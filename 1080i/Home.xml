@@ -64,12 +64,12 @@
 						<visible>System.HasMediaDVD</visible>
 						<onclick>EjectTray()</onclick>
 						<animation type="Visible">
-							<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="50" end="100" center="auto" tween="sine" easing="inout" time="300" />
+							<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="300"/>
+							<effect type="zoom" start="50" end="100" center="auto" tween="sine" easing="inout" time="300"/>
 						</animation>
 						<animation type="Hidden">
-							<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="100" end="50" center="auto" tween="sine" easing="inout" time="300" />
+							<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="300"/>
+							<effect type="zoom" start="100" end="50" center="auto" tween="sine" easing="inout" time="300"/>
 						</animation>
 					</control>
 					<control type="button" id="9022">
@@ -84,12 +84,12 @@
 						<visible>System.HasMediaDVD</visible>
 						<onclick>PlayDVD</onclick>
 						<animation type="Visible">
-							<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="50" end="100" center="auto" tween="sine" easing="inout" time="300" />
+							<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="300"/>
+							<effect type="zoom" start="50" end="100" center="auto" tween="sine" easing="inout" time="300"/>
 						</animation>
 						<animation type="Hidden">
-							<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="100" end="50" center="auto" tween="sine" easing="inout" time="300" />
+							<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="300"/>
+							<effect type="zoom" start="100" end="50" center="auto" tween="sine" easing="inout" time="300"/>
 						</animation>
 					</control>
 					<control type="label" id="9026">
@@ -99,7 +99,6 @@
 						<font>font13_title</font>
 						<textcolor>themecolor</textcolor>
 					</control>
-					<control type="label" id="9023">
 						<width>auto</width>
 						<height>41</height>
 						<label>$INFO[Weather.Temperature,,[COLOR grey]	|  [/COLOR]]</label>
@@ -111,7 +110,7 @@
 					<control type="label" id="9025">
 						<width>auto</width>
 						<height>41</height>
-						<label>$INFO[System.Date,[COLOR grey],	|  [/COLOR]]$INFO[System.Time]</label>
+						<label>[COLOR grey]	|  [/COLOR]$INFO[System.Date,[COLOR grey],	|  [/COLOR]]$INFO[System.Time]</label>
 						<font>font13_title</font>
 						<textcolor>themecolor</textcolor>
 						<shadowcolor>shadow</shadowcolor>
@@ -125,15 +124,15 @@
 			<top>453</top>
 			<animation effect="slide" end="0,338" time="320" tween="cubic" easing="inout" condition="Skin.HasSetting(lowermainmenu)">Conditional</animation>
 			<animation type="WindowOpen" reversible="false" condition="Window.Previous(Startup)">
-				<effect type="zoom" start="0" end="100" center="960,540" delay="500" time="300" tween="cubic" />
+				<effect type="zoom" start="0" end="100" center="960,540" delay="500" time="300" tween="cubic"/>
 			</animation>
 			<animation type="WindowOpen" reversible="false" condition="!Window.Previous(Startup)">
-				<effect type="zoom" start="150" end="100" center="960,540" time="300" tween="cubic" />
-				<effect type="fade" start="50" end="100" time="300" />
+				<effect type="zoom" start="150" end="100" center="960,540" time="300" tween="cubic"/>
+				<effect type="fade" start="50" end="100" time="300"/>
 			</animation>
 			<animation type="WindowClose" reversible="false">
-				<effect type="fade" start="100" end="0" time="300" />
-				<effect type="zoom" start="100" end="130" center="960,540" time="300" tween="cubic" easing="in" />
+				<effect type="fade" start="100" end="0" time="300"/>
+				<effect type="zoom" start="100" end="130" center="960,540" time="300" tween="cubic" easing="in"/>
 			</animation>
 			<control type="group" id="9001">
 				<left>0</left>
