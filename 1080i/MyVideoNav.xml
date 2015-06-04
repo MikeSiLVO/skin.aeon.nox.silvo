@@ -980,6 +980,15 @@
 					<selected>!Skin.HasSetting(bannerinfofloor)</selected>
 					<visible>Control.IsVisible(506)</visible>
 				</control>
+				<control type="radiobutton" id="6999">
+					<description>Show Clearart</description>
+					<textwidth>375</textwidth>
+					<include>ButtonCommonValues</include>
+					<label>Show Clearart</label>
+					<onclick>Skin.ToggleSetting(Enable.Logo.clearart)</onclick>
+					<selected>Skin.HasSetting(Enable.Logo.clearart)</selected>
+					<visible>Control.IsVisible(59) + [Container.Content(movies) | Container.Content(tvshows)]</visible>
+				</control>
 				<control type="button" id="7006">
 					<description>Enable Extended Information</description>
 					<textwidth>375</textwidth>
