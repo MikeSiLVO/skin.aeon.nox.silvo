@@ -11,7 +11,8 @@
 				<height>1080</height>
 				<onleft>SetProperty(MediaMenu,True,home)</onleft>
 				<onleft>SetFocus(9050)</onleft>
-				<onright>60</onright>
+                <onright condition="!Container.Content(seasons)">60</onright>
+                <onright condition="Container.Content(seasons)">503</onright>
 				<onup>503</onup>
 				<ondown>503</ondown>
 				<orientation>vertical</orientation>
