@@ -59,7 +59,7 @@
 		<control type="group">
 			<visible>![Window.IsActive(home) | Window.IsActive(startup)] | Window.IsActive(script-globalsearch-main.xml)</visible>
 			<include>Window_OpenClose_Animation</include>
-			<visible>Control.IsVisible(50) | [Control.IsVisible(51) + !Skin.HasSetting(Enable.AlternateInfowall)] | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(499) | Control.IsVisible(500) | Control.IsVisible(601) | Control.IsVisible(602) | Control.IsVisible(701) | [Control.IsVisible(507) + !Skin.HasSetting(alternatebiglistlayout)] | Window.IsActive(script-NextAired-TVGuide.xml) | Window.IsActive(script-NextAired-TVGuide2.xml) | Window.IsActive(appearancesettings)</visible>
+			<visible>Control.IsVisible(50) | [Control.IsVisible(51) + !Skin.HasSetting(Enable.AlternateInfowall)] | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(499) | Control.IsVisible(500) | Control.IsVisible(601) | Control.IsVisible(602) | Control.IsVisible(701) | [Control.IsVisible(507) + !Skin.HasSetting(alternatebiglistlayout)] | Window.IsActive(script-NextAired-TVGuide.xml) | Window.IsActive(script-NextAired-TVGuide2.xml) | Window.IsActive(appearancesettings) | Window.IsActive(script-globalsearch-main.xml)</visible>
 			<include>ViewAnimation</include>
 			<animation effect="slide" start="0,0" end="0,80" time="720" tween="cubic" easing="inout" condition="![[Control.IsVisible(52) + !Window.IsActive(systeminfo)] | Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(56) | Control.IsVisible(500) | Control.IsVisible(57)] | Window.IsActive(skinsettings)">Conditional</animation>
 			<control type="image">
@@ -605,6 +605,15 @@
 	</include>
 	<include name="GlobalSearchBG">
 		<control type="image">
+			<texture background="true" fallback="special://skin/backgrounds/fallback_movies.jpg">$INFO[Skin.String(CustomDefaultBackground)]</texture>
+			<aspectratio>scale</aspectratio>
+			<fadetime>600</fadetime>
+			<animation effect="fade" time="600">Visible</animation>
+			<animation effect="fade" time="600">Hidden</animation>
+			<animation effect="fade" time="200">WindowClose</animation>
+			<include>AnimatedBackgroundAnimation</include>
+		</control>
+		<control type="image">
 			<texture background="true" fallback="$INFO[Skin.String(CustomDefaultBackground)]">$INFO[Container(111).ListItem.Property(Fanart)]</texture>
 			<aspectratio>scale</aspectratio>
 			<fadetime>600</fadetime>
@@ -612,6 +621,7 @@
 			<animation effect="fade" time="600">Visible</animation>
 			<animation effect="fade" time="600">Hidden</animation>
 			<animation effect="fade" time="200">WindowClose</animation>
+			<include>AnimatedBackgroundAnimation</include>
 		</control>
 		<control type="image">
 			<texture background="true" fallback="$INFO[Skin.String(CustomDefaultBackground)]">$INFO[Container(121).ListItem.Property(Fanart)]</texture>
@@ -621,6 +631,7 @@
 			<animation effect="fade" time="600">Visible</animation>
 			<animation effect="fade" time="600">Hidden</animation>
 			<animation effect="fade" time="200">WindowClose</animation>
+			<include>AnimatedBackgroundAnimation</include>
 		</control>
 		<control type="image">
 			<texture background="true" fallback="$INFO[Skin.String(CustomDefaultBackground)]">$INFO[Container(131).ListItem.Property(Fanart)]</texture>
@@ -630,6 +641,7 @@
 			<animation effect="fade" time="600">Visible</animation>
 			<animation effect="fade" time="600">Hidden</animation>
 			<animation effect="fade" time="200">WindowClose</animation>
+			<include>AnimatedBackgroundAnimation</include>
 		</control>
 		<control type="image">
 			<texture background="true" fallback="$INFO[Skin.String(CustomDefaultBackground)]">$INFO[Container(141).ListItem.Property(Fanart)]</texture>
@@ -639,6 +651,7 @@
 			<animation effect="fade" time="600">Visible</animation>
 			<animation effect="fade" time="600">Hidden</animation>
 			<animation effect="fade" time="200">WindowClose</animation>
+			<include>AnimatedBackgroundAnimation</include>
 		</control>
 		<control type="image">
 			<texture background="true" fallback="$INFO[Skin.String(CustomDefaultBackground)]">$INFO[Container(151).ListItem.Property(Fanart)]</texture>
@@ -648,6 +661,7 @@
 			<animation effect="fade" time="600">Visible</animation>
 			<animation effect="fade" time="600">Hidden</animation>
 			<animation effect="fade" time="200">WindowClose</animation>
+			<include>AnimatedBackgroundAnimation</include>
 		</control>
 		<control type="image">
 			<texture background="true" fallback="$INFO[Skin.String(CustomDefaultBackground)]">$INFO[Container(161).ListItem.Property(Fanart)]</texture>
@@ -657,6 +671,7 @@
 			<animation effect="fade" time="600">Visible</animation>
 			<animation effect="fade" time="600">Hidden</animation>
 			<animation effect="fade" time="200">WindowClose</animation>
+			<include>AnimatedBackgroundAnimation</include>
 		</control>
 		<control type="image">
 			<texture background="true" fallback="$INFO[Skin.String(CustomDefaultBackground)]">$INFO[Container(171).ListItem.Property(Fanart)]</texture>
@@ -666,6 +681,7 @@
 			<animation effect="fade" time="600">Visible</animation>
 			<animation effect="fade" time="600">Hidden</animation>
 			<animation effect="fade" time="200">WindowClose</animation>
+			<include>AnimatedBackgroundAnimation</include>
 		</control>
 		<control type="image">
 			<texture background="true" fallback="$INFO[Skin.String(CustomDefaultBackground)]">$INFO[Container(181).ListItem.Property(Fanart)]</texture>
@@ -675,6 +691,7 @@
 			<animation effect="fade" time="600">Visible</animation>
 			<animation effect="fade" time="600">Hidden</animation>
 			<animation effect="fade" time="200">WindowClose</animation>
+			<include>AnimatedBackgroundAnimation</include>
 		</control>
 		<control type="image">
 			<texture background="true" fallback="$INFO[Skin.String(CustomDefaultBackground)]">$INFO[Container(211).ListItem.Property(Fanart)]</texture>
@@ -684,6 +701,7 @@
 			<animation effect="fade" time="600">Visible</animation>
 			<animation effect="fade" time="600">Hidden</animation>
 			<animation effect="fade" time="200">WindowClose</animation>
+			<include>AnimatedBackgroundAnimation</include>
 		</control>
 	</include>
 </includes>
