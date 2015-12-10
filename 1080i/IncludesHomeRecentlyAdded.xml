@@ -1095,8 +1095,8 @@
 			<animation effect="slide" tween="cubic" time="720" end="0,1080" start="0,0" condition="!Skin.HasSetting(lowermainmenu) + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">WindowClose</animation>
 			<animation effect="slide" tween="cubic" time="720" start="0,-1080" end="0,0" condition="Skin.HasSetting(lowermainmenu) | StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">WindowOpen</animation>
 			<animation effect="slide" tween="cubic" time="720" end="0,-1080" start="0,0" condition="Skin.HasSetting(lowermainmenu) | StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">WindowClose</animation>
-			<animation effect="slide" end="0,-650" time="320" tween="cubic" easing="inout" condition="Skin.HasSetting(lowermainmenu) | StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">Conditional</animation>
-			<animation effect="slide" end="300,40" time="320" tween="cubic" easing="inout" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">Conditional</animation>
+			<animation effect="slide" end="0,-645" time="320" tween="cubic" easing="inout" condition="Skin.HasSetting(lowermainmenu) | StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">Conditional</animation>
+			<animation effect="slide" end="300,0" time="320" tween="cubic" easing="inout" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">Conditional</animation>
 			<animation effect="slide" end="120,0" time="320" tween="cubic" easing="inout" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + VideoPlayer.Content(livetv)">Conditional</animation>
 			<control type="group">
 				<control type="image">
@@ -1137,7 +1137,7 @@
 					<itemgap>12</itemgap>
 					<control type="label">
 						<left>50</left>
-						<width>1300</width>
+						<width>800</width>
 						<height>40</height>
 						<font>font48_title</font>
 						<textcolor>themecolor</textcolor>
@@ -1147,7 +1147,7 @@
 					</control>
 					<control type="label">
 						<left>50</left>
-						<width>1300</width>
+						<width>800</width>
 						<height>40</height>
 						<font>font48_title</font>
 						<textcolor>white2</textcolor>
@@ -1156,7 +1156,7 @@
 					</control>
 					<control type="label">
 						<left>90</left>
-						<width>1300</width>
+						<width>800</width>
 						<height>40</height>
 						<font>font15</font>
 						<textcolor>white2</textcolor>
@@ -1166,7 +1166,7 @@
 					</control>
 					<control type="label">
 						<left>90</left>
-						<width>1300</width>
+						<width>800</width>
 						<height>40</height>
 						<font>font15</font>
 						<textcolor>white2</textcolor>
@@ -1176,7 +1176,7 @@
 					</control>
 					<control type="label">
 						<left>100</left>
-						<width>1300</width>
+						<width>800</width>
 						<height>40</height>
 						<font>font15</font>
 						<textcolor>white2</textcolor>
@@ -1186,7 +1186,7 @@
 					</control>
 					<control type="label">
 						<left>90</left>
-						<width>1300</width>
+						<width>800</width>
 						<height>40</height>
 						<font>font15</font>
 						<textcolor>white2</textcolor>
@@ -1196,7 +1196,7 @@
 					</control>
 					<control type="label">
 						<left>90</left>
-						<width>1300</width>
+						<width>800</width>
 						<height>40</height>
 						<font>font15</font>
 						<textcolor>white2</textcolor>
@@ -1206,7 +1206,7 @@
 					</control>
 					<control type="label">
 						<left>100</left>
-						<width>1300</width>
+						<width>800</width>
 						<height>40</height>
 						<font>font15</font>
 						<textcolor>white2</textcolor>
@@ -1216,7 +1216,7 @@
 					</control>
 					<control type="label">
 						<left>90</left>
-						<width>1300</width>
+						<width>800</width>
 						<height>40</height>
 						<font>font15</font>
 						<textcolor>white2</textcolor>
@@ -1239,7 +1239,7 @@
 						<description>Time Label</description>
 						<left>50</left>
 						<height>50</height>
-						<width>1300</width>
+						<width>800</width>
 						<label>$INFO[Player.Time]$INFO[Player.Duration,[COLOR=labelheader] / [/COLOR]]</label>
 						<font>font48</font>
 						<textcolor>white2</textcolor>
@@ -1253,7 +1253,7 @@
 		<!-- Music Info -->
 		<control type="group">
 			<left>0</left>
-			<top>602</top>
+			<top>600</top>
 			<visible>Player.HasAudio</visible>
 			<include>VisibleFadeEffect</include>
 			<animation effect="slide" tween="cubic" time="720" start="0,1080" end="0,0" condition="!Skin.HasSetting(lowermainmenu) + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">WindowOpen</animation>
@@ -1261,10 +1261,10 @@
 			<animation effect="slide" tween="cubic" time="720" start="0,-1080" end="0,0" condition="Skin.HasSetting(lowermainmenu) | StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">WindowOpen</animation>
 			<animation effect="slide" tween="cubic" time="720" end="0,-1080" start="0,0" condition="Skin.HasSetting(lowermainmenu) | StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">WindowClose</animation>
 			<animation effect="slide" end="0,-660" time="320" tween="cubic" easing="inout" condition="Skin.HasSetting(lowermainmenu) | StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">Conditional</animation>
-			<animation effect="slide" end="400,40" time="320" tween="cubic" easing="inout" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">Conditional</animation>
+			<animation effect="slide" end="400,0" time="320" tween="cubic" easing="inout" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">Conditional</animation>
 			<control type="image">
 				<left>0</left>
-				<top>-152</top>
+				<top>-150</top>
 				<width>FullScreenWidth</width>
 				<height>630</height>
 				<texture border="1">nowplaying_shadow.png</texture>
@@ -1677,6 +1677,7 @@
 		<control type="group">
 			<animation effect="slide" tween="cubic" time="720" start="0,-1080" end="0,0">WindowOpen</animation>
 			<animation effect="slide" tween="cubic" time="720" end="0,-1080" start="0,0">WindowClose</animation>
+			<animation effect="slide" tween="cubic" time="320" end="0,-40" condition="Skin.HasSetting(lowermainmenu)">Conditional</animation>
 			<include>VisibleFadeEffect</include>
 			<visible>StringCompare(Container(9000).ListItem.Property(widget),weather) + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
 			<control type="image">
@@ -1689,7 +1690,7 @@
 				<animation effect="slide" end="0,-810" time="320" tween="cubic" easing="inout" condition="Skin.HasSetting(lowermainmenu)">Conditional</animation>
 			</control>
 			<control type="image">
-				<top>675</top>
+				<top>715</top>
 				<width>FullScreenWidth</width>
 				<height>50</height>
 				<texture>v2.png</texture>
@@ -1697,7 +1698,7 @@
 			</control>
 			<control type="panel" id="300">
 				<left>0</left>
-				<top>0</top>
+				<top>40</top>
 				<width>FullScreenWidth</width>
 				<height>300</height>
 				<onup>9000</onup>
