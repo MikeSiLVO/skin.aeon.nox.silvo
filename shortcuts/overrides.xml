@@ -35,10 +35,10 @@
 			<shortcut label="31034" condition="System.HasAddon(service.library.data.provider)" icon="logos/ldp-logo.png" widget="library" widgetType="episodes" widgetTarget="video">plugin://service.library.data.provider?type=recommendedepisodes&amp;reload=$INFO[Window.Property(recommendedepisodes)]</shortcut>
 		</node>
 		<node label="2">
-			<shortcut label="31036" target="music" type="albums" icon="DefaultMusicAlbums.png" path="plugin://service.library.data.provider?type=randomalbums&amp;reload=$INFO[Window.Property(randomalbums)]">randomalbums</shortcut>
-			<shortcut label="31037" target="music" type="albums" icon="DefaultMusicRecentlyAdded.png" path="plugin://service.library.data.provider?type=recentalbums&amp;reload=$INFO[Window.Property(recentalbums)]">recentalbums</shortcut>
-			<shortcut label="31038" target="music" type="albums" icon="DefaultMusicRecentlyPlayed.png" path="plugin://service.library.data.provider?type=recommendedalbums&amp;reload=$INFO[Window.Property(recommendedalbums)]">recommendedalbums</shortcut>
-			<shortcut label="31035" target="music" type="songs" icon="DefaultMusicSongs.png" path="plugin://service.library.data.provider?type=randomsongs&amp;reload=$INFO[Window.Property(randomsongs)]">randomsongs</shortcut>
+			<shortcut label="31036" condition="System.HasAddon(service.library.data.provider)" icon="logos/ldp-logo.png" widget="library" widgetType="albums" widgetTarget="music">plugin://service.library.data.provider?type=randomalbums&amp;reload=$INFO[Window.Property(randomalbums)]</shortcut>
+			<shortcut label="31037" condition="System.HasAddon(service.library.data.provider)" icon="logos/ldp-logo.png" widget="library" widgetType="albums" widgetTarget="music">plugin://service.library.data.provider?type=recentalbums&amp;reload=$INFO[Window.Property(recentalbums)]</shortcut>
+			<shortcut label="31038" condition="System.HasAddon(service.library.data.provider)" icon="logos/ldp-logo.png" widget="library" widgetType="albums" widgetTarget="music">plugin://service.library.data.provider?type=recommendedalbums&amp;reload=$INFO[Window.Property(recommendedalbums)]</shortcut>
+			<shortcut label="31035" condition="System.HasAddon(service.library.data.provider)" icon="logos/ldp-logo.png" widget="library" widgetType="songs" widgetTarget="music">plugin://service.library.data.provider?type=randomsongs&amp;reload=$INFO[Window.Property(randomsongs)]</shortcut>
 		</node>
 		<node label="20389">
 			<shortcut label="Random Music Videos" condition="System.HasAddon(service.library.data.provider)" icon="logos/ldp-logo.png" widget="library" widgetType="musicvideos" widgetTarget="video">plugin://service.library.data.provider?type=randommusicvideos&amp;reload=$INFO[Window.Property(randommusicvideos)]</shortcut>
