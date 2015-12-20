@@ -315,8 +315,37 @@
 							<height>88</height>
 							<texture border="1">separator3.png</texture>
 							<visible>!IsEmpty(ListItem.Rating)</visible>
+					</control>
+					<control type="group">
+						<visible>!IsEmpty(ListItem.UserRating)</visible>
+						<width>120</width>
+						<control type="label">
+							<left>0</left>
+							<top>2</top>
+							<width>120</width>
+							<height>60</height>
+							<align>center</align>
+							<label>$INFO[ListItem.UserRating]</label>
+							<font>font48_bold</font>
+							<textcolor>grey</textcolor>
 						</control>
-						<control type="group">
+						<control type="label">
+							<top>52</top>
+							<width>120</width>
+							<height>30</height>
+							<align>center</align>
+							<label>[LOWERCASE]$LOCALIZE[31146][/LOWERCASE]</label>
+							<font>font12</font>
+							<textcolor>grey</textcolor>
+						</control>
+					</control>
+					<control type="image">
+						<width>2</width>
+						<height>90</height>
+						<texture border="1">separator3.png</texture>
+						<visible>!IsEmpty(ListItem.UserRating)</visible>
+					</control>
+					<control type="group">
 							<visible>!IsEmpty(ListItem.Top250)</visible>
 							<width>200</width>
 							<control type="label">
@@ -1790,6 +1819,13 @@
 							<onclick>RunScript(script.cinemavision,experience)</onclick>
 							<visible>System.HasAddon(script.cinemavision) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + !StringCompare(Skin.String(CinemaVision.Button),$LOCALIZE[31014]) + IsEmpty(Window(Home).Property(script.cinemavision.running))</visible>
 						</control>
+						<control type="togglebutton" id="7">
+						<description>Set rating</description>
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label>38023</label>
+						<altlabel>$LOCALIZE[31147]</altlabel>
+						<usealttexture>!IsEmpty(ListItem.UserRating)</usealttexture>
+					</control>
 						<control type="image" id="201">
 							<width>2</width>
 							<height>58</height>

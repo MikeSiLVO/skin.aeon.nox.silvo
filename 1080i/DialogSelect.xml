@@ -3,7 +3,7 @@
 	<defaultcontrol always="true">9000</defaultcontrol>
 	<coordinates>
 		<system>1</system>
-		<left>357</left>
+		<left>457</left>
 		<top>240</top>
 	</coordinates>
 	<include>dialogeffect</include>
@@ -12,7 +12,7 @@
 			<control type="image">
 				<left>157</left>
 				<top>0</top>
-				<width>892</width>
+				<width>692</width>
 				<height>600</height>
 				<texture border="40">dialogs/default/bg.png</texture>
 				<visible>Control.IsVisible(3) + !Control.IsVisible(5)</visible>
@@ -20,7 +20,7 @@
 			<control type="image">
 				<left>0</left>
 				<top>0</top>
-				<width>1206</width>
+				<width>1006</width>
 				<height>600</height>
 				<texture border="40">dialogs/default/bg.png</texture>
 				<visible>Control.IsVisible(5) | Control.isVisible(6)</visible>
@@ -28,7 +28,7 @@
 			<control type="image">
 				<left>30</left>
 				<top>86</top>
-				<width>832</width>
+				<width>632</width>
 				<height>482</height>
 				<texture border="5">dialogs/default/inner.png</texture>
 				<animation effect="slide" start="0" end="157" time="0" tween="quadratic" condition="Control.IsVisible(3) + !Control.IsVisible(5)">Conditional</animation>
@@ -36,7 +36,7 @@
 			<control type="label" id="1">
 				<left>30</left>
 				<top>32</top>
-				<width>1140</width>
+				<width>940</width>
 				<height>40</height>
 				<font>font15_title</font>
 				<label>$LOCALIZE[13406]</label>
@@ -44,7 +44,7 @@
 				<textcolor>dialogheader</textcolor>
 			</control>
 			<control type="group">
-				<left>876</left>
+				<left>676</left>
 				<top>86</top>
 				<control type="image">
 					<left>0</left>
@@ -62,7 +62,7 @@
 				<control type="list" id="3">
 					<left>32</left>
 					<top>88</top>
-					<width>830</width>
+					<width>630</width>
 					<height>480</height>
 					<onup>3</onup>
 					<ondown>3</ondown>
@@ -73,12 +73,12 @@
 					<animation effect="slide" start="0" end="157" time="0" tween="quadratic" condition="!Control.IsVisible(5)">Conditional</animation>
 					<itemlayout height="60" width="630">
 						<control type="image">
-							<width>830</width>
+							<width>630</width>
 							<height>60</height>
 							<texture border="1">separator2.png</texture>
 						</control>
 						<control type="label">
-							<width>830</width>
+							<width>630</width>
 							<height>60</height>
 							<textoffsetx>15</textoffsetx>
 							<font>font14</font>
@@ -89,7 +89,7 @@
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 						<control type="label">
-							<width>830</width>
+							<width>630</width>
 							<height>60</height>
 							<textoffsetx>15</textoffsetx>
 							<font>font14</font>
@@ -102,20 +102,20 @@
 					</itemlayout>
 					<focusedlayout height="60" width="630">
 						<control type="image">
-							<width>830</width>
+							<width>630</width>
 							<height>60</height>
 							<texture border="1">separator2.png</texture>
 							<include>VisibleFadeEffect</include>
 						</control>
 						<control type="image">
-							<width>830</width>
+							<width>630</width>
 							<height>60</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+							<texture border="5">listselect_fo.png</texture>
 							<visible>Control.HasFocus(3)</visible>
 							<include>VisibleFadeEffect</include>
 						</control>
 						<control type="label">
-							<width>830</width>
+							<width>630</width>
 							<height>60</height>
 							<textoffsetx>15</textoffsetx>
 							<font>font14</font>
@@ -128,7 +128,7 @@
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(3)">Conditional</animation>
 						</control>
 						<control type="label">
-							<width>830</width>
+							<width>630</width>
 							<height>60</height>
 							<textoffsetx>15</textoffsetx>
 							<font>font14</font>
@@ -144,7 +144,7 @@
 				<control type="list" id="6">
 					<left>32</left>
 					<top>88</top>
-					<width>830</width>
+					<width>630</width>
 					<height>480</height>
 					<onup>6</onup>
 					<ondown>6</ondown>
@@ -155,12 +155,12 @@
 					<itemlayout height="60" width="641">
 						<control type="image">
 							<left>1</left>
-							<width>830</width>
+							<width>630</width>
 							<height>60</height>
 							<texture border="1">separator2.png</texture>
 						</control>
 						<control type="label">
-							<width>830</width>
+							<width>630</width>
 							<height>60</height>
 							<font>font14</font>
 							<textoffsetx>15</textoffsetx>
@@ -171,7 +171,7 @@
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 						<control type="label">
-							<width>830</width>
+							<width>630</width>
 							<height>60</height>
 							<font>font14</font>
 							<textoffsetx>15</textoffsetx>
@@ -181,23 +181,23 @@
 							<label>$VAR[DialogSelectLabel2Var]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout height="60" width="841">
+					<focusedlayout height="60" width="641">
 						<control type="image">
 							<left>1</left>
-							<width>830</width>
+							<width>630</width>
 							<height>60</height>
 							<texture border="1">separator2.png</texture>
 						</control>
 						<control type="image">
 							<left>1</left>
-							<width>830</width>
+							<width>630</width>
 							<height>60</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+							<texture border="5">listselect_fo.png</texture>
 							<visible>Control.HasFocus(6)</visible>
 							<include>VisibleFadeEffect</include>
 						</control>
 						<control type="label">
-							<width>830</width>
+							<width>630</width>
 							<height>60</height>
 							<font>font14</font>
 							<textoffsetx>15</textoffsetx>
@@ -209,7 +209,7 @@
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(6)">Conditional</animation>
 						</control>
 						<control type="label">
-							<width>830</width>
+							<width>630</width>
 							<height>60</height>
 							<font>font14</font>
 							<textoffsetx>15</textoffsetx>
@@ -223,7 +223,7 @@
 				</control>
 			</control>
 			<control type="grouplist" id="9001">
-				<left>876</left>
+				<left>676</left>
 				<top>434</top>
 				<height>134</height>
 				<onleft>60</onleft>
@@ -235,15 +235,15 @@
 					<description>Manual button</description>
 					<width>300</width>
 					<label>186</label>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texturefocus>
+					<texturefocus border="5">button_fo.png</texturefocus>
 					<texturenofocus border="5">dialogs/default/inner.png</texturenofocus>
 				</control>
 			</control>
 			<control type="scrollbar" id="60">
-				<left>864</left>
+				<left>662</left>
 				<top>88</top>
 				<height>480</height>
-				<width>8</width>
+				<width>14</width>
 				<onleft>6</onleft>
 				<onright>9001</onright>
 				<ondown>60</ondown>

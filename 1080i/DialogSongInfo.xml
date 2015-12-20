@@ -39,7 +39,7 @@
 				<left>31</left>
 				<top>88</top>
 				<width>738</width>
-				<height>540</height>
+				<height>630</height>
 				<onup>9002</onup>
 				<ondown>9002</ondown>
 				<onleft>9001</onleft>
@@ -68,7 +68,7 @@
 						<width>738</width>
 						<height>45</height>
 						<font>font14</font>
-						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<textcolor>labelheader</textcolor>
 						<selectedcolor>selected</selectedcolor>
 						<label>$INFO[ListItem.Label2]</label>
 						<textoffsetx>15</textoffsetx>
@@ -85,7 +85,7 @@
 						<top>0</top>
 						<width>738</width>
 						<height>90</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+						<texture border="4">listselect_fo.png</texture>
 						<visible>Control.HasFocus(9002)</visible>
 						<include>VisibleFadeEffect</include>
 					</control>
@@ -192,10 +192,10 @@
 				</content>
 			</control>
 			<control type="scrollbar" id="60">
-				<left>772</left>
+				<left>770</left>
 				<top>88</top>
-				<height>540</height>
-				<width>8</width>
+				<height>630</height>
+				<width>14</width>
 				<onleft>9002</onleft>
 				<onright>9001</onright>
 				<ondown>60</ondown>
@@ -205,16 +205,6 @@
 				<texturesliderbar colordiffuse="55ffffff" border="4">scrollbar/texturesliderbar3.png</texturesliderbar>
 				<texturesliderbarfocus border="4">scrollbar/texturesliderbar3.png</texturesliderbarfocus>
 				<animation effect="slide" start="0" end="157" time="0" tween="quadratic" condition="Control.IsVisible(3) + !Control.IsVisible(5)">Conditional</animation>
-			</control>
-			<control type="image">
-				<description>Rating value</description>
-				<left>41</left>
-				<top>643</top>
-				<width>302</width>
-				<height>64</height>
-				<aspectratio align="left">keep</aspectratio>
-				<colordiffuse>grey2</colordiffuse>
-				<texture fallback="rating0.png">$INFO[ListItem.StarRating]</texture>
 			</control>
 			<!-- right group -->
 			<control type="group">
@@ -229,8 +219,8 @@
 				</control>
 				<control type="grouplist" id="9001">
 					<onup>9001</onup>
-					<onleft>9000</onleft>
-					<onright>9000</onright>
+					<onleft>9002</onleft>
+					<onright>9001</onright>
 					<ondown>9001</ondown>
 					<control type="image">
 						<width>310</width>
@@ -240,10 +230,29 @@
 						<bordertexture border="5">dialogs/default/inner.png</bordertexture>
 						<bordersize>1</bordersize>
 					</control>
-					<control type="button" id="7">
-						<description>Set User Rating</description>
+					<control type="image">
+						<description>Rating value</description>
 						<width>310</width>
+						<height>120</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<colordiffuse>grey2</colordiffuse>
+						<visible>IsEmpty(ListItem.StarRating)</visible>
+						<texture>flags/rating/0.png</texture>
+					</control>
+					<control type="image">
+						<description>Rating value</description>
+						<width>310</width>
+						<height>120</height>
+						<aspectratio aligny="top">keep</aspectratio>
+						<colordiffuse>grey2</colordiffuse>
+						<visible>!IsEmpty(ListItem.StarRating)</visible>
+						<texture colordiffuse="themecolor">$INFO[ListItem.StarRating]</texture>
+					</control>
+					<control type="button" id="7">
+						<description>Set my rating</description>
 						<label>38023</label>
+						<width>310</width>
+						<label>222</label>
 					</control>
 					<control type="button" id="12">
 						<description>Album Info button</description>
