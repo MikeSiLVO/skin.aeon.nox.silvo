@@ -68,7 +68,7 @@
 						<width>738</width>
 						<height>45</height>
 						<font>font14</font>
-						<textcolor>labelheader</textcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
 						<selectedcolor>selected</selectedcolor>
 						<label>$INFO[ListItem.Label2]</label>
 						<textoffsetx>15</textoffsetx>
@@ -85,7 +85,7 @@
 						<top>0</top>
 						<width>738</width>
 						<height>90</height>
-						<texture border="4">listselect_fo.png</texture>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
 						<visible>Control.HasFocus(9002)</visible>
 						<include>VisibleFadeEffect</include>
 					</control>
@@ -246,7 +246,7 @@
 						<aspectratio aligny="top">keep</aspectratio>
 						<colordiffuse>grey2</colordiffuse>
 						<visible>!IsEmpty(ListItem.StarRating)</visible>
-						<texture colordiffuse="themecolor">$INFO[ListItem.StarRating]</texture>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">$INFO[ListItem.StarRating]</texture>
 					</control>
 					<control type="button" id="7">
 						<description>Set my rating</description>
