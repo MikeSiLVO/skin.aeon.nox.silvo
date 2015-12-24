@@ -133,17 +133,6 @@
 						<texture border="1">separator2.png</texture>
 					</control>
 					<control type="image">
-						<left>380</left>
-						<top>105</top>
-						<width>120</width>
-						<height>68</height>
-						<colordiffuse>grey</colordiffuse>
-						<aspectratio>keep</aspectratio>
-						<texture fallback="flags/colored/rating/NR.png">$VAR[ColoredRatingFlagVar]</texture>
-						<include>MediaFlagVars</include>
-						<visible>Skin.HasSetting(coloredflags) + !Skin.HasSetting(Enable.MPAAInfoRating)</visible>
-					</control>
-					<control type="image">
 						<left>327</left>
 						<top>105</top>
 						<width>285</width>
@@ -230,9 +219,11 @@
 							<texture fallback="flags/mpaa/NR.png">$VAR[RatingFlagVar]</texture>
 							<visible>!Skin.HasSetting(coloredflags)</visible>
 						</control>
-						<control type="label">
+						<control type="image">
 							<width>198</width>
-							<include>HiddenObject</include>
+							<colordiffuse>grey</colordiffuse>
+							<include>MediaFlagVars</include>
+							<texture fallback="flags/colored/rating/NR.png">$VAR[ColoredRatingFlagVar]</texture>
 							<visible>Skin.HasSetting(coloredflags) + !Skin.HasSetting(Enable.MPAAInfoRating)</visible>
 						</control>
 						<control type="label">
@@ -512,25 +503,25 @@
 								<label>$INFO[Window(Home).Property(SkinHelper.TMDB.Budget.mln),$, Million]</label>
 								<label2>Budget:</label2>
 								<onclick>noop</onclick>
-								<visible>!IsEmpty(Window(Home).Property(SkinHelper.TMDB.Budget.mln))</visible>
+								<visible>!IsEmpty(Window(Home).Property(SkinHelper.TMDB.Budget.mln)) + Container.Content(movies)</visible>
 							</item>
 							<item>
 								<label>$INFO[Window(Home).Property(SkinHelper.TMDB.Revenue.mln),$, Million]</label>
 								<label2>Revenue:</label2>
 								<onclick>noop</onclick>
-								<visible>!IsEmpty(Window(Home).Property(SkinHelper.TMDB.Revenue.mln))</visible>
+								<visible>!IsEmpty(Window(Home).Property(SkinHelper.TMDB.Revenue.mln)) + Container.Content(movies)</visible>
 							</item>
 							<item>
 								<label>$INFO[Window(Home).Property(SkinHelper.RottenTomatoesRating),,%]</label>
 								<label2>Rotten Tomatoes rating:</label2>
 								<onclick>noop</onclick>
-								<visible>!IsEmpty(Window(Home).Property(SkinHelper.RottenTomatoesRating))</visible>
+								<visible>!IsEmpty(Window(Home).Property(SkinHelper.RottenTomatoesRating)) + Container.Content(movies)</visible>
 							</item>
 							<item>
 								<label>$INFO[Window(Home).Property(SkinHelper.RottenTomatoesAwards)]</label>
 								<label2>Awards:</label2>
 								<onclick>noop</onclick>
-								<visible>!IsEmpty(Window(Home).Property(SkinHelper.RottenTomatoesAwards))</visible>
+								<visible>!IsEmpty(Window(Home).Property(SkinHelper.RottenTomatoesAwards)) + Container.Content(movies)</visible>
 							</item>
 							<item>
 								<label>$INFO[ListItem.Country]</label>
