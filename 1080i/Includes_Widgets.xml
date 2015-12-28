@@ -186,7 +186,7 @@
 	</include>
 	<!-- List Info -->
 	<include name="ListInfo">
-		<top>0</top>
+		<top>-2</top>
 		<height>312</height>
 		<itemgap>10</itemgap>
 		<align>center</align>
@@ -232,7 +232,7 @@
 		</control>
 		<control type="textbox">
 			<width>$PARAM[Width]</width>
-			<height max="143">auto</height>
+			<height>143</height>
 			<font>font14_textbox</font>
 			<align>justify</align>
 			<textcolor>white2</textcolor>
@@ -248,6 +248,7 @@
 			<left>83</left>
 			<width>134</width>
 			<height>200</height>
+			<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 			<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 			<animation effect="zoom" end="95,90" center="150,210" condition="$PARAM[caseVisible]">conditional</animation>
 			<animation effect="zoom" end="94,96" center="auto" condition="$PARAM[clearVisible]">conditional</animation>
@@ -269,7 +270,7 @@
 			<left>50</left>
 			<width>200</width>
 			<height>200</height>
-			<aspectratio aligny="center" scalediffuse="false">$PARAM[Aspect]</aspectratio>
+			<aspectratio aligny="$PARAM[Aligny]" scalediffuse="false">$PARAM[Aspect]</aspectratio>
 			<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 			<animation effect="zoom" end="90,98" center="250,150" condition="$PARAM[caseVisible]">conditional</animation>
 			<animation effect="zoom" end="90,98" center="250,150" condition="$PARAM[clearVisible]">conditional</animation>
@@ -304,7 +305,7 @@
 			<left>0</left>
 			<width>300</width>
 			<height>169</height>
-			<aspectratio>$PARAM[Aspect]</aspectratio>
+			<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 			<animation effect="zoom" end="98,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 			<colordiffuse>$VAR[HomeWidgetTransVar]</colordiffuse>
 			<texture>$PARAM[Texture]</texture>
@@ -406,7 +407,7 @@
 					<animation effect="fade" time="300" tween="sine" easing="inout">VisibleChange</animation>
 				</control>
 				<control type="group">
-					<visible>IsEmpty(Container(8001).ListItem.Property(HighTemp)) + IsEmpty(Container(8001).ListItem.ChannelName) + IsEmpty(Container(8001).ListItem.Artist) + IsEmpty(Container(8001).ListItem.AlbumArtist) + IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
+					<visible>!StringCompare(Container(9000).ListItem.Property(widgetTarget),pictures) + IsEmpty(Container(8001).ListItem.Property(HighTemp)) + IsEmpty(Container(8001).ListItem.ChannelName) + IsEmpty(Container(8001).ListItem.Artist) + IsEmpty(Container(8001).ListItem.AlbumArtist) + IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -431,12 +432,13 @@
 					</control>
 				</control>
 				<control type="group">
-					<visible>!IsEmpty(Container(8001).ListItem.Property(HighTemp)) | !IsEmpty(Container(8001).ListItem.ChannelName) | !IsEmpty(Container(8001).ListItem.Artist) | !IsEmpty(Container(8001).ListItem.AlbumArtist) | !IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
+					<visible>StringCompare(Container(9000).ListItem.Property(widgetTarget),pictures) | !IsEmpty(Container(8001).ListItem.Property(HighTemp)) | !IsEmpty(Container(8001).ListItem.ChannelName) | !IsEmpty(Container(8001).ListItem.Artist) | !IsEmpty(Container(8001).ListItem.AlbumArtist) | !IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
 						<width>350</width>
 						<height>350</height>
+						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true">$VAR[HomeWidget8001PosterVar]</texture>
 						<fadetime>IconCrossfadeTime</fadetime>
 						<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
@@ -475,7 +477,7 @@
 					<animation effect="fade" time="300" tween="sine" easing="inout">VisibleChange</animation>
 				</control>
 				<control type="group">
-					<visible>IsEmpty(Container(8002).ListItem.Property(HighTemp)) + IsEmpty(Container(8002).ListItem.ChannelName) + IsEmpty(Container(8002).ListItem.Artist) + IsEmpty(Container(8002).ListItem.AlbumArtist) + IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
+					<visible>!StringCompare(Container(9000).ListItem.Property(widgetTarget.2),pictures) + IsEmpty(Container(8002).ListItem.Property(HighTemp)) + IsEmpty(Container(8002).ListItem.ChannelName) + IsEmpty(Container(8002).ListItem.Artist) + IsEmpty(Container(8002).ListItem.AlbumArtist) + IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -500,12 +502,13 @@
 					</control>
 				</control>
 				<control type="group">
-					<visible>!IsEmpty(Container(8002).ListItem.Property(HighTemp)) | !IsEmpty(Container(8002).ListItem.ChannelName) | !IsEmpty(Container(8002).ListItem.Artist) | !IsEmpty(Container(8002).ListItem.AlbumArtist) | !IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
+					<visible>StringCompare(Container(9000).ListItem.Property(widgetTarget.2),pictures) | !IsEmpty(Container(8002).ListItem.Property(HighTemp)) | !IsEmpty(Container(8002).ListItem.ChannelName) | !IsEmpty(Container(8002).ListItem.Artist) | !IsEmpty(Container(8002).ListItem.AlbumArtist) | !IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
 						<width>350</width>
 						<height>350</height>
+						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true">$VAR[HomeWidget8002PosterVar]</texture>
 						<fadetime>IconCrossfadeTime</fadetime>
 						<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
@@ -543,7 +546,7 @@
 					<animation effect="fade" time="300" tween="sine" easing="inout">VisibleChange</animation>
 				</control>
 				<control type="group">
-					<visible>IsEmpty(Container(8001).ListItem.Property(HighTemp)) + IsEmpty(Container(8001).ListItem.ChannelName) + IsEmpty(Container(8001).ListItem.Artist) + IsEmpty(Container(8001).ListItem.AlbumArtist) + IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
+					<visible>!StringCompare(Container(9000).ListItem.Property(widgetTarget),pictures) + IsEmpty(Container(8001).ListItem.Property(HighTemp)) + IsEmpty(Container(8001).ListItem.ChannelName) + IsEmpty(Container(8001).ListItem.Artist) + IsEmpty(Container(8001).ListItem.AlbumArtist) + IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -568,12 +571,13 @@
 					</control>
 				</control>
 				<control type="group">
-					<visible>!IsEmpty(Container(8001).ListItem.Property(HighTemp)) | !IsEmpty(Container(8001).ListItem.ChannelName) | !IsEmpty(Container(8001).ListItem.Artist) | !IsEmpty(Container(8001).ListItem.AlbumArtist) | !IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
+					<visible>StringCompare(Container(9000).ListItem.Property(widgetTarget),pictures) | !IsEmpty(Container(8001).ListItem.Property(HighTemp)) | !IsEmpty(Container(8001).ListItem.ChannelName) | !IsEmpty(Container(8001).ListItem.Artist) | !IsEmpty(Container(8001).ListItem.AlbumArtist) | !IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
 						<width>350</width>
 						<height>350</height>
+						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true">$VAR[HomeWidget8001PosterVar]</texture>
 						<fadetime>IconCrossfadeTime</fadetime>
 						<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
@@ -611,7 +615,7 @@
 					<animation effect="fade" time="300" tween="sine" easing="inout">VisibleChange</animation>
 				</control>
 				<control type="group">
-					<visible>IsEmpty(Container(8002).ListItem.Property(HighTemp)) + IsEmpty(Container(8002).ListItem.ChannelName) + IsEmpty(Container(8002).ListItem.Artist) + IsEmpty(Container(8002).ListItem.AlbumArtist) + IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
+					<visible>!StringCompare(Container(9000).ListItem.Property(widgetTarget.2),pictures) + IsEmpty(Container(8002).ListItem.Property(HighTemp)) + IsEmpty(Container(8002).ListItem.ChannelName) + IsEmpty(Container(8002).ListItem.Artist) + IsEmpty(Container(8002).ListItem.AlbumArtist) + IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -636,12 +640,13 @@
 					</control>
 				</control>
 				<control type="group">
-					<visible>!IsEmpty(Container(8002).ListItem.Property(HighTemp)) | !IsEmpty(Container(8002).ListItem.ChannelName) | !IsEmpty(Container(8002).ListItem.Artist) | !IsEmpty(Container(8002).ListItem.AlbumArtist) | !IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
+					<visible>StringCompare(Container(9000).ListItem.Property(widgetTarget.2),pictures) | !IsEmpty(Container(8002).ListItem.Property(HighTemp)) | !IsEmpty(Container(8002).ListItem.ChannelName) | !IsEmpty(Container(8002).ListItem.Artist) | !IsEmpty(Container(8002).ListItem.AlbumArtist) | !IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
 						<width>350</width>
 						<height>350</height>
+						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true">$VAR[HomeWidget8002PosterVar]</texture>
 						<fadetime>IconCrossfadeTime</fadetime>
 						<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
@@ -895,7 +900,7 @@
 				<top>0</top>
 				<width>200</width>
 				<height>300</height>
-				<aspectratio aligny="top">scale</aspectratio>
+				<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 				<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 				<animation effect="zoom" end="95,90" center="100,250" condition="$PARAM[caseVisible]">conditional</animation>
 				<animation effect="zoom" end="94,97" center="auto" condition="$PARAM[clearVisible]">conditional</animation>
@@ -944,7 +949,7 @@
 					<top>0</top>
 					<width>200</width>
 					<height>300</height>
-					<aspectratio aligny="top">scale</aspectratio>
+					<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 					<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 					<animation effect="zoom" end="95,90" center="100,250" condition="$PARAM[caseVisible]">conditional</animation>
 					<animation effect="zoom" end="94,97" center="auto" condition="$PARAM[clearVisible]">conditional</animation>
@@ -998,7 +1003,7 @@
 				<top>0</top>
 				<width>282</width>
 				<height>282</height>
-				<aspectratio aligny="center" scalediffuse="false">$PARAM[Aspect]</aspectratio>
+				<aspectratio aligny="$PARAM[Aligny]" scalediffuse="false">$PARAM[Aspect]</aspectratio>
 				<animation effect="zoom" end="35,35" center="144,80" condition="$PARAM[isWeather]">conditional</animation>
 				<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 				<animation effect="zoom" end="90,98" center="250,150" condition="$PARAM[caseVisible]">conditional</animation>
@@ -1102,7 +1107,7 @@
 					<top>0</top>
 					<width>282</width>
 					<height>282</height>
-					<aspectratio aligny="center" scalediffuse="false">$PARAM[Aspect]</aspectratio>
+					<aspectratio aligny="$PARAM[Aligny]" scalediffuse="false">$PARAM[Aspect]</aspectratio>
 					<animation effect="zoom" end="35,35" center="144,80" condition="$PARAM[isWeather]">conditional</animation>
 					<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 					<animation effect="zoom" end="90,98" center="250,150" condition="$PARAM[caseVisible]">conditional</animation>
@@ -1211,7 +1216,7 @@
 				<top>0</top>
 				<width>473</width>
 				<height>266</height>
-				<aspectratio>$PARAM[Aspect]</aspectratio>
+				<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 				<colordiffuse>$VAR[HomeWidgetTransVar]</colordiffuse>
 				<animation effect="zoom" end="98,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 				<texture>$PARAM[Texture]</texture>
@@ -1291,7 +1296,7 @@
 					<top>0</top>
 					<width>473</width>
 					<height>266</height>
-					<aspectratio>$PARAM[Aspect]</aspectratio>
+					<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 					<animation effect="zoom" end="98,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 					<texture>$PARAM[Texture]</texture>
 				</control>
@@ -1516,7 +1521,7 @@
 				<top>0</top>
 				<width>200</width>
 				<height>300</height>
-				<aspectratio aligny="top">scale</aspectratio>
+				<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 				<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 				<animation effect="zoom" end="95,90" center="100,250" condition="$PARAM[caseVisible]">conditional</animation>
 				<animation effect="zoom" end="94,97" center="auto" condition="$PARAM[clearVisible]">conditional</animation>
@@ -1565,7 +1570,7 @@
 					<top>0</top>
 					<width>200</width>
 					<height>300</height>
-					<aspectratio aligny="top">scale</aspectratio>
+					<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 					<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 					<animation effect="zoom" end="95,90" center="100,250" condition="$PARAM[caseVisible]">conditional</animation>
 					<animation effect="zoom" end="94,97" center="auto" condition="$PARAM[clearVisible]">conditional</animation>
@@ -1619,7 +1624,7 @@
 				<top>0</top>
 				<width>257</width>
 				<height>257</height>
-				<aspectratio aligny="center" scalediffuse="false">$PARAM[Aspect]</aspectratio>
+				<aspectratio aligny="$PARAM[Aligny]" scalediffuse="false">$PARAM[Aspect]</aspectratio>
 				<animation effect="zoom" end="35,35" center="144,60" condition="$PARAM[isWeather]">conditional</animation>
 				<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 				<animation effect="zoom" end="89,98" center="250,127" condition="$PARAM[caseVisible]">conditional</animation>
@@ -1723,7 +1728,7 @@
 					<top>0</top>
 					<width>257</width>
 					<height>257</height>
-					<aspectratio aligny="center" scalediffuse="false">$PARAM[Aspect]</aspectratio>
+					<aspectratio aligny="$PARAM[Aligny]" scalediffuse="false">$PARAM[Aspect]</aspectratio>
 					<animation effect="zoom" end="35,35" center="144,60" condition="$PARAM[isWeather]">conditional</animation>
 					<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 					<animation effect="zoom" end="89,98" center="250,127" condition="$PARAM[caseVisible]">conditional</animation>
@@ -1831,7 +1836,7 @@
 				<top>0</top>
 				<width>456</width>
 				<height>257</height>
-				<aspectratio>$PARAM[Aspect]</aspectratio>
+				<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 				<colordiffuse>$VAR[HomeWidgetTransVar]</colordiffuse>
 				<animation effect="zoom" end="98,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 				<texture>$PARAM[Texture]</texture>
@@ -1911,7 +1916,7 @@
 					<top>0</top>
 					<width>456</width>
 					<height>257</height>
-					<aspectratio>$PARAM[Aspect]</aspectratio>
+					<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 					<animation effect="zoom" end="98,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 					<texture>$PARAM[Texture]</texture>
 				</control>
@@ -2137,7 +2142,7 @@
 				<top>0</top>
 				<width>155</width>
 				<height>233</height>
-				<aspectratio aligny="top">scale</aspectratio>
+				<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 				<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 				<animation effect="zoom" end="95,90" center="76,198" condition="$PARAM[caseVisible]">conditional</animation>
 				<animation effect="zoom" end="94,95" center="auto" condition="$PARAM[clearVisible]">conditional</animation>
@@ -2186,7 +2191,7 @@
 					<top>0</top>
 					<width>155</width>
 					<height>233</height>
-					<aspectratio aligny="top">scale</aspectratio>
+					<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 					<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 					<animation effect="zoom" end="95,90" center="76,198" condition="$PARAM[caseVisible]">conditional</animation>
 					<animation effect="zoom" end="94,95" center="auto" condition="$PARAM[clearVisible]">conditional</animation>
@@ -2240,7 +2245,7 @@
 				<top>0</top>
 				<width>200</width>
 				<height>200</height>
-				<aspectratio aligny="center" scalediffuse="false">$PARAM[Aspect]</aspectratio>
+				<aspectratio aligny="$PARAM[Aligny]" scalediffuse="false">$PARAM[Aspect]</aspectratio>
 				<animation effect="zoom" end="35,35" center="100,50" condition="$PARAM[isWeather]">conditional</animation>
 				<animation effect="zoom" end="96,95" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 				<animation effect="zoom" end="88,98" center="190,100" condition="$PARAM[caseVisible]">conditional</animation>
@@ -2344,7 +2349,7 @@
 					<top>0</top>
 					<width>200</width>
 					<height>200</height>
-					<aspectratio aligny="center" scalediffuse="false">$PARAM[Aspect]</aspectratio>
+					<aspectratio aligny="$PARAM[Aligny]" scalediffuse="false">$PARAM[Aspect]</aspectratio>
 					<animation effect="zoom" end="35,35" center="144,80" condition="$PARAM[isWeather]">conditional</animation>
 					<animation effect="zoom" end="96,95" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 					<animation effect="zoom" end="88,98" center="190,100" condition="$PARAM[caseVisible]">conditional</animation>
@@ -2452,7 +2457,7 @@
 				<top>0</top>
 				<width>353</width>
 				<height>199</height>
-				<aspectratio>$PARAM[Aspect]</aspectratio>
+				<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 				<colordiffuse>$VAR[HomeWidgetTransVar]</colordiffuse>
 				<animation effect="zoom" end="98,95" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 				<texture>$PARAM[Texture]</texture>
@@ -2532,7 +2537,7 @@
 					<top>0</top>
 					<width>353</width>
 					<height>199</height>
-					<aspectratio>$PARAM[Aspect]</aspectratio>
+					<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 					<animation effect="zoom" end="98,95" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 					<texture>$PARAM[Texture]</texture>
 				</control>
@@ -2755,7 +2760,7 @@
 				<top>0</top>
 				<width>162</width>
 				<height>243</height>
-				<aspectratio aligny="top">scale</aspectratio>
+				<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 				<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 				<animation effect="zoom" end="96,90" center="81,198" condition="$PARAM[caseVisible]">conditional</animation>
 				<animation effect="zoom" end="93,96" center="auto" condition="$PARAM[clearVisible]">conditional</animation>
@@ -2804,7 +2809,7 @@
 					<top>0</top>
 					<width>162</width>
 					<height>243</height>
-					<aspectratio aligny="top">scale</aspectratio>
+					<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 					<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 					<animation effect="zoom" end="96,90" center="81,198" condition="$PARAM[caseVisible]">conditional</animation>
 					<animation effect="zoom" end="93,96" center="auto" condition="$PARAM[clearVisible]">conditional</animation>
@@ -2858,7 +2863,7 @@
 				<top>0</top>
 				<width>200</width>
 				<height>200</height>
-				<aspectratio aligny="center" scalediffuse="false">$PARAM[Aspect]</aspectratio>
+				<aspectratio aligny="$PARAM[Aligny]" scalediffuse="false">$PARAM[Aspect]</aspectratio>
 				<animation effect="zoom" end="35,35" center="100,50" condition="$PARAM[isWeather]">conditional</animation>
 				<animation effect="zoom" end="96,95" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 				<animation effect="zoom" end="88,98" center="190,100" condition="$PARAM[caseVisible]">conditional</animation>
@@ -2962,7 +2967,7 @@
 					<top>0</top>
 					<width>200</width>
 					<height>200</height>
-					<aspectratio aligny="center" scalediffuse="false">$PARAM[Aspect]</aspectratio>
+					<aspectratio aligny="$PARAM[Aligny]" scalediffuse="false">$PARAM[Aspect]</aspectratio>
 					<animation effect="zoom" end="35,35" center="144,80" condition="$PARAM[isWeather]">conditional</animation>
 					<animation effect="zoom" end="96,95" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 					<animation effect="zoom" end="88,98" center="190,100" condition="$PARAM[caseVisible]">conditional</animation>
@@ -3070,7 +3075,7 @@
 				<top>0</top>
 				<width>364</width>
 				<height>205</height>
-				<aspectratio>$PARAM[Aspect]</aspectratio>
+				<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 				<colordiffuse>$VAR[HomeWidgetTransVar]</colordiffuse>
 				<animation effect="zoom" end="98,95" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 				<texture>$PARAM[Texture]</texture>
@@ -3150,7 +3155,7 @@
 					<top>0</top>
 					<width>364</width>
 					<height>205</height>
-					<aspectratio>$PARAM[Aspect]</aspectratio>
+					<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
 					<animation effect="zoom" end="98,95" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 					<texture>$PARAM[Texture]</texture>
 				</control>
