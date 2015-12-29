@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<!-- ******* WIDGETS ******** -->
-	<include name="Widget1">
-		<control type="label">
-			<top>500</top>
-			<font>font14</font>
-			<textcolor>white2</textcolor>
-			<shadowcolor>black</shadowcolor>
-			<label>$INFO[Container(8001).ListItem.FileNameAndPath]</label>
-		</control>
+	<include name="Widget1">		
 		<control type="group" id="90010">
 			<animation effect="slide" tween="cubic" time="720" start="0,-1080" end="0,0" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">WindowOpen</animation>
 			<animation effect="slide" tween="cubic" time="720" end="0,-1080" start="0,0" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">WindowClose</animation>
