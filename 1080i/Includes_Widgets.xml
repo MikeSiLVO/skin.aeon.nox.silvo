@@ -2,6 +2,13 @@
 <includes>
 	<!-- ******* WIDGETS ******** -->
 	<include name="Widget1">
+		<control type="label">
+			<top>500</top>
+			<font>font14</font>
+			<textcolor>white2</textcolor>
+			<shadowcolor>black</shadowcolor>
+			<label>$INFO[Container(8001).ListItem.FileNameAndPath]</label>
+		</control>
 		<control type="group" id="90010">
 			<animation effect="slide" tween="cubic" time="720" start="0,-1080" end="0,0" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">WindowOpen</animation>
 			<animation effect="slide" tween="cubic" time="720" end="0,-1080" start="0,0" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">WindowClose</animation>
@@ -12,7 +19,7 @@
 			<animation effect="slide" end="0,-349" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !Skin.HasSetting(lowermainmenu)">Conditional</animation>
 			<animation effect="slide" end="215,-64" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">Conditional</animation>
 			<animation effect="fade" start="100" end="0" time="200" delay="100" condition="Window.IsVisible(1199)">Conditional</animation>
-			<animation effect="fade" start="100" end="0" time="200" delay="100" condition="[Skin.HasSetting(Enable.WidgetHide) + !Control.HasFocus(8001) + !Control.HasFocus(8002)] | [Skin.HasSetting(Enable.PanelInfo) + Control.HasFocus(8002) + !StringCompare(Container(9000).ListItem.Property(widgetStyle.2),List)]">Conditional</animation>
+			<animation effect="fade" start="100" end="0" time="200" delay="100" condition="[Skin.HasSetting(Enable.WidgetHide) + !Control.HasFocus(8001) + !Control.HasFocus(8002)] | [Skin.HasSetting(Enable.PanelInfo) + Control.HasFocus(8002) + !StringCompare(Container(9000).ListItem.Property(widgetStyle.2),List) + !StringCompare(Container(9000).ListItem.Property(widgetTarget.2),pictures) + !SubString(Container(9000).ListItem.Property(widgetPath.2),action=favourites)]">Conditional</animation>
 			<visible>!IsEmpty(Container(9000).ListItem.Property(widgetPath))</visible>
 			<include>VisibleFadeEffect</include>
 			<!-- Test Image
@@ -47,7 +54,7 @@
 			<animation effect="slide" end="0,601" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !Skin.HasSetting(lowermainmenu)">Conditional</animation>
 			<animation effect="slide" end="215,633" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">Conditional</animation>
 			<animation effect="fade" start="100" end="0" time="200" delay="100" condition="Window.IsVisible(1199)">Conditional</animation>
-			<animation effect="fade" start="100" end="0" time="200" delay="100" condition="[Skin.HasSetting(Enable.WidgetHide) + !Control.HasFocus(8001) + !Control.HasFocus(8002)]  | [Skin.HasSetting(Enable.PanelInfo) + Control.HasFocus(8001) + !StringCompare(Container(9000).ListItem.Property(widgetStyle),List)]">Conditional</animation>
+			<animation effect="fade" start="100" end="0" time="200" delay="100" condition="[Skin.HasSetting(Enable.WidgetHide) + !Control.HasFocus(8001) + !Control.HasFocus(8002)]  | [Skin.HasSetting(Enable.PanelInfo) + Control.HasFocus(8001) + !StringCompare(Container(9000).ListItem.Property(widgetStyle),List) + !StringCompare(Container(9000).ListItem.Property(widgetTarget),pictures) + !SubString(Container(9000).ListItem.Property(widgetPath),action=favourites)]">Conditional</animation>
 			<animation effect="fade" start="100" end="0" time="200" delay="100" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !Skin.HasSetting(Disable.Videoinfo) + Player.HasVideo + !Control.HasFocus(8002)">Conditional</animation>
 			<animation effect="fade" start="100" end="0" time="200" delay="100" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !Skin.HasSetting(Disable.Musicinfo) + Player.HasAudio + !Control.HasFocus(8002)">Conditional</animation>
 			<animation effect="fade" start="100" end="0" time="200" delay="100" condition="!IsEmpty(Container(9000).ListItem.Property(widgetLiveTV)) + [PVR.HasNonRecordingTimer | PVR.IsRecording] + !Control.HasFocus(8002)">Conditional</animation>
@@ -394,7 +401,7 @@
 		<control type="group">
 			<top>90</top>
 			<left>240</left>
-			<visible>IntegerGreaterThan(Container(8001).NumItems,0)</visible>
+			<visible>IntegerGreaterThan(Container(8001).NumItems,0) + !StringCompare(Container(9000).ListItem.Property(widgetTarget),pictures) + !SubString(Container(9000).ListItem.Property(widgetPath),action=favourites)</visible>
 			<visible>[Skin.HasSetting(Enable.PanelInfo) + Control.HasFocus(8001) + Substring(Container(9000).ListItem.Property(widgetStyle),Panel) + !Substring(Container(9000).ListItem.Property(widgetStyle),Extended)] | [Skin.HasSetting(Enable.PanelInfo) + Control.HasFocus(8001) + Substring(Container(9000).ListItem.Property(widgetStyle),Panel) + StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])]</visible>
 			<animation effect="slide" end="0,950" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !Skin.HasSetting(lowermainmenu)">Conditional</animation>
 			<animation effect="slide" end="0,697" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">Conditional</animation>
@@ -407,7 +414,7 @@
 					<animation effect="fade" time="300" tween="sine" easing="inout">VisibleChange</animation>
 				</control>
 				<control type="group">
-					<visible>!StringCompare(Container(9000).ListItem.Property(widgetTarget),pictures) + IsEmpty(Container(8001).ListItem.Property(HighTemp)) + IsEmpty(Container(8001).ListItem.ChannelName) + IsEmpty(Container(8001).ListItem.Artist) + IsEmpty(Container(8001).ListItem.AlbumArtist) + IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
+					<visible>IsEmpty(Container(8001).ListItem.Property(HighTemp)) + IsEmpty(Container(8001).ListItem.ChannelName) + IsEmpty(Container(8001).ListItem.Artist) + IsEmpty(Container(8001).ListItem.AlbumArtist) + IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -432,7 +439,7 @@
 					</control>
 				</control>
 				<control type="group">
-					<visible>StringCompare(Container(9000).ListItem.Property(widgetTarget),pictures) | !IsEmpty(Container(8001).ListItem.Property(HighTemp)) | !IsEmpty(Container(8001).ListItem.ChannelName) | !IsEmpty(Container(8001).ListItem.Artist) | !IsEmpty(Container(8001).ListItem.AlbumArtist) | !IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
+					<visible>!IsEmpty(Container(8001).ListItem.Property(HighTemp)) | !IsEmpty(Container(8001).ListItem.ChannelName) | !IsEmpty(Container(8001).ListItem.Artist) | !IsEmpty(Container(8001).ListItem.AlbumArtist) | !IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -464,7 +471,7 @@
 		<control type="group">
 			<top>449</top>
 			<left>240</left>
-			<visible>IntegerGreaterThan(Container(8002).NumItems,0)</visible>
+			<visible>IntegerGreaterThan(Container(8002).NumItems,0) + !StringCompare(Container(9000).ListItem.Property(widgetTarget.2),pictures) + !SubString(Container(9000).ListItem.Property(widgetPath.2),action=favourites)</visible>
 			<visible>[Skin.HasSetting(Enable.PanelInfo) + Control.HasFocus(8002) + Substring(Container(9000).ListItem.Property(widgetStyle.2),Panel) + !Substring(Container(9000).ListItem.Property(widgetStyle.2),Extended)] | [Skin.HasSetting(Enable.PanelInfo) + Control.HasFocus(8002) + Substring(Container(9000).ListItem.Property(widgetStyle.2),Panel) + StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])]</visible>
 			<animation effect="slide" end="0,-950" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !Skin.HasSetting(lowermainmenu)">Conditional</animation>
 			<animation effect="slide" end="0,-697" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">Conditional</animation>
@@ -477,7 +484,7 @@
 					<animation effect="fade" time="300" tween="sine" easing="inout">VisibleChange</animation>
 				</control>
 				<control type="group">
-					<visible>!StringCompare(Container(9000).ListItem.Property(widgetTarget.2),pictures) + IsEmpty(Container(8002).ListItem.Property(HighTemp)) + IsEmpty(Container(8002).ListItem.ChannelName) + IsEmpty(Container(8002).ListItem.Artist) + IsEmpty(Container(8002).ListItem.AlbumArtist) + IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
+					<visible>IsEmpty(Container(8002).ListItem.Property(HighTemp)) + IsEmpty(Container(8002).ListItem.ChannelName) + IsEmpty(Container(8002).ListItem.Artist) + IsEmpty(Container(8002).ListItem.AlbumArtist) + IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -502,7 +509,7 @@
 					</control>
 				</control>
 				<control type="group">
-					<visible>StringCompare(Container(9000).ListItem.Property(widgetTarget.2),pictures) | !IsEmpty(Container(8002).ListItem.Property(HighTemp)) | !IsEmpty(Container(8002).ListItem.ChannelName) | !IsEmpty(Container(8002).ListItem.Artist) | !IsEmpty(Container(8002).ListItem.AlbumArtist) | !IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
+					<visible>!IsEmpty(Container(8002).ListItem.Property(HighTemp)) | !IsEmpty(Container(8002).ListItem.ChannelName) | !IsEmpty(Container(8002).ListItem.Artist) | !IsEmpty(Container(8002).ListItem.AlbumArtist) | !IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -534,7 +541,7 @@
 		<control type="group">
 			<top>90</top>
 			<left>40</left>
-			<visible>IntegerGreaterThan(Container(8001).NumItems,0)</visible>
+			<visible>IntegerGreaterThan(Container(8001).NumItems,0) + !StringCompare(Container(9000).ListItem.Property(widgetTarget),pictures) + !SubString(Container(9000).ListItem.Property(widgetPath),action=favourites)</visible>
 			<visible>Skin.HasSetting(Enable.PanelInfo) + Control.HasFocus(8001) + Substring(Container(9000).ListItem.Property(widgetStyle),Extended Panel) + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
 			<animation effect="slide" end="0,950" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !Skin.HasSetting(lowermainmenu)">Conditional</animation>
 			<control type="group">
@@ -546,7 +553,7 @@
 					<animation effect="fade" time="300" tween="sine" easing="inout">VisibleChange</animation>
 				</control>
 				<control type="group">
-					<visible>!StringCompare(Container(9000).ListItem.Property(widgetTarget),pictures) + IsEmpty(Container(8001).ListItem.Property(HighTemp)) + IsEmpty(Container(8001).ListItem.ChannelName) + IsEmpty(Container(8001).ListItem.Artist) + IsEmpty(Container(8001).ListItem.AlbumArtist) + IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
+					<visible>IsEmpty(Container(8001).ListItem.Property(HighTemp)) + IsEmpty(Container(8001).ListItem.ChannelName) + IsEmpty(Container(8001).ListItem.Artist) + IsEmpty(Container(8001).ListItem.AlbumArtist) + IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -571,7 +578,7 @@
 					</control>
 				</control>
 				<control type="group">
-					<visible>StringCompare(Container(9000).ListItem.Property(widgetTarget),pictures) | !IsEmpty(Container(8001).ListItem.Property(HighTemp)) | !IsEmpty(Container(8001).ListItem.ChannelName) | !IsEmpty(Container(8001).ListItem.Artist) | !IsEmpty(Container(8001).ListItem.AlbumArtist) | !IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
+					<visible>!IsEmpty(Container(8001).ListItem.Property(HighTemp)) | !IsEmpty(Container(8001).ListItem.ChannelName) | !IsEmpty(Container(8001).ListItem.Artist) | !IsEmpty(Container(8001).ListItem.AlbumArtist) | !IsEmpty(Container(8001).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -603,7 +610,7 @@
 		<control type="group">
 			<top>449</top>
 			<left>40</left>
-			<visible>IntegerGreaterThan(Container(8002).NumItems,0)</visible>
+			<visible>IntegerGreaterThan(Container(8002).NumItems,0) + !StringCompare(Container(9000).ListItem.Property(widgetTarget.2),pictures) + !SubString(Container(9000).ListItem.Property(widgetPath.2),action=favourites)</visible>
 			<visible>Skin.HasSetting(Enable.PanelInfo) + Control.HasFocus(8002) + Substring(Container(9000).ListItem.Property(widgetStyle.2),Extended Panel) + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
 			<animation effect="slide" end="0,-950" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !Skin.HasSetting(lowermainmenu)">Conditional</animation>
 			<control type="group">
@@ -615,7 +622,7 @@
 					<animation effect="fade" time="300" tween="sine" easing="inout">VisibleChange</animation>
 				</control>
 				<control type="group">
-					<visible>!StringCompare(Container(9000).ListItem.Property(widgetTarget.2),pictures) + IsEmpty(Container(8002).ListItem.Property(HighTemp)) + IsEmpty(Container(8002).ListItem.ChannelName) + IsEmpty(Container(8002).ListItem.Artist) + IsEmpty(Container(8002).ListItem.AlbumArtist) + IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
+					<visible>IsEmpty(Container(8002).ListItem.Property(HighTemp)) + IsEmpty(Container(8002).ListItem.ChannelName) + IsEmpty(Container(8002).ListItem.Artist) + IsEmpty(Container(8002).ListItem.AlbumArtist) + IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -640,7 +647,7 @@
 					</control>
 				</control>
 				<control type="group">
-					<visible>StringCompare(Container(9000).ListItem.Property(widgetTarget.2),pictures) | !IsEmpty(Container(8002).ListItem.Property(HighTemp)) | !IsEmpty(Container(8002).ListItem.ChannelName) | !IsEmpty(Container(8002).ListItem.Artist) | !IsEmpty(Container(8002).ListItem.AlbumArtist) | !IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
+					<visible>!IsEmpty(Container(8002).ListItem.Property(HighTemp)) | !IsEmpty(Container(8002).ListItem.ChannelName) | !IsEmpty(Container(8002).ListItem.Artist) | !IsEmpty(Container(8002).ListItem.AlbumArtist) | !IsEmpty(Container(8002).ListItem.Property(Addon.Name))</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -670,74 +677,77 @@
 	</include>
 	<!-- Panel Background/Labels -->
 	<include name="PanelBack1">
-		<control type="image">
-			<left></left>
-			<centerleft>50%</centerleft>
-			<top>-21</top>
-			<width>1473.5</width>
-			<height>$PARAM[backHeight]</height>
-			<texture colordiffuse="$VAR[HomeWidgetTransVar]" border="40">$VAR[HomeWidgetBackgroundVar]</texture>
-		</control>
-		<control type="label">
-			<top>-28</top>
-			<left>965</left>
-			<width>710</width>
-			<height>20</height>
-			<align>right</align>
-			<font>font13_title</font>
-			<textcolor>grey</textcolor>
-			<shadowcolor>shadow</shadowcolor>
-			<label>$PARAM[label]</label>
-			<visible>StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
-		</control>
-		<control type="label">
-			<top>-28</top>
-			<left>240</left>
-			<width>710</width>
-			<height>20</height>
-			<align>left</align>
-			<font>font13_title</font>
-			<textcolor>$VAR[ThemeLabelColor]</textcolor>
-			<shadowcolor>shadow</shadowcolor>
-			<label>$VAR[HomeWidget8001TitleVar]</label>
-			<visible>Control.HasFocus(8001) + StringCompare(Container(9000).ListItem.Property(widgetTitle),Title) + StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
-		</control>
-		<control type="label">
-			<top>$PARAM[labelBottom]</top>
-			<left></left>
-			<centerleft>50%</centerleft>
-			<width>1440</width>
-			<height>20</height>
-			<align>center</align>
-			<font>font13_title</font>
-			<textcolor>grey</textcolor>
-			<shadowcolor>shadow</shadowcolor>
-			<label>$PARAM[label]</label>
-			<visible>!StringCompare(Container(9000).ListItem.Property(widgetTitle),Title) + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
-		</control>
-		<control type="label">
-			<top>$PARAM[labelBottom]</top>
-			<left>240</left>
-			<width>710</width>
-			<height>20</height>
-			<align>left</align>
-			<font>font13_title</font>
-			<textcolor>$VAR[ThemeLabelColor]</textcolor>
-			<shadowcolor>shadow</shadowcolor>
-			<label>$VAR[HomeWidget8001TitleVar]</label>
-			<visible>Control.HasFocus(8001) + StringCompare(Container(9000).ListItem.Property(widgetTitle),Title) + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
-		</control>
-		<control type="label">
-			<top>$PARAM[labelBottom]</top>
-			<left>965</left>
-			<width>710</width>
-			<height>20</height>
-			<align>right</align>
-			<font>font13_title</font>
-			<textcolor>grey</textcolor>
-			<shadowcolor>shadow</shadowcolor>
-			<label>$PARAM[label]</label>
-			<visible>StringCompare(Container(9000).ListItem.Property(widgetTitle),Title) + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
+		<control type="group">
+			<visible>IntegerGreaterThan(Container(8001).NumItems,0)</visible>
+			<control type="image">
+				<left></left>
+				<centerleft>50%</centerleft>
+				<top>-21</top>
+				<width>1473.5</width>
+				<height>$PARAM[backHeight]</height>
+				<texture colordiffuse="$VAR[HomeWidgetTransVar]" border="40">$VAR[HomeWidgetBackgroundVar]</texture>
+			</control>
+			<control type="label">
+				<top>-28</top>
+				<left>965</left>
+				<width>710</width>
+				<height>20</height>
+				<align>right</align>
+				<font>font13_title</font>
+				<textcolor>grey</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<label>$PARAM[label]</label>
+				<visible>StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
+			</control>
+			<control type="label">
+				<top>-28</top>
+				<left>240</left>
+				<width>710</width>
+				<height>20</height>
+				<align>left</align>
+				<font>font13_title</font>
+				<textcolor>$VAR[ThemeLabelColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<label>$VAR[HomeWidget8001TitleVar]</label>
+				<visible>Control.HasFocus(8001) + StringCompare(Container(9000).ListItem.Property(widgetTitle),Title) + StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
+			</control>
+			<control type="label">
+				<top>$PARAM[labelBottom]</top>
+				<left></left>
+				<centerleft>50%</centerleft>
+				<width>1440</width>
+				<height>20</height>
+				<align>center</align>
+				<font>font13_title</font>
+				<textcolor>grey</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<label>$PARAM[label]</label>
+				<visible>!StringCompare(Container(9000).ListItem.Property(widgetTitle),Title) + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
+			</control>
+			<control type="label">
+				<top>$PARAM[labelBottom]</top>
+				<left>240</left>
+				<width>710</width>
+				<height>20</height>
+				<align>left</align>
+				<font>font13_title</font>
+				<textcolor>$VAR[ThemeLabelColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<label>$VAR[HomeWidget8001TitleVar]</label>
+				<visible>Control.HasFocus(8001) + StringCompare(Container(9000).ListItem.Property(widgetTitle),Title) + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
+			</control>
+			<control type="label">
+				<top>$PARAM[labelBottom]</top>
+				<left>965</left>
+				<width>710</width>
+				<height>20</height>
+				<align>right</align>
+				<font>font13_title</font>
+				<textcolor>grey</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<label>$PARAM[label]</label>
+				<visible>StringCompare(Container(9000).ListItem.Property(widgetTitle),Title) + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
+			</control>
 		</control>
 	</include>
 	<include name="PanelBack2">

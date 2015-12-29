@@ -48,6 +48,14 @@
 	<onunload>ClearProperty(Widget.Resume,Home)</onunload>
 	<onunload>ClearProperty(Widget.Trailer,Home)</onunload>
 	<controls>
+		<control type="group">
+			<visible>StringCompare(Window(Home).Property(Widget.Type),NoInfo)</visible>
+			<control type="grouplist" id="8052">
+				<control type="button" id="8053">
+					<onfocus>Dialog.Close(1199)</onfocus>					
+				</control>
+			</control>
+		</control>
 		<control type="image">
 			<left></left>
 			<centerleft>50%</centerleft>
@@ -389,7 +397,17 @@
 				<top>90</top>
 				<width>1740</width>
 				<height>669</height>
-				<texture>homewidgets/Info_Separator1.png</texture>
+				<texture>homewidgets/Info_Separator2.png</texture>
+				<visible>!SubString(Window(Home).Property(Widget.FilePath),plugin.audio) + !SubString(Window(Home).Property(Widget.FilePath),plugin.video) + !SubString(Window(Home).Property(Widget.FilePath),plugin.picture) + !SubString(Window(Home).Property(Widget.FilePath),plugin.image) + !SubString(Window(Home).Property(Widget.FilePath),script://)</visible>
+			</control>
+			<control type="image">
+				<left></left>
+				<centerleft>50%</centerleft>
+				<top>90</top>
+				<width>1740</width>
+				<height>669</height>
+				<texture>homewidgets/Info_Separator3.png</texture>
+				<visible>SubString(Window(Home).Property(Widget.FilePath),plugin.audio) | SubString(Window(Home).Property(Widget.FilePath),plugin.video) | SubString(Window(Home).Property(Widget.FilePath),plugin.picture) | SubString(Window(Home).Property(Widget.FilePath),plugin.image) | SubString(Window(Home).Property(Widget.FilePath),script://)</visible>
 			</control>
 			<control type="image">
 				<left>100</left>
@@ -406,24 +424,7 @@
 				<height>392</height>
 				<texture>$INFO[Window(Home).Property(Widget.DiscArt)]</texture>
 				<visible>!IsEmpty(Control.GetLabel(8021))</visible>
-			</control>
-			<!--<control type="image">
-				<left>1480</left>
-				<top>368</top>
-				<width>381</width>
-				<height>381</height>
-				<aspectratio scalediffuse="false" aligny="top">scale</aspectratio>
-				<texture diffuse="discart/cdart.png">$INFO[Window(Home).Property(Widget.Cover)]</texture>
-				<visible>IsEmpty(Control.GetLabel(8020))</visible>
-			</control>
-			<control type="image">
-				<left>1480</left>
-				<top>368</top>
-				<width>381</width>
-				<height>381</height>
-				<texture>discart/$INFO[Window(Home).Property(Widget.DiscArtFake)]</texture>
-				<visible>IsEmpty(Control.GetLabel(8020)) + [StringCompare(Window(Home).Property(Widget.Type),1) | StringCompare(Window(Home).Property(Widget.Type),20)]</visible>
-			</control>-->
+			</control>			
 			<control type="grouplist">
 				<top>99</top>
 				<left>757</left>
@@ -453,7 +454,7 @@
 				<height>90</height>
 				<orientation>horizontal</orientation>
 				<control type="label" id="1021">
-					<width>140</width>
+					<width min="140">auto</width>
 					<height>90</height>
 					<align>left</align>
 					<font>font35_title_bold</font>
@@ -639,8 +640,20 @@
 					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FilePath)],noresume)</onclick>
 					<onclick>Dialog.Close(1199)</onclick>
 					<oninfo>Dialog.Close(1199)</oninfo>
-					<visible>true</visible>
+					<visible>[SubString(Window(Home).Property(Widget.FilePath),skinhelper) + SubString(Window(Home).Property(Widget.FilePath),playmedia)] | [!SubString(Window(Home).Property(Widget.FilePath),activatewindow) + !SubString(Window(Home).Property(Widget.FilePath),plugin.audio) + !SubString(Window(Home).Property(Widget.FilePath),plugin.video) + !SubString(Window(Home).Property(Widget.FilePath),plugin.picture) + !SubString(Window(Home).Property(Widget.FilePath),plugin.image) + !SubString(Window(Home).Property(Widget.FilePath),script)]</visible>
 				</control>
+				<control type="button" id="8055">
+					<description>Open Button</description>
+					<textoffsetx>10</textoffsetx>
+					<width min="250">auto</width>
+					<align>center</align>
+					<texturenofocus colordiffuse="77FFFFFF">homewidgets/widgetinfo_nofocus.png</texturenofocus>
+					<label>Open</label>
+					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FilePath)],noresume)</onclick>
+					<onclick>Dialog.Close(1199)</onclick>
+					<oninfo>Dialog.Close(1199)</oninfo>
+					<visible>SubString(Window(Home).Property(Widget.FilePath),skinhelper) + SubString(Window(Home).Property(Widget.FilePath),activatewindow)</visible>
+				</control>				
 			</control>
 		</control>
 	</controls>
