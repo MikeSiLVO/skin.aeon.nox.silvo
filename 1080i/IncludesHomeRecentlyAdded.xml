@@ -793,7 +793,7 @@
 						<left>-25</left>
 						<width>1725</width>
 						<control type="group">
-							<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31229])</visible>
+							<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31229]) + IsEmpty(Container(9000).ListItem.Property(widgetArtwork))</visible>
 							<control type="image">
 								<top>10</top>
 								<height>450</height>
@@ -814,7 +814,22 @@
 							</control>
 						</control>
 						<control type="group">
-							<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230])</visible>
+							<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31229]) + !IsEmpty(Container(9000).ListItem.Property(widgetArtwork))</visible>
+							<control type="image">
+								<top>220</top>
+								<height>240</height>
+								<texture border="40">dialogs/default/bg2.png</texture>
+								<visible>[StringCompare(Container(9000).ListItem.Property(widgetTarget),video) + StringCompare(Container(9000).ListItem.Property(widgetArtwork),Logo)]</visible>
+							</control>
+							<control type="image">
+								<top>85</top>
+								<height>370</height>
+								<texture border="40">dialogs/default/bg2.png</texture>
+								<visible>[StringCompare(Container(9000).ListItem.Property(widgetTarget),video) + StringCompare(Container(9000).ListItem.Property(widgetArtwork),Landscape/Fanart)]</visible>
+							</control>
+						</control>
+						<control type="group">
+							<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230]) + IsEmpty(Container(9000).ListItem.Property(widgetArtwork))</visible>
 							<control type="image">
 								<top>80</top>
 								<height>375</height>
@@ -832,6 +847,21 @@
 								<height>315</height>
 								<texture border="40">dialogs/default/bg2.png</texture>
 								<visible>[StringCompare(Container(9000).ListItem.Property(widgetTarget),music) | StringCompare(Container(9000).ListItem.Property(widgetTarget),programs)]</visible>
+							</control>
+						</control>
+						<control type="group">
+							<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230]) + !IsEmpty(Container(9000).ListItem.Property(widgetArtwork))</visible>
+							<control type="image">
+								<top>255</top>
+								<height>200</height>
+								<texture border="40">dialogs/default/bg2.png</texture>
+								<visible>[StringCompare(Container(9000).ListItem.Property(widgetTarget),video) + StringCompare(Container(9000).ListItem.Property(widgetArtwork),Logo)]</visible>
+							</control>
+							<control type="image">
+								<top>85</top>
+								<height>370</height>
+								<texture border="40">dialogs/default/bg2.png</texture>
+								<visible>[StringCompare(Container(9000).ListItem.Property(widgetTarget),video) + StringCompare(Container(9000).ListItem.Property(widgetArtwork),Landscape/Fanart)]</visible>
 							</control>
 						</control>
 						<control type="group">
@@ -873,6 +903,22 @@
 						<include>IncludePosterWidgetLayout</include>
 						<include name="IncludePosterWidgetLayout">
 							<param name="ArtworkTop">106</param>
+							<param name="LabelTop">360</param>
+							<param name="SubLabelTop">395</param>
+							<param name="WidgetStyleString">$LOCALIZE[31230]</param>
+						</include>
+						<!-- Logo -->
+						<include>IncludeLogoWidgetLayout</include>
+						<include name="IncludeLogoWidgetLayout">
+							<param name="ArtworkTop">280</param>
+							<param name="LabelTop">360</param>
+							<param name="SubLabelTop">390</param>
+							<param name="WidgetStyleString">$LOCALIZE[31230]</param>
+						</include>
+						<!-- Fanart -->
+						<include>IncludeFanartWidgetLayout</include>
+						<include name="IncludeFanartWidgetLayout">
+							<param name="ArtworkTop">180</param>
 							<param name="LabelTop">360</param>
 							<param name="SubLabelTop">395</param>
 							<param name="WidgetStyleString">$LOCALIZE[31230]</param>
@@ -1013,6 +1059,22 @@
 							<param name="ArtworkWidth">242</param>
 							<param name="LabelTop">290</param>
 							<param name="SubLabelTop">325</param>
+							<param name="WidgetStyleString">$LOCALIZE[31230]</param>
+						</include>
+						<!-- Logo -->
+						<include name="IncludeLogoWidgetLayout">
+							<param name="PanelID">8002</param>
+						</include>
+						<include name="IncludeLogoWidgetLayout">
+							<param name="PanelID">8002</param>
+							<param name="WidgetStyleString">$LOCALIZE[31230]</param>
+						</include>
+						<!-- Fanart -->
+						<include name="IncludeFanartWidgetLayout">
+							<param name="PanelID">8002</param>
+						</include>
+						<include name="IncludeFanartWidgetLayout">
+							<param name="PanelID">8002</param>
 							<param name="WidgetStyleString">$LOCALIZE[31230]</param>
 						</include>
 						<!-- Landscape -->

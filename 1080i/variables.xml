@@ -814,7 +814,11 @@
 	</variable>
 	<variable name="WidgetStyleLabelVar">
 		<value condition="!IsEmpty(Container(211).ListItem.Property(widgetStyle))">$INFO[Container(211).ListItem.Property(widgetStyle)]</value>
-		<value>$LOCALIZE[571]</value>
+		<value>Classic</value>
+	</variable>
+	<variable name="WidgetArtworkLabelVar">
+		<value condition="!IsEmpty(Container(211).ListItem.Property(widgetArtwork))">$INFO[Container(211).ListItem.Property(widgetArtwork)]</value>
+		<value>Poster</value>
 	</variable>
 	<!-- <variable name="AudioChannelVar">
 		<value condition="IntegerGreaterThan(VideoPlayer.AudioChannels,7)">7.1</value>
@@ -1422,10 +1426,10 @@
 		<value>$LOCALIZE[571]</value>
 	</variable>
 	<variable name="WidgetSubLabelVar">
-		<value condition="!SubString(Container(9000).ListItem.Property(widgetPath),extendedinfo) + !StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230])">$INFO[ListItem.Rating,, ]$INFO[ListItem.Duration,• , $LOCALIZE[12391]]</value>
-		<value condition="!SubString(Container(9000).ListItem.Property(widgetPath),extendedinfo) + StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230])">$INFO[ListItem.Rating,, ]$INFO[ListItem.Duration,• ,m]</value>
-		<value condition="SubString(Container(9000).ListItem.Property(widgetPath),extendedinfo) + !StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230])">$INFO[ListItem.Rating,, ]$INFO[ListItem.Property(Duration),• , $LOCALIZE[12391]]</value>
-		<value condition="SubString(Container(9000).ListItem.Property(widgetPath),extendedinfo) + StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230])">$INFO[ListItem.Rating,, ]$INFO[ListItem.Property(Duration),• ,m]</value>
+		<value condition="!SubString(Container(9000).ListItem.Property(widgetPath),extendedinfo) + !StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230])">$INFO[ListItem.Rating,, • ]$INFO[ListItem.Duration,, $LOCALIZE[12391]]</value>
+		<value condition="!SubString(Container(9000).ListItem.Property(widgetPath),extendedinfo) + StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230])">$INFO[ListItem.Rating,, • ]$INFO[ListItem.Duration,,m]</value>
+		<value condition="SubString(Container(9000).ListItem.Property(widgetPath),extendedinfo) + !StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230])">$INFO[ListItem.Rating,, • ]$INFO[ListItem.Property(Duration),, $LOCALIZE[12391]]</value>
+		<value condition="SubString(Container(9000).ListItem.Property(widgetPath),extendedinfo) + StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230])">$INFO[ListItem.Rating,, • ]$INFO[ListItem.Property(Duration),,m]</value>
 	</variable>
 	<variable name="WidgetLogoVar">
 		<value condition="StringCompare(Container(9000).ListItem.Property(widget),rt) | SubString(Container(9000).ListItem.Property(widgetName),rottentomatoes)">logos/rt-logo.png</value>
@@ -1448,6 +1452,16 @@
 		<value condition="!IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
 		<value condition="!IsEmpty(ListItem.Property(poster))">$INFO[ListItem.Property(poster)]</value>
 		<value condition="!IsEmpty(ListItem.Icon)">$INFO[ListItem.Icon]</value>
+	</variable>
+	<variable name="WidgetListItemLogo">
+		<value condition="!IsEmpty(ListItem.Art(tvshow.clearlogo))">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
+		<value>$INFO[ListItem.Art(clearlogo)]</value>
+	</variable>
+	<variable name="WidgetListItemFanart">
+		<value condition="!IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
+		<value condition="!IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
+		<value condition="!IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<value>$INFO[ListItem.Art(thumb)]</value>
 	</variable>
 	<variable name="WidgetListItemLandscape">
 		<value condition="!IsEmpty(ListItem.Icon)">$INFO[ListItem.Icon]</value>
