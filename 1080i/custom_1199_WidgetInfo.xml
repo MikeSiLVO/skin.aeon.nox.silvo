@@ -101,7 +101,7 @@
 					<font>font30_title_bold</font>
 					<textcolor>grey</textcolor>
 					<shadowcolor>black</shadowcolor>
-					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+					<scroll>true</scroll>
 					<label>$INFO[Window(Home).Property(Widget.Title)]</label>
 				</control>
 				<control type="label">
@@ -110,7 +110,7 @@
 					<font>font30</font>
 					<textcolor>labelheader</textcolor>
 					<shadowcolor>black</shadowcolor>
-					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+					<scroll>true</scroll>
 					<label>$INFO[Window(Home).Property(Widget.SubTitle)]</label>
 				</control>
 			</control>
@@ -312,7 +312,6 @@
 					<texturenofocus colordiffuse="77FFFFFF">homewidgets/widgetinfo_nofocus.png</texturenofocus>
 					<label>Close</label>
 					<onclick>Dialog.Close(1199)</onclick>
-					<oninfo>Dialog.Close(1199)</oninfo>
 				</control>
 				<control type="button" id="8054">
 					<description>Play Button</description>
@@ -323,8 +322,7 @@
 					<label>Play</label>
 					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FilePath)],noresume)</onclick>
 					<onclick>Dialog.Close(1199)</onclick>
-					<oninfo>Dialog.Close(1199)</oninfo>
-					<visible>!SubString(Window(Home).Property(Widget.FilePath),activatewindow) + !SubString(Window(Home).Property(Widget.FilePath),playtrailer) + !SubString(Window(Home).Property(Widget.FilePath),extendedinfo&&id) + !SubString(Window(Home).Property(Widget.FilePath),extendedinfo&&dbid) + !SubString(Window(Home).Property(Widget.FilePath),extendedtvinfo)</visible>
+					<visible>!SubString(Window(Home).Property(Widget.FilePath),activatewindow) + !SubString(Window(Home).Property(Widget.FilePath),playtrailer) + !SubString(Window(Home).Property(Widget.FilePath),extended)</visible>
 				</control>
 				<control type="button" id="8055">
 					<description>Open Button</description>
@@ -335,8 +333,7 @@
 					<label>Open</label>
 					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FilePath)],noresume)</onclick>
 					<onclick>Dialog.Close(1199)</onclick>
-					<oninfo>Dialog.Close(1199)</oninfo>
-					<visible>SubString(Window(Home).Property(Widget.FilePath),activatewindow) | SubString(Window(Home).Property(Widget.FilePath),extendedinfo&&id) | SubString(Window(Home).Property(Widget.FilePath),extendedinfo&&dbid) | SubString(Window(Home).Property(Widget.FilePath),extendedtvinfo)</visible>
+					<visible>SubString(Window(Home).Property(Widget.FilePath),activatewindow) | SubString(Window(Home).Property(Widget.FilePath),extended)</visible>
 				</control>
 				<control type="button" id="8056">
 					<description>Resume Button</description>
@@ -347,7 +344,6 @@
 					<label>$LOCALIZE[13404] $INFO[Window(Home).Property(Widget.Resume),(,%)]</label>
 					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FilePath)],resume)</onclick>
 					<onclick>Dialog.Close(1199)</onclick>
-					<oninfo>Dialog.Close(1199)</oninfo>
 					<visible>IntegerGreaterThan(Window(Home).Property(Widget.Resume),1)</visible>
 				</control>
 				<control type="button" id="8057">
@@ -359,7 +355,6 @@
 					<label>$LOCALIZE[20410]</label>
 					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.Trailer)])</onclick>
 					<onclick>Dialog.Close(1199)</onclick>
-					<oninfo>Dialog.Close(1199)</oninfo>
 					<visible>!IsEmpty(Window(Home).Property(Widget.Trailer))</visible>
 				</control>
 				<control type="button" id="8058">
@@ -370,19 +365,7 @@
 					<texturenofocus colordiffuse="77FFFFFF">homewidgets/widgetinfo_nofocus.png</texturenofocus>
 					<label>Add to CouchPotato</label>
 					<onclick>RunPlugin(plugin://plugin.video.couchpotato_manager/movies/add?title=$INFO[Window(Home).Property(Widget.Title)])</onclick>
-					<oninfo>Dialog.Close(1199)</oninfo>
-					<visible>System.HasAddon(plugin.video.couchpotato_manager) + SubString(Window(Home).Property(Widget.FilePath),extendedinfo) + SubString(Window(Home).Property(Widget.FilePath),&&id) + !SubString(Window(Home).Property(Widget.FilePath),extendedtvinfo) + !SubString(Window(Home).Property(Widget.FilePath),ActivateWindow)</visible>
-				</control>
-				<control type="button" id="8059">
-					<description>Add to Sick Beard</description>
-					<textoffsetx>10</textoffsetx>
-					<width min="250">auto</width>
-					<align>center</align>
-					<texturenofocus colordiffuse="77FFFFFF">homewidgets/widgetinfo_nofocus.png</texturenofocus>
-					<label>Add to SickBeard</label>
-					<onclick>RunPlugin(plugin://plugin.video.sickrage?action=addshow&show_name=$INFO[Window(Home).Property(Widget.Title)])</onclick>
-					<oninfo>Dialog.Close(1199)</oninfo>
-					<visible>System.HasAddon(plugin.video.sickrage) + SubString(Window(Home).Property(Widget.FilePath),extendedtvinfo) + !SubString(Window(Home).Property(Widget.FilePath),ActivateWindow)</visible>
+					<visible>System.HasAddon(plugin.video.couchpotato_manager) + SubString(Window(Home).Property(Widget.FilePath),extendedinfo) + !SubString(Window(Home).Property(Widget.FilePath),ActivateWindow)</visible>
 				</control>
 			</control>
 		</control>
@@ -432,7 +415,7 @@
 					<font>font30_title_bold</font>
 					<textcolor>grey</textcolor>
 					<shadowcolor>black</shadowcolor>
-					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+					<scroll>true</scroll>
 					<label>$INFO[Window(Home).Property(Widget.Title)]</label>
 				</control>
 				<control type="label">
@@ -441,7 +424,7 @@
 					<font>font30</font>
 					<textcolor>labelheader</textcolor>
 					<shadowcolor>black</shadowcolor>
-					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+					<scroll>true</scroll>
 					<label>$INFO[Window(Home).Property(Widget.SubTitle)]</label>
 				</control>
 			</control>
@@ -518,7 +501,7 @@
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsAudioChannels)]</texture>
-					<visible>!IsEmpty(Control.GetLabel(1027)</visible>
+					<visible>!IsEmpty(Control.GetLabel(1027))</visible>
 				</control>
 			</control>
 			<!-- Info -->
@@ -624,7 +607,6 @@
 					<texturenofocus colordiffuse="77FFFFFF">homewidgets/widgetinfo_nofocus.png</texturenofocus>
 					<label>Close</label>
 					<onclick>Dialog.Close(1199)</onclick>
-					<oninfo>Dialog.Close(1199)</oninfo>
 				</control>
 				<control type="button" id="8054">
 					<description>Play Button</description>
@@ -635,7 +617,6 @@
 					<label>Play</label>
 					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FilePath)],noresume)</onclick>
 					<onclick>Dialog.Close(1199)</onclick>
-					<oninfo>Dialog.Close(1199)</oninfo>
 					<visible>[SubString(Window(Home).Property(Widget.FilePath),skinhelper) + SubString(Window(Home).Property(Widget.FilePath),playmedia)] | [!SubString(Window(Home).Property(Widget.FilePath),activatewindow) + !SubString(Window(Home).Property(Widget.FilePath),plugin.audio) + !SubString(Window(Home).Property(Widget.FilePath),plugin.video) + !SubString(Window(Home).Property(Widget.FilePath),plugin.picture) + !SubString(Window(Home).Property(Widget.FilePath),plugin.image) + !SubString(Window(Home).Property(Widget.FilePath),script)]</visible>
 				</control>
 				<control type="button" id="8055">
@@ -647,7 +628,6 @@
 					<label>Open</label>
 					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FilePath)],noresume)</onclick>
 					<onclick>Dialog.Close(1199)</onclick>
-					<oninfo>Dialog.Close(1199)</oninfo>
 					<visible>SubString(Window(Home).Property(Widget.FilePath),skinhelper) + SubString(Window(Home).Property(Widget.FilePath),activatewindow)</visible>
 				</control>
 			</control>
