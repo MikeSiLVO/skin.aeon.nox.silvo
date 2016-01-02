@@ -412,7 +412,7 @@
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
-						<width>233</width>
+						<width>246</width>
 						<height>350</height>
 						<texture background="true">$VAR[HomeWidget8001PosterVar]</texture>
 						<fadetime>IconCrossfadeTime</fadetime>
@@ -420,10 +420,10 @@
 						<bordersize>20</bordersize>
 					</control>
 					<control type="grouplist">
-						<left>212</left>
+						<left>225</left>
 						<include name="ListInfo">
 							<param name="Texture">$VAR[HomeWidget8001PosterVar]</param>
-							<param name="Width">1228</param>
+							<param name="Width">1215</param>
 							<param name="Title">$VAR[HomeWidget8001TitleVar]</param>
 							<param name="SubTitle">$VAR[HomeWidget8001SubTitleVar]</param>
 							<param name="Info1">$VAR[HomeWidget8001Info1Var]</param>
@@ -482,7 +482,7 @@
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
-						<width>233</width>
+						<width>246</width>
 						<height>350</height>
 						<texture background="true">$VAR[HomeWidget8002PosterVar]</texture>
 						<fadetime>IconCrossfadeTime</fadetime>
@@ -490,10 +490,10 @@
 						<bordersize>20</bordersize>
 					</control>
 					<control type="grouplist">
-						<left>212</left>
+						<left>225</left>
 						<include name="ListInfo">
 							<param name="Texture">$VAR[HomeWidget8002PosterVar]</param>
-							<param name="Width">1228</param>
+							<param name="Width">1215</param>
 							<param name="Title">$VAR[HomeWidget8002TitleVar]</param>
 							<param name="SubTitle">$VAR[HomeWidget8002SubTitleVar]</param>
 							<param name="Info1">$VAR[HomeWidget8002Info1Var]</param>
@@ -551,7 +551,7 @@
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
-						<width>233</width>
+						<width>246</width>
 						<height>350</height>
 						<texture background="true">$VAR[HomeWidget8001PosterVar]</texture>
 						<fadetime>IconCrossfadeTime</fadetime>
@@ -559,10 +559,10 @@
 						<bordersize>20</bordersize>
 					</control>
 					<control type="grouplist">
-						<left>212</left>
+						<left>225</left>
 						<include name="ListInfo">
 							<param name="Texture">$VAR[HomeWidget8001PosterVar]</param>
-							<param name="Width">1638</param>
+							<param name="Width">1625</param>
 							<param name="Title">$VAR[HomeWidget8001TitleVar]</param>
 							<param name="SubTitle">$VAR[HomeWidget8001SubTitleVar]</param>
 							<param name="Info1">$VAR[HomeWidget8001Info1Var]</param>
@@ -620,7 +620,7 @@
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
-						<width>233</width>
+						<width>246</width>
 						<height>350</height>
 						<texture background="true">$VAR[HomeWidget8002PosterVar]</texture>
 						<fadetime>IconCrossfadeTime</fadetime>
@@ -628,10 +628,10 @@
 						<bordersize>20</bordersize>
 					</control>
 					<control type="grouplist">
-						<left>212</left>
+						<left>225</left>
 						<include name="ListInfo">
 							<param name="Texture">$VAR[HomeWidget8002PosterVar]</param>
-							<param name="Width">1638</param>
+							<param name="Width">1625</param>
 							<param name="Title">$VAR[HomeWidget8002TitleVar]</param>
 							<param name="SubTitle">$VAR[HomeWidget8002SubTitleVar]</param>
 							<param name="Info1">$VAR[HomeWidget8002Info1Var]</param>
@@ -680,6 +680,16 @@
 				<width>1473.5</width>
 				<height>$PARAM[backHeight]</height>
 				<texture colordiffuse="$VAR[HomeWidgetTransVar]" border="40">$VAR[HomeWidgetBackgroundVar]</texture>
+				<visible>Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
+			</control>
+			<control type="image">
+				<left></left>
+				<centerleft>50%</centerleft>
+				<top>-21</top>
+				<width>1473.5</width>
+				<height>$PARAM[backHeight]</height>
+				<texture colordiffuse="$VAR[HomeWidgetTransVar]" border="40">$VAR[HomeWidget8001BackgroundVar]</texture>
+				<visible>!Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
 			</control>
 			<control type="label">
 				<top>-28</top>
@@ -754,6 +764,16 @@
 				<width>1473.5</width>
 				<height>$PARAM[backHeight]</height>
 				<texture colordiffuse="$VAR[HomeWidgetTransVar]" border="40">$VAR[HomeWidgetBackgroundVar]</texture>
+				<visible>Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
+			</control>
+			<control type="image">
+				<left></left>
+				<centerleft>50%</centerleft>
+				<top>-21</top>
+				<width>1473.5</width>
+				<height>$PARAM[backHeight]</height>
+				<texture colordiffuse="$VAR[HomeWidgetTransVar]" border="40">$VAR[HomeWidget8002BackgroundVar]</texture>
+				<visible>!Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
 			</control>
 			<control type="label">
 				<top>-28</top>
@@ -828,6 +848,16 @@
 				<width>1885</width>
 				<height>$PARAM[backHeight]</height>
 				<texture colordiffuse="$VAR[HomeWidgetTransVar]" border="40">$VAR[HomeWidgetBackgroundVar]</texture>
+				<visible>Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
+			</control>
+			<control type="image">
+				<left></left>
+				<centerleft>50%</centerleft>
+				<top>-21</top>
+				<width>1885</width>
+				<height>$PARAM[backHeight]</height>
+				<texture colordiffuse="$VAR[HomeWidgetTransVar]" border="40">$VAR[HomeWidget8001BackgroundVar]</texture>
+				<visible>!Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
 			</control>
 			<control type="label">
 				<top>$PARAM[labelBottom]</top>
@@ -878,6 +908,16 @@
 				<width>1885</width>
 				<height>$PARAM[backHeight]</height>
 				<texture colordiffuse="$VAR[HomeWidgetTransVar]" border="40">$VAR[HomeWidgetBackgroundVar]</texture>
+				<visible>Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
+			</control>
+			<control type="image">
+				<left></left>
+				<centerleft>50%</centerleft>
+				<top>-21</top>
+				<width>1885</width>
+				<height>$PARAM[backHeight]</height>
+				<texture colordiffuse="$VAR[HomeWidgetTransVar]" border="40">$VAR[HomeWidget8002BackgroundVar]</texture>
+				<visible>!Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
 			</control>
 			<control type="label">
 				<top>$PARAM[labelBottom]</top>
