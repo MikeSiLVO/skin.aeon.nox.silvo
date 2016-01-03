@@ -32,7 +32,7 @@
 		<param name="SubLabelTop" default="400"/>
 		<param name="WidgetStyleString" default="$LOCALIZE[31229]"/>
 		<definition>
-			<itemlayout height="325" width="$PARAM[LayoutWidth]" condition="[StringCompare(Container(9000).ListItem.Property(widgetType),movies) | StringCompare(Container(9000).ListItem.Property(WidgetType),playlists) | StringCompare(Container(9000).ListItem.Property(widgetTarget),extendedinfo) | [StringCompare(Container(9000).ListItem.Property(widgetType),tvshows) + !SubString(Container(9000).ListItem.Property(widgetpath),episodes)]] + StringCompare(Container(9000).ListItem.Property(widgetStyle),$PARAM[WidgetStyleString]) + IsEmpty(Container(9000).ListItem.Property(widgetArtwork))">
+			<itemlayout height="325" width="$PARAM[LayoutWidth]" condition="[StringCompare(Container(9000).ListItem.Property(widgetType),movies) | StringCompare(Container(9000).ListItem.Property(WidgetType),playlists) | StringCompare(Container(9000).ListItem.Property(widgetTarget),extendedinfo) | [StringCompare(Container(9000).ListItem.Property(widgetType),tvshows) + !SubString(Container(9000).ListItem.Property(widgetpath),episodes)]] + StringCompare(Container(9000).ListItem.Property(widgetStyle),$PARAM[WidgetStyleString]) + StringCompare(Container(9000).ListItem.Property(widgetArtwork),Poster)">
 				<control type="image">
 					<top>$PARAM[ArtworkTop]</top>
 					<width>$PARAM[ArtworkWidth]</width>
@@ -71,7 +71,7 @@
 					</control>
 				</control>
 			</itemlayout>
-			<focusedlayout height="325" width="$PARAM[LayoutWidth]" condition="[StringCompare(Container(9000).ListItem.Property(widgetType),movies) | StringCompare(Container(9000).ListItem.Property(WidgetType),playlists) | StringCompare(Container(9000).ListItem.Property(widgetTarget),extendedinfo) | [StringCompare(Container(9000).ListItem.Property(widgetType),tvshows) + !SubString(Container(9000).ListItem.Property(widgetpath),episodes)]] + StringCompare(Container(9000).ListItem.Property(widgetStyle),$PARAM[WidgetStyleString]) + IsEmpty(Container(9000).ListItem.Property(widgetArtwork))">
+			<focusedlayout height="325" width="$PARAM[LayoutWidth]" condition="[StringCompare(Container(9000).ListItem.Property(widgetType),movies) | StringCompare(Container(9000).ListItem.Property(WidgetType),playlists) | StringCompare(Container(9000).ListItem.Property(widgetTarget),extendedinfo) | [StringCompare(Container(9000).ListItem.Property(widgetType),tvshows) + !SubString(Container(9000).ListItem.Property(widgetpath),episodes)]] + StringCompare(Container(9000).ListItem.Property(widgetStyle),$PARAM[WidgetStyleString]) + StringCompare(Container(9000).ListItem.Property(widgetArtwork),Poster)">
 				<control type="group">
 					<animation type="Focus" reversible="false">
 						<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
@@ -306,6 +306,92 @@
 						<shadowcolor>black</shadowcolor>
 						<textcolor>selected</textcolor>
 						<label>$VAR[WidgetSubLabelVar]</label>
+					</control>
+				</control>
+			</focusedlayout>
+		</definition>
+	</include>
+	<include name="IncludeDiscartWidgetLayout">
+		<param name="PanelID" default="8001"/>
+		<param name="LayoutWidth" default="336"/>
+		<param name="LayoutHeight" default="300"/>
+		<param name="ArtworkWidth" default="300"/>
+		<param name="ArtworkHeight" default="300"/>
+		<param name="ArtworkTop" default="60"/>
+		<param name="LabelWidth" default="285"/>
+		<param name="LabelTop" default="365"/>
+		<param name="SubLabelTop" default="400"/>
+		<param name="WidgetStyleString" default="$LOCALIZE[31229]"/>
+		<definition>
+			<itemlayout width="$PARAM[LayoutWidth]" height="$PARAM[LayoutHeight]" condition="[StringCompare(Container(9000).ListItem.Property(widgetTarget),video) + StringCompare(Container(9000).ListItem.Property(widgetStyle),$PARAM[WidgetStyleString]) + StringCompare(Container(9000).ListItem.Property(widgetArtwork),Discart)]">
+				<control type="image">
+					<top>$PARAM[ArtworkTop]</top>
+					<width>$PARAM[ArtworkWidth]</width>
+					<height>$PARAM[ArtworkHeight]</height>
+					<texture>$INFO[ListItem.Art(discart)]</texture>
+				</control>
+				<control type="group">
+					<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31229])</visible>
+					<control type="label">
+						<left>10</left>
+						<top>$PARAM[LabelTop]</top>
+						<width>$PARAM[LabelWidth]</width>
+						<height>36</height>
+						<align>center</align>
+						<font>font13</font>
+						<shadowcolor>black</shadowcolor>
+						<textcolor>white</textcolor>
+						<label>$INFO[ListItem.Title]</label>
+					</control>
+					<control type="label">
+						<left>10</left>
+						<top>$PARAM[SubLabelTop]</top>
+						<width>$PARAM[LabelWidth]</width>
+						<height>36</height>
+						<align>center</align>
+						<font>font13</font>
+						<shadowcolor>black</shadowcolor>
+						<textcolor>white</textcolor>
+						<label>$VAR[WidgetSubLabelVar]</label>
+					</control>
+				</control>
+			</itemlayout>
+			<focusedlayout width="$PARAM[LayoutWidth]" height="$PARAM[LayoutHeight]" condition="[StringCompare(Container(9000).ListItem.Property(widgetTarget),video) + StringCompare(Container(9000).ListItem.Property(widgetStyle),$PARAM[WidgetStyleString]) + StringCompare(Container(9000).ListItem.Property(widgetArtwork),Discart)]">
+				<control type="group">
+					<animation type="Focus" reversible="false">
+						<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
+						<effect type="fade" start="80" end="100" time="300" />
+					</animation>
+					<control type="image">
+						<top>$PARAM[ArtworkTop]</top>
+						<width>$PARAM[ArtworkWidth]</width>
+						<height>$PARAM[ArtworkHeight]</height>
+						<texture>$INFO[ListItem.Art(discart)]</texture>
+					</control>
+					<control type="group">
+						<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31229])</visible>
+						<control type="label">
+							<left>10</left>
+							<top>$PARAM[LabelTop]</top>
+							<width>$PARAM[LabelWidth]</width>
+							<height>36</height>
+							<align>center</align>
+							<font>font13</font>
+							<shadowcolor>black</shadowcolor>
+							<textcolor>selected</textcolor>
+							<label>$INFO[ListItem.Title]</label>
+						</control>
+						<control type="label">
+							<left>10</left>
+							<top>$PARAM[SubLabelTop]</top>
+							<width>$PARAM[LabelWidth]</width>
+							<height>36</height>
+							<align>center</align>
+							<font>font13</font>
+							<shadowcolor>black</shadowcolor>
+							<textcolor>selected</textcolor>
+							<label>$VAR[WidgetSubLabelVar]</label>
+						</control>
 					</control>
 				</control>
 			</focusedlayout>

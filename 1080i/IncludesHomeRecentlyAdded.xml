@@ -10,10 +10,10 @@
 			<visible>!IsEmpty(Container(9000).ListItem.Property(widget)) + !StringCompare(Container(9000).ListItem.Property(widget),weather) + !StringCompare(Container(9000).ListItem.Property(widget),livetv)</visible>
 			<include>VisibleFadeEffect</include>
 			<!-- Classic Widgets -->
-			<control type="group">
-				<visible>IsEmpty(Container(9000).ListItem.Property(widgetStyle))</visible>
+			<control type="group" id="900300">
+				<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),Classic)</visible>
 				<control type="group">
-					<visible>[ControlGroup(9003).HasFocus() + !Skin.HasSetting(lowermainmenu)] + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
+					<visible>[ControlGroup(900300).HasFocus() + !Skin.HasSetting(lowermainmenu)] + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
 					<include>VisibleFadeEffect</include>
 					<control type="image">
 						<left>0</left>
@@ -32,7 +32,7 @@
 					</control>
 				</control>
 				<control type="group">
-					<visible>[ControlGroup(9003).HasFocus() + Skin.HasSetting(lowermainmenu)] + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
+					<visible>[ControlGroup(900300).HasFocus() + Skin.HasSetting(lowermainmenu)] + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
 					<include>VisibleFadeEffect</include>
 					<control type="image">
 						<left>0</left>
@@ -51,7 +51,7 @@
 					</control>
 				</control>
 				<control type="group">
-					<visible>ControlGroup(9003).HasFocus() + StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
+					<visible>ControlGroup(900300).HasFocus() + StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
 					<include>VisibleFadeEffect</include>
 					<control type="image">
 						<left>420</left>
@@ -783,17 +783,18 @@
 				</control>
 			</control>
 			<!-- Horizontal Menu Panel Widgets -->
-			<control type="group">
-				<visible>!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !IsEmpty(Container(9000).ListItem.Property(widgetStyle))</visible>
+			<control type="group" id="900301">
+				<visible>!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !StringCompare(Container(9000).ListItem.Property(widgetStyle),Classic)</visible>
 				<control type="group">
 					<left>120</left>
 					<top>-20</top>
+					<visible allowhiddenfocus="true">![StringCompare(Container(9000).ListItem.Property(widgetHide),Until focused) + !ControlGroup(900301).HasFocus()]</visible>
 					<!-- Widget Backgrounds -->
 					<control type="group">
 						<left>-25</left>
 						<width>1725</width>
 						<control type="group">
-							<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31229]) + IsEmpty(Container(9000).ListItem.Property(widgetArtwork))</visible>
+							<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31229]) + !StringCompare(Container(9000).ListItem.Property(widgetArtwork),Logo) + !StringCompare(Container(9000).ListItem.Property(widgetArtwork),Landscape/Fanart)</visible>
 							<control type="image">
 								<top>10</top>
 								<height>450</height>
@@ -814,7 +815,7 @@
 							</control>
 						</control>
 						<control type="group">
-							<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31229]) + !IsEmpty(Container(9000).ListItem.Property(widgetArtwork))</visible>
+							<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31229]) + !StringCompare(Container(9000).ListItem.Property(widgetArtwork),Poster)</visible>
 							<control type="image">
 								<top>220</top>
 								<height>240</height>
@@ -829,7 +830,7 @@
 							</control>
 						</control>
 						<control type="group">
-							<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230]) + IsEmpty(Container(9000).ListItem.Property(widgetArtwork))</visible>
+							<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230]) + !StringCompare(Container(9000).ListItem.Property(widgetArtwork),Logo) + !StringCompare(Container(9000).ListItem.Property(widgetArtwork),Landscape/Fanart)</visible>
 							<control type="image">
 								<top>80</top>
 								<height>375</height>
@@ -850,7 +851,7 @@
 							</control>
 						</control>
 						<control type="group">
-							<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230]) + !IsEmpty(Container(9000).ListItem.Property(widgetArtwork))</visible>
+							<visible>StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230]) + !StringCompare(Container(9000).ListItem.Property(widgetArtwork),Poster)</visible>
 							<control type="image">
 								<top>255</top>
 								<height>200</height>
@@ -923,6 +924,12 @@
 							<param name="SubLabelTop">395</param>
 							<param name="WidgetStyleString">$LOCALIZE[31230]</param>
 						</include>
+						<!-- Discart -->
+						<include>IncludeDiscartWidgetLayout</include>
+						<include name="IncludeDiscartWidgetLayout">
+							<param name="ArtworkTop">115</param>
+							<param name="WidgetStyleString">$LOCALIZE[31230]</param>
+						</include>
 						<!-- Landscape -->
 						<include>IncludeLandscapeWidgetLayout</include>
 						<include name="IncludeLandscapeWidgetLayout">
@@ -950,11 +957,12 @@
 				</control>
 			</control>
 			<!-- Vertical Menu Panel Widgets -->
-			<control type="group">
-				<visible>StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !IsEmpty(Container(9000).ListItem.Property(widgetStyle))</visible>
+			<control type="group" id="900302">
+				<visible>StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !StringCompare(Container(9000).ListItem.Property(widgetStyle),Classic)</visible>
 				<control type="group">
 					<left>440</left>
 					<top>80</top>
+					<visible allowhiddenfocus="true">![StringCompare(Container(9000).ListItem.Property(widgetHide),Until focused) + !ControlGroup(900302).HasFocus()]</visible>
 					<!-- Widget Backgrounds -->
 					<control type="group">
 						<left>-25</left>

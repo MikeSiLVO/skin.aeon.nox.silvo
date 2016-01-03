@@ -214,10 +214,20 @@
 					<height>90</height>
 					<textoffsetx>30</textoffsetx>
 					<font>font15</font>
-					<label>Widget artwork</label>
+					<label> - Artwork</label>
 					<label2>$VAR[WidgetArtworkLabelVar]</label2>
-					<visible>!IsEmpty(Container(211).ListItem.Property(widgetStyle))</visible>
+					<visible>!IsEmpty(Container(211).ListItem.Property(widgetStyle)) + !StringCompare(Container(211).ListItem.Property(widgetStyle),Classic)</visible>
 					<visible>[StringCompare(Container(211).ListItem.Property(widget),library) + StringCompare(Container(211).ListItem.Property(widgetType),movies)] | StringCompare(Container(211).ListItem.Property(widget),Playlist)</visible>
+				</control>
+				<control type="button" id="512">
+					<description>Change widget hidden status</description>
+					<width>1316</width>
+					<height>90</height>
+					<textoffsetx>30</textoffsetx>
+					<font>font15</font>
+					<label> - Hide</label>
+					<label2>$VAR[WidgetHideLabelVar]</label2>
+					<visible>!IsEmpty(Container(211).ListItem.Property(widgetName))</visible>
 				</control>
 				<control type="button" id="510">
 					<description>Choose infoline</description>
