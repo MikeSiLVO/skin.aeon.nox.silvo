@@ -73,11 +73,6 @@
 						<onclick>noop</onclick>
 						<icon>-</icon>
 					</item>
-					<!-- <item id="3">
-						<label>31155</label>
-						<onclick>noop</onclick>
-						<icon>-</icon>
-					</item> -->
 				</content>
 			</control>
 			<control type="textbox">
@@ -135,13 +130,13 @@
 						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=ThemeHomeLabelColor)</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
-					<!-- <control type="button" id="104">
+					<control type="button" id="104">
 						<width>1316</width>
 						<height>90</height>
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
-						<label>Main text</label>
-						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=MainHomeLabelColor)</onclick>
+						<label>Focused Submenu item</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=FocusedSubMenuColor)</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
 					<control type="button" id="105">
@@ -149,10 +144,10 @@
 						<height>90</height>
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
-						<label>RSS feed</label>
-						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=MainRSSColor)</onclick>
+						<label>Unfocused Submenu item</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=UnfocusedSubMenuColor)</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
-					</control -->
+					</control>
 					<control type="button" id="106">
 						<width>1316</width>
 						<height>90</height>
@@ -206,29 +201,6 @@
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
 				</control>
-				<control type="grouplist" id="9003">
-					<description>control area</description>
-					<left>522</left>
-					<top>32</top>
-					<width>1316</width>
-					<height>720</height>
-					<itemgap>0</itemgap>
-					<pagecontrol>60</pagecontrol>
-					<onleft>9000</onleft>
-					<onright>60</onright>
-					<onup>9001</onup>
-					<ondown>9001</ondown>
-					<visible>Container(9000).HasFocus(3)</visible>
-					<control type="button" id="300">
-						<width>1316</width>
-						<height>90</height>
-						<textoffsetx>30</textoffsetx>
-						<font>font15</font>
-						<label>Widget highlight overlay</label>
-						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=WidgetHighlightColor)</onclick>
-						<texturenofocus border="1">separator5.png</texturenofocus>
-					</control>
-				</control>
 				<control type="grouplist">
 					<include name="ColorCustomizerSwatchGrouplist">
 						<param name="FocusID">1</param>
@@ -242,12 +214,12 @@
 					<include name="ColorCustomizerSwatchimage">
 						<param name="ColorString">ThemeHomeLabelColor</param>
 					</include>
-					<!-- <include name="ColorCustomizerSwatchimage">
-						<param name="ColorString">MainHomeLabelColor</param>
+					<include name="ColorCustomizerSwatchimage">
+						<param name="ColorString">FocusedSubMenuColor</param>
 					</include>
 					<include name="ColorCustomizerSwatchimage">
-						<param name="ColorString">MainRSSColor</param>
-					</include> -->
+						<param name="ColorString">UnfocusedSubMenuColor</param>
+					</include>
 					<control type="grouplist">
 						<itemgap>20</itemgap>
 						<orientation>vertical</orientation>
