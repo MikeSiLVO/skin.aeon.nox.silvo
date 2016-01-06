@@ -226,8 +226,8 @@
 					<textoffsetx>30</textoffsetx>
 					<font>font15</font>
 					<label> - Hide</label>
-					<label2>$VAR[WidgetHideLabelVar]</label2>
-					<visible>!IsEmpty(Container(211).ListItem.Property(widgetName))</visible>
+					<label2>$VAR[WidgetHiddenLabelVar]</label2>
+					<visible>!IsEmpty(Container(211).ListItem.Property(widgetName)) + !StringCompare(Container(211).ListItem.Property(widgetStyle),Classic)</visible>
 				</control>
 				<control type="button" id="510">
 					<description>Choose infoline</description>
