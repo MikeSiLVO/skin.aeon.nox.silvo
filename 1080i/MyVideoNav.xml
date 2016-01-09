@@ -19,14 +19,21 @@
 			<onclick>50</onclick>
 		</control>
 		<control type="fadelabel" id="4410">
-			<width>11479</width>
-			<height>118</height>
+			<top>-100</top>
+			<width>2560</width>
+			<height>100</height>
 			<scrollspeed>20</scrollspeed>
 			<scrollout>false</scrollout>
-			<top>-10000</top>
-			<pauseatend>7000</pauseatend>
-			<font>font48</font>
-			<textcolor>black</textcolor>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),8)">FadelabelPauseAtEnd8</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),9)">FadelabelPauseAtEnd9</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),10)">FadelabelPauseAtEnd10</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),15)">FadelabelPauseAtEnd15</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),20)">FadelabelPauseAtEnd20</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),30)">FadelabelPauseAtEnd30</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),60)">FadelabelPauseAtEnd60</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),90)">FadelabelPauseAtEnd90</include>
+			<font>font10</font>
+			<textcolor>white</textcolor>
 			<randomize>true</randomize>
 			<label>$INFO[ListItem.Art(extrafanart1)]</label>
 			<label>$INFO[ListItem.Art(extrafanart2)]</label>
@@ -1169,6 +1176,17 @@
 		</control>
 		<control type="multiimage">
 			<imagepath background="true">$VAR[GlobalBackgroundVar]</imagepath>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),5)">FanartTimePerImage5</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),6)">FanartTimePerImage6</include>
+			<include condition="IsEmpty(Skin.String(FanartTimePerImage))">FanartTimePerImage7</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),8)">FanartTimePerImage8</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),9)">FanartTimePerImage9</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),10)">FanartTimePerImage10</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),15)">FanartTimePerImage15</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),20)">FanartTimePerImage20</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),30)">FanartTimePerImage30</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),60)">FanartTimePerImage60</include>
+			<include condition="StringCompare(Skin.String(FanartTimePerImage),90)">FanartTimePerImage90</include>
 			<animation effect="fade" time="500">Visible</animation>
 			<visible>Skin.HasSetting(Enable.FullscreenFanart) + Window.IsActive(1113)</visible>
 		</control>
