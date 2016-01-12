@@ -79,7 +79,7 @@
 		<control type="image">
 			<description>LOGO</description>
 			<left>0</left>
-			<top>0</top>
+			<top>-15</top>
 			<width>400</width>
 			<height>120</height>
 			<aspectratio>keep</aspectratio>
@@ -97,7 +97,7 @@
 	</include>
 	<include name="MediaMenuTop">
 		<left>0</left>
-		<top>100</top>
+		<top>85</top>
 		<width>400</width>
 		<height>1080</height>
 		<onleft>9050</onleft>
@@ -251,8 +251,8 @@
 					<usealttexture>Container.SortDirection(Ascending)</usealttexture>
 				</control>
 				<control type="button" id="2001">
-					<label>$LOCALIZE[19190]</label>
 					<include>ButtonCommonValues</include>
+					<label>$LOCALIZE[19190]</label>
 					<onclick>ActivateWindow(1128)</onclick>
 				</control>
 				<control type="button" id="203">
@@ -330,7 +330,8 @@
 		<height>1080</height>
 		<onleft>9050</onleft>
 		<onright>ClearProperty(MediaMenu,Home)</onright>
-		<onright>50</onright>
+		<onright condition="!Window.IsActive(SettingsCategory.xml)">50</onright>
+		<onright condition="Window.IsActive(SettingsCategory.xml)">3</onright>
 		<onup>9050</onup>
 		<ondown>9050</ondown>
 		<onback>ClearProperty(MediaMenu,Home)</onback>
@@ -351,6 +352,24 @@
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[19190]</label>
 			<onclick>ActivateWindow(1128)</onclick>
+		</control>
+		<control type="button" id="203">
+			<description>Settings level</description>
+			<textwidth>352</textwidth>
+			<font>font13_title</font>
+			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[31142]</label>
+			<enable>no</enable>
+			<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
+			<visible>Window.IsActive(SettingsCategory.xml)</visible>
+		</control>
+		<control type="button" id="20">
+			<description>Change settings level</description>
+			<label>19019</label>
+			<textwidth>352</textwidth>
+			<include>ButtonCommonValues</include>
+			<onclick>SettingsLevelChange</onclick>
+			<visible>Window.IsActive(SettingsCategory.xml)</visible>
 		</control>
 	</include>
 	<!-- Scroll Label -->
@@ -529,8 +548,6 @@
 			<textoffsetx>15</textoffsetx>
 			<textcolor>grey2</textcolor>
 			<focusedcolor>white</focusedcolor>
-			<texturefocus colordiffuse="$VAR[ThemeLabelColor]" border="5">button_middle_focus.png</texturefocus>
-			<texturenofocus border="5">button_middle3.png</texturenofocus>
 			<onclick>PlayMedia($ESCINFO[ListItem.Trailer])</onclick>
 			<visible>!IsEmpty(ListItem.Trailer)</visible>
 		</control>
@@ -674,7 +691,7 @@
 					<control type="image">
 						<width>320</width>
 						<height>80</height>
-						<texture colordiffuse="$VAR[ThemeLabelColor]" border="5">listselect_fo.png</texture>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
 						<visible>Control.HasFocus(5000)</visible>
 					</control>
 					<control type="label">
@@ -1219,6 +1236,136 @@
 					<texture background="true">$VAR[PosterThumbVar]</texture>
 					<bordertexture border="1,1,2,1">thumbs/panel_border.png</bordertexture>
 					<bordersize>1,1,2,1</bordersize>
+				</control>
+			</control>
+		</control>
+	</include>
+	<include name="NewInfoPanel">
+		<control type="image">
+			<description>background image</description>
+			<include>FullscreenDimensions</include>
+			<texture colordiffuse="80FFFFFF">black.png</texture>
+			<visible>!IsEmpty(Control.GetLabel(4421)) + Control.IsVisible(4421) + !Skin.HasSetting(Enable.ManualNewInfoPanel) | [!IsEmpty(Control.GetLabel(4421)) + Skin.HasSetting(Enable.ManualNewInfoPanel) + Control.HasFocus(4401)] | [!IsEmpty(Control.GetLabel(4421)) + Skin.HasSetting(Enable.ManualNewInfoPanel) + Control.HasFocus(4402)]</visible>
+			<animation effect="fade" time="320">Visible</animation>
+			<animation effect="fade" time="720">Hidden</animation>
+		</control>
+		<control type="group" id="13000">
+			<visible>[!IsEmpty(Control.GetLabel(4421)) + Control.IsVisible(4421) + !Skin.HasSetting(Enable.ManualNewInfoPanel)] | [!IsEmpty(Control.GetLabel(4421)) + Skin.HasSetting(Enable.ManualNewInfoPanel) + Control.HasFocus(4401)] | [!IsEmpty(Control.GetLabel(4421)) + Skin.HasSetting(Enable.ManualNewInfoPanel) + Control.HasFocus(4402)]</visible>
+			<animation effect="slide" start="0,-1080" end="0,0" time="840" tween="cubic">Visible</animation>
+			<animation effect="slide" start="0,0" end="0,-1080" time="720" tween="cubic">Hidden</animation>
+			<control type="group">
+				<visible>StringCompare(Control.GetLabel(4421),fanart)</visible>
+				<include>SettingsFadeEffect</include>
+				<control type="grouplist">
+					<left>5</left>
+					<top>50</top>
+					<control type="button">
+						<label>$VAR[InfoPanelLabel1Var]</label>
+						<include>NewInfoPanelButtonsValues</include>
+					</control>
+					<control type="button">
+						<label>$VAR[InfoPanelLabel2Var]</label>
+						<include>NewInfoPanelButtonsValues</include>
+					</control>
+					<control type="group">
+						<control type="button">
+							<label>$VAR[InfoPanelLabel3Var]</label>
+							<width>auto</width>
+							<include>NewInfoPanelButtonsValues</include>
+						</control>
+						<control type="button">
+							<left>501</left>
+							<width>251</width>
+							<label>$VAR[InfoPanelLabel4Var]</label>
+							<include>NewInfoPanelButtonsValues</include>
+						</control>
+						<control type="button">
+							<left>752</left>
+							<width>250</width>
+							<label>$VAR[InfoPanelLabel5Var]</label>
+							<include>NewInfoPanelButtonsValues</include>
+						</control>
+					</control>
+				</control>
+				<control type="textbox">
+					<label>$VAR[VideoPlotVar]</label>
+					<top>337</top>
+					<left>20</left>
+					<width>1090</width>
+					<height>130</height>
+					<font>font14_textbox2</font>
+					<pagecontrol>-</pagecontrol>
+					<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+					<include>NewInfoPanelButtonsValues</include>
+				</control>
+				<control type="image">
+					<left>1132</left>
+					<top>60</top>
+					<width>768</width>
+					<height>415</height>
+					<fadetime>200</fadetime>
+					<texture background="true">$VAR[GlobalBackgroundVar]</texture>
+					<aspectratio scalediffuse="false" aligny="center">scale</aspectratio>
+					<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
+					<bordersize>20</bordersize>
+				</control>
+			</control>
+			<control type="group">
+			<visible>StringCompare(Control.GetLabel(4421),poster)</visible>
+				<include>SettingsFadeEffect</include>
+				<control type="grouplist">
+					<left>5</left>
+					<top>50</top>
+					<control type="button">
+						<label>$VAR[InfoPanelLabel1Var]</label>
+						<width>615</width>
+						<include>NewInfoPanelButtonsValues</include>
+					</control>
+					<control type="button">
+						<label>$VAR[InfoPanelLabel2Var]</label>
+						<width>615</width>
+						<include>NewInfoPanelButtonsValues</include>
+					</control>
+					<control type="button">
+						<label>$VAR[InfoPanelLabel3Var]</label>
+						<width>615</width>
+						<include>NewInfoPanelButtonsValues</include>
+					</control>
+					<control type="group">
+						<control type="button">
+							<width>251</width>
+							<label>$VAR[InfoPanelLabel4Var]</label>
+							<include>NewInfoPanelButtonsValues</include>
+						</control>
+						<control type="button">
+							<left>251</left>
+							<width>364</width>
+							<label>$VAR[InfoPanelLabel5Var]</label>
+							<include>NewInfoPanelButtonsValues</include>
+						</control>
+					</control>
+				</control>
+				<control type="textbox">
+					<label>$VAR[VideoPlotVar]</label>
+					<top>62</top>
+					<left>700</left>
+					<width>900</width>
+					<height>350</height>
+					<font>font14_textbox2</font>
+					<pagecontrol>-</pagecontrol>
+					<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+					<include>NewInfoPanelButtonsValues</include>
+				</control>
+				<control type="image">
+					<left>1601</left>
+					<top>40</top>
+					<width>298</width>
+					<height>447</height>
+					<fadetime>200</fadetime>
+					<texture background="true">$VAR[PosterThumbVar]</texture>
+					<aspectratio scalediffuse="false" aligny="center">scale</aspectratio>
+					<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
+					<bordersize>20</bordersize>
 				</control>
 			</control>
 		</control>
