@@ -307,16 +307,27 @@
 				<texture background="true">$VAR[ArtworkLogoVar]</texture>
 			</control>
 			<control type="label">
-				<top>75</top>
+				<top>75</top>			
 				<left>397</left>
 				<width>375</width>
 				<height>15</height>
-				<font>font14</font>
+				<font>font14</font>				
 				<textcolor>$VAR[ThemeLabelColor]</textcolor>
 				<label>$INFO[ListItem.Label]</label>
 				<scroll>true</scroll>
-				<visible>IsEmpty(ListItem.Art(clearlogo))</visible>
+				<visible>IsEmpty(ListItem.Art(clearlogo)) + !ListItem.IsCollection</visible>
 			</control>
+			<control type="label">
+				<top>75</top>			
+				<left>397</left>
+				<width>750</width>
+				<height>15</height>
+				<font>font14</font>				
+				<textcolor>$VAR[ThemeLabelColor]</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+				<scroll>true</scroll>
+				<visible>IsEmpty(ListItem.Art(clearlogo)) + ListItem.IsCollection</visible>
+			</control>				
 			<control type="label">
 				<top>75</top>
 				<left>787</left>
