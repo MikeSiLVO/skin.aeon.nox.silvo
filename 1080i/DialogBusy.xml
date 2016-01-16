@@ -10,7 +10,7 @@
 		<control type="group">
 			<left>0</left>
 			<top>100</top>
-			<visible>IsEmpty(Window(Home).Property(script.cinemavision.running))</visible>
+			<visible>IsEmpty(Window(Home).Property(script.cinemavision.running)) + !Window.IsActive(script-skin_helper_service-ColorPicker.xml)</visible>
 			<control type="image">
 				<description>background image</description>
 				<left>0</left>
@@ -57,7 +57,7 @@
 			<control type="list">
 				<left>150</left>
 				<top>32</top>
-				<width>180</width>
+				<width>400</width>
 				<height>100</height>
 				<scrolltime tween="quadratic" easing="out">0</scrolltime>
 				<autoscroll time="1000" repeat="1000">true</autoscroll>
@@ -67,7 +67,7 @@
 						<description>Busy label</description>
 						<left>0</left>
 						<top>0</top>
-						<width>180</width>
+						<width>400</width>
 						<height>100</height>
 						<align>left</align>
 						<aligny>center</aligny>
@@ -80,7 +80,7 @@
 						<description>Busy label</description>
 						<left>0</left>
 						<top>0</top>
-						<width>180</width>
+						<width>400</width>
 						<height>100</height>
 						<align>left</align>
 						<aligny>center</aligny>
