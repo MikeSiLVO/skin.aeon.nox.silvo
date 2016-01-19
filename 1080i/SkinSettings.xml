@@ -835,13 +835,21 @@
 					</include>
 					<include name="AddonStatusRadioButton">
 						<param name="ButtonID">1101</param>
-						<param name="AddonID">service.library.data.provider</param>
+						<param name="AddonID">script.grab.fanart</param>
 					</include>
 					<include name="AddonStatusRadioButton">
 						<param name="ButtonID">1102</param>
+						<param name="AddonID">service.library.data.provider</param>
+					</include>
+					<include name="AddonStatusRadioButton">
+						<param name="ButtonID">1103</param>
+						<param name="AddonID">script.toolbox</param>
+					</include>
+					<include name="AddonStatusRadioButton">
+						<param name="ButtonID">1104</param>
 						<param name="AddonID">script.extendedinfo</param>
 					</include>
-					<control type="radiobutton" id="1103">
+					<control type="radiobutton" id="1105">
 						<width>658</width>
 						<height>90</height>
 						<textoffsetx>30</textoffsetx>
@@ -852,21 +860,17 @@
 						<textureradioofffocus colordiffuse="invalid">android/btn_radio_on_holo_dark.png</textureradioofffocus>
 						<textureradiooffnofocus colordiffuse="invalid">android/btn_radio_on_holo_dark.png</textureradiooffnofocus>
 						<onclick condition="!System.HasAddon(script.skin.info.service)">Notification($LOCALIZE[19098]:,script.skin.info.service needs to be manually installed,7000,DefaultIconWarning.png)</onclick>
-						<onclick condition="System.HasAddon(script.skin.info.service)">noop</onclick>
+						<onclick condition="System.HasAddon(script.skin.info.service)">Addon.OpenSettings(script.skin.info.service)</onclick>
 						<selected>System.HasAddon(script.skin.info.service)</selected>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
 					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1104</param>
-						<param name="AddonID">script.tv.show.next.aired</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1105</param>
-						<param name="AddonID">script.cinemavision</param>
-					</include>
-					<include name="AddonStatusRadioButton">
 						<param name="ButtonID">1106</param>
-						<param name="AddonID">script.trakt</param>
+						<param name="AddonID">script.skin.helper.service</param>
+					</include>
+					<include name="AddonStatusRadioButton">
+						<param name="ButtonID">1107</param>
+						<param name="AddonID">script.artwork.downloader</param>
 					</include>
 				</control>
 				<control type="grouplist" id="9012">
@@ -884,19 +888,19 @@
 					<visible>Container(9000).HasFocus(10)</visible>
 					<include name="AddonStatusRadioButton">
 						<param name="ButtonID">1200</param>
-						<param name="AddonID">script.grab.fanart</param>
+						<param name="AddonID">script.tv.show.next.aired</param>
 					</include>
 					<include name="AddonStatusRadioButton">
 						<param name="ButtonID">1201</param>
-						<param name="AddonID">script.toolbox</param>
+						<param name="AddonID">script.cinemavision</param>
 					</include>
 					<include name="AddonStatusRadioButton">
 						<param name="ButtonID">1202</param>
-						<param name="AddonID">script.skin.helper.service</param>
+						<param name="AddonID">script.trakt</param>
 					</include>
 					<include name="AddonStatusRadioButton">
 						<param name="ButtonID">1203</param>
-						<param name="AddonID">script.artwork.downloader</param>
+						<param name="AddonID">script.videoextras</param>
 					</include>
 					<control type="radiobutton" id="1204">
 						<width>658</width>
@@ -909,15 +913,11 @@
 						<textureradioofffocus colordiffuse="invalid">android/btn_radio_on_holo_dark.png</textureradioofffocus>
 						<textureradiooffnofocus colordiffuse="invalid">android/btn_radio_on_holo_dark.png</textureradiooffnofocus>
 						<onclick condition="!System.HasAddon(script.libraryeditor)">Notification($LOCALIZE[19098]:,script.libraryeditor needs to be manually installed,7000,DefaultIconWarning.png)</onclick>
-						<onclick condition="System.HasAddon(script.libraryeditor)">noop</onclick>
+						<onclick condition="System.HasAddon(script.libraryeditor)">Addon.OpenSettings(script.libraryeditor)</onclick>
 						<selected>System.HasAddon(script.libraryeditor)</selected>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1205</param>
-						<param name="AddonID">script.videoextras</param>
-					</include>
-					<control type="radiobutton" id="1206">
+					<control type="radiobutton" id="1205">
 						<width>658</width>
 						<height>90</height>
 						<textoffsetx>30</textoffsetx>
@@ -928,7 +928,7 @@
 						<textureradioofffocus colordiffuse="invalid">android/btn_radio_on_holo_dark.png</textureradioofffocus>
 						<textureradiooffnofocus colordiffuse="invalid">android/btn_radio_on_holo_dark.png</textureradiooffnofocus>
 						<onclick condition="!System.HasAddon(script.ratingupdate)">Notification($LOCALIZE[19098]:,script.ratingupdate needs to be manually installed,7000,DefaultIconWarning.png)</onclick>
-						<onclick condition="System.HasAddon(script.ratingupdate)">noop</onclick>
+						<onclick condition="System.HasAddon(script.ratingupdate)">Addon.OpenSettings(script.ratingupdate)</onclick>
 						<selected>System.HasAddon(script.ratingupdate)</selected>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
