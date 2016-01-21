@@ -510,7 +510,7 @@
 		<value condition="Player.Playing + !Player.Seeking + !Player.DisplayAfterSeek | [Player.Paused + !Player.Caching] | [Player.ShowTime + !Player.Seeking]">$INFO[System.Time]$INFO[player.FinishTime, [,]]</value>
 		<value condition="[Player.Paused + Player.Caching] + !Player.Seeking + !Player.DisplayAfterSeek">$INFO[Player.CacheLevel,$LOCALIZE[15107] ,%]</value>
 		<value condition="Player.Seeking">$INFO[Player.SeekStepSize]</value>
-		<value condition="Player.DisplayAfterSeek + ![player.forwarding | player.rewinding]">$INFO[Player.SeekOffset,$LOCALIZE[31046][COLOR=themecolor] ,[/COLOR]]</value>
+		<value condition="Player.DisplayAfterSeek + ![player.forwarding | player.rewinding]">$INFO[Player.SeekOffset,$LOCALIZE[31046] ,]</value>
 	</variable>
 	<variable name="OSDRightLabelVar">
 		<value condition="Player.ShowTime + !VideoPlayer.Content(livetv)">$INFO[Player.Time]$INFO[Player.TimeRemaining, / ]</value>
@@ -606,7 +606,7 @@
 		<value condition="Control.HasFocus(404)">$LOCALIZE[31944]</value>
 		<value condition="Control.HasFocus(405)">$LOCALIZE[31945]</value>
 		<value condition="Control.HasFocus(406)">$LOCALIZE[31962]</value>
-		<value condition="Control.HasFocus(410)">This will open the sidemenu when navigating to the top left corner of the screen when available. This is a test setting for those that use a mouse to navigate through Kodi, if anybody likes this setting let me know and I will keep it.</value>
+		<value condition="Control.HasFocus(410)">$LOCALIZE[31290]</value>
 		<value condition="Control.HasFocus(500)">$LOCALIZE[31988]</value>
 		<value condition="Control.HasFocus(504)">$LOCALIZE[31984]</value>
 		<value condition="Control.HasFocus(506)">$LOCALIZE[31986]</value>
