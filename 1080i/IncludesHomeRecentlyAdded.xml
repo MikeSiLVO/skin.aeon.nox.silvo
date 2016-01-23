@@ -990,10 +990,23 @@
 							<description>Time Label</description>
 							<height>50</height>
 							<width>840</width>
-							<label>[COLOR white2]$INFO[Player.Time][/COLOR]$INFO[Player.Duration, / [COLOR=white2],[/COLOR]]</label>
+							<!--ToDo: add 'ends' to strings.po-->
+							<label>[COLOR white2]+$VAR[PlayerTimeRemainingTVVar][/COLOR]$INFO[VideoPlayer.NextStartTime, ends: [COLOR=white2],[/COLOR]]</label>
 							<font>font48</font>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
 							<shadowcolor>black</shadowcolor>
+							<visible>VideoPlayer.Content(livetv)</visible>
+						</control>
+						<control type="label">
+							<description>Time Label</description>
+							<height>50</height>
+							<width>840</width>
+							<label>[COLOR white2]+[B]$VAR[PlayerTimeRemainingTVVar][/B][/COLOR]$INFO[VideoPlayer.NextStartTime, endet: [COLOR=white2],[/COLOR]]</label>
+							<label>[COLOR white2]$INFO[Player.Time[/COLOR]$INFO[Player.Duration, / [COLOR=white2],[/COLOR]]</label>
+							<font>font48</font>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<visible>VideoPlayer.Content(movies) | VideoPlayer.Content(musicvideos)</visible>
 						</control>
 					</control>
 				</control>
