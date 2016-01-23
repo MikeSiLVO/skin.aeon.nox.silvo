@@ -104,14 +104,14 @@
 	</include>
 	<include name="MediaMenuTop">
 		<left>0</left>
-		<top>85</top>
+		<top>80</top>
 		<width>400</width>
 		<height>1080</height>
 		<onleft>9050</onleft>
 		<onright>ClearProperty(MediaMenu,Home)</onright>
 		<onright>50</onright>
 		<onup>9050</onup>
-		<ondown>9012</ondown>
+		<ondown>9050</ondown>
 		<onback>ClearProperty(MediaMenu,Home)</onback>
 		<onback>50</onback>
 		<itemgap>0</itemgap>
@@ -1254,12 +1254,12 @@
 			<description>background image</description>
 			<include>FullscreenDimensions</include>
 			<texture colordiffuse="80FFFFFF">black.png</texture>
-			<visible>!IsEmpty(Control.GetLabel(4421)) + Control.IsVisible(4421) + !Skin.HasSetting(Enable.ManualNewInfoPanel) | [!IsEmpty(Control.GetLabel(4421)) + Skin.HasSetting(Enable.ManualNewInfoPanel) + Control.HasFocus(4401)] | [!IsEmpty(Control.GetLabel(4421)) + Skin.HasSetting(Enable.ManualNewInfoPanel) + Control.HasFocus(4402)]</visible>
+			<visible>!IsEmpty(Control.GetLabel(4421)) + Control.IsVisible(4421) + !Skin.HasSetting(Enable.ManualNewInfoPanel) | [!IsEmpty(Control.GetLabel(4421)) + Skin.HasSetting(Enable.ManualNewInfoPanel) + Control.HasFocus(4401)]</visible>
 			<animation effect="fade" time="320">Visible</animation>
 			<animation effect="fade" time="720">Hidden</animation>
 		</control>
 		<control type="group" id="13000">
-			<visible>[!IsEmpty(Control.GetLabel(4421)) + Control.IsVisible(4421) + !Skin.HasSetting(Enable.ManualNewInfoPanel)] | [!IsEmpty(Control.GetLabel(4421)) + Skin.HasSetting(Enable.ManualNewInfoPanel) + Control.HasFocus(4401)] | [!IsEmpty(Control.GetLabel(4421)) + Skin.HasSetting(Enable.ManualNewInfoPanel) + Control.HasFocus(4402)]</visible>
+			<visible>[!IsEmpty(Control.GetLabel(4421)) + Control.IsVisible(4421) + !Skin.HasSetting(Enable.ManualNewInfoPanel)] | [!IsEmpty(Control.GetLabel(4421)) + Skin.HasSetting(Enable.ManualNewInfoPanel) + Control.HasFocus(4401)]</visible>
 			<animation effect="slide" start="0,-1080" end="0,0" time="840" tween="cubic">Visible</animation>
 			<animation effect="slide" start="0,0" end="0,-1080" time="720" tween="cubic">Hidden</animation>
 			<animation effect="slide" start="0,-1200" end="0,0" time="720" tween="cubic">WindowOpen</animation>
@@ -1387,7 +1387,7 @@
 		<definition>
 			<control type="image">
 				<include>FullscreenDimensions</include>
-				<texture background="true">black.png</texture>
+				<texture>black.png</texture>
 				<animation effect="fade" start="0" end="40" time="320">Visible</animation>
 				<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + System.IdleTime(3)</visible>
 			</control>
@@ -1844,7 +1844,7 @@
 				<textureradioofffocus colordiffuse="invalid">android/btn_radio_on_holo_dark.png</textureradioofffocus>
 				<textureradiooffnofocus colordiffuse="invalid">android/btn_radio_on_holo_dark.png</textureradiooffnofocus>
 				<onclick condition="!System.HasAddon($PARAM[AddonID])">RunPlugin(plugin://$PARAM[AddonID])</onclick>
-				<onclick condition="System.HasAddon($PARAM[AddonID])">noop</onclick>
+				<onclick condition="System.HasAddon($PARAM[AddonID])">Addon.OpenSettings($PARAM[AddonID])</onclick>
 				<selected>System.HasAddon($PARAM[AddonID])</selected>
 				<texturenofocus border="1">separator5.png</texturenofocus>
 			</control>

@@ -249,20 +249,14 @@
 					<include>ButtonCommonValues</include>
 					<label>587</label>
 				</control>
-				<control type="radiobutton" id="98">
+				<control type="button" id="98">
 					<visible>Container.CanFilterAdvanced</visible>
 					<description>Filter</description>
 					<include>ButtonCommonValues</include>
 					<label>587</label>
-					<selected>Container.Filtered</selected>
-					<onclick>right</onclick>
+					<onclick>ClearProperty(MediaMenu,Home)</onclick>
+					<onclick>SetFocus(50)</onclick>
 					<onclick>Filter</onclick>
-				</control>
-				<control type="radiobutton" id="16">
-					<description>PartyMode</description>
-					<label>589</label>
-					<onclick condition="Skin.HasSetting(launchmusicfullscreen)">FullScreen</onclick>
-					<include>ButtonCommonValues</include>
 				</control>
 				<control type="button" id="203">
 					<description>Actions</description>
@@ -287,6 +281,13 @@
 					<onclick>ActivateWindow(musicplaylist)</onclick>
 					<visible>!StringCompare(Playlist.Length(music),0)</visible>
 				</control>
+				<control type="button" id="16">
+					<description>PartyMode</description>
+					<label>589</label>
+					<onclick condition="Skin.HasSetting(launchmusicfullscreen)">FullScreen</onclick>
+					<include>ButtonCommonValues</include>
+					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[MyMusicNavMusicPartyModeLabelVar][/COLOR]</label2>
+				</control>
 				<control type="button" id="6121">
 					<description>Shuffle music</description>
 					<textwidth>255</textwidth>
@@ -304,26 +305,11 @@
 					<visible>Player.HasMedia</visible>
 				</control>
 			</control>
-			<control type="button" id="9012">
-				<visible>!Skin.HasSetting(KioskMode.Enabled)</visible>
-				<top>1030</top>
-				<width>400</width>
-				<align>center</align>
-				<textoffsetx>30</textoffsetx>
-				<font>IconMedium</font>
-				<label></label>
-				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
-				<texturefocus>-</texturefocus>
-				<onup>9050</onup>
-				<ondown>9050</ondown>
-				<onclick>ActivateWindow(1132)</onclick>
-				<visible>!Window.IsActive(1130) + !Window.IsActive(1131) + !Window.IsActive(1132)</visible>
-			</control>
 		</control>
 		<!-- Fullscreen Fanart -->
 		<control type="image">
 			<include>FullscreenDimensions</include>
-			<texture background="true">black.png</texture>
+			<texture>black.png</texture>
 			<animation effect="fade" time="250">Visible</animation>
 			<visible>Skin.HasSetting(Enable.FullscreenMusicFanart) + Window.IsActive(1113)</visible>
 		</control>
