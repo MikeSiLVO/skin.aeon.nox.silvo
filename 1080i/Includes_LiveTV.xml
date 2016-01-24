@@ -197,7 +197,7 @@
 				<height>38</height>
 				<font>font16</font>
 				<align>right</align>
-				<label>$INFO[VideoPlayer.TimeRemaining(hh:mm)]</label>
+				<label>[B]+$VAR[PlayerTimeRemainingTVVar][/B]</label>
 				<visible>!IsEmpty(VideoPlayer.Title)</visible>
 			</control>
 			<control type="label">
@@ -774,12 +774,12 @@
 				<visible>![VideoPlayer.Content(LiveTV) + Player.Recording]</visible>
 			</control>
 			<control type="label" id="1">
-				<left>1450</left>
-				<width>150</width>
+				<left>1350</left>
+				<width>250</width>
 				<height>38</height>
 				<font>font16</font>
 				<align>right</align>
-				<label>[B]$INFO[VideoPlayer.TimeRemaining(hh:mm)][/B]</label>
+				<label>[B]+$VAR[PlayerTimeRemainingTVVar][/B]</label>
 				<visible>!IsEmpty(VideoPlayer.Title)</visible>
 			</control>
 			<control type="group" id="1">

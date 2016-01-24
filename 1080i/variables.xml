@@ -1424,6 +1424,43 @@
 		<value condition="!IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(mm),0) + StringCompare(Player.TimeRemaining(mm),01)">$LOCALIZE[12311] $LOCALIZE[31182]</value>
 		<value condition="!IntegerGreaterThan(Player.TimeRemaining(h),0) + !IntegerGreaterThan(Player.TimeRemaining(mm),01)">$INFO[Player.TimeRemaining(ss)] $LOCALIZE[31184]</value>
 	</variable>
+	<!-- add: remaining Time for LiveTV-Bar -->
+	<!--      format: e.g. '1h 25min' or '48min' -->
+	<variable name="PlayerTimeRemainingTVVar">
+		<value condition="IntegerGreaterThan(Player.TimeRemaining(h),1) + IntegerGreaterThan(Player.TimeRemaining(mm),09)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $INFO[Player.TimeRemaining(mm)]$LOCALIZE[32001]</value>
+		<value condition="IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + StringCompare(Player.TimeRemaining(mm),09)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12319]$LOCALIZE[32001]</value>
+		<value condition="IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + StringCompare(Player.TimeRemaining(mm),08)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12318]$LOCALIZE[32001]</value>
+		<value condition="IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + StringCompare(Player.TimeRemaining(mm),07)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12317]$LOCALIZE[32001]</value>
+		<value condition="IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + StringCompare(Player.TimeRemaining(mm),06)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12316]$LOCALIZE[32001]</value>
+		<value condition="IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + StringCompare(Player.TimeRemaining(mm),05)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12315]$LOCALIZE[32001]</value>
+		<value condition="IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + StringCompare(Player.TimeRemaining(mm),04)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12314]$LOCALIZE[32001]</value>
+		<value condition="IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + StringCompare(Player.TimeRemaining(mm),03)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12313]$LOCALIZE[32001]</value>
+		<value condition="IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + StringCompare(Player.TimeRemaining(mm),02)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12312]$LOCALIZE[32001]</value>
+		<value condition="IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + StringCompare(Player.TimeRemaining(mm),01)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12311]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(h),1) + IntegerGreaterThan(Player.TimeRemaining(h),0) + IntegerGreaterThan(Player.TimeRemaining(mm),09)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $INFO[Player.TimeRemaining(mm)]$LOCALIZE[32001]</value>
+		<value condition="StringCompare(Player.TimeRemaining(h),2) + StringCompare(Player.TimeRemaining(mm),00)">$INFO[Player.TimeRemaining(h)]h</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(h),0) + StringCompare(Player.TimeRemaining(mm),09)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12319]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(h),0) + StringCompare(Player.TimeRemaining(mm),08)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12318]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(h),0) + StringCompare(Player.TimeRemaining(mm),07)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12317]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(h),0) + StringCompare(Player.TimeRemaining(mm),06)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12316]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(h),0) + StringCompare(Player.TimeRemaining(mm),05)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12315]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(h),0) + StringCompare(Player.TimeRemaining(mm),04)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12314]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(h),0) + StringCompare(Player.TimeRemaining(mm),03)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12313]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(h),0) + StringCompare(Player.TimeRemaining(mm),02)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12312]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(h),1) + !IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(h),0) + StringCompare(Player.TimeRemaining(mm),01)">$INFO[Player.TimeRemaining(h)]$LOCALIZE[32000] $LOCALIZE[12311]$LOCALIZE[32001]</value>
+		<value condition="StringCompare(Player.TimeRemaining(h),1) + StringCompare(Player.TimeRemaining(mm),00)">$INFO[Player.TimeRemaining(h)]h</value>
+		<value condition="IntegerGreaterThan(Player.TimeRemaining(mm),0) + !IntegerGreaterThan(Player.TimeRemaining(h),0) + IntegerGreaterThan(Player.TimeRemaining(mm),09)">$INFO[Player.TimeRemaining(mm)]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(mm),0) + StringCompare(Player.TimeRemaining(mm),09)">$LOCALIZE[12319]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(mm),0) + StringCompare(Player.TimeRemaining(mm),08)">$LOCALIZE[12318]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(mm),0) + StringCompare(Player.TimeRemaining(mm),07)">$LOCALIZE[12317]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(mm),0) + StringCompare(Player.TimeRemaining(mm),06)">$LOCALIZE[12316]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(mm),0) + StringCompare(Player.TimeRemaining(mm),05)">$LOCALIZE[12315]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(mm),0) + StringCompare(Player.TimeRemaining(mm),04)">$LOCALIZE[12314]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(mm),0) + StringCompare(Player.TimeRemaining(mm),03)">$LOCALIZE[12313]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(mm),0) + StringCompare(Player.TimeRemaining(mm),02)">$LOCALIZE[12312]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(mm),09) + IntegerGreaterThan(Player.TimeRemaining(mm),0) + StringCompare(Player.TimeRemaining(mm),01)">$LOCALIZE[12311]$LOCALIZE[32001]</value>
+		<value condition="!IntegerGreaterThan(Player.TimeRemaining(h),0) + !IntegerGreaterThan(Player.TimeRemaining(mm),01)">$INFO[Player.TimeRemaining(ss)]$LOCALIZE[32003]</value>
+	</variable>
 	<variable name="ListItemMinuteDurationVar">
 		<value condition="[SubString(ListItem.Duration,1,Right)]">1m</value>
 		<value condition="[SubString(ListItem.Duration,2,Right)]">2m</value>
