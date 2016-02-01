@@ -744,7 +744,7 @@
 		</control>
 	</include>
 	<include name="ExtendedVideoInfoLists">
-		<control type="panel" id="90019">
+		<control type="panel" id="90010">
 			<left>-36</left>
 			<top>550</top>
 			<width>1190</width>
@@ -758,17 +758,12 @@
 					<width>280</width>
 					<height>420</height>
 					<aspectratio aligny="top">scale</aspectratio>
-					<texture background="true">$INFO[ListItem.Icon]</texture>
-					<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
-					<bordersize>2</bordersize>
+					<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Icon]</texture>
 				</control>
 				<control type="image">
-					<top>322</top>
 					<width>280</width>
-					<height>98</height>
-					<texture>black.png</texture>
-					<colordiffuse>88ffffff</colordiffuse>
-					<bordersize>2</bordersize>
+					<height>420</height>
+					<texture>logo_back.png</texture>
 				</control>
 				<control type="label">
 					<left>10</left>
@@ -777,9 +772,9 @@
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>white2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<selectedcolor>selected</selectedcolor>
+					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 				<control type="label">
@@ -789,9 +784,9 @@
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>white2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<selectedcolor>selected</selectedcolor>
+					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 					<label>$INFO[ListItem.Label2]</label>
 				</control>
 			</itemlayout>
@@ -805,17 +800,12 @@
 						<width>280</width>
 						<height>420</height>
 						<aspectratio aligny="top">scale</aspectratio>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-						<bordertexture border="8">thumbs/thumbnail_focused.png</bordertexture>
-						<bordersize>8</bordersize>
+						<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Icon]</texture>
 					</control>
 					<control type="image">
-						<top>316</top>
 						<width>280</width>
-						<height>104</height>
-						<texture>black.png</texture>
-						<colordiffuse>88ffffff</colordiffuse>
-						<bordersize>8</bordersize>
+						<height>420</height>
+						<texture>logo_back.png</texture>
 					</control>
 					<control type="label">
 						<left>10</left>
@@ -824,10 +814,10 @@
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
-						<selectedcolor>selected</selectedcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[ListItem.Label]</label>
-						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90019)">Conditional</animation>
+						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90010)">Conditional</animation>
 					</control>
 					<control type="label">
 						<left>10</left>
@@ -836,149 +826,89 @@
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
-						<selectedcolor>selected</selectedcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[ListItem.Label2]</label>
-						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90019)">Conditional</animation>
+						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90010)">Conditional</animation>
 					</control>
 				</control>
 			</focusedlayout>
 			<content>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(0).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(0).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(0).Icon]</icon>
-					<onclick>SetProperty(ActorID,0)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(0).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(0).Label)</visible>
-				</item>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(1).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(1).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(1).Icon]</icon>
-					<onclick>SetProperty(ActorID,1)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(1).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(1).Label)</visible>
-				</item>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(2).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(2).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(2).Icon]</icon>
-					<onclick>SetProperty(ActorID,2)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(2).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(2).Label)</visible>
-				</item>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(3).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(3).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(3).Icon]</icon>
-					<onclick>SetProperty(ActorID,3)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(3).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(3).Label)</visible>
-				</item>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(4).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(4).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(4).Icon]</icon>
-					<onclick>SetProperty(ActorID,4)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(4).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(4).Label)</visible>
-				</item>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(5).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(5).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(5).Icon]</icon>
-					<onclick>SetProperty(ActorID,5)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(5).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(5).Label)</visible>
-				</item>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(6).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(6).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(6).Icon]</icon>
-					<onclick>SetProperty(ActorID,6)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(6).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(6).Label)</visible>
-				</item>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(7).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(7).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(7).Icon]</icon>
-					<onclick>SetProperty(ActorID,7)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(7).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(7).Label)</visible>
-				</item>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(8).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(8).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(8).Icon]</icon>
-					<onclick>SetProperty(ActorID,8)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(8).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(8).Label)</visible>
-				</item>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(9).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(9).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(9).Icon]</icon>
-					<onclick>SetProperty(ActorID,9)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(9).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(9).Label)</visible>
-				</item>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(10).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(10).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(10).Icon]</icon>
-					<onclick>SetProperty(ActorID,10)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(10).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(10).Label)</visible>
-				</item>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(11).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(11).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(11).Icon]</icon>
-					<onclick>SetProperty(ActorID,11)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(11).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(11).Label)</visible>
-				</item>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(12).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(12).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(12).Icon]</icon>
-					<onclick>SetProperty(ActorID,12)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(12).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(12).Label)</visible>
-				</item>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(13).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(13).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(13).Icon]</icon>
-					<onclick>SetProperty(ActorID,13)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(13).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(13).Label)</visible>
-				</item>
-				<item>
-					<label>$INFO[Container(50).ListItemAbsolute(14).Label]</label>
-					<label2>$INFO[Container(50).ListItemAbsolute(14).Label2]</label2>
-					<icon>$INFO[Container(50).ListItemAbsolute(14).Icon]</icon>
-					<onclick>SetProperty(ActorID,14)</onclick>
-					<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute(14).Label])</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!IsEmpty(Container(50).ListItemAbsolute(14).Label)</visible>
-				</item>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">0</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">1</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">2</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">3</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">4</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">5</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">6</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">7</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">8</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">9</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">10</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">11</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">12</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">13</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">14</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">15</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">16</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">17</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">18</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">19</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">20</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">21</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">22</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">23</param>
+				</include>
+				<include name="VideoCastItem">
+					<param name="CastListItemID">24</param>
+				</include>
 			</content>
 		</control>
 		<control type="panel" id="90011">
@@ -989,24 +919,19 @@
 			<height>420</height>
 			<orientation>horizontal</orientation>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
-			<visible>!StringCompare(Window(Home).Property(SimilarMovies.Count),0)</visible>
+			<visible>!StringCompare(Window(Home).Property(SimilarMovies.Count),0) + System.HasAddon(script.extendedinfo) + !IsEmpty(Window(Home).Property(SimilarMovies.Count))</visible>
 			<visible>Container.Content(movies)</visible>
 			<itemlayout height="420" width="280">
 				<control type="image">
 					<width>280</width>
-					<height>420</height>
+					<height>422</height>
 					<aspectratio aligny="top">scale</aspectratio>
 					<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
-					<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
-					<bordersize>2</bordersize>
 				</control>
 				<control type="image">
-					<top>322</top>
 					<width>280</width>
-					<height>98</height>
-					<texture>black.png</texture>
-					<colordiffuse>88ffffff</colordiffuse>
-					<bordersize>2</bordersize>
+					<height>420</height>
+					<texture>logo_back.png</texture>
 				</control>
 				<control type="label">
 					<left>10</left>
@@ -1015,9 +940,9 @@
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>white2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<selectedcolor>selected</selectedcolor>
+					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 				<control type="label">
@@ -1027,17 +952,17 @@
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>white2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<selectedcolor>selected</selectedcolor>
+					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 					<label>$INFO[ListItem.Year]</label>
 				</control>
 				<control type="image">
-					<left>180</left>
+					<left>192</left>
+					<top>-10</top>
 					<width>100</width>
 					<height>100</height>
 					<texture>overlays/addons/enabled.png</texture>
-					<bordersize>2</bordersize>
 					<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 				</control>
 			</itemlayout>
@@ -1052,16 +977,11 @@
 						<height>420</height>
 						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
-						<bordertexture border="8">thumbs/thumbnail_focused.png</bordertexture>
-						<bordersize>8</bordersize>
 					</control>
 					<control type="image">
-						<top>316</top>
 						<width>280</width>
-						<height>104</height>
-						<texture>black.png</texture>
-						<colordiffuse>88ffffff</colordiffuse>
-						<bordersize>8</bordersize>
+						<height>420</height>
+						<texture>logo_back.png</texture>
 					</control>
 					<control type="label">
 						<left>10</left>
@@ -1070,7 +990,8 @@
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
-						<selectedcolor>selected</selectedcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[ListItem.Label]</label>
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90011)">Conditional</animation>
@@ -1082,17 +1003,18 @@
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
-						<selectedcolor>selected</selectedcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[ListItem.Year]</label>
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90011)">Conditional</animation>
 					</control>
 					<control type="image">
-						<left>180</left>
+						<left>192</left>
+						<top>-10</top>
 						<width>100</width>
 						<height>100</height>
 						<texture>overlays/addons/enabled.png</texture>
-						<bordersize>8</bordersize>
 						<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 					</control>
 				</control>
@@ -1107,7 +1029,7 @@
 			<height>420</height>
 			<orientation>horizontal</orientation>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
-			<visible>!StringCompare(Window(Home).Property(DirectorMovies.Count),0)</visible>
+			<visible>!StringCompare(Window(Home).Property(DirectorMovies.Count),0) + System.HasAddon(script.extendedinfo)</visible>
 			<visible>Container.Content(movies)</visible>
 			<itemlayout height="420" width="280">
 				<control type="image">
@@ -1115,16 +1037,11 @@
 					<height>420</height>
 					<aspectratio aligny="top">scale</aspectratio>
 					<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
-					<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
-					<bordersize>2</bordersize>
 				</control>
 				<control type="image">
-					<top>322</top>
 					<width>280</width>
-					<height>98</height>
-					<texture>black.png</texture>
-					<colordiffuse>88ffffff</colordiffuse>
-					<bordersize>2</bordersize>
+					<height>420</height>
+					<texture>logo_back.png</texture>
 				</control>
 				<control type="label">
 					<left>10</left>
@@ -1133,9 +1050,9 @@
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>white2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<selectedcolor>selected</selectedcolor>
+					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 				<control type="label">
@@ -1145,17 +1062,17 @@
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>white2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<selectedcolor>selected</selectedcolor>
+					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 					<label>$INFO[ListItem.Year]</label>
 				</control>
 				<control type="image">
-					<left>180</left>
+					<left>192</left>
+					<top>-10</top>
 					<width>100</width>
 					<height>100</height>
 					<texture>overlays/addons/enabled.png</texture>
-					<bordersize>2</bordersize>
 					<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 				</control>
 			</itemlayout>
@@ -1170,16 +1087,11 @@
 						<height>420</height>
 						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
-						<bordertexture border="8">thumbs/thumbnail_focused.png</bordertexture>
-						<bordersize>8</bordersize>
 					</control>
 					<control type="image">
-						<top>316</top>
 						<width>280</width>
-						<height>104</height>
-						<texture>black.png</texture>
-						<colordiffuse>88ffffff</colordiffuse>
-						<bordersize>8</bordersize>
+						<height>420</height>
+						<texture>logo_back.png</texture>
 					</control>
 					<control type="label">
 						<left>10</left>
@@ -1188,7 +1100,8 @@
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
-						<selectedcolor>selected</selectedcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[ListItem.Label]</label>
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90012)">Conditional</animation>
@@ -1200,17 +1113,18 @@
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
-						<selectedcolor>selected</selectedcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[ListItem.Year]</label>
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90012)">Conditional</animation>
 					</control>
 					<control type="image">
-						<left>180</left>
+						<left>192</left>
+						<top>-10</top>
 						<width>100</width>
 						<height>100</height>
 						<texture>overlays/addons/enabled.png</texture>
-						<bordersize>8</bordersize>
 						<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 					</control>
 				</control>
@@ -1225,7 +1139,7 @@
 			<height>420</height>
 			<orientation>horizontal</orientation>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
-			<visible>!StringCompare(Window(Home).Property(WriterMovies.Count),0)</visible>
+			<visible>!StringCompare(Window(Home).Property(WriterMovies.Count),0) + System.HasAddon(script.extendedinfo)</visible>
 			<visible>Container.Content(movies)</visible>
 			<itemlayout height="420" width="280">
 				<control type="image">
@@ -1233,16 +1147,11 @@
 					<height>420</height>
 					<aspectratio aligny="top">scale</aspectratio>
 					<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
-					<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
-					<bordersize>2</bordersize>
 				</control>
 				<control type="image">
-					<top>322</top>
 					<width>280</width>
-					<height>98</height>
-					<texture>black.png</texture>
-					<colordiffuse>88ffffff</colordiffuse>
-					<bordersize>2</bordersize>
+					<height>420</height>
+					<texture>logo_back.png</texture>
 				</control>
 				<control type="label">
 					<left>10</left>
@@ -1251,9 +1160,9 @@
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>white2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<selectedcolor>selected</selectedcolor>
+					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 				<control type="label">
@@ -1263,17 +1172,17 @@
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>white2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<selectedcolor>selected</selectedcolor>
+					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 					<label>$INFO[ListItem.Year]</label>
 				</control>
 				<control type="image">
-					<left>180</left>
+					<left>192</left>
+					<top>-10</top>
 					<width>100</width>
 					<height>100</height>
 					<texture>overlays/addons/enabled.png</texture>
-					<bordersize>2</bordersize>
 					<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 				</control>
 			</itemlayout>
@@ -1288,16 +1197,11 @@
 						<height>420</height>
 						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
-						<bordertexture border="8">thumbs/thumbnail_focused.png</bordertexture>
-						<bordersize>8</bordersize>
 					</control>
 					<control type="image">
-						<top>316</top>
 						<width>280</width>
-						<height>104</height>
-						<texture>black.png</texture>
-						<colordiffuse>88ffffff</colordiffuse>
-						<bordersize>8</bordersize>
+						<height>420</height>
+						<texture>logo_back.png</texture>
 					</control>
 					<control type="label">
 						<left>10</left>
@@ -1306,8 +1210,9 @@
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
-						<selectedcolor>selected</selectedcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
 						<shadowcolor>shadow</shadowcolor>
+						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 						<label>$INFO[ListItem.Label]</label>
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90013)">Conditional</animation>
 					</control>
@@ -1318,17 +1223,18 @@
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
-						<selectedcolor>selected</selectedcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[ListItem.Year]</label>
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90013)">Conditional</animation>
 					</control>
 					<control type="image">
-						<left>180</left>
+						<left>192</left>
+						<top>-10</top>
 						<width>100</width>
 						<height>100</height>
 						<texture>overlays/addons/enabled.png</texture>
-						<bordersize>8</bordersize>
 						<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 					</control>
 				</control>
@@ -1343,7 +1249,7 @@
 			<height>420</height>
 			<orientation>horizontal</orientation>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
-			<visible>!StringCompare(Window(Home).Property(StudioInfo.Count),0)</visible>
+			<visible>!StringCompare(Window(Home).Property(StudioInfo.Count),0) + System.HasAddon(script.extendedinfo)</visible>
 			<visible>Container.Content(movies)</visible>
 			<itemlayout height="420" width="280">
 				<control type="image">
@@ -1351,16 +1257,11 @@
 					<height>420</height>
 					<aspectratio aligny="top">scale</aspectratio>
 					<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
-					<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
-					<bordersize>2</bordersize>
 				</control>
 				<control type="image">
-					<top>322</top>
 					<width>280</width>
-					<height>98</height>
-					<texture>black.png</texture>
-					<colordiffuse>88ffffff</colordiffuse>
-					<bordersize>2</bordersize>
+					<height>420</height>
+					<texture>logo_back.png</texture>
 				</control>
 				<control type="label">
 					<left>10</left>
@@ -1369,9 +1270,9 @@
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>white2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<selectedcolor>selected</selectedcolor>
+					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 				<control type="label">
@@ -1381,17 +1282,17 @@
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>white2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<selectedcolor>selected</selectedcolor>
+					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 					<label>$INFO[ListItem.Year]</label>
 				</control>
 				<control type="image">
-					<left>180</left>
+					<left>192</left>
+					<top>-10</top>
 					<width>100</width>
 					<height>100</height>
 					<texture>overlays/addons/enabled.png</texture>
-					<bordersize>2</bordersize>
 					<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 				</control>
 			</itemlayout>
@@ -1406,16 +1307,11 @@
 						<height>420</height>
 						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
-						<bordertexture border="8">thumbs/thumbnail_focused.png</bordertexture>
-						<bordersize>8</bordersize>
 					</control>
 					<control type="image">
-						<top>316</top>
 						<width>280</width>
-						<height>104</height>
-						<texture>black.png</texture>
-						<colordiffuse>88ffffff</colordiffuse>
-						<bordersize>8</bordersize>
+						<height>420</height>
+						<texture>logo_back.png</texture>
 					</control>
 					<control type="label">
 						<left>10</left>
@@ -1424,7 +1320,8 @@
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
-						<selectedcolor>selected</selectedcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[ListItem.Label]</label>
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90014)">Conditional</animation>
@@ -1436,17 +1333,18 @@
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
-						<selectedcolor>selected</selectedcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[ListItem.Year]</label>
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90014)">Conditional</animation>
 					</control>
 					<control type="image">
-						<left>180</left>
+						<left>192</left>
+						<top>-10</top>
 						<width>100</width>
 						<height>100</height>
 						<texture>overlays/addons/enabled.png</texture>
-						<bordersize>8</bordersize>
 						<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 					</control>
 				</control>
@@ -1461,7 +1359,7 @@
 			<height>420</height>
 			<orientation>horizontal</orientation>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
-			<visible>!StringCompare(Window(Home).Property(SimilarTVShows.Count),0)</visible>
+			<visible>!StringCompare(Window(Home).Property(SimilarTVShows.Count),0) + System.HasAddon(script.extendedinfo)</visible>
 			<visible>Container.Content(tvshows)</visible>
 			<itemlayout height="420" width="280">
 				<control type="image">
@@ -1489,7 +1387,7 @@
 					<font>font14</font>
 					<textcolor>grey</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<selectedcolor>selected</selectedcolor>
+					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 				<control type="label">
@@ -1501,7 +1399,7 @@
 					<font>font14</font>
 					<textcolor>grey</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<selectedcolor>selected</selectedcolor>
+					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 					<label>$INFO[ListItem.Year]</label>
 				</control>
 				<control type="image">
@@ -1542,7 +1440,7 @@
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
-						<selectedcolor>selected</selectedcolor>
+						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[ListItem.Label]</label>
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90015)">Conditional</animation>
@@ -1554,7 +1452,7 @@
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
-						<selectedcolor>selected</selectedcolor>
+						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[ListItem.Year]</label>
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90015)">Conditional</animation>
@@ -1587,17 +1485,12 @@
 					<width>280</width>
 					<height>420</height>
 					<aspectratio aligny="top">scale</aspectratio>
-					<texture background="true">$INFO[ListItem.Icon]</texture>
-					<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
-					<bordersize>2</bordersize>
+					<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Icon]</texture>
 				</control>
 				<control type="image">
-					<top>322</top>
 					<width>280</width>
-					<height>98</height>
-					<texture>black.png</texture>
-					<colordiffuse>88ffffff</colordiffuse>
-					<bordersize>2</bordersize>
+					<height>420</height>
+					<texture>logo_back.png</texture>
 				</control>
 				<control type="label">
 					<left>10</left>
@@ -1606,9 +1499,9 @@
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>white2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<selectedcolor>selected</selectedcolor>
+					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 				<control type="label">
@@ -1618,9 +1511,9 @@
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>white2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<selectedcolor>selected</selectedcolor>
+					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 					<label>$INFO[ListItem.Label2]</label>
 				</control>
 			</itemlayout>
@@ -1634,17 +1527,12 @@
 						<width>280</width>
 						<height>420</height>
 						<aspectratio aligny="top">scale</aspectratio>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-						<bordertexture border="8">thumbs/thumbnail_focused.png</bordertexture>
-						<bordersize>8</bordersize>
+						<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Icon]</texture>
 					</control>
 					<control type="image">
-						<top>316</top>
 						<width>280</width>
-						<height>104</height>
-						<texture>black.png</texture>
-						<colordiffuse>88ffffff</colordiffuse>
-						<bordersize>8</bordersize>
+						<height>420</height>
+						<texture>logo_back.png</texture>
 					</control>
 					<control type="label">
 						<left>10</left>
@@ -1653,7 +1541,7 @@
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
-						<selectedcolor>selected</selectedcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[ListItem.Label]</label>
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
@@ -1665,7 +1553,7 @@
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
-						<selectedcolor>selected</selectedcolor>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[ListItem.Label2]</label>
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
@@ -2692,11 +2580,13 @@
 		<param name="CastListItemID"/>
 		<definition>
 			<item>
-				<label>$INFO[Container(50).ListItem($PARAM[CastListItemID]).Label]</label>
-				<label2>$INFO[Container(50).ListItem($PARAM[CastListItemID]).Label2]</label2>
-				<thumb>$INFO[Container(50).ListItem($PARAM[CastListItemID]).Thumb]</thumb>
-				<visible>!IsEmpty(Container(50).ListItemNoWrap($PARAM[CastListItemID]).Label)</visible>
-				<onclick>RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[Container(50).Listitem($PARAM[CastListItemID]).Label])</onclick>
+				<label>$INFO[Container(50).ListItemAbsolute($PARAM[CastListItemID]).Label]</label>
+				<label2>$INFO[Container(50).ListItemAbsolute($PARAM[CastListItemID]).Label2]</label2>
+				<icon>$INFO[Container(50).ListItemAbsolute($PARAM[CastListItemID]).Icon]</icon>
+				<onclick>SetProperty(ActorID,$PARAM[CastListItemID])</onclick>
+				<onclick>SetProperty(ActorName,$INFO[Container(50).ListItemAbsolute($PARAM[CastListItemID]).Label])</onclick>
+				<onclick>ActivateWindow(1129)</onclick>
+				<visible>!IsEmpty(Container(50).ListItemAbsolute($PARAM[CastListItemID]).Label)</visible>
 			</item>
 		</definition>
 	</include>
