@@ -2,7 +2,7 @@
 <window>
 	<defaultcontrol always="true">9000</defaultcontrol>
 	<allowoverlay>no</allowoverlay>
-	<!--<onload condition="Window.Previous(startup)">PlayMedia(special://skin/skinextras/intromovie.mp4)</onload>-->
+	<onload condition="!System.HasAddon(script.skinshortcuts)">RunPlugin(plugin://script.skinshortcuts)</onload>
 	<onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9000)</onload>
 	<controls>
 		<include>CommonBackground</include>
