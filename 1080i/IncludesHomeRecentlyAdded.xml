@@ -7,6 +7,7 @@
 			<animation effect="slide" end="0,338" time="320" tween="cubic" easing="inout" condition="Skin.HasSetting(lowermainmenu) | StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">Conditional</animation>
 			<animation effect="fade" start="100" end="0" time="0" reversible="false" condition="Container(9000).OnNext | Container(9000).OnPrevious">Conditional</animation>
 			<animation effect="fade" start="0" end="100" time="200" delay="200" reversible="false" condition="![Container(9000).OnNext | Container(9000).OnPrevious]">Conditional</animation>
+			<animation effect="fade" start="0" end="100" time="200" delay="200" reversible="false" condition="StringCompare(Container(9000).ListItem.Property(widgetHidden),Until focused)">Focus</animation>
 			<visible>!IsEmpty(Container(9000).ListItem.Property(widget)) + !StringCompare(Container(9000).ListItem.Property(widget),weather) + !StringCompare(Container(9000).ListItem.Property(widget),livetv)</visible>
 			<include>VisibleFadeEffect</include>
 			<!-- Classic Widgets -->
@@ -788,7 +789,7 @@
 				<control type="group">
 					<left>120</left>
 					<top>-20</top>
-					<visible allowhiddenfocus="true">![StringCompare(Container(9000).ListItem.Property(widgetHide),Until focused) + !ControlGroup(900301).HasFocus()]</visible>
+					<visible allowhiddenfocus="true">![StringCompare(Container(9000).ListItem.Property(widgetHidden),Until focused) + !ControlGroup(900301).HasFocus()] | !StringCompare(Container(9000).ListItem.Property(widgetHidden),Until focused)</visible>
 					<!-- Widget Backgrounds -->
 					<control type="group">
 						<left>-25</left>
@@ -962,7 +963,7 @@
 				<control type="group">
 					<left>440</left>
 					<top>80</top>
-					<visible allowhiddenfocus="true">![StringCompare(Container(9000).ListItem.Property(widgetHide),Until focused) + !ControlGroup(900302).HasFocus()]</visible>
+					<visible allowhiddenfocus="true">![StringCompare(Container(9000).ListItem.Property(widgetHidden),Until focused) + !ControlGroup(900302).HasFocus()] | !StringCompare(Container(9000).ListItem.Property(widgetHidden),Until focused)</visible>
 					<!-- Widget Backgrounds -->
 					<control type="group">
 						<left>-25</left>
