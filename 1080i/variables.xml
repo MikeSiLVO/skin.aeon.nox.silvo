@@ -69,7 +69,7 @@
 	</variable>
     <variable name="WeatherBackgroundTypeVar">
         <value condition="Skin.HasSetting(weatherfanart.multi)">/</value>
-        <value>.jpg</value>
+        <value>$INFO[Skin.String(weatherfanart.ext)]</value>
     </variable>
 	<variable name="WeatherCurrentConditionIconVar">
 		<value condition="!IsEmpty(Skin.String(weathericons.path))">$INFO[Skin.String(weathericons.path)]$INFO[Window(weather).Property(Current.FanartCode),,.png]</value>
