@@ -7,6 +7,7 @@
 			<include condition="Window.IsActive(home)">HomeFanart</include>
 			<include condition="!Window.IsActive(home)">GlobalFanart</include>
 			<include condition="Window.IsActive(home)">LiveCasesBackground</include>
+			<include condition="Window.IsActive(home)">WidgetHomeFanart</include>
 			<include condition="Window.IsActive(videos) + !IsEmpty(Skin.String(VideoGenreFanartPath))">VideoGenreFanart</include>
 			<include condition="Window.IsActive(musiclibrary) + !IsEmpty(Skin.String(MusicGenreFanartPath))">MusicGenreFanart</include>
 			<include condition="Window.IsActive(script-NextAired-TVGuide.xml) | Window.IsActive(script-NextAired-TVGuide2.xml)">TVShowNextAiredBackground</include>
@@ -213,6 +214,41 @@
 			<include condition="StringCompare(Skin.String(FanartTimePerImage),60)">FanartTimePerImage60</include>
 			<include condition="StringCompare(Skin.String(FanartTimePerImage),90)">FanartTimePerImage90</include>
 			<visible>Player.HasAudio + Skin.HasSetting(Enable.ArtistSlideshowOnHome) + IsEmpty(Window(Home).Property(script.cinemavision.running))</visible>
+		</control>
+	</include>
+	<include name="WidgetHomeFanart">
+		<control type="multiimage">
+			<aspectratio align="center" aligny="top">scale</aspectratio>
+			<imagepath background="true">$PARAM[imagePath]</imagepath>
+			<fadetime>600</fadetime>
+			<animation effect="fade" time="480">Visible</animation>
+			<animation effect="fade" time="480">Hidden</animation>
+			<animation effect="zoom" start="110" end="130" center="auto" time="12000" pulse="true" delay="480" condition="Skin.HasSetting(animatedbghome)">Conditional</animation>
+			<animation effect="slide" start="-15,-15" end="15,15" time="6000" pulse="true" delay="480" condition="Skin.HasSetting(animatedbghome)">Conditional</animation>
+			<visible>$PARAM[Visible] + !$PARAM[isWeather]</visible>
+		</control>
+		<control type="group">
+			<visible>$PARAM[Visible] + $PARAM[isWeather]</visible>
+			<control type="multiimage">
+				<aspectratio align="center" aligny="top">scale</aspectratio>
+				<imagepath background="true">$PARAM[imagePath]</imagepath>
+				<fadetime>600</fadetime>
+				<animation effect="fade" time="480">Visible</animation>
+				<animation effect="fade" time="480">Hidden</animation>
+				<animation effect="zoom" start="110" end="130" center="auto" time="12000" pulse="true" delay="480" condition="Skin.HasSetting(animatedbghome)">Conditional</animation>
+				<animation effect="slide" start="-15,-15" end="15,15" time="6000" pulse="true" delay="480" condition="Skin.HasSetting(animatedbghome)">Conditional</animation>
+				<visible>!Skin.HasSetting(WeatherFanartDir.multi)</visible>
+			</control>
+			<control type="multiimage">
+				<aspectratio align="center" aligny="top">scale</aspectratio>
+				<imagepath background="true">$PARAM[imagePathMulti]</imagepath>
+				<fadetime>600</fadetime>
+				<animation effect="fade" time="480">Visible</animation>
+				<animation effect="fade" time="480">Hidden</animation>
+				<animation effect="zoom" start="110" end="130" center="auto" time="12000" pulse="true" delay="480" condition="Skin.HasSetting(animatedbghome)">Conditional</animation>
+				<animation effect="slide" start="-15,-15" end="15,15" time="6000" pulse="true" delay="480" condition="Skin.HasSetting(animatedbghome)">Conditional</animation>
+				<visible>Skin.HasSetting(WeatherFanartDir.multi)</visible>
+			</control>
 		</control>
 	</include>
 	<include name="TVShowNextAiredBackground">
