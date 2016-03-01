@@ -27,9 +27,15 @@
 	</animation>
 	<animation effect="slide" end="0,231" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !Skin.HasSetting(lowermainmenu)">Conditional</animation>
 	<animation effect="slide" end="65,115" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">Conditional</animation>
+	<onunload>ClearProperty(Widget,Home)</onunload>
 	<onunload>ClearProperty(Widget.Type,Home)</onunload>
+	<onunload>ClearProperty(Widget.Target,Home)</onunload>
 	<onunload>ClearProperty(Widget.Cover,Home)</onunload>
 	<onunload>ClearProperty(Widget.DiscArt,Home)</onunload>
+	<onunload>ClearProperty(Widget.Background,Home)</onunload>
+	<onunload>ClearProperty(Widget.BackgroundColor,Home)</onunload>
+	<onunload>ClearProperty(Widget.StarRating,Home)</onunload>
+	<onunload>ClearProperty(Widget.Case,Home)</onunload>
 	<onunload>ClearProperty(Widget.Title,Home)</onunload>
 	<onunload>ClearProperty(Widget.SubTitle,Home)</onunload>
 	<onunload>ClearProperty(Widget.Year,Home)</onunload>
@@ -45,16 +51,25 @@
 	<onunload>ClearProperty(Widget.Info2,Home)</onunload>
 	<onunload>ClearProperty(Widget.Plot,Home)</onunload>
 	<onunload>ClearProperty(Widget.FilePath,Home)</onunload>
+	<onunload>ClearProperty(Widget.FolderPath,Home)</onunload>
 	<onunload>ClearProperty(Widget.Resume,Home)</onunload>
 	<onunload>ClearProperty(Widget.Trailer,Home)</onunload>
+	<onunload>ClearProperty(Widget.DBID,Home)</onunload>
+	<onunload>ClearProperty(Widget.FlagsAL1,Home)</onunload>
+	<onunload>ClearProperty(Widget.FlagsAL2,Home)</onunload>
+	<onunload>ClearProperty(Widget.FlagsAL3,Home)</onunload>
+	<onunload>ClearProperty(Widget.FlagsSL1,Home)</onunload>
+	<onunload>ClearProperty(Widget.FlagsSL2,Home)</onunload>
+	<onunload>ClearProperty(Widget.FlagsSL3,Home)</onunload>
 	<controls>
-		<control type="group">
-			<visible>StringCompare(Window(Home).Property(Widget.Type),NoInfo)</visible>
-			<control type="grouplist" id="8052">
-				<control type="button" id="8053">
-					<onfocus>Dialog.Close(1199)</onfocus>
-				</control>
-			</control>
+		<control type="image">
+			<left></left>
+			<centerleft>50%</centerleft>
+			<top>74</top>
+			<width>1772</width>
+			<height>701</height>
+			<visible>!Skin.HasSetting(Enable.OnInfoMatch) | StringCompare(Window(Home).Property(Widget.Background),-) | StringCompare(Skin.String(Widget.Back),None)</visible>
+			<texture colordiffuse="FF0B0B0B" border="40">homewidgets/bg_default.png</texture>
 		</control>
 		<control type="image">
 			<left></left>
@@ -62,19 +77,28 @@
 			<top>74</top>
 			<width>1772</width>
 			<height>701</height>
-			<texture border="40">homewidgets/bg_default.png</texture>
-			<visible>true</visible>
+			<visible>Skin.HasSetting(Enable.GlobalWidgetBack) + Skin.HasSetting(Enable.OnInfoMatch)</visible>
+			<texture colordiffuse="$VAR[HomeWidgetBackColor]" border="40">$VAR[HomeWidgetBackgroundVar]</texture>
+		</control>
+		<control type="image">
+			<left></left>
+			<centerleft>50%</centerleft>
+			<top>74</top>
+			<width>1772</width>
+			<height>701</height>
+			<visible>!Skin.HasSetting(Enable.GlobalWidgetBack) + Skin.HasSetting(Enable.OnInfoMatch)</visible>
+			<texture colordiffuse="$INFO[Window(Home).Property(Widget.BackgroundColor)]" border="40">$INFO[Window(Home).Property(Widget.Background)]</texture>
 		</control>
 		<!-- Portrait -->
 		<control type="group">
-			<visible>StringCompare(Window(Home).Property(Widget.Type),Portrait)</visible>
+			<visible>StringCompare(Window(Home).Property(Widget.Type),movies) | StringCompare(Window(Home).Property(Widget.Type),tvshows) | StringCompare(Window(Home).Property(Widget.Type),episodes)</visible>
 			<control type="image">
 				<left></left>
 				<centerleft>50%</centerleft>
 				<top>90</top>
 				<width>1740</width>
 				<height>669</height>
-				<texture>homewidgets/Info_Separator1.png</texture>
+				<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">homewidgets/Info_Separator1.png</texture>
 			</control>
 			<control type="image">
 				<left>100</left>
@@ -82,6 +106,47 @@
 				<width>446</width>
 				<height>649</height>
 				<texture>$INFO[Window(Home).Property(Widget.Cover)]</texture>
+				<visible>[IsEmpty(Window(Home).Property(Widget.Case)) | SubString(Window(Home).Property(Widget.Case),-)] + !ControlGroup(816).HasFocus</visible>
+			</control>
+			<control type="image">
+				<left>112</left>
+				<top>113</top>
+				<width>422</width>
+				<height>623</height>
+				<texture>$INFO[Window(Home).Property(Widget.Cover)]</texture>
+				<visible>Substring(Window(Home).Property(Widget.Case),glass) + !ControlGroup(816).HasFocus</visible>
+			</control>
+			<control type="image">
+				<left>111</left>
+				<top>154</top>
+				<width>424</width>
+				<height>585</height>
+				<texture>$INFO[Window(Home).Property(Widget.Cover)]</texture>
+				<visible>Substring(Window(Home).Property(Widget.Case),/case) + !ControlGroup(816).HasFocus</visible>
+			</control>
+			<control type="image">
+				<left>102</left>
+				<top>158</top>
+				<width>429</width>
+				<height>577</height>
+				<texture>$INFO[Window(Home).Property(Widget.Cover)]</texture>
+				<visible>Substring(Window(Home).Property(Widget.Case),bdcase) + !ControlGroup(816).HasFocus</visible>
+			</control>
+			<control type="image">
+				<left>114</left>
+				<top>113</top>
+				<width>418</width>
+				<height>623</height>
+				<texture>$INFO[Window(Home).Property(Widget.Cover)]</texture>
+				<visible>Substring(Window(Home).Property(Widget.Case),clearcase) + !ControlGroup(816).HasFocus</visible>
+			</control>
+			<control type="image">
+				<left>100</left>
+				<top>100</top>
+				<width>446</width>
+				<height>649</height>
+				<texture>$INFO[Window(Home).Property(Widget.Case)]</texture>
+				<visible>!IsEmpty(Window(Home).Property(Widget.Case)) + !ControlGroup(816).HasFocus</visible>
 			</control>
 			<control type="image" id="8020">
 				<left>1427</left>
@@ -91,6 +156,13 @@
 				<texture>$INFO[Window(Home).Property(Widget.DiscArt)]</texture>
 				<visible>!IsEmpty(Control.GetLabel(8020))</visible>
 			</control>
+			<control type="image">
+				<left>548</left>
+				<top>191</top>
+				<width>1272</width>
+				<height>91</height>
+				<texture colordiffuse="$VAR[HomeWidgetInfoIconBackColor]">back.png</texture>
+			</control>
 			<!-- Header -->
 			<control type="grouplist">
 				<top>99</top>
@@ -99,8 +171,8 @@
 					<width>1266</width>
 					<height>35</height>
 					<font>font30_title_bold</font>
-					<textcolor>grey</textcolor>
-					<shadowcolor>black</shadowcolor>
+					<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<scroll>true</scroll>
 					<label>$INFO[Window(Home).Property(Widget.Title)]</label>
 				</control>
@@ -109,104 +181,386 @@
 					<height>53</height>
 					<font>font30</font>
 					<textcolor>$VAR[ThemeLabelColor]</textcolor>
-					<shadowcolor>black</shadowcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<scroll>true</scroll>
 					<label>$INFO[Window(Home).Property(Widget.SubTitle)]</label>
+				</control>
+			</control>
+			<!--Cast-->
+			<control type="group" id="816">
+				<visible>Skin.HasSetting(CastonWidget)</visible>
+				<control type="list" id="1000">
+					<visible>!IsEmpty(Control.GetLabel(8020))</visible>
+					<content>$VAR[HomeWidgetCast]</content>
+					<left>548</left>
+					<top>652</top>
+					<width>872</width>
+					<height>220</height>
+					<onleft>1000</onleft>
+					<onright>1000</onright>
+					<onup>8052</onup>
+					<ondown>8052</ondown>
+					<orientation>horizontal</orientation>
+					<scrolltime>400</scrolltime>
+					<itemlayout height="85" width="87.2">
+						<control type="image">
+							<left>10</left>
+							<top>5</top>
+							<width>65</width>
+							<height>90</height>
+							<aligny>center</aligny>
+							<align>center</align>
+							<aspectratio>scale</aspectratio>
+							<texture fallback="DefaultActor.png" background="true">$INFO[ListItem.Icon]</texture>
+							<bordertexture border="-2">black.png</bordertexture>
+							<colordiffuse>FF909090</colordiffuse>
+						</control>
+					</itemlayout>
+					<focusedlayout height="85" width="87.2">
+						<control type="image">
+							<left>10</left>
+							<top>5</top>
+							<width>65</width>
+							<height>90</height>
+							<aligny>center</aligny>
+							<align>center</align>
+							<aspectratio>scale</aspectratio>
+							<texture fallback="DefaultActor.png" background="true">$INFO[ListItem.Icon]</texture>
+							<bordertexture border="-2">black.png</bordertexture>
+							<colordiffuse>FF909090</colordiffuse>
+							<include>Animation_Fade</include>
+							<visible>!Control.HasFocus(1000)</visible>
+						</control>
+						<control type="image">
+							<left>10</left>
+							<top>5</top>
+							<width>65</width>
+							<height>90</height>
+							<aligny>center</aligny>
+							<align>center</align>
+							<aspectratio>scale</aspectratio>
+							<texture fallback="DefaultActor.png" background="true">$INFO[ListItem.Icon]</texture>
+							<bordertexture border="-2">grey.png</bordertexture>
+							<include>Animation_Fade</include>
+							<visible>Control.HasFocus(1000)</visible>
+						</control>
+					</focusedlayout>
+				</control>
+				<control type="list" id="1000">
+					<visible>IsEmpty(Control.GetLabel(8020))</visible>
+					<content>$VAR[HomeWidgetCast]</content>
+					<left>548</left>
+					<top>652</top>
+					<width>1286</width>
+					<height>220</height>
+					<onleft>1000</onleft>
+					<onright>1000</onright>
+					<onup>8052</onup>
+					<ondown>8052</ondown>
+					<orientation>horizontal</orientation>
+					<scrolltime>400</scrolltime>
+					<itemlayout height="85" width="85.35">
+						<control type="image">
+							<left>10</left>
+							<top>5</top>
+							<width>65</width>
+							<height>90</height>
+							<aligny>center</aligny>
+							<align>center</align>
+							<aspectratio>scale</aspectratio>
+							<texture fallback="DefaultActor.png" background="true">$INFO[ListItem.Icon]</texture>
+							<bordertexture border="-2">black.png</bordertexture>
+							<colordiffuse>FF909090</colordiffuse>
+						</control>
+					</itemlayout>
+					<focusedlayout height="85" width="85.35">
+						<control type="image">
+							<left>10</left>
+							<top>5</top>
+							<width>65</width>
+							<height>90</height>
+							<aligny>center</aligny>
+							<align>center</align>
+							<aspectratio>scale</aspectratio>
+							<texture fallback="DefaultActor.png" background="true">$INFO[ListItem.Icon]</texture>
+							<bordertexture border="-2">black.png</bordertexture>
+							<colordiffuse>FF909090</colordiffuse>
+							<include>Animation_Fade</include>
+							<visible>!Control.HasFocus(1000)</visible>
+						</control>
+						<control type="image">
+							<left>10</left>
+							<top>5</top>
+							<width>65</width>
+							<height>90</height>
+							<aligny>center</aligny>
+							<align>center</align>
+							<aspectratio>scale</aspectratio>
+							<texture fallback="DefaultActor.png" background="true">$INFO[ListItem.Icon]</texture>
+							<bordertexture border="-2">grey.png</bordertexture>
+							<include>Animation_Fade</include>
+							<visible>Control.HasFocus(1000)</visible>
+						</control>
+					</focusedlayout>
+				</control>
+				<control type="group" id="3000">
+					<visible>Control.HasFocus(1000)</visible>
+					<left>100</left>
+					<top>100</top>
+					<control type="image">
+						<width>446</width>
+						<height>649</height>
+						<aligny>center</aligny>
+						<align>center</align>
+						<aspectratio>scale</aspectratio>
+						<texture fallback="DefaultActor.png">$INFO[Container(1000).ListItem.Icon]</texture>
+					</control>
+					<control type="image">
+						<top>555</top>
+						<width>446</width>
+						<height>94</height>
+						<texture>black.png</texture>
+					</control>
+					<control type="label">
+						<left>10</left>
+						<top>573</top>
+						<width>426</width>
+						<height>53</height>
+						<align>center</align>
+						<font>Font_Reg40</font>
+						<textcolor>$VAR[HomeMenuWidgetTextVar]</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<scroll>true</scroll>
+						<label>$INFO[Container(1000).ListItem.Label] as[CR]$INFO[Container(1000).ListItem.Label2]</label>
+					</control>
 				</control>
 			</control>
 			<!-- Flags-->
 			<control type="grouplist">
 				<top>192</top>
-				<left>554</left>
+				<left>559</left>
 				<height>90</height>
 				<orientation>horizontal</orientation>
+				<itemgap>10</itemgap>
 				<control type="label" id="1001">
-					<width>140</width>
+					<width>auto</width>
 					<height>90</height>
 					<align>left</align>
 					<font>font35_title_bold</font>
-					<textcolor>white</textcolor>
+					<textcolor>$VAR[HomeWidgetInfoIconColor]</textcolor>
 					<label>$INFO[Window(Home).Property(Widget.Year)]</label>
 					<visible>!IsEmpty(Control.GetLabel(1001))</visible>
 				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>!IsEmpty(Control.GetLabel(1001))</visible>
+				</control>
 				<control type="image" id="1002">
-					<width>140</width>
+					<width>130</width>
 					<height>90</height>
 					<aspectratio>keep</aspectratio>
-					<colordiffuse>white</colordiffuse>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsRating)]</texture>
 					<visible>!IsEmpty(Control.GetLabel(1002))</visible>
 				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>!IsEmpty(Control.GetLabel(1002))</visible>
+				</control>
 				<control type="image" id="1003">
-					<width>140</width>
+					<width>130</width>
 					<height>90</height>
 					<aspectratio>keep</aspectratio>
-					<colordiffuse>white</colordiffuse>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsStudio)]</texture>
 					<visible>!IsEmpty(Control.GetLabel(1003))</visible>
 				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>!IsEmpty(Control.GetLabel(1003))</visible>
+				</control>
 				<control type="image" id="1004">
-					<width>140</width>
+					<width>130</width>
 					<height>90</height>
 					<aspectratio>keep</aspectratio>
-					<colordiffuse>white</colordiffuse>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsResolution)]</texture>
 					<visible>!IsEmpty(Control.GetLabel(1004))</visible>
 				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>!IsEmpty(Control.GetLabel(1004))</visible>
+				</control>
 				<control type="image" id="1005">
-					<width>140</width>
+					<width>130</width>
 					<height>90</height>
 					<aspectratio>keep</aspectratio>
-					<colordiffuse>white</colordiffuse>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsSource)]</texture>
 					<visible>!IsEmpty(Control.GetLabel(1005))</visible>
 				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>!IsEmpty(Control.GetLabel(1005))</visible>
+				</control>
 				<control type="image" id="1006">
-					<width>140</width>
+					<width>130</width>
 					<height>90</height>
 					<aspectratio>keep</aspectratio>
-					<colordiffuse>white</colordiffuse>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsAspect)]</texture>
 					<visible>!IsEmpty(Control.GetLabel(1006))</visible>
 				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>!IsEmpty(Control.GetLabel(1006))</visible>
+				</control>
 				<control type="image" id="1007">
-					<width>140</width>
+					<width>130</width>
 					<height>90</height>
 					<aspectratio>keep</aspectratio>
-					<colordiffuse>white</colordiffuse>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsAudio)]</texture>
 					<visible>!IsEmpty(Control.GetLabel(1007))</visible>
 				</control>
+				<control type="grouplist">
+					<height>90</height>
+					<orientation>vertical</orientation>
+					<align>center</align>
+					<visible>!IsEmpty(Control.GetLabel(1007))</visible>
+					<!-- Audio Country Flags-->
+					<control type="image" id="1017">
+						<width>28</width>
+						<height>28</height>
+						<aspectratio>keep</aspectratio>
+						<align>center</align>
+						<aligny>center</aligny>
+						<texture>$INFO[Window(Home).Property(Widget.FlagsAL1)]</texture>
+						<visible>!IsEmpty(Control.GetLabel(1017))</visible>
+					</control>
+					<control type="image" id="1027">
+						<width>28</width>
+						<height>28</height>
+						<aspectratio>keep</aspectratio>
+						<align>center</align>
+						<aligny>center</aligny>
+						<texture>$INFO[Window(Home).Property(Widget.FlagsAL2)]</texture>
+						<visible>!IsEmpty(Control.GetLabel(1027))</visible>
+					</control>
+					<control type="image" id="1037">
+						<width>28</width>
+						<height>28</height>
+						<aspectratio>keep</aspectratio>
+						<align>center</align>
+						<aligny>center</aligny>
+						<texture>$INFO[Window(Home).Property(Widget.FlagsAL3)]</texture>
+						<visible>!IsEmpty(Control.GetLabel(1037))</visible>
+					</control>
+				</control>
+				<control type="image">
+					<width>18</width>
+					<texture>-</texture>
+					<visible>!IsEmpty(Control.GetLabel(1017)) | !IsEmpty(Control.GetLabel(1027)) | !IsEmpty(Control.GetLabel(1037))</visible>
+				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>!IsEmpty(Control.GetLabel(1007))</visible>
+				</control>
 				<control type="image" id="1008">
-					<width>140</width>
+					<width>130</width>
 					<height>90</height>
 					<aspectratio>keep</aspectratio>
-					<colordiffuse>white</colordiffuse>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsAudioChannels)]</texture>
 					<visible>!IsEmpty(Control.GetLabel(1008))</visible>
 				</control>
 				<control type="image">
-					<width>140</width>
+					<width>2</width>
+					<height>90</height>
+					<texture>separator3.png</texture>
+					<visible>!IsEmpty(Control.GetLabel(1008))</visible>
+				</control>
+				<control type="image" id="1009">
+					<width>130</width>
 					<height>90</height>
 					<aspectratio>keep</aspectratio>
-					<colordiffuse>white</colordiffuse>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsCC)]</texture>
+				</control>
+				<control type="grouplist">
+					<height>90</height>
+					<orientation>vertical</orientation>
+					<align>center</align>
+					<visible>!IsEmpty(Control.GetLabel(1009))</visible>
+					<!-- Subtitle Country Flags-->
+					<control type="image" id="1019">
+						<width>28</width>
+						<height>28</height>
+						<aspectratio>keep</aspectratio>
+						<align>center</align>
+						<aligny>center</aligny>
+						<texture>$INFO[Window(Home).Property(Widget.FlagsSL1)]</texture>
+						<visible>!IsEmpty(Control.GetLabel(1019))</visible>
+					</control>
+					<control type="image" id="1029">
+						<width>28</width>
+						<height>28</height>
+						<aspectratio>keep</aspectratio>
+						<align>center</align>
+						<aligny>center</aligny>
+						<texture>$INFO[Window(Home).Property(Widget.FlagsSL2)]</texture>
+						<visible>!IsEmpty(Control.GetLabel(1029))</visible>
+					</control>
+					<control type="image" id="1039">
+						<width>28</width>
+						<height>28</height>
+						<aspectratio>keep</aspectratio>
+						<align>center</align>
+						<aligny>center</aligny>
+						<texture>$INFO[Window(Home).Property(Widget.FlagsSL3)]</texture>
+						<visible>!IsEmpty(Control.GetLabel(1039))</visible>
+					</control>
+				</control>
+				<control type="image">
+					<width>18</width>
+					<texture>-</texture>
+					<visible>!IsEmpty(Control.GetLabel(1019)) | !IsEmpty(Control.GetLabel(1029)) | !IsEmpty(Control.GetLabel(1039))</visible>
+				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>!IsEmpty(Control.GetLabel(1009))</visible>
 				</control>
 			</control>
 			<!-- Info -->
@@ -215,28 +569,28 @@
 				<left>555</left>
 				<orientation>horizontal</orientation>
 				<control type="image">
-					<width>30</width>
-					<height>30</height>
-					<colordiffuse>AAFFFFFF</colordiffuse>
+					<width>35</width>
+					<height>35</height>
 					<texture>homewidgets/WidgetInfoPluginIcon.png</texture>
-					<visible>!IsEmpty(Control.GetLabel(1009)) | !IsEmpty(Control.GetLabel(1010))</visible>
+					<colordiffuse>$VAR[HomeWidgetInfoTextColor]</colordiffuse>
+					<visible>!IsEmpty(Control.GetLabel(1010)) | !IsEmpty(Control.GetLabel(1011))</visible>
 				</control>
 				<control type="label">
 					<width>10</width>
 				</control>
-				<control type="label" id="1009">
+				<control type="label" id="1010">
 					<width>1230</width>
 					<height>30</height>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
 					<label>$INFO[Window(Home).Property(Widget.Info1)]</label>
 					<visible>IsEmpty(Control.GetLabel(8020))</visible>
 				</control>
-				<control type="label" id="1010">
+				<control type="label" id="1011">
 					<width>828</width>
 					<height>30</height>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
 					<label>$INFO[Window(Home).Property(Widget.Info1)]</label>
 					<visible>!IsEmpty(Control.GetLabel(8020))</visible>
 				</control>
@@ -246,159 +600,249 @@
 				<left>555</left>
 				<orientation>horizontal</orientation>
 				<control type="image">
-					<width>30</width>
-					<height>30</height>
-					<colordiffuse>AAFFFFFF</colordiffuse>
+					<width>35</width>
+					<height>35</height>
 					<texture>homewidgets/WidgetInfoGenreIcon.png</texture>
-					<visible>!IsEmpty(Control.GetLabel(1011)) | !IsEmpty(Control.GetLabel(1012))</visible>
+					<colordiffuse>$VAR[HomeWidgetInfoTextColor]</colordiffuse>
+					<visible>!IsEmpty(Control.GetLabel(1012)) | !IsEmpty(Control.GetLabel(1013))</visible>
 				</control>
 				<control type="label">
 					<width>10</width>
 				</control>
-				<control type="label" id="1011">
+				<control type="label" id="1012">
 					<width>1230</width>
 					<height>30</height>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
 					<label>$INFO[Window(Home).Property(Widget.Info2)]</label>
 					<visible>IsEmpty(Control.GetLabel(8020))</visible>
 				</control>
-				<control type="label" id="1012">
+				<control type="label" id="1013">
 					<width>828</width>
 					<height>30</height>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
 					<label>$INFO[Window(Home).Property(Widget.Info2)]</label>
 					<visible>!IsEmpty(Control.GetLabel(8020))</visible>
 				</control>
 			</control>
 			<!-- Info Plot-->
-			<control type="textbox">
-				<top>459</top>
-				<left>555</left>
-				<height>290</height>
-				<width>1266</width>
-				<font>font14_textbox</font>
-				<align>justify</align>
-				<textcolor>grey</textcolor>
-				<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
-				<label>$INFO[Window(Home).Property(Widget.Plot)]</label>
-				<visible>IsEmpty(Control.GetLabel(8020))</visible>
+			<control type="group">
+				<visible>!IntegerGreaterThan(Container(1000).NumItems,0)</visible>
+				<control type="textbox">
+					<top>459</top>
+					<left>555</left>
+					<height>290</height>
+					<width>1266</width>
+					<font>font14_textbox</font>
+					<align>justify</align>
+					<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+					<label>$INFO[Window(Home).Property(Widget.Plot)]</label>
+					<visible>IsEmpty(Control.GetLabel(8020))</visible>
+				</control>
+				<control type="textbox">
+					<top>459</top>
+					<left>555</left>
+					<height>290</height>
+					<width>852</width>
+					<font>font14_textbox</font>
+					<align>justify</align>
+					<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
+					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+					<label>$INFO[Window(Home).Property(Widget.Plot)]</label>
+					<visible>!IsEmpty(Control.GetLabel(8020))</visible>
+				</control>
 			</control>
-			<control type="textbox">
-				<top>459</top>
-				<left>555</left>
-				<height>290</height>
-				<width>852</width>
-				<font>font14_textbox</font>
-				<align>justify</align>
-				<textcolor>grey</textcolor>
-				<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
-				<label>$INFO[Window(Home).Property(Widget.Plot)]</label>
-				<visible>!IsEmpty(Control.GetLabel(8020))</visible>
+			<control type="group">
+				<visible>IntegerGreaterThan(Container(1000).NumItems,0) + Skin.HasSetting(CastonWidget)</visible>
+				<control type="textbox">
+					<top>459</top>
+					<left>555</left>
+					<height>190</height>
+					<width>1266</width>
+					<font>font14_textbox</font>
+					<align>justify</align>
+					<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
+					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+					<label>$INFO[Window(Home).Property(Widget.Plot)]</label>
+					<visible>IsEmpty(Control.GetLabel(8020))</visible>
+				</control>
+				<control type="textbox">
+					<top>459</top>
+					<left>555</left>
+					<height>190</height>
+					<width>852</width>
+					<font>font14_textbox</font>
+					<align>justify</align>
+					<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
+					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+					<label>$INFO[Window(Home).Property(Widget.Plot)]</label>
+					<visible>!IsEmpty(Control.GetLabel(8020))</visible>
+				</control>
 			</control>
-			<!-- Info Buttons-->`
+			<!-- Info Buttons-->
 			<control type="grouplist" id="8052">
 				<left>547</left>
 				<width>1266</width>
 				<top>285</top>
 				<height>60</height>
 				<orientation>horizontal</orientation>
+				<ondown>1000</ondown>
 				<control type="button" id="8053">
 					<description>Close</description>
-					<textoffsetx>10</textoffsetx>
-					<width min="250">auto</width>
-					<align>center</align>
-					<texturenofocus colordiffuse="77FFFFFF">homewidgets/widgetinfo_nofocus.png</texturenofocus>
-					<label>$LOCALIZE[15067]</label>
+					<include>WidgetInfoButtonCommonValues</include>
+					<label>15067</label>
 					<onclick>Dialog.Close(1199)</onclick>
-					<onup>Dialog.Close(1199)</onup>
-					<ondown>Dialog.Close(1199)</ondown>
+					<oninfo>Dialog.Close(1199)</oninfo>
 				</control>
-				<control type="button" id="8054">
-					<description>Play Button</description>
-					<textoffsetx>10</textoffsetx>
-					<width min="250">auto</width>
-					<align>center</align>
-					<texturenofocus colordiffuse="77FFFFFF">homewidgets/widgetinfo_nofocus.png</texturenofocus>
-					<label>$LOCALIZE[208]</label>
-					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FilePath)],noresume)</onclick>
-					<onclick>Dialog.Close(1199)</onclick>
-					<visible>!SubString(Window(Home).Property(Widget.FilePath),activatewindow) + !SubString(Window(Home).Property(Widget.FilePath),playtrailer) + !SubString(Window(Home).Property(Widget.FilePath),extended)</visible>
+				<control type="image" id="8054">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
 				</control>
 				<control type="button" id="8055">
-					<description>Open Button</description>
-					<textoffsetx>10</textoffsetx>
-					<width min="250">auto</width>
-					<align>center</align>
-					<texturenofocus colordiffuse="77FFFFFF">homewidgets/widgetinfo_nofocus.png</texturenofocus>
-					<label>$LOCALIZE[502]</label>
+					<description>Play Button</description>
+					<include>WidgetInfoButtonCommonValues</include>
+					<label>208</label>
 					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FilePath)],noresume)</onclick>
 					<onclick>Dialog.Close(1199)</onclick>
-					<visible>SubString(Window(Home).Property(Widget.FilePath),activatewindow) | SubString(Window(Home).Property(Widget.FilePath),extended)</visible>
+					<oninfo>Dialog.Close(1199)</oninfo>
+					<visible>!IsEmpty(Window(Home).Property(Widget.FilePath)) + [StringCompare(Window(Home).Property(Widget.Target),video) | StringCompare(Window(Home).Property(Widget.Target),music)]</visible>
 				</control>
-				<control type="button" id="8056">
+				<control type="button" id="8069">
+					<description>Play Button</description>
+					<include>WidgetInfoButtonCommonValues</include>
+					<label>208</label>
+					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FolderPath)],isdir)</onclick>
+					<onclick>Dialog.Close(1199)</onclick>
+					<oninfo>Dialog.Close(1199)</oninfo>
+					<visible>IsEmpty(Window(Home).Property(Widget.FilePath)) + [StringCompare(Window(Home).Property(Widget.Target),video) | StringCompare(Window(Home).Property(Widget.Target),music)]</visible>
+				</control>
+				<control type="image" id="8056">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>Control.IsVisible(8055) | Control.IsVisible(8069)</visible>
+				</control>
+				<control type="button" id="8057">
 					<description>Resume Button</description>
-					<textoffsetx>10</textoffsetx>
-					<width min="250">auto</width>
-					<align>center</align>
-					<texturenofocus colordiffuse="77FFFFFF">homewidgets/widgetinfo_nofocus.png</texturenofocus>
+					<include>WidgetInfoButtonCommonValues</include>
 					<label>$LOCALIZE[13404] $INFO[Window(Home).Property(Widget.Resume),(,%)]</label>
 					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FilePath)],resume)</onclick>
 					<onclick>Dialog.Close(1199)</onclick>
+					<oninfo>Dialog.Close(1199)</oninfo>
 					<visible>IntegerGreaterThan(Window(Home).Property(Widget.Resume),1)</visible>
 				</control>
-				<control type="button" id="8057">
+				<control type="image" id="8058">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>Control.IsVisible(8057)</visible>
+				</control>
+				<control type="button" id="8059">
 					<description>Play Trailer</description>
-					<textoffsetx>10</textoffsetx>
-					<width min="250">auto</width>
-					<align>center</align>
-					<texturenofocus colordiffuse="77FFFFFF">homewidgets/widgetinfo_nofocus.png</texturenofocus>
+					<include>WidgetInfoButtonCommonValues</include>
 					<label>$LOCALIZE[20410]</label>
 					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.Trailer)])</onclick>
 					<onclick>Dialog.Close(1199)</onclick>
+					<oninfo>Dialog.Close(1199)</oninfo>
 					<visible>!IsEmpty(Window(Home).Property(Widget.Trailer))</visible>
 				</control>
-				<control type="button" id="8058">
+				<control type="image" id="8060">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>Control.IsVisible(8059)</visible>
+				</control>
+				<control type="button" id="8061">
 					<description>Add to Couch Potato</description>
-					<textoffsetx>10</textoffsetx>
-					<width min="250">auto</width>
-					<align>center</align>
-					<texturenofocus colordiffuse="77FFFFFF">homewidgets/widgetinfo_nofocus.png</texturenofocus>
-					<label>$LOCALIZE[31270]</label>
+					<include>WidgetInfoButtonCommonValues</include>
+					<label>$ADDON[script.extendedinfo 32165]</label>
 					<onclick>RunPlugin(plugin://plugin.video.couchpotato_manager/movies/add?title=$INFO[Window(Home).Property(Widget.Title)])</onclick>
-					<visible>System.HasAddon(plugin.video.couchpotato_manager) + SubString(Window(Home).Property(Widget.FilePath),extendedinfo) + !SubString(Window(Home).Property(Widget.FilePath),ActivateWindow)</visible>
+					<oninfo>Dialog.Close(1199)</oninfo>
+					<visible>System.HasAddon(plugin.video.couchpotato_manager) + IsEmpty(Window(Home).Property(Widget.DBID)) + StringCompare(Window(Home).Property(Widget.Type),movies) + [StringCompare(Window(Home).Property(Widget),trakt) | StringCompare(Window(Home).Property(Widget),rt) | StringCompare(Window(Home).Property(Widget),tmdb)]</visible>
+				</control>
+				<control type="button" id="8062">
+					<description>Add to SickRage</description>
+					<include>WidgetInfoButtonCommonValues</include>
+					<label>$ADDON[script.extendedinfo 32166]</label>
+					<onclick>RunPlugin(plugin://plugin.video.sickrage?action=addshow&amp;show_name=$INFO[Window(Home).Property(Widget.Title)])</onclick>
+					<oninfo>Dialog.Close(1199)</oninfo>
+					<visible>System.HasAddon(plugin.video.sickrage) + IsEmpty(Window(Home).Property(Widget.DBID)) + StringCompare(Window(Home).Property(Widget.Type),tvshows) + [StringCompare(Window(Home).Property(Widget),trakt) | StringCompare(Window(Home).Property(Widget),tmdb)]</visible>
+				</control>
+				<control type="image" id="8063">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>Control.IsVisible(8061) | Control.IsVisible(8062)</visible>
+				</control>
+				<control type="button" id="8064">
+					<description>Youtube Search</description>
+					<include>WidgetInfoButtonCommonValues</include>
+					<label>YouTube $ADDON[plugin.video.youtube 30102]</label>
+					<onclick>RunScript(script.skin.helper.service,action=searchyoutube,title=$INFO[Window(Home).Property(Widget.Title)],header=$INFO[Window(Home).Property(Widget.Title)] YouTube Search)</onclick>
+					<onclick>Dialog.Close(1199)</onclick>
+					<visible>System.HasAddon(script.skin.helper.service) + System.HasAddon(plugin.video.youtube) + StringCompare(Window(Home).Property(Widget.Type),movies) + StringCompare(Window(Home).Property(Widget.Target),video)</visible>
+				</control>
+				<control type="button" id="8065">
+					<description>Youtube Search</description>
+					<include>WidgetInfoButtonCommonValues</include>
+					<label>YouTube $ADDON[plugin.video.youtube 30102]</label>
+					<onclick>RunScript(script.skin.helper.service,action=searchyoutube,title=$INFO[Window(Home).Property(Widget.SubTitle)],header=$INFO[Window(Home).Property(Widget.SubTitle)] YouTube Search)</onclick>
+					<onclick>Dialog.Close(1199)</onclick>
+					<visible>System.HasAddon(script.skin.helper.service) + System.HasAddon(plugin.video.youtube) + !StringCompare(Window(Home).Property(Widget.Type),movies) + [StringCompare(Window(Home).Property(Widget.Target),video) | StringCompare(Window(Home).Property(Widget.Target),music)]</visible>
+				</control>
+				<control type="image" id="8068">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>Control.IsVisible(8064) | Control.IsVisible(8065)</visible>
 				</control>
 			</control>
 		</control>
 		<!-- Square -->
 		<control type="group">
-			<visible>StringCompare(Window(Home).Property(Widget.Type),Square)</visible>
+			<visible>!StringCompare(Window(Home).Property(Widget.Type),movies) + !StringCompare(Window(Home).Property(Widget.Type),tvshows) + !StringCompare(Window(Home).Property(Widget.Type),episodes)</visible>
 			<control type="image">
 				<left></left>
 				<centerleft>50%</centerleft>
 				<top>90</top>
 				<width>1740</width>
 				<height>669</height>
-				<texture>homewidgets/Info_Separator2.png</texture>
-				<visible>!SubString(Window(Home).Property(Widget.FilePath),plugin.audio) + !SubString(Window(Home).Property(Widget.FilePath),plugin.video) + !SubString(Window(Home).Property(Widget.FilePath),plugin.picture) + !SubString(Window(Home).Property(Widget.FilePath),plugin.image) + !SubString(Window(Home).Property(Widget.FilePath),script://)</visible>
-			</control>
-			<control type="image">
-				<left></left>
-				<centerleft>50%</centerleft>
-				<top>90</top>
-				<width>1740</width>
-				<height>669</height>
-				<texture>homewidgets/Info_Separator3.png</texture>
-				<visible>SubString(Window(Home).Property(Widget.FilePath),plugin.audio) | SubString(Window(Home).Property(Widget.FilePath),plugin.video) | SubString(Window(Home).Property(Widget.FilePath),plugin.picture) | SubString(Window(Home).Property(Widget.FilePath),plugin.image) | SubString(Window(Home).Property(Widget.FilePath),script://)</visible>
+				<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">homewidgets/Info_Separator2.png</texture>
 			</control>
 			<control type="image">
 				<left>100</left>
 				<top>100</top>
 				<width>649</width>
 				<height>649</height>
-				<aspectratio aligny="top">scale</aspectratio>
 				<texture>$INFO[Window(Home).Property(Widget.Cover)]</texture>
+				<visible>IsEmpty(Window(Home).Property(Widget.Case)) | SubString(Window(Home).Property(Widget.Case),-)</visible>
+			</control>
+			<control type="image">
+				<left>114</left>
+				<top>113</top>
+				<width>621</width>
+				<height>623</height>
+				<texture>$INFO[Window(Home).Property(Widget.Cover)]</texture>
+				<visible>Substring(Window(Home).Property(Widget.Case),glass)</visible>
+			</control>
+			<control type="image">
+				<left>158</left>
+				<top>110</top>
+				<width>583</width>
+				<height>629</height>
+				<texture>$INFO[Window(Home).Property(Widget.Cover)]</texture>
+				<visible>Substring(Window(Home).Property(Widget.Case),case)</visible>
+			</control>
+			<control type="image">
+				<left>100</left>
+				<top>100</top>
+				<width>649</width>
+				<height>649</height>
+				<texture>$INFO[Window(Home).Property(Widget.Case)]</texture>
 			</control>
 			<control type="image" id="8021">
 				<left>1427</left>
@@ -408,6 +852,13 @@
 				<texture>$INFO[Window(Home).Property(Widget.DiscArt)]</texture>
 				<visible>!IsEmpty(Control.GetLabel(8021))</visible>
 			</control>
+			<control type="image">
+				<left>751</left>
+				<top>191</top>
+				<width>1069</width>
+				<height>91</height>
+				<texture colordiffuse="$VAR[HomeWidgetInfoIconBackColor]">back.png</texture>
+			</control>
 			<control type="grouplist">
 				<top>99</top>
 				<left>757</left>
@@ -415,8 +866,8 @@
 					<width>1063</width>
 					<height>35</height>
 					<font>font30_title_bold</font>
-					<textcolor>grey</textcolor>
-					<shadowcolor>black</shadowcolor>
+					<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<scroll>true</scroll>
 					<label>$INFO[Window(Home).Property(Widget.Title)]</label>
 				</control>
@@ -425,12 +876,12 @@
 					<height>53</height>
 					<font>font30</font>
 					<textcolor>$VAR[ThemeLabelColor]</textcolor>
-					<shadowcolor>black</shadowcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<scroll>true</scroll>
 					<label>$INFO[Window(Home).Property(Widget.SubTitle)]</label>
 				</control>
 			</control>
-			<!-- Flags-->
+			<!-- Flags -->
 			<control type="grouplist">
 				<top>192</top>
 				<left>757</left>
@@ -441,69 +892,121 @@
 					<height>90</height>
 					<align>left</align>
 					<font>font35_title_bold</font>
-					<textcolor>white</textcolor>
+					<textcolor>$VAR[HomeWidgetInfoIconColor]</textcolor>
 					<label>$INFO[Window(Home).Property(Widget.Year)]</label>
+					<visible>!IsEmpty(Control.GetLabel(1021))</visible>
+				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
 					<visible>!IsEmpty(Control.GetLabel(1021))</visible>
 				</control>
 				<control type="image" id="1022">
 					<width>140</width>
 					<height>90</height>
 					<aspectratio>keep</aspectratio>
-					<colordiffuse>white</colordiffuse>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsStudio)]</texture>
+					<visible>!IsEmpty(Control.GetLabel(1022))</visible>
+				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
 					<visible>!IsEmpty(Control.GetLabel(1022))</visible>
 				</control>
 				<control type="image" id="1023">
 					<width>140</width>
 					<height>90</height>
 					<aspectratio>keep</aspectratio>
-					<colordiffuse>white</colordiffuse>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsResolution)]</texture>
+					<visible>!IsEmpty(Control.GetLabel(1023))</visible>
+				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
 					<visible>!IsEmpty(Control.GetLabel(1023))</visible>
 				</control>
 				<control type="image" id="1024">
 					<width>140</width>
 					<height>90</height>
 					<aspectratio>keep</aspectratio>
-					<colordiffuse>white</colordiffuse>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsSource)]</texture>
+					<visible>!IsEmpty(Control.GetLabel(1024))</visible>
+				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
 					<visible>!IsEmpty(Control.GetLabel(1024))</visible>
 				</control>
 				<control type="image" id="1025">
 					<width>140</width>
 					<height>90</height>
 					<aspectratio>keep</aspectratio>
-					<colordiffuse>white</colordiffuse>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsAspect)]</texture>
+					<visible>!IsEmpty(Control.GetLabel(1025))</visible>
+				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
 					<visible>!IsEmpty(Control.GetLabel(1025))</visible>
 				</control>
 				<control type="image" id="1026">
 					<width>140</width>
 					<height>90</height>
 					<aspectratio>keep</aspectratio>
-					<colordiffuse>white</colordiffuse>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsAudio)]</texture>
+					<visible>!IsEmpty(Control.GetLabel(1026))</visible>
+				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
 					<visible>!IsEmpty(Control.GetLabel(1026))</visible>
 				</control>
 				<control type="image" id="1027">
 					<width>140</width>
 					<height>90</height>
 					<aspectratio>keep</aspectratio>
-					<colordiffuse>white</colordiffuse>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
 					<align>center</align>
 					<aligny>center</aligny>
 					<texture>$INFO[Window(Home).Property(Widget.FlagsAudioChannels)]</texture>
 					<visible>!IsEmpty(Control.GetLabel(1027))</visible>
+				</control>
+				<control type="image">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>!IsEmpty(Control.GetLabel(1027))</visible>
+				</control>
+				<control type="image">
+					<width>260</width>
+					<height>90</height>
+					<aspectratio>keep</aspectratio>
+					<colordiffuse>$VAR[HomeWidgetInfoIconColor]</colordiffuse>
+					<align>center</align>
+					<aligny>center</aligny>
+					<texture fallback="rating0.png">$INFO[Window(Home).Property(Widget.StarRating)]</texture>
+					<visible>StringCompare(Window(Home).Property(Widget.Type),albums) | StringCompare(Window(Home).Property(Widget.Type),songs)</visible>
 				</control>
 			</control>
 			<!-- Info -->
@@ -512,10 +1015,10 @@
 				<left>758</left>
 				<orientation>horizontal</orientation>
 				<control type="image">
-					<width>30</width>
-					<height>30</height>
-					<colordiffuse>AAFFFFFF</colordiffuse>
+					<width>35</width>
+					<height>35</height>
 					<texture>homewidgets/WidgetInfoPluginIcon.png</texture>
+					<colordiffuse>$VAR[HomeWidgetInfoTextColor]</colordiffuse>
 					<visible>!IsEmpty(Control.GetLabel(1028)) | !IsEmpty(Control.GetLabel(1029))</visible>
 				</control>
 				<control type="label">
@@ -525,7 +1028,7 @@
 					<width>1027</width>
 					<height>30</height>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
 					<label>$INFO[Window(Home).Property(Widget.Info1)]</label>
 					<visible>IsEmpty(Control.GetLabel(8021))</visible>
 				</control>
@@ -533,7 +1036,7 @@
 					<width>625</width>
 					<height>30</height>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
 					<label>$INFO[Window(Home).Property(Widget.Info1)]</label>
 					<visible>!IsEmpty(Control.GetLabel(8021))</visible>
 				</control>
@@ -543,20 +1046,20 @@
 				<left>758</left>
 				<orientation>horizontal</orientation>
 				<control type="image">
-					<width>30</width>
-					<height>30</height>
-					<colordiffuse>AAFFFFFF</colordiffuse>
+					<width>35</width>
+					<height>35</height>
 					<texture>homewidgets/WidgetInfoGenreIcon.png</texture>
+					<colordiffuse>$VAR[HomeWidgetInfoTextColor]</colordiffuse>
 					<visible>!IsEmpty(Control.GetLabel(1030)) | !IsEmpty(Control.GetLabel(1031))</visible>
 				</control>
 				<control type="label">
 					<width>10</width>
 				</control>
 				<control type="label" id="1030">
-					<width>1027</width>
+					<width>1028</width>
 					<height>30</height>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
 					<label>$INFO[Window(Home).Property(Widget.Info2)]</label>
 					<visible>IsEmpty(Control.GetLabel(8021))</visible>
 				</control>
@@ -564,12 +1067,12 @@
 					<width>625</width>
 					<height>30</height>
 					<font>font14</font>
-					<textcolor>grey</textcolor>
+					<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
 					<label>$INFO[Window(Home).Property(Widget.Info2)]</label>
 					<visible>!IsEmpty(Control.GetLabel(8021))</visible>
 				</control>
 			</control>
-			<!-- Info Plot-->
+			<!-- Info Plot -->
 			<control type="textbox">
 				<top>459</top>
 				<left>758</left>
@@ -577,7 +1080,7 @@
 				<width>1063</width>
 				<font>font14_textbox</font>
 				<align>justify</align>
-				<textcolor>grey</textcolor>
+				<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
 				<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
 				<label>$INFO[Window(Home).Property(Widget.Plot)]</label>
 				<visible>IsEmpty(Control.GetLabel(8021))</visible>
@@ -589,48 +1092,82 @@
 				<width>649</width>
 				<font>font14_textbox</font>
 				<align>justify</align>
-				<textcolor>grey</textcolor>
+				<textcolor>$VAR[HomeWidgetInfoTextColor]</textcolor>
 				<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
 				<label>$INFO[Window(Home).Property(Widget.Plot)]</label>
 				<visible>!IsEmpty(Control.GetLabel(8021))</visible>
 			</control>
-			<!-- Info Buttons-->
+			<!-- Info Buttons -->
 			<control type="grouplist" id="8052">
 				<left>750</left>
 				<width>1063</width>
 				<top>285</top>
 				<height>60</height>
 				<orientation>horizontal</orientation>
-				<control type="button" id="8053">
+				<control type="button" id="8071">
 					<description>Close</description>
-					<textoffsetx>10</textoffsetx>
-					<width min="250">auto</width>
-					<align>center</align>
-					<texturenofocus colordiffuse="77FFFFFF">homewidgets/widgetinfo_nofocus.png</texturenofocus>
-					<label>$LOCALIZE[15067]</label>
+					<include>WidgetInfoButtonCommonValues</include>
+					<label>15067</label>
 					<onclick>Dialog.Close(1199)</onclick>
+					<oninfo>Dialog.Close(1199)</oninfo>
 				</control>
-				<control type="button" id="8054">
+				<control type="image" id="8072">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+				</control>
+				<control type="button" id="8073">
 					<description>Play Button</description>
-					<textoffsetx>10</textoffsetx>
-					<width min="250">auto</width>
-					<align>center</align>
-					<texturenofocus colordiffuse="77FFFFFF">homewidgets/widgetinfo_nofocus.png</texturenofocus>
-					<label>$LOCALIZE[208]</label>
-					<onclick>Dialog.Close(1199)</onclick>
+					<include>WidgetInfoButtonCommonValues</include>
+					<label>208</label>
 					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FilePath)],noresume)</onclick>
-					<visible>[SubString(Window(Home).Property(Widget.FilePath),skinhelper) + SubString(Window(Home).Property(Widget.FilePath),playmedia)] | [!SubString(Window(Home).Property(Widget.FilePath),activatewindow) + !SubString(Window(Home).Property(Widget.FilePath),plugin.audio) + !SubString(Window(Home).Property(Widget.FilePath),plugin.video) + !SubString(Window(Home).Property(Widget.FilePath),plugin.picture) + !SubString(Window(Home).Property(Widget.FilePath),plugin.image) + !SubString(Window(Home).Property(Widget.FilePath),script)]</visible>
+					<onclick>Dialog.Close(1199)</onclick>
+					<oninfo>Dialog.Close(1199)</oninfo>
+					<visible>!IsEmpty(Window(Home).Property(Widget.FilePath)) + [StringCompare(Window(Home).Property(Widget.Target),video) | StringCompare(Window(Home).Property(Widget.Target),music)]</visible>
 				</control>
-				<control type="button" id="8055">
-					<description>Open Button</description>
-					<textoffsetx>10</textoffsetx>
-					<width min="250">auto</width>
-					<align>center</align>
-					<texturenofocus colordiffuse="77FFFFFF">homewidgets/widgetinfo_nofocus.png</texturenofocus>
-					<label>$LOCALIZE[502]</label>
+				<control type="button" id="8074">
+					<description>Play Button</description>
+					<include>WidgetInfoButtonCommonValues</include>
+					<label>208</label>
+					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FolderPath)],isdir)</onclick>
 					<onclick>Dialog.Close(1199)</onclick>
-					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FilePath)],noresume)</onclick>
-					<visible>SubString(Window(Home).Property(Widget.FilePath),skinhelper) + SubString(Window(Home).Property(Widget.FilePath),activatewindow)</visible>
+					<oninfo>Dialog.Close(1199)</oninfo>
+					<visible>IsEmpty(Window(Home).Property(Widget.FilePath)) + [StringCompare(Window(Home).Property(Widget.Target),video) | StringCompare(Window(Home).Property(Widget.Target),music)]</visible>
+				</control>
+				<control type="image" id="8075">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>Control.IsVisible(8073) | Control.IsVisible(8074)</visible>
+				</control>
+				<control type="button" id="8076">
+					<description>Resume Button</description>
+					<include>WidgetInfoButtonCommonValues</include>
+					<label>$LOCALIZE[13404] $INFO[Window(Home).Property(Widget.Resume),(,%)]</label>
+					<onclick>PlayMedia($INFO[Window(Home).Property(Widget.FilePath)],resume)</onclick>
+					<onclick>Dialog.Close(1199)</onclick>
+					<oninfo>Dialog.Close(1199)</oninfo>
+					<visible>IntegerGreaterThan(Window(Home).Property(Widget.Resume),1)</visible>
+				</control>
+				<control type="image" id="8077">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>Control.IsVisible(8076)</visible>
+				</control>
+				<control type="button" id="8078">
+					<description>Youtube Search</description>
+					<include>WidgetInfoButtonCommonValues</include>
+					<label>YouTube $ADDON[plugin.video.youtube 30102]</label>
+					<onclick>RunScript(script.skin.helper.service,action=searchyoutube,title=$INFO[Window(Home).Property(Widget.SubTitle)] official,header=$INFO[Window(Home).Property(Widget.SubTitle)] YouTube Search)</onclick>
+					<onclick>Dialog.Close(1199)</onclick>
+					<visible>System.HasAddon(script.skin.helper.service) + System.HasAddon(plugin.video.youtube) + !StringCompare(Window(Home).Property(Widget.Type),movies) + [StringCompare(Window(Home).Property(Widget.Target),video) | StringCompare(Window(Home).Property(Widget.Target),music)]</visible>
+				</control>
+				<control type="image" id="8079">
+					<width>2</width>
+					<height>90</height>
+					<texture colordiffuse="$VAR[HomeWidgetInfoSepColor]">separator3.png</texture>
+					<visible>Control.IsVisible(8078)</visible>
 				</control>
 			</control>
 		</control>
