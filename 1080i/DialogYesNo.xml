@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">10</defaultcontrol>
+	<onunload condition="!IsEmpty(Window(Home).Property(WidgetUpdate)) + !IsEmpty(Window(Home).Property(OfferReloadAfterConfirm))">RunScript(script.toolbox,info=yesnodialog,header=$LOCALIZE[14117],text=$LOCALIZE[31316],yesaction=ClearProperty(WidgetUpdate,Home)||ClearProperty(OfferReloadAfterConfirm,Home)||ReloadSkin(),noaction=ClearProperty(WidgetUpdate,Home)||ClearProperty(OfferReloadAfterConfirm,Home)||Dialog.Close,yeslabel=$LOCALIZE[20183],nolabel=$LOCALIZE[222])</onunload>
+	<!-- $INFO[Window(Home).Property(OfferReloadAfterConfirm)] -->
+	<!-- $INFO[Window(Home).Property(WidgetUpdate)] -->
 	<coordinates>
 		<left>502</left>
 		<top>293</top>
@@ -61,6 +64,8 @@
 			<onright>10</onright>
 			<onup>11</onup>
 			<ondown>11</ondown>
+			<onclick condition="!IsEmpty(Window(Home).Property(WidgetUpdate))">SetProperty(OfferReloadAfterConfirm,True,home)</onclick>
+			<onclick condition="!IsEmpty(Window(Home).Property(WidgetUpdate)) + Skin.HasSetting(Enable.AdvancedWidgets)">Skin.Reset(Enable.AdvancedWidgets)</onclick>
 			<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texturefocus>
 			<texturenofocus border="5">dialogs/default/inner.png</texturenofocus>
 		</control>
@@ -79,6 +84,7 @@
 			<onright>11</onright>
 			<onup>10</onup>
 			<ondown>10</ondown>
+			<onclick condition="!IsEmpty(Window(Home).Property(WidgetUpdate))">ClearProperty(OfferReloadAfterConfirm,Home)</onclick>
 			<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texturefocus>
 			<texturenofocus border="5">dialogs/default/inner.png</texturenofocus>
 		</control>
