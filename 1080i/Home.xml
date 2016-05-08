@@ -5,7 +5,7 @@
 	<onload condition="!System.HasAddon(script.skinshortcuts) + !System.HasAddon(script.toolbox)">Notification($LOCALIZE[14117],$LOCALIZE[31315],20000,icon.png)</onload>
 	<onload condition="!System.HasAddon(script.skinshortcuts) + System.HasAddon(script.toolbox)">RunScript(script.toolbox,info=yesnodialog,header=$LOCALIZE[14117],text=$LOCALIZE[31315],yesaction=ActivateWindow(settings),noaction=RunPlugin(plugin://script.skinshortcuts)||SetProperty(OfferReloadAfterConfirm,True,home),yeslabel=$LOCALIZE[222],nolabel=$LOCALIZE[24038])</onload>
 	<onload condition="Skin.HasSetting(Enable.AdvancedWidgets) + System.HasAddon(script.toolbox)">RunScript(script.toolbox,info=yesnodialog,header=$LOCALIZE[14117],text=$LOCALIZE[31319],yesaction=SetProperty(WidgetUpdate,True,home)||RunScript(script.skinshortcuts,type=resetall),noaction=Skin.Reset(Enable.AdvancedWidgets)||Dialog.Close,yeslabel=$LOCALIZE[10035],nolabel=$LOCALIZE[222])</onload>
-	<onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9000)</onload>
+	<onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9000&amp;levels=2)</onload>
 	<onunload>ClearProperty(SkinHelper.WidgetContainer,home)</onunload>
 	<onunload>ClearProperty(Widget.CaseHome,home)</onunload>
 	<controls>
