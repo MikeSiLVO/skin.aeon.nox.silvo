@@ -18,6 +18,9 @@
 	<onunload>ClearProperty(CustomSelectMainMenuLayout,skinsettings)</onunload>
 	<onunload>ClearProperty(CustomSelectFanartTimePerImage,skinsettings)</onunload>
 	<onunload>ClearProperty(CustomSelectWidgetOpacity,skinsettings)</onunload>
+	<onunload>ClearProperty(CustomSelectWidgetBack,skinsettings)</onunload>
+	<onunload>ClearProperty(CustomSelectWidgetCaseInfo,skinsettings)</onunload>
+	<onunload>ClearProperty(CustomSelectWidgetCaseOnInfo,skinsettings)</onunload>
 	<include>dialogeffect</include>
 	<controls>
 		<control type="group">
@@ -41,7 +44,7 @@
 				<width>940</width>
 				<height>40</height>
 				<font>font15_title</font>
-				<label>$LOCALIZE[31237]</label>
+				<label>$LOCALIZE[22080]</label>
 				<align>center</align>
 				<textcolor>dialogheader</textcolor>
 			</control>
@@ -225,9 +228,21 @@
 						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetOpacity))</visible>
 					</item>
 					<item>
+						<label>95%</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.Trans,95)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetOpacity))</visible>
+					</item>
+					<item>
 						<label>90%</label>
 						<onclick>Dialog.Close(1129)</onclick>
 						<onclick>Skin.SetString(Widget.Trans,90)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetOpacity))</visible>
+					</item>
+					<item>
+						<label>85%</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.Trans,85)</onclick>
 						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetOpacity))</visible>
 					</item>
 					<item>
@@ -237,9 +252,21 @@
 						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetOpacity))</visible>
 					</item>
 					<item>
+						<label>75%</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.Trans,75)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetOpacity))</visible>
+					</item>
+					<item>
 						<label>70%</label>
 						<onclick>Dialog.Close(1129)</onclick>
 						<onclick>Skin.SetString(Widget.Trans,70)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetOpacity))</visible>
+					</item>
+					<item>
+						<label>65%</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.Trans,65)</onclick>
 						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetOpacity))</visible>
 					</item>
 					<item>
@@ -249,10 +276,145 @@
 						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetOpacity))</visible>
 					</item>
 					<item>
+						<label>55%</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.Trans,55)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetOpacity))</visible>
+					</item>
+					<item>
 						<label>50%</label>
 						<onclick>Dialog.Close(1129)</onclick>
 						<onclick>Skin.SetString(Widget.Trans,50)</onclick>
 						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetOpacity))</visible>
+					</item>
+					<!-- Widget Back -->
+					<item>
+						<label>$LOCALIZE[571]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.Reset(Widget.Back)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetBack))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31723]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.Back,Flat)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetBack))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[192]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.Back,Clear)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetBack))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31724]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.Back,Clear White)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetBack))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31725]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.Back,Colored Default)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetBack))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31726]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.Back,Colored Flat)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetBack))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31727]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.Back,Colored Clear)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetBack))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31728]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.Back,Colored Clear White)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetBack))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[231]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.Back,-)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetBack))</visible>
+					</item>
+					<!-- Widget Case -->
+					<item>
+						<label>$LOCALIZE[231]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.Reset(Widget.CaseInfo)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetCaseInfo))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31721]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.CaseInfo,Glass)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetCaseInfo))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31707]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.CaseInfo,Case)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetCaseInfo))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31747]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.CaseInfo,BD Case)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetCaseInfo))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31722]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.CaseInfo,Clear Case)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetCaseInfo))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31746]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.CaseInfo,Match widget panel)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetCaseInfo))</visible>
+					</item>
+					<!-- Widget Case On Info-->
+					<item>
+						<label>$LOCALIZE[231]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.Reset(Widget.CaseOnInfo)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetCaseOnInfo))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31721]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.CaseOnInfo,Glass)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetCaseOnInfo))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31707]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.CaseOnInfo,Case)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetCaseOnInfo))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31747]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.CaseOnInfo,BD Case)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetCaseOnInfo))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31722]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.CaseOnInfo,Clear Case)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetCaseOnInfo))</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[31746]</label>
+						<onclick>Dialog.Close(1129)</onclick>
+						<onclick>Skin.SetString(Widget.CaseOnInfo,Match widget panel)</onclick>
+						<visible>!IsEmpty(Window(skinsettings).Property(CustomSelectWidgetCaseOnInfo))</visible>
 					</item>
 				</content>
 			</control>

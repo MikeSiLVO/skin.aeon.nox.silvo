@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<variable name="CustomConfirmTextboxVar">
+		<value condition="!IsEmpty(Window(Home).Property(MissingDependency))">$LOCALIZE[31315]</value>
+		<value condition="!IsEmpty(Window(Home).Property(WidgetUpdate))">$LOCALIZE[31319]</value>
+		<value condition="!IsEmpty(Window(Home).Property(OfferReloadAfterConfirm))">$LOCALIZE[31316]</value>
+		<value condition="!IsEmpty(Window(Home).Property(NotWarnedOnHidingViz))">$LOCALIZE[31322]</value>
+		<value condition="!IsEmpty(Window(Home).Property(Notify)) + !IsEmpty(Window(Home).Property(NotifyFileManager))">If you cannot locate the directory containing your background images, please add that location as a source in Kodi's File Manager. For more information check http://kodi.wiki/view/File_manager</value>
+	</variable>
+	<variable name="CustomConfirmYesLabelVar">
+		<value condition="!IsEmpty(Window(Home).Property(MissingDependency))">$LOCALIZE[24038]</value>
+		<value condition="!IsEmpty(Window(Home).Property(WidgetUpdate))">$LOCALIZE[10035]</value>
+		<value condition="!IsEmpty(Window(Home).Property(OfferReloadAfterConfirm))">$LOCALIZE[20183]</value>
+		<value>$LOCALIZE[107]</value>
+	</variable>
+	<variable name="CustomConfirmNoLabelVar">
+		<value condition="!IsEmpty(Window(Home).Property(MissingDependency)) | !IsEmpty(Window(Home).Property(WidgetUpdate)) | !IsEmpty(Window(Home).Property(OfferReloadAfterConfirm))">$LOCALIZE[222]</value>
+		<value>$LOCALIZE[106]</value>
+	</variable>
 	<variable name="FanartTimePerImageLabelVar">
 		<value condition="!IsEmpty(Skin.String(FanartTimePerImage))">$INFO[Skin.String(FanartTimePerImage)] $LOCALIZE[31090]</value>
 		<value>7 $LOCALIZE[31090]</value>
