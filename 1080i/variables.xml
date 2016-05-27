@@ -1909,6 +1909,14 @@
 		<value>$LOCALIZE[351]</value>
 	</variable>
 	<!-- Widget Settings -->
+	<variable name="Widget1DisplayTitleVar">
+		<value condition="!IsEmpty(Window.Property(widgetStyle))">$INFO[Window.Property(widgetName)]</value>
+		<value>$LOCALIZE[231]</value>
+	</variable>
+	<variable name="Widget2DisplayTitleVar">
+		<value condition="!IsEmpty(Window.Property(widgetStyle.2))">$INFO[Window.Property(widgetName.2)]</value>
+		<value>$LOCALIZE[231]</value>
+	</variable>
 	<variable name="WidgetStyleLabelVar">
 		<value condition="StringCompare(Window.Property(widgetStyle),List)">$LOCALIZE[535]</value>
 		<value condition="StringCompare(Window.Property(widgetStyle),Extended List)">$LOCALIZE[31711]</value>
