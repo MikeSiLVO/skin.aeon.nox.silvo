@@ -29,7 +29,7 @@
 				<ondown>9000</ondown>
 				<pagecontrol>-</pagecontrol>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
-				<visible>!Window.IsActive(script-skinshortcuts.xml) + !Window.IsActive(1140)</visible>
+				<visible>!Window.IsActive(script-skinshortcuts.xml) + !Window.IsActive(1140) + !Window.IsActive(1117)</visible>
 				<include>SettingsFadeEffect</include>
 				<itemlayout height="90" width="356">
 					<control type="image">
@@ -61,7 +61,7 @@
 						<width>356</width>
 						<height>90</height>
 						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
-						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
+						<animation effect="fade" start="100" end="60" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
 					</control>
 					<control type="label">
 						<width>356</width>
@@ -112,8 +112,8 @@
 						<onclick>noop</onclick>
 						<icon>-</icon>
 					</item>
-					<item id="10">
-						<label>31279</label>
+					<item id="7">
+						<label>10043</label>
 						<onclick>noop</onclick>
 						<icon>-</icon>
 					</item>
@@ -146,11 +146,11 @@
 				<font>font16_textbox</font>
 				<align>left</align>
 				<textcolor>grey2</textcolor>
-				<label>$VAR[SkinSettingsDescriptionVar]</label>
+				<label>[I]$VAR[SkinSettingsDescriptionVar][/I]</label>
 				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
 				<animation effect="fade" start="0" end="100" time="300" tween="sine" easing="inout">Visible</animation>
 				<animation effect="fade" start="100" end="0" time="0" tween="sine" easing="inout">Hidden</animation>
-				<visible>!Window.IsActive(script-skinshortcuts.xml) + !Window.IsActive(1140)</visible>
+				<visible>!Window.IsActive(script-skinshortcuts.xml) + !Window.IsActive(1140) + !Window.IsActive(1117)</visible>
 			</control>
 			<control type="scrollbar" id="60">
 				<left>1838</left>
@@ -167,7 +167,7 @@
 				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
 			</control>
 			<control type="group" id="9010">
-				<visible>!Window.IsActive(script-skinshortcuts.xml) + !Window.IsActive(1140)</visible>
+				<visible>!Window.IsActive(script-skinshortcuts.xml) + !Window.IsActive(1140) + !Window.IsActive(1117)</visible>
 				<include>SettingsFadeEffect</include>
 				<control type="grouplist" id="9001">
 					<description>control area</description>
@@ -915,7 +915,7 @@
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
 				</control>
-				<control type="grouplist" id="9011">
+				<control type="grouplist" id="9007">
 					<description>control area</description>
 					<left>522</left>
 					<top>32</top>
@@ -924,103 +924,83 @@
 					<itemgap>0</itemgap>
 					<pagecontrol>60</pagecontrol>
 					<onleft>9000</onleft>
-					<onright>9012</onright>
-					<onup>9011</onup>
-					<ondown>9011</ondown>
-					<visible>Container(9000).HasFocus(10)</visible>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1100</param>
-						<param name="AddonID">script.skinshortcuts</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1101</param>
-						<param name="AddonID">script.grab.fanart</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1102</param>
-						<param name="AddonID">service.library.data.provider</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1104</param>
-						<param name="AddonID">script.extendedinfo</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1105</param>
-						<param name="AddonID">script.skin.info.service</param>
-						<param name="visible">System.HasAddon(repository.aeon.nox.silvo)</param>
-					</include>
-					<include name="AddonStatusRadioButtonRepo">
-						<param name="ButtonID">11050</param>
-						<param name="AddonID">script.skin.info.service</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1106</param>
-						<param name="AddonID">script.skin.helper.service</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1107</param>
-						<param name="AddonID">script.artwork.downloader</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1103</param>
-						<param name="AddonID">script.toolbox</param>
-					</include>
-				</control>
-				<control type="grouplist" id="9012">
-					<description>control area</description>
-					<left>1180</left>
-					<top>32</top>
-					<width>658</width>
-					<height>720</height>
-					<itemgap>0</itemgap>
-					<pagecontrol>60</pagecontrol>
-					<onleft>9011</onleft>
 					<onright>60</onright>
-					<onup>9012</onup>
-					<ondown>9012</ondown>
-					<visible>Container(9000).HasFocus(10)</visible>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1200</param>
-						<param name="AddonID">script.image.resource.select</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1201</param>
-						<param name="AddonID">script.tv.show.next.aired</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1202</param>
-						<param name="AddonID">script.colorbox</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1203</param>
-						<param name="AddonID">script.cinemavision</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1204</param>
-						<param name="AddonID">script.trakt</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1205</param>
-						<param name="AddonID">script.videoextras</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1206</param>
-						<param name="AddonID">script.libraryeditor</param>
-						<param name="visible">System.HasAddon(repository.aeon.nox.silvo)</param>
-					</include>
-					<include name="AddonStatusRadioButtonRepo">
-						<param name="ButtonID">12060</param>
-						<param name="AddonID">script.libraryeditor</param>
-					</include>
-					<include name="AddonStatusRadioButton">
-						<param name="ButtonID">1207</param>
-						<param name="AddonID">script.moviesetart</param>
-						<param name="visible">System.HasAddon(repository.aeon.nox.silvo)</param>
-					</include>
-					<include name="AddonStatusRadioButtonRepo">
-						<param name="ButtonID">12070</param>
-						<param name="AddonID">script.moviesetart</param>
-					</include>
+					<onup>9007</onup>
+					<ondown>9007</ondown>
+					<visible>Container(9000).HasFocus(7)</visible>
+					<usecontrolcoords>true</usecontrolcoords>
+					<control type="image">
+						<description>LOGO</description>
+						<left>383</left>
+						<top>-40</top>
+						<width>550</width>
+						<height>200</height>
+						<aspectratio  align="center" aligny="top">keep</aspectratio>
+						<texture>aeon-nox-logo.png</texture>
+					</control>
+					<control type="label">
+						<top>-45</top>
+						<width>1316</width>
+						<height>80</height>
+						<align>center</align>
+						<textcolor>grey</textcolor>
+						<font>font_skinversion</font>
+						<label>$INFO[System.AddonVersion(skin.aeon.nox.silvo),v,]</label>
+					</control>
+					<control type="image">
+						<description>LOGO</description>
+						<left>545.5</left>
+						<top>-30</top>
+						<width>225</width>
+						<height>225</height>
+						<aspectratio  align="center" aligny="top">keep</aspectratio>
+						<texture>kodi.png</texture>
+					</control>
+					<control type="label">
+						<top>-30</top>
+						<width>1316</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<align>center</align>
+						<textcolor>grey</textcolor>
+						<font>font_kodiversion</font>
+						<label>$VAR[KodiVersionLabelVar]</label>
+					</control>
+					<control type="image" id="705">
+						<top>-90</top>
+						<width>1316</width>
+						<height>90</height>
+						<texture border="1">separator5.png</texture>
+					</control>
+					<control type="button" id="700">
+						<width>1316</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<align>center</align>
+						<font>font15</font>
+						<label>$LOCALIZE[31337]</label>
+						<onclick>ActivateWindow(1117)</onclick>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+					</control>
+					<control type="button" id="701">
+						<width>1316</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<align>center</align>
+						<font>font15</font>
+						<label>$LOCALIZE[31338]</label>
+						<onclick>ToggleDebug</onclick>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+					</control>
+					<control type="button" id="702">
+						<width>1316</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<align>center</align>
+						<font>font15</font>
+						<label>$LOCALIZE[31339]</label>
+						<onclick>Skin.ToggleDebug</onclick>
+					</control>
 				</control>
 			</control>
 		</control>

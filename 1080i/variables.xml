@@ -6,6 +6,7 @@
 		<value condition="!IsEmpty(Window(Home).Property(OfferReloadAfterConfirm))">$LOCALIZE[31316]</value>
 		<value condition="!IsEmpty(Window(Home).Property(NotWarnedOnHidingViz))">$LOCALIZE[31322]</value>
 		<value condition="!IsEmpty(Window(Home).Property(Notify)) + !IsEmpty(Window(Home).Property(NotifyFileManager))">$LOCALIZE[31323]</value>
+		<value condition="!IsEmpty(Window(Home).Property(Notify)) + !IsEmpty(Window(Home).Property(NotWarnedOnMuzicVizInfo))">$LOCALIZE[31333]</value>
 	</variable>
 	<variable name="CustomConfirmYesLabelVar">
 		<value condition="!IsEmpty(Window(Home).Property(MissingDependency))">$LOCALIZE[24038]</value>
@@ -114,7 +115,8 @@
 		<value>$INFO[ListItem.Property(UnWatchedEpisodes)]</value>
 	</variable>
 	<variable name="BreadcrumbsFillerVar">
-		<value condition="Window.IsActive(1140)">$LOCALIZE[20077]: Color customization</value>
+		<value condition="Window.IsActive(1140)">$LOCALIZE[20077]: $LOCALIZE[31340]</value>
+		<value condition="Window.IsActive(1117)">$LOCALIZE[20077]: $LOCALIZE[31279]</value>
 		<value condition="Container.Content(tvshows) | Container.Content(seasons)">$LOCALIZE[20343]: </value>
 		<value condition="SubString(Container.FolderPath,videodb://recentlyadded,Left)">$INFO[Window(home).Property(fakelabel)]</value>
 		<value condition="Container.Content(episodes) + !StringCompare(Container.FolderName,ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]: </value>
@@ -688,6 +690,7 @@
 		<value condition="Control.HasFocus(605)">$LOCALIZE[31853]</value>
 		<value condition="Control.HasFocus(606)">$LOCALIZE[31854]</value>
 		<value condition="Control.HasFocus(607)">$LOCALIZE[31174]</value>
+		<value condition="Control.HasFocus(700)">$LOCALIZE[31342]</value>
 		<value condition="Control.HasFocus(800)">$LOCALIZE[31748]</value>
 		<value condition="Control.HasFocus(801)">$LOCALIZE[31749]</value>
 		<value condition="Control.HasFocus(802)">$LOCALIZE[31750]</value>
@@ -700,9 +703,6 @@
 		<value condition="Control.HasFocus(809)">$LOCALIZE[31757]</value>
 		<value condition="Control.HasFocus(810)">$LOCALIZE[31758]</value>
 		<value condition="Control.HasFocus(811)">$LOCALIZE[31759]</value>
-		<value condition="Control.HasFocus(1100) | Control.HasFocus(1101) | Control.HasFocus(1102)">This script is [COLOR FF00991F]REQUIRED[/COLOR]</value>
-		<value condition="Control.HasFocus(1103) | Control.HasFocus(1104) | Control.HasFocus(1105)  | Control.HasFocus(1106) | Control.HasFocus(1107) | Control.HasFocus(1108)">This script is [COLOR FF007ACD]HIGHLY RECOMMENDED[/COLOR][CR]Some recommended scripts may be unsuitable for low performance devices</value>
-		<value condition="Control.HasFocus(1200) | Control.HasFocus(1201) | Control.HasFocus(1202) | Control.HasFocus(1203) | Control.HasFocus(1204) | Control.HasFocus(1205) | Control.HasFocus(1206) | Control.HasFocus(1207)">This script is [COLOR FFB38E00]OPTIONAL[/COLOR][CR]Some optional scripts may be unsuitable for low performance devices</value>
 		<value condition="Control.HasFocus(90012)">$LOCALIZE[31925]</value>
 		<value condition="Control.HasFocus(90013)">$LOCALIZE[31926]</value>
 		<value condition="Control.HasFocus(90014)">$LOCALIZE[31930]</value>
@@ -729,6 +729,11 @@
 		<value condition="Control.HasFocus()"></value>
 		<value condition="Control.HasFocus()"></value>
 		<value condition="Control.HasFocus()"></value> -->
+	</variable>
+	<variable name="AddonStatusDescriptionVar">
+		<value condition="Control.HasFocus(100) | Control.HasFocus(101) | Control.HasFocus(102) | Control.HasFocus(102) | Control.HasFocus(102) | Control.HasFocus(103) | Control.HasFocus(104) | Control.HasFocus(105) | Control.HasFocus(106) | Control.HasFocus(107) | Control.HasFocus(108) | Control.HasFocus(109)">$LOCALIZE[31325]</value>
+		<value condition="Control.HasFocus(200) | Control.HasFocus(201) | Control.HasFocus(202) | Control.HasFocus(203) | Control.HasFocus(2030) | Control.HasFocus(204) | Control.HasFocus(205) | Control.HasFocus(206) | Control.HasFocus(207) | Control.HasFocus(208) | Control.HasFocus(209) | Control.HasFocus(210) | Control.HasFocus(211) | Control.HasFocus(212) | Control.HasFocus(213)">$LOCALIZE[31326]</value>
+		<value condition="Control.HasFocus(300) | Control.HasFocus(301) | Control.HasFocus(302) | Control.HasFocus(303) | Control.HasFocus(304) | Control.HasFocus(305) | Control.HasFocus(306) | Control.HasFocus(307) | Control.HasFocus(308) | Control.HasFocus(309) | Control.HasFocus(3090) | Control.HasFocus(310) | Control.HasFocus(311) | Control.HasFocus(3110)">$LOCALIZE[31327]</value>
 	</variable>
 	<variable name="lowermainmenuVar">
 		<value condition="Skin.HasSetting(lowermainmenu)">$LOCALIZE[418]</value>
@@ -1907,6 +1912,12 @@
 		<value condition="StringCompare(Window(home).Property(actualViewtype),BigList) + Container.Content(movies) + Skin.HasSetting(noindicatorbiglist)">$LOCALIZE[16041]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),BigList) + Container.Content(episodes) + Skin.HasSetting(noindicatorbiglistepisode)">$LOCALIZE[16041]</value>
 		<value>$LOCALIZE[351]</value>
+	</variable>
+	<variable name="KodiVersionLabelVar">
+		<value condition="SubString(System.BuildVersion,17.,Left)">KRYPTON - [COLOR invalid]$LOCALIZE[31341][/COLOR]</value>
+		<value condition="SubString(System.BuildVersion,16.,Left)">JARVIS$INFO[System.BuildVersion, - v,]$INFO[System.BuildDate, (,)]</value>
+		<value condition="SubString(System.BuildVersion,15.,Left)">ISENGARD - [COLOR invalid]$LOCALIZE[31341][/COLOR]</value>
+		<value condition="SubString(System.BuildVersion,14.,Left)">HELIX - [COLOR invalid]$LOCALIZE[31341][/COLOR]</value>
 	</variable>
 	<!-- Widget Settings -->
 	<variable name="Widget1DisplayTitleVar">

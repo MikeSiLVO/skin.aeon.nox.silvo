@@ -2247,8 +2247,6 @@
 						<left>397</left>
 						<width>120</width>
 						<height>90</height>
-						<align>left</align>
-						<aligny>center</aligny>
 						<visible>Container.Content(tvshows)</visible>
 						<control type="image" id="9900$PARAM[StudioLabelID]">
 							<width>120</width>
@@ -2615,48 +2613,50 @@
 			<colordiffuse>$PARAM[ColorStringVar]</colordiffuse>
 		</definition>
 	</include>
-	<include name="AddonStatusRadioButton">
+	<include name="AddonStatusButton">
 		<param name="ButtonID" />
 		<param name="AddonID" />
-		<param name="visible" default="true" />
 		<definition>
-			<control type="radiobutton" id="$PARAM[ButtonID]">
-				<width>658</width>
-				<height>90</height>
-				<textoffsetx>30</textoffsetx>
-				<font>font15</font>
-				<label>$PARAM[AddonID]</label>
-				<textureradioonfocus colordiffuse="FF00991F">android/btn_radio_on_holo_dark.png</textureradioonfocus>
-				<textureradioonnofocus colordiffuse="FF00991F">android/btn_radio_on_holo_dark.png</textureradioonnofocus>
-				<textureradioofffocus colordiffuse="invalid">android/btn_radio_on_holo_dark.png</textureradioofffocus>
-				<textureradiooffnofocus colordiffuse="invalid">android/btn_radio_on_holo_dark.png</textureradiooffnofocus>
-				<onclick condition="!System.HasAddon($PARAM[AddonID])">RunPlugin(plugin://$PARAM[AddonID])</onclick>
-				<onclick condition="System.HasAddon($PARAM[AddonID])">Addon.OpenSettings($PARAM[AddonID])</onclick>
-				<selected>System.HasAddon($PARAM[AddonID])</selected>
-				<texturenofocus border="1">separator5.png</texturenofocus>
-				<visible>$PARAM[visible]</visible>
-			</control>
+			<width>1316</width>
+			<height>90</height>
+			<textoffsetx>30</textoffsetx>
+			<font>font15</font>
+			<label>$PARAM[AddonID]</label>
+			<onclick condition="!System.HasAddon($PARAM[AddonID])">InstallAddon($PARAM[AddonID])</onclick>
+			<onclick condition="System.HasAddon($PARAM[AddonID])">Addon.OpenSettings($PARAM[AddonID])</onclick>
+			<selected>System.HasAddon($PARAM[AddonID])</selected>
+			<texturenofocus border="1">separator5.png</texturenofocus>
 		</definition>
 	</include>
-	<include name="AddonStatusRadioButtonRepo">
+	<include name="AddonStatusButtonNoRepo">
 		<param name="ButtonID" />
 		<param name="AddonID" />
 		<definition>
-			<control type="radiobutton" id="$PARAM[ButtonID]">
-				<width>658</width>
-				<height>90</height>
-				<textoffsetx>30</textoffsetx>
-				<font>font15</font>
-				<label>$PARAM[AddonID]</label>
-				<textureradioonfocus colordiffuse="FF00991F">android/btn_radio_on_holo_dark.png</textureradioonfocus>
-				<textureradioonnofocus colordiffuse="FF00991F">android/btn_radio_on_holo_dark.png</textureradioonnofocus>
-				<textureradioofffocus colordiffuse="invalid">android/btn_radio_on_holo_dark.png</textureradioofffocus>
-				<textureradiooffnofocus colordiffuse="invalid">android/btn_radio_on_holo_dark.png</textureradiooffnofocus>
-				<onclick condition="!System.HasAddon(repository.aeon.nox.silvo)">Notification(Install SiLVO repo to install automatically,Without repo you must install manually,7000,DefaultIconWarning.png)</onclick>
-				<selected>System.HasAddon($PARAM[AddonID])</selected>
-				<texturenofocus border="1">separator5.png</texturenofocus>
-				<visible>!System.HasAddon(repository.aeon.nox.silvo)</visible>
-			</control>
+			<width>1316</width>
+			<height>90</height>
+			<textoffsetx>30</textoffsetx>
+			<font>font15</font>
+			<label>$PARAM[AddonID]</label>
+			<onclick condition="!System.HasAddon(repository.aeon.nox.silvo)">SetProperty(Notify,True,home)</onclick>
+			<onclick condition="!System.HasAddon(repository.aeon.nox.silvo)">SetProperty(NotifyNoRepo,True,home)</onclick>
+			<onclick condition="!System.HasAddon(repository.aeon.nox.silvo)">ActivateWindow(1126)</onclick>
+			<selected>System.HasAddon($PARAM[AddonID])</selected>
+			<texturenofocus border="1">separator5.png</texturenofocus>
+		</definition>
+	</include>
+	<include name="CustomColorRadioButton">
+		<param name="ColorStringVar" />
+		<definition>
+			<width>1316</width>
+			<height>90</height>
+			<textoffsetx>30</textoffsetx>
+			<font>font15</font>
+			<textureradioonfocus colordiffuse="$PARAM[ColorStringVar]">color_swatch.png</textureradioonfocus>
+			<textureradioonnofocus colordiffuse="$PARAM[ColorStringVar]">color_swatch.png</textureradioonnofocus>
+			<textureradioofffocus colordiffuse="$PARAM[ColorStringVar]">color_swatch.png</textureradioofffocus>
+			<textureradiooffnofocus colordiffuse="$PARAM[ColorStringVar]">color_swatch.png</textureradiooffnofocus>
+			<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">listselect_fo.png</texturefocus>
+			<texturenofocus border="1">separator5.png</texturenofocus>
 		</definition>
 	</include>
 	<!-- <include name="AutoConfig">
