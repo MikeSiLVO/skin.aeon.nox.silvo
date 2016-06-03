@@ -28,6 +28,13 @@
 					<width>FullScreenWidth</width>
 					<height>87</height>
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_bar.png</texture>
+					<visible>!Skin.HasSetting(Enable.ColoredSystemBars)</visible>
+				</control>
+				<control type="image">
+					<width>FullScreenWidth</width>
+					<height>87</height>
+					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_bar_white.png</texture>
+					<visible>Skin.HasSetting(Enable.ColoredSystemBars)</visible>
 				</control>
 				<include condition="System.HasAddon(service.library.data.provider)">PlayListStatsList</include>
 				<control type="label">
@@ -150,8 +157,6 @@
 				<control type="group" id="9001">
 					<left>0</left>
 					<top>159</top>
-					<ondown condition="System.HasMediaDVD | Control.IsVisible(9027)">9020</ondown>
-					<ondown condition="![System.HasMediaDVD | Control.IsVisible(9027)]">9000</ondown>
 					<include condition="[StringCompare(Skin.String(RSS.Position),$LOCALIZE[571]) | !StringCompare(Skin.String(RSS.Position),$LOCALIZE[571]) + !Skin.HasSetting(Enable.VisibleSubmenu)] + system.getbool(lookandfeel.enablerssfeeds) | [!system.getbool(lookandfeel.enablerssfeeds) + !Skin.HasSetting(Enable.VisibleSubmenu)]">SubMenuAnimation</include>
 					<animation effect="slide" start="1870,0" end="0,0" delay="300" time="240" condition="!Window.Previous(startup)">WindowOpen</animation>
 					<animation effect="slide" start="1870,0" end="0,0" delay="200" time="480" condition="Window.Previous(startup)">WindowOpen</animation>
@@ -160,6 +165,14 @@
 						<width>FullScreenWidth</width>
 						<height>87</height>
 						<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_bar.png</texture>
+						<visible>Skin.HasSetting(Enable.ColoredSystemBars)</visible>
+					</control>
+					<control type="image">
+						<left>0</left>
+						<width>FullScreenWidth</width>
+						<height>87</height>
+						<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_bar_white.png</texture>
+						<visible>Skin.HasSetting(Enable.ColoredSystemBars)</visible>
 					</control>
 					<control type="fixedlist" id="9010">
 						<left>210</left>
@@ -249,13 +262,13 @@
 				<control type="image">
 					<top>-4</top>
 					<width>FullScreenWidth</width>
-					<height>234</height>
+					<height>230</height>
 					<texture colordiffuse="$VAR[ThemeHomeMenuBarColor]">homemenu_back.png</texture>
 				</control>
 				<control type="image">
-					<top>-4</top>
+					<top>1</top>
 					<width>FullScreenWidth</width>
-					<height>234</height>
+					<height>225</height>
 					<texture colordiffuse="$VAR[ThemeHomeMenuBarColor]">homemenu_back_white.png</texture>
 					<visible>Skin.HasSetting(Enable.ColoredMenuBar)</visible>
 				</control>
@@ -325,7 +338,6 @@
 				<animation effect="slide" end="-500,0" time="240">WindowClose</animation>
 				<animation effect="slide" start="0,0" end="350,0" time="280" delay="0" condition="Control.HasFocus(90100)">conditional</animation>
 				<left>-350</left>
-				<onleft>9002</onleft>
 				<control type="image">
 					<width>350</width>
 					<height>1080</height>
@@ -391,19 +403,35 @@
 				<height>87</height>
 				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_bar.png</texture>
 				<visible>system.getbool(lookandfeel.enablerssfeeds) + !StringCompare(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + IsEmpty(Skin.String(VerticalMenuSystemBar.Position))]</visible>
-				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="!Window.IsVisible(1199) + Substring(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
-				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="!Window.IsVisible(1199) + Substring(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus">Conditional</animation>
-				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="Window.IsVisible(1199)">Conditional</animation>
+				<visible>!Skin.HasSetting(Enable.ColoredSystemBars)</visible>
+				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + [SubString(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus] | [SubString(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus]">Conditional</animation>
+			</control>
+			<control type="image">
+				<left>510</left>
+				<width>1820</width>
+				<height>87</height>
+				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + [SubString(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus] | [SubString(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus]">Conditional</animation>
+				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_bar_white.png</texture>
+				<visible>Skin.HasSetting(Enable.ColoredSystemBars)</visible>
+				<visible>system.getbool(lookandfeel.enablerssfeeds) + !StringCompare(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + IsEmpty(Skin.String(VerticalMenuSystemBar.Position))]</visible>
 			</control>
 			<control type="image">
 				<left>420</left>
 				<width>90</width>
 				<height>87</height>
 				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_end.png</texture>
+				<visible>!Skin.HasSetting(Enable.ColoredSystemBars)</visible>
 				<visible>system.getbool(lookandfeel.enablerssfeeds) + !StringCompare(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + IsEmpty(Skin.String(VerticalMenuSystemBar.Position))]</visible>
-				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="!Window.IsVisible(1199) + Substring(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
-				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="!Window.IsVisible(1199) + Substring(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus">Conditional</animation>
-				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="Window.IsVisible(1199)">Conditional</animation>
+				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + [SubString(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus] | [SubString(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus]">Conditional</animation>
+			</control>
+			<control type="image">
+				<left>422</left>
+				<width>90</width>
+				<height>87</height>
+				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_end_white.png</texture>
+				<visible>Skin.HasSetting(Enable.ColoredSystemBars)</visible>
+				<visible>system.getbool(lookandfeel.enablerssfeeds) + !StringCompare(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + IsEmpty(Skin.String(VerticalMenuSystemBar.Position))]</visible>
+				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + [SubString(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus] | [SubString(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus]">Conditional</animation>
 			</control>
 			<control type="image">
 				<left>510</left>
@@ -411,19 +439,35 @@
 				<height>87</height>
 				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_bar.png</texture>
 				<visible>system.getbool(lookandfeel.enablerssfeeds) + StringCompare(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + StringCompare(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]</visible>
-				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="!Window.IsVisible(1199) + Substring(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
-				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="!Window.IsVisible(1199) + Substring(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus">Conditional</animation>
-				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="Window.IsVisible(1199)">Conditional</animation>
+				<visible>!Skin.HasSetting(Enable.ColoredSystemBars)</visible>
+				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + [SubString(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus] | [SubString(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus]">Conditional</animation>
+			</control>
+			<control type="image">
+				<left>510</left>
+				<width>1820</width>
+				<height>87</height>
+				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_bar_white.png</texture>
+				<visible>system.getbool(lookandfeel.enablerssfeeds) + StringCompare(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + StringCompare(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]</visible>
+				<visible>Skin.HasSetting(Enable.ColoredSystemBars)</visible>
+				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + [SubString(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus] | [SubString(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus]">Conditional</animation>
 			</control>
 			<control type="image">
 				<left>420</left>
 				<width>90</width>
 				<height>87</height>
 				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_end.png</texture>
+				<visible>!Skin.HasSetting(Enable.ColoredSystemBars)</visible>
 				<visible>system.getbool(lookandfeel.enablerssfeeds) + StringCompare(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + StringCompare(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]</visible>
-				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="!Window.IsVisible(1199) + Substring(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
-				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="!Window.IsVisible(1199) + Substring(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus">Conditional</animation>
-				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="Window.IsVisible(1199)">Conditional</animation>
+				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + [SubString(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus] | [SubString(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus]">Conditional</animation>
+			</control>
+			<control type="image">
+				<left>422</left>
+				<width>90</width>
+				<height>87</height>
+				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_end_white.png</texture>
+				<visible>Skin.HasSetting(Enable.ColoredSystemBars)</visible>
+				<visible>system.getbool(lookandfeel.enablerssfeeds) + StringCompare(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + StringCompare(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]</visible>
+				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + [SubString(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus] | [SubString(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus]">Conditional</animation>
 			</control>
 			<control type="group">
 				<animation effect="slide" end="0,45" time="320" tween="cubic" easing="inout" condition="system.getbool(lookandfeel.enablerssfeeds) + StringCompare(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + StringCompare(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]">Conditional</animation>
