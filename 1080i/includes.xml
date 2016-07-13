@@ -1985,7 +1985,10 @@
 			<control type="group">
 				<top>254</top>
 				<left>300</left>
-				<animation effect="slide" start="0,-960" end="0,0" time="720" tween="cubic">Visible</animation>
+				<animation type="Visible" reversible="false">
+					<effect type="zoom" start="80" end="100" center="960,540" delay="160" tween="back" time="240" />
+					<effect type="fade" delay="160" end="100" time="240" />
+				</animation>
 				<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(sets)] + System.IdleTime(3)</visible>
 				<visible>true</visible>
 				<control type="image">
