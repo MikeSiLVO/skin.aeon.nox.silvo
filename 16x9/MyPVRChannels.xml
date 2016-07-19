@@ -759,15 +759,22 @@
 								<height>63</height>
 								<label>[B][COLOR white]$INFO[ListItem.Label][/COLOR][/B] $INFO[ListItem.Title, ]</label>
 							</control>
-							<control type="image">
-								<animation effect="fade" start="100" end="40" time="1200" pulse="true" condition="true">conditional</animation>
+							<!--<control type="image">
+								<animation effect="fade" start="100" end="40" time="2000" pulse="true" condition="true">conditional</animation>
 								<left>850</left>
 								<top>12</top>
 								<width>35</width>
 								<height>35</height>
 								<texture>new_pvr/PVR-IsRecording.png</texture>
 								<visible>ListItem.IsRecording</visible>
-							</control>
+							</control>-->
+                            <control type="group">
+                                <left>830</left>
+                                <top>12</top>
+                                <include>NowRecordingIcon</include>
+                                <visible>ListItem.IsRecording</visible>
+                            </control>
+                            
 							<control type="image">
 								<visible>true</visible>
 								<left>880</left>
@@ -817,7 +824,7 @@
 								<height>63</height>
 								<label>[B][COLOR white]$INFO[ListItem.Label][/COLOR][/B] $INFO[ListItem.Title, ]</label>
 							</control>
-							<control type="image">
+							<!--<control type="image">
 								<animation effect="fade" start="100" end="40" time="1200" pulse="true" condition="true">conditional</animation>
 								<left>850</left>
 								<top>12</top>
@@ -825,7 +832,13 @@
 								<height>35</height>
 								<texture>new_pvr/PVR-IsRecording.png</texture>
 								<visible>ListItem.IsRecording</visible>
-							</control>
+							</control>-->
+                            <control type="group">
+                                <left>830</left>
+                                <top>12</top>
+                                <include>NowRecordingIcon</include>
+                                <visible>ListItem.IsRecording</visible>
+                            </control>
 							<control type="image">
 								<visible>true</visible>
 								<left>880</left>
