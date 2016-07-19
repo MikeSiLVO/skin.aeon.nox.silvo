@@ -3,23 +3,73 @@
 	<defaultcontrol always="true">11</defaultcontrol>
 	<coordinates>
 		<system>1</system>
-		<left>450</left>
+		<left>350</left>
 		<top>20</top>
 	</coordinates>
 	<animation effect="fade" start="0" end="100" time="300" easing="out">WindowOpen</animation>
 	<animation effect="fade" start="100" end="0" time="300" easing="in">WindowClose</animation>
 	<controls>
+		<!-- new channel Logo on the left -->
+		<control type="group">
+			<control type="image"> <!-- BG -->
+				<left>-320</left>
+				<top>20</top>
+				<width>330</width>
+				<height>310</height>
+				<texture border="40">listpanel_back.png</texture>
+			</control>
+            <control type="image"> <!-- Box above BG -->
+				<left>-310</left>
+				<top>30</top>
+				<width>310</width>
+				<height>290</height>
+				<texture>new_pvr/texturebg3.png</texture>
+				<align>center</align>
+				<visible>false</visible>
+			</control>
+			<control type="image" id="1"> <!-- Channel Logo -->
+				<left>-280</left>
+				<top>60</top>
+				<width>240</width>
+				<height>140</height>
+				<align>center</align>
+				<texture>$INFO[VideoPlayer.Cover]</texture>
+				<aspectratio>keep</aspectratio>
+			</control>
+			<control type="label"> <!-- Channel Name -->
+				<left>-300</left>
+				<top>220</top>
+				<width>280</width>
+				<height>20</height>
+				<align>center</align>
+				<font>font15</font>
+				<textcolor>white</textcolor>
+				<scroll>true</scroll>
+				<label>[B]$INFO[VideoPlayer.ChannelName][/B]</label>
+			</control>
+            <control type="label"> <!-- StartDate -->
+                <left>-300</left>
+                <top>270</top>
+                <width>280</width>
+                <height>20</height>
+                <align>center</align>
+                <font>font11</font>
+                <textcolor>white</textcolor>
+                <scroll>true</scroll>
+                <label>$INFO[Container(11).ListItemPosition(0).StartDate]</label>
+            </control>
+		</control>
 		<control type="group">
 			<control type="image">
 				<top>20</top>
-				<width>1000</width>
+				<width>1200</width>
 				<height>1025</height>
 				<texture border="40">listpanel_back.png</texture>
 			</control>
 			<control type="wraplist" id="11">
 				<left>31</left>
 				<top>53</top>
-				<width>937</width>
+				<width>1137</width>
 				<height>970</height>
 				<onleft>60</onleft>
 				<onright>60</onright>
@@ -32,7 +82,7 @@
 				<itemlayout height="70">
 					<control type="image">
 						<top>10</top>
-						<width>937</width>
+						<width>1137</width>
 						<height>60</height>
 						<texture border="1">separator2.png</texture>
 					</control>
@@ -44,11 +94,11 @@
 						<font>font15</font>
 						<textcolor>white</textcolor>
 						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
-						<label>$INFO[ListItem.StartTime]</label>
+                        <label>$INFO[ListItem.StartTime]</label>
 					</control>
 					<control type="label">
 						<left>130</left>
-						<width>780</width>
+						<width>980</width>
 						<height>60</height>
 						<font>font15</font>
 						<textoffsetx>15</textoffsetx>
@@ -89,12 +139,12 @@
 				<focusedlayout height="120">
 					<control type="image">
 						<top>60</top>
-						<width>937</width>
+						<width>1123</width>
 						<height>60</height>
 						<texture border="1">separator2.png</texture>
 					</control>
 					<control type="image">
-						<width>937</width>
+						<width>1123</width>
 						<height>120</height>
 						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
 						<visible>Control.HasFocus(11)</visible>
@@ -112,7 +162,7 @@
 					</control>
 					<control type="label">
 						<left>130</left>
-						<width>720</width>
+						<width>984</width>
 						<height>60</height>
 						<font>font15</font>
 						<textoffsetx>15</textoffsetx>
@@ -122,19 +172,9 @@
 						<animation effect="slide" start="0,0" end="40,0" time="0" tween="sine" easing="in" condition="[ListItem.HasTimer | ListItem.IsRecording]">Conditional</animation>
 					</control>
 					<control type="label">
-						<left>730</left>
-						<width>200</width>
-						<height>60</height>
-						<font>font11</font>
-						<align>right</align>
-						<textoffsetx>0</textoffsetx>
-						<textcolor>white2</textcolor>
-						<label>$INFO[ListItem.StartDate]</label>
-					</control>
-					<control type="label">
 						<top>50</top>
 						<left>130</left>
-						<width>800</width>
+						<width>984</width>
 						<height>60</height>
 						<font>font14</font>
 						<textoffsetx>15</textoffsetx>
@@ -172,7 +212,7 @@
 				</focusedlayout>
 			</control>
 			<control type="scrollbar" id="60">
-				<left>1350</left>
+				<left>1156</left>
 				<top>53</top>
 				<width>14</width>
 				<height>990</height>
