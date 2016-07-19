@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">62</defaultcontrol>
+	<controls>
+		<control type="button" id="62">
+			<onclick>Dialog.Close(textviewer)</onclick>
+			<onleft>Dialog.Close(textviewer)</onleft>
+			<onright>Dialog.Close(textviewer)</onright>
+			<onup>PageUp(61)</onup>
+			<ondown>PageDown(61)</ondown>
+			<include>HiddenObject</include>
+		</control>
+		<control type="group">
+			<include>WindowSettingsFadeAnimation</include>
+			<left>-40</left>
+			<top>-92</top>
+			<animation effect="slide" tween="cubic" time="0" end="0,190" condition="Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)">Conditional</animation>
+			<control type="image">
+				<left>490</left>
+				<top>0</top>
+				<width>1380</width>
+				<height>904</height>
+				<texture border="40">listpanel_back.png</texture>
+			</control>
+			<control type="label" id="1">
+				<description>header label</description>
+				<left>552</left>
+				<top>32</top>
+				<width>1256</width>
+				<height>40</height>
+				<font>font16_title</font>
+				<align>center</align>
+				<textcolor>dialogheader</textcolor>
+			</control>
+			<control type="textbox" id="5">
+				<description>textarea</description>
+				<left>552</left>
+				<top>72</top>
+				<width>1256</width>
+				<height>800</height>
+				<font>font15_textbox</font>
+				<align>left</align>
+				<textcolor>grey2</textcolor>
+				<pagecontrol>61</pagecontrol>
+			</control>
+			<control type="scrollbar" id="61">
+				<left>1838</left>
+				<top>32</top>
+				<width>14</width>
+				<height>840</height>
+				<ondown>61</ondown>
+				<onup>61</onup>
+				<showonepage>false</showonepage>
+				<texturesliderbackground>-</texturesliderbackground>
+				<texturesliderbar border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
+				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
+				<orientation>vertical</orientation>
+			</control>
+		</control>
+	</controls>
+</window>

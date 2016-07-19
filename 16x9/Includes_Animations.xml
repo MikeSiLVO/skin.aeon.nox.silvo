@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="WindowOpenCloseAnimation">
+		<animation effect="slide" tween="cubic" time="720" start="0,1080" end="0,0" condition="Window.Previous(home)">WindowOpen</animation>
+		<animation effect="slide" tween="cubic" time="720" end="0,1080" start="0,0" condition="Window.Next(home)">WindowClose</animation>
+	</include>
+	<include name="DialogOpenCloseAnimation">
+		<animation type="WindowOpen" reversible="false">
+			<effect type="zoom" start="150" end="100" center="960,540" time="300" tween="cubic" easing="out" />
+			<effect type="fade" end="100" time="150" />
+		</animation>
+		<animation type="WindowClose" reversible="false">
+			<effect type="fade" start="100" end="0" time="100" delay="100" />
+			<effect type="zoom" start="100" end="130" center="960,540" time="200" tween="cubic" easing="in" />
+		</animation>
+	</include>
+	<include name="VisibleFadeAnimation">
+		<animation effect="fade" time="300">Visible</animation>
+		<animation effect="fade" time="300">Hidden</animation>
+	</include>
+	<include name="SettingsFadeAnimation">
+		<animation effect="fade" time="100" delay="200">Visible</animation>
+		<animation effect="fade" time="50">Hidden</animation>
+	</include>
+	<include name="WindowSettingsFadeAnimation">
+		<animation effect="fade" time="100" delay="200">WindowOpen</animation>
+		<animation effect="fade" time="50">WindowClose</animation>
+	</include>
+	<include name="ViewAnimation">
+		<animation effect="slide" tween="cubic" time="720" start="0,1080" end="0,0">VisibleChange</animation>
+	</include>
+	<include name="WindowASViewAnimation">
+		<animation effect="slide" tween="cubic" time="720" start="0,1080" end="0,0">WindowOpen</animation>
+		<animation effect="slide" tween="cubic" time="720" end="0,1080" start="0,0">WindowClose</animation>
+	</include>
+	<include name="DialogPopupAnimation">
+		<animation type="WindowOpen" reversible="false">
+			<effect type="slide" start="0,-196" end="0" tween="cubic" easing="inout" time="400" />
+		</animation>
+		<animation type="WindowClose" reversible="false">
+			<effect type="slide" end="0,-196" start="0" tween="cubic" easing="inout" time="400" />
+		</animation>
+	</include>
+	<include name="SubMenuAnimation">
+		<animation effect="slide" end="0,-90" time="300" tween="cubic" easing="inout" condition="!ControlGroup(9001).HasFocus()">conditional</animation>
+		<animation effect="fade" start="100" end="0" time="300" condition="!ControlGroup(9001).HasFocus()">conditional</animation>
+	</include>
+	<include name="InfoPanelDelayAnimation">
+		<visible>![Container.OnNext | Container.OnPrevious]</visible>
+		<animation effect="fade" end="100" time="120" delay="2000" condition="String.IsEqual(Skin.String(InfoPanel.Delay),2)">Visible</animation>
+		<animation effect="fade" end="100" time="120" delay="3000" condition="String.IsEqual(Skin.String(InfoPanel.Delay),3)">Visible</animation>
+		<animation effect="fade" end="100" time="120" delay="4000" condition="String.IsEqual(Skin.String(InfoPanel.Delay),4)">Visible</animation>
+		<animation effect="fade" end="100" time="120" delay="5000" condition="String.IsEqual(Skin.String(InfoPanel.Delay),5)">Visible</animation>
+	</include>
+	<include name="ShowCaseDelayAnimation">
+		<visible>![Container.OnNext | Container.OnPrevious]</visible>
+		<animation effect="fade" end="100" time="120" delay="2000" condition="String.IsEqual(Skin.String(ShowCase.Delay),2)">Visible</animation>
+		<animation effect="fade" end="100" time="120" delay="3000" condition="String.IsEqual(Skin.String(ShowCase.Delay),3)">Visible</animation>
+		<animation effect="fade" end="100" time="120" delay="4000" condition="String.IsEqual(Skin.String(ShowCase.Delay),4)">Visible</animation>
+		<animation effect="fade" end="100" time="120" delay="5000" condition="String.IsEqual(Skin.String(ShowCase.Delay),5)">Visible</animation>
+	</include>
+	<include name="MyFlixDelayAnimation">
+		<visible>![Container.OnNext | Container.OnPrevious]</visible>
+		<animation effect="fade" end="100" time="120" delay="2000" condition="String.IsEqual(Skin.String(MyFlix.Delay),2)">Visible</animation>
+		<animation effect="fade" end="100" time="120" delay="3000" condition="String.IsEqual(Skin.String(MyFlix.Delay),3)">Visible</animation>
+		<animation effect="fade" end="100" time="120" delay="4000" condition="String.IsEqual(Skin.String(MyFlix.Delay),4)">Visible</animation>
+		<animation effect="fade" end="100" time="120" delay="5000" condition="String.IsEqual(Skin.String(MyFlix.Delay),5)">Visible</animation>
+	</include>
+	<include name="OpenCaseAnimation">
+		<animation type="conditional" reversible="false" condition="[!String.IsEmpty(Control.GetLabel(4444)) + Control.IsVisible(4444)] + !String.IsEmpty(ListItem.Title)">
+			<effect type="rotatey" center="19" start="0" end="70" time="1000" tween="quadratic" easing="out" />
+			<effect type="rotatey" delay="3500" center="19" start="0" end="-70" time="1000" tween="quadratic" easing="out" />
+		</animation>
+		<animation type="conditional" reversible="false" condition="[!String.IsEmpty(Control.GetLabel(4446)) + Control.IsVisible(4446)]">
+			<effect type="rotatey" center="19" start="0" end="70" time="1000" tween="quadratic" easing="out" />
+			<effect type="rotatey" delay="6000" center="19" start="0" end="-70" time="1000" tween="quadratic" easing="out" />
+		</animation>
+	</include>
+	<include name="MyFlixModAnimation">
+		<animation type="conditional" reversible="false" condition="[!String.IsEmpty(Control.GetLabel(4447)) + Control.IsVisible(4447)] + Skin.HasSetting(Enable.MyFlix.OpenCase) + Skin.HasSetting(Enable.MyFlix.Cases)">
+			<effect type="rotatey" center="19" start="0" end="40" time="1000" tween="quadratic" easing="out" />
+			<effect type="rotatey" delay="3500" center="19" start="0" end="-40" time="1000" tween="quadratic" easing="out" />
+		</animation>
+		<animation type="conditional" reversible="false" condition="[!String.IsEmpty(Control.GetLabel(4448)) + Control.IsVisible(4448)] + Skin.HasSetting(Enable.MyFlix.OpenCase) + Skin.HasSetting(Enable.MyFlix.Cases)">
+			<effect type="rotatey" center="19" start="0" end="40" time="1000" tween="quadratic" easing="out" />
+			<effect type="rotatey" delay="6000" center="19" start="0" end="-40" time="1000" tween="quadratic" easing="out" />
+		</animation>
+	</include>
+	<include name="ShowCaseModDiscAnimation">
+		<animation type="Conditional" condition="[!String.IsEmpty(Control.GetLabel(4444)) + Control.IsVisible(4444)]" reversible="false">
+			<effect type="slide" start="1100,0" end="0,0" delay="0" time="2600" tween="cubic" easing="inout" />
+			<effect type="rotate" start="0" center="auto" end="720" delay="0" time="2600" tween="cubic" easing="inout" />
+		</animation>
+	</include>
+	<include name="AnimatedBackgroundAnimation">
+		<animation effect="zoom" start="110" end="130" center="auto" time="9000" pulse="true" condition="Skin.HasSetting(Enable.AnimatedBackgrounds)">Conditional</animation>
+		<animation effect="slide" start="-15,-15" end="15,15" time="4500" pulse="true" condition="Skin.HasSetting(Enable.AnimatedBackgrounds)">Conditional</animation>
+	</include>
+	<include name="SlideLeftSpinningDiscAnimation">
+		<animation type="WindowOpen" reversible="false">
+			<effect type="slide" tween="cubic" easing="inout" time="1500" delay="100" start="-800" end="0" />
+			<effect type="rotate" end="-360" center="auto" time="2000" delay="0" loop="false" tween="cubic" easing="inout" />
+		</animation>
+		<animation type="Conditional" reversible="false" condition="!Container.OnNext + !Container.OnPrevious">
+			<effect type="rotate" end="-360" center="auto" time="6400" delay="1200" loop="false" tween="cubic" easing="inout" />
+		</animation>
+	</include>
+</includes>

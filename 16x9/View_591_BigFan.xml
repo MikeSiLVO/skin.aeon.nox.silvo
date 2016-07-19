@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<includes>
+	<include name="contents591list">
+		<width>1920</width>
+		<height>1080</height>
+		<onup>SetProperty(MediaMenu,True,home)</onup>
+		<onup>SetFocus(9050)</onup>
+		<onleft>591</onleft>
+		<onright>591</onright>
+		<ondown>4400</ondown>
+		<orientation>horizontal</orientation>
+		<viewtype label="$LOCALIZE[31249]">list</viewtype>
+		<preloaditems>2</preloaditems>
+		<scrolltime tween="quadratic">200</scrolltime>
+		<itemlayout width="1080" height="1920"></itemlayout>
+		<focusedlayout width="1080" height="1920">
+			<control type="group">
+				<animation type="Visible">
+					<effect type="fade" time="120" end="100" />
+				</animation>
+				<animation type="Hidden">
+					<effect type="fade" time="120" start="100" end="0" />
+				</animation>
+				<animation type="WindowOpen">
+					<effect type="fade" time="320" end="100" />
+				</animation>
+				<animation type="WindowClose">
+					<effect type="fade" time="240" start="100" end="0" />
+				</animation>
+			</control>
+		</focusedlayout>
+	</include>
+	<include name="BigFanList">
+		<control type="fixedlist" id="591">
+			<include>contents591list</include>
+		</control>
+	</include>
+	<include name="View_591_BigFan">
+		<control type="group">
+			<include>BigFanList</include>
+			<include>ViewAnimation</include>
+			<include>VisibleFadeAnimation</include>
+			<visible>Control.IsVisible(591) + !Window.IsActive(addoninformation)</visible>
+			<!-- IMDb Logo -->
+			<control type="grouplist">
+				<left>1780</left>
+				<top>55</top>
+				<itemgap>0</itemgap>
+				<orientation>vertical</orientation>
+				<visible>Skin.HasSetting(bigfanimdblogo)</visible>
+				<control type="image">
+					<visible>!String.IsEmpty(ListItem.Top250)</visible>
+					<width>100</width>
+					<height>45</height>
+					<align>center</align>
+					<aspectratio>scale</aspectratio>
+					<texture background="true">IMDb.png</texture>
+				</control>
+				<control type="Label">
+					<visible>!String.IsEmpty(ListItem.Top250)</visible>
+					<width>100</width>
+					<height>100</height>
+					<align>center</align>
+					<label>$INFO[ListItem.Top250,#]</label>
+					<font>font16_title_bold</font>
+					<shadowcolor>shadow</shadowcolor>
+					<textcolor>fffeec900</textcolor>
+				</control>
+				<!--<control type="image">
+					<width>125</width>
+					<height>175</height>
+					<align>center</align>
+					<aspectratio>keep</aspectratio>
+					<texture background="true">oscars.png</texture>
+					<visible>String.Contains(ListItem.FileName,.oscars) | String.IsEqual(Container.FolderPath,special://profile/playlists/video/BestPicture.xsp)</visible>
+				</control>-->
+			</control>
+			<control type="image">
+				<top>675</top>
+				<left>20</left>
+				<width>292</width>
+				<height>412</height>
+				<texture background="true" fallback="empty.png">$VAR[PosterThumbVar]</texture>
+				<fadetime>200</fadetime>
+				<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
+				<bordersize>20</bordersize>
+				<animation effect="fade" delay="240" time="240" reversible="false">Hidden</animation>
+			</control>
+			<control type="image">
+				<left>15</left>
+				<top>700</top>
+				<width>85</width>
+				<height>80</height>
+				<aspectratio>keep</aspectratio>
+				<texture background="true">oscars.png</texture>
+				<visible>Skin.HasSetting(oscars591) + [String.Contains(ListItem.FileName,.oscars) | String.IsEqual(Container.FolderPath,special://profile/playlists/video/BestPicture.xsp)]</visible>
+			</control>
+			<control type="image">
+				<left>222</left>
+				<top>695</top>
+				<width>80</width>
+				<height>80</height>
+				<texture>$VAR[OverlayVar]</texture>
+				<aspectratio align="center" aligny="top">keep</aspectratio>
+			</control>
+			<control type="group">
+				<top>-65</top>
+				<control type="label">
+					<left>300</left>
+					<top>910</top>
+					<width>1400</width>
+					<height>42</height>
+					<aligny>top</aligny>
+					<align>left</align>
+					<font>font16_title</font>
+					<textcolor>grey</textcolor>
+					<scroll>true</scroll>
+					<label>[B]$INFO[ListItem.Label][/B]</label>
+					<textoffsety>-2</textoffsety>
+					<textoffsetx>30</textoffsetx>
+				</control>
+				<control type="label">
+					<left>300</left>
+					<top>960</top>
+					<width>1105</width>
+					<height>30</height>
+					<align>left</align>
+					<font>font13_bold</font>
+					<textcolor>grey</textcolor>
+					<label>$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration,, $LOCALIZE[12391]]$INFO[ListItem.Endtime, • $LOCALIZE[19127]: ,]</label>
+					<textoffsetx>30</textoffsetx>
+					<visible>Container.Content(movies) + !ListItem.IsCollection</visible>
+				</control>
+				<control type="label">
+					<left>300</left>
+					<top>1000</top>
+					<width>1305</width>
+					<height>30</height>
+					<align>left</align>
+					<label>$INFO[ListItem.Genre]</label>
+					<font>font13_bold</font>
+					<textcolor>grey</textcolor>
+					<textoffsetx>30</textoffsetx>
+					<scroll>true</scroll>
+				</control>
+				<control type="label">
+					<top>960</top>
+					<left>330</left>
+					<width>1220</width>
+					<height>30</height>
+					<align>left</align>
+					<font>font13_bold</font>
+					<textcolor>grey2</textcolor>
+					<label>$LOCALIZE[31010]: $INFO[Window(Home).Property(NextAired.NextNumber)] - $INFO[Window(Home).Property(NextAired.NextTitle)] ($INFO[Window(Home).Property(NextAired.NextDay)])</label>
+					<visible>!String.IsEmpty(Window(Home).Property(NextAired.NextDate))</visible>
+				</control>
+				<control type="label">
+					<left>330</left>
+					<top>960</top>
+					<width>1220</width>
+					<height>30</height>
+					<align>left</align>
+					<label>$INFO[Window(Home).Property(NextAired.Status)]</label>
+					<font>font13_bold</font>
+					<textcolor>grey2</textcolor>
+					<visible>String.IsEmpty(Window(Home).Property(NextAired.NextDate))</visible>
+				</control>
+			</control>
+		</control>
+	</include>
+</includes>
