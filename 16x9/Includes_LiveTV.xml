@@ -169,15 +169,7 @@
 				<visible>![VideoPlayer.Content(LiveTV) + Player.Recording]</visible>
 			</control>
 			<control type="group"> <!-- Recording logo and labels -->
-				<!--<control type="image">
-					<left>499</left>
-					<top>896</top>
-					<width>40</width>
-					<height>40</height>
-					<texture>new_pvr/PVR-IsRecording.png</texture>
-					<animation effect="fade" start="100" end="40" time="960" pulse="true" condition="true">conditional</animation>
-				</control>-->
-				<!--PVR.IsRecording-->
+				<!-- PVR.IsRecording -->
 				<control type="group">
 					<visible>VideoPlayer.Content(LiveTV) + PVR.IsRecording</visible>
 					<visible>String.IsEqual(VideoPlayer.ChannelName,PVR.NowRecordingChannel)</visible>
@@ -780,26 +772,16 @@
 				<visible>!String.IsEmpty(VideoPlayer.Title)</visible>
 				<visible>![VideoPlayer.Content(LiveTV) + PVR.IsRecording]</visible>
 			</control>
-			<!--<control type="label" id="1">
-				<left>1450</left>
-				<width>150</width>
-				<height>38</height>
-				<font>font16</font>
-				<align>right</align>
-				<label>[B]$INFO[VideoPlayer.TimeRemaining(hh:mm)][/B]</label>
-				<visible>!String.IsEmpty(VideoPlayer.Title)</visible>
-			</control>-->
 			<control type="label" id="1">
-				<left>1450</left>
-				<width>150</width>
+				<left>1400</left>
+				<width>200</width>
 				<height>38</height>
 				<font>font16</font>
 				<align>right</align>
 				<label>[COLOR white2]+$VAR[PlayerTimeRemainingTVVar][/COLOR]</label>
 				<visible>!String.IsEmpty(VideoPlayer.Title)</visible>
 			</control>
-			
-			<!--PVR.IsRecording-->
+			<!-- PVR.IsRecording -->
 			<control type="group" id="1">
 				<control type="group">
 					<left>479</left>

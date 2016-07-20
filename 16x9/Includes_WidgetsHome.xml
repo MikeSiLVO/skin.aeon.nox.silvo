@@ -127,7 +127,7 @@
 				<top>50</top>
 				<visible>VideoPlayer.Content(musicvideos) | VideoPlayer.Content(livetv) | Player.IsInternetStream</visible>
 				<control type="group">
-					<!--disabled on LiveTV - ChannelLogo looks IMHO ugly with this enabled -->
+					<!-- disabled on LiveTV - ChannelLogo looks IMHO ugly with this enabled and transparent Picons -->
 					<control type="image">
 						<description>Cover image</description>
 						<top>-20</top>
@@ -967,14 +967,14 @@
 		</control>
 	</include>
 	
-	<!--add new include: Recording Info-->
+	<!-- added new include: Recording Info -->
 	<include name="NowRecordingBar">
 		<control type="group">
 			<left>490r</left>
 			<animation effect="fade" end="95" condition="true">Conditional</animation>
 			<control type="group">
 				<visible>PVR.IsRecording</visible>
-				<!--Don't display, if the actual channel is recorded-->
+				<!-- Don't display, if the actual channel is recorded -->
 				<visible>!String.IsEqual(VideoPlayer.ChannelName,PVR.NowRecordingChannel)</visible>
 				<height>150</height>
 				<control type="image">
@@ -1040,9 +1040,6 @@
 			</control>
 		</control>
 	</include>
-	<!--end:add new include: Recording Info-->
-	
-	
 	<include name="FanartTitle">
 		<control type="button">
 			<left>0</left>
