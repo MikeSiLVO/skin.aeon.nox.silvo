@@ -150,7 +150,7 @@
 						<left>340</left>
 						<height>300</height>
 						<align>center</align>
-						<!--Live-TV Group-->
+						<!-- Live-TV Group -->
 						<control type="group">
 							<visible>VideoPlayer.Content(livetv)</visible>
 							<control type="label">
@@ -161,31 +161,15 @@
 								<shadowcolor>black</shadowcolor>
 								<label>$INFO[VideoPlayer.ChannelName]</label>
 							</control>
-							<!--Player.Title with RecordingIcon-->
+							<!-- Player.Title with RecordingIcon -->
 							<control type="group">
 								<visible>String.IsEqual(VideoPlayer.ChannelName,PVR.NowRecordingChannel)</visible>
 								<top>50</top>
 								<height>80</height>
-								<!--RecordingIcon-->
-								<control type="image">
-									<left>0</left>
-									<top>4</top>
-									<width>36</width>
-									<height>36</height>
-									<aspectratio>keep</aspectratio>
-									<texture>new_pvr/PVR-IsRecording.png</texture>
-									<fadetime>IconCrossfadeTime</fadetime>
-									<animation effect="fade" start="100" end="40" time="2000" pulse="true" condition="true">conditional</animation>
+								<!-- RecordingIcon -->
+								<control type="group">
+									<include>NowRecordingIcon</include>
 								</control>
-								<!--<control type="label">
-									<left>0</left>
-									<top>9</top>
-									<height>26</height>
-									<width>26</width>
-									<font>IconTiny</font>
-									<textcolor>red</textcolor>
-									<label></label>
-								</control>-->
 								<control type="label">
 									<width>840</width>
 									<top>0</top>
