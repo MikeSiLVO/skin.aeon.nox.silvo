@@ -416,7 +416,7 @@
 						<textcolor>grey2</textcolor>
 						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 						<label>$INFO[ListItem.ChannelName]</label>
-						<visible>String.IsEmpty(Skin.String(LiveTV.EpgViewChannels))</visible>
+						<visible>IsEmpty(Skin.String(LiveTV.EpgViewChannels))</visible>
 					</control>
 					<control type="label">
 						<left>50</left>
@@ -472,7 +472,7 @@
 						<textcolor>grey2</textcolor>
 						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 						<label>$INFO[ListItem.ChannelName]</label>
-						<visible>String.IsEmpty(Skin.String(LiveTV.EpgViewChannels))</visible>
+						<visible>IsEmpty(Skin.String(LiveTV.EpgViewChannels))</visible>
 					</control>
 					<control type="label">
 						<posx>50</posx>
@@ -482,7 +482,7 @@
 						<textoffsetx>15</textoffsetx>
 						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 						<label>$INFO[ListItem.ChannelName]</label>
-						<visible>StringCompare(Skin.String(LiveTV.EpgViewChannels),2) + !IsEmpty(ListItem.Icon)</visible>
+						<visible>StringCompare(Skin.String(LiveTV.EpgViewChannels),2)</visible>
 					</control>
 					<control type="image">
 						<posx>340</posx>
