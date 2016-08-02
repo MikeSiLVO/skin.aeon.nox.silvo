@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!-- Fullscreen Wall -->
+	<include name="View_609_Fullscreen_Wall">
+		<control type="group">
+			<visible>Control.IsVisible(609)</visible>
+			<include>ViewAnimation</include>
+			<top></top>
+			<control type="group">
+				<visible>Container.Content(artists) | Container.Content(albums)</visible>
+				<control type="image">
+					<left>0</left>
+					<width>1</width>
+					<height>1080</height>
+					<texture>black.png</texture>
+				</control>
+				<control type="image">
+					<left>1919</left>
+					<width>1</width>
+					<height>1080</height>
+					<texture>black.png</texture>
+				</control>
+			</control>
+			<control type="panel" id="609">
+				<width>1920</width>
+				<height>1080</height>
+				<onleft>SetProperty(MediaMenu,True,home)</onleft>
+				<onleft>SetFocus(9050)</onleft>
+				<onright>60</onright>
+				<onup>609</onup>
+				<ondown>609</ondown>
+				<orientation>vertical</orientation>
+				<viewtype label="$LOCALIZE[31246]">icon</viewtype>
+				<pagecontrol>60</pagecontrol>
+				<preloaditems>2</preloaditems>
+				<scrolltime tween="quadratic">400</scrolltime>
+				<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(artists) | Container.Content(albums) | [Window.IsActive(music) + Container.Content(files)]</visible>
+				<itemlayout width="240" height="360" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + !Skin.HasSetting(Enable.SmallerFullscreenWallPosters)">
+					<control type="group">
+						<control type="image">
+							<left>0</left>
+							<width>240</width>
+							<height>360</height>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+							<texture background="true">$VAR[PosterThumbVar]</texture>
+						</control>
+						<control type="image">
+							<left>-20</left>
+							<top>10</top>
+							<width>85</width>
+							<height>60</height>
+							<aspectratio>keep</aspectratio>
+							<texture background="true">oscars.png</texture>
+							<visible>Skin.HasSetting(oscars609) + [String.Contains(ListItem.FileName,.oscars) | String.IsEqual(Container.FolderPath,special://profile/playlists/video/BestPicture.xsp)]</visible>
+						</control>
+						<control type="image">
+							<width>240</width>
+							<height>360</height>
+							<texture>thumbs/diffuse.png</texture>
+						</control>
+						<control type="image">
+							<left>187</left>
+							<top>0</top>
+							<width>60</width>
+							<height>60</height>
+							<texture>$VAR[OverlayVar]</texture>
+							<aspectratio align="center" aligny="top">keep</aspectratio>
+							<visible>[!String.IsEmpty(Skin.String(609.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(609.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(609.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
+						</control>
+						<control type="group">
+							<left>10</left>
+							<top>20</top>
+							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
+						</control>
+					</control>
+				</itemlayout>
+				<focusedlayout width="240" height="360" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + !Skin.HasSetting(Enable.SmallerFullscreenWallPosters)">
+					<control type="group">
+						<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto" reversible="false">Focus</animation>
+						<control type="image">
+							<left>0</left>
+							<width>240</width>
+							<height>360</height>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+							<texture background="true">$VAR[PosterThumbVar]</texture>
+							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="9">thumbs/thumbnail_focused.png</bordertexture>
+							<bordersize>8</bordersize>
+						</control>
+						<control type="image">
+							<left>-20</left>
+							<top>10</top>
+							<width>85</width>
+							<height>60</height>
+							<aspectratio>keep</aspectratio>
+							<texture background="true">oscars.png</texture>
+							<visible>Skin.HasSetting(oscars609) + [String.Contains(ListItem.FileName,.oscars) | String.IsEqual(Container.FolderPath,special://profile/playlists/video/BestPicture.xsp)]</visible>
+						</control>
+						<control type="image">
+							<left>180</left>
+							<top>8</top>
+							<width>60</width>
+							<height>60</height>
+							<texture>$VAR[OverlayVar]</texture>
+							<aspectratio align="center" aligny="top">keep</aspectratio>
+							<visible>[!String.IsEmpty(Skin.String(609.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(609.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(609.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
+						</control>
+						<control type="group">
+							<left>10</left>
+							<top>20</top>
+							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
+						</control>
+					</control>
+				</focusedlayout>
+				<itemlayout width="192" height="270" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + Skin.HasSetting(Enable.SmallerFullscreenWallPosters)">
+					<control type="group">
+						<control type="image">
+							<left>0</left>
+							<width>192</width>
+							<height>270</height>
+							<texture background="true">$VAR[PosterThumbVar]</texture>
+						</control>
+						<control type="image">
+							<width>192</width>
+							<height>270</height>
+							<texture>thumbs/diffuse.png</texture>
+						</control>
+						<control type="image">
+							<left>149</left>
+							<top>0</top>
+							<width>50</width>
+							<height>50</height>
+							<texture>$VAR[OverlayVar]</texture>
+							<aspectratio align="center" aligny="top">keep</aspectratio>
+							<visible>[!String.IsEmpty(Skin.String(609.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(609.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(609.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
+						</control>
+						<control type="group">
+							<left>10</left>
+							<top>20</top>
+							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
+						</control>
+					</control>
+				</itemlayout>
+				<focusedlayout width="192" height="270" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + Skin.HasSetting(Enable.SmallerFullscreenWallPosters)">
+					<control type="group">
+						<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto" reversible="false">Focus</animation>
+						<control type="image">
+							<left>0</left>
+							<width>192</width>
+							<height>270</height>
+							<texture background="true">$VAR[PosterThumbVar]</texture>
+							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="9">thumbs/thumbnail_focused.png</bordertexture>
+							<bordersize>8</bordersize>
+						</control>
+						<control type="image">
+							<left>141</left>
+							<top>8</top>
+							<width>50</width>
+							<height>50</height>
+							<texture>$VAR[OverlayVar]</texture>
+							<aspectratio align="center" aligny="top">keep</aspectratio>
+							<visible>[!String.IsEmpty(Skin.String(609.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(609.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(609.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
+						</control>
+						<control type="group">
+							<left>10</left>
+							<top>20</top>
+							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
+						</control>
+					</control>
+				</focusedlayout>
+				<itemlayout width="274" height="270" condition="Container.Content(artists) | Container.Content(albums) | [Window.IsActive(music) + Container.Content(files)]">
+					<control type="group">
+						<left>1</left>
+						<control type="image">
+							<left>0</left>
+							<width>274</width>
+							<height>270</height>
+							<aspectratio aligny="top" scalediffuse="false">scale</aspectratio>
+							<texture background="true">$INFO[ListItem.Thumb]</texture>
+						</control>
+						<control type="image">
+							<visible>Container.Content(albums)</visible>
+							<width>274</width>
+							<height>270</height>
+							<texture>thumbs/diffuse.png</texture>
+						</control>
+						<control type="group">
+							<visible>Container.Content(artists)</visible>
+							<control type="image">
+								<width>274</width>
+								<height>270</height>
+								<texture border="0,0,0,50">thumbs/diffuse_music.png</texture>
+							</control>
+							<control type="label">
+								<top>230</top>
+								<width>274</width>
+								<height>28</height>
+								<align>center</align>
+								<textoffsetx>4</textoffsetx>
+								<textcolor>grey</textcolor>
+								<info>ListItem.Label</info>
+							</control>
+						</control>
+					</control>
+				</itemlayout>
+				<focusedlayout width="274" height="270" condition="Container.Content(artists) | Container.Content(albums) | [Window.IsActive(music) + Container.Content(files)]">
+					<control type="group">
+						<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto" reversible="false">Focus</animation>
+						<left>1</left>
+						<control type="image">
+							<width>274</width>
+							<height>270</height>
+							<aspectratio aligny="top" scalediffuse="false">scale</aspectratio>
+							<texture background="true">$INFO[ListItem.Thumb]</texture>
+							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="9">thumbs/thumbnail_focused.png</bordertexture>
+							<bordersize>8</bordersize>
+						</control>
+						<control type="group">
+							<visible>Container.Content(artists)</visible>
+							<control type="image">
+								<left>8</left>
+								<top>220</top>
+								<width>258</width>
+								<height>42</height>
+								<texture>black.png</texture>
+								<colordiffuse>99ffffff</colordiffuse>
+							</control>
+							<control type="label">
+								<top>225</top>
+								<width>274</width>
+								<height>28</height>
+								<align>center</align>
+								<textoffsetx>10</textoffsetx>
+								<textcolor>grey</textcolor>
+								<info>ListItem.Label</info>
+							</control>
+						</control>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="scrollbar" id="60">
+				<left>1906</left>
+				<top>0</top>
+				<width>10</width>
+				<height>1080</height>
+				<onup>60</onup>
+				<ondown>60</ondown>
+				<onleft>609</onleft>
+				<onright>SetProperty(MediaMenu,True,home)</onright>
+				<onright>SetFocus(9050)</onright>
+				<orientation>vertical</orientation>
+				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">solid_bg.png</texturesliderbarfocus>
+				<animation effect="fade" start="100" end="0" time="500" delay="500" condition="!Control.HasFocus(60) + !Container.Scrolling">Conditional</animation>
+				<animation effect="zoom" start="100,100" end="200,100" center="auto" tween="sine" easing="inout" time="500" pulse="true" condition="Control.HasFocus(60)">Conditional</animation>
+			</control>
+			<control type="group">
+				<include content="InfoPopup">
+					<param name="StudioLabelID">609</param>
+				</include>
+				<visible>Control.HasFocus(609) + !ListItem.IsParentFolder + Skin.HasSetting(Enable.FullscreenWallInfoPopup)</visible>
+			</control>
+		</control>
+	</include>
+</includes>

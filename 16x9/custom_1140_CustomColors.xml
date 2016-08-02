@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1140">
+	<defaultcontrol always="true">9000</defaultcontrol>
+	<controls>
+		<control type="group">
+			<left>0</left>
+			<top>128</top>
+			<control type="list" id="9000">
+				<left>82</left>
+				<top>32</top>
+				<width>356</width>
+				<height>840</height>
+				<onleft>9010</onleft>
+				<onright>9010</onright>
+				<onup>9000</onup>
+				<ondown>9000</ondown>
+				<pagecontrol>-</pagecontrol>
+				<scrolltime tween="quadratic" easing="out">200</scrolltime>
+				<include>SettingsFadeAnimation</include>
+				<itemlayout height="90" width="356">
+					<control type="image">
+						<top>30</top>
+						<width>356</width>
+						<height>60</height>
+						<texture border="1">separator2.png</texture>
+					</control>
+					<control type="label">
+						<width>356</width>
+						<height>90</height>
+						<font>font15</font>
+						<textoffsetx>20</textoffsetx>
+						<textcolor>grey2</textcolor>
+						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+						<align>right</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="90" width="356">
+					<control type="image">
+						<top>30</top>
+						<width>356</width>
+						<height>60</height>
+						<texture border="1">separator2.png</texture>
+					</control>
+					<control type="image">
+						<width>356</width>
+						<height>90</height>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
+					</control>
+					<control type="label">
+						<width>356</width>
+						<height>90</height>
+						<font>font15</font>
+						<textoffsetx>20</textoffsetx>
+						<textcolor>white</textcolor>
+						<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+						<align>right</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="2">
+						<label>16000</label>
+						<onclick>noop</onclick>
+						<icon>-</icon>
+					</item>
+					<item id="1">
+						<label>513</label>
+						<onclick>noop</onclick>
+						<icon>-</icon>
+					</item>
+					<item id="3">
+						<label>31155</label>
+						<onclick>noop</onclick>
+						<icon>-</icon>
+					</item>
+				</content>
+			</control>
+			<control type="textbox">
+				<description>description area</description>
+				<left>552</left>
+				<top>754</top>
+				<width>1256</width>
+				<height>115</height>
+				<font>font16_textbox</font>
+				<align>left</align>
+				<textcolor>grey2</textcolor>
+				<label>[B]$VAR[CustomColorsDescriptionVar][/B]</label>
+				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+				<animation effect="fade" start="0" end="100" time="300" tween="sine" easing="inout">Visible</animation>
+				<animation effect="fade" start="100" end="0" time="0" tween="sine" easing="inout">Hidden</animation>
+			</control>
+			<control type="group" id="9010">
+				<control type="grouplist" id="9001">
+					<description>control area</description>
+					<left>522</left>
+					<top>32</top>
+					<width>1316</width>
+					<height>720</height>
+					<itemgap>0</itemgap>
+					<pagecontrol>60</pagecontrol>
+					<onleft>9000</onleft>
+					<onright>60</onright>
+					<onup>9001</onup>
+					<ondown>9001</ondown>
+					<visible>Container(9000).HasFocus(1)</visible>
+					<control type="radiobutton" id="100">
+						<label>$LOCALIZE[15111]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=ThemeHomeLabelColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[ThemeHomeLabelColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="102">
+						<label>$LOCALIZE[31294]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=FocusedMainMenuColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[FocusedMainMenuColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="103">
+						<label>$LOCALIZE[31295]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=UnfocusedMainMenuColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[UnfocusedMainMenuColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="104">
+						<label>$LOCALIZE[31296]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=FocusedSubMenuColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[FocusedSubMenuColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="105">
+						<label>$LOCALIZE[31297]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=UnfocusedSubMenuColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[UnfocusedSubMenuColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="106">
+						<label>$LOCALIZE[31298]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=FocusedMainMenuIconLabelColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[FocusedMainMenuIconLabelColor]</param>
+						</include>
+						<visible>String.IsEqual(Skin.String(MainMenu.Layout),$LOCALIZE[536])</visible>
+					</control>
+					<control type="radiobutton" id="107">
+						<label>$LOCALIZE[31299]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=UnfocusedMainMenuIconLabelColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[UnfocusedMainMenuIconLabelColor]</param>
+						</include>
+						<visible>String.IsEqual(Skin.String(MainMenu.Layout),$LOCALIZE[536])</visible>
+					</control>
+					<control type="radiobutton" id="108">
+						<label>$LOCALIZE[20304]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=RSSFeedColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[RSSFeedColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="109">
+						<label>$LOCALIZE[31302]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=ThemeHomeMenuBarColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[ThemeHomeMenuBarColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="110">
+						<width>1316</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<font>font15</font>
+						<label>  - Full color menu bar</label>
+						<onclick>Skin.ToggleSetting(Enable.ColoredMenuBar)</onclick>
+						<selected>Skin.HasSetting(Enable.ColoredMenuBar)</selected>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+					</control>
+					<control type="radiobutton" id="111">
+						<label>$LOCALIZE[31303]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=ThemeHomeSystemBarsColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[ThemeHomeSystemBarsColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="112">
+						<width>1316</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<font>font15</font>
+						<label>  - Full color system bars</label>
+						<onclick>Skin.ToggleSetting(Enable.ColoredSystemBars)</onclick>
+						<selected>Skin.HasSetting(Enable.ColoredSystemBars)</selected>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+					</control>
+				</control>
+				<control type="grouplist" id="9002">
+					<description>control area</description>
+					<left>522</left>
+					<top>32</top>
+					<width>1316</width>
+					<height>720</height>
+					<itemgap>0</itemgap>
+					<pagecontrol>60</pagecontrol>
+					<onleft>9000</onleft>
+					<onright>60</onright>
+					<onup>9002</onup>
+					<ondown>9002</ondown>
+					<visible>Container(9000).HasFocus(2)</visible>
+					<control type="radiobutton" id="200">
+						<label>$LOCALIZE[15111]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=ThemeLabelColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[ThemeLabelColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="201">
+						<label>$LOCALIZE[31304]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=HighlightBarColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[HighlightBarColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="202">
+						<label>$LOCALIZE[31305]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=UnWatchedEpColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[UnWatchedEpColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="203">
+						<label>$LOCALIZE[31252]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=TopBarColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[TopBarColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="204">
+						<label>$LOCALIZE[31346]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=ThemeOSDProgressColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[ThemeOSDProgressColor]</param>
+						</include>
+					</control>
+				</control>
+				<control type="grouplist" id="9003">
+					<description>control area</description>
+					<left>522</left>
+					<top>32</top>
+					<width>1316</width>
+					<height>720</height>
+					<itemgap>0</itemgap>
+					<pagecontrol>60</pagecontrol>
+					<onleft>9000</onleft>
+					<onright>60</onright>
+					<onup>9003</onup>
+					<ondown>9003</ondown>
+					<visible>Container(9000).HasFocus(3)</visible>
+					<control type="radiobutton" id="300">
+						<label>$LOCALIZE[31304]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=WidgetHighlightBarColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[WidgetHighlightBarColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="301">
+						<label>$LOCALIZE[31102]</label>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=WidgetBackgroundColor)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[WidgetBackgroundColor]</param>
+						</include>
+					</control>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>
