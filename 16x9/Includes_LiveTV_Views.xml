@@ -484,17 +484,13 @@
 							<align>left</align>
 							<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
 						</control>
-						<control type="label">
-							<posy>0</posy>
-							<width>120</width>
-							<height>55</height>
-							<font>IconSmall</font>
-							<textoffsetx>14</textoffsetx>
-							<textcolor>DDFF0000</textcolor>
-							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
-							<label></label>
+						<control type="image">
+							<top>8</top>
+							<width>40</width>
+							<height>40</height>
+							<texture>new_pvr/PVR-IsRecording.png</texture>
+							<animation effect="fade" start="100" end="40" time="2000" pulse="true" condition="true">Conditional</animation>
 							<visible>ListItem.IsRecording</visible>
-							<align>left</align>
 						</control>
 					</control>
 					<control type="label" id="1">
@@ -526,17 +522,13 @@
 							<visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
 							<align>left</align>
 						</control>
-						<control type="label">
-							<posy>0</posy>
-							<width>120</width>
-							<height>55</height>
-							<font>IconSmall</font>
-							<textoffsetx>14</textoffsetx>
-							<textcolor>DDFF0000</textcolor>
-							<selectedcolor>DDFF0000</selectedcolor>
-							<label></label>
+						<control type="image">
+							<top>8</top>
+							<width>40</width>
+							<height>40</height>
+							<texture>new_pvr/PVR-IsRecording.png</texture>
+							<animation effect="fade" start="100" end="40" time="2000" pulse="true" condition="true">Conditional</animation>
 							<visible>ListItem.IsRecording</visible>
-							<align>left</align>
 						</control>
 					</control>
 					<control type="label" id="1">
@@ -1011,17 +1003,13 @@
 					<fadetime>IconCrossfadeTime</fadetime>
 					<animation effect="slide" start="0" end="-20" time="100" tween="sine" easing="in" condition="ListItem.IsRecording">Conditional</animation>
 				</control>
-				<control type="label">
+				<control type="image">
 					<left>828</left>
 					<top>45</top>
-					<width>120</width>
-					<height>30</height>
-					<font>IconSmall</font>
-					<textoffsetx>15</textoffsetx>
-					<textcolor>grey2</textcolor>
-					<align>right</align>
-					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
-					<label>?</label>
+					<width>40</width>
+					<height>40</height>
+					<texture>new_pvr/PVR-IsRecording.png</texture>
+					<animation effect="fade" start="100" end="40" time="2000" pulse="true" condition="true">Conditional</animation>
 					<visible>ListItem.IsRecording</visible>
 				</control>
 			</itemlayout>
@@ -1096,16 +1084,13 @@
 					<fadetime>IconCrossfadeTime</fadetime>
 					<animation effect="slide" start="0" end="-20" time="100" tween="sine" easing="in" condition="ListItem.IsRecording">Conditional</animation>
 				</control>
-				<control type="label">
+				<control type="image">
 					<left>828</left>
 					<top>45</top>
-					<width>120</width>
-					<height>30</height>
-					<font>IconSmall</font>
-					<textoffsetx>15</textoffsetx>
-					<align>right</align>
-					<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
-					<label>?</label>
+					<width>40</width>
+					<height>40</height>
+					<texture>new_pvr/PVR-IsRecording.png</texture>
+					<animation effect="fade" start="100" end="40" time="2000" pulse="true" condition="true">Conditional</animation>
 					<visible>ListItem.IsRecording</visible>
 				</control>
 			</focusedlayout>
