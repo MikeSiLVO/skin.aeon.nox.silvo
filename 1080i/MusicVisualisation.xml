@@ -126,6 +126,7 @@
 			<visible>Skin.HasSetting(BigAssLabel)</visible>
 			<animation effect="rotate" tween="cubic" time="720" center="auto" end="90" condition="true">Conditonal</animation>
 		</control>
+		<include condition="Skin.HasSetting(MakeItSnow)">SnowBackground</include>
 		<control type="group">
 			<visible>Player.ShowInfo + !Skin.HasSetting(Disable.MusicVizTime) + !Window.IsActive(musicosd) + !Window.IsVisible(script-cu-lrclyrics-main.xml) </visible>
 			<animation type="WindowOpen" reversible="false">
