@@ -311,6 +311,20 @@
 				<control type="image">
 					<width>455</width>
 					<height>1080</height>
+					<texture border="40">mediamenu_back.png</texture>
+					<animation effect="fade" start="100" end="80" condition="true">Conditional</animation>
+					<visible>!Skin.HasSetting(Enable.ColoredMenuBar)</visible>
+				</control>
+				<control type="image">
+					<width>455</width>
+					<height>1080</height>
+					<texture colordiffuse="$VAR[ThemeHomeMenuBarColor]" border="40">mediamenu_back_white.png</texture>
+					<animation effect="fade" start="100" end="80" condition="true">Conditional</animation>
+					<visible>Skin.HasSetting(Enable.ColoredMenuBar)</visible>
+				</control>
+				<control type="image">
+					<width>455</width>
+					<height>1080</height>
 					<texture colordiffuse="CCFFFFFF" border="40">mediamenu_back.png</texture>
 				</control>
 				<control type="button">
