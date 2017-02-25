@@ -298,7 +298,7 @@
 					<include>ButtonCommonValues</include>
 					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVSearch)</onclick>
 					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioSearch)</onclick>
-					<visible>!Skin.HasSetting(Disable.PVRSearch)</visible>
+					<visible>![Skin.HasSetting(Disable.PVRSearch) | Window.IsActive(tvsearch)]</visible>
 				</control>
 				<control type="button" id="201">
 					<description>View options</description>
