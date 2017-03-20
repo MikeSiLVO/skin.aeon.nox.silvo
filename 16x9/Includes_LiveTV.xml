@@ -145,6 +145,13 @@
 							<label>[B]$INFO[VideoPlayer.Title][/B]</label>
 							<visible>!String.IsEmpty(VideoPlayer.Title)</visible>
 						</control>
+						<control type="label">
+							<width>auto</width>
+							<height>43</height>
+							<font>font13</font>
+							<label>($INFO[VideoPlayer.PlotOutline])</label>
+							<visible>!String.IsEmpty(VideoPlayer.PlotOutline) + Skin.HasSetting(Enable.LiveTVPlotOutline)</visible>
+						</control>
 					</control>
 					<control type="grouplist">
 						<left>330</left>
