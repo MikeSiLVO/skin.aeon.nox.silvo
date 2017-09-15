@@ -1962,6 +1962,14 @@
 		<value condition="String.IsEqual(Skin.String(VideoInfo.Dimmer),50%)">80FFFFFF</value>
 		<value condition="String.IsEqual(Skin.String(VideoInfo.Dimmer),90%)">E6FFFFFF</value>
 	</variable>
+	<variable name="PlayerProgressLabelVar">
+		<value condition="Player.Playing + Player.HasVideo + VideoPlayer.Content(movies)"> </value>
+		<value condition="Player.Paused + Player.HasVideo + VideoPlayer.Content(movies)"> </value>
+		<value condition="Player.Playing + Player.HasVideo + VideoPlayer.Content(episodes)"> </value>
+		<value condition="Player.Paused + Player.HasVideo + VideoPlayer.Content(episodes)"> </value>
+		<value condition="Player.Playing + Player.HasAudio"> </value>
+		<value condition="Player.Paused + Player.HasAudio"> </value>
+	</variable>
 	<!-- Color Picker VARs -->
 	<variable name="FocusedMainMenuColor">
 		<value condition="!String.IsEmpty(Skin.String(FocusedMainMenuColor)) + !String.IsEqual(Skin.String(FocusedMainMenuColor),None)">$INFO[Skin.String(FocusedMainMenuColor)]</value>
