@@ -91,7 +91,7 @@
 				</control>
 				<control type="image">
 					<left>-36</left>
-					<top>174</top>
+					<top>170</top>
 					<width>1188</width>
 					<height>1</height>
 					<texture colordiffuse="$VAR[ThemeLabelColor]">new_pvr/osd_line_white.png</texture>
@@ -100,14 +100,14 @@
 					<left>-36</left>
 					<top>171</top>
 					<width>1188</width>
-					<height>520</height>
+					<height>570</height>
 					<ondown>9000</ondown>
 					<orientation>horizontal</orientation>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
 					<itemlayout height="57" width="1188">
 						<control type="label">
 							<width>1188</width>
-							<height>287</height>
+							<height>400</height>
 							<aligny>top</aligny>
 							<font>font15</font>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
@@ -128,7 +128,7 @@
 						</control>
 						<control type="label">
 							<width>1188</width>
-							<height>287</height>
+							<height>400</height>
 							<aligny>top</aligny>
 							<font>font15</font>
 							<textcolor>white</textcolor>
@@ -149,17 +149,27 @@
 							<label2>$LOCALIZE[515]:</label2>
 							<visible>!String.IsEmpty(ListItem.Genre)</visible>
 						</item>
+						<item>
+                                                        <label>$INFO[ListItem.Season]</label>
+                                                        <visible>!String.IsEmpty(ListItem.Season)</visible>
+							<label2>Season:</label2>
+                                                </item>
+						<item>
+                                                        <label>$INFO[ListItem.Episode]</label>
+                                                        <visible>!String.IsEmpty(ListItem.Episode)</visible>
+							<label2>Episode:</label2>
+                                                </item>
 						<item> 
                                                         <label>$INFO[ListItem.Writer]</label>
                                                         <label2>$LOCALIZE[20417]:</label2>
                                                         <visible>!String.IsEmpty(ListItem.Writer)</visible>
                                                 </item>
-                                                <item> 
+                                                <item>
                                                         <label>$INFO[ListItem.Director]</label>
                                                         <label2>$LOCALIZE[20339]:</label2>
                                                         <visible>!String.IsEmpty(ListItem.Director)</visible>
                                                 </item>
-                                                <item> 
+                                                <item>
                                                         <label>$INFO[ListItem.Cast]</label>
                                                         <label2>$LOCALIZE[206]:</label2>
                                                         <visible>!String.IsEmpty(ListItem.Cast)</visible>
@@ -183,14 +193,14 @@
 				</control>
 				<control type="image">
 					<left>-36</left>
-					<top>710</top>
+					<top>750</top>
 					<width>1188</width>
 					<height>1</height>
 					<texture colordiffuse="$VAR[ThemeLabelColor]">new_pvr/osd_line_white.png</texture>
 				</control>
 				<control type="image">
 					<left>-36</left>
-					<top>771</top>
+					<top>811</top>
 					<width>1188</width>
 					<height>1</height>
 					<texture colordiffuse="$VAR[ThemeLabelColor]">new_pvr/osd_line_white.png</texture>
@@ -221,7 +231,7 @@
 					<left>-36</left>
 					<top>10</top>
 					<!-- <control type="button" id="210">
-						<top>716</top>
+						<top>756</top>
 						<width>634</width>
 						<texturenofocus />
 						<disabledcolor>grey</disabledcolor>
@@ -233,7 +243,7 @@
 						<enable>no</enable>
 					</control> -->
 					<control type="grouplist" id="9000">
-						<top>701</top>
+						<top>741</top>
 						<width>1188</width>
 						<height>60</height>
 						<onleft>9000</onleft>
@@ -271,7 +281,7 @@
 				</control>
 			</control>
 			<control type="grouplist" id="9001">
-				<top>771</top>
+				<top>811</top>
 				<width>1190</width>
 				<height>204</height>
 				<onup>9000</onup>
