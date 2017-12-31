@@ -3,7 +3,7 @@
 	<defaultcontrol always="true">7</defaultcontrol>
 	<controls>
 		<control type="group">
-			<top>80</top>
+			<top>0</top>
 			<animation effect="slide" start="-729,0" end="0,0" time="500" tween="quadratic">WindowOpen</animation>
 			<animation effect="slide" end="-729,0" time="500" tween="quadratic">WindowClose</animation>
 			<control type="image">
@@ -18,6 +18,7 @@
 				<texture background="true">logo.png</texture>
 			</control> -->
 			<control type="image">
+				<top>20</top>
 				<width>729</width>
 				<height>180</height>
 				<aspectratio>keep</aspectratio>
@@ -25,6 +26,7 @@
 			</control>
 			<control type="image">
 				<top>400</top>
+				<left>45</left>
 				<width>640</width>
 				<height>360</height>
 				<aspectratio scalediffuse="false" aligny="bottom">keep</aspectratio>
@@ -35,13 +37,14 @@
 			<animation effect="slide" start="1242,0" end="0,0" time="500" tween="quadratic">WindowOpen</animation>
 			<animation effect="slide" end="1242,0" time="500" tween="quadratic">WindowClose</animation>
 			<left>729</left>
-			<top>80</top>
+			<top>0</top>
 			<control type="image">
 				<width>1192</width>
 				<height>1080</height>
 				<texture>black-back.png</texture>
 			</control>
 			<control type="group">
+				<top>20</top>
 				<left>40</left>
 				<width>1042</width>
 				<height>854</height>
@@ -104,7 +107,7 @@
 					<ondown>9000</ondown>
 					<orientation>horizontal</orientation>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
-					<itemlayout height="57" width="1188">
+					<itemlayout height="58" width="1188">
 						<control type="label">
 							<width>1188</width>
 							<height>400</height>
@@ -116,11 +119,11 @@
 							<textoffsetx>36</textoffsetx>
 						</control>
 					</itemlayout>
-					<focusedlayout height="57" width="1188">
+					<focusedlayout height="58" width="1188">
 						<control type="image">
 							<top>5</top>
 							<width>1188</width>
-							<height>47</height>
+							<height>48</height>
 							<aligny>top</aligny>
 							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
 							<visible>Control.HasFocus(300)</visible>
@@ -150,30 +153,30 @@
 							<visible>!String.IsEmpty(ListItem.Genre)</visible>
 						</item>
 						<item>
-                                                        <label>$INFO[ListItem.Season]</label>
-                                                        <label2>Season:</label2>
-                                                        <visible>!String.IsEmpty(ListItem.Season)</visible>
-                                                </item>
+							<label>$INFO[ListItem.Season]</label>
+							<label2>Season:</label2>
+							<visible>!String.IsEmpty(ListItem.Season)</visible>
+							</item>
 						<item>
-                                                        <label>$INFO[ListItem.Episode]</label>
-                                                        <label2>Episode:</label2>
-                                                        <visible>!String.IsEmpty(ListItem.Episode)</visible>
-                                                </item>
-						<item> 
-                                                        <label>$INFO[ListItem.Writer]</label>
-                                                        <label2>$LOCALIZE[20417]:</label2>
-                                                        <visible>!String.IsEmpty(ListItem.Writer)</visible>
-                                                </item>
-                                                <item>
-                                                        <label>$INFO[ListItem.Director]</label>
-                                                        <label2>$LOCALIZE[20339]:</label2>
-                                                        <visible>!String.IsEmpty(ListItem.Director)</visible>
-                                                </item>
-                                                <item>
-                                                        <label>$INFO[ListItem.Cast]</label>
-                                                        <label2>$LOCALIZE[206]:</label2>
-                                                        <visible>!String.IsEmpty(ListItem.Cast)</visible>
-                                                </item>
+							<label>$INFO[ListItem.Episode]</label>
+							<label2>Episode:</label2>
+							<visible>!String.IsEmpty(ListItem.Episode)</visible>
+							</item>
+						<item>
+							<label>$INFO[ListItem.Writer]</label>
+							<label2>$LOCALIZE[20417]:</label2>
+							<visible>!String.IsEmpty(ListItem.Writer)</visible>
+						</item>
+						<item>
+							<label>$INFO[ListItem.Director]</label>
+							<label2>$LOCALIZE[20339]:</label2>
+							<visible>!String.IsEmpty(ListItem.Director)</visible>
+						</item>
+						<item>
+							<label>$INFO[ListItem.Cast]</label>
+							<label2>$LOCALIZE[206]:</label2>
+							<visible>!String.IsEmpty(ListItem.Cast)</visible>
+						</item>
 						<item>
 							<label>$INFO[ListItem.DateAdded]</label>
 							<label2>$LOCALIZE[570]:</label2>
@@ -281,9 +284,9 @@
 				</control>
 			</control>
 			<control type="grouplist" id="9001">
-				<top>811</top>
+				<top>831</top>
 				<width>1190</width>
-				<height>204</height>
+				<height>244</height>
 				<onup>9000</onup>
 				<ondown>noop</ondown>
 				<pagecontrol>70</pagecontrol>
@@ -310,7 +313,7 @@
 						<left>36</left>
 						<top>3</top>
 						<width>1112</width>
-						<height>174</height>
+						<height>214</height>
 						<font>font15_textbox</font>
 						<textcolor>white</textcolor>
 						<pagecontrol />
