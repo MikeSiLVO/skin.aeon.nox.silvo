@@ -45,6 +45,7 @@
 		<value>$LOCALIZE[22080]</value>
 	</variable>
 	<variable name="GlobalBackgroundVar">
+		<value condition="!String.IsEmpty(Control.GetLabel(4411)) + !Skin.HasSetting(Disable.Extrafanart) + !Skin.HasSetting(Disable.Fanart) + !ListItem.IsCollection">$INFO[Control.GetLabel(4411)]</value>
 		<value condition="!String.IsEmpty(Control.GetLabel(4410)) + !Skin.HasSetting(Disable.Extrafanart) + !Skin.HasSetting(Disable.Fanart) + !ListItem.IsCollection">$INFO[Control.GetLabel(4410)]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.Art(fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[Container.ListItem.Art(fanart)]</value>
 		<value condition="!String.IsEmpty(Container.Art(set.fanart))">$INFO[Container.Art(set.fanart)]</value>
@@ -222,6 +223,7 @@
 		<value condition="Window.IsActive(addoninformation) + !Window.IsActive(textviewer)">$VAR[BreadcrumbsFillerVar]$INFO[ListItem.AddonName]</value>
 		<value condition="Window.IsActive(textviewer)">$VAR[BreadcrumbsFillerVar]</value>
 		<value condition="Window.IsActive(script-globalsearch-main.xml)">$INFO[System.AddonTitle(script.globalsearch)]$INFO[Control.GetLabel(190),: ]$INFO[Control.GetLabel(191), ]</value>
+		<value condition="Window.IsActive(script-globalsearch.xml)">$INFO[System.AddonTitle(script.globalsearch)]$INFO[Window.Property(GlobalSearch.SearchString),: $LOCALIZE[194]]</value>
 		<value condition="Window.IsActive(TVGuide) | Window.IsActive(RadioGuide)">$VAR[BreadcrumbsFillerVar,, $LOCALIZE[19069]]</value>
 		<value condition="Window.IsActive(TVRecordings) | Window.IsActive(RadioRecordings)">$VAR[BreadcrumbsFillerVar,, $LOCALIZE[19163]]</value>
 		<value condition="Window.IsActive(TVTimers) | Window.IsActive(RadioTimers)">$VAR[BreadcrumbsFillerVar,, $LOCALIZE[19040]]</value>
@@ -781,7 +783,6 @@
 		<value condition="Control.HasFocus(8002) | Control.HasFocus(8003)">$LOCALIZE[31386]</value>
 		<value condition="Control.HasFocus(8004)">$LOCALIZE[31387]</value>
 		<value condition="Control.HasFocus(8006)">$LOCALIZE[31388]</value>
-		<value condition="Control.HasFocus(8011)">$LOCALIZE[31392]</value>
 		<value condition="Control.HasFocus(90012)">$LOCALIZE[31925]</value>
 		<value condition="Control.HasFocus(90013)">$LOCALIZE[31926]</value>
 		<value condition="Control.HasFocus(90014)">$LOCALIZE[31930]</value>
@@ -1037,7 +1038,7 @@
 		<value condition="ControlGroup(9001).HasFocus(90018)">$INFO[ListItem.Set]$INFO[Container(90018).NumItems, [COLOR grey2](,)[/COLOR]]</value>
 	</variable>
 	<variable name="VideoInfoButtonLabelVar">
-		<value condition="Control.HasFocus(300)">$LOCALIZE[31271]</value>
+		<value condition="Control.HasFocus(300) | Control.HasFocus(64)">$LOCALIZE[31271]</value>
 		<value condition="Control.HasFocus(8) + String.IsEqual(ListItem.DBType,tvshow)">$LOCALIZE[1024]</value>
 		<value condition="Control.HasFocus(8)">$LOCALIZE[208]</value>
 		<value condition="Control.HasFocus(909)">$INFO[System.AddonTitle(script.cinemavision)]</value>
@@ -1062,37 +1063,6 @@
 		<value condition="ControlGroup(9001).HasFocus(50) + Container.Content(albums)">$LOCALIZE[182]$INFO[Container(50).NumItems, [COLOR grey3](,)[/COLOR]]</value>
 		<value condition="ControlGroup(9001).HasFocus(50) + Container.Content(artists)">$LOCALIZE[21888]$INFO[Container(50).NumItems, [COLOR grey3](,)[/COLOR]]</value>
 	</variable>
-	<!-- Extended Info -->
-	<!-- <variable name="ExtendedInfo.FavLabelVar">
-		<value condition="!String.IsEmpty(Window.Property(favorite))"></value>
-		<value></value>
-	</variable>
-	<variable name="ExtendedInfo.DetailsLabelVar">
-		<value condition="ControlGroup(9001).HasFocus(132)">$LOCALIZE[207]</value>
-		<value condition="ControlGroup(9001).HasFocus(1000)">$LOCALIZE[206]$INFO[Container(1000).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(150)">$ADDON[script.extendedinfo 32116]$INFO[Container(150).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(750)">$ADDON[script.extendedinfo 32115]$INFO[Container(750).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(250) + String.IsEmpty(Window.Property(set.label))">$LOCALIZE[33054]$INFO[Container(250).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(250)">$INFO[Window.Property(set.label)]$INFO[Container(250).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(1150)">$ADDON[script.extendedinfo 32117]$INFO[Container(1150).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(350)">$ADDON[script.extendedinfo 32118]$INFO[Container(350).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(1250)">$ADDON[script.extendedinfo 32119]$INFO[Container(1250).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(1350)">$LOCALIZE[20445]$INFO[Container(1350).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-	</variable>
-	<variable name="ExtendedInfo.ActorDetailsLabelVar">
-		<value condition="ControlGroup(9001).HasFocus(132)">$LOCALIZE[21887]</value>
-		<value condition="ControlGroup(9001).HasFocus(150)">$ADDON[script.extendedinfo 32120]$INFO[Container(150).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(250)">$ADDON[script.extendedinfo 32121]$INFO[Container(250).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(350)">$ADDON[script.extendedinfo 32118]$INFO[Container(350).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(450)">$ADDON[script.extendedinfo 32119]$INFO[Container(450).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(550)">$ADDON[script.extendedinfo 32122]$INFO[Container(550).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(650)">$ADDON[script.extendedinfo 32123]$INFO[Container(650).NumItems, [COLOR grey2](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(750)">$LOCALIZE[20445]$INFO[Container(750).NumItems, [COLOR grey3](,)[/COLOR]]</value>
-	</variable>
-	<variable name="ExtendedInfo.ActorPlotVar">
-		<value condition="!String.IsEmpty(Window.Property(Biography))">$INFO[Window.Property(Biography)]</value>
-		<value>$LOCALIZE[547]</value>
-	</variable> -->
 	<!-- Select dialog -->
 	<variable name="DialogSelectLabel2Var">
 		<value condition="String.IsEqual(Control.GetLabel(1),$LOCALIZE[25006])">$VAR[DurationMinutesVar,, [LOWERCASE]$LOCALIZE[12391][/LOWERCASE]]</value>
@@ -2377,7 +2347,8 @@
 		<value condition="String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31014])">Skin.Reset(CinemaVision.Button)</value>
 	</variable>
 	<variable name="ViewFloorLabelVar">
-		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),RightList) + Container.Content(movies) + !String.IsEmpty(Skin.String(506.movies.ViewFloorStatus))">$INFO[Skin.String(506.movies.ViewFloorStatus)]</value><value condition="String.IsEqual(Window(Home).Property(actualViewtype),RightList) + Container.Content(tvshows) + !String.IsEmpty(Skin.String(506.tvshows.ViewFloorStatus))">$INFO[Skin.String(506.tvshows.ViewFloorStatus)]</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),RightList) + Container.Content(movies) + !String.IsEmpty(Skin.String(506.movies.ViewFloorStatus))">$INFO[Skin.String(506.movies.ViewFloorStatus)]</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),RightList) + Container.Content(tvshows) + !String.IsEmpty(Skin.String(506.tvshows.ViewFloorStatus))">$INFO[Skin.String(506.tvshows.ViewFloorStatus)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),RightList) + Container.Content(seasons) + !String.IsEmpty(Skin.String(506.seasons.ViewFloorStatus))">$INFO[Skin.String(506.seasons.ViewFloorStatus)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),RightList) + Container.Content(episodes) + !String.IsEmpty(Skin.String(506.episodes.ViewFloorStatus))">$INFO[Skin.String(506.episodes.ViewFloorStatus)]</value>
 		<value>$LOCALIZE[19218]</value>
@@ -2433,6 +2404,20 @@
 	</variable>
 	<variable name="ShortcutsDisabledVar">
 		<value condition="String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)">[COLOR invalid]×[/COLOR] </value>
+		<value />
+	</variable>
+	<variable name="ShortcutsRecordingWidgetVar">
+		<value condition="!String.IsEmpty(Container(211).ListItem.Property(widgetLiveTV))">[COLOR green][/COLOR]</value>
+		<value></value>
+	</variable>
+	<variable name="SkinShortcutsButtonLabelVar">
+		<value condition="Control.HasFocus(304)">$ADDON[script.skinshortcuts 32003]</value>
+		<value condition="Control.HasFocus(303)">$ADDON[script.skinshortcuts 32002]</value>
+		<value condition="Control.HasFocus(313)">$LOCALIZE[24021]</value>
+		<value condition="Control.HasFocus(301)">$ADDON[script.skinshortcuts 32000]</value>
+		<value condition="Control.HasFocus(302)">$ADDON[script.skinshortcuts 32001]</value>
+		<value condition="Control.HasFocus(308)">$LOCALIZE[31468]</value>
+		<value condition="Control.HasFocus(519)">$LOCALIZE[31273]</value>
 		<value />
 	</variable>
 	<variable name="VideoInfoDimmerLabelVar">
