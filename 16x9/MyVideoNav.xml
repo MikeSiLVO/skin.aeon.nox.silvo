@@ -369,7 +369,6 @@
  						<top>1000</top>
  						<visible>![Control.IsVisible(56) | Control.IsVisible(55)]</visible>
  						<include>VisibleFadeAnimation</include>
- 						<!-- Shift IMDb Logo + Oscar -->
  						<control type="grouplist">
  							<left>1542</left>
  							<top>-902</top>
@@ -443,40 +442,6 @@
  				</control>
  				<control type="group">
  					<visible>Control.IsVisible(59)</visible>
- 					<!-- IMDb Logo + Oscars Statue -->
- 					<control type="grouplist">
- 						<left>1785</left>
- 						<top>110</top>
- 						<itemgap>10</itemgap>
- 						<orientation>vertical</orientation>
- 						<animation effect="slide" end="0,400" time="840" tween="cubic" condition="[!String.IsEmpty(Control.GetLabel(4421)) + Control.IsVisible(4421) + !Skin.HasSetting(Enable.ManualNewInfoPanel)] | [!String.IsEmpty(Control.GetLabel(4421)) + Skin.HasSetting(Enable.ManualNewInfoPanel) + Control.HasFocus(4401)]">Conditional</animation>
- 						<control type="image">
- 							<visible>!String.IsEmpty(ListItem.Top250) + Skin.HasSetting(imdblogo)</visible>
- 							<width>95</width>
- 							<height>45</height>
- 							<align>center</align>
- 							<aspectratio>scale</aspectratio>
- 							<texture background="true">IMDb.png</texture>
- 						</control>
- 						<control type="Label">
- 							<visible>!String.IsEmpty(ListItem.Top250) + Skin.HasSetting(imdblogo)</visible>
- 							<width>95</width>
- 							<height>50</height>
- 							<align>center</align>
- 							<label>$INFO[ListItem.Top250,# ]</label>
- 							<font>font16_title_bold</font>
- 							<shadowcolor>shadow</shadowcolor>
- 							<textcolor>FFEEC900</textcolor>
- 						</control>
- 						<control type="image">
- 							<width>95</width>
- 							<height>135</height>
- 							<align>center</align>
- 							<aspectratio>keep</aspectratio>
- 							<texture background="true">oscars.png</texture>
- 							<visible>Skin.HasSetting(oscarlogo) + String.Contains(ListItem.FileName,.oscars)</visible>
- 						</control>
- 					</control>
  					<!-- Floor Info -->
  					<control type="group">
  						<top>880</top>
@@ -491,7 +456,7 @@
  								<label>$INFO[ListItem.Top250,$LOCALIZE[13409] # ,]</label>
  								<font>font13</font>
  								<textcolor>white</textcolor>
- 								<visible>!String.IsEmpty(ListItem.Top250) + !Skin.HasSetting(imdblogo)</visible>
+ 								<visible>!String.IsEmpty(ListItem.Top250)</visible>
  							</control>
  							<!-- Tagline -->
  							<control type="label">
