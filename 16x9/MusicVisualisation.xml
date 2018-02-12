@@ -258,7 +258,8 @@
 						<scroll>true</scroll>
 						<scrollsuffix>  -  </scrollsuffix>
 						<include>VisibleFadeAnimation</include>
-						<visible>[String.IsEqual(Control.GetLabel(5555),empty.png) + String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearLogo))] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
+						<animation effect="fade" delay="200" time="300">Visible</animation>
+						<visible>[String.IsEqual(Control.GetLabel(5555),empty.png) + !Control.IsVisible(1111)] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
 					</control>
 					<control type="image" id="5555">
 						<left>760</left>
@@ -270,15 +271,16 @@
 						<fadetime>300</fadetime>
 						<visible>!Skin.HasSetting(Disable.MusicVizLogo)</visible>
 					</control>
-					<control type="image">
+					<control type="image" id="1111">
 						<left>760</left>
 						<top>0</top>
 						<width>400</width>
 						<height>180</height>
 						<aspectratio aligny="center" align="center">keep</aspectratio>
 						<texture background="true">$INFO[Window(Home).Property(SkinHelper.Player.Art.ClearLogo)]</texture>
+						<fadetime>300</fadetime>
 						<include>VisibleFadeAnimation</include>
-						<visible>String.IsEqual(Control.GetLabel(5555),empty.png) + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearLogo)) + !Skin.HasSetting(Disable.MusicVizLogo)</visible>
+						<visible>String.IsEqual(Control.GetLabel(5555),empty.png) + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearLogo)) + !Skin.HasSetting(Disable.MusicVizLogo) + !Skin.HasSetting(MusicVizLogo.LocalOnly)</visible>
 					</control>
 				</control>
 				<control type="grouplist">
@@ -359,7 +361,8 @@
 							<scroll>true</scroll>
 							<scrollsuffix>  -  </scrollsuffix>
 							<include>VisibleFadeAnimation</include>
-							<visible>[String.IsEqual(Control.GetLabel(99999),empty.png) + String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearLogo))] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
+							<animation effect="fade" delay="200" time="300">Visible</animation>
+							<visible>[String.IsEqual(Control.GetLabel(99999),empty.png) + !Control.IsVisible(11111)] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
 						</control>
 						<control type="image" id="99999">
 							<left>740</left>
@@ -371,7 +374,7 @@
 							<fadetime>300</fadetime>
 							<visible>!Skin.HasSetting(Disable.MusicVizLogo)</visible>
 						</control>
-						<control type="image">
+						<control type="image" id="11111">
 							<left>740</left>
 							<top>-120</top>
 							<width>400</width>
@@ -379,7 +382,8 @@
 							<aspectratio aligny="bottom" align="right">keep</aspectratio>
 							<texture background="true">$INFO[Window(Home).Property(SkinHelper.Player.Art.ClearLogo)]</texture>
 							<include>VisibleFadeAnimation</include>
-							<visible>String.IsEqual(Control.GetLabel(99999),empty.png) + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearLogo)) + !Skin.HasSetting(Disable.MusicVizLogo)</visible>
+							<fadetime>300</fadetime>
+							<visible>String.IsEqual(Control.GetLabel(99999),empty.png) + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearLogo)) + !Skin.HasSetting(Disable.MusicVizLogo) + !Skin.HasSetting(MusicVizLogo.LocalOnly)</visible>
 						</control>
 						<control type="label">
 							<left>30</left>
@@ -462,7 +466,8 @@
 								<scroll>true</scroll>
 								<scrollsuffix>  -  </scrollsuffix>
 								<include>VisibleFadeAnimation</include>
-								<visible>[String.IsEqual(Control.GetLabel(999999),empty.png) + String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearLogo))] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
+								<animation effect="fade" delay="200" time="300">Visible</animation>
+								<visible>[String.IsEqual(Control.GetLabel(999999),empty.png) + !Control.IsVisible(111111)] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
 							</control>
 							<control type="label">
 								<left>475</left>
@@ -513,7 +518,8 @@
 								<scroll>true</scroll>
 								<scrollsuffix>  -  </scrollsuffix>
 								<include>VisibleFadeAnimation</include>
-								<visible>[String.IsEqual(Control.GetLabel(999999),empty.png) + String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearLogo))] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
+								<animation effect="fade" delay="200" time="300">Visible</animation>
+								<visible>[String.IsEqual(Control.GetLabel(999999),empty.png) + !Control.IsVisible(111111)] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
 							</control>
 							<control type="label">
 								<left>475</left>
@@ -560,16 +566,16 @@
 							<fadetime>300</fadetime>
 							<visible>!Skin.HasSetting(Disable.MusicVizLogo)</visible>
 						</control>
-						<control type="image">
+						<control type="image" id="111111">
 							<left>473</left>
 							<top>-120</top>
 							<width>400</width>
 							<height>155</height>
 							<aspectratio aligny="bottom" align="left">keep</aspectratio>
 							<texture background="true">$INFO[Window(Home).Property(SkinHelper.Player.Art.ClearLogo)]</texture>
-							<fadetime>400</fadetime>
 							<include>VisibleFadeAnimation</include>
-							<visible>String.IsEqual(Control.GetLabel(999999),empty.png) + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearLogo)) + !Skin.HasSetting(Disable.MusicVizLogo)</visible>
+							<fadetime>300</fadetime>
+							<visible>String.IsEqual(Control.GetLabel(999999),empty.png) + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearLogo)) + !Skin.HasSetting(Disable.MusicVizLogo) + !Skin.HasSetting(MusicVizLogo.LocalOnly)</visible>
 						</control>
 						<control type="label">
 							<left>475</left>
@@ -609,7 +615,8 @@
 							<scroll>true</scroll>
 							<scrollsuffix>  -  </scrollsuffix>
 							<include>VisibleFadeAnimation</include>
-							<visible>[String.IsEqual(Control.GetLabel(9999999),empty.png) + String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearLogo))] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
+							<animation effect="fade" delay="200" time="300">Visible</animation>
+							<visible>[String.IsEqual(Control.GetLabel(9999999),empty.png) + !Control.IsVisible(1111111)] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
 						</control>
 						<control type="image" id="9999999">
 							<top>-120</top>
@@ -620,7 +627,7 @@
 							<fadetime>300</fadetime>
 							<visible>!Skin.HasSetting(Disable.MusicVizLogo)</visible>
 						</control>
-						<control type="image">
+						<control type="image" id="1111111">
 							<left>760</left>
 							<top>-120</top>
 							<width>400</width>
@@ -628,7 +635,8 @@
 							<aspectratio aligny="bottom" align="center">keep</aspectratio>
 							<texture background="true">$INFO[Window(Home).Property(SkinHelper.Player.Art.ClearLogo)]</texture>
 							<include>VisibleFadeAnimation</include>
-							<visible>String.IsEqual(Control.GetLabel(9999999),empty.png) + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearLogo)) + !Skin.HasSetting(Disable.MusicVizLogo)</visible>
+							<fadetime>300</fadetime>
+							<visible>String.IsEqual(Control.GetLabel(9999999),empty.png) + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearLogo)) + !Skin.HasSetting(Disable.MusicVizLogo) + !Skin.HasSetting(MusicVizLogo.LocalOnly)</visible>
 						</control>
 						<control type="label">
 							<top>70</top>
