@@ -47,9 +47,9 @@
 	<variable name="GlobalBackgroundVar">
 		<value condition="!String.IsEmpty(Control.GetLabel(4410)) + !Skin.HasSetting(Disable.Extrafanart) + !Skin.HasSetting(Disable.Fanart) + !ListItem.IsCollection">$INFO[Control.GetLabel(4410)]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.Art(fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[Container.ListItem.Art(fanart)]</value>
-		<value condition="!String.IsEmpty(Container.Art(set.fanart))">$INFO[Container.Art(set.fanart)]</value>
-		<value condition="!String.IsEmpty(Container.Art(artist.fanart))">$INFO[Container.Art(artist.fanart)]</value>
-		<value condition="!String.IsEmpty(Container.Art(tvshow.fanart))">$INFO[Container.Art(tvshow.fanart)]</value>
+		<value condition="!String.IsEmpty(Container.Art(set.fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[Container.Art(set.fanart)]</value>
+		<value condition="!String.IsEmpty(Container.Art(artist.fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[Container.Art(artist.fanart)]</value>
+		<value condition="!String.IsEmpty(Container.Art(tvshow.fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[Container.Art(tvshow.fanart)]</value>
 		<value condition="Window.IsActive(1133) + !String.IsEmpty(Container(51).ListItem.Art(fanart)) + Control.HasFocus(51)">$INFO[Container(51).ListItem.Art(fanart)]</value>
 		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,1)">$INFO[Window(Home).Property(script.grab.fanart.Movie.FanArt)]</value>
 		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,2)">$INFO[Window(Home).Property(script.grab.fanart.TV.FanArt)]</value>
@@ -119,8 +119,8 @@
 	</variable>
 	<variable name="VizBackgroundVar">
 		<value condition="String.IsEqual(Skin.String(Viz.Background),2)">$INFO[Window(Home).Property(script.grab.fanart.Music.FanArt)]</value>
-		<value condition="[[!String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),/transparent) + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshowTransparent))] | [String.IsEmpty(Window(Visualisation).Property(ArtistSlideshowTransparent))] + String.IsEqual(Skin.String(Viz.Background),3)]">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</value>
-		<value condition="String.IsEqual(Skin.String(Viz.Background),4) + !String.IsEmpty(Window(Home).Property(ImageFilter))">$INFO[Window(Home).Property(ImageFilter)]</value>
+		<value condition="[![String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),\transparent) | !String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),/transparent)] + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshowTransparent))] | [String.IsEmpty(Window(Visualisation).Property(ArtistSlideshowTransparent))]] + String.IsEqual(Skin.String(Viz.Background),3)">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</value>
+		<value condition="String.IsEqual(Skin.String(Viz.Background),4) + !String.IsEmpty(Window(Home).Property(ImageColorFIVE)))">$INFO[Window(Home).Property(ImageFilterFIVE)]</value>
 		<value condition="[String.IsEqual(Skin.String(Viz.Background),5) | String.IsEqual(Skin.String(Viz.Background),6)] + !String.IsEmpty(Skin.String(CustomMusicBackground.path))">$INFO[Skin.String(CustomMusicBackground.path)]</value>
 		<value condition="!String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>
 		<value>$INFO[Window(Home).Property(script.grab.fanart.Music.FanArt)]</value>
@@ -855,9 +855,7 @@
 		<value condition="String.IsEqual(Skin.String(MusicVizLayout),3)">Skin.Reset(MusicVizLayout)</value>
 	</variable>
 	<variable name="RatingFlagVar">
-		<value condition="String.IsEmpty(ListItem.MPAA)">NR.png</value>
-		<value condition="String.Contains(ListItem.MPAA,NR)">NR.png</value>
-		<value condition="String.IsEqual(ListItem.MPAA,Rated)">NR.png</value>
+		<value condition="String.IsEmpty(ListItem.MPAA) | String.Contains(ListItem.MPAA,NR) | String.IsEqual(ListItem.MPAA,Rated) | String.IsEqual(ListItem.MPAA,Rated ) | String.IsEqual(ListItem.MPAA,Not Rated)">NR.png</value>
 		<value condition="String.Contains(ListItem.MPAA,US:G) | String.Contains(ListItem.MPAA,USA:G) | String.Contains(ListItem.MPAA,Rated G) | String.Contains(ListItem.MPAA,Rated Approved) | String.Contains(ListItem.MPAA,Rated Passed)">G.png</value>
 		<value condition="String.Contains(ListItem.MPAA,PG-13)">PG-13.png</value>
 		<value condition="String.Contains(ListItem.MPAA,Rated PG) | String.IsEqual(ListItem.Mpaa,PG)">PG.png</value>
@@ -906,6 +904,7 @@
 		<value>$INFO[ListItem.MPAA,,.png]</value>
 	</variable>
 	<variable name="VideoRatingFlagVar">
+		<value condition="String.IsEmpty(VideoPlayer.MPAA) | String.Contains(VideoPlayer.MPAA,NR) | String.IsEqual(VideoPlayer.MPAA,Rated) | String.IsEqual(VideoPlayer.MPAA,Rated ) | String.IsEqual(VideoPlayer.MPAA,Not Rated)">NR.png</value>
 		<value condition="String.Contains(VideoPlayer.MPAA,US:G) | String.Contains(VideoPlayer.MPAA,USA:G) | String.Contains(VideoPlayer.MPAA,Rated G) | String.Contains(VideoPlayer.MPAA,Rated Approved) | String.Contains(VideoPlayer.MPAA,Rated Passed)">G.png</value>
 		<value condition="String.Contains(VideoPlayer.MPAA,PG-13)">PG-13.png</value>
 		<value condition="String.Contains(VideoPlayer.MPAA,Rated PG) | String.IsEqual(VideoPlayer.Mpaa,PG)">PG.png</value>
