@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1114" type="dialog">
 	<defaultcontrol always="true">90200</defaultcontrol>
+	<onunload condition="System.HasAddon(script.colorbox)">RunScript(script.colorbox,daemon=True)</onunload>
 	<coordinates>
 		<system>1</system>
 		<left>199</left>
@@ -88,9 +89,8 @@
 				<width>1452</width>
 				<onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(Enable.BlurredVideoInfo)">Dialog.Close(1119)</onclick>
 				<onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(Enable.BlurredVideoInfo) + !Window.IsActive(music)">Dialog.Close(movieinformation)</onclick>
-				<onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(Enable.BlurredVideoInfo) + Window.IsActive(music) + !String.IsEqual(ListItem.DBType,song)">Dialog.Close(musicinformation)</onclick>
-				<onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(Enable.BlurredVideoInfo) + Window.IsActive(music) + String.IsEqual(ListItem.DBType,song)">Dialog.Close(songinformation)</onclick>
-				<onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(Enable.BlurredVideoInfo) + Window.IsActive(music) + String.IsEqual(ListItem.DBType,song)">Dialog.Close(songinformation)</onclick>
+				<onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(Enable.BlurredVideoInfo) + Window.IsActive(music) + !String.IsEqual(ListItem.DBTYPE,song)">Dialog.Close(musicinformation)</onclick>
+				<onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(Enable.BlurredVideoInfo) + Window.IsActive(music) + String.IsEqual(ListItem.DBTYPE,song)">Dialog.Close(songinformation)</onclick>
 				<onclick condition="System.HasAddon(script.colorbox)">Skin.ToggleSetting(Enable.BlurredVideoInfo)</onclick>
 				<onclick condition="!System.HasAddon(script.colorbox)">InstallAddon(script.colorbox)</onclick>
 				<selected>Skin.HasSetting(Enable.BlurredVideoInfo)</selected>
