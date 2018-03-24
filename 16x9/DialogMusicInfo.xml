@@ -2,10 +2,6 @@
 <window>
 	<onload>SetFocus(5010)</onload>
 	<controls>
-		<control type="multiimage" id="7975">
-			<include>HiddenObject</include>
-			<imagepath background="true">$VAR[PosterVar]</imagepath>
-		</control>
 		<control type="group">
 			<animation effect="slide" start="-729,0" end="0,0" time="500" tween="quadratic" condition="!Skin.HasSetting(Enable.BlurredVideoInfo)">WindowOpen</animation>
 			<animation effect="slide" start="-729,0" end="0,0" delay="500" time="500" tween="quadratic" condition="Skin.HasSetting(Enable.BlurredVideoInfo)">WindowOpen</animation>
@@ -734,7 +730,7 @@
 							<width>70</width>
 							<texturenofocus />
 							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
+							<label></label>
 							<onclick>SendClick(10)</onclick>
 							<enable>!Skin.HasSetting(KioskMode.Enabled)</enable>
 						</control>
@@ -743,6 +739,28 @@
 							<height>60</height>
 							<texture border="1">separator3.png</texture>
 							<visible>!Skin.HasSetting(KioskMode.Enabled)</visible>
+						</control>
+						<control type="button" id="5012">
+							<description>Get Fanart</description>
+							<font>IconMediumMD</font>
+							<width>70</width>
+							<texturenofocus />
+							<include>ButtonInfoDialogsCommonValues</include>
+							<label></label>
+							<onclick>SendClick(12)</onclick>
+							<enable>!Skin.HasSetting(KioskMode.Enabled)</enable>
+							<visible>!String.IsEqual(ListItem.DBTYPE,song)</visible>
+						</control>
+						<control type="button" id="50012">
+							<description>Album Info</description>
+							<font>IconMediumMD</font>
+							<width>70</width>
+							<texturenofocus />
+							<include>ButtonInfoDialogsCommonValues</include>
+							<label></label>
+							<onclick>SendClick(12)</onclick>
+							<enable>!Skin.HasSetting(KioskMode.Enabled)</enable>
+							<visible>String.IsEqual(ListItem.DBTYPE,song)</visible>
 						</control>
 						<control type="togglebutton" id="5007">
 							<description>Set rating</description>
@@ -789,18 +807,6 @@
 						</control>
 					</control>
 				</control>
-			</control>
-			<control type="button" id="10">
-				<description>Get Thumb</description>
-				<include>HiddenObject</include>
-			</control>
-			<control type="button" id="7">
-				<description>Set rating</description>
-				<include>HiddenObject</include>
-			</control>
-			<control type="button" id="6">
-				<description>Refresh</description>
-				<include>HiddenObject</include>
 			</control>
 			<control type="grouplist" id="9001">
 				<top>587</top>
@@ -980,9 +986,6 @@
 					</focusedlayout>
 				</control>
 			</control>
-			<control type="scrollbar" id="70">
-				<include>HiddenObject</include>
-			</control>
 			<control type="group" id="71">
 				<left>36</left>
 				<top>995</top>
@@ -996,6 +999,29 @@
 					<label>$VAR[MusicInfoDetailsLabelVar]</label>
 				</control>
 			</control>
+		</control>
+		<control type="button" id="6">
+			<description>Refresh</description>
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="7">
+			<description>Set rating</description>
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="10">
+			<description>Get Thumb</description>
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="12">
+			<description>Get Fanart</description>
+			<include>HiddenObject</include>
+		</control>
+		<control type="scrollbar" id="70">
+			<include>HiddenObject</include>
+		</control>
+		<control type="multiimage" id="7975">
+			<include>HiddenObject</include>
+			<imagepath background="true">$INFO[ListItem.Icon]</imagepath>
 		</control>
 	</controls>
 </window>
