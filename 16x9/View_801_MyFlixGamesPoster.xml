@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<includes>
+	<include name="View_801_MyFlixGamesPoster">
+		<control type="group">
+			<visible>Control.IsVisible(801) + !Window.IsActive(skinsettings)</visible>
+			<include>ViewAnimation</include>
+			<control type="group">
+				<animation effect="slide" start="0" end="0,60" time="0" tween="cubic" easing="inout" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)]">Conditional</animation>
+				<control type="group">
+					<animation effect="slide" end="0,400" time="0" condition="Skin.HasSetting(Disable.MyFlixInfo)">Conditional</animation>
+					<control type="image">
+						<left>50</left>
+						<top>50</top>
+						<width>550</width>
+						<height>170</height>
+						<aspectratio align="left" aligny="bottom">keep</aspectratio>
+						<texture background="true">$VAR[ArtworkLogoVar]</texture>
+						<visible>$EXP[PluginAdvancedLauncher] + Skin.HasSetting(Enable.gameflixPoster.Logo)</visible>
+					</control>
+					<control type="label">
+						<left>25</left>
+						<top>50</top>
+						<height>124</height>
+						<font>font_musicviz</font>
+						<textcolor>grey</textcolor>
+						<label>$INFO[ListItem.Title]</label>
+						<visible>$EXP[PluginAdvancedLauncher] + [String.IsEmpty(ListItem.Art(clearlogo)) | !Skin.HasSetting(Enable.gameflixPoster.Logo)]</visible>
+					</control>                  
+				</control>
+				<control type="group">
+					<left>10</left>
+					<top>220</top>
+					<width>1000</width>
+					<height>270</height>
+					<include>VisibleFadeAnimation</include>
+					<visible>!Skin.HasSetting(Disable.MyFlixInfo)</visible>
+					<animation effect="slide" start="0" end="0,-40" time="0" tween="cubic" easing="inout" condition="Container.Content(tvshows)">Conditional</animation>
+					<control type="group">
+						<control type="grouplist">
+							<visible>true</visible>
+							<control type="label">
+								<label>[COLOR $VAR[MyFlixThemeLabelColor]]Studio:[/COLOR][CR]$INFO[ListItem.Studio]</label>
+								<width>800</width>
+								<include>DefaultButtonsValues</include>
+								<visible>!String.IsEmpty(ListItem.Studio)</visible>
+							</control>
+							<control type="label">
+								<label>[COLOR $VAR[MyFlixThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</label>
+								<width>800</width>
+								<include>DefaultButtonsValues</include>
+								<visible>!String.IsEmpty(ListItem.Genre)</visible>
+							</control>
+							<control type="label">
+								<label>[COLOR $VAR[MyFlixThemeLabelColor]]Number of ROMS:[/COLOR][CR]$INFO[ListItem.Property(AEL_NumItems)] ROMS</label>
+								<width>800</width>
+								<include>DefaultButtonsValues</include>
+								<visible>!String.IsEmpty(ListItem.Property(AEL_NumItems))</visible>
+							</control>
+							<control type="label">
+								<label>$INFO[ListItem.Year,Released: ,]$INFO[ListItem.Property(nplayers), • ,]$INFO[ListItem.Property(esrb), • ,]</label>
+								<width>1000</width>
+								<height>45</height>
+								<include>DefaultButtonsValues</include>
+								<visible>true</visible>
+							</control>
+						</control>
+						<control type="textbox">
+							<top>240</top>
+							<left>15</left>
+							<label>[COLOR $VAR[MyFlixThemeLabelColor]]$INFO[ListItem.Title,, - ][/COLOR]$VAR[VideoPlotVar]</label>
+							<width>800</width>
+							<height>130</height>
+							<font>font15</font>
+							<textcolor>grey</textcolor>
+							<autoscroll delay="3000" time="3000" repeat="4000">true</autoscroll>
+							<animation effect="slide" start="0" end="0,40" time="620" tween="cubic" easing="inout" condition="!String.IsEmpty(Window(Home).Property(NextAired.Status))">Conditional</animation>
+							<visible>!IsEmpty(ListItem.plot)</visible>
+						</control>
+					</control>
+				</control>
+			</control>
+			<control type="panel" id="801">
+				<top>530</top>
+				<width>1920</width>
+				<height>550</height>
+				<visible>true</visible>
+				<onleft>801</onleft>
+				<onright>801</onright>
+				<onup>SetProperty(MediaMenu,True,Home)</onup>
+				<onup>SetFocus(9050)</onup>
+				<ondown condition="Control.IsVisible(80160)">80160</ondown>
+				<ondown condition="!Control.IsVisible(80160)">4400</ondown>
+				<viewtype label="GameFlixPoster">bigwrap</viewtype>
+				<pagecontrol>80160</pagecontrol>
+				<orientation>horizontal</orientation>
+				<preloaditems>2</preloaditems>
+				<focusposition>0</focusposition>
+                <itemlayout height="525" width="271" condition="!Skin.HasSetting(Enable.gameflixPoster.SmallIcon)">
+                    <description>Regular Posters</description>
+                    <include>FlixPoster</include>
+                    <control type="image">
+                        <left>10</left>
+                        <top>75</top>
+                        <width>268</width>
+                        <height>390</height>
+                        <texture border="1">black.png</texture>
+                        <colordiffuse>$VAR[MyFlixDimmerVar]</colordiffuse>
+                        <bordersize>20</bordersize>
+                    </control>
+                    <include>FlixPosterReflection</include>
+                    <include>FlixPosterCaseReflection</include>
+                </itemlayout>
+                <focusedlayout height="525" width="271" condition="!Skin.HasSetting(Enable.gameflixPoster.SmallIcon)">
+                    <control type="group">
+                        <visible>$EXP[PluginAdvancedLauncher]</visible>
+                        <include>FlixPoster</include>
+                        <include>FlixPosterReflection</include>
+                        <include>FlixPosterCaseReflection</include>
+                    </control>
+                </focusedlayout>
+                <itemlayout height="213" width="156" condition="Skin.HasSetting(Enable.gameflixPoster.SmallIcon)">
+                    <description>Small Posters</description>
+                    <include>FlixPosterSmall</include>
+                    <control type="image">
+                        <left>5</left>
+                        <top>60</top>
+                        <width>155</width>
+                        <height>212</height>
+                        <texture border="1">black.png</texture>
+                        <colordiffuse>$VAR[MyFlixDimmerVar]</colordiffuse>
+                        <bordersize>10</bordersize>
+                    </control>
+                </itemlayout>
+                <focusedlayout height="213" width="156" condition="Skin.HasSetting(Enable.gameflixPoster.SmallIcon)">
+                    <description>Small Posters</description>
+                    <control type="group">
+                        <visible>$EXP[PluginAdvancedLauncher]</visible>
+                        <include>FlixPosterSmall</include>
+                        <include>FlixPosterOverlaySmall</include>
+                    </control>
+                </focusedlayout>
+			</control>
+			<control type="scrollbar" id="80160">
+				<left>110</left>
+				<top>985</top>
+				<width>1680</width>
+				<height>12</height>
+				<onup>801</onup>
+				<ondown condition="Integer.IsGreaterOrEqual(Container(801).NumPages,10) + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]">615</ondown>
+				<ondown condition="![Integer.IsGreaterOrEqual(Container(801).NumPages,10) + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]]">4400</ondown>
+				<texturesliderbackground />
+				<texturesliderbar border="6,0,6,0">scrollbar/texturesliderbar_hor.png</texturesliderbar>
+				<texturesliderbarfocus border="6,0,6,0">scrollbar/texturesliderbarfocus_hor.png</texturesliderbarfocus>
+				<textureslidernib />
+				<textureslidernibfocus />
+				<showonepage>false</showonepage>
+				<orientation>horizontal</orientation>
+				<animation effect="fade" start="100" end="0" time="500" delay="500" condition="!Control.HasFocus(80160) + !Container.Scrolling">Conditional</animation>
+			</control>
+            <control type="image">
+                <top>1020</top>
+                <left>50</left>
+                <width>200</width>
+                <height>100</height>
+                <aspectratio align="left" aligny="top">keep</aspectratio>
+                <texture background="true">$INFO[Window(10000).Property(AEL_Launch_Clearlogo)]</texture>
+                <visible>!IsEmpty(Window(10000).Property(AEL_Launch_Clearlogo))</visible>
+            </control>
+		</control>
+	</include>
+	<include name="FlixPoster">
+		<control type="image">
+			<left>10</left>
+			<top>75</top>
+			<width>268</width>
+			<height>390</height>
+			<texture background="true">$VAR[PosterThumbVar]</texture>
+			<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
+			<bordersize>20</bordersize>
+		</control>
+	</include>
+	<include name="FlixPosterReflection">
+		<control type="image">
+			<left>29</left>
+			<top>465</top>
+			<width>228</width>
+			<height>402</height>
+			<texture background="true" flipy="true" diffuse="thumbs/thumb_reflect.png">$VAR[PosterThumbVar]</texture>
+		</control>
+	</include>
+	<include name="FlixPosterSmall">
+		<control type="image">
+			<left>5</left>
+			<top>60</top>
+			<width>155</width>
+			<height>212</height>
+			<texture background="true">$VAR[PosterThumbVar]</texture>
+			<bordertexture border="10">thumbs/thumb_shadow_aa.png</bordertexture>
+			<bordersize>10</bordersize>
+		</control>
+	</include>
+</includes>

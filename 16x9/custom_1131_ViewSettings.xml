@@ -920,6 +920,55 @@
 						<visible>[String.IsEqual(Window(Home).Property(actualViewtype),FanartList) | String.IsEqual(Window(Home).Property(actualViewtype),BigList) + [Container.Content(movies) | Container.Content(episodes)]] | [String.IsEqual(Window(Home).Property(actualViewtype),Gallery) + Container.Content(movies)] | [[Container.Content(movies) | Container.Content(episodes)] + [String.IsEqual(Window(Home).Property(actualViewtype),Landscape) + !Skin.HasSetting(Enable.Landscape.Logo)] | [String.IsEqual(Window(Home).Property(actualViewtype),ShowCase) + !Skin.HasSetting(Enable.ShowCase.Logo) + Skin.HasSetting(Enable.ShowCase.FloorInfo.movies)]]</visible>
 						<visible>!Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(genres) + !Container.Content(sets)</visible>
 					</control>
+                    <!--GameFlix-->
+					<control type="radiobutton" id="18010">
+						<description>Enable Logo For GameFlix Poster</description>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31606]</label>
+						<onclick>Skin.ToggleSetting(Enable.gameflixPoster.Logo)</onclick>
+						<selected>Skin.HasSetting(Enable.gameflixPoster.Logo)</selected>
+						<visible>String.IsEqual(Window(Home).Property(actualViewtype),GameFlixPoster)</visible>
+					</control>
+					<control type="radiobutton" id="18020">
+						<description>Enable Logo For GameFlix Wide</description>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31606]</label>
+						<onclick>Skin.ToggleSetting(Enable.gameflixWide.Logo)</onclick>
+						<selected>Skin.HasSetting(Enable.gameflixWide.Logo)</selected>
+						<visible>String.IsEqual(Window(Home).Property(actualViewtype),GameFlixWide)</visible>
+					</control>
+					<control type="radiobutton" id="18030">
+						<description>Enable Logo For GameFlix Square</description>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31606]</label>
+						<onclick>Skin.ToggleSetting(Enable.gameflixSquare.Logo)</onclick>
+						<selected>Skin.HasSetting(Enable.gameflixSquare.Logo)</selected>
+						<visible>String.IsEqual(Window(Home).Property(actualViewtype),GameFlixSquare)</visible>
+					</control>
+					<control type="radiobutton" id="18011">
+						<description>Enable Small Icons GameFlix Poster</description>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31293]</label>
+						<onclick>Skin.ToggleSetting(Enable.gameflixPoster.SmallIcon)</onclick>
+						<selected>Skin.HasSetting(Enable.gameflixPoster.SmallIcon)</selected>
+						<visible>String.IsEqual(Window(Home).Property(actualViewtype),GameFlixPoster)</visible>
+					</control>
+					<control type="radiobutton" id="18021">
+						<description>Enable Small Icons For GameFlix Wide</description>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31293]</label>
+						<onclick>Skin.ToggleSetting(Enable.gameflixWide.SmallIcon)</onclick>
+						<selected>Skin.HasSetting(Enable.gameflixWide.SmallIcon)</selected>
+						<visible>String.IsEqual(Window(Home).Property(actualViewtype),GameFlixWide)</visible>
+					</control>
+					<control type="radiobutton" id="18031">
+						<description>Enable Small Icons For GameFlix Square</description>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31293]</label>
+						<onclick>Skin.ToggleSetting(Enable.gameflixSquare.SmallIcon)</onclick>
+						<selected>Skin.HasSetting(Enable.gameflixSquare.SmallIcon)</selected>
+						<visible>String.IsEqual(Window(Home).Property(actualViewtype),GameFlixSquare)</visible>
+					</control>
 				</control>
 				<control type="button" id="9012">
 					<visible>!Skin.HasSetting(KioskMode.Enabled)</visible>

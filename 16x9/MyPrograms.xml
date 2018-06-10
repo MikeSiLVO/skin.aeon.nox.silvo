@@ -6,7 +6,7 @@
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
 	<onunload>ClearProperty(Progams.Games,Home)</onunload>
-	<views>50,501,51,54,55,500,57,503</views>
+	<views>50,501,51,54,55,500,57,503,801,802,803</views>
 	<menucontrol>9051</menucontrol>
 	<controls>
 		<include>CommonBackground</include>
@@ -29,6 +29,12 @@
 			<!-- view id = 57 -->
 			<include condition="!Skin.HasSetting(Disable.WallView)">View_503_Wall</include>
 			<!-- view id = 503 -->
+            <include condition="!Skin.HasSetting(Disable.MyFlixGamesPoster)">View_801_MyFlixGamesPoster</include>
+			<!-- view id = 801 -->
+			<include condition="!Skin.HasSetting(Disable.MyFlixGamesWide)">View_802_MyFlixGamesWide</include>
+			<!-- view id = 802 -->
+			<include condition="!Skin.HasSetting(Disable.MyFlixGamesSquare)">View_803_MyFlixGamesSquare</include>
+			<!-- view id = 803 -->
 		</control>
 		<control type="group">
 			<visible>Control.IsVisible(54) | Control.IsVisible(52) | Control.IsVisible(500) | Control.IsVisible(57) | Control.IsVisible(503)</visible>

@@ -1221,6 +1221,9 @@
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),FullscreenWall) + !String.IsEmpty(Skin.String(609.NoTopBar))">$INFO[Skin.String(609.NoTopBar)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),RightList) + !String.IsEmpty(Skin.String(506.NoTopBar))">$INFO[Skin.String(506.NoTopBar)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + !String.IsEmpty(Skin.String(509.NoTopBar))">$INFO[Skin.String(509.NoTopBar)]</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixPoster) + !String.IsEmpty(Skin.String(801.NoTopBar))">$INFO[Skin.String(801.NoTopBar)]</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixWide) + !String.IsEmpty(Skin.String(802.NoTopBar))">$INFO[Skin.String(802.NoTopBar)]</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixSquare) + !String.IsEmpty(Skin.String(803.NoTopBar))">$INFO[Skin.String(803.NoTopBar)]</value>
 		<value>$LOCALIZE[16041]</value>
 	</variable>
 	<variable name="NoTopBarOnClickVar">
@@ -1276,6 +1279,12 @@
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),RightList) + !String.IsEmpty(Skin.String(506.NoTopBar))">Skin.Reset(506.NoTopBar)</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + String.IsEmpty(Skin.String(509.NoTopBar))">Skin.SetString(509.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + !String.IsEmpty(Skin.String(509.NoTopBar))">Skin.Reset(509.NoTopBar)</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixPoster) + String.IsEmpty(Skin.String(801.NoTopBar))">Skin.SetString(801.NoTopBar,$LOCALIZE[351])</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixPoster) + !String.IsEmpty(Skin.String(801.NoTopBar))">Skin.Reset(801.NoTopBar)</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixWide) + String.IsEmpty(Skin.String(802.NoTopBar))">Skin.SetString(802.NoTopBar,$LOCALIZE[351])</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixWide) + !String.IsEmpty(Skin.String(802.NoTopBar))">Skin.Reset(802.NoTopBar)</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixSquare) + String.IsEmpty(Skin.String(803.NoTopBar))">Skin.SetString(803.NoTopBar,$LOCALIZE[351])</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixSquare) + !String.IsEmpty(Skin.String(803.NoTopBar))">Skin.Reset(803.NoTopBar)</value>
 	</variable>
 	<variable name="TriPanelLayoutLabelVar">
 		<value condition="!String.IsEmpty(Skin.String(TriPanelLayout))">$INFO[Skin.String(TriPanelLayout)]</value>
