@@ -290,6 +290,26 @@
 							<onclick>Container.SetViewMode(505)</onclick>
 							<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes)] + !Skin.HasSetting(Disable.PanelView)</visible>
 						</item>
+                        
+						<item>
+							<label>GameFlixPoster</label>
+							<onclick>Container.SetViewMode(801)</onclick>
+							<visible>Window.IsActive(programs)</visible>
+							<visible>$EXP[PluginAdvancedLauncher] + !Skin.HasSetting(Disable.MyFlixView)</visible>
+						</item>
+						<item>
+							<label>GameFlixWide</label>
+							<onclick>Container.SetViewMode(802)</onclick>
+							<visible>Window.IsActive(programs)</visible>
+							<visible>$EXP[PluginAdvancedLauncher] + !Skin.HasSetting(Disable.MyFlixView)</visible>
+						</item>
+						<item>
+							<label>GameFlixSquare</label>
+							<onclick>Container.SetViewMode(803)</onclick>
+							<visible>Window.IsActive(programs)</visible>
+							<visible>$EXP[PluginAdvancedLauncher] + !Skin.HasSetting(Disable.MyFlixView)</visible>
+						</item>
+                        
 					</content>
 				</control>
 				<control type="button" id="9012">
