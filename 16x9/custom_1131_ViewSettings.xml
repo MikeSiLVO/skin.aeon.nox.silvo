@@ -110,6 +110,14 @@
 						<visible>String.IsEqual(Window(Home).Property(actualViewtype),TriPanel)</visible>
 					</control>
 					<!-- RightList -->
+					<control type="radiobutton" id="1509">
+						<description>Karellen SubLabel Movies</description>
+						<include>ButtonCommonValues</include>
+						<label>Karellen sublabel</label>
+						<onclick>Skin.ToggleSetting(KarellenSublabelMovies)</onclick>
+						<selected>Skin.HasSetting(KarellenSublabelMovies)</selected>
+						<visible>String.IsEqual(Window(Home).Property(actualViewtype),RightList) + Container.Content(movies)</visible>
+					</control>
 					<control type="radiobutton" id="1507">
 						<description>Alternate Layout Artists</description>
 						<include>ButtonCommonValues</include>
