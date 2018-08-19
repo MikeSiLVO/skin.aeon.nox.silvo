@@ -1487,6 +1487,20 @@
 		<value condition="Integer.IsEqual(Player.TimeRemaining(mm),01)">$LOCALIZE[12311]m</value>
 		<value>$INFO[Player.TimeRemaining(ss)]s</value>
 	</variable>
+	<variable name="PVRTimeRemainingAltVar">
+		<value condition="Integer.IsGreater(PVR.EpgEventRemainingTime(h),0) + Integer.IsGreater(PVR.EpgEventRemainingTime(mm),10)">$INFO[PVR.EpgEventRemainingTime(h),,h]$INFO[PVR.EpgEventRemainingTime(mm),,m]</value>
+		<value condition="Integer.IsLessOrEqual(PVR.EpgEventRemainingTime(h),0) + Integer.IsGreater(PVR.EpgEventRemainingTime(mm),10)">$INFO[PVR.EpgEventRemainingTime(mm),,m]</value>
+		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),09)">$LOCALIZE[12319]m</value>
+		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),08)">$LOCALIZE[12318]m</value>
+		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),07)">$LOCALIZE[12317]m</value>
+		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),06)">$LOCALIZE[12316]m</value>
+		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),05)">$LOCALIZE[12315]m</value>
+		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),04)">$LOCALIZE[12314]m</value>
+		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),03)">$LOCALIZE[12313]m</value>
+		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),02)">$LOCALIZE[12312]m</value>
+		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),01)">$LOCALIZE[12311]m</value>
+		<value>$INFO[PVR.EpgEventRemainingTime(ss)]s</value>
+	</variable>
 	<variable name="ItemDurationVar">
 		<value condition="Integer.IsEqual(ListItem.Duration(mins),60) | Integer.IsEqual(ListItem.Duration(mins),120) | Integer.IsEqual(ListItem.Duration(mins),180) | Integer.IsEqual(ListItem.Duration(mins),240) | Integer.IsEqual(ListItem.Duration(mins),300) | Integer.IsEqual(ListItem.Duration(mins),360) | Integer.IsEqual(ListItem.Duration(mins),420)">$INFO[ListItem.Duration(hours),,h]</value>
 		<value condition="Integer.IsLess(ListItem.Duration(mins),60)">$INFO[ListItem.Duration(m),,m]</value>
