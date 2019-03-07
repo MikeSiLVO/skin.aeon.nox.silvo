@@ -14,22 +14,31 @@
 			<control type="image">
 				<left>20</left>
 				<top>20</top>
-				<width>150</width>
+				<width>200</width>
 				<height>150</height>
 				<aspectratio>keep</aspectratio>
 				<texture background="true" fallback="DefaultTVShows.png">$INFO[VideoPlayer.Cover]</texture>
 			</control>
 			<control type="label">
-				<left>200</left>
+				<left>250</left>
 				<top>10</top>
-				<width>800</width>
+				<width>750</width>
 				<height>150</height>
 				<font>font60</font>
-				<label>$INFO[VideoPlayer.ChannelNumberlabel]$INFO[VideoPlayer.ChannelName,  ]</label>
+				<label>[B]$INFO[VideoPlayer.ChannelNumberlabel]$INFO[VideoPlayer.ChannelName,  ][/B]</label>
 			</control>
-			<control type="list" id="11">
+            <control type="label">
+                <left>250</left>
+                <top>120</top>
+                <width>750</width>
+                <height>60</height>
+                <font>font16</font>
+                <textcolor>$VAR[ThemeLabelColor]</textcolor>
+                <label>$INFO[ListItem.StartDate]</label>
+            </control>
+			<control type="fixedlist" id="11">
 				<top>200</top>
-				<width>937</width>
+				<width>1250</width>
 				<height>880</height>
 				<onleft>Dialog.Close(pvrchannelguide)</onleft>
 				<onright>60</onright>
@@ -37,6 +46,8 @@
 				<ondown>11</ondown>
 				<viewtype label="535">list</viewtype>
 				<pagecontrol>60</pagecontrol>
+                <focusposition>4</focusposition>
+                <movement>4</movement>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<itemlayout height="80">
 					<control type="label">
@@ -45,7 +56,8 @@
 						<width>700</width>
 						<height>60</height>
 						<font>font15</font>
-						<label>$INFO[ListItem.StartTime]$INFO[ListItem.Label, - ]</label>
+                        <textcolor>grey</textcolor>
+                        <label>$INFO[ListItem.StartTime]$INFO[ListItem.Label, - ]  [COLOR grey2][I]$VAR[PVRSeasonAndEpisodeVar][/I][/COLOR]</label>
 						<animation effect="slide" start="0,0" end="40,0" time="0" tween="sine" easing="in" condition="[ListItem.HasTimer | ListItem.IsRecording]">Conditional</animation>
 					</control>
 					<control type="label">
@@ -76,55 +88,44 @@
 						<visible>Control.HasFocus(11)</visible>
 						<include>VisibleFadeAnimation</include>
 					</control>
+                    <control type="image">
+                        <left>944</left>
+                        <width>300</width>
+                        <height>160</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture>$INFO[ListItem.Icon]</texture><!-- Maybe ListItem.EPGEventIcon ???-->
+                        <include>VisibleFadeAnimation</include>
+                        <visible>Control.HasFocus(11)</visible>
+                    </control>
 					<control type="label">
 						<left>10</left>
 						<top>5</top>
 						<width>700</width>
 						<height>60</height>
 						<font>font15</font>
-						<label>$INFO[ListItem.StartTime]$INFO[ListItem.Label, - ]</label>
+                        <label>$INFO[ListItem.StartTime]$INFO[ListItem.Label, - ] [COLOR grey2][I]$VAR[PVRSeasonAndEpisodeVar][/I][/COLOR]</label>
 						<animation effect="slide" end="45" time="0" condition="[ListItem.HasTimer | ListItem.IsRecording]">Conditional</animation>
 					</control>
 					<control type="label">
-						<left>490</left>
-						<top>23</top>
-						<width>437</width>
-						<height>60</height>
-						<font>font12</font>
-						<align>right</align>
-						<label>$INFO[ListItem.StartDate]</label>
-					</control>
-					<control type="label">
 						<left>690</left>
-						<top>-10</top>
+						<top>5</top>
 						<width>237</width>
 						<height>60</height>
-						<font>font12</font>
+						<font>font15</font>
 						<align>right</align>
-						<textcolor>white2</textcolor>
-						<label>$INFO[ListItem.EndTime,$LOCALIZE[31393]: ]</label>
+						<!--<textcolor>white2</textcolor>-->
+                        <label>$VAR[ItemDurationVar]</label>
 					</control>
 					<control type="textbox">
-						<top>75</top>
+						<top>62</top>
 						<left>15</left>
 						<width>907</width>
-						<height>80</height>
+						<height>83</height>
 						<font>font14</font>
 						<textcolor>grey</textcolor>
-						<label>$INFO[ListItem.PlotOutline]</label>
+                        <shadowcolor>black</shadowcolor>
+                        <label>[COLOR $VAR[ThemeLabelColor]][I]$VAR[PVREpisodenameOrPlotOutlineVar,,[CR]][/COLOR][/I]$INFO[ListItem.Plot]</label>
 						<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
-						<visible>!String.IsEmpty(ListItem.PlotOutline) + !String.IsEqual(ListItem.PlotOutline,N/A)</visible>
-					</control>
-					<control type="textbox">
-						<top>75</top>
-						<left>15</left>
-						<width>907</width>
-						<height>80</height>
-						<font>font14</font>
-						<textcolor>grey</textcolor>
-						<label>$INFO[ListItem.Plot]</label>
-						<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
-						<visible>String.IsEmpty(ListItem.PlotOutline) | String.IsEqual(ListItem.PlotOutline,N/A)</visible>
 					</control>
 					<control type="label">
 						<top>20</top>
@@ -153,12 +154,13 @@
 				<height>840</height>
 				<showonepage>false</showonepage>
 				<texturesliderbackground />
-				<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
+				<texturesliderbar colordiffuse="55ffffff" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
 				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
 				<onleft>11</onleft>
 				<onright>Dialog.Close(pvrchannelguide)</onright>
 				<ondown>61</ondown>
 				<onup>61</onup>
+				<orientation>vertical</orientation>
 			</control>
 		</control>
 	</controls>

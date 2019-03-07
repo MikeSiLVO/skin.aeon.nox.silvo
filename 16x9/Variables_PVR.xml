@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <variable name="ExpirationDateTimeLabel">
+        <value condition="!String.IsEmpty(ListItem.ExpirationDate) + Window.IsVisible(DialogPVRInfo.xml)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19299]:[/COLOR] $INFO[ListItem.ExpirationDate] $INFO[ListItem.ExpirationTime]</value>
+        <value condition="!String.IsEmpty(ListItem.ExpirationDate)">[COLOR grey2]$LOCALIZE[19299]:[/COLOR] $INFO[ListItem.ExpirationDate] $INFO[ListItem.ExpirationTime][CR]</value>
+    </variable>
+
+    <variable name="PVRSeasonAndEpisodeVar">
+        <value>$INFO[ListItem.Season,s]$INFO[ListItem.Episode,e]</value>
+    </variable>
+    <variable name="PVREpisodenameOrPlotOutlineVar">
+        <value condition="!String.IsEmpty(ListItem.Episodename)">$INFO[ListItem.Episodename]</value>
+        <value condition="!String.IsEmpty(ListItem.PlotOutline)">$INFO[ListItem.PlotOutline]</value>
+    </variable>
+    <variable name="PVRSeasonAndEpisodeOrPlotOutlineVar">
+        <value condition="[PVR.IsPlayingTV | PVR.IsPlayingRecording] + !String.IsEmpty(VideoPlayer.Episodename)">$INFO[VideoPlayer.Season,s]$INFO[VideoPlayer.Episode,e, - ]$INFO[VideoPlayer.Episodename]</value>
+        <value condition="[PVR.IsPlayingTV | PVR.IsPlayingRecording] + String.IsEmpty(VideoPlayer.Episodename)">$INFO[VideoPlayer.Season,s]$INFO[VideoPlayer.Episode,e]</value>
+        <value condition="[PVR.IsPlayingTV | PVR.IsPlayingRecording]">$INFO[VideoPlayer.PlotOutline]</value>
+    </variable>
+    <variable name="PVRFullScreenInfoTitleVar">
+        <value condition="String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">$INFO[VideoPlayer.Title]</value>
+        <value condition="!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19031]:[/COLOR] $INFO[VideoPlayer.NextTitle]</value>
+    </variable>
+    <variable name="PVRFullScreenInfoSeasonEpisodeVar">
+        <value condition="String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">$VAR[PVRNowPlayingSeasonAndEpisodeOrPlotOutlineVar]</value>
+        <value condition="!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">$INFO[VideoPlayer.NextPlotOutline]</value>
+    </variable>
+    <variable name="PVRFullScreenInfoGenreVar">
+        <value condition="String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">$INFO[VideoPlayer.Genre,$LOCALIZE[515]: ]</value>
+        <value condition="!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">$INFO[VideoPlayer.NextGenre,$LOCALIZE[515]: ]</value>
+    </variable>
+    <variable name="PVRFullScreenInfoPlotVar">
+        <value condition="String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">$INFO[VideoPlayer.Plot]</value>
+        <value condition="!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">$INFO[VideoPlayer.NextPlot]</value>
+    </variable>
+	<variable name="PVRChannelIconVar">
+        <value condition="Window.IsVisible(PVRGuideInfo)">$INFO[ListItem.Art(Thumb)]</value>
+        <value condition="PVR.IsPlayingRecording + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ChannelLogo))">$INFO[Window(Home).Property(SkinHelper.Player.Art.ChannelLogo)]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ChannelLogo))">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.ChannelLogo)]</value>
+		<value>$INFO[ListItem.ActualIcon]</value>
+	</variable>
+</includes>
