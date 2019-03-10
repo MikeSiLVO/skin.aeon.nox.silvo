@@ -220,21 +220,65 @@
 					<include>VisibleFadeAnimation</include>
 					<visible>!Player.HasVideo</visible>
 				</control>
-				<control type="image">
-					<left>31</left>
+				<control type="group">
+					<description>Playing item info</description>
+					<left>32</left>
 					<top>32</top>
-					<width>822</width>
-					<height>461</height>
-					<texture>black.png</texture>
-					<include>VisibleFadeAnimation</include>
 					<visible>Player.HasVideo</visible>
-				</control>
-				<control type="videowindow">
-					<left>31</left>
-					<top>32</top>
-					<width>822</width>
-					<height>461</height>
-					<visible>Player.HasVideo</visible>
+					<control type="image">
+						<width>822</width>
+						<height>461</height>
+						<texture>black.png</texture>
+						<include>VisibleFadeAnimation</include>
+					</control>
+					<control type="videowindow">
+						<width>822</width>
+						<height>461</height>
+					</control>
+					<control type="image">
+						<width>822</width>
+						<height>50</height>
+						<texture>back.png</texture>
+						<animation effect="fade" end="70" time="200" condition="true">Conditional</animation>
+					</control>
+					<control type="image">
+						<top>411</top>
+						<width>822</width>
+						<height>50</height>
+						<texture>back.png</texture>
+						<animation effect="fade" end="70" time="200" condition="true">Conditional</animation>
+						<visible>!String.IsEmpty(VideoPlayer.Episodename) | !String.IsEmpty(VideoPlayer.Episode)</visible>
+					</control>
+					<control type="group">
+						<top>10</top>
+						<control type="label">
+							<left>20</left>
+							<top>-7</top>
+							<width>800</width>
+							<height>40</height>
+							<label>[I]$LOCALIZE[31040]:  [B]$INFO[VideoPlayer.Title][/B][/I]</label>
+							<font>font11</font>
+							<scroll>true</scroll>
+						</control>
+						<control type="label">
+							<left>20</left>
+							<top>406</top>
+							<width>800</width>
+							<height>40</height>
+							<label>[I]$VAR[PVRSeasonAndEpisodeOrPlotOutlineVar][/I]</label>
+							<font>font11</font>
+							<scroll>true</scroll>
+							<visible>!String.IsEmpty(VideoPlayer.Episodename) | !String.IsEmpty(VideoPlayer.Episode)</visible>
+						</control>
+						<control type="image">
+							<left>750</left>
+							<top>-12</top>
+							<width>62</width>
+							<height>47</height>
+							<aspectratio>keep</aspectratio>
+							<texture>$INFO[VideoPlayer.Cover]</texture>
+						</control>
+					</control>
 				</control>
 			</control>
 			<control type="group">
@@ -489,29 +533,73 @@
 					<texture colordiffuse="60FFFFFF" border="5">dialogs/default/inner.png</texture>
 				</control>
 				<!-- Videopreview and logo -->
-				<control type="group">
-					<visible>!Player.HasVideo</visible>
-					<left>122</left>
+				<control type="image">
 					<top>12</top>
-					<control type="image">
-						<width>200</width>
-						<height>200</height>
-						<aspectratio>keep</aspectratio>
-						<fadetime>400</fadetime>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-					</control>
+					<left>72</left>
+					<width>300</width>
+					<height>200</height>
+					<aspectratio>keep</aspectratio>
+					<fadetime>400</fadetime>
+					<texture>$INFO[ListItem.Icon]</texture>
+					<visible>!Player.HasVideo</visible>
 				</control>
 				<control type="group">
 					<visible>Player.HasVideo</visible>
 					<top>2</top>
+					<left>10</left>
 					<control type="image">
-						<width>445</width>
+						<top>-3</top>
+						<width>415</width>
 						<height>225</height>
 						<texture>black.png</texture>
 					</control>
 					<control type="videowindow">
-						<width>445</width>
+						<width>415</width>
 						<height>225</height>
+					</control>
+					<control type="image">
+						<width>415</width>
+						<height>50</height>
+						<texture>back.png</texture>
+						<animation effect="fade" end="70" time="200" condition="true">Conditional</animation>
+					</control>
+					<control type="image">
+						<top>175</top>
+						<width>415</width>
+						<height>50</height>
+						<texture>back.png</texture>
+						<animation effect="fade" end="70" time="200" condition="true">Conditional</animation>
+						<visible>!String.IsEmpty(VideoPlayer.Episodename) | !String.IsEmpty(VideoPlayer.Episode)</visible>
+					</control>
+					<control type="group">
+						<top>10</top>
+						<control type="label">
+							<left>20</left>
+							<top>-7</top>
+							<width>375</width>
+							<height>40</height>
+							<label>[I]$LOCALIZE[31040]:  [B]$INFO[VideoPlayer.Title][/B][/I]</label>
+							<font>font11</font>
+							<scroll>true</scroll>
+						</control>
+						<control type="label">
+							<left>20</left>
+							<top>173</top>
+							<width>375</width>
+							<height>40</height>
+							<label>[I]$VAR[PVRSeasonAndEpisodeOrPlotOutlineVar][/I]</label>
+							<font>font11</font>
+							<scroll>true</scroll>
+							<visible>!String.IsEmpty(VideoPlayer.Episodename) | !String.IsEmpty(VideoPlayer.Episode)</visible>
+						</control>
+						<control type="image">
+							<left>343</left>
+							<top>-7</top>
+							<width>62</width>
+							<height>47</height>
+							<aspectratio>keep</aspectratio>
+							<texture>$INFO[VideoPlayer.Cover]</texture>
+						</control>
 					</control>
 				</control>
 				<!-- Description and fanart -->
@@ -736,6 +824,14 @@
 								<texture>back.png</texture>
 								<animation effect="fade" end="70" time="200" condition="true">Conditional</animation>
 							</control>
+							<control type="image">
+								<top>355</top>
+								<width>720</width>
+								<height>50</height>
+								<texture>back.png</texture>
+								<animation effect="fade" end="70" time="200" condition="true">Conditional</animation>
+								<visible>!String.IsEmpty(VideoPlayer.Episodename) | !String.IsEmpty(VideoPlayer.Episode)</visible>
+							</control>
 							<control type="group">
 								<top>10</top>
 								<control type="label">
@@ -743,7 +839,7 @@
 									<top>-5</top>
 									<width>600</width>
 									<height>40</height>
-									<label>[I]$INFO[VideoPlayer.Title,$LOCALIZE[31040]:  ][/I]</label>
+									<label>[I]$LOCALIZE[31040]:  [B]$INFO[VideoPlayer.Title][/B][/I]</label>
 									<font>font13</font>
 									<scroll>true</scroll>
 								</control>
@@ -754,6 +850,16 @@
 									<height>55</height>
 									<aspectratio>keep</aspectratio>
 									<texture background="true">$INFO[VideoPlayer.Cover]</texture>
+								</control>
+								<control type="label">
+									<left>20</left>
+									<top>353</top>
+									<width>700</width>
+									<height>40</height>
+									<label>[I]$VAR[PVRSeasonAndEpisodeOrPlotOutlineVar][/I]</label>
+									<font>font11</font>
+									<scroll>true</scroll>
+									<visible>!String.IsEmpty(VideoPlayer.Episodename) | !String.IsEmpty(VideoPlayer.Episode)</visible>
 								</control>
 							</control>
 						</control>
