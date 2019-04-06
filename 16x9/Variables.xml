@@ -1506,18 +1506,9 @@
 		<value condition="Integer.IsLess(Player.TimeRemaining(h),1) + Integer.IsLess(Player.TimeRemaining(mm),01) + !Integer.IsEqual(Player.TimeRemaining(ss),00)">$INFO[Player.TimeRemaining(ss),, $LOCALIZE[31184]]</value>
 	</variable>
 	<variable name="PlayerTimeRemainingAltVar">
-		<value condition="Integer.IsGreater(PVR.EpgEventRemainingTime(h),0) + Integer.IsGreater(PVR.EpgEventRemainingTime(mm),10)">$INFO[PVR.EpgEventRemainingTime(h),,h]$INFO[PVR.EpgEventRemainingTime(mm),,m]</value>
-		<value condition="Integer.IsLessOrEqual(PVR.EpgEventRemainingTime(h),0) + Integer.IsGreater(PVR.EpgEventRemainingTime(mm),10)">$INFO[PVR.EpgEventRemainingTime(mm),,m]</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),09)">$LOCALIZE[12319]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),08)">$LOCALIZE[12318]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),07)">$LOCALIZE[12317]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),06)">$LOCALIZE[12316]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),05)">$LOCALIZE[12315]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),04)">$LOCALIZE[12314]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),03)">$LOCALIZE[12313]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),02)">$LOCALIZE[12312]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),01)">$LOCALIZE[12311]m</value>
-		<value>$INFO[PVR.EpgEventRemainingTime(ss)]s</value>
+		<value condition="Integer.IsGreater(PVR.EpgEventRemainingTime(mins),60)">$INFO[PVR.EpgEventRemainingTime(h),,h]$INFO[PVR.EpgEventRemainingTime(m),,m]</value>
+		<value condition="Integer.IsLess(PVR.EpgEventRemainingTime(m),1)">$INFO[PVR.EpgEventRemainingTime(ss)]s</value>
+		<value>$INFO[PVR.EpgEventRemainingTime(mins),,m]</value>
 	</variable>
 	<variable name="ItemDurationVar">
 		<value condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEmpty(Window(Home).Property(NextAired.Runtime))">$INFO[Window(Home).Property(NextAired.Runtime),,m]</value>
