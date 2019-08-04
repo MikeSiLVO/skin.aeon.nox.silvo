@@ -196,12 +196,11 @@
 						<orientation>horizontal</orientation>
 						<usecontrolcoords>true</usecontrolcoords>
 						<itemgap>8</itemgap>
-						<animation effect="slide" end="-40" condition="!Skin.HasSetting(Enable.HourMinuteDuration)">Conditional</animation>
 						<!-- Minute Duration -->
 						<control type="group">
-							<visible>!Skin.HasSetting(Enable.HourMinuteDuration)</visible>
-							<width>175</width>
-							<height>90</height>
+							<visible>!Skin.HasSetting(Enable.HourMinuteDuration) + [!String.IsEmpty(Window(Home).Property(NextAired.Runtime)) | !String.IsEmpty(ListItem.Duration)]</visible>
+							<width>155</width>
+							<height>100</height>
 							<control type="label">
 								<width>auto</width>
 								<height>60</height>
@@ -237,7 +236,7 @@
 							<font>font52_bold</font>
 							<textcolor>grey</textcolor>
 							<label>$VAR[ItemDurationVar]</label>
-							<visible>Skin.HasSetting(Enable.HourMinuteDuration)</visible>
+							<visible>Skin.HasSetting(Enable.HourMinuteDuration) + [!String.IsEmpty(Window(Home).Property(NextAired.Runtime)) | !String.IsEmpty(ListItem.Duration)]</visible>
 						</control>
 						<control type="label">
 							<width>auto</width>
