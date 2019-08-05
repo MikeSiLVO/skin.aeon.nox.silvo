@@ -5,6 +5,10 @@
 	<onload condition="![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.HasAddon(script.cinemavision)">SetFocus(909)</onload>
 	<onload condition="Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)">SetFocus(808)</onload>
 	<controls>
+		<!-- <control type="list" id="9888">
+			<include>HiddenList</include>
+			<content>plugin://plugin.video.themoviedb.helper/?info=find&amp;type=movie&amp;imdb_id=$INFO[ListItem.IMDBNumber]</content>
+		</control> -->
 		<control type="textbox" id="4">
 			<include>HiddenObject</include>
 		</control>
@@ -387,61 +391,6 @@
 								</control>
 							</control>
 						</control>
-						<!-- Skin Helper RottenTomatoes/Metacritic Ratings -->
-						<control type="grouplist">
-							<visible>System.HasAddon(script.skin.helper.service) + String.IsEqual(ListItem.DBTYPE,movie)</visible>
-							<width>390</width>
-							<orientation>horizontal</orientation>
-							<usecontrolcoords>true</usecontrolcoords>
-							<itemgap>10</itemgap>
-							<control type="grouplist">
-								<top>20</top>
-								<width>175</width>
-								<orientation>horizontal</orientation>
-								<usecontrolcoords>true</usecontrolcoords>
-								<itemgap>10</itemgap>
-								<visible>String.IsEmpty(ListItem.Rating(tomatometerallcritics))</visible>
-								<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Image)) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating))</visible>
-								<control type="image">
-									<left>5</left>
-									<width>50</width>
-									<height>50</height>
-									<texture>$INFO[Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Image),logos/rottentomatoes/,.png]</texture>
-									<colordiffuse>grey</colordiffuse>
-								</control>
-								<control type="label">
-									<top>10</top>
-									<height>30</height>
-									<width>auto</width>
-									<label>$INFO[Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),,%]</label>
-									<font>font48_bold</font>
-									<textcolor>grey</textcolor>
-								</control>
-							</control>
-							<control type="grouplist">
-								<top>21</top>
-								<width>175</width>
-								<orientation>horizontal</orientation>
-								<usecontrolcoords>true</usecontrolcoords>
-								<itemgap>10</itemgap>
-								<visible>String.IsEmpty(ListItem.Rating(metacritic))</visible>
-								<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible>
-								<control type="image">
-									<width>47</width>
-									<height>47</height>
-									<texture>logos/metacritic.png</texture>
-									<colordiffuse>grey</colordiffuse>
-								</control>
-								<control type="label">
-									<top>10</top>
-									<height>30</height>
-									<width>auto</width>
-									<label>$INFO[Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating),,%]</label>
-									<font>font48_bold</font>
-									<textcolor>grey</textcolor>
-								</control>
-							</control>
-						</control>
 					</control>
 					<!-- Separator -->
 					<control type="image">
@@ -644,12 +593,12 @@
 								<visible>!String.IsEmpty(ListItem.PlayCount)</visible>
 							</item>
 							<item>
-								<label>$INFO[Window(Home).Property(SkinHelper.ListItem.Tag)]</label>
+								<label>$INFO[ListItem.Tag]</label>
 								<label2>$LOCALIZE[20459]:</label2>
 								<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[20459])</onclick>
-								<onclick>SetProperty(MoreInfoContent,$INFO[Window(Home).Property(SkinHelper.ListItem.Tag)])</onclick>
+								<onclick>SetProperty(MoreInfoContent,$INFO[ListItem.Tag])</onclick>
 								<onclick>SetFocus(64)</onclick>
-								<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Tag)) + String.IsEqual(ListItem.DBTYPE,movie)</visible>
+								<visible>!String.IsEmpty(ListItem.Tag) + String.IsEqual(ListItem.DBTYPE,movie)</visible>
 							</item>
 							<item>
 								<label>[UPPERCASE]$INFO[ListItem.Property(AudioLanguage.1)]$INFO[ListItem.Property(AudioLanguage.2), / ]$INFO[ListItem.Property(AudioLanguage.3), / ]$INFO[ListItem.Property(AudioLanguage.4), / ]$INFO[ListItem.Property(AudioLanguage.5), / ]$INFO[ListItem.Property(AudioLanguage.6), / ]$INFO[ListItem.Property(AudioLanguage.7), / ][/UPPERCASE]</label>
@@ -1159,8 +1108,8 @@
 							</control>
 						</control>
 					</control>
-					<include condition="!System.HasAddon(script.embuary.helper)">DefaultActorList</include>
-					<include condition="System.HasAddon(script.embuary.helper)">CustomActorList</include>
+					<include condition="!System.HasAddon(script.extendedinfo)">DefaultActorList</include>
+					<include condition="System.HasAddon(script.extendedinfo)">CustomActorList</include>
 					<include condition="System.HasAddon(script.embuary.helper) + Skin.HasSetting(Enable.ExtendedInfoIntergration) + String.IsEqual(ListItem.DBTYPE,movie)">ExtendedInfoMovieLists</include>
 					<include condition="String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEmpty(ListItem.SetID)">ExtendedMovieSetPanel</include>
 					<include condition="System.HasAddon(script.embuary.helper) + Skin.HasSetting(Enable.ExtendedInfoTVIntergration) + String.IsEqual(ListItem.DBTYPE,tvshow)">ExtendedInfoSeriesLists</include>
