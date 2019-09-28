@@ -161,6 +161,13 @@
 						<onclick>Addon.OpenSettings(script.skin.info.service)</onclick>
 						<visible>System.HasAddon(script.skin.info.service)</visible>
 					</control>
+					<control type="button" id="203">
+						<include>SettingsButtonCommonValues</include>
+						<label>script.skin.info.service</label>
+						<label2>[COLOR invalid]$LOCALIZE[31332][/COLOR]$LOCALIZE[31451]</label2>
+						<onclick>InstallAddon(script.skin.info.service)</onclick>
+						<visible>!System.HasAddon(script.skin.info.service)</visible>
+					</control>
 					<control type="button" id="200">
 						<include>SettingsButtonCommonValues</include>
 						<label>$INFO[System.AddonTitle(script.embuary.info)]</label>
@@ -217,13 +224,6 @@
 						<label2>[COLOR invalid]$LOCALIZE[31332][/COLOR]$LOCALIZE[31451]</label2>
 						<onclick>InstallAddon(script.embuary.helper)</onclick>
 						<visible>!System.HasAddon(script.embuary.helper)</visible>
-					</control>
-					<control type="button" id="203">
-						<include>SettingsButtonCommonValues</include>
-						<label>script.skin.info.service</label>
-						<label2>[COLOR invalid]$LOCALIZE[31332][/COLOR]$LOCALIZE[31451]</label2>
-						<onclick>InstallAddon(script.skin.info.service)</onclick>
-						<visible>!System.HasAddon(script.skin.info.service)</visible>
 					</control>
 					<control type="button" id="210">
 						<include>SettingsButtonCommonValues</include>
