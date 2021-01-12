@@ -1032,6 +1032,20 @@
 			<selected>Skin.HasSetting(Enable.TinyFullscreenWallPosters)</selected>
 			<visible>!Window.IsActive(music) + Skin.HasSetting(Enable.SmallerFullscreenWallPosters)</visible>
 		</control>
+		<control type="radiobutton" id="1517">
+			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[31604]</label>
+			<onclick>Skin.ToggleSetting(Disable.Wall.MovieInfo)</onclick>
+			<selected>!Skin.HasSetting(Disable.Wall.MovieInfo)</selected>
+			<visible>Container.Content(movies) + !Skin.HasSetting(Enable.Wall.Logo)</visible>
+		</control>
+		<control type="radiobutton" id="1523">
+			<include>ButtonCommonValues</include>
+			<label>   - $LOCALIZE[515]</label>
+			<onclick>Skin.ToggleSetting(Disable.Wall.MovieGenre)</onclick>
+			<selected>!Skin.HasSetting(Disable.Wall.MovieGenre)</selected>)
+			<visible>Container.Content(movies) + !Skin.HasSetting(Enable.Wall.Logo) + !Skin.HasSetting(Disable.Wall.MovieInfo)</visible>
+		</control>
 		<control type="radiobutton" id="1520">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31292]</label>
