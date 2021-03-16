@@ -733,6 +733,7 @@
 							<visible>!Skin.HasSetting(HideMusicVizCD)</visible>
 						</control>
 						<control type="group">
+							<visible>String.IsEmpty(Player.Art(album.cdart)) + String.IsEmpty(Player.Art(cdart))</visible>
 							<visible>String.IsEmpty(Player.Art(album.discart)) + String.IsEmpty(Player.Art(discart))</visible>
 							<visible>!Skin.HasSetting(HideMusicVizCD) + !Skin.HasSetting(MusicDiscFallback.Vinyl)</visible>
 							<control type="label">

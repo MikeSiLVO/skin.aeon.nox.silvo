@@ -833,6 +833,8 @@
 		<value>$INFO[ListItem.Art(clearlogo)]</value>
 	</variable>
 	<variable name="PlayerArtworkDiscVar">
+		<value condition="!String.IsEmpty(Player.Art(album.cdart))">$INFO[Player.Art(album.cdart)]</value>
+		<value condition="!String.IsEmpty(Player.Art(cdart))">$INFO[Player.Art(cdart)]</value>
 		<value condition="!String.IsEmpty(Player.Art(album.discart))">$INFO[Player.Art(album.discart)]</value>
 		<value condition="!String.IsEmpty(Player.Art(discart))">$INFO[Player.Art(discart)]</value>
 		<value condition="Skin.HasSetting(MusicDiscFallback.Vinyl)">special://skin/extras/cdart/vinyl.png</value>
