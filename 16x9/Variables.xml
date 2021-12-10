@@ -713,6 +713,7 @@
 		<value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.Art(tvshow.poster))">$INFO[Container.ListItem.Art(tvshow.poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
+		<value condition="!String.IsEmpty(Window.Property(ael.listitem.art.poster))">$INFO[Window.Property(ael.listitem.art.poster)]</value>
 		<value>$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="FocusedPosterThumbVar">
@@ -726,6 +727,7 @@
 		<value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.Art(tvshow.poster))">$INFO[Container.ListItem.Art(tvshow.poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
+		<value condition="!String.IsEmpty(Window.Property(ael.listitem.art.poster))">$INFO[Window.Property(ael.listitem.art.poster)]</value>
 		<value>$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="FloorLabelVar">
@@ -2123,5 +2125,41 @@
 		<value condition="!String.IsEmpty(Skin.String(ThemeOSDProgressColor)) + !String.IsEqual(Skin.String(ThemeOSDProgressColor),None)">$INFO[Skin.String(ThemeOSDProgressColor)]</value>
 		<value condition="!String.IsEmpty(Skin.String(ThemeLabelColor)) + !String.IsEqual(Skin.String(ThemeLabelColor),None)">$INFO[Skin.String(ThemeLabelColor)]</value>
 		<value>FF6DB9E5</value>
+	</variable>
+
+	<variable name="ListItemIcon">
+		<value condition="!String.IsEmpty(Window.Property(ael.listitem.art.icon))">$INFO[Window.Property(ael.listitem.art.icon)]</value>
+		<value>$INFO[ListItem.Icon]</value>
+	</variable>
+
+	<!-- GAMES -->
+	<variable name="GameTitle">
+		<value condition="!String.IsEmpty(Window.Property(ael.listitem.title))">$INFO[Window.Property(ael.listitem.title)]</value>
+		<value condition="!String.IsEmpty(Game.Title)">$INFO[Game.Title]</value>
+		<value>$INFO[ListItem.Label]</value>
+	</variable>
+	<variable name="GamePlot">
+		<value condition="!String.IsEmpty(Window.Property(ael.listitem.plot))">$INFO[Window.Property(ael.listitem.plot)]</value>
+		<value condition="!String.IsEmpty(Game.Overview)">$INFO[Game.Overview]</value>
+		<value>$INFO[ListItem.AddonSummary]</value>
+	</variable>
+	<variable name="GameStudio">
+		<value condition="!String.IsEmpty(Window.Property(ael.listitem.studio))">$INFO[Window.Property(ael.listitem.studio)]</value>
+		<value condition="!String.IsEmpty(Game.Developer)">$INFO[Game.Developer]</value>
+		<value>$INFO[ListItem.Studio]</value>
+	</variable>
+	<variable name="GameGenre">
+		<value condition="!String.IsEmpty(Window.Property(ael.listitem.genre))">$INFO[Window.Property(ael.listitem.genre)]</value>
+		<value condition="!String.IsEmpty(Game.Genres)">$INFO[Game.Genres]</value>
+		<value>$INFO[ListItem.Genre]</value>
+	</variable>
+	<variable name="GameYear">
+		<value condition="!String.IsEmpty(Window.Property(ael.listitem.year))">$INFO[Window.Property(ael.listitem.year)]</value>
+		<value condition="!String.IsEmpty(Game.Year)">$INFO[Game.Year]</value>
+		<value>$INFO[ListItem.Year]</value>
+	</variable>
+	<variable name="GameYear">
+		<value condition="!String.IsEmpty(Window.Property(ael.listitem.rating))">$INFO[Window.Property(ael.listitem.rating)]</value>
+		<value>$INFO[ListItem.Rating]</value>
 	</variable>
 </includes>

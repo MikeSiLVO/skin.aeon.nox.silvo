@@ -705,7 +705,7 @@
 				<ondown>501</ondown>
 				<pagecontrol>50160</pagecontrol>
 				<viewtype label="$LOCALIZE[31241]">list</viewtype>
-				<visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | String.Contains(Container.FolderPath,plugin.program.advanced.launcher)</visible>
+				<visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | $EXP[InGameMode]</visible>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<animation effect="slide" end="0,-203.375" time="120" condition="!Skin.HasSetting(nohighlist)">Conditional</animation>
 				<itemlayout height="68" width="806" condition="Container.Content(movies)">
@@ -1656,7 +1656,7 @@
 				<ondown>501</ondown>
 				<pagecontrol>50160</pagecontrol>
 				<viewtype label="$LOCALIZE[31241]">list</viewtype>
-				<visible>String.Contains(Container.FolderPath,plugin.program.advanced.launcher)</visible>
+				<visible>$EXP[InGameMode]</visible>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<animation effect="slide" end="0,-203.375" time="120" condition="!Skin.HasSetting(nohighlistgame)">Conditional</animation>
 				<itemlayout height="68" width="806">

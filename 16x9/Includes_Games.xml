@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+	<!-- List data of available game assets -->
+	<include name="GameAssets">
+		<item id="5051">
+			<label>Trailer</label>
+			<thumb>DefaultAddonMovieInfo.png</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Trailer)</visible>
+			<property name="contenttype">video</property>
+			<property name="video">$INFO[Container.ListItem.Trailer]</property>
+			<onclick>PlayMedia($INFO[Container.ListItem.Trailer],1)</onclick>
+		</item>
+		<item id="5052">
+			<label>Title</label>
+			<thumb>$INFO[Container.ListItem.Art(title)]</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Art(title))</visible>
+			<property name="contenttype">image</property>
+			<onclick>ShowPicture($INFO[Container.ListItem.Art(title)])</onclick>
+		</item>
+		<item id="5053">
+			<label>Snap</label>
+			<thumb>$INFO[Container.ListItem.Art(snap)]</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Art(snap))</visible>
+			<property name="contenttype">image</property>
+			<onclick>ShowPicture($INFO[Container.ListItem.Art(snap)])</onclick>
+		</item>
+		<item id="5054">
+			<label>Front</label>
+			<thumb>$INFO[Container.ListItem.Art(boxfront)]</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Art(boxfront))</visible>
+			<property name="contenttype">image</property>
+			<onclick>ShowPicture($INFO[Container.ListItem.Art(boxfront)])</onclick>
+		</item>
+		<item id="5055">
+			<label>Back</label>
+			<thumb>$INFO[Container.ListItem.Art(boxback)]</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Art(boxback))</visible>
+			<property name="contenttype">image</property>
+			<onclick>ShowPicture($INFO[Container.ListItem.Art(boxback)])</onclick>
+		</item>
+		<item id="5056">
+			<label>Flyer</label>
+			<thumb>$INFO[Container.ListItem.Art(poster)]</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Art(poster))</visible>
+			<property name="contenttype">image</property>
+			<onclick>ShowPicture($INFO[Container.ListItem.Art(poster)])</onclick>
+		</item>
+		<item id="5057">
+			<label>Map</label>
+			<thumb>$INFO[Container.ListItem.Art(map)]</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Art(map))</visible>
+			<property name="contenttype">image</property>
+			<onclick>ShowPicture($INFO[Container.ListItem.Art(map)])</onclick>
+		</item>
+		<item id="5058">
+			<label>Cartridge/Disc</label>
+			<thumb>$INFO[Container.ListItem.Art(cartridge)]</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Art(cartridge))</visible>
+			<property name="contenttype">image</property>
+			<onclick>ShowPicture($INFO[Container.ListItem.Art(cartridge)])</onclick>
+		</item>
+	</include>
+
+</includes>

@@ -5,8 +5,8 @@
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
-	<onunload>ClearProperty(Progams.Games,Home)</onunload>
-	<views>50,51,55,500</views>
+	<onunload>ClearProperty(Programs.Games,Home)</onunload>
+	<views>50,51,55,57,500</views>
 	<menucontrol>9051</menucontrol>
 	<controls>
 		<include>CommonBackground</include>
@@ -17,7 +17,7 @@
 			<!-- view id = 50 -->
 			<include condition="!Skin.HasSetting(Disable.InfoWallView)">AddonInfoWall</include>
 			<!-- view id = 51 -->
-			<include condition="!Skin.HasSetting(Disable.TriPanelView)">MusicTriPanel</include>
+			<include condition="!Skin.HasSetting(Disable.TriPanelView)">GamesTriPanel</include>
 			<!-- view id = 55 -->
 			<include condition="!Skin.HasSetting(Disable.ShiftView)">GamesShift</include>
 			<!-- view id = 57 -->
@@ -51,8 +51,19 @@
 						<height>30</height>
 						<align>center</align>
 						<font>font13_title</font>
+						<label>GAme MOde</label>
+						<textoffsetx>30</textoffsetx>
+						<visible>$EXP[InGameMode]</visible>
+					</control>
+					<control type="label">
+						<top>45</top>
+						<right>410</right>
+						<height>30</height>
+						<align>center</align>
+						<font>font13_title</font>
 						<label>$VAR[FloorLabel2Var]</label>
 						<textoffsetx>30</textoffsetx>
+						<visible>!$EXP[InGameMode]</visible>
 					</control>
 				</control>
 			</control>
@@ -68,7 +79,7 @@
 						<height>48</height>
 						<font>font16_title_bold</font>
 						<scroll>true</scroll>
-						<label>$INFO[ListItem.Label]</label>
+						<label>$VAR[GameTitle]</label>
 						<textoffsetx>30</textoffsetx>
 					</control>
 					<control type="label">
@@ -77,7 +88,7 @@
 						<height>30</height>
 						<font>font13_title</font>
 						<scroll>true</scroll>
-						<label>$INFO[ListItem.AddonSummary]</label>
+						<label>$VAR[GamePlot]</label>
 						<textoffsetx>30</textoffsetx>
 					</control>
 				</control>
