@@ -606,6 +606,6 @@
 	<expression name="WidgetFanartVisible">[[String.IsEmpty(Container(9000).ListItem.Property(widgetDisableFanart)) + ControlGroup(90010).HasFocus] | [String.IsEmpty(Container(9000).ListItem.Property(widgetDisableFanart.2)) + ControlGroup(90020).HasFocus]]</expression>
 	
 	<!-- Games -->
-	<expression name="InGameMode">String.Contains(Container.FolderPath,plugin://plugin.program.ael) | String.Contains(Container.FolderPath,plugin://plugin.program.advanced.launcher) | String.Contains(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher) | Window.IsActive(games) | Container.Content(games)</expression>
+	<expression name="InGameMode">String.Contains(Container.FolderPath,plugin://plugin.program.ael) | String.Contains(Container.FolderPath,plugin://plugin.program.advanced.launcher) | String.Contains(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher) | String.Contains(Container.FolderPath,plugin://plugin.program.akl) | Window.IsActive(games) | Container.Content(games)</expression>
 
 </includes>
