@@ -166,7 +166,7 @@
 		<value condition="Window.IsActive(SettingsCategory.xml) | Window.IsActive(systeminfo) | Window.IsActive(skinsettings) | Window.IsActive(settings) | Window.IsActive(addonbrowser) | Window.IsActive(filemanager) | Window.IsActive(eventlog)">SetProperty(Nox.Temp,System.Fallback,Home)</value>
 		<value condition="Window.IsActive(programs) | Window.IsActive(1133)">SetProperty(Nox.Temp,Apps.Fallback,Home)</value>
 		<value condition="Window.IsActive(pictures)">SetProperty(Nox.Temp,Pictures.Fallback,Home)</value>
-		<value condition="Window.IsActive(games)">SetProperty(Nox.Temp,Games.Fallback,Home)</value>
+		<value condition="$EXP[InGameMode]">SetProperty(Nox.Temp,Games.Fallback,Home)</value>
 	</variable>
 	<variable name="BackgroundLabelVar">
 		<value condition="String.StartsWith(Container.FolderPath,videodb://tvshows/)">$LOCALIZE[20343]</value>
@@ -178,7 +178,7 @@
 		<value condition="Window.IsActive(SettingsCategory.xml) | Window.IsActive(systeminfo) | Window.IsActive(skinsettings) | Window.IsActive(settings) | Window.IsActive(addonbrowser) | Window.IsActive(filemanager) | Window.IsActive(eventlog)">$LOCALIZE[13000]</value>
 		<value condition="Window.IsActive(programs) | Window.IsActive(1133)">$LOCALIZE[24001]</value>
 		<value condition="Window.IsActive(pictures)">$LOCALIZE[1]</value>
-		<value condition="Window.IsActive(games)">$LOCALIZE[10821]</value>
+		<value condition="$EXP[InGameMode]">$LOCALIZE[10821]</value>
 	</variable>
 	<variable name="LoginProfileBackgroundVar">
 		<value condition="!String.IsEmpty(Skin.String(Profiles.Fallback))">$INFO[Skin.String(Profiles.Fallback)]</value>
@@ -284,13 +284,13 @@
 		<value condition="Container.Content(artists) | Container.Content(albums) | Container.Content(songs)"></value>
 		<value condition="Window.IsActive(music)"></value>
 		<value condition="Window.IsActive(addonbrowser) | Window.IsActive(addoninformation) | Window.IsActive(eventlog) | Window.IsActive(filemanager) | Window.IsActive(settings) | Window.IsActive(SettingsCategory.xml) | Window.IsActive(skinsettings) | Window.IsActive(profiles) | Window.IsActive(systeminfo)"></value>
-		<value condition="Window.IsActive(games)"></value>
+		<value condition="$EXP[InGameMode]"></value>
 		<value condition="Window.IsActive(programs) | Window.IsActive(1133)"></value>
 		<value condition="Window.IsActive(pictures)"></value>
 		<value condition="Window.IsActive(weather)"></value>
 	</variable>
 	<variable name="BreadcrumbsFillerVar">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(movies) | Container.Content(genres) | Window.IsActive(music) | Window.IsActive(games) | Window.IsActive(programs) | Window.IsActive(tvchannels) | Window.IsActive(TVRecordings) | Window.IsActive(TVTimers) | Window.IsActive(TVSearch)" />
+		<value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(movies) | Container.Content(genres) | Window.IsActive(music) | $EXP[InGameMode] | Window.IsActive(programs) | Window.IsActive(tvchannels) | Window.IsActive(TVRecordings) | Window.IsActive(TVTimers) | Window.IsActive(TVSearch)" />
 		<value condition="Window.IsActive(profiles)">$LOCALIZE[13200]</value>
 		<value condition="Window.IsVisible(1133) + Window.IsActive(addoninformation)">$LOCALIZE[31957]: </value>
 		<value condition="Window.IsActive(1133)">$LOCALIZE[31957]</value>
@@ -2135,39 +2135,29 @@
 		<value>FF6DB9E5</value>
 	</variable>
 
-	<variable name="ListItemIcon">
-		<value condition="!String.IsEmpty(Window.Property(ael.listitem.art.icon))">$INFO[Window.Property(ael.listitem.art.icon)]</value>
-		<value>$INFO[ListItem.Icon]</value>
-	</variable>
-
 	<!-- GAMES -->
 	<variable name="GameTitle">
-		<value condition="!String.IsEmpty(Window.Property(ael.listitem.title))">$INFO[Window.Property(ael.listitem.title)]</value>
 		<value condition="!String.IsEmpty(Game.Title)">$INFO[Game.Title]</value>
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="GamePlot">
-		<value condition="!String.IsEmpty(Window.Property(ael.listitem.plot))">$INFO[Window.Property(ael.listitem.plot)]</value>
 		<value condition="!String.IsEmpty(Game.Overview)">$INFO[Game.Overview]</value>
+		<value condition="!String.IsEmpty(ListItem.Plot)">$INFO[ListItem.Plot]</value>
 		<value>$INFO[ListItem.AddonSummary]</value>
 	</variable>
 	<variable name="GameStudio">
-		<value condition="!String.IsEmpty(Window.Property(ael.listitem.studio))">$INFO[Window.Property(ael.listitem.studio)]</value>
 		<value condition="!String.IsEmpty(Game.Developer)">$INFO[Game.Developer]</value>
 		<value>$INFO[ListItem.Studio]</value>
 	</variable>
 	<variable name="GameGenre">
-		<value condition="!String.IsEmpty(Window.Property(ael.listitem.genre))">$INFO[Window.Property(ael.listitem.genre)]</value>
 		<value condition="!String.IsEmpty(Game.Genres)">$INFO[Game.Genres]</value>
 		<value>$INFO[ListItem.Genre]</value>
 	</variable>
 	<variable name="GameYear">
-		<value condition="!String.IsEmpty(Window.Property(ael.listitem.year))">$INFO[Window.Property(ael.listitem.year)]</value>
 		<value condition="!String.IsEmpty(Game.Year)">$INFO[Game.Year]</value>
 		<value>$INFO[ListItem.Year]</value>
 	</variable>
-	<variable name="GameYear">
-		<value condition="!String.IsEmpty(Window.Property(ael.listitem.rating))">$INFO[Window.Property(ael.listitem.rating)]</value>
+	<variable name="GameRating">
 		<value>$INFO[ListItem.Rating]</value>
 	</variable>
 </includes>

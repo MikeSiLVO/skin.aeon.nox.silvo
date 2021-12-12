@@ -968,6 +968,12 @@
 					<width>448</width>
 					<height>270</height>
 					<control type="button">
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31043]:[/COLOR][CR]$VAR[GameTitle]]</label>
+						<width>448</width>
+						<include>DefaultButtonsValues</include>
+						<visible>!String.IsEmpty($VAR[GameTitle])</visible>
+					</control>
+					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$VAR[GameGenre]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
