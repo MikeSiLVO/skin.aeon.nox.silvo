@@ -8,11 +8,10 @@
 # Needs the following OS vars (.env)
 #
 # ADDON_NAME=plugin.program.akl
-# ADDON_WORKINGDIR=<project root dir>
-# ADDON_SRCPATHS=**/*.py,**/*.md,**/*.xml,*.txt,resources/language/**/*.po,resources/**/*.sql,media/**/*.*,!tests/**/*.*,!build/**/*.*
+# ADDON_SRCPATHS=**/*.py:**/*.md:**/*.xml:media/**/*.*:!tests/**/*.*:!build/**/*.*
 # ADDON_KODI_DIR=<kodi addons dir>
 #
-# ADDON_SRCPATHS is a comma separated list of glob patterns of files to deploy.
+# ADDON_SRCPATHS is a path separator list of glob patterns of files to deploy.
 # 
 
 # --- Python standard library ---
@@ -24,17 +23,30 @@ import glob
 import typing
 import shutil
 import logging
+import subprocess
 
 logger = logging.getLogger(__name__)
 
-def publish():
-        
-    working_directory    = os.getenv('ADDON_WORKINGDIR')
-    source_paths_str     = os.getenv('ADDON_SRCPATHS')
-    kodi_addon_directory = os.getenv('ADDON_KODI_DIR')
-    addon_name           = os.getenv('ADDON_NAME')
+
+def pack(working_directory: str, packer_src_files: str, packer_dst_files:str):
     
-    source_paths = source_paths_str.split(',')
+    tool_path = os.path.join(working_directory, 'build', 'tools', 'kodi-texturepacker', 'linux')
+    tool_path = os.path.join(tool_path, 'TexturePacker')
+    command = [
+        tool_path, 
+        '-dupecheck', 
+        f'-input {os.path.join(working_directory, packer_src_files)}',
+        f'-output {os.path.join(working_directory, packer_dst_files)}'
+    ]
+
+    cmd = ' '.join(command)
+    logger.info(f'TexturePacker CMD: {cmd}')
+    retcode = subprocess.call(cmd, shell=True, close_fds = True)
+    logger.info(f'TexturePacker: {retcode}')
+
+def publish(addon_name: str, working_directory: str, source_paths_str:str, kodi_addon_directory:str):
+    
+    source_paths = source_paths_str.split(':')
     source_files = _get_files_for_addon(working_directory, source_paths)
     dest_directory = f'{kodi_addon_directory}{addon_name}/'
     
@@ -83,6 +95,19 @@ def _get_files_for_addon(working_directory:str, source_paths:typing.List[str]) -
     return source_files
 
 try:
-    publish()
+    working_directory    = os.getenv('PWD')
+    addon_name           = os.getenv('ADDON_NAME')
+
+    source_paths_str     = os.getenv('ADDON_SRCPATHS')
+    kodi_addon_directory = os.getenv('ADDON_KODI_DIR')
+    
+    packer_src_files     = os.getenv('PACKER_FILES_SRC')
+    packer_dst_files     = os.getenv('PACKER_FILES_DEST')
+
+    if not working_directory.endswith(os.path.sep):
+        working_directory = f'{working_directory}{os.path.sep}'
+
+    pack(working_directory, packer_src_files, packer_dst_files)
+    publish(addon_name, working_directory, source_paths_str, kodi_addon_directory)
 except Exception as ex:
     logger.fatal('Exception in tool', exc_info=ex)
