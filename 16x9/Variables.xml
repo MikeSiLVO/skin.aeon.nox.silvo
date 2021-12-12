@@ -833,6 +833,7 @@
 		<value condition="Container.Content(seasons) | Container.Content(episodes)">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(albumartist.clearlogo))">$INFO[ListItem.Art(albumartist.clearlogo)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(artist.clearlogo))">$INFO[ListItem.Art(artist.clearlogo)]</value>
+		<value condition="$EXP[InGameMode] + String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Icon)">$INFO[ListItem.Icon]</value>
 		<value>$INFO[ListItem.Art(clearlogo)]</value>
 	</variable>
 	<variable name="PlayerArtworkDiscVar">

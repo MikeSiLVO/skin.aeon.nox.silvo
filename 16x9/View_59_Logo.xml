@@ -26,7 +26,7 @@
 			</control>
 		</control>
 		<control type="group">
-			<visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
+			<visible>String.IsEmpty(ListItem.Art(clearlogo)) + !$EXP[InGameMode]</visible>
 			<control type="label">
 				<top>250</top>
 				<width>470</width>
@@ -70,7 +70,7 @@
 		<focusposition>2</focusposition>
 		<viewtype label="$LOCALIZE[31606]">list</viewtype>
 		<scrolltime tween="quadratic" easing="out">300</scrolltime>
-		<visible>Container.Content(tvshows) | Container.Content(movies) | Container.Content(sets) | Container.Content(artists)</visible>
+		<visible>Container.Content(tvshows) | Container.Content(movies) | Container.Content(sets) | Container.Content(artists) | $EXP[InGameMode]</visible>
 		<orientation>horizontal</orientation>
 		<itemlayout width="495" height="450">
 			<control type="group">
@@ -95,6 +95,7 @@
 			<include condition="!Skin.HasSetting(LogoWrapList)">LogoWrap</include>
 			<control type="group">
 				<visible>!ListItem.IsParentFolder</visible>
+				<!-- Movies -->
 				<control type="group">
 					<visible>!ListItem.IsCollection</visible>
 					<control type="group">
@@ -129,6 +130,7 @@
 						</control>
 					</control>
 				</control>
+				<!-- Movie Collections -->
 				<control type="group">
 					<visible>ListItem.IsCollection + !Skin.HasSetting(noextendedinfomovies)</visible>
 					<animation effect="fade" time="140" delay="100" condition="!Skin.HasSetting(noextendedinfomovies)">Visible</animation>
@@ -173,6 +175,7 @@
 						</control>
 					</control>
 				</control>
+				<!-- TV Shows -->
 				<control type="group">
 					<top>845</top>
 					<visible>[Container.Content(tvshows) + !Skin.HasSetting(noextendedinfotvshows)]</visible>
@@ -199,6 +202,33 @@
 						<align>center</align>
 						<font>font13_bold</font>
 						<label>$INFO[ListItem.RatingAndVotes]</label>
+					</control>
+				</control>
+				<!-- Games -->
+				<control type="group">
+					<visible>$EXP[InGameMode]</visible>
+					<left>495</left>
+					<top>845</top>
+					<control type="grouplist">
+						<top>130</top>
+						<height>100</height>
+						<itemgap>5</itemgap>
+						<control type="label">
+							<width>930</width>
+							<height>40</height>
+							<align>center</align>
+							<font>font14_bold</font>
+							<scroll>true</scroll>
+							<label>$INFO[ListItem.Tagline]</label>
+							<visible>!String.IsEmpty(ListItem.Tagline)</visible>
+						</control>
+						<control type="label">
+							<width>930</width>
+							<height>40</height>
+							<align>center</align>
+							<font>font13_bold</font>
+							<label>$VAR[FloorSubLabelVar]</label>
+						</control>
 					</control>
 				</control>
 			</control>

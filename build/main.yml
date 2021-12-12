@@ -11,6 +11,9 @@ variables:
   isHotfix: ${{startsWith(variables['Build.SourceBranch'], 'refs/heads/hotfix/')}}
   isDev: ${{eq(variables['Build.SourceBranch'], 'refs/heads/dev')}}
   workingDirectory: '$(Build.SourcesDirectory)'
+  packerToolPath: '$(build.artifactstagingdirectory)/build/tools/kodi-texturepacker/linux/TexturePacker'
+  packerSrc: '$(build.artifactstagingdirectory)/media/'
+  packerDest: '$(build.artifactstagingdirectory)/media/Textures.xbt'
 
 stages:
 - stage: Build
@@ -47,15 +50,28 @@ stages:
           RegEx: 'version="\d+\.\d+\.\d+.*" provider'
           ValueToReplace: 'version="$(packageVersion)" provider'
           
+      - script: |
+            $(packerToolPath) -dupecheck -input $(packerSrc) -output $(packerDest)
+        displayName: 'Run texturepacker'
+
       - task: CopyFiles@2
         displayName: 'Copy addon files for package'
         inputs:
           SourceFolder: ''
           Contents: |
-              *.md
-              *.xml
-              lib/**/*.*
-              media/**/*.*
+              **/*.md
+              **/*.xml
+              **/*.txt
+              **/*.jpg
+              **/*.png
+              **/*.po
+              **/*.ttf
+              **/*.xsp
+              **/*.mp4
+              **/*.xbt
+              !media/**/*.png
+              !media/**/*.jpg
+              !build/**/*.*
           TargetFolder: '$(build.artifactstagingdirectory)/skin.aeon.nox.silvo/'
           CleanTargetFolder: true
           flattenFolders: false

@@ -6,7 +6,7 @@
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
 	<onunload>ClearProperty(Programs.Games,Home)</onunload>
-	<views>50,51,55,57,500</views>
+	<views>50,51,55,57,59,500</views>
 	<menucontrol>9051</menucontrol>
 	<controls>
 		<include>CommonBackground</include>
@@ -21,6 +21,8 @@
 			<!-- view id = 55 -->
 			<include condition="!Skin.HasSetting(Disable.ShiftView)">GamesShift</include>
 			<!-- view id = 57 -->
+			<include condition="!Skin.HasSetting(Disable.LogoView)">View_59_Logo</include>
+			<!-- view id = 59 -->
 			<include condition="!Skin.HasSetting(Disable.IconsView)">AddonIcons</include>
 			<!-- view id = 500 -->
 		</control>
@@ -51,7 +53,7 @@
 						<height>30</height>
 						<align>center</align>
 						<font>font13_title</font>
-						<label>GAme MOde</label>
+						<label>Game Mode</label>
 						<textoffsetx>30</textoffsetx>
 						<visible>$EXP[InGameMode]</visible>
 					</control>
@@ -117,6 +119,30 @@
 			<include>SideBladeLeft</include>
 			<control type="grouplist" id="9050">
 				<include>MediaMenuTop</include>
+				<control type="button" id="6051">
+					<description>Show Info Toggle</description>
+					<textwidth>255</textwidth>
+					<include>ButtonCommonValues</include>
+					<label>$LOCALIZE[31018]</label>
+					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[InfoPanelLabelVar][/COLOR]</label2>
+					<onclick condition="Control.IsVisible(52)">$VAR[52VideoInfoPanelVar]</onclick>
+					<onclick condition="Control.IsVisible(53)">$VAR[53VideoInfoPanelVar]</onclick>
+					<onclick condition="Control.IsVisible(57)">$VAR[57VideoInfoPanelVar]</onclick>
+					<onclick condition="Control.IsVisible(59)">$VAR[59VideoInfoPanelVar]</onclick>
+					<onclick condition="Control.IsVisible(503)">Skin.ToggleSetting(503.InfoPanel)</onclick>
+					<onclick condition="Control.IsVisible(601)">$VAR[601VideoInfoPanelVar]</onclick>
+					<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | Control.IsVisible(59) | Control.IsVisible(503) | Control.IsVisible(601)</visible>
+				</control>
+				<control type="radiobutton" id="6052">
+					<description>InfoPanel Settings button</description>
+					<textwidth>352</textwidth>
+					<include>ButtonCommonValues</include>
+					<label>   - $LOCALIZE[413]</label>
+					<onclick>Skin.ToggleSetting(Enable.ManualInfoPanel)</onclick>
+					<onclick condition="!Skin.HasSetting(Enable.ManualInfoPanel)">Skin.Reset(InfoPanel.Delay)</onclick>
+					<selected>Skin.HasSetting(Enable.ManualInfoPanel)</selected>
+					<visible>$EXP[InGameMode] + Control.IsVisible(6051) + [!String.IsEmpty(Control.GetLabel(4420)) | !String.IsEmpty(Control.GetLabel(4421))]</visible>
+				</control>
 				<control type="edit" id="19">
 					<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
 					<description>Filter</description>
