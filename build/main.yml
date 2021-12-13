@@ -1,3 +1,25 @@
+# Azure Devops Pipeline definition
+# 
+# Will build and release packages on Gitflow branch triggers (main, release/*).
+# In build phase it will apply semver versioning with help of GitVersion (plugin needed).
+# Automatically runs the texturepacker tool to compile images into xbt file. The results of 
+# the build are stored in a package on Azure Devops.
+# After the build phase the deployment phase follows. During this phase it will checkout the
+# github repository containing a Kodi addon repository and add the new package so users can
+# download it.
+# There are 2 deployment phases, first one for staging where only beta/release candidates are 
+# deployed. Second one is the main repository for official releases (based on master/main branch).
+#
+# Needed extensions:
+# - GitTools / GitVersion
+# - RegEx Match & Replace
+#
+# Needed variables (var groups in library)
+# - repository.variables
+#   - git_emailAddress 
+#   - git_userName
+#   - github_token
+
 trigger:
 - main
 - release/*
@@ -23,6 +45,9 @@ stages:
       displayName: build
         
       steps:
+      - checkout: self
+        submodules: true
+        
       - task: gitversion/setup@0
         displayName: 'Install GitTools'
         inputs:
@@ -114,7 +139,7 @@ stages:
      
 - stage: DeployStaging
   displayName: Deployment on Staging
-  condition: or(eq(${{variables.isReleaseCandidate}}, true),eq(${{variables.isHotfix}}, true),eq(${{variables.isMaster}}, true))
+  condition: and(succeeded(),or(eq(${{variables.isReleaseCandidate}}, true),eq(${{variables.isHotfix}}, true),eq(${{variables.isMaster}}, true)))
   jobs:
     - deployment: Staging
       environment: 
@@ -194,7 +219,7 @@ stages:
 
 - stage: DeployProd
   displayName: Deployment on Production
-  condition: eq(${{variables.isMaster}}, true)
+  condition: and(succeeded(),eq(${{variables.isMaster}}, true))
   jobs:
     - deployment: Production
       environment: 
