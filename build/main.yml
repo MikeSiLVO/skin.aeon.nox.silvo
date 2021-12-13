@@ -33,9 +33,9 @@ variables:
   isHotfix: ${{startsWith(variables['Build.SourceBranch'], 'refs/heads/hotfix/')}}
   isDev: ${{eq(variables['Build.SourceBranch'], 'refs/heads/dev')}}
   workingDirectory: '$(Build.SourcesDirectory)'
-  packerToolPath: '$(build.artifactstagingdirectory)/build/tools/kodi-texturepacker/linux/TexturePacker'
-  packerSrc: '$(build.artifactstagingdirectory)/media/'
-  packerDest: '$(build.artifactstagingdirectory)/media/Textures.xbt'
+  packerToolPath: '$(workingDirectory)/build/tools/kodi-texturepacker/linux/TexturePacker'
+  packerSrc: '$(workingDirectory)/media/'
+  packerDest: '$(workingDirectory)/media/Textures.xbt'
 
 stages:
 - stage: Build
@@ -46,7 +46,7 @@ stages:
         
       steps:
       - checkout: self
-        submodules: recursive
+        submodules: true
         
       - task: gitversion/setup@0
         displayName: 'Install GitTools'
