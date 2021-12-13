@@ -9,7 +9,18 @@
 	<views>50,51,55,57,59,500</views>
 	<menucontrol>9051</menucontrol>
 	<controls>
+		<control type="label" id="4420">
+			<label>$VAR[GamesInfoPanelVar]</label>
+			<include>HiddenObject</include>
+			<visible>Control.IsVisible(57) | Control.IsVisible(59)</visible>
+			<include condition="!String.IsEmpty(Skin.String(InfoPanel.Delay))">InfoPanelDelayAnimation</include>
+		</control>
 		<include>CommonBackground</include>
+		<control type="group">
+			<visible>Control.IsVisible(57) | Control.IsVisible(59)</visible>
+			<top>-30</top>
+			<include>InfoPanel</include>
+		</control>
 		<control type="group">
 			<include>WindowOpenCloseAnimation</include>
 			<include condition="!Skin.HasSetting(Enable.SlimList)">AddonList</include>
@@ -125,13 +136,10 @@
 					<include>ButtonCommonValues</include>
 					<label>$LOCALIZE[31018]</label>
 					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[InfoPanelLabelVar][/COLOR]</label2>
-					<onclick condition="Control.IsVisible(52)">$VAR[52VideoInfoPanelVar]</onclick>
-					<onclick condition="Control.IsVisible(53)">$VAR[53VideoInfoPanelVar]</onclick>
-					<onclick condition="Control.IsVisible(57)">$VAR[57VideoInfoPanelVar]</onclick>
-					<onclick condition="Control.IsVisible(59)">$VAR[59VideoInfoPanelVar]</onclick>
+					<onclick condition="Control.IsVisible(57)">$VAR[57GamesInfoPanelVar]</onclick>
+					<onclick condition="Control.IsVisible(59)">$VAR[59GamesInfoPanelVar]</onclick>
 					<onclick condition="Control.IsVisible(503)">Skin.ToggleSetting(503.InfoPanel)</onclick>
-					<onclick condition="Control.IsVisible(601)">$VAR[601VideoInfoPanelVar]</onclick>
-					<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | Control.IsVisible(59) | Control.IsVisible(503) | Control.IsVisible(601)</visible>
+					<visible>Control.IsVisible(57) | Control.IsVisible(59) | Control.IsVisible(503)</visible>
 				</control>
 				<control type="radiobutton" id="6052">
 					<description>InfoPanel Settings button</description>
