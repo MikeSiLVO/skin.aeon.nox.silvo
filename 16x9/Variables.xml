@@ -416,6 +416,7 @@
 		<value condition="Container.Content(seasons)">$INFO[Container.ShowPlot]</value>
 		<value condition="!String.IsEmpty(ListItem.PlotOutline) + Skin.HasSetting(ViewInfoPlotToggle)">$INFO[ListItem.PlotOutline]</value>
 		<value condition="System.GetBool(videolibrary.showunwatchedplots)">$INFO[ListItem.Plot]</value>
+		<value condition="$EXP[InGameMode]">$VAR[GamePlot]</value>
 		<value>$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="OtherPlotVar">
@@ -699,13 +700,14 @@
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31010]:[/COLOR][CR]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired),,: ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Name)]</value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Last_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31011]:[/COLOR][CR]$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Season),S]$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Episode),E,  -]$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Name)]</value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31019]:[/COLOR][CR]$INFO[ListItem.Studio]</value>
-		<value condition="$EXP[InGameMode]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31019]:[/COLOR][CR]$VAR[GameStudio]</value>
+		<value condition="$EXP[InGameMode]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31995]:[/COLOR][CR]$VAR[GameStudio]</value>
 	</variable>
 	<variable name="InfoPanelLabel3Var">
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[563]:[/COLOR][CR]$INFO[ListItem.RatingAndVotes]$INFO[ListItem.Top250, / $LOCALIZE[13409] #]</value>
 		<value condition="Container.Content(tvshows) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Status))">[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Property(TotalSeasons)]$VAR[OneOrMoreSeasonsVar, , / ]$INFO[ListItem.Property(TotalEpisodes),, ]$VAR[OneOrMoreEpisodesVar]:[/COLOR][CR]$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[16101]]</value>
 		<value condition="Container.Content(tvshows)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20360]:[/COLOR][CR]$INFO[ListItem.Property(TotalEpisodes)]$INFO[ListItem.Property(UnWatchedEpisodes), (,[LOWERCASE] $LOCALIZE[16101][/LOWERCASE])]</value>
 		<value condition="Container.Content(seasons)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20360]:[/COLOR][CR]$INFO[ListItem.Property(TotalEpisodes)]</value>
+		<value condition="$EXP[InGameMode]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[345]:[/COLOR][CR]$VAR[GameYear]</value>
 	</variable>
 	<variable name="InfoPanelLabel4Var">
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Runtime))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime),, $LOCALIZE[12391]]</value>
@@ -719,8 +721,7 @@
 	<variable name="InfoPanelLabel5Var">
 		<value condition="[Container.Content(movies) | Container.Content(sets)] + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Years))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[345]:[/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Years)]</value>
 		<value condition="[Container.Content(movies) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[345]:[/COLOR][CR]$INFO[ListItem.Year]</value>
-		<value condition="Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20416]:[/COLOR][CR]$INFO[ListItem.Premiered]</value>
-		<value condition="$EXP[InGameMode]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[345]:[/COLOR][CR]$VAR[GameYear]</value>
+		<value condition="Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20416]:[/COLOR][CR]$INFO[ListItem.Premiered]</value>		
 	</variable>
 	<variable name="PosterThumbVar">
 		<value condition="Container.Content(genres) + !Skin.HasSetting(coloredflags)">$INFO[ListItem.Label,special://skin/extras/moviegenres/default/,.jpg]</value>

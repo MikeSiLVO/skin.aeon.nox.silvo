@@ -9,6 +9,29 @@
 	<views>50,51,55,57,59,500</views>
 	<menucontrol>9051</menucontrol>
 	<controls>
+		<!-- Trigger for showing fanart fullscreen (hidden)-->
+		<control type="button" id="4400">
+			<include>HiddenObject</include>
+			<onfocus>SetProperty(Enable.FullscreenFanart,True,Home)</onfocus>
+			<onfocus>ActivateWindow(1113)</onfocus>
+			<onleft>50</onleft>
+			<onright>50</onright>
+			<onup>50</onup>
+			<ondown>50</ondown>
+			<onclick>50</onclick>
+		</control>
+		<!-- Trigger for manual showing infopanel (hidden) -->
+		<control type="button" id="4401">
+			<include>HiddenObject</include>
+			<onfocus condition="!Skin.HasSetting(Enable.ManualInfoPanel) | String.IsEmpty(Control.GetLabel(4420))">SetProperty(MediaMenu,True,Home)</onfocus>
+			<onfocus condition="!Skin.HasSetting(Enable.ManualInfoPanel) | String.IsEmpty(Control.GetLabel(4420))">SetFocus(9050)</onfocus>
+			<onup>SetProperty(MediaMenu,True,Home)</onup>
+			<onup>SetFocus(9050)</onup>
+			<ondown>50</ondown>
+			<onleft>50</onleft>
+			<onright>50</onright>
+		</control>
+		<!-- InfoPanel type label (hidden) -->
 		<control type="label" id="4420">
 			<label>$VAR[GamesInfoPanelVar]</label>
 			<include>HiddenObject</include>
@@ -16,6 +39,7 @@
 			<include condition="!String.IsEmpty(Skin.String(InfoPanel.Delay))">InfoPanelDelayAnimation</include>
 		</control>
 		<include>CommonBackground</include>
+		<!-- InfoPanel-->
 		<control type="group">
 			<visible>Control.IsVisible(57) | Control.IsVisible(59)</visible>
 			<top>-30</top>
