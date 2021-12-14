@@ -33,7 +33,7 @@ variables:
   isHotfix: ${{startsWith(variables['Build.SourceBranch'], 'refs/heads/hotfix/')}}
   isDev: ${{eq(variables['Build.SourceBranch'], 'refs/heads/dev')}}
   workingDirectory: '$(Build.SourcesDirectory)'
-  packerToolPath: '$(workingDirectory)/build/tools/kodi-texturepacker/linux/TexturePacker'
+  packerToolPath: '$(workingDirectory)/.build/tools/kodi-texturepacker/linux/TexturePacker'
   packerSrc: '$(workingDirectory)/media/'
   packerDest: '$(workingDirectory)/media/Textures.xbt'
 
@@ -116,7 +116,7 @@ stages:
           SourceFolder: '$(build.artifactstagingdirectory)/skin.aeon.nox.silvo/'
           Contents: |
               addon.xml
-              media/**/*.*
+              resources/**/*.*
           TargetFolder: '$(build.artifactstagingdirectory)/package/'
           CleanTargetFolder: false
           flattenFolders: false
@@ -139,7 +139,7 @@ stages:
      
 - stage: DeployStaging
   displayName: Deployment on Staging
-  condition: and(succeeded(),or(eq(${{variables.isReleaseCandidate}}, true),eq(${{variables.isHotfix}}, true),eq(${{variables.isMaster}}, true)))
+  condition: or(eq(${{variables.isReleaseCandidate}}, true),eq(${{variables.isHotfix}}, true),eq(${{variables.isMaster}}, true))
   jobs:
     - deployment: Staging
       environment: 
@@ -147,6 +147,12 @@ stages:
 
       variables:
         - group: repository.variables
+        - name: repository_url
+          value: github.com/chrisism/repository.chrisism.dev.git
+        - name: repository_name
+          value: repository.chrisism.dev
+        - name: repository_data_dir
+          value: 'matrix'
 
       strategy:     
         runOnce:
@@ -157,14 +163,14 @@ stages:
               artifact: 'skin.aeon.nox.silvo'
 
             - script: |
-                git clone https://github.com/chrisism/dev.repository.chrisism.git
+                git clone https://$(repository_url)
               workingDirectory: $(Pipeline.Workspace)/
               displayName: 'Clone git repository'
 
             - script: |
                 git config user.email $(git_emailAddress)
                 git config user.name $(git_userName)
-              workingDirectory: $(Pipeline.Workspace)/dev.repository.chrisism/
+              workingDirectory: $(Pipeline.Workspace)/$(repository_name)
               displayName: 'Configure git settings'
 
             - task: CopyFiles@2
@@ -172,7 +178,7 @@ stages:
               inputs:
                 SourceFolder: '$(Pipeline.Workspace)/skin.aeon.nox.silvo'
                 Contents: '**/*.*'
-                TargetFolder: '$(Pipeline.Workspace)/dev.repository.chrisism/skin.aeon.nox.silvo'
+                TargetFolder: '$(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/skin.aeon.nox.silvo'
                 CleanTargetFolder: false
                 flattenFolders: false
                 OverWrite: true
@@ -181,7 +187,7 @@ stages:
               displayName: 'Merge addon xml files for repository'
               inputs:
                 scriptSource: 'inline'
-                arguments: '$(Pipeline.Workspace)/dev.repository.chrisism/addons.xml $(Pipeline.Workspace)/dev.repository.chrisism/skin.aeon.nox.silvo/addon.xml'
+                arguments: '$(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/addons.xml $(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/skin.aeon.nox.silvo/addon.xml'
                 script: |
                   import sys
                   from xml.etree import ElementTree
@@ -200,26 +206,26 @@ stages:
 
                   addons.append(addon_in)
                   addons_xml.write(file_combined)
-                workingDirectory: '$(Pipeline.Workspace)/dev.repository.chrisism/'
+                workingDirectory: '$(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/'
                 
             - script: md5sum addons.xml > addons.xml.md5
-              workingDirectory: $(Pipeline.Workspace)/dev.repository.chrisism/
+              workingDirectory: $(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/
               displayName: 'Creating md5 file for addons.xml'
 
             - script: |
                 git add .
                 git commit -m "$(Build.DefinitionName) Release $(Build.BuildNumber)"
-              workingDirectory: $(Pipeline.Workspace)/dev.repository.chrisism/
+              workingDirectory: $(Pipeline.Workspace)/$(repository_name)/
               displayName: 'Git - Add and commit'    
 
             - script: |
-                git push https://$(github_token)@github.com/chrisism/dev.repository.chrisism.git main 
-              workingDirectory: $(Pipeline.Workspace)/dev.repository.chrisism/skin.aeon.nox.silvo
+                git push https://$(github_token)@$(repository_url) main 
+              workingDirectory: $(Pipeline.Workspace)/$(repository_name)/
               displayName: 'Git - Push'    
 
 - stage: DeployProd
   displayName: Deployment on Production
-  condition: and(succeeded(),eq(${{variables.isMaster}}, true))
+  condition: eq(${{variables.isMaster}}, true)
   jobs:
     - deployment: Production
       environment: 
@@ -227,6 +233,12 @@ stages:
 
       variables:
         - group: repository.variables
+        - name: repository_url
+          value: github.com/chrisism/repository.chrisism.git
+        - name: repository_name
+          value: repository.chrisism
+        - name: repository_data_dir
+          value: 'matrix'
 
       strategy:     
         runOnce:
@@ -237,14 +249,14 @@ stages:
               artifact: 'skin.aeon.nox.silvo'
 
             - script: |
-                git clone https://github.com/chrisism/repository.chrisism.git
+                git clone https://$(repository_url)
               workingDirectory: $(Pipeline.Workspace)/
               displayName: 'Clone git repository'
 
             - script: |
                 git config user.email $(git_emailAddress)
                 git config user.name $(git_userName)
-              workingDirectory: $(Pipeline.Workspace)/repository.chrisism/
+              workingDirectory: $(Pipeline.Workspace)/$(repository_name)
               displayName: 'Configure git settings'
 
             - task: CopyFiles@2
@@ -252,7 +264,7 @@ stages:
               inputs:
                 SourceFolder: '$(Pipeline.Workspace)/skin.aeon.nox.silvo'
                 Contents: '**/*.*'
-                TargetFolder: '$(Pipeline.Workspace)/repository.chrisism/skin.aeon.nox.silvo'
+                TargetFolder: '$(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/skin.aeon.nox.silvo'
                 CleanTargetFolder: false
                 flattenFolders: false
                 OverWrite: true
@@ -261,7 +273,7 @@ stages:
               displayName: 'Merge addon xml files for repository'
               inputs:
                 scriptSource: 'inline'
-                arguments: '$(Pipeline.Workspace)/repository.chrisism/addons.xml $(Pipeline.Workspace)/repository.chrisism/skin.aeon.nox.silvo/addon.xml'
+                arguments: '$(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/addons.xml $(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/skin.aeon.nox.silvo/addon.xml'
                 script: |
                   import sys
                   from xml.etree import ElementTree
@@ -280,19 +292,19 @@ stages:
 
                   addons.append(addon_in)
                   addons_xml.write(file_combined)
-                workingDirectory: '$(Pipeline.Workspace)/repository.chrisism/'
+                workingDirectory: '$(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/'
                 
             - script: md5sum addons.xml > addons.xml.md5
-              workingDirectory: $(Pipeline.Workspace)/repository.chrisism/
+              workingDirectory: $(Pipeline.Workspace)/$(repository_name)/$(repository_data_dir)/
               displayName: 'Creating md5 file for addons.xml'
 
             - script: |
                 git add .
                 git commit -m "$(Build.DefinitionName) Release $(Build.BuildNumber)"
-              workingDirectory: $(Pipeline.Workspace)/repository.chrisism/
+              workingDirectory: $(Pipeline.Workspace)/$(repository_name)/
               displayName: 'Git - Add and commit'    
 
             - script: |
-                git push https://$(github_token)@github.com/chrisism/repository.chrisism.git master 
-              workingDirectory: $(Pipeline.Workspace)/repository.chrisism/skin.aeon.nox.silvo
+                git push https://$(github_token)@$(repository_url) main 
+              workingDirectory: $(Pipeline.Workspace)/$(repository_name)/
               displayName: 'Git - Push'    
