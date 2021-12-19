@@ -348,6 +348,8 @@
 						<width>1401</width>
 						<height>810</height>
 						<onleft>9000</onleft>
+						<onup>9003</onup>
+						<ondown>9003</ondown>
 						<visible>Container(9000).HasFocus(3)</visible>
 						<control type="radiobutton" id="3007">
 							<include>SettingsButtonCommonValues</include>
@@ -414,6 +416,14 @@
 							<label>   - $LOCALIZE[13007]</label>
 							<onclick>Skin.Reset(MusicGenreFanartPath)</onclick>
 							<visible>!String.IsEmpty(Skin.String(MusicGenreFanartPath))</visible>
+						</control>
+						<control type="button" id="3011">
+							<include>SettingsButtonCommonValues</include>
+							<label>$LOCALIZE[31997]</label>
+							<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Skin.String(GameStudioIconPath)][/COLOR]</label2>
+							<onclick>Skin.Reset(GameStudioIconPath)</onclick>
+							<onclick>SetProperty(CustomSelectGameStudioIconPath,True,Home)</onclick>
+							<onclick>ActivateWindow(1129)</onclick>
 						</control>
 						<control type="button" id="3006">
 							<include>SettingsButtonCommonValues</include>

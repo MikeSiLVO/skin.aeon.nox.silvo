@@ -911,6 +911,7 @@
 		<value condition="Control.HasFocus(3007)">$LOCALIZE[31380]</value>
 		<value condition="Control.HasFocus(3008)">$LOCALIZE[31381]</value>
 		<value condition="Control.HasFocus(3009)">$LOCALIZE[31516]</value>
+		<value condition="Control.HasFocus(3011)">$LOCALIZE[32001]</value>
 		<value condition="Control.HasFocus(4001)">$LOCALIZE[31940]</value>
 		<value condition="Control.HasFocus(4002)">$LOCALIZE[31942]</value>
 		<value condition="Control.HasFocus(4003)">$LOCALIZE[31916]</value>
@@ -1306,7 +1307,9 @@
 		<value>resource://resource.images.studios.white/</value>
 	</variable>
 	<variable name="PathFlagsGameStudios">
-		<value>resource://resource.images.gamestudios.grayscale/</value>
+		<value condition="!String.IsEmpty(Skin.String(GameStudioIconPath))">$INFO[Skin.String(GameStudioIconPath)]</value>
+		<value condition="Skin.HasSetting(coloredflags)">resource://resource.images.studios.coloured/</value>
+		<value>resource://resource.images.studios.white/</value>
 	</variable>
 	<variable name="PathFlagsGameESRB">
 		<value>flags/esrb/</value>

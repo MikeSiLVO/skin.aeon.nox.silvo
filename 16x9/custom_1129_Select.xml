@@ -26,6 +26,7 @@
 	<onunload>ClearProperty(CustomSelectPVRGuideLogos,Home)</onunload>
 	<onunload>ClearProperty(CustomSelectMusicGenreIconPath,Home)</onunload>
 	<onunload>ClearProperty(CustomSelectAutoHideVideoOSD,1115)</onunload>
+	<onunload>ClearProperty(CustomSelectGameStudioIconPath,Home)</onunload>
 	<controls>
 		<control type="group">
 			<include>DialogOpenCloseAnimation</include>
@@ -163,6 +164,7 @@
 					<include condition="!String.IsEmpty(Window(Home).Property(CustomSelectPVRGuideLogos))">SelectPVRGuideLogos</include>
 					<include condition="!String.IsEmpty(Window(Home).Property(CustomSelectMusicGenreIconPath))">SelectMusicGenreIconPath</include>
 					<include condition="!String.IsEmpty(Window(1115).Property(CustomSelectAutoHideVideoOSD))">SelectAutoHideVideoOSD</include>
+					<include condition="!String.IsEmpty(Window(Home).Property(CustomSelectGameStudioIconPath))">SelectGameStudioIconPath</include>
 				</content>
 			</control>
 			<control type="list" id="90101">

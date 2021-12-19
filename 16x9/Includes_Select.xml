@@ -1043,6 +1043,25 @@
 			<onclick>Dialog.Close(1129)</onclick>
 		</item>
 	</include>
+	<include name="SelectGameStudioIconPath">
+		<item>
+			<label>$LOCALIZE[31998]</label>
+			<onclick>Skin.SetPath(GameStudioIconPath)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[32000]</label>
+			<onclick condition="!System.HasAddon(resource.images.gamestudios.grayscale)">InstallAddon(resource.images.gamestudios.grayscale)</onclick>
+			<onclick condition="System.HasAddon(resource.images.gamestudios.grayscale)">Skin.SetString(GameStudioIconPath,resource://resource.images.gamestudios.grayscale/)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31999]</label>
+			<onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
+			<onclick condition="System.HasAddon(script.image.resource.select)">RunScript(script.image.resource.select,property=GameStudioIconPath&amp;type=resource.images.studios)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+	</include>
 	<include name="SelectAutoHideVideoOSD">
 		<item>
 			<label>$LOCALIZE[13113]</label>
