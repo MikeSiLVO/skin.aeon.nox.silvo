@@ -62,4 +62,55 @@
 		</item>
 	</include>
 
+	<!-- Footer flags for games -->
+	<include name="GameFooterFlags">
+		<!-- hidden helpers -->
+		<control type="label" id="4471"><visible>false</visible><label>$VAR[GameNumOfPlayers]</label></control>	
+		<control type="label" id="4472"><visible>false</visible><label>$VAR[GameESRB]</label></control>	
+		<control type="grouplist">
+			<visible>$EXP[InGameMode]</visible>
+			<width>1665</width>
+			<height>90</height>
+			<left>120</left>
+			<itemgap>10</itemgap>
+			<orientation>horizontal</orientation>
+			<!-- Game Studio -->
+			<control type="image" id="912">
+				<width>160</width>
+				<include>MediaFlagValues</include>
+				<texture>$VAR[PathFlagsGameStudios]$VAR[GameStudio,,.png]</texture>
+			</control>
+			<!-- Game ESRB -->
+			<control type="group">
+				<visible>!String.IsEmpty(Control.GetLabel(4472))</visible>
+				<width>70</width>
+				<animation effect="slide" end="-160" condition="Control.IsVisible(50)">Conditional</animation>
+				<control type="image">
+					<include>MediaFlagValues</include>
+					<texture fallback="flags/esrb/RP (Rating Pending).png">$VAR[PathFlagsGameESRB]$VAR[GameESRB,,.png]</texture>
+				</control>
+			</control>
+			<!-- Game Number of players -->
+			<control type="group">
+				<visible>!String.IsEmpty(Control.GetLabel(4471))</visible>
+				<width>80</width>
+				<animation effect="slide" end="-160" condition="Control.IsVisible(50)">Conditional</animation>
+				<control type="image">
+					<include>MediaFlagValues</include>
+					<height>90</height>
+					<texture>DefaultUser.png</texture>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>80</width>
+					<height>90</height>
+					<align>center</align>
+					<label>$VAR[GameNumOfPlayers]</label>
+					<font>font10</font>
+					<textcolor>grey</textcolor>
+					<wrapmultiline>true</wrapmultiline>
+				</control>
+			</control>
+		</control>
+	</include>
 </includes>

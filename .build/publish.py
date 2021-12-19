@@ -18,7 +18,7 @@
 from __future__ import unicode_literals
 from __future__ import division
 
-import os
+import os, sys
 import glob
 import typing
 import shutil
@@ -107,7 +107,9 @@ try:
     if not working_directory.endswith(os.path.sep):
         working_directory = f'{working_directory}{os.path.sep}'
 
-    pack(working_directory, packer_src_files, packer_dst_files)
+    if (len(sys.argv) > 1 and sys.argv[1] == '--pack'):
+        pack(working_directory, packer_src_files, packer_dst_files)
+        
     publish(addon_name, working_directory, source_paths_str, kodi_addon_directory)
 except Exception as ex:
     logger.fatal('Exception in tool', exc_info=ex)
