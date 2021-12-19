@@ -1305,6 +1305,12 @@
 		<value condition="Skin.HasSetting(coloredflags)">resource://resource.images.studios.coloured/</value>
 		<value>resource://resource.images.studios.white/</value>
 	</variable>
+	<variable name="PathFlagsGameStudios">
+		<value>resource://resource.images.gamestudios.grayscale/</value>
+	</variable>
+	<variable name="PathFlagsGameESRB">
+		<value>flags/esrb/</value>
+	</variable>
 	<variable name="PathFlagsLanguage">
 		<value>flags/language/default/</value>
 	</variable>
@@ -1737,6 +1743,7 @@
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(sets) + !String.IsEmpty(Skin.String(509.Sets.DisableOverlay))">$INFO[Skin.String(509.Sets.DisableOverlay)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(tvshows) + !String.IsEmpty(Skin.String(509.TV.DisableOverlay))">$INFO[Skin.String(509.TV.DisableOverlay)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(episodes) + !String.IsEmpty(Skin.String(509.Episodes.DisableOverlay))">$INFO[Skin.String(509.Episodes.DisableOverlay)]</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + $EXP[InGameMode] + !String.IsEmpty(Skin.String(509.Games.DisableOverlay))">$INFO[Skin.String(509.Games.DisableOverlay)]</value>
 		<!-- BigFan -->
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigFan) + Container.Content(movies) + !String.IsEmpty(Skin.String(591.Movies.DisableOverlay))">$INFO[Skin.String(591.Movies.DisableOverlay)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigFan) + Container.Content(sets) + !String.IsEmpty(Skin.String(591.Sets.DisableOverlay))">$INFO[Skin.String(591.Sets.DisableOverlay)]</value>
@@ -1844,6 +1851,8 @@
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(tvshows) + String.IsEqual(Skin.String(509.TV.DisableOverlay),$LOCALIZE[305])">Skin.Reset(509.TV.DisableOverlay)</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(episodes) + String.IsEmpty(Skin.String(509.Episodes.DisableOverlay))">Skin.SetString(509.Episodes.DisableOverlay,$LOCALIZE[305])</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(episodes) + String.IsEqual(Skin.String(509.Episodes.DisableOverlay),$LOCALIZE[305])">Skin.Reset(509.Episodes.DisableOverlay)</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + $EXP[InGameMode] + String.IsEmpty(Skin.String(509.Games.DisableOverlay))">Skin.SetString(509.Games.DisableOverlay,$LOCALIZE[305])</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + $EXP[InGameMode] + String.IsEqual(Skin.String(509.Games.DisableOverlay),$LOCALIZE[305])">Skin.Reset(509.Games.DisableOverlay)</value>
 		<!-- BigFan-->
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigFan) + Container.Content(movies) + String.IsEmpty(Skin.String(591.Movies.DisableOverlay))">Skin.SetString(591.Movies.DisableOverlay,$LOCALIZE[305])</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigFan) + Container.Content(movies) + String.IsEqual(Skin.String(591.Movies.DisableOverlay),$LOCALIZE[305])">Skin.Reset(591.Movies.DisableOverlay)</value>
@@ -1942,6 +1951,7 @@
 	</variable>
 	<variable name="MyFlixTitleLabelVar">
 		<value condition="Container.Content(tvshows) | Container.Content(episodes)">$INFO[ListItem.TVShowTitle]</value>
+		<value condition="$EXP[InGameMode]">$VAR[GameTitle]</value>
 		<value>$INFO[ListItem.Title]</value>
 	</variable>
 	<variable name="MyFlixDimmerVar">
@@ -2180,5 +2190,11 @@
 	</variable>
 	<variable name="GameRating">
 		<value>$INFO[ListItem.Rating]</value>
+	</variable>
+	<variable name="GameESRB">
+		<value>$INFO[ListItem.Property(esrb)]</value>
+	</variable>
+	<variable name="GameNumOfPlayers">
+		<value>$INFO[ListItem.Property(nplayers)]</value>
 	</variable>
 </includes>

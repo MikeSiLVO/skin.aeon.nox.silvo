@@ -30,7 +30,7 @@ logger = logging.getLogger(__name__)
 
 def pack(working_directory: str, packer_src_files: str, packer_dst_files:str):
     
-    tool_path = os.path.join(working_directory, 'build', 'tools', 'kodi-texturepacker', 'linux')
+    tool_path = os.path.join(working_directory, '.build', 'tools', 'kodi-texturepacker', 'linux')
     tool_path = os.path.join(tool_path, 'TexturePacker')
     command = [
         tool_path, 

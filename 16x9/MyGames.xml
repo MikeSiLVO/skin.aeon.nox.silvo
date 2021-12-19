@@ -6,7 +6,7 @@
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
 	<onunload>ClearProperty(Programs.Games,Home)</onunload>
-	<views>50,51,55,57,59,500</views>
+	<views>50,51,55,57,59,500,509</views>
 	<menucontrol>9051</menucontrol>
 	<controls>
 		<!-- Trigger for showing fanart fullscreen (hidden)-->
@@ -45,6 +45,7 @@
 			<top>-30</top>
 			<include>InfoPanel</include>
 		</control>
+		<!-- Views -->
 		<control type="group">
 			<include>WindowOpenCloseAnimation</include>
 			<include condition="!Skin.HasSetting(Enable.SlimList)">AddonList</include>
@@ -60,52 +61,20 @@
 			<!-- view id = 59 -->
 			<include condition="!Skin.HasSetting(Disable.IconsView)">AddonIcons</include>
 			<!-- view id = 500 -->
+			<include condition="!Skin.HasSetting(Disable.MyFlixView)">View_509_MyFlix</include>
+			<!-- view id = 509 -->
 		</control>
+		<!-- Floor labels / media flags -->
 		<control type="group">
-			<visible>Control.IsVisible(54) | Control.IsVisible(57) | Control.IsVisible(500)</visible>
+			<!-- <visible>Control.IsVisible(57) | Control.IsVisible(500)</visible> -->
 			<visible>!Window.IsActive(addoninformation)</visible>
 			<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">VisibleChange</animation>
 			<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">WindowOpen</animation>
 			<animation effect="slide" tween="cubic" time="720" end="0,806" start="0,0">WindowClose</animation>
 			<top>-30</top>
+			<!-- Footer (Icons, Shift) Not Game Mode-->
 			<control type="group">
-				<visible>Control.IsVisible(54)</visible>
-				<control type="group">
-					<left>410</left>
-					<top>1010</top>
-					<control type="label">
-						<right>410</right>
-						<height>48</height>
-						<align>center</align>
-						<font>font16_title_bold</font>
-						<scroll>true</scroll>
-						<label>$INFO[ListItem.Label]</label>
-						<textoffsetx>30</textoffsetx>
-					</control>
-					<control type="label">
-						<top>45</top>
-						<right>410</right>
-						<height>30</height>
-						<align>center</align>
-						<font>font13_title</font>
-						<label>Game Mode</label>
-						<textoffsetx>30</textoffsetx>
-						<visible>$EXP[InGameMode]</visible>
-					</control>
-					<control type="label">
-						<top>45</top>
-						<right>410</right>
-						<height>30</height>
-						<align>center</align>
-						<font>font13_title</font>
-						<label>$VAR[FloorLabel2Var]</label>
-						<textoffsetx>30</textoffsetx>
-						<visible>!$EXP[InGameMode]</visible>
-					</control>
-				</control>
-			</control>
-			<control type="group">
-				<visible>Control.IsVisible(500) | Control.IsVisible(57)</visible>
+				<visible>[Control.IsVisible(500) | Control.IsVisible(57)] + !$EXP[InGameMode]</visible>
 				<animation effect="slide" start="0" end="40" time="720" tween="cubic" easing="inout" condition="Control.IsVisible(57)">Conditional</animation>
 				<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">VisibleChange</animation>
 				<control type="group">
@@ -116,7 +85,7 @@
 						<height>48</height>
 						<font>font16_title_bold</font>
 						<scroll>true</scroll>
-						<label>$VAR[GameTitle]</label>
+						<label>$INFO[ListItem.Label]</label>
 						<textoffsetx>30</textoffsetx>
 					</control>
 					<control type="label">
@@ -125,7 +94,7 @@
 						<height>30</height>
 						<font>font13_title</font>
 						<scroll>true</scroll>
-						<label>$VAR[GamePlot]</label>
+						<label>$INFO[ListItem.AddonSummary]</label>
 						<textoffsetx>30</textoffsetx>
 					</control>
 				</control>
@@ -140,6 +109,152 @@
 					<wrapmultiline>true</wrapmultiline>
 				</control>
 			</control>
+			<!-- Footer MEDIAFLAGS () Game Mode -->
+			<control type="group">
+				<visible>!ListItem.IsParentFolder + $EXP[InGameMode]</visible>
+				<!-- (Logo) -->
+				<control type="group">
+					<top>995</top>
+					<visible>Control.IsVisible(59) + !String.IsEqual(Skin.String(59.Games.ViewFlags),$LOCALIZE[1223])</visible>
+					<include>ViewAnimation</include>
+					<control type="group">
+						<left>60</left>
+						<control type="image" id="911">
+							<include>MediaFlagValues</include>
+							<texture>$VAR[PathFlagsGameStudios]$VAR[GameStudio,,.png]</texture>
+						</control>
+						<control type="label">
+							<width>135</width>
+							<height>90</height>
+							<align>center</align>
+							<label>$VAR[GameStudio]</label>
+							<font>font10</font>
+	
+							<textcolor>grey2</textcolor>
+							<wrapmultiline>true</wrapmultiline>
+							<visible>String.IsEmpty(Control.GetLabel(911))</visible>
+						</control>
+					</control>
+					<control type="image">
+						<left>1725</left>
+						<include>MediaFlagValues</include>
+						<texture fallback="flags/esrb/RP (Rating Pending).png">$VAR[PathFlagsGameESRB]$VAR[GameESRB,,.png]</texture>
+					</control>
+					<control type="group">
+						<left>1855</left>
+						<top>20</top>
+						<control type="grouplist">
+							<height>90</height>
+							<width>35</width>
+							<itemgap>-5</itemgap>
+							<visible>String.IsEqual(Skin.String(LanguageFlags),1) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
+							<control type="image">
+								<width>30</width>
+								<height>30</height>
+								<aspectratio>keep</aspectratio>
+								<colordiffuse>grey</colordiffuse>
+								<texture>flags/audio.png</texture>
+								<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1)) | [!String.IsEmpty(ListItem.Property(AudioLanguage.2)) + !String.IsEqual(ListItem.Property(AudioLanguage.1),ListItem.Property(AudioLanguage.2))]</visible>
+							</control>
+							<control type="image">
+								<width>30</width>
+								<height>30</height>
+								<aspectratio>keep</aspectratio>
+								<colordiffuse>grey</colordiffuse>
+								<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.1),,.png]</texture>
+								<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
+							</control>
+							<control type="image">
+								<width>30</width>
+								<height>30</height>
+								<aspectratio>keep</aspectratio>
+								<colordiffuse>grey</colordiffuse>
+								<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.2),,.png]</texture>
+								<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.2)) + !String.IsEqual(ListItem.Property(AudioLanguage.2),ListItem.Property(AudioLanguage.1))</visible>
+							</control>
+						</control>
+						<control type="grouplist">
+							<left>32</left>
+							<height>90</height>
+							<width>35</width>
+							<itemgap>-5</itemgap>
+							<visible>String.IsEqual(Skin.String(LanguageFlags),2) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
+							<control type="image">
+								<width>30</width>
+								<height>30</height>
+								<aspectratio>keep</aspectratio>
+								<colordiffuse>grey</colordiffuse>
+								<texture>flags/subtitles.png</texture>
+								<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1)) | [!String.IsEmpty(ListItem.Property(SubtitleLanguage.2)) + !String.IsEqual(ListItem.Property(SubtitleLanguage.1),ListItem.Property(SubtitleLanguage.2))]</visible>
+							</control>
+							<control type="image">
+								<width>30</width>
+								<height>30</height>
+								<aspectratio>keep</aspectratio>
+								<colordiffuse>grey</colordiffuse>
+								<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.1),,.png]</texture>
+								<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
+							</control>
+							<control type="image">
+								<width>30</width>
+								<height>30</height>
+								<aspectratio>keep</aspectratio>
+								<colordiffuse>grey</colordiffuse>
+								<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.2),,.png]</texture>
+								<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.2))</visible>
+								<visible>!String.IsEqual(ListItem.Property(SubtitleLanguage.1),ListItem.Property(SubtitleLanguage.2))</visible>
+							</control>
+						</control>
+					</control>
+				</control>
+				<!-- (List - Tripanel - Shift - Icons - MyFlix) -->
+				<control type="group">
+					<visible>Control.IsVisible(50) | Control.IsVisible(55) |  Control.IsVisible(57) | Control.IsVisible(500) | Control.IsVisible(509)</visible>
+					<include>ViewAnimation</include>
+					<animation effect="slide" end="0,-16" condition="Control.IsVisible(56)">Conditional</animation>
+					<animation effect="slide" end="360,-110" condition="Control.IsVisible(57)">Conditional</animation>
+					<animation effect="slide" end="-140" condition="Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
+					<left>680</left>
+					<top>1020</top>
+					<height>90</height>
+					<control type="group">
+						<control type="group">
+							<visible>[Control.IsVisible(50) + !Skin.HasSetting(Disable.List.Mediaflags)] | Control.IsVisible(509) + !Skin.HasSetting(Disable.MyFlix.Mediaflags)</visible>
+							<include>ViewAnimation</include>
+							<width>1665</width>
+							<control type="group">
+								<left>120</left>
+								<width>160</width>
+								<visible>!Control.IsVisible(50)</visible>
+								<control type="image" id="912">
+									<width>160</width>
+									<include>MediaFlagValues</include>
+									<texture>$VAR[PathFlagsGameStudios]$VAR[GameStudio,,.png]</texture>
+								</control>
+								<control type="label">
+									<left>10</left>
+									<width>140</width>
+									<height>90</height>
+									<align>center</align>
+									<label>$VAR[GameStudio]</label>
+									<font>font10</font>
+									<textcolor>grey</textcolor>
+									<wrapmultiline>true</wrapmultiline>
+									<visible>String.IsEmpty(Control.GetLabel(912))</visible>
+								</control>
+							</control>
+							<control type="group">
+								<animation effect="slide" end="-160" condition="Control.IsVisible(50)">Conditional</animation>
+								<control type="image">
+									<left>280</left>
+									<include>MediaFlagValues</include>
+									<texture fallback="flags/esrb/RP (Rating Pending).png">$VAR[PathFlagsGameESRB]$VAR[GameESRB,,.png]</texture>
+								</control>
+							</control>
+						</control>
+					</control>
+				</control>
+			</control>
 			<control type="image">
 				<top>970</top>
 				<width>100%</width>
@@ -149,6 +264,7 @@
 		</control>
 		<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>
 		<include>Topbar</include>
+		<!-- Sideblad (menu)-->
 		<control type="group">
 			<left>-440</left>
 			<include>SideBladeLeft</include>
