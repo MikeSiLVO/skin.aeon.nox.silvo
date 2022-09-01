@@ -30,7 +30,7 @@
 						<width>80</width>
 						<height>80</height>
 						<aspectratio>keep</aspectratio>
-						<texture>logos/imdb.png</texture>
+						<texture>logos/imdb250.png</texture>
 						<visible>!String.IsEmpty(ListItem.Top250)</visible>
 					</control>
 					<control type="Label">
@@ -326,6 +326,7 @@
 				</control>
 			</control>
 			<control type="image">
+				<visible>!String.IsEmpty(ListItem.Art(thumb))</visible>
 				<left>1504</left>
 				<top>733</top>
 				<width>416</width>
@@ -333,6 +334,21 @@
 				<aspectratio align="right">keep</aspectratio>
 				<align>right</align>
 				<texture background="true">$VAR[NoSpoilerIconVar]</texture>
+				<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+				<bordersize>1</bordersize>
+				<fadetime>IconCrossfadeTime</fadetime>
+				<visible>Container.Content(episodes)</visible>
+				<animation effect="slide" end="0,-203.375" time="120" condition="!Skin.HasSetting(nohighlist)">Conditional</animation>
+			</control>
+			<control type="image">
+				<visible>String.IsEmpty(ListItem.Art(thumb)) + !String.IsEmpty(ListItem.Art(fanart))</visible>
+				<left>1504</left>
+				<top>733</top>
+				<width>416</width>
+				<height>234</height>
+				<aspectratio align="right">keep</aspectratio>
+				<align>right</align>
+				<texture background="true">$INFO[ListItem.Art(fanart)]</texture>
 				<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
 				<bordersize>1</bordersize>
 				<fadetime>IconCrossfadeTime</fadetime>

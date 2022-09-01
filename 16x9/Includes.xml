@@ -2925,7 +2925,7 @@
 				<visible>![Window.IsActive(videoosd) + Skin.HasSetting(VideoOSDOnTop) | Window.IsVisible(playerprocessinfo) | Window.IsVisible(SliderDialog) | Window.IsVisible(pvrchannelguide) | Window.IsVisible(PVROSDTeletext) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(SubtitleSearch) | Window.IsVisible(1115)]</visible>
 				<animation effect="fade" end="100" time="239.76">Visible</animation>
 				<control type="group">
-					<visible>!String.IsEmpty(VideoPlayer.Studio)</visible>
+					<visible>!String.IsEmpty(VideoPlayer.Studio) + !Skin.HasSetting(Enable.HideStudioMovies)</visible>
 					<width>270</width>
 					<control type="image" id="142099">
 						<width>270</width>
@@ -2943,6 +2943,27 @@
 						<wrapmultiline>true</wrapmultiline>
 						<animation effect="fade" time="239.76" delay="100">Visible</animation>
 						<visible>String.IsEmpty(Control.GetLabel(142099))</visible>
+					</control>
+				</control>
+				<control type="group">
+					<visible>!String.IsEmpty(VideoPlayer.Studio) + Skin.HasSetting(Enable.HideStudioMovies) + !VideoPlayer.Content(movies)</visible>
+					<width>270</width>
+					<control type="image" id="142100">
+						<width>270</width>
+						<include>MediaFlagValues</include>
+						<bordersize>2</bordersize>
+						<texture>$VAR[PathFlagsStudios]$INFO[VideoPlayer.Studio,,.png]</texture>
+					</control>
+					<control type="label">
+						<width>270</width>
+						<height>90</height>
+						<align>center</align>
+						<label>$INFO[VideoPlayer.Studio]</label>
+						<font>font10</font>
+						<textcolor>grey2</textcolor>
+						<wrapmultiline>true</wrapmultiline>
+						<animation effect="fade" time="239.76" delay="100">Visible</animation>
+						<visible>String.IsEmpty(Control.GetLabel(142100))</visible>
 					</control>
 				</control>
 				<control type="image">
@@ -3171,7 +3192,7 @@
 										<width>80</width>
 										<height>60</height>
 										<aspectratio>keep</aspectratio>
-										<texture>logos/imdb.png</texture>
+										<texture>logos/imdb250.png</texture>
 										<colordiffuse>grey</colordiffuse>
 									</control>
 									<control type="label">

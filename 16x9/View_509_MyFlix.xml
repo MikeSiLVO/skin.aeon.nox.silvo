@@ -31,7 +31,7 @@
 						<top>40</top>
 						<width>526</width>
 						<height>204</height>
-						<aspectratio align="left" aligny="center">keep</aspectratio>
+						<aspectratio align="center" aligny="center">keep</aspectratio>
 						<texture background="true">$VAR[ArtworkLogoVar]</texture>
 						<visible>[Container.Content(movies) | Container.Content(sets)] + Skin.HasSetting(Enable.MyFlix.MovieLogo) | [Container.Content(tvshows) | Container.Content(episodes)] + Skin.HasSetting(Enable.MyFlix.TVLogo)</visible>
 					</control>
@@ -72,7 +72,7 @@
 							<top>-35</top>
 							<width>65</width>
 							<height>30</height>
-							<texture colordiffuse="grey">logos/imdb.png</texture>
+							<texture colordiffuse="grey">logos/imdb250.png</texture>
 							<visible>!String.IsEmpty(ListItem.Top250)</visible>
 						</control>
 						<control type="Label">
@@ -114,8 +114,17 @@
 								<textcolor>grey</textcolor>
 								<shadowcolor>shadow</shadowcolor>
 								<include>DefaultButtonsValues</include>
-								<label>$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),,m]$INFO[ListItem.Endtime, • $LOCALIZE[19127]: ,]</label>
-								<visible>!Skin.HasSetting(Enable.HourMinuteDuration)</visible>
+								<label>$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),,m]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ,]</label>
+								<visible>!Skin.HasSetting(Enable.HourMinuteDuration) + !Skin.HasSetting(Enable.MyFlix.HideVotesMovies)</visible>
+							</control>
+							<control type="label">
+								<width>1000</width>
+							<height>45</height>
+								<textcolor>grey</textcolor>
+								<shadowcolor>shadow</shadowcolor>
+								<include>DefaultButtonsValues</include>
+								<label>$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ,]</label>
+								<visible>Skin.HasSetting(Enable.HourMinuteDuration) + !Skin.HasSetting(Enable.MyFlix.HideVotesMovies)</visible>
 							</control>
 							<control type="label">
 								<width>1000</width>
@@ -123,8 +132,17 @@
 								<textcolor>grey</textcolor>
 								<shadowcolor>shadow</shadowcolor>
 								<include>DefaultButtonsValues</include>
-								<label>$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ,]</label>
-								<visible>Skin.HasSetting(Enable.HourMinuteDuration)</visible>
+								<label>$INFO[ListItem.Year,, • ]$INFO[ListItem.Rating,$LOCALIZE[563]: , • ]$INFO[ListItem.Duration(mins),,m]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ,]</label>
+								<visible>!Skin.HasSetting(Enable.HourMinuteDuration) + Skin.HasSetting(Enable.MyFlix.HideVotesMovies)</visible>
+							</control>
+							<control type="label">
+								<width>1000</width>
+								<height>45</height>
+								<textcolor>grey</textcolor>
+								<shadowcolor>shadow</shadowcolor>
+								<include>DefaultButtonsValues</include>
+								<label>$INFO[ListItem.Year,, • ]$INFO[ListItem.Rating,$LOCALIZE[563]: , • ]$VAR[ItemDurationVar]]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ,]</label>
+								<visible>Skin.HasSetting(Enable.HourMinuteDuration) + Skin.HasSetting(Enable.MyFlix.HideVotesMovies)</visible>
 							</control>
 						</control>
 						<control type="textbox">
@@ -214,12 +232,22 @@
 					<control type="grouplist">
 						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + [Skin.HasSetting(Disable.NextAired) | String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Status))]</visible>
 						<control type="label">
+							<visible>!Skin.HasSetting(Enable.MyFlix.HideVotesTVShows)</visible>
 							<width>800</width>
 							<height>45</height>
 							<textcolor>grey</textcolor>
 							<shadowcolor>shadow</shadowcolor>
 							<include>DefaultButtonsValues</include>
 							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[563]: [/COLOR]$INFO[ListItem.RatingAndVotes]</label>
+						</control>
+						<control type="label">
+							<visible>Skin.HasSetting(Enable.MyFlix.HideVotesTVShows)</visible>
+							<width>800</width>
+							<height>45</height>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<include>DefaultButtonsValues</include>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[563]: [/COLOR]$INFO[ListItem.Rating]</label>
 						</control>
 						<control type="label">
 							<width>800</width>
@@ -246,8 +274,27 @@
 							<height>45</height>
 							<textcolor>grey</textcolor>
 							<shadowcolor>shadow</shadowcolor>
-							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20359]: [/COLOR]$VAR[FloorLabelVar]</label>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20373]: [/COLOR]$VAR[SeasonNumberVar]</label>
 							<include>DefaultButtonsValues</include>
+							<visible>!String.IsEqual(ListItem.Season,0)</visible>
+						</control>
+						<control type="label">
+							<width>800</width>
+							<height>45</height>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20359]: [/COLOR]$VAR[EpisodeNumberVar] - $INFO[ListItem.Title]</label>
+							<include>DefaultButtonsValues</include>
+							<visible>!String.IsEqual(ListItem.Season,0)</visible>
+						</control>
+						<control type="label">
+							<width>800</width>
+							<height>45</height>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label>[COLOR $VAR[ThemeLabelColor]]Special: [/COLOR]$INFO[ListItem.Title]</label>
+							<include>DefaultButtonsValues</include>
+							<visible>String.IsEqual(ListItem.Season,0)</visible>
 						</control>
 						<control type="label">
 							<height>45</height>
@@ -285,12 +332,22 @@
 							<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Last_Aired)) + String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired))</visible>
 						</control>
 						<control type="label">
+							<visible>!Skin.HasSetting(Enable.MyFlix.HideVotesTVShows)</visible>
 							<height>45</height>
 							<width>650</width>
 							<textcolor>grey</textcolor>
 							<shadowcolor>shadow</shadowcolor>
 							<include>DefaultButtonsValues</include>
-							<label>$INFO[ListItem.Premiered,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]</label>
+							<label>$INFO[ListItem.Premiered,,]$INFO[ListItem.RatingAndVotes, • $LOCALIZE[563]: ,]</label>
+						</control>
+						<control type="label">
+							<visible>Skin.HasSetting(Enable.MyFlix.HideVotesTVShows)</visible>
+							<height>45</height>
+							<width>650</width>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<include>DefaultButtonsValues</include>
+							<label>$INFO[ListItem.Premiered,,]$INFO[ListItem.Rating, • $LOCALIZE[563]: ,]</label>
 						</control>
 					</control>
 					<control type="textbox">

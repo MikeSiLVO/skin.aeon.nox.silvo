@@ -295,7 +295,15 @@
 							<font>font48_bold</font>
 							<textcolor>grey</textcolor>
 							<label>$VAR[EpisodeCountVar]</label>
-							<visible>String.IsEqual(ListItem.DBTYPE,episode)</visible>
+							<visible>String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEqual(ListItem.Season,0)</visible>
+						</control>
+						<control type="label">
+							<width>auto</width>
+							<height>90</height>
+							<font>font48_bold</font>
+							<textcolor>grey</textcolor>
+							<label>Special Episode</label>
+							<visible>String.IsEqual(ListItem.DBTYPE,episode) + String.IsEqual(ListItem.Season,0)</visible>
 						</control>
 						<control type="image">
 							<width>120</width>
@@ -374,7 +382,7 @@
 									<height>100</height>
 									<aspectratio>keep</aspectratio>
 									<colordiffuse>grey</colordiffuse>
-									<texture>logos/imdb.png</texture>
+									<texture>logos/imdb250.png</texture>
 								</control>
 								<control type="label">
 									<width>auto</width>
@@ -1035,7 +1043,7 @@
 								<orientation>horizontal</orientation>
 								<control type="group">
 									<width>165</width>
-									<visible>!String.IsEmpty(ListItem.Studio)</visible>
+									<visible>!String.IsEmpty(ListItem.Studio) + !Skin.HasSetting(Enable.HideStudioMovies)</visible>
 									<control type="image" id="800011">
 										<width>160</width>
 										<include>MediaFlagValues</include>
@@ -1050,6 +1058,25 @@
 										<textcolor>grey</textcolor>
 										<wrapmultiline>true</wrapmultiline>
 										<visible>String.IsEmpty(Control.GetLabel(800011))</visible>
+									</control>
+								</control>
+								<control type="group">
+									<width>165</width>
+									<visible>!String.IsEmpty(ListItem.Studio) + Skin.HasSetting(Enable.HideStudioMovies) + !String.IsEqual(ListItem.DBTYPE,movie)</visible>
+									<control type="image" id="800012">
+										<width>160</width>
+										<include>MediaFlagValues</include>
+										<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
+									</control>
+									<control type="label">
+										<width>155</width>
+										<height>90</height>
+										<align>center</align>
+										<label>$INFO[ListItem.Studio]</label>
+										<font>font10</font>
+										<textcolor>grey</textcolor>
+										<wrapmultiline>true</wrapmultiline>
+										<visible>String.IsEmpty(Control.GetLabel(800012))</visible>
 									</control>
 								</control>
 								<control type="grouplist">

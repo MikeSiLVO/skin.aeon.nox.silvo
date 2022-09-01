@@ -729,7 +729,7 @@
 		<value>$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="FloorLabelVar">
-		<value condition="Container.Content(episodes) + String.Contains(Container.FolderPath,/recentlyaddedepisodes)">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
+		<value condition="Container.Content(episodes) + String.Contains(Container.FolderPath,/recentlyaddedepisodes)">$INFO[ListItem.Season,S]$INFO[ListItem.Episode,E. ]$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="FloorSubLabelVar">
@@ -1550,6 +1550,14 @@
 		<value condition="!Integer.IsGreater(ListItem.Season,9)">$INFO[ListItem.Season,S0]$INFO[ListItem.Episode,E]</value>
 		<value condition="!Integer.IsGreater(ListItem.Episode,9)">$INFO[ListItem.Season,S]$INFO[ListItem.Episode,E0]</value>
 		<value>$INFO[ListItem.Season,S]$INFO[ListItem.Episode,E]</value>
+	</variable>
+	<variable name="SeasonNumberVar">
+		<value condition="!Integer.IsGreater(ListItem.Season,9)">$INFO[ListItem.Season,0]</value>
+		<value>$INFO[ListItem.Season,,]</value>
+	</variable>
+	<variable name="EpisodeNumberVar">
+		<value condition="!Integer.IsGreater(ListItem.Episode,9)">$INFO[ListItem.Episode,0]</value>
+		<value>$INFO[ListItem.Episode,,]</value>
 	</variable>
 	<variable name="PlayerEpisodeCountVar">
 		<value condition="!Integer.IsGreater(VideoPlayer.Season,9) + !Integer.IsGreater(VideoPlayer.Episode,9)">$INFO[VideoPlayer.Season,S0]$INFO[VideoPlayer.Episode,E0]</value>
