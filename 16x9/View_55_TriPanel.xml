@@ -968,26 +968,26 @@
 					<width>448</width>
 					<height>270</height>
 					<control type="button">
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31043]:[/COLOR][CR]$INFO[ListItem.Writer]</label>
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31043]:[/COLOR][CR]$VAR[GameTitle]]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
-						<visible>!String.IsEmpty(ListItem.Writer)</visible>
+						<visible>!String.IsEmpty($VAR[GameTitle])</visible>
 					</control>
 					<control type="button">
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</label>
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$VAR[GameGenre]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
-						<visible>!String.IsEmpty(ListItem.Genre)</visible>
+						<visible>!String.IsEmpty($VAR[GameGenre])</visible>
 					</control>
 					<control type="button">
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[572]:[/COLOR][CR]$INFO[ListItem.Studio]</label>
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[572]:[/COLOR][CR]$VAR[GameStudio]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
-						<visible>!String.IsEmpty(ListItem.Studio)</visible>
+						<visible>!String.IsEmpty($VAR[GameStudio])</visible>
 					</control>
 				</control>
 				<control type="textbox" id="70">
-					<label>$INFO[ListItem.Plot]</label>
+					<label>$VAR[GamePlot]</label>
 					<left>15</left>
 					<top>370</top>
 					<width>418</width>
@@ -1065,7 +1065,7 @@
 					<viewtype label="31078">list</viewtype>
 					<pagecontrol>95560</pagecontrol>
 					<preloaditems>2</preloaditems>
-					<visible>String.Contains(Container.FolderPath,plugin.program.advanced.launcher)</visible>
+					<visible>$EXP[InGameMode]</visible>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
 					<itemlayout height="70" width="806">
 						<control type="label">
@@ -1074,7 +1074,7 @@
 							<height>68</height>
 							<font>font15</font>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<label>$INFO[ListItem.Year]</label>
+							<label>$VAR[GameYear]</label>
 						</control>
 						<control type="label">
 							<left>110</left>
@@ -1082,7 +1082,7 @@
 							<height>68</height>
 							<font>font15</font>
 							<textcolor>grey2</textcolor>
-							<label>$INFO[ListItem.Label]</label>
+							<label>$VAR[GameTitle]</label>
 						</control>
 						<control type="label">
 							<left>110</left>
@@ -1091,7 +1091,7 @@
 							<font>font15</font>
 							<align>right</align>
 							<textcolor>grey2</textcolor>
-							<label>$INFO[ListItem.Rating]</label>
+							<label>$VAR[GameRating]</label>
 							<visible>!Skin.HasSetting(Enable.HideRatings)</visible>
 						</control>
 					</itemlayout>
@@ -1108,7 +1108,7 @@
 							<width>90</width>
 							<height>68</height>
 							<font>font15</font>
-							<label>$INFO[ListItem.Year]</label>
+							<label>$VAR[GameYear]</label>
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(55)">Conditional</animation>
 						</control>
 						<control type="label">
@@ -1116,7 +1116,7 @@
 							<width>620</width>
 							<height>68</height>
 							<font>font15</font>
-							<label>$INFO[ListItem.Label]</label>
+							<label>$VAR[GameTitle]</label>
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(55)">Conditional</animation>
 						</control>
 						<control type="label">
@@ -1125,7 +1125,7 @@
 							<height>68</height>
 							<font>font15</font>
 							<align>right</align>
-							<label>$INFO[ListItem.Rating]</label>
+							<label>$VAR[GameRating]</label>
 							<visible>!Skin.HasSetting(Enable.HideRatings)</visible>
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(55)">Conditional</animation>
 						</control>

@@ -112,7 +112,7 @@
 							<label>$LOCALIZE[31241]</label>
 							<onclick>Container.SetViewMode(501)</onclick>
 							<visible>Window.IsActive(programs)</visible>
-							<visible>String.Contains(Container.FolderPath,plugin.program.advanced.launcher) + !Skin.HasSetting(Disable.LowListView)</visible>
+							<visible>$EXP[InGameMode] + !Skin.HasSetting(Disable.LowListView)</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[31242]</label>
@@ -129,9 +129,8 @@
 						<item>
 							<label>$LOCALIZE[31606]</label>
 							<onclick>Container.SetViewMode(59)</onclick>
-							<visible>Window.IsActive(videos) | Window.IsActive(music)</visible>
 							<visible>!Skin.HasSetting(Disable.LogoView)</visible>
-							<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(artists)]</visible>
+							<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(artists) | $EXP[InGameMode]]</visible>
 						</item>
 						<item>
 							<label>[CAPITALIZE]$LOCALIZE[36906][/CAPITALIZE]</label>
@@ -153,8 +152,7 @@
 						<item>
 							<label>$LOCALIZE[31079]</label>
 							<onclick>Container.SetViewMode(57)</onclick>
-							<visible>Window.IsActive(programs)</visible>
-							<visible>String.Contains(Container.FolderPath,plugin.program.advanced.launcher) + !Skin.HasSetting(Disable.LowListView)</visible>
+							<visible>$EXP[InGameMode] + !Skin.HasSetting(Disable.LowListView)</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[31243]</label>
@@ -171,8 +169,7 @@
 						<item>
 							<label>$LOCALIZE[31244]</label>
 							<onclick>Container.SetViewMode(509)</onclick>
-							<visible>Window.IsActive(videos)</visible>
-							<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)] + !Skin.HasSetting(Disable.MyFlixView)</visible>
+							<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | $EXP[InGameMode]] + !Skin.HasSetting(Disable.MyFlixView)</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[31078]</label>
@@ -189,8 +186,7 @@
 						<item>
 							<label>$LOCALIZE[31078]</label>
 							<onclick>Container.SetViewMode(55)</onclick>
-							<visible>Window.IsActive(programs)</visible>
-							<visible>String.Contains(Container.FolderPath,plugin.program.advanced.launcher) + !Skin.HasSetting(Disable.TriPanelView)</visible>
+							<visible>$EXP[InGameMode] + !Skin.HasSetting(Disable.TriPanelView)</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[536]</label>

@@ -5,11 +5,47 @@
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
-	<onunload>ClearProperty(Progams.Games,Home)</onunload>
-	<views>50,51,55,500</views>
+	<onunload>ClearProperty(Programs.Games,Home)</onunload>
+	<views>50,51,55,57,59,500,509</views>
 	<menucontrol>9051</menucontrol>
 	<controls>
+		<!-- Trigger for showing fanart fullscreen (hidden)-->
+		<control type="button" id="4400">
+			<include>HiddenObject</include>
+			<onfocus>SetProperty(Enable.FullscreenFanart,True,Home)</onfocus>
+			<onfocus>ActivateWindow(1113)</onfocus>
+			<onleft>50</onleft>
+			<onright>50</onright>
+			<onup>50</onup>
+			<ondown>50</ondown>
+			<onclick>50</onclick>
+		</control>
+		<!-- Trigger for manual showing infopanel (hidden) -->
+		<control type="button" id="4401">
+			<include>HiddenObject</include>
+			<onfocus condition="!Skin.HasSetting(Enable.ManualInfoPanel) | String.IsEmpty(Control.GetLabel(4420))">SetProperty(MediaMenu,True,Home)</onfocus>
+			<onfocus condition="!Skin.HasSetting(Enable.ManualInfoPanel) | String.IsEmpty(Control.GetLabel(4420))">SetFocus(9050)</onfocus>
+			<onup>SetProperty(MediaMenu,True,Home)</onup>
+			<onup>SetFocus(9050)</onup>
+			<ondown>50</ondown>
+			<onleft>50</onleft>
+			<onright>50</onright>
+		</control>
+		<!-- InfoPanel type label (hidden) -->
+		<control type="label" id="4420">
+			<label>$VAR[GamesInfoPanelVar]</label>
+			<include>HiddenObject</include>
+			<visible>Control.IsVisible(57) | Control.IsVisible(59)</visible>
+			<include condition="!String.IsEmpty(Skin.String(InfoPanel.Delay))">InfoPanelDelayAnimation</include>
+		</control>
 		<include>CommonBackground</include>
+		<!-- InfoPanel-->
+		<control type="group">
+			<visible>Control.IsVisible(57) | Control.IsVisible(59)</visible>
+			<top>-30</top>
+			<include>InfoPanel</include>
+		</control>
+		<!-- Views -->
 		<control type="group">
 			<include>WindowOpenCloseAnimation</include>
 			<include condition="!Skin.HasSetting(Enable.SlimList)">AddonList</include>
@@ -17,47 +53,28 @@
 			<!-- view id = 50 -->
 			<include condition="!Skin.HasSetting(Disable.InfoWallView)">AddonInfoWall</include>
 			<!-- view id = 51 -->
-			<include condition="!Skin.HasSetting(Disable.TriPanelView)">MusicTriPanel</include>
+			<include condition="!Skin.HasSetting(Disable.TriPanelView)">GamesTriPanel</include>
 			<!-- view id = 55 -->
 			<include condition="!Skin.HasSetting(Disable.ShiftView)">GamesShift</include>
 			<!-- view id = 57 -->
+			<include condition="!Skin.HasSetting(Disable.LogoView)">View_59_Logo</include>
+			<!-- view id = 59 -->
 			<include condition="!Skin.HasSetting(Disable.IconsView)">AddonIcons</include>
 			<!-- view id = 500 -->
+			<include condition="!Skin.HasSetting(Disable.MyFlixView)">View_509_MyFlix</include>
+			<!-- view id = 509 -->
 		</control>
+		<!-- Floor labels / media flags -->
 		<control type="group">
-			<visible>Control.IsVisible(54) | Control.IsVisible(57) | Control.IsVisible(500)</visible>
+			<!-- <visible>Control.IsVisible(57) | Control.IsVisible(500)</visible> -->
 			<visible>!Window.IsActive(addoninformation)</visible>
 			<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">VisibleChange</animation>
 			<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">WindowOpen</animation>
 			<animation effect="slide" tween="cubic" time="720" end="0,806" start="0,0">WindowClose</animation>
 			<top>-30</top>
+			<!-- Footer (Icons, Shift) Not Game Mode-->
 			<control type="group">
-				<visible>Control.IsVisible(54)</visible>
-				<control type="group">
-					<left>410</left>
-					<top>1010</top>
-					<control type="label">
-						<right>410</right>
-						<height>48</height>
-						<align>center</align>
-						<font>font16_title_bold</font>
-						<scroll>true</scroll>
-						<label>$INFO[ListItem.Label]</label>
-						<textoffsetx>30</textoffsetx>
-					</control>
-					<control type="label">
-						<top>45</top>
-						<right>410</right>
-						<height>30</height>
-						<align>center</align>
-						<font>font13_title</font>
-						<label>$VAR[FloorLabel2Var]</label>
-						<textoffsetx>30</textoffsetx>
-					</control>
-				</control>
-			</control>
-			<control type="group">
-				<visible>Control.IsVisible(500) | Control.IsVisible(57)</visible>
+				<visible>[Control.IsVisible(500) | Control.IsVisible(57)] + !$EXP[InGameMode]</visible>
 				<animation effect="slide" start="0" end="40" time="720" tween="cubic" easing="inout" condition="Control.IsVisible(57)">Conditional</animation>
 				<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">VisibleChange</animation>
 				<control type="group">
@@ -92,6 +109,31 @@
 					<wrapmultiline>true</wrapmultiline>
 				</control>
 			</control>
+			<!-- Footer MEDIAFLAGS () Game Mode -->
+			<control type="group">
+				<visible>!ListItem.IsParentFolder + $EXP[InGameMode]</visible>
+				<!-- (Logo) -->
+				<control type="group">
+					<top>995</top>
+					<visible>Control.IsVisible(59) + !String.IsEqual(Skin.String(59.Games.ViewFlags),$LOCALIZE[1223])</visible>
+					<include>ViewAnimation</include>
+					<include>GameFooterFlags</include>
+				</control>
+				<!-- (List - Tripanel - Shift - Icons - MyFlix) -->
+				<control type="group">
+					<visible>Control.IsVisible(50) | Control.IsVisible(55) |  Control.IsVisible(57) | Control.IsVisible(500) | Control.IsVisible(509)</visible>
+					<include>ViewAnimation</include>
+					<animation effect="slide" end="0,-16" condition="Control.IsVisible(56)">Conditional</animation>
+					<animation effect="slide" end="360,-110" condition="Control.IsVisible(57)">Conditional</animation>
+					<animation effect="slide" end="-140" condition="Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
+					<top>1020</top>
+					<height>90</height>
+					<control type="group">
+						<visible>[Control.IsVisible(50) + !Skin.HasSetting(Disable.List.Mediaflags)] | Control.IsVisible(509) + !Skin.HasSetting(Disable.MyFlix.Mediaflags)</visible>
+						<include>GameFooterFlags</include>
+					</control>
+				</control>
+			</control>
 			<control type="image">
 				<top>970</top>
 				<width>100%</width>
@@ -101,11 +143,33 @@
 		</control>
 		<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>
 		<include>Topbar</include>
+		<!-- Sideblad (menu)-->
 		<control type="group">
 			<left>-440</left>
 			<include>SideBladeLeft</include>
 			<control type="grouplist" id="9050">
 				<include>MediaMenuTop</include>
+				<control type="button" id="6051">
+					<description>Show Info Toggle</description>
+					<textwidth>255</textwidth>
+					<include>ButtonCommonValues</include>
+					<label>$LOCALIZE[31018]</label>
+					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[InfoPanelLabelVar][/COLOR]</label2>
+					<onclick condition="Control.IsVisible(57)">$VAR[57GamesInfoPanelVar]</onclick>
+					<onclick condition="Control.IsVisible(59)">$VAR[59GamesInfoPanelVar]</onclick>
+					<onclick condition="Control.IsVisible(503)">Skin.ToggleSetting(503.InfoPanel)</onclick>
+					<visible>Control.IsVisible(57) | Control.IsVisible(59) | Control.IsVisible(503)</visible>
+				</control>
+				<control type="radiobutton" id="6052">
+					<description>InfoPanel Settings button</description>
+					<textwidth>352</textwidth>
+					<include>ButtonCommonValues</include>
+					<label>   - $LOCALIZE[413]</label>
+					<onclick>Skin.ToggleSetting(Enable.ManualInfoPanel)</onclick>
+					<onclick condition="!Skin.HasSetting(Enable.ManualInfoPanel)">Skin.Reset(InfoPanel.Delay)</onclick>
+					<selected>Skin.HasSetting(Enable.ManualInfoPanel)</selected>
+					<visible>$EXP[InGameMode] + Control.IsVisible(6051) + [!String.IsEmpty(Control.GetLabel(4420)) | !String.IsEmpty(Control.GetLabel(4421))]</visible>
+				</control>
 				<control type="edit" id="19">
 					<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
 					<description>Filter</description>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+	<!-- List data of available game assets -->
+	<include name="GameAssets">
+		<item id="5051">
+			<label>Trailer</label>
+			<thumb>DefaultAddonMovieInfo.png</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Trailer)</visible>
+			<property name="contenttype">video</property>
+			<property name="video">$INFO[Container.ListItem.Trailer]</property>
+			<onclick>PlayMedia($INFO[Container.ListItem.Trailer],1)</onclick>
+		</item>
+		<item id="5052">
+			<label>Title</label>
+			<thumb>$INFO[Container.ListItem.Art(title)]</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Art(title))</visible>
+			<property name="contenttype">image</property>
+			<onclick>ShowPicture($INFO[Container.ListItem.Art(title)])</onclick>
+		</item>
+		<item id="5053">
+			<label>Snap</label>
+			<thumb>$INFO[Container.ListItem.Art(snap)]</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Art(snap))</visible>
+			<property name="contenttype">image</property>
+			<onclick>ShowPicture($INFO[Container.ListItem.Art(snap)])</onclick>
+		</item>
+		<item id="5054">
+			<label>Front</label>
+			<thumb>$INFO[Container.ListItem.Art(boxfront)]</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Art(boxfront))</visible>
+			<property name="contenttype">image</property>
+			<onclick>ShowPicture($INFO[Container.ListItem.Art(boxfront)])</onclick>
+		</item>
+		<item id="5055">
+			<label>Back</label>
+			<thumb>$INFO[Container.ListItem.Art(boxback)]</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Art(boxback))</visible>
+			<property name="contenttype">image</property>
+			<onclick>ShowPicture($INFO[Container.ListItem.Art(boxback)])</onclick>
+		</item>
+		<item id="5056">
+			<label>Flyer</label>
+			<thumb>$INFO[Container.ListItem.Art(poster)]</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Art(poster))</visible>
+			<property name="contenttype">image</property>
+			<onclick>ShowPicture($INFO[Container.ListItem.Art(poster)])</onclick>
+		</item>
+		<item id="5057">
+			<label>Map</label>
+			<thumb>$INFO[Container.ListItem.Art(map)]</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Art(map))</visible>
+			<property name="contenttype">image</property>
+			<onclick>ShowPicture($INFO[Container.ListItem.Art(map)])</onclick>
+		</item>
+		<item id="5058">
+			<label>Cartridge/Disc</label>
+			<thumb>$INFO[Container.ListItem.Art(cartridge)]</thumb>
+			<visible>!String.IsEmpty(Container.ListItem.Art(cartridge))</visible>
+			<property name="contenttype">image</property>
+			<onclick>ShowPicture($INFO[Container.ListItem.Art(cartridge)])</onclick>
+		</item>
+	</include>
+
+	<!-- Footer flags for games -->
+	<include name="GameFooterFlags">
+		<!-- hidden helpers -->
+		<control type="label" id="4471"><visible>false</visible><label>$VAR[GameNumOfPlayers]</label></control>	
+		<control type="label" id="4472"><visible>false</visible><label>$VAR[GameESRB]</label></control>	
+		<control type="grouplist">
+			<visible>$EXP[InGameMode]</visible>
+			<width>1665</width>
+			<height>90</height>
+			<left>120</left>
+			<itemgap>10</itemgap>
+			<orientation>horizontal</orientation>
+			<!-- Game Studio -->
+			<control type="image" id="912">
+				<width>160</width>
+				<include>MediaFlagValues</include>
+				<texture>$VAR[PathFlagsGameStudios]$VAR[GameStudio,,.png]</texture>
+			</control>
+			<!-- Game ESRB -->
+			<control type="group">
+				<visible>!String.IsEmpty(Control.GetLabel(4472))</visible>
+				<width>70</width>
+				<animation effect="slide" end="-160" condition="Control.IsVisible(50)">Conditional</animation>
+				<control type="image">
+					<include>MediaFlagValues</include>
+					<texture fallback="flags/esrb/RP (Rating Pending).png">$VAR[PathFlagsGameESRB]$VAR[GameESRB,,.png]</texture>
+				</control>
+			</control>
+			<!-- Game Number of players -->
+			<control type="group">
+				<visible>!String.IsEmpty(Control.GetLabel(4471))</visible>
+				<width>80</width>
+				<animation effect="slide" end="-160" condition="Control.IsVisible(50)">Conditional</animation>
+				<control type="image">
+					<include>MediaFlagValues</include>
+					<height>90</height>
+					<texture>DefaultUser.png</texture>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>80</width>
+					<height>90</height>
+					<align>center</align>
+					<label>$VAR[GameNumOfPlayers]</label>
+					<font>font10</font>
+					<textcolor>grey</textcolor>
+					<wrapmultiline>true</wrapmultiline>
+				</control>
+			</control>
+		</control>
+	</include>
+</includes>

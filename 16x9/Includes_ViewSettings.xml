@@ -519,7 +519,7 @@
 			<onclick>Skin.ToggleSetting(nohighlist)</onclick>
 			<selected>Skin.HasSetting(nohighlist)</selected>
 			<include>ReloadWindowOnClick</include>
-			<visible>![Control.IsVisible(501) + String.Contains(Container.FolderPath,plugin.program.advanced.launcher)]</visible>
+			<visible>![Control.IsVisible(501) + $EXP[InGameMode]]</visible>
 			<visible>!Window.IsActive(music)</visible>
 		</control>
 		<control type="radiobutton" id="1518">
@@ -529,7 +529,7 @@
 			<onclick>Skin.ToggleSetting(nohighlistgame)</onclick>
 			<selected>Skin.HasSetting(nohighlistgame)</selected>
 			<include>ReloadWindowOnClick</include>
-			<visible>Control.IsVisible(501) + String.Contains(Container.FolderPath,plugin.program.advanced.launcher)</visible>
+			<visible>Control.IsVisible(501) + $EXP[InGameMode]</visible>
 		</control>
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
@@ -952,6 +952,13 @@
 			<selected>Skin.HasSetting(Enable.MyFlix.TVLogo)</selected>
 			<visible>Container.Content(tvshows) | Container.Content(episodes)</visible>
 		</control>
+		<control type="radiobutton" id="1512">
+			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[31606]</label>
+			<onclick>Skin.ToggleSetting(Enable.MyFlix.GameLogo)</onclick>
+			<selected>Skin.HasSetting(Enable.MyFlix.GameLogo)</selected>
+			<visible>$EXP[InGameMode]</visible>
+		</control>
 		<control type="button" id="1513">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31348]</label>
@@ -1000,6 +1007,13 @@
 			<onclick>Skin.ToggleSetting(Enable.MyFlix.TVLandscape)</onclick>
 			<selected>Skin.HasSetting(Enable.MyFlix.TVLandscape)</selected>
 			<visible>Container.Content(tvshows)</visible>
+		</control>
+		<control type="radiobutton" id="1520">
+			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[31076]</label>
+			<onclick>Skin.ToggleSetting(Enable.MyFlix.GameLandscape)</onclick>
+			<selected>Skin.HasSetting(Enable.MyFlix.GameLandscape)</selected>
+			<visible>$EXP[InGameMode]</visible>
 		</control>
 	</include>
 	<include name="BigFanViewSettings">

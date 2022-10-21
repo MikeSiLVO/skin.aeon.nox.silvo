@@ -11,7 +11,7 @@
 				<include condition="!String.IsEmpty(Skin.String(MyFlix.Delay))">MyFlixDelayAnimation</include>
 				<animation effect="fade" end="100" time="120" delay="1600">WindowOpen</animation>
 				<animation effect="fade" end="100" time="120" delay="1600">Visible</animation>
-				<visible>Skin.HasSetting(Enable.MyFlix.OpenCase) + !ListItem.IsCollection + Container.Content(movies)</visible>
+				<visible>Skin.HasSetting(Enable.MyFlix.OpenCase) + !ListItem.IsCollection + [Container.Content(movies) | $EXP[InGameMode]</visible>
 			</control>
 			<control type="label" id="4448">
 				<description>MyFlix Open Case Sets</description>
@@ -22,8 +22,9 @@
 				<animation effect="fade" end="100" time="120" delay="1600">Visible</animation>
 				<visible>Skin.HasSetting(Enable.MyFlix.OpenCase) + ListItem.IsCollection</visible>
 			</control>
+			<!-- Info Panel -->
 			<control type="group">
-				<animation effect="slide" start="0" end="0,140" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)]">Conditional</animation>
+				<animation effect="slide" start="0" end="0,140" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)] | [$EXP[InGameMode] + Skin.HasSetting(Enable.MyFlix.GameLandscape)]">Conditional</animation>
 				<control type="group">
 					<animation effect="slide" end="0,320" condition="Skin.HasSetting(Disable.MyFlixInfo)">Conditional</animation>
 					<control type="image" id="50999">
@@ -33,11 +34,11 @@
 						<height>204</height>
 						<aspectratio align="left" aligny="center">keep</aspectratio>
 						<texture background="true">$VAR[ArtworkLogoVar]</texture>
-						<visible>[Container.Content(movies) | Container.Content(sets)] + Skin.HasSetting(Enable.MyFlix.MovieLogo) | [Container.Content(tvshows) | Container.Content(episodes)] + Skin.HasSetting(Enable.MyFlix.TVLogo)</visible>
+						<visible>[Container.Content(movies) | Container.Content(sets)] + Skin.HasSetting(Enable.MyFlix.MovieLogo) | [Container.Content(tvshows) | Container.Content(episodes)] + Skin.HasSetting(Enable.MyFlix.TVLogo) | [$EXP[InGameMode] + Skin.HasSetting(Enable.MyFlix.GameLogo)]</visible>
 					</control>
 					<control type="group">
 						<top>75</top>
-						<animation effect="slide" start="0" end="0,60" condition="[Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(Enable.MyFlix.MovieLogo) | Container.Content(tvshows) + !Skin.HasSetting(Enable.MyFlix.TVLogo)">Conditional</animation>
+						<animation effect="slide" start="0" end="0,60" condition="[[Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(Enable.MyFlix.MovieLogo)] | [Container.Content(tvshows) + !Skin.HasSetting(Enable.MyFlix.TVLogo)] | [$EXP[InGameMode] + !Skin.HasSetting(Enable.MyFlix.GameLandscape)]">Conditional</animation>
 						<control type="group">
 							<visible>!Control.IsVisible(50999) | String.IsEmpty(Control.GetLabel(50999))</visible>
 							<left>25</left>
@@ -87,6 +88,7 @@
 							<visible>!String.IsEmpty(ListItem.Top250)</visible>
 						</control>
 					</control>
+					<!-- Movie (Director, genre)-->
 					<control type="group">
 						<visible>Container.Content(movies) + !ListItem.IsCollection</visible>
 						<control type="grouplist">
@@ -139,6 +141,7 @@
 							<autoscroll delay="3000" time="3000" repeat="4000">true</autoscroll>
 						</control>
 					</control>
+					<!-- Movie Collection (Director, genre)-->
 					<control type="group">
 						<visible>ListItem.IsCollection + ![Container.OnNext | Container.OnPrevious]</visible>
 						<animation effect="fade" time="140" delay="100">Visible</animation>
@@ -182,6 +185,7 @@
 							<autoscroll delay="3000" time="3000" repeat="4000">true</autoscroll>
 						</control>
 					</control>
+					<!-- TV Show (show status, next aired, genre)-->
 					<control type="grouplist">
 						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + !Skin.HasSetting(Disable.NextAired) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Status))</visible>
 						<control type="label">
@@ -211,6 +215,7 @@
 							<visible>!String.IsEmpty(ListItem.Genre)</visible>
 						</control>
 					</control>
+					<!-- TV Shows (rating, premiered, genre)-->
 					<control type="grouplist">
 						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + [Skin.HasSetting(Disable.NextAired) | String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Status))]</visible>
 						<control type="label">
@@ -239,6 +244,7 @@
 							<visible>!String.IsEmpty(ListItem.Genre)</visible>
 						</control>
 					</control>
+					<!-- TV Show - Episodes ()-->
 					<control type="grouplist">
 						<visible>Container.Content(episodes)</visible>
 						<control type="label">
@@ -293,6 +299,7 @@
 							<label>$INFO[ListItem.Premiered,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]</label>
 						</control>
 					</control>
+					<!-- TV Show - Episode Plot-->
 					<control type="textbox">
 						<left>15</left>
 						<top>90</top>
@@ -307,13 +314,60 @@
 						<animation effect="slide" start="0" end="0,155" condition="Container.Content(episodes)">Conditional</animation>
 						<visible>Container.Content(tvshows) | Container.Content(episodes)</visible>
 					</control>
+					<!-- Game Info -->
+					<control type="group">
+						<visible>$EXP[InGameMode]</visible>
+						<control type="grouplist">
+						    <control type="label" id="4460"><visible>false</visible><label>$VAR[GameStudio]</label></control>
+							<control type="label" id="4461"><visible>false</visible><label>$VAR[GameGenre]</label></control>
+							<control type="label">
+								<width>800</width>
+								<height>45</height>
+								<textcolor>grey</textcolor>
+								<shadowcolor>shadow</shadowcolor>
+								<include>DefaultButtonsValues</include>
+								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31995]: [/COLOR]$VAR[GameStudio]</label>
+								<visible>!String.IsEmpty(Control.GetLabel(4460))</visible>
+							</control>
+							<control type="label">
+								<width>800</width>
+								<height>45</height>
+								<textcolor>grey</textcolor>
+								<shadowcolor>shadow</shadowcolor>
+								<include>DefaultButtonsValues</include>
+								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]: [/COLOR]$VAR[GameGenre]</label>
+								<visible>!String.IsEmpty(Control.GetLabel(4461))</visible>
+							</control>
+							<control type="label">
+								<width>1000</width>
+								<height>45</height>
+								<textcolor>grey</textcolor>
+								<shadowcolor>shadow</shadowcolor>
+								<include>DefaultButtonsValues</include>
+								<label>$VAR[GameYear,, • ]$VAR[GameRating]</label>
+							</control>
+						</control>
+						<!-- Plot -->
+						<control type="textbox">
+							<left>15</left>
+							<top>150</top>
+							<width>800</width>
+							<height>130</height>
+							<font>font15</font>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Tagline,,[CR]][/COLOR]$VAR[VideoPlotVar]</label>
+							<autoscroll delay="3000" time="3000" repeat="4000">true</autoscroll>
+						</control>
+					</control>
 				</control>
 			</control>
+			<!-- List Items -->
 			<control type="fixedlist" id="509">
 				<top>518</top>
 				<width>1920</width>
 				<height>600</height>
-				<visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)</visible>
+				<visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | $EXP[InGameMode]</visible>
 				<onleft>509</onleft>
 				<onright>509</onright>
 				<onup>SetProperty(MediaMenu,True,Home)</onup>
@@ -324,7 +378,7 @@
 				<pagecontrol>50960</pagecontrol>
 				<orientation>horizontal</orientation>
 				<preloaditems>2</preloaditems>
-				<itemlayout height="525" width="271" condition="[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets) | [Container.Content(tvshows) + !Skin.HasSetting(Enable.MyFlix.TVLandscape)]">
+				<itemlayout height="525" width="271" condition="[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets) | [Container.Content(tvshows) + !Skin.HasSetting(Enable.MyFlix.TVLandscape)] | [$EXP[InGameMode] + !Skin.HasSetting(Enable.MyFlix.GameLandscape)]">
 					<control type="image">
 						<include>FlixNoCaseVars</include>
 						<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
@@ -351,9 +405,9 @@
 					<include>FlixPosterReflection</include>
 					<include>FlixPosterCaseReflection</include>
 				</itemlayout>
-				<focusedlayout height="525" width="271" condition="[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets) | [Container.Content(tvshows) + !Skin.HasSetting(Enable.MyFlix.TVLandscape)]">
+				<focusedlayout height="525" width="271" condition="[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets) | [Container.Content(tvshows) + !Skin.HasSetting(Enable.MyFlix.TVLandscape)] | [$EXP[InGameMode] + !Skin.HasSetting(Enable.MyFlix.GameLandscape)]">
 					<control type="group">
-						<visible>[[Container.Content(movies) | Container.Content(sets)] + Control.IsVisible(7000) + Skin.HasSetting(Enable.MyFlix.OpenCase)] | [[Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(Enable.MyFlix.OpenCase)] | Container.Content(tvshows)</visible>
+						<visible>[[Container.Content(movies) | Container.Content(sets)] + Control.IsVisible(7000) + Skin.HasSetting(Enable.MyFlix.OpenCase)] | [[Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(Enable.MyFlix.OpenCase)] | Container.Content(tvshows) | [$EXP[InGameMode] + !Skin.HasSetting(Enable.MyFlix.OpenCase)]</visible>
 						<control type="image">
 							<include>FlixNoCaseVars</include>
 							<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
@@ -372,7 +426,7 @@
 						<include>FlixPosterCaseReflection</include>
 					</control>
 				</focusedlayout>
-				<itemlayout height="270" width="480" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)]">
+				<itemlayout height="270" width="480" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)] | [$EXP[InGameMode] + Skin.HasSetting(Enable.MyFlix.GameLandscape)]">
 					<include>FlixLandscape</include>
 					<control type="image">
 						<left>410</left>
@@ -393,7 +447,7 @@
 					</control>
 					<include>FlixLandscapeReflection</include>
 				</itemlayout>
-				<focusedlayout height="270" width="480" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)]">
+				<focusedlayout height="270" width="480" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)] | [$EXP[InGameMode] + Skin.HasSetting(Enable.MyFlix.GameLandscape)]">
 					<include>FlixLandscape</include>
 					<control type="image">
 						<left>410</left>
@@ -440,7 +494,7 @@
 			</control>
 			<control type="group">
 				<top>518</top>
-				<visible>[[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets)] + !Control.IsVisible(7000) + Skin.HasSetting(Enable.MyFlix.OpenCase)</visible>
+				<visible>[[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(sets)] + !Control.IsVisible(7000) + Skin.HasSetting(Enable.MyFlix.OpenCase)] | [$EXP[InGameMode] + !Skin.HasSetting(Enable.MyFlix.GameLandscape)]</visible>
 				<control type="image">
 					<include>FlixCaseVars</include>
 					<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
@@ -459,7 +513,7 @@
 				<top>669</top>
 				<width>215</width>
 				<height>215</height>
-				<visible>[[[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets)] + !Control.IsVisible(7000) + Skin.HasSetting(Enable.MyFlix.Cases) + Skin.HasSetting(Enable.MyFlix.OpenCase)]</visible>
+				<visible>[[[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets) | [$EXP[InGameMode] + !Skin.HasSetting(Enable.MyFlix.GameLandscape)]] + !Control.IsVisible(7000) + Skin.HasSetting(Enable.MyFlix.Cases) + Skin.HasSetting(Enable.MyFlix.OpenCase)]</visible>
 				<include>MyFlixRollingMovieSetDiscs</include>
 			</control>
 			<control type="group">
@@ -467,12 +521,12 @@
 				<top>682</top>
 				<width>211</width>
 				<height>211</height>
-				<visible>[[[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets)] + !Control.IsVisible(7000) + !Skin.HasSetting(Enable.MyFlix.Cases) + Skin.HasSetting(Enable.MyFlix.OpenCase)]</visible>
+				<visible>[[[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets) | [$EXP[InGameMode] + !Skin.HasSetting(Enable.MyFlix.GameLandscape)]] + !Control.IsVisible(7000) + !Skin.HasSetting(Enable.MyFlix.Cases) + Skin.HasSetting(Enable.MyFlix.OpenCase)]</visible>
 				<animation effect="slide" end="-2,-11" condition="Skin.HasSetting(useclearcases)">Conditional</animation>
 				<include>MyFlixRollingMovieSetDiscs</include>
 			</control>
 			<control type="group" id="7000">
-				<visible>[[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets)] + [Container.OnNext | Container.OnPrevious] + Skin.HasSetting(Enable.MyFlix.OpenCase)</visible>
+				<visible>[[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets) | [$EXP[InGameMode] + !Skin.HasSetting(Enable.MyFlix.GameLandscape)]] + [Container.OnNext | Container.OnPrevious] + Skin.HasSetting(Enable.MyFlix.OpenCase)</visible>
 				<animation effect="fade" time="1000" end="0" reversible="false">Hidden</animation>
 				<control type="label">
 					<include>HiddenObject</include>
@@ -480,7 +534,7 @@
 			</control>
 			<control type="group">
 				<top>518</top>
-				<visible>[[[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets)] + !Control.IsVisible(7000) + Skin.HasSetting(Enable.MyFlix.OpenCase)]</visible>
+				<visible>[[[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets) | [$EXP[InGameMode] + !Skin.HasSetting(Enable.MyFlix.GameLandscape)]] + !Control.IsVisible(7000) + Skin.HasSetting(Enable.MyFlix.OpenCase)]</visible>
 				<include>MyFlixModAnimation</include>
 				<include>FlixPoster</include>
 				<control type="image">
@@ -512,7 +566,7 @@
 			<height>40</height>
 			<texture>$VAR[OverlayVar]</texture>
 			<aspectratio align="center" aligny="top">keep</aspectratio>
-			<visible>[!String.IsEmpty(Skin.String(509.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(509.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(509.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
+			<visible>[!String.IsEmpty(Skin.String(509.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(509.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(509.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(509.Games.DisableOverlay)) + $EXP[InGameMode]]</visible>
 		</control>
 	</include>
 	<include name="FlixLandscape">
@@ -550,21 +604,21 @@
 		<top>60</top>
 		<width>292</width>
 		<height>408</height>
-		<visible>Skin.HasSetting(Enable.MyFlix.Cases) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
+		<visible>Skin.HasSetting(Enable.MyFlix.Cases) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | $EXP[InGameMode]]</visible>
 	</include>
 	<include name="FlixNoCaseVars">
 		<left>-12</left>
 		<top>89</top>
 		<width>288</width>
 		<height>376</height>
-		<visible>!Skin.HasSetting(useclearcases) + !Skin.HasSetting(Enable.MyFlix.Cases) + Skin.HasSetting(Enable.MyFlix.OpenCase) + [Container.Content(movies) | Container.Content(sets)] + !ListItem.IsParentFolder</visible>
+		<visible>!Skin.HasSetting(useclearcases) + !Skin.HasSetting(Enable.MyFlix.Cases) + Skin.HasSetting(Enable.MyFlix.OpenCase) + [Container.Content(movies) | Container.Content(sets) | $EXP[InGameMode]] + !ListItem.IsParentFolder</visible>
 	</include>
 	<include name="FlixNoClearCaseVars">
 		<left>-10</left>
 		<top>66</top>
 		<width>280</width>
 		<height>394</height>
-		<visible>Skin.HasSetting(useclearcases) + !Skin.HasSetting(Enable.MyFlix.Cases) + Skin.HasSetting(Enable.MyFlix.OpenCase) + [Container.Content(movies) | Container.Content(sets)] + !ListItem.IsParentFolder</visible>
+		<visible>Skin.HasSetting(useclearcases) + !Skin.HasSetting(Enable.MyFlix.Cases) + Skin.HasSetting(Enable.MyFlix.OpenCase) + [Container.Content(movies) | Container.Content(sets)  | $EXP[InGameMode]] + !ListItem.IsParentFolder</visible>
 	</include>
 	<include name="FlixPosterReflection">
 		<control type="image">
@@ -582,7 +636,7 @@
 			<width>295</width>
 			<height>410</height>
 			<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png" colordiffuse="73FFFFFF">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
-			<visible>Skin.HasSetting(Enable.MyFlix.Cases) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
+			<visible>Skin.HasSetting(Enable.MyFlix.Cases) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | $EXP[InGameMode]]</visible>
 		</control>
 	</include>
 	<include name="MyFlixRollingMovieSetDiscs">
