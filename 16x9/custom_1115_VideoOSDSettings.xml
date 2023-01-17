@@ -42,6 +42,13 @@
 					<onclick>Skin.ToggleSetting(VideoOSDOnTop)</onclick>
 					<selected>Skin.HasSetting(VideoOSDOnTop)</selected>
 				</control>
+				<control type="button" id="90212">
+					<width>1452</width>
+					<label>$LOCALIZE[31577]</label>
+					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[AutoHideVideoOSDLabelVar][/COLOR]</label2>
+					<onclick>SetProperty(CustomSelectAutoHideVideoOSD,True)</onclick>
+					<onclick>ActivateWindow(1129)</onclick>
+				</control>
 				<control type="radiobutton" id="90202">
 					<width>1452</width>
 					<radioposx>1350</radioposx>
@@ -119,15 +126,6 @@
 					<label>$LOCALIZE[31513]</label>
 					<onclick>Skin.ToggleSetting(Enable.AddonInfo)</onclick>
 					<selected>Skin.HasSetting(Enable.AddonInfo)</selected>
-				</control>
-				<control type="button" id="90212">
-					<width>1452</width>
-					<label>$LOCALIZE[31577]</label>
-					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[AutoHideVideoOSDLabelVar][/COLOR]</label2>
-					<onclick condition="!System.AddonIsEnabled(script.skin.info.service)">EnableAddon(script.skin.info.service)</onclick>
-					<onclick condition="!System.HasAddon(script.skin.info.service)">InstallAddon(script.skin.info.service)</onclick>
-					<onclick condition="System.HasAddon(script.skin.info.service)">SetProperty(CustomSelectAutoHideVideoOSD,True)</onclick>
-					<onclick condition="System.HasAddon(script.skin.info.service)">ActivateWindow(1129)</onclick>
 				</control>
 			</control>
 			<control type="scrollbar" id="6">
