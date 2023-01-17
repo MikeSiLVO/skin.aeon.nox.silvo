@@ -540,7 +540,7 @@
 				<param name="width">770</param>
 			</include>
 		</itemlayout>
-		<focusedlayout height="82" width="806" condition="[!Skin.HasSetting(rightlistalternate) + Container.Content(movies)]">
+		<focusedlayout height="82" width="806" condition="[!Skin.HasSetting(rightlistalternate) + Container.Content(movies)]" infoupdate="5000">
 			<control type="image">
 				<include>RightListFocusedHighLightContent</include>
 				<include>VisibleFadeAnimation</include>
@@ -549,7 +549,7 @@
 				<param name="width">700</param>
 			</include>
 		</focusedlayout>
-		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + !Skin.HasSetting(rightlistalternatetv)">
+		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + !Skin.HasSetting(rightlistalternatetv)" infoupdate="5000">
 			<control type="image">
 				<include>RightListFocusedHighLightContent</include>
 				<include>VisibleFadeAnimation</include>
@@ -561,13 +561,13 @@
 				</include>
 			</control>
 		</focusedlayout>
-		<focusedlayout height="82" width="806" condition="[Skin.HasSetting(rightlistalternate) + Container.Content(movies)]">
+		<focusedlayout height="82" width="806" condition="[Skin.HasSetting(rightlistalternate) + Container.Content(movies)]" infoupdate="5000">
 			<include content="RightListFocusedLayout">
 				<param name="width">770</param>
 				<param name="labelColor">$VAR[ThemeLabelColor]</param>
 			</include>
 		</focusedlayout>
-		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + Skin.HasSetting(rightlistalternatetv)">
+		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + Skin.HasSetting(rightlistalternatetv)" infoupdate="5000">
 			<include content="RightListFocusedLayout">
 				<param name="width">770</param>
 				<param name="labelColor">$VAR[ThemeLabelColor]</param>
