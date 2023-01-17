@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">6</defaultcontrol>
+	<include>DialogOpenCloseAnimation</include>
+	<controls>
+		<control type="group">
+			<control type="image">
+				<left>162</left>
+				<top>0</top>
+				<width>1600</width>
+				<height>940</height>
+				<texture border="40">listpanel_back.png</texture>
+			</control>
+			<control type="label" id="1">
+				<left>360</left>
+				<top>0</top>
+				<width>1200</width>
+				<height>80</height>
+				<align>center</align>
+				<font>font35_title</font>
+				<label/>
+				<shadowcolor>black</shadowcolor>
+			</control>
+			<control type="panel" id="6">
+				<viewtype label="536">icon</viewtype>
+				<top>100</top>
+				<left>194</left>
+				<width>1536</width>
+				<height>760</height>
+				<onup>7</onup>
+				<ondown>7</ondown>
+				<preloaditems>4</preloaditems>
+				<itemlayout height="76" width="128">
+					<control type="image">
+						<width>123</width>
+						<height>71</height>
+						<texture border="0">colors/white.png</texture>
+						<colordiffuse>$INFO[ListItem.Label2]</colordiffuse>
+					</control>
+				</itemlayout>
+				<focusedlayout height="76" width="128">
+					<control type="group">
+						<animation effect="zoom" time="300" tween="sine" easing="inout" start="100" end="180" center="70,40">Focus</animation>
+						<control type="image">
+							<width>123</width>
+							<height>71</height>
+							<texture border="0">colors/white.png</texture>
+							<colordiffuse>$INFO[ListItem.Label2]</colordiffuse>
+						</control>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="grouplist" id="9001">
+				<orientation>horizontal</orientation>
+				<itemgap>10</itemgap>
+				<left>290</left>
+				<top>860</top>
+				<width>1000</width>
+				<align>center</align>
+				<control type="label" id="3010">
+					<width>460</width>
+					<height>60</height>
+					<align>right</align>
+					<label>$INFO[ListItem.Label][COLOR=$INFO[ListItem.Label2]]$INFO[ListItem.Label2, ][/COLOR]</label>
+					<shadowcolor>FF424242</shadowcolor>
+				</control>
+				<control type="button" id="7">
+					<width>auto</width>
+					<height>60</height>
+					<label/>
+					<onup>6</onup>
+					<ondown>6</ondown>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>
