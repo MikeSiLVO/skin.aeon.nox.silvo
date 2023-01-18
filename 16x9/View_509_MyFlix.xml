@@ -381,6 +381,7 @@
 						<height>40</height>
 						<texture>$VAR[OverlayVar]</texture>
 						<aspectratio align="center" aligny="top">keep</aspectratio>
+						<visible>[!String.IsEmpty(Skin.String(509.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(509.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(509.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
 					</control>
 					<control type="image">
 						<left>-10</left>
@@ -402,6 +403,7 @@
 						<height>40</height>
 						<texture>$VAR[OverlayVar]</texture>
 						<aspectratio align="center" aligny="top">keep</aspectratio>
+						<visible>[!String.IsEmpty(Skin.String(509.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(509.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(509.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
 					</control>
 					<include>FlixLandscapeReflection</include>
 				</focusedlayout>
