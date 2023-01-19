@@ -324,7 +324,8 @@
 					<control type="button" id="150">
 						<left>693</left>
 						<onup>130</onup>
-						<ondown>170</ondown>
+						<ondown condition="!Control.IsVisible(310)">8</ondown>
+						<ondown condition="Control.IsVisible(310)">3100</ondown>
 						<include>Objects_SingleKeyOff</include>
 					</control>
 					<control type="button" id="151">
@@ -430,6 +431,15 @@
 						<ondown>8</ondown>
 						<include>Objects_SingleKeyOff</include>
 					</control>
+					<control type="button" id="3100">
+						<onup>150</onup>
+						<ondown>8</ondown>
+						<onclick>SendClick(310)</onclick>
+						<font>IconMedium</font>
+						<label>$VAR[ShowPasswordButtonLabelVar]</label>
+						<include>Objects_SingleKeyOff</include>
+						<visible>Control.IsVisible(310)</visible>
+					</control>
 				</control>
 				<!-- Row 5 -->
 				<control type="grouplist">
@@ -441,31 +451,11 @@
 						<ondown condition="!Control.IsVisible(5000)">309</ondown>
 						<ondown condition="Control.IsVisible(5000)">5000</ondown>
 						<include>Objects_DoubleKeyOff</include>
-						<visible>!Control.IsVisible(310)</visible>
-					</control>
-					<control type="button" id="300">
-						<label>$LOCALIZE[20177]</label>
-						<onup>302</onup>
-						<ondown condition="!Control.IsVisible(5000)">309</ondown>
-						<ondown condition="Control.IsVisible(5000)">5000</ondown>
-						<width>240</width>
-						<include>Objects_DoubleKeyOff</include>
-						<visible>Control.IsVisible(310)</visible>
-					</control>
-					<control type="button" id="3100">
-						<onup>302</onup>
-						<ondown condition="!Control.IsVisible(5000)">309</ondown>
-						<ondown condition="Control.IsVisible(5000)">5000</ondown>
-						<onclick>SendClick(310)</onclick>
-						<font>IconMedium</font>
-						<label>$VAR[ShowPasswordButtonLabelVar]</label>
-						<include>Objects_SingleKeyOff</include>
-						<visible>Control.IsVisible(310)</visible>
 					</control>
 					<control type="button" id="305">
 						<left>504</left>
 						<label>←</label>
-						<onup>100</onup>
+						<onup>160</onup>
 						<ondown condition="!Control.IsVisible(5000)">100</ondown>
 						<ondown condition="Control.IsVisible(5000)">5000</ondown>
 						<width>120</width>
@@ -500,7 +490,8 @@
 						<height>80</height>
 						<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texturefocus>
 						<label>20181</label>
-						<onup>169</onup>
+						<onup condition="!Control.IsVisible(310)">169</onup>
+						<onup condition="Control.IsVisible(310)">3100</onup>
 						<ondown condition="!Control.IsVisible(5000)">109</ondown>
 						<ondown condition="Control.IsVisible(5000)">5000</ondown>
 						<include>Objects_KeyOff</include>
