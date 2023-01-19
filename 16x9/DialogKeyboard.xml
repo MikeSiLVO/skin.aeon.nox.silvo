@@ -8,6 +8,9 @@
 	</coordinates>
 	<include>DialogOpenCloseAnimation</include>
 	<controls>
+		<control type="button" id="310">
+			<include>Hiddenobject</include>
+		</control>
 		<control type="group">
 			<animation effect="slide" start="0,0" end="-100,0" time="320" tween="cubic" easing="inout" condition="Window.IsActive(numericinput)">Conditional</animation>
 			<control type="image" id="0">
@@ -438,6 +441,27 @@
 						<ondown condition="!Control.IsVisible(5000)">309</ondown>
 						<ondown condition="Control.IsVisible(5000)">5000</ondown>
 						<include>Objects_DoubleKeyOff</include>
+						<visible>!Control.IsVisible(310)</visible>
+					</control>
+					<control type="button" id="300">
+						<label>$LOCALIZE[20177]</label>
+						<onup>302</onup>
+						<ondown condition="!Control.IsVisible(5000)">309</ondown>
+						<ondown condition="Control.IsVisible(5000)">5000</ondown>
+						<width>240</width>
+						<include>Objects_DoubleKeyOff</include>
+						<visible>Control.IsVisible(310)</visible>
+					</control>
+					<control type="button" id="3100">
+						<left>126</left>
+						<onup>302</onup>
+						<ondown condition="!Control.IsVisible(5000)">309</ondown>
+						<ondown condition="Control.IsVisible(5000)">5000</ondown>
+						<onclick>SendClick(310)</onclick>
+						<font>IconMedium</font>
+						<label>$VAR[ShowPasswordButtonLabelVar]</label>
+						<include>Objects_SingleKeyOff</include>
+						<visible>Control.IsVisible(310)</visible>
 					</control>
 					<control type="button" id="305">
 						<left>504</left>
