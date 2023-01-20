@@ -17,52 +17,77 @@
 				<description>top left mover</description>
 				<width>128</width>
 				<height>128</height>
-				<texturefocus>calibrate/cal_TL_fo.png</texturefocus>
+				<texturefocus colordiffuse="$VAR[ThemeLabelColor]">calibrate/cal_TL.png</texturefocus>
 				<texturenofocus>calibrate/cal_TL.png</texturenofocus>
+				<movingspeed acceleration="180" maxvelocity="300" resettimeout="200" delta="1">
+					<eventconfig type="up" />
+					<eventconfig type="down" />
+					<eventconfig type="left" />
+					<eventconfig type="right" />
+				</movingspeed>
 			</control>
 			<control type="mover" id="9">
 				<description>right bottom mover</description>
 				<width>128</width>
 				<height>128</height>
-				<texturefocus>calibrate/cal_BR_fo.png</texturefocus>
+				<texturefocus colordiffuse="$VAR[ThemeLabelColor]">calibrate/cal_BR.png</texturefocus>
 				<texturenofocus>calibrate/cal_BR.png</texturenofocus>
-				<animation type="WindowOpen" reversible="false">
-					<effect type="zoom" start="115" end="100" center="960,540" easing="inout" tween="sine" time="300" />
-					<effect type="fade" start="0" end="100" time="175" />
-				</animation>
-				<animation type="WindowClose" reversible="false">
-					<effect type="zoom" start="100" end="175" center="960,540" easing="out" tween="sine" time="300" />
-					<effect type="fade" start="100" end="0" time="250" easing="out" tween="cubic" />
-				</animation>
-				<animation type="Visible" reversible="false">
-					<effect type="zoom" start="115" end="100" center="960,540" easing="inout" tween="sine" time="300" />
-					<effect type="fade" start="0" end="100" time="175" />
-				</animation>
-				<animation type="Hidden" reversible="false">
-					<effect type="zoom" start="100" end="75" center="960,540" easing="in" tween="back" time="300" />
-					<effect type="fade" start="100" end="0" delay="200" time="100" />
-				</animation>
+				<movingspeed acceleration="180" maxvelocity="300" resettimeout="200" delta="1">
+					<eventconfig type="up" />
+					<eventconfig type="down" />
+					<eventconfig type="left" />
+					<eventconfig type="right" />
+				</movingspeed>
 			</control>
 			<control type="mover" id="10">
 				<description>subtitle position mover</description>
 				<left>200</left>
 				<top>750</top>
 				<width>750</width>
-				<height>128</height>
-				<texturefocus border="20">calibrate/cal_SUB_fo.png</texturefocus>
-				<texturenofocus border="20">calibrate/cal_SUB.png</texturenofocus>
+				<height>90</height>
+				<texturefocus colordiffuse="$VAR[ThemeLabelColor]">calibrate/cal_SUB.png</texturefocus>
+				<texturenofocus>calibrate/cal_SUB.png</texturenofocus>
+				<movingspeed acceleration="180" maxvelocity="300" resettimeout="200" delta="1">
+					<eventconfig type="up" />
+					<eventconfig type="down" />
+					<eventconfig type="left" />
+					<eventconfig type="right" />
+				</movingspeed>
 			</control>
 			<control type="resize" id="11">
 				<description>pixel aspect ratio</description>
 				<top>390</top>
 				<width>500</width>
 				<height>500</height>
-				<texturefocus>calibrate/cal_ratio_fo.png</texturefocus>
+				<texturefocus colordiffuse="$VAR[ThemeLabelColor]">calibrate/cal_ratio.png</texturefocus>
 				<texturenofocus>calibrate/cal_ratio.png</texturenofocus>
+				<movingspeed acceleration="140" maxvelocity="300" resettimeout="180" delta="1">
+					<eventconfig type="left" />
+					<eventconfig type="right" />
+				</movingspeed>
+			</control>
+			<control type="mover" id="12">
+				<description>reset calibration</description>
+				<left>0</left>
+				<top>900</top>
+				<width>100</width>
+				<height>100</height>
+				<texturefocus colordiffuse="$VAR[ThemeLabelColor]">calibrate/reset.png</texturefocus>
+				<texturenofocus>calibrate/reset.png</texturenofocus>
+			</control>
+			<control type="label">
+				<description>window title</description>
+				<top>30</top>
+				<width>100%</width>
+				<height>30</height>
+				<align>center</align>
+				<label>$LOCALIZE[214]</label>
+				<font>font48_title</font>
+				<shadowcolor>black</shadowcolor>
 			</control>
 			<control type="label" id="2">
-				<description>coordinates label</description>
-				<top>150</top>
+				<description>resolution label</description>
+				<top>90</top>
 				<width>100%</width>
 				<height>30</height>
 				<align>center</align>
@@ -72,6 +97,16 @@
 			</control>
 			<control type="label" id="3">
 				<description>help information</description>
+				<top>150</top>
+				<width>100%</width>
+				<height>30</height>
+				<align>center</align>
+				<label />
+				<font>font48</font>
+				<shadowcolor>black</shadowcolor>
+			</control>
+			<control type="label" id="4">
+				<description>calibration value</description>
 				<top>210</top>
 				<width>100%</width>
 				<height>30</height>
