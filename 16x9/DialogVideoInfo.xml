@@ -1086,13 +1086,11 @@
 										<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
 									</control>
 									<control type="image">
-										<top>-12</top>
-										<width>35</width>
+										<top>2</top>
+										<width>64</width>
 										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/hdr.png</texture>
-										<visible>String.Contains(ListItem.Filename,hdr)</visible>
-										<animation effect="slide" end="10,-2" condition="!Skin.HasSetting(coloredflags)">Conditional</animation>
-										<animation effect="slide" end="0,-3" condition="Skin.HasSetting(coloredflags)">Conditional</animation>
+										<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
+										<visible>!String.IsEmpty(ListItem.HdrType)</visible>
 									</control>
 								</control>
 								<control type="image">

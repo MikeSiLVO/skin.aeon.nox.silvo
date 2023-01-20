@@ -610,19 +610,16 @@
 						<control type="group">
 							<visible>[Control.IsVisible(52) + String.IsEqual(Skin.String(52.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)] | [Control.IsVisible(52) + String.IsEqual(Skin.String(52.Episodes.ViewFlags),$LOCALIZE[31160]) + Container.Content(episodes)] | [Control.IsVisible(53) + String.IsEqual(Skin.String(53.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)] | [Control.IsVisible(59) + String.IsEqual(Skin.String(59.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)] | [Control.IsVisible(503) + String.IsEqual(Skin.String(503.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)]</visible>
 							<control type="image">
-								<left>180</left>
+								<left>175</left>
 								<include>MediaFlagValues</include>
 								<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
 							</control>
 							<control type="image">
-								<left>290</left>
-								<top>-12</top>
-								<width>35</width>
+								<left>282</left>
+								<top>2</top>
+								<width>58</width>
 								<include>MediaFlagValues</include>
-								<texture>$VAR[MediaFlagsPathVar]/hdr.png</texture>
-								<visible>String.Contains(ListItem.Filename,hdr)</visible>
-								<animation effect="slide" end="15,-2" condition="!Skin.HasSetting(coloredflags)">Conditional</animation>
-								<animation effect="slide" end="0,-4" condition="Skin.HasSetting(coloredflags)">Conditional</animation>
+								<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
 							</control>
 							<control type="image">
 								<left>330</left>
@@ -761,7 +758,6 @@
 										<width>64</width>
 										<include>MediaFlagValues</include>
 										<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
-										<animation effect="slide" end="10" condition="!Skin.HasSetting(coloredflags)">Conditional</animation>
 									</control>
 									<control type="image">
 										<left>670</left>

@@ -2963,13 +2963,11 @@
 						<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[VideoPlayer.VideoResolution,,.png]</texture>
 					</control>
 					<control type="image">
-						<top>-12</top>
-						<width>35</width>
+						<top>2</top>
+						<width>64</width>
 						<include>MediaFlagValues</include>
-						<texture>$VAR[MediaFlagsPathVar]/hdr.png</texture>
-						<visible>String.Contains(Player.Filename,hdr)</visible>
-						<animation effect="slide" end="10,-2" condition="!Skin.HasSetting(coloredflags)">Conditional</animation>
-						<animation effect="slide" end="0,-3" condition="Skin.HasSetting(coloredflags)">Conditional</animation>
+						<texture>$VAR[MediaFlagsPathVar]/$INFO[VideoPlayer.HdrType,hdr/,.png]</texture>
+						<visible>!String.IsEmpty(VideoPlayer.HdrType)</visible>
 					</control>
 				</control>
 				<control type="image">
