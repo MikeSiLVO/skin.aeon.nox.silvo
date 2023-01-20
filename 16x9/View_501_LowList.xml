@@ -560,36 +560,39 @@
 				</control>
 			</control>
 			<control type="group">
-				<left>1270</left>
+				<left>1265</left>
 				<top>1000</top>
 				<width>1840</width>
 				<control type="group">
 					<visible>!ListItem.IsCollection</visible>
 					<include>VisibleFadeAnimation</include>
 					<control type="image">
-						<left>13.5</left>
-						<colordiffuse>grey2</colordiffuse>
 						<include>MediaFlagValues</include>
 						<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
 						<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
 					</control>
 					<control type="image">
-						<left>176.5</left>
-						<colordiffuse>grey2</colordiffuse>
+						<left>110</left>
+						<top>2</top>
+						<width>60</width>
+						<include>MediaFlagValues</include>
+						<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
+						<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
+					</control>
+					<control type="image">
+						<left>177</left>
 						<include>MediaFlagValues</include>
 						<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
 						<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
 					</control>
 					<control type="image">
-						<left>339</left>
-						<colordiffuse>grey2</colordiffuse>
+						<left>344</left>
 						<include>MediaFlagValues</include>
 						<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[AudioCodecFlagVar]</texture>
 						<visible>!String.IsEmpty(ListItem.AudioCodec)</visible>
 					</control>
 					<control type="image">
-						<left>506</left>
-						<colordiffuse>grey2</colordiffuse>
+						<left>511</left>
 						<include>MediaFlagValues</include>
 						<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
 						<visible>!String.IsEmpty(ListItem.AudioChannels) + !Container.Content(seasons)</visible>
