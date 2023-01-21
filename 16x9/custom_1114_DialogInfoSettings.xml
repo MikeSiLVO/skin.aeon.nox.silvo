@@ -4,7 +4,7 @@
 	<coordinates>
 		<system>1</system>
 		<left>199</left>
-		<top>210</top>
+		<top>150</top>
 	</coordinates>
 	<include>DialogOpenCloseAnimation</include>
 	<controls>
@@ -14,7 +14,7 @@
 			<animation effect="fade" time="150">Hidden</animation>
 			<control type="image">
 				<width>1522</width>
-				<height>660</height>
+				<height>780</height>
 				<texture border="40">dialogs/default/bg.png</texture>
 			</control>
 			<control type="label" id="2">
@@ -31,7 +31,7 @@
 				<left>33</left>
 				<top>88</top>
 				<width>1452</width>
-				<height>540</height>
+				<height>660</height>
 				<pagecontrol>6</pagecontrol>
 				<onup>90200</onup>
 				<ondown>90200</ondown>
@@ -60,7 +60,7 @@
 					<onclick>Skin.ToggleSetting(VideoInfoPlotToggle)</onclick>
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
-				<control type="radiobutton" id="90211">
+				<control type="radiobutton" id="90204">
 					<width>1452</width>
 					<radioposx>1350</radioposx>
 					<label>$LOCALIZE[31541]</label>
@@ -68,7 +68,7 @@
 					<selected>!Skin.HasSetting(SetInfoPlotToggle)</selected>
 					<visible>System.HasAddon(script.skin.info.service) + !Window.IsActive(musicinformation)</visible>
 				</control>
-				<control type="button" id="90204">
+				<control type="button" id="90205">
 					<width>1452</width>
 					<label>$LOCALIZE[31990]</label>
 					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[CinemaVisionButtonLabelVar][/COLOR]</label2>
@@ -76,7 +76,7 @@
 					<visible>System.HasAddon(script.cinemavision)</visible>
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
-				<control type="radiobutton" id="90205">
+				<control type="radiobutton" id="90206">
 					<width>1452</width>
 					<radioposx>1350</radioposx>
 					<onclick>Skin.ToggleSetting(Enable.ExtendedInfoIntergration)</onclick>
@@ -87,7 +87,7 @@
 					<visible>System.HasAddon(script.embuary.helper)</visible>
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
-				<control type="radiobutton" id="90206">
+				<control type="radiobutton" id="90207">
 					<width>1452</width>
 					<radioposx>1350</radioposx>
 					<onclick>Skin.ToggleSetting(Enable.ExtendedInfoTVIntergration)</onclick>
@@ -97,14 +97,6 @@
 					<label>$LOCALIZE[31127] ($LOCALIZE[20343])</label>
 					<visible>System.HasAddon(script.embuary.helper)</visible>
 					<visible>!Window.IsActive(musicinformation)</visible>
-				</control>
-				<control type="button" id="90207">
-					<width>1452</width>
-					<label>$LOCALIZE[31442]</label>
-					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[DialogInfoDimmerLabelVar][/COLOR]</label2>
-					<onclick>SetProperty(CustomSelectDialogInfoDimmer,True)</onclick>
-					<onclick>ActivateWindow(1129)</onclick>
-					<visible>!Skin.HasSetting(Enable.BlurredVideoInfo)</visible>
 				</control>
 				<control type="radiobutton" id="90208">
 					<width>1452</width>
@@ -118,7 +110,15 @@
 					<selected>Skin.HasSetting(Enable.BlurredVideoInfo)</selected>
 					<label>$LOCALIZE[31174]</label>
 				</control>
-				<control type="radiobutton" id="90209">
+				<control type="button" id="90209">
+					<width>1452</width>
+					<label>$LOCALIZE[31442]</label>
+					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[DialogInfoDimmerLabelVar][/COLOR]</label2>
+					<onclick>SetProperty(CustomSelectDialogInfoDimmer,True)</onclick>
+					<onclick>ActivateWindow(1129)</onclick>
+					<visible>!Skin.HasSetting(Enable.BlurredVideoInfo)</visible>
+				</control>
+				<control type="radiobutton" id="90210">
 					<width>1452</width>
 					<radioposx>1350</radioposx>
 					<onclick>Skin.ToggleSetting(discartoninfo)</onclick>
@@ -126,13 +126,21 @@
 					<label>$LOCALIZE[31601]</label>
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
-				<control type="radiobutton" id="90210">
+				<control type="radiobutton" id="90211">
 					<width>1452</width>
 					<radioposx>1350</radioposx>
 					<onclick>Skin.ToggleSetting(CharacterOnInfo)</onclick>
 					<selected>Skin.HasSetting(CharacterOnInfo)</selected>
 					<label>$LOCALIZE[31507]</label>
 					<visible>!Window.IsActive(musicinformation)</visible>
+				</control>
+				<control type="radiobutton" id="90212">
+					<width>1452</width>
+					<radioposx>1350</radioposx>
+					<onclick>Skin.ToggleSetting(TMDbHelper.HideBudgetRevenue)</onclick>
+					<selected>Skin.HasSetting(TMDbHelper.HideBudgetRevenue)</selected>
+					<label>$LOCALIZE[31596]</label>
+					<visible>!Window.IsActive(musicinformation) + System.AddonIsEnabled(plugin.video.themoviedb.helper)</visible>
 				</control>
 			</control>
 			<control type="scrollbar" id="6">
