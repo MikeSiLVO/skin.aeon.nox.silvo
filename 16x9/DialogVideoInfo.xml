@@ -632,7 +632,7 @@
 								<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31850])</onclick>
 								<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window(Home).Property(TMDbHelper.ListItem.Budget)])</onclick>
 								<onclick>SetFocus(64)</onclick>
-								<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Budget)) + String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Budget),0)</visible>
+								<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Budget)) + String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Budget),$0) + !Skin.HasSetting(TMDbHelper.HideBudgetRevenue)</visible>
 							</item>
 							<item>
 								<label>$INFO[Window(Home).Property(TMDbHelper.ListItem.Revenue)]</label>
@@ -640,7 +640,7 @@
 								<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31851])</onclick>
 								<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window(Home).Property(TMDbHelper.ListItem.Revenue)])</onclick>
 								<onclick>SetFocus(64)</onclick>
-								<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Revenue)) + String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Revenue),0)</visible>
+								<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Revenue)) + String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Revenue),$0) + !Skin.HasSetting(TMDbHelper.HideBudgetRevenue)</visible>
 							</item>
 							<item>
 								<label>$INFO[ListItem.Premiered]</label>
