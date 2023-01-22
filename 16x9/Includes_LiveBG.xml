@@ -47,17 +47,15 @@
 			<include>HiddenList</include>
 			<content>$VAR[CaseContentVar]</content>
 		</control>
-		<control type="image">
-			<fadetime>600</fadetime>
-			<visible>String.StartsWith(Container(9000).ListItem.Property(background),s:live) | [Control.HasFocus(9010) + String.StartsWith(Container(9010).ListItem.Property(background),s:live)]</visible>
-			<include>FullscreenDimensions</include>
-			<aspectratio align="center" aligny="top">scale</aspectratio>
-			<texture background="true">special://skin/backgrounds/default_livecases.jpg</texture>
-		</control>
 		<control type="group">
-			<visible>String.StartsWith(Container(9000).ListItem.Property(background),s:live) + ![String.EndsWith(Container(9000).ListItem.Property(background),i:songs) | String.EndsWith(Container(9000).ListItem.Property(background),i:albums)] | Control.HasFocus(9010) + String.StartsWith(Container(9010).ListItem.Property(background),s:live) + ![String.EndsWith(Container(9010).ListItem.Property(background),i:songs) | String.EndsWith(Container(9010).ListItem.Property(background),i:albums)]</visible>
+			<visible>[String.StartsWith(Container(9000).ListItem.Property(background),s:live) + ![String.EndsWith(Container(9000).ListItem.Property(background),i:songs) | String.EndsWith(Container(9000).ListItem.Property(background),i:albums)] | Control.HasFocus(9010) + String.StartsWith(Container(9010).ListItem.Property(background),s:live) + ![String.EndsWith(Container(9010).ListItem.Property(background),i:songs) | String.EndsWith(Container(9010).ListItem.Property(background),i:albums)]] + ![Control.HasFocus(9010) + !String.IsEmpty(Container(9010).ListItem.Property(background))]</visible>
 			<animation effect="fade" time="600">WindowOpen</animation>
 			<animation effect="fade" time="600">VisibleChange</animation>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<aspectratio align="center" aligny="top">scale</aspectratio>
+				<texture background="true">special://skin/backgrounds/default_livecases.jpg</texture>
+			</control>
 			<control type="group">
 				<description>Case 1</description>
 				<left>1170</left>
