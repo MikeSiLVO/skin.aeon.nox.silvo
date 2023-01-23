@@ -97,7 +97,7 @@
 			<include>FullscreenDimensions</include>
 			<aspectratio>scale</aspectratio>
 			<fadetime>FanartCrossfadeTime</fadetime>
-			<texture background="true" fallback="special://skin/backgrounds/fallback_movies.jpg">$INFO[Skin.String(VideoGenreFanartPath)]$INFO[ListItem.Label,,.jpg]</texture>
+			<texture background="true" fallback="special://skin/extras/backgrounds/fallback_movies.jpg">$INFO[Skin.String(VideoGenreFanartPath)]$INFO[ListItem.Label,,.jpg]</texture>
 			<include condition="Skin.HasSetting(Enable.AnimatedBackgrounds)">AnimatedBackgroundAnimation</include>
 			<visible>Container.Content(genres)</visible>
 		</control>
@@ -107,7 +107,7 @@
 			<include>FullscreenDimensions</include>
 			<aspectratio>scale</aspectratio>
 			<fadetime>FanartCrossfadeTime</fadetime>
-			<texture background="true" fallback="special://skin/backgrounds/fallback_music.jpg">$INFO[Skin.String(MusicGenreFanartPath)]$INFO[ListItem.Label,,.jpg]</texture>
+			<texture background="true" fallback="special://skin/extras/backgrounds/fallback_music.jpg">$INFO[Skin.String(MusicGenreFanartPath)]$INFO[ListItem.Label,,.jpg]</texture>
 			<include condition="Skin.HasSetting(Enable.AnimatedBackgrounds)">AnimatedBackgroundAnimation</include>
 			<visible>Container.Content(genres)</visible>
 		</control>
@@ -207,14 +207,14 @@
 			<include condition="Skin.HasSetting(Enable.AnimatedBackgrounds)">AnimatedBackgroundAnimation</include>
 			<animation effect="fade" time="200">WindowClose</animation>
 			<control type="image">
-				<texture background="true" fallback="special://skin/backgrounds/fallback_movies.jpg">$INFO[Skin.String(CustomDefaultBackground.path)]</texture>
+				<texture background="true" fallback="special://skin/extras/backgrounds/fallback_movies.jpg">$INFO[Skin.String(CustomDefaultBackground.path)]</texture>
 				<aspectratio>scale</aspectratio>
 				<fadetime>600</fadetime>
 				<visible>!Control.HasFocus(50)</visible>
 				<animation effect="fade" time="600">VisibleChange</animation>
 			</control>
 			<control type="image">
-				<texture background="true" fallback="special://skin/backgrounds/fallback_movies.jpg">$VAR[GlobalBackgroundVar]</texture>
+				<texture background="true" fallback="special://skin/extras/backgrounds/fallback_movies.jpg">$VAR[GlobalBackgroundVar]</texture>
 				<aspectratio>scale</aspectratio>
 				<fadetime>600</fadetime>
 				<visible>Control.HasFocus(50)</visible>
@@ -528,7 +528,7 @@
 	</include>
 	<include name="LibreELECBG">
 		<control type="image">
-			<texture background="true">special://skin/backgrounds/le_bg.jpg</texture>
+			<texture background="true">special://skin/extras/backgrounds/le_bg.jpg</texture>
 			<aspectratio>scale</aspectratio>
 			<fadetime>600</fadetime>
 			<animation effect="fade" time="600">Visible</animation>
@@ -539,7 +539,7 @@
 	</include>
 	<include name="CoreELECBG">
 		<control type="image">
-			<texture background="true">special://skin/backgrounds/ce_bg.jpg</texture>
+			<texture background="true">special://skin/extras/backgrounds/ce_bg.jpg</texture>
 			<aspectratio>scale</aspectratio>
 			<fadetime>600</fadetime>
 			<animation effect="fade" time="600">Visible</animation>
