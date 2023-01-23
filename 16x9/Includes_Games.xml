@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="GameControllers">
+		<control type="label">
+			<left>30</left>
+			<top>32</top>
+			<width>1614</width>
+			<height>40</height>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<textcolor>dialogheader</textcolor>
+			<font>font15_title</font>
+			<label>$LOCALIZE[35058]</label>
+		</control>
+		<!-- left group -->
+		<control type="group">
+			<left>31</left>
+			<top>88</top>
+			<control type="image">
+				<left>-1</left>
+				<top>-2</top>
+				<width>312</width>
+				<height>482</height>
+				<texture border="5">dialogs/default/inner.png</texture>
+			</control>
+			<control type="grouplist" id="3">
+				<description>Controller types grouplist</description>
+				<width>310</width>
+				<height>480</height>
+				<onleft>noop</onleft>
+				<onright>5</onright>
+				<onup>9</onup>
+				<ondown>9</ondown>
+				<scrolltime tween="cubic" easing="out">500</scrolltime>
+			</control>
+		</control>
+		<!-- middle group 1 -->
+		<control type="group">
+			<left>357</left>
+			<top>88</top>
+			<control type="image">
+				<left>-1</left>
+				<top>-2</top>
+				<width>612</width>
+				<height>482</height>
+				<texture border="5">dialogs/default/inner.png</texture>
+			</control>
+			<control type="gamecontroller" id="31">
+				<left>65</left>
+				<width>480</width>
+				<height>480</height>
+			</control>
+		</control>
+		<!-- middle group 2 -->
+		<control type="group">
+			<left>983</left>
+			<top>88</top>
+			<control type="image">
+				<top>-2</top>
+				<width>334</width>
+				<height>482</height>
+				<texture border="5">dialogs/default/inner.png</texture>
+			</control>
+			<control type="grouplist" id="5">
+				<description>Feature types grouplist</description>
+				<width>334</width>
+				<height>480</height>
+				<pagecontrol>60</pagecontrol>
+				<onleft>3</onleft>
+				<onright>60</onright>
+				<onup>2</onup>
+				<ondown>9001</ondown>
+				<scrolltime tween="cubic" easing="out">500</scrolltime>
+			</control>
+			<control type="scrollbar" id="60">
+				<left>333</left>
+				<width>14</width>
+				<height>480</height>
+				<texturesliderbackground />
+				<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
+				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
+				<onleft>5</onleft>
+				<onright>9001</onright>
+				<showonepage>false</showonepage>
+			</control>
+		</control>
+		<!-- right group -->
+		<control type="group">
+			<left>1333</left>
+			<top>88</top>
+			<control type="image">
+				<left>-1</left>
+				<top>-2</top>
+				<width>312</width>
+				<height>482</height>
+				<texture border="5">dialogs/default/inner.png</texture>
+			</control>
+			<control type="grouplist" id="9001">
+				<width>310</width>
+				<height>480</height>
+				<onleft>5</onleft>
+				<onright>noop</onright>
+				<onup>9001</onup>
+				<ondown>9001</ondown>
+				<control type="button" id="18">
+					<description>OK Button</description>
+					<width>310</width>
+					<label>$LOCALIZE[186]</label>
+				</control>
+				<control type="button" id="19">
+					<width>310</width>
+					<label>$LOCALIZE[13007]</label>
+				</control>
+				<control type="button" id="20">
+					<description>Link to install more controllers</description>
+					<width>310</width>
+					<label>$LOCALIZE[21452]</label>
+				</control>
+				<control type="button" id="22">
+					<width>310</width>
+					<label>$LOCALIZE[35021]</label>
+				</control>
+				<control type="button" id="17">
+					<width>310</width>
+					<label>$LOCALIZE[10043]</label>
+				</control>
+				<control type="button" id="21">
+					<width>310</width>
+					<label>$LOCALIZE[35019]</label>
+				</control>
+			</control>
+		</control>
+		<control type="textbox" id="32">
+			<description>Controller description</description>
+			<left>60</left>
+			<top>575</top>
+			<width>1570</width>
+			<height>150</height>
+			<font>font14_textbox</font>
+			<textcolor>grey</textcolor>
+			<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+		</control>
+		<control type="button" id="10">
+			<description>Default controller types button</description>
+			<height>60</height>
+			<width>310</width>
+			<align>right</align>
+			<font>font14</font>
+			<textoffsetx>20</textoffsetx>
+			<textcolor>grey2</textcolor>
+		</control>
+		<control type="button" id="7">
+			<description>Default feature types button</description>
+			<width>334</width>
+			<height>60</height>
+		</control>
+		<control type="label" id="8">
+			<description>Default label</description>
+			<height>60</height>
+			<font>font14</font>
+			<textoffsetx>15</textoffsetx>
+			<textcolor>$VAR[ThemeLabelColor]</textcolor>
+		</control>
+		<control type="image" id="9">
+			<description>Default separator</description>
+			<visible>no</visible>
+		</control>
+	</include>
+	<include name="GamePorts">
+		<control type="label" id="2">
+			<left>30</left>
+			<top>32</top>
+			<width>1614</width>
+			<height>40</height>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<textcolor>dialogheader</textcolor>
+			<font>font15_title</font>
+		</control>
+		<!-- left group -->
+		<control type="group">
+			<left>31</left>
+			<top>88</top>
+			<control type="image">
+				<left>-2</left>
+				<top>-2</top>
+				<width>1305</width>
+				<height>602</height>
+				<texture border="5">dialogs/default/inner.png</texture>
+			</control>
+			<control type="list" id="3">
+				<description>Controller types grouplist</description>
+				<width>1302</width>
+				<height>700</height>
+				<onleft>noop</onleft>
+				<onright>9001</onright>
+				<scrolltime tween="quadratic" easing="out">200</scrolltime>
+				<itemlayout height="100" width="1302">
+					<control type="label">
+						<textoffsetx>15</textoffsetx>
+						<font>font30</font>
+						<textcolor>grey2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<textoffsetx>15</textoffsetx>
+						<font>font30</font>
+						<textcolor>grey2</textcolor>
+						<right>132</right>
+						<align>right</align>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+					<control type="image">
+						<right>0</right>
+						<width>100</width>
+						<texture>$INFO[ListItem.Icon]</texture>
+					</control>
+				</itemlayout>
+				<focusedlayout height="100" width="1302">
+					<control type="image">
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+					</control>
+					<control type="label">
+						<textoffsetx>15</textoffsetx>
+						<font>font30</font>
+						<scroll>true</scroll>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<textoffsetx>15</textoffsetx>
+						<font>font30</font>
+						<scroll>true</scroll>
+						<right>132</right>
+						<align>right</align>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+					<control type="image">
+						<right>0</right>
+						<width>100</width>
+						<texture>$INFO[ListItem.Icon]</texture>
+					</control>
+				</focusedlayout>
+			</control>
+		</control>
+		<!-- right group -->
+		<control type="group">
+			<left>1333</left>
+			<top>88</top>
+			<control type="image">
+				<left>-1</left>
+				<top>-2</top>
+				<width>312</width>
+				<height>602</height>
+				<texture border="5">dialogs/default/inner.png</texture>
+			</control>
+			<control type="grouplist" id="9001">
+				<width>310</width>
+				<height>480</height>
+				<onleft>3</onleft>
+				<onright>noop</onright>
+				<onup>9001</onup>
+				<ondown>9001</ondown>
+				<control type="button" id="18">
+					<description>OK Button</description>
+					<width>310</width>
+					<label>$LOCALIZE[186]</label>
+				</control>
+				<control type="button" id="19">
+					<width>310</width>
+					<label>$LOCALIZE[13007]</label>
+				</control>
+			</control>
+		</control>
+	</include>
+</includes>

@@ -33,7 +33,7 @@
 			<top>240</top>
 			<animation effect="slide" end="0,-100" time="0" condition="!String.IsEmpty(Window(Home).Property(CustomSelectSearch)) + Skin.HasSetting(centermainmenu)">Conditional</animation>
 			<animation effect="slide" end="0,100" time="0" condition="!String.IsEmpty(Window(Home).Property(CustomSelectSearch)) + !Skin.HasSetting(centermainmenu)">Conditional</animation>
-			<visible>![Window.IsActive(gamestretchmode) | Window.IsActive(gamevideofilter) | Window.IsActive(gamevideorotation) | Window.IsActive(gamevolume)]</visible>
+			<visible>![Window.IsActive(gamestretchmode) | Window.IsActive(gamevideofilter) | Window.IsActive(gamevideorotation) | Window.IsActive(gamevolume) | Window.IsActive(InGameSaves)]</visible>
 			<include>VisibleFadeAnimation</include>
 			<control type="group">
 				<visible>String.IsEmpty(Window(Home).Property(CustomSelectGameOSDSettings))</visible>
@@ -85,7 +85,7 @@
 				<control type="image">
 					<left>98</left>
 					<width>820</width>
-					<height>470</height>
+					<height>530</height>
 					<texture border="40">dialogs/default/bg.png</texture>
 				</control>
 				<control type="image">
@@ -169,7 +169,7 @@
 				<left>118</left>
 				<top>88</top>
 				<width>800</width>
-				<height>360</height>
+				<height>420</height>
 				<onup>90101</onup>
 				<ondown>90101</ondown>
 				<onleft>60</onleft>
