@@ -199,15 +199,7 @@
 	<variable name="ArtistAlbumInfoPathVar">
 		<value condition="!System.GetBool(musiclibrary.showcompilationartists)">musicdb://artists/$INFO[ListItem.DBID]/$INFO[Window(musicinformation).Property(AlbumDBID)]/?albumartistsonly=true&amp;artistid=$INFO[ListItem.DBID]</value>
 		<value>musicdb://artists/$INFO[ListItem.DBID]/$INFO[Window(musicinformation).Property(AlbumDBID)]/?albumartistsonly=false&amp;artistid=$INFO[ListItem.DBID]</value>
-		<!-- <value condition="!System.GetBool(musiclibrary.showcompilationartists) + Control.HasFocus(9060)">musicdb://artists/$INFO[ListItem.DBID]/$INFO[Window(musicinformation).Property(ArtistAlbumDBID)]/?albumartistsonly=true&amp;artistid=$INFO[ListItem.DBID]</value>
-		<value condition="Control.HasFocus(9060)">musicdb://artists/$INFO[ListItem.DBID]/$INFO[Window(musicinformation).Property(ArtistAlbumDBID)]/?albumartistsonly=false&amp;artistid=$INFO[ListItem.DBID]</value> -->
 	</variable>
-	<!-- <variable name="DSPManagerHelpTextVar">
-		<value condition="Control.HasFocus(20)">$INFO[Container(20).ListItem.Property(Description)]</value>
-		<value condition="Control.HasFocus(21)">$INFO[Container(21).ListItem.Property(Description)]</value>
-		<value condition="Control.HasFocus(9000)">$INFO[Container(9000).ListItem.Label2]</value>
-		<value>$LOCALIZE[15020]</value>
-	</variable> -->
 	<variable name="503.InfoPanelTextboxVar">
 		<value condition="ListItem.IsCollection + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.ExtendedPlot))">$INFO[Window(Home).Property(SkinInfo.Set.Movies.ExtendedPlot)]</value>
 		<value condition="!String.IsEmpty(ListItem.PlotOutline)">$INFO[ListItem.PlotOutline]</value>
@@ -1341,7 +1333,6 @@
 		<value condition="String.IsEqual(Skin.String(DialogInfo.Dimmer),90%)">E6FFFFFF</value>
 	</variable>
 	<variable name="DialogInfoDetailsLabelVar">
-		<!-- <value condition="Control.HasFocus(9060)">$INFO[Container.ListItem.Album]$INFO[Container(9060).NumItems,[COLOR grey] (,)[/COLOR]]</value> -->
 		<value condition="[String.IsEqual(ListItem.DBTYPE,album) | String.IsEqual(ListItem.DBTYPE,song)] + ControlGroup(9001).HasFocus(50)">$LOCALIZE[182]$INFO[Container(50).NumItems, [COLOR grey](,)[/COLOR]]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,artist) + ControlGroup(9001).HasFocus(9050)">$LOCALIZE[21888]$INFO[Container(9050).NumItems, (,)]$INFO[Container.ListItem.Album, - ]</value>
 		<value condition="[Window.IsActive(home) | Window.IsActive(videos)] + ControlGroup(90001).HasFocus(90050) | ControlGroup(90001).HasFocus(50)">$LOCALIZE[206]$INFO[Container(50).NumItems, [COLOR grey](,)[/COLOR]]</value>
@@ -1349,9 +1340,7 @@
 		<value condition="!String.IsEqual(ListItem.DBTYPE,set) + [Window.IsActive(home) | Window.IsActive(videos)] + ControlGroup(90001).HasFocus(90050) | !String.IsEqual(ListItem.DBTYPE,set) + ControlGroup(90001).HasFocus(50)">$LOCALIZE[206]$INFO[Container(50).NumItems, [COLOR grey](,)[/COLOR]]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,movie) + ControlGroup(90001).HasFocus(90011)">$LOCALIZE[31111]$INFO[Container(90011).NumItems, [COLOR grey](,)[/COLOR]]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,movie) + ControlGroup(90001).HasFocus(90012)">$LOCALIZE[31112]$INFO[ListItem.Director, ]$INFO[Container(90012).NumItems, [COLOR grey](,)[/COLOR]]</value>
-		<!-- <value condition="String.IsEqual(ListItem.DBTYPE,movie) + ControlGroup(90001).HasFocus(90013)">$LOCALIZE[31521]$INFO[Container(90013).ListItem.Property(searchstring), ]$INFO[Container(90013).NumItems, [COLOR grey](,)[/COLOR]]</value> -->
 		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow) + ControlGroup(90001).HasFocus(90014)">$LOCALIZE[31115]$INFO[Container(90014).NumItems, [COLOR grey](,)[/COLOR]]</value>
-		<!-- <value condition="String.IsEqual(ListItem.DBTYPE,tvshow) + ControlGroup(90001).HasFocus(90015)">$LOCALIZE[31521]$INFO[Container(90015).ListItem.Property(searchstring), ]$INFO[Container(90015).NumItems, [COLOR grey](,)[/COLOR]]</value> -->
 		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow) + ControlGroup(90001).HasFocus(90016)">$LOCALIZE[33054]$INFO[Container(90016).NumItems, [COLOR grey](,)[/COLOR]]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,movie) + ControlGroup(90001).HasFocus(90017)">$INFO[ListItem.Set]$INFO[Container(90017).NumItems, [COLOR grey](,)[/COLOR]]</value>
 	</variable>
@@ -1363,9 +1352,7 @@
 		<value condition="ControlGroup(90001).HasFocus(90050) + !String.IsEmpty(Container(90050).ListItem.Icon) + !String.IsEqual(Container(90050).ListItem.Icon,DefaultActor.png)">$INFO[Container(90050).ListItem.Icon]</value>
 		<value condition="ControlGroup(90001).HasFocus(90011) + !String.IsEmpty(Container(90011).ListItem.Art(poster))">$INFO[Container(90011).ListItem.Art(poster)]</value>
 		<value condition="ControlGroup(90001).HasFocus(90012) + !String.IsEmpty(Container(90012).ListItem.Art(poster))">$INFO[Container(90012).ListItem.Art(poster)]</value>
-		<!-- <value condition="ControlGroup(90001).HasFocus(90013) + !String.IsEmpty(Container(90013).ListItem.Art(poster))">$INFO[Container(90013).ListItem.Art(poster)]</value> -->
 		<value condition="ControlGroup(90001).HasFocus(90014) + !String.IsEmpty(Container(90014).ListItem.Art(poster))">$INFO[Container(90014).ListItem.Art(poster)]</value>
-		<!-- <value condition="ControlGroup(90001).HasFocus(90015) + !String.IsEmpty(Container(90015).ListItem.Art(poster))">$INFO[Container(90015).ListItem.Art(poster)]</value> -->
 		<value condition="ControlGroup(90001).HasFocus(90016) + !String.IsEmpty(Container(90016).ListItem.Icon)">$INFO[Container(90016).ListItem.Icon]</value>
 		<value condition="ControlGroup(90001).HasFocus(90017) + !String.IsEmpty(Container(90017).ListItem.Art(poster))">$INFO[Container(90017).ListItem.Art(poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(season.poster))">$INFO[ListItem.Art(season.poster)]</value>
