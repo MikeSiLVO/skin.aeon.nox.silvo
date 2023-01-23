@@ -72,7 +72,7 @@
 				<textcolor>white</textcolor>
 				<shadowcolor>shadow</shadowcolor>
 				<label>$INFO[Window(Home).Property(TMDbHelper.ListItem.Status)]</label>
-				<visible>[String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Status)) + !Control.HasFocus(61)] + !Skin.HasSetting(Disable.NextAired)</visible>
+				<visible>[String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Status)) + !Control.HasFocus(61)] + !Skin.HasSetting(Disable.NextAired) + !Container.Content(movies)</visible>
 			</control>
 			<control type="label">
 				<left>398</left>
