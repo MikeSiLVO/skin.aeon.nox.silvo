@@ -66,14 +66,14 @@
 					<label>$LOCALIZE[31541]</label>
 					<onclick>Skin.ToggleSetting(SetInfoPlotToggle)</onclick>
 					<selected>!Skin.HasSetting(SetInfoPlotToggle)</selected>
-					<visible>System.HasAddon(script.skin.info.service) + !Window.IsActive(musicinformation)</visible>
+					<visible>System.AddonIsEnabled(script.skin.info.service) + !Window.IsActive(musicinformation)</visible>
 				</control>
 				<control type="button" id="90205">
 					<width>1452</width>
 					<label>$LOCALIZE[31990]</label>
 					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[CinemaVisionButtonLabelVar][/COLOR]</label2>
 					<onclick>$VAR[CinemaVisionButtonOnClickVar]</onclick>
-					<visible>System.HasAddon(script.cinemavision)</visible>
+					<visible>System.AddonIsEnabled(script.cinemavision)</visible>
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
 				<control type="radiobutton" id="90206">
@@ -84,7 +84,7 @@
 					<onclick>Dialog.Close(movieinformation)</onclick>
 					<selected>Skin.HasSetting(Enable.ExtendedInfoIntergration)</selected>
 					<label>$LOCALIZE[31127] ($LOCALIZE[342])</label>
-					<visible>System.HasAddon(script.embuary.helper)</visible>
+					<visible>System.AddonIsEnabled(script.embuary.helper)</visible>
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
 				<control type="radiobutton" id="90207">
@@ -95,20 +95,20 @@
 					<onclick>Dialog.Close(movieinformation)</onclick>
 					<selected>Skin.HasSetting(Enable.ExtendedInfoTVIntergration)</selected>
 					<label>$LOCALIZE[31127] ($LOCALIZE[20343])</label>
-					<visible>System.HasAddon(script.embuary.helper)</visible>
+					<visible>System.AddonIsEnabled(script.embuary.helper)</visible>
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
 				<control type="radiobutton" id="90208">
 					<width>1452</width>
 					<radioposx>1350</radioposx>
-					<onclick condition="System.HasAddon(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo)">Dialog.Close(1119)</onclick>
-					<onclick condition="System.HasAddon(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo) + !Window.IsActive(musicinformation)">Dialog.Close(movieinformation)</onclick>
-					<onclick condition="System.HasAddon(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo) + Window.IsActive(music) + !String.IsEqual(ListItem.DBTYPE,song)">Dialog.Close(musicinformation)</onclick>
-					<onclick condition="System.HasAddon(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo) + Window.IsActive(music) + String.IsEqual(ListItem.DBTYPE,song)">Dialog.Close(songinformation)</onclick>
-					<onclick condition="System.HasAddon(script.embuary.helper)">Skin.ToggleSetting(Enable.BlurredVideoInfo)</onclick>
-					<onclick condition="!System.HasAddon(script.embuary.helper)">InstallAddon(script.embuary.helper)</onclick>
+					<onclick condition="System.AddonIsEnabled(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo)">Dialog.Close(1119)</onclick>
+					<onclick condition="System.AddonIsEnabled(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo) + !Window.IsActive(musicinformation)">Dialog.Close(movieinformation)</onclick>
+					<onclick condition="System.AddonIsEnabled(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo) + Window.IsActive(music) + !String.IsEqual(ListItem.DBTYPE,song)">Dialog.Close(musicinformation)</onclick>
+					<onclick condition="System.AddonIsEnabled(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo) + Window.IsActive(music) + String.IsEqual(ListItem.DBTYPE,song)">Dialog.Close(songinformation)</onclick>
+					<onclick condition="System.AddonIsEnabled(script.embuary.helper)">Skin.ToggleSetting(Enable.BlurredVideoInfo)</onclick>
 					<selected>Skin.HasSetting(Enable.BlurredVideoInfo)</selected>
 					<label>$LOCALIZE[31174]</label>
+					<visible>System.AddonIsEnabled(script.embuary.helper)</visible>
 				</control>
 				<control type="button" id="90209">
 					<width>1452</width>
