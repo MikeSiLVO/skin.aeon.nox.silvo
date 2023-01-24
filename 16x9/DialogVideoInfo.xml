@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<onload condition="System.HasAddon(script.embuary.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(script.embuary.helper,action=blurimg,file=$VAR[PosterVar],prop=MyProp,radius=10)</onload>
+	<onload condition="System.AddonIsEnabled(script.embuary.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(script.embuary.helper,action=blurimg,file=$VAR[PosterVar],prop=MyProp,radius=10)</onload>
 	<onload>SetFocus(90003)</onload>
-	<onload condition="![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + ![String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.HasAddon(script.cinemavision)]">SetFocus(8)</onload>
-	<onload condition="![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.HasAddon(script.cinemavision)">SetFocus(909)</onload>
+	<onload condition="![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + ![String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.cinemavision)]">SetFocus(8)</onload>
+	<onload condition="![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.cinemavision)">SetFocus(909)</onload>
 	<onload condition="Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)">SetFocus(808)</onload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(FSFanart))">ClearProperty(FSFanart,movieinformation)</onunload>
 	<controls>
 		<control type="textbox" id="4">
 			<include>HiddenObject</include>
 		</control>
-		<include condition="!String.IsEqual(ListItem.DBTYPE,set) + System.HasAddon(script.embuary.info)">HiddenActorList</include>
+		<include condition="!String.IsEqual(ListItem.DBTYPE,set) + System.AddonIsEnabled(script.embuary.info)">HiddenActorList</include>
 		<control type="fadelabel" id="4510">
 			<top>-100</top>
 			<width>2560</width>
@@ -62,7 +62,7 @@
 				<fadetime>IconCrossfadeTime</fadetime>
 				<texture background="true">$VAR[VideoInfoActorResourceVar]</texture>
 				<animation effect="fade" time="300">Visible</animation>
-				<visible>[Control.HasFocus(50) | Control.HasFocus(90050)] + System.HasAddon(resource.images.actorart)</visible>
+				<visible>[Control.HasFocus(50) | Control.HasFocus(90050)] + System.AddonIsEnabled(resource.images.actorart)</visible>
 			</control>
 		</control>
 		<!-- Details Side -->
@@ -555,10 +555,10 @@
 							<item>
 								<label>$INFO[ListItem.Director]</label>
 								<label2>$LOCALIZE[20339]:</label2>
-								<onclick condition="System.HasAddon(script.embuary.info)">SetProperty(DirectorID,True)</onclick>
-								<onclick condition="System.HasAddon(script.embuary.info)">SetProperty(ActorName,$INFO[ListItem.Director])</onclick>
-								<onclick condition="System.HasAddon(script.embuary.info)">ActivateWindow(1129)</onclick>
-								<onclick condition="!System.HasAddon(script.embuary.info)">SendClick(2003,13)</onclick>
+								<onclick condition="System.AddonIsEnabled(script.embuary.info)">SetProperty(DirectorID,True)</onclick>
+								<onclick condition="System.AddonIsEnabled(script.embuary.info)">SetProperty(ActorName,$INFO[ListItem.Director])</onclick>
+								<onclick condition="System.AddonIsEnabled(script.embuary.info)">ActivateWindow(1129)</onclick>
+								<onclick condition="!System.AddonIsEnabled(script.embuary.info)">SendClick(2003,13)</onclick>
 								<visible>!String.IsEmpty(ListItem.Director)</visible>
 							</item>
 							<item>
@@ -572,10 +572,10 @@
 							<item>
 								<label>$INFO[ListItem.Writer]</label>
 								<label2>$LOCALIZE[20417]:</label2>
-								<onclick condition="!System.HasAddon(script.embuary.info)">SetProperty(MoreInfoTitle,$LOCALIZE[20417])</onclick>
-								<onclick condition="!System.HasAddon(script.embuary.info)">SetProperty(MoreInfoContent,$ESCINFO[ListItem.Writer])</onclick>
-								<onclick condition="!System.HasAddon(script.embuary.info)">SetFocus(64)</onclick>
-								<onclick condition="System.HasAddon(script.embuary.info)">RunScript(script.embuary.info,call=person,query='"$INFO[ListItem.Writer]"')</onclick>
+								<onclick condition="!System.AddonIsEnabled(script.embuary.info)">SetProperty(MoreInfoTitle,$LOCALIZE[20417])</onclick>
+								<onclick condition="!System.AddonIsEnabled(script.embuary.info)">SetProperty(MoreInfoContent,$ESCINFO[ListItem.Writer])</onclick>
+								<onclick condition="!System.AddonIsEnabled(script.embuary.info)">SetFocus(64)</onclick>
+								<onclick condition="System.AddonIsEnabled(script.embuary.info)">RunScript(script.embuary.info,call=person,query='"$INFO[ListItem.Writer]"')</onclick>
 								<visible>!String.IsEmpty(ListItem.Writer)</visible>
 							</item>
 							<item>
@@ -827,7 +827,7 @@
 						<label></label>
 						<altlabel></altlabel>
 						<usealttexture>String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.DBTYPE,tvshow)</usealttexture>
-						<visible>[System.HasAddon(script.cinemavision) + !String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232])] | !System.HasAddon(script.cinemavision)</visible>
+						<visible>[System.AddonIsEnabled(script.cinemavision) + !String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232])] | !System.AddonIsEnabled(script.cinemavision)</visible>
 						<visible>![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)]</visible>
 					</control>
 					<control type="button" id="808">
@@ -851,7 +851,7 @@
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label></label>
 						<onclick>RunScript(script.cinemavision,dbtype=$INFO[ListItem.DBTYPE],dbid=$INFO[ListItem.DBID])</onclick>
-						<visible>System.HasAddon(script.cinemavision) + String.IsEmpty(Window(Home).Property(script.cinemavision.running)) + !String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31014])</visible>
+						<visible>System.AddonIsEnabled(script.cinemavision) + String.IsEmpty(Window(Home).Property(script.cinemavision.running)) + !String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31014])</visible>
 						<visible>[String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode)]</visible>
 					</control>
 					<control type="button" id="910">
@@ -861,8 +861,8 @@
 						<texturenofocus />
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label></label>
-						<onclick condition="!System.HasAddon(script.embuary.info)">SetFocus(50)</onclick>
-						<onclick condition="System.HasAddon(script.embuary.info)">SetFocus(90050)</onclick>
+						<onclick condition="!System.AddonIsEnabled(script.embuary.info)">SetFocus(50)</onclick>
+						<onclick condition="System.AddonIsEnabled(script.embuary.info)">SetFocus(90050)</onclick>
 						<visible>!String.IsEmpty(ListItem.Cast)</visible>
 					</control>
 					<control type="button" id="908">
@@ -894,7 +894,7 @@
 						<label></label>
 						<onclick>Action(close)</onclick>
 						<onclick>RunScript(script.embuary.helper,action=goto,path='"plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.Title]&amp;search_type=videos"',target=videos)</onclick>
-						<visible>System.HasAddon(plugin.video.youtube) + System.HasAddon(script.embuary.helper) + String.IsEqual(ListItem.DBType,movie) + !Control.IsVisible(11)</visible>
+						<visible>System.AddonIsEnabled(plugin.video.youtube) + System.AddonIsEnabled(script.embuary.helper) + String.IsEqual(ListItem.DBType,movie) + !Control.IsVisible(11)</visible>
 					</control>
 					<control type="togglebutton" id="7">
 						<description>Set rating</description>
@@ -936,11 +936,11 @@
 						<label></label>
 						<!-- <onclick>SetProperty(KodiDBID,$INFO[ListItem.DBID],movieinformation)</onclick> -->
 						<onclick>SetProperty(FSFanart,$INFO[ListItem.Art(fanart)],movieinformation)</onclick>
-						<onclick condition="Window.IsActive(home) + System.HasAddon(script.embuary.info) + String.IsEqual(ListItem.DBTYPE,movie)">SetProperty(EmbuaryInfoSearchType,movie,Home)</onclick>
-						<onclick condition="Window.IsActive(home) + System.HasAddon(script.embuary.info) + String.IsEqual(ListItem.DBTYPE,tvshow)">SetProperty(EmbuaryInfoSearchType,tvshow,Home)</onclick>
-						<onclick condition="Window.IsActive(home) + System.HasAddon(script.embuary.info) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)] + !String.IsEmpty(ListItem.IMDBNumber)">SetProperty(EmbuaryInfoSearchStringIMDB,$INFO[ListItem.IMDBNumber],Home)</onclick>
-						<onclick condition="Window.IsActive(home) + System.HasAddon(script.embuary.info) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)]">SetProperty(EmbuaryInfoSearchStringTitle,$INFO[ListItem.Title],Home)</onclick>
-						<onclick condition="Window.IsActive(home) + System.HasAddon(script.embuary.info) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)]">SetProperty(EmbuaryInfoSearchStringYear,$INFO[ListItem.Year],Home)</onclick>
+						<onclick condition="Window.IsActive(home) + System.AddonIsEnabled(script.embuary.info) + String.IsEqual(ListItem.DBTYPE,movie)">SetProperty(EmbuaryInfoSearchType,movie,Home)</onclick>
+						<onclick condition="Window.IsActive(home) + System.AddonIsEnabled(script.embuary.info) + String.IsEqual(ListItem.DBTYPE,tvshow)">SetProperty(EmbuaryInfoSearchType,tvshow,Home)</onclick>
+						<onclick condition="Window.IsActive(home) + System.AddonIsEnabled(script.embuary.info) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)] + !String.IsEmpty(ListItem.IMDBNumber)">SetProperty(EmbuaryInfoSearchStringIMDB,$INFO[ListItem.IMDBNumber],Home)</onclick>
+						<onclick condition="Window.IsActive(home) + System.AddonIsEnabled(script.embuary.info) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)]">SetProperty(EmbuaryInfoSearchStringTitle,$INFO[ListItem.Title],Home)</onclick>
+						<onclick condition="Window.IsActive(home) + System.AddonIsEnabled(script.embuary.info) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)]">SetProperty(EmbuaryInfoSearchStringYear,$INFO[ListItem.Year],Home)</onclick>
 						<onclick>ActivateWindow(1119)</onclick>
 					</control>
 				</control>
@@ -969,8 +969,8 @@
 							<width>1200</width>
 							<height>500</height>
 							<onup>9000</onup>
-							<ondown condition="String.IsEqual(ListItem.DBTYPE,set) | !System.HasAddon(script.embuary.info)">50</ondown>
-							<ondown condition="!String.IsEqual(ListItem.DBTYPE,set) + System.HasAddon(script.embuary.info)">90050</ondown>
+							<ondown condition="String.IsEqual(ListItem.DBTYPE,set) | !System.AddonIsEnabled(script.embuary.info)">50</ondown>
+							<ondown condition="!String.IsEqual(ListItem.DBTYPE,set) + System.AddonIsEnabled(script.embuary.info)">90050</ondown>
 							<include>ButtonInfoDialogsCommonValues</include>
 							<onclick>SetProperty(TextViewerHeader,$ESCINFO[ListItem.Label,[B],[/B]],Home)</onclick>
 							<onclick condition="String.IsEqual(ListItem.DBTYPE,movie)">SetProperty(TextViewerSubHeader,$ESCINFO[ListItem.Tagline,[I],[/I]],Home)</onclick>
@@ -1222,12 +1222,12 @@
 							</control>
 						</control>
 					</control>
-					<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !System.HasAddon(script.embuary.info)">DefaultActorList</include>
+					<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !System.AddonIsEnabled(script.embuary.info)">DefaultActorList</include>
 					<include condition="String.IsEqual(ListItem.DBTYPE,set)">DefaultSetList</include>
-					<include condition="!String.IsEqual(ListItem.DBTYPE,set) + System.HasAddon(script.embuary.info)">CustomActorList</include>
-					<include condition="System.HasAddon(script.embuary.helper) + Skin.HasSetting(Enable.ExtendedInfoIntergration) + String.IsEqual(ListItem.DBTYPE,movie)">ExtendedInfoMovieLists</include>
+					<include condition="!String.IsEqual(ListItem.DBTYPE,set) + System.AddonIsEnabled(script.embuary.info)">CustomActorList</include>
+					<include condition="System.AddonIsEnabled(script.embuary.helper) + Skin.HasSetting(Enable.ExtendedInfoIntergration) + String.IsEqual(ListItem.DBTYPE,movie)">ExtendedInfoMovieLists</include>
 					<include condition="String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEmpty(ListItem.SetID)">ExtendedMovieSetPanel</include>
-					<include condition="System.HasAddon(script.embuary.helper) + Skin.HasSetting(Enable.ExtendedInfoTVIntergration) + String.IsEqual(ListItem.DBTYPE,tvshow)">ExtendedInfoSeriesLists</include>
+					<include condition="System.AddonIsEnabled(script.embuary.helper) + Skin.HasSetting(Enable.ExtendedInfoTVIntergration) + String.IsEqual(ListItem.DBTYPE,tvshow)">ExtendedInfoSeriesLists</include>
 					<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) + Integer.IsGreater(ListItem.Property(TotalSeasons),0)">ExtendedSeasonPanel</include>
 				</control>
 			</control>

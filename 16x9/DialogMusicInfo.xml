@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<onload condition="System.HasAddon(script.embuary.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(script.embuary.helper,action=blurimg,file=$INFO[ListItem.Icon],prop=MyProp,radius=10)</onload>
+	<onload condition="System.AddonIsEnabled(script.embuary.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(script.embuary.helper,action=blurimg,file=$INFO[ListItem.Icon],prop=MyProp,radius=10)</onload>
 	<onload>SetFocus(9003)</onload>
 	<onload>SetFocus(5010)</onload>
 	<controls>
@@ -881,8 +881,8 @@
 					<scrolltime tween="quadratic" easing="out">300</scrolltime>
 					<orientation>horizontal</orientation>
 					<onclick>Dialog.Close(musicinformation)</onclick>
-					<onclick condition="!System.HasAddon(script.embuary.helper)">ActivateWindow(Music,"musicdb://albums/$INFO[ListItem.DBID]/")</onclick>
-					<onclick condition="System.HasAddon(script.embuary.helper)">RunScript(script.embuary.helper,action=goto,path='"musicdb://albums/$INFO[ListItem.DBID]/"',target=music)</onclick>
+					<onclick condition="!System.AddonIsEnabled(script.embuary.helper)">ActivateWindow(Music,"musicdb://albums/$INFO[ListItem.DBID]/")</onclick>
+					<onclick condition="System.AddonIsEnabled(script.embuary.helper)">RunScript(script.embuary.helper,action=goto,path='"musicdb://albums/$INFO[ListItem.DBID]/"',target=music)</onclick>
 					<visible>String.IsEqual(ListItem.DBTYPE,artist)</visible>
 					<itemlayout height="245" width="239">
 						<control type="image">

@@ -3650,7 +3650,7 @@
 				<onright condition="![Control.IsVisible(50) | Control.IsVisible(506)]">SetFocus(614)</onright>
 				<onright condition="Control.IsVisible(50) | Control.IsVisible(506)">4400</onright>
 				<onback>50</onback>
-				<visible>!System.HasAddon(script.embuary.helper)</visible>
+				<visible>!System.AddonIsEnabled(script.embuary.helper)</visible>
 				<visible>[[Container.HasNext | Container.HasPrevious] + String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
 			</control>
 			<control type="image">
@@ -3689,7 +3689,7 @@
 				<onright condition="!Control.IsVisible(51) + !Control.IsVisible(499) + !Control.IsVisible(500) + !Control.IsVisible(609)">4400</onright>
 				<onright condition="Control.IsVisible(51) | Control.IsVisible(499) | Control.IsVisible(500) | Control.IsVisible(609)">SetFocus(50)</onright>
 				<onback>SetFocus(50)</onback>
-				<visible>System.HasAddon(script.embuary.helper)</visible>
+				<visible>System.AddonIsEnabled(script.embuary.helper)</visible>
 				<visible>[[Container.HasNext | Container.HasPrevious] + String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
 				<itemlayout height="37" width="60">
 					<control type="label">
@@ -3729,7 +3729,7 @@
 				<ondown>4400</ondown>
 				<onback>SetFocus(50)</onback>
 				<orientation>horizontal</orientation>
-				<visible>System.HasAddon(script.embuary.helper)</visible>
+				<visible>System.AddonIsEnabled(script.embuary.helper)</visible>
 				<visible>[[Container.HasNext | Container.HasPrevious] + String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
 				<itemlayout height="60" width="66">
 					<control type="label">

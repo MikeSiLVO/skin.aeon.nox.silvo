@@ -130,7 +130,7 @@
 						<item id="10">
 							<label>31569</label>
 							<icon />
-							<visible>System.HasAddon(script.xbmcbackup)</visible>
+							<visible>System.AddonIsEnabled(script.xbmcbackup)</visible>
 						</item>
 					</content>
 				</control>
@@ -242,7 +242,7 @@
 							<label>$LOCALIZE[31158]</label>
 							<onclick>Skin.ToggleSetting(Disable.SearchButton)</onclick>
 							<selected>Skin.HasSetting(Disable.SearchButton)</selected>
-							<visible>System.HasAddon(script.globalsearch)</visible>
+							<visible>System.AddonIsEnabled(script.globalsearch)</visible>
 							<visible>!Skin.HasSetting(HideSystemBars)</visible>
 						</control>
 						<control type="button" id="1013">
@@ -263,7 +263,7 @@
 							<label>$LOCALIZE[31154]</label>
 							<onclick>Skin.ToggleSetting(Enable.ArtistSlideshowOnHome)</onclick>
 							<selected>Skin.HasSetting(Enable.ArtistSlideshowOnHome)</selected>
-							<visible>System.HasAddon(script.artistslideshow)</visible>
+							<visible>System.AddonIsEnabled(script.artistslideshow)</visible>
 						</control>
 						<control type="radiobutton" id="1016">
 							<include>SettingsButtonCommonValues</include>
@@ -314,7 +314,7 @@
 							<label>$LOCALIZE[31574]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[ViewSetPlotLocalizeVar][/COLOR]</label2>
 							<onclick>Skin.ToggleSetting(ViewSetPlotToggle)</onclick>
-							<visible>System.HasAddon(script.skin.info.service) + System.AddonIsEnabled(script.skin.info.service)</visible>
+							<visible>System.AddonIsEnabled(script.skin.info.service)</visible>
 						</control>
 						<control type="radiobutton" id="20000">
 							<include>SettingsButtonCommonValues</include>
@@ -372,14 +372,14 @@
 							<label>31083</label>
 							<onclick>Skin.ToggleSetting(Disable.NextAired)</onclick>
 							<selected>!Skin.HasSetting(Disable.NextAired)</selected>
-							<visible>System.HasAddon(plugin.video.themoviedb.helper)</visible>
+							<visible>System.AddonIsEnabled(plugin.video.themoviedb.helper)</visible>
 						</control>
 						<control type="radiobutton" id="3009">
 							<include>SettingsButtonCommonValues</include>
 							<label>$LOCALIZE[31486]</label>
 							<onclick>Skin.ToggleSetting(Disable.VideoLyrics)</onclick>
 							<selected>!Skin.HasSetting(Disable.VideoLyrics)</selected>
-							<visible>System.HasAddon(script.cu.lrclyrics)</visible>
+							<visible>System.AddonIsEnabled(script.cu.lrclyrics)</visible>
 						</control>
 						<control type="radiobutton" id="3004">
 							<include>SettingsButtonCommonValues</include>
@@ -392,7 +392,7 @@
 							<include>SettingsButtonCommonValues</include>
 							<label>   - $LOCALIZE[5]</label>
 							<onclick>Addon.OpenSettings(plugin.program.autocompletion)</onclick>
-							<visible>Skin.HasSetting(Enable.Autocomplete) + System.HasAddon(plugin.program.autocompletion)</visible>
+							<visible>Skin.HasSetting(Enable.Autocomplete) + System.AddonIsEnabled(plugin.program.autocompletion)</visible>
 						</control>
 						<control type="button" id="3000">
 							<include>SettingsButtonCommonValues</include>
