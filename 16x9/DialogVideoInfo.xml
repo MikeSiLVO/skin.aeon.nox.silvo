@@ -865,17 +865,6 @@
 						<onclick condition="System.AddonIsEnabled(script.embuary.info)">SetFocus(90050)</onclick>
 						<visible>!String.IsEmpty(ListItem.Cast)</visible>
 					</control>
-					<control type="button" id="908">
-						<description>Special Features</description>
-						<font>IconMediumMD</font>
-						<width>65</width>
-						<texturenofocus />
-						<include>ButtonInfoDialogsCommonValues</include>
-						<label></label>
-						<onclick>Dialog.Close(MovieInformation)</onclick>
-						<onclick>RunScript(plugin.video.specialfeatures,listitem)</onclick>
-						<visible>System.HasAddon(plugin.video.specialfeatures) + String.IsEqual(Window(home).Property(SpecialFeatures.Visible),true)</visible>
-					</control>
 					<control type="button" id="11">
 						<description>Play Trailer</description>
 						<font>IconMediumMD</font>
