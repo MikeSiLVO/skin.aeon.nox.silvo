@@ -140,8 +140,8 @@
 	<variable name="VizBackgroundLabelVar">
 		<value condition="String.IsEqual(Skin.String(Viz.Background),1)">$LOCALIZE[31068]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),2)">$LOCALIZE[31065]</value>
-		<value condition="String.IsEqual(Skin.String(Viz.Background),3) + System.HasAddon(script.artistslideshow)">$INFO[System.AddonTitle(script.artistslideshow)]</value>
-		<value condition="String.IsEqual(Skin.String(Viz.Background),3) + !System.HasAddon(script.artistslideshow)">$LOCALIZE[31059]</value>
+		<value condition="String.IsEqual(Skin.String(Viz.Background),3) + System.AddonIsEnabled(script.artistslideshow)">$INFO[System.AddonTitle(script.artistslideshow)]</value>
+		<value condition="String.IsEqual(Skin.String(Viz.Background),3) + !System.AddonIsEnabled(script.artistslideshow)">$LOCALIZE[31059]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),4)">$LOCALIZE[31002]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),5)">$ADDON[script.skinshortcuts 32051]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),6)">$ADDON[script.skinshortcuts 32052]</value>
@@ -152,11 +152,11 @@
 	<variable name="VizBackgroundVar">
 		<value condition="String.IsEqual(Skin.String(Viz.Background),7) + !String.IsEmpty(Control.GetLabel(4411)) + String.IsEmpty(Player.Art(artist.fanart1))">$INFO[Control.GetLabel(4411)]</value>
 		<value condition="!String.IsEmpty(Control.GetLabel(4410)) + String.IsEqual(Skin.String(Viz.Background),7)">$INFO[Control.GetLabel(4410)]</value>
-		<value condition="System.HasAddon(script.grab.fanart) + String.IsEqual(Skin.String(Viz.Background),2)">$INFO[Window(Home).Property(script.grab.fanart.Music.FanArt)]</value>
+		<value condition="System.AddonIsEnabled(script.grab.fanart) + String.IsEqual(Skin.String(Viz.Background),2)">$INFO[Window(Home).Property(script.grab.fanart.Music.FanArt)]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),3) + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.ArtworkReady))">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</value>
 		<value condition="[String.IsEqual(Skin.String(Viz.Background),5) | String.IsEqual(Skin.String(Viz.Background),6)] + !String.IsEmpty(Skin.String(CustomMusicBackground.path))">$INFO[Skin.String(CustomMusicBackground.path)]</value>
 		<value condition="!String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>
-		<value condition="System.HasAddon(script.grab.fanart)">$INFO[Window(Home).Property(script.grab.fanart.Music.FanArt)]</value>
+		<value condition="System.AddonIsEnabled(script.grab.fanart)">$INFO[Window(Home).Property(script.grab.fanart.Music.FanArt)]</value>
 		<value>$INFO[Container(9037).ListItem.Art(fanart)]</value>
 	</variable>
 	<variable name="FallbackBackgroundOnClickVar">
@@ -240,7 +240,7 @@
 	</variable>
 	<!-- Genres -->
 	<variable name="MovieSetGenreVar">
-		<value condition="System.HasAddon(script.skin.info.service) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre))">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Genre)]</value>
+		<value condition="System.AddonIsEnabled(script.skin.info.service) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre))">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Genre)]</value>
 		<value>$INFO[Container(4500).ListItem(0).Genre]</value>
 	</variable>
 	<variable name="MusicGenreIconsPathVar">
@@ -409,7 +409,7 @@
 		<value>$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="VideoPlotVar">
-		<value condition="ListItem.IsCollection + System.HasAddon(script.skin.info.service) + System.AddonIsEnabled(script.skin.info.service) + !Skin.HasSetting(ViewSetPlotToggle) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Plot))">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Plot)]</value>
+		<value condition="ListItem.IsCollection + System.AddonIsEnabled(script.skin.info.service) + System.AddonIsEnabled(script.skin.info.service) + !Skin.HasSetting(ViewSetPlotToggle) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Plot))">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Plot)]</value>
 		<value condition="Container.Content(seasons)">$INFO[Container.ShowPlot]</value>
 		<value condition="!String.IsEmpty(ListItem.PlotOutline) + Skin.HasSetting(ViewInfoPlotToggle)">$INFO[ListItem.PlotOutline]</value>
 		<value condition="System.GetBool(videolibrary.showunwatchedplots)">$INFO[ListItem.Plot]</value>
@@ -1391,7 +1391,7 @@
 		<value condition="[Container(9001).HasNext + !Container(9001).HasPrevious] + !String.IsEqual(ListItem.DBTYPE,song)">$LOCALIZE[31453]</value>
 	</variable>
 	<variable name="VideoInfoPlotVar">
-		<value condition="System.HasAddon(script.skin.info.service) + String.IsEqual(ListItem.DBTYPE,set) + Skin.HasSetting(SetInfoPlotToggle) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Plot))">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Plot)]</value>
+		<value condition="System.AddonIsEnabled(script.skin.info.service) + String.IsEqual(ListItem.DBTYPE,set) + Skin.HasSetting(SetInfoPlotToggle) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Plot))">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Plot)]</value>
 		<value condition="Skin.HasSetting(VideoInfoPlotToggle) + !String.IsEmpty(ListItem.PlotOutline)">$INFO[ListItem.PlotOutline]</value>
 		<value condition="!String.IsEmpty(ListItem.Plot)">$INFO[ListItem.Plot]</value>
 		<value>$LOCALIZE[19055]</value>

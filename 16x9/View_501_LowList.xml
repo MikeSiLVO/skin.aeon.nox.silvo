@@ -168,13 +168,13 @@
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</label>
 						<width>650</width>
 						<include>DefaultButtonsValues</include>
-						<visible>!Skin.HasSetting(nohighlist) | [System.HasAddon(plugin.video.themoviedb.helper) + Skin.HasSetting(Disable.NextAired) + Skin.HasSetting(nohighlist)] | [!System.HasAddon(plugin.video.themoviedb.helper) + Skin.HasSetting(nohighlist)]</visible>
+						<visible>!Skin.HasSetting(nohighlist) | [System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Disable.NextAired) + Skin.HasSetting(nohighlist)] | [!System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(nohighlist)]</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31324]:[/COLOR][CR]$INFO[ListItem.Premiered]</label>
 						<width>650</width>
 						<include>DefaultButtonsValues</include>
-						<visible>!String.IsEmpty(ListItem.Premiered) + !Skin.HasSetting(nohighlist) + [System.HasAddon(plugin.video.themoviedb.helper) + Skin.HasSetting(Disable.NextAired) + !Skin.HasSetting(nohighlist)] | [!System.HasAddon(plugin.video.themoviedb.helper) + !Skin.HasSetting(nohighlist)]</visible>
+						<visible>!String.IsEmpty(ListItem.Premiered) + !Skin.HasSetting(nohighlist) + [System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Disable.NextAired) + !Skin.HasSetting(nohighlist)] | [!System.AddonIsEnabled(plugin.video.themoviedb.helper) + !Skin.HasSetting(nohighlist)]</visible>
 					</control>
 				</control>
 				<control type="grouplist">
@@ -374,7 +374,7 @@
 			<control type="group" id="501102">
 				<left>1270</left>
 				<top>733</top>
-				<visible>ListItem.IsCollection + System.HasAddon(script.skin.info.service) + !Skin.HasSetting(nohighlist)</visible>
+				<visible>ListItem.IsCollection + System.AddonIsEnabled(script.skin.info.service) + !Skin.HasSetting(nohighlist)</visible>
 				<include>VisibleFadeAnimation</include>
 				<control type="textbox" id="70">
 					<label>$VAR[VideoPlotVar]</label>
@@ -406,7 +406,7 @@
 			<control type="group" id="501103">
 				<left>1270</left>
 				<top>713</top>
-				<visible>ListItem.IsCollection + !System.HasAddon(script.skin.info.service) + !Skin.HasSetting(nohighlist)</visible>
+				<visible>ListItem.IsCollection + !System.AddonIsEnabled(script.skin.info.service) + !Skin.HasSetting(nohighlist)</visible>
 				<include>VisibleFadeAnimation</include>
 				<control type="textbox" id="70">
 					<label>$VAR[VideoPlotVar]</label>

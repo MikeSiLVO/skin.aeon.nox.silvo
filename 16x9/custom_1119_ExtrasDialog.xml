@@ -44,7 +44,7 @@
 				<label>$LOCALIZE[31970]</label>
 				<visible>!Skin.HasSetting(KioskMode.Enabled)</visible>
 				<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
-				<visible>System.HasAddon(script.trakt) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
+				<visible>System.AddonIsEnabled(script.trakt) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
 			</control>
 			<control type="button" id="90204">
 				<description>EmbuaryInfo</description>
@@ -62,7 +62,7 @@
 				<onclick condition="Window.IsActive(Home) + String.IsEqual(Window(Home).Property(EmbuaryInfoSearchType),tvshow)">RunScript(script.embuary.info,call=tv,query='"$INFO[Window(Home).Property(EmbuaryInfoSearchStringTitle)]"',year=$INFO[Window(Home).Property(EmbuaryInfoSearchStringYear)])</onclick>
 				<label>$LOCALIZE[31149]</label>
 				<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
-				<visible>System.HasAddon(script.embuary.info) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)] | !String.IsEmpty(Window(Home).Property(EmbuaryInfoSearchType))</visible>
+				<visible>System.AddonIsEnabled(script.embuary.info) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)] | !String.IsEmpty(Window(Home).Property(EmbuaryInfoSearchType))</visible>
 			</control>
 			<control type="button" id="90205">
 				<description>CinemaVision</description>
@@ -74,7 +74,7 @@
 				<label>$INFO[System.AddonTitle(script.cinemavision)]</label>
 				<onclick>Dialog.Close(1119)</onclick>
 				<onclick>RunScript(script.cinemavision,dbtype=$INFO[ListItem.DBTYPE],dbid=$INFO[ListItem.DBID])</onclick>
-				<visible>System.HasAddon(script.cinemavision) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31014]) + String.IsEmpty(Window(Home).Property(script.cinemavision.running))</visible>
+				<visible>System.AddonIsEnabled(script.cinemavision) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31014]) + String.IsEmpty(Window(Home).Property(script.cinemavision.running))</visible>
 			</control>
 			<control type="button" id="90208">
 				<description>Search YouTube button</description>
@@ -87,7 +87,7 @@
 				<onclick>ActivateWindow(videos,"plugin://plugin.video.youtube/kodion/search/list/",return)</onclick>
 				<label>$LOCALIZE[137] $INFO[System.AddonTitle(plugin.video.youtube)]</label>
 				<visible>!Skin.HasSetting(KioskMode.Enabled)</visible>
-				<visible>System.HasAddon(plugin.video.youtube)</visible>
+				<visible>System.AddonIsEnabled(plugin.video.youtube)</visible>
 			</control>
 			<control type="button" id="90209">
 				<description>Edit button</description>
@@ -101,7 +101,7 @@
 				<label>21435</label>
 				<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
 				<visible>!Skin.HasSetting(KioskMode.Enabled) + !Window.IsActive(home)</visible>
-				<visible>System.HasAddon(script.metadata.editor)</visible>
+				<visible>System.AddonIsEnabled(script.metadata.editor)</visible>
 			</control>
 			<control type="button" id="90210">
 				<width>510</width>

@@ -131,8 +131,8 @@
 					</control>
 					<control type="grouplist">
 						<visible>ListItem.IsCollection</visible>
-						<animation effect="slide" end="0,110" condition="!System.HasAddon(script.skin.info.service)">Conditional</animation>
-						<animation effect="fade" time="250" condition="System.HasAddon(script.skin.info.service)">Visible</animation>
+						<animation effect="slide" end="0,110" condition="!System.AddonIsEnabled(script.skin.info.service)">Conditional</animation>
+						<animation effect="fade" time="250" condition="System.AddonIsEnabled(script.skin.info.service)">Visible</animation>
 						<control type="label">
 							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[342]:[/COLOR] $INFO[Container(4500).NumItems]</label>
 							<width>570</width>

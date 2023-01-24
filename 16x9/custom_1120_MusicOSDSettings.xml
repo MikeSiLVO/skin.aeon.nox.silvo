@@ -52,14 +52,15 @@
 					<width>1452</width>
 					<label>   - $INFO[System.AddonTitle(script.artistslideshow)] $LOCALIZE[5]</label>
 					<onclick>Addon.OpenSettings(script.artistslideshow)</onclick>
-					<visible>String.IsEqual(Skin.String(Viz.Background),3) + System.HasAddon(script.artistslideshow)</visible>
+					<visible>String.IsEqual(Skin.String(Viz.Background),3) + System.AddonIsEnabled(script.artistslideshow)</visible>
 				</control>
 				<control type="button" id="90902">
 					<description>Artist Slideshow Settings Button</description>
 					<width>1452</width>
 					<label>   - $LOCALIZE[31438]</label>
-					<onclick>InstallAddon(script.artistslideshow)</onclick>
-					<visible>String.IsEqual(Skin.String(Viz.Background),3) + !System.HasAddon(script.artistslideshow)</visible>
+					<onclick condition="!System.HasAddon(script.artistslideshow)">InstallAddon(script.artistslideshow)</onclick>
+					<onclick condition="!System.AddonIsEnabled(script.artistslideshow)">EnableAddon(script.artistslideshow)</onclick>
+					<visible>String.IsEqual(Skin.String(Viz.Background),3) + [!System.HasAddon(script.artistslideshow) | !System.AddonIsEnabled(script.artistslideshow)]</visible>
 				</control>
 				<control type="button" id="90209">
 					<description>CU Lyrics Settings</description>
@@ -118,7 +119,7 @@
 					<onclick condition="Skin.HasSetting(Enable.VizInfo)">Skin.SetBool(Enable.VizPersistent)</onclick>
 					<onclick condition="Skin.HasSetting(Enable.VizInfo)">Skin.Reset(Enable.VizInfo)</onclick>
 					<onclick condition="Skin.HasSetting(Enable.VizPersistent)">Skin.Reset(Enable.VizPersistent)</onclick>
-					<visible>System.HasAddon(script.artistslideshow)</visible>
+					<visible>System.HasAddon(script.artistslideshow) + System.AddonIsEnabled(script.artistslideshow)</visible>
 				</control>
 				<control type="radiobutton" id="90910">
 					<width>1452</width>

@@ -3,7 +3,7 @@
 	<defaultcontrol always="true">50</defaultcontrol>
 	<views>50,51,52,53,55,56,57,58,59,499,500,501,502,503,504,505,506,507,509,591,592,601,602,609</views>
 	<menucontrol>9051</menucontrol>
-	<onload condition="System.HasAddon(script.skin.info.service) + String.IsEmpty(Window(home).Property(skininfos_daemon_running))">RunScript(script.skin.info.service)</onload>
+	<onload condition="System.AddonIsEnabled(script.skin.info.service) + String.IsEmpty(Window(home).Property(skininfos_daemon_running))">RunScript(script.skin.info.service)</onload>
 	<onload>SetProperty(Window.HasSettings,True,Home)</onload>
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
@@ -175,7 +175,7 @@
 			<include>HiddenList</include>
 			<content sortby="year" sortorder="ascending">$VAR[MovieSetsPathVar]</content>
 		</control>
-		<include condition="System.HasAddon(script.embuary.helper)">EmbuaryHelperLibraryContentList</include>
+		<include condition="System.AddonIsEnabled(script.embuary.helper)">EmbuaryHelperLibraryContentList</include>
 		<include>CommonBackground</include>
 		<control type="group">
 			<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | Control.IsVisible(59) | Control.IsVisible(601)</visible>
@@ -656,7 +656,7 @@
 							<control type="group">
 								<visible>[Container.Content(movies) + Control.IsVisible(50) + !Skin.HasSetting(Disable.List.Mediaflags)] | [Container.Content(movies) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.EpisodeMediaflags)] | Control.IsVisible(591) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(509) + !Skin.HasSetting(Disable.MyFlix.Mediaflags) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo) | Control.IsVisible(499) | Control.IsVisible(500) | Control.IsVisible(601)</visible>
 								<include>ViewAnimation</include>
-								<include condition="!System.HasAddon(script.embuary.helper)">NoEmbuaryHelperFlagAnimations</include>
+								<include condition="!System.AddonIsEnabled(script.embuary.helper)">NoEmbuaryHelperFlagAnimations</include>
 								<control type="grouplist">
 									<width>140</width>
 									<height>90</height>
@@ -1309,8 +1309,8 @@
 			</control>
 			<include>MediaMenuPlayerControls</include>
 		</control>
-		<include condition="!System.HasAddon(script.embuary.helper)">DefaultLetterJump</include>
-		<include condition="System.HasAddon(script.embuary.helper)">ScriptLetterJump</include>
+		<include condition="!System.AddonIsEnabled(script.embuary.helper)">DefaultLetterJump</include>
+		<include condition="System.AddonIsEnabled(script.embuary.helper)">ScriptLetterJump</include>
 		<!-- Fullscreen Fanart -->
 		<control type="group">
 			<visible>!String.IsEmpty(Window(Home).Property(Enable.FullscreenFanart))</visible>

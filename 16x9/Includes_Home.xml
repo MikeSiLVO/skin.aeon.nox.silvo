@@ -108,7 +108,7 @@
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_bar_white.png</texture>
 					<visible>[!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] | [!String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) + !String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
 				</control>
-				<include condition="System.HasAddon(service.library.data.provider)">PlayListStatsList</include>
+				<include condition="System.AddonIsEnabled(service.library.data.provider)">PlayListStatsList</include>
 				<control type="label">
 					<top>46</top>
 					<width>1080</width>
@@ -131,7 +131,7 @@
 					<onup condition="!Control.IsVisible(90010) + Control.IsVisible(90020) + !Skin.HasSetting(centermainmenu)">90020</onup>
 					<onup condition="!Control.IsVisible(90010) + !Control.IsVisible(90020)">9000</onup>
 					<ondown>9000</ondown>
-					<include condition="System.HasAddon(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)">HomeSearchButton</include>
+					<include condition="System.AddonIsEnabled(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)">HomeSearchButton</include>
 					<control type="label" id="9026">
 						<width>5</width>
 						<height>41</height>
@@ -178,7 +178,7 @@
 					<onup condition="!Control.IsVisible(90010) + Control.IsVisible(90020) + !Skin.HasSetting(centermainmenu)">90020</onup>
 					<onup condition="!Control.IsVisible(90010) + !Control.IsVisible(90020)">9000</onup>
 					<ondown>9000</ondown>
-					<include condition="System.HasAddon(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)">HomeSearchButton</include>
+					<include condition="System.AddonIsEnabled(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)">HomeSearchButton</include>
 					<control type="label" id="9026">
 						<width>5</width>
 						<height>41</height>
@@ -466,7 +466,7 @@
 				<animation effect="slide" end="0,45" time="320" tween="cubic" easing="inout" condition="system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]">Conditional</animation>
 				<control type="group">
 					<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="$EXP[HasVerticalMenuWithExtended]">Conditional</animation>
-					<include condition="System.HasAddon(service.library.data.provider)">PlayListStatsList</include>
+					<include condition="System.AddonIsEnabled(service.library.data.provider)">PlayListStatsList</include>
 					<control type="label">
 						<left>485</left>
 						<width>740</width>
@@ -1411,7 +1411,7 @@
 			<animation effect="slide" end="1250,0" time="320" tween="cubic" easing="inout" condition="!system.getbool(lookandfeel.enablerssfeeds)">Conditional</animation>
 			<animation effect="slide" end="100,0" time="320" tween="cubic" easing="inout" condition="!system.getbool(lookandfeel.enablerssfeeds) + !Skin.HasSetting(Disable.SearchButton) + !System.HasMediaDVD">Conditional</animation>
 			<animation effect="slide" end="50,0" time="320" tween="cubic" easing="inout" condition="!system.getbool(lookandfeel.enablerssfeeds) + Skin.HasSetting(Disable.SearchButton) + System.HasMediaDVD">Conditional</animation>
-			<visible>system.getbool(lookandfeel.enablerssfeeds) | [System.HasAddon(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)] | System.HasMediaDVD</visible>
+			<visible>system.getbool(lookandfeel.enablerssfeeds) | [System.AddonIsEnabled(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)] | System.HasMediaDVD</visible>
 			<top>1036</top>
 			<control type="group">
 				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
@@ -1496,7 +1496,7 @@
 					<onup condition="!Control.IsVisible(90010) + !Control.IsVisible(90020)">9000</onup>
 					<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
 					<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.Contains(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus">Conditional</animation>
-					<include condition="System.HasAddon(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)">HomeSearchButton</include>
+					<include condition="System.AddonIsEnabled(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)">HomeSearchButton</include>
 					<control type="label">
 						<width>410</width>
 						<label />

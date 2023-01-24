@@ -336,7 +336,7 @@
 			<onclick condition="String.IsEmpty(Skin.String(Showcase.Delay))">Skin.SetString(Showcase.Delay,2)</onclick>
 			<onclick>Skin.ToggleSetting(Enable.ShowCaseSquare.ArtistCDArt)</onclick>
 			<selected>Skin.HasSetting(Enable.ShowCaseSquare.ArtistCDArt)</selected>
-			<visible>System.HasAddon(script.skin.info.service) + Container.Content(artists)</visible>
+			<visible>System.AddonIsEnabled(script.skin.info.service) + Container.Content(artists)</visible>
 		</control>
 		<control type="button" id="1515">
 			<include>ButtonCommonValues</include>
@@ -402,7 +402,7 @@
 			<label>$LOCALIZE[31966]</label>
 			<onclick>Skin.ToggleSetting(Enable.Shift.ArtistCDArt)</onclick>
 			<selected>Skin.HasSetting(Enable.Shift.ArtistCDArt)</selected>)
-			<visible>System.HasAddon(script.skin.info.service) + Container.Content(artists)</visible>
+			<visible>System.AddonIsEnabled(script.skin.info.service) + Container.Content(artists)</visible>
 		</control>
 		<control type="button" id="1515">
 			<include>ButtonCommonValues</include>

@@ -77,7 +77,7 @@
 			<height>10</height>
 			<texture background="true">$INFO[Player.Art(thumb)]</texture>
 		</control>
-		<include condition="!System.HasAddon(script.grab.fanart)">MusicVizFanartLists</include>
+		<include condition="!System.AddonIsEnabled(script.grab.fanart)">MusicVizFanartLists</include>
 		<control type="visualisation" id="2">
 			<include>FullscreenDimensions</include>
 			<visible>!Skin.HasSetting(hidevizbehindfanart) + Player.HasAudio + ![String.IsEqual(Visualisation.Name,waveform) | String.Contains(Visualisation.Name,spectrum)]</visible>
@@ -841,7 +841,7 @@
 			<animation effect="slide" end="1870,0" time="240">WindowClose</animation>
 			<animation effect="slide" start="1870" end="0" time="240">VisibleChange</animation>
 			<animation effect="slide" start="1870,0" end="0,0" delay="800" time="480" condition="Window.Previous(startup)">WindowOpen</animation>
-			<visible>System.HasAddon(script.artistslideshow) + [!String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.ArtistBiography)) | !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.1.AlbumName)) | !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.1.SimilarName))]</visible>
+			<visible>System.AddonIsEnabled(script.artistslideshow) + [!String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.ArtistBiography)) | !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.1.AlbumName)) | !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.1.SimilarName))]</visible>
 			<visible>[Player.ShowInfo + Skin.HasSetting(Enable.VizInfo)] | Skin.HasSetting(Enable.VizPersistent)</visible>
 			<top>993</top>
 			<control type="group">
