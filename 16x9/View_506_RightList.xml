@@ -549,7 +549,7 @@
 				<param name="width">700</param>
 			</include>
 		</focusedlayout>
-		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + !Skin.HasSetting(rightlistalternatetv)">
+		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + !Skin.HasSetting(rightlistalternatetv)" infoupdate="5000">
 			<control type="image">
 				<include>RightListFocusedHighLightContent</include>
 				<include>VisibleFadeAnimation</include>
@@ -567,7 +567,7 @@
 				<param name="labelColor">$VAR[ThemeLabelColor]</param>
 			</include>
 		</focusedlayout>
-		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + Skin.HasSetting(rightlistalternatetv)">
+		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + Skin.HasSetting(rightlistalternatetv)" infoupdate="5000">
 			<include content="RightListFocusedLayout">
 				<param name="width">770</param>
 				<param name="labelColor">$VAR[ThemeLabelColor]</param>
@@ -618,7 +618,7 @@
 					<label>$VAR[RightListSubLabelVar]</label>
 					<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(506)">Conditional</animation>
 					<animation effect="slide" end="-155" time="0" condition="!String.IsEmpty(ListItem.UserRating) + Window.IsActive(music)">Conditional</animation>
-					<visible>!ListItem.IsCollection + !Container.Content(seasons)</visible>
+					<visible>!ListItem.IsCollection + !Container.Content(seasons) + !String.IsEqual(ListItem.DBTYPE,season)</visible>
 				</control>
 				<control type="image">
 					<left>662</left>
