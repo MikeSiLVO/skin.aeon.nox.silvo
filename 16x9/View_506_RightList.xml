@@ -618,7 +618,7 @@
 					<label>$VAR[RightListSubLabelVar]</label>
 					<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(506)">Conditional</animation>
 					<animation effect="slide" end="-155" time="0" condition="!String.IsEmpty(ListItem.UserRating) + Window.IsActive(music)">Conditional</animation>
-					<visible>!ListItem.IsCollection + !Container.Content(seasons)</visible>
+					<visible>!ListItem.IsCollection + !Container.Content(seasons) + !String.IsEqual(ListItem.DBTYPE,season)</visible>
 				</control>
 				<control type="image">
 					<left>662</left>
