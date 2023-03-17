@@ -128,6 +128,7 @@
 				</control>
 			</control>
 			<control type="group">
+				<top>447</top>
 				<animation type="WindowOpen" reversible="false" condition="!Player.Paused">
 					<effect type="fade" start="0" end="100" time="479.52" />
 				</animation>
@@ -140,23 +141,19 @@
 				<visible>Player.Paused + !System.HasVisibleModalDialog</visible>
 				<control type="group">
 					<left>867</left>
-					<top>378</top>
+					<width>186</width>
+					<height>186</height>
 					<visible>!Skin.HasSetting(PausedLabel)</visible>
 					<control type="image">
-						<width>186</width>
-						<height>186</height>
 						<texture>osd/bg_play_large.png</texture>
 					</control>
 					<control type="image">
-						<width>186</width>
-						<height>186</height>
 						<texture>osd/btn_pause.png</texture>
 					</control>
 				</control>
 				<control type="label">
-					<top>367</top>
 					<width>100%</width>
-					<height>200</height>
+					<height>184</height>
 					<align>center</align>
 					<label>[UPPERCASE][B]$LOCALIZE[112][/B][/UPPERCASE]</label>
 					<font>BigAssTimeFont</font>
