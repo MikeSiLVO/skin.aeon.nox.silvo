@@ -138,14 +138,21 @@
 							<width>570</width>
 							<height>55</height>
 							<include>DefaultButtonsValues</include>
-							<visible>!String.IsEqual(Container(4500).NumItems,0)</visible>
+							<visible>!String.IsEqual(Container(4500).NumItems,0) + Skin.HasSetting(Disable.RightList.Mediaflags)</visible>
 						</control>
 						<control type="label">
 							<width>570</width>
 							<height>55</height>
-							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20339]:[/COLOR] $INFO[Window(Home).Property(SkinInfo.Set.Movies.Director)]</label>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20348]:[/COLOR] $INFO[Window(Home).Property(SkinInfo.Set.Movies.Director)]</label>
 							<include>DefaultButtonsValues</include>
 							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Director))</visible>
+						</control>
+						<control type="label">
+							<width>570</width>
+							<height>55</height>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20418]:[/COLOR] $INFO[Window(Home).Property(SkinInfo.Set.Movies.Writer)]</label>
+							<include>DefaultButtonsValues</include>
+							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Writer)) + !Skin.HasSetting(Disable.RightList.Mediaflags)</visible>
 						</control>
 						<control type="label">
 							<width>570</width>
