@@ -60,6 +60,7 @@
 						<textcolor>grey2</textcolor>
 						<label>$INFO[ListItem.ChannelName]$INFO[ListItem.Label, - ]</label>
 						<visible>!String.IsEmpty(ListItem.Date)</visible>
+						<animation effect="slide" end="0,15" condition="String.IsEmpty(ListItem.EpisodeName)">Conditional</animation>
 					</control>
 					<control type="label">
 						<left>174</left>
@@ -78,6 +79,7 @@
 						<font>font15</font>
 						<textcolor>grey3</textcolor>
 						<label>$INFO[ListItem.Date]</label>
+						<animation effect="slide" end="0,-15" condition="String.IsEmpty(ListItem.EpisodeName)">Conditional</animation>
 					</control>
 					<control type="image">
 						<left>1090</left>
@@ -137,6 +139,7 @@
 						<font>font30</font>
 						<label>$INFO[ListItem.ChannelName]$INFO[ListItem.Label, - ]</label>
 						<visible>!String.IsEmpty(ListItem.Date)</visible>
+						<animation effect="slide" end="0,15" condition="String.IsEmpty(ListItem.EpisodeName)">Conditional</animation>
 					</control>
 					<control type="label">
 						<left>174</left>
@@ -154,6 +157,7 @@
 						<font>font15</font>
 						<textcolor>grey2</textcolor>
 						<label>$INFO[ListItem.Date]</label>
+						<animation effect="slide" end="0,-15" condition="String.IsEmpty(ListItem.EpisodeName)">Conditional</animation>
 					</control>
 					<control type="image">
 						<left>1090</left>
