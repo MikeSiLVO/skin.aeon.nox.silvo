@@ -3605,7 +3605,7 @@
 		<control type="list" id="9142">
 			<include>HiddenList</include>
 			<content limit="1">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</content>
-			<visible>!Container.Content(seasons)</visible>
+			<visible>!ListItem.IsCollection + !Container.Content(seasons)</visible>
 		</control>
 	</include>
 	<include name="EmbuaryHelperContentList">
