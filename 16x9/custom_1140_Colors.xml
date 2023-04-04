@@ -133,24 +133,21 @@
 					<visible>Container(9000).HasFocus(1)</visible>
 					<control type="radiobutton" id="100">
 						<label>$LOCALIZE[15111]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=ThemeHomeLabelColor)</onclick>
+						<onclick>Skin.SetColor(ThemeHomeLabelColor, 15111, FFFF9800, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[ThemeHomeLabelColor]</param>
 						</include>
 					</control>
 					<control type="radiobutton" id="109">
 						<label>$LOCALIZE[31302]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=ThemeHomeMenuBarColor)</onclick>
+						<onclick>Skin.SetColor(ThemeHomeMenuBarColor, 31302, FFFF9800, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[ThemeHomeMenuBarColor]</param>
 						</include>
 					</control>
 					<control type="radiobutton" id="110">
 						<label>$LOCALIZE[31522]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=ThemeHomeMenuGlowBarColor)</onclick>
+						<onclick>Skin.SetColor(ThemeHomeMenuGlowBarColor, 31522, FFFF9800, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[ThemeHomeMenuGlowBarColor]</param>
 						</include>
@@ -158,16 +155,14 @@
 					</control>
 					<control type="radiobutton" id="111">
 						<label>$LOCALIZE[31303]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=ThemeHomeSystemBarsColor)</onclick>
+						<onclick>Skin.SetColor(ThemeHomeSystemBarsColor, 31303, FF000000, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[ThemeHomeSystemBarsColor]</param>
 						</include>
 					</control>
 					<control type="radiobutton" id="112">
 						<label>$LOCALIZE[31524]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=ThemeHomeSystemGlowBarsColor)</onclick>
+						<onclick>Skin.SetColor(ThemeHomeSystemGlowBarsColor, 31524, 00FFFFFF, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[ThemeHomeSystemGlowBarsColor]</param>
 						</include>
@@ -175,40 +170,35 @@
 					</control>
 					<control type="radiobutton" id="102">
 						<label>$LOCALIZE[31294]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=FocusedMainMenuColor)</onclick>
+						<onclick>Skin.SetColor(FocusedMainMenuColor, 31294, FFE5E5E5, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[FocusedMainMenuColor]</param>
 						</include>
 					</control>
 					<control type="radiobutton" id="103">
 						<label>$LOCALIZE[31295]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=UnfocusedMainMenuColor)</onclick>
+						<onclick>Skin.SetColor(UnfocusedMainMenuColor, 31295, FF000000, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[UnfocusedMainMenuColor]</param>
 						</include>
 					</control>
 					<control type="radiobutton" id="104">
 						<label>$LOCALIZE[31296]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=FocusedSubMenuColor)</onclick>
+						<onclick>Skin.SetColor(FocusedSubMenuColor, 31296, FFE5E5E5, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[FocusedSubMenuColor]</param>
 						</include>
 					</control>
 					<control type="radiobutton" id="105">
 						<label>$LOCALIZE[31297]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=UnfocusedSubMenuColor)</onclick>
+						<onclick>Skin.SetColor(UnfocusedSubMenuColor, 31297, FFBDBDBD, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[UnfocusedSubMenuColor]</param>
 						</include>
 					</control>
 					<control type="radiobutton" id="106">
 						<label>$LOCALIZE[31298]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=FocusedMainMenuIconLabelColor)</onclick>
+						<onclick>Skin.SetColor(FocusedMainMenuIconLabelColor, 31298, FFE5E5E5, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[FocusedMainMenuIconLabelColor]</param>
 						</include>
@@ -216,8 +206,7 @@
 					</control>
 					<control type="radiobutton" id="107">
 						<label>$LOCALIZE[31299]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=UnfocusedMainMenuIconLabelColor)</onclick>
+						<onclick>Skin.SetColor(UnfocusedMainMenuIconLabelColor, 31299, FF000000, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[UnfocusedMainMenuIconLabelColor]</param>
 						</include>
@@ -225,8 +214,7 @@
 					</control>
 					<control type="radiobutton" id="108">
 						<label>$LOCALIZE[31220]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=RSSFeedColor)</onclick>
+						<onclick>Skin.SetColor(RSSFeedColor, 31220, FFBDBDBD, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[RSSFeedColor]</param>
 						</include>
@@ -245,40 +233,35 @@
 					<visible>Container(9000).HasFocus(2)</visible>
 					<control type="radiobutton" id="200">
 						<label>$LOCALIZE[15111]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=ThemeLabelColor)</onclick>
+						<onclick>Skin.SetColor(ThemeLabelColor, 15111, FFFF9800, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[ThemeLabelColor]</param>
 						</include>
 					</control>
 					<control type="radiobutton" id="201">
 						<label>$LOCALIZE[31304]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=HighlightBarColor)</onclick>
+						<onclick>Skin.SetColor(HighlightBarColor, 31304, FF2A52BE, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[HighlightBarColor]</param>
 						</include>
 					</control>
 					<control type="radiobutton" id="202">
 						<label>$LOCALIZE[31305]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=UnWatchedEpColor)</onclick>
+						<onclick>Skin.SetColor(UnWatchedEpColor, 31305, FFE5E5E5, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[UnWatchedEpColor]</param>
 						</include>
 					</control>
 					<control type="radiobutton" id="203">
 						<label>$LOCALIZE[31252]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=TopBarColor)</onclick>
+						<onclick>Skin.SetColor(TopBarColor, 31252, FF000000, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[TopBarColor]</param>
 						</include>
 					</control>
 					<control type="radiobutton" id="204">
 						<label>$LOCALIZE[31346]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=ThemeOSDProgressColor)</onclick>
+						<onclick>Skin.SetColor(ThemeOSDProgressColor, 31346, FFFF9800, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[ThemeOSDProgressColor]</param>
 						</include>
@@ -297,16 +280,14 @@
 					<visible>Container(9000).HasFocus(3)</visible>
 					<control type="radiobutton" id="300">
 						<label>$LOCALIZE[31304]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=WidgetHighlightBarColor)</onclick>
+						<onclick>Skin.SetColor(WidgetHighlightBarColor, 31304, FFFF9800, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[WidgetHighlightBarColor]</param>
 						</include>
 					</control>
 					<control type="radiobutton" id="301">
 						<label>$LOCALIZE[31102]</label>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=WidgetBackgroundColor)</onclick>
+						<onclick>Skin.SetColor(WidgetBackgroundColor, 31102, FFFF9800, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[WidgetBackgroundColor]</param>
 						</include>
