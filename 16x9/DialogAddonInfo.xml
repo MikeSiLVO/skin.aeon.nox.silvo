@@ -186,48 +186,35 @@
 						<visible>!String.IsEmpty(ListItem.AddonSize)</visible>
 					</control>
 				</control>
+				<control type="image">
+					<left>31</left>
+					<top>200</top>
+					<width>1448</width>
+					<height>3</height>
+					<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+				</control>
 				<control type="grouplist">
 					<left>47</left>
-					<top>345</top>
-					<usecontrolcoords>true</usecontrolcoords>
+					<top>240</top>
 					<control type="textbox" id="400">
 						<width>1415</width>
-						<height>460</height>
+						<height>565</height>
 						<textcolor>grey2</textcolor>
 						<align>justify</align>
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[21821]: [/COLOR][CR]$INFO[ListItem.AddonDescription]</label>
 						<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+						<visible>!String.IsEmpty(ListItem.AddonBroken) | !String.IsEmpty(ListItem.AddonDisclaimer) | !String.IsEmpty(ListItem.AddonBroken)</visible>
+					</control>
+					<control type="textbox" id="400">
+						<width>1415</width>
+						<height>735</height>
+						<textcolor>grey2</textcolor>
+						<align>justify</align>
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[21821]: [/COLOR][CR]$INFO[ListItem.AddonDescription]</label>
+						<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+						<visible>String.IsEmpty(ListItem.AddonBroken) + String.IsEmpty(ListItem.AddonDisclaimer) + String.IsEmpty(ListItem.AddonBroken)</visible>
 					</control>
 				</control>
-				<!-- <control type="panel" id="50">
-					<left>40</left>
-					<top>500</top>
-					<width>1470</width>
-					<height>280</height>
-					<ondown>5000</ondown>
-					<onup>9000</onup>
-					<orientation>horizontal</orientation>
-					<itemlayout height="279" width="490">
-						<control type="image">
-							<left>-20</left>
-							<width>496</width>
-							<height>279</height>
-							<texture background="true">$INFO[ListItem.Icon]</texture>
-							<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
-							<bordersize>20</bordersize>
-						</control>
-					</itemlayout>
-					<focusedlayout height="279" width="490">
-						<control type="image">
-							<left>-20</left>
-							<width>496</width>
-							<height>279</height>
-							<texture background="true">$INFO[ListItem.Icon]</texture>
-							<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
-							<bordersize>20</bordersize>
-						</control>
-					</focusedlayout>
-				</control> -->
 			</control>
 			<control type="image">
 				<left>416</left>
