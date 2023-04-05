@@ -10,7 +10,7 @@
 				<control type="image">
 					<width>729</width>
 					<height>540</height>
-					<texture>black-back.png</texture>
+					<texture colordiffuse="F2FFFFFF">black.png</texture>
 				</control>
 				<control type="image">
 					<width>729</width>
@@ -33,7 +33,7 @@
 				<control type="image">
 					<width>1192</width>
 					<height>540</height>
-					<texture>black-back.png</texture>
+					<texture colordiffuse="F2FFFFFF">black.png</texture>
 				</control>
 				<control type="group">
 					<left>40</left>
@@ -193,105 +193,93 @@
 					<control type="group">
 						<left>-36</left>
 						<top>10</top>
-					<!-- <control type="button" id="210">
-						<top>516</top>
-						<width>634</width>
-						<texturenofocus />
-						<disabledcolor>grey</disabledcolor>
-						<font>font30_title</font>
-						<align>left</align>
-						<textoffsetx>36</textoffsetx>
-						<include>ButtonInfoDialogsCommonValues</include>
-						<label>[B]$[PVRInfoButtonLabelVar][/B]</label>
-						<enable>no</enable>
-					</control> -->
-					<control type="grouplist" id="9000">
-						<top>301</top>
-						<width>1188</width>
-						<height>60</height>
-						<onleft>9000</onleft>
-						<onright>9000</onright>
-						<onup>300</onup>
-						<ondown>9001</ondown>
-						<align>right</align>
-						<orientation>horizontal</orientation>
-						<control type="button" id="5">
-							<description>Switch to Channel</description>
-							<width>auto</width>
-							<label>19165</label>
-						</control>
-						<control type="button" id="10">
-							<description>Play Program</description>
-							<width>auto</width>
-							<label>19190</label>
-						</control>
-						<control type="button" id="4">
-							<description>Find similar</description>
-							<width>auto</width>
-							<label>19003</label>
-						</control>
-						<control type="button" id="6">
-							<description>Record</description>
-							<width>auto</width>
-						</control>
-						<control type="button" id="9">
-							<description>Timer</description>
-							<width>auto</width>
-							<label>19061</label>
-						</control>
-						<control type="button" id="8">
-							<description>Play recording</description>
-							<width>auto</width>
-							<label>19687</label>
-						</control>
-						<control type="button" id="7">
-							<description>OK</description>
-							<width>auto</width>
-							<label>186</label>
+						<control type="grouplist" id="9000">
+							<top>301</top>
+							<width>1188</width>
+							<height>60</height>
+							<onleft>9000</onleft>
+							<onright>9000</onright>
+							<onup>300</onup>
+							<ondown>9001</ondown>
+							<align>right</align>
+							<orientation>horizontal</orientation>
+							<control type="button" id="5">
+								<description>Switch to Channel</description>
+								<width>auto</width>
+								<label>19165</label>
+							</control>
+							<control type="button" id="10">
+								<description>Play Program</description>
+								<width>auto</width>
+								<label>19190</label>
+							</control>
+							<control type="button" id="4">
+								<description>Find similar</description>
+								<width>auto</width>
+								<label>19003</label>
+							</control>
+							<control type="button" id="6">
+								<description>Record</description>
+								<width>auto</width>
+							</control>
+							<control type="button" id="9">
+								<description>Timer</description>
+								<width>auto</width>
+								<label>19061</label>
+							</control>
+							<control type="button" id="8">
+								<description>Play recording</description>
+								<width>auto</width>
+								<label>19687</label>
+							</control>
+							<control type="button" id="7">
+								<description>OK</description>
+								<width>auto</width>
+								<label>186</label>
+							</control>
 						</control>
 					</control>
 				</control>
-			</control>
-			<control type="grouplist" id="9001">
-				<top>371</top>
-				<width>1190</width>
-				<height>204</height>
-				<onup>9000</onup>
-				<ondown>noop</ondown>
-				<pagecontrol>70</pagecontrol>
-				<scrolltime tween="quadratic" easing="out">300</scrolltime>
-				<control type="group" id="90017">
+				<control type="grouplist" id="9001">
+					<top>371</top>
 					<width>1190</width>
 					<height>204</height>
-					<control type="button" id="900171">
-						<description>FS Plot</description>
-						<texturenofocus />
-						<width>1186</width>
-						<height>214</height>
-						<label />
-						<onup>9000</onup>
-						<ondown>50</ondown>
-						<include>ButtonInfoDialogsCommonValues</include>
-						<onclick>SetProperty(TextViewerHeader,$ESCINFO[ListItem.Title,[B],[/B]],Home)</onclick>
-						<onclick>SetProperty(TextViewerSubHeader,$ESCINFO[ListItem.EpisodeName,[I],[/I]],Home)</onclick>
-						<onclick>SetProperty(TextViewerContent,$ESCINFO[ListItem.Plot],Home)</onclick>
-						<onclick>ActivateWindow(1112)</onclick>
-					</control>
-					<control type="textbox" id="4">
-						<description>Plot</description>
-						<left>36</left>
-						<top>3</top>
-						<width>1112</width>
-						<height>174</height>
-						<pagecontrol />
-						<label>$INFO[ListItem.Plot]</label>
-						<autoscroll time="3000" delay="6000" repeat="6000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(900171)</autoscroll>
-						<animation effect="fade" start="0" end="100" time="500" tween="sine" easing="inout">VisibleChange</animation>
-						<animation effect="fade" start="100" end="78" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(900171)">Conditional</animation>
+					<onup>9000</onup>
+					<ondown>noop</ondown>
+					<pagecontrol>70</pagecontrol>
+					<scrolltime tween="quadratic" easing="out">300</scrolltime>
+					<control type="group" id="90017">
+						<width>1190</width>
+						<height>204</height>
+						<control type="button" id="900171">
+							<description>FS Plot</description>
+							<texturenofocus />
+							<width>1186</width>
+							<height>214</height>
+							<label />
+							<onup>9000</onup>
+							<ondown>50</ondown>
+							<include>ButtonInfoDialogsCommonValues</include>
+							<onclick>SetProperty(TextViewerHeader,$ESCINFO[ListItem.Title,[B],[/B]],Home)</onclick>
+							<onclick>SetProperty(TextViewerSubHeader,$ESCINFO[ListItem.EpisodeName,[I],[/I]],Home)</onclick>
+							<onclick>SetProperty(TextViewerContent,$ESCINFO[ListItem.Plot],Home)</onclick>
+							<onclick>ActivateWindow(1112)</onclick>
+						</control>
+						<control type="textbox" id="4">
+							<description>Plot</description>
+							<left>36</left>
+							<top>3</top>
+							<width>1112</width>
+							<height>174</height>
+							<pagecontrol />
+							<label>$INFO[ListItem.Plot]</label>
+							<autoscroll time="3000" delay="6000" repeat="6000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(900171)</autoscroll>
+							<animation effect="fade" start="0" end="100" time="500" tween="sine" easing="inout">VisibleChange</animation>
+							<animation effect="fade" start="100" end="78" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(900171)">Conditional</animation>
+						</control>
 					</control>
 				</control>
 			</control>
 		</control>
-	</control>
-</controls>
+	</controls>
 </window>
