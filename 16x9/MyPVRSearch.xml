@@ -52,7 +52,7 @@
 						<height>70</height>
 						<font>font60</font>
 						<label>$INFO[ListItem.Label]</label>
-						<visible>String.IsEqual(ListItem.Label,$LOCALIZE[19140])</visible>
+						<visible>String.IsEqual(ListItem.Label,$LOCALIZE[19335]) | String.IsEqual(ListItem.Label,$LOCALIZE[19337])</visible>
 					</control>
 					<control type="label">
 						<left>135</left>
@@ -61,7 +61,7 @@
 						<font>font30</font>
 						<textcolor>grey2</textcolor>
 						<label>$INFO[ListItem.Label]</label>
-						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19140])</visible>
+						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19337])</visible>
 					</control>
 					<control type="label">
 						<left>135</left>
@@ -131,7 +131,7 @@
 						<height>70</height>
 						<font>font60</font>
 						<label>$INFO[ListItem.Label]</label>
-						<visible>String.IsEqual(ListItem.Label,Search...)</visible>
+						<visible>String.IsEqual(ListItem.Label,$LOCALIZE[19335]) | String.IsEqual(ListItem.Label,$LOCALIZE[19337])</visible>
 					</control>
 					<control type="label">
 						<left>135</left>
@@ -139,7 +139,7 @@
 						<height>70</height>
 						<font>font30</font>
 						<label>$INFO[ListItem.Label]</label>
-						<visible>!String.IsEqual(ListItem.Label,Search...)</visible>
+						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19337])</visible>
 					</control>
 					<control type="label">
 						<left>135</left>
@@ -224,7 +224,7 @@
 		<control type="image">
 			<width>100%</width>
 			<height>1080</height>
-			<texture>black-back.png</texture>
+			<texture colordiffuse="D9FFFFFF">black.png</texture>
 			<animation effect="fade" time="400">Visible</animation>
 			<animation effect="fade" time="200">Hidden</animation>
 			<visible>Window.IsActive(FileBrowser) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRTimerSetting) | Window.IsActive(PVRGroupManager) | Window.IsActive(PVRGuideSearch)</visible>
