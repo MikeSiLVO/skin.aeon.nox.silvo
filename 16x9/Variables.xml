@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<variable name="ShowPasswordButtonLabelVar">
-		<value condition="String.IsEqual(Control.GetLabel(310), $LOCALIZE[12308])"></value>
-		<value></value>
+		<value condition="String.IsEqual(Control.GetLabel(310), $LOCALIZE[12308])"></value>
+		<value></value>
 	</variable>
 	<variable name="TMDbHelperNextAiredLabelVar">
 		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19031]:[/COLOR] $INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired),, • ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Season),S]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Episode),E, - ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Name)]</value>
