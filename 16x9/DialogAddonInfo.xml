@@ -44,20 +44,12 @@
 					<onright>60</onright>
 					<onup>9000</onup>
 					<ondown>9000</ondown>
-					<animation effect="slide" end="0,132" condition="Window.IsActive(1112)">Conditional</animation>
+					<animation effect="slide" end="0,66" condition="Window.IsActive(1112)">Conditional</animation>
 					<control type="button" id="9">
 						<description>Configure Addon</description>
 						<width>356</width>
 						<height>66</height>
 						<label>24020</label>
-						<font>font15</font>
-						<visible>!Window.IsActive(1112)</visible>
-					</control>
-					<control type="button" id="8">
-						<description>Update Addon button</description>
-						<width>356</width>
-						<height>66</height>
-						<label>24138</label>
 						<font>font15</font>
 						<visible>!Window.IsActive(1112)</visible>
 					</control>
@@ -74,6 +66,14 @@
 						<onclick>ActivateWindow(1112)</onclick>
 						<enable>!String.IsEmpty(ListItem.AddonNews)</enable>
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="Window.IsActive(1112)">Conditional</animation>
+					</control>
+					<control type="button" id="8">
+						<description>Update Addon button</description>
+						<width>356</width>
+						<height>66</height>
+						<label>24138</label>
+						<font>font15</font>
+						<visible>!Window.IsActive(1112)</visible>
 					</control>
 					<control type="button" id="200">
 						<description>Screenshot button</description>
