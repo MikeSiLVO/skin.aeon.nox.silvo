@@ -1160,6 +1160,15 @@
 			<visible>!String.IsEqual(Skin.String(PVRGuide.Logos),1)</visible>
 		</control>
 	</include>
+	<include name="PVRBackgroundDim">
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture colordiffuse="D9FFFFFF">black.png</texture>
+			<animation effect="fade" time="400">Visible</animation>
+			<animation effect="fade" time="200">Hidden</animation>
+			<visible>Window.IsActive(FileBrowser) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRTimerSetting) | Window.IsActive(PVRGroupManager) | Window.IsActive(PVRGuideSearch)</visible>
+		</control>
+	</include>
 	<variable name="GuideTimelineViewTypeOptionsLabelVar">
 		<value condition="String.IsEqual(Skin.String(LiveTV.EpgViewType),1)">$LOCALIZE[31222]</value>
 		<value>$LOCALIZE[602]</value>
