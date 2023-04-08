@@ -251,9 +251,9 @@
 							<visible>[Control.IsVisible(52) + Container.Content(movies) + !Skin.HasSetting(Disable.Landscape.MovieInfo) + [!Skin.HasSetting(Enable.Landscape.Logo)] | [Skin.HasSetting(Enable.Landscape.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] | [Control.IsVisible(52) + Container.Content(tvshows) + !Skin.HasSetting(Disable.Landscape.TVInfo) + [!Skin.HasSetting(Enable.Landscape.Logo)] | [Control.IsVisible(52) + Container.Content(episodes) + !Skin.HasSetting(Disable.Landscape.EpisodeInfo)]] | [Control.IsVisible(53) + Container.Content(movies) + !Skin.HasSetting(Disable.ShowCase.MovieInfo) + [!Skin.HasSetting(Enable.ShowCase.Logo)] | [Skin.HasSetting(Enable.ShowCase.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] | [Control.IsVisible(53) + Container.Content(tvshows) + !Skin.HasSetting(Disable.ShowCase.TVInfo) + !Skin.HasSetting(Enable.ShowCase.Logo)] | [Control.IsVisible(53) + Container.Content(seasons) + !Skin.HasSetting(Disable.ShowCase.FloorInfo.seasons) + !Skin.HasSetting(Enable.ShowCase.SeasonBanner)] | [Control.IsVisible(503) + Container.Content(movies) + !Skin.HasSetting(Disable.Wall.MovieInfo) + [!Skin.HasSetting(Enable.Wall.Logo) | [Skin.HasSetting(Enable.Wall.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]]] | [Control.IsVisible(503) + Container.Content(tvshows) + !Skin.HasSetting(Disable.Wall.TVInfo) + [!Skin.HasSetting(Enable.Wall.Logo) | [Skin.HasSetting(Enable.Wall.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]]] | [Control.IsVisible(503) + Container.Content(seasons) + Skin.HasSetting(Enable.Wall.FloorInfo.seasons)] | Container.Content(genres) + Control.IsVisible(53) + Skin.HasSetting(ShowCaseGenreLabels)</visible>
 							<visible>![Container.Content(files) + Control.IsVisible(503)]</visible>
 							<control type="label">
-								<left>450</left>
+								<left>532</left>
 								<top>985</top>
-								<width>1020</width>
+								<width>856</width>
 								<height>46</height>
 								<align>center</align>
 								<font>font16_title_bold</font>
@@ -262,11 +262,11 @@
 								<label>$VAR[FloorLabelVar]</label>
 							</control>
 							<control type="group">
-								<left>560</left>
+								<left>532</left>
 								<top>1030</top>
 								<visible>[Control.IsVisible(52) + Container.Content(movies) + !Skin.HasSetting(Disable.Landscape.MovieInfo) + !Skin.HasSetting(Enable.Landscape.Logo)] | [Control.IsVisible(52) + Container.Content(tvshows) + !Skin.HasSetting(Disable.Landscape.TVInfo) + !Skin.HasSetting(Enable.Landscape.Logo)] | [Control.IsVisible(52) + Container.Content(episodes) + !Skin.HasSetting(Disable.Landscape.EpisodeInfo)] | [Control.IsVisible(53) + Container.Content(movies) + !Skin.HasSetting(Disable.ShowCase.MovieInfo) + [!Skin.HasSetting(Enable.ShowCase.Logo)]] | [Control.IsVisible(53) + Container.Content(tvshows) + !Skin.HasSetting(Disable.ShowCase.TVInfo) + [!Skin.HasSetting(Enable.ShowCase.Logo)]] | [Control.IsVisible(53) + Container.Content(seasons) + !Skin.HasSetting(Disable.ShowCase.FloorInfo.seasons) + !Skin.HasSetting(Enable.ShowCase.SeasonBanner)] | [Control.IsVisible(503) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(Disable.Wall.MovieInfo) + [!Skin.HasSetting(Enable.Wall.Logo)]] | [Control.IsVisible(503) + Container.Content(sets) + !Skin.HasSetting(Disable.Wall.SetInfo) + [!Skin.HasSetting(Enable.Wall.SetLogo)]] | [Control.IsVisible(503) + Container.Content(tvshows) + !Skin.HasSetting(Disable.Wall.TVInfo) + !Skin.HasSetting(Enable.Wall.Logo)] | [Control.IsVisible(503) + Container.Content(seasons) + Skin.HasSetting(Enable.Wall.FloorInfo.seasons) + !Skin.HasSetting(Enable.Wall.SeasonBanner)]</visible>
 								<control type="label">
-									<width>800</width>
+									<width>856</width>
 									<height>30</height>
 									<align>center</align>
 									<font>font13_bold</font>
@@ -277,7 +277,7 @@
 								</control>
 								<control type="label">
 									<top>38</top>
-									<width>800</width>
+									<width>856</width>
 									<height>22</height>
 									<align>center</align>
 									<font>font13_bold</font>
@@ -520,7 +520,7 @@
 						<visible>[[Control.IsVisible(52) + Container.Content(movies) + !String.IsEqual(Skin.String(52.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(52) + Container.Content(tvshows) + !String.IsEqual(Skin.String(52.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(52) + Container.Content(episodes) + !String.IsEqual(Skin.String(52.Episodes.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(movies) + !String.IsEqual(Skin.String(53.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(tvshows) + !String.IsEqual(Skin.String(53.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(seasons) + !String.IsEqual(Skin.String(53.Seasons.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(59) + Container.Content(movies) + !String.IsEqual(Skin.String(59.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(59) + Container.Content(tvshows) + !String.IsEqual(Skin.String(59.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(movies) + !String.IsEqual(Skin.String(503.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(tvshows) + !String.IsEqual(Skin.String(503.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(seasons) + !String.IsEqual(Skin.String(503.Seasons.ViewFlags),$LOCALIZE[1223])]]</visible>
 						<include>ViewAnimation</include>
 						<control type="group">
-							<left>60</left>
+							<left>70</left>
 							<control type="image" id="911">
 								<include>MediaFlagValues</include>
 								<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
@@ -529,20 +529,20 @@
 								<width>135</width>
 								<height>90</height>
 								<align>center</align>
-								<label>$INFO[ListItem.Studio]</label>
 								<font>font10</font>
 								<textcolor>grey2</textcolor>
 								<wrapmultiline>true</wrapmultiline>
+								<label>$INFO[ListItem.Studio]</label>
 								<visible>String.IsEmpty(Control.GetLabel(911))</visible>
 							</control>
 						</control>
 						<control type="image">
-							<left>1725</left>
+							<left>1708</left>
 							<include>MediaFlagValues</include>
 							<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
 						</control>
 						<control type="group">
-							<left>1855</left>
+							<left>1850</left>
 							<top>20</top>
 							<control type="grouplist">
 								<height>90</height>
@@ -610,29 +610,29 @@
 						<control type="group">
 							<visible>[Control.IsVisible(52) + String.IsEqual(Skin.String(52.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)] | [Control.IsVisible(52) + String.IsEqual(Skin.String(52.Episodes.ViewFlags),$LOCALIZE[31160]) + Container.Content(episodes)] | [Control.IsVisible(53) + String.IsEqual(Skin.String(53.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)] | [Control.IsVisible(59) + String.IsEqual(Skin.String(59.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)] | [Control.IsVisible(503) + String.IsEqual(Skin.String(503.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)]</visible>
 							<control type="image">
-								<left>175</left>
+								<left>220</left>
 								<include>MediaFlagValues</include>
 								<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
 							</control>
 							<control type="image">
-								<left>282</left>
+								<left>325</left>
 								<top>2</top>
 								<width>58</width>
 								<include>MediaFlagValues</include>
 								<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
 							</control>
 							<control type="image">
-								<left>330</left>
+								<left>388</left>
 								<include>MediaFlagValues</include>
 								<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
 							</control>
 							<control type="image">
-								<left>1460</left>
+								<left>1393</left>
 								<include>MediaFlagValues</include>
 								<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[AudioCodecFlagVar]</texture>
 							</control>
 							<control type="image">
-								<left>1600</left>
+								<left>1554</left>
 								<include>MediaFlagValues</include>
 								<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
 							</control>
