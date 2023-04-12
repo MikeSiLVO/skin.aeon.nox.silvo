@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">6</defaultcontrol>
-	<include>DialogOpenCloseAnimation</include>	
+	<include>DialogOpenCloseAnimation</include>
 	<onunload>ClearProperty(Reset.Color,1140)</onunload>
 	<controls>
 		<control type="group">
@@ -29,6 +29,7 @@
 				<height>760</height>
 				<onleft>9001</onleft>
 				<onright>9001</onright>
+				<ondown>9001</ondown>
 				<preloaditems>4</preloaditems>
 				<itemlayout height="76" width="128">
 					<control type="image">
@@ -69,14 +70,14 @@
 					<height>60</height>
 					<label/>
 					<onup>6</onup>
-					<ondown>6</ondown>
+					<ondown>Control.SetFocus(6,5,absolute)</ondown>
 				</control>
 				<control type="button" id="99">
 					<width>auto</width>
 					<height>60</height>
 					<label>$LOCALIZE[13007] $LOCALIZE[737]</label>
 					<onup>6</onup>
-					<ondown>6</ondown>
+					<ondown>Control.SetFocus(6,6,absolute)</ondown>
 					<onclick>Skin.Reset($INFO[Window(1140).Property(Reset.Color)])</onclick>
 					<onclick>SendClick(7)</onclick>
 					<visible>!String.IsEmpty(Window(1140).Property(Reset.Color))</visible>
