@@ -1723,7 +1723,7 @@
 		<!-- MyFlix -->
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(movies) + !String.IsEmpty(Skin.String(509.Movies.DisableOverlay))">$INFO[Skin.String(509.Movies.DisableOverlay)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(sets) + !String.IsEmpty(Skin.String(509.Sets.DisableOverlay))">$INFO[Skin.String(509.Sets.DisableOverlay)]</value>
-		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(tvshows) + !String.IsEmpty(Skin.String(509.TV.DisableOverlay))">$INFO[Skin.String(509.TV.DisableOverlay)]</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + [Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Skin.String(509.TV.DisableOverlay))">$INFO[Skin.String(509.TV.DisableOverlay)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(episodes) + !String.IsEmpty(Skin.String(509.Episodes.DisableOverlay))">$INFO[Skin.String(509.Episodes.DisableOverlay)]</value>
 		<!-- BigFan -->
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigFan) + Container.Content(movies) + !String.IsEmpty(Skin.String(591.Movies.DisableOverlay))">$INFO[Skin.String(591.Movies.DisableOverlay)]</value>
@@ -1828,8 +1828,8 @@
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(movies) + String.IsEqual(Skin.String(509.Movies.DisableOverlay),$LOCALIZE[305])">Skin.Reset(509.Movies.DisableOverlay)</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(sets) + String.IsEmpty(Skin.String(509.Sets.DisableOverlay))">Skin.SetString(509.Sets.DisableOverlay,$LOCALIZE[305])</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(sets) + String.IsEqual(Skin.String(509.Sets.DisableOverlay),$LOCALIZE[305])">Skin.Reset(509.Sets.DisableOverlay)</value>
-		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(tvshows) + String.IsEmpty(Skin.String(509.TV.DisableOverlay))">Skin.SetString(509.TV.DisableOverlay,$LOCALIZE[305])</value>
-		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(tvshows) + String.IsEqual(Skin.String(509.TV.DisableOverlay),$LOCALIZE[305])">Skin.Reset(509.TV.DisableOverlay)</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + [Container.Content(tvshows) | Container.Content(seasons)] + String.IsEmpty(Skin.String(509.TV.DisableOverlay))">Skin.SetString(509.TV.DisableOverlay,$LOCALIZE[305])</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + [Container.Content(tvshows) | Container.Content(seasons)] + String.IsEqual(Skin.String(509.TV.DisableOverlay),$LOCALIZE[305])">Skin.Reset(509.TV.DisableOverlay)</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(episodes) + String.IsEmpty(Skin.String(509.Episodes.DisableOverlay))">Skin.SetString(509.Episodes.DisableOverlay,$LOCALIZE[305])</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + Container.Content(episodes) + String.IsEqual(Skin.String(509.Episodes.DisableOverlay),$LOCALIZE[305])">Skin.Reset(509.Episodes.DisableOverlay)</value>
 		<!-- BigFan-->
