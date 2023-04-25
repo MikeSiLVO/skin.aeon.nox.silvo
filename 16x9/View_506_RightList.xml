@@ -6,7 +6,7 @@
 			<visible>Control.IsVisible(506) + !Window.IsActive(addoninformation)</visible>
 			<include>ViewAnimation</include>
 			<control type="image">
-				<left>25</left>
+				<left>32</left>
 				<top>50</top>
 				<width>400</width>
 				<height>155</height>
@@ -19,10 +19,10 @@
 				<top>380</top>
 				<visible>[!Skin.HasSetting(Enable.Rightlist.HidePoster.Movies) + Container.Content(movies)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.Sets) + Container.Content(sets)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.tvshows) + Container.Content(tvshows)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.seasons) + Container.Content(seasons)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.episodes) + Container.Content(episodes)]</visible>
 				<control type="group">
-					<top>-200</top>
-					<left>30</left>
-					<width>380</width>
-					<height>380</height>
+					<top>-170</top>
+					<left>40</left>
+					<width>370</width>
+					<height>370</height>
 					<visible>[Container.Content(movies) | Container.Content(sets)] + Skin.HasSetting(discrightlist)</visible>
 					<animation effect="slide" end="0,30" time="0" tween="cubic" easing="inout" condition="!Skin.HasSetting(rightlistcovers) + Skin.HasSetting(discrightlist)">Conditional</animation>
 					<include>SlideLeftSpinningDiscAnimation</include>
@@ -40,27 +40,29 @@
 					</control>
 				</control>
 				<control type="multiimage">
-					<left>20</left>
-					<top>20</top>
-					<width>400</width>
-					<height>580</height>
+					<left>40</left>
+					<top>40</top>
+					<width>370</width>
+					<height>555</height>
 					<aspectratio aligny="bottom">stretch</aspectratio>
 					<imagepath background="true">$VAR[FocusedPosterThumbVar]</imagepath>
 					<fadetime>IconCrossfadeTime</fadetime>
 				</control>
 				<control type="image">
-					<width>440</width>
-					<height>620</height>
+					<left>20</left>
+					<top>20</top>
+					<width>410</width>
+					<height>595</height>
 					<aspectratio aligny="bottom">stretch</aspectratio>
 					<texture colordiffuse="00FFFFFF">black.png</texture>
 					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
 					<bordersize>20</bordersize>
 				</control>
 				<control type="image">
-					<left>-55</left>
-					<top>-40</top>
-					<width>502</width>
-					<height>680</height>
+					<left>-30</left>
+					<top>-12</top>
+					<width>470</width>
+					<height>640</height>
 					<fadetime>IconCrossfadeTime</fadetime>
 					<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
 					<visible>Skin.HasSetting(rightlistcovers) + !ListItem.IsParentFolder</visible>

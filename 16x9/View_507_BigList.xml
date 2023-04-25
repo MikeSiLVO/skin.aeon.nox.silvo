@@ -30,7 +30,6 @@
 				<ondown>507</ondown>
 				<preloaditems>2</preloaditems>
 				<pagecontrol>50760</pagecontrol>
-				<animation effect="slide" tween="cubic" time="0" end="-50,0" condition="Container.Content(albums) + Skin.HasSetting(alternatebiglistlayout)">Conditional</animation>
 				<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(artists) | Container.Content(albums)]</visible>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<itemlayout width="1808" height="238">
@@ -174,15 +173,6 @@
 						<texture colordiffuse="$VAR[HighlightBarColor]">listselect_fo.png</texture>
 						<visible>Control.HasFocus(507)</visible>
 						<include>VisibleFadeAnimation</include>
-						<visible>[Container.Content(albums) + !Skin.HasSetting(alternatebiglistlayout)] | [Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(artists)]</visible>
-					</control>
-					<control type="image">
-						<left>90</left>
-						<top>-8</top>
-						<width>1713</width>
-						<height>231</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]">listselect_fo.png</texture>
-						<visible>Container.Content(albums) + Skin.HasSetting(alternatebiglistlayout)</visible>
 					</control>
 					<include>view_BigList-LandscapeCommons</include>
 					<control type="group">
@@ -338,7 +328,7 @@
 			<left>18</left>
 			<top>10</top>
 			<control type="image">
-				<left>100</left>
+				<left>70</left>
 				<top>-2</top>
 				<width>200</width>
 				<height>200</height>
