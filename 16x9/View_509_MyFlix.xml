@@ -23,7 +23,7 @@
 				<visible>Skin.HasSetting(Enable.MyFlix.OpenCase) + ListItem.IsCollection</visible>
 			</control>
 			<control type="group">
-				<animation effect="slide" start="0" end="0,120" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)]">Conditional</animation>
+				<animation effect="slide" start="0" end="0,120" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)] | Container.Content(seasons)">Conditional</animation>
 				<control type="group">
 					<animation effect="slide" end="0,320" condition="Skin.HasSetting(Disable.MyFlixInfo)">Conditional</animation>
 					<control type="image" id="50999">
@@ -33,7 +33,7 @@
 						<height>204</height>
 						<aspectratio align="left" aligny="center">keep</aspectratio>
 						<texture background="true">$VAR[ArtworkLogoVar]</texture>
-						<visible>[Container.Content(movies) | Container.Content(sets)] + Skin.HasSetting(Enable.MyFlix.MovieLogo) | [Container.Content(tvshows) | Container.Content(episodes)] + Skin.HasSetting(Enable.MyFlix.TVLogo)</visible>
+						<visible>[Container.Content(movies) | Container.Content(sets)] + Skin.HasSetting(Enable.MyFlix.MovieLogo) | [Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + Skin.HasSetting(Enable.MyFlix.TVLogo)</visible>
 					</control>
 					<control type="group">
 						<top>75</top>
@@ -189,6 +189,16 @@
 							<height>45</height>
 							<textcolor>grey</textcolor>
 							<shadowcolor>shadow</shadowcolor>
+							<font>font15_bold</font>
+							<include>DefaultButtonsValues</include>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>Container.Content(seasons)</visible>
+						</control>
+						<control type="label">
+							<width>800</width>
+							<height>45</height>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
 							<include>DefaultButtonsValues</include>
 							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]: [/COLOR]$INFO[Window(Home).Property(TMDbHelper.ListItem.Status)]</label>
 						</control>
@@ -213,6 +223,16 @@
 					</control>
 					<control type="grouplist">
 						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + [Skin.HasSetting(Disable.NextAired) | String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Status))]</visible>
+						<control type="label">
+							<width>800</width>
+							<height>45</height>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<font>font15_bold</font>
+							<include>DefaultButtonsValues</include>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>Container.Content(seasons)</visible>
+						</control>
 						<control type="label">
 							<width>800</width>
 							<height>45</height>
@@ -313,7 +333,7 @@
 				<top>530</top>
 				<width>1920</width>
 				<height>600</height>
-				<visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)</visible>
+				<visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
 				<onleft>509</onleft>
 				<onright>509</onright>
 				<onup>SetProperty(MediaMenu,True,Home)</onup>
@@ -367,6 +387,47 @@
 						</control>
 						<include>FlixPosterOverlay</include>
 					</control>
+				</focusedlayout>
+				<itemlayout height="525" width="271" condition="Container.Content(seasons)">
+					<control type="image">
+						<include>FlixNoCaseVars</include>
+						<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
+					</control>
+					<control type="image">
+						<include>FlixNoClearCaseVars</include>
+						<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
+					</control>
+					<include>FlixPoster</include>
+					<include>FlixPosterOverlay</include>
+					<control type="image">
+						<left>10</left>
+						<top>75</top>
+						<width>268</width>
+						<height>390</height>
+						<texture border="1">black.png</texture>
+						<colordiffuse>$VAR[MyFlixDimmerVar]</colordiffuse>
+						<bordersize>20</bordersize>
+					</control>
+					<control type="image">
+						<include>FlixCaseVars</include>
+						<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
+					</control>
+				</itemlayout>
+				<focusedlayout height="525" width="271" condition="Container.Content(seasons)">
+					<control type="image">
+						<include>FlixNoCaseVars</include>
+						<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
+					</control>
+					<control type="image">
+						<include>FlixNoClearCaseVars</include>
+						<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
+					</control>
+					<include>FlixPoster</include>
+					<control type="image">
+						<include>FlixCaseVars</include>
+						<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
+					</control>
+					<include>FlixPosterOverlay</include>
 				</focusedlayout>
 				<itemlayout height="270" width="480" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)]">
 					<include>FlixLandscape</include>
