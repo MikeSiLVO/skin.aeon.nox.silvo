@@ -47,10 +47,6 @@
 					<include>MovieShowcaseThumb</include>
 				</control>
 				<control type="image">
-					<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png" fallback="DefaultVideo.png">$VAR[ShowcaseItem0Var]</texture>
-					<include>MovieShowcaseThumbReflection</include>
-				</control>
-				<control type="image">
 					<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
 					<include>MovieShowcaseCase</include>
 					<visible>![ListItem.IsCollection + Skin.HasSetting(Disable.ShowCaseSetCases)]</visible>
@@ -104,14 +100,6 @@
 						<top>22</top>
 						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
 					</control>
-					<control type="image">
-						<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png" fallback="DefaultVideo.png">$VAR[ShowcaseItem0Var]</texture>
-						<include>MovieShowcaseThumbReflection</include>
-					</control>
-					<control type="image">
-						<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
-						<include>MovieShowcaseCaseReflection</include>
-					</control>
 				</control>
 			</control>
 		</focusedlayout>
@@ -150,7 +138,7 @@
 		<control type="group">
 			<visible>Control.IsVisible(53)</visible>
 			<animation effect="slide" end="0,55" time="0" condition="Container.Content(genres)">Conditional</animation>
-			<top>-50</top>
+			<top>-36</top>
 			<include>ViewAnimation</include>
 			<control type="group">
 				<top>570</top>
@@ -279,15 +267,6 @@
 								<top>22</top>
 								<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon-1</include>
 							</control>
-							<control type="image">
-								<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png" fallback="DefaultVideo.png">$VAR[ShowcaseItem-1Var]</texture>
-								<aspectratio scalediffuse="false" aligny="top" align="left">scale</aspectratio>
-								<include>MovieShowcaseThumbReflection</include>
-							</control>
-							<control type="image">
-								<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png">$VAR[CaseTypePathVar]$VAR[ShowcaseRes-1Var]p.png</texture>
-								<include>MovieShowcaseCaseReflection</include>
-							</control>
 						</control>
 					</control>
 				</control>
@@ -413,14 +392,6 @@
 								<left>28</left>
 								<top>22</top>
 								<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon1</include>
-							</control>
-							<control type="image">
-								<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png" fallback="DefaultVideo.png">$VAR[ShowcaseItem1Var]</texture>
-								<include>MovieShowcaseThumbReflection</include>
-							</control>
-							<control type="image">
-								<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png">$VAR[CaseTypePathVar]$VAR[ShowcaseRes1Var]p.png</texture>
-								<include>MovieShowcaseCaseReflection</include>
 							</control>
 						</control>
 					</control>
@@ -609,23 +580,6 @@
 		<bordersize>20</bordersize>
 		<visible>Skin.HasSetting(useclearcases) + Skin.HasSetting(showcasemod) + [Container.Content(movies) | Container.Content(sets)] + !ListItem.IsParentFolder</visible>
 	</include>
-	<include name="MovieShowcaseThumbReflection">
-		<aspectratio scalediffuse="false" aligny="top">scale</aspectratio>
-		<left>16</left>
-		<top>420</top>
-		<width>264</width>
-		<height>396</height>
-		<colordiffuse>d1FFFFFF</colordiffuse>
-	</include>
-	<include name="MovieShowcaseCaseReflection">
-		<aspectratio scalediffuse="false" aligny="top">stretch</aspectratio>
-		<left>-35</left>
-		<top>400</top>
-		<width>335</width>
-		<height>406</height>
-		<colordiffuse>d1FFFFFF</colordiffuse>
-		<visible>Skin.HasSetting(Enable.ShowCase.Covers) + !Container.Content(genres) + !ListItem.IsParentFolder</visible>
-	</include>
 	<include name="WatchedOverlayShowCase">
 		<left>220</left>
 		<top>-10</top>
@@ -657,15 +611,6 @@
 				<texture background="true">$VAR[CaseTypePathVar]$PARAM[ShowcaseResVar]</texture>
 				<include>MovieShowcaseCase</include>
 				<visible>![ListItem($PARAM[ListItem.Position]).IsCollection + Skin.HasSetting(Disable.ShowCaseSetCases)] + !String.IsEmpty(ListItem($PARAM[ListItem.Position]).Title)</visible>
-			</control>
-			<control type="image">
-				<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png" fallback="DefaultVideo.png">$PARAM[ShowcaseItemVar]</texture>
-				<include>MovieShowcaseThumbReflection</include>
-			</control>
-			<control type="image">
-				<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png">$VAR[CaseTypePathVar]$PARAM[ShowcaseResVar]</texture>
-				<include>MovieShowcaseCaseReflection</include>
-				<visible>!String.IsEmpty(ListItem($PARAM[ListItem.Position]).Title)</visible>
 			</control>
 			<control type="group">
 				<left>28</left>
@@ -738,16 +683,6 @@
 	<include name="MovieShowCaseItem0">
 		<control type="group">
 			<visible>!listItem.IsCollection + Skin.HasSetting(boxsetmod) | !Skin.HasSetting(boxsetmod)</visible>
-			<control type="image">
-				<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png" fallback="DefaultVideo.png">$VAR[ShowcaseFocusedItem0Var]</texture>
-				<include>MovieShowcaseThumbReflection</include>
-				<include>OpenCaseAnimation</include>
-			</control>
-			<control type="image">
-				<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
-				<include>MovieShowcaseCaseReflection</include>
-				<include>OpenCaseAnimation</include>
-			</control>
 			<control type="image">
 				<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
 				<include>MovieShowcaseNoCase</include>

@@ -243,15 +243,15 @@
 					<control type="grouplist">
 						<top>103</top>
 						<width>1200</width>
-						<height>100</height>
+						<height>90</height>
 						<orientation>horizontal</orientation>
 						<usecontrolcoords>true</usecontrolcoords>
-						<itemgap>8</itemgap>
+						<itemgap>5</itemgap>
 						<!-- Minute Duration -->
 						<control type="group">
 							<visible>!String.IsEqual(ListItem.DBTYPE,set) + !Skin.HasSetting(Enable.HourMinuteDuration) + [!String.IsEmpty(Window(Home).Property(NextAired.Runtime)) | !String.IsEmpty(ListItem.Duration)]</visible>
 							<width>120</width>
-							<height>100</height>
+							<height>90</height>
 							<control type="label">
 								<width>auto</width>
 								<height>60</height>
@@ -273,7 +273,7 @@
 							<control type="label">
 								<top>50</top>
 								<width>auto</width>
-								<height>40</height>
+								<height>30</height>
 								<align>center</align>
 								<label>[LOWERCASE]$LOCALIZE[12391][/LOWERCASE]</label>
 								<font>font12</font>
@@ -298,7 +298,8 @@
 							<visible>String.IsEqual(ListItem.DBTYPE,episode)</visible>
 						</control>
 						<control type="image">
-							<width>120</width>
+							<width>135</width>
+							<height>90</height>
 							<include>MediaFlagValues</include>
 							<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
 							<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
@@ -318,7 +319,7 @@
 							<control type="label">
 								<top>50</top>
 								<width>auto</width>
-								<height>40</height>
+								<height>30</height>
 								<align>center</align>
 								<label>[LOWERCASE]$VAR[RatingAndVotesVar][/LOWERCASE]</label>
 								<font>font12</font>
@@ -328,9 +329,7 @@
 						<control type="group">
 							<visible>String.IsEqual(ListItem.DBTYPE,set) + !String.IsEmpty(ListItem.Rating)</visible>
 							<control type="label">
-								<top>15</top>
 								<width>auto</width>
-								<height>60</height>
 								<align>center</align>
 								<label>$INFO[ListItem.Rating,$LOCALIZE[31146] ]</label>
 								<font>font16_title_bold</font>
@@ -352,7 +351,7 @@
 							<control type="label">
 								<top>50</top>
 								<width>auto</width>
-								<height>40</height>
+								<height>30</height>
 								<align>center</align>
 								<label>[LOWERCASE]$LOCALIZE[19256][/LOWERCASE]</label>
 								<font>font12</font>
@@ -361,23 +360,21 @@
 						</control>
 						<!-- User/RottenTomatoes/Metacritic Ratings -->
 						<control type="grouplist">
-							<top>2</top>
 							<width>925</width>
+							<height>90</height>
 							<orientation>horizontal</orientation>
-							<itemgap>5</itemgap>
+							<itemgap>10</itemgap>
 							<control type="grouplist">
 								<visible>!String.IsEmpty(ListItem.UserRating)</visible>
 								<width>95</width>
 								<orientation>horizontal</orientation>
 								<control type="image">
 									<width>50</width>
-									<height>90</height>
 									<aspectratio>keep</aspectratio>
 									<texture colordiffuse="$VAR[ThemeLabelColor]">favourites.png</texture>
 									<animation effect="fade" end="67" condition="true">Conditional</animation>
 								</control>
 								<control type="label">
-									<height>90</height>
 									<width>auto</width>
 									<font>font16_title_bold</font>
 									<textcolor>grey</textcolor>
@@ -391,16 +388,13 @@
 								<usecontrolcoords>true</usecontrolcoords>
 								<itemgap>3</itemgap>
 								<control type="image">
-									<top>-4</top>
-									<width>75</width>
-									<height>100</height>
+									<width>68</width>
 									<aspectratio>keep</aspectratio>
 									<colordiffuse>grey</colordiffuse>
 									<texture>logos/imdb.png</texture>
 								</control>
 								<control type="label">
 									<width>auto</width>
-									<height>90</height>
 									<align>center</align>
 									<font>font16_title_bold</font>
 									<textcolor>grey</textcolor>
@@ -414,15 +408,12 @@
 								<usecontrolcoords>true</usecontrolcoords>
 								<itemgap>3</itemgap>
 								<control type="image">
-									<top>16</top>
-									<width>75</width>
-									<height>60</height>
+									<width>68</width>
 									<aspectratio>keep</aspectratio>
 									<colordiffuse>grey</colordiffuse>
 									<texture>$VAR[RottenFreshLogoVar]</texture>
 								</control>
 								<control type="label">
-									<height>90</height>
 									<width>auto</width>
 									<font>font16_title_bold</font>
 									<textcolor>grey</textcolor>
@@ -436,19 +427,16 @@
 								<usecontrolcoords>true</usecontrolcoords>
 								<itemgap>3</itemgap>
 								<control type="image">
-									<top>15</top>
-									<width>75</width>
-									<height>60</height>
+									<width>68</width>
 									<aspectratio>keep</aspectratio>
 									<colordiffuse>grey</colordiffuse>
 									<texture>$VAR[RottenFreshAudienceLogoVar]</texture>
 								</control>
 								<control type="label">
-									<height>90</height>
 									<width>auto</width>
 									<font>font16_title_bold</font>
 									<textcolor>grey</textcolor>
-									<label>$VAR[RottenFreshAudienceLabelVar]$VAR[RottenFreshAudienceLabel2Var] </label>
+									<label>$VAR[RottenFreshAudienceLabelVar]$VAR[RottenFreshAudienceLabel2Var]</label>
 								</control>
 							</control>
 							<control type="grouplist">
@@ -458,19 +446,16 @@
 								<usecontrolcoords>true</usecontrolcoords>
 								<itemgap>3</itemgap>
 								<control type="image">
-									<top>15</top>
-									<width>60</width>
-									<height>60</height>
+									<width>68</width>
 									<aspectratio>keep</aspectratio>
 									<colordiffuse>grey</colordiffuse>
 									<texture>logos/metacritic.png</texture>
 								</control>
 								<control type="label">
-									<height>90</height>
 									<width>auto</width>
 									<font>font16_title_bold</font>
 									<textcolor>grey</textcolor>
-									<label> $VAR[MetacriticLabelVar]$VAR[MetacriticLabel2Var]</label>
+									<label>$VAR[MetacriticLabelVar]$VAR[MetacriticLabel2Var]</label>
 								</control>
 							</control>
 						</control>
@@ -1063,24 +1048,10 @@
 										<visible>String.IsEmpty(Control.GetLabel(800011))</visible>
 									</control>
 								</control>
-								<control type="grouplist">
-									<width>195</width>
-									<height>90</height>
-									<orientation>horizontal</orientation>
-									<usecontrolcoords>true</usecontrolcoords>
-									<itemgap>-32</itemgap>
-									<control type="image">
-										<width>160</width>
-										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
-									</control>
-									<control type="image">
-										<top>2</top>
-										<width>64</width>
-										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
-										<visible>!String.IsEmpty(ListItem.HdrType)</visible>
-									</control>
+								<control type="image">
+									<width>160</width>
+									<include>MediaFlagValues</include>
+									<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
 								</control>
 								<control type="image">
 									<width>160</width>
@@ -1105,10 +1076,16 @@
 									<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
 									<visible>!String.IsEmpty(ListItem.AudioChannels)</visible>
 								</control>
+								<control type="image">
+									<width>160</width>
+									<include>MediaFlagValues</include>
+									<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
+									<visible>!String.IsEmpty(ListItem.HdrType)</visible>
+								</control>
 								<control type="grouplist">
 									<top>15</top>
 									<height>90</height>
-									<width>35</width>
+									<width>30</width>
 									<itemgap>-5</itemgap>
 									<visible>String.IsEqual(Skin.String(LanguageFlags),1) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
 									<control type="image">
@@ -1138,7 +1115,7 @@
 								<control type="grouplist">
 									<top>15</top>
 									<height>90</height>
-									<width>35</width>
+									<width>30</width>
 									<itemgap>-5</itemgap>
 									<visible>String.IsEqual(Skin.String(LanguageFlags),2) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
 									<control type="image">

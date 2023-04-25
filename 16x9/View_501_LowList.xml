@@ -560,42 +560,44 @@
 				</control>
 			</control>
 			<control type="group">
-				<left>1265</left>
+				<left>1256</left>
 				<top>1000</top>
-				<width>1840</width>
 				<control type="group">
 					<visible>!ListItem.IsCollection</visible>
 					<include>VisibleFadeAnimation</include>
 					<control type="image">
+						<width>126</width>
 						<include>MediaFlagValues</include>
 						<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
 						<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
 					</control>
 					<control type="image">
-						<left>110</left>
-						<top>2</top>
-						<width>60</width>
-						<include>MediaFlagValues</include>
-						<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
-						<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
-					</control>
-					<control type="image">
-						<left>177</left>
+						<left>140</left>
+						<width>126</width>
 						<include>MediaFlagValues</include>
 						<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
 						<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
 					</control>
 					<control type="image">
-						<left>344</left>
+						<left>280</left>
+						<width>126</width>
 						<include>MediaFlagValues</include>
 						<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[AudioCodecFlagVar]</texture>
 						<visible>!String.IsEmpty(ListItem.AudioCodec)</visible>
 					</control>
 					<control type="image">
-						<left>511</left>
+						<left>418</left>
+						<width>126</width>
 						<include>MediaFlagValues</include>
 						<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
 						<visible>!String.IsEmpty(ListItem.AudioChannels) + !Container.Content(seasons)</visible>
+					</control>
+					<control type="image">
+						<left>524</left>
+						<width>126</width>
+						<include>MediaFlagValues</include>
+						<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
+						<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
 					</control>
 				</control>
 				<control type="group">

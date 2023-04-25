@@ -6,17 +6,17 @@
 			<visible>Control.IsVisible(506) + !Window.IsActive(addoninformation)</visible>
 			<include>ViewAnimation</include>
 			<control type="image">
-				<left>30</left>
-				<top>70</top>
-				<width>390</width>
-				<height>164</height>
+				<left>25</left>
+				<top>50</top>
+				<width>400</width>
+				<height>155</height>
 				<aspectratio aligny="bottom">keep</aspectratio>
 				<texture background="true">$VAR[ArtworkLogoVar]</texture>
 				<visible>[Skin.HasSetting(rightlistlogomovie) + Container.Content(movies) | Container.Content(sets)] | [Skin.HasSetting(rightlistlogotv) + [Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]]</visible>
 			</control>
 			<control type="group">
 				<left>5</left>
-				<top>445</top>
+				<top>380</top>
 				<visible>[!Skin.HasSetting(Enable.Rightlist.HidePoster.Movies) + Container.Content(movies)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.Sets) + Container.Content(sets)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.tvshows) + Container.Content(tvshows)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.seasons) + Container.Content(seasons)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.episodes) + Container.Content(episodes)]</visible>
 				<control type="group">
 					<top>-200</top>
@@ -510,7 +510,7 @@
 	</include>
 	<include name="contents506list">
 		<left>1010</left>
-		<top>74</top>
+		<top>70</top>
 		<width>1200</width>
 		<height>910</height>
 		<onleft condition="!Control.IsVisible(50664)">SetProperty(MediaMenu,True,Home)</onleft>

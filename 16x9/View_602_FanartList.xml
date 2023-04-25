@@ -5,6 +5,7 @@
 		<control type="group">
 			<visible>Control.IsVisible(602)</visible>
 			<include>ViewAnimation</include>
+			<top>-30</top>
 			<control type="group">
 				<left>1150</left>
 				<top>136</top>
@@ -15,34 +16,8 @@
 					<height>830</height>
 					<texture colordiffuse="CCFFFFFF" border="40">listpanel_back.png</texture>
 				</control>
-				<control type="textbox" id="70">
-					<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Tagline,, - ][/COLOR]$VAR[VideoPlotVar]</label>
-					<left>13</left>
-					<top>455</top>
-					<width>660</width>
-					<height>250</height>
-					<font>font14_textbox</font>
-					<pagecontrol>60261</pagecontrol>
-					<include>DefaultButtonsValues</include>
-					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(60261)</autoscroll>
-					<visible>!ListItem.IsCollection</visible>
-				</control>
-				<control type="scrollbar" id="60261">
-					<left>690</left>
-					<top>455</top>
-					<width>12</width>
-					<height>250</height>
-					<onleft>60260</onleft>
-					<onright condition="!Control.IsVisible(615)">4400</onright>
-					<onright condition="Control.IsVisible(615)">615</onright>
-					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
-					<showonepage>false</showonepage>
-					<visible>!ListItem.IsCollection</visible>
-				</control>
 				<control type="textbox" id="71">
-					<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Tagline,, - ][/COLOR]$VAR[VideoPlotVar]</label>
+					<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Tagline][/COLOR][CR]$VAR[VideoPlotVar]</label>
 					<left>13</left>
 					<top>455</top>
 					<width>660</width>
@@ -51,7 +26,6 @@
 					<pagecontrol>60262</pagecontrol>
 					<include>DefaultButtonsValues</include>
 					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(60261)</autoscroll>
-					<visible>ListItem.IsCollection</visible>
 				</control>
 				<control type="scrollbar" id="60262">
 					<left>690</left>
@@ -65,145 +39,6 @@
 					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
-					<visible>ListItem.IsCollection</visible>
-				</control>
-			</control>
-			<control type="group">
-				<left>1120</left>
-				<top>863</top>
-				<height>90</height>
-				<include>VisibleFadeAnimation</include>
-				<visible>Container.Content(movies) | Container.Content(episodes)</visible>
-				<control type="image">
-					<width>168</width>
-					<colordiffuse>grey2</colordiffuse>
-					<include>MediaFlagValues</include>
-					<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
-					<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
-				</control>
-				<control type="image">
-					<left>124</left>
-					<top>2</top>
-					<width>64</width>
-					<include>MediaFlagValues</include>
-					<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
-				</control>
-				<control type="image">
-					<left>200</left>
-					<width>168</width>
-					<colordiffuse>grey2</colordiffuse>
-					<include>MediaFlagValues</include>
-					<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
-					<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
-				</control>
-				<control type="image">
-					<left>380</left>
-					<width>168</width>
-					<colordiffuse>grey2</colordiffuse>
-					<include>MediaFlagValues</include>
-					<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[AudioCodecFlagVar]</texture>
-					<visible>!String.IsEmpty(ListItem.AudioCodec)</visible>
-				</control>
-				<control type="image">
-					<left>560</left>
-					<width>168</width>
-					<colordiffuse>grey2</colordiffuse>
-					<include>MediaFlagValues</include>
-					<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
-					<visible>!String.IsEmpty(ListItem.AudioChannels)</visible>
-				</control>
-			</control>
-			<control type="group">
-				<left>1180</left>
-				<top>863</top>
-				<width>1815</width>
-				<height>90</height>
-				<include>VisibleFadeAnimation</include>
-				<visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
-				<control type="image">
-					<width>168</width>
-					<colordiffuse>grey2</colordiffuse>
-					<include>MediaFlagValues</include>
-					<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
-					<visible>!String.IsEmpty(ListItem.Studio) + Container.Content(seasons)</visible>
-				</control>
-				<control type="group">
-					<top>-5</top>
-					<width>175</width>
-					<visible>!String.IsEmpty(ListItem.Property(TotalSeasons))</visible>
-					<control type="label">
-						<width>165</width>
-						<height>60</height>
-						<align>center</align>
-						<label>[B]$INFO[ListItem.Property(TotalSeasons)][/B]</label>
-						<font>font48</font>
-						<wrapmultiline>true</wrapmultiline>
-						<textcolor>grey</textcolor>
-					</control>
-					<control type="label">
-						<top>52</top>
-						<width>165</width>
-						<height>30</height>
-						<align>center</align>
-						<label>[LOWERCASE]$VAR[OneOrMoreSeasonsVar][/LOWERCASE]</label>
-						<font>font12</font>
-						<textcolor>grey</textcolor>
-					</control>
-				</control>
-				<control type="group">
-					<visible>!String.IsEmpty(ListItem.Property(TotalEpisodes))</visible>
-					<width>175</width>
-					<left>165</left>
-					<top>-5</top>
-					<control type="label">
-						<width>165</width>
-						<height>60</height>
-						<align>center</align>
-						<label>[B]$INFO[ListItem.Property(TotalEpisodes)][/B]</label>
-						<font>font48</font>
-						<wrapmultiline>true</wrapmultiline>
-						<textcolor>grey</textcolor>
-					</control>
-					<control type="label">
-						<width>165</width>
-						<top>52</top>
-						<height>30</height>
-						<align>center</align>
-						<label>[LOWERCASE]$VAR[OneOrMoreEpisodesVar][/LOWERCASE]</label>
-						<font>font12</font>
-						<textcolor>grey</textcolor>
-					</control>
-				</control>
-				<control type="group">
-					<visible>!String.IsEmpty(ListItem.Property(UnWatchedEpisodes))</visible>
-					<top>-5</top>
-					<left>330</left>
-					<width>175</width>
-					<control type="label">
-						<width>165</width>
-						<top>2</top>
-						<height>60</height>
-						<align>center</align>
-						<label>[B]$INFO[ListItem.Property(UnWatchedEpisodes)][/B]</label>
-						<font>font48</font>
-						<wrapmultiline>true</wrapmultiline>
-						<textcolor>$VAR[UnWatchedEpColor]</textcolor>
-					</control>
-					<control type="label">
-						<width>165</width>
-						<top>52</top>
-						<height>30</height>
-						<align>center</align>
-						<label>[LOWERCASE]$LOCALIZE[16101][/LOWERCASE]</label>
-						<font>font12</font>
-						<textcolor>$VAR[UnWatchedEpColor]</textcolor>
-					</control>
-				</control>
-				<control type="image">
-					<left>495</left>
-					<include>MediaFlagValues</include>
-					<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
-					<visible>!ListItem.IsParentFolder</visible>
 				</control>
 			</control>
 			<control type="group">

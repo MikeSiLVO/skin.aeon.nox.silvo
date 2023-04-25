@@ -56,7 +56,7 @@
 	<include name="View_52_Landscape">
 		<control type="group">
 			<visible>Control.IsVisible(52)</visible>
-			<top>566</top>
+			<top>580</top>
 			<include>ViewAnimation</include>
 			<include condition="Skin.HasSetting(LandscapeWrapList)">LandscapeFixed</include>
 			<include condition="!Skin.HasSetting(LandscapeWrapList)">LandscapeWrap</include>
@@ -209,13 +209,6 @@
 		<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
 		<bordersize>20</bordersize>
 	</include>
-	<include name="LandscapeThumbReflectionCommonValues">
-		<left>20</left>
-		<top>391</top>
-		<width>660</width>
-		<height>370</height>
-		<aspectratio scalediffuse="false" aligny="center">scale</aspectratio>
-	</include>
 	<include name="WatchedOverlayLandscape">
 		<left>617</left>
 		<top>19</top>
@@ -230,10 +223,6 @@
 			<include>LandscapeThumbCommonValues</include>
 			<texture background="true" diffuse="thumbs/thumb_mask.png">$VAR[LandscapeItem-3Var]</texture>
 		</control>
-		<control type="image">
-			<include>LandscapeThumbReflectionCommonValues</include>
-			<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png">$VAR[LandscapeItem-3Var]</texture>
-		</control>
 		<control type="group">
 			<left>42</left>
 			<top>42</top>
@@ -245,12 +234,6 @@
 			<include>LandscapeThumbCommonValues</include>
 			<texture background="true" diffuse="thumbs/thumb_mask.png">$VAR[LandscapeItem-2Var]</texture>
 		</control>
-		<control type="image">
-			<aspectratio scalediffuse="false" aligny="top" align="left">scale</aspectratio>
-			<width>299</width>
-			<include>LandscapeThumbReflectionCommonValues</include>
-			<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png">$VAR[LandscapeItem-2Var]</texture>
-		</control>
 		<control type="group">
 			<left>42</left>
 			<top>42</top>
@@ -261,12 +244,6 @@
 		<control type="image">
 			<include>LandscapeThumbCommonValues</include>
 			<texture background="true" diffuse="thumbs/thumb_mask.png">$VAR[LandscapeItem-1Var]</texture>
-		</control>
-		<control type="image">
-			<aspectratio scalediffuse="false" aligny="top" align="left">scale</aspectratio>
-			<width>314</width>
-			<include>LandscapeThumbReflectionCommonValues</include>
-			<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png">$VAR[LandscapeItem-1Var]</texture>
 		</control>
 		<control type="image">
 			<include>WatchedOverlayLandscape</include>
@@ -284,10 +261,6 @@
 			<texture background="true" diffuse="thumbs/thumb_mask.png">$VAR[LandscapeItem0Var]</texture>
 		</control>
 		<control type="image">
-			<include>LandscapeThumbReflectionCommonValues</include>
-			<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png">$VAR[LandscapeItem0Var]</texture>
-		</control>
-		<control type="image">
 			<include>WatchedOverlayLandscape</include>
 			<texture>$VAR[IconOverlay0Var]</texture>
 		</control>
@@ -301,13 +274,6 @@
 		<control type="image">
 			<include>LandscapeThumbCommonValues</include>
 			<texture background="true" diffuse="thumbs/thumb_mask.png">$VAR[LandscapeItem1Var]</texture>
-		</control>
-		<control type="image">
-			<aspectratio scalediffuse="false" aligny="top" align="right">scale</aspectratio>
-			<left>370</left>
-			<width>310</width>
-			<include>LandscapeThumbReflectionCommonValues</include>
-			<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png">$VAR[LandscapeItem1Var]</texture>
 		</control>
 		<control type="image">
 			<include>WatchedOverlayLandscape</include>
@@ -325,13 +291,6 @@
 			<texture background="true" diffuse="thumbs/thumb_mask.png">$VAR[LandscapeItem2Var]</texture>
 		</control>
 		<control type="image">
-			<aspectratio scalediffuse="false" aligny="top" align="right">scale</aspectratio>
-			<left>380</left>
-			<width>300</width>
-			<include>LandscapeThumbReflectionCommonValues</include>
-			<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png">$VAR[LandscapeItem2Var]</texture>
-		</control>
-		<control type="image">
 			<include>WatchedOverlayLandscape</include>
 			<texture>$VAR[IconOverlay2Var]</texture>
 		</control>
@@ -340,10 +299,6 @@
 		<control type="image">
 			<include>LandscapeThumbCommonValues</include>
 			<texture background="true" diffuse="thumbs/thumb_mask.png">$VAR[LandscapeItem3Var]</texture>
-		</control>
-		<control type="image">
-			<include>LandscapeThumbReflectionCommonValues</include>
-			<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png">$VAR[LandscapeItem3Var]</texture>
 		</control>
 		<control type="image">
 			<include>WatchedOverlayLandscape</include>

@@ -2939,15 +2939,15 @@
 				<animation effect="fade" end="100" time="239.76">Visible</animation>
 				<control type="group">
 					<visible>!String.IsEmpty(VideoPlayer.Studio)</visible>
-					<width>270</width>
+					<width>240</width>
 					<control type="image" id="142099">
-						<width>270</width>
+						<width>240</width>
 						<include>MediaFlagValues</include>
 						<bordersize>2</bordersize>
 						<texture>$VAR[PathFlagsStudios]$INFO[VideoPlayer.Studio,,.png]</texture>
 					</control>
 					<control type="label">
-						<width>270</width>
+						<width>240</width>
 						<height>90</height>
 						<align>center</align>
 						<label>$INFO[VideoPlayer.Studio]</label>
@@ -2959,50 +2959,43 @@
 					</control>
 				</control>
 				<control type="image">
-					<width>270</width>
+					<width>240</width>
 					<include>MediaFlagValues</include>
 					<texture>$VAR[MediaFlagsPathVar]/mpaa/$VAR[VideoRatingFlagVar]</texture>
 					<visible>!String.IsEmpty(VideoPlayer.MPAA)</visible>
 				</control>
-				<control type="grouplist">
-					<width>270</width>
-					<height>100</height>
-					<orientation>horizontal</orientation>
-					<usecontrolcoords>true</usecontrolcoords>
-					<itemgap>-20</itemgap>
-					<control type="image">
-						<include>MediaFlagValues</include>
-						<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[VideoPlayer.VideoResolution,,.png]</texture>
-					</control>
-					<control type="image">
-						<top>2</top>
-						<width>64</width>
-						<include>MediaFlagValues</include>
-						<texture>$VAR[MediaFlagsPathVar]/$INFO[VideoPlayer.HdrType,hdr/,.png]</texture>
-						<visible>!String.IsEmpty(VideoPlayer.HdrType)</visible>
-					</control>
+				<control type="image">
+					<width>240</width>
+					<include>MediaFlagValues</include>
+					<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[VideoPlayer.VideoResolution,,.png]</texture>
 				</control>
 				<control type="image">
-					<width>270</width>
+					<width>240</width>
 					<include>MediaFlagValues</include>
 					<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[VideoSourceFlagVar]</texture>
 				</control>
 				<control type="image">
-					<width>270</width>
+					<width>240</width>
 					<include>MediaFlagValues</include>
 					<texture>$VAR[MediaFlagsPathVar]/aspectratio/$INFO[VideoPlayer.VideoAspect,,.png]</texture>
 				</control>
 				<control type="image">
-					<width>270</width>
+					<width>240</width>
 					<include>MediaFlagValues</include>
 					<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[PlayerAudioCodecFlagVar]</texture>
 					<visible>!String.IsEmpty(VideoPlayer.AudioCodec)</visible>
 				</control>
 				<control type="image">
-					<width>270</width>
+					<width>240</width>
 					<include>MediaFlagValues</include>
 					<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[VideoPlayer.AudioChannels,,.png]</texture>
 					<visible>!String.IsEmpty(VideoPlayer.AudioChannels)</visible>
+				</control>
+				<control type="image">
+					<width>240</width>
+					<include>MediaFlagValues</include>
+					<texture>$VAR[MediaFlagsPathVar]/$INFO[VideoPlayer.HdrType,hdr/,.png]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.HdrType)</visible>
 				</control>
 			</control>
 			<control type="image">
