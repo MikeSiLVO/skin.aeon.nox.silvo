@@ -18,25 +18,6 @@
 			<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
 			<visible>[Container.Content(movies) |Container.Content(tvshows) | Container.Content(seasons)] + Skin.HasSetting(Enable.Shift.Covers)</visible>
 		</control>
-		<control type="group">
-			<animation effect="fade" start="100" end="30" time="400">Focus</animation>
-			<animation effect="fade" start="30" end="100" time="400">UnFocus</animation>
-			<top>614</top>
-			<control type="image">
-				<left>8</left>
-				<width>300</width>
-				<height>430</height>
-				<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png">$VAR[PosterThumbVar]</texture>
-			</control>
-			<control type="image">
-				<left>-45</left>
-				<top>-20</top>
-				<width>375</width>
-				<height>450</height>
-				<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
-				<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons)] + Skin.HasSetting(Enable.Shift.Covers)</visible>
-			</control>
-		</control>
 		<control type="image">
 			<left>269</left>
 			<top>169</top>
