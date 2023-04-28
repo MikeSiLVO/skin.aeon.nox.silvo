@@ -2,30 +2,42 @@
 <includes>
 	<!-- Built-in-Select -->
 	<include name="DefaultSelect">
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture>colors/black50.png</texture>
+			<animation effect="fade" time="300">WindowOpen</animation>
+			<animation effect="fade" time="300">WindowClose</animation>
+		</control>
 		<control type="group">
 			<include>DialogOpenCloseAnimation</include>
 			<left>160</left>
 			<top>245</top>
-			<animation effect="slide" end="0,-35" condition="Control.IsVisible(6)">Conditional</animation>
 			<control type="image">
-				<width>1600</width>
-				<height>660</height>
-				<texture border="40">dialogs/default/bg.png</texture>
+				<left>32</left>
+				<top>22</top>
+				<width>1556</width>
+				<height>610</height>
+				<texture>colors/black90.png</texture>
+				<bordersize>1</bordersize>
+				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
 				<visible>Control.IsVisible(6)</visible>
 			</control>
 			<control type="image">
-				<left>293</left>
-				<width>1030</width>
-				<height>660</height>
-				<texture border="40">dialogs/default/bg.png</texture>
+				<left>322</left>
+				<top>20</top>
+				<width>982</width>
+				<height>602</height>
+				<texture>colors/black90.png</texture>
+				<bordersize>1</bordersize>
+				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
 				<visible>!Control.IsVisible(6)</visible>
 			</control>
 			<control type="group">
 				<visible>!Control.IsVisible(3)</visible>
-				<left>17</left>
+				<left>33</left>
 				<top>30</top>
 				<control type="label">
-					<left>30</left>
+					<left>20</left>
 					<width>1420</width>
 					<height>40</height>
 					<font>font16_title_bold</font>
@@ -35,9 +47,9 @@
 				</control>
 				<control type="image">
 					<top>50</top>
-					<width>1566</width>
+					<width>1554</width>
 					<height>1</height>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+					<texture colordiffuse="grey4">separator_horizontal.png</texture>
 				</control>
 			</control>
 			<control type="group">
@@ -54,10 +66,11 @@
 					<scroll>true</scroll>
 				</control>
 				<control type="image">
+					<left>13</left>
 					<top>50</top>
-					<width>996</width>
+					<width>980</width>
 					<height>1</height>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+					<texture colordiffuse="grey4">separator_horizontal.png</texture>
 				</control>
 			</control>
 			<control type="group">
@@ -87,7 +100,7 @@
 			<control type="group" id="9000">
 				<control type="list" id="3">
 					<left>480</left>
-					<top>88</top>
+					<top>81</top>
 					<width>980</width>
 					<height>540</height>
 					<onup>3</onup>
@@ -200,7 +213,7 @@
 				</control>
 				<control type="list" id="6">
 					<left>32</left>
-					<top>88</top>
+					<top>81</top>
 					<width>1030</width>
 					<height>550</height>
 					<onup>6</onup>
@@ -263,8 +276,8 @@
 			</control>
 			<control type="scrollbar" id="60">
 				<left>16</left>
-				<top>88</top>
-				<height>540</height>
+				<top>80</top>
+				<height>542</height>
 				<width>14</width>
 				<onleft condition="Control.IsVisible(8)">98</onleft>
 				<onleft condition="Control.IsVisible(5) + !Control.IsVisible(8)">95</onleft>
@@ -273,15 +286,15 @@
 				<ondown>60</ondown>
 				<onup>60</onup>
 				<showonepage>false</showonepage>
-				<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-				<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
+				<texturesliderbackground />
+				<texturesliderbar>colors/white10.png</texturesliderbar>
 				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 				<animation effect="slide" start="0" end="293" time="0" tween="quadratic" condition="!Control.IsVisible(6)">Conditional</animation>
 			</control>
 			<control type="grouplist" id="90000">
 				<animation effect="slide" start="0" end="-275" time="0" condition="!Control.IsVisible(6)">Conditional</animation>
-				<left>1415</left>
-				<top>2</top>
+				<left>1400</left>
+				<top>4</top>
 				<width>200</width>
 				<itemgap>-40</itemgap>
 				<align>right</align>
@@ -392,7 +405,7 @@
 							<top>175</top>
 							<width>400</width>
 							<height>50</height>
-							<texture colordiffuse="88FFFFFF">black.png</texture>
+							<texture>colors/black50.png</texture>
 						</control>
 						<control type="group">
 							<visible>!String.IsEmpty(ListItem.Label2)</visible>
@@ -427,7 +440,7 @@
 						<control type="image">
 							<width>400</width>
 							<height>225</height>
-							<texture colordiffuse="44FFFFFF">black.png</texture>
+							<texture>colors/black25.png</texture>
 						</control>
 					</control>
 				</itemlayout>
@@ -446,7 +459,7 @@
 							<top>175</top>
 							<width>400</width>
 							<height>50</height>
-							<texture colordiffuse="88FFFFFF">black.png</texture>
+							<texture>colors/black50.png</texture>
 						</control>
 						<control type="group">
 							<visible>!String.IsEmpty(ListItem.Label2)</visible>
@@ -478,7 +491,7 @@
 						<control type="image">
 							<width>400</width>
 							<height>225</height>
-							<texture colordiffuse="44FFFFFF">black.png</texture>
+							<texture>colors/black25.png</texture>
 							<include>FocusFadeOutAnimation</include>
 						</control>
 					</control>

@@ -128,7 +128,7 @@
 						<control type="image">
 							<width>320</width>
 							<height>320</height>
-							<texture border="1" colordiffuse="66FFFFFF">black.png</texture>
+							<texture>colors/black25.png</texture>
 							<bordersize>20</bordersize>
 						</control>
 						<control type="group">
@@ -138,7 +138,7 @@
 							<control type="image">
 								<width>284</width>
 								<height>40</height>
-								<texture colordiffuse="88FFFFFF">black.png</texture>
+								<texture>colors/black50.png</texture>
 								<bordersize>2</bordersize>
 							</control>
 							<control type="label">
@@ -180,7 +180,7 @@
 							<control type="image">
 								<width>284</width>
 								<height>40</height>
-								<texture colordiffuse="88FFFFFF">black.png</texture>
+								<texture>colors/black50.png</texture>
 								<bordersize>2</bordersize>
 							</control>
 							<control type="label">
@@ -218,7 +218,7 @@
 						<control type="image">
 							<width>320</width>
 							<height>320</height>
-							<texture border="1" colordiffuse="66FFFFFF">black.png</texture>
+							<texture>colors/black25.png</texture>
 							<bordersize>20</bordersize>
 						</control>
 						<control type="group">
@@ -228,7 +228,7 @@
 							<control type="image">
 								<width>284</width>
 								<height>40</height>
-								<texture colordiffuse="88FFFFFF">black.png</texture>
+								<texture>colors/black50.png</texture>
 								<bordersize>2</bordersize>
 							</control>
 							<control type="label">
@@ -280,7 +280,7 @@
 							<control type="image">
 								<width>284</width>
 								<height>40</height>
-								<texture colordiffuse="88FFFFFF">black.png</texture>
+								<texture>colors/black50.png</texture>
 								<bordersize>2</bordersize>
 							</control>
 							<control type="label">
@@ -323,7 +323,7 @@
 						<control type="image">
 							<width>300</width>
 							<height>430</height>
-							<texture border="1" colordiffuse="66FFFFFF">black.png</texture>
+							<texture>colors/black25.png</texture>
 							<bordersize>20</bordersize>
 						</control>
 						<control type="image">
@@ -366,7 +366,7 @@
 						<control type="image">
 							<width>300</width>
 							<height>430</height>
-							<texture border="1" colordiffuse="66FFFFFF">black.png</texture>
+							<texture>colors/black25.png</texture>
 							<animation effect="fade" start="100" end="0" time="200" reversible="false">Focus</animation>
 							<animation effect="fade" start="0" end="100" time="200" reversible="false">UnFocus</animation>
 							<bordersize>20</bordersize>
@@ -398,97 +398,6 @@
 				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 				<showonepage>false</showonepage>
 			</control>
-			<control type="group">
-				<left>310</left>
-				<top>85</top>
-				<visible>!ListItem.IsParentFolder</visible>
-				<visible>[Container.Content(movies) | Container.Content(tvshows)]</visible>
-				<visible>Skin.HasSetting(503.InfoPanel) + Control.HasFocus(503) + System.IdleTime(1)</visible>
-				<animation effect="fade" time="100" delay="200">Visible</animation>
-				<animation effect="slide" end="0,460" time="300" tween="cubic" easing="inout" condition="Container(503).Row(1)">Conditional</animation>
-				<animation effect="slide" end="320,0" time="300" tween="cubic" easing="inout" condition="Container(503).Column(3)">Conditional</animation>
-				<animation effect="slide" end="320,0" time="300" tween="cubic" easing="inout" condition="Container(503).Column(5) | Container(503).Column(3) | Container(503).Column(2)">Conditional</animation>
-				<animation effect="slide" end="320,0" time="300" tween="cubic" easing="inout" condition="Container(503).Column(5) | Container(503).Column(4) | Container(503).Column(3) | Container(503).Column(2) | Container(503).Column(1)">Conditional</animation>
-				<control type="image">
-					<left>6</left>
-					<top>-24</top>
-					<width>650</width>
-					<height>470</height>
-					<texture border="40">dialog_back3.png</texture>
-				</control>
-				<control type="image">
-					<top>192</top>
-					<width>19</width>
-					<height>36</height>
-					<texture colordiffuse="FF060b0e">views/wall/arrow.png</texture>
-					<visible>Integer.IsLessOrEqual(Container(503).Column,3)</visible>
-				</control>
-				<control type="image">
-					<left>644</left>
-					<top>192</top>
-					<width>19</width>
-					<height>36</height>
-					<texture colordiffuse="FF060b0e" flipx="true">views/wall/arrow.png</texture>
-					<visible>Integer.IsGreater(Container(503).Column,3)</visible>
-				</control>
-				<control type="label">
-					<left>50</left>
-					<top>20</top>
-					<width>550</width>
-					<height>20</height>
-					<font>font15</font>
-					<textcolor>grey</textcolor>
-					<label>$INFO[ListItem.Label]</label>
-				</control>
-				<control type="image">
-					<left>50</left>
-					<top>46</top>
-					<width>180</width>
-					<height>70</height>
-					<aspectratio>keep</aspectratio>
-					<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
-					<texture fallback="flags/rating/0.0.png">$INFO[ListItem.Rating,flags/rating/,.png]</texture>
-					<visible>!ListItem.IsParentFolder + String.IsEmpty(ListItem.UserRating)</visible>
-				</control>
-				<control type="image">
-					<left>50</left>
-					<top>46</top>
-					<width>180</width>
-					<height>70</height>
-					<aspectratio>keep</aspectratio>
-					<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
-					<texture>$INFO[ListItem.UserRating,flags/rating/,.png]</texture>
-					<visible>!ListItem.IsParentFolder + !String.IsEmpty(ListItem.UserRating)</visible>
-				</control>
-				<control type="textbox">
-					<left>50</left>
-					<top>110</top>
-					<width>550</width>
-					<height>210</height>
-					<font>font15</font>
-					<textcolor>grey</textcolor>
-					<label>$VAR[503.InfoPanelTextboxVar]</label>
-					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(63)</autoscroll>
-				</control>
-				<control type="label">
-					<left>50</left>
-					<top>330</top>
-					<width>550</width>
-					<height>20</height>
-					<font>font15</font>
-					<textcolor>$VAR[ThemeLabelColor]</textcolor>
-					<label>$INFO[ListItem.Year]$INFO[ListItem.Duration(mins), - , $LOCALIZE[12391]]</label>
-				</control>
-				<control type="label">
-					<left>50</left>
-					<top>375</top>
-					<width>550</width>
-					<height>20</height>
-					<font>font15</font>
-					<textcolor>grey</textcolor>
-					<label>$VAR[503.InfoPanelLabel2Var]</label>
-				</control>
-			</control>
 		</control>
 		<control type="group">
 			<visible>Control.IsVisible(503) + !Window.IsActive(addoninformation)</visible>
@@ -497,21 +406,114 @@
 			<control type="image">
 				<width>100%</width>
 				<height>120</height>
-				<texture border="1">bottom_shadow.png</texture>
+				<texture border="1">views/wall/bottom_shadow.png</texture>
 			</control>
 			<control type="image">
-				<top>960</top>
+				<top>920</top>
 				<width>100%</width>
-				<height>120</height>
-				<texture border="1" flipy="true">bottom_shadow.png</texture>
+				<height>160</height>
+				<texture border="1" flipy="true">views/wall/bottom_shadow.png</texture>
 				<visible>Container.Content(albums) | Container.Content(addons) | [Window.IsActive(music) + Container.Content(files)]</visible>
 			</control>
 			<control type="image">
-				<top>250</top>
+				<top>540</top>
 				<width>100%</width>
-				<height>1080</height>
+				<height>540</height>
 				<texture border="1">logo_back.png</texture>
 				<visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+			</control>
+		</control>
+		<control type="group">
+			<left>300</left>
+			<top>60</top>
+			<visible>!ListItem.IsParentFolder</visible>
+			<visible>[Container.Content(movies) | Container.Content(tvshows)]</visible>
+			<visible>Skin.HasSetting(503.InfoPanel) + Control.HasFocus(503) + System.IdleTime(1)</visible>
+			<animation effect="fade" time="100" delay="200">Visible</animation>
+			<animation effect="slide" end="0,440" time="300" tween="cubic" easing="inout" condition="Container(503).Row(1)">Conditional</animation>
+			<animation effect="slide" end="320,0" time="300" tween="cubic" easing="inout" condition="Container(503).Column(3)">Conditional</animation>
+			<animation effect="slide" end="320,0" time="300" tween="cubic" easing="inout" condition="Container(503).Column(5) | Container(503).Column(3) | Container(503).Column(2)">Conditional</animation>
+			<animation effect="slide" end="320,0" time="300" tween="cubic" easing="inout" condition="Container(503).Column(5) | Container(503).Column(4) | Container(503).Column(3) | Container(503).Column(2) | Container(503).Column(1)">Conditional</animation>
+			<control type="image">
+				<left>25</left>
+				<top>-4</top>
+				<width>608</width>
+				<height>428</height>
+				<texture>colors/black90.png</texture>
+				<bordersize>1</bordersize>
+				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
+			</control>
+			<control type="image">
+				<top>192</top>
+				<width>19</width>
+				<height>36</height>
+				<texture colordiffuse="FF060b0e">views/wall/arrow.png</texture>
+				<visible>Integer.IsLessOrEqual(Container(503).Column,3)</visible>
+			</control>
+			<control type="image">
+				<left>644</left>
+				<top>192</top>
+				<width>19</width>
+				<height>36</height>
+				<texture colordiffuse="FF060b0e" flipx="true">views/wall/arrow.png</texture>
+				<visible>Integer.IsGreater(Container(503).Column,3)</visible>
+			</control>
+			<control type="label">
+				<left>50</left>
+				<top>20</top>
+				<width>550</width>
+				<height>20</height>
+				<font>font15</font>
+				<textcolor>grey</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+			<control type="image">
+				<left>50</left>
+				<top>46</top>
+				<width>180</width>
+				<height>70</height>
+				<aspectratio>keep</aspectratio>
+				<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
+				<texture fallback="flags/rating/0.0.png">$INFO[ListItem.Rating,flags/rating/,.png]</texture>
+				<visible>!ListItem.IsParentFolder + String.IsEmpty(ListItem.UserRating)</visible>
+			</control>
+			<control type="image">
+				<left>50</left>
+				<top>46</top>
+				<width>180</width>
+				<height>70</height>
+				<aspectratio>keep</aspectratio>
+				<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
+				<texture>$INFO[ListItem.UserRating,flags/rating/,.png]</texture>
+				<visible>!ListItem.IsParentFolder + !String.IsEmpty(ListItem.UserRating)</visible>
+			</control>
+			<control type="textbox">
+				<left>50</left>
+				<top>110</top>
+				<width>550</width>
+				<height>210</height>
+				<font>font15</font>
+				<textcolor>grey</textcolor>
+				<label>$VAR[503.InfoPanelTextboxVar]</label>
+				<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(63)</autoscroll>
+			</control>
+			<control type="label">
+				<left>50</left>
+				<top>330</top>
+				<width>550</width>
+				<height>20</height>
+				<font>font15</font>
+				<textcolor>$VAR[ThemeLabelColor]</textcolor>
+				<label>$INFO[ListItem.Year]$INFO[ListItem.Duration(mins), - , $LOCALIZE[12391]]</label>
+			</control>
+			<control type="label">
+				<left>50</left>
+				<top>375</top>
+				<width>550</width>
+				<height>20</height>
+				<font>font15</font>
+				<textcolor>grey</textcolor>
+				<label>$VAR[503.InfoPanelLabel2Var]</label>
 			</control>
 		</control>
 	</include>

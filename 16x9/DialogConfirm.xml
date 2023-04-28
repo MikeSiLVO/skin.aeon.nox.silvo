@@ -8,13 +8,13 @@
 	<controls>
 		<control type="image">
 			<include>FullscreenDimensions</include>
-			<texture colordiffuse="AAFFFFFF">black.png</texture>
+			<texture>colors/black75.png</texture>
 			<animation effect="fade" time="300">WindowOpen</animation>
 			<animation effect="fade" time="300">WindowClose</animation>
 		</control>
 		<control type="group">
-			<left>502</left>
-			<top>293</top>
+			<left>510</left>
+			<top>290</top>
 			<control type="label" id="1">
 				<width>0</width>
 				<height>0</height>
@@ -22,33 +22,35 @@
 				<visible>false</visible>
 			</control>
 			<control type="image">
-				<width>916</width>
-				<height>494</height>
-				<texture border="40">dialogs/default/bg.png</texture>
+				<width>900</width>
+				<height>500</height>
+				<texture>colors/black90.png</texture>
+				<bordersize>1</bordersize>
+				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
 			</control>
 			<control type="image">
-				<left>17</left>
-				<top>70</top>
-				<width>882</width>
+				<left>1</left>
+				<top>48</top>
+				<width>898</width>
 				<height>1</height>
-				<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+				<texture colordiffuse="grey4">separator_horizontal.png</texture>
 			</control>
 			<control type="progress">
-				<left>30</left>
-				<top>21</top>
-				<width>856</width>
+				<left>2</left>
+				<top>2</top>
+				<width>898</width>
 				<height>40</height>
 				<info>System.Progressbar</info>
 				<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
 				<visible>Window.IsActive(progressdialog)</visible>
 			</control>
 			<control type="label">
-				<left>30</left>
-				<top>22</top>
-				<width>856</width>
+				<left>2</left>
+				<top>2</top>
+				<width>898</width>
 				<height>40</height>
 				<textoffsetx>15</textoffsetx>
-				<font>font15_title</font>
+				<font>font16_title_bold</font>
 				<align>center</align>
 				<textcolor>grey2</textcolor>
 				<label>$INFO[Control.GetLabel(1)] $INFO[System.Progressbar,- ,%]</label>

@@ -104,7 +104,7 @@
 							<top>-2</top>
 							<width>40</width>
 							<height>40</height>
-							<texture>new_pvr/icons/channels/record.png</texture>
+							<texture>pvr/icons/channels/record.png</texture>
 							<animation effect="fade" start="100" end="40" time="2000" pulse="true" condition="true">Conditional</animation>
 							<visible>PVR.IsRecordingPlayingChannel</visible>
 							<!-- <visible>PVR.IsRecordingPlayingChannel | PVR.IsPlayingActiveRecording</visible> -->
@@ -178,7 +178,7 @@
 								<info>PVR.TimeshiftProgressBufferEnd</info>
 								<info2>PVR.TimeshiftProgressBufferStart</info2>
 								<texturebg border="3" colordiffuse="60FFFFFF">colors/white50.png</texturebg>
-								<midtexture>colors/white70.png</midtexture>
+								<midtexture>colors/white75.png</midtexture>
 								<visible>Player.SeekEnabled</visible>
 							</control>
 							<control type="progress">
@@ -639,7 +639,7 @@
 				<pagecontrol>10</pagecontrol>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<timeblocks>30</timeblocks>
-				<progresstexture border="0,20,18,14" colordiffuse="$VAR[ThemeLabelColor]">new_pvr/PVR-EpgProgressIndicator.png</progresstexture>
+				<progresstexture border="0,20,18,14" colordiffuse="$VAR[ThemeLabelColor]">pvr/PVR-EpgProgressIndicator.png</progresstexture>
 				<rulerunit>6</rulerunit>
 				<onleft>10</onleft>
 				<onright>10</onright>
@@ -654,7 +654,7 @@
 						<width>440</width>
 						<height>52</height>
 						<aspectratio>stretch</aspectratio>
-						<texture border="3" colordiffuse="26FFFFFF">new_pvr/epg-genres/0.png</texture>
+						<texture border="3" colordiffuse="26FFFFFF">pvr/epg-genres/0.png</texture>
 						<visible>!String.IsEqual(ListItem.Label,System.Date)</visible>
 					</control>
 					<control type="label">
@@ -679,13 +679,13 @@
 						<top>2</top>
 						<width>116</width>
 						<height>70</height>
-						<texture colordiffuse="40FFFFFF">new_pvr/epg-item.png</texture>
+						<texture colordiffuse="40FFFFFF">pvr/epg-item.png</texture>
 					</control>
 					<control type="image" id="2">
 						<width>120</width>
 						<height>72</height>
 						<aspectratio>stretch</aspectratio>
-						<texture border="3">$INFO[ListItem.Property(GenreType),new_pvr/epg-genres/,.png]</texture>
+						<texture border="3">$INFO[ListItem.Property(GenreType),pvr/epg-genres/,.png]</texture>
 						<visible>Skin.HasSetting(Enable.PVRGenreColors)</visible>
 					</control>
 					<control type="image">
@@ -712,7 +712,7 @@
 						<width>116</width>
 						<height>68</height>
 						<texture colordiffuse="$VAR[HighlightBarColor]">listselect_fo.png</texture>
-						<bordertexture border="8" colordiffuse="$VAR[HighlightBarColor]">new_pvr/pvr_focused.png</bordertexture>
+						<bordertexture border="8" colordiffuse="$VAR[HighlightBarColor]">pvr/pvr_focused.png</bordertexture>
 						<bordersize>2</bordersize>
 						<visible>Control.HasFocus(10)</visible>
 						<include>VisibleFadeAnimation</include>
@@ -828,7 +828,7 @@
 				<pagecontrol>10</pagecontrol>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<timeblocks>30</timeblocks>
-				<progresstexture border="0,20,18,14" colordiffuse="$VAR[ThemeLabelColor]">new_pvr/PVR-EpgProgressIndicator.png</progresstexture>
+				<progresstexture border="0,20,18,14" colordiffuse="$VAR[ThemeLabelColor]">pvr/PVR-EpgProgressIndicator.png</progresstexture>
 				<rulerunit>6</rulerunit>
 				<onleft>10</onleft>
 				<onright>10</onright>
@@ -843,7 +843,7 @@
 						<width>42</width>
 						<height>42</height>
 						<aspectratio>stretch</aspectratio>
-						<texture border="3" colordiffuse="26FFFFFF">new_pvr/epg-genres/0.png</texture>
+						<texture border="3" colordiffuse="26FFFFFF">pvr/epg-genres/0.png</texture>
 						<visible>!String.IsEqual(ListItem.Label,System.Date)</visible>
 					</control>
 					<control type="label" id="2">
@@ -943,14 +943,14 @@
 						<width>120</width>
 						<height>55</height>
 						<aspectratio>stretch</aspectratio>
-						<texture colordiffuse="33FFFFFF">new_pvr/epg-item.png</texture>
+						<texture colordiffuse="33FFFFFF">pvr/epg-item.png</texture>
 					</control>
 					<control type="image" id="1">
 						<top>-2</top>
 						<width>122</width>
 						<height>57</height>
 						<aspectratio>stretch</aspectratio>
-						<texture border="3">$INFO[ListItem.Property(GenreType),new_pvr/epg-genres/,.png]</texture>
+						<texture border="3">$INFO[ListItem.Property(GenreType),pvr/epg-genres/,.png]</texture>
 						<visible>Skin.HasSetting(Enable.PVRGenreColors)</visible>
 					</control>
 					<control type="image">
@@ -976,7 +976,7 @@
 						<width>118</width>
 						<height>53</height>
 						<texture colordiffuse="$VAR[HighlightBarColor]">listselect_fo.png</texture>
-						<bordertexture border="8" colordiffuse="$VAR[HighlightBarColor]">new_pvr/pvr_focused.png</bordertexture>
+						<bordertexture border="8" colordiffuse="$VAR[HighlightBarColor]">pvr/pvr_focused.png</bordertexture>
 						<bordersize>2</bordersize>
 						<visible>Control.HasFocus(10)</visible>
 						<include>VisibleFadeAnimation</include>
@@ -1163,7 +1163,7 @@
 	<include name="PVRBackgroundDim">
 		<control type="image">
 			<include>FullscreenDimensions</include>
-			<texture colordiffuse="D9FFFFFF">black.png</texture>
+			<texture>colors/black75.png</texture>
 			<animation effect="fade" time="400">Visible</animation>
 			<animation effect="fade" time="200">Hidden</animation>
 			<visible>Window.IsActive(FileBrowser) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRTimerSetting) | Window.IsActive(PVRGroupManager) | Window.IsActive(PVRGuideSearch)</visible>

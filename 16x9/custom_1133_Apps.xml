@@ -12,14 +12,16 @@
 			<include>ViewAnimation</include>
 			<visible>!Window.IsActive(addoninformation) + !Window.IsActive(service-LibreELEC-Settings-mainWindow) + !Window.IsActive(service-CoreELEC-Settings-mainWindow)</visible>
 			<control type="group">
-				<left>100</left>
+				<left>90</left>
 				<top>-40</top>
 				<control type="image">
-					<left>-32</left>
-					<top>148</top>
-					<width>874</width>
-					<height>904</height>
-					<texture border="40">listpanel_back.png</texture>
+					<left>-1</left>
+					<top>179</top>
+					<width>812</width>
+					<height>842</height>
+					<texture>colors/black75.png</texture>
+					<bordersize>1</bordersize>
+					<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
 				</control>
 				<control type="panel" id="50">
 					<top>180</top>
@@ -181,29 +183,31 @@
 					</content>
 				</control>
 				<control type="scrollbar" id="60">
-					<left>740</left>
+					<left>810</left>
 					<top>180</top>
-					<width>14</width>
+					<width>20</width>
 					<height>840</height>
 					<onup>60</onup>
 					<ondown>60</ondown>
 					<onleft>50</onleft>
 					<onright>51</onright>
-					<texturesliderbackground />
-					<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-					<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
+					<texturesliderbackground>colors/black75.png</texturesliderbackground>
+					<texturesliderbar>colors/white25.png</texturesliderbar>
+					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
 			</control>
 			<control type="group">
-				<left>1014</left>
+				<left>1000</left>
 				<top>-40</top>
 				<control type="image">
-					<left>-32</left>
-					<top>148</top>
-					<width>874</width>
-					<height>904</height>
-					<texture border="40">listpanel_back.png</texture>
+					<left>-1</left>
+					<top>179</top>
+					<width>812</width>
+					<height>842</height>
+					<texture>colors/black75.png</texture>
+					<bordersize>1</bordersize>
+					<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
 				</control>
 				<control type="panel" id="51">
 					<top>180</top>
@@ -320,17 +324,17 @@
 					<content target="$INFO[Container(50).ListItem.Property(AppsTarget)]" sortby="$INFO[Container(50).ListItem.Property(AppsSortBy)]" sortorder="descending">$INFO[Container(50).ListItem.Property(AppsContent)]</content>
 				</control>
 				<control type="scrollbar" id="61">
-					<left>810</left>
+					<left>811</left>
 					<top>180</top>
-					<width>14</width>
+					<width>20</width>
 					<height>840</height>
 					<onup>60</onup>
 					<ondown>60</ondown>
 					<onleft>51</onleft>
 					<onright>noop</onright>
 					<texturesliderbackground />
-					<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-					<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
+					<texturesliderbar>colors/white25.png</texturesliderbar>
+					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
 			</control>

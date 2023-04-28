@@ -28,7 +28,7 @@
 				</itemlayout>
 				<focusedlayout height="90" width="356">
 					<control type="image">
-						<width>356</width>
+						<width>355</width>
 						<height>90</height>
 						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
@@ -252,6 +252,14 @@
 						</include>
 					</control>
 					<control type="radiobutton" id="201">
+						<label>$LOCALIZE[31598]</label>
+						<onclick>SetProperty(Reset.Color,ThemeBorderColor)</onclick>
+						<onclick>Skin.SetColor(ThemeBorderColor, 31598, FF000000, special://skin/extras/colors.xml)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[ThemeBorderColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="202">
 						<label>$LOCALIZE[31304]</label>
 						<onclick>SetProperty(Reset.Color,HighlightBarColor)</onclick>
 						<onclick>Skin.SetColor(HighlightBarColor, 31304, FF2A52BE, special://skin/extras/colors.xml)</onclick>
@@ -259,7 +267,7 @@
 							<param name="ColorStringVar">$VAR[HighlightBarColor]</param>
 						</include>
 					</control>
-					<control type="radiobutton" id="202">
+					<control type="radiobutton" id="203">
 						<label>$LOCALIZE[31305]</label>
 						<onclick>SetProperty(Reset.Color,UnWatchedEpColor)</onclick>
 						<onclick>Skin.SetColor(UnWatchedEpColor, 31305, FFE5E5E5, special://skin/extras/colors.xml)</onclick>
@@ -267,7 +275,7 @@
 							<param name="ColorStringVar">$VAR[UnWatchedEpColor]</param>
 						</include>
 					</control>
-					<control type="radiobutton" id="203">
+					<control type="radiobutton" id="204">
 						<label>$LOCALIZE[31252]</label>
 						<onclick>SetProperty(Reset.Color,TopBarColor)</onclick>
 						<onclick>Skin.SetColor(TopBarColor, 31252, FF000000, special://skin/extras/colors.xml)</onclick>
@@ -275,7 +283,7 @@
 							<param name="ColorStringVar">$VAR[TopBarColor]</param>
 						</include>
 					</control>
-					<control type="radiobutton" id="204">
+					<control type="radiobutton" id="205">
 						<label>$LOCALIZE[31346]</label>
 						<onclick>SetProperty(Reset.Color,ThemeOSDProgressColor)</onclick>
 						<onclick>Skin.SetColor(ThemeOSDProgressColor, 31346, FFFF9800, special://skin/extras/colors.xml)</onclick>

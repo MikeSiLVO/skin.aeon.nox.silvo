@@ -6,57 +6,51 @@
 			<include>HiddenList</include>
 		</control>
 		<control type="group">
-		<animation type="WindowOpen">
-			<effect type="zoom" start="150" end="100" center="auto" time="720" tween="cubic" easing="out" />
-			<effect type="fade" end="100" time="360" />
-		</animation>
-			<top>60</top>
+			<animation type="WindowOpen">
+				<effect type="zoom" start="150" end="100" center="auto" time="720" tween="cubic" easing="out" />
+				<effect type="fade" end="100" time="360" />
+			</animation>
 			<control type="group">
+				<left>60</left>
+				<top>90</top>
 				<control type="image">
-					<left>25</left>
-					<width>1870</width>
-					<height>1020</height>
-					<texture colordiffuse="CCFFFFFF" border="40">listpanel_back.png</texture>
+					<left>-1</left>
+					<top>-1</top>
+					<width>1802</width>
+					<height>902</height>
+					<texture>colors/black90.png</texture>
+					<bordersize>1</bordersize>
+					<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
 				</control>
 				<control type="image">
-					<left>415</left>
-					<top>32</top>
-					<width>1</width>
-					<height>949</height>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">separator_vertical.png</texture>
-				</control>
-				<control type="image">
-					<left>58</left>
-					<top>31</top>
-					<width>357</width>
-					<height>357</height>
+					<width>360</width>
+					<height>360</height>
 					<aspectratio>keep</aspectratio>
 					<texture background="true">$INFO[ListItem.Icon]</texture>
 					<bordertexture border="1">thumbs/panel_border.png</bordertexture>
 					<bordersize>1</bordersize>
 				</control>
 				<control type="grouplist" id="9000">
-					<left>58</left>
-					<top>387</top>
-					<width>356</width>
-					<height>594</height>
+					<top>360</top>
+					<width>360</width>
+					<height>540</height>
 					<onleft>60</onleft>
 					<onright>60</onright>
 					<onup>9000</onup>
 					<ondown>9000</ondown>
-					<animation effect="slide" end="0,66" condition="Window.IsActive(1112)">Conditional</animation>
+					<animation effect="slide" end="0,60" condition="Window.IsActive(1112)">Conditional</animation>
 					<control type="button" id="9">
 						<description>Configure Addon</description>
-						<width>356</width>
-						<height>66</height>
+						<width>360</width>
+						<height>60</height>
 						<label>24020</label>
 						<font>font15</font>
 						<visible>!Window.IsActive(1112)</visible>
 					</control>
 					<control type="button" id="201">
 						<description>Addon news button</description>
-						<width>356</width>
-						<height>66</height>
+						<width>360</width>
+						<height>60</height>
 						<label>24054</label>
 						<font>font15</font>
 						<onclick>SetProperty(AddonNews,True,Home)</onclick>
@@ -69,16 +63,16 @@
 					</control>
 					<control type="button" id="8">
 						<description>Update Addon button</description>
-						<width>356</width>
-						<height>66</height>
+						<width>360</width>
+						<height>60</height>
 						<label>24138</label>
 						<font>font15</font>
 						<visible>!Window.IsActive(1112)</visible>
 					</control>
 					<control type="button" id="200">
 						<description>Screenshot button</description>
-						<width>356</width>
-						<height>66</height>
+						<width>360</width>
+						<height>60</height>
 						<label>$LOCALIZE[1000]</label>
 						<font>font15</font>
 						<onclick>SetFocus(50)</onclick>
@@ -89,40 +83,40 @@
 					</control>
 					<control type="button" id="12">
 						<description>Launch Addon button</description>
-						<width>356</width>
-						<height>66</height>
+						<width>360</width>
+						<height>60</height>
 						<label>518</label>
 						<font>font15</font>
 						<visible>!Window.IsActive(1112)</visible>
 					</control>
 					<control type="button" id="6">
 						<description>Install/UnInstall Addon button</description>
-						<width>356</width>
-						<height>66</height>
+						<width>360</width>
+						<height>60</height>
 						<label>24022</label>
 						<font>font15</font>
 						<visible>!Window.IsActive(1112)</visible>
 					</control>
 					<control type="button" id="14">
 						<description>Versions Addon button</description>
-						<width>356</width>
-						<height>66</height>
+						<width>360</width>
+						<height>60</height>
 						<label>24069</label>
 						<font>font15</font>
 						<visible>!Window.IsActive(1112)</visible>
 					</control>
 					<control type="button" id="7">
 						<description>Enable/Disable Addon button</description>
-						<width>356</width>
-						<height>66</height>
+						<width>360</width>
+						<height>60</height>
 						<label>24021</label>
 						<font>font15</font>
 						<visible>!Window.IsActive(1112)</visible>
 					</control>
 					<control type="radiobutton" id="13">
 						<description>Auto Update Addon button</description>
-						<width>356</width>
-						<height>66</height>
+						<width>360</width>
+						<height>60</height>
 						<label>21340</label>
 						<font>font15</font>
 						<radioposx>256</radioposx>
@@ -130,98 +124,96 @@
 					</control>
 					<control type="button" id="10">
 						<description>Dependencies button</description>
-						<width>356</width>
-						<height>66</height>
+						<width>360</width>
+						<height>60</height>
 						<label>39024</label>
 						<font>font15</font>
 						<visible>!Window.IsActive(1112)</visible>
 					</control>
 				</control>
-			</control>
-			<control type="group">
-				<left>385</left>
-				<visible>!Window.IsActive(TextViewer) + !Window.IsActive(1112)</visible>
-				<include>SettingsFadeAnimation</include>
-				<control type="grouplist">
-					<left>32</left>
-					<top>32</top>
-					<width>850</width>
-					<itemgap>10</itemgap>
-					<control type="button">
-						<height>45</height>
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[21863]: [/COLOR]$INFO[ListItem.AddonCreator]</label>
-						<include>SettingsPanelButtonsValues</include>
-					</control>
-					<control type="button">
-						<height>45</height>
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[24051] [/COLOR]$INFO[ListItem.AddonVersion]</label>
-						<include>SettingsPanelButtonsValues</include>
-					</control>
-					<control type="button">
-						<height>45</height>
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[12013]: [/COLOR]$INFO[ListItem.AddonInstallDate]</label>
-						<include>SettingsPanelButtonsValues</include>
-					</control>
-				</control>
-				<control type="grouplist">
-					<left>900</left>
-					<top>32</top>
-					<itemgap>10</itemgap>
-					<width>570</width>
-					<usecontrolcoords>true</usecontrolcoords>
-					<control type="button">
-						<height>45</height>
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[146] [/COLOR]$INFO[ListItem.AddonType]</label>
-						<include>SettingsPanelButtonsValues</include>
-					</control>
-					<control type="button">
-						<height>45</height>
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[560]: [/COLOR]$INFO[ListItem.Property(Addon.ID)]</label>
-						<include>SettingsPanelButtonsValues</include>
-					</control>
-					<control type="button">
-						<height>45</height>
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[22031]: [/COLOR]$INFO[ListItem.AddonSize]</label>
-						<include>SettingsPanelButtonsValues</include>
-						<visible>!String.IsEmpty(ListItem.AddonSize)</visible>
-					</control>
-				</control>
 				<control type="image">
-					<left>31</left>
-					<top>200</top>
-					<width>1448</width>
-					<height>3</height>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+					<left>360</left>
+					<width>1</width>
+					<height>900</height>
+					<texture colordiffuse="grey4">separator_vertical.png</texture>
 				</control>
-				<control type="grouplist">
-					<left>47</left>
-					<top>240</top>
-					<control type="textbox" id="400">
-						<width>1415</width>
-						<height>565</height>
-						<textcolor>grey2</textcolor>
-						<align>justify</align>
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[21821]: [/COLOR][CR]$INFO[ListItem.AddonDescription]</label>
-						<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
-						<visible>!String.IsEmpty(ListItem.AddonBroken) | !String.IsEmpty(ListItem.AddonDisclaimer) | !String.IsEmpty(ListItem.AddonBroken)</visible>
+				<control type="group">
+						<visible>!Window.IsActive(TextViewer) + !Window.IsActive(1112)</visible>
+					<left>360</left>
+					<control type="group">
+						<left>20</left>
+						<include>SettingsFadeAnimation</include>
+						<control type="grouplist">
+							<top>10</top>
+							<height>180</height>
+							<control type="button">
+								<width>600</width>
+								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[21863]: [/COLOR]$INFO[ListItem.AddonCreator]</label>
+							</control>
+							<control type="button">
+								<width>600</width>
+								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[24051] [/COLOR]$INFO[ListItem.AddonVersion]</label>
+							</control>
+							<control type="button">
+								<width>600</width>
+								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[12013]: [/COLOR]$INFO[ListItem.AddonInstallDate]</label>
+							</control>
+						</control>
+						<control type="grouplist">
+							<left>600</left>
+							<top>10</top>
+							<height>180</height>
+							<control type="button">
+								<width>600</width>
+								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[146] [/COLOR]$INFO[ListItem.AddonType]</label>
+							</control>
+							<control type="button">
+								<width>600</width>
+								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[560]: [/COLOR]$INFO[ListItem.Property(Addon.ID)]</label>
+							</control>
+							<control type="button">
+								<width>600</width>
+								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[22031]: [/COLOR]$INFO[ListItem.AddonSize]</label>
+								<visible>!String.IsEmpty(ListItem.AddonSize)</visible>
+							</control>
+						</control>
+						<control type="group">
+							<top>208</top>
+							<control type="textbox" id="400">
+								<width>1400</width>
+								<height>520</height>
+								<textcolor>grey2</textcolor>
+								<align>justify</align>
+								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[21821]: [/COLOR][CR]$INFO[ListItem.AddonDescription]</label>
+								<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+								<visible>!String.IsEmpty(ListItem.AddonBroken) | !String.IsEmpty(ListItem.AddonDisclaimer) | !String.IsEmpty(ListItem.AddonBroken)</visible>
+							</control>
+							<control type="textbox" id="400">
+								<width>1400</width>
+								<height>690</height>
+								<textcolor>grey2</textcolor>
+								<align>justify</align>
+								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[21821]: [/COLOR][CR]$INFO[ListItem.AddonDescription]</label>
+								<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+								<visible>String.IsEmpty(ListItem.AddonBroken) + String.IsEmpty(ListItem.AddonDisclaimer) + String.IsEmpty(ListItem.AddonBroken)</visible>
+							</control>
+						</control>
 					</control>
-					<control type="textbox" id="400">
-						<width>1415</width>
-						<height>735</height>
-						<textcolor>grey2</textcolor>
-						<align>justify</align>
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[21821]: [/COLOR][CR]$INFO[ListItem.AddonDescription]</label>
-						<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
-						<visible>String.IsEmpty(ListItem.AddonBroken) + String.IsEmpty(ListItem.AddonDisclaimer) + String.IsEmpty(ListItem.AddonBroken)</visible>
+					<control type="image">
+						<left>1</left>
+						<top>200</top>
+						<width>1439</width>
+						<height>3</height>
+						<texture colordiffuse="grey4">separator_horizontal.png</texture>
 					</control>
 				</control>
 			</control>
 			<control type="image">
-				<left>416</left>
-				<top>838</top>
-				<width>1448</width>
+				<left>421</left>
+				<top>830</top>
+				<width>1439</width>
 				<height>3</height>
-				<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+				<texture colordiffuse="grey4">separator_horizontal.png</texture>
 				<visible>![Window.IsVisible(AddonSettings) + Window.IsActive(TextViewer)]</visible>
 				<visible>!String.IsEmpty(ListItem.AddonBroken) | [!String.IsEmpty(ListItem.AddonDisclaimer) + String.IsEmpty(Window(Home).Property(AddonNews))]</visible>
 			</control>

@@ -20,22 +20,23 @@
 		</control>
 		<control type="image">
 			<include>FullscreenDimensions</include>
-			<texture border="1" colordiffuse="D9FFFFFF">black.png</texture>
+			<texture>colors/black50.png</texture>
 			<animation effect="fade" time="100">WindowOpen</animation>
 			<animation effect="fade" time="50">WindowClose</animation>
 			<visible>!Window.IsVisible(addoninformation)</visible>
 		</control>
 		<control type="group">
-			<animation effect="slide" end="245,-20" condition="Window.IsActive(addoninformation)">Conditional</animation>
+			<animation effect="slide" end="166,-20" condition="Window.IsActive(addoninformation)">Conditional</animation>
 			<include condition="String.IsEmpty(Window(Home).Property(AddonNews))">DialogOpenCloseAnimation</include>
 			<animation effect="fade" time="100" delay="200" condition="!String.IsEmpty(Window(Home).Property(AddonNews))">WindowOpen</animation>
 			<animation effect="fade" time="50" condition="!String.IsEmpty(Window(Home).Property(AddonNews))">WindowClose</animation>
 			<left>270</left>
 			<top>88</top>
 			<control type="image">
-				<width>1380</width>
-				<height>904</height>
-				<texture border="40">listpanel_back.png</texture>
+				<left>20</left>
+				<width>1342</width>
+				<height>880</height>
+				<texture>colors/black90.png</texture>
 				<visible>String.IsEmpty(Window(Home).Property(AddonNews))</visible>
 			</control>
 			<control type="label">
@@ -65,7 +66,7 @@
 				<height>700</height>
 				<align>justify</align>
 				<font>font16_textbox</font>
-				<textcolor>grey2</textcolor>
+				<textcolor>grey</textcolor>
 				<pagecontrol>61</pagecontrol>
 				<label>$INFO[Window(Home).Property(TextViewerContent)]</label>
 				<visible>String.IsEmpty(Window(skinsettings).Property(FAQ)) + String.IsEmpty(Window(Home).Property(AddonNews))</visible>
@@ -74,10 +75,10 @@
 				<left>62</left>
 				<top>145</top>
 				<width>1256</width>
-				<height>735</height>
+				<height>750</height>
 				<align>justify</align>
 				<font>font16_textbox</font>
-				<textcolor>grey2</textcolor>
+				<textcolor>grey</textcolor>
 				<pagecontrol>61</pagecontrol>
 				<label>$INFO[Window(Home).Property(TextViewerContent)]</label>
 				<visible>String.IsEmpty(Window(skinsettings).Property(FAQ)) + !String.IsEmpty(Window(Home).Property(AddonNews))</visible>
@@ -88,16 +89,16 @@
 				<width>1256</width>
 				<height>695</height>
 				<font>font16_textbox</font>
-				<textcolor>grey2</textcolor>
+				<textcolor>grey</textcolor>
 				<pagecontrol>62</pagecontrol>
 				<label>[COLOR FFFF9800][B]Why are all the menu backgrounds black?[/B][/COLOR][CR]   • [I]There are no default chosen backgrounds in this skin. If you want backgrounds for your menu items you must select them yourself when customizing the main menu or use the Set default background option in Skin settings > General.[/I][CR][CR][COLOR FFFF9800][B]How do I find my backgrounds when I can not see them?[/B][/COLOR][CR]   • [I]If you have added sources to Kodi's File Manager (repos or other locations and folders) then you must add any additional sources/paths that contain your backgrounds. Visit [/I][B] http://kodi.wiki/view/File%20manager[/B][I] for more info on how to add sources.[/I][CR][CR][B][COLOR FFFF9800]How do I keep the Music information on the screen permanently?[/B][/COLOR][CR]   • [I]The info button toggles how music information is displayed. When it disappears press info to re-show it and never press it a second time to hide it. If it is hidden then it will display for 10 seconds after a song is played or the next track in your queue begins.[/I][CR][CR][COLOR FFFF9800][B]How do I customize this skin?[/B][/COLOR][CR]   • [I]To customize the Main Menu navigate to System > Interface > Configure skin to access the skin wide settings and main menu customization. Select [/I][B] Set up the Aeon Nox main menu[/B] [I]where you can enable/disable any item, customize what happens when you select that item, set up backgrounds, widgets, manage the submenu, and choose a custom label.[/I][CR][CR]   • [I]There are more options located in Skin settings > Customization for things like the OSD (On Screen Display) for fullscreen music and video playback, skin color picker, and the video information dialog.[/I][CR][CR]   • [I]There are also many settings for each viewtype and/or section (Artist, Album, Song, Movie, TV Show, Episode, etc...) in the side menu so play around with all the options for further customization.[/I]</label>
 				<visible>!String.IsEmpty(Window(skinsettings).Property(FAQ))</visible>
 			</control>
 			<control type="scrollbar" id="61">
 				<left>1348</left>
-				<top>32</top>
-				<width>14</width>
-				<height>840</height>
+				<top>145</top>
+				<width>20</width>
+				<height>750</height>
 				<ondown>61</ondown>
 				<onup>61</onup>
 				<showonepage>false</showonepage>

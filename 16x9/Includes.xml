@@ -49,7 +49,7 @@
 		<control type="image">
 			<width>432</width>
 			<height>1080</height>
-			<texture colordiffuse="E6FFFFFF" border="40">mediamenu_back.png</texture>
+			<texture border="40">mediamenu_back.png</texture>
 		</control>
 		<control type="button" id="9051">
 			<include>HiddenObject</include>
@@ -739,17 +739,20 @@
 	<!-- System Windows -->
 	<include name="SystemPanel">
 		<control type="image">
-			<left>51</left>
-			<width>1818</width>
-			<height>875</height>
-			<texture border="40" colordiffuse="CC000000">homewidgets/bg_flat.png</texture>
+			<top>30</top>
+			<left>80</left>
+			<width>1760</width>
+			<height>813</height>
+			<texture>colors/black90.png</texture>
+			<bordersize>1</bordersize>
+			<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
 		</control>
 		<control type="image">
 			<left>436</left>
 			<top>32</top>
 			<width>1</width>
 			<height>810</height>
-			<texture colordiffuse="$VAR[ThemeLabelColor]">separator_vertical.png</texture>
+			<texture colordiffuse="grey4">separator_vertical.png</texture>
 			<animation effect="slide" end="90" condition="Window.IsActive(profiles)">Conditional</animation>
 			<animation effect="slide" end="275" condition="Window.IsActive(script-skinshortcuts.xml) + String.IsEmpty(Window(Home).Property(skinshortcuts-management-widget))">Conditional</animation>
 		</control>
@@ -1928,7 +1931,7 @@
 			<control type="group" id="13000">
 				<control type="image">
 					<include>FullscreenDimensions</include>
-					<texture colordiffuse="80FFFFFF">black.png</texture>
+					<texture>colors/black50.png</texture>
 					<visible>!Skin.HasSetting(Enable.ManualInfoPanel) + [String.IsEqual(Control.GetLabel(4420),5) | String.IsEqual(Control.GetLabel(4420),6)] | [Skin.HasSetting(Enable.ManualInfoPanel) + Control.HasFocus(4401) + [String.IsEqual(Control.GetLabel(4420),5) | String.IsEqual(Control.GetLabel(4420),6)]]</visible>
 					<animation effect="fade" time="320">Visible</animation>
 					<animation effect="fade" time="720">Hidden</animation>
@@ -2063,7 +2066,7 @@
 		<definition>
 			<control type="image">
 				<include>FullscreenDimensions</include>
-				<texture>black.png</texture>
+				<texture>colors/black.png</texture>
 				<animation effect="fade" start="0" end="40" time="320">Visible</animation>
 				<visible>[String.IsEqual(Skin.String(InfoPopup.Delay),2) + System.IdleTime(2) | String.IsEqual(Skin.String(InfoPopup.Delay),3) + System.IdleTime(3) | String.IsEqual(Skin.String(InfoPopup.Delay),4) + System.IdleTime(4) | String.IsEqual(Skin.String(InfoPopup.Delay),5) + System.IdleTime(5)] + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(sets)]</visible>
 			</control>

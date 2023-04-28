@@ -2046,28 +2046,32 @@
 		<value>$INFO[System.Date][COLOR grey2]$INFO[System.Time, • ][/COLOR][COLOR white]$INFO[Player.TimeRemaining,   - ][/COLOR]</value>
 	</variable>
 	<variable name="PVRTimerIcon">
-		<value condition="ListItem.IsRecording">new_pvr/icons/PVR-IsRecording.png</value>
-		<value condition="ListItem.HasReminder">new_pvr/icons/timers/bell.png</value>
-		<value condition="ListItem.HasTimerSchedule + ListItem.TimerHasError">new_pvr/icons/PVR-HasTimerScheduleError.png</value>
-		<value condition="ListItem.HasTimer + ListItem.TimerHasError">new_pvr/icons/PVR-HasTimerError.png</value>
-		<value condition="ListItem.HasTimerSchedule + ListItem.TimerHasConflict">new_pvr/icons/PVR-HasTimerScheduleConflict.png</value>
-		<value condition="ListItem.HasTimer + ListItem.TimerHasConflict">new_pvr/icons/PVR-HasTimerConflict.png</value>
-		<value condition="ListItem.HasRecording">new_pvr/icons/PVR-HasRecording.png</value>
-		<value condition="ListItem.HasTimerSchedule + !ListItem.TimerIsActive">new_pvr/icons/PVR-HasTimerScheduleDisabled.png</value>
-		<value condition="ListItem.HasTimer + !ListItem.TimerIsActive">new_pvr/icons/PVR-HasTimerDisabled.png</value>
-		<value condition="ListItem.HasTimerSchedule">new_pvr/icons/PVR-HasTimerSchedule.png</value>
-		<value condition="ListItem.HasTimer">new_pvr/icons/PVR-HasTimer.png</value>
-		<value condition="ListItem.IsPlayable">new_pvr/icons/PVR-HasArchive.png</value>
+		<value condition="ListItem.IsRecording">pvr/icons/PVR-IsRecording.png</value>
+		<value condition="ListItem.HasReminder">pvr/icons/timers/bell.png</value>
+		<value condition="ListItem.HasTimerSchedule + ListItem.TimerHasError">pvr/icons/PVR-HasTimerScheduleError.png</value>
+		<value condition="ListItem.HasTimer + ListItem.TimerHasError">pvr/icons/PVR-HasTimerError.png</value>
+		<value condition="ListItem.HasTimerSchedule + ListItem.TimerHasConflict">pvr/icons/PVR-HasTimerScheduleConflict.png</value>
+		<value condition="ListItem.HasTimer + ListItem.TimerHasConflict">pvr/icons/PVR-HasTimerConflict.png</value>
+		<value condition="ListItem.HasRecording">pvr/icons/PVR-HasRecording.png</value>
+		<value condition="ListItem.HasTimerSchedule + !ListItem.TimerIsActive">pvr/icons/PVR-HasTimerScheduleDisabled.png</value>
+		<value condition="ListItem.HasTimer + !ListItem.TimerIsActive">pvr/icons/PVR-HasTimerDisabled.png</value>
+		<value condition="ListItem.HasTimerSchedule">pvr/icons/PVR-HasTimerSchedule.png</value>
+		<value condition="ListItem.HasTimer">pvr/icons/PVR-HasTimer.png</value>
+		<value condition="ListItem.IsPlayable">pvr/icons/PVR-HasArchive.png</value>
 	</variable>
 	<variable name="PVRChannelStatusIcon">
-		<value condition="ListItem.IsRecording">new_pvr/icons/channels/record.png</value>
-		<value condition="ListItem.HasTimer | ListItem.HasTimerSchedule">new_pvr/icons/channels/timer.png</value>
-		<value condition="ListItem.HasArchive">new_pvr/icons/channels/archive.png</value>
+		<value condition="ListItem.IsRecording">pvr/icons/channels/record.png</value>
+		<value condition="ListItem.HasTimer | ListItem.HasTimerSchedule">pvr/icons/channels/timer.png</value>
+		<value condition="ListItem.HasArchive">pvr/icons/channels/archive.png</value>
 	</variable>
 	<!-- Color Picker VARs -->
 	<variable name="ThemeLabelColor">
 		<value condition="!String.IsEmpty(Skin.String(ThemeLabelColor)) + !String.IsEqual(Skin.String(ThemeLabelColor),None)">$INFO[Skin.String(ThemeLabelColor)]</value>
 		<value>FF6DB9E5</value>
+	</variable>
+	<variable name="ThemeBorderColor">
+		<value condition="!String.IsEmpty(Skin.String(ThemeBorderColor))">$INFO[Skin.String(ThemeBorderColor)]</value>
+		<value>black</value>
 	</variable>
 	<variable name="TopBarColor">
 		<value condition="!String.IsEmpty(Skin.String(TopBarColor)) + !String.IsEqual(Skin.String(TopBarColor),None)">$INFO[Skin.String(TopBarColor)]</value>
