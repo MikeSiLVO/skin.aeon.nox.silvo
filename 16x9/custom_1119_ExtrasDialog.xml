@@ -16,18 +16,13 @@
 			<onup>90200</onup>
 			<ondown>90200</ondown>
 			<align>center</align>
-			<control type="image" id="90201">
-				<width>510</width>
-				<height>34</height>
-				<texture border="30,20,30,2">dialog_top2.png</texture>
-			</control>
 			<control type="button" id="90202">
 				<description>FS Fanart button</description>
 				<width>510</width>
 				<textwidth>435</textwidth>
 				<textoffsetx>45</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="35,2,35,2">button_shutdown_focus.png</texturefocus>
-				<texturenofocus border="35,2,35,2">button_shutdown_nofocus.png</texturenofocus>
+				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+				<texturenofocus>button_nofocus.png</texturenofocus>
 				<onclick>ActivateWindow(1113)</onclick>
 				<label>$LOCALIZE[31092]</label>
 			</control>
@@ -36,8 +31,8 @@
 				<width>510</width>
 				<textwidth>435</textwidth>
 				<textoffsetx>45</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="35,2,35,2">button_shutdown_focus.png</texturefocus>
-				<texturenofocus border="35,2,35,2">button_shutdown_nofocus.png</texturenofocus>
+				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+				<texturenofocus>button_nofocus.png</texturenofocus>
 				<onclick>Dialog.Close(1119)</onclick>
 				<onclick>Dialog.Close(MovieInformation)</onclick>
 				<onclick>RunScript(script.trakt,action=rate)</onclick>
@@ -51,8 +46,8 @@
 				<width>510</width>
 				<textwidth>435</textwidth>
 				<textoffsetx>45</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="35,2,35,2">button_shutdown_focus.png</texturefocus>
-				<texturenofocus border="35,2,35,2">button_shutdown_nofocus.png</texturenofocus>
+				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+				<texturenofocus>button_nofocus.png</texturenofocus>
 				<onclick>Dialog.Close(1119)</onclick>
 				<onclick condition="!Window.IsActive(Home) + String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEmpty(ListItem.IMDBNumber)">RunScript(script.embuary.info,call=movie,external_id=$INFO[ListItem.IMDBNumber])</onclick>
 				<onclick condition="!Window.IsActive(Home) + String.IsEqual(ListItem.DBTYPE,movie) + String.IsEmpty(ListItem.IMDBNumber)">RunScript(script.embuary.info,call=movie,query='"$INFO[ListItem.Title]"',year=$INFO[ListItem.Year])</onclick>
@@ -69,8 +64,8 @@
 				<width>510</width>
 				<textwidth>435</textwidth>
 				<textoffsetx>45</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="35,2,35,2">button_shutdown_focus.png</texturefocus>
-				<texturenofocus border="35,2,35,2">button_shutdown_nofocus.png</texturenofocus>
+				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+				<texturenofocus>button_nofocus.png</texturenofocus>
 				<label>$INFO[System.AddonTitle(script.cinemavision)]</label>
 				<onclick>Dialog.Close(1119)</onclick>
 				<onclick>RunScript(script.cinemavision,dbtype=$INFO[ListItem.DBTYPE],dbid=$INFO[ListItem.DBID])</onclick>
@@ -81,8 +76,8 @@
 				<width>510</width>
 				<textwidth>435</textwidth>
 				<textoffsetx>45</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="35,2,35,2">button_shutdown_focus.png</texturefocus>
-				<texturenofocus border="35,2,35,2">button_shutdown_nofocus.png</texturenofocus>
+				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+				<texturenofocus>button_nofocus.png</texturenofocus>
 				<onclick>Dialog.Close(all,true)</onclick>
 				<onclick>ActivateWindow(videos,"plugin://plugin.video.youtube/kodion/search/list/",return)</onclick>
 				<label>$LOCALIZE[137] $INFO[System.AddonTitle(plugin.video.youtube)]</label>
@@ -94,8 +89,8 @@
 				<width>510</width>
 				<textwidth>435</textwidth>
 				<textoffsetx>45</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="35,2,35,2">button_shutdown_focus.png</texturefocus>
-				<texturenofocus border="35,2,35,2">button_shutdown_nofocus.png</texturenofocus>
+				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+				<texturenofocus>button_nofocus.png</texturenofocus>
 				<onclick>Dialog.Close(1119)</onclick>
 				<onclick>RunScript(script.metadata.editor,dbid=$INFO[ListItem.DBID],type=$INFO[ListItem.DBType])</onclick>
 				<label>21435</label>
@@ -107,8 +102,8 @@
 				<width>510</width>
 				<textwidth>435</textwidth>
 				<textoffsetx>45</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="35,2,35,2">button_shutdown_focus.png</texturefocus>
-				<texturenofocus border="35,2,35,2">button_shutdown_nofocus.png</texturenofocus>
+				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+				<texturenofocus>button_nofocus.png</texturenofocus>
 				<onclick>ActivateWindow(1114)</onclick>
 				<label>$LOCALIZE[5]</label>
 				<visible>!Skin.HasSetting(KioskMode.Enabled)</visible>
@@ -118,16 +113,11 @@
 				<width>510</width>
 				<textwidth>435</textwidth>
 				<textoffsetx>45</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="35,2,35,2">button_shutdown_focus.png</texturefocus>
-				<texturenofocus border="35,2,35,2">button_shutdown_nofocus.png</texturenofocus>
+				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+				<texturenofocus>button_nofocus.png</texturenofocus>
 				<onclick>Dialog.Close(1119)</onclick>
 				<label>$LOCALIZE[31075]</label>
 				<visible>![Control.IsVisible(90202) | Control.IsVisible(90203) | Control.IsVisible(90204) | Control.IsVisible(90205) | Control.IsVisible(90206) | Control.IsVisible(90207) | Control.IsVisible(90208) | Control.IsVisible(90209) | Control.IsVisible(90210) | Control.IsVisible(90211)]</visible>
-			</control>
-			<control type="image" id="90212">
-				<width>510</width>
-				<height>34</height>
-				<texture border="30,2,30,20">dialog_bottom2.png</texture>
 			</control>
 		</control>
 	</controls>
