@@ -2975,6 +2975,12 @@
 				<control type="image">
 					<width>240</width>
 					<include>MediaFlagValues</include>
+					<texture>$VAR[MediaFlagsPathVar]/$INFO[VideoPlayer.HdrType,hdr/,.png]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.HdrType)</visible>
+				</control>
+				<control type="image">
+					<width>240</width>
+					<include>MediaFlagValues</include>
 					<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[VideoSourceFlagVar]</texture>
 				</control>
 				<control type="image">
@@ -2993,12 +2999,6 @@
 					<include>MediaFlagValues</include>
 					<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[VideoPlayer.AudioChannels,,.png]</texture>
 					<visible>!String.IsEmpty(VideoPlayer.AudioChannels)</visible>
-				</control>
-				<control type="image">
-					<width>240</width>
-					<include>MediaFlagValues</include>
-					<texture>$VAR[MediaFlagsPathVar]/$INFO[VideoPlayer.HdrType,hdr/,.png]</texture>
-					<visible>!String.IsEmpty(VideoPlayer.HdrType)</visible>
 				</control>
 			</control>
 			<control type="image">
