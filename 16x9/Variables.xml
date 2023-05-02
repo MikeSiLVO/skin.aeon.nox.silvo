@@ -66,7 +66,7 @@
 		<value>$LOCALIZE[22080]</value>
 	</variable>
 	<variable name="GlobalBackgroundVar">
-		<value condition="Window.Next(home)"></value>
+		<value condition="Window.Next(home)" />
 		<value condition="Window.IsActive(pictures) + Container.Content(images)">$INFO[ListItem.FolderPath]</value>
 		<value condition="Window.IsActive(1133) + !String.IsEmpty(Container(51).ListItem.Art(fanart)) + Control.HasFocus(51)">$INFO[Container(51).ListItem.Art(fanart)]</value>
 		<value condition="!String.IsEmpty(Control.GetLabel(4411)) + !Skin.HasSetting(Disable.Extrafanart) + !Skin.HasSetting(Disable.Fanart)">$INFO[Control.GetLabel(4411)]</value>
@@ -261,9 +261,10 @@
 		<value condition="ListItem.IsResumable">overlays/list/resumable.png</value>
 		<value>$INFO[ListItem.Overlay,overlays/list/]</value>
 	</variable>
-	<variable name="ListOverlayEpisodesVar">
-		<value condition="Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),99)">   99 +</value>
-		<value>$INFO[ListItem.Property(UnWatchedEpisodes)]</value>
+	<variable name="ListItemOverlayShowsVar">
+		<value condition="String.IsEqual(ListItem.Property(WatchedEpisodePercent),100)">overlays/list/OverlayWatched.png</value>
+		<value condition="!String.IsEqual(ListItem.Property(WatchedEpisodePercent),0)">overlays/list/resumable.png</value>
+		<value>overlays/list/OverlayUnWatched.png</value>
 	</variable>
 	<variable name="PlayerProgressIconVar">
 		<value condition="Player.Playing + Player.HasVideo + VideoPlayer.Content(movies)"> </value>

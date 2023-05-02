@@ -14,18 +14,18 @@
 			<top>245</top>
 			<control type="image">
 				<left>32</left>
-				<top>22</top>
+				<top>20</top>
 				<width>1556</width>
-				<height>610</height>
+				<height>602</height>
 				<texture>colors/black90.png</texture>
 				<bordersize>1</bordersize>
 				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
 				<visible>Control.IsVisible(6)</visible>
 			</control>
 			<control type="image">
-				<left>322</left>
+				<left>314</left>
 				<top>20</top>
-				<width>982</width>
+				<width>990</width>
 				<height>602</height>
 				<texture>colors/black90.png</texture>
 				<bordersize>1</bordersize>
@@ -105,8 +105,8 @@
 					<height>540</height>
 					<onup>3</onup>
 					<ondown>3</ondown>
-					<onleft>60</onleft>
-					<onright>90000</onright>
+					<onleft>90000</onleft>
+					<onright>60</onright>
 					<pagecontrol>60</pagecontrol>
 					<animation effect="slide" start="0" end="-157" time="0" tween="quadratic" condition="!Control.IsVisible(6)">Conditional</animation>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
@@ -215,17 +215,17 @@
 					<left>32</left>
 					<top>81</top>
 					<width>1030</width>
-					<height>550</height>
+					<height>540</height>
 					<onup>6</onup>
 					<ondown>6</ondown>
-					<onleft>60</onleft>
-					<onright>90000</onright>
+					<onleft>90000</onleft>
+					<onright>60</onright>
 					<pagecontrol>60</pagecontrol>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
-					<itemlayout height="55" width="1041">
+					<itemlayout height="60" width="1041">
 						<control type="label">
 							<width>1030</width>
-							<height>55</height>
+							<height>60</height>
 							<font>font14</font>
 							<textoffsetx>15</textoffsetx>
 							<textcolor>grey2</textcolor>
@@ -234,7 +234,7 @@
 						</control>
 						<control type="label">
 							<width>1030</width>
-							<height>55</height>
+							<height>60</height>
 							<font>font13</font>
 							<textoffsetx>15</textoffsetx>
 							<textcolor>grey2</textcolor>
@@ -243,18 +243,18 @@
 							<label>$VAR[DialogSelectLabel2Var]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout height="55" width="1041">
+					<focusedlayout height="60" width="1041">
 						<control type="image">
 							<left>1</left>
 							<width>1030</width>
-							<height>55</height>
+							<height>60</height>
 							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
 							<visible>Control.HasFocus(6)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
 						<control type="label">
 							<width>1030</width>
-							<height>55</height>
+							<height>60</height>
 							<font>font14</font>
 							<textoffsetx>15</textoffsetx>
 							<shadowcolor>shadow</shadowcolor>
@@ -263,7 +263,7 @@
 						</control>
 						<control type="label">
 							<width>1030</width>
-							<height>55</height>
+							<height>60</height>
 							<font>font13</font>
 							<textoffsetx>15</textoffsetx>
 							<align>right</align>
@@ -275,21 +275,21 @@
 				</control>
 			</control>
 			<control type="scrollbar" id="60">
-				<left>16</left>
-				<top>80</top>
-				<height>542</height>
-				<width>14</width>
-				<onleft condition="Control.IsVisible(8)">98</onleft>
-				<onleft condition="Control.IsVisible(5) + !Control.IsVisible(8)">95</onleft>
-				<onleft condition="!Control.IsVisible(5)">97</onleft>
-				<onright>9000</onright>
+				<left>1291</left>
+				<top>81</top>
+				<height>540</height>
+				<width>12</width>
+				<onright condition="Control.IsVisible(8)">98</onright>
+				<onright condition="Control.IsVisible(5) + !Control.IsVisible(8)">95</onright>
+				<onright condition="!Control.IsVisible(5)">97</onright>
+				<onleft>9000</onleft>
 				<ondown>60</ondown>
 				<onup>60</onup>
 				<showonepage>false</showonepage>
 				<texturesliderbackground />
 				<texturesliderbar>colors/white10.png</texturesliderbar>
 				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
-				<animation effect="slide" start="0" end="293" time="0" tween="quadratic" condition="!Control.IsVisible(6)">Conditional</animation>
+				<animation effect="slide" start="0" end="-229" time="0" tween="quadratic" condition="Control.IsVisible(6)">Conditional</animation>
 			</control>
 			<control type="grouplist" id="90000">
 				<animation effect="slide" start="0" end="-275" time="0" condition="!Control.IsVisible(6)">Conditional</animation>
