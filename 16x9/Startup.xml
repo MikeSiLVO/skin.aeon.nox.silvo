@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol condition="Skin.HasSetting(Enable.StartupIntro)">10</defaultcontrol>
-	<onload condition="System.HasAddon(plugin.video.themoviedb.helper)">Skin.SetBool(TMDbHelper.Service)</onload>
-	<onload condition="!System.HasAddon(plugin.video.themoviedb.helper)">Skin.SetBool(Disable.NextAired)</onload>
-	<onload condition="System.HasAddon(script.skin.info.service)">RunScript(script.skin.info.service)</onload>
-	<onload condition="System.HasAddon(script.artistslideshow)">RunScript(script.artistslideshow,daemon=True)</onload>
+	<onload>Skin.SetBool(TMDbHelper.Service)</onload>
+	<onload>Skin.SetString(TMDbHelper.MonitorContainer,9143)</onload>
+	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">Skin.SetBool(Disable.NextAired)</onload>
+	<onload condition="System.AddonIsEnabled(script.skin.info.service)">RunScript(script.skin.info.service)</onload>
+	<onload condition="System.AddonIsEnabled(script.artistslideshow)">RunScript(script.artistslideshow,daemon=True)</onload>
 	<onload condition="!Skin.HasSetting(Enable.StartupIntro)">ReplaceWindow($INFO[System.StartupWindow])</onload>
 	<onunload condition="Skin.HasSetting(Enable.StartupIntro)">PlayerControl(Stop)</onunload>
 	<controls>

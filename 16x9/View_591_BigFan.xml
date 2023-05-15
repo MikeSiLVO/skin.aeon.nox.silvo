@@ -138,18 +138,18 @@
 					<height>30</height>
 					<font>font13_bold</font>
 					<textcolor>grey2</textcolor>
-					<label>$LOCALIZE[31010]: $INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired),, • ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Season),S]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Episode),E, - ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Name)]</label>
-					<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired))</visible>
+					<label>$LOCALIZE[31010]: $INFO[Container(9143).ListItem.Property(Next_Aired),, • ]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]</label>
+					<visible>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))</visible>
 				</control>
 				<control type="label">
 					<left>330</left>
 					<top>960</top>
 					<width>1220</width>
 					<height>30</height>
-					<label>$INFO[Window(Home).Property(TMDbHelper.ListItem.Status)]</label>
+					<label>$INFO[Container(9143).ListItem.Property(Status)]</label>
 					<font>font13_bold</font>
 					<textcolor>grey2</textcolor>
-					<visible>!Container.Content(movies) + String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired))</visible>
+					<visible>!Container.Content(movies) + String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))</visible>
 				</control>
 				<control type="group">
 					<visible>ListItem.IsCollection + ![Container.OnNext | Container.OnPrevious]</visible>

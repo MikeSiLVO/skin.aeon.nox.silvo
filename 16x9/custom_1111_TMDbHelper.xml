@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1111" type="window">
+	<defaultcontrol always="true">9999</defaultcontrol>
+	<controls>
+		<control type="list" id="9999">
+			<include>HiddenList</include>
+			<content target="videos">$INFO[Window(Home).Property(TMDbHelper.Path.Current)]</content>
+		</control>
+		<control type="group">
+			<visible>Container(9999).IsUpdating</visible>
+			<visible>!Window.IsVisible(DialogVideoInfo.xml)</visible>
+			<control type="group">
+				<include>DialogOpenCloseAnimation</include>
+				<control type="group">
+					<left>912</left>
+					<top>492</top>
+					<control type="image">
+						<description>Busy animation</description>
+						<width>96</width>
+						<height>96</height>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">android/spinner_48_inner_holo.png</texture>
+						<aspectratio>keep</aspectratio>
+						<animation effect="rotate" start="0" end="360" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
+					</control>
+					<control type="image">
+						<description>Busy animation</description>
+						<width>96</width>
+						<height>96</height>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">android/spinner_48_outer_holo.png</texture>
+						<aspectratio>keep</aspectratio>
+						<animation effect="rotate" start="360" end="0" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
+					</control>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>
