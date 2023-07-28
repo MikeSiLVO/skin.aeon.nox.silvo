@@ -770,13 +770,14 @@
 							<top>380</top>
 							<height>90</height>
 							<control type="grouplist">
-								<width>1200</width>
+								<left>10</left>
+								<width>1180</width>
 								<height>90</height>
 								<align>center</align>
 								<usecontrolcoords>true</usecontrolcoords>
 								<orientation>horizontal</orientation>
 								<control type="group">
-									<width>165</width>
+									<width>160</width>
 									<visible>!String.IsEmpty(ListItem.Studio)</visible>
 									<control type="image" id="800011">
 										<width>160</width>
@@ -784,7 +785,7 @@
 										<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
 									</control>
 									<control type="label">
-										<width>155</width>
+										<width>160</width>
 										<height>90</height>
 										<align>center</align>
 										<label>$INFO[ListItem.Studio]</label>
@@ -824,6 +825,7 @@
 									<visible>!String.IsEmpty(ListItem.AudioCodec)</visible>
 								</control>
 								<control type="image">
+									<width>160</width>
 									<include>MediaFlagValues</include>
 									<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
 									<visible>!String.IsEmpty(ListItem.AudioChannels)</visible>
@@ -857,6 +859,15 @@
 										<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.2))</visible>
 										<visible>!String.IsEqual(ListItem.Property(AudioLanguage.1),ListItem.Property(AudioLanguage.2))</visible>
 									</control>
+									<control type="image">
+										<width>30</width>
+										<height>30</height>
+										<include>MediaFlagValues</include>
+										<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.3),,.png]</texture>
+										<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
+										<visible>!String.IsEqual(ListItem.Property(AudioLanguage.1),ListItem.Property(AudioLanguage.3))</visible>
+										<visible>!String.IsEqual(ListItem.Property(AudioLanguage.2),ListItem.Property(AudioLanguage.3))</visible>
+									</control>
 								</control>
 								<control type="grouplist">
 									<top>15</top>
@@ -885,6 +896,15 @@
 										<include>MediaFlagValues</include>
 										<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.2),,.png]</texture>
 										<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.2)) + !String.IsEqual(ListItem.Property(SubtitleLanguage.2),ListItem.Property(SubtitleLanguage.1))</visible>
+									</control>
+									<control type="image">
+										<width>30</width>
+										<height>30</height>
+										<include>MediaFlagValues</include>
+										<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.3),,.png]</texture>
+										<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
+										<visible>!String.IsEqual(ListItem.Property(SubtitleLanguage.3),ListItem.Property(SubtitleLanguage.1))</visible>
+										<visible>!String.IsEqual(ListItem.Property(SubtitleLanguage.3),ListItem.Property(SubtitleLanguage.2))</visible>
 									</control>
 								</control>
 								<control type="group">
