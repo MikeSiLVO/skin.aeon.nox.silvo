@@ -232,6 +232,14 @@
 			<visible>!String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))</visible>
 		</item>
 		<item>
+			<label>$INFO[ListItem.Genre]</label>
+			<label2>$LOCALIZE[515]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[515])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[ListItem.Genre])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(ListItem.Genre)</visible>
+		</item>
+		<item>
 			<label>$INFO[ListItem.Premiered]</label>
 			<label2>$LOCALIZE[31452]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31452])</onclick>
