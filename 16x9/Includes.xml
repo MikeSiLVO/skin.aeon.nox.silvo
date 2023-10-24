@@ -48,7 +48,7 @@
 	<!-- ROTTENTOMATOES IMDb TMDb -->
 	<include name="TMDbHelperFlags">
 		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating))</visible>
+			<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
 			<width>170</width>
 			<orientation>horizontal</orientation>
 			<control type="image">
@@ -75,7 +75,7 @@
 			</control>
 		</control>
 		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter))</visible>
+			<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience))</visible>
 			<width>170</width>
 			<orientation>horizontal</orientation>
 			<itemgap>6</itemgap>
@@ -103,29 +103,6 @@
 			</control>
 		</control>
 		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9143).ListItem.Property(IMDb_Rating))</visible>
-			<width>170</width>
-			<orientation>horizontal</orientation>
-			<usecontrolcoords>true</usecontrolcoords>
-			<control type="image">
-				<width>60</width>
-				<include>MediaFlagValues</include>
-				<texture>logos/imdb.png</texture>
-			</control>
-			<control type="grouplist">
-				<left>10</left>
-				<width>100</width>
-				<height>78</height>
-				<align>center</align>
-				<control type="label">
-					<height>60</height>
-					<font>font13_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$INFO[Container(9143).ListItem.Property(IMDb_Rating)]</label>
-				</control>
-			</control>
-		</control>
-		<control type="grouplist">
 			<visible>!String.IsEmpty(Container(9143).ListItem.Property(TMDb_Rating))</visible>
 			<width>170</width>
 			<orientation>horizontal</orientation>
@@ -145,6 +122,29 @@
 					<font>font13_bold</font>
 					<textcolor>grey</textcolor>
 					<label>$INFO[Container(9143).ListItem.Property(TMDb_Rating)]</label>
+				</control>
+			</control>
+		</control>
+		<control type="grouplist">
+			<visible>!String.IsEmpty(Container(9143).ListItem.Property(IMDb_Rating))</visible>
+			<width>170</width>
+			<orientation>horizontal</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<control type="image">
+				<width>60</width>
+				<include>MediaFlagValues</include>
+				<texture>logos/imdb.png</texture>
+			</control>
+			<control type="grouplist">
+				<left>10</left>
+				<width>100</width>
+				<height>78</height>
+				<align>center</align>
+				<control type="label">
+					<height>60</height>
+					<font>font13_bold</font>
+					<textcolor>grey</textcolor>
+					<label>$INFO[Container(9143).ListItem.Property(IMDb_Rating)]</label>
 				</control>
 			</control>
 		</control>
