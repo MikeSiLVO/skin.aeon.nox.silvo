@@ -1374,6 +1374,10 @@
 		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow) + ControlGroup(90001).HasFocus(90015)">$LOCALIZE[31521]$INFO[Container(90015).ListItem.Property(searchstring), ]$INFO[Container(90015).NumItems, [COLOR grey](,)[/COLOR]]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow) + ControlGroup(90001).HasFocus(90016)">$LOCALIZE[33054]$INFO[Container(90016).NumItems, [COLOR grey](,)[/COLOR]]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,movie) + ControlGroup(90001).HasFocus(90017)">$INFO[ListItem.Set]$INFO[Container(90017).NumItems, [COLOR grey](,)[/COLOR]]</value>
+		<value condition="String.IsEqual(ListItem.Property(item.type),person) + ControlGroup(90001).HasFocus(900010)">$LOCALIZE[31210]</value>
+		<value condition="String.IsEqual(ListItem.Property(item.type),person) + ControlGroup(90001).HasFocus(900011)">$LOCALIZE[31212]</value>
+		<value condition="String.IsEqual(ListItem.Property(item.type),person) + ControlGroup(90001).HasFocus(900012)">$LOCALIZE[31545]</value>
+		<value condition="String.IsEqual(ListItem.Property(item.type),person) + ControlGroup(90001).HasFocus(900020)">$LOCALIZE[31547]</value>
 	</variable>
 	<!-- DialogVideoInfo -->
 	<variable name="VideoInfoPosterVar">
@@ -1386,6 +1390,10 @@
 		<value condition="ControlGroup(90001).HasFocus(90014) + !String.IsEmpty(Container(90014).ListItem.Art(poster))">$INFO[Container(90014).ListItem.Art(poster)]</value>
 		<value condition="ControlGroup(90001).HasFocus(90016) + !String.IsEmpty(Container(90016).ListItem.Icon)">$INFO[Container(90016).ListItem.Icon]</value>
 		<value condition="ControlGroup(90001).HasFocus(90017) + !String.IsEmpty(Container(90017).ListItem.Art(poster))">$INFO[Container(90017).ListItem.Art(poster)]</value>
+		<value condition="ControlGroup(90001).HasFocus(900010) + !String.IsEmpty(Container(900010).ListItem.Art(poster))">$INFO[Container(900010).ListItem.Art(poster)]</value>
+		<value condition="ControlGroup(90001).HasFocus(900011) + !String.IsEmpty(Container(900011).ListItem.Art(poster))">$INFO[Container(900011).ListItem.Art(poster)]</value>
+		<value condition="ControlGroup(90001).HasFocus(900012) + !String.IsEmpty(Container(900012).ListItem.Art(poster))">$INFO[Container(900012).ListItem.Art(poster)]</value>
+		<value condition="ControlGroup(90001).HasFocus(900020) + !String.IsEmpty(Container(900020).ListItem.Art(poster))">$INFO[Container(900020).ListItem.Art(poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(season.poster))">$INFO[ListItem.Art(season.poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.poster))">$INFO[ListItem.Art(tvshow.poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(poster1))">$INFO[Control.GetLabel(4510)]</value>
@@ -1979,6 +1987,10 @@
 	<variable name="DialogInfoDimmerLabelVar">
 		<value condition="!String.IsEmpty(Skin.String(DialogInfo.Dimmer))">$INFO[Skin.String(DialogInfo.Dimmer)]</value>
 		<value>85%</value>
+	</variable>
+	<variable name="CustomTextViewerContentVar">
+		<value condition="!String.IsEmpty(Window(skinsettings).Property(FAQ))">[COLOR FFFF9800][B]Why are all the menu backgrounds black?[/B][/COLOR][CR]There are no default chosen backgrounds in this skin. If you want backgrounds for your menu items you must select them yourself when customizing the main menu or use the Set default background option in Skin settings > General.[CR][CR][COLOR FFFF9800][B]How do I find my backgrounds when I can not see them?[/B][/COLOR][CR]If you have added sources to Kodi's File Manager (repos or other locations and folders) then you must add any additional sources/paths that contain your backgrounds. Visit [B]http://kodi.wiki/view/File%20manager[/B] for more info on how to add sources.[CR][CR][B][COLOR FFFF9800]How do I keep the Music information on the screen permanently?[/B][/COLOR][CR]The info button toggles how music information is displayed. When it disappears press info to re-show it and never press it a second time to hide it. If it is hidden then it will display for 10 seconds after a song is played or the next track in your queue begins.[CR][CR][COLOR FFFF9800][B]How do I customize this skin?[/B][/COLOR][CR]To customize the Main Menu navigate to System > Interface > Configure skin to access the skin wide settings and main menu customization. Select [B]Set up the Aeon Nox main menu[/B] where you can enable/disable any item, customize what happens when you select that item, set up backgrounds, widgets, manage the submenu, and choose a custom label.[CR][CR][LIGHT]There are many more options located in Skin settings > Customization for things like the OSD (On Screen Display) for fullscreen music and video playback, skin color picker, and the video information dialog.[/LIGHT][CR][CR][LIGHT]There are also many settings for each viewtype and/or section (Artist, Album, Song, Movie, TV Show, Episode, etc...) in the side menu so play around with all the options for further customization.[/LIGHT]</value>
+		<value>$INFO[Window(Home).Property(TextViewerContent)]</value>
 	</variable>
 	<!-- TopBar VAR's -->
 	<variable name="NoTopBarLabelVar">
