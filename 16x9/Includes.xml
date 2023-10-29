@@ -231,7 +231,7 @@
 			</control>
 		</control>
 		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9142).ListItem.Rating(metacritic))</visible>
+			<visible>!String.IsEmpty(Container(9142).ListItem.Rating(metacritic)) + ![String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience)) | String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))]</visible>
 			<width>170</width>
 			<orientation>horizontal</orientation>
 			<control type="image">
@@ -1104,6 +1104,7 @@
 	<include name="TMDbHelperPersonList">
 		<control type="panel" id="900010">
 			<visible allowhiddenfocus="true">Integer.IsGreater(Container(900010).NumItems,0)</visible>
+			<onclick>RunScript(plugin.video.themoviedb.helper,add_path=$INFO[ListItem.FolderPath],type=movie,call_auto=1111)</onclick>
 			<include content="ExtendedInfoListLayout">
 				<param name="PanelID">900010</param>
 				<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_movies&amp;type=person&amp;query=$INFO[ListItem.Label]</param>
@@ -1111,6 +1112,7 @@
 		</control>
 		<control type="panel" id="900011">
 			<visible allowhiddenfocus="true">Integer.IsGreater(Container(900011).NumItems,0)</visible>
+			<onclick>RunScript(plugin.video.themoviedb.helper,add_path=$INFO[ListItem.FolderPath],type=tv,call_auto=1111)</onclick>
 			<include content="ExtendedInfoListLayout">
 				<param name="PanelID">900011</param>
 				<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_tvshows&amp;type=person&amp;query=$INFO[ListItem.Label]</param>
@@ -1118,6 +1120,7 @@
 		</control>
 		<control type="panel" id="900012">
 			<visible allowhiddenfocus="true">Integer.IsGreater(Container(900012).NumItems,0)</visible>
+			<onclick>RunScript(plugin.video.themoviedb.helper,add_path=$INFO[ListItem.FolderPath],type=movie,call_auto=1111)</onclick>
 			<include content="ExtendedInfoListLayout">
 				<param name="PanelID">900012</param>
 				<param name="content">plugin://plugin.video.themoviedb.helper?info=crew_in_movies&amp;type=person&amp;query=$INFO[ListItem.Label]</param>
