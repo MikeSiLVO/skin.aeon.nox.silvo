@@ -2,8 +2,8 @@
 <window>
 	<onload condition="System.AddonIsEnabled(script.embuary.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(script.embuary.helper,action=blurimg,file=$VAR[PosterVar],prop=MyProp,radius=10)</onload>
 	<onload>SetFocus(90003)</onload>
-	<onload condition="![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + ![String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.cinemavision)] + !String.IsEqual(ListItem.Property(item.type),person)">SetFocus(8)</onload>
-	<onload condition="![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.cinemavision)">SetFocus(909)</onload>
+	<onload condition="![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + ![String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.preshowexperience)] + !String.IsEqual(ListItem.Property(item.type),person)">SetFocus(8)</onload>
+	<onload condition="![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.preshowexperience)">SetFocus(909)</onload>
 	<onload condition="Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)">SetFocus(808)</onload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(FSFanart))">ClearProperty(FSFanart,movieinformation)</onunload>
 	<controls>
@@ -579,7 +579,7 @@
 						<label></label>
 						<altlabel></altlabel>
 						<usealttexture>String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.DBTYPE,tvshow)</usealttexture>
-						<visible>[System.AddonIsEnabled(script.cinemavision) + !String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232])] | !System.AddonIsEnabled(script.cinemavision)</visible>
+						<visible>[System.AddonIsEnabled(script.preshowexperience) + !String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232])] | !System.AddonIsEnabled(script.preshowexperience)</visible>
 						<visible>![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)]</visible>
 					</control>
 					<control type="button" id="808">
@@ -596,14 +596,14 @@
 						<visible>Window.IsActive(home) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)]</visible>
 					</control>
 					<control type="button" id="909">
-						<description>CinemaVision</description>
+						<description>Preshowexperience</description>
 						<font>IconMediumMD</font>
 						<width>65</width>
 						<texturenofocus />
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label></label>
-						<onclick>RunScript(script.cinemavision,dbtype=$INFO[ListItem.DBTYPE],dbid=$INFO[ListItem.DBID])</onclick>
-						<visible>System.AddonIsEnabled(script.cinemavision) + String.IsEmpty(Window(Home).Property(script.cinemavision.running)) + !String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31014])</visible>
+						<onclick>RunScript(script.preshowexperience,experience)</onclick>
+						<visible>System.AddonIsEnabled(script.preshowexperience) + String.IsEmpty(Window(Home).Property(script.preshowexperience.running)) + !String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31014])</visible>
 						<visible>[String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode)]</visible>
 					</control>
 					<control type="button" id="910">

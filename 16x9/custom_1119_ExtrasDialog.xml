@@ -38,16 +38,16 @@
 				<visible>System.AddonIsEnabled(script.trakt) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
 			</control>
 			<control type="button" id="90204">
-				<description>CinemaVision</description>
+				<description>PreshowExperience</description>
 				<width>510</width>
 				<textwidth>435</textwidth>
 				<textoffsetx>35</textoffsetx>
 				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
 				<texturenofocus>button_nofocus.png</texturenofocus>
-				<label>$INFO[System.AddonTitle(script.cinemavision)]</label>
+				<label>$INFO[System.AddonTitle(script.preshowexperience)]</label>
 				<onclick>Dialog.Close(1119)</onclick>
-				<onclick>RunScript(script.cinemavision,dbtype=$INFO[ListItem.DBTYPE],dbid=$INFO[ListItem.DBID])</onclick>
-				<visible>System.AddonIsEnabled(script.cinemavision) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31014]) + String.IsEmpty(Window(Home).Property(script.cinemavision.running))</visible>
+				<onclick>RunScript(script.preshowexperience,experience)</onclick>
+				<visible>System.AddonIsEnabled(script.preshowexperience) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31014]) + String.IsEmpty(Window(Home).Property(script.preshowexperience.running))</visible>
 			</control>
 			<control type="button" id="90205">
 				<description>Search YouTube button</description>
