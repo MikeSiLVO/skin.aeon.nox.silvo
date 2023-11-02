@@ -3,6 +3,7 @@
 	<defaultcontrol condition="Skin.HasSetting(Enable.StartupIntro)">10</defaultcontrol>
 	<onload>Skin.SetBool(TMDbHelper.Service)</onload>
 	<onload>Skin.SetString(TMDbHelper.MonitorContainer,9143)</onload>
+	<onload>Skin.SetBool(TMDbHelper.DirectCallAuto)</onload>
 	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">Skin.SetBool(Disable.NextAired)</onload>
 	<onload condition="System.AddonIsEnabled(script.skin.info.service)">RunScript(script.skin.info.service)</onload>
 	<onload condition="System.AddonIsEnabled(script.artistslideshow)">RunScript(script.artistslideshow,daemon=True)</onload>
