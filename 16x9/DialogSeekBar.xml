@@ -43,39 +43,41 @@
 					<height>135</height>
 					<texture border="1,8.65,1,1">bottombar.png</texture>
 				</control>
-				<control type="progress">
-					<top>25</top>
-					<width>100%</width>
-					<height>40</height>
-					<texturebg border="2">osd/texturebg.png</texturebg>
-					<lefttexture />
-					<midtexture border="2">osd/midtexture_cache.png</midtexture>
-					<righttexture />
-					<overlaytexture />
-					<info>Player.ProgressCache</info>
-				</control>
-				<control type="progress">
-					<top>25</top>
-					<width>100%</width>
-					<height>36</height>
-					<texturebg border="1">osd/texturebg_cache.png</texturebg>
-					<lefttexture />
-					<midtexture colordiffuse="$VAR[ThemeOSDProgressColor]" border="2">osd/midtexture.png</midtexture>
-					<righttexture />
-					<overlaytexture />
-					<info>Player.Progress</info>
+				<control type="group">
+					<top>18</top>
+					<control type="progress">
+						<top>1</top>
+						<width>100%</width>
+						<height>43</height>
+						<texturebg border="2">osd/texturebg.png</texturebg>
+						<lefttexture />
+						<midtexture border="2">osd/midtexture_cache.png</midtexture>
+						<righttexture />
+						<overlaytexture />
+						<info>Player.ProgressCache</info>
+					</control>
+					<control type="progress">
+						<width>100%</width>
+						<height>40</height>
+						<texturebg border="2">osd/texturebg_cache.png</texturebg>
+						<lefttexture />
+						<midtexture colordiffuse="$VAR[ThemeOSDProgressColor]" border="2">osd/midtexture.png</midtexture>
+						<righttexture />
+						<overlaytexture />
+						<info>Player.Progress</info>
+					</control>
 				</control>
 				<control type="slider" id="401">
-					<top>27</top>
+					<top>20</top>
 					<width>100%</width>
-					<height>22</height>
+					<height>25</height>
 					<texturesliderbar>seekslider2.png</texturesliderbar>
 					<textureslidernib colordiffuse="$VAR[ThemeOSDProgressColor]">slidernib_alt.png</textureslidernib>
 					<textureslidernibfocus colordiffuse="$VAR[ThemeOSDProgressColor]">slidernib_alt.png</textureslidernibfocus>
 					<visible>Player.Seeking</visible>
 				</control>
 				<control type="group">
-					<top>24</top>
+					<top>20</top>
 					<animation effect="fade" start="100" end="50" time="239.76" condition="Player.Seeking">Conditional</animation>
 					<control type="label">
 						<width>830</width>
@@ -104,7 +106,7 @@
 					</control>
 				</control>
 				<control type="label">
-					<top>24</top>
+					<top>20</top>
 					<width>100%</width>
 					<height>90</height>
 					<font>font14_title</font>
@@ -115,6 +117,15 @@
 					<aligny>top</aligny>
 					<textoffsety>-2</textoffsety>
 					<label>$VAR[SeekLabelVar]</label>
+				</control>
+				<control type="ranges">
+					<top>62</top>
+					<width>100%</width>
+					<height>4</height>
+					<texturebg>colors/white10.png</texturebg>
+					<righttexture>colors/white.png</righttexture>
+					<info>Player.Chapters</info>
+					<visible>!Integer.IsEqual(Player.ChapterCount,0)</visible>
 				</control>
 				<control type="image">
 					<left>1460</left>
