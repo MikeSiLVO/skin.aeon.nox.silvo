@@ -1108,6 +1108,8 @@
 			<include content="ExtendedInfoListLayout">
 				<param name="PanelID">900010</param>
 				<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_movies&amp;type=person&amp;query=$INFO[ListItem.Label]</param>
+				<param name="label">$INFO[Container(900010).ListItem.Property(Character)]</param>
+				<param name="labelVisibility">!String.IsEmpty(Container(900010).ListItem.Property(Character))</param>
 			</include>
 		</control>
 		<control type="panel" id="900011">
@@ -1116,6 +1118,8 @@
 			<include content="ExtendedInfoListLayout">
 				<param name="PanelID">900011</param>
 				<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_tvshows&amp;type=person&amp;query=$INFO[ListItem.Label]</param>
+				<param name="label">$INFO[Container(900011).ListItem.Property(Character)]</param>
+				<param name="labelVisibility">!String.IsEmpty(Container(900011).ListItem.Property(Character))</param>
 			</include>
 		</control>
 		<control type="panel" id="900012">
@@ -1124,6 +1128,8 @@
 			<include content="ExtendedInfoListLayout">
 				<param name="PanelID">900012</param>
 				<param name="content">plugin://plugin.video.themoviedb.helper?info=crew_in_movies&amp;type=person&amp;query=$INFO[ListItem.Label]</param>
+				<param name="label">$INFO[Container(900012).ListItem.Property(Job)]</param>
+				<param name="labelVisibility">!String.IsEmpty(Container(900011).ListItem.Property(Job))</param>
 			</include>
 		</control>
 		<control type="panel" id="900020">
