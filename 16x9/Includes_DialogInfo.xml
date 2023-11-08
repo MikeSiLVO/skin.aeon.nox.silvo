@@ -283,7 +283,7 @@
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[575])</onclick>
 			<onclick>SetProperty(MoreInfoContent,$ESCINFO[ListItem.PercentPlayed,,%])</onclick>
 			<onclick>SetFocus(64)</onclick>
-			<visible>ListItem.IsResumable</visible>
+			<visible>ListItem.IsResumable + !String.IsEqual(ListItem.PercentPlayed,0)</visible>
 		</item>
 		<item>
 			<label>$INFO[ListItem.LastPlayed]</label>
