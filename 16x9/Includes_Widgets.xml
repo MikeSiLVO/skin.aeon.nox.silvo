@@ -129,7 +129,7 @@
 				<width>200</width>
 				<height>300</height>
 				<fadetime>IconCrossfadeTime</fadetime>
-				<texture background="true" diffuse="thumbs/movieposter_mask.png"  fallback="homewidgets/DefaultMovies_poster.png">$VAR[HomeWidgetPosterVar]</texture>
+				<texture diffuse="thumbs/movieposter_mask.png"  fallback="homewidgets/DefaultMovies_poster.png" background="true">$VAR[HomeWidgetPosterVar]</texture>
 			</control>
 			<control type="image">
 				<left>-30</left>
@@ -177,7 +177,7 @@
 				<width>$PARAM[widthArt]</width>
 				<height>$PARAM[heightArt]</height>
 				<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
-				<texture fallback="homewidgets/DefaultMovies_poster.png">$PARAM[Texture]</texture>
+				<texture fallback="homewidgets/DefaultMovies_poster.png" background="true">$PARAM[Texture]</texture>
 			</control>
 			<control type="image">
 				<left>$PARAM[leftCase]</left>
@@ -198,7 +198,7 @@
 				<width>$PARAM[widthArt]</width>
 				<height>$PARAM[heightArt]</height>
 				<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
-				<texture fallback="DefaultMovies.png">$PARAM[Texture]</texture>
+				<texture fallback="DefaultMovies.png" background="true">$PARAM[Texture]</texture>
 				<visible>!$PARAM[fallbackVisible]</visible>
 			</control>
 			<control type="image">
@@ -207,7 +207,7 @@
 				<width>$PARAM[widthArt]</width>
 				<height>$PARAM[widthArt]</height>
 				<aspectratio aligny="top" scalediffuse="false">scale</aspectratio>
-				<texture diffuse="homewidgets/cdart-mask.png" fallback="DefaultMusicAlbums.png">$INFO[Container.ListItem.Art(thumb)]</texture>
+				<texture diffuse="homewidgets/cdart-mask.png" fallback="DefaultMusicAlbums.png" background="true">$INFO[Container.ListItem.Art(thumb)]</texture>
 				<visible>$PARAM[fallbackVisible]</visible>
 			</control>
 			<control type="image">
@@ -246,7 +246,7 @@
 				<width>$PARAM[widthArt]</width>
 				<height>$PARAM[heightArt]</height>
 				<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
-				<texture fallback="homewidgets/DefaultMovies_landscape.png">$PARAM[Texture]</texture>
+				<texture fallback="homewidgets/DefaultMovies_landscape.png" background="true">$PARAM[Texture]</texture>
 				<visible>![$PARAM[fallbackVisible]]</visible>
 			</control>
 			<control type="label">
@@ -282,7 +282,7 @@
 					<width>$PARAM[widthArt]</width>
 					<height>$PARAM[heightArt]</height>
 					<aspectratio>stretch</aspectratio>
-					<texture>$VAR[HomeWidgetBannerVar]</texture>
+					<texture background="true">$VAR[HomeWidgetBannerVar]</texture>
 				</control>
 				<control type="image">
 					<left>$PARAM[leftArt]</left>
@@ -290,7 +290,7 @@
 					<width>$PARAM[widthArt]</width>
 					<height>$PARAM[heightArt]</height>
 					<aspectratio aligny="top">scale</aspectratio>
-					<texture fallback="homewidgets/DefaultMovies_banner.png">$VAR[HomeWidgetFanArtVar]</texture>
+					<texture fallback="homewidgets/DefaultMovies_banner.png" background="true">$VAR[HomeWidgetFanArtVar]</texture>
 					<visible>String.IsEmpty(ListItem.Art(banner)) + String.IsEmpty(ListItem.Art(tvshow.banner))</visible>
 				</control>
 				<control type="image">
@@ -299,7 +299,7 @@
 					<width>$PARAM[widthArt]</width>
 					<height>$PARAM[heightArt]</height>
 					<aspectratio>keep</aspectratio>
-					<texture>$VAR[HomeWidgetClearLogoVar]</texture>
+					<texture background="true">$VAR[HomeWidgetClearLogoVar]</texture>
 					<visible>String.IsEmpty(ListItem.Art(banner)) + String.IsEmpty(ListItem.Art(tvshow.banner))</visible>
 				</control>
 				<control type="label">
@@ -334,7 +334,7 @@
 					<width>$PARAM[widthArt]</width>
 					<height>$PARAM[heightArt]</height>
 					<aspectratio>stretch</aspectratio>
-					<texture>$VAR[HomeWidgetBannerVar]</texture>
+					<texture background="true">$VAR[HomeWidgetBannerVar]</texture>
 				</control>
 				<control type="image">
 					<left>$PARAM[leftArt]</left>
@@ -342,7 +342,7 @@
 					<width>$PARAM[widthArt]</width>
 					<height>$PARAM[heightArt]</height>
 					<aspectratio aligny="top">scale</aspectratio>
-					<texture fallback="homewidgets/DefaultMovies_banner.png">$VAR[HomeWidgetFanArtVar]</texture>
+					<texture fallback="homewidgets/DefaultMovies_banner.png" background="true">$VAR[HomeWidgetFanArtVar]</texture>
 					<visible>String.IsEmpty(ListItem.Art(banner)) + String.IsEmpty(ListItem.Art(tvshow.banner))</visible>
 				</control>
 				<control type="image">
@@ -351,7 +351,7 @@
 					<width>$PARAM[widthArt]</width>
 					<height>$PARAM[heightArt]</height>
 					<aspectratio>keep</aspectratio>
-					<texture>$VAR[HomeWidgetClearLogoVar]</texture>
+					<texture background="true">$VAR[HomeWidgetClearLogoVar]</texture>
 					<visible>String.IsEmpty(ListItem.Art(banner)) + String.IsEmpty(ListItem.Art(tvshow.banner))</visible>
 				</control>
 				<control type="label">
@@ -424,7 +424,7 @@
 					<top>5</top>
 					<width>40</width>
 					<height>40</height>
-					<texture>$INFO[ListItem.Icon]</texture>
+					<texture background="true">$INFO[ListItem.Icon]</texture>
 				</control>
 				<control type="label">
 					<left>40</left>
@@ -449,7 +449,7 @@
 				<top>5</top>
 				<width>40</width>
 				<height>40</height>
-				<texture>$INFO[ListItem.Icon]</texture>
+				<texture background="true">$INFO[ListItem.Icon]</texture>
 			</control>
 			<control type="label">
 				<left>40</left>
@@ -526,7 +526,7 @@
 						<width>$PARAM[widthArt]</width>
 						<height>$PARAM[heightArt]</height>
 						<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
-						<texture fallback="homewidgets/DefaultMovies_poster.png">$PARAM[Texture]</texture>
+						<texture fallback="homewidgets/DefaultMovies_poster.png" background="true">$PARAM[Texture]</texture>
 					</control>
 					<control type="group">
 						<visible>$PARAM[labelVisible]</visible>
@@ -570,7 +570,7 @@
 						<width>$PARAM[widthArt]</width>
 						<height>$PARAM[heightArt]</height>
 						<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
-						<texture fallback="homewidgets/DefaultMovies_poster.png">$PARAM[Texture]</texture>
+						<texture fallback="homewidgets/DefaultMovies_poster.png" background="true">$PARAM[Texture]</texture>
 						<bordertexture colordiffuse="$VAR[WidgetHighlightBarColor]" border="5">thumbs/thumbnail_focused.png</bordertexture>
 						<bordersize>5</bordersize>
 					</control>
@@ -616,7 +616,7 @@
 						<width>$PARAM[widthArt]</width>
 						<height>$PARAM[heightArt]</height>
 						<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
-						<texture fallback="DefaultMovies.png">$PARAM[Texture]</texture>
+						<texture fallback="DefaultMovies.png" background="true">$PARAM[Texture]</texture>
 						<visible>!$PARAM[fallbackVisible]</visible>
 					</control>
 					<control type="group">
@@ -626,7 +626,7 @@
 							<width>$PARAM[widthArt]</width>
 							<height>$PARAM[widthArt]</height>
 							<aspectratio aligny="top" scalediffuse="false">scale</aspectratio>
-							<texture diffuse="homewidgets/cdart-mask.png" fallback="DefaultMovies.png">$INFO[ListItem.Art(thumb)]</texture>
+							<texture diffuse="homewidgets/cdart-mask.png" fallback="DefaultMovies.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
 						</control>
 						<control type="image">
 							<top>$PARAM[topFakeDiscArt]</top>
@@ -684,7 +684,7 @@
 						<width>$PARAM[widthArt]</width>
 						<height>$PARAM[heightArt]</height>
 						<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
-						<texture fallback="DefaultMovies.png">$PARAM[Texture]</texture>
+						<texture fallback="DefaultMovies.png" background="true">$PARAM[Texture]</texture>
 						<visible>!$PARAM[fallbackVisible]</visible>
 					</control>
 					<control type="group">
@@ -694,7 +694,7 @@
 							<width>$PARAM[widthArt]</width>
 							<height>$PARAM[widthArt]</height>
 							<aspectratio aligny="top" scalediffuse="false">scale</aspectratio>
-							<texture diffuse="homewidgets/cdart-mask.png" fallback="DefaultMovies.png">$INFO[ListItem.Art(thumb)]</texture>
+							<texture diffuse="homewidgets/cdart-mask.png" fallback="DefaultMovies.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
 						</control>
 						<control type="image">
 							<top>$PARAM[topFakeDiscArt]</top>
@@ -768,7 +768,7 @@
 							<width>$PARAM[widthArt]</width>
 							<height>$PARAM[widthArt]</height>
 							<aspectratio aligny="top" scalediffuse="false">scale</aspectratio>
-							<texture diffuse="homewidgets/cdart-mask.png" fallback="DefaultMovies.png">$INFO[ListItem.Art(thumb)]</texture>
+							<texture diffuse="homewidgets/cdart-mask.png" fallback="DefaultMovies.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
 						</control>
 						<control type="image">
 							<top>$PARAM[topFakeDiscArt]</top>
@@ -852,7 +852,7 @@
 							<width>$PARAM[widthArt]</width>
 							<height>$PARAM[widthArt]</height>
 							<aspectratio aligny="top" scalediffuse="false">scale</aspectratio>
-							<texture diffuse="homewidgets/cdart-mask.png" fallback="DefaultMovies.png">$INFO[ListItem.Art(thumb)]</texture>
+							<texture diffuse="homewidgets/cdart-mask.png" fallback="DefaultMovies.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
 						</control>
 						<control type="image">
 							<top>$PARAM[topFakeDiscArt]</top>
@@ -929,7 +929,7 @@
 					<width>$PARAM[widthArt]</width>
 					<height>$PARAM[heightArt]</height>
 					<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
-					<texture fallback="homewidgets/DefaultMovies_landscape.png">$PARAM[Texture]</texture>
+					<texture fallback="homewidgets/DefaultMovies_landscape.png" background="true">$PARAM[Texture]</texture>
 					<visible>![$PARAM[fallbackVisible]]</visible>
 				</control>
 				<control type="label">
@@ -985,7 +985,7 @@
 					<width>$PARAM[widthArt]</width>
 					<height>$PARAM[heightArt]</height>
 					<aspectratio aligny="$PARAM[Aligny]">$PARAM[Aspect]</aspectratio>
-					<texture fallback="homewidgets/DefaultMovies_landscape.png">$PARAM[Texture]</texture>
+					<texture fallback="homewidgets/DefaultMovies_landscape.png" background="true">$PARAM[Texture]</texture>
 					<visible>![$PARAM[fallbackVisible]]</visible>
 				</control>
 				<control type="label">
@@ -1048,7 +1048,7 @@
 					<width>$PARAM[widthArt]</width>
 					<height>$PARAM[heightArt]</height>
 					<aspectratio>$PARAM[Aspect]</aspectratio>
-					<texture>$PARAM[Texture]</texture>
+					<texture background="true">$PARAM[Texture]</texture>
 				</control>
 				<control type="image">
 					<left>$PARAM[leftArt]</left>
@@ -1056,7 +1056,7 @@
 					<width>$PARAM[widthArt]</width>
 					<height>$PARAM[heightArt]</height>
 					<aspectratio aligny="top">scale</aspectratio>
-					<texture fallback="homewidgets/DefaultMovies_banner.png">$VAR[HomeWidgetFanArtVar]</texture>
+					<texture fallback="homewidgets/DefaultMovies_banner.png" background="true">$VAR[HomeWidgetFanArtVar]</texture>
 					<visible>String.IsEmpty(ListItem.Art(banner)) + String.IsEmpty(ListItem.Art(tvshow.banner))</visible>
 				</control>
 				<control type="image">
@@ -1065,7 +1065,7 @@
 					<width>$PARAM[widthArt]</width>
 					<height>$PARAM[heightArt]</height>
 					<aspectratio>keep</aspectratio>
-					<texture>$VAR[HomeWidgetClearLogoVar]</texture>
+					<texture background="true">$VAR[HomeWidgetClearLogoVar]</texture>
 					<visible>String.IsEmpty(ListItem.Art(banner)) + String.IsEmpty(ListItem.Art(tvshow.banner))</visible>
 				</control>
 				<control type="label">
@@ -1121,7 +1121,7 @@
 					<width>$PARAM[widthArt]</width>
 					<height>$PARAM[heightArt]</height>
 					<aspectratio>$PARAM[Aspect]</aspectratio>
-					<texture>$PARAM[Texture]</texture>
+					<texture background="true">$PARAM[Texture]</texture>
 				</control>
 				<control type="image">
 					<left>$PARAM[leftArt]</left>
@@ -1129,7 +1129,7 @@
 					<width>$PARAM[widthArt]</width>
 					<height>$PARAM[heightArt]</height>
 					<aspectratio aligny="top">scale</aspectratio>
-					<texture fallback="homewidgets/DefaultMovies_banner.png">$VAR[HomeWidgetFanArtVar]</texture>
+					<texture fallback="homewidgets/DefaultMovies_banner.png" background="true">$VAR[HomeWidgetFanArtVar]</texture>
 					<visible>String.IsEmpty(ListItem.Art(banner)) + String.IsEmpty(ListItem.Art(tvshow.banner))</visible>
 				</control>
 				<control type="image">
@@ -1138,7 +1138,7 @@
 					<width>$PARAM[widthArt]</width>
 					<height>$PARAM[heightArt]</height>
 					<aspectratio>keep</aspectratio>
-					<texture>$VAR[HomeWidgetClearLogoVar]</texture>
+					<texture background="true">$VAR[HomeWidgetClearLogoVar]</texture>
 					<visible>String.IsEmpty(ListItem.Art(banner)) + String.IsEmpty(ListItem.Art(tvshow.banner))</visible>
 				</control>
 				<control type="label">
