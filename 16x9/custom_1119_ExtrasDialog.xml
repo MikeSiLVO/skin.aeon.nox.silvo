@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1119" type="dialog">
 	<defaultcontrol always="true">90200</defaultcontrol>
+	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(FSFanart))">ClearProperty(FSFanart,movieinformation)</onunload>
+	<onunload condition="!String.IsEmpty(Window(Home).Property(Enable.FullscreenFanart))">ClearProperty(Enable.FullscreenFanart,Home)</onunload>
 	<include>DialogOpenCloseAnimation</include>
 	<controls>
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture>colors/black25.png</texture>
+			<animation effect="fade" time="100">WindowOpen</animation>
+			<animation effect="fade" time="50">WindowClose</animation>
+		</control>
 		<control type="grouplist" id="90200">
 			<left>705</left>
 			<width>510</width>
