@@ -4,14 +4,6 @@
 		<value condition="String.IsEqual(Control.GetLabel(310), $LOCALIZE[12308])"></value>
 		<value></value>
 	</variable>
-	<variable name="TMDbHelperNextAiredLabelVar">
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19031]:[/COLOR] $INFO[Container(9143).ListItem.Property(Next_Aired),, • ]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]</value>
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31374]:[/COLOR] $INFO[Container(9143).ListItem.Property(Last_Aired),, • ]$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Name)]</value>
-	</variable>
-	<variable name="TMDbHelperDBTYPEPathVar">
-		<value condition="String.IsEqual(ListItem.DBTYPE,movie)">tmdb_type=movie</value>
-		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow)">tmdb_type=tv</value>
-	</variable>
 	<variable name="MovieSetsPathVar">
 		<value condition="String.IsEqual(ListItem.DBTYPE,set)">videodb://movies/sets/$INFO[ListItem.DBID]/?setid=$INFO[ListItem.DBID]</value>
 	</variable>
@@ -1481,10 +1473,6 @@
 		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating(tomatometerallaudience),6.0) | Integer.IsGreaterOrEqual(Container(9142).ListItem.Rating(tomatometerallaudience),6.0)">logos/rottentomatoes/popcornfresh.png</value>
 		<value>logos/rottentomatoes/popcornrotten.png</value>
 	</variable>
-	<variable name="RottenFreshAudienceTMDbHelperLogoVar">
-		<value condition="Integer.IsGreaterOrEqual(Container(9143).ListItem.Property(RottenTomatoes_UserMeter),60)">logos/rottentomatoes/popcornfresh.png</value>
-		<value>logos/rottentomatoes/popcornrotten.png</value>
-	</variable>
 	<variable name="RottenFreshAudienceLabelVar">
 		<value condition="String.StartsWith(ListItem.Rating(tomatometerallaudience),1.) | String.StartsWith(Container(9142).ListItem.Rating(tomatometerallaudience),1.)">1</value>
 		<value condition="String.StartsWith(ListItem.Rating(tomatometerallaudience),2.) | String.StartsWith(Container(9142).ListItem.Rating(tomatometerallaudience),2.)">2</value>
@@ -1538,13 +1526,29 @@
 		<value condition="ControlGroup(9001).HasFocus(9050) + !String.IsEmpty(Container(9050).ListItem.Icon)">$INFO[Container(9050).ListItem.Icon]</value>
 		<value>$INFO[ListItem.Icon]</value>
 	</variable>
-	<!-- TMDbHelper Info-->
+	<!-- TMDbHelper -->
+	<variable name="TMDbHelperNextAiredLabelVar">
+		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19031]:[/COLOR] $INFO[Container(9143).ListItem.Property(Next_Aired),, • ]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]</value>
+		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31374]:[/COLOR] $INFO[Container(9143).ListItem.Property(Last_Aired),, • ]$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Name)]</value>
+	</variable>
+	<variable name="TMDbHelperDBTYPEPathVar">
+		<value condition="String.IsEqual(ListItem.DBTYPE,movie)">movie</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow)">tv</value>
+	</variable>
 	<variable name="TMDbHelperInfoPosterVar">
 		<value condition="ControlGroup(90000).HasFocus(900010) + !String.IsEmpty(Container(900010).ListItem.Art(thumb))">$INFO[Container(900010).ListItem.Art(poster)]</value>
 		<value condition="ControlGroup(90000).HasFocus(10053) + !String.IsEmpty(Container(10053).ListItem.Art(thumb))">$INFO[Container(10053).ListItem.Art(thumb)]</value>
 		<value condition="Window.IsActive(script-embuary-person.xml) + ControlGroup(90000).HasFocus(10054) + !String.IsEmpty(Container(10054).ListItem.Art(thumb))">$INFO[Container(10054).ListItem.Art(thumb)]</value>
 		<value condition="ControlGroup(90000).HasFocus(10056) + !String.IsEmpty(Container(10056).ListItem.Art(thumb))">$INFO[Container(10056).ListItem.Art(thumb)]</value>
 		<value>$INFO[Container(10051).ListItem.Art(thumb)]</value>
+	</variable>
+	<variable name="RottenFreshAudienceTMDbHelperLogoVar">
+		<value condition="Integer.IsGreaterOrEqual(Container(9143).ListItem.Property(RottenTomatoes_UserMeter),60)">logos/rottentomatoes/popcornfresh.png</value>
+		<value>logos/rottentomatoes/popcornrotten.png</value>
+	</variable>
+	<variable name="TMDbHelperLocalDBVar">
+		<value condition="Addon.SettingBool(plugin.video.themoviedb.helper,local_db)">&amp;exclude_key=dbid&amp;exclude_value=is_empty&amp;length=6</value>
+		<value />
 	</variable>
 	<!-- Embuary Info -->
 	<variable name="EmbuaryInfoPosterVar">
