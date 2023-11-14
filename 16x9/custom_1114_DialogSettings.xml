@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1114" type="dialog">
+	<defaultcontrol always="true">90200</defaultcontrol>
+	<onunload condition="!Skin.HasSetting(BlurEnabled) + String.IsEqual(Skin.String(Viz.Background),4) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd)">Skin.ToggleSetting(BlurEnabled)</onunload>
+	<onunload condition="!Skin.HasSetting(BlurEnabled) + String.IsEqual(Skin.String(Viz.Background),4) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd)">RunScript(script.embuary.helper,action=restartservice)</onunload>
+	<onunload>ClearProperty(DialogSettings,Home)</onunload>
+	<coordinates>
+		<system>1</system>
+		<left>210</left>
+		<top>180</top>
+	</coordinates>
+	<include>DialogOpenCloseAnimation</include>
+	<controls>
+		<control type="group">
+			<visible>!Window.IsVisible(1129)</visible>
+			<animation effect="fade" time="250">Visible</animation>
+			<animation effect="fade" time="150">Hidden</animation>
+			<include>DialogPanel</include>
+			<control type="label" id="2">
+				<top>10</top>
+				<width>1500</width>
+				<height>40</height>
+				<font>font15_title</font>
+				<label>$LOCALIZE[5]$VAR[DialogSettingsHeaderVar]</label>
+				<align>center</align>
+				<textcolor>dialogheader</textcolor>
+			</control>
+			<control type="grouplist" id="90200">
+				<left>1</left>
+				<top>59</top>
+				<width>1498</width>
+				<height>660</height>
+				<pagecontrol>6</pagecontrol>
+				<onup>90200</onup>
+				<ondown>90200</ondown>
+				<onleft>6</onleft>
+				<onright>6</onright>
+				<include condition="String.IsEqual(Window(Home).Property(DialogSettings),videoosd)">VideoOSDSettings</include>
+				<include condition="String.IsEqual(Window(Home).Property(DialogSettings),musicosd)">MusicOSDSettings</include>
+				<include condition="String.IsEqual(Window(Home).Property(DialogSettings),videoinfo)">VideoInfoSettings</include>
+			</control>
+			<control type="scrollbar" id="6">
+				<left>1489</left>
+				<top>59</top>
+				<width>10</width>
+				<height>660</height>
+				<texturesliderbackground>colors/black.png</texturesliderbackground>
+				<texturesliderbar>colors/white25.png</texturesliderbar>
+				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+				<onleft>90200</onleft>
+				<onright>90200</onright>
+				<showonepage>false</showonepage>
+			</control>
+		</control>
+	</controls>
+</window>

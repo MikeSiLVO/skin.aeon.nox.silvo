@@ -1964,7 +1964,7 @@
 		<value condition="!String.IsEmpty(Window(skinsettings).Property(FAQ))">[COLOR FFFF9800][B]Why are all the menu backgrounds black?[/B][/COLOR][CR]There are no default chosen backgrounds in this skin. If you want backgrounds for your menu items you must select them yourself when customizing the main menu or use the Set default background option in Skin settings > General.[CR][CR][COLOR FFFF9800][B]How do I find my backgrounds when I can not see them?[/B][/COLOR][CR]If you have added sources to Kodi's File Manager (repos or other locations and folders) then you must add any additional sources/paths that contain your backgrounds. Visit [B]http://kodi.wiki/view/File%20manager[/B] for more info on how to add sources.[CR][CR][B][COLOR FFFF9800]How do I keep the Music information on the screen permanently?[/B][/COLOR][CR]The info button toggles how music information is displayed. When it disappears press info to re-show it and never press it a second time to hide it. If it is hidden then it will display for 10 seconds after a song is played or the next track in your queue begins.[CR][CR][COLOR FFFF9800][B]How do I customize this skin?[/B][/COLOR][CR]To customize the Main Menu navigate to System > Interface > Configure skin to access the skin wide settings and main menu customization. Select [B]Set up the Aeon Nox main menu[/B] where you can enable/disable any item, customize what happens when you select that item, set up backgrounds, widgets, manage the submenu, and choose a custom label.[CR][CR][LIGHT]There are many more options located in Skin settings > Customization for things like the OSD (On Screen Display) for fullscreen music and video playback, skin color picker, and the video information dialog.[/LIGHT][CR][CR][LIGHT]There are also many settings for each viewtype and/or section (Artist, Album, Song, Movie, TV Show, Episode, etc...) in the side menu so play around with all the options for further customization.[/LIGHT]</value>
 		<value>$INFO[Window(Home).Property(TextViewerContent)]</value>
 	</variable>
-	<!-- TopBar VAR's -->
+	<!-- TopBar VARs -->
 	<variable name="NoTopBarLabelVar">
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),List) + !String.IsEmpty(Skin.String(50.NoTopBar))">$INFO[Skin.String(50.NoTopBar)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),InfoWall) + !String.IsEmpty(Skin.String(51.NoTopBar))">$INFO[Skin.String(51.NoTopBar)]</value>
@@ -2073,6 +2073,13 @@
 		<value condition="ListItem.IsRecording">pvr/icons/channels/record.png</value>
 		<value condition="ListItem.HasTimer | ListItem.HasTimerSchedule">pvr/icons/channels/timer.png</value>
 		<value condition="ListItem.HasArchive">pvr/icons/channels/archive.png</value>
+	</variable>
+	<!-- Dialog Settings Vars -->
+	<variable name="DialogSettingsHeaderVar">
+		<value condition="String.IsEqual(Window(Home).Property(DialogSettings),videoosd)"> - $LOCALIZE[31375]</value>
+		<value condition="String.IsEqual(Window(Home).Property(DialogSettings),musicosd)"> - $LOCALIZE[31376]</value>
+		<value condition="String.IsEqual(Window(Home).Property(DialogSettings),videoinfo)"> - $LOCALIZE[31190]</value>
+		<value />
 	</variable>
 	<!-- Color Picker VARs -->
 	<variable name="ThemeLabelColor">
