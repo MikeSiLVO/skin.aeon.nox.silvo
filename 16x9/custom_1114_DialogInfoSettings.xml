@@ -3,8 +3,8 @@
 	<defaultcontrol always="true">90200</defaultcontrol>
 	<coordinates>
 		<system>1</system>
-		<left>199</left>
-		<top>150</top>
+		<left>210</left>
+		<top>180</top>
 	</coordinates>
 	<include>DialogOpenCloseAnimation</include>
 	<controls>
@@ -13,24 +13,25 @@
 			<animation effect="fade" time="250">Visible</animation>
 			<animation effect="fade" time="150">Hidden</animation>
 			<control type="image">
-				<width>1522</width>
-				<height>780</height>
-				<texture border="40">dialogs/default/bg.png</texture>
+				<width>1500</width>
+				<height>720</height>
+				<texture>colors/black.png</texture>
+				<bordersize>1</bordersize>
+				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
 			</control>
 			<control type="label" id="2">
-				<left>30</left>
-				<top>32</top>
-				<width>1462</width>
+				<top>10</top>
+				<width>1500</width>
 				<height>40</height>
 				<font>font15_title</font>
-				<label>$LOCALIZE[12003]</label>
+				<label>$LOCALIZE[5] - $LOCALIZE[12003]</label>
 				<align>center</align>
 				<textcolor>dialogheader</textcolor>
 			</control>
 			<control type="grouplist" id="90200">
-				<left>33</left>
-				<top>88</top>
-				<width>1452</width>
+				<left>1</left>
+				<top>59</top>
+				<width>1498</width>
 				<height>660</height>
 				<pagecontrol>6</pagecontrol>
 				<onup>90200</onup>
@@ -38,38 +39,38 @@
 				<onleft>6</onleft>
 				<onright>6</onright>
 				<control type="radiobutton" id="90201">
-					<width>1452</width>
-					<radioposx>1350</radioposx>
+					<width>1498</width>
+					<radioposx>1396</radioposx>
 					<label>$LOCALIZE[31487]</label>
 					<onclick>Skin.ToggleSetting(MoreVideoInfoDetails)</onclick>
 					<selected>Skin.HasSetting(MoreVideoInfoDetails)</selected>
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
 				<control type="radiobutton" id="90202">
-					<width>1452</width>
-					<radioposx>1350</radioposx>
+					<width>1498</width>
+					<radioposx>1396</radioposx>
 					<label>$LOCALIZE[31494]</label>
 					<onclick>Skin.ToggleSetting(Disable.VideoInfoPathDetails)</onclick>
 					<selected>Skin.HasSetting(Disable.VideoInfoPathDetails)</selected>
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
 				<control type="button" id="90203">
-					<width>1452</width>
+					<width>1498</width>
 					<label>$LOCALIZE[31931]</label>
 					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[VideoPlotLocalizeVar][/COLOR]</label2>
 					<onclick>Skin.ToggleSetting(VideoInfoPlotToggle)</onclick>
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
 				<control type="radiobutton" id="90204">
-					<width>1452</width>
-					<radioposx>1350</radioposx>
+					<width>1498</width>
+					<radioposx>1396</radioposx>
 					<label>$LOCALIZE[31541]</label>
 					<onclick>Skin.ToggleSetting(SetInfoPlotToggle)</onclick>
 					<selected>!Skin.HasSetting(SetInfoPlotToggle)</selected>
 					<visible>System.AddonIsEnabled(script.skin.info.service) + !Window.IsActive(musicinformation)</visible>
 				</control>
 				<control type="button" id="90205">
-					<width>1452</width>
+					<width>1498</width>
 					<label>$LOCALIZE[31990]</label>
 					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[CinemaVisionButtonLabelVar][/COLOR]</label2>
 					<onclick>$VAR[CinemaVisionButtonOnClickVar]</onclick>
@@ -77,8 +78,8 @@
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
 				<control type="radiobutton" id="90206">
-					<width>1452</width>
-					<radioposx>1350</radioposx>
+					<width>1498</width>
+					<radioposx>1396</radioposx>
 					<onclick>Skin.ToggleSetting(Enable.ExtendedInfoIntergration)</onclick>
 					<onclick>Dialog.Close(1119)</onclick>
 					<onclick>Dialog.Close(movieinformation)</onclick>
@@ -88,8 +89,8 @@
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
 				<control type="radiobutton" id="90207">
-					<width>1452</width>
-					<radioposx>1350</radioposx>
+					<width>1498</width>
+					<radioposx>1396</radioposx>
 					<onclick>Skin.ToggleSetting(Enable.ExtendedInfoTVIntergration)</onclick>
 					<onclick>Dialog.Close(1119)</onclick>
 					<onclick>Dialog.Close(movieinformation)</onclick>
@@ -99,8 +100,8 @@
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
 				<control type="radiobutton" id="90208">
-					<width>1452</width>
-					<radioposx>1350</radioposx>
+					<width>1498</width>
+					<radioposx>1396</radioposx>
 					<onclick condition="System.AddonIsEnabled(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo)">Dialog.Close(1119)</onclick>
 					<onclick condition="System.AddonIsEnabled(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo) + !Window.IsActive(musicinformation)">Dialog.Close(movieinformation)</onclick>
 					<onclick condition="System.AddonIsEnabled(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo) + Window.IsActive(music) + !String.IsEqual(ListItem.DBTYPE,song)">Dialog.Close(musicinformation)</onclick>
@@ -111,7 +112,7 @@
 					<visible>System.AddonIsEnabled(script.embuary.helper)</visible>
 				</control>
 				<control type="button" id="90209">
-					<width>1452</width>
+					<width>1498</width>
 					<label>$LOCALIZE[31442]</label>
 					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[DialogInfoDimmerLabelVar][/COLOR]</label2>
 					<onclick>SetProperty(CustomSelectDialogInfoDimmer,True)</onclick>
@@ -119,24 +120,24 @@
 					<visible>!Skin.HasSetting(Enable.BlurredVideoInfo)</visible>
 				</control>
 				<control type="radiobutton" id="90210">
-					<width>1452</width>
-					<radioposx>1350</radioposx>
+					<width>1498</width>
+					<radioposx>1396</radioposx>
 					<onclick>Skin.ToggleSetting(discartoninfo)</onclick>
 					<selected>Skin.HasSetting(discartoninfo)</selected>
 					<label>$LOCALIZE[31601]</label>
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
 				<control type="radiobutton" id="90211">
-					<width>1452</width>
-					<radioposx>1350</radioposx>
+					<width>1498</width>
+					<radioposx>1396</radioposx>
 					<onclick>Skin.ToggleSetting(CharacterOnInfo)</onclick>
 					<selected>Skin.HasSetting(CharacterOnInfo)</selected>
 					<label>$LOCALIZE[31507]</label>
 					<visible>!Window.IsActive(musicinformation)</visible>
 				</control>
 				<control type="radiobutton" id="90212">
-					<width>1452</width>
-					<radioposx>1350</radioposx>
+					<width>1498</width>
+					<radioposx>1396</radioposx>
 					<onclick>Skin.ToggleSetting(TMDbHelper.HideBudgetRevenue)</onclick>
 					<selected>Skin.HasSetting(TMDbHelper.HideBudgetRevenue)</selected>
 					<label>$LOCALIZE[31596]</label>
