@@ -136,7 +136,7 @@
 				<top>-45</top>
 				<width>260</width>
 				<height>390</height>
-				<texture background="true">$VAR[HomeWidgetInfoCaseVar]</texture>
+				<texture>$VAR[HomeWidgetInfoCaseVar]</texture>
 				<fadetime>IconCrossfadeTime</fadetime>
 				<animation effect="slide" end="0,-11" condition="String.IsEqual(Skin.String(Widget.CaseInfo),Case) | [ControlGroup(90010).HasFocus + String.IsEqual(Container(9000).ListItem.Property(widgetCase),Case) + String.IsEqual(Skin.String(Widget.CaseInfo),Match widget panel)] | [ControlGroup(90020).HasFocus + String.IsEqual(Container(9000).ListItem.Property(widgetCase.2),Case) + String.IsEqual(Skin.String(Widget.CaseInfo),Match widget panel)]">Conditional</animation>
 				<animation effect="zoom" end="80" center="auto" condition="[String.IsEqual(Skin.String(Widget.CaseInfo),Glass) | [ControlGroup(90010).HasFocus + String.IsEqual(Container(9000).ListItem.Property(widgetCase),Glass) + String.IsEqual(Skin.String(Widget.CaseInfo),Match widget panel)] | [ControlGroup(90020).HasFocus + String.IsEqual(Container(9000).ListItem.Property(widgetCase.2),Glass) + String.IsEqual(Skin.String(Widget.CaseInfo),Match widget panel)]] | [String.IsEqual(Skin.String(Widget.CaseInfo),Clear Case) | [ControlGroup(90010).HasFocus + String.IsEqual(Container(9000).ListItem.Property(widgetCase),Clear Case) + String.IsEqual(Skin.String(Widget.CaseInfo),Match widget panel)] | [ControlGroup(90020).HasFocus + String.IsEqual(Container(9000).ListItem.Property(widgetCase.2),Clear Case) + String.IsEqual(Skin.String(Widget.CaseInfo),Match widget panel)]]">Conditional</animation>
@@ -161,7 +161,7 @@
 		<control type="image">
 			<width>310</width>
 			<height>310</height>
-			<texture background="true">$VAR[HomeWidgetInfoCaseVar]</texture>
+			<texture>$VAR[HomeWidgetInfoCaseVar]</texture>
 			<fadetime>IconCrossfadeTime</fadetime>
 			<visible>!String.IsEmpty(Skin.String(Widget.CaseInfo))</visible>
 		</control>
