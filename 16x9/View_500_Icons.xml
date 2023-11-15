@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<include name="IconsBackPanel">
-		<param name="width">1693</param>
-		<definition>
-			<control type="image">
-				<left>119</left>
-				<top>178</top>
-				<width>$PARAM[width]</width>
-				<height>722</height>
-				<texture>colors/black.png</texture>
-				<bordersize>1</bordersize>
-				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-				<visible>$PARAM[visible]</visible>
-			</control>
-		</definition>
-	</include>
 	<!-- Video Wall -->
 	<include name="VideoIcons">
 		<control type="group">
 			<visible>Control.IsVisible(500) + !Window.IsActive(addoninformation)</visible>
 			<include>ViewAnimation</include>
 			<animation effect="slide" end="34.5" condition="Skin.HasSetting(500.SmallerIcons)">Conditional</animation>
-			<include content="IconsBackPanel">
+			<include content="BackPanel">
+				<param name="left">119</param>
+				<param name="top">178</param>
+				<param name="width">1693</param>
+				<param name="height">722</param>
 				<param name="visible">!Skin.HasSetting(500.SmallerIcons)</param>
 			</include>
-			<include content="IconsBackPanel">
+			<include content="BackPanel">
+				<param name="left">119</param>
+				<param name="top">178</param>
 				<param name="width">1613</param>
+				<param name="height">722</param>
 				<param name="visible">Skin.HasSetting(500.SmallerIcons)</param>
 			</include>
 			<top>-19</top>
@@ -352,7 +344,13 @@
 		<control type="group">
 			<visible>Control.IsVisible(500) + !Window.IsActive(addoninformation)</visible>
 			<include>ViewAnimation</include>
-			<include>IconsBackPanel</include>
+			<top>41</top>
+			<include content="BackPanel">
+				<param name="left">119</param>
+				<param name="top">178</param>
+				<param name="width">1693</param>
+				<param name="height">722</param>
+			</include>
 			<control type="panel" id="500">
 				<left>120</left>
 				<top>179</top>
@@ -459,7 +457,13 @@
 		<control type="group">
 			<visible>Control.IsVisible(500) + !Window.IsActive(addoninformation)</visible>
 			<include>ViewAnimation</include>
-			<include>IconsBackPanel</include>
+			<top>41</top>
+			<include content="BackPanel">
+				<param name="left">119</param>
+				<param name="top">178</param>
+				<param name="width">1693</param>
+				<param name="height">722</param>
+			</include>
 			<control type="panel" id="500">
 				<left>120</left>
 				<top>179</top>
@@ -540,13 +544,12 @@
 			<visible>Control.IsVisible(500) + !Window.IsActive(addoninformation)</visible>
 			<include>ViewAnimation</include>
 			<top>-85</top>
-			<control type="image">
-				<left>90</left>
-				<top>148</top>
-				<width>1740</width>
-				<height>964</height>
-				<texture border="40">listpanel_back.png</texture>
-			</control>
+			<include content="BackPanel">
+				<param name="left">119</param>
+				<param name="top">178</param>
+				<param name="width">1694</param>
+				<param name="height">902</param>
+			</include>
 			<control type="panel" id="500">
 				<left>120</left>
 				<top>179</top>
