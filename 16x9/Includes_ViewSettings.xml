@@ -488,21 +488,16 @@
 			<visible>[System.GetBool(videolibrary.groupmoviesets) + Container.Content(movies)] | Container.Content(sets)</visible>
 		</control>
 	</include>
-	<include name="SmallIconsViewSettings">
-		<!-- SmallIcons -->
-		<control type="radiobutton" id="1510">
-			<description>Enable Icons InfoPopup</description>
-			<include>ButtonCommonValues</include>
-			<label>$LOCALIZE[31292]</label>
-			<onclick>Skin.ToggleSetting(Enable.SmallIconsInfoPopup)</onclick>
-			<onclick condition="String.IsEmpty(Skin.String(InfoPopup.Delay))">Skin.SetString(InfoPopup.Delay,3)</onclick>
-			<selected>Skin.HasSetting(Enable.SmallIconsInfoPopup)</selected>
-			<visible>[Container.Content(movies) | Container.Content(tvshows)]</visible>
-		</control>
-	</include>
 	<include name="IconsViewSettings">
 		<!-- Icons -->
 		<control type="radiobutton" id="1510">
+			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[31293]</label>
+			<onclick>Skin.ToggleSetting(500.SmallerIcons)</onclick>
+			<selected>Skin.HasSetting(500.SmallerIcons)</selected>
+			<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets) | Container.Content(genres)]</visible>
+		</control>
+		<control type="radiobutton" id="1511">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31292]</label>
 			<onclick>Skin.ToggleSetting(Enable.IconsInfoPopup)</onclick>

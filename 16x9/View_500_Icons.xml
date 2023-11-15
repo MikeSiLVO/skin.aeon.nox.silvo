@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="IconsBackPanel">
-		<control type="image">
-			<left>90</left>
-			<top>148</top>
-			<width>1740</width>
-			<height>784</height>
-			<texture border="40">listpanel_back.png</texture>
-		</control>
+		<param name="width">1693</param>
+		<definition>
+			<control type="image">
+				<left>119</left>
+				<top>178</top>
+				<width>$PARAM[width]</width>
+				<height>722</height>
+				<texture>colors/black.png</texture>
+				<bordersize>1</bordersize>
+				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
 	</include>
 	<!-- Video Wall -->
 	<include name="VideoIcons">
 		<control type="group">
 			<visible>Control.IsVisible(500) + !Window.IsActive(addoninformation)</visible>
 			<include>ViewAnimation</include>
-			<include>IconsBackPanel</include>
-			<top>-10</top>
+			<animation effect="slide" end="34.5" condition="Skin.HasSetting(500.SmallerIcons)">Conditional</animation>
+			<include content="IconsBackPanel">
+				<param name="visible">!Skin.HasSetting(500.SmallerIcons)</param>
+			</include>
+			<include content="IconsBackPanel">
+				<param name="width">1613</param>
+				<param name="visible">Skin.HasSetting(500.SmallerIcons)</param>
+			</include>
+			<top>-19</top>
 			<control type="panel" id="500">
 				<left>120</left>
 				<top>179</top>
@@ -29,7 +42,7 @@
 				<pagecontrol>50060</pagecontrol>
 				<preloaditems>2</preloaditems>
 				<scrolltime tween="quadratic" easing="out">300</scrolltime>
-				<itemlayout height="360" width="240" condition="Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)">
+				<itemlayout height="360" width="240" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)] + !Skin.HasSetting(500.SmallerIcons)">
 					<control type="image">
 						<width>240</width>
 						<height>360</height>
@@ -53,7 +66,7 @@
 						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
 					</control>
 				</itemlayout>
-				<focusedlayout height="360" width="240" condition="Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)">
+				<focusedlayout height="360" width="240" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)] + !Skin.HasSetting(500.SmallerIcons)">
 					<control type="group">
 						<animation type="Focus" reversible="false">
 							<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
@@ -82,7 +95,7 @@
 						</control>
 					</control>
 				</focusedlayout>
-				<itemlayout height="360" width="240" condition="Container.Content(genres)">
+				<itemlayout height="360" width="240" condition="Container.Content(genres) + !Skin.HasSetting(500.SmallerIcons)">
 					<control type="image">
 						<width>240</width>
 						<height>360</height>
@@ -92,7 +105,7 @@
 						<bordersize>2</bordersize>
 					</control>
 				</itemlayout>
-				<focusedlayout height="360" width="240" condition="Container.Content(genres)">
+				<focusedlayout height="360" width="240" condition="Container.Content(genres) + !Skin.HasSetting(500.SmallerIcons)">
 					<control type="group">
 						<animation type="Focus" reversible="false">
 							<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
@@ -228,9 +241,89 @@
 						</control>
 					</control>
 				</focusedlayout>
+				<itemlayout height="240" width="160" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)] + Skin.HasSetting(500.SmallerIcons)">
+					<control type="image">
+						<width>160</width>
+						<height>240</height>
+						<texture colordiffuse="BAFFFFFF" background="true">$VAR[PosterThumb]</texture>
+						<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+						<bordersize>2</bordersize>
+					</control>
+					<control type="image">
+						<left>129</left>
+						<top>1</top>
+						<width>30</width>
+						<height>30</height>
+						<texture>$VAR[OverlayVar]</texture>
+						<aspectratio align="center" aligny="top">keep</aspectratio>
+						<bordersize>1</bordersize>
+						<visible>[!String.IsEmpty(Skin.String(500.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(500.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(500.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(500.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
+					</control>
+					<control type="group">
+						<left>15</left>
+						<top>15</top>
+						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
+					</control>
+				</itemlayout>
+				<focusedlayout height="240" width="160" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)] + Skin.HasSetting(500.SmallerIcons)">
+					<control type="group">
+						<animation type="Focus" reversible="false">
+							<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
+							<effect type="fade" start="80" end="100" time="300" tween="sine" easing="in" />
+						</animation>
+						<control type="image">
+							<width>160</width>
+							<height>240</height>
+							<texture background="true">$VAR[PosterThumb]</texture>
+							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="4">thumbs/thumbnail_focused.png</bordertexture>
+							<bordersize>4</bordersize>
+						</control>
+						<control type="image">
+							<left>127</left>
+							<top>3</top>
+							<width>30</width>
+							<height>30</height>
+							<texture>$VAR[OverlayVar]</texture>
+							<aspectratio align="center" aligny="top">keep</aspectratio>
+							<bordersize>1</bordersize>
+							<visible>[!String.IsEmpty(Skin.String(500.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(500.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(500.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(500.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
+						</control>
+						<control type="group">
+							<left>15</left>
+							<top>15</top>
+							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
+						</control>
+					</control>
+				</focusedlayout>
+				<itemlayout height="240" width="160" condition="Container.Content(genres) + Skin.HasSetting(500.SmallerIcons)">
+					<control type="image">
+						<width>160</width>
+						<height>240</height>
+						<aspectratio>scale</aspectratio>
+						<texture colordiffuse="BAFFFFFF" background="true" fallback="special://skin/extras/moviegenres/default/Default.jpg">$VAR[GenreIconVar]</texture>
+						<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+						<bordersize>2</bordersize>
+					</control>
+				</itemlayout>
+				<focusedlayout height="240" width="160" condition="Container.Content(genres) + Skin.HasSetting(500.SmallerIcons)">
+					<control type="group">
+						<animation type="Focus" reversible="false">
+							<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
+							<effect type="fade" start="80" end="100" time="300" tween="sine" easing="in" />
+						</animation>
+						<control type="image">
+							<width>160</width>
+							<height>240</height>
+							<aspectratio>scale</aspectratio>
+							<texture colordiffuse="BAFFFFFF" background="true" fallback="special://skin/extras/moviegenres/default/Default.jpg">$VAR[GenreIconVar]</texture>
+							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+							<bordersize>8</bordersize>
+						</control>
+					</control>
+				</focusedlayout>
 			</control>
 			<control type="scrollbar" id="50060">
-				<left>1802</left>
+				<left>1801</left>
 				<top>179</top>
 				<width>10</width>
 				<height>720</height>
@@ -240,10 +333,11 @@
 				<onright condition="Control.IsVisible(615)">SetFocus(615)</onright>
 				<ondown>50060</ondown>
 				<onup>50060</onup>
-				<showonepage>false</showonepage>
-				<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-				<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
+				<texturesliderbackground>colors/black.png</texturesliderbackground>
+				<texturesliderbar>colors/white25.png</texturesliderbar>
 				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+				<showonepage>false</showonepage>
+				<animation effect="slide" end="-80" condition="Skin.HasSetting(500.SmallerIcons)">Conditional</animation>
 			</control>
 			<control type="group">
 				<include content="InfoPopup">
@@ -399,10 +493,10 @@
 				</itemlayout>
 				<focusedlayout height="240" width="240">
 					<control type="group">
-							<animation type="Focus" reversible="false">
-								<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
-								<effect type="fade" start="80" end="100" time="300" tween="sine" easing="in" />
-							</animation>
+						<animation type="Focus" reversible="false">
+							<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
+							<effect type="fade" start="80" end="100" time="300" tween="sine" easing="in" />
+						</animation>
 						<control type="image">
 							<width>240</width>
 							<height>240</height>
