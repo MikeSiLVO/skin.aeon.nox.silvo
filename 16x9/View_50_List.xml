@@ -1855,13 +1855,13 @@
 			<control type="group">
 				<left>100</left>
 				<top>-40</top>
-				<control type="image">
-					<left>-32</left>
-					<top>148</top>
-					<width>1204</width>
-					<height>904</height>
-					<texture border="40">listpanel_back.png</texture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">-1</param>
+					<param name="top">179</param>
+					<param name="width">1156</param>
+					<param name="height">842</param>
+					<param name="texture">colors/black75.png</param>
+				</include>
 				<control type="panel" id="50">
 					<top>180</top>
 					<width>1140</width>
@@ -2063,15 +2063,15 @@
 					<ondown>95060</ondown>
 					<onleft>50</onleft>
 					<onright>9002</onright>
-					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
+					<texturesliderbackground>colors/black.png</texturesliderbackground>
+					<texturesliderbar>colors/white25.png</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
 			</control>
 			<control type="group">
 				<left>1296</left>
-				<top>155</top>
+				<top>163</top>
 				<control type="image">
 					<width>570</width>
 					<height>835</height>
@@ -2079,15 +2079,6 @@
 					<texture background="true">$INFO[ListItem.Icon]</texture>
 					<fadetime>IconCrossfadeTime</fadetime>
 					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
-					<bordersize>20</bordersize>
-				</control>
-				<control type="image">
-					<top>795</top>
-					<width>570</width>
-					<height>835</height>
-					<aspectratio aligny="top">keep</aspectratio>
-					<fadetime>IconCrossfadeTime</fadetime>
-					<texture diffuse="thumbs/thumb_reflect.png" flipy="true" background="true">$INFO[ListItem.Icon]</texture>
 					<bordersize>20</bordersize>
 				</control>
 			</control>

@@ -126,7 +126,7 @@
 							<visible>Window.IsActive(pictures)</visible>
 							<width>1125</width>
 							<height>633</height>
-							<texture background="true">$INFO[ListItem.PicturePath]</texture>
+							<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
 							<aspectratio align="center" aligny="center">keep</aspectratio>
 							<colordiffuse>BAffffff</colordiffuse>
 						</control>
@@ -148,13 +148,6 @@
 							<texture>colors/black75.png</texture>
 							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
 							<bordersize>8</bordersize>
-						</control>
-						<control type="image">
-							<visible>ListItem.IsFolder + !Container.Content(artists)</visible>
-							<width>1125</width>
-							<height>633</height>
-							<aspectratio>keep</aspectratio>
-							<texture background="true">$INFO[ListItem.Thumb]</texture>
 						</control>
 						<control type="image">
 							<visible>!Window.IsActive(pictures)</visible>
@@ -186,9 +179,8 @@
 							<visible>Window.IsActive(pictures)</visible>
 							<width>1125</width>
 							<height>633</height>
-							<texture background="true">$INFO[ListItem.PicturePath]</texture>
+							<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
 							<aspectratio align="center" aligny="center">keep</aspectratio>
-							<colordiffuse>BAffffff</colordiffuse>
 							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
 							<bordersize>8</bordersize>
 						</control>
