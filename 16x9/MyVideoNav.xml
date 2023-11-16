@@ -627,7 +627,7 @@
 							</control>
 						</control>
 					</control>
-					<!-- (List - Tripanel - Posters - Shift - BannerWall - Small Icons - Icons - BannerPlex - RightList - MyFlix - BigFan - FanartList) -->
+					<!-- (List - Tripanel - Posters - Shift - BannerWall - Icons - BannerPlex - RightList - MyFlix - BigFan - FanartList) -->
 					<control type="group">
 						<visible>Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | [Control.IsVisible(58)] | Control.IsVisible(500) | Control.IsVisible(506) | Control.IsVisible(509) | Control.IsVisible(591) | Control.IsVisible(601) | Control.IsVisible(602)</visible>
 						<include>ViewAnimation</include>
@@ -636,16 +636,17 @@
 						<!-- Movies + Episodes -->
 						<control type="group">
 							<visible>![Container.Content(addons) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
-							<animation effect="slide" end="40" condition="Control.IsVisible(50)">Conditional</animation>
+							<animation effect="slide" end="80" condition="String.IsEmpty(Skin.String(LanguageFlags))">Conditional</animation>
+							<animation effect="slide" end="80" condition="Control.IsVisible(50)">Conditional</animation>
 							<animation effect="slide" end="-300" condition="Container.Content(episodes) + !System.AddonIsEnabled(plugin.video.themoviedb.helper) + [Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(509) | Control.IsVisible(602)]">Conditional</animation>
 							<animation effect="slide" end="-240" condition="Container.Content(episodes) + !System.AddonIsEnabled(plugin.video.themoviedb.helper) + [Control.IsVisible(500)]">Conditional</animation>
 							<control type="group">
+								<left>40</left>
 								<visible>[Container.Content(movies) + Control.IsVisible(50) + !Skin.HasSetting(Disable.List.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(50)]  | [Container.Content(movies) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.EpisodeMediaflags)] | Control.IsVisible(591) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(509) + !Skin.HasSetting(Disable.MyFlix.Mediaflags) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(500) | Control.IsVisible(601) | Control.IsVisible(602)</visible>
 								<include>ViewAnimation</include>
-								<include condition="!System.AddonIsEnabled(script.embuary.helper)">NoEmbuaryHelperFlagAnimations</include>
+								<include condition="!System.AddonIsEnabled(script.embuary.helper) + !System.AddonIsEnabled(plugin.video.themoviedb.helper)">NoEmbuaryHelperFlagAnimations</include>
 								<!-- ROTTENTOMATOES/METACRITIC -->
 								<control type="grouplist">
-									<left>35</left>
 									<width>340</width>
 									<orientation>horizontal</orientation>
 									<include condition="System.AddonIsEnabled(script.embuary.helper)">RottenMetaFlags</include>
@@ -653,8 +654,8 @@
 								</control>
 								<!-- MEDIAFLAGS -->
 								<control type="grouplist">
-									<left>380</left>
-									<width>1540</width>
+									<left>340</left>
+									<width>1500</width>
 									<orientation>horizontal</orientation>
 									<usecontrolcoords>true</usecontrolcoords>
 									<control type="group">
@@ -707,9 +708,10 @@
 									<!-- LANGUAGE FLAGS -->
 									<control type="grouplist">
 										<top>10</top>
-										<height>78</height>
+										<height>60</height>
+										<align>center</align>
 										<control type="grouplist">
-											<width>170</width>
+											<width>140</width>
 											<height>30</height>
 											<orientation>horizontal</orientation>
 											<itemgap>5</itemgap>
@@ -749,7 +751,7 @@
 										</control>
 										<control type="grouplist">
 											<top>30</top>
-											<width>135</width>
+											<width>140</width>
 											<height>30</height>
 											<orientation>horizontal</orientation>
 											<itemgap>5</itemgap>
@@ -1034,7 +1036,7 @@
 						</control>
 					</control>
 				</control>
-				<!-- (Tripanel - Posters - Shift - BannerWall - Small Icons - Icons - BannerPlex - RightList - MyFlix - BigFan) -->
+				<!-- (List - Tripanel - Posters - Shift - BannerWall - Small Icons - Icons - BannerPlex - RightList - MyFlix - BigFan) -->
 				<control type="group">
 					<visible>ListItem.IsCollection</visible>
 					<animation effect="fade" time="140" delay="100">Visible</animation>
