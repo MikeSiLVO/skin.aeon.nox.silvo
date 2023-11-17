@@ -19,7 +19,7 @@
 				<preloaditems>2</preloaditems>
 				<pagecontrol>50560</pagecontrol>
 				<orientation>horizontal</orientation>
-				<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes)]</visible>
+				<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_505]</visible>
 				<itemlayout width="610" height="843">
 					<control type="label">
 						<top>327</top>

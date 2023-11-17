@@ -524,7 +524,7 @@
 		<ondown>506</ondown>
 		<pagecontrol>50660</pagecontrol>
 		<viewtype label="$LOCALIZE[31239]">list</viewtype>
-		<visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
+		<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_506]</visible>
 		<scrolltime tween="quadratic" easing="out">200</scrolltime>
 		<itemlayout height="82" width="806" condition="[!Skin.HasSetting(rightlistalternate) + Container.Content(movies)]">
 			<include content="RightListItemLayout">

@@ -333,7 +333,7 @@
 				<top>530</top>
 				<width>1920</width>
 				<height>600</height>
-				<visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
+				<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_509]</visible>
 				<onleft>509</onleft>
 				<onright>509</onright>
 				<onup>SetProperty(MediaMenu,True,Home)</onup>

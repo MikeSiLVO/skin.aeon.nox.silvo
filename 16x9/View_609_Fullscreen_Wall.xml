@@ -30,7 +30,7 @@
 				<pagecontrol>60960</pagecontrol>
 				<preloaditems>2</preloaditems>
 				<scrolltime tween="quadratic">400</scrolltime>
-				<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(artists) | Container.Content(albums) | [Window.IsActive(music) + Container.Content(files)]</visible>
+				<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(artists) | Container.Content(albums)] | !System.AddonIsEnabled(script.skinvariables) + [Window.IsActive(music) + Container.Content(files)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_609]</visible>
 				<itemlayout width="240" height="360" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + !Skin.HasSetting(Enable.SmallerFullscreenWallPosters)">
 					<control type="group">
 						<control type="image">

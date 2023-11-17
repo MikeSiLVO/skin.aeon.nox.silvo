@@ -36,7 +36,7 @@
 				<preloaditems>2</preloaditems>
 				<viewtype label="31088">wide</viewtype>
 				<scrolltime tween="quadratic" easing="out">300</scrolltime>
-				<visible>Container.Content(tvshows) | Container.Content(movies)</visible>
+				<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(tvshows) | Container.Content(movies)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_58]</visible>
 				<itemlayout height="110" width="560">
 					<control type="image">
 						<width>560</width>

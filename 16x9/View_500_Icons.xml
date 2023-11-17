@@ -34,6 +34,7 @@
 				<pagecontrol>50060</pagecontrol>
 				<preloaditems>2</preloaditems>
 				<scrolltime tween="quadratic" easing="out">300</scrolltime>
+				<visible>True + !System.AddonIsEnabled(script.skinvariables) | [$EXP[Exp_View_500] + System.AddonIsEnabled(script.skinvariables)]</visible>
 				<itemlayout height="360" width="240" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)] + !Skin.HasSetting(500.SmallerIcons)">
 					<control type="image">
 						<width>240</width>

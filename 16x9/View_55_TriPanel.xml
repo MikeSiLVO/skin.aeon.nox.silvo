@@ -191,7 +191,7 @@
 					<viewtype label="31078">list</viewtype>
 					<pagecontrol>95560</pagecontrol>
 					<preloaditems>2</preloaditems>
-					<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets)</visible>
+					<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_55]</visible>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
 					<itemlayout height="70" width="806" condition="Container.Content(movies)">
 						<control type="label">

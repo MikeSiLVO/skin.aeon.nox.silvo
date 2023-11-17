@@ -26,7 +26,7 @@
 				<ondown>507</ondown>
 				<preloaditems>2</preloaditems>
 				<pagecontrol>50760</pagecontrol>
-				<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(artists) | Container.Content(albums)]</visible>
+				<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(artists) | Container.Content(albums)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_507]</visible>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<itemlayout width="1808" height="238">
 					<include>view_BigList-LandscapeCommons</include>

@@ -26,7 +26,7 @@
 		<preloaditems>2</preloaditems>
 		<viewtype label="31076">bigwrap</viewtype>
 		<scrolltime tween="sine" easing="inout">500</scrolltime>
-		<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(artists) | Container.Content(sets)</visible>
+		<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(artists) | Container.Content(sets)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_52]</visible>
 		<itemlayout height="642" width="680" condition="![Skin.HasSetting(Enable.LandscapeNoFlow) + !Control.IsVisible(6010)]" />
 		<focusedlayout height="636" width="680" condition="![Skin.HasSetting(Enable.LandscapeNoFlow) + !Control.IsVisible(6010)]" />
 		<itemlayout height="642" width="710" condition="Skin.HasSetting(Enable.LandscapeNoFlow)">

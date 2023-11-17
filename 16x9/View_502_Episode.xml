@@ -29,7 +29,7 @@
 				<pagecontrol>50260</pagecontrol>
 				<viewtype label="$LOCALIZE[20359]">list</viewtype>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
-				<visible>Container.Content(episodes)</visible>
+				<visible>[!System.AddonIsEnabled(script.skinvariables) + Container.Content(episodes)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_502]</visible>
 				<animation effect="slide" end="0,0" time="160" condition="Container(502).Row(0)">Conditional</animation>
 				<animation effect="slide" end="0,0" time="160" condition="Container(502).Row(1)">Conditional</animation>
 				<animation effect="slide" end="0,0" time="160" condition="Container(502).Row(2)">Conditional</animation>
