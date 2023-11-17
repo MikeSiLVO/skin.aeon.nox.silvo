@@ -706,10 +706,11 @@
 							<height>500</height>
 							<onup>9000</onup>
 							<ondown condition="String.IsEqual(ListItem.Property(item.type),person)">900010</ondown>
-							<ondown condition="[String.IsEqual(ListItem.DBTYPE,set) | !System.AddonIsEnabled(script.embuary.info)] + !String.IsEqual(ListItem.Property(item.type),person)">50</ondown>
-							<ondown condition="!String.IsEqual(ListItem.DBTYPE,set) + System.AddonIsEnabled(script.embuary.info) + !String.IsEqual(ListItem.Property(item.type),person)">90050</ondown>
+							<ondown condition="[String.IsEqual(ListItem.DBTYPE,set) | !System.AddonIsEnabled(plugin.video.themoviedb.helper)] + !String.IsEqual(ListItem.Property(item.type),person)">50</ondown>
+							<ondown condition="!String.IsEqual(ListItem.DBTYPE,set) + System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.Property(item.type),person)">90050</ondown>
 							<onclick>SetProperty(TextViewerHeader,$ESCINFO[ListItem.Label,[B],[/B]],Home)</onclick>
 							<onclick condition="String.IsEqual(ListItem.DBTYPE,movie)">SetProperty(TextViewerSubHeader,$ESCINFO[ListItem.Tagline,[I],[/I]],Home)</onclick>
+							<onclick condition="String.IsEqual(ListItem.DBTYPE,set)">SetProperty(TextViewerSubHeader,$INFO[Container(50).NumItems,, $LOCALIZE[342],[I],[/I]],Home)</onclick>
 							<onclick condition="String.IsEqual(ListItem.DBTYPE,tvshow) + !String.IsEmpty(Container(9143).ListItem.Property(Status))">SetProperty(TextViewerSubHeader,$ESCINFO[Container(9143).ListItem.Property(Status),[I],[/I]],Home)</onclick>
 							<onclick condition="String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEmpty(ListItem.TvShowTitle)">SetProperty(TextViewerSubHeader,$ESCINFO[ListItem.TvShowTitle,[I],[/I]],Home)</onclick>
 							<onclick>SetProperty(TextViewerContent,$ESCVAR[VideoInfoPlotVar],Home)</onclick>
