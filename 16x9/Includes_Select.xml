@@ -75,26 +75,16 @@
 			</control>
 			<control type="group">
 				<left>1075</left>
-				<top>115</top>
+				<top>100</top>
 				<control type="multiimage">
 					<width>500</width>
 					<height>500</height>
 					<timeperimage>70</timeperimage>
 					<fadetime>1</fadetime>
 					<randomize>false</randomize>
-					<aspectratio aligny="top">keep</aspectratio>
+					<aspectratio>keep</aspectratio>
 					<imagepath background="true">$INFO[Container(6).ListItem.Icon]</imagepath>
-					<visible>Control.IsVisible(6) + ![Window.IsVisible(script-skinshortcuts.xml) + String.StartsWith(Container(6).ListItem.Icon(Icon), special://skin/extras/icons)]</visible>
-				</control>
-				<control type="multiimage">
-					<width>500</width>
-					<height>500</height>
-					<timeperimage>70</timeperimage>
-					<fadetime>1</fadetime>
-					<randomize>false</randomize>
-					<aspectratio>center</aspectratio>
-					<imagepath background="true">$INFO[Container(6).ListItem.Icon]</imagepath>
-					<visible>Control.IsVisible(6) + [Window.IsVisible(script-skinshortcuts.xml) + String.StartsWith(Container(6).ListItem.Icon(Icon), special://skin/extras/icons)]</visible>
+					<visible>Control.IsVisible(6)</visible>
 				</control>
 			</control>
 			<control type="group" id="9000">
