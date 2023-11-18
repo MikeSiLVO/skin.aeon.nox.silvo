@@ -538,8 +538,7 @@
 								<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
 							</control>
 							<control type="image">
-								<left>320</left>
-								<width>100</width>
+								<left>388</left>
 								<include>MediaFlagValues</include>
 								<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
 							</control>
@@ -547,6 +546,7 @@
 								<left>388</left>
 								<include>MediaFlagValues</include>
 								<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
+								<visible>String.IsEmpty(ListItem.HdrType)</visible>
 							</control>
 							<control type="image">
 								<left>1393</left>
