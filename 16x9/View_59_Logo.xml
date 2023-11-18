@@ -95,38 +95,34 @@
 			<include condition="!Skin.HasSetting(LogoWrapList)">LogoWrap</include>
 			<control type="group">
 				<visible>!ListItem.IsParentFolder</visible>
-				<control type="group">
-					<visible>!ListItem.IsCollection</visible>
-					<control type="group">
-						<visible>Container.Content(movies) + !Skin.HasSetting(noextendedinfomovies)</visible>
-						<left>532</left>
-						<top>845</top>
-						<control type="label">
-							<width>856</width>
-							<align>center</align>
-							<label>$INFO[ListItem.Top250,$LOCALIZE[13409] # ,]</label>
-						</control>
-						<control type="grouplist">
-							<top>130</top>
-							<height>100</height>
-							<itemgap>5</itemgap>
-							<control type="label">
-								<width>856</width>
-								<height>40</height>
-								<align>center</align>
-								<font>font14_bold</font>
-								<scroll>true</scroll>
-								<label>$INFO[ListItem.Tagline]</label>
-								<visible>!String.IsEmpty(ListItem.Tagline)</visible>
-							</control>
-							<control type="label">
-								<width>856</width>
-								<height>40</height>
-								<align>center</align>
-								<font>font13_bold</font>
-								<label>$VAR[FloorSubLabelVar]</label>
-							</control>
-						</control>
+				<control type="grouplist">
+					<left>532</left>
+					<top>945</top>
+					<height>110</height>
+					<align>center</align>
+					<visible>Container.Content(movies) + !Skin.HasSetting(noextendedinfomovies) + !ListItem.IsCollection</visible>
+					<control type="label">
+						<width>856</width>
+						<height>35</height>
+						<align>center</align>
+						<label>$INFO[ListItem.Top250,$LOCALIZE[13409] # ,]</label>
+						<visible>!String.IsEmpty(ListItem.Top250)</visible>
+					</control>
+					<control type="label">
+						<width>856</width>
+						<height>40</height>
+						<align>center</align>
+						<font>font14_bold</font>
+						<scroll>true</scroll>
+						<label>$INFO[ListItem.Tagline]</label>
+						<visible>!String.IsEmpty(ListItem.Tagline)</visible>
+					</control>
+					<control type="label">
+						<width>856</width>
+						<height>35</height>
+						<align>center</align>
+						<font>font13_bold</font>
+						<label>$VAR[FloorSubLabelVar]</label>
 					</control>
 				</control>
 				<control type="group">
