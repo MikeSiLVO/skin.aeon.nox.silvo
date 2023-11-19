@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">50</defaultcontrol>
-	<views>50,51,52,53,55,56,57,58,59,500,501,502,503,504,505,506,507,509,591,592,601,602,609</views>
+	<views>50,51,52,53,55,56,57,58,59,500,501,502,503,504,505,506,507,509,591,592,602,609</views>
 	<menucontrol>9051</menucontrol>
 	<onload condition="System.AddonIsEnabled(script.skin.info.service) + String.IsEmpty(Window(home).Property(skininfos_daemon_running))">RunScript(script.skin.info.service)</onload>
 	<onload>SetProperty(Window.HasSettings,True,Home)</onload>
@@ -168,7 +168,7 @@
 		<control type="label" id="4420">
 			<label>$VAR[VideoInfoPanelVar]</label>
 			<include>HiddenObject</include>
-			<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | Control.IsVisible(59) | Control.IsVisible(601)</visible>
+			<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(59)</visible>
 			<include condition="!String.IsEmpty(Skin.String(InfoPanel.Delay))">InfoPanelDelayAnimation</include>
 		</control>
 		<control type="list" id="4500">
@@ -179,7 +179,7 @@
 		<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">TMDbHelperContentList</include>
 		<include>CommonBackground</include>
 		<control type="group">
-			<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | Control.IsVisible(59) | Control.IsVisible(601)</visible>
+			<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(59)</visible>
 			<top>-30</top>
 			<include>InfoPanel</include>
 		</control>
@@ -224,8 +224,6 @@
 			<!-- view id = 509 -->
 			<include condition="!Skin.HasSetting(Disable.BigFanView)">View_591_BigFan</include>
 			<!-- view id = 591 -->
-			<include condition="!Skin.HasSetting(Disable.BannerPlexView)">BannerPlex</include>
-			<!-- view id = 601 -->
 			<include condition="!Skin.HasSetting(Disable.FanartListView)">VideoFanartList</include>
 			<!-- view id = 602 -->
 			<include condition="!Skin.HasSetting(Disable.FullscreenWallView)">View_609_Fullscreen_Wall</include>
@@ -413,9 +411,9 @@
 						</control>
 					</control>
 				</control>
-				<!-- Floor Labels (Shift - BannerWall - Small Icons - Icons - BannerPlex) -->
+				<!-- Floor Labels (Shift - BannerWall - Small Icons - Icons) -->
 				<control type="group">
-					<visible>Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(500) | Control.IsVisible(601)</visible>
+					<visible>Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(500)</visible>
 					<include>ViewAnimation</include>
 					<animation effect="slide" end="34.5" condition="Control.IsVisible(500) + Skin.HasSetting(500.SmallerIcons) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets) | Container.Content(genres)]">Conditional</animation>
 					<animation effect="slide" end="400,-34" condition="Control.IsVisible(57) + !Skin.HasSetting(Enable.Shift.Small) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos)]">Conditional</animation>
@@ -484,7 +482,6 @@
 									<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(57).OnNext + !Container(57).OnPrevious">Conditional</animation>
 									<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(58).OnNext + !Container(58).OnPrevious">Conditional</animation>
 									<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(500).OnNext + !Container(500).OnPrevious">Conditional</animation>
-									<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(601).OnNext + !Container(601).OnPrevious">Conditional</animation>
 									<animation effect="fade" time="250" delay="300" reversible="false">Visible</animation>
 									<visible>String.IsEmpty(Window(Home).Property(TMDbHelper.IsUpdating))</visible>
 								</control>
@@ -498,7 +495,7 @@
 					<height>300</height>
 					<texture border="1">gradient_floor.png</texture>
 					<animation effect="slide" end="0,-80" condition="Control.IsVisible(57) | Control.IsVisible(591)">Conditional</animation>
-					<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(59) | Control.IsVisible(500) | Control.IsVisible(503) | Control.IsVisible(591) | Control.IsVisible(601)</visible>
+					<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(59) | Control.IsVisible(500) | Control.IsVisible(503) | Control.IsVisible(591)</visible>
 				</control>
 				<!-- MEDIAFLAGS -->
 				<control type="group">
@@ -627,9 +624,9 @@
 							</control>
 						</control>
 					</control>
-					<!-- (List - Tripanel - Posters - Shift - BannerWall - Icons - BannerPlex - RightList - MyFlix - BigFan - FanartList) -->
+					<!-- (List - Tripanel - Posters - Shift - BannerWall - Icons - RightList - MyFlix - BigFan - FanartList) -->
 					<control type="group">
-						<visible>Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | [Control.IsVisible(58)] | Control.IsVisible(500) | Control.IsVisible(506) | Control.IsVisible(509) | Control.IsVisible(591) | Control.IsVisible(601) | Control.IsVisible(602)</visible>
+						<visible>Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | [Control.IsVisible(58)] | Control.IsVisible(500) | Control.IsVisible(506) | Control.IsVisible(509) | Control.IsVisible(591) | Control.IsVisible(602)</visible>
 						<include>ViewAnimation</include>
 						<top>1014</top>
 						<height>90</height>
@@ -642,7 +639,7 @@
 							<animation effect="slide" end="-240" condition="Container.Content(episodes) + !System.AddonIsEnabled(plugin.video.themoviedb.helper) + [Control.IsVisible(500)]">Conditional</animation>
 							<control type="group">
 								<left>40</left>
-								<visible>[Container.Content(movies) + Control.IsVisible(50) + !Skin.HasSetting(Disable.List.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(50)]  | [Container.Content(movies) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.EpisodeMediaflags)] | Control.IsVisible(591) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(509) + !Skin.HasSetting(Disable.MyFlix.Mediaflags) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(500) | Control.IsVisible(601) | Control.IsVisible(602)</visible>
+								<visible>[Container.Content(movies) + Control.IsVisible(50) + !Skin.HasSetting(Disable.List.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(50)]  | [Container.Content(movies) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.EpisodeMediaflags)] | Control.IsVisible(591) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(509) + !Skin.HasSetting(Disable.MyFlix.Mediaflags) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(500) | Control.IsVisible(602)</visible>
 								<include>ViewAnimation</include>
 								<include condition="!System.AddonIsEnabled(script.embuary.helper) + !System.AddonIsEnabled(plugin.video.themoviedb.helper)">NoEmbuaryHelperFlagAnimations</include>
 								<!-- ROTTENTOMATOES/METACRITIC -->
@@ -1036,7 +1033,7 @@
 						</control>
 					</control>
 				</control>
-				<!-- (List - Tripanel - Posters - Shift - BannerWall - Small Icons - Icons - BannerPlex - RightList - MyFlix - BigFan) -->
+				<!-- (List - Tripanel - Posters - Shift - BannerWall - Small Icons - Icons - RightList - MyFlix - BigFan) -->
 				<control type="group">
 					<visible>ListItem.IsCollection</visible>
 					<animation effect="fade" time="140" delay="100">Visible</animation>
@@ -1045,7 +1042,7 @@
 					<animation effect="slide" end="-70" condition="Control.IsVisible(509)">Conditional</animation>
 					<animation effect="slide" end="-1152.5" condition="Control.IsVisible(591)">Conditional</animation>
 					<control type="grouplist">
-						<visible>Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(500) | [Control.IsVisible(506) + Container.Content(movies) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Control.IsVisible(506) + Container.Content(sets) + !Skin.HasSetting(Disable.RightList.SetMediaflags)] | Control.IsVisible(509) | Control.IsVisible(591) | Control.IsVisible(601) | Control.IsVisible(602)</visible>
+						<visible>Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(500) | [Control.IsVisible(506) + Container.Content(movies) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Control.IsVisible(506) + Container.Content(sets) + !Skin.HasSetting(Disable.RightList.SetMediaflags)] | Control.IsVisible(509) | Control.IsVisible(591) | Control.IsVisible(602)</visible>
 						<left>80</left>
 						<top>1014</top>
 						<height>90</height>
@@ -1136,11 +1133,11 @@
 					<onclick condition="Control.IsVisible(52)">$VAR[52VideoInfoPanelVar]</onclick>
 					<onclick condition="Control.IsVisible(53)">$VAR[53VideoInfoPanelVar]</onclick>
 					<onclick condition="Control.IsVisible(57)">$VAR[57VideoInfoPanelVar]</onclick>
+					<onclick condition="Control.IsVisible(58)">$VAR[58VideoInfoPanelVar]</onclick>
 					<onclick condition="Control.IsVisible(59)">$VAR[59VideoInfoPanelVar]</onclick>
 					<onclick condition="Control.IsVisible(503)">Skin.ToggleSetting(503.InfoPanel)</onclick>
-					<onclick condition="Control.IsVisible(601)">$VAR[601VideoInfoPanelVar]</onclick>
 					<visible>![Container.Content(genres) | Container.Content(musicvideos)]</visible>
-					<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | Control.IsVisible(59) | Control.IsVisible(503) | Control.IsVisible(601)</visible>
+					<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(59) | Control.IsVisible(503)</visible>
 				</control>
 				<control type="radiobutton" id="6052">
 					<description>InfoPanel Settings button</description>

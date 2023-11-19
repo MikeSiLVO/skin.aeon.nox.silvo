@@ -337,7 +337,6 @@
 			<onclick condition="Control.IsVisible(508)">SetProperty(actualViewtype,SongList,Home)</onclick>
 			<onclick condition="Control.IsVisible(509)">SetProperty(actualViewtype,MyFlix,Home)</onclick>
 			<onclick condition="Control.IsVisible(591)">SetProperty(actualViewtype,BigFan,Home)</onclick>
-			<onclick condition="Control.IsVisible(601)">SetProperty(actualViewtype,BannerPlex,Home)</onclick>
 			<onclick condition="Control.IsVisible(602)">SetProperty(actualViewtype,FanartList,Home)</onclick>
 			<onclick condition="Control.IsVisible(603)">SetProperty(actualViewtype,MusicJukebox,Home)</onclick>
 			<onclick condition="Control.IsVisible(609)">SetProperty(actualViewtype,FullscreenWall,Home)</onclick>
@@ -711,7 +710,7 @@
 			<animation effect="slide" start="0,0" end="0,-90" time="500" tween="cubic" condition="Control.IsVisible(609) + String.IsEmpty(Skin.String(609.NoTopBar)) + System.IdleTime(2)">Conditional</animation>
 			<animation effect="slide" start="0,-90" end="0,0" time="500" condition="Window.Previous(Home)">WindowOpen</animation>
 			<animation effect="slide" end="0,-90" start="0,0" time="500" condition="Window.Next(Home)">WindowClose</animation>
-			<visible>[Control.IsVisible(50) + String.IsEmpty(Skin.String(50.NoTopBar))] | [Control.IsVisible(51) + String.IsEmpty(Skin.String(51.NoTopBar))] | [Control.IsVisible(52) + String.IsEmpty(Skin.String(52.NoTopBar))] | [Control.IsVisible(53) + String.IsEmpty(Skin.String(53.NoTopBar))] | [Control.IsVisible(54) + String.IsEmpty(Skin.String(54.NoTopBar))] | [Control.IsVisible(55) + String.IsEmpty(Skin.String(55.NoTopBar))] | [Control.IsVisible(56) + String.IsEmpty(Skin.String(56.NoTopBar))] | [Control.IsVisible(57) + String.IsEmpty(Skin.String(57.NoTopBar))] | [Control.IsVisible(58) + String.IsEmpty(Skin.String(58.NoTopBar))] | [Control.IsVisible(59) + String.IsEmpty(Skin.String(59.NoTopBar))] | [Control.IsVisible(500) + String.IsEmpty(Skin.String(500.NoTopBar))] | [Control.IsVisible(501) + String.IsEmpty(Skin.String(501.NoTopBar))] | [Control.IsVisible(502) + String.IsEmpty(Skin.String(502.NoTopBar))] | [Control.IsVisible(503) + String.IsEmpty(Skin.String(503.NoTopBar))] | [Control.IsVisible(504) + String.IsEmpty(Skin.String(504.NoTopBar))] | [Control.IsVisible(505) + String.IsEmpty(Skin.String(505.NoTopBar))] | [Control.IsVisible(507) + String.IsEmpty(Skin.String(507.NoTopBar))] | [Control.IsVisible(508) + String.IsEmpty(Skin.String(508.NoTopBar))] | [Control.IsVisible(591) + String.IsEmpty(Skin.String(591.NoTopBar))] | [Control.IsVisible(592) + String.IsEmpty(Skin.String(592.NoTopBar))] | [Control.IsVisible(601) + String.IsEmpty(Skin.String(601.NoTopBar))] | [Control.IsVisible(602) + String.IsEmpty(Skin.String(602.NoTopBar))] | [Control.IsVisible(603) + String.IsEmpty(Skin.String(603.NoTopBar))] | [Control.IsVisible(609) + String.IsEmpty(Skin.String(609.NoTopBar))] | [Control.IsVisible(506) + String.IsEmpty(Skin.String(506.NoTopBar))] | [Control.IsVisible(509) + String.IsEmpty(Skin.String(509.NoTopBar))] | [Control.IsVisible(603) + String.IsEmpty(Skin.String(603.NoTopBar))] | !Window.IsMedia | Window.IsActive(tvguide)</visible>
+			<visible>[Control.IsVisible(50) + String.IsEmpty(Skin.String(50.NoTopBar))] | [Control.IsVisible(51) + String.IsEmpty(Skin.String(51.NoTopBar))] | [Control.IsVisible(52) + String.IsEmpty(Skin.String(52.NoTopBar))] | [Control.IsVisible(53) + String.IsEmpty(Skin.String(53.NoTopBar))] | [Control.IsVisible(54) + String.IsEmpty(Skin.String(54.NoTopBar))] | [Control.IsVisible(55) + String.IsEmpty(Skin.String(55.NoTopBar))] | [Control.IsVisible(56) + String.IsEmpty(Skin.String(56.NoTopBar))] | [Control.IsVisible(57) + String.IsEmpty(Skin.String(57.NoTopBar))] | [Control.IsVisible(58) + String.IsEmpty(Skin.String(58.NoTopBar))] | [Control.IsVisible(59) + String.IsEmpty(Skin.String(59.NoTopBar))] | [Control.IsVisible(500) + String.IsEmpty(Skin.String(500.NoTopBar))] | [Control.IsVisible(501) + String.IsEmpty(Skin.String(501.NoTopBar))] | [Control.IsVisible(502) + String.IsEmpty(Skin.String(502.NoTopBar))] | [Control.IsVisible(503) + String.IsEmpty(Skin.String(503.NoTopBar))] | [Control.IsVisible(504) + String.IsEmpty(Skin.String(504.NoTopBar))] | [Control.IsVisible(505) + String.IsEmpty(Skin.String(505.NoTopBar))] | [Control.IsVisible(507) + String.IsEmpty(Skin.String(507.NoTopBar))] | [Control.IsVisible(508) + String.IsEmpty(Skin.String(508.NoTopBar))] | [Control.IsVisible(591) + String.IsEmpty(Skin.String(591.NoTopBar))] | [Control.IsVisible(592) + String.IsEmpty(Skin.String(592.NoTopBar))] | [Control.IsVisible(602) + String.IsEmpty(Skin.String(602.NoTopBar))] | [Control.IsVisible(603) + String.IsEmpty(Skin.String(603.NoTopBar))] | [Control.IsVisible(609) + String.IsEmpty(Skin.String(609.NoTopBar))] | [Control.IsVisible(506) + String.IsEmpty(Skin.String(506.NoTopBar))] | [Control.IsVisible(509) + String.IsEmpty(Skin.String(509.NoTopBar))] | [Control.IsVisible(603) + String.IsEmpty(Skin.String(603.NoTopBar))] | !Window.IsMedia | Window.IsActive(tvguide)</visible>
 			<visible>!Skin.HasSetting(Disable.TopBar)</visible>
 			<control type="image">
 				<width>100%</width>
@@ -1806,7 +1805,7 @@
 				<animation effect="slide" start="0,0" end="0,218" condition="[Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small)] | Control.IsVisible(59)">Conditional</animation>
 				<animation effect="slide" start="0,0" end="0,-20" condition="Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small) + Skin.HasSetting(Enable.Shift.Covers)">Conditional</animation>
 				<animation effect="slide" start="0,0" end="0,20" time="720" tween="cubic" condition="Control.IsVisible(52)">Conditional</animation>
-				<animation effect="slide" start="0,0" end="0,80" time="720" tween="cubic" condition="Control.IsVisible(601)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="-5,30" time="720" tween="cubic" condition="Control.IsVisible(58)">Conditional</animation>
 				<top>5</top>
 				<control type="image">
 					<left>90</left>
@@ -1873,7 +1872,7 @@
 						<top>342</top>
 						<left>136</left>
 						<width>970</width>
-						<height>180</height>
+						<height>178</height>
 						<font>font14_textbox2</font>
 						<pagecontrol>62</pagecontrol>
 						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(62)</autoscroll>

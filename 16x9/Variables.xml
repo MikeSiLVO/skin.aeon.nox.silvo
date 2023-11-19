@@ -499,11 +499,11 @@
 		<value condition="Control.IsVisible(57) + Container.Content(tvshows)">$INFO[Skin.String(57.TVShows.InfoPanel)]</value>
 		<value condition="Control.IsVisible(57) + Container.Content(seasons)">$INFO[Skin.String(57.Seasons.InfoPanel)]</value>
 		<value condition="Control.IsVisible(57) + Container.Content(sets)">$INFO[Skin.String(57.Sets.InfoPanel)]</value>
+		<value condition="Control.IsVisible(58) + Container.Content(movies)">$INFO[Skin.String(58.Movies.InfoPanel)]</value>
+		<value condition="Control.IsVisible(58) + Container.Content(tvshows)">$INFO[Skin.String(58.TVShows.InfoPanel)]</value>
 		<value condition="Control.IsVisible(59) + Container.Content(movies)">$INFO[Skin.String(59.Movies.InfoPanel)]</value>
 		<value condition="Control.IsVisible(59) + Container.Content(sets)">$INFO[Skin.String(59.Sets.InfoPanel)]</value>
 		<value condition="Control.IsVisible(59) + Container.Content(tvshows)">$INFO[Skin.String(59.TVShows.InfoPanel)]</value>
-		<value condition="Control.IsVisible(601) + Container.Content(movies)">$INFO[Skin.String(601.Movies.InfoPanel)]</value>
-		<value condition="Control.IsVisible(601) + Container.Content(tvshows)">$INFO[Skin.String(601.TVShows.InfoPanel)]</value>
 	</variable>
 	<variable name="MusicInfoPanelVar">
 		<value condition="Control.IsVisible(54) + Container.Content(albums)">$INFO[Skin.String(54.Albums.InfoPanel)]</value>
@@ -590,17 +590,17 @@
 		<value condition="Control.IsVisible(59) + Container.Content(tvshows) + String.IsEqual(Skin.String(59.TVShows.InfoPanel),5)">Skin.SetString(59.TVShows.InfoPanel,6)</value>
 		<value condition="Control.IsVisible(59) + Container.Content(tvshows) + String.IsEqual(Skin.String(59.TVShows.InfoPanel),6)">Skin.Reset(59.TVShows.InfoPanel)</value>
 	</variable>
-	<variable name="601VideoInfoPanelVar">
-		<value condition="Container.Content(movies) + String.IsEmpty(Skin.String(601.Movies.InfoPanel))">Skin.SetString(601.Movies.InfoPanel,1)</value>
-		<value condition="Container.Content(movies) + String.IsEqual(Skin.String(601.Movies.InfoPanel),1)">Skin.SetString(601.Movies.InfoPanel,2)</value>
-		<value condition="Container.Content(movies) + String.IsEqual(Skin.String(601.Movies.InfoPanel),2)">Skin.SetString(601.Movies.InfoPanel,5)</value>
-		<value condition="Container.Content(movies) + String.IsEqual(Skin.String(601.Movies.InfoPanel),5)">Skin.SetString(601.Movies.InfoPanel,6)</value>
-		<value condition="Container.Content(movies) + String.IsEqual(Skin.String(601.Movies.InfoPanel),6)">Skin.Reset(601.Movies.InfoPanel)</value>
-		<value condition="Container.Content(tvshows) + String.IsEmpty(Skin.String(601.TVShows.InfoPanel))">Skin.SetString(601.TVShows.InfoPanel,1)</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(Skin.String(601.TVShows.InfoPanel),1)">Skin.SetString(601.TVShows.InfoPanel,2)</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(Skin.String(601.TVShows.InfoPanel),2)">Skin.SetString(601.TVShows.InfoPanel,5)</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(Skin.String(601.TVShows.InfoPanel),5)">Skin.SetString(601.TVShows.InfoPanel,6)</value>
-		<value condition="Container.Content(tvshows) + String.IsEqual(Skin.String(601.TVShows.InfoPanel),6)">Skin.Reset(601.TVShows.InfoPanel)</value>
+	<variable name="58VideoInfoPanelVar">
+		<value condition="Container.Content(movies) + String.IsEmpty(Skin.String(58.Movies.InfoPanel))">Skin.SetString(58.Movies.InfoPanel,1)</value>
+		<value condition="Container.Content(movies) + String.IsEqual(Skin.String(58.Movies.InfoPanel),1)">Skin.SetString(58.Movies.InfoPanel,2)</value>
+		<value condition="Container.Content(movies) + String.IsEqual(Skin.String(58.Movies.InfoPanel),2)">Skin.SetString(58.Movies.InfoPanel,5)</value>
+		<value condition="Container.Content(movies) + String.IsEqual(Skin.String(58.Movies.InfoPanel),5)">Skin.SetString(58.Movies.InfoPanel,6)</value>
+		<value condition="Container.Content(movies) + String.IsEqual(Skin.String(58.Movies.InfoPanel),6)">Skin.Reset(58.Movies.InfoPanel)</value>
+		<value condition="Container.Content(tvshows) + String.IsEmpty(Skin.String(58.TVShows.InfoPanel))">Skin.SetString(58.TVShows.InfoPanel,1)</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(Skin.String(58.TVShows.InfoPanel),1)">Skin.SetString(58.TVShows.InfoPanel,2)</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(Skin.String(58.TVShows.InfoPanel),2)">Skin.SetString(58.TVShows.InfoPanel,5)</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(Skin.String(58.TVShows.InfoPanel),5)">Skin.SetString(58.TVShows.InfoPanel,6)</value>
+		<value condition="Container.Content(tvshows) + String.IsEqual(Skin.String(58.TVShows.InfoPanel),6)">Skin.Reset(58.TVShows.InfoPanel)</value>
 	</variable>
 	<variable name="52MusicInfoPanelVar">
 		<value condition="Container.Content(artists) + String.IsEmpty(Skin.String(52.Artists.InfoPanel))">Skin.SetString(52.Artists.InfoPanel,2)</value>
@@ -1748,9 +1748,6 @@
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigList) + Container.Content(movies) + !String.IsEmpty(Skin.String(507.Movies.DisableOverlay))">$INFO[Skin.String(507.Movies.DisableOverlay)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigList) + Container.Content(tvshows) + !String.IsEmpty(Skin.String(507.TV.DisableOverlay))">$INFO[Skin.String(503.TV.DisableOverlay)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigList) + Container.Content(episodes) + !String.IsEmpty(Skin.String(507.Episodes.DisableOverlay))">$INFO[Skin.String(507.Episodes.DisableOverlay)]</value>
-		<!-- BannerPlex -->
-		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BannerPlex) + Container.Content(movies) + !String.IsEmpty(Skin.String(601.Movies.DisableOverlay))">$INFO[Skin.String(601.Movies.DisableOverlay)]</value>
-		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BannerPlex) + Container.Content(tvshows) + !String.IsEmpty(Skin.String(601.TV.DisableOverlay))">$INFO[Skin.String(601.TV.DisableOverlay)]</value>
 		<!-- FullscreenWall -->
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),FullscreenWall) + Container.Content(movies) + !String.IsEmpty(Skin.String(609.Movies.DisableOverlay))">$INFO[Skin.String(609.Movies.DisableOverlay)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),FullscreenWall) + Container.Content(tvshows) + !String.IsEmpty(Skin.String(609.TV.DisableOverlay))">$INFO[Skin.String(609.TV.DisableOverlay)]</value>
@@ -1841,11 +1838,6 @@
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigList) + Container.Content(tvshows) + String.IsEqual(Skin.String(507.TV.DisableOverlay),$LOCALIZE[305])">Skin.Reset(507.TV.DisableOverlay)</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigList) + Container.Content(episodes) + String.IsEmpty(Skin.String(507.Episodes.DisableOverlay))">Skin.SetString(507.Episodes.DisableOverlay,$LOCALIZE[305])</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigList) + Container.Content(episodes) + String.IsEqual(Skin.String(507.Episodes.DisableOverlay),$LOCALIZE[305])">Skin.Reset(507.Episodes.DisableOverlay)</value>
-		<!-- BannerPlex -->
-		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BannerPlex) + Container.Content(movies) + String.IsEmpty(Skin.String(601.Movies.DisableOverlay))">Skin.SetString(601.Movies.DisableOverlay,$LOCALIZE[305])</value>
-		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BannerPlex) + Container.Content(movies) + String.IsEqual(Skin.String(601.Movies.DisableOverlay),$LOCALIZE[305])">Skin.Reset(601.Movies.DisableOverlay)</value>
-		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BannerPlex) + Container.Content(tvshows) + String.IsEmpty(Skin.String(601.TV.DisableOverlay))">Skin.SetString(601.TV.DisableOverlay,$LOCALIZE[305])</value>
-		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BannerPlex) + Container.Content(tvshows) + String.IsEqual(Skin.String(601.TV.DisableOverlay),$LOCALIZE[305])">Skin.Reset(601.TV.DisableOverlay)</value>
 		<!-- FullscreenWall -->
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),FullscreenWall) + Container.Content(movies) + String.IsEmpty(Skin.String(609.Movies.DisableOverlay))">Skin.SetString(609.Movies.DisableOverlay,$LOCALIZE[305])</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),FullscreenWall) + Container.Content(movies) + String.IsEqual(Skin.String(609.Movies.DisableOverlay),$LOCALIZE[305])">Skin.Reset(609.Movies.DisableOverlay)</value>
@@ -2010,7 +2002,6 @@
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),SongList) + !String.IsEmpty(Skin.String(508.NoTopBar))">$INFO[Skin.String(508.NoTopBar)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigFan) + !String.IsEmpty(Skin.String(591.NoTopBar))">$INFO[Skin.String(591.NoTopBar)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigInfo) + !String.IsEmpty(Skin.String(592.NoTopBar))">$INFO[Skin.String(592.NoTopBar)]</value>
-		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BannerPlex) + !String.IsEmpty(Skin.String(601.NoTopBar))">$INFO[Skin.String(601.NoTopBar)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),FanartList) + !String.IsEmpty(Skin.String(602.NoTopBar))">$INFO[Skin.String(602.NoTopBar)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),FullscreenWall) + !String.IsEmpty(Skin.String(609.NoTopBar))">$INFO[Skin.String(609.NoTopBar)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),RightList) + !String.IsEmpty(Skin.String(506.NoTopBar))">$INFO[Skin.String(506.NoTopBar)]</value>
@@ -2059,8 +2050,6 @@
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigFan) + !String.IsEmpty(Skin.String(591.NoTopBar))">Skin.Reset(591.NoTopBar)</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigInfo) + String.IsEmpty(Skin.String(592.NoTopBar))">Skin.SetString(592.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigInfo) + !String.IsEmpty(Skin.String(592.NoTopBar))">Skin.Reset(592.NoTopBar)</value>
-		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BannerPlex) + String.IsEmpty(Skin.String(601.NoTopBar))">Skin.SetString(601.NoTopBar,$LOCALIZE[351])</value>
-		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BannerPlex) + !String.IsEmpty(Skin.String(601.NoTopBar))">Skin.Reset(601.NoTopBar)</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),FanartList) + String.IsEmpty(Skin.String(602.NoTopBar))">Skin.SetString(602.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),FanartList) + !String.IsEmpty(Skin.String(602.NoTopBar))">Skin.Reset(602.NoTopBar)</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),FullscreenWall) + String.IsEmpty(Skin.String(609.NoTopBar))">Skin.SetString(609.NoTopBar,$LOCALIZE[351])</value>

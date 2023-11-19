@@ -431,6 +431,14 @@
 		</control>
 		<control type="radiobutton" id="1511">
 			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[31248]</label>
+			<onclick>Skin.ToggleSetting(BannerPlex)</onclick>
+			<include>ReloadWindowOnClick</include>
+			<selected>Skin.HasSetting(BannerPlex)</selected>
+			<visible>Skin.HasSetting(Disable.BannerWallInfo)</visible>
+		</control>
+		<control type="radiobutton" id="1512">
+			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31292]</label>
 			<onclick>Skin.ToggleSetting(Enable.BannerWallInfoPopup)</onclick>
 			<onclick condition="String.IsEmpty(Skin.String(InfoPopup.Delay))">Skin.SetString(InfoPopup.Delay,3)</onclick>
@@ -1006,10 +1014,6 @@
 			<onclick>Skin.ToggleSetting(EnableBigFanPlot)</onclick>
 			<selected>Skin.HasSetting(EnableBigFanPlot)</selected>
 		</control>
-	</include>
-	<include name="BannerPlexViewSettings">
-		<!-- BannerPlex -->
-		<description />
 	</include>
 	<include name="FanartListViewSettings">
 		<!-- FanartList -->
