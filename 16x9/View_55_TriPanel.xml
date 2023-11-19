@@ -5,19 +5,19 @@
 		<control type="group">
 			<visible>Control.IsVisible(55)</visible>
 			<include>ViewAnimation</include>
-			<top>-32</top>
+			<top>-12</top>
 			<control type="group">
 				<left>1400</left>
 				<top>136</top>
-				<animation effect="slide" end="-500,0" time="640" easing="inout" tween="circle" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
+				<animation effect="slide" end="-503,0" time="640" easing="inout" tween="circle" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
 				<animation effect="zoom" center="1400,500" start="100" end="110" time="240" tween="back" reversible="false" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
-				<control type="image">
-					<left>-32</left>
-					<top>60</top>
-					<width>512</width>
-					<height>752</height>
-					<texture colordiffuse="CCFFFFFF" border="40">listpanel_back.png</texture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">-2</param>
+					<param name="top">91</param>
+					<param name="width">467</param>
+					<param name="height">692</param>
+					<param name="texture">colors/black75.png</param>
+				</include>
 				<control type="grouplist">
 					<top>92</top>
 					<width>448</width>
@@ -128,16 +128,16 @@
 					<onleft>50</onleft>
 					<onright condition="!Control.IsVisible(615)">4400</onright>
 					<onright condition="Control.IsVisible(615)">615</onright>
-					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
+					<texturesliderbackground>colors/black10.png</texturesliderbackground>
+					<texturesliderbar>colors/white25.png</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
 			</control>
 			<control type="group">
-				<left>846</left>
+				<left>850</left>
 				<top>154</top>
-				<animation effect="slide" end="547,0" time="640" easing="inout" tween="circle" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
+				<animation effect="slide" end="540,0" time="640" easing="inout" tween="circle" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
 				<animation effect="zoom" center="850,700" start="100" end="90" time="240" tween="back" reversible="false" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
 				<control type="multiimage">
 					<left>20</left>
@@ -161,7 +161,7 @@
 					<left>20</left>
 					<top>20</top>
 					<width>80</width>
-					<height>800</height>
+					<height>795</height>
 					<texture flipx="true" border="1">side_shadow.png</texture>
 					<visible>String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])</visible>
 					<animation effect="fade" start="0" end="100" time="650" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
@@ -170,13 +170,13 @@
 			<control type="group">
 				<left>76</left>
 				<top>60</top>
-				<control type="image">
-					<left>-32</left>
-					<top>60</top>
-					<width>870</width>
-					<height>906</height>
-					<texture colordiffuse="CCFFFFFF" border="40">listpanel_back.png</texture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">-1</param>
+					<param name="top">91</param>
+					<param name="width">820</param>
+					<param name="height">842</param>
+					<param name="texture">colors/black75.png</param>
+				</include>
 				<control type="list" id="55">
 					<top>92</top>
 					<width>806</width>
@@ -523,7 +523,7 @@
 					</focusedlayout>
 				</control>
 				<control type="scrollbar" id="95560">
-					<left>808</left>
+					<left>806</left>
 					<top>92</top>
 					<width>12</width>
 					<height>840</height>

@@ -6,14 +6,13 @@
 			<visible>Control.IsVisible(51) + !Window.IsActive(addoninformation)</visible>
 			<include>ViewAnimation</include>
 			<top>-65</top>
-			<control type="image">
-				<left>90</left>
-				<top>148</top>
-				<width>1740</width>
-				<height>964</height>
-				<texture border="40">listpanel_back.png</texture>
-				<visible>!Skin.HasSetting(Enable.AlternateInfowall)</visible>
-			</control>
+			<include content="BackPanel">
+				<param name="left">107</param>
+				<param name="top">178</param>
+				<param name="width">1694</param>
+				<param name="height">902</param>
+				<param name="visible">!Skin.HasSetting(Enable.AlternateInfowall)</param>
+			</include>
 			<control type="group">
 				<left>1120</left>
 				<top>179</top>
@@ -66,7 +65,7 @@
 					<top>555</top>
 					<left>15</left>
 					<width>650</width>
-					<height>342</height>
+					<height>343</height>
 					<font>font14_textbox</font>
 					<shadowcolor>shadow</shadowcolor>
 					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(95161)</autoscroll>
@@ -74,7 +73,7 @@
 					<include>DefaultButtonsValues</include>
 				</control>
 				<control type="scrollbar" id="95161">
-					<left>680</left>
+					<left>668</left>
 					<top>558</top>
 					<width>12</width>
 					<height>342</height>
@@ -84,10 +83,10 @@
 					<onright condition="Control.IsVisible(615)">615</onright>
 					<ondown>95161</ondown>
 					<onup>95161</onup>
-					<showonepage>false</showonepage>
-					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
+					<texturesliderbackground>colors/black10.png</texturesliderbackground>
+					<texturesliderbar>colors/white25.png</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<showonepage>false</showonepage>
 				</control>
 			</control>
 			<control type="panel" id="51">
@@ -136,7 +135,7 @@
 				<focusedlayout height="300" width="200" condition="![Skin.HasSetting(Enable.InfoWall.TVBanners) + Container.Content(tvshows)] + ![Skin.HasSetting(Enable.InfoWall.MovieBanners) + Container.Content(movies)] + !Skin.HasSetting(Enable.AlternateInfowall)">
 					<control type="group">
 						<animation type="Focus" reversible="false">
-							<effect type="zoom" start="100" end="112" time="300" tween="sine" easing="inout" center="auto" />
+							<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 							<effect type="fade" start="80" end="100" time="300" tween="sine" easing="in" />
 						</animation>
 						<control type="image">
@@ -191,7 +190,7 @@
 				<focusedlayout height="300" width="200" condition="![Skin.HasSetting(Enable.InfoWall.TVBanners) + Container.Content(tvshows)] + ![Skin.HasSetting(Enable.InfoWall.MovieBanners) + Container.Content(movies)] + Skin.HasSetting(Enable.AlternateInfowall)">
 					<control type="group">
 						<animation type="Focus" reversible="false">
-							<effect type="zoom" start="100" end="112" time="300" tween="sine" easing="inout" center="auto" />
+							<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 							<effect type="fade" start="80" end="100" time="300" tween="sine" easing="in" />
 						</animation>
 						<control type="image">
@@ -408,11 +407,10 @@
 				<onright>50</onright>
 				<onleft>SetProperty(MediaMenu,True,Home)</onleft>
 				<onleft>SetFocus(9050)</onleft>
-				<showonepage>false</showonepage>
-				<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-				<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
+				<texturesliderbackground>colors/black10.png</texturesliderbackground>
+				<texturesliderbar>colors/white25.png</texturesliderbar>
 				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
-				<animation effect="fade" start="100" end="0" time="500" delay="500" condition="!Control.HasFocus(95160)">Conditional</animation>
+				<showonepage>false</showonepage>
 			</control>
 		</control>
 	</include>

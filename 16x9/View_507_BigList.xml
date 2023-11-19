@@ -4,18 +4,14 @@
 		<control type="group">
 			<visible>Control.IsVisible(507) + !Window.IsActive(addoninformation)</visible>
 			<include>ViewAnimation</include>
-			<control type="group">
-				<left>58</left>
-				<top>-56</top>
-				<control type="image">
-					<left>-32</left>
-					<top>118</top>
-					<width>1867</width>
-					<height>995</height>
-					<texture colordiffuse="BFFFFFFF" border="40">listpanel_back.png</texture>
-					<visible>!Skin.HasSetting(alternatebiglistlayout)</visible>
-				</control>
-			</control>
+			<include content="BackPanel">
+				<param name="left">57</param>
+				<param name="top">93</param>
+				<param name="width">1817</param>
+				<param name="height">939</param>
+				<param name="texture">colors/black75.png</param>
+				<param name="visible">!Skin.HasSetting(alternatebiglistlayout)</param>
+			</include>
 			<control type="list" id="507">
 				<viewtype label="$LOCALIZE[31242]">biglist</viewtype>
 				<left>58</left>
@@ -309,15 +305,15 @@
 				</focusedlayout>
 			</control>
 			<control type="scrollbar" id="50760">
-				<left>1862</left>
+				<left>1861</left>
 				<top>94</top>
 				<width>12</width>
 				<height>937</height>
 				<onleft>507</onleft>
 				<onright condition="!Control.IsVisible(615)">4400</onright>
 				<onright condition="Control.IsVisible(615)">615</onright>
-				<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-				<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
+				<texturesliderbackground>colors/black10.png</texturesliderbackground>
+				<texturesliderbar>colors/white25.png</texturesliderbar>
 				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 				<showonepage>false</showonepage>
 			</control>
