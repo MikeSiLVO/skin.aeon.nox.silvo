@@ -5,17 +5,17 @@
 		<control type="group">
 			<visible>Control.IsVisible(602)</visible>
 			<include>ViewAnimation</include>
-			<top>-30</top>
+			<top>-12</top>
 			<control type="group">
-				<left>1150</left>
-				<top>136</top>
-				<control type="image">
-					<left>-32</left>
-					<top>20</top>
-					<width>752</width>
-					<height>830</height>
-					<texture colordiffuse="CCFFFFFF" border="40">listpanel_back.png</texture>
-				</control>
+				<left>1138</left>
+				<top>141</top>
+				<include content="BackPanel">
+					<param name="left">-5</param>
+					<param name="top">51</param>
+					<param name="width">695</param>
+					<param name="height">762</param>
+					<param name="texture">colors/black75.png</param>
+				</include>
 				<control type="textbox" id="71">
 					<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Tagline][/COLOR][CR]$VAR[VideoPlotVar]</label>
 					<left>13</left>
@@ -28,55 +28,64 @@
 					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(60261)</autoscroll>
 				</control>
 				<control type="scrollbar" id="60262">
-					<left>690</left>
-					<top>456</top>
+					<left>677</left>
+					<top>452</top>
 					<width>12</width>
 					<height>360</height>
 					<onleft>60260</onleft>
 					<onright condition="!Control.IsVisible(615)">4400</onright>
 					<onright condition="Control.IsVisible(615)">615</onright>
-					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
+					<texturesliderbackground>colors/black10.png</texturesliderbackground>
+					<texturesliderbar>colors/white25.png</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
-			</control>
-			<control type="group">
-				<left>1146</left>
-				<top>188</top>
-				<control type="image">
-					<visible>!Container.Content(episodes)</visible>
-					<width>693</width>
-					<height>390</height>
-					<aspectratio>scale</aspectratio>
-					<texture background="true">$VAR[GlobalBackgroundVar]</texture>
-					<fadetime>400</fadetime>
+				<control type="group">
+					<left>-4</left>
+					<top>52</top>
+					<control type="image">
+						<visible>!Container.Content(episodes)</visible>
+						<width>693</width>
+						<height>390</height>
+						<aspectratio>scale</aspectratio>
+						<texture background="true">$VAR[GlobalBackgroundVar]</texture>
+						<fadetime>400</fadetime>
+						<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+						<bordersize>2</bordersize>
+					</control>
+					<control type="image">
+						<visible>Container.Content(episodes)</visible>
+						<width>693</width>
+						<height>390</height>
+						<aspectratio>scale</aspectratio>
+						<texture background="true">$VAR[NoSpoilerIconVar]</texture>
+						<fadetime>400</fadetime>
+					</control>
+					<control type="image">
+						<top>302</top>
+						<width>689</width>
+						<height>90</height>
+						<texture border="1">separator5.png</texture>
+					</control>
 				</control>
 				<control type="image">
-					<visible>Container.Content(episodes)</visible>
-					<width>693</width>
-					<height>390</height>
-					<aspectratio>scale</aspectratio>
-					<texture background="true">$VAR[NoSpoilerIconVar]</texture>
-					<fadetime>400</fadetime>
-				</control>
-				<control type="image">
-					<top>302</top>
-					<width>689</width>
-					<height>90</height>
-					<texture border="1">separator5.png</texture>
+					<left>-5</left>
+					<top>51</top>
+					<width>40</width>
+					<height>762</height>
+					<texture flipx="true" border="1">side_shadow.png</texture>
 				</control>
 			</control>
 			<control type="group">
 				<left>76</left>
 				<top>60</top>
-				<control type="image">
-					<left>-32</left>
-					<top>60</top>
-					<width>1120</width>
-					<height>904</height>
-					<texture colordiffuse="CCFFFFFF" border="40">listpanel_back.png</texture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">-1</param>
+					<param name="top">91</param>
+					<param name="width">1058</param>
+					<param name="height">842</param>
+					<param name="texture">colors/black75.png</param>
+				</include>
 				<control type="list" id="602">
 					<top>92</top>
 					<width>1056</width>
@@ -502,7 +511,7 @@
 					</focusedlayout>
 				</control>
 				<control type="scrollbar" id="60260">
-					<left>1058</left>
+					<left>1044</left>
 					<top>92</top>
 					<width>12</width>
 					<height>840</height>
@@ -513,17 +522,10 @@
 					<onright condition="Control.IsVisible(60262)">60262</onright>
 					<onright condition="!Control.IsVisible(615) + !Control.IsVisible(60261)">4400</onright>
 					<onright condition="Control.IsVisible(615) + !Control.IsVisible(60261) + !Control.IsVisible(60262)">615</onright>
-					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
+					<texturesliderbackground>colors/black10.png</texturesliderbackground>
+					<texturesliderbar>colors/white25.png</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
-				</control>
-				<control type="image">
-					<left>1072</left>
-					<top>114</top>
-					<width>40</width>
-					<height>795</height>
-					<texture flipx="true" border="1">side_shadow.png</texture>
 				</control>
 			</control>
 		</control>
