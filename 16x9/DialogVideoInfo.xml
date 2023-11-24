@@ -617,6 +617,15 @@
 						<onclick condition="System.AddonIsEnabled(script.embuary.info)">SetFocus(90050)</onclick>
 						<visible>!String.IsEmpty(ListItem.Cast)</visible>
 					</control>
+					<control type="button" id="14">
+						<description>Versions</description>
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<texturenofocus />
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label></label>
+						<visible>String.IsEqual(ListItem.DBType,movie)</visible>
+					</control>
 					<control type="button" id="11">
 						<description>Play Trailer</description>
 						<font>IconMediumMD</font>

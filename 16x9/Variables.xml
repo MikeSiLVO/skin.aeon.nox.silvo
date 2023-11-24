@@ -26,6 +26,20 @@
 		<value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
 		<value>$INFO[ListItem.Icon]</value>
 	</variable>
+	<variable name="VideoVersionsPosterVar">
+		<value condition="Control.HasFocus(50) + !String.IsEmpty(Container(50).ListItem.Art(poster))">$INFO[Container(50).ListItem.Art(poster)]</value>
+		<value condition="Control.HasFocus(51) + !String.IsEmpty(Container(51).ListItem.Art(poster))">$INFO[Container(51).ListItem.Art(poster)]</value>
+		<value condition="Control.HasFocus(50) + !String.IsEmpty(Container(50).ListItem.Icon)">$INFO[Container(50).ListItem.Icon]</value>
+		<value condition="Control.HasFocus(51) + !String.IsEmpty(Container(51).ListItem.Icon)">$INFO[Container(51).ListItem.Icon]</value>
+	</variable>
+	<variable name="VideoVersionsHeaderLabelVar">
+		<value condition="Control.HasFocus(50) + Window.IsActive(videoversion)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[16106] $LOCALIZE[31616][/COLOR]</value>
+		<value condition="Control.HasFocus(51) + Window.IsActive(videoversion)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[16106] $LOCALIZE[31014][/COLOR]</value>
+		<value condition="Control.HasFocus(50) + Window.IsActive(videoversionplay)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[208] $LOCALIZE[31616][/COLOR]</value>
+		<value condition="Control.HasFocus(51) + Window.IsActive(videoversionplay)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[208] $LOCALIZE[31014][/COLOR]</value>
+		<value condition="Control.HasFocus(97)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[222][/COLOR]</value>
+		<value>$LOCALIZE[40000]</value>
+	</variable>
 	<variable name="MusicPlayerCodecVar">
 		<value condition="String.Contains(MusicPlayer.Codec,mp3)">mp3</value>
 		<value>$INFO[MusicPlayer.Codec]</value>
@@ -1407,6 +1421,7 @@
 		<value condition="Control.HasFocus(8)">$LOCALIZE[208]</value>
 		<value condition="Control.HasFocus(909)">$INFO[System.AddonTitle(script.preshowexperience)]</value>
 		<value condition="Control.HasFocus(910)">$LOCALIZE[206]</value>
+		<value condition="Control.HasFocus(14)">$LOCALIZE[40000]</value>
 		<value condition="Control.HasFocus(11)">$LOCALIZE[20410]</value>
 		<value condition="Control.HasFocus(911)">$LOCALIZE[31457]</value>
 		<value condition="Control.HasFocus(7) | Control.HasFocus(5007) + !String.IsEmpty(ListItem.UserRating)">$LOCALIZE[31147]</value>

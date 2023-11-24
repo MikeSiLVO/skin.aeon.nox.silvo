@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">50</defaultcontrol>
+	<controls>
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture>colors/black50.png</texture>
+			<animation effect="fade" time="300">WindowOpen</animation>
+			<animation effect="fade" time="300">WindowClose</animation>
+		</control>
+		<control type="group">
+			<include condition="Window.IsActive(videoversion)">VideoVersionsPos</include>
+			<include condition="Window.IsActive(videoversionplay)">VideoVersionsPlayPos</include>
+			<top>239</top>
+			<include>DialogOpenCloseAnimation</include>
+			<include content="BackPanel">
+				<param name="left">0</param>
+				<param name="top">0</param>
+				<param name="width">1621</param>
+				<param name="height">598</param>
+				<param name="visible">Window.IsActive(videoversion)</param>
+			</include>
+			<include content="BackPanel">
+				<param name="left">0</param>
+				<param name="top">0</param>
+				<param name="width">1340</param>
+				<param name="height">598</param>
+				<param name="visible">Window.IsActive(videoversionplay)</param>
+			</include>
+			<control type="image">
+				<left>1</left>
+				<top>50</top>
+				<width>805</width>
+				<height>246</height>
+				<texture border="5">dialogs/default/inner.png</texture>
+			</control>
+			<control type="image">
+				<left>1</left>
+				<top>291</top>
+				<width>805</width>
+				<height>306</height>
+				<texture border="5">dialogs/default/inner.png</texture>
+			</control>
+			<control type="image">
+				<left>1</left>
+				<top>291</top>
+				<width>805</width>
+				<height>306</height>
+				<texture border="5">dialogs/default/inner.png</texture>
+			</control>
+			<control type="group">
+				<left>2</left>
+				<top>0</top>
+				<control type="label">
+					<left>16</left>
+					<width>1448</width>
+					<height>50</height>
+					<font>font16_title_bold</font>
+					<label>$VAR[VideoVersionsHeaderLabelVar]</label>
+					<textcolor>dialogheader</textcolor>
+					<scroll>true</scroll>
+				</control>
+				<control type="button" id="97">
+					<description>Cancel button</description>
+					<left>1558</left>
+					<top>-22</top>
+					<texturefocus />
+					<texturenofocus />
+					<width>90</width>
+					<height>90</height>
+					<font>IconMedium</font>
+					<textcolor>grey2</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<focusedcolor>$VAR[HighlightBarColor]</focusedcolor>
+					<label></label>
+					<onclick>back</onclick>
+					<ondown>9000</ondown>
+					<animation effect="slide" end="-280" condition="Window.IsActive(videoversionplay)">Conditional</animation>
+				</control>
+				<control type="image">
+					<top>50</top>
+					<width>1618</width>
+					<height>1</height>
+					<texture colordiffuse="grey4">separator_horizontal.png</texture>
+					<visible>Window.IsActive(videoversion)</visible>
+				</control>
+				<control type="image">
+					<top>50</top>
+					<width>1337</width>
+					<height>1</height>
+					<texture colordiffuse="grey4">separator_horizontal.png</texture>
+					<visible>Window.IsActive(videoversionplay)</visible>
+				</control>
+			</control>
+			<control type="group">
+				<left>826</left>
+				<top>76</top>
+				<control type="image">
+					<width>500</width>
+					<height>500</height>
+					<aspectratio>keep</aspectratio>
+					<texture background="true">$VAR[VideoVersionsPosterVar]</texture>
+				</control>
+			</control>
+			<control type="group" id="9000">
+				<control type="list" id="50">
+					<left>3</left>
+					<top>53</top>
+					<width>800</width>
+					<height>240</height>
+					<onleft condition="Window.IsActive(videoversion)">90000</onleft>
+					<onright condition="Window.IsActive(videoversion)">90000</onright>
+					<onleft condition="Window.IsActive(videoversionplay)">97</onleft>
+					<onright condition="Window.IsActive(videoversionplay)">97</onright>
+					<onup>97</onup>
+					<ondown>51</ondown>
+					<scrolltime tween="quadratic" easing="out">200</scrolltime>
+					<itemlayout height="60" width="800">
+						<control type="label">
+							<width>800</width>
+							<height>60</height>
+							<font>font14</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="60" width="800">
+						<control type="image">
+							<left>1</left>
+							<width>800</width>
+							<height>60</height>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+							<visible>Control.HasFocus(50)</visible>
+							<include>VisibleFadeAnimation</include>
+						</control>
+						<control type="label">
+							<width>800</width>
+							<height>60</height>
+							<font>font14</font>
+							<textoffsetx>15</textoffsetx>
+							<shadowcolor>shadow</shadowcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
+						</control>
+					</focusedlayout>
+				</control>
+				<control type="list" id="51">
+					<left>3</left>
+					<top>294</top>
+					<width>800</width>
+					<height>300</height>
+					<onleft condition="Window.IsActive(videoversion)">90000</onleft>
+					<onright condition="Window.IsActive(videoversion)">90000</onright>
+					<onleft condition="Window.IsActive(videoversionplay)">97</onleft>
+					<onright condition="Window.IsActive(videoversionplay)">97</onright>
+					<onup>50</onup>
+					<ondown>51</ondown>
+					<scrolltime tween="quadratic" easing="out">200</scrolltime>
+					<itemlayout height="60" width="800">
+						<control type="label">
+							<width>800</width>
+							<height>60</height>
+							<font>font14</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="60" width="800">
+						<control type="image">
+							<left>1</left>
+							<width>800</width>
+							<height>60</height>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+							<visible>Control.HasFocus(51)</visible>
+							<include>VisibleFadeAnimation</include>
+						</control>
+						<control type="label">
+							<width>800</width>
+							<height>60</height>
+							<font>font14</font>
+							<textoffsetx>15</textoffsetx>
+							<shadowcolor>shadow</shadowcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(51)">Conditional</animation>
+						</control>
+					</focusedlayout>
+				</control>
+			</control>
+			<include condition="Window.IsActive(videoversion)">VideoVersionButtons</include>
+		</control>
+	</controls>
+</window>
