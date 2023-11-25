@@ -137,8 +137,14 @@
 			"library": "50",
 			"plugins": "50"
 		},
+        "none-videos": {
+            "rule": "Container.Content() + Window.IsVisible(MyVideoNav.xml)",
+            "viewtypes": ["50", "500"],
+            "library": "50",
+            "plugins": "50"
+        },
 		"other": {
-			"rule": "![Container.Content(movies) | Container.Content(sets) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | Container.Content(addons) | Container.Content(genres) | Container.Content(musicvideos) | Container.Content(games) | Container.Content(images) | Container.Content(files)] | Container.Content()",
+			"rule": "![Container.Content(movies) | Container.Content(sets) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | Container.Content(addons) | Container.Content(genres) | Container.Content(musicvideos) | Container.Content(games) | Container.Content(images) | Container.Content(files) | [Container.Content() + Window.IsVisible(MyVideoNav.xml)]]",
 			"viewtypes": ["50"],
 			"library": "50"
 		}
