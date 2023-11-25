@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<variable name="SkinVariablesContentVar">
+		<value condition="!String.IsEmpty(Container.Content)">$INFO[Container.Content]</value>
+		<value condition="Window.IsVisible(MyVideoNav.xml)">none-videos</value>
+	</variable>
 	<variable name="ShowPasswordButtonLabelVar">
 		<value condition="String.IsEqual(Control.GetLabel(310), $LOCALIZE[12308])"></value>
 		<value></value>
