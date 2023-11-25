@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
+	<onload>Control.SetVisible(50)</onload>
+	<onload>Control.SetHidden(51)</onload>
 	<defaultcontrol always="true">50</defaultcontrol>
 	<controls>
 		<control type="image">
@@ -27,27 +29,6 @@
 				<param name="height">598</param>
 				<param name="visible">Window.IsActive(videoversionplay)</param>
 			</include>
-			<control type="image">
-				<left>1</left>
-				<top>50</top>
-				<width>805</width>
-				<height>246</height>
-				<texture border="5">dialogs/default/inner.png</texture>
-			</control>
-			<control type="image">
-				<left>1</left>
-				<top>291</top>
-				<width>805</width>
-				<height>306</height>
-				<texture border="5">dialogs/default/inner.png</texture>
-			</control>
-			<control type="image">
-				<left>1</left>
-				<top>291</top>
-				<width>805</width>
-				<height>306</height>
-				<texture border="5">dialogs/default/inner.png</texture>
-			</control>
 			<control type="group">
 				<left>2</left>
 				<top>0</top>
@@ -107,13 +88,15 @@
 					<left>3</left>
 					<top>53</top>
 					<width>800</width>
-					<height>240</height>
-					<onleft condition="Window.IsActive(videoversion)">90000</onleft>
+					<height>540</height>
+					<onleft condition="Integer.IsEqual(Container(51).NumItems,0)">97</onleft>
+					<onleft condition="Integer.IsGreater(Container(51).NumItems,0)">Control.SetHidden(50)</onleft>
+					<onleft condition="Integer.IsGreater(Container(51).NumItems,0)">Control.SetVisible(51)</onleft>
+					<onleft condition="Integer.IsGreater(Container(51).NumItems,0)">SetFocus(51)</onleft>
 					<onright condition="Window.IsActive(videoversion)">90000</onright>
-					<onleft condition="Window.IsActive(videoversionplay)">97</onleft>
 					<onright condition="Window.IsActive(videoversionplay)">97</onright>
 					<onup>97</onup>
-					<ondown>51</ondown>
+					<ondown>50</ondown>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
 					<itemlayout height="60" width="800">
 						<control type="label">
@@ -148,14 +131,15 @@
 				</control>
 				<control type="list" id="51">
 					<left>3</left>
-					<top>294</top>
+					<top>53</top>
 					<width>800</width>
-					<height>300</height>
-					<onleft condition="Window.IsActive(videoversion)">90000</onleft>
-					<onright condition="Window.IsActive(videoversion)">90000</onright>
-					<onleft condition="Window.IsActive(videoversionplay)">97</onleft>
+					<height>540</height>
+					<onleft>Control.SetHidden(51)</onleft>
+					<onleft>Control.SetVisible(50)</onleft>
+					<onleft>SetFocus(50)</onleft>
 					<onright condition="Window.IsActive(videoversionplay)">97</onright>
-					<onup>50</onup>
+					<onright condition="Window.IsActive(videoversion)">90000</onright>
+					<onup>97</onup>
 					<ondown>51</ondown>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
 					<itemlayout height="60" width="800">
