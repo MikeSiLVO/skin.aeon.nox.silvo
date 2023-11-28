@@ -32,14 +32,30 @@
 			<control type="group">
 				<left>2</left>
 				<top>0</top>
+				<control type="button" id="95">
+					<description>Press left icon</description>
+					<left>-8</left>
+					<top>-22</top>
+					<texturefocus />
+					<texturenofocus />
+					<width>90</width>
+					<height>90</height>
+					<font>IconMedium</font>
+					<textcolor>grey2</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<focusedcolor>$VAR[HighlightBarColor]</focusedcolor>
+					<label></label>
+					<visible>Integer.IsGreater(Container(51).NumItems,0)</visible>
+				</control>
 				<control type="label">
-					<left>16</left>
+					<left>56</left>
 					<width>1448</width>
 					<height>50</height>
 					<font>font16_title_bold</font>
 					<label>$VAR[VideoVersionsHeaderLabelVar]</label>
 					<textcolor>dialogheader</textcolor>
 					<scroll>true</scroll>
+					<animation effect="slide" end="-40" condition="!Integer.IsGreater(Container(51).NumItems,0)">Conditional</animation>
 				</control>
 				<control type="button" id="97">
 					<description>Cancel button</description>
@@ -59,18 +75,9 @@
 					<animation effect="slide" end="-280" condition="Window.IsActive(videoversionplay)">Conditional</animation>
 				</control>
 				<control type="image">
-					<top>50</top>
-					<width>1618</width>
-					<height>1</height>
+					<include condition="Window.IsActive(videoversion)">VideoVersionsSeparator</include>
+					<include condition="Window.IsActive(videoversionplay)">VideoVersionsPlaySeparator</include>
 					<texture colordiffuse="grey4">separator_horizontal.png</texture>
-					<visible>Window.IsActive(videoversion)</visible>
-				</control>
-				<control type="image">
-					<top>50</top>
-					<width>1337</width>
-					<height>1</height>
-					<texture colordiffuse="grey4">separator_horizontal.png</texture>
-					<visible>Window.IsActive(videoversionplay)</visible>
 				</control>
 			</control>
 			<control type="group">
