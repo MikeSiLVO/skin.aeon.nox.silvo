@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol always="true">7</defaultcontrol>
+	<onload condition="Window.IsActive(PVRGuideInfo)">SetFocus(9)</onload>
+	<onload condition="Window.IsActive(PVRRecordingInfo)">SetFocus(8)</onload>
 	<controls>
 		<control type="group">
 			<top>540</top>
@@ -235,11 +236,6 @@
 								<width>auto</width>
 								<label>826</label>
 								<visible>Window.IsActive(PVRGuideInfo)</visible>
-							</control>
-							<control type="button" id="7">
-								<description>OK</description>
-								<width>auto</width>
-								<label>186</label>
 							</control>
 						</control>
 					</control>
