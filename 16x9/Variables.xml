@@ -836,9 +836,17 @@
 		<value condition="!String.IsEmpty(Player.Art(clearart))">$INFO[Player.Art(clearart)]</value>
 		<value>$INFO[Player.Art(clearlogo)]</value>
 	</variable>
-	<variable name="PlayerPosterArtworkVar">
-		<value condition="VideoPlayer.Content(episodes) + [String.IsEmpty(Player.Art(tvshow.clearlogo)) + String.IsEmpty(Player.Art(tvshow.clearart))]">$INFO[Player.Art(tvshow.poster)]</value>
-		<value condition="VideoPlayer.Content(movies) + [String.IsEmpty(Player.Art(clearlogo)) + String.IsEmpty(Player.Art(clearart))]">$INFO[Player.Art(poster)]</value>
+	<variable name="PausedLabelVar">
+		<value condition="VideoPlayer.Content(episodes)">$INFO[VideoPlayer.TvShowTitle]</value>
+		<value>$INFO[Player.Title]</value>
+	</variable>
+	<variable name="PausedClearartVar">
+		<value condition="VideoPlayer.Content(episodes) + !String.IsEmpty(Player.Art(tvshow.clearart))">$INFO[Player.Art(tvshow.clearart)]</value>
+		<value>$INFO[Player.Art(clearart)]</value>
+	</variable>
+	<variable name="PausedLogoVar">
+		<value condition="VideoPlayer.Content(episodes) + !String.IsEmpty(Player.Art(tvshow.clearlogo))">$INFO[Player.Art(tvshow.clearlogo)]</value>
+		<value>$INFO[Player.Art(clearlogo)]</value>
 	</variable>
 	<variable name="PlayerArtworkLogoVar">
 		<value condition="!String.IsEmpty(Player.Art(artist.clearlogo))">$INFO[Player.Art(artist.clearlogo)]</value>
@@ -1555,13 +1563,6 @@
 	<variable name="TMDbHelperDBTYPEPathVar">
 		<value condition="String.IsEqual(ListItem.DBTYPE,movie)">movie</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow)">tv</value>
-	</variable>
-	<variable name="TMDbHelperInfoPosterVar">
-		<value condition="ControlGroup(90000).HasFocus(900010) + !String.IsEmpty(Container(900010).ListItem.Art(thumb))">$INFO[Container(900010).ListItem.Art(poster)]</value>
-		<value condition="ControlGroup(90000).HasFocus(10053) + !String.IsEmpty(Container(10053).ListItem.Art(thumb))">$INFO[Container(10053).ListItem.Art(thumb)]</value>
-		<value condition="Window.IsActive(script-embuary-person.xml) + ControlGroup(90000).HasFocus(10054) + !String.IsEmpty(Container(10054).ListItem.Art(thumb))">$INFO[Container(10054).ListItem.Art(thumb)]</value>
-		<value condition="ControlGroup(90000).HasFocus(10056) + !String.IsEmpty(Container(10056).ListItem.Art(thumb))">$INFO[Container(10056).ListItem.Art(thumb)]</value>
-		<value>$INFO[Container(10051).ListItem.Art(thumb)]</value>
 	</variable>
 	<variable name="RottenFreshAudienceTMDbHelperLogoVar">
 		<value condition="Integer.IsGreaterOrEqual(Container(9143).ListItem.Property(RottenTomatoes_UserMeter),60)">logos/rottentomatoes/popcornfresh.png</value>
