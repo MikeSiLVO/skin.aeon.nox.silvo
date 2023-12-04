@@ -4,7 +4,7 @@
 		<start reset="true">Window.IsActive(videoosd) + !System.IdleTime(1) + !String.IsEmpty(Skin.String(AutoCloseVideoOSD))</start>
 		<reset>!System.IdleTime(1) + Window.IsActive(videoosd) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(AutoCloseVideoOSD), 1)</reset>
 		<stop>!Window.IsActive(videoosd) | String.IsEmpty(Skin.String(AutoCloseVideoOSD)) | Window.IsActive(videoosd) + !String.IsEmpty(Skin.String(AutoCloseVideoOSD)) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(AutoCloseVideoOSD),Skin.Numeric(AutoCloseVideoOSD))</stop>
-		<onstop condition="![Window.IsVisible(DialogSettings.xml) | Window.IsVisible(SubtitleSearch) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(1115) | Window.IsVisible(FileBrowser)]">Dialog.Close(videoosd)</onstop>
+		<onstop condition="![Window.IsVisible(DialogSettings.xml) | Window.IsVisible(SubtitleSearch) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(1114) | Window.IsVisible(FileBrowser)]">Dialog.Close(videoosd)</onstop>
 	</timer>
 	<timer>
 		<name>takescreenshot</name>
