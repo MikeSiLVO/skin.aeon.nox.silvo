@@ -210,6 +210,14 @@
 								<label>19190</label>
 								<visible>Window.IsActive(PVRGuideInfo)</visible>
 							</control>
+							<control type="button" id="99">
+								<description>Delete recording</description>
+								<width>auto</width>
+								<label>$LOCALIZE[117]</label>
+								<onclick>Dialog.Close(pvrrecordinginfo)</onclick>
+								<onclick>Action(delete,tvrecordings)</onclick>
+								<visible>Window.IsActive(PVRRecordingInfo)</visible>
+							</control>
 							<control type="button" id="4">
 								<description>Find similar</description>
 								<width>auto</width>
