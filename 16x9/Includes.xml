@@ -25,7 +25,7 @@
 	<!-- ROTTENTOMATOES TMDb TRAKT IMDb -->
 	<include name="TMDbHelperFlags">
 		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
+			<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
 			<width>170</width>
 			<orientation>horizontal</orientation>
 			<control type="image">
@@ -52,7 +52,7 @@
 			</control>
 		</control>
 		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience))</visible>
+			<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience))</visible>
 			<width>170</width>
 			<orientation>horizontal</orientation>
 			<itemgap>6</itemgap>
@@ -153,7 +153,7 @@
 	<!-- ROTTENTOMATOES/METACRITIC -->
 	<include name="RottenMetaFlags">
 		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
+			<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
 			<width>170</width>
 			<orientation>horizontal</orientation>
 			<control type="image">
@@ -180,7 +180,7 @@
 			</control>
 		</control>
 		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience))</visible>
+			<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience))</visible>
 			<width>170</width>
 			<orientation>horizontal</orientation>
 			<itemgap>6</itemgap>
