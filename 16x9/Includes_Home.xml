@@ -108,7 +108,7 @@
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_bar_white.png</texture>
 					<visible>[!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] | [!String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) + !String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
 				</control>
-				<include condition="System.AddonIsEnabled(service.library.data.provider)">PlayListStatsList</include>
+				<include condition="System.AddonIsEnabled(script.embuary.helper)">PlayListStatsList</include>
 				<control type="label">
 					<top>46</top>
 					<width>1080</width>
@@ -466,7 +466,7 @@
 				<animation effect="slide" end="0,45" time="320" tween="cubic" easing="inout" condition="system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]">Conditional</animation>
 				<control type="group">
 					<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="$EXP[HasVerticalMenuWithExtended]">Conditional</animation>
-					<include condition="System.AddonIsEnabled(service.library.data.provider)">PlayListStatsList</include>
+					<include condition="System.AddonIsEnabled(script.embuary.helper)">PlayListStatsList</include>
 					<control type="label">
 						<left>485</left>
 						<width>740</width>
