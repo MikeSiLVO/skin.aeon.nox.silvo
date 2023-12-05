@@ -1434,13 +1434,16 @@
 				<onclick>ActivateWindow(osdvideosettings)</onclick>
 				<oninfo>ActivateWindow(osdvideosettings)</oninfo>
 			</control>
-			<control type="button" id="703">
+			<control type="togglebutton" id="703">
 				<texturefocus />
+				<alttexturefocus />
 				<font>IconOSDButtons</font>
-				<label></label>
+				<label></label>
+				<altlabel></altlabel>
 				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
 				<width>100</width>
 				<height>100</height>
+				<usealttexture>VideoPlayer.HasSubtitles</usealttexture>
 				<onclick>ActivateWindow(OSDSubtitleSettings)</onclick>
 				<oninfo>ActivateWindow(SubtitleSearch)</oninfo>
 			</control>
@@ -1563,7 +1566,7 @@
 			<control type="button" id="707">
 				<texturefocus />
 				<font>IconOSDButtons</font>
-				<label></label>
+				<label></label>
 				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
 				<width>100</width>
 				<height>100</height>
@@ -1619,65 +1622,74 @@
 			<onleft>203</onleft>
 			<onright>203</onright>
 			<control type="button" id="800">
-				<texturefocus>osd/buttons/OSDAudioFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDAudioNF.png</texturenofocus>
-				<font />
-				<label />
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
 				<onclick>ActivateWindow(osdaudiosettings)</onclick>
 			</control>
 			<control type="button" id="801">
-				<texturefocus>osd/buttons/OSDVideoFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDVideoNF.png</texturenofocus>
-				<font />
-				<label />
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
 				<onclick>ActivateWindow(osdvideosettings)</onclick>
 			</control>
 			<control type="button" id="802">
-				<texturefocus>osd/buttons/OSDSubtitlesFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDSubtitlesNF.png</texturenofocus>
-				<font />
-				<label />
+				<texturefocus />
+				<alttexturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<altlabel></altlabel>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
+				<usealttexture>VideoPlayer.HasSubtitles</usealttexture>
 				<onclick>ActivateWindow(OSDSubtitleSettings)</onclick>
 			</control>
 			<control type="button" id="814">
-				<texturefocus>osd/buttons/OSDTeleTextFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDTeleTextNF.png</texturenofocus>
-				<font />
-				<label />
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
 				<onclick>ActivateWindow(Teletext)</onclick>
 			</control>
 			<control type="button" id="803">
-				<texturefocus>osd/buttons/OSDChannelUPFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDChannelUPNF.png</texturenofocus>
-				<font />
-				<label />
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
 				<onclick>PlayerControl(Previous)</onclick>
 			</control>
 			<control type="button" id="804">
-				<textoffsety>60</textoffsety>
-				<texturefocus>osd/buttons/OSDChannelDownFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDChannelDownNF.png</texturenofocus>
-				<font />
-				<label />
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
 				<onclick>PlayerControl(Next)</onclick>
 			</control>
 			<control type="button" id="805">
-				<texturefocus>osd/buttons/OSDRewindFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDRewindNF.png</texturenofocus>
-				<font />
-				<label />
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
 				<onclick>PlayerControl(Rewind)</onclick>
@@ -1685,35 +1697,37 @@
 				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
 			</control>
 			<control type="togglebutton" id="806">
-				<texturefocus>osd/buttons/OSDPauseFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDPauseNF.png</texturenofocus>
-				<alttexturefocus>osd/buttons/OSDPlayFO.png</alttexturefocus>
-				<alttexturenofocus>osd/buttons/OSDPlayNF.png</alttexturenofocus>
-				<label />
-				<altlabel>208</altlabel>
+				<texturefocus />
+				<alttexturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<altlabel></altlabel>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
-				<font />
 				<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
 				<onclick>PlayerControl(Play)</onclick>
 				<visible>Player.PauseEnabled</visible>
 				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
 			</control>
 			<control type="button" id="807">
-				<texturefocus>osd/buttons/OSDStopFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDStopNF.png</texturenofocus>
-				<font />
-				<label />
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
 				<onclick>PlayerControl(Stop)</onclick>
 				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
 			</control>
 			<control type="button" id="808">
-				<texturefocus>osd/buttons/OSDForwardFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDForwardNF.png</texturenofocus>
-				<font />
-				<label />
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
 				<onclick>PlayerControl(Forward)</onclick>
@@ -1721,64 +1735,69 @@
 				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
 			</control>
 			<control type="togglebutton" id="809">
-				<texturefocus>osd/buttons/OSDRecordOffFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDRecordOffNF.png</texturenofocus>
-				<alttexturefocus>osd/buttons/OSDRecordOnFO.png</alttexturefocus>
-				<alttexturenofocus>osd/buttons/OSDRecordOnNF.png</alttexturenofocus>
-				<label />
-				<altlabel>208</altlabel>
+				<texturefocus />
+				<alttexturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<altlabel></altlabel>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
-				<font />
 				<onclick>PVR.ToggleRecordPlayingChannel</onclick>
 				<visible>PVR.CanRecordPlayingChannel</visible>
 				<usealttexture>PVR.IsRecordingPlayingChannel</usealttexture>
 			</control>
 			<control type="button" id="810">
-				<texturefocus>osd/buttons/OSDChannelListFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDChannelListNF.png</texturenofocus>
-				<font />
-				<label />
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
 				<onclick>Dialog.Close(VideoOSD)</onclick>
 				<onclick>ActivateWindow(PVROSDChannels)</onclick>
 			</control>
 			<control type="button" id="811">
-				<texturefocus>osd/buttons/OSDChannelGuideFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDChannelGuideNF.png</texturenofocus>
-				<font />
-				<label />
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
 				<onclick>Dialog.Close(VideoOSD)</onclick>
 				<onclick>ActivateWindow(pvrchannelguide)</onclick>
 			</control>
 			<control type="button" id="812">
-				<texturefocus>osd/buttons/OSDStereoscopicFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDStereoscopicNF.png</texturenofocus>
-				<font />
-				<label />
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
 				<onclick>ToggleStereoMode</onclick>
 				<visible>VideoPlayer.IsStereoscopic</visible>
 			</control>
 			<control type="button" id="813">
-				<texturefocus>osd/buttons/OSDGuideFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDGuideNF.png</texturenofocus>
-				<font />
-				<label />
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
 				<onclick>Dialog.Close(VideoOSD)</onclick>
 				<onclick>ActivateWindow(TVGuide)</onclick>
 			</control>
 			<control type="button" id="815">
-				<texturefocus>osd/buttons/OSDSkinFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDSkinNF.png</texturenofocus>
-				<font />
-				<label />
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
 				<onclick>SetProperty(DialogSettings,videoosd,Home)</onclick>
