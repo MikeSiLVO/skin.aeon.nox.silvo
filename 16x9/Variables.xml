@@ -349,9 +349,9 @@
 		<value condition="String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31099])">$INFO[Window(Home).Property(PlaylistCount),[COLOR grey]$LOCALIZE[20389]:[/COLOR] ]$INFO[Window(Home).Property(PlaylistWatched),[COLOR grey] • $LOCALIZE[16102]:[/COLOR] ]$INFO[Window(Home).Property(PlaylistUnWatched),[COLOR grey] • $LOCALIZE[16101]:[/COLOR] ]$INFO[Window(Home).Property(PlaylistInProgress),[COLOR grey] • $LOCALIZE[575]:[/COLOR] ]</value>
 	</variable>
 	<variable name="PlaylistStatsContentVar">
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31097])">plugin://service.library.data.provider?type=playliststats&amp;id=$INFO[Container(9000).ListItem.Property(path)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31098])">plugin://service.library.data.provider?type=playliststats&amp;id=$INFO[Container(9000).ListItem.Property(path)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31099])">plugin://service.library.data.provider?type=playliststats&amp;id=$INFO[Container(9000).ListItem.Property(path)]</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31097])">plugin://script.embuary.helper/?info=getpathstats&amp;path=$INFO[Container(9000).ListItem.Property(path)]</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31098])">plugin://script.embuary.helper/?info=getpathstats&amp;path=$INFO[Container(9000).ListItem.Property(path)]</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31099])">plugin://script.embuary.helper/?info=getpathstats&amp;path=$INFO[Container(9000).ListItem.Property(path)]</value>
 	</variable>
 	<variable name="MusicOSDRepeatButtonVar">
 		<value condition="[!Playlist.IsRepeat + !Playlist.IsRepeatOne] + !Control.HasFocus(707)">osd/buttons/OSDRepeatNF.png</value>
