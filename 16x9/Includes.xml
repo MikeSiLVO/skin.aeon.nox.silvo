@@ -566,15 +566,15 @@
 	<include name="MediaMenuPlayerControls">
 		<control type="grouplist" id="9950">
 			<defaultcontrol always="true">9957</defaultcontrol>
-			<top>1020</top>
-			<left>-20</left>
-			<height>67</height>
+			<top>1010</top>
+			<left>-15</left>
+			<height>80</height>
 			<width>440</width>
 			<align>center</align>
 			<scrolltime tween="sine">200</scrolltime>
 			<orientation>horizontal</orientation>
 			<onup>9050</onup>
-			<itemgap>-10</itemgap>
+			<itemgap>-25</itemgap>
 			<ondown condition="Window.IsActive(SettingsCategory.xml)">2001</ondown>
 			<ondown condition="Window.IsActive(profiles)">2002</ondown>
 			<ondown condition="!Window.IsActive(profiles) + Control.IsVisible(2000)">2000</ondown>
@@ -587,94 +587,102 @@
 			<onback>50</onback>
 			<visible>Player.HasMedia + !String.IsEmpty(Window(Home).Property(MediaMenu)) + !Window.IsVisible(1128) + !Window.IsVisible(1130) + !Window.IsVisible(1131) + !Window.IsVisible(1132)</visible>
 			<control type="button" id="9958">
-				<texturefocus>osd/buttons/OSDChannelUpFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDChannelUpNF.png</texturenofocus>
-				<label />
-				<width>67</width>
-				<height>67</height>
-				<font />
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
 				<onclick>PlayerControl(Previous)</onclick>
 				<visible>VideoPlayer.Content(livetv)</visible>
 			</control>
 			<control type="button" id="9951">
-				<texturefocus>osd/buttons/OSDPrevTrackFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDPrevTrackNF.png</texturenofocus>
-				<label />
-				<width>67</width>
-				<height>67</height>
-				<font />
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
 				<onclick>PlayerControl(Previous)</onclick>
 				<visible>!VideoPlayer.Content(livetv)</visible>
 			</control>
 			<control type="button" id="9952">
-				<texturefocus>osd/buttons/OSDRewindFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDRewindNF.png</texturenofocus>
-				<label />
-				<width>67</width>
-				<height>67</height>
-				<font />
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
 				<onclick>PlayerControl(Rewind)</onclick>
 			</control>
 			<control type="button" id="9953">
-				<texturefocus>osd/buttons/OSDStopFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDStopNF.png</texturenofocus>
-				<label />
-				<width>67</width>
-				<height>67</height>
-				<font />
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
 				<onclick>PlayerControl(Stop)</onclick>
 				<onclick>ClearProperty(MediaMenu,Home)</onclick>
 				<onclick>SetFocus(50)</onclick>
 			</control>
 			<control type="button" id="9957">
-				<texturefocus>osd/buttons/OSDChannelListFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDChannelListNF.png</texturenofocus>
-				<label />
-				<width>67</width>
-				<height>67</height>
-				<font />
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
 				<onclick>fullscreen</onclick>
 			</control>
 			<control type="togglebutton" id="9954">
-				<texturefocus>osd/buttons/OSDPauseFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDPauseNF.png</texturenofocus>
-				<alttexturefocus>osd/buttons/OSDPlayFO.png</alttexturefocus>
-				<alttexturenofocus>osd/buttons/OSDPlayNF.png</alttexturenofocus>
-				<label />
-				<altlabel>208</altlabel>
-				<width>67</width>
-				<height>67</height>
-				<font />
+				<texturefocus />
+				<alttexturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<altlabel></altlabel>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
 				<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
 				<onclick>PlayerControl(Play)</onclick>
 			</control>
 			<control type="button" id="9955">
-				<texturefocus>osd/buttons/OSDForwardFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDForwardNF.png</texturenofocus>
-				<label />
-				<width>67</width>
-				<height>67</height>
-				<font />
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
 				<onclick>PlayerControl(Forward)</onclick>
 			</control>
 			<control type="button" id="9956">
-				<texturefocus>osd/buttons/OSDNextTrackFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDNextTrackNF.png</texturenofocus>
-				<label />
-				<width>67</width>
-				<height>67</height>
-				<font />
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
 				<onclick>PlayerControl(Next)</onclick>
 				<visible>!VideoPlayer.Content(livetv)</visible>
 			</control>
 			<control type="button" id="9959">
-				<texturefocus>osd/buttons/OSDChannelDownFO.png</texturefocus>
-				<texturenofocus>osd/buttons/OSDChannelDownNF.png</texturenofocus>
-				<label />
-				<width>67</width>
-				<height>67</height>
-				<font />
-				<onclick>PlayerControl(Previous)</onclick>
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
+				<onclick>PlayerControl(Next)</onclick>
 				<visible>VideoPlayer.Content(livetv)</visible>
 			</control>
 		</control>
@@ -3065,6 +3073,11 @@
 			<name>IconOSDButtons</name>
 			<filename>MaterialIcons-Regular.ttf</filename>
 			<size>70</size>
+		</font>
+		<font>
+			<name>IconMediaMenuButtons</name>
+			<filename>MaterialIcons-Regular.ttf</filename>
+			<size>50</size>
 		</font>
 	</include>
 	<!-- Scrollbars -->
