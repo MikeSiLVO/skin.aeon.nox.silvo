@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <overrides>
+	<override action="ActivateWindow(favourites)">
+		<action>ActivateWindow(favouritesbrowser)</action>
+	</override>
 	<contextmenu />
 	<groupoverride group="mainmenu" condition="String.IsEqual(ListItem.Property(path),ActivateWindow(1129))">SetProperty(CustomSelectSearch,True,Home)</groupoverride>
 	<visibleoverride condition="Library.HasContent(music)">ActivateWindow(Music,files)</visibleoverride>
