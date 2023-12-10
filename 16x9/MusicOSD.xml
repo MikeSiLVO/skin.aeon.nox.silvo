@@ -24,164 +24,176 @@
 				<ondown>802</ondown>
 				<onleft>202</onleft>
 				<onright>202</onright>
-				<control type="button" id="802">
-					<texturefocus>osd/buttons/OSDRatingFO.png</texturefocus>
-					<texturenofocus>osd/buttons/OSDRatingNF.png</texturenofocus>
-					<label />
+				<control type="togglebutton" id="802">
+					<texturefocus />
+					<alttexturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<altlabel></altlabel>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<width>100</width>
 					<height>100</height>
-					<font />
+					<usealttexture>!String.IsEmpty(MusicPlayer.UserRating)</usealttexture>
 					<onclick>SetRating</onclick>
 				</control>
 				<control type="button" id="700">
-					<texturefocus>osd/buttons/OSDPlaylistFO.png</texturefocus>
-					<texturenofocus>osd/buttons/OSDPlaylistNF.png</texturenofocus>
-					<label />
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<width>100</width>
 					<height>100</height>
-					<font />
 					<onclick>Close</onclick>
 					<onclick>ActivateWindow(MusicPlaylist)</onclick>
 				</control>
 				<control type="button" id="500">
-					<texturefocus>osd/buttons/OSDVizFO.png</texturefocus>
-					<texturenofocus>osd/buttons/OSDVizNF.png</texturenofocus>
-					<label />
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<width>100</width>
 					<height>100</height>
-					<font />
 				</control>
 				<control type="button" id="702">
-					<texturefocus>osd/buttons/OSDSettingsFO.png</texturefocus>
-					<texturenofocus>osd/buttons/OSDSettingsNF.png</texturenofocus>
-					<label />
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<width>100</width>
 					<height>100</height>
-					<font />
 					<onclick>Addon.Default.OpenSettings(xbmc.player.musicviz)</onclick>
 					<visible>Visualisation.Enabled</visible>
 				</control>
 				<control type="button" id="705">
-					<texturefocus>osd/buttons/OSDVideoFO.png</texturefocus>
-					<texturenofocus>osd/buttons/OSDVideoNF.png</texturenofocus>
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label> <!-- Alternate labels  -->
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<width>100</width>
 					<height>100</height>
-					<font />
 					<onclick>ActivateWindow(visualisationpresetlist)</onclick>
 					<visible>Visualisation.HasPresets</visible>
 				</control>
 				<control type="button" id="600">
-					<texturefocus>osd/buttons/OSDPrevTrackFO.png</texturefocus>
-					<texturenofocus>osd/buttons/OSDPrevTrackNF.png</texturenofocus>
-					<label />
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<width>100</width>
 					<height>100</height>
-					<font />
 					<onclick>PlayerControl(Previous)</onclick>
 					<visible>!Skin.HasSetting(Disable.MusicPlayerControlButtons)</visible>
 				</control>
 				<control type="button" id="601">
-					<texturefocus>osd/buttons/OSDRewindFO.png</texturefocus>
-					<texturenofocus>osd/buttons/OSDRewindNF.png</texturenofocus>
-					<label />
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<width>100</width>
 					<height>100</height>
-					<font />
 					<onclick>PlayerControl(Rewind)</onclick>
 					<visible>!Skin.HasSetting(Disable.MusicPlayerControlButtons)</visible>
 				</control>
 				<control type="button" id="603">
-					<texturefocus>osd/buttons/OSDStopFO.png</texturefocus>
-					<texturenofocus>osd/buttons/OSDStopNF.png</texturenofocus>
-					<label />
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<width>100</width>
 					<height>100</height>
-					<font />
 					<onclick>PlayerControl(Stop)</onclick>
 					<visible>!Skin.HasSetting(Disable.MusicPlayerControlButtons)</visible>
 				</control>
 				<control type="togglebutton" id="602">
-					<texturefocus>osd/buttons/OSDPauseFO.png</texturefocus>
-					<texturenofocus>osd/buttons/OSDPauseNF.png</texturenofocus>
-					<alttexturefocus>osd/buttons/OSDPlayFO.png</alttexturefocus>
-					<alttexturenofocus>osd/buttons/OSDPlayNF.png</alttexturenofocus>
-					<label />
-					<altlabel>208</altlabel>
+					<texturefocus />
+					<alttexturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<altlabel></altlabel>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<width>100</width>
 					<height>100</height>
-					<font />
 					<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
 					<onclick>PlayerControl(Play)</onclick>
 					<visible>!Skin.HasSetting(Disable.MusicPlayerControlButtons)</visible>
 				</control>
 				<control type="button" id="604">
-					<texturefocus>osd/buttons/OSDForwardFO.png</texturefocus>
-					<texturenofocus>osd/buttons/OSDForwardNF.png</texturenofocus>
-					<label />
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<width>100</width>
 					<height>100</height>
-					<font />
 					<onclick>PlayerControl(Forward)</onclick>
 					<visible>!Skin.HasSetting(Disable.MusicPlayerControlButtons)</visible>
 				</control>
 				<control type="button" id="605">
-					<texturefocus>osd/buttons/OSDNextTrackFO.png</texturefocus>
-					<texturenofocus>osd/buttons/OSDNextTrackNF.png</texturenofocus>
-					<label />
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<width>100</width>
 					<height>100</height>
-					<font />
 					<onclick>PlayerControl(Next)</onclick>
 					<visible>!Skin.HasSetting(Disable.MusicPlayerControlButtons)</visible>
 				</control>
 				<control type="button" id="703">
-					<texturefocus>osd/buttons/OSDLyricsFO.png</texturefocus>
-					<texturenofocus>osd/buttons/OSDLyricsNF.png</texturenofocus>
-					<label />
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<width>100</width>
 					<height>100</height>
-					<font />
-					<onclick condition="!System.AddonIsEnabled(script.cu.lrclyrics)">EnableAddon(script.cu.lrclyrics)</onclick>
 					<onclick condition="!System.HasAddon(script.cu.lrclyrics)">InstallAddon(script.cu.lrclyrics)</onclick>
-					<onclick>Close</onclick>
-					<onclick condition="System.HasAddon(script.cu.lrclyrics)">RunScript(script.cu.lrclyrics)</onclick>
+					<onclick condition="System.HasAddon(script.cu.lrclyrics) + !System.AddonIsEnabled(script.cu.lrclyrics)">EnableAddon(script.cu.lrclyrics)</onclick>
+					<onclick condition="System.AddonIsEnabled(script.cu.lrclyrics)">Close</onclick>
+					<onclick condition="System.AddonIsEnabled(script.cu.lrclyrics)">RunScript(script.cu.lrclyrics)</onclick>
 				</control>
 				<control type="togglebutton" id="704">
-					<texturefocus>osd/buttons/OSDRandomOffFO.png</texturefocus>
-					<texturenofocus>osd/buttons/OSDRandomOffNF.png</texturenofocus>
-					<alttexturefocus>osd/buttons/OSDRandomOnFO.png</alttexturefocus>
-					<alttexturenofocus>osd/buttons/OSDRandomOnNF.png</alttexturenofocus>
-					<label />
+					<texturefocus />
+					<alttexturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<altlabel></altlabel>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<width>100</width>
 					<height>100</height>
-					<font />
 					<usealttexture>Playlist.IsRandom</usealttexture>
 					<onclick>PlayerControl(Random)</onclick>
 					<visible>!MusicPartyMode.Enabled</visible>
 				</control>
 				<control type="button" id="707">
-					<width>0.1</width>
-					<height>0.1</height>
 					<texturefocus />
-					<texturenofocus />
-					<label>$LOCALIZE[486]$INFO[Playlist.Repeat, : ]</label>
-					<font />
+					<font>IconOSDButtons</font>
+					<label>$VAR[MusicOSDRepeatButtonVar]</label>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<width>100</width>
+					<height>100</height>
 					<onclick>PlayerControl(Repeat)</onclick>
 					<visible>!MusicPartyMode.Enabled</visible>
 				</control>
-				<control type="image" id="708">
-					<texture>$VAR[MusicOSDRepeatButtonVar]</texture>
-					<width>100</width>
-					<height>100</height>
-					<visible>!MusicPartyMode.Enabled</visible>
-				</control>
 				<control type="button" id="706">
-					<texturefocus>osd/buttons/OSDSkinFO.png</texturefocus>
-					<texturenofocus>osd/buttons/OSDSkinNF.png</texturenofocus>
-					<label />
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
 					<width>100</width>
 					<height>100</height>
-					<font />
 					<onclick>Dialog.Close(musicosd)</onclick>
 					<onclick>SetProperty(DialogSettings,musicosd,Home)</onclick>
 					<onclick>ActivateWindow(1114)</onclick>
