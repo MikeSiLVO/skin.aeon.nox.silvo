@@ -102,13 +102,14 @@
 					<onleft condition="Integer.IsGreater(Container(51).NumItems,0)">Control.SetHidden(50)</onleft>
 					<onleft condition="Integer.IsGreater(Container(51).NumItems,0)">Control.SetVisible(51)</onleft>
 					<onleft condition="Integer.IsGreater(Container(51).NumItems,0)">SetFocus(51)</onleft>
+					<onright condition="!String.IsEmpty(Container(50).ListItem.Art(poster))">SetProperty(versionsposter,$ESCINFO[Container(50).ListItem.Art(poster)],home)</onright>
+					<onright condition="String.IsEmpty(Container(50).ListItem.Art(poster)) + !String.IsEmpty(Container(50).ListItem.Icon)">SetProperty(versionsposter,$ESCINFO[Container(50).ListItem.Icon],home)</onright>
 					<onright condition="Window.IsActive(videoversion)">Action(Select)</onright>
 					<onright condition="Window.IsActive(videoversion)">90000</onright>
 					<onright condition="Window.IsActive(videoversionselect)">97</onright>
 					<onup>97</onup>
 					<ondown>50</ondown>
-					<onfocus condition="!String.IsEmpty(Container(50).ListItem.Art(poster))">SetProperty(versionsposter,$ESCINFO[Container(50).ListItem.Art(poster)],home)</onfocus>
-					<onfocus condition="String.IsEmpty(Container(50).ListItem.Art(poster)) + !String.IsEmpty(Container(50).ListItem.Icon)">SetProperty(versionsposter,$ESCINFO[Container(50).ListItem.Icon],home)</onfocus>
+					<onfocus>ClearProperty(versionsposter,Home)</onfocus>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
 					<itemlayout height="60" width="800">
 						<control type="label">
@@ -149,13 +150,14 @@
 					<onleft>Control.SetHidden(51)</onleft>
 					<onleft>Control.SetVisible(50)</onleft>
 					<onleft>SetFocus(50)</onleft>
+					<onright condition="!String.IsEmpty(Container(51).ListItem.Art(poster))">SetProperty(versionsposter,$ESCINFO[Container(51).ListItem.Art(poster)],home)</onright>
+					<onright condition="String.IsEmpty(Container(51).ListItem.Art(poster)) + !String.IsEmpty(Container(51).ListItem.Icon)">SetProperty(versionsposter,$ESCINFO[Container(51).ListItem.Icon],home)</onright>
 					<onright condition="Window.IsActive(videoversion)">Action(Select)</onright>
 					<onright condition="Window.IsActive(videoversionselect)">97</onright>
 					<onright condition="Window.IsActive(videoversion)">90000</onright>
 					<onup>97</onup>
 					<ondown>51</ondown>
-					<onfocus condition="!String.IsEmpty(Container(51).ListItem.Art(poster))">SetProperty(versionsposter,$ESCINFO[Container(51).ListItem.Art(poster)],home)</onfocus>
-					<onfocus condition="String.IsEmpty(Container(51).ListItem.Art(poster)) + !String.IsEmpty(Container(51).ListItem.Icon)">SetProperty(versionsposter,$ESCINFO[Container(51).ListItem.Icon],home)</onfocus>
+					<onfocus>ClearProperty(versionsposter,Home)</onfocus>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
 					<itemlayout height="60" width="800">
 						<control type="label">
