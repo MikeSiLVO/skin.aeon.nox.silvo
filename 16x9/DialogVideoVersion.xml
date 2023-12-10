@@ -15,7 +15,7 @@
 		</control>
 		<control type="group">
 			<include condition="Window.IsActive(videoversion)">VideoVersionsPos</include>
-			<include condition="Window.IsActive(videoversionplay)">VideoVersionsPlayPos</include>
+			<include condition="Window.IsActive(videoversionselect)">VideoVersionsPlayPos</include>
 			<top>239</top>
 			<include>DialogOpenCloseAnimation</include>
 			<include content="BackPanel">
@@ -30,7 +30,7 @@
 				<param name="top">0</param>
 				<param name="width">1340</param>
 				<param name="height">598</param>
-				<param name="visible">Window.IsActive(videoversionplay)</param>
+				<param name="visible">Window.IsActive(videoversionselect)</param>
 			</include>
 			<control type="group">
 				<left>2</left>
@@ -75,12 +75,12 @@
 					<onclick>back</onclick>
 					<onleft>9000</onleft>
 					<onright condition="Window.IsActive(videoversion)">90000</onright>
-					<onright condition="Window.IsActive(videoversionplay)">9000</onright>
+					<onright condition="Window.IsActive(videoversionselect)">9000</onright>
 					<ondown>9000</ondown>
-					<animation effect="slide" end="-280" condition="Window.IsVisible(videoversionplay)">Conditional</animation>
+					<animation effect="slide" end="-280" condition="Window.IsVisible(videoversionselect)">Conditional</animation>]
 				</control>
 				<include condition="Window.IsActive(videoversion)">VideoVersionsSeparator</include>
-				<include condition="Window.IsActive(videoversionplay)">VideoVersionsPlaySeparator</include>
+				<include condition="Window.IsActive(videoversionselect)">VideoVersionsPlaySeparator</include>
 			</control>
 			<control type="group">
 				<left>826</left>
@@ -104,7 +104,7 @@
 					<onleft condition="Integer.IsGreater(Container(51).NumItems,0)">SetFocus(51)</onleft>
 					<onright condition="Window.IsActive(videoversion)">Action(Select)</onright>
 					<onright condition="Window.IsActive(videoversion)">90000</onright>
-					<onright condition="Window.IsActive(videoversionplay)">97</onright>
+					<onright condition="Window.IsActive(videoversionselect)">97</onright>
 					<onup>97</onup>
 					<ondown>50</ondown>
 					<onfocus condition="!String.IsEmpty(Container(50).ListItem.Art(poster))">SetProperty(versionsposter,$ESCINFO[Container(50).ListItem.Art(poster)],home)</onfocus>
@@ -150,7 +150,7 @@
 					<onleft>Control.SetVisible(50)</onleft>
 					<onleft>SetFocus(50)</onleft>
 					<onright condition="Window.IsActive(videoversion)">Action(Select)</onright>
-					<onright condition="Window.IsActive(videoversionplay)">97</onright>
+					<onright condition="Window.IsActive(videoversionselect)">97</onright>
 					<onright condition="Window.IsActive(videoversion)">90000</onright>
 					<onup>97</onup>
 					<ondown>51</ondown>
