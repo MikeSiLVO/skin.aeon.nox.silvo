@@ -354,12 +354,9 @@
 		<value condition="String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31099])">plugin://script.embuary.helper/?info=getpathstats&amp;path=$INFO[Container(9000).ListItem.Property(path)]</value>
 	</variable>
 	<variable name="MusicOSDRepeatButtonVar">
-		<value condition="[!Playlist.IsRepeat + !Playlist.IsRepeatOne] + !Control.HasFocus(707)">osd/buttons/OSDRepeatNF.png</value>
-		<value condition="Playlist.IsRepeatOne + !Control.HasFocus(707)">osd/buttons/OSDRepeatOneNF.png</value>
-		<value condition="Playlist.IsRepeat + !Control.HasFocus(707)">osd/buttons/OSDRepeatAllNF.png</value>
-		<value condition="[!Playlist.IsRepeat + !Playlist.IsRepeatOne] + Control.HasFocus(707)">osd/buttons/OSDRepeatFO.png</value>
-		<value condition="Playlist.IsRepeatOne + Control.HasFocus(707)">osd/buttons/OSDRepeatOneFO.png</value>
-		<value condition="Playlist.IsRepeat + Control.HasFocus(707)">osd/buttons/OSDRepeatAllFO.png</value>
+		<value condition="[!Playlist.IsRepeat + !Playlist.IsRepeatOne]"></value>
+		<value condition="Playlist.IsRepeatOne"></value>
+		<value condition="Playlist.IsRepeat"></value>
 	</variable>
 	<!-- List Label Vars -->
 	<variable name="VideoListLabelVar">
