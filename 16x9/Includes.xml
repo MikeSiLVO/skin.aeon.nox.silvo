@@ -1046,7 +1046,7 @@
 	<include name="ExtendedInfoMovieLists">
 		<control type="panel" id="90011">
 			<visible allowhiddenfocus="true">Integer.IsGreater(Container(90011).NumItems,0)</visible>
-			<onclick>RunScript(plugin.video.themoviedb.helper,add_path='"videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(90011).ListItem.Title]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D"',call_auto=1111)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">RunScript(plugin.video.themoviedb.helper,add_path='"$INFO[Container(90011).ListItem.Title,videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]"',call_auto=1111)</onclick>
 			<include content="ExtendedInfoListLayout">
 				<param name="PanelID">90011</param>
 				<param name="content">plugin://script.embuary.helper/?info=getsimilar&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</param>
@@ -1054,7 +1054,7 @@
 		</control>
 		<control type="panel" id="90012">
 			<visible allowhiddenfocus="true">Integer.IsGreater(Container(90012).NumItems,0)</visible>
-			<onclick>RunScript(script.embuary.helper,action=playitem,item='$ESCINFO[ListItem.Filenameandpath]')</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">RunScript(plugin.video.themoviedb.helper,add_path='"$INFO[Container(90012).ListItem.Title,videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]"',call_auto=1111)</onclick>
 			<include content="ExtendedInfoListLayout">
 				<param name="PanelID">90012</param>
 				<param name="content">plugin://script.embuary.helper/?info=getdirectedby&amp;dbid=$INFO[ListItem.DBID]</param>
@@ -1062,6 +1062,8 @@
 		</control>
 		<control type="panel" id="90013">
 			<visible allowhiddenfocus="true">Integer.IsGreater(Container(90013).NumItems,0)</visible>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + String.IsEqual(Container(90013).ListItem.DBTYPE,movie)">RunScript(plugin.video.themoviedb.helper,add_path='"$INFO[Container(90013).ListItem.Title,videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]"',call_auto=1111)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + String.IsEqual(Container(90013).ListItem.DBTYPE,tvshow)">RunScript(plugin.video.themoviedb.helper,add_path='"$INFO[Container(90013).ListItem.TVShowTitle,videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D]"',call_auto=1111)</onclick>
 			<include content="ExtendedInfoListLayout">
 				<param name="PanelID">90013</param>
 				<param name="content">plugin://script.embuary.helper/?info=getitemsbyactor&amp;type=movie&amp;dbid=$INFO[ListItem.DBID]</param>
@@ -1071,6 +1073,7 @@
 	<include name="ExtendedInfoSeriesLists">
 		<control type="panel" id="90014">
 			<visible allowhiddenfocus="true">Integer.IsGreater(Container(90014).NumItems,0)</visible>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">RunScript(plugin.video.themoviedb.helper,add_path='"$INFO[Container(90014).ListItem.TVShowTitle,videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D]"',call_auto=1111)</onclick>
 			<include content="ExtendedInfoListLayout">
 				<param name="PanelID">90014</param>
 				<param name="content">plugin://script.embuary.helper/?info=getsimilar&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</param>
@@ -1079,6 +1082,7 @@
 		</control>
 		<control type="panel" id="90015">
 			<visible allowhiddenfocus="true">Integer.IsGreater(Container(90015).NumItems,0)</visible>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">RunScript(plugin.video.themoviedb.helper,add_path='"$INFO[Container(90015).ListItem.TVShowTitle,videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D]"',call_auto=1111)</onclick>
 			<include content="ExtendedInfoListLayout">
 				<param name="PanelID">90015</param>
 				<param name="content">plugin://script.embuary.helper/?info=getitemsbyactor&amp;type=tvshow&amp;dbid=$INFO[ListItem.DBID]&amp;content=tvshow</param>
