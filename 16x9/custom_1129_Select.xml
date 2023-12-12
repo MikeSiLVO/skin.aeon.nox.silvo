@@ -6,6 +6,8 @@
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(ActorID)) + !String.IsEmpty(Window(movieinformation).Property(DoAction))">Control.Move(50,-$INFO[Window(movieinformation).Property(ActorID)])</onunload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(ActorID)) + !String.IsEmpty(Window(movieinformation).Property(DoAction))">SetFocus(90050)</onunload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(DirectorID)) + !String.IsEmpty(Window(movieinformation).Property(DoAction))">SendClick(2003,13)</onunload>
+	<onunload condition="!String.IsEmpty(Skin.String(ItemToEdit.MultiFanart))">Skin.SetString($INFO[Window(Home).Property(Nox.Temp)],$INFO[Skin.String(ItemToEdit.MultiFanart)])</onunload>
+	<onunload condition="!String.IsEmpty(Skin.String(ItemToEdit.BGType))">Skin.SetString($INFO[Window(Home).Property(Nox.BGType)],$INFO[Skin.String(ItemToEdit.BGType)])</onunload>
 	<onunload>ClearProperty(ActorID,movieinformation)</onunload>
 	<onunload>ClearProperty(ActorName,movieinformation)</onunload>
 	<onunload>ClearProperty(DirectorID,movieinformation)</onunload>

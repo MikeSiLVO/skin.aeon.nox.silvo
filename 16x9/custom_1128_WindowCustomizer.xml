@@ -36,7 +36,7 @@
 				<control type="radiobutton" id="901002">
 					<description>Extrafanart</description>
 					<include>ButtonCommonValues</include>
-					<label>   - $LOCALIZE[31020]</label>
+					<label>$LOCALIZE[31020]</label>
 					<onclick>Skin.ToggleSetting(Disable.Extrafanart)</onclick>
 					<selected>!Skin.HasSetting(Disable.Extrafanart)</selected>
 					<enable>!Skin.HasSetting(Disable.Fanart)</enable>
@@ -47,9 +47,9 @@
 					<include>ButtonCommonValues</include>
 					<label>$LOCALIZE[31117]: $VAR[BackgroundLabelVar]</label>
 					<onclick>Skin.Reset(ItemToEdit.MultiFanart)</onclick>
-					<onclick>SetProperty(No.Cases,True,Home)</onclick>
 					<onclick>$VAR[FallbackBackgroundOnClickVar]</onclick>
-					<onclick>ActivateWindow(1122)</onclick>
+					<onclick>SetProperty(CustomSelect,fallbackbackground,Home)</onclick>
+					<onclick>ActivateWindow(1129)</onclick>
 				</control>
 			</control>
 		</control>
