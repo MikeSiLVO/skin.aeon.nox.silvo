@@ -3896,17 +3896,10 @@
 			</control>
 		</control>
 	</include>
-	<include name="EmbuaryHelperLibraryContentList">
-		<control type="list" id="9142">
-			<include>HiddenList</include>
-			<content limit="1">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</content>
-			<visible>!ListItem.IsCollection + !Container.Content(tvshows) + !Container.Content(seasons)</visible>
-		</control>
-	</include>
 	<include name="EmbuaryHelperContentList">
 		<control type="list" id="9142">
 			<include>HiddenList</include>
-			<content limit="1">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[VideoPlayer.DBID]&amp;type=movie</content>
+			<content limit="1">$VAR[EmbuaryHelperContentVar]</content>
 		</control>
 	</include>
 	<include name="TMDbHelperContentList">

@@ -1586,6 +1586,12 @@
 		<value condition="Addon.SettingBool(plugin.video.themoviedb.helper,local_db)">&amp;exclude_key=dbid&amp;exclude_value=is_empty&amp;length=6</value>
 		<value />
 	</variable>
+	<variable name="EmbuaryHelperContentVar">
+		<value condition="ListItem.IsCollection" />
+		<value condition="VideoPlayer.Content(movies)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[VideoPlayer.DBID]&amp;type=movie</value>
+		<value condition="Container.Content(movies)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
+		<value condition="Container.Content(tvshows)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
+	</variable>
 	<variable name="ScriptLetterJumpContentVar">
 		<value condition="Container.Content() | Container.Content(actors)" />
 		<value>plugin://script.embuary.helper/?info=jumptoletter&amp;showall=false&amp;reload=$INFO[Container.NumItems]</value>
