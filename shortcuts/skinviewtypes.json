@@ -1,159 +1,165 @@
 {
-	"prefix": "Exp_View",
-	"viewtypes": {
-		"50":  "535",
-		"51":  "31247",
-		"52":  "31076",
-		"53":  "31077",
-		"54":  "31077",
-		"55":  "31078",
-		"56":  "31243",
-		"57":  "31079",
-		"58":  "31088",
-		"59":  "31606",
-		"500": "536",
-		"501": "31241",
-		"502": "20359",
-		"503": "31245",
-		"504": "31251",
-		"505": "31314",
-		"506": "31239",
-		"507": "31242",
-		"508": "31238",
-		"509": "31244",
-		"591": "31249",
-		"602": "31240",
-		"603": "31510",
-		"609": "31246"
-	},
-	"icons": {
-		"50":  "special://skin/extras/icons/viewtypes/view_50_list.jpg",
-		"51":  "special://skin/extras/icons/viewtypes/view_51_infowall.jpg",
-		"52":  "special://skin/extras/icons/viewtypes/view_52_landscape.jpg",
-		"53":  "special://skin/extras/icons/viewtypes/view_53_showcase.jpg",
-		"54":  "special://skin/extras/icons/viewtypes/view_54_showcase_square.jpg",
-		"55":  "special://skin/extras/icons/viewtypes/view_55_tripanel.jpg",
-		"56":  "special://skin/extras/icons/viewtypes/view_56_posters.jpg",
-		"57":  "special://skin/extras/icons/viewtypes/view_57_shift.jpg",
-		"58":  "special://skin/extras/icons/viewtypes/view_58_bannerwall.jpg",
-		"59":  "special://skin/extras/icons/viewtypes/view_59_logo.jpg",
-		"500": "special://skin/extras/icons/viewtypes/view_500_icons.jpg",
-		"501": "special://skin/extras/icons/viewtypes/view_501_lowlist.jpg",
-		"502": "special://skin/extras/icons/viewtypes/view_502_episode.jpg",
-		"503": "special://skin/extras/icons/viewtypes/view_503_wall.jpg",
-		"504": "special://skin/extras/icons/viewtypes/view_504_gallery.jpg",
-		"505": "special://skin/extras/icons/viewtypes/view_505_panel.jpg",
-		"506": "special://skin/extras/icons/viewtypes/view_506_rightlist.jpg",
-		"507": "special://skin/extras/icons/viewtypes/view_507_biglist.jpg",
-		"508": "special://skin/extras/icons/viewtypes/view_508_songlist.jpg",
-		"509": "special://skin/extras/icons/viewtypes/view_509_myflix.jpg",
-		"591": "special://skin/extras/icons/viewtypes/view_591_bigfan.jpg",
-		"602": "special://skin/extras/icons/viewtypes/view_602_fanartlist.jpg",
-		"603": "special://skin/extras/icons/viewtypes/view_603_jukebox.jpg",
-		"609": "special://skin/extras/icons/viewtypes/view_609_fullscreen_wall.jpg"
-	},
-	"rules": {
-		"videos": {
-			"rule": "Container.Content(videos)",
-			"viewtypes": ["50"],
-			"library": "50",
-			"plugins": "50"
-		},
-		"movies": {
-			"rule": "Container.Content(movies)",
-			"viewtypes": ["50", "506", "501", "507", "602", "59", "509", "503", "609", "55", "51", "53", "52", "56", "57", "58", "500", "591", "504", "505"],
-			"library": "506",
-			"plugins": "506"
-		},
-		"sets": {
-			"rule": "Container.Content(sets)",
-			"viewtypes": ["50", "506", "501", "602", "59", "509", "503", "609", "55", "53", "52", "56", "58", "500", "591", "504"],
-			"library": "509",
-			"plugins": "509"
-		},
-		"episodes": {
-			"rule": "Container.Content(episodes)",
-			"viewtypes": ["50", "506", "501", "502", "507", "602", "509", "55", "500", "52", "505"],
-			"library": "506",
-			"plugins": "506"
-		},
-		"tvshows": {
-			"rule": "Container.Content(tvshows)",
-			"viewtypes": ["50", "506", "501", "507", "602", "59", "509", "503", "609", "55", "51", "53", "52", "56", "57", "58", "500", "591", "504", "505"],
-			"library": "59",
-			"plugins": "59"
-		},
-		"seasons": {
-			"rule": "Container.Content(seasons)",
-			"viewtypes": ["50", "506", "501", "602", "509", "503", "609", "55", "53", "52", "56", "57", "500", "591"],
-			"library": "506",
-			"plugins": "506"
-		},
-		"artists": {
-			"rule": "Container.Content(artists)",
-			"viewtypes": ["50", "506", "501", "507", "59", "503", "609", "55", "51", "54", "52", "57", "500"],
-			"library": "55",
-			"plugins": "55"
-		},
-		"albums": {
-			"rule": "Container.Content(albums)",
-			"viewtypes": ["50", "506", "501", "507", "503", "609", "55", "51", "54", "57"],
-			"library": "501",
-			"plugins": "501"
-		},
-		"songs": {
-			"rule": "Container.Content(songs)",
-			"viewtypes": ["50", "506", "507", "501", "508", "55", "54", "57"],
-			"library": "506",
-			"plugins": "506"
-		},
-		"addons": {
-			"rule": "Container.Content(addons)",
-			"viewtypes": ["50", "503", "55", "51", "54", "57", "500"],
-			"library": "50",
-			"plugins": "50"
-		},
-		"genres": {
-			"rule": "!Window.IsVisible(MyMusicNav.xml) + Container.Content(genres)",
-			"viewtypes": ["50", "53", "56", "57", "500"],
-			"library": "50",
-			"plugins": "50"
-		},
-		"musicvideos": {
-			"rule": "Container.Content(musicvideos)",
-			"viewtypes": ["50", "53", "56", "57"],
-			"library": "57",
-			"plugins": "57"
-		},
-		"games": {
-			"rule": "Container.Content(games)",
-			"viewtypes": ["50", "51", "55", "57", "500"],
-			"library": "50",
-			"plugins": "50"
-		},
-		"images": {
-			"rule": "Container.Content(images)",
-			"viewtypes": ["50", "54", "57", "500", "504"],
-			"library": "50",
-			"plugins": "50"
-		},
-		"files": {
-			"rule": "!Window.IsVisible(MyMusicNav.xml) + Container.Content(files)",
-			"viewtypes": ["50", "503", "500"],
-			"library": "50",
-			"plugins": "50"
-		},
-		"none-videos": {
-			"rule": "Container.Content() + Window.IsVisible(MyVideoNav.xml)",
-			"viewtypes": ["50", "500"],
-			"library": "50",
-			"plugins": "50"
-		},
-		"playlists": {
-			"rule": "Container.Content(playlists)",
-			"viewtypes": ["50"],
-			"library": "50",
-			"plugins": "50"
-		}
-	}
+    "prefix": "Exp_View",
+    "viewtypes": {
+        "50":  "535",
+        "51":  "31247",
+        "52":  "31076",
+        "53":  "31077",
+        "54":  "31077",
+        "55":  "31078",
+        "56":  "31243",
+        "57":  "31079",
+        "58":  "31088",
+        "59":  "31606",
+        "500": "536",
+        "501": "31241",
+        "502": "20359",
+        "503": "31245",
+        "504": "31251",
+        "505": "31314",
+        "506": "31239",
+        "507": "31242",
+        "508": "31238",
+        "509": "31244",
+        "591": "31249",
+        "602": "31240",
+        "603": "31510",
+        "609": "31246"
+    },
+    "icons": {
+        "50":  "special://skin/extras/icons/viewtypes/view_50_list.jpg",
+        "51":  "special://skin/extras/icons/viewtypes/view_51_infowall.jpg",
+        "52":  "special://skin/extras/icons/viewtypes/view_52_landscape.jpg",
+        "53":  "special://skin/extras/icons/viewtypes/view_53_showcase.jpg",
+        "54":  "special://skin/extras/icons/viewtypes/view_54_showcase_square.jpg",
+        "55":  "special://skin/extras/icons/viewtypes/view_55_tripanel.jpg",
+        "56":  "special://skin/extras/icons/viewtypes/view_56_posters.jpg",
+        "57":  "special://skin/extras/icons/viewtypes/view_57_shift.jpg",
+        "58":  "special://skin/extras/icons/viewtypes/view_58_bannerwall.jpg",
+        "59":  "special://skin/extras/icons/viewtypes/view_59_logo.jpg",
+        "500": "special://skin/extras/icons/viewtypes/view_500_icons.jpg",
+        "501": "special://skin/extras/icons/viewtypes/view_501_lowlist.jpg",
+        "502": "special://skin/extras/icons/viewtypes/view_502_episode.jpg",
+        "503": "special://skin/extras/icons/viewtypes/view_503_wall.jpg",
+        "504": "special://skin/extras/icons/viewtypes/view_504_gallery.jpg",
+        "505": "special://skin/extras/icons/viewtypes/view_505_panel.jpg",
+        "506": "special://skin/extras/icons/viewtypes/view_506_rightlist.jpg",
+        "507": "special://skin/extras/icons/viewtypes/view_507_biglist.jpg",
+        "508": "special://skin/extras/icons/viewtypes/view_508_songlist.jpg",
+        "509": "special://skin/extras/icons/viewtypes/view_509_myflix.jpg",
+        "591": "special://skin/extras/icons/viewtypes/view_591_bigfan.jpg",
+        "602": "special://skin/extras/icons/viewtypes/view_602_fanartlist.jpg",
+        "603": "special://skin/extras/icons/viewtypes/view_603_jukebox.jpg",
+        "609": "special://skin/extras/icons/viewtypes/view_609_fullscreen_wall.jpg"
+    },
+    "rules": {
+        "videos": {
+            "rule": "Container.Content(videos)",
+            "viewtypes": ["50"],
+            "library": "50",
+            "plugins": "50"
+        },
+        "movies": {
+            "rule": "Container.Content(movies)",
+            "viewtypes": ["50", "506", "501", "507", "602", "59", "509", "503", "609", "55", "51", "53", "52", "56", "57", "58", "500", "591", "504", "505"],
+            "library": "506",
+            "plugins": "506"
+        },
+        "sets": {
+            "rule": "Container.Content(sets)",
+            "viewtypes": ["50", "506", "501", "602", "59", "509", "503", "609", "55", "53", "52", "56", "58", "500", "591", "504"],
+            "library": "509",
+            "plugins": "509"
+        },
+        "episodes": {
+            "rule": "Container.Content(episodes)",
+            "viewtypes": ["50", "506", "501", "502", "507", "602", "509", "55", "500", "52", "505"],
+            "library": "506",
+            "plugins": "506"
+        },
+        "tvshows": {
+            "rule": "Container.Content(tvshows)",
+            "viewtypes": ["50", "506", "501", "507", "602", "59", "509", "503", "609", "55", "51", "53", "52", "56", "57", "58", "500", "591", "504", "505"],
+            "library": "59",
+            "plugins": "59"
+        },
+        "seasons": {
+            "rule": "Container.Content(seasons)",
+            "viewtypes": ["50", "506", "501", "602", "509", "503", "609", "55", "53", "52", "56", "57", "500", "591"],
+            "library": "506",
+            "plugins": "506"
+        },
+        "artists": {
+            "rule": "Container.Content(artists)",
+            "viewtypes": ["50", "506", "501", "507", "59", "503", "609", "55", "51", "54", "52", "57", "500"],
+            "library": "55",
+            "plugins": "55"
+        },
+        "albums": {
+            "rule": "Container.Content(albums)",
+            "viewtypes": ["50", "506", "501", "507", "503", "609", "55", "51", "54", "57"],
+            "library": "501",
+            "plugins": "501"
+        },
+        "songs": {
+            "rule": "Container.Content(songs)",
+            "viewtypes": ["50", "506", "507", "501", "508", "55", "54", "57"],
+            "library": "506",
+            "plugins": "506"
+        },
+        "addons": {
+            "rule": "Container.Content(addons)",
+            "viewtypes": ["50", "503", "55", "51", "54", "57", "500"],
+            "library": "50",
+            "plugins": "50"
+        },
+        "genres": {
+            "rule": "!Window.IsVisible(MyMusicNav.xml) + Container.Content(genres)",
+            "viewtypes": ["50", "53", "56", "57", "500"],
+            "library": "50",
+            "plugins": "50"
+        },
+        "musicvideos": {
+            "rule": "Container.Content(musicvideos)",
+            "viewtypes": ["50", "53", "56", "57"],
+            "library": "57",
+            "plugins": "57"
+        },
+        "games": {
+            "rule": "Container.Content(games)",
+            "viewtypes": ["50", "51", "55", "57", "500"],
+            "library": "50",
+            "plugins": "50"
+        },
+        "images": {
+            "rule": "Container.Content(images)",
+            "viewtypes": ["50", "54", "57", "500", "504"],
+            "library": "50",
+            "plugins": "50"
+        },
+        "files": {
+            "rule": "!Window.IsVisible(MyMusicNav.xml) + Container.Content(files)",
+            "viewtypes": ["50", "503", "500"],
+            "library": "50",
+            "plugins": "50"
+        },
+        "none-videos": {
+            "rule": "Container.Content() + Window.IsVisible(MyVideoNav.xml)",
+            "viewtypes": ["50", "500"],
+            "library": "50",
+            "plugins": "50"
+        },
+        "playlists": {
+            "rule": "Container.Content(playlists)",
+            "viewtypes": ["50"],
+            "library": "50",
+            "plugins": "50"
+        },
+        "actors": {
+            "rule": "Container.Content(actors)",
+            "viewtypes": ["50", "500"],
+            "library": "50",
+            "plugins": "50"
+        }
+    }
 }

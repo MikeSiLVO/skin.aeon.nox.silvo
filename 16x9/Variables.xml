@@ -3,7 +3,7 @@
 	<variable name="SkinVariablesContentVar">
 		<value condition="String.IsEqual(Container.Content,genres) + Window.IsVisible(MyMusicNav.xml)">genres-music</value>
 		<value condition="!String.IsEmpty(Container.Content)">$INFO[Container.Content]</value>
-		<value condition="Window.IsVisible(MyVideoNav.xml)">none-videos</value>
+		<value condition="Container.Content() + Window.IsVisible(MyVideoNav.xml)">none-videos</value>
 	</variable>
 	<variable name="ShowPasswordButtonLabelVar">
 		<value condition="String.IsEqual(Control.GetLabel(310), $LOCALIZE[12308])"></value>
