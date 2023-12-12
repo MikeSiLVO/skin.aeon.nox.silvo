@@ -1,237 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1129" type="dialog">
-	<onload condition="String.IsEmpty(Window(Home).Property(CustomSelectGameOSDSettings))">SetFocus(90100)</onload>
-	<onload condition="!String.IsEmpty(Window(Home).Property(CustomSelectGameOSDSettings))">SetFocus(90101)</onload>
+	<onload>SetFocus(90100)</onload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(ActorID)) + !String.IsEmpty(Window(movieinformation).Property(DoAction))">SetFocus(50,$INFO[Window(movieinformation).Property(ActorID)])</onunload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(ActorID)) + !String.IsEmpty(Window(movieinformation).Property(DoAction))">Action(select)</onunload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(ActorID)) + !String.IsEmpty(Window(movieinformation).Property(DoAction))">Control.Move(50,-$INFO[Window(movieinformation).Property(ActorID)])</onunload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(ActorID)) + !String.IsEmpty(Window(movieinformation).Property(DoAction))">SetFocus(90050)</onunload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(DirectorID)) + !String.IsEmpty(Window(movieinformation).Property(DoAction))">SendClick(2003,13)</onunload>
-	<onunload>ClearProperty(CustomSelectGameOSDSettings,Home)</onunload>
-	<onunload>ClearProperty(CustomSelectSearch,Home)</onunload>
 	<onunload>ClearProperty(ActorID,movieinformation)</onunload>
 	<onunload>ClearProperty(ActorName,movieinformation)</onunload>
 	<onunload>ClearProperty(DirectorID,movieinformation)</onunload>
 	<onunload>ClearProperty(DoAction,movieinformation)</onunload>
-	<onunload>ClearProperty(CustomSelectMainMenuLayout,skinsettings)</onunload>
-	<onunload>ClearProperty(CustomSelectFanartTimePerImage,skinsettings)</onunload>
-	<onunload>ClearProperty(CustomSelectLanguageFlags,skinsettings)</onunload>
-	<onunload>ClearProperty(CustomSelectDefaultBackground,Home)</onunload>
-	<onunload>ClearProperty(CustomSelectWidgetOpacity,skinsettings)</onunload>
-	<onunload>ClearProperty(CustomSelectWidgetBack,skinsettings)</onunload>
-	<onunload>ClearProperty(CustomSelectWidgetCaseInfo,skinsettings)</onunload>
-	<onunload>ClearProperty(CustomSelectMyFlixDimmer,1131)</onunload>
-	<onunload>ClearProperty(CustomSelectDialogInfoDimmer,1114)</onunload>
-	<onunload>ClearProperty(CustomSelectMusicVizBackground,1114)</onunload>
-	<onunload>ClearProperty(CustomSelectPVRGuideLogos,Home)</onunload>
-	<onunload>ClearProperty(CustomSelectMusicGenreIconPath,Home)</onunload>
-	<onunload>ClearProperty(CustomSelectAutoHideVideoOSD,1114)</onunload>
+	<onunload>ClearProperty(CustomSelect,Home)</onunload>
 	<controls>
 		<control type="group">
 			<include>DialogOpenCloseAnimation</include>
-			<left>457</left>
-			<top>240</top>
-			<animation effect="slide" end="0,-100" time="0" condition="!String.IsEmpty(Window(Home).Property(CustomSelectSearch)) + Skin.HasSetting(centermainmenu)">Conditional</animation>
-			<animation effect="slide" end="0,100" time="0" condition="!String.IsEmpty(Window(Home).Property(CustomSelectSearch)) + !Skin.HasSetting(centermainmenu)">Conditional</animation>
 			<visible>![Window.IsActive(gamestretchmode) | Window.IsActive(gamevideofilter) | Window.IsActive(gamevideorotation) | Window.IsActive(gamevolume) | Window.IsActive(InGameSaves)]</visible>
 			<include>VisibleFadeAnimation</include>
-			<control type="group">
-				<visible>String.IsEmpty(Window(Home).Property(CustomSelectGameOSDSettings))</visible>
-				<control type="group">
-					<visible>String.IsEmpty(Window(Home).Property(CustomSelectSearch))</visible>
-					<control type="image">
-						<top>20</top>
-						<left>188</left>
-						<width>630</width>
-						<height>550</height>
-						<texture>colors/black90.png</texture>
-						<bordersize>1</bordersize>
-						<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-					</control>
-					<control type="image">
-						<left>189</left>
-						<top>87</top>
-						<width>628</width>
-						<height>1</height>
-						<texture colordiffuse="grey4">separator_horizontal.png</texture>
-					</control>
-				</control>
-				<control type="group">
-					<visible>!String.IsEmpty(Window(Home).Property(CustomSelectSearch))</visible>
-					<control type="image">
-						<left>157</left>
-						<width>692</width>
-						<height>360</height>
-						<texture border="40">dialogs/default/bg.png</texture>
-					</control>
-					<control type="image">
-						<left>187</left>
-						<top>86</top>
-						<width>632</width>
-						<height>242</height>
-						<texture border="5">dialogs/default/inner.png</texture>
-					</control>
-				</control>
-				<control type="label" id="1">
-					<left>30</left>
-					<top>32</top>
-					<width>940</width>
-					<height>40</height>
-					<font>font15_title</font>
-					<label>$VAR[CustomSelectLabelVar]</label>
-					<align>center</align>
-					<textcolor>dialogheader</textcolor>
-				</control>
-			</control>
-			<control type="group">
-				<visible>!String.IsEmpty(Window(Home).Property(CustomSelectGameOSDSettings))</visible>
-				<control type="image">
-					<left>98</left>
-					<width>820</width>
-					<height>530</height>
-					<texture border="40">dialogs/default/bg.png</texture>
-				</control>
-				<control type="image">
-					<left>115</left>
-					<top>80</top>
-					<width>785</width>
-					<height>1</height>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
-				</control>
-				<control type="label">
-					<left>120</left>
-					<top>30</top>
-					<width>760</width>
-					<height>40</height>
-					<font>font16_title_bold</font>
-					<label>$LOCALIZE[35221]</label>
-					<textcolor>dialogheader</textcolor>
-					<align>center</align>
-					<scroll>true</scroll>
-				</control>
-			</control>
-			<control type="list" id="90100">
-				<left>189</left>
-				<top>88</top>
-				<width>628</width>
-				<height>480</height>
-				<onup>90100</onup>
-				<ondown>90100</ondown>
-				<onleft>90100</onleft>
-				<onright>60</onright>
-				<pagecontrol>60</pagecontrol>
-				<scrolltime tween="quadratic" easing="out">200</scrolltime>
-				<visible>String.IsEmpty(Window(Home).Property(CustomSelectGameOSDSettings))</visible>
-				<itemlayout height="60" width="628">
-					<control type="label">
-						<width>628</width>
-						<height>60</height>
-						<textoffsetx>15</textoffsetx>
-						<font>font14</font>
-						<textcolor>grey2</textcolor>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-				</itemlayout>
-				<focusedlayout height="60" width="628">
-					<control type="image">
-						<width>629</width>
-						<height>60</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
-						<visible>Control.HasFocus(90100)</visible>
-						<include>VisibleFadeAnimation</include>
-					</control>
-					<control type="label">
-						<width>628</width>
-						<height>60</height>
-						<textoffsetx>15</textoffsetx>
-						<font>font14</font>
-						<scroll>true</scroll>
-						<label>$INFO[ListItem.Label]</label>
-						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90100)">Conditional</animation>
-					</control>
-				</focusedlayout>
-				<content>
-					<include condition="!String.IsEmpty(Window(Home).Property(CustomSelectSearch))">SelectSearch</include>
-					<include condition="!String.IsEmpty(Window(movieinformation).Property(ActorName))">SelectActorName</include>
-					<include condition="!String.IsEmpty(Window(skinsettings).Property(CustomSelectMainMenuLayout))">SelectMainMenuLayout</include>
-					<include condition="!String.IsEmpty(Window(skinsettings).Property(CustomSelectFanartTimePerImage))">SelectFanartTimePerImage</include>
-					<include condition="!String.IsEmpty(Window(Home).Property(CustomSelectDefaultBackground))">SelectDefaultBackground</include>
-					<include condition="!String.IsEmpty(Window(skinsettings).Property(CustomSelectLanguageFlags))">SelectLanguageFlags</include>
-					<include condition="!String.IsEmpty(Window(skinsettings).Property(CustomSelectWidgetOpacity))">SelectWidgetOpacity</include>
-					<include condition="!String.IsEmpty(Window(skinsettings).Property(CustomSelectWidgetBack))">SelectWidgetBack</include>
-					<include condition="!String.IsEmpty(Window(skinsettings).Property(CustomSelectWidgetCaseInfo))">SelectWidgetCaseInfo</include>
-					<include condition="!String.IsEmpty(Window(1131).Property(CustomSelectMyFlixDimmer))">SelectMyFlixDimmer</include>
-					<include condition="!String.IsEmpty(Window(1114).Property(CustomSelectDialogInfoDimmer))">SelectDialogInfoDimmer</include>
-					<include condition="!String.IsEmpty(Window(1114).Property(CustomSelectMusicVizBackground))">SelectMusicVizBackground</include>
-					<include condition="!String.IsEmpty(Window(Home).Property(CustomSelectPVRGuideLogos))">SelectPVRGuideLogos</include>
-					<include condition="!String.IsEmpty(Window(Home).Property(CustomSelectMusicGenreIconPath))">SelectMusicGenreIconPath</include>
-					<include condition="!String.IsEmpty(Window(1114).Property(CustomSelectAutoHideVideoOSD))">SelectAutoHideVideoOSD</include>
-				</content>
-			</control>
-			<control type="list" id="90101">
-				<left>118</left>
-				<top>88</top>
-				<width>800</width>
-				<height>420</height>
-				<onup>90101</onup>
-				<ondown>90101</ondown>
-				<onleft>60</onleft>
-				<pagecontrol>60</pagecontrol>
-				<scrolltime tween="quadratic" easing="out">200</scrolltime>
-				<visible>!String.IsEmpty(Window(Home).Property(CustomSelectGameOSDSettings))</visible>
-				<itemlayout height="60" width="800">
-					<control type="label">
-						<left>4</left>
-						<width>776</width>
-						<height>60</height>
-						<textoffsetx>15</textoffsetx>
-						<font>font14</font>
-						<textcolor>grey2</textcolor>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="label">
-						<width>776</width>
-						<height>60</height>
-						<textoffsetx>15</textoffsetx>
-						<font>font14</font>
-						<textcolor>grey2</textcolor>
-						<align>right</align>
-						<label>$INFO[ListItem.Label2]</label>
-					</control>
-				</itemlayout>
-				<focusedlayout height="60" width="800">
-					<control type="image">
-						<width>780</width>
-						<height>60</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
-						<visible>Control.HasFocus(90101)</visible>
-						<include>VisibleFadeAnimation</include>
-					</control>
-					<control type="group">
-						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90101)">Conditional</animation>
-						<control type="label">
-							<left>4</left>
-							<width>776</width>
-							<height>60</height>
-							<textoffsetx>15</textoffsetx>
-							<font>font14</font>
-							<scroll>true</scroll>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
-						<control type="label">
-							<width>776</width>
-							<height>60</height>
-							<textoffsetx>15</textoffsetx>
-							<font>font14</font>
-							<align>right</align>
-							<label>$INFO[ListItem.Label2]</label>
-						</control>
-					</control>
-				</focusedlayout>
-				<content>
-					<include condition="!String.IsEmpty(Window(Home).Property(CustomSelectGameOSDSettings))">SelectGameOSDSettings</include>
-				</content>
-			</control>
+			<include condition="!String.IsEqual(Window(Home).Property(CustomSelect),search) + !String.IsEqual(Window(Home).Property(CustomSelect),gameosdsettings) + String.IsEmpty(Window(movieinformation).Property(ActorName)) + !String.IsEqual(Window(Home).Property(CustomSelect),pvrguidelogos) + !String.IsEqual(Window(Home).Property(CustomSelect),musicgenreiconpath)">CustomSelectDefaultBackPanel</include>
+			<include condition="String.IsEqual(Window(Home).Property(CustomSelect),search) | !String.IsEmpty(Window(movieinformation).Property(ActorName)) | String.IsEqual(Window(Home).Property(CustomSelect),pvrguidelogos) | String.IsEqual(Window(Home).Property(CustomSelect),musicgenreiconpath)">CustomSelectSearchBackPanel</include>
+			<include condition="String.IsEqual(Window(Home).Property(CustomSelect),gameosdsettings)">CustomSelectGameOSDBackPanel</include>
+			<include condition="!String.IsEqual(Window(Home).Property(CustomSelect),gameosdsettings)">CustomSelectLayout</include>
+			<include condition="String.IsEqual(Window(Home).Property(CustomSelect),gameosdsettings)">CustomGameOSDLayout</include>
 		</control>
 	</controls>
 </window>
