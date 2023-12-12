@@ -354,7 +354,7 @@
 		<value condition="!String.IsEqual(Container.SortMethod,$LOCALIZE[345]) + !ListItem.IsCollection + !String.IsEmpty(ListItem.Genre)">$INFO[ListItem.Year,, • ]$INFO[ListItem.Genre]</value>
 		<value condition="!String.IsEmpty(ListItem.Genre)">$INFO[ListItem.Genre]</value>
 		<value condition="!String.IsEqual(Container.SortMethod,$LOCALIZE[345]) + !ListItem.IsCollection + !String.IsEmpty(ListItem.Year)">$INFO[ListItem.Year]</value>
-		<value condition="!ListItem.IsCollection + String.IsEmpty(Container.PluginName)">[I]$INFO[ListItem.FolderPath][/I]</value>
+		<value condition="[!ListItem.IsCollection + !Container.Content(studios)] + String.IsEmpty(Container.PluginName)">[I]$INFO[ListItem.FolderPath][/I]</value>
 	</variable>
 	<variable name="MusicListLabel3Var">
 		<value condition="Container.Content(songs) + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
