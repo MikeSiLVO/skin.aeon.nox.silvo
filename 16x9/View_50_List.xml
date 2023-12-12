@@ -36,7 +36,7 @@
 					<pagecontrol>95060</pagecontrol>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
 					<visible>True + !System.AddonIsEnabled(script.skinvariables) | [$EXP[Exp_View_50] + System.AddonIsEnabled(script.skinvariables)]</visible>
-					<itemlayout height="120" width="1140" condition="Container.Content(movies) | Container.Content(studios)">
+					<itemlayout height="120" width="1140" condition="Container.Content(movies)">
 						<control type="image">
 							<left>10</left>
 							<top>5</top>
@@ -53,7 +53,7 @@
 							<font>font30</font>
 							<textcolor>grey2</textcolor>
 							<label>$INFO[ListItem.Label]</label>
-							<animation effect="slide" end="0,25" condition="ListItem.IsCollection | Container.Content(studios)">Conditional</animation>
+							<animation effect="slide" end="0,25" condition="ListItem.IsCollection">Conditional</animation>
 						</control>
 						<control type="label">
 							<left>135</left>
@@ -105,7 +105,7 @@
 							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
 						</control>
 					</itemlayout>
-					<focusedlayout height="120" width="1140" condition="Container.Content(movies) | Container.Content(studios)">
+					<focusedlayout height="120" width="1140" condition="Container.Content(movies)">
 						<control type="image">
 							<width>1160</width>
 							<height>120</height>
@@ -127,7 +127,7 @@
 							<height>70</height>
 							<font>font30</font>
 							<label>$INFO[ListItem.Label]</label>
-							<animation effect="slide" end="0,25" condition="ListItem.IsCollection | Container.Content(studios)">Conditional</animation>
+							<animation effect="slide" end="0,25" condition="ListItem.IsCollection">Conditional</animation>
 						</control>
 						<control type="label">
 							<left>135</left>
@@ -173,6 +173,49 @@
 							<height>64</height>
 							<aspectratio>keep</aspectratio>
 							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+						</control>
+					</focusedlayout>
+					<itemlayout height="120" width="1140" condition="Container.Content(studios)">
+						<control type="image">
+							<left>10</left>
+							<top>5</top>
+							<width>110</width>
+							<height>110</height>
+							<aspectratio>keep</aspectratio>
+							<texture>$VAR[StudioIconVar]</texture>
+							<colordiffuse>grey2</colordiffuse>
+						</control>
+						<control type="label">
+							<left>135</left>
+							<width>790</width>
+							<height>116</height>
+							<font>font30</font>
+							<textcolor>grey2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="120" width="1140" condition="Container.Content(studios)">
+						<control type="image">
+							<width>1160</width>
+							<height>120</height>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<visible>Control.HasFocus(50)</visible>
+							<include>VisibleFadeAnimation</include>
+						</control>
+						<control type="image">
+							<left>10</left>
+							<top>5</top>
+							<width>110</width>
+							<height>110</height>
+							<aspectratio>keep</aspectratio>
+							<texture>$VAR[StudioIconVar]</texture>
+						</control>
+						<control type="label">
+							<left>135</left>
+							<width>790</width>
+							<height>116</height>
+							<font>font30</font>
+							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</focusedlayout>
 					<itemlayout height="120" width="1140" condition="Container.Content(sets)">
@@ -946,13 +989,17 @@
 				<visible>![Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content() | Container.Content(files) | Container.Content(addons)]</visible>
 				<animation effect="fade" time="250">Visible</animation>
 				<control type="image">
-					<width>540</width>
-					<height>840</height>
+					<left>-1</left>
+					<top>-1</top>
+					<width>554</width>
+					<height>842</height>
 					<texture>colors/black75.png</texture>
+					<bordersize>1</bordersize>
+					<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
 				</control>
 				<control type="image">
-					<width>540</width>
-					<height>348</height>
+					<width>552</width>
+					<height>352</height>
 					<aspectratio>keep</aspectratio>
 					<texture background="true">$VAR[NoSpoilerIconVar]</texture>
 					<fadetime>IconCrossfadeTime</fadetime>
@@ -961,7 +1008,7 @@
 				</control>
 				<control type="image">
 					<top>348</top>
-					<width>540</width>
+					<width>552</width>
 					<height>2</height>
 					<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
 					<visible>Container.Content(episodes) | Container.Content(videos)</visible>
@@ -991,9 +1038,9 @@
 					<visible>Container.Content(episodes) | Container.Content(videos)</visible>
 				</control>
 				<control type="scrollbar" id="95061">
-					<left>520</left>
+					<left>540</left>
 					<top>350</top>
-					<width>20</width>
+					<width>12</width>
 					<height>490</height>
 					<onup>PageUp(70)</onup>
 					<ondown>PageUp(70)</ondown>
@@ -1008,7 +1055,7 @@
 				</control>
 				<control type="scrollbar" id="95063">
 					<left>540</left>
-					<width>20</width>
+					<width>12</width>
 					<height>840</height>
 					<onleft>8000</onleft>
 					<onright>4400</onright>
