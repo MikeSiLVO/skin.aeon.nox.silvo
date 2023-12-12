@@ -1586,6 +1586,10 @@
 		<value condition="Addon.SettingBool(plugin.video.themoviedb.helper,local_db)">&amp;exclude_key=dbid&amp;exclude_value=is_empty&amp;length=6</value>
 		<value />
 	</variable>
+	<variable name="ScriptLetterJumpContentVar">
+		<value condition="Container.Content() | Container.Content(actors)" />
+		<value>plugin://script.embuary.helper/?info=jumptoletter&amp;showall=false&amp;reload=$INFO[Container.NumItems]</value>
+	</variable>
 	<!-- Embuary Info -->
 	<variable name="EmbuaryInfoPosterVar">
 		<value condition="ControlGroup(90000).HasFocus(10052) + !String.IsEmpty(Container(10052).ListItem.Art(thumb))">$INFO[Container(10052).ListItem.Art(thumb)]</value>
