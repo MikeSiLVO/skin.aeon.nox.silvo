@@ -3480,8 +3480,9 @@
 								</control>
 								<control type="grouplist">
 									<visible>VideoPlayer.Content(movies)</visible>
-									<width>390</width>
+									<width>420</width>
 									<height>60</height>
+									<itemgap>10</itemgap>
 									<orientation>horizontal</orientation>
 									<control type="grouplist">
 										<visible>!String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
@@ -3522,9 +3523,66 @@
 										</control>
 									</control>
 									<control type="grouplist">
-										<visible>!String.IsEmpty(Container(9142).ListItem.Rating(metacritic))</visible>
+										<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
 										<width>140</width>
-										<itemgap>3</itemgap>
+										<orientation>horizontal</orientation>
+										<control type="image">
+											<width>60</width>
+											<height>55</height>
+											<aspectratio>keep</aspectratio>
+											<colordiffuse>grey</colordiffuse>
+											<texture>$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Image),logos/rottentomatoes/,.png]</texture>
+										</control>
+										<control type="label">
+											<width>auto</width>
+											<height>60</height>
+											<font>font14_bold</font>
+											<textcolor>grey</textcolor>
+											<label>$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating),,%]</label>
+										</control>
+									</control>
+									<control type="grouplist">
+										<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience))</visible>
+										<width>140</width>
+										<orientation>horizontal</orientation>
+										<control type="image">
+											<width>60</width>
+											<height>48</height>
+											<aspectratio>keep</aspectratio>
+											<colordiffuse>grey</colordiffuse>
+											<texture>$VAR[RottenFreshAudienceTMDbHelperLogoVar]</texture>
+										</control>
+										<control type="label">
+											<width>auto</width>
+											<height>60</height>
+											<font>font14_bold</font>
+											<textcolor>grey</textcolor>
+											<label>$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter),,%]</label>
+										</control>
+									</control>
+									<control type="grouplist">
+										<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.TMDb_Rating))</visible>
+										<width>140</width>
+										<orientation>horizontal</orientation>
+										<itemgap>10</itemgap>
+										<control type="image">
+											<width>60</width>
+											<height>60</height>
+											<aspectratio>keep</aspectratio>
+											<colordiffuse>grey</colordiffuse>
+											<texture>logos/tmdb.png</texture>
+										</control>
+										<control type="label">
+											<width>auto</width>
+											<height>60</height>
+											<font>font14_bold</font>
+											<textcolor>grey</textcolor>
+											<label>$INFO[Window(Home).Property(TMDbHelper.Player.TMDb_Rating)]</label>
+										</control>
+									</control>
+									<control type="grouplist">
+										<visible>!String.IsEmpty(Container(9143).ListItem.Property(Trakt_Rating))</visible>
+										<width>140</width>
 										<usecontrolcoords>true</usecontrolcoords>
 										<orientation>horizontal</orientation>
 										<control type="image">
@@ -3533,14 +3591,14 @@
 											<height>48</height>
 											<aspectratio>keep</aspectratio>
 											<colordiffuse>grey</colordiffuse>
-											<texture>logos/metacritic.png</texture>
+											<texture>logos/trakt-clearlogo.png</texture>
 										</control>
 										<control type="label">
 											<width>auto</width>
 											<height>60</height>
 											<font>font14_bold</font>
 											<textcolor>grey</textcolor>
-											<label>$VAR[MetacriticLabelVar]$VAR[MetacriticLabel2Var]</label>
+											<label>$INFO[Window(Home).Property(TMDbHelper.Player.Trakt_Rating)]</label>
 										</control>
 									</control>
 								</control>

@@ -1563,7 +1563,7 @@
 		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow)">tv</value>
 	</variable>
 	<variable name="RottenFreshAudienceTMDbHelperLogoVar">
-		<value condition="Integer.IsGreaterOrEqual(Container(9143).ListItem.Property(RottenTomatoes_UserMeter),60)">logos/rottentomatoes/popcornfresh.png</value>
+		<value condition="Integer.IsGreaterOrEqual(Container(9143).ListItem.Property(RottenTomatoes_UserMeter),60) | Integer.IsGreaterOrEqual(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter),60)">logos/rottentomatoes/popcornfresh.png</value>
 		<value>logos/rottentomatoes/popcornrotten.png</value>
 	</variable>
 	<variable name="TMDbHelperLocalDBVar">
