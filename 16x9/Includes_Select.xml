@@ -639,7 +639,22 @@
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),musicgenreiconpath)">SelectMusicGenreIconPath</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),autohidevideoosd)">SelectAutoHideVideoOSD</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),rightlistbackgrounddim)">SelectRightListBackgroundDim</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),fallbackbackground)">SelectFallbackBackground</include>
 			</content>
+		</control>
+		<control type="scrollbar" id="60">
+			<left>617</left>
+			<top>69</top>
+			<height>480</height>
+			<width>12</width>
+			<onleft>90100</onleft>
+			<onright>90100</onright>
+			<ondown>60</ondown>
+			<onup>60</onup>
+			<texturesliderbackground>colors/black.png</texturesliderbackground>
+			<texturesliderbar>colors/white25.png</texturesliderbar>
+			<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+			<showonepage>false</showonepage>
 		</control>
 	</include>
 	<include name="CustomGameOSDLayout">
@@ -1302,6 +1317,76 @@
 			<label>20%</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.SetString(RightList.BackgroundDim,20%)</onclick>
+		</item>
+	</include>
+	<include name="SelectFallbackBackground">
+		<item>
+			<label>$LOCALIZE[13007]</label>
+			<onclick>Skin.Reset(ItemToEdit.MultiFanart)</onclick>
+			<onclick>Skin.Reset(ItemToEdit.BGType)</onclick>
+			<onclick>Skin.SetString($INFO[Window(Home).Property(Nox.Temp)],$INFO[Skin.String(ItemToEdit.MultiFanart)])</onclick>
+			<onclick>Skin.SetString($INFO[Window(Home).Property(Nox.BGType)],$INFO[Skin.String(ItemToEdit.BGType)])</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31110]</label>
+			<onclick>Skin.SetString(ItemToEdit.BGType,1)</onclick>
+			<onclick>Skin.SetImage(ItemToEdit.MultiFanart,special://skin/backgrounds/solidcolors)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31023]</label>
+			<onclick>Skin.SetString(ItemToEdit.BGType,1)</onclick>
+			<onclick>Skin.SetImage(ItemToEdit.MultiFanart)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31022]</label>
+			<onclick>Skin.SetString(ItemToEdit.BGType,2)</onclick>
+			<onclick>Skin.SetPath(ItemToEdit.MultiFanart)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31062]</label>
+			<onclick>Skin.SetString(ItemToEdit.BGType,3)</onclick>
+			<onclick>Skin.SetString(ItemToEdit.MultiFanart,1)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+			<visible>System.AddonIsEnabled(script.grab.fanart) + !String.IsEqual(Window(Home).Property(Nox.Temp),Profiles.Fallback)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[31063]</label>
+			<onclick>Skin.SetString(ItemToEdit.BGType,3)</onclick>
+			<onclick>Skin.SetString(ItemToEdit.MultiFanart,2)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+			<visible>System.AddonIsEnabled(script.grab.fanart) + !String.IsEqual(Window(Home).Property(Nox.Temp),Profiles.Fallback)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[31064]</label>
+			<onclick>Skin.SetString(ItemToEdit.BGType,3)</onclick>
+			<onclick>Skin.SetString(ItemToEdit.MultiFanart,3)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+			<visible>System.AddonIsEnabled(script.grab.fanart) + !String.IsEqual(Window(Home).Property(Nox.Temp),Profiles.Fallback)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[31065]</label>
+			<onclick>Skin.SetString(ItemToEdit.BGType,3)</onclick>
+			<onclick>Skin.SetString(ItemToEdit.MultiFanart,4)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+			<visible>System.AddonIsEnabled(script.grab.fanart) + !String.IsEqual(Window(Home).Property(Nox.Temp),Profiles.Fallback)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[31066]</label>
+			<onclick>Skin.SetString(ItemToEdit.BGType,3)</onclick>
+			<onclick>Skin.SetString(ItemToEdit.MultiFanart,5)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+			<visible>System.AddonIsEnabled(script.grab.fanart) + !String.IsEqual(Window(Home).Property(Nox.Temp),Profiles.Fallback)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[31084]</label>
+			<onclick>Skin.SetString(ItemToEdit.BGType,6)</onclick>
+			<onclick>Skin.SetString(ItemToEdit.MultiFanart,6)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+			<visible>!String.IsEmpty(Skin.String(weatherfanart.path)) + !String.IsEqual(Window(Home).Property(Nox.Temp),Profiles.Fallback)</visible>
 		</item>
 	</include>
 	<!-- Custom Confirm -->
