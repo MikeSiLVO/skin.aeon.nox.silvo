@@ -62,8 +62,8 @@
 		<value>$LOCALIZE[12317] $LOCALIZE[31090]</value>
 	</variable>
 	<variable name="CustomSelectLabelVar">
-		<value condition="!String.IsEmpty(Window(Home).Property(CustomSelectGameOSDSettings))" />
-		<value condition="!String.IsEmpty(Window(Home).Property(CustomSelectSearch))">$LOCALIZE[137]</value>
+		<value condition="String.IsEqual(Window(Home).Property(CustomSelect),gameosdsettings)">$LOCALIZE[35221]</value>
+		<value condition="String.IsEqual(Window(Home).Property(CustomSelect),search)">$LOCALIZE[137]</value>
 		<value>$LOCALIZE[22080]</value>
 	</variable>
 	<variable name="GlobalBackgroundVar">
@@ -1977,10 +1977,6 @@
 		<value condition="String.StartsWith(System.BuildVersion,14.)">HELIX - [COLOR invalid]$LOCALIZE[31341][/COLOR]</value>
 		<value>$INFO[System.BuildVersion,v]$INFO[System.BuildDate, (,)]</value>
 	</variable>
-	<variable name="MyFlixDimmerLabelVar">
-		<value condition="!String.IsEmpty(Skin.String(MyFlix.Dimmer))">$INFO[Skin.String(MyFlix.Dimmer)]</value>
-		<value>60%</value>
-	</variable>
 	<variable name="MyFlixTitleLabelVar">
 		<value condition="Container.Content(tvshows) | Container.Content(episodes)">$INFO[ListItem.TVShowTitle]</value>
 		<value>$INFO[ListItem.Title]</value>
@@ -1998,13 +1994,28 @@
 		<value condition="String.IsEqual(Skin.String(MyFlix.Dimmer),10%)">1AFFFFFF</value>
 		<value condition="String.IsEqual(Skin.String(MyFlix.Dimmer),0%)">00FFFFFF</value>
 	</variable>
-	<variable name="ShortcutsDisabledVar">
-		<value condition="String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)">[COLOR invalid]×[/COLOR] </value>
-		<value />
+	<variable name="MyFlixDimmerLabelVar">
+		<value condition="!String.IsEmpty(Skin.String(MyFlix.Dimmer))">$INFO[Skin.String(MyFlix.Dimmer)]</value>
+		<value>50%</value>
+	</variable>
+	<variable name="BackgroundDimVar">
+		<value condition="!Control.IsVisible(506)">80FFFFFF</value>
+		<value condition="Control.IsVisible(506) + String.IsEmpty(Skin.String(RightList.BackgroundDim))">80FFFFFF</value>
+		<value condition="Control.IsVisible(506) + String.IsEqual(Skin.String(RightList.BackgroundDim),40%)">66FFFFFF</value>
+		<value condition="Control.IsVisible(506) + String.IsEqual(Skin.String(RightList.BackgroundDim),30%)">4DFFFFFF</value>
+		<value condition="Control.IsVisible(506) + String.IsEqual(Skin.String(RightList.BackgroundDim),20%)">33FFFFFF</value>
+	</variable>
+	<variable name="BackgroundDimLabelVar">
+		<value condition="Control.IsVisible(506) + !String.IsEmpty(Skin.String(RightList.BackgroundDim))">$INFO[Skin.String(RightList.BackgroundDim)]</value>
+		<value>50%</value>
 	</variable>
 	<variable name="DialogInfoDimmerLabelVar">
 		<value condition="!String.IsEmpty(Skin.String(DialogInfo.Dimmer))">$INFO[Skin.String(DialogInfo.Dimmer)]</value>
 		<value>85%</value>
+	</variable>
+	<variable name="ShortcutsDisabledVar">
+		<value condition="String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)">[COLOR invalid]×[/COLOR] </value>
+		<value />
 	</variable>
 	<variable name="CustomTextViewerContentVar">
 		<value condition="!String.IsEmpty(Window(skinsettings).Property(FAQ))">[COLOR FFFF9800][B]Why are all the menu backgrounds black?[/B][/COLOR][CR]There are no default chosen backgrounds in this skin. If you want backgrounds for your menu items you must select them yourself when customizing the main menu or use the Set default background option in Skin settings > General.[CR][CR][COLOR FFFF9800][B]How do I find my backgrounds when I can not see them?[/B][/COLOR][CR]If you have added sources to Kodi's File Manager (repos or other locations and folders) then you must add any additional sources/paths that contain your backgrounds. Visit [B]http://kodi.wiki/view/File%20manager[/B] for more info on how to add sources.[CR][CR][B][COLOR FFFF9800]How do I keep the Music information on the screen permanently?[/B][/COLOR][CR]The info button toggles how music information is displayed. When it disappears press info to re-show it and never press it a second time to hide it. If it is hidden then it will display for 10 seconds after a song is played or the next track in your queue begins.[CR][CR][COLOR FFFF9800][B]How do I customize this skin?[/B][/COLOR][CR]To customize the Main Menu navigate to System > Interface > Configure skin to access the skin wide settings and main menu customization. Select [B]Set up the Aeon Nox main menu[/B] where you can enable/disable any item, customize what happens when you select that item, set up backgrounds, widgets, manage the submenu, and choose a custom label.[CR][CR][LIGHT]There are many more options located in Skin settings > Customization for things like the OSD (On Screen Display) for fullscreen music and video playback, skin color picker, and the video information dialog.[/LIGHT][CR][CR][LIGHT]There are also many settings for each viewtype and/or section (Artist, Album, Song, Movie, TV Show, Episode, etc...) in the side menu so play around with all the options for further customization.[/LIGHT]</value>

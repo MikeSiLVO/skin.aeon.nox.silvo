@@ -507,6 +507,202 @@
 		</control>
 	</include>
 	<!-- Custom Select -->
+	<include name="CustomSelectDefaultBackPanel">
+		<left>645</left>
+		<top>265</top>
+		<include content="BackPanel">
+			<param name="left">0</param>
+			<param name="top">0</param>
+			<param name="width">630</param>
+			<param name="height">550</param>
+		</include>
+		<control type="image">
+			<left>1</left>
+			<top>67</top>
+			<width>628</width>
+			<height>1</height>
+			<texture colordiffuse="grey4">separator_horizontal.png</texture>
+		</control>
+		<control type="label" id="1">
+			<width>630</width>
+			<height>70</height>
+			<font>font16_title_bold</font>
+			<label>$VAR[CustomSelectLabelVar]</label>
+			<align>center</align>
+			<textcolor>dialogheader</textcolor>
+		</control>
+	</include>
+	<include name="CustomSelectSearchBackPanel">
+		<left>645</left>
+		<top>385.5</top>
+		<include content="BackPanel">
+			<param name="left">0</param>
+			<param name="top">0</param>
+			<param name="width">630</param>
+			<param name="height">309</param>
+		</include>
+		<control type="image">
+			<left>1</left>
+			<top>67</top>
+			<width>628</width>
+			<height>1</height>
+			<texture colordiffuse="grey4">separator_horizontal.png</texture>
+		</control>
+		<control type="label" id="1">
+			<width>630</width>
+			<height>70</height>
+			<font>font16_title_bold</font>
+			<label>$VAR[CustomSelectLabelVar]</label>
+			<align>center</align>
+			<textcolor>dialogheader</textcolor>
+		</control>
+	</include>
+	<include name="CustomSelectGameOSDBackPanel">
+		<left>560</left>
+		<top>295</top>
+		<include content="BackPanel">
+			<param name="left">0</param>
+			<param name="top">0</param>
+			<param name="width">800</param>
+			<param name="height">490</param>
+		</include>
+		<control type="image">
+			<left>1</left>
+			<top>67</top>
+			<width>798</width>
+			<height>1</height>
+			<texture colordiffuse="grey4">separator_horizontal.png</texture>
+		</control>
+		<control type="label" id="1">
+			<width>800</width>
+			<height>70</height>
+			<font>font16_title_bold</font>
+			<label>$VAR[CustomSelectLabelVar]</label>
+			<align>center</align>
+			<textcolor>dialogheader</textcolor>
+		</control>
+	</include>
+	<include name="CustomSelectLayout">
+		<control type="list" id="90100">
+			<left>1</left>
+			<top>68</top>
+			<width>628</width>
+			<height>480</height>
+			<onup>90100</onup>
+			<ondown>90100</ondown>
+			<onleft>90100</onleft>
+			<onright>60</onright>
+			<pagecontrol>60</pagecontrol>
+			<scrolltime tween="quadratic" easing="out">200</scrolltime>
+			<itemlayout height="60" width="628">
+				<control type="label">
+					<width>628</width>
+					<height>60</height>
+					<textoffsetx>15</textoffsetx>
+					<font>font14</font>
+					<textcolor>grey2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout height="60" width="628">
+				<control type="image">
+					<width>629</width>
+					<height>60</height>
+					<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+					<visible>Control.HasFocus(90100)</visible>
+					<include>VisibleFadeAnimation</include>
+				</control>
+				<control type="label">
+					<width>628</width>
+					<height>60</height>
+					<textoffsetx>15</textoffsetx>
+					<font>font14</font>
+					<scroll>true</scroll>
+					<label>$INFO[ListItem.Label]</label>
+					<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90100)">Conditional</animation>
+				</control>
+			</focusedlayout>
+			<content>
+				<include condition="!String.IsEmpty(Window(movieinformation).Property(ActorName))">SelectActorName</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),search)">SelectSearch</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),mainmenulayout)">SelectMainMenuLayout</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),fanarttimeperimage)">SelectFanartTimePerImage</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),defaultbackground)">SelectDefaultBackground</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),languageflags)">SelectLanguageFlags</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),widgetopacity)">SelectWidgetOpacity</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),widgetback)">SelectWidgetBack</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),widgetcaseinfo)">SelectWidgetCaseInfo</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),myflixdimmer)">SelectMyFlixDimmer</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),dialoginfodimmer)">SelectDialogInfoDimmer</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),musicvizbackground)">SelectMusicVizBackground</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),pvrguidelogos)">SelectPVRGuideLogos</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),musicgenreiconpath)">SelectMusicGenreIconPath</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),autohidevideoosd)">SelectAutoHideVideoOSD</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),rightlistbackgrounddim)">SelectRightListBackgroundDim</include>
+			</content>
+		</control>
+	</include>
+	<include name="CustomGameOSDLayout">
+		<control type="list" id="90100">
+			<left>1</left>
+			<top>68</top>
+			<width>798</width>
+			<height>420</height>
+			<onup>90100</onup>
+			<ondown>90100</ondown>
+			<scrolltime tween="quadratic" easing="out">200</scrolltime>
+			<itemlayout height="60" width="798">
+				<control type="label">
+					<width>798</width>
+					<height>60</height>
+					<textoffsetx>15</textoffsetx>
+					<font>font14</font>
+					<textcolor>grey2</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="label">
+					<width>798</width>
+					<height>60</height>
+					<textoffsetx>15</textoffsetx>
+					<font>font14</font>
+					<textcolor>grey2</textcolor>
+					<align>right</align>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout height="60" width="798">
+				<control type="image">
+					<width>798</width>
+					<height>60</height>
+					<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+					<visible>Control.HasFocus(90100)</visible>
+					<include>VisibleFadeAnimation</include>
+				</control>
+				<control type="group">
+					<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90100)">Conditional</animation>
+					<control type="label">
+						<width>798</width>
+						<height>60</height>
+						<textoffsetx>15</textoffsetx>
+						<font>font14</font>
+						<scroll>true</scroll>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<width>798</width>
+						<height>60</height>
+						<textoffsetx>15</textoffsetx>
+						<font>font14</font>
+						<align>right</align>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+				</control>
+			</focusedlayout>
+			<content>
+				<include>SelectGameOSDSettings</include>
+			</content>
+		</control>
+	</include>
 	<include name="SelectGameOSDSettings">
 		<item>
 			<description>Video filter button</description>
@@ -840,34 +1036,9 @@
 	</include>
 	<include name="SelectMyFlixDimmer">
 		<item>
-			<label>100%</label>
-			<onclick>Dialog.Close(1129)</onclick>
-			<onclick>Skin.SetString(MyFlix.Dimmer,100%)</onclick>
-		</item>
-		<item>
-			<label>90%</label>
-			<onclick>Dialog.Close(1129)</onclick>
-			<onclick>Skin.SetString(MyFlix.Dimmer,90%)</onclick>
-		</item>
-		<item>
-			<label>80%</label>
-			<onclick>Dialog.Close(1129)</onclick>
-			<onclick>Skin.SetString(MyFlix.Dimmer,80%)</onclick>
-		</item>
-		<item>
-			<label>70%</label>
-			<onclick>Dialog.Close(1129)</onclick>
-			<onclick>Skin.SetString(MyFlix.Dimmer,70%)</onclick>
-		</item>
-		<item>
-			<label>60% - $LOCALIZE[571]</label>
+			<label>50% - $LOCALIZE[571]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.Reset(MyFlix.Dimmer)</onclick>
-		</item>
-		<item>
-			<label>50%</label>
-			<onclick>Dialog.Close(1129)</onclick>
-			<onclick>Skin.SetString(MyFlix.Dimmer,50%)</onclick>
 		</item>
 		<item>
 			<label>40%</label>
@@ -1109,6 +1280,28 @@
 			<label>90 $LOCALIZE[31090]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.SetString(AutoCloseVideoOSD,90)</onclick>
+		</item>
+	</include>
+	<include name="SelectRightListBackgroundDim">
+		<item>
+			<label>50% - $LOCALIZE[571]</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.Reset(RightList.BackgroundDim)</onclick>
+		</item>
+		<item>
+			<label>40%</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.SetString(RightList.BackgroundDim,40%)</onclick>
+		</item>
+		<item>
+			<label>30%</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.SetString(RightList.BackgroundDim,30%)</onclick>
+		</item>
+		<item>
+			<label>20%</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.SetString(RightList.BackgroundDim,20%)</onclick>
 		</item>
 	</include>
 	<!-- Custom Confirm -->

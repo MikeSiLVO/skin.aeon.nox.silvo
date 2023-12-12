@@ -748,6 +748,13 @@
 			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[ViewFloorLabelVar][/COLOR]</label2>
 			<visible>!Window.IsActive(music)</visible>
 		</control>
+		<control type="button" id="1536">
+			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[31348]</label>
+			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[BackgroundDimLabelVar][/COLOR]</label2>
+			<onclick>SetProperty(CustomSelect,rightlistbackgrounddim,Home)</onclick>
+			<onclick>ActivateWindow(1129)</onclick>
+		</control>
 		<control type="radiobutton" id="1533">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31005]</label>
@@ -960,7 +967,7 @@
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31348]</label>
 			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[MyFlixDimmerLabelVar][/COLOR]</label2>
-			<onclick>SetProperty(CustomSelectMyFlixDimmer,True)</onclick>
+			<onclick>SetProperty(CustomSelect,myflixdimmer,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 		</control>
 		<control type="radiobutton" id="1514">
