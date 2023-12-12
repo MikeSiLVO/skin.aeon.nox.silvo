@@ -93,7 +93,7 @@
 				<onclick>SetProperty(DialogSettings,videoinfo,Home)</onclick>
 				<onclick>ActivateWindow(1114)</onclick>
 				<label>$LOCALIZE[5]</label>
-				<visible>!Skin.HasSetting(KioskMode.Enabled)</visible>
+				<visible>!Skin.HasSetting(KioskMode.Enabled) + !Window.IsActive(musicinformation)</visible>
 			</control>
 			<control type="button" id="90220">
 				<description>No extra features button</description>

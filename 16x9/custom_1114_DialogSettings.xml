@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1114" type="dialog">
-	<defaultcontrol always="true">90200</defaultcontrol>
+	<onload>SetFocus(90201)</onload>
 	<onunload condition="!Skin.HasSetting(BlurEnabled) + String.IsEqual(Skin.String(Viz.Background),4) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd)">Skin.ToggleSetting(BlurEnabled)</onunload>
 	<onunload condition="!Skin.HasSetting(BlurEnabled) + String.IsEqual(Skin.String(Viz.Background),4) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd)">RunScript(script.embuary.helper,action=restartservice)</onunload>
 	<onunload>ClearProperty(DialogSettings,Home)</onunload>
