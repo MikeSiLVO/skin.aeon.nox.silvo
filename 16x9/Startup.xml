@@ -1,42 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol condition="Skin.HasSetting(Enable.StartupIntro)">10</defaultcontrol>
-	<onload>Skin.SetBool(TMDbHelper.Service)</onload>
-	<onload>Skin.SetString(TMDbHelper.MonitorContainer,9143)</onload>
-	<onload>Skin.Reset(TMDbHelper.DirectCallAuto)</onload>
-	<onload>Skin.Reset(skininfo.autoclosevideoosd)</onload>
-	<onload>Skin.Reset(skininfo.autoclosemusicosd)</onload>
-	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">Skin.SetBool(Disable.NextAired)</onload>
-	<onload condition="System.AddonIsEnabled(script.skin.info.service)">RunScript(script.skin.info.service)</onload>
-	<onload condition="System.AddonIsEnabled(script.artistslideshow)">RunScript(script.artistslideshow,daemon=True)</onload>
-	<onload condition="!Skin.HasSetting(Enable.StartupIntro)">ReplaceWindow($INFO[System.StartupWindow])</onload>
-	<onunload condition="Skin.HasSetting(Enable.StartupIntro)">PlayerControl(Stop)</onunload>
-	<controls>
-		<control type="button" id="10">
-			<include>HiddenObject</include>
-			<onfocus>PlayMedia(special://skin/extras/intro.mp4,1)</onfocus>
-			<onfocus>SetFocus(11)</onfocus>
-			<animation effect="fade" end="100" time="100">Focus</animation>
-		</control>
-		<control type="button" id="11">
-			<include>HiddenObject</include>
-			<onup>ReplaceWindow($INFO[System.StartupWindow])</onup>
-			<ondown>ReplaceWindow($INFO[System.StartupWindow])</ondown>
-			<onleft>ReplaceWindow($INFO[System.StartupWindow])</onleft>
-			<onright>ReplaceWindow($INFO[System.StartupWindow])</onright>
-			<onclick>ReplaceWindow($INFO[System.StartupWindow])</onclick>
-			<onfocus>ReplaceWindow($INFO[System.StartupWindow])</onfocus>
-			<animation effect="fade" end="100" time="12050">Focus</animation>
-		</control>
-		<control type="group">
-			<visible>Player.HasVideo</visible>
-			<control type="image">
-				<include>FullscreenDimensions</include>
-				<texture>colors/black.png</texture>
-			</control>
-			<control type="videowindow">
-				<include>FullscreenDimensions</include>
-			</control>
-		</control>
-	</controls>
+	<onload>ReplaceWindow(1101)</onload>
 </window>

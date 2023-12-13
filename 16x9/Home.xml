@@ -8,7 +8,7 @@
 	<onload condition="System.AddonIsEnabled(script.skinvariables)">RunScript(script.skinvariables,action=buildviews)</onload>
 	<onload condition="System.AddonIsEnabled(script.skinshortcuts) + !Skin.HasSetting(AskedDefaultBackground)">SetProperty(AskDefaultBackground,True,Home)</onload>
 	<onload condition="System.AddonIsEnabled(script.skinshortcuts) + !Skin.HasSetting(AskedDefaultBackground) + !Control.IsVisible(9999)">Skin.TimerStart(askdefaultbackground)</onload>
-	<onload condition="System.AddonIsEnabled(script.skin.info.service) + String.IsEmpty(Window(home).Property(skininfos_daemon_running))">RunScript(script.skin.info.service)</onload>
+	<onload condition="System.AddonIsEnabled(script.skin.info.service) + String.IsEmpty(Window(Home).Property(skininfos_daemon_running))">RunScript(script.skin.info.service)</onload>
 	<menucontrol>9051</menucontrol>
 	<controls>
 		<control type="button" id="64">
@@ -137,76 +137,79 @@
 			<onfocus condition="Player.HasMedia">ActivateWindow(playercontrols)</onfocus>
 			<onfocus condition="!Player.HasMedia">SetFocus(9000)</onfocus>
 		</control>
-		<include>CommonBackground</include>
 		<control type="group">
-			<visible>!Integer.IsEqual(Container(9000).NumItems,0) + !Control.HasFocus(64)</visible>
-			<include>VisibleFadeAnimation</include>
-			<include condition="!Skin.HasSetting(Disable.Videoinfo)">NowPlayingVideoWidget</include>
-			<include condition="!Skin.HasSetting(Disable.Musicinfo)">NowPlayingMusicWidget</include>
-			<include>Widget1</include>
-			<include>Widget2</include>
-			<include>LiveTVWidget</include>
-			<!-- Horizontal Menu -->
-			<!-- RSS Feeds -->
-			<include condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">HorizontalMenuSystemBars</include>
-			<include condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical)">HorizontalMenu</include>
-			<!-- Vertical Menu -->
-			<include condition="!String.IsEqual(Skin.String(HorizontalRSSPosition),high) + system.getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">RSSFeed</include>
-			<include condition="String.IsEqual(Skin.String(HorizontalRSSPosition),high) + system.getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">RSSFeed2</include>
-			<include condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">VerticalMenu</include>
-			<!-- RSS Feed -->
-			<include condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">RSSFeedVerticalMenu</include>
-			<!-- Fanart Title Widget -->
-			<include condition="!Skin.HasSetting(Disable.FanartTitle)">FanartTitle</include>
-			<!-- Vertical SubMenu + System Bars -->
-			<include condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">VerticalSubMenu</include>
-			<include condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">VerticalMenuSystemBars</include>
-		</control>
-		<control type="group" id="9999">
-			<visible>System.AddonIsEnabled(script.skinshortcuts) + [Integer.IsEqual(Container(9000).NumItems,0) | Container(9000).IsUpdating]</visible>
-			<control type="image">
-				<include>FullscreenDimensions</include>
-				<texture>colors/black.png</texture>
-			</control>
+			<visible allowhiddenfocus="true">[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
+			<include>CommonBackground</include>
 			<control type="group">
-				<top>440</top>
-				<control type="label">
-					<width>100%</width>
-					<height>100</height>
-					<align>center</align>
-					<font>font_version</font>
-					<label>$LOCALIZE[31526]</label>
-				</control>
-				<control type="fadelabel">
-					<top>100</top>
-					<width>100%</width>
-					<height>100</height>
-					<align>center</align>
-					<font>font_version</font>
-					<label>$LOCALIZE[31527]</label>
-					<label>$LOCALIZE[31527].</label>
-					<label>$LOCALIZE[31527]..</label>
-					<label>$LOCALIZE[31527]...</label>
-					<label>$LOCALIZE[31527]....</label>
-					<scrollout>false</scrollout>
-					<pauseatend>1000</pauseatend>
-				</control>
+				<visible>!Integer.IsEqual(Container(9000).NumItems,0) + !Control.HasFocus(64)</visible>
+				<include>VisibleFadeAnimation</include>
+				<include condition="!Skin.HasSetting(Disable.Videoinfo)">NowPlayingVideoWidget</include>
+				<include condition="!Skin.HasSetting(Disable.Musicinfo)">NowPlayingMusicWidget</include>
+				<include>Widget1</include>
+				<include>Widget2</include>
+				<include>LiveTVWidget</include>
+				<!-- Horizontal Menu -->
+				<!-- RSS Feeds -->
+				<include condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">HorizontalMenuSystemBars</include>
+				<include condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical)">HorizontalMenu</include>
+				<!-- Vertical Menu -->
+				<include condition="!String.IsEqual(Skin.String(HorizontalRSSPosition),high) + system.getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">RSSFeed</include>
+				<include condition="String.IsEqual(Skin.String(HorizontalRSSPosition),high) + system.getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">RSSFeed2</include>
+				<include condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">VerticalMenu</include>
+				<!-- RSS Feed -->
+				<include condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">RSSFeedVerticalMenu</include>
+				<!-- Fanart Title Widget -->
+				<include condition="!Skin.HasSetting(Disable.FanartTitle)">FanartTitle</include>
+				<!-- Vertical SubMenu + System Bars -->
+				<include condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">VerticalSubMenu</include>
+				<include condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(HideSystemBars)">VerticalMenuSystemBars</include>
 			</control>
-			<control type="group">
-				<left>80</left>
-				<top>900</top>
+			<control type="group" id="9999">
+				<visible>System.AddonIsEnabled(script.skinshortcuts) + [Integer.IsEqual(Container(9000).NumItems,0) | Container(9000).IsUpdating]</visible>
 				<control type="image">
-					<width>400</width>
-					<height>130</height>
-					<aspectratio align="left">keep</aspectratio>
-					<texture>xbmc-logo.png</texture>
+					<include>FullscreenDimensions</include>
+					<texture>colors/black.png</texture>
 				</control>
-				<control type="image">
-					<left>1375</left>
-					<width>400</width>
-					<height>130</height>
-					<aspectratio>keep</aspectratio>
-					<texture>aeon-nox-logo.png</texture>
+				<control type="group">
+					<top>440</top>
+					<control type="label">
+						<width>100%</width>
+						<height>100</height>
+						<align>center</align>
+						<font>font_version</font>
+						<label>$LOCALIZE[31526]</label>
+					</control>
+					<control type="fadelabel">
+						<top>100</top>
+						<width>100%</width>
+						<height>100</height>
+						<align>center</align>
+						<font>font_version</font>
+						<label>$LOCALIZE[31527]</label>
+						<label>$LOCALIZE[31527].</label>
+						<label>$LOCALIZE[31527]..</label>
+						<label>$LOCALIZE[31527]...</label>
+						<label>$LOCALIZE[31527]....</label>
+						<scrollout>false</scrollout>
+						<pauseatend>1000</pauseatend>
+					</control>
+				</control>
+				<control type="group">
+					<left>80</left>
+					<top>900</top>
+					<control type="image">
+						<width>400</width>
+						<height>130</height>
+						<aspectratio align="left">keep</aspectratio>
+						<texture>xbmc-logo.png</texture>
+					</control>
+					<control type="image">
+						<left>1375</left>
+						<width>400</width>
+						<height>130</height>
+						<aspectratio>keep</aspectratio>
+						<texture>aeon-nox-logo.png</texture>
+					</control>
 				</control>
 			</control>
 		</control>

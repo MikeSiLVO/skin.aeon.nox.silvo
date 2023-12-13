@@ -361,12 +361,6 @@
 						<height>810</height>
 						<onleft>9000</onleft>
 						<visible>Container(9000).HasFocus(3)</visible>
-						<control type="radiobutton" id="3007">
-							<include>SettingsButtonCommonValues</include>
-							<label>$LOCALIZE[31282]</label>
-							<onclick>Skin.ToggleSetting(Enable.StartupIntro)</onclick>
-							<selected>Skin.HasSetting(Enable.StartupIntro)</selected>
-						</control>
 						<control type="radiobutton" id="3005">
 							<include>SettingsButtonCommonValues</include>
 							<label>31083</label>
@@ -595,6 +589,13 @@
 							<width>1401</width>
 							<height>1</height>
 							<texture colordiffuse="grey4">separator_horizontal.png</texture>
+						</control>
+						<control type="button" id="6009">
+							<include>SettingsButtonCommonValues</include>
+							<label>$LOCALIZE[31282]</label>
+							<onclick>SetProperty(CustomSelect,startupintro,Home)</onclick>
+							<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Skin.String(StartupIntro)][/COLOR]</label2>
+							<onclick>ActivateWindow(1129)</onclick>
 						</control>
 						<control type="button" id="6007">
 							<include>SettingsButtonCommonValues</include>
