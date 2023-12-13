@@ -640,6 +640,7 @@
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),autohidevideoosd)">SelectAutoHideVideoOSD</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),rightlistbackgrounddim)">SelectRightListBackgroundDim</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),fallbackbackground)">SelectFallbackBackground</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),startupintro)">SelectStartupIntro</include>
 			</content>
 		</control>
 		<control type="scrollbar" id="60">
@@ -1387,6 +1388,23 @@
 			<onclick>Skin.SetString(ItemToEdit.MultiFanart,6)</onclick>
 			<onclick>Dialog.Close(1129)</onclick>
 			<visible>!String.IsEmpty(Skin.String(weatherfanart.path)) + !String.IsEqual(Window(Home).Property(Nox.Temp),Profiles.Fallback)</visible>
+		</item>
+	</include>
+	<include name="SelectStartupIntro">
+		<item>
+			<label>$LOCALIZE[13106]</label>
+			<onclick>Skin.Reset(StartupIntro)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[15106]</label>
+			<onclick>Skin.SetString(StartupIntro,special://skin/extras/intro.mp4)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[636]</label>
+			<onclick>Skin.SetFile(StartupIntro,.mp4|.mkv|.avi)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
 		</item>
 	</include>
 	<!-- Custom Confirm -->
