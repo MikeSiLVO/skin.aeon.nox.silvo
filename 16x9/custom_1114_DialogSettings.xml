@@ -3,52 +3,52 @@
 	<onload>SetFocus(90201)</onload>
 	<onunload condition="!Skin.HasSetting(BlurEnabled) + String.IsEqual(Skin.String(Viz.Background),4) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd)">Skin.ToggleSetting(BlurEnabled)</onunload>
 	<onunload condition="!Skin.HasSetting(BlurEnabled) + String.IsEqual(Skin.String(Viz.Background),4) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd)">RunScript(script.embuary.helper,action=restartservice)</onunload>
+	<onunload condition="String.IsEqual(Window(Home).Property(DialogSettings),livetv) + !Window.IsActive(skinsettings)">SetFocus(50)</onunload>
 	<onunload>ClearProperty(DialogSettings,Home)</onunload>
-	<coordinates>
-		<system>1</system>
-		<left>210</left>
-		<top>180</top>
-	</coordinates>
 	<include>DialogOpenCloseAnimation</include>
 	<controls>
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture>colors/black50.png</texture>
+			<animation effect="fade" time="300">WindowOpen</animation>
+			<animation effect="fade" time="300">WindowClose</animation>
+		</control>
 		<control type="group">
+			<left>210</left>
+			<top>180</top>
 			<visible>!Window.IsVisible(1129)</visible>
 			<animation effect="fade" time="250">Visible</animation>
 			<animation effect="fade" time="150">Hidden</animation>
-			<include>DialogPanel</include>
-			<control type="label" id="2">
-				<top>10</top>
-				<width>1500</width>
-				<height>40</height>
-				<font>font15_title</font>
-				<label>$LOCALIZE[5]$VAR[DialogSettingsHeaderVar]</label>
-				<align>center</align>
-				<textcolor>dialogheader</textcolor>
-			</control>
+			<include content="DialogPanel">
+				<param name="height">730</param>
+				<param name="header_label">$VAR[DialogSettingsHeaderVar]</param>
+				<param name="buttons_ondown">90200</param>
+			</include>
 			<control type="grouplist" id="90200">
 				<left>1</left>
-				<top>59</top>
+				<top>68</top>
 				<width>1498</width>
 				<height>660</height>
 				<pagecontrol>6</pagecontrol>
-				<onup>90200</onup>
+				<onup>90000</onup>
 				<ondown>90200</ondown>
-				<onleft>6</onleft>
-				<onright>6</onright>
+				<onright condition="Control.IsVisible(6)">6</onright>
+				<onright condition="!Control.IsVisible(6)">97</onright>
 				<include condition="String.IsEqual(Window(Home).Property(DialogSettings),videoosd)">VideoOSDSettings</include>
 				<include condition="String.IsEqual(Window(Home).Property(DialogSettings),musicosd)">MusicOSDSettings</include>
 				<include condition="String.IsEqual(Window(Home).Property(DialogSettings),videoinfo)">VideoInfoSettings</include>
+				<include condition="String.IsEqual(Window(Home).Property(DialogSettings),livetv)">LiveTVSettings</include>
 			</control>
 			<control type="scrollbar" id="6">
-				<left>1489</left>
-				<top>59</top>
-				<width>10</width>
+				<left>1491</left>
+				<top>68</top>
+				<width>8</width>
 				<height>660</height>
+				<onleft>90200</onleft>
+				<onright>97</onright>
 				<texturesliderbackground>colors/black.png</texturesliderbackground>
 				<texturesliderbar>colors/white25.png</texturesliderbar>
 				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
-				<onleft>90200</onleft>
-				<onright>90200</onright>
 				<showonepage>false</showonepage>
 			</control>
 		</control>
