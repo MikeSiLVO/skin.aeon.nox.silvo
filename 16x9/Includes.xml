@@ -20,9 +20,7 @@
 	<include file="script-skinviewtypes-includes.xml" />
 	<include file="Variables.xml" />
 	<include file="Variables_Widgets.xml" />
-	<!-- RATINGS -->
-	<!-- TMDb Helper -->
-	<!-- ROTTENTOMATOES TMDb TRAKT IMDb -->
+	<!-- TMDb Helper Ratings -->
 	<include name="TMDbHelperFlags">
 		<control type="grouplist">
 			<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
@@ -149,8 +147,7 @@
 			</control>
 		</control>
 	</include>
-	<!-- Embuary Helper -->
-	<!-- ROTTENTOMATOES/METACRITIC -->
+	<!-- Embuary Helper Ratings -->
 	<include name="RottenMetaFlags">
 		<control type="grouplist">
 			<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
@@ -936,7 +933,7 @@
 			<visible>!String.IsEmpty(Window(Home).Property(Window.HasSettings))</visible>
 		</control>
 	</include>
-	<!-- System Windows -->
+	<!-- System Panels -->
 	<include name="SystemPanel">
 		<control type="image">
 			<top>31</top>
@@ -3971,6 +3968,7 @@
 			</control>
 		</control>
 	</include>
+	<!-- Content Lists -->
 	<include name="EmbuaryHelperContentList">
 		<control type="list" id="9142">
 			<include>HiddenList</include>
@@ -3982,6 +3980,7 @@
 			<include>HiddenList</include>
 		</control>
 	</include>
+	<!-- Letter Jump -->
 	<include name="DefaultLetterJump">
 		<control type="group">
 			<visible allowhiddenfocus="true">Control.HasFocus(614)</visible>
