@@ -1,60 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">5</defaultcontrol>
-	<coordinates>
-		<system>1</system>
-		<left>199</left>
-		<top>210</top>
-	</coordinates>
 	<include>DialogOpenCloseAnimation</include>
 	<controls>
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture>colors/black50.png</texture>
+			<animation effect="fade" time="300">WindowOpen</animation>
+			<animation effect="fade" time="300">WindowClose</animation>
+		</control>
 		<control type="group">
+			<left>210</left>
+			<top>234</top>
 			<animation effect="fade" start="100" end="0" time="400" condition="Window.IsVisible(SliderDialog) | Window.IsVisible(SubtitleSearch)">Conditional</animation>
 			<animation effect="slide" end="0,-160" condition="Window.IsVisible(fullscreeninfo)">Conditional</animation>
-			<control type="image">
-				<width>1522</width>
-				<height>660</height>
-				<texture border="40">dialogs/default/bg.png</texture>
-			</control>
-			<control type="label" id="2">
-				<left>30</left>
-				<top>32</top>
-				<width>1462</width>
-				<height>40</height>
-				<font>font15_title</font>
-				<label>587</label>
-				<align>center</align>
-				<textcolor>dialogheader</textcolor>
-			</control>
-			<control type="image">
-				<left>30</left>
-				<top>86</top>
-				<width>1140</width>
-				<height>542</height>
-				<texture border="5">dialogs/default/inner.png</texture>
-				<animation effect="fade" start="100" end="80" time="400" condition="Window.IsActive(fullscreenvideo)">Conditional</animation>
-			</control>
+			<include content="DialogPanel">
+				<param name="height">611</param>
+				<param name="header_label">$VAR[DialogSettingsHeaderVar]</param>
+				<param name="buttons_ondown">5</param>
+				<param name="close_onclick">SendClick(29)</param>
+				<param name="ok_onclick">SendClick(28)</param>
+				<param name="ok_visible">Control.IsVisible(28)</param>
+				<param name="more_onclick">SendClick(30)</param>
+				<param name="more_visible">Control.IsVisible(30)</param>
+			</include>
 			<control type="grouplist" id="5">
-				<left>31</left>
-				<top>88</top>
-				<width>1138</width>
+				<left>2</left>
+				<top>69</top>
+				<width>1498</width>
 				<height>540</height>
 				<pagecontrol>6</pagecontrol>
 				<onup>5</onup>
 				<ondown>5</ondown>
 				<ondown>9001</ondown>
-				<onright>6</onright>
+				<onleft>97</onleft>
+				<onright condition="Control.IsVisible(6)">6</onright>
+				<onright condition="!Control.IsVisible(6)">97</onright>
 			</control>
 			<control type="scrollbar" id="6">
-				<left>1168</left>
-				<top>88</top>
-				<width>14</width>
+				<left>1491</left>
+				<top>69</top>
+				<width>8</width>
 				<height>540</height>
-				<texturesliderbackground />
-				<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
 				<onleft>5</onleft>
-				<onright>9001</onright>
+				<onright>97</onright>
+				<texturesliderbackground>colors/black.png</texturesliderbackground>
+				<texturesliderbar>colors/white25.png</texturesliderbar>
+				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 				<showonepage>false</showonepage>
 			</control>
 			<control type="button" id="7">
@@ -62,7 +54,7 @@
 			</control>
 			<control type="radiobutton" id="8">
 				<description>Default RadioButton</description>
-				<radioposx>1035</radioposx>
+				<radioposx>1396</radioposx>
 			</control>
 			<control type="spincontrolex" id="9">
 				<description>Default SpinControlex</description>
@@ -85,40 +77,22 @@
 				<textoffsetx>15</textoffsetx>
 				<textcolor>$VAR[ThemeLabelColor]</textcolor>
 			</control>
-			<!-- right group -->
-			<control type="group">
-				<left>1182</left>
-				<top>88</top>
-				<control type="image">
-					<left>-1</left>
-					<top>-2</top>
-					<width>312</width>
-					<height>542</height>
-					<texture border="5">dialogs/default/inner.png</texture>
-					<animation effect="fade" start="100" end="80" time="400" condition="Window.IsActive(fullscreenvideo)">Conditional</animation>
-				</control>
-				<control type="grouplist" id="9001">
-					<onup>9001</onup>
-					<onleft>6</onleft>
-					<onright>5</onright>
-					<ondown>9001</ondown>
-					<control type="button" id="28">
-						<description>Ok Button</description>
-						<width>310</width>
-						<label>186</label>
-					</control>
-					<control type="button" id="29">
-						<description>Cancel Button</description>
-						<width>310</width>
-						<label>222</label>
-					</control>
-					<control type="button" id="30">
-						<description>Clear Button</description>
-						<width>310</width>
-						<label>192</label>
-					</control>
-				</control>
-			</control>
+		</control>
+		<control type="label" id="2">
+			<description>Header label</description>
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="28">
+			<description>Ok Button</description>
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="29">
+			<description>Cancel Button</description>
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="30">
+			<description>Clear Button</description>
+			<include>HiddenObject</include>
 		</control>
 	</controls>
 </window>
