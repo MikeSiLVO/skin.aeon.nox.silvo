@@ -1617,7 +1617,7 @@
 		<value condition="String.IsEqual(Control.GetLabel(1),$LOCALIZE[25006])">$INFO[ListItem.Duration(mins),, [LOWERCASE]$LOCALIZE[12391][/LOWERCASE]]</value>
 		<value condition="!String.IsEmpty(ListItem.Label2)">$INFO[ListItem.Label2]</value>
 		<value condition="!String.IsEmpty(ListItem.AddonVersion)">$INFO[ListItem.AddonVersion]</value>
-		<value condition="!String.IsEmpty(Container(6).ListItem.Icon) + !Window.IsVisible(script-skinshortcuts.xml)">[COLOR FF00991F]•[/COLOR]</value>
+		<value condition="!String.IsEmpty(Container(6).ListItem.Icon) + !Window.IsVisible(script-skinshortcuts.xml) + String.IsEmpty(Window(Home).Property(NoArtworkReadyIndicator)) + String.IsEmpty(Container.PluginName)">[COLOR FF00991F]•[/COLOR]</value>
 	</variable>
 	<variable name="EpisodeCountVar">
 		<value condition="!Integer.IsGreater(ListItem.Season,9) + !Integer.IsGreater(ListItem.Episode,9)">$INFO[ListItem.Season,S0]$INFO[ListItem.Episode,E0]</value>

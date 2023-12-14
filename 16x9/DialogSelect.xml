@@ -2,6 +2,7 @@
 <window>
 	<defaultcontrol always="true">9000</defaultcontrol>
 	<onload condition="!Skin.HasSetting(WarnedOnFileManager) + !String.IsEmpty(Window(Home).Property(NotifyFilemanager))">ActivateWindow(1126)</onload>
+	<onunload>ClearProperty(NoArtworkReadyIndicator,Home)</onunload>
 	<controls>
 		<include condition="![Window.IsActive(gamestretchmode) | Window.IsActive(gamevideofilter) | Window.IsActive(gamevideorotation) | Window.IsActive(ingamesaves)]">DefaultSelect</include>
 		<include condition="[Window.IsActive(gamestretchmode) | Window.IsActive(gamevideofilter) | Window.IsActive(gamevideorotation) | Window.IsActive(ingamesaves)]">GameSelect</include>
