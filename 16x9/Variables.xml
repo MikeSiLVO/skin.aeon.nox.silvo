@@ -2006,7 +2006,7 @@
 		<value condition="Control.IsVisible(506) + String.IsEqual(Skin.String(RightList.BackgroundDim),20%)">33FFFFFF</value>
 	</variable>
 	<variable name="BackgroundDimLabelVar">
-		<value condition="Control.IsVisible(506) + !String.IsEmpty(Skin.String(RightList.BackgroundDim))">$INFO[Skin.String(RightList.BackgroundDim)]</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),RightList) + !String.IsEmpty(Skin.String(RightList.BackgroundDim))">$INFO[Skin.String(RightList.BackgroundDim)]</value>
 		<value>50%</value>
 	</variable>
 	<variable name="DialogInfoDimmerLabelVar">
