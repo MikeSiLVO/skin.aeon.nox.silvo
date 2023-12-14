@@ -307,6 +307,7 @@
 			<label>$INFO[Container.Viewmode,$LOCALIZE[31100] ]</label>
 			<onclick condition="!System.AddonIsEnabled(script.skinvariables) | !Window.IsActive(MyVideoNav.xml)">ActivateWindow(1130)</onclick>
 			<onclick condition="System.AddonIsEnabled(script.skinvariables) + Window.IsActive(MyVideoNav.xml)">Runscript(script.skinvariables,action=buildviews,contentid=$VAR[SkinVariablesContentVar],pluginname=$INFO[Container.PluginName])</onclick>
+			<onclick condition="System.AddonIsEnabled(script.skinvariables) + Window.IsActive(MyVideoNav.xml)">SetProperty(NoArtworkReadyIndicator,True,Home)</onclick>
 			<visible>!Window.IsActive(tvchannels)</visible>
 		</control>
 		<control type="button" id="7031">
