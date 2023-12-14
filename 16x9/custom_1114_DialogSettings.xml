@@ -5,7 +5,6 @@
 	<onunload condition="!Skin.HasSetting(BlurEnabled) + String.IsEqual(Skin.String(Viz.Background),4) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd)">RunScript(script.embuary.helper,action=restartservice)</onunload>
 	<onunload condition="String.IsEqual(Window(Home).Property(DialogSettings),livetv) + !Window.IsActive(skinsettings)">SetFocus(50)</onunload>
 	<onunload>ClearProperty(DialogSettings,Home)</onunload>
-	<include>DialogOpenCloseAnimation</include>
 	<controls>
 		<control type="image">
 			<include>FullscreenDimensions</include>
@@ -14,6 +13,7 @@
 			<animation effect="fade" time="300">WindowClose</animation>
 		</control>
 		<control type="group">
+			<include>DialogOpenCloseAnimation</include>
 			<left>210</left>
 			<top>180</top>
 			<visible>!Window.IsVisible(1129)</visible>
