@@ -18,6 +18,8 @@
 				<param name="close_onclick">SendClick(414)</param>
 				<param name="ok_onclick">SendClick(413)</param>
 				<param name="ok_visible">Control.IsEnabled(413)</param>
+				<param name="more_onclick">SendClick(415)</param>
+				<param name="more_visible">Control.IsEnabled(415)</param>
 			</include>
 			<control type="group">
 				<left>1</left>
@@ -29,7 +31,8 @@
 					<height>540</height>
 					<onleft>90000</onleft>
 					<onright condition="Control.IsVisible(60)">60</onright>
-					<onright condition="!Control.IsVisible(60)">90000</onright>
+					<onright condition="!Control.IsVisible(60) + !Control.IsEnabled(416)">90000</onright>
+					<onright condition="!Control.IsVisible(60) + Control.IsEnabled(416)">9000</onright>
 					<onup>450</onup>
 					<ondown>450</ondown>
 					<pagecontrol>60</pagecontrol>
@@ -71,7 +74,8 @@
 					<height>540</height>
 					<onleft>90000</onleft>
 					<onright condition="Control.IsVisible(60)">60</onright>
-					<onright condition="!Control.IsVisible(60)">90000</onright>
+					<onright condition="!Control.IsVisible(60) + !Control.IsEnabled(416)">90000</onright>
+					<onright condition="!Control.IsVisible(60) + Control.IsEnabled(416)">9000</onright>
 					<onup>451</onup>
 					<ondown>451</ondown>
 					<pagecontrol>60</pagecontrol>
@@ -146,8 +150,8 @@
 					<width>8</width>
 					<height>540</height>
 					<onleft>450</onleft>
-					<onright condition="Control.IsEnabled(415) | Control.IsEnabled(416)">9000</onright>
-					<onright condition="!Control.IsEnabled(415) + !Control.IsEnabled(416)">90000</onright>
+					<onright condition="Control.IsEnabled(416)">9000</onright>
+					<onright condition="!Control.IsEnabled(416)">90000</onright>
 					<texturesliderbackground>colors/black.png</texturesliderbackground>
 					<texturesliderbar>colors/white25.png</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
@@ -159,7 +163,7 @@
 				<top>69</top>
 				<control type="image">
 					<width>526</width>
-					<height>420</height>
+					<height>480</height>
 					<fadetime>300</fadetime>
 					<aspectratio>keep</aspectratio>
 					<texture background="true">$INFO[ListItem.Icon]</texture>
@@ -167,7 +171,7 @@
 				</control>
 				<control type="image">
 					<width>526</width>
-					<height>420</height>
+					<height>480</height>
 					<fadetime>300</fadetime>
 					<aspectratio>keep</aspectratio>
 					<texture background="true" flipx="true">$INFO[ListItem.Icon]</texture>
@@ -175,7 +179,7 @@
 				</control>
 				<control type="grouplist" id="9000">
 					<left>-1</left>
-					<top>420</top>
+					<top>480</top>
 					<width>527</width>
 					<height>120</height>
 					<onleft>60</onleft>
@@ -184,14 +188,10 @@
 					<ondown>9000</ondown>
 					<control type="radiobutton" id="416">
 						<description>Flip image button</description>
+						<texturenofocus colordiffuse="grey3" border="1">listselect_fo.png</texturenofocus>
 						<width>527</width>
 						<radioposx>430</radioposx>
 						<label>$LOCALIZE[749]</label>
-					</control>
-					<control type="button" id="415">
-						<description>Create folder button</description>
-						<width>527</width>
-						<label>$LOCALIZE[119]</label>
 					</control>
 				</control>
 			</control>
@@ -213,6 +213,11 @@
 			<description>Cancel button</description>
 			<include>HiddenObject</include>
 			<label>$LOCALIZE[222]</label>
+		</control>
+		<control type="button" id="415">
+			<description>Create folder button</description>
+			<include>HiddenObject</include>
+			<label>$LOCALIZE[119]</label>
 		</control>
 	</controls>
 </window>
