@@ -31,7 +31,7 @@
 				<usecontrolcoords>true</usecontrolcoords>
 				<control type="label">
 					<width>1720</width>
-					<height>50</height>
+					<height>80</height>
 					<font>font60caps_title</font>
 					<textcolor>$VAR[ThemeLabelColor]</textcolor>
 					<label>$LOCALIZE[112]...</label>
@@ -43,13 +43,15 @@
 					<texture background="true">$VAR[PausedLogoVar]</texture>
 					<visible>VideoPlayer.Content(episodes) + !String.IsEmpty(Player.Art(tvshow.clearlogo)) | !String.IsEmpty(Player.Art(clearlogo))</visible>
 				</control>
-				<control type="textbox">
+				<control type="label">
 					<left>15</left>
 					<width>1720</width>
 					<height>125</height>
 					<font>font100caps_title</font>
 					<textcolor>grey</textcolor>
 					<label>$VAR[PausedLabelVar]</label>
+					<scroll>true</scroll>
+					<scrollspeed>80</scrollspeed>
 					<visible>String.IsEmpty(Player.Art(tvshow.clearlogo)) + String.IsEmpty(Player.Art(clearlogo))</visible>
 				</control>
 				<control type="label">
