@@ -1640,11 +1640,71 @@
 		<value>$INFO[Container(10051).ListItem.Duration(h),,h]$INFO[Container(10051).ListItem.Duration(m),,m]</value>
 	</variable>
 	<!-- SelectDialog -->
+	<variable name="DialogSelectImageVar">
+		<value condition="!String.IsEmpty(Container(6).ListItem.Art(poster))">$INFO[Container(6).ListItem.Art(poster)]</value>
+		<value>$INFO[Container(6).ListItem.Icon]</value>
+	</variable>
 	<variable name="DialogSelectLabel2Var">
+		<value condition="Window.IsVisible(selectvideoextra)">$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</value>
+		<value condition="Window.IsVisible(selectvideoversion)">$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$VAR[VideoResolutionLabelVar, | ]$VAR[SourceLabelVar, • ]$VAR[HDRTypeLabelVar, • ]$VAR[AudioCodecLabelVar, | ]$VAR[AudioChannelsLabelVar, • ]</value>
 		<value condition="String.IsEqual(Control.GetLabel(1),$LOCALIZE[25006])">$INFO[ListItem.Duration(mins),, [LOWERCASE]$LOCALIZE[12391][/LOWERCASE]]</value>
 		<value condition="!String.IsEmpty(ListItem.Label2)">$INFO[ListItem.Label2]</value>
 		<value condition="!String.IsEmpty(ListItem.AddonVersion)">$INFO[ListItem.AddonVersion]</value>
 		<value condition="!String.IsEmpty(Container(6).ListItem.Icon) + !Window.IsVisible(script-skinshortcuts.xml) + String.IsEmpty(Window(Home).Property(NoArtworkReadyIndicator)) + String.IsEmpty(Container.PluginName)">[COLOR FF00991F]•[/COLOR]</value>
+	</variable>
+	<variable name="VideoResolutionLabelVar">
+		<value condition="String.IsEqual(ListItem.VideoResolution,4K)">$INFO[ListItem.VideoResolution]</value>
+		<value>$INFO[ListItem.VideoResolution]p</value>
+	</variable>
+	<variable name="SourceLabelVar">
+		<value condition="ListItem.IsStereoscopic">BLURAY 3D</value>
+		<value condition="[String.Contains(ListItem.filename,pdtv) | String.Contains(ListItem.filename,sdtv) | String.Contains(ListItem.filename,sd tv)]">SDTV</value>
+		<value condition="[String.Contains(ListItem.Filename,hdtv) | String.Contains(ListItem.Filename,hd tv)]">HDTV</value>
+		<value condition="[String.Contains(ListItem.Filename,hddvd) | String.Contains(ListItem.Filename,hd-dvd)]">HD DVD</value>
+		<value condition="String.Contains(ListItem.Filename,web-dl) | String.Contains(ListItem.Filename,webdl) | String.Contains(ListItem.Filename,webrip)">WEB-DL</value>
+		<value condition="String.Contains(ListItem.Filename,dvd) | String.IsEqual(ListItem.FileExtension,ifo)">DVD</value>
+		<value condition="[String.Contains(ListItem.Filename,bluray) | String.Contains(ListItem.Filename,blu-ray) | String.Contains(ListItem.Filename,bdrip) | String.Contains(ListItem.Filename,brrip) | String.IsEqual(ListItem.FileExtension,bdmv) | String.IsEqual(ListItem.FileExtension,iso) | String.Contains(ListItem.Filename,remux)]">BLURAY</value>
+		<value>$INFO[ListItem.VideoCodec]</value>
+	</variable>
+	<variable name="AudioCodecLabelVar">
+		<value condition="String.Contains(ListItem.Filename,atmos)">ATMOS</value>
+		<value condition="String.Contains(ListItem.Filename,dtsx) | String.Contains(ListItem.Filename,dts-x)">DTS-X</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,aac_latm)">AAC</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,ac3)">DOLBY DIGITAL</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,aif)">AIFF</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,aifc)">AIFF</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dca)">DTS</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dolbydigital)">DOLBY DIGITAL</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dts)">DTS</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dtshd_hra)">DTSHD-HRA</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dtshd_ma)">DTSHD-MA</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dtsma)">DTSHD-MA</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,eac3)">DOLBY DIGITAL+</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,mp3float)">MP3</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,pcm_bluray)">PCM</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,pcm_s16le)">PCM</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,pcm_s24le)">PCM</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,truehd)">TRUE HD</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,wavpack)">WAVP</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,wmapro)">WMA-PRO</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,wmav2)">WMA</value>
+		<value>[UPPERCASE]$INFO[ListItem.AudioCodec][/UPPERCASE]</value>
+	</variable>
+	<variable name="AudioChannelsLabelVar">
+		<value condition="String.IsEqual(ListItem.AudioChannels,1)">1.0</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,2)">2.0</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,3)">2.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,4)">4.0</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,5)">4.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,6)">5.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,7)">6.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,8)">7.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,10)">9.1</value>
+		<value>$INFO[ListItem.AudioChannels]</value>
+	</variable>
+	<variable name="HDRTypeLabelVar">
+		<value condition="String.IsEqual(ListItem.HdrType,dolbyvision)">DOLBY VISION</value>
+		<value condition="!String.IsEmpty(ListItem.HdrType)">[UPPERCASE]$INFO[ListItem.HdrType][/UPPERCASE]</value>
 	</variable>
 	<variable name="EpisodeCountVar">
 		<value condition="!Integer.IsGreater(ListItem.Season,9) + !Integer.IsGreater(ListItem.Episode,9)">$INFO[ListItem.Season,S0]$INFO[ListItem.Episode,E0]</value>
