@@ -1323,7 +1323,7 @@
 	</variable>
 	<variable name="HDRFlagsVar">
 		<value condition="!String.IsEmpty(ListItem.HdrType)">hdr/$INFO[ListItem.HdrType].png</value>
-		<value condition="!String.IsEmpty(ListItem.DBID)">hdr/sdr.png</value>
+		<value condition="!String.IsEmpty(ListItem.DBID) + !String.IsEmpty(ListItem.VideoResolution)">hdr/sdr.png</value>
 	</variable>
 	<variable name="PathFlagsStudios">
 		<value condition="Skin.HasSetting(coloredflags)">resource://resource.images.studios.coloured/</value>
