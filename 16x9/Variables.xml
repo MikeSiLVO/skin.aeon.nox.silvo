@@ -1645,12 +1645,16 @@
 		<value>$INFO[Container(6).ListItem.Icon]</value>
 	</variable>
 	<variable name="DialogSelectLabel2Var">
-		<value condition="Window.IsVisible(selectvideoextra)">$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</value>
-		<value condition="Window.IsVisible(selectvideoversion)">$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$VAR[VideoResolutionLabelVar, | ]$VAR[SourceLabelVar, • ]$VAR[HDRTypeLabelVar, • ]$VAR[AudioCodecLabelVar, | ]$VAR[AudioChannelsLabelVar, • ]</value>
+		<value condition="Window.IsVisible(selectvideoextra)">$VAR[DialogSelectLabel2RuntimeVar]</value>
+		<value condition="Window.IsVisible(selectvideoversion)">$VAR[DialogSelectLabel2RuntimeVar]$VAR[VideoResolutionLabelVar, | ]$VAR[SourceLabelVar, • ]$VAR[HDRTypeLabelVar, • ]$VAR[AudioCodecLabelVar, | ]$VAR[AudioChannelsLabelVar, • ]</value>
 		<value condition="String.IsEqual(Control.GetLabel(1),$LOCALIZE[25006])">$INFO[ListItem.Duration(mins),, [LOWERCASE]$LOCALIZE[12391][/LOWERCASE]]</value>
 		<value condition="!String.IsEmpty(ListItem.Label2)">$INFO[ListItem.Label2]</value>
 		<value condition="!String.IsEmpty(ListItem.AddonVersion)">$INFO[ListItem.AddonVersion]</value>
 		<value condition="!String.IsEmpty(Container(6).ListItem.Icon) + !Window.IsVisible(script-skinshortcuts.xml) + String.IsEmpty(Window(Home).Property(NoArtworkReadyIndicator)) + String.IsEmpty(Container.PluginName)">[COLOR FF00991F]•[/COLOR]</value>
+	</variable>
+	<variable name="DialogSelectLabel2RuntimeVar">
+		<value condition="Skin.HasSetting(Enable.HourMinuteDuration)">$VAR[ItemDurationVar]</value>
+		<value condition="!Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</value>
 	</variable>
 	<variable name="VideoResolutionLabelVar">
 		<value condition="String.IsEqual(ListItem.VideoResolution,4K)">$INFO[ListItem.VideoResolution]</value>
@@ -2221,6 +2225,11 @@
 		<value condition="Window.IsVisible(1114) + String.IsEqual(Window(Home).Property(DialogSettings),videoinfo)">$LOCALIZE[31190] $LOCALIZE[5]</value>
 		<value condition="Window.IsVisible(1114) + String.IsEqual(Window(Home).Property(DialogSettings),livetv)">$LOCALIZE[31502] $LOCALIZE[5]</value>
 		<value />
+	</variable>
+	<variable name="DialogSettingsOkButtonLabelVar">
+		<value condition="Window.IsVisible(selectvideoversion)"></value>
+		<value condition="Window.IsVisible(selectvideoextra)"></value>
+		<value></value>
 	</variable>
 	<variable name="DialogSettingsMoreButtonLabelVar">
 		<value condition="Window.IsVisible(FileBrowser.xml)"></value>
