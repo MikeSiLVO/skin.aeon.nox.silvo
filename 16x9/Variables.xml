@@ -2054,14 +2054,8 @@
 		<value>$LOCALIZE[351]</value>
 	</variable>
 	<variable name="KodiVersionLabelVar">
-		<value condition="String.StartsWith(System.BuildVersion,20.)">$INFO[System.BuildVersion,Nexus - v]$INFO[System.BuildDate, (,)]</value>
-		<value condition="String.StartsWith(System.BuildVersion,19.)">MATRIX - [COLOR invalid]$LOCALIZE[31341][/COLOR]</value>
-		<value condition="String.StartsWith(System.BuildVersion,18.)">LEIA - [COLOR invalid]$LOCALIZE[31341][/COLOR]</value>
-		<value condition="String.StartsWith(System.BuildVersion,17.)">KRYPTON - [COLOR invalid]$LOCALIZE[31341][/COLOR]</value>
-		<value condition="String.StartsWith(System.BuildVersion,16.)">JARVIS - [COLOR invalid]$LOCALIZE[31341][/COLOR]</value>
-		<value condition="String.StartsWith(System.BuildVersion,15.)">ISENGARD - [COLOR invalid]$LOCALIZE[31341][/COLOR]</value>
-		<value condition="String.StartsWith(System.BuildVersion,14.)">HELIX - [COLOR invalid]$LOCALIZE[31341][/COLOR]</value>
-		<value>$INFO[System.BuildVersion,v]$INFO[System.BuildDate, (,)]</value>
+		<value condition="String.StartsWith(System.BuildVersion,21.)">$INFO[System.BuildVersionShort,Omega - v]$INFO[System.BuildDate, (,)]</value>
+		<value>$INFO[System.BuildVersionShort,v]$INFO[System.BuildVersionGit, (,)] - [COLOR invalid]$LOCALIZE[31341][/COLOR]</value>
 	</variable>
 	<variable name="MyFlixTitleLabelVar">
 		<value condition="Container.Content(tvshows) | Container.Content(episodes)">$INFO[ListItem.TVShowTitle]</value>
