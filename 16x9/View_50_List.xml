@@ -1734,7 +1734,7 @@
 				</control>
 				<control type="panel" id="50">
 					<top>180</top>
-					<width>1160</width>
+					<width>1140</width>
 					<height>840</height>
 					<onleft>SetProperty(MediaMenu,True,Home)</onleft>
 					<onleft>SetFocus(9050)</onleft>
@@ -1766,45 +1766,57 @@
 						</control>
 						<control type="label">
 							<left>135</left>
-							<width>985</width>
-							<height>70</height>
+							<width>975</width>
+							<height>120</height>
 							<font>font30</font>
 							<textcolor>grey2</textcolor>
 							<label>$INFO[ListItem.Label]</label>
-							<animation effect="slide" start="0,0" end="0,25" time="0" condition="String.IsEmpty(ListItem.AddonSummary)">Conditional</animation>
+							<visible>String.IsEmpty(ListItem.AddonSummary)</visible>
+						</control>
+						<control type="group">
+							<visible>!String.IsEmpty(ListItem.AddonSummary) | !String.IsEmpty(ListItem.Label2)</visible>
+							<control type="label">
+								<left>135</left>
+								<top>10</top>
+								<width>975</width>
+								<height>50</height>
+								<font>font30</font>
+								<textcolor>grey2</textcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>135</left>
+								<top>60</top>
+								<width>1125</width>
+								<height>50</height>
+								<font>font15</font>
+								<textcolor>grey3</textcolor>
+								<label>$INFO[ListItem.AddonSummary]</label>
+							</control>
+							<control type="label">
+								<top>60</top>
+								<width>1125</width>
+								<height>50</height>
+								<font>font15</font>
+								<align>right</align>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
 						</control>
 						<control type="label">
-							<left>135</left>
-							<top>50</top>
-							<width>985</width>
-							<height>60</height>
-							<font>font15</font>
-							<textcolor>grey3</textcolor>
-							<label>$INFO[ListItem.AddonSummary]</label>
-						</control>
-						<control type="image">
-							<left>1090</left>
-							<top>8</top>
+							<left>1100</left>
+							<top>25</top>
 							<width>30</width>
 							<height>30</height>
-							<aspectratio>keep</aspectratio>
-							<align>right</align>
-							<texture>verified_repo.png</texture>
-							<visible>ListItem.Property(Addon.IsFromOfficialRepo)</visible>
-						</control>
-						<control type="label">
-							<left>60</left>
-							<width>1060</width>
-							<height>120</height>
-							<font>font15</font>
-							<align>right</align>
+							<font>IconTinyMD</font>
 							<textcolor>grey2</textcolor>
-							<label>$INFO[ListItem.Label2]</label>
+							<label></label>
+							<visible>ListItem.Property(Addon.IsFromOfficialRepo)</visible>
 						</control>
 					</itemlayout>
 					<focusedlayout height="120" width="1140">
 						<control type="image">
-							<width>1160</width>
+							<width>1140</width>
 							<height>120</height>
 							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
 							<visible>Control.HasFocus(50)</visible>
@@ -1830,37 +1842,49 @@
 						</control>
 						<control type="label">
 							<left>135</left>
-							<width>985</width>
-							<height>70</height>
+							<width>975</width>
+							<height>120</height>
 							<font>font30</font>
 							<label>$INFO[ListItem.Label]</label>
-							<animation effect="slide" start="0,0" end="0,25" time="0" condition="String.IsEmpty(ListItem.AddonSummary)">Conditional</animation>
+							<visible>String.IsEmpty(ListItem.AddonSummary)</visible>
+						</control>
+						<control type="group">
+							<visible>!String.IsEmpty(ListItem.AddonSummary) | !String.IsEmpty(ListItem.Label2)</visible>
+							<control type="label">
+								<left>135</left>
+								<top>10</top>
+								<width>975</width>
+								<height>50</height>
+								<font>font30</font>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<left>135</left>
+								<top>60</top>
+								<width>1125</width>
+								<height>50</height>
+								<font>font15</font>
+								<textcolor>grey2</textcolor>
+								<label>$INFO[ListItem.AddonSummary]</label>
+							</control>
+							<control type="label">
+								<top>60</top>
+								<width>1125</width>
+								<height>50</height>
+								<font>font15</font>
+								<align>right</align>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
 						</control>
 						<control type="label">
-							<left>135</left>
-							<top>50</top>
-							<width>985</width>
-							<height>60</height>
-							<font>font15</font>
-							<label>$INFO[ListItem.AddonSummary]</label>
-						</control>
-						<control type="image">
-							<left>1090</left>
-							<top>8</top>
+							<left>1100</left>
+							<top>25</top>
 							<width>30</width>
 							<height>30</height>
-							<aspectratio>keep</aspectratio>
-							<align>right</align>
-							<texture>verified_repo.png</texture>
+							<font>IconTinyMD</font>
+							<label></label>
 							<visible>ListItem.Property(Addon.IsFromOfficialRepo)</visible>
-						</control>
-						<control type="label">
-							<left>60</left>
-							<width>1060</width>
-							<height>120</height>
-							<font>font15</font>
-							<align>right</align>
-							<label>$INFO[ListItem.Label2]</label>
 						</control>
 					</focusedlayout>
 				</control>
@@ -2838,16 +2862,6 @@
 							<textcolor>grey2</textcolor>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
-						<control type="image">
-							<left>1115</left>
-							<top>4</top>
-							<width>20</width>
-							<height>20</height>
-							<aspectratio>keep</aspectratio>
-							<align>right</align>
-							<texture>verified_repo.png</texture>
-							<visible>ListItem.Property(Addon.IsFromOfficialRepo)</visible>
-						</control>
 						<control type="label">
 							<left>30</left>
 							<width>1080</width>
@@ -2856,6 +2870,16 @@
 							<align>right</align>
 							<textcolor>grey2</textcolor>
 							<label>$INFO[ListItem.Label2]</label>
+						</control>
+						<control type="label">
+							<left>1110</left>
+							<top>15</top>
+							<width>30</width>
+							<height>30</height>
+							<font>IconTinyMD</font>
+							<textcolor>grey2</textcolor>
+							<label></label>
+							<visible>ListItem.Property(Addon.IsFromOfficialRepo)</visible>
 						</control>
 					</itemlayout>
 					<focusedlayout height="60" width="1140">
@@ -2873,16 +2897,6 @@
 							<font>font15</font>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
-						<control type="image">
-							<left>1115</left>
-							<top>4</top>
-							<width>20</width>
-							<height>20</height>
-							<aspectratio>keep</aspectratio>
-							<align>right</align>
-							<texture>verified_repo.png</texture>
-							<visible>ListItem.Property(Addon.IsFromOfficialRepo)</visible>
-						</control>
 						<control type="label">
 							<left>30</left>
 							<width>1080</width>
@@ -2890,6 +2904,15 @@
 							<font>font15</font>
 							<align>right</align>
 							<label>$INFO[ListItem.Label2]</label>
+						</control>
+						<control type="label">
+							<left>1110</left>
+							<top>15</top>
+							<width>30</width>
+							<height>30</height>
+							<font>IconTinyMD</font>
+							<label></label>
+							<visible>ListItem.Property(Addon.IsFromOfficialRepo)</visible>
 						</control>
 					</focusedlayout>
 				</control>
