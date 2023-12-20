@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol>9000</defaultcontrol>
+	<defaultcontrol>90000</defaultcontrol>
 	<controls>
 		<control type="image">
 			<include>FullscreenDimensions</include>
@@ -10,261 +10,74 @@
 		</control>
 		<control type="group">
 			<include>DialogOpenCloseAnimation</include>
-			<control type="grouplist" id="9000">
-				<left>705</left>
+			<centerleft>50%</centerleft>
+			<centertop>50%</centertop>
+			<width>510</width>
+			<height>600</height>
+			<control type="panel" id="90000">
 				<width>510</width>
-				<height>1080</height>
-				<onleft>9000</onleft>
-				<onright>9000</onright>
-				<onup>9000</onup>
-				<ondown>9000</ondown>
-				<align>center</align>
-				<control type="button" id="2">
-					<description>Exit button</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>Quit()</onclick>
-					<font>font14</font>
-					<label>13012</label>
-					<visible>System.ShowExitButton</visible>
-				</control>
-				<control type="button" id="3">
-					<description>Shutdown button</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>Powerdown()</onclick>
-					<visible>System.CanPowerDown</visible>
-					<font>font14</font>
-					<label>13016</label>
-				</control>
-				<control type="button" id="4">
-					<description>Custom Shutdown Timer</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>AlarmClock(shutdowntimer,Shutdown())</onclick>
-					<font>font14</font>
-					<label>20150</label>
-					<visible>!System.HasAlarm(shutdowntimer)</visible>
-					<visible>System.CanPowerDown | System.CanSuspend | System.CanHibernate</visible>
-				</control>
-				<control type="button" id="5">
-					<description>Cancel Shutdown Timer</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>CancelAlarm(shutdowntimer)</onclick>
-					<font>font14</font>
-					<label>$LOCALIZE[20151]$INFO[System.Alarmpos, (,)]</label>
-					<visible>System.HasAlarm(shutdowntimer)</visible>
-				</control>
-				<control type="button" id="6">
-					<description>Suspend button</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>Suspend()</onclick>
-					<visible>System.CanSuspend</visible>
-					<font>font14</font>
-					<label>13011</label>
-				</control>
-				<control type="button" id="7">
-					<description>Hibernate button</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>Hibernate()</onclick>
-					<visible>System.CanHibernate</visible>
-					<font>font14</font>
-					<label>13010</label>
-				</control>
-				<control type="button" id="8">
-					<description>Reboot to Android button</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>System.ExecWait("/usr/sbin/rebootfromnand")</onclick>
-					<onclick>Reset()</onclick>
-					<visible>System.PathExist("/dev/env")</visible>
-					<font>font14</font>
-					<label>$LOCALIZE[31576]</label>
-				</control>
-				<control type="button" id="9">
-					<description>Reboot button</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>Reset()</onclick>
-					<visible>System.CanReboot</visible>
-					<font>font14</font>
-					<label>13013</label>
-				</control>
-				<control type="button" id="10">
-					<description>Logoff button</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>dialog.close(all,true)</onclick>
-					<onclick>System.LogOff</onclick>
-					<font>font14</font>
-					<label>$LOCALIZE[20126] $INFO[system.profilename]</label>
-					<visible>System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)</visible>
-					<visible>System.Loggedon</visible>
-				</control>
-				<control type="togglebutton" id="11">
-					<description>Master mode button</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<label>20046</label>
-					<altlabel>20045</altlabel>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<usealttexture>!System.IsMaster</usealttexture>
-					<alttexturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</alttexturefocus>
-					<alttexturenofocus>button_nofocus.png</alttexturenofocus>
-					<onclick>Mastermode</onclick>
-					<visible>System.HasLocks</visible>
-				</control>
-				<control type="button" id="12">
-					<description>Inhibit idle shutdown</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>InhibitIdleShutdown(true)</onclick>
-					<font>font14</font>
-					<label>13017</label>
-					<visible>System.HasShutdown +!System.IsInhibit</visible>
-				</control>
-				<control type="button" id="13">
-					<description>Allow idle shutdown</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>InhibitIdleShutdown(false)</onclick>
-					<font>font14</font>
-					<label>13018</label>
-					<visible>System.HasShutdown + System.IsInhibit</visible>
-				</control>
-				<control type="button" id="14">
-					<description>Settings</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>Dialog.Close(all,true)</onclick>
-					<onclick>ActivateWindow(settings)</onclick>
-					<font>font14</font>
-					<label>$LOCALIZE[5]</label>
-				</control>
-				<control type="button" id="15">
-					<description>Skin Settings</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>Dialog.Close(all,true)</onclick>
-					<onclick>ActivateWindow(skinsettings)</onclick>
-					<font>font14</font>
-					<label>20077</label>
-				</control>
-				<control type="button" id="16">
-					<description>Favorites</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>ActivateWindow(favouritesbrowser)</onclick>
-					<font>font14</font>
-					<label>1036</label>
-				</control>
-				<control type="button" id="17">
-					<description>Reload Skin button</description>
-					<width>510</width>
-					<height>60</height>
-					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
-					<textwidth>435</textwidth>
-					<textoffsetx>35</textoffsetx>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-					<texturenofocus>button_nofocus.png</texturenofocus>
-					<onclick>Dialog.Close(all,true)</onclick>
-					<onclick>ReloadSkin()</onclick>
-					<font>font14</font>
-					<label>20183</label>
-				</control>
+				<height>600</height>
+				<onleft>90000</onleft>
+				<onright>90000</onright>
+				<onup>90000</onup>
+				<ondown>90000</ondown>
+				<scrolltime tween="quadratic" easing="out">200</scrolltime>
+				<itemlayout width="510" height="60" infoupdate="5000">
+					<control type="image">
+						<width>510</width>
+						<height>60</height>
+						<texture>button_nofocus.png</texture>
+					</control>
+					<control type="label">
+						<width>510</width>
+						<height>60</height>
+						<textcolor>grey2</textcolor>
+						<font>font14</font>
+						<textoffsetx>35</textoffsetx>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<width>510</width>
+						<height>60</height>
+						<textcolor>grey2</textcolor>
+						<font>font14</font>
+						<textoffsetx>35</textoffsetx>
+						<align>right</align>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout width="510" height="60" infoupdate="5000">
+					<control type="image">
+						<width>510</width>
+						<height>60</height>
+						<texture colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texture>
+					</control>
+					<control type="label">
+						<width>510</width>
+						<height>60</height>
+						<focusedcolor>white</focusedcolor>
+						<font>font14</font>
+						<textoffsetx>35</textoffsetx>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<width>510</width>
+						<height>60</height>
+						<focusedcolor>white</focusedcolor>
+						<font>font14</font>
+						<textoffsetx>35</textoffsetx>
+						<align>right</align>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+				</focusedlayout>
+				<content>
+					<include>skinshortcuts-group-buttonmenu</include>
+					<item>
+						<label>5</label>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(settings)</onclick>
+					</item>
+				</content>
 			</control>
 		</control>
 	</controls>

@@ -18,7 +18,7 @@
 						<height>810</height>
 						<onright>9000</onright>
 						<scrolltime>0</scrolltime>
-						<itemlayout height="81" width="356">
+						<itemlayout height="81" width="356" condition="!String.IsEqual(Window.Property(groupname),buttonmenu)">
 							<control type="group">
 								<visible>String.IsEmpty(Window(Home).Property(skinshortcuts-management-widget))</visible>
 								<control type="label">
@@ -52,7 +52,7 @@
 								</control>
 							</control>
 						</itemlayout>
-						<focusedlayout height="81" width="550">
+						<focusedlayout height="81" width="550" condition="!String.IsEqual(Window.Property(groupname),buttonmenu)">
 							<control type="image">
 								<width>630</width>
 								<height>81</height>
@@ -97,6 +97,32 @@
 								</control>
 							</control>
 						</focusedlayout>
+						<itemlayout height="81" width="356" condition="String.IsEqual(Window.Property(groupname),buttonmenu)">
+							<control type="label">
+								<width>460</width>
+								<height>81</height>
+								<font>font15_title</font>
+								<textoffsetx>20</textoffsetx>
+								<textcolor>grey</textcolor>
+								<label>$VAR[ShortcutsDisabledVar]$INFO[ListItem.Label]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="81" width="550" condition="String.IsEqual(Window.Property(groupname),buttonmenu)">
+							<control type="image">
+								<width>630</width>
+								<height>81</height>
+								<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+								<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!ControlGroup(90000).HasFocus">Conditional</animation>
+							</control>
+							<control type="label">
+								<width>460</width>
+								<height>81</height>
+								<font>font15_title</font>
+								<textoffsetx>20</textoffsetx>
+								<label>$VAR[ShortcutsDisabledVar]$INFO[ListItem.Label]</label>
+								<scroll>true</scroll>
+							</control>
+						</focusedlayout>
 					</control>
 					<control type="grouplist" id="90000">
 						<left>405</left>
@@ -109,6 +135,7 @@
 						<orientation>horizontal</orientation>
 						<itemgap>-20</itemgap>
 						<visible>String.IsEmpty(Window(Home).Property(skinshortcuts-management-widget))</visible>
+						<animation effect="slide" end="120" condition="String.IsEqual(Window.Property(groupname),buttonmenu)">Conditional</animation>
 						<animation effect="slide" end="0,81" condition="Integer.IsGreater(Container(211).Position,0)">Conditional</animation>
 						<animation effect="slide" end="0,81" condition="Integer.IsGreater(Container(211).Position,1)">Conditional</animation>
 						<animation effect="slide" end="0,81" condition="Integer.IsGreater(Container(211).Position,2)">Conditional</animation>
@@ -131,6 +158,7 @@
 							<textcolor>grey2</textcolor>
 							<focusedcolor>white</focusedcolor>
 							<label></label>
+							<visible>!String.IsEqual(Window.Property(groupname),buttonmenu)</visible>
 						</control>
 						<control type="button" id="302">
 							<texturefocus />
@@ -155,6 +183,7 @@
 							<textcolor>grey2</textcolor>
 							<focusedcolor>white</focusedcolor>
 							<label></label>
+							<visible>!String.IsEqual(Window.Property(groupname),buttonmenu)</visible>
 						</control>
 						<control type="button" id="303">
 							<texturefocus />
@@ -221,6 +250,15 @@
 									<width>1125</width>
 									<include>SettingsButtonCommonValues</include>
 									<label>$ADDON[script.skinshortcuts 32048]</label>
+									<visible>!String.IsEqual(Window.Property(groupname),buttonmenu)</visible>
+								</control>
+								<control type="button" id="3080">
+									<description>Reset</description>
+									<width>1125</width>
+									<include>SettingsButtonCommonValues</include>
+									<label>$LOCALIZE[31468]</label>
+									<onclick>SendClick(308)</onclick>
+									<visible>String.IsEqual(Window.Property(groupname),buttonmenu)</visible>
 								</control>
 								<control type="button" id="305">
 									<description>Change label</description>
@@ -243,6 +281,7 @@
 									<include>SettingsButtonCommonValues</include>
 									<label>$ADDON[script.skinshortcuts 32027]</label>
 									<label2>$INFO[Container(211).ListItem.Property(displaypath)]</label2>
+									<visible>!String.IsEqual(Window.Property(groupname),buttonmenu)</visible>
 								</control>
 								<control type="button" id="405">
 									<description>Edit submenu</description>
@@ -259,6 +298,7 @@
 									<label2>$INFO[Container(211).ListItem.Property(backgroundName)]</label2>
 									<onclick condition="!Skin.HasSetting(WarnedOnFileManager)">SetProperty(Notify,True,Home)</onclick>
 									<onclick condition="!Skin.HasSetting(WarnedOnFileManager)">SetProperty(NotifyFileManager,True,Home)</onclick>
+									<visible>!String.IsEqual(Window.Property(groupname),buttonmenu)</visible>
 								</control>
 								<control type="button" id="510">
 									<description>Choose infoline</description>

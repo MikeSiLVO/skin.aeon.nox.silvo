@@ -5,6 +5,18 @@
 	</override>
 	<contextmenu />
 	<groupoverride group="mainmenu" condition="String.IsEqual(ListItem.Property(path),ActivateWindow(1129))">SetProperty(CustomSelect,search,Home)</groupoverride>
+	<override action="RebootFromNand">
+		<action>System.ExecWait("/usr/sbin/rebootfromnand")</action>
+		<action>Reboot()</action>
+	</override>
+	<override action="ActivateWindow(skinsettings)" group="buttonmenu">
+		<action>Dialog.Close(all,true)</action>
+		<action>::ACTION::</action>
+	</override>
+	<override action="ActivateWindow(favouritesbrowser)" group="buttonmenu">
+		<action>Dialog.Close(all,true)</action>
+		<action>::ACTION::</action>
+	</override>
 	<visibleoverride condition="Library.HasContent(music)">ActivateWindow(Music,files)</visibleoverride>
 	<visibleoverride condition="Library.HasContent(movies)">ActivateWindow(videos,files,return)</visibleoverride>
 	<visibleoverride condition="Library.HasContent(tvshows)">ActivateWindow(videos,files,return)</visibleoverride>
@@ -73,6 +85,7 @@
 			<shortcut label="12600" type="12600" icon="DefaultAddonWeather.png">ActivateWindow(Weather)</shortcut>
 			<shortcut label="341" type="341" icon="DefaultVCD.png">PlayDisc</shortcut>
 			<shortcut label="31485" type="31485" icon="DefaultVCD.png">EjectTray()</shortcut>
+			<shortcut label="31576" type="31576" icon="DefaultAddonPeripheral.png" condition="System.Platform.Linux">RebootFromNand</shortcut>
 		</node>
 		<!-- Video Library -->
 		<node label="14236">
