@@ -1486,6 +1486,18 @@
 				<oninfo>Dialog.Close(all,true)</oninfo>
 				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
 			</control>
+			<control type="button" id="603">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>PlayerControl(Stop)</onclick>
+				<oninfo>Dialog.Close(all,true)</oninfo>
+				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
+			</control>
 			<control type="togglebutton" id="602">
 				<texturefocus />
 				<alttexturefocus />
@@ -1498,18 +1510,6 @@
 				<height>100</height>
 				<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
 				<onclick>PlayerControl(Play)</onclick>
-				<oninfo>Dialog.Close(all,true)</oninfo>
-				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
-			</control>
-			<control type="button" id="603">
-				<texturefocus />
-				<font>IconOSDButtons</font>
-				<label></label>
-				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
-				<shadowcolor>shadow</shadowcolor>
-				<width>100</width>
-				<height>100</height>
-				<onclick>PlayerControl(Stop)</onclick>
 				<oninfo>Dialog.Close(all,true)</oninfo>
 				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
 			</control>
@@ -1700,16 +1700,6 @@
 				<height>100</height>
 				<onclick>PlayerControl(Previous)</onclick>
 			</control>
-			<control type="button" id="804">
-				<texturefocus />
-				<font>IconOSDButtons</font>
-				<label></label>
-				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
-				<shadowcolor>shadow</shadowcolor>
-				<width>100</width>
-				<height>100</height>
-				<onclick>PlayerControl(Next)</onclick>
-			</control>
 			<control type="button" id="805">
 				<texturefocus />
 				<font>IconOSDButtons</font>
@@ -1720,6 +1710,17 @@
 				<height>100</height>
 				<onclick>PlayerControl(Rewind)</onclick>
 				<visible>Player.SeekEnabled</visible>
+				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
+			</control>
+			<control type="button" id="807">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>PlayerControl(Stop)</onclick>
 				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
 			</control>
 			<control type="togglebutton" id="806">
@@ -1737,17 +1738,6 @@
 				<visible>Player.PauseEnabled</visible>
 				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
 			</control>
-			<control type="button" id="807">
-				<texturefocus />
-				<font>IconOSDButtons</font>
-				<label></label>
-				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
-				<shadowcolor>shadow</shadowcolor>
-				<width>100</width>
-				<height>100</height>
-				<onclick>PlayerControl(Stop)</onclick>
-				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
-			</control>
 			<control type="button" id="808">
 				<texturefocus />
 				<font>IconOSDButtons</font>
@@ -1759,6 +1749,16 @@
 				<onclick>PlayerControl(Forward)</onclick>
 				<visible>Player.SeekEnabled</visible>
 				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
+			</control>
+			<control type="button" id="804">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>PlayerControl(Next)</onclick>
 			</control>
 			<control type="togglebutton" id="809">
 				<texturefocus />

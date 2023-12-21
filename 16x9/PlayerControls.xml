@@ -67,6 +67,16 @@
 					<onclick condition="!Player.TempoEnabled">PlayerControl(Rewind)</onclick>
 					<onclick condition="Player.TempoEnabled">PlayerControl(tempodown)</onclick>
 				</control>
+				<control type="button" id="603">
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<width>100</width>
+					<height>100</height>
+					<onclick>PlayerControl(Stop)</onclick>
+				</control>
 				<control type="togglebutton" id="602">
 					<texturefocus />
 					<alttexturefocus />
@@ -79,16 +89,6 @@
 					<height>100</height>
 					<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
 					<onclick>PlayerControl(Play)</onclick>
-				</control>
-				<control type="button" id="603">
-					<texturefocus />
-					<font>IconOSDButtons</font>
-					<label></label>
-					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<width>100</width>
-					<height>100</height>
-					<onclick>PlayerControl(Stop)</onclick>
 				</control>
 				<control type="button" id="604">
 					<texturefocus />
