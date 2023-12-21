@@ -45,19 +45,18 @@
 				<content>
 					<item id="4">
 						<label>31493</label>
-						<icon />
 					</item>
 					<item id="2">
 						<label>16000</label>
-						<icon />
 					</item>
 					<item id="1">
 						<label>513</label>
-						<icon />
 					</item>
 					<item id="3">
 						<label>31155</label>
-						<icon />
+					</item>
+					<item id="5">
+						<label>OSD</label>
 					</item>
 				</content>
 			</control>
@@ -283,14 +282,6 @@
 							<param name="ColorStringVar">$VAR[TopBarColor]</param>
 						</include>
 					</control>
-					<control type="radiobutton" id="204">
-						<label>$LOCALIZE[31346]</label>
-						<onclick>SetProperty(Reset.Color,ThemeOSDProgressColor)</onclick>
-						<onclick>Skin.SetColor(ThemeOSDProgressColor, 31346, FFFF9800, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[ThemeOSDProgressColor]</param>
-						</include>
-					</control>
 				</control>
 				<control type="grouplist" id="9003">
 					<left>437</left>
@@ -317,6 +308,42 @@
 						<onclick>Skin.SetColor(WidgetBackgroundColor, 31102, FFFF9800, special://skin/extras/colors.xml)</onclick>
 						<include content="CustomColorRadioButton">
 							<param name="ColorStringVar">$VAR[WidgetBackgroundColor]</param>
+						</include>
+					</control>
+				</control>
+				<control type="grouplist" id="9005">
+					<left>437</left>
+					<top>32</top>
+					<width>1401</width>
+					<height>810</height>
+					<pagecontrol>60</pagecontrol>
+					<onleft>9000</onleft>
+					<onright>60</onright>
+					<onup>9005</onup>
+					<ondown>9005</ondown>
+					<visible>Container(9000).HasFocus(5)</visible>
+					<control type="radiobutton" id="500">
+						<label>$LOCALIZE[31346]</label>
+						<onclick>SetProperty(Reset.Color,ThemeOSDProgressColor)</onclick>
+						<onclick>Skin.SetColor(ThemeOSDProgressColor, 31346, FFFF9800, special://skin/extras/colors.xml)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[ThemeOSDProgressColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="501">
+						<label>$LOCALIZE[31625]</label>
+						<onclick>SetProperty(Reset.Color,FocusedOSDButtonsColor)</onclick>
+						<onclick>Skin.SetColor(FocusedOSDButtonsColor, 31625, FFFF9800, special://skin/extras/colors.xml)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[FocusedOSDButtonsColor]</param>
+						</include>
+					</control>
+					<control type="radiobutton" id="502">
+						<label>$LOCALIZE[31626]</label>
+						<onclick>SetProperty(Reset.Color,UnfocusedOSDButtonsColor)</onclick>
+						<onclick>Skin.SetColor(UnfocusedOSDButtonsColor, 31626, FFFF9800, special://skin/extras/colors.xml)</onclick>
+						<include content="CustomColorRadioButton">
+							<param name="ColorStringVar">$VAR[UnfocusedOSDButtonsColor]</param>
 						</include>
 					</control>
 				</control>
