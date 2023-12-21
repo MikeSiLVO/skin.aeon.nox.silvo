@@ -994,11 +994,13 @@
 		<value condition="Control.HasFocus(201)">$LOCALIZE[31415][CR]$LOCALIZE[31411]</value>
 		<value condition="Control.HasFocus(202)">$LOCALIZE[31416]</value>
 		<value condition="Control.HasFocus(203)">$LOCALIZE[31418]</value>
-		<value condition="Control.HasFocus(204)">$LOCALIZE[31420]</value>
 		<value condition="Control.HasFocus(100)">$LOCALIZE[31417][CR]$LOCALIZE[31411]</value>
 		<value condition="Control.HasFocus(102) | Control.HasFocus(103) | Control.HasFocus(104) | Control.HasFocus(105) | Control.HasFocus(106) | Control.HasFocus(107) | Control.HasFocus(108) | Control.HasFocus(109) | Control.HasFocus(110) | Control.HasFocus(111) | Control.HasFocus(112)">$LOCALIZE[31425]</value>
 		<value condition="Control.HasFocus(300)">$LOCALIZE[31422][CR]$LOCALIZE[31423]</value>
 		<value condition="Control.HasFocus(301)">$LOCALIZE[31424]</value>
+		<value condition="Control.HasFocus(500)">$LOCALIZE[31420]</value>
+		<value condition="Control.HasFocus(501)">$LOCALIZE[31627][CR]$LOCALIZE[31411]</value>
+		<value condition="Control.HasFocus(502)">$LOCALIZE[31627]</value>
 	</variable>
 	<variable name="AddonStatusDescriptionVar">
 		<value condition="Control.HasFocus(100) | Control.HasFocus(101)">$LOCALIZE[31427]</value>
@@ -2306,9 +2308,18 @@
 		<value condition="!String.IsEmpty(Skin.String(UnWatchedEpColor)) + !String.IsEqual(Skin.String(UnWatchedEpColor),None)">$INFO[Skin.String(UnWatchedEpColor)]</value>
 		<value>white</value>
 	</variable>
+	<!-- OSD -->
 	<variable name="ThemeOSDProgressColor">
 		<value condition="!String.IsEmpty(Skin.String(ThemeOSDProgressColor)) + !String.IsEqual(Skin.String(ThemeOSDProgressColor),None)">$INFO[Skin.String(ThemeOSDProgressColor)]</value>
 		<value condition="!String.IsEmpty(Skin.String(ThemeLabelColor)) + !String.IsEqual(Skin.String(ThemeLabelColor),None)">$INFO[Skin.String(ThemeLabelColor)]</value>
 		<value>FF6DB9E5</value>
+	</variable>
+	<variable name="FocusedOSDButtonsColor">
+		<value condition="!String.IsEmpty(Skin.String(FocusedOSDButtonsColor)) + !String.IsEqual(Skin.String(FocusedOSDButtonsColor),None)">$INFO[Skin.String(FocusedOSDButtonsColor)]</value>
+		<value>$VAR[ThemeLabelColor]</value>
+	</variable>
+	<variable name="UnfocusedOSDButtonsColor">
+		<value condition="!String.IsEmpty(Skin.String(UnfocusedOSDButtonsColor)) + !String.IsEqual(Skin.String(UnfocusedOSDButtonsColor),None)">$INFO[Skin.String(UnfocusedOSDButtonsColor)]</value>
+		<value>white</value>
 	</variable>
 </includes>
