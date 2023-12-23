@@ -262,7 +262,7 @@
 	</variable>
 	<variable name="ListItemOverlayShowsVar">
 		<value condition="String.IsEqual(ListItem.Property(WatchedEpisodePercent),100)">overlays/list/OverlayWatched.png</value>
-		<value condition="!String.IsEqual(ListItem.Property(WatchedEpisodePercent),0)">overlays/list/resumable.png</value>
+		<value condition="Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),0)">overlays/list/resumable.png</value>
 		<value>overlays/list/OverlayUnWatched.png</value>
 	</variable>
 	<variable name="PlayerProgressIconVar">
