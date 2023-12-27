@@ -53,7 +53,16 @@
 							<font>font30</font>
 							<textcolor>grey2</textcolor>
 							<label>$INFO[ListItem.Label]</label>
-							<animation effect="slide" end="0,25" condition="ListItem.IsCollection">Conditional</animation>
+							<visible>!ListItem.IsCollection</visible>
+						</control>
+						<control type="label">
+							<left>135</left>
+							<width>790</width>
+							<height>120</height>
+							<font>font30</font>
+							<textcolor>grey2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>ListItem.IsCollection</visible>
 						</control>
 						<control type="label">
 							<left>135</left>
@@ -65,15 +74,16 @@
 							<label>$VAR[VideoListLabel2Var]</label>
 						</control>
 						<control type="image">
-							<left>950</left>
-							<top>44</top>
-							<width>80</width>
-							<height>30</height>
+							<left>990</left>
+							<top>40</top>
+							<width>100</width>
+							<height>40</height>
 							<aspectratio>keep</aspectratio>
 							<texture>$VAR[UnFocusHDIndicator]</texture>
 							<colordiffuse>grey2</colordiffuse>
 							<visible>String.IsEqual(ListItem.Label2,ListItem.Rating) | String.IsEqual(ListItem.Label2,ListItem.Year)</visible>
 							<visible>Skin.HasSetting(noindicatorlist)</visible>
+							<animation effect="slide" end="-65" condition="!Skin.HasSetting(Enable.HideRatings) | String.IsEqual(Container.SortMethod,$LOCALIZE[563])">Conditional</animation>
 						</control>
 						<control type="label">
 							<width>1090</width>
@@ -127,7 +137,15 @@
 							<height>70</height>
 							<font>font30</font>
 							<label>$INFO[ListItem.Label]</label>
-							<animation effect="slide" end="0,25" condition="ListItem.IsCollection">Conditional</animation>
+							<visible>!ListItem.IsCollection</visible>
+						</control>
+						<control type="label">
+							<left>135</left>
+							<width>790</width>
+							<height>120</height>
+							<font>font30</font>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>ListItem.IsCollection</visible>
 						</control>
 						<control type="label">
 							<left>135</left>
@@ -138,14 +156,15 @@
 							<label>$VAR[VideoListLabel2Var]</label>
 						</control>
 						<control type="image">
-							<left>950</left>
-							<top>44</top>
-							<width>80</width>
-							<height>30</height>
+							<left>990</left>
+							<top>40</top>
+							<width>100</width>
+							<height>40</height>
 							<aspectratio>keep</aspectratio>
 							<texture>$VAR[UnFocusHDIndicator]</texture>
 							<visible>String.IsEqual(ListItem.Label2,ListItem.Rating) | String.IsEqual(ListItem.Label2,ListItem.Year)</visible>
 							<visible>Skin.HasSetting(noindicatorlist)</visible>
+							<animation effect="slide" end="-65" condition="!Skin.HasSetting(Enable.HideRatings) | String.IsEqual(Container.SortMethod,$LOCALIZE[563])">Conditional</animation>
 						</control>
 						<control type="label">
 							<width>1090</width>
@@ -317,16 +336,15 @@
 							<label>$VAR[VideoListLabel2Var]</label>
 						</control>
 						<control type="image">
-							<left>950</left>
-							<top>44</top>
-							<width>80</width>
-							<height>30</height>
+							<left>990</left>
+							<top>40</top>
+							<width>100</width>
+							<height>40</height>
 							<aspectratio>keep</aspectratio>
 							<texture>$VAR[UnFocusHDIndicator]</texture>
 							<colordiffuse>grey2</colordiffuse>
 							<visible>String.IsEqual(ListItem.Label2,ListItem.Rating)</visible>
 							<visible>Skin.HasSetting(noindicatorlist)</visible>
-							<animation effect="slide" end="-40" condition="Skin.HasSetting(Enable.HideRatings)">Conditional</animation>
 						</control>
 						<control type="label">
 							<width>1090</width>
@@ -399,15 +417,14 @@
 							<label>$VAR[VideoListLabel2Var]</label>
 						</control>
 						<control type="image">
-							<left>950</left>
-							<top>44</top>
-							<width>80</width>
-							<height>30</height>
+							<left>990</left>
+							<top>40</top>
+							<width>100</width>
+							<height>40</height>
 							<aspectratio>keep</aspectratio>
 							<texture>$VAR[UnFocusHDIndicator]</texture>
 							<visible>String.IsEqual(ListItem.Label2,ListItem.Rating)</visible>
 							<visible>Skin.HasSetting(noindicatorlist)</visible>
-							<animation effect="slide" end="-40" condition="Skin.HasSetting(Enable.HideRatings)">Conditional</animation>
 						</control>
 						<control type="label">
 							<width>1090</width>
@@ -468,15 +485,25 @@
 							<font>font15</font>
 							<align>right</align>
 							<textcolor>grey2</textcolor>
-							<label>$INFO[ListItem.Label2]</label>
+							<label>$INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20453]]</label>
 						</control>
-						<control type="image">
-							<left>1090</left>
+						<control type="group">
+							<left>1085</left>
 							<top>28</top>
-							<width>64</width>
-							<height>64</height>
-							<aspectratio>keep</aspectratio>
-							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlayShowsVar]</texture>
+							<control type="image">
+								<width>64</width>
+								<height>64</height>
+								<aspectratio>keep</aspectratio>
+								<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+							</control>
+							<control type="label">
+								<width>64</width>
+								<height>64</height>
+								<font>font12_title</font>
+								<align>center</align>
+								<label>$VAR[ListItemOverlayShowsVar]</label>
+								<textcolor>grey3</textcolor>
+							</control>
 						</control>
 					</itemlayout>
 					<focusedlayout height="120" width="1140" condition="Container.Content(tvshows)">
@@ -515,15 +542,25 @@
 							<height>116</height>
 							<font>font15</font>
 							<align>right</align>
-							<label>$INFO[ListItem.Label2]</label>
+							<label>$INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20453]]</label>
 						</control>
-						<control type="image">
-							<left>1090</left>
+						<control type="group">
+							<left>1085</left>
 							<top>28</top>
-							<width>64</width>
-							<height>64</height>
-							<aspectratio>keep</aspectratio>
-							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlayShowsVar]</texture>
+							<control type="image">
+								<width>64</width>
+								<height>64</height>
+								<aspectratio>keep</aspectratio>
+								<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+							</control>
+							<control type="label">
+								<width>64</width>
+								<height>64</height>
+								<font>font12_title</font>
+								<align>center</align>
+								<label>$VAR[ListItemOverlayShowsVar]</label>
+								<textcolor>grey2</textcolor>
+							</control>
 						</control>
 					</focusedlayout>
 					<itemlayout height="120" width="1140" condition="Container.Content(seasons)">
@@ -562,13 +599,23 @@
 							<textcolor>grey2</textcolor>
 							<label>$INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20453]]</label>
 						</control>
-						<control type="image">
-							<left>1090</left>
+						<control type="group">
+							<left>1085</left>
 							<top>28</top>
-							<width>64</width>
-							<height>64</height>
-							<aspectratio>keep</aspectratio>
-							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlayShowsVar]</texture>
+							<control type="image">
+								<width>64</width>
+								<height>64</height>
+								<aspectratio>keep</aspectratio>
+								<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+							</control>
+							<control type="label">
+								<width>64</width>
+								<height>64</height>
+								<font>font12_title</font>
+								<align>center</align>
+								<label>$VAR[ListItemOverlayShowsVar]</label>
+								<textcolor>grey3</textcolor>
+							</control>
 						</control>
 					</itemlayout>
 					<focusedlayout height="120" width="1140" condition="Container.Content(seasons)">
@@ -611,13 +658,23 @@
 							<align>right</align>
 							<label>$INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20453]]</label>
 						</control>
-						<control type="image">
-							<left>1090</left>
+						<control type="group">
+							<left>1085</left>
 							<top>28</top>
-							<width>64</width>
-							<height>64</height>
-							<aspectratio>keep</aspectratio>
-							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlayShowsVar]</texture>
+							<control type="image">
+								<width>64</width>
+								<height>64</height>
+								<aspectratio>keep</aspectratio>
+								<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+							</control>
+							<control type="label">
+								<width>64</width>
+								<height>64</height>
+								<font>font12_title</font>
+								<align>center</align>
+								<label>$VAR[ListItemOverlayShowsVar]</label>
+								<textcolor>grey2</textcolor>
+							</control>
 						</control>
 					</focusedlayout>
 					<itemlayout height="120" width="1140" condition="Container.Content(addons)">

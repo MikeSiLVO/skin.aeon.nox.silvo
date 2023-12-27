@@ -933,13 +933,23 @@
 						<textcolor>grey2</textcolor>
 						<label>$INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20453]]</label>
 					</control>
-					<control type="image">
+					<control type="group">
 						<left>742</left>
 						<top>2</top>
-						<width>64</width>
-						<height>64</height>
-						<aspectratio>keep</aspectratio>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlayShowsVar]</texture>
+						<control type="image">
+							<width>64</width>
+							<height>64</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+						</control>
+						<control type="label">
+							<width>64</width>
+							<height>64</height>
+							<font>font12_title</font>
+							<align>center</align>
+							<label>$VAR[ListItemOverlayShowsVar]</label>
+							<textcolor>grey3</textcolor>
+						</control>
 					</control>
 				</itemlayout>
 				<focusedlayout height="68" width="806" condition="Container.Content(seasons)">
@@ -967,13 +977,23 @@
 						<label>$INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20453]]</label>
 						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(501)">Conditional</animation>
 					</control>
-					<control type="image">
+					<control type="group">
 						<left>742</left>
 						<top>2</top>
-						<width>64</width>
-						<height>64</height>
-						<aspectratio>keep</aspectratio>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlayShowsVar]</texture>
+						<control type="image">
+							<width>64</width>
+							<height>64</height>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+						</control>
+						<control type="label">
+							<width>64</width>
+							<height>64</height>
+							<font>font12_title</font>
+							<align>center</align>
+							<label>$VAR[ListItemOverlayShowsVar]</label>
+							<textcolor>grey2</textcolor>
+						</control>
 					</control>
 				</focusedlayout>
 				<itemlayout height="68" width="806" condition="Container.Content(episodes)">
