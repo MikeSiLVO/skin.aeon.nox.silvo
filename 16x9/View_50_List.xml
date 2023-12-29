@@ -2300,20 +2300,22 @@
 							<label>$INFO[ListItem.Label2]</label>
 							<visible>!ListItem.IsFolder</visible>
 						</control>
-						<control type="image">
+						<control type="group">
 							<left>1076</left>
-							<width>64</width>
-							<height>64</height>
-							<aspectratio>keep</aspectratio>
-							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
-							<visible>!Container.Content(seasons) + !Container.Content(tvshows)</visible>
-						</control>
-						<control type="image">
-							<left>1076</left>
-							<width>64</width>
-							<height>64</height>
-							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlayShowsVar]</texture>
-							<visible>Container.Content(seasons) | Container.Content(tvshows)</visible>
+							<control type="image">
+								<width>64</width>
+								<height>64</height>
+								<aspectratio>keep</aspectratio>
+								<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+							</control>
+							<control type="label">
+								<width>64</width>
+								<height>64</height>
+								<font>font12_title</font>
+								<align>center</align>
+								<textcolor>grey2</textcolor>
+								<label>$VAR[ListItemOverlayShowsVar]</label>
+							</control>
 						</control>
 					</itemlayout>
 					<focusedlayout height="60" width="1140" condition="!Container.Content(addons)">
@@ -2359,20 +2361,21 @@
 							<label>$INFO[ListItem.Label2]</label>
 							<visible>!ListItem.IsFolder</visible>
 						</control>
-						<control type="image">
+						<control type="group">
 							<left>1076</left>
-							<width>64</width>
-							<height>64</height>
-							<aspectratio>keep</aspectratio>
-							<texture colordiffuse="$VAR[ThemeLabelColor]" fallback="overlays/list/">$VAR[ListItemOverlay]</texture>
-							<visible>!Container.Content(seasons) + !Container.Content(tvshows)</visible>
-						</control>
-						<control type="image">
-							<left>1076</left>
-							<width>64</width>
-							<height>64</height>
-							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlayShowsVar]</texture>
-							<visible>Container.Content(seasons) | Container.Content(tvshows)</visible>
+							<control type="image">
+								<width>64</width>
+								<height>64</height>
+								<aspectratio>keep</aspectratio>
+								<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+							</control>
+							<control type="label">
+								<width>64</width>
+								<height>64</height>
+								<font>font12_title</font>
+								<align>center</align>
+								<label>$VAR[ListItemOverlayShowsVar]</label>
+							</control>
 						</control>
 					</focusedlayout>
 					<itemlayout height="60" width="1140" condition="Container.Content(addons)">
