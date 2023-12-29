@@ -70,7 +70,7 @@
 		<focusposition>2</focusposition>
 		<viewtype label="$LOCALIZE[31606]">list</viewtype>
 		<scrolltime tween="quadratic" easing="out">300</scrolltime>
-		<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(tvshows) | Container.Content(movies) | Container.Content(sets) | Container.Content(artists)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_59]</visible>
+		<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(tvshows) | Container.Content(movies) | Container.Content(sets)] | [Window.IsActive(music) +  Container.Content(artists)] | !Window.IsActive(music) + System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_59]</visible>
 		<orientation>horizontal</orientation>
 		<itemlayout width="495" height="450">
 			<control type="group">
