@@ -372,11 +372,10 @@
 	<variable name="VideoListLabel2Var">
 		<value condition="Container.Content(episodes) + Skin.HasSetting(Enable.HideRatings) + ![String.IsEqual(Container.SortMethod,$LOCALIZE[563]) | String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | String.IsEqual(Container.SortMethod,$LOCALIZE[20074])]">$INFO[ListItem.Premiered]</value>
 		<value condition="Container.Content(episodes)">$VAR[DialogSelectLabel2RuntimeVar,, • ]$INFO[ListItem.Premiered]</value>
-		<value condition="!String.IsEqual(Container.SortMethod,$LOCALIZE[345]) + !ListItem.IsCollection + !String.IsEmpty(ListItem.Genre)">$INFO[ListItem.Year]$INFO[ListItem.Genre, • ]</value>
-		<value condition="!String.IsEqual(Container.SortMethod,$LOCALIZE[180]) + !ListItem.IsCollection + !String.IsEmpty(ListItem.Genre)">$VAR[DialogSelectLabel2RuntimeVar,, • ]$INFO[ListItem.Year]$INFO[ListItem.Genre, • ]</value>
-		<value condition="!String.IsEmpty(ListItem.Genre)">$VAR[DialogSelectLabel2RuntimeVar,, • ]$INFO[ListItem.Genre]</value>
-		<value condition="!String.IsEqual(Container.SortMethod,$LOCALIZE[345]) + !ListItem.IsCollection + !String.IsEmpty(ListItem.Year)">$INFO[ListItem.Year]</value>
-		<value condition="[!ListItem.IsCollection + !Container.Content(studios)] + String.IsEmpty(Container.PluginName)">[I]$INFO[ListItem.FolderPath][/I]</value>
+		<value condition="![String.IsEqual(Container.SortMethod,$LOCALIZE[345]) + !Container.Content(tvshows)] + !String.IsEqual(Container.SortMethod,$LOCALIZE[180]) + !ListItem.IsCollection + !String.IsEmpty(ListItem.Genre)">$VAR[DialogSelectLabel2RuntimeVar,, • ]$INFO[ListItem.Year]$INFO[ListItem.Genre, • ]</value>
+		<value condition="!String.IsEqual(Container.SortMethod,$LOCALIZE[180]) + !String.IsEmpty(ListItem.Genre)">$VAR[DialogSelectLabel2RuntimeVar,, • ]$INFO[ListItem.Genre]</value>
+		<value condition="!ListItem.IsCollection + !String.IsEmpty(ListItem.Year)">$INFO[ListItem.Year]$INFO[ListItem.Genre, • ]</value>
+		<value condition="!ListItem.IsCollection + !Container.Content(studios) + String.IsEmpty(Container.PluginName)">[I]$INFO[ListItem.FolderPath][/I]</value>
 	</variable>
 	<variable name="VideoListDurationVar">
 		<value condition="Integer.IsLess(ListItem.Duration(mins),60)">$INFO[ListItem.Duration(mm:ss)]</value>
