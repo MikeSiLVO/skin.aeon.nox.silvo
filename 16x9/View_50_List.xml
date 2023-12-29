@@ -46,14 +46,57 @@
 							<texture>$VAR[StudioIconVar]</texture>
 							<colordiffuse>grey2</colordiffuse>
 						</control>
+						<control type="group">
+							<visible>!ListItem.IsCollection</visible>
+							<control type="label">
+								<left>135</left>
+								<width>790</width>
+								<height>70</height>
+								<font>font30</font>
+								<textcolor>grey2</textcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="group">
+								<visible>Skin.HasSetting(noindicatorlist)</visible>
+								<control type="image">
+									<left>5</left>
+									<top>20</top>
+									<width>1090</width>
+									<height>40</height>
+									<aspectratio align="right">keep</aspectratio>
+									<colordiffuse>grey2</colordiffuse>
+									<texture>$VAR[UnFocusHDIndicator]</texture>
+								</control>
+								<control type="label">
+									<left>5</left>
+									<top>60</top>
+									<width>1090</width>
+									<height>40</height>
+									<font>font15</font>
+									<align>right</align>
+									<textcolor>grey2</textcolor>
+									<label>$VAR[VideoListLabelVar]</label>
+								</control>
+							</control>
+							<control type="label">
+								<left>5</left>
+								<width>1090</width>
+								<height>116</height>
+								<font>font15</font>
+								<align>right</align>
+								<textcolor>grey2</textcolor>
+								<label>$VAR[VideoListLabelVar]</label>
+								<visible>!Skin.HasSetting(noindicatorlist)</visible>
+							</control>
+						</control>
 						<control type="label">
 							<left>135</left>
 							<width>790</width>
-							<height>70</height>
+							<height>120</height>
 							<font>font30</font>
 							<textcolor>grey2</textcolor>
 							<label>$INFO[ListItem.Label]</label>
-							<visible>!ListItem.IsCollection</visible>
+							<visible>ListItem.IsCollection</visible>
 						</control>
 						<control type="label">
 							<left>135</left>
@@ -72,39 +115,6 @@
 							<font>font15</font>
 							<textcolor>grey3</textcolor>
 							<label>$VAR[VideoListLabel2Var]</label>
-						</control>
-						<control type="image">
-							<left>990</left>
-							<top>40</top>
-							<width>100</width>
-							<height>40</height>
-							<aspectratio>keep</aspectratio>
-							<texture>$VAR[UnFocusHDIndicator]</texture>
-							<colordiffuse>grey2</colordiffuse>
-							<visible>String.IsEqual(ListItem.Label2,ListItem.Rating) | String.IsEqual(ListItem.Label2,ListItem.Year)</visible>
-							<visible>Skin.HasSetting(noindicatorlist)</visible>
-							<animation effect="slide" end="-65" condition="!Skin.HasSetting(Enable.HideRatings) | String.IsEqual(Container.SortMethod,$LOCALIZE[563])">Conditional</animation>
-						</control>
-						<control type="label">
-							<width>1090</width>
-							<height>116</height>
-							<font>font30</font>
-							<align>right</align>
-							<textcolor>grey2</textcolor>
-							<label>$INFO[ListItem.Rating]</label>
-							<visible>[String.IsEqual(ListItem.Label2,ListItem.Rating) + !Skin.HasSetting(Enable.HideRatings)] | String.IsEqual(Container.SortMethod,$LOCALIZE[563])</visible>
-							<visible>!ListItem.IsCollection</visible>
-						</control>
-						<control type="label">
-							<left>5</left>
-							<width>1090</width>
-							<height>116</height>
-							<font>font15</font>
-							<align>right</align>
-							<textcolor>grey2</textcolor>
-							<label>$VAR[VideoListLabelVar]</label>
-							<visible>[!String.IsEqual(ListItem.Label2,ListItem.Rating) | Skin.HasSetting(Enable.HideRatings)] + !String.IsEqual(Container.SortMethod,$LOCALIZE[563])</visible>
-							<visible>!ListItem.IsCollection</visible>
 						</control>
 						<control type="image">
 							<left>1090</left>
@@ -131,13 +141,44 @@
 							<aspectratio>keep</aspectratio>
 							<texture>$VAR[StudioIconVar]</texture>
 						</control>
-						<control type="label">
-							<left>135</left>
-							<width>790</width>
-							<height>70</height>
-							<font>font30</font>
-							<label>$INFO[ListItem.Label]</label>
+						<control type="group">
 							<visible>!ListItem.IsCollection</visible>
+							<control type="label">
+								<left>135</left>
+								<width>790</width>
+								<height>70</height>
+								<font>font30</font>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="group">
+								<visible>Skin.HasSetting(noindicatorlist)</visible>
+								<control type="image">
+									<left>5</left>
+									<top>20</top>
+									<width>1090</width>
+									<height>40</height>
+									<aspectratio align="right">keep</aspectratio>
+									<texture>$VAR[UnFocusHDIndicator]</texture>
+								</control>
+								<control type="label">
+									<left>5</left>
+									<top>60</top>
+									<width>1090</width>
+									<height>40</height>
+									<font>font15</font>
+									<align>right</align>
+									<label>$VAR[VideoListLabelVar]</label>
+								</control>
+							</control>
+							<control type="label">
+								<left>5</left>
+								<width>1090</width>
+								<height>116</height>
+								<font>font15</font>
+								<align>right</align>
+								<label>$VAR[VideoListLabelVar]</label>
+								<visible>!Skin.HasSetting(noindicatorlist)</visible>
+							</control>
 						</control>
 						<control type="label">
 							<left>135</left>
@@ -154,36 +195,6 @@
 							<height>60</height>
 							<font>font15</font>
 							<label>$VAR[VideoListLabel2Var]</label>
-						</control>
-						<control type="image">
-							<left>990</left>
-							<top>40</top>
-							<width>100</width>
-							<height>40</height>
-							<aspectratio>keep</aspectratio>
-							<texture>$VAR[UnFocusHDIndicator]</texture>
-							<visible>String.IsEqual(ListItem.Label2,ListItem.Rating) | String.IsEqual(ListItem.Label2,ListItem.Year)</visible>
-							<visible>Skin.HasSetting(noindicatorlist)</visible>
-							<animation effect="slide" end="-65" condition="!Skin.HasSetting(Enable.HideRatings) | String.IsEqual(Container.SortMethod,$LOCALIZE[563])">Conditional</animation>
-						</control>
-						<control type="label">
-							<width>1090</width>
-							<height>116</height>
-							<font>font30</font>
-							<align>right</align>
-							<label>$INFO[ListItem.Rating]</label>
-							<visible>[String.IsEqual(ListItem.Label2,ListItem.Rating) + !Skin.HasSetting(Enable.HideRatings)] | String.IsEqual(Container.SortMethod,$LOCALIZE[563])</visible>
-							<visible>!ListItem.IsCollection</visible>
-						</control>
-						<control type="label">
-							<left>5</left>
-							<width>1090</width>
-							<height>116</height>
-							<font>font15</font>
-							<align>right</align>
-							<label>$VAR[VideoListLabelVar]</label>
-							<visible>[!String.IsEqual(ListItem.Label2,ListItem.Rating) | Skin.HasSetting(Enable.HideRatings)] + !String.IsEqual(Container.SortMethod,$LOCALIZE[563])</visible>
-							<visible>!ListItem.IsCollection</visible>
 						</control>
 						<control type="image">
 							<left>1090</left>
@@ -324,7 +335,6 @@
 							<font>font30</font>
 							<textcolor>grey2</textcolor>
 							<label>$INFO[ListItem.Label]</label>
-							<animation effect="slide" start="0,0" end="0,25" time="0" condition="String.IsEmpty(ListItem.Premiered)">Conditional</animation>
 						</control>
 						<control type="label">
 							<left>135</left>
@@ -335,25 +345,27 @@
 							<textcolor>grey3</textcolor>
 							<label>$VAR[VideoListLabel2Var]</label>
 						</control>
-						<control type="image">
-							<left>990</left>
-							<top>40</top>
-							<width>100</width>
-							<height>40</height>
-							<aspectratio>keep</aspectratio>
-							<texture>$VAR[UnFocusHDIndicator]</texture>
-							<colordiffuse>grey2</colordiffuse>
-							<visible>String.IsEqual(ListItem.Label2,ListItem.Rating)</visible>
+						<control type="group">
 							<visible>Skin.HasSetting(noindicatorlist)</visible>
-						</control>
-						<control type="label">
-							<width>1090</width>
-							<height>116</height>
-							<font>font30</font>
-							<align>right</align>
-							<textcolor>grey2</textcolor>
-							<label>$VAR[VideoListLabelVar]</label>
-							<visible>String.IsEqual(ListItem.Label2,ListItem.Rating)</visible>
+							<control type="image">
+								<left>5</left>
+								<top>20</top>
+								<width>1090</width>
+								<height>40</height>
+								<aspectratio align="right">keep</aspectratio>
+								<colordiffuse>grey2</colordiffuse>
+								<texture>$VAR[UnFocusHDIndicator]</texture>
+							</control>
+							<control type="label">
+								<left>5</left>
+								<top>60</top>
+								<width>1090</width>
+								<height>40</height>
+								<font>font15</font>
+								<align>right</align>
+								<textcolor>grey2</textcolor>
+								<label>$VAR[VideoListLabelVar]</label>
+							</control>
 						</control>
 						<control type="label">
 							<left>5</left>
@@ -362,8 +374,8 @@
 							<font>font15</font>
 							<align>right</align>
 							<textcolor>grey2</textcolor>
-							<label>$INFO[ListItem.Label2]</label>
-							<visible>!String.IsEqual(ListItem.Label2,ListItem.Rating)</visible>
+							<label>$VAR[VideoListLabelVar]</label>
+							<visible>!Skin.HasSetting(noindicatorlist)</visible>
 						</control>
 						<control type="image">
 							<left>1090</left>
@@ -406,7 +418,6 @@
 							<height>70</height>
 							<font>font30</font>
 							<label>$INFO[ListItem.Label]</label>
-							<animation effect="slide" start="0,0" end="0,25" time="0" condition="String.IsEmpty(ListItem.Premiered)">Conditional</animation>
 						</control>
 						<control type="label">
 							<left>135</left>
@@ -416,23 +427,25 @@
 							<font>font15</font>
 							<label>$VAR[VideoListLabel2Var]</label>
 						</control>
-						<control type="image">
-							<left>990</left>
-							<top>40</top>
-							<width>100</width>
-							<height>40</height>
-							<aspectratio>keep</aspectratio>
-							<texture>$VAR[UnFocusHDIndicator]</texture>
-							<visible>String.IsEqual(ListItem.Label2,ListItem.Rating)</visible>
+						<control type="group">
 							<visible>Skin.HasSetting(noindicatorlist)</visible>
-						</control>
-						<control type="label">
-							<width>1090</width>
-							<height>116</height>
-							<font>font30</font>
-							<align>right</align>
-							<label>$VAR[VideoListLabelVar]</label>
-							<visible>String.IsEqual(ListItem.Label2,ListItem.Rating)</visible>
+							<control type="image">
+								<left>5</left>
+								<top>20</top>
+								<width>1090</width>
+								<height>40</height>
+								<aspectratio align="right">keep</aspectratio>
+								<texture>$VAR[UnFocusHDIndicator]</texture>
+							</control>
+							<control type="label">
+								<left>5</left>
+								<top>60</top>
+								<width>1090</width>
+								<height>40</height>
+								<font>font15</font>
+								<align>right</align>
+								<label>$VAR[VideoListLabelVar]</label>
+							</control>
 						</control>
 						<control type="label">
 							<left>5</left>
@@ -440,8 +453,8 @@
 							<height>116</height>
 							<font>font15</font>
 							<align>right</align>
-							<label>$INFO[ListItem.Label2]</label>
-							<visible>!String.IsEqual(ListItem.Label2,ListItem.Rating)</visible>
+							<label>$VAR[VideoListLabelVar]</label>
+							<visible>!Skin.HasSetting(noindicatorlist)</visible>
 						</control>
 						<control type="image">
 							<left>1090</left>

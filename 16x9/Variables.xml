@@ -359,22 +359,28 @@
 	</variable>
 	<!-- List Label Vars -->
 	<variable name="VideoListLabelVar">
-		<value condition="Skin.HasSetting(Enable.HideRatings) + String.IsEqual(ListItem.Label2,ListItem.Rating) + !String.IsEqual(Container.SortMethod,$LOCALIZE[563]) + !String.IsEmpty(ListItem.Year) + !String.IsEqual(ListItem.DBTYPE,episode) | [Container.Content(movies) + String.IsEqual(Container.SortMethod,$LOCALIZE[345])]">$INFO[ListItem.Year]</value>
-		<value condition="!Skin.HasSetting(Enable.HideRatings) + String.IsEqual(ListItem.Label2,ListItem.Rating) + !String.IsEmpty(ListItem.Label2)">$INFO[ListItem.Label2]</value>
-		<value condition="Container.Content(movies) + String.IsEqual(Container.SortMethod,$LOCALIZE[180])">$INFO[ListItem.Duration(h:mm:ss)]</value>
-		<value condition="Container.Content(movies) + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])">$INFO[ListItem.UserRating,,*]</value>
+		<value condition="Container.Content(movies) + String.IsEqual(Container.SortMethod,$LOCALIZE[345])">$INFO[ListItem.Year]</value>
+		<value condition="!Skin.HasSetting(Enable.HideRatings) + String.IsEqual(ListItem.Label2,ListItem.Rating) | Skin.HasSetting(Enable.HideRatings) + String.IsEqual(ListItem.Label2,ListItem.Rating) + String.IsEqual(Container.SortMethod,$LOCALIZE[563]) + !String.IsEmpty(ListItem.Label2)">$INFO[ListItem.Label2]</value>
+		<value condition="Container.Content(movies) + String.IsEqual(Container.SortMethod,$LOCALIZE[180]) | Container.Content(movies) + [String.IsEqual(ListItem.Label2,ListItem.Rating) + Skin.HasSetting(Enable.HideRatings)]">$VAR[VideoListDurationVar]</value>
+		<value condition="[Container.Content(movies) | Container.Content(episodes)] + String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) + !String.IsEmpty(ListItem.UserRating)">$INFO[ListItem.UserRating,,*]</value>
+		<value condition="[Container.Content(movies) | Container.Content(episodes)] + String.IsEqual(Container.SortMethod,$LOCALIZE[20074]) + !String.IsEmpty(ListItem.MPAA)">$INFO[ListItem.MPAA]</value>
 		<value condition="Container.Content(movies) + String.IsEqual(Container.SortMethod,$LOCALIZE[570])">$INFO[ListItem.DateAdded]</value>
-		<value condition="Container.Content(movies) + String.IsEqual(Container.SortMethod,$LOCALIZE[568])">$INFO[ListItem.LastPlayed]</value>
+		<value condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes)] + String.IsEqual(Container.SortMethod,$LOCALIZE[568]) + !String.IsEmpty(ListItem.LastPlayed)">$INFO[ListItem.LastPlayed]</value>
 		<value condition="Container.Content(movies) + String.IsEqual(Container.SortMethod,$LOCALIZE[567])">$INFO[ListItem.PlayCount,, $LOCALIZE[31488]]</value>
-		<value condition="!Container.Content(movies) + !Container.Content(episodes)">$INFO[ListItem.Duration]</value>
+		<value condition="Container.Content(episodes)">$VAR[VideoListDurationVar]</value>
 	</variable>
 	<variable name="VideoListLabel2Var">
+		<value condition="Container.Content(episodes) + Skin.HasSetting(Enable.HideRatings) + ![String.IsEqual(Container.SortMethod,$LOCALIZE[563]) | String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | String.IsEqual(Container.SortMethod,$LOCALIZE[20074])]">$INFO[ListItem.Premiered]</value>
 		<value condition="Container.Content(episodes)">$VAR[DialogSelectLabel2RuntimeVar,, • ]$INFO[ListItem.Premiered]</value>
 		<value condition="!String.IsEqual(Container.SortMethod,$LOCALIZE[345]) + !ListItem.IsCollection + !String.IsEmpty(ListItem.Genre)">$INFO[ListItem.Year]$INFO[ListItem.Genre, • ]</value>
 		<value condition="!String.IsEqual(Container.SortMethod,$LOCALIZE[180]) + !ListItem.IsCollection + !String.IsEmpty(ListItem.Genre)">$VAR[DialogSelectLabel2RuntimeVar,, • ]$INFO[ListItem.Year]$INFO[ListItem.Genre, • ]</value>
 		<value condition="!String.IsEmpty(ListItem.Genre)">$VAR[DialogSelectLabel2RuntimeVar,, • ]$INFO[ListItem.Genre]</value>
 		<value condition="!String.IsEqual(Container.SortMethod,$LOCALIZE[345]) + !ListItem.IsCollection + !String.IsEmpty(ListItem.Year)">$INFO[ListItem.Year]</value>
 		<value condition="[!ListItem.IsCollection + !Container.Content(studios)] + String.IsEmpty(Container.PluginName)">[I]$INFO[ListItem.FolderPath][/I]</value>
+	</variable>
+	<variable name="VideoListDurationVar">
+		<value condition="Integer.IsLess(ListItem.Duration(mins),60)">$INFO[ListItem.Duration(mm:ss)]</value>
+		<value condition="Integer.IsGreaterOrEqual(ListItem.Duration(mins),60)">$INFO[ListItem.Duration(h:mm:ss)]</value>
 	</variable>
 	<variable name="MusicListLabel3Var">
 		<value condition="Container.Content(songs) + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
