@@ -69,32 +69,31 @@
 						</control>
 					</itemlayout>
 					<focusedlayout height="60" width="957">
-						<control type="image">
-							<width>957</width>
-							<height>60</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
-							<visible>Control.HasFocus(3)</visible>
-							<include>VisibleFadeAnimation</include>
-						</control>
-						<control type="label">
-							<width>950</width>
-							<height>60</height>
-							<textoffsetx>15</textoffsetx>
-							<font>font14</font>
-							<scroll>true</scroll>
-							<shadowcolor>shadow</shadowcolor>
-							<label>$INFO[ListItem.Label]</label>
+						<control type="group">
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(3)">Conditional</animation>
-						</control>
-						<control type="label">
-							<width>950</width>
-							<height>60</height>
-							<textoffsetx>15</textoffsetx>
-							<font>font14</font>
-							<align>right</align>
-							<shadowcolor>shadow</shadowcolor>
-							<label>$INFO[ListItem.Label2]</label>
-							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(3)">Conditional</animation>
+							<control type="image">
+								<width>957</width>
+								<height>60</height>
+								<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+							</control>
+							<control type="label">
+								<width>950</width>
+								<height>60</height>
+								<textoffsetx>15</textoffsetx>
+								<font>font14</font>
+								<scroll>true</scroll>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<width>950</width>
+								<height>60</height>
+								<textoffsetx>15</textoffsetx>
+								<font>font14</font>
+								<align>right</align>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
 						</control>
 					</focusedlayout>
 				</control>
@@ -131,31 +130,30 @@
 						</control>
 					</itemlayout>
 					<focusedlayout height="60" width="957">
-						<control type="image">
-							<width>957</width>
-							<height>60</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
-							<visible>Control.HasFocus(6)</visible>
-							<include>VisibleFadeAnimation</include>
-						</control>
-						<control type="label">
-							<width>950</width>
-							<height>60</height>
-							<font>font14</font>
-							<textoffsetx>15</textoffsetx>
-							<shadowcolor>shadow</shadowcolor>
-							<label>$INFO[ListItem.Label]</label>
+						<control type="group">
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(6)">Conditional</animation>
-						</control>
-						<control type="label">
-							<width>950</width>
-							<height>60</height>
-							<font>font13</font>
-							<textoffsetx>15</textoffsetx>
-							<align>right</align>
-							<shadowcolor>shadow</shadowcolor>
-							<label>$VAR[DialogSelectLabel2Var]</label>
-							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(6)">Conditional</animation>
+							<control type="image">
+								<width>957</width>
+								<height>60</height>
+								<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+							</control>
+							<control type="label">
+								<width>950</width>
+								<height>60</height>
+								<font>font14</font>
+								<textoffsetx>15</textoffsetx>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<width>950</width>
+								<height>60</height>
+								<font>font13</font>
+								<textoffsetx>15</textoffsetx>
+								<align>right</align>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$VAR[DialogSelectLabel2Var]</label>
+							</control>
 						</control>
 					</focusedlayout>
 				</control>
