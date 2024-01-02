@@ -35,14 +35,6 @@
 		<value condition="!String.IsEmpty(Container(50).ListItem.Art(poster))">$INFO[Container(50).ListItem.Art(poster)]</value>
 		<value condition="!String.IsEmpty(Container(50).ListItem.Art(thumb))">$INFO[Container(50).ListItem.Art(thumb)]</value>
 	</variable>
-	<variable name="VideoVersionsHeaderLabelVar">
-		<value condition="Control.HasFocus(50) + Window.IsActive(videoversion)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[16106] $LOCALIZE[31616][/COLOR]</value>
-		<value condition="Control.HasFocus(51) + Window.IsActive(videoversion)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[16106] $LOCALIZE[31014][/COLOR]</value>
-		<value condition="Control.HasFocus(50) + Window.IsActive(videoversionselect)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[208] $INFO[Container(50).ListItem.Label][/COLOR]</value>
-		<value condition="Control.HasFocus(51) + Window.IsActive(videoversionselect)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[208] $LOCALIZE[31014][/COLOR]</value>
-		<value condition="Control.HasFocus(97)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[222][/COLOR]</value>
-		<value>$LOCALIZE[40000]</value>
-	</variable>
 	<variable name="MusicPlayerCodecVar">
 		<value condition="String.Contains(MusicPlayer.Codec,mp3)">mp3</value>
 		<value>$INFO[MusicPlayer.Codec]</value>
