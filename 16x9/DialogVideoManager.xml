@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">9000</defaultcontrol>
+	<controls>
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture>colors/black50.png</texture>
+			<animation effect="fade" time="300">WindowOpen</animation>
+			<animation effect="fade" time="300">WindowClose</animation>
+		</control>
+		<control type="group">
+			<left>210</left>
+			<top>234</top>
+			<include>DialogOpenCloseAnimation</include>
+			<include content="DialogPanel">
+				<param name="icon_visible">true</param>
+				<param name="height">611</param>
+				<param name="header_label">$INFO[Control.GetLabel(2)]</param>
+				<param name="buttons_ondown">9000</param>
+				<param name="ondown_condition">Integer.IsGreater(Container(50).NumItems,0)</param>
+				<param name="buttons_ondown2">9999</param>
+				<param name="ondown_condition2">Integer.IsEqual(Container(50).NumItems,0)</param>
+			</include>
+			<control type="group">
+				<left>701</left>
+				<top>69</top>
+				<control type="image">
+					<width>500</width>
+					<height>540</height>
+					<aspectratio>keep</aspectratio>
+					<texture background="true">$VAR[VideoVersionsPosterVar]</texture>
+				</control>
+			</control>
+			<control type="group" id="9000">
+				<control type="list" id="50">
+					<left>1</left>
+					<top>68</top>
+					<width>700</width>
+					<height>540</height>
+					<onleft>97</onleft>
+					<onright>9999</onright>
+					<onup>50</onup>
+					<ondown>50</ondown>
+					<scrolltime tween="quadratic" easing="out">200</scrolltime>
+					<itemlayout height="60" width="800">
+						<control type="label">
+							<width>800</width>
+							<height>60</height>
+							<font>font14</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="60" width="800">
+						<control type="group">
+							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
+							<control type="image">
+								<left>1</left>
+								<width>800</width>
+								<height>60</height>
+								<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+							</control>
+							<control type="label">
+								<width>800</width>
+								<height>60</height>
+								<font>font14</font>
+								<textoffsetx>15</textoffsetx>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</control>
+					</focusedlayout>
+				</control>
+			</control>
+			<control type="grouplist" id="9999">
+				<left>1241</left>
+				<top>68</top>
+				<width>258</width>
+				<height>540</height>
+				<onleft>9000</onleft>
+				<onright>90000</onright>
+				<onup>9999</onup>
+				<ondown>9999</ondown>
+				<control type="button" id="21">
+					<description>Play button</description>
+					<texturenofocus colordiffuse="grey3" border="1">listselect_fo.png</texturenofocus>
+					<textoffsetx>30</textoffsetx>
+					<width>258</width>
+					<height>67.5</height>
+					<label>$LOCALIZE[208]</label>
+				</control>
+				<control type="button" id="22">
+					<description>Add version button</description>
+					<texturenofocus colordiffuse="grey3" border="1">listselect_fo.png</texturenofocus>
+					<textoffsetx>30</textoffsetx>
+					<width>258</width>
+					<height>67.5</height>
+					<label>$LOCALIZE[40014]</label>
+					<visible>Window.IsVisible(managevideoversions)</visible>
+				</control>
+				<control type="button" id="23">
+					<description>Add extras button</description>
+					<texturenofocus colordiffuse="grey3" border="1">listselect_fo.png</texturenofocus>
+					<textoffsetx>30</textoffsetx>
+					<width>258</width>
+					<height>67.5</height>
+					<label>$LOCALIZE[40015]</label>
+					<visible>Window.IsVisible(managevideoextras)</visible>
+				</control>
+				<control type="button" id="27">
+					<description>Choose art button</description>
+					<texturenofocus colordiffuse="grey3" border="1">listselect_fo.png</texturenofocus>
+					<textoffsetx>30</textoffsetx>
+					<width>258</width>
+					<height>67.5</height>
+					<label>$LOCALIZE[13511]</label>
+				</control>
+				<control type="button" id="24">
+					<description>Rename button</description>
+					<texturenofocus colordiffuse="grey3" border="1">listselect_fo.png</texturenofocus>
+					<textoffsetx>30</textoffsetx>
+					<width>258</width>
+					<height>67.5</height>
+					<label>$LOCALIZE[118]</label>
+				</control>
+				<control type="button" id="26">
+					<description>Remove button</description>
+					<texturenofocus colordiffuse="grey3" border="1">listselect_fo.png</texturenofocus>
+					<textoffsetx>30</textoffsetx>
+					<width>258</width>
+					<height>67.5</height>
+					<label>$LOCALIZE[15015]</label>
+				</control>
+				<control type="button" id="25">
+					<description>Set default button</description>
+					<texturenofocus colordiffuse="grey3" border="1">listselect_fo.png</texturenofocus>
+					<textoffsetx>30</textoffsetx>
+					<width>258</width>
+					<height>67.5</height>
+					<label>$LOCALIZE[40023]</label>
+					<visible>Window.IsVisible(managevideoversions)</visible>
+				</control>
+				<control type="button" id="99991">
+					<description>Blank button</description>
+					<texturenofocus colordiffuse="grey3" border="1">listselect_fo.png</texturenofocus>
+					<width>258</width>
+					<height>135</height>
+					<label />
+					<enable>no</enable>
+				</control>
+				<control type="button" id="99992">
+					<description>Blank button</description>
+					<texturenofocus colordiffuse="grey3" border="1">listselect_fo.png</texturenofocus>
+					<width>258</width>
+					<height>67.5</height>
+					<label />
+					<enable>no</enable>
+					<visible>Window.IsVisible(managevideoextras)</visible>
+				</control>
+			</control>
+		</control>
+		<control type="label" id="2">
+			<include>HiddenObject</include>
+		</control>
+	</controls>
+</window>

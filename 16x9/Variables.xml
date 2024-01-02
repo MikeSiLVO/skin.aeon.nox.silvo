@@ -32,11 +32,8 @@
 		<value>$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="VideoVersionsPosterVar">
-		<value condition="Control.HasFocus(50) + !String.IsEmpty(Container(50).ListItem.Art(poster))">$INFO[Container(50).ListItem.Art(poster)]</value>
-		<value condition="Control.HasFocus(51) + !String.IsEmpty(Container(51).ListItem.Art(poster))">$INFO[Container(51).ListItem.Art(poster)]</value>
-		<value condition="Control.HasFocus(50) + !String.IsEmpty(Container(50).ListItem.Icon)">$INFO[Container(50).ListItem.Icon]</value>
-		<value condition="Control.HasFocus(51) + !String.IsEmpty(Container(51).ListItem.Icon)">$INFO[Container(51).ListItem.Icon]</value>
-		<value condition="!String.IsEmpty(Window(Home).Property(versionsposter))">$INFO[Window(Home).Property(versionsposter)]</value>
+		<value condition="!String.IsEmpty(Container(50).ListItem.Art(poster))">$INFO[Container(50).ListItem.Art(poster)]</value>
+		<value condition="!String.IsEmpty(Container(50).ListItem.Art(thumb))">$INFO[Container(50).ListItem.Art(thumb)]</value>
 	</variable>
 	<variable name="VideoVersionsHeaderLabelVar">
 		<value condition="Control.HasFocus(50) + Window.IsActive(videoversion)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[16106] $LOCALIZE[31616][/COLOR]</value>
@@ -1466,6 +1463,7 @@
 		<value condition="Control.HasFocus(909)">$INFO[System.AddonTitle(script.preshowexperience)]</value>
 		<value condition="Control.HasFocus(910)">$LOCALIZE[206]</value>
 		<value condition="Control.HasFocus(14)">$LOCALIZE[40000]</value>
+		<value condition="Control.HasFocus(15)">$LOCALIZE[40211]</value>
 		<value condition="Control.HasFocus(11)">$LOCALIZE[20410]</value>
 		<value condition="Control.HasFocus(911)">$LOCALIZE[31457]</value>
 		<value condition="Control.HasFocus(7) | Control.HasFocus(5007) + !String.IsEmpty(ListItem.UserRating)">$LOCALIZE[31147]</value>
