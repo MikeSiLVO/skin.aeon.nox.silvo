@@ -154,7 +154,7 @@
 						<visible>!String.IsEqual(ListItem.Property(item.type),person)</visible>
 						<!-- Minute Duration -->
 						<control type="group">
-							<visible>!String.IsEqual(ListItem.DBTYPE,set) + !Skin.HasSetting(Enable.HourMinuteDuration) + [!String.IsEmpty(Window(Home).Property(NextAired.Runtime)) | !String.IsEmpty(ListItem.Duration)]</visible>
+							<visible>!String.IsEqual(ListItem.DBTYPE,set) + !Skin.HasSetting(Enable.HourMinuteDuration) + [!String.IsEmpty(Container(9143).ListItem.Property(Duration)) | !String.IsEmpty(ListItem.Duration)]</visible>
 							<width>120</width>
 							<height>90</height>
 							<control type="label">
@@ -170,7 +170,7 @@
 								<width>auto</width>
 								<height>60</height>
 								<align>center</align>
-								<label>$INFO[Window(Home).Property(NextAired.Runtime)]</label>
+								<label>$INFO[Container(9143).ListItem.Property(Duration)]</label>
 								<font>font48_bold</font>
 								<textcolor>grey</textcolor>
 								<visible>[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)]</visible>
@@ -192,7 +192,7 @@
 							<font>font48_bold</font>
 							<textcolor>grey</textcolor>
 							<label>$VAR[ItemDurationVar]</label>
-							<visible>!String.IsEqual(ListItem.DBTYPE,set) + Skin.HasSetting(Enable.HourMinuteDuration) + [!String.IsEmpty(Window(Home).Property(NextAired.Runtime)) | !String.IsEmpty(ListItem.Duration)]</visible>
+							<visible>!String.IsEqual(ListItem.DBTYPE,set) + Skin.HasSetting(Enable.HourMinuteDuration) + [!String.IsEmpty(Container(9143).ListItem.Property(Duration)) | !String.IsEmpty(ListItem.Duration)]</visible>
 						</control>
 						<control type="label">
 							<width>auto</width>
