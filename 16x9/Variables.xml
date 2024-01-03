@@ -1448,7 +1448,7 @@
 	<variable name="VideoInfoDetailsImageVar">
 		<value condition="[String.IsEqual(ListItem.DBTYPE,movie) + Skin.HasSetting(discartoninfo)]">$INFO[ListItem.Art(discart)]</value>
 		<value condition="[String.IsEqual(ListItem.DBTYPE,tvshow) + Skin.HasSetting(CharacterOnInfo)]">$INFO[ListItem.Art(clearart)]</value>
-		<value condition="[String.IsEqual(ListItem.DBTYPE,episode) + Skin.HasSetting(CharacterOnInfo)]">$INFO[ListItem.Art(tvshow.clearart)]</value>
+		<value condition="[String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)] + Skin.HasSetting(CharacterOnInfo)">$INFO[ListItem.Art(tvshow.clearart)]</value>
 	</variable>
 	<variable name="VideoInfoButtonLabelVar">
 		<value condition="Control.HasFocus(300) | Control.HasFocus(64) | [Control.HasFocus(9003) + String.IsEqual(ListItem.DBTYPE,song)]">$LOCALIZE[31271]</value>

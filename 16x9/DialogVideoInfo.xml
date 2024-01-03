@@ -127,7 +127,7 @@
 							<!-- Set labels -->
 							<include condition="String.IsEqual(ListItem.DBTYPE,set)">InfoSublabelSets</include>
 							<!-- TV Show Fadelabels -->
-							<include condition="String.IsEqual(ListItem.DBTYPE,tvshow)">InfoSublabelTVShows</include>
+							<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)">InfoSublabelTVShows</include>
 							<!-- Episode Fadelabels -->
 							<include condition="String.IsEqual(ListItem.DBTYPE,episode)">InfoSublabelEpisodes</include>
 							<!-- Music Video label -->
@@ -469,7 +469,7 @@
 							<include condition="String.IsEqual(ListItem.Property(item.type),person)">InfoContentTMDbHelperPerson</include>
 							<include condition="String.IsEqual(ListItem.DBTYPE,set)">InfoContentSets</include>
 							<include condition="String.IsEqual(ListItem.DBTYPE,movie)">InfoContentMovies</include>
-							<include condition="String.IsEqual(ListItem.DBTYPE,tvshow)">InfoContentTVShows</include>
+							<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)">InfoContentTVShows</include>
 							<include condition="String.IsEqual(ListItem.DBTYPE,episode)">InfoContentEpisodes</include>
 							<include condition="!String.IsEqual(ListItem.Property(item.type),person)">InfoContentGeneral</include>
 						</content>
@@ -748,7 +748,7 @@
 								<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(90003)</autoscroll>
 								<animation effect="fade" start="0" end="100" time="500" tween="sine" easing="inout">VisibleChange</animation>
 								<animation effect="fade" start="100" end="78" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90003)">Conditional</animation>
-								<visible>[String.IsEqual(ListItem.DBTYPE,movie) + Skin.HasSetting(discartoninfo) + !String.IsEmpty(ListItem.Art(discart))] | [String.IsEqual(ListItem.DBTYPE,tvshow) + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(ListItem.Art(clearart))] | [String.IsEqual(ListItem.DBTYPE,episode) + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(ListItem.Art(tvshow.clearart))]</visible>
+								<visible>[String.IsEqual(ListItem.DBTYPE,movie) + Skin.HasSetting(discartoninfo) + !String.IsEmpty(ListItem.Art(discart))] | [String.IsEqual(ListItem.DBTYPE,tvshow) + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(ListItem.Art(clearart))] | [String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)] + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(ListItem.Art(tvshow.clearart))</visible>
 							</control>
 							<control type="textbox" id="401">
 								<width>1162</width>
@@ -757,7 +757,7 @@
 								<align>justify</align>
 								<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(90003)</autoscroll>
 								<animation effect="fade" start="100" end="78" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90003)">Conditional</animation>
-								<visible>[String.IsEqual(ListItem.DBTYPE,movie) + !Skin.HasSetting(discartoninfo) | String.IsEqual(ListItem.DBTYPE,movie) + String.IsEmpty(ListItem.Art(discart))] | [String.IsEqual(ListItem.DBTYPE,tvshow) + !Skin.HasSetting(CharacterOnInfo) | String.IsEqual(ListItem.DBTYPE,tvshow) + String.IsEmpty(ListItem.Art(clearart))] | [String.IsEqual(ListItem.DBTYPE,episode) + !Skin.HasSetting(CharacterOnInfo) | String.IsEqual(ListItem.DBTYPE,episode) + String.IsEmpty(ListItem.Art(tvshow.clearart))] | String.IsEqual(ListItem.DBTYPE,musicvideo)</visible>
+								<visible>[String.IsEqual(ListItem.DBTYPE,movie) + !Skin.HasSetting(discartoninfo) | String.IsEqual(ListItem.DBTYPE,movie) + String.IsEmpty(ListItem.Art(discart))] | [String.IsEqual(ListItem.DBTYPE,tvshow) + !Skin.HasSetting(CharacterOnInfo) | String.IsEqual(ListItem.DBTYPE,tvshow) + String.IsEmpty(ListItem.Art(clearart))] | [String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)] + !Skin.HasSetting(CharacterOnInfo) | [String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)] + String.IsEmpty(ListItem.Art(tvshow.clearart))] | String.IsEqual(ListItem.DBTYPE,musicvideo)</visible>
 							</control>
 							<control type="textbox" id="402">
 								<top>-15</top>
@@ -778,7 +778,7 @@
 							<height>375</height>
 							<aspectratio>keep</aspectratio>
 							<texture background="true">$VAR[VideoInfoDetailsImageVar]</texture>
-							<visible>[String.IsEqual(ListItem.DBTYPE,movie) + Skin.HasSetting(discartoninfo)] | [String.IsEqual(ListItem.DBTYPE,tvshow) + Skin.HasSetting(CharacterOnInfo)] | [String.IsEqual(ListItem.DBTYPE,episode) + Skin.HasSetting(CharacterOnInfo)]</visible>
+							<visible>[String.IsEqual(ListItem.DBTYPE,movie) + Skin.HasSetting(discartoninfo)] | [String.IsEqual(ListItem.DBTYPE,tvshow) + Skin.HasSetting(CharacterOnInfo)] | [String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)] + Skin.HasSetting(CharacterOnInfo)</visible>
 						</control>
 						<!-- Mediaflags -->
 						<control type="group">
@@ -923,7 +923,7 @@
 									</control>
 								</control>
 								<control type="group">
-									<visible>String.IsEqual(ListItem.DBTYPE,tvshow) + !String.IsEmpty(ListItem.Property(TotalSeasons))</visible>
+									<visible>[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEmpty(ListItem.Property(TotalSeasons))</visible>
 									<width>200</width>
 									<left>-20</left>
 									<control type="label">
@@ -945,7 +945,7 @@
 									</control>
 								</control>
 								<control type="group">
-									<visible>String.IsEqual(ListItem.DBTYPE,tvshow) + !String.IsEmpty(ListItem.Property(TotalEpisodes))</visible>
+									<visible>[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEmpty(ListItem.Property(TotalEpisodes))</visible>
 									<width>200</width>
 									<control type="label">
 										<top>2</top>
@@ -966,7 +966,7 @@
 									</control>
 								</control>
 								<control type="group">
-									<visible>String.IsEqual(ListItem.DBTYPE,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes))</visible>
+									<visible>[[String.IsEqual(ListItem.DBTYPE,tvshow)] | [String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.Property(TotalEpisodes),ListItem.Property(UnWatchedEpisodes))] + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes))]</visible>
 									<width>200</width>
 									<control type="label">
 										<top>2</top>
