@@ -23,6 +23,13 @@
 			<selected>Skin.HasSetting(SlimList.Info)</selected>
 			<visible>Skin.HasSetting(Enable.SlimList) + ![Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content() | Container.Content(files) | Container.Content(addons)]</visible>
 		</control>
+		<control type="radiobutton" id="1513">
+			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[31255]</label>
+			<onclick>Skin.ToggleSetting(Disable.List.TVMediaflags)</onclick>
+			<selected>!Skin.HasSetting(Disable.List.TVMediaflags)</selected>
+			<visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
+		</control>
 	</include>
 	<include name="InfoWallViewSettings">
 		<!-- InfoWall -->
