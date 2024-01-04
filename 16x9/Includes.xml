@@ -1129,9 +1129,10 @@
 		</control>
 		<control type="panel" id="900020">
 			<visible allowhiddenfocus="true">Integer.IsGreater(Container(900020).NumItems,0)</visible>
+			<onclick>SetFocus(99)</onclick>
 			<include content="ExtendedInfoListLayout">
 				<param name="PanelID">900020</param>
-				<param name="content">plugin://plugin.video.themoviedb.helper?info=images&amp;type=person&amp;query=$INFO[ListItem.Label]</param>
+				<param name="content">plugin://plugin.video.themoviedb.helper?info=images&amp;type=person&amp;query='"$ESCINFO[ListItem.Label]"'</param>
 			</include>
 		</control>
 	</include>
