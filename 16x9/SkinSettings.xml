@@ -3,7 +3,6 @@
 	<defaultcontrol always="true">9000</defaultcontrol>
 	<onload>SetProperty(Window.HasSettings,True,Home)</onload>
 	<onload>ClearProperty(MediaMenu,Home)</onload>
-	<onload>ClearProperty(BusySkinBackup,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
 	<onunload condition="!String.IsEmpty(Skin.String(FanartTimePerImage))">RunScript(script.grab.fanart,mode=random,refresh=$INFO[Skin.String(FanartTimePerImage)])</onunload>
