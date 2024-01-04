@@ -5,6 +5,7 @@
 	<onload condition="![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + ![String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.preshowexperience)] + !String.IsEqual(ListItem.Property(item.type),person)">SetFocus(8)</onload>
 	<onload condition="![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.preshowexperience)">SetFocus(909)</onload>
 	<onload condition="Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)">SetFocus(808)</onload>
+	<onload condition="String.IsEqual(ListItem.Property(item.type),person)">SetProperty(SlideshowActorName,$ESCINFO[ListItem.Label],Home)</onload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(FSFanart))">ClearProperty(FSFanart,movieinformation)</onunload>
 	<controls>
 		<control type="textbox" id="4">
@@ -980,6 +981,27 @@
 					<include condition="System.AddonIsEnabled(script.embuary.helper) + Skin.HasSetting(Enable.ExtendedInfoTVIntergration) + String.IsEqual(ListItem.DBTYPE,tvshow)">ExtendedInfoSeriesLists</include>
 					<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) + Integer.IsGreater(ListItem.Property(TotalSeasons),0)">ExtendedSeasonPanel</include>
 				</control>
+			</control>
+		</control>
+		<control id="99" type="button">
+			<onup>noop</onup>
+			<ondown>noop</ondown>
+			<onleft condition="!String.IsEmpty(Container(900020).ListItemNoWrap(-1).Label)">Control.Move(900020,-1)</onleft>
+			<onright condition="!String.IsEmpty(Container(900020).ListItemNoWrap(1).Label)">Control.Move(900020,1)</onright>
+			<onback>900020</onback>
+			<include>HiddenObject</include>
+		</control>
+		<control type="group">
+			<visible>Control.HasFocus(99)</visible>
+			<include>VisibleFadeAnimation</include>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<texture>colors/black.png</texture>
+			</control>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<aspectratio>keep</aspectratio>
+				<texture>$INFO[Container(900020).ListItem.Icon]</texture>
 			</control>
 		</control>
 	</controls>
