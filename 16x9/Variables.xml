@@ -1452,7 +1452,7 @@
 	</variable>
 	<variable name="VideoInfoButtonLabelVar">
 		<value condition="Control.HasFocus(300) | Control.HasFocus(64) | [Control.HasFocus(9003) + String.IsEqual(ListItem.DBTYPE,song)]">$LOCALIZE[31271]</value>
-		<value condition="Control.HasFocus(8) + [String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.DBTYPE,tvshow)] | Control.HasFocus(808)">$LOCALIZE[1024]</value>
+		<value condition="Control.HasFocus(8) + [String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] | Control.HasFocus(808)">$LOCALIZE[1024]</value>
 		<value condition="Control.HasFocus(8)">$LOCALIZE[208]</value>
 		<value condition="Control.HasFocus(909)">$INFO[System.AddonTitle(script.preshowexperience)]</value>
 		<value condition="Control.HasFocus(910)">$LOCALIZE[206]</value>
@@ -1466,7 +1466,8 @@
 		<value condition="Control.HasFocus(5010)">$INFO[Control.GetLabel(10)]</value>
 		<value condition="Control.HasFocus(5012) | Control.HasFocus(50012)">$INFO[Control.GetLabel(12)]</value>
 		<value condition="Control.HasFocus(6) | Control.HasFocus(5006)">$LOCALIZE[184]</value>
-		<value condition="Control.HasFocus(208)">$LOCALIZE[31014]</value>
+		<value condition="Control.HasFocus(208)">$LOCALIZE[22082]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,season)">$LOCALIZE[31271]</value>
 		<value condition="[Control.HasFocus(9003) + !String.IsEqual(ListItem.DBTYPE,song)] | [Container(9001).HasNext + !Container(9001).HasPrevious] + Window.IsActive(musicinformation)">$LOCALIZE[31453]</value>
 		<value condition="Control.HasFocus(90003) | [Container(90001).HasNext + !Container(90001).HasPrevious] + !Window.IsActive(musicinformation)">$LOCALIZE[31453]</value>
 		<value condition="[Container(9001).HasNext + !Container(9001).HasPrevious] + !String.IsEqual(ListItem.DBTYPE,song)">$LOCALIZE[31453]</value>
