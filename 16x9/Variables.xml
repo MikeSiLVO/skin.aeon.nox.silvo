@@ -714,7 +714,7 @@
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + !Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</value>
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$VAR[ItemDurationVar]</value>
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</value>
-		<value condition="Container.Content(tvshows) + !String.IsEmpty(Window(Home).Property(NextAired.Runtime))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</value>
+		<value condition="Container.Content(tvshows) + !String.IsEmpty(Container(9143).ListItem.Property(Duration))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[Container(9143).ListItem.Property(Duration),, $LOCALIZE[12391]]</value>
 		<value condition="Container.Content(tvshows)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[33054]:[/COLOR][CR]$INFO[ListItem.Property(TotalSeasons)]</value>
 		<value condition="Container.Content(seasons)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[16101]:[/COLOR][CR]$INFO[ListItem.Property(UnWatchedEpisodes)]</value>
 	</variable>
