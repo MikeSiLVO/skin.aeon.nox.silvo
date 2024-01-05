@@ -128,19 +128,19 @@
 		</definition>
 	</include>
 	<include name="VideoOSDSettings">
-		<control type="radiobutton" id="90201">
-			<width>1498</width>
-			<radioposx>1396</radioposx>
-			<label>$LOCALIZE[31508]</label>
-			<onclick>Skin.ToggleSetting(VideoOSDOnTop)</onclick>
-			<selected>Skin.HasSetting(VideoOSDOnTop)</selected>
-		</control>
-		<control type="button" id="90202">
+		<control type="button" id="90201">
 			<width>1498</width>
 			<label>$LOCALIZE[31577]</label>
 			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[AutoHideVideoOSDLabelVar][/COLOR]</label2>
 			<onclick>SetProperty(CustomSelect,autohidevideoosd,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
+		</control>
+		<control type="radiobutton" id="90202">
+			<width>1498</width>
+			<radioposx>1396</radioposx>
+			<label>$LOCALIZE[31508]</label>
+			<onclick>Skin.ToggleSetting(VideoOSDOnTop)</onclick>
+			<selected>Skin.HasSetting(VideoOSDOnTop)</selected>
 		</control>
 		<control type="radiobutton" id="90203">
 			<width>1498</width>
@@ -222,19 +222,19 @@
 		</control>
 	</include>
 	<include name="MusicOSDSettings">
+		<control type="button" id="90217">
+			<width>1498</width>
+			<label>$LOCALIZE[31577]</label>
+			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[AutoHideMusicOSDLabelVar][/COLOR]</label2>
+			<onclick>SetProperty(CustomSelect,autohidemusicosd,Home)</onclick>
+			<onclick>ActivateWindow(1129)</onclick>
+		</control>
 		<control type="button" id="90201">
 			<description>Background Button</description>
 			<width>1498</width>
 			<label>$LOCALIZE[31102]:</label>
 			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[VizBackgroundLabelVar][/COLOR]</label2>
 			<onclick>SetProperty(CustomSelect,musicvizbackground,Home)</onclick>
-			<onclick>ActivateWindow(1129)</onclick>
-		</control>
-		<control type="button" id="90217">
-			<width>1498</width>
-			<label>$LOCALIZE[31577]</label>
-			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[AutoHideMusicOSDLabelVar][/COLOR]</label2>
-			<onclick>SetProperty(CustomSelect,autohidemusicosd,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 		</control>
 		<control type="button" id="90202">
