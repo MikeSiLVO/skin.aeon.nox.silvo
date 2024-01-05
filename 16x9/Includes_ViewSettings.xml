@@ -1003,14 +1003,14 @@
 			<onclick>Skin.ToggleSetting(Enable.MyFlix.OpenCase)</onclick>
 			<onclick condition="String.IsEmpty(Skin.String(MyFlix.Delay))">Skin.SetString(MyFlix.Delay,2)</onclick>
 			<selected>Skin.HasSetting(Enable.MyFlix.OpenCase)</selected>
-			<visible>Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)</visible>
+			<visible>[Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)</visible>
 		</control>
 		<control type="button" id="1518">
 			<include>ButtonCommonValues</include>
 			<label>   - $LOCALIZE[31973]</label>
 			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[MyFlixDelayLocalizeVar][/COLOR]</label2>
 			<onclick>$VAR[MyFlixModDelayOnClickVar]</onclick>
-			<visible>Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape) + Skin.HasSetting(Enable.MyFlix.OpenCase)</visible>
+			<visible>[Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(Enable.MyFlix.MovieLandscape) + Skin.HasSetting(Enable.MyFlix.OpenCase)</visible>
 		</control>
 		<control type="radiobutton" id="1519">
 			<include>ButtonCommonValues</include>
