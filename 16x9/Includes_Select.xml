@@ -477,6 +477,7 @@
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),pvrguidelogos)">SelectPVRGuideLogos</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),musicgenreiconpath)">SelectMusicGenreIconPath</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),autohidevideoosd)">SelectAutoHideVideoOSD</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),autohidemusicosd)">SelectAutoHideMusicOSD</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),rightlistbackgrounddim)">SelectRightListBackgroundDim</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),fallbackbackground)">SelectFallbackBackground</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),startupintro)">SelectStartupIntro</include>
@@ -633,7 +634,7 @@
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>ClearProperty(ActorID,movieinformation)</onclick>
 			<onclick>ClearProperty(DirectorID,movieinformation)</onclick>
-			<onclick>RunScript(plugin.video.themoviedb.helper,add_query=$INFO[Window(movieinformation).Property(ActorName)],type=person,call_auto=1111)</onclick>
+			<onclick>RunScript(plugin.video.themoviedb.helper,add_query='"$ESCINFO[Window(movieinformation).Property(ActorName)]"',type=person,call_auto=1111)</onclick>
 			<onclick>ClearProperty(ActorName,movieinformation)</onclick>
 		</item>
 	</include>
@@ -1135,6 +1136,68 @@
 			<label>90 $LOCALIZE[31090]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.SetString(AutoCloseVideoOSD,90)</onclick>
+		</item>
+	</include>
+	<include name="SelectAutoHideMusicOSD">
+		<item>
+			<label>$LOCALIZE[13113]</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.Reset(AutoCloseMusicOSD)</onclick>
+		</item>
+		<item>
+			<label>5 $LOCALIZE[31090]</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.SetString(AutoCloseMusicOSD,5)</onclick>
+		</item>
+		<item>
+			<label>6 $LOCALIZE[31090]</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.SetString(AutoCloseMusicOSD,6)</onclick>
+		</item>
+		<item>
+			<label>7 $LOCALIZE[31090]</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.SetString(AutoCloseMusicOSD,7)</onclick>
+		</item>
+		<item>
+			<label>8 $LOCALIZE[31090]</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.SetString(AutoCloseMusicOSD,8)</onclick>
+		</item>
+		<item>
+			<label>9 $LOCALIZE[31090]</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.SetString(AutoCloseMusicOSD,9)</onclick>
+		</item>
+		<item>
+			<label>10 $LOCALIZE[31090]</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.SetString(AutoCloseMusicOSD,10)</onclick>
+		</item>
+		<item>
+			<label>15 $LOCALIZE[31090]</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.SetString(AutoCloseMusicOSD,15)</onclick>
+		</item>
+		<item>
+			<label>20 $LOCALIZE[31090]</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.SetString(AutoCloseMusicOSD,20)</onclick>
+		</item>
+		<item>
+			<label>30 $LOCALIZE[31090]</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.SetString(AutoCloseMusicOSD,30)</onclick>
+		</item>
+		<item>
+			<label>60 $LOCALIZE[31090]</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.SetString(AutoCloseMusicOSD,60)</onclick>
+		</item>
+		<item>
+			<label>90 $LOCALIZE[31090]</label>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>Skin.SetString(AutoCloseMusicOSD,90)</onclick>
 		</item>
 	</include>
 	<include name="SelectRightListBackgroundDim">
