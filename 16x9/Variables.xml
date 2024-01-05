@@ -271,7 +271,7 @@
 		<value condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEqual(ListItem.Property(TotalEpisodes),ListItem.Property(UnWatchedEpisodes)) + !String.IsEqual(ListItem.Property(UnWatchedEpisodes),0)">$INFO[ListItem.Property(UnWatchedEpisodes)]</value>
 	</variable>
 	<variable name="RightListItemOverlayShowsVar">
-		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),99)">   99 +</value>
+		<value condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),99)">   99 +</value>
 		<value condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEqual(ListItem.Property(UnWatchedEpisodes),0)">$INFO[ListItem.Property(UnWatchedEpisodes)]</value>
 	</variable>
 	<variable name="PlayerProgressIconVar">
