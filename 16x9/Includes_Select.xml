@@ -24,22 +24,29 @@
 				<param name="more_visible">Control.IsVisible(8)</param>
 			</include>
 			<control type="group">
-				<left>958</left>
-				<top>69</top>
+				<left>957</left>
+				<top>68</top>
+				<visible>Control.IsVisible(6)</visible>
 				<control type="image">
-					<width>540</width>
-					<height>540</height>
+					<left>2</left>
+					<top>1</top>
+					<width>539</width>
+					<height>539</height>
 					<fadetime>300</fadetime>
 					<aspectratio>keep</aspectratio>
 					<texture background="true">$VAR[DialogSelectImageVar]</texture>
-					<visible>Control.IsVisible(6)</visible>
+				</control>
+				<control type="image">
+					<width>1</width>
+					<height>542</height>
+					<texture colordiffuse="grey4">separator_vertical.png</texture>
 				</control>
 			</control>
 			<control type="group" id="9000">
 				<control type="list" id="3">
 					<left>1</left>
 					<top>68</top>
-					<width>957</width>
+					<width>956</width>
 					<height>540</height>
 					<onup>3</onup>
 					<ondown>3</ondown>
@@ -47,7 +54,7 @@
 					<onright>60</onright>
 					<pagecontrol>60</pagecontrol>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
-					<itemlayout height="60" width="957">
+					<itemlayout height="60" width="950">
 						<control type="label">
 							<width>950</width>
 							<height>60</height>
@@ -68,11 +75,11 @@
 							<label>$INFO[ListItem.Label2]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout height="60" width="957">
+					<focusedlayout height="60" width="956">
 						<control type="group">
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(3)">Conditional</animation>
 							<control type="image">
-								<width>957</width>
+								<width>956</width>
 								<height>60</height>
 								<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
 							</control>
@@ -100,7 +107,7 @@
 				<control type="list" id="6">
 					<left>1</left>
 					<top>68</top>
-					<width>957</width>
+					<width>956</width>
 					<height>540</height>
 					<onup>6</onup>
 					<ondown>6</ondown>
@@ -129,11 +136,11 @@
 							<label>$VAR[DialogSelectLabel2Var]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout height="60" width="957">
+					<focusedlayout height="60" width="956">
 						<control type="group">
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(6)">Conditional</animation>
 							<control type="image">
-								<width>957</width>
+								<width>956</width>
 								<height>60</height>
 								<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
 							</control>
@@ -159,7 +166,7 @@
 				</control>
 			</control>
 			<control type="scrollbar" id="60">
-				<left>949</left>
+				<left>948</left>
 				<top>69</top>
 				<width>8</width>
 				<height>540</height>
