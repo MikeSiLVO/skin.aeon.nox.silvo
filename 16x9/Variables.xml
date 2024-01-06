@@ -376,6 +376,10 @@
 		<value condition="Integer.IsLess(ListItem.Duration(mins),60)">$INFO[ListItem.Duration(mm:ss)]</value>
 		<value condition="Integer.IsGreaterOrEqual(ListItem.Duration(mins),60)">$INFO[ListItem.Duration(h:mm:ss)]</value>
 	</variable>
+	<variable name="AddonListSummaryLabelVar">
+		<value condition="!String.IsEmpty(ListItem.AddonSummary)">$INFO[ListItem.AddonSummary]</value>
+		<value condition="!String.IsEmpty(ListItem.Label2)">$LOCALIZE[19055]</value>
+	</variable>
 	<variable name="MusicListLabel3Var">
 		<value condition="Container.Content(songs) + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Label]</value>
