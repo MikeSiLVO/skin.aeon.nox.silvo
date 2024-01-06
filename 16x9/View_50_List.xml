@@ -1842,10 +1842,10 @@
 							<font>font30</font>
 							<textcolor>grey2</textcolor>
 							<label>$INFO[ListItem.Label]</label>
-							<visible>String.IsEmpty(ListItem.AddonSummary) | String.IsEmpty(ListItem.Label2)</visible>
+							<visible>String.IsEmpty(ListItem.AddonSummary) + String.IsEmpty(ListItem.Label2)</visible>
 						</control>
 						<control type="group">
-							<visible>!String.IsEmpty(ListItem.AddonSummary) + !String.IsEmpty(ListItem.Label2)</visible>
+							<visible>!String.IsEmpty(ListItem.AddonSummary) | !String.IsEmpty(ListItem.Label2)</visible>
 							<control type="label">
 								<left>135</left>
 								<top>10</top>
@@ -1917,10 +1917,10 @@
 							<height>120</height>
 							<font>font30</font>
 							<label>$INFO[ListItem.Label]</label>
-							<visible>String.IsEmpty(ListItem.AddonSummary) | String.IsEmpty(ListItem.Label2)</visible>
+							<visible>String.IsEmpty(ListItem.AddonSummary) + String.IsEmpty(ListItem.Label2)</visible>
 						</control>
 						<control type="group">
-							<visible>!String.IsEmpty(ListItem.AddonSummary) + !String.IsEmpty(ListItem.Label2)</visible>
+							<visible>!String.IsEmpty(ListItem.AddonSummary) | !String.IsEmpty(ListItem.Label2)</visible>
 							<control type="label">
 								<left>135</left>
 								<top>10</top>
