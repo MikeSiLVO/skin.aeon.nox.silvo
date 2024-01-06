@@ -174,8 +174,8 @@
 		<value condition="Window.IsActive(favouritesbrowser)">SetProperty(Nox.Temp,Favourites.Fallback,Home)</value>
 	</variable>
 	<variable name="BackgroundLabelVar">
-		<value condition="String.StartsWith(Container.FolderPath,videodb://tvshows/)">$LOCALIZE[20343]</value>
-		<value condition="String.StartsWith(Container.FolderPath,videodb://movies/)">$LOCALIZE[20342]</value>
+		<value condition="String.StartsWith(Container.FolderPath,videodb://tvshows/) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)">$LOCALIZE[20343]</value>
+		<value condition="String.StartsWith(Container.FolderPath,videodb://movies/) | Container.Content(movies)">$LOCALIZE[20342]</value>
 		<value condition="Container.Content(musicvideos)">$LOCALIZE[20389]</value>
 		<value condition="Window.IsActive(videos) | Window.IsActive(videoplaylist)">$LOCALIZE[3]</value>
 		<value condition="Window.IsActive(music) | Window.IsActive(musicplaylist)">$LOCALIZE[2]</value>
