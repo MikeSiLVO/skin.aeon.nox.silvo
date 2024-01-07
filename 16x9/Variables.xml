@@ -1447,7 +1447,7 @@
 		<value condition="ControlGroup(90001).HasFocus(900012) + !String.IsEmpty(Container(900012).ListItem.Art(poster))">$INFO[Container(900012).ListItem.Art(poster)]</value>
 		<value condition="ControlGroup(90001).HasFocus(900020) + !String.IsEmpty(Container(900020).ListItem.Art(poster))">$INFO[Container(900020).ListItem.Art(poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(season.poster))">$INFO[ListItem.Art(season.poster)]</value>
-		<value condition="!String.IsEmpty(ListItem.Art(tvshow.poster))">$INFO[ListItem.Art(tvshow.poster)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(tvshow.poster)) + !String.IsEqual(ListItem.DBTYPE,season)">$INFO[ListItem.Art(tvshow.poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(poster1))">$INFO[Control.GetLabel(4510)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
 		<value>$INFO[ListItem.Icon]</value>
