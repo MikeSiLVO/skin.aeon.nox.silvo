@@ -2229,7 +2229,7 @@
 	<!-- Dialog Settings Vars -->
 	<variable name="DialogSettingsHeaderVar">
 		<value condition="Control.HasFocus(97)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[15067][/COLOR]</value>
-		<value condition="Window.IsVisible(FileBrowser.xml) + Control.HasFocus(95)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[186][/COLOR]</value>
+		<value condition="[Window.IsVisible(FileBrowser.xml) | Window.IsVisible(contentsettings)] + Control.HasFocus(95)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[186][/COLOR]</value>
 		<value condition="Window.IsVisible(FileBrowser.xml) + Control.HasFocus(98)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[119][/COLOR]</value>
 		<value condition="Window.IsVisible(FileBrowser.xml)">$INFO[Control.GetLabel(411)][COLOR $VAR[ThemeLabelColor]]$INFO[Control.GetLabel(412), - ][/COLOR]</value>
 		<value condition="Window.IsVisible(DialogSelect.xml) + Control.HasFocus(95)">[COLOR $VAR[ThemeLabelColor]]$INFO[Control.GetLabel(5)][/COLOR]</value>
