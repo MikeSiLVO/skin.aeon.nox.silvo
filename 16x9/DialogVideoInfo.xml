@@ -984,11 +984,12 @@
 			</control>
 		</control>
 		<control id="99" type="button">
+			<onclick>SetFocus(900020)</onclick>
+			<onback>900020</onback>
 			<onup>noop</onup>
 			<ondown>noop</ondown>
 			<onleft condition="!String.IsEmpty(Container(900020).ListItemNoWrap(-1).Label)">Control.Move(900020,-1)</onleft>
 			<onright condition="!String.IsEmpty(Container(900020).ListItemNoWrap(1).Label)">Control.Move(900020,1)</onright>
-			<onback>900020</onback>
 			<include>HiddenObject</include>
 		</control>
 		<control type="group">
