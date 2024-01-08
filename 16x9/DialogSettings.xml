@@ -2,8 +2,6 @@
 <window>
 	<defaultcontrol always="true">5</defaultcontrol>
 	<include>DialogOpenCloseAnimation</include>
-	<onload>SetProperty(Dialog.HeaderLabel,$VAR[DialogSettingsHeaderVar],Home)</onload>
-	<onunload>ClearProperty(Dialog.HeaderLabel,Home)</onunload>
 	<controls>
 		<control type="group">
 			<include>VisibleFadeAnimation</include>
@@ -21,7 +19,7 @@
 				<animation effect="slide" end="0,-160" condition="Window.IsVisible(fullscreeninfo)">Conditional</animation>
 				<include content="DialogPanel">
 					<param name="height">611</param>
-					<param name="header_label">$INFO[Window(Home).Property(Dialog.HeaderLabel)]</param>
+					<param name="header_label">$VAR[DialogSettingsHeaderVar]</param>
 					<param name="buttons_ondown">5</param>
 					<param name="close_onclick">SendClick(29)</param>
 					<param name="ok_onclick">SendClick(28)</param>
