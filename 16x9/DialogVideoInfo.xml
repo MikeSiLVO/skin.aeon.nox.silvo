@@ -244,7 +244,7 @@
 						</control>
 						<!-- TV Show Watched Percent -->
 						<control type="group">
-							<visible>!String.IsEmpty(ListItem.Property(WatchedEpisodePercent)) + !String.IsEqual(ListItem.Property(WatchedEpisodePercent),0)</visible>
+							<visible>Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),1)</visible>
 							<width>165</width>
 							<control type="label">
 								<width>auto</width>
@@ -266,16 +266,16 @@
 						</control>
 						<!-- User/RottenTomatoes/Metacritic Ratings -->
 						<control type="grouplist">
-							<width>925</width>
+							<width>730</width>
 							<height>90</height>
 							<orientation>horizontal</orientation>
 							<itemgap>10</itemgap>
 							<control type="grouplist">
 								<visible>!String.IsEmpty(ListItem.UserRating)</visible>
-								<width>95</width>
+								<width>165</width>
 								<orientation>horizontal</orientation>
 								<control type="image">
-									<width>50</width>
+									<width>45</width>
 									<aspectratio>keep</aspectratio>
 									<texture colordiffuse="$VAR[ThemeLabelColor]">favourites.png</texture>
 									<animation effect="fade" end="67" condition="true">Conditional</animation>
@@ -289,7 +289,7 @@
 							</control>
 							<control type="grouplist">
 								<visible>!String.IsEmpty(ListItem.Top250)</visible>
-								<width>190</width>
+								<width>165</width>
 								<orientation>horizontal</orientation>
 								<usecontrolcoords>true</usecontrolcoords>
 								<itemgap>3</itemgap>
@@ -346,7 +346,7 @@
 								</control>
 							</control>
 							<control type="grouplist">
-								<visible>!String.IsEmpty(ListItem.Rating(metacritic))</visible>
+								<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating)) + String.IsEmpty(ListItem.Rating(tomatometerallcritics)) + !String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.DBTYPE,episode)</visible>
 								<width>165</width>
 								<orientation>horizontal</orientation>
 								<usecontrolcoords>true</usecontrolcoords>
@@ -355,13 +355,70 @@
 									<width>68</width>
 									<aspectratio>keep</aspectratio>
 									<colordiffuse>grey</colordiffuse>
-									<texture>logos/metacritic.png</texture>
+									<texture>$VAR[TMDbHelperRottenTomatoLogoVar]</texture>
 								</control>
 								<control type="label">
 									<width>auto</width>
 									<font>font16_title_bold</font>
 									<textcolor>grey</textcolor>
-									<label>$VAR[MetacriticLabelVar]$VAR[MetacriticLabel2Var]</label>
+									<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_Rating),,%]</label>
+								</control>
+							</control>
+							<control type="grouplist">
+								<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter)) + String.IsEmpty(ListItem.Rating(tomatometerallaudience)) + !String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.DBTYPE,episode)</visible>
+								<width>165</width>
+								<orientation>horizontal</orientation>
+								<usecontrolcoords>true</usecontrolcoords>
+								<itemgap>3</itemgap>
+								<control type="image">
+									<width>68</width>
+									<aspectratio>keep</aspectratio>
+									<colordiffuse>grey</colordiffuse>
+									<texture>$VAR[RottenFreshAudienceTMDbHelperLogoVar]</texture>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<font>font16_title_bold</font>
+									<textcolor>grey</textcolor>
+									<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_UserMeter),,%]</label>
+								</control>
+							</control>
+							<control type="grouplist">
+								<visible>!String.IsEmpty(Container(9143).ListItem.Property(TMDb_Rating)) + !String.IsEqual(ListItem.DBTYPE,season)</visible>
+								<width>165</width>
+								<orientation>horizontal</orientation>
+								<usecontrolcoords>true</usecontrolcoords>
+								<itemgap>10</itemgap>
+								<control type="image">
+									<width>68</width>
+									<aspectratio>keep</aspectratio>
+									<colordiffuse>grey</colordiffuse>
+									<texture>logos/tmdb.png</texture>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<font>font16_title_bold</font>
+									<textcolor>grey</textcolor>
+									<label>$INFO[Container(9143).ListItem.Property(TMDb_Rating)]</label>
+								</control>
+							</control>
+							<control type="grouplist">
+								<visible>!String.IsEmpty(Container(9143).ListItem.Property(Trakt_Rating)) + !String.IsEqual(ListItem.DBTYPE,season) + ![String.IsEqual(ListItem.DBTYPE,tvshow) + Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),1)] + ![!String.IsEmpty(ListItem.UserRating) + !String.IsEmpty(ListItem.Top250)]</visible>
+								<width>165</width>
+								<orientation>horizontal</orientation>
+								<usecontrolcoords>true</usecontrolcoords>
+								<itemgap>10</itemgap>
+								<control type="image">
+									<width>68</width>
+									<aspectratio>keep</aspectratio>
+									<colordiffuse>grey</colordiffuse>
+									<texture>logos/trakt-clearlogo.png</texture>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<font>font16_title_bold</font>
+									<textcolor>grey</textcolor>
+									<label>$INFO[Container(9143).ListItem.Property(Trakt_Rating)]</label>
 								</control>
 							</control>
 						</control>
