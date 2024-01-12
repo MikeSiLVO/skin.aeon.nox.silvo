@@ -358,7 +358,7 @@
 		<value condition="Container.Content(movies) + String.IsEqual(Container.SortMethod,$LOCALIZE[570])">$INFO[ListItem.DateAdded]</value>
 		<value condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes)] + String.IsEqual(Container.SortMethod,$LOCALIZE[568]) + !String.IsEmpty(ListItem.LastPlayed)">$INFO[ListItem.LastPlayed]</value>
 		<value condition="Container.Content(movies) + String.IsEqual(Container.SortMethod,$LOCALIZE[567])">$INFO[ListItem.PlayCount,, $LOCALIZE[31488]]</value>
-		<value condition="Container.Content(episodes)">$VAR[VideoListDurationVar]</value>
+		<value condition="Container.Content(episodes) | Container.Content(videos)">$VAR[VideoListDurationVar]</value>
 	</variable>
 	<variable name="VideoListLabel2Var">
 		<value condition="Container.Content(episodes) + Skin.HasSetting(Enable.HideRatings) + ![String.IsEqual(Container.SortMethod,$LOCALIZE[563]) | String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | String.IsEqual(Container.SortMethod,$LOCALIZE[20074])]">$INFO[ListItem.Premiered]</value>
