@@ -865,7 +865,71 @@
 							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
 						</control>
 					</focusedlayout>
-					<itemlayout height="120" width="1140" condition="![Container.Content(movies) | Container.Content(studios) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(addons) | Container.Content(seasons) | Container.Content(videos)]">
+					<itemlayout height="120" width="1140" condition="Container.Content(directors)">
+						<control type="image">
+							<left>10</left>
+							<top>5</top>
+							<width>110</width>
+							<height>110</height>
+							<aspectratio>keep</aspectratio>
+							<colordiffuse>grey2</colordiffuse>
+							<texture background="true">$INFO[ListItem.Icon,views/list/]</texture>
+							<visible>!System.AddonIsEnabled(resource.images.moviedirectorthumbs)</visible>
+						</control>
+						<control type="image">
+							<left>10</left>
+							<top>5</top>
+							<width>110</width>
+							<height>110</height>
+							<aspectratio>keep</aspectratio>
+							<colordiffuse>grey2</colordiffuse>
+							<texture background="true">$INFO[ListItem.Label,resource://resource.images.moviedirectorthumbs/,.jpg]</texture>
+							<visible>System.AddonIsEnabled(resource.images.moviedirectorthumbs)</visible>
+						</control>
+						<control type="label">
+							<left>130</left>
+							<width>940</width>
+							<height>120</height>
+							<font>font30</font>
+							<textcolor>grey2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="120" width="1160" condition="Container.Content(directors)">
+						<control type="image">
+							<width>1160</width>
+							<height>120</height>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<visible>Control.HasFocus(50)</visible>
+							<include>VisibleFadeAnimation</include>
+						</control>
+						<control type="image">
+							<left>10</left>
+							<top>5</top>
+							<width>110</width>
+							<height>110</height>
+							<aspectratio>keep</aspectratio>
+							<texture background="true">$INFO[ListItem.Icon,views/list/]</texture>
+							<visible>!System.AddonIsEnabled(resource.images.moviedirectorthumbs)</visible>
+						</control>
+						<control type="image">
+							<left>10</left>
+							<top>5</top>
+							<width>110</width>
+							<height>110</height>
+							<aspectratio>keep</aspectratio>
+							<texture background="true">$INFO[ListItem.Label,resource://resource.images.moviedirectorthumbs/,.jpg]</texture>
+							<visible>System.AddonIsEnabled(resource.images.moviedirectorthumbs)</visible>
+						</control>
+						<control type="label">
+							<left>130</left>
+							<width>940</width>
+							<height>120</height>
+							<font>font30</font>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</focusedlayout>
+					<itemlayout height="120" width="1140" condition="![Container.Content(movies) | Container.Content(studios) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(addons) | Container.Content(seasons) | Container.Content(videos) | Container.Content(directors)]">
 						<control type="image">
 							<left>10</left>
 							<top>5</top>
@@ -911,7 +975,7 @@
 							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
 						</control>
 					</itemlayout>
-					<focusedlayout height="120" width="1140" condition="![Container.Content(movies) | Container.Content(studios) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(addons) | Container.Content(seasons) | Container.Content(videos)]">
+					<focusedlayout height="120" width="1160" condition="![Container.Content(movies) | Container.Content(studios) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(addons) | Container.Content(seasons) | Container.Content(videos) | Container.Content(directors)]">
 						<control type="image">
 							<width>1160</width>
 							<height>120</height>
