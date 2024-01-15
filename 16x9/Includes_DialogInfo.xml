@@ -3,7 +3,7 @@
 	<!-- DialogVideoInfo -->
 	<include name="InfoSublabelMovies">
 		<control type="fadelabel">
-			<width>1180</width>
+			<width>1075</width>
 			<height>30</height>
 			<align>left</align>
 			<aligny>center</aligny>
@@ -17,7 +17,7 @@
 			<visible>!String.IsEmpty(ListItem.Tagline) + [String.IsEmpty(ListItem.OriginalTitle) | String.IsEqual(ListItem.OriginalTitle,ListItem.Title)]</visible>
 		</control>
 		<control type="fadelabel">
-			<width>1180</width>
+			<width>1075</width>
 			<height>30</height>
 			<align>left</align>
 			<aligny>center</aligny>
@@ -43,7 +43,7 @@
 	</include>
 	<include name="InfoSublabelSets">
 		<control type="label">
-			<width>1180</width>
+			<width>1175</width>
 			<height>30</height>
 			<align>left</align>
 			<aligny>center</aligny>
@@ -54,7 +54,7 @@
 	</include>
 	<include name="InfoSublabelTVShows">
 		<control type="fadelabel">
-			<width>1180</width>
+			<width>1175</width>
 			<height>30</height>
 			<align>left</align>
 			<aligny>center</aligny>
@@ -68,7 +68,7 @@
 			<visible>[!String.IsEmpty(ListItem.Status) | !String.IsEmpty(Container(9143).ListItem.Status)] + !String.IsEmpty(Container(9143).ListItem.Property(Awards))</visible>
 		</control>
 		<control type="label">
-			<width>1180</width>
+			<width>1175</width>
 			<height>30</height>
 			<align>left</align>
 			<aligny>center</aligny>
@@ -80,7 +80,7 @@
 	</include>
 	<include name="InfoSublabelEpisodes">
 		<control type="fadelabel">
-			<width>1180</width>
+			<width>1175</width>
 			<height>30</height>
 			<align>left</align>
 			<aligny>center</aligny>
@@ -378,6 +378,290 @@
 			<onclick>SetFocus(64)</onclick>
 			<visible>!String.IsEmpty(ListItem.Property(Aliases))</visible>
 		</item>
+	</include>
+	<include name="InfoDefaultRuntime">
+		<control type="group">
+			<visible>[!String.IsEmpty(Container(9143).ListItem.Property(Duration)) | !String.IsEmpty(ListItem.Duration)]</visible>
+			<width>120</width>
+			<height>90</height>
+			<control type="label">
+				<width>auto</width>
+				<height>60</height>
+				<align>center</align>
+				<label>$INFO[ListItem.Duration(mins)]</label>
+				<font>font48_bold</font>
+				<textcolor>grey</textcolor>
+				<visible>!String.IsEmpty(ListItem.Duration)</visible>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<height>60</height>
+				<align>center</align>
+				<label>$INFO[Container(9143).ListItem.Property(Duration)]</label>
+				<font>font48_bold</font>
+				<textcolor>grey</textcolor>
+				<visible>[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + String.IsEmpty(ListItem.Duration)</visible>
+			</control>
+			<control type="label">
+				<top>50</top>
+				<width>auto</width>
+				<height>30</height>
+				<align>center</align>
+				<label>[LOWERCASE]$LOCALIZE[12391][/LOWERCASE]</label>
+				<font>font12</font>
+				<textcolor>grey</textcolor>
+			</control>
+		</control>
+	</include>
+	<include name="InfoHourMinRuntime">
+		<control type="label">
+			<width>140</width>
+			<height>90</height>
+			<font>font48_bold</font>
+			<textcolor>grey</textcolor>
+			<label>$VAR[ItemDurationVar]</label>
+			<visible>[!String.IsEmpty(Container(9143).ListItem.Property(Duration)) | !String.IsEmpty(ListItem.Duration)]</visible>
+		</control>
+	</include>
+	<include name="InfoEpNumber">
+		<control type="label">
+			<width>auto</width>
+			<height>90</height>
+			<font>font48_bold</font>
+			<textcolor>grey</textcolor>
+			<label>$VAR[EpisodeCountVar]</label>
+		</control>
+	</include>
+	<include name="InfoMPAA">
+		<control type="image">
+			<width>135</width>
+			<height>90</height>
+			<include>MediaFlagValues</include>
+			<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
+		</control>
+	</include>
+	<include name="InfoSetRating">
+		<control type="label">
+			<width>auto</width>
+			<align>center</align>
+			<label>$INFO[ListItem.Rating,$LOCALIZE[31146] ]</label>
+			<font>font16_title_bold</font>
+			<textcolor>grey</textcolor>
+		</control>
+	</include>
+	<include name="InfoTVWatchedPercent">
+		<control type="group">
+			<visible>Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),0)</visible>
+			<width>165</width>
+			<control type="label">
+				<width>auto</width>
+				<height>60</height>
+				<align>center</align>
+				<label>$INFO[ListItem.Property(WatchedEpisodePercent),,%]</label>
+				<font>font16_title_bold</font>
+				<textcolor>grey</textcolor>
+			</control>
+			<control type="label">
+				<top>50</top>
+				<width>auto</width>
+				<height>30</height>
+				<align>center</align>
+				<label>[LOWERCASE]$LOCALIZE[19256][/LOWERCASE]</label>
+				<font>font12</font>
+				<textcolor>grey</textcolor>
+			</control>
+		</control>
+	</include>
+	<include name="InfoMainRating">
+		<control type="group">
+			<visible>!String.IsEmpty(ListItem.Rating)</visible>
+			<width>165</width>
+			<control type="label">
+				<width>165</width>
+				<height>60</height>
+				<align>center</align>
+				<label>$INFO[ListItem.Rating]</label>
+				<font>font16_title_bold</font>
+				<textcolor>grey</textcolor>
+			</control>
+			<control type="label">
+				<top>50</top>
+				<width>165</width>
+				<height>30</height>
+				<align>center</align>
+				<label>[LOWERCASE]$VAR[RatingAndVotesVar][/LOWERCASE]</label>
+				<font>font12</font>
+				<textcolor>grey</textcolor>
+			</control>
+		</control>
+	</include>
+	<include name="InfoTop250">
+		<control type="grouplist">
+			<visible>!String.IsEmpty(ListItem.Top250)</visible>
+			<width>165</width>
+			<orientation>horizontal</orientation>
+			<control type="image">
+				<width>65</width>
+				<aspectratio>keep</aspectratio>
+				<colordiffuse>grey</colordiffuse>
+				<texture>logos/imdb.png</texture>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<align>center</align>
+				<font>font16_title_bold</font>
+				<textcolor>grey</textcolor>
+				<label>$INFO[ListItem.Top250, #]</label>
+			</control>
+		</control>
+	</include>
+	<include name="InfoExtendedRatings">
+		<!-- Kodi Rotten Critic Rating -->
+		<control type="grouplist">
+			<visible>!String.IsEmpty(ListItem.Rating(tomatometerallcritics))</visible>
+			<width>165</width>
+			<orientation>horizontal</orientation>
+			<control type="image">
+				<width>68</width>
+				<aspectratio>keep</aspectratio>
+				<colordiffuse>grey</colordiffuse>
+				<texture>$VAR[RottenFreshLogoVar]</texture>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<font>font16_title_bold</font>
+				<textcolor>grey</textcolor>
+				<label>$VAR[RottenFreshLabelVar]$VAR[RottenFreshLabel2Var]</label>
+			</control>
+		</control>
+		<!-- Kodi Rotten Audience Rating -->
+		<control type="grouplist">
+			<visible>!String.IsEmpty(ListItem.Rating(tomatometerallaudience))</visible>
+			<width>165</width>
+			<orientation>horizontal</orientation>
+			<control type="image">
+				<width>68</width>
+				<aspectratio>keep</aspectratio>
+				<colordiffuse>grey</colordiffuse>
+				<texture>$VAR[RottenFreshAudienceLogoVar]</texture>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<font>font16_title_bold</font>
+				<textcolor>grey</textcolor>
+				<label>$VAR[RottenFreshAudienceLabelVar]$VAR[RottenFreshAudienceLabel2Var]</label>
+			</control>
+		</control>
+		<!-- TMDbHelper Rotten Critic Rating -->
+		<control type="grouplist">
+			<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating)) + String.IsEmpty(ListItem.Rating(tomatometerallcritics)) + !String.IsEqual(ListItem.DBTYPE,episode)</visible>
+			<width>165</width>
+			<orientation>horizontal</orientation>
+			<control type="image">
+				<width>68</width>
+				<aspectratio>keep</aspectratio>
+				<colordiffuse>grey</colordiffuse>
+				<texture>$VAR[TMDbHelperRottenTomatoLogoVar]</texture>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<font>font16_title_bold</font>
+				<textcolor>grey</textcolor>
+				<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_Rating),,%]</label>
+			</control>
+		</control>
+		<!-- TMDbHelper Rotten Audience Rating -->
+		<control type="grouplist">
+			<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter)) + String.IsEmpty(ListItem.Rating(tomatometerallaudience)) + !String.IsEqual(ListItem.DBTYPE,episode)</visible>
+			<width>165</width>
+			<orientation>horizontal</orientation>
+			<control type="image">
+				<width>68</width>
+				<aspectratio>keep</aspectratio>
+				<colordiffuse>grey</colordiffuse>
+				<texture>$VAR[RottenFreshAudienceTMDbHelperLogoVar]</texture>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<font>font16_title_bold</font>
+				<textcolor>grey</textcolor>
+				<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_UserMeter),,%]</label>
+			</control>
+		</control>
+		<!-- Kodi TMDb Rating -->
+		<control type="grouplist">
+			<visible>!String.IsEmpty(ListItem.Rating(themoviedb))</visible>
+			<width>165</width>
+			<orientation>horizontal</orientation>
+			<itemgap>10</itemgap>
+			<control type="image">
+				<width>68</width>
+				<aspectratio>keep</aspectratio>
+				<colordiffuse>grey</colordiffuse>
+				<texture>logos/tmdb.png</texture>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<font>font16_title_bold</font>
+				<textcolor>grey</textcolor>
+				<label>$INFO[ListItem.Rating(themoviedb)]</label>
+			</control>
+		</control>
+		<!-- TMDbHelper TMDb Rating -->
+		<control type="grouplist">
+			<visible>String.IsEmpty(ListItem.Rating(themoviedb)) + !String.IsEmpty(Container(9143).ListItem.Property(TMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(TMDb_Rating),0.0)</visible>
+			<width>165</width>
+			<orientation>horizontal</orientation>
+			<itemgap>10</itemgap>
+			<control type="image">
+				<width>68</width>
+				<aspectratio>keep</aspectratio>
+				<colordiffuse>grey</colordiffuse>
+				<texture>logos/tmdb.png</texture>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<font>font16_title_bold</font>
+				<textcolor>grey</textcolor>
+				<label>$INFO[Container(9143).ListItem.Property(TMDb_Rating)]</label>
+			</control>
+		</control>
+		<!-- Kodi Trakt Rating -->
+		<control type="grouplist">
+			<visible>!String.IsEmpty(ListItem.Rating(trakt))</visible>
+			<width>165</width>
+			<orientation>horizontal</orientation>
+			<control type="image">
+				<width>68</width>
+				<aspectratio>keep</aspectratio>
+				<colordiffuse>grey</colordiffuse>
+				<texture>logos/trakt-clearlogo.png</texture>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<font>font16_title_bold</font>
+				<textcolor>grey</textcolor>
+				<label>$INFO[ListItem.Rating(trakt)]</label>
+			</control>
+		</control>
+		<!-- TMDbHelper Trakt Rating -->
+		<control type="grouplist">
+			<visible>String.IsEmpty(ListItem.Rating(trakt)) + !String.IsEmpty(Container(9143).ListItem.Property(Trakt_Rating))</visible>
+			<width>165</width>
+			<orientation>horizontal</orientation>
+			<control type="image">
+				<width>68</width>
+				<aspectratio>keep</aspectratio>
+				<colordiffuse>grey</colordiffuse>
+				<texture>logos/trakt-clearlogo.png</texture>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<font>font16_title_bold</font>
+				<textcolor>grey</textcolor>
+				<label>$INFO[Container(9143).ListItem.Property(Trakt_Rating)]</label>
+			</control>
+		</control>
 	</include>
 	<!-- DialogAddonInfo -->
 	<include name="AddonInfoTextboxSmall">
