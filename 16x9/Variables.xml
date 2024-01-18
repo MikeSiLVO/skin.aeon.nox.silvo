@@ -257,6 +257,10 @@
 		<value condition="!String.IsEmpty(Skin.String(musicgenreicons.path))">$INFO[Skin.String(musicgenreicons.name)]</value>
 		<value condition="!String.IsEmpty(Skin.String(MusicGenreIconPath))">$INFO[Skin.String(MusicGenreIconPath)]</value>
 	</variable>
+	<variable name="MovieGenreIconsPathLabelVar">
+		<value condition="!String.IsEmpty(Skin.String(moviegenreicons.path))">$INFO[Skin.String(moviegenreicons.name)]</value>
+		<value condition="!String.IsEmpty(Skin.String(MovieGenreIconPath))">$INFO[Skin.String(MovieGenreIconPath)]</value>
+	</variable>
 	<variable name="OverlayVar">
 		<value condition="ListItem.IsResumable + !Skin.HasSetting(Disable.Resumable)">overlays/resumable.png</value>
 		<value condition="!Skin.HasSetting(Disable.OverlayUnwatched) + String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">overlays/OverlayUnwatched.png</value>
@@ -410,6 +414,7 @@
 		<value condition="!String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(poster)]</value>
 	</variable>
 	<variable name="GenreIconVar">
+		<value condition="!String.IsEmpty(Skin.String(moviegenreicons.path))">$INFO[Skin.String(moviegenreicons.path)]$INFO[ListItem.Label]$INFO[Skin.String(moviegenreicons.ext)]</value>
 		<value condition="!Skin.HasSetting(coloredflags)">$INFO[ListItem.Label,special://skin/extras/moviegenres/default/,.jpg]</value>
 		<value condition="Skin.HasSetting(coloredflags)">$INFO[ListItem.Label,special://skin/extras/moviegenres/colored/,.jpg]</value>
 		<value>$INFO[ListItem.Icon]</value>
@@ -728,6 +733,8 @@
 		<value condition="Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20416]:[/COLOR][CR]$INFO[ListItem.Premiered]</value>
 	</variable>
 	<variable name="PosterThumbVar">
+		<value condition="Window.Next(home)" />
+		<value condition="Container.Content(genres) + !String.IsEmpty(Skin.String(moviegenreicons.path))">$INFO[Skin.String(moviegenreicons.path)]$INFO[ListItem.Label]$INFO[Skin.String(moviegenreicons.ext)]</value>
 		<value condition="Container.Content(genres) + !Skin.HasSetting(coloredflags)">$INFO[ListItem.Label,special://skin/extras/moviegenres/default/,.jpg]</value>
 		<value condition="Container.Content(genres) + Skin.HasSetting(coloredflags)">$INFO[ListItem.Label,special://skin/extras/moviegenres/colored/,.jpg]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(season.poster))">$INFO[ListItem.Art(season.poster)]</value>
@@ -740,6 +747,7 @@
 		<value>$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="FocusedPosterThumbVar">
+		<value condition="Window.Next(home)" />
 		<value condition="Container.Content(genres) + !Skin.HasSetting(coloredflags)">$INFO[ListItem.Label,special://skin/extras/moviegenres/default/,.jpg]</value>
 		<value condition="Container.Content(genres) + Skin.HasSetting(coloredflags)">$INFO[ListItem.Label,special://skin/extras/moviegenres/colored/,.jpg]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(poster1))">$INFO[Control.GetLabel(4412)]</value>
@@ -2228,6 +2236,7 @@
 	</variable>
 	<!-- Dialog Settings Vars -->
 	<variable name="DialogSettingsHeaderVar">
+		<value condition="Control.HasFocus(97) + Window.IsVisible(contentsettings)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[222][/COLOR]</value>
 		<value condition="Control.HasFocus(97)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[15067][/COLOR]</value>
 		<value condition="[Window.IsVisible(FileBrowser.xml) | Window.IsVisible(contentsettings)] + Control.HasFocus(95)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[186][/COLOR]</value>
 		<value condition="Window.IsVisible(FileBrowser.xml) + Control.HasFocus(98)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[119][/COLOR]</value>
