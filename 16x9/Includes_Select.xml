@@ -483,6 +483,7 @@
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),musicvizbackground)">SelectMusicVizBackground</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),pvrguidelogos)">SelectPVRGuideLogos</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),musicgenreiconpath)">SelectMusicGenreIconPath</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),moviegenreiconpath)">SelectMovieGenreIconPath</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),autohidevideoosd)">SelectAutoHideVideoOSD</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),autohidemusicosd)">SelectAutoHideMusicOSD</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),rightlistbackgrounddim)">SelectRightListBackgroundDim</include>
@@ -1072,6 +1073,12 @@
 	</include>
 	<include name="SelectMusicGenreIconPath">
 		<item>
+			<label>$LOCALIZE[13007]</label>
+			<onclick>Skin.Reset(musicgenreicons.path)</onclick>
+			<onclick>Skin.Reset(MusicGenreIconPath)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+		<item>
 			<label>$LOCALIZE[31561]</label>
 			<onclick>Skin.SetPath(MusicGenreIconPath)</onclick>
 			<onclick>Dialog.Close(1129)</onclick>
@@ -1080,6 +1087,25 @@
 			<label>$LOCALIZE[31562]</label>
 			<onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
 			<onclick condition="System.HasAddon(script.image.resource.select)">RunScript(script.image.resource.select,property=musicgenreicons&amp;type=resource.images.musicgenreicons)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+	</include>
+	<include name="SelectMovieGenreIconPath">
+		<item>
+			<label>$LOCALIZE[13007]</label>
+			<onclick>Skin.Reset(moviegenreicons.path)</onclick>
+			<onclick>Skin.Reset(MovieGenreIconPath)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31618]</label>
+			<onclick>Skin.SetPath(MovieGenreIconPath)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31619]</label>
+			<onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
+			<onclick condition="System.HasAddon(script.image.resource.select)">RunScript(script.image.resource.select,property=moviegenreicons&amp;type=resource.images.moviegenreicons)</onclick>
 			<onclick>Dialog.Close(1129)</onclick>
 		</item>
 	</include>

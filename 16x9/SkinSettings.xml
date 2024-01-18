@@ -387,9 +387,16 @@
 							<onclick>Addon.OpenSettings(plugin.program.autocompletion)</onclick>
 							<visible>Skin.HasSetting(Enable.Autocomplete) + System.AddonIsEnabled(plugin.program.autocompletion)</visible>
 						</control>
+						<control type="button" id="3011">
+							<include>SettingsButtonCommonValues</include>
+							<label>$LOCALIZE[31622]</label>
+							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[MovieGenreIconsPathLabelVar][/COLOR]</label2>
+							<onclick>SetProperty(CustomSelect,moviegenreiconpath,Home)</onclick>
+							<onclick>ActivateWindow(1129)</onclick>
+						</control>
 						<control type="button" id="3000">
 							<include>SettingsButtonCommonValues</include>
-							<label>31015</label>
+							<label>$LOCALIZE[31015]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Skin.String(VideoGenreFanartPath)][/COLOR]</label2>
 							<onclick>Skin.SetPath(VideoGenreFanartPath)</onclick>
 						</control>
@@ -403,8 +410,6 @@
 							<include>SettingsButtonCommonValues</include>
 							<label>$LOCALIZE[31563]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[MusicGenreIconsPathLabelVar][/COLOR]</label2>
-							<onclick>Skin.Reset(musicgenreicons.path)</onclick>
-							<onclick>Skin.Reset(MusicGenreIconPath)</onclick>
 							<onclick>SetProperty(CustomSelect,musicgenreiconpath,Home)</onclick>
 							<onclick>ActivateWindow(1129)</onclick>
 						</control>
