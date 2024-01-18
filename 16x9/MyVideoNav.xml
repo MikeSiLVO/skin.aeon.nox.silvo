@@ -634,7 +634,7 @@
 						<control type="group">
 							<visible>![Container.Content(addons) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
 							<animation effect="slide" end="80" condition="String.IsEmpty(Skin.String(LanguageFlags))">Conditional</animation>
-							<animation effect="slide" end="80" condition="Control.IsVisible(50)">Conditional</animation>
+							<animation effect="slide" end="80" condition="Control.IsVisible(50) + !Container.Content(episodes)">Conditional</animation>
 							<animation effect="slide" end="-300" condition="Container.Content(episodes) + !System.AddonIsEnabled(plugin.video.themoviedb.helper) + [Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(509) | Control.IsVisible(602)]">Conditional</animation>
 							<animation effect="slide" end="-240" condition="Container.Content(episodes) + !System.AddonIsEnabled(plugin.video.themoviedb.helper) + [Control.IsVisible(500)]">Conditional</animation>
 							<control type="group">
