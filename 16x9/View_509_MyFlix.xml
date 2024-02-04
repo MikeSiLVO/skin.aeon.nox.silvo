@@ -23,21 +23,20 @@
 				<visible>Skin.HasSetting(Enable.MyFlix.OpenCase) + ListItem.IsCollection</visible>
 			</control>
 			<control type="group">
-				<animation effect="slide" start="0" end="0,120" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)] | Container.Content(seasons)">Conditional</animation>
+				<animation effect="slide" start="0" end="0,120" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)]">Conditional</animation>
 				<control type="group">
 					<animation effect="slide" end="0,320" condition="Skin.HasSetting(Disable.MyFlixInfo)">Conditional</animation>
 					<control type="image" id="50999">
-						<left>22</left>
+						<left>20</left>
 						<top>40</top>
-						<width>526</width>
-						<height>204</height>
-						<aspectratio align="left" aligny="center">keep</aspectratio>
+						<width>500</width>
+						<height>190</height>
+						<aspectratio align="left" aligny="bottom">keep</aspectratio>
 						<texture background="true">$VAR[ArtworkLogoVar]</texture>
 						<visible>[Container.Content(movies) | Container.Content(sets)] + Skin.HasSetting(Enable.MyFlix.MovieLogo) | [Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + Skin.HasSetting(Enable.MyFlix.TVLogo)</visible>
 					</control>
 					<control type="group">
-						<top>75</top>
-						<animation effect="slide" start="0" end="0,60" condition="[Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(Enable.MyFlix.MovieLogo) | Container.Content(tvshows) + !Skin.HasSetting(Enable.MyFlix.TVLogo)">Conditional</animation>
+						<top>110</top>
 						<control type="group">
 							<visible>!Control.IsVisible(50999) | String.IsEmpty(Control.GetLabel(50999))</visible>
 							<left>25</left>
@@ -62,18 +61,17 @@
 					<left>10</left>
 					<top>270</top>
 					<width>1000</width>
-					<height>270</height>
+					<height>135</height>
 					<include>VisibleFadeAnimation</include>
 					<visible>!Skin.HasSetting(Disable.MyFlixInfo)</visible>
-					<animation effect="slide" start="0" end="0,-40" condition="Container.Content(tvshows) | Container.Content(episodes)">Conditional</animation>
 					<control type="group">
+						<visible>!String.IsEmpty(ListItem.Top250)</visible>
 						<control type="image">
 							<left>17</left>
 							<top>-35</top>
 							<width>65</width>
 							<height>30</height>
 							<texture colordiffuse="grey">logos/imdb.png</texture>
-							<visible>!String.IsEmpty(ListItem.Top250)</visible>
 						</control>
 						<control type="Label">
 							<left>90</left>
@@ -84,102 +82,84 @@
 							<font>font14</font>
 							<shadowcolor>shadow</shadowcolor>
 							<textcolor>grey</textcolor>
-							<visible>!String.IsEmpty(ListItem.Top250)</visible>
 						</control>
 					</control>
-					<control type="group">
+					<control type="grouplist">
 						<visible>Container.Content(movies) + !ListItem.IsCollection</visible>
-						<control type="grouplist">
-							<control type="label">
-								<width>800</width>
-								<height>45</height>
-								<textcolor>grey</textcolor>
-								<shadowcolor>shadow</shadowcolor>
-								<include>DefaultButtonsValues</include>
-								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20339]: [/COLOR]$INFO[ListItem.Director]</label>
-								<visible>!String.IsEmpty(ListItem.Director)</visible>
-							</control>
-							<control type="label">
-								<width>800</width>
-								<height>45</height>
-								<textcolor>grey</textcolor>
-								<shadowcolor>shadow</shadowcolor>
-								<include>DefaultButtonsValues</include>
-								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]: [/COLOR]$INFO[ListItem.Genre]</label>
-								<visible>!String.IsEmpty(ListItem.Genre)</visible>
-							</control>
-							<control type="label">
-								<width>1000</width>
-								<height>45</height>
-								<textcolor>grey</textcolor>
-								<shadowcolor>shadow</shadowcolor>
-								<include>DefaultButtonsValues</include>
-								<label>$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),,m]$INFO[ListItem.Endtime, • $LOCALIZE[19127]: ,]</label>
-								<visible>!Skin.HasSetting(Enable.HourMinuteDuration)</visible>
-							</control>
-							<control type="label">
-								<width>1000</width>
-								<height>45</height>
-								<textcolor>grey</textcolor>
-								<shadowcolor>shadow</shadowcolor>
-								<include>DefaultButtonsValues</include>
-								<label>$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ,]</label>
-								<visible>Skin.HasSetting(Enable.HourMinuteDuration)</visible>
-							</control>
-						</control>
-						<control type="textbox">
-							<left>15</left>
-							<top>150</top>
+						<control type="label">
 							<width>800</width>
-							<height>170</height>
-							<font>font15</font>
+							<height>45</height>
 							<textcolor>grey</textcolor>
 							<shadowcolor>shadow</shadowcolor>
-							<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Tagline,,[CR]][/COLOR]$VAR[VideoPlotVar]</label>
-							<autoscroll delay="3000" time="3000" repeat="4000">true</autoscroll>
+							<include>DefaultButtonsValues</include>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20339]: [/COLOR]$INFO[ListItem.Director]</label>
+							<visible>!String.IsEmpty(ListItem.Director)</visible>
+						</control>
+						<control type="label">
+							<width>800</width>
+							<height>45</height>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<include>DefaultButtonsValues</include>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]: [/COLOR]$INFO[ListItem.Genre]</label>
+							<visible>!String.IsEmpty(ListItem.Genre)</visible>
+						</control>
+						<control type="label">
+							<width>1000</width>
+							<height>45</height>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<include>DefaultButtonsValues</include>
+							<label>$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),,m]$INFO[ListItem.Endtime, • $LOCALIZE[19127]: ,]</label>
+							<visible>!Skin.HasSetting(Enable.HourMinuteDuration)</visible>
+						</control>
+						<control type="label">
+							<width>1000</width>
+							<height>45</height>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<include>DefaultButtonsValues</include>
+							<label>$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ,]</label>
+							<visible>Skin.HasSetting(Enable.HourMinuteDuration)</visible>
 						</control>
 					</control>
-					<control type="group">
+					<control type="grouplist">
 						<visible>ListItem.IsCollection + ![Container.OnNext | Container.OnPrevious]</visible>
 						<animation effect="fade" time="140" delay="100">Visible</animation>
-						<control type="grouplist">
-							<control type="label">
-								<width>800</width>
-								<height>45</height>
-								<textcolor>grey</textcolor>
-								<shadowcolor>shadow</shadowcolor>
-								<include>DefaultButtonsValues</include>
-								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20339]: [/COLOR]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Director)]</label>
-								<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Director))</visible>
-							</control>
-							<control type="label">
-								<width>800</width>
-								<height>45</height>
-								<textcolor>grey</textcolor>
-								<shadowcolor>shadow</shadowcolor>
-								<include>DefaultButtonsValues</include>
-								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]: [/COLOR]$VAR[MovieSetGenreVar]</label>
-								<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre)) | !String.IsEmpty(Container(4500).ListItem(0).Genre)</visible>
-							</control>
-							<control type="label">
-								<width>1000</width>
-								<height>45</height>
-								<textcolor>grey</textcolor>
-								<shadowcolor>shadow</shadowcolor>
-								<include>DefaultButtonsValues</include>
-								<label>$INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]$INFO[Container(4500).NumItems, • , $LOCALIZE[342]]$INFO[ListItem.RatingAndVotes, • ]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime), • , $LOCALIZE[12391]]</label>
-							</control>
-						</control>
-						<control type="textbox">
-							<left>15</left>
-							<top>150</top>
+						<control type="label">
 							<width>800</width>
-							<height>130</height>
-							<font>font15</font>
+							<height>45</height>
 							<textcolor>grey</textcolor>
 							<shadowcolor>shadow</shadowcolor>
-							<label>$VAR[VideoPlotVar]</label>
-							<autoscroll delay="3000" time="3000" repeat="4000">true</autoscroll>
+							<include>DefaultButtonsValues</include>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20339]: [/COLOR]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Director)]</label>
+							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Director))</visible>
+						</control>
+						<control type="label">
+							<width>800</width>
+							<height>45</height>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<include>DefaultButtonsValues</include>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20339]: [/COLOR]$INFO[Container(4500).ListItemNoWrap(0).Director]$INFO[Container(4500).ListItemNoWrap(1).Director, / ]$INFO[Container(4500).ListItemNoWrap(2).Director, / ]$INFO[Container(4500).ListItemNoWrap(3).Director, / ]</label>
+							<visible>String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Director)) + !String.IsEmpty(Container(4500).ListItem(0).Director)</visible>
+						</control>
+						<control type="label">
+							<width>800</width>
+							<height>45</height>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<include>DefaultButtonsValues</include>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]: [/COLOR]$VAR[MovieSetGenreVar]</label>
+							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre)) | !String.IsEmpty(Container(4500).ListItem(0).Genre)</visible>
+						</control>
+						<control type="label">
+							<width>1000</width>
+							<height>45</height>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<include>DefaultButtonsValues</include>
+							<label>$INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]$INFO[Container(4500).NumItems, • , $LOCALIZE[342]]$INFO[ListItem.RatingAndVotes, • ]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime), • , $LOCALIZE[12391]]</label>
 						</control>
 					</control>
 					<control type="grouplist">
@@ -240,6 +220,7 @@
 							<shadowcolor>shadow</shadowcolor>
 							<include>DefaultButtonsValues</include>
 							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[563]: [/COLOR]$INFO[ListItem.RatingAndVotes]</label>
+							<visible>!String.IsEmpty(ListItem.RatingAndVotes)</visible>
 						</control>
 						<control type="label">
 							<width>800</width>
@@ -248,6 +229,7 @@
 							<shadowcolor>shadow</shadowcolor>
 							<include>DefaultButtonsValues</include>
 							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31452]: [/COLOR]$INFO[ListItem.Premiered]</label>
+							<visible>!String.IsEmpty(ListItem.Premiered)</visible>
 						</control>
 						<control type="label">
 							<width>800</width>
@@ -315,17 +297,14 @@
 					</control>
 					<control type="textbox">
 						<left>15</left>
-						<top>90</top>
+						<top>150</top>
 						<width>800</width>
-						<height>210</height>
+						<height>170</height>
 						<font>font15</font>
 						<textcolor>grey</textcolor>
 						<shadowcolor>shadow</shadowcolor>
-						<label>$VAR[VideoPlotVar]</label>
-						<autoscroll delay="3000" time="2500" repeat="4000">true</autoscroll>
-						<animation effect="slide" start="0" end="0,45" condition="Container.Content(tvshows)">Conditional</animation>
-						<animation effect="slide" start="0" end="0,155" condition="Container.Content(episodes)">Conditional</animation>
-						<visible>Container.Content(tvshows) | Container.Content(episodes)</visible>
+						<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Tagline,,[CR]][/COLOR]$VAR[VideoPlotVar]</label>
+						<autoscroll delay="3000" time="3000" repeat="4000">true</autoscroll>
 					</control>
 				</control>
 			</control>
