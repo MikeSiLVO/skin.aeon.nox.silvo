@@ -633,10 +633,8 @@
 						<!-- Movies + Episodes -->
 						<control type="group">
 							<visible>![Container.Content(addons) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
-							<animation effect="slide" end="80" condition="String.IsEmpty(Skin.String(LanguageFlags))">Conditional</animation>
-							<animation effect="slide" end="80" condition="Control.IsVisible(50) + !Container.Content(episodes)">Conditional</animation>
-							<animation effect="slide" end="-300" condition="Container.Content(episodes) + !System.AddonIsEnabled(plugin.video.themoviedb.helper) + [Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(509) | Control.IsVisible(602)]">Conditional</animation>
-							<animation effect="slide" end="-240" condition="Container.Content(episodes) + !System.AddonIsEnabled(plugin.video.themoviedb.helper) + [Control.IsVisible(500)]">Conditional</animation>
+							<animation effect="slide" end="85" condition="String.IsEmpty(Skin.String(LanguageFlags)) + [System.AddonIsEnabled(script.embuary.helper) | System.AddonIsEnabled(plugin.video.themoviedb.helper)]">Conditional</animation>
+							<animation effect="slide" end="80" condition="Control.IsVisible(50) + Container.Content(movies)">Conditional</animation>
 							<control type="group">
 								<left>40</left>
 								<visible>[Container.Content(movies) + Control.IsVisible(50) + !Skin.HasSetting(Disable.List.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(50)]  | [Container.Content(movies) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.EpisodeMediaflags)] | Control.IsVisible(591) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(509) + !Skin.HasSetting(Disable.MyFlix.Mediaflags) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(500) | Control.IsVisible(602)</visible>
@@ -654,7 +652,6 @@
 									<left>340</left>
 									<width>1500</width>
 									<orientation>horizontal</orientation>
-									<usecontrolcoords>true</usecontrolcoords>
 									<control type="group">
 										<width>170</width>
 										<visible>![Container.Content(movies) + Control.IsVisible(50)]</visible>
@@ -680,7 +677,7 @@
 									</control>
 									<control type="image">
 										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution].png</texture>
+										<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
 									</control>
 									<control type="image">
 										<include>MediaFlagValues</include>
@@ -704,8 +701,7 @@
 									</control>
 									<!-- LANGUAGE FLAGS -->
 									<control type="grouplist">
-										<top>10</top>
-										<height>60</height>
+										<height>78</height>
 										<align>center</align>
 										<control type="grouplist">
 											<width>140</width>
@@ -799,9 +795,12 @@
 								<control type="group">
 									<width>987.5</width>
 									<visible>Container.Content(tvshows)</visible>
-									<animation effect="slide" start="0,0" end="-1000" condition="Control.IsVisible(509)">Conditional</animation>
+									<animation effect="slide" end="-520" condition="Control.IsVisible(57)">Conditional</animation>
+									<animation effect="slide" end="-140" condition="Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
+									<animation effect="slide" end="-1000" condition="Control.IsVisible(509)">Conditional</animation>
 									<control type="group">
 										<visible>!String.IsEmpty(ListItem.Studio)</visible>
+										<include>VisibleFadeAnimation</include>
 										<width>200</width>
 										<control type="image" id="913">
 											<top>2</top>
@@ -826,7 +825,7 @@
 										<width>200</width>
 										<include>MediaFlagValues</include>
 										<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
-										<visible>!String.IsEmpty(ListItem.Studio) + ![String.IsEmpty(ListItem.MPAA) + String.StartsWith(Container.FolderPath,plugin://)]</visible>
+										<visible>![String.IsEmpty(ListItem.MPAA) + String.StartsWith(Container.FolderPath,plugin://)]</visible>
 									</control>
 									<control type="grouplist">
 										<left>400</left>
@@ -1038,23 +1037,25 @@
 					<visible>ListItem.IsCollection</visible>
 					<animation effect="fade" time="140" delay="100">Visible</animation>
 					<animation effect="slide" end="1200" condition="Control.IsVisible(50) + Container.Content(sets)">Conditional</animation>
-					<animation effect="slide" end="1300" condition="Control.IsVisible(506)">Conditional</animation>
+					<animation effect="slide" end="1320" condition="Control.IsVisible(506)">Conditional</animation>
 					<animation effect="slide" end="-70" condition="Control.IsVisible(509)">Conditional</animation>
 					<animation effect="slide" end="-1152.5" condition="Control.IsVisible(591)">Conditional</animation>
 					<control type="grouplist">
 						<visible>Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(500) | [Control.IsVisible(506) + Container.Content(movies) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Control.IsVisible(506) + Container.Content(sets) + !Skin.HasSetting(Disable.RightList.SetMediaflags)] | Control.IsVisible(509) | Control.IsVisible(591) | Control.IsVisible(602)</visible>
-						<left>80</left>
+						<left>60</left>
 						<top>1014</top>
 						<height>90</height>
 						<orientation>horizontal</orientation>
 						<control type="group">
-							<width>177</width>
+							<width>170</width>
 							<control type="image" id="917">
 								<include>MediaFlagValues</include>
 								<texture>$VAR[PathFlagsStudios]$INFO[Container(4500).ListItem(0).Studio,,.png]</texture>
 							</control>
 							<control type="label">
-								<width>177</width>
+								<left>20</left>
+								<width>130</width>
+								<height>78</height>
 								<align>center</align>
 								<font>font10</font>
 								<textcolor>grey</textcolor>
@@ -1067,23 +1068,24 @@
 							<include>MediaFlagValues</include>
 							<texture>$VAR[MediaFlagsPathVar]/mpaa/$VAR[SetRatingFlagVar]</texture>
 						</control>
-						<control type="grouplist">
-							<width>240</width>
-							<orientation>horizontal</orientation>
-							<itemgap>-40</itemgap>
+						<control type="group">
+							<width>170</width>
 							<visible>![Control.IsVisible(55) | Control.IsVisible(57) | Control.IsVisible(500) | Control.IsVisible(509) | Control.IsVisible(591)]</visible>
 							<visible>!String.IsEqual(Container(4500).NumItems,0)</visible>
 							<control type="label">
-								<width>63</width>
-								<height>78</height>
+								<height>60</height>
 								<align>center</align>
 								<label>$INFO[Container(4500).NumItems]</label>
 								<font>font48_bold</font>
 								<textcolor>grey</textcolor>
 							</control>
-							<control type="image">
-								<include>MediaFlagValues</include>
-								<texture>overlays/set.png</texture>
+							<control type="label">
+								<top>52</top>
+								<height>30</height>
+								<align>center</align>
+								<label>$LOCALIZE[342]</label>
+								<font>font12</font>
+								<textcolor>grey</textcolor>
 							</control>
 						</control>
 					</control>
