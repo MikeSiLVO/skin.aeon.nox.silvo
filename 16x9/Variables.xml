@@ -2248,8 +2248,7 @@
 		<value condition="Control.HasFocus(98) + Window.IsVisible(mediafilter)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[192][/COLOR]</value>
 		<value condition="Window.IsVisible(FileBrowser.xml)">$INFO[Control.GetLabel(411)][COLOR $VAR[ThemeLabelColor]]$INFO[Control.GetLabel(412), - ][/COLOR]</value>
 		<value condition="Window.IsVisible(DialogSelect.xml) + Control.HasFocus(95)">[COLOR $VAR[ThemeLabelColor]]$INFO[Control.GetLabel(5)][/COLOR]</value>
-		<value condition="Window.IsVisible(selectvideoversion)">$INFO[Control.GetLabel(1)]$INFO[ListItem.Label,: ]</value>
-		<value condition="Window.IsVisible(DialogSelect.xml)">$INFO[Control.GetLabel(1)]</value>
+		<value condition="Window.IsVisible(DialogSelect.xml) | Window.IsVisible(selectvideoversion)">$INFO[Control.GetLabel(1)]</value>
 		<value condition="Window.IsVisible(DialogSettings.xml)">$INFO[Control.GetLabel(2)]</value>
 		<value condition="Window.IsVisible(1114) + String.IsEqual(Window(Home).Property(DialogSettings),videoosd)">$LOCALIZE[31375] $LOCALIZE[5]</value>
 		<value condition="Window.IsVisible(1114) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd)">$LOCALIZE[31376] $LOCALIZE[5]</value>
