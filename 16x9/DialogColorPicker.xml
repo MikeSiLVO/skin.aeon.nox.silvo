@@ -21,7 +21,6 @@
 		</control>
 		<control type="label" id="1">
 			<left>360</left>
-			<top>5</top>
 			<width>1200</width>
 			<height>80</height>
 			<align>center</align>
@@ -31,21 +30,21 @@
 		</control>
 		<control type="image">
 			<left>5</left>
-			<top>87</top>
+			<top>77</top>
 			<width>1910</width>
 			<height>1</height>
 			<texture colordiffuse="grey4">separator_horizontal.png</texture>
 		</control>
 		<control type="image">
 			<left>5</left>
-			<top>892</top>
+			<top>882</top>
 			<width>1910</width>
 			<height>1</height>
 			<texture colordiffuse="grey4">separator_horizontal.png</texture>
 		</control>
 		<control type="panel" id="6">
 			<viewtype label="536">icon</viewtype>
-			<top>90</top>
+			<top>80</top>
 			<left>10</left>
 			<width>1900</width>
 			<height>800</height>
@@ -82,47 +81,60 @@
 			</focusedlayout>
 		</control>
 		<control type="image">
-			<top>910</top>
+			<top>886</top>
 			<left>15</left>
 			<width>300</width>
-			<height>150</height>
+			<height>184</height>
 			<texture colordiffuse="$INFO[ListItem.Label2]">colors/white.png</texture>
 			<animation effect="fade" start="100" end="0" condition="!Control.HasFocus(6)">Conditional</animation>
 		</control>
 		<control type="image">
-			<top>908</top>
+			<top>884</top>
 			<left>13</left>
 			<width>304</width>
-			<height>154</height>
+			<height>188</height>
 			<bordersize>1</bordersize>
 			<texture colordiffuse="grey4" border="1" infill="false">colors/border_frame.png</texture>
 		</control>
 		<control type="grouplist" id="9001">
-			<left>320</left>
-			<top>910</top>
-			<height>120</height>
+			<left>1615</left>
+			<top>894</top>
+			<width>400</width>
+			<height>180</height>
 			<onup>6</onup>
 			<onleft>6</onleft>
 			<onright>6</onright>
 			<control type="button" id="7">
-				<width>200</width>
+				<width>300</width>
 				<height>60</height>
+				<align>right</align>
 				<label />
 			</control>
 			<control type="button" id="99">
-				<width>200</width>
+				<width>300</width>
 				<height>60</height>
+				<align>right</align>
 				<label>$LOCALIZE[13007]</label>
 				<onclick>Skin.Reset($INFO[Window(1140).Property(Reset.Color)])</onclick>
 				<onclick>SendClick(7)</onclick>
 				<visible>!String.IsEmpty(Window(1140).Property(Reset.Color))</visible>
 			</control>
+			<control type="button" id="98">
+				<width>300</width>
+				<height>60</height>
+				<align>right</align>
+				<label>$LOCALIZE[31617]</label>
+				<onclick>Dialog.Close(dialogcolorpicker)</onclick>
+				<onclick>Skin.SetString($INFO[Window(1140).Property(Reset.Color)])</onclick>
+				<visible>!String.IsEmpty(Window(1140).Property(Reset.Color))</visible>
+			</control>
 		</control>
 		<control type="label" id="3010">
-			<top>1010</top>
-			<left>335</left>
-			<width>900</width>
+			<top>1020</top>
+			<left>325</left>
+			<width>1000</width>
 			<height>60</height>
+			<font>font16</font>
 			<label>[UPPERCASE]$INFO[ListItem.Label,, ][COLOR=$INFO[ListItem.Label2]]$INFO[ListItem.Label2][/COLOR][/UPPERCASE]</label>
 			<shadowcolor>grey2</shadowcolor>
 			<animation effect="slide" end="0,-60" condition="String.IsEmpty(Window(1140).Property(Reset.Color))">Conditional</animation>
