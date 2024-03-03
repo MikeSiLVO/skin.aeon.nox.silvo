@@ -539,7 +539,7 @@
 					<width>2800</width>
 					<height>500</height>
 					<onup>9000</onup>
-					<ondown condition="!String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person) + !String.IsEqual(ListItem.DBTYPE,season)">Runscript(plugin.video.themoviedb.helper,recommendations=5000|info=cast|true|info||5001|info=crew|true|info||5002|info=similar|true|info,window_id=1110,tmdb_type=$VAR[TMDbHelperDBTYPEPathVar],tmdb_id=$INFO[Container(9143).ListItem.UniqueID(tmdb)],winprop_clearlogo=$INFO[ListItem.Art(clearlogo)])</ondown>
+					<ondown condition="!String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person) + !String.IsEqual(ListItem.DBTYPE,season)">Runscript(plugin.video.themoviedb.helper,recommendations=5000|info=cast|true|info||5001|info=crew|true|info||5002|info=similar|true|info||5003|info=trakt_comments|true|text,window_id=1110,tmdb_type=$VAR[TMDbHelperDBTYPEPathVar],tmdb_id=$INFO[Container(9143).ListItem.UniqueID(tmdb)],winprop_clearlogo=$INFO[ListItem.Art(clearlogo)])</ondown>
 					<ondown condition="String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.Property(item.type),person)">noop</ondown>
 					<usecontrolcoords>true</usecontrolcoords>
 					<scrolltime tween="quadratic" easing="out">300</scrolltime>
