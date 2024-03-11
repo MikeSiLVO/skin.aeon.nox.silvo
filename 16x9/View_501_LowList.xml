@@ -1268,7 +1268,7 @@
 						<width>180</width>
 						<height>34</height>
 						<aspectratio>keep</aspectratio>
-						<texture colordiffuse="$VAR[ThemeLabelColor]" fallback="rating0.png">$INFO[ListItem.UserRating,flags/rating/,.png]</texture>
+						<texture colordiffuse="$VAR[ThemeLabelColor]" fallback="flags/rating/empty.png">$INFO[ListItem.UserRating,flags/rating/,.png]</texture>
 						<colordiffuse>grey2</colordiffuse>
 						<visible>!ListItem.IsParentFolder + !String.IsEqual(Container.SortMethod,$LOCALIZE[557])</visible>
 					</control>
@@ -1314,7 +1314,7 @@
 						<width>180</width>
 						<height>34</height>
 						<aspectratio>keep</aspectratio>
-						<texture fallback="rating0.png">$INFO[ListItem.UserRating,flags/rating/,.png]</texture>
+						<texture fallback="flags/rating/empty.png">$INFO[ListItem.UserRating,flags/rating/,.png]</texture>
 						<visible>!ListItem.IsParentFolder + !String.IsEqual(Container.SortMethod,$LOCALIZE[557])</visible>
 						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(501)">Conditional</animation>
 					</control>
@@ -1353,7 +1353,7 @@
 						<width>180</width>
 						<height>34</height>
 						<aspectratio>keep</aspectratio>
-						<texture fallback="rating0.png">$INFO[ListItem.UserRating,flags/rating/,.png]</texture>
+						<texture fallback="flags/rating/empty.png">$INFO[ListItem.UserRating,flags/rating/,.png]</texture>
 						<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
 						<visible>!ListItem.IsParentFolder</visible>
 					</control>
@@ -1400,7 +1400,7 @@
 						<height>34</height>
 						<aspectratio>keep</aspectratio>
 						<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
-						<texture fallback="rating0.png">$INFO[ListItem.UserRating,flags/rating/,.png]</texture>
+						<texture fallback="flags/rating/empty.png">$INFO[ListItem.UserRating,flags/rating/,.png]</texture>
 						<visible>!ListItem.IsParentFolder</visible>
 						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(501)">Conditional</animation>
 					</control>
