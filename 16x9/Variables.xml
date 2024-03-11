@@ -1352,7 +1352,12 @@
 		<value condition="!String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 		<value>$INFO[ListItem.Icon,views/list/]</value>
 	</variable>
-	<variable name="StarRatingDiffuseVar">
+	<variable name="StarRatingItemDiffuseVar">
+		<value condition="ListItem.IsSelected | ListItem.IsPlaying">$VAR[ThemeLabelColor]</value>
+		<value condition="!String.IsEmpty(ListItem.UserRating)">$VAR[ThemeLabelColor]</value>
+		<value>grey3</value>
+	</variable>
+	<variable name="StarRatingFocusedDiffuseVar">
 		<value condition="ListItem.IsSelected | ListItem.IsPlaying">$VAR[ThemeLabelColor]</value>
 		<value condition="!String.IsEmpty(ListItem.UserRating)">$VAR[ThemeLabelColor]</value>
 		<value>white</value>
@@ -1491,6 +1496,7 @@
 		<value condition="[Control.HasFocus(9003) + !String.IsEqual(ListItem.DBTYPE,song)] | [Container(9001).HasNext + !Container(9001).HasPrevious] + Window.IsActive(musicinformation)">$LOCALIZE[31453]</value>
 		<value condition="Control.HasFocus(90003) | [Container(90001).HasNext + !Container(90001).HasPrevious] + !Window.IsActive(musicinformation)">$LOCALIZE[31453]</value>
 		<value condition="[Container(9001).HasNext + !Container(9001).HasPrevious] + !String.IsEqual(ListItem.DBTYPE,song)">$LOCALIZE[31453]</value>
+		<value condition="Control.HasFocus(5000)">$LOCALIZE[20391]</value>
 	</variable>
 	<variable name="VideoInfoPlotVar">
 		<value condition="String.IsEqual(ListItem.Property(item.type),person)">$INFO[ListItem.Property(Biography)]</value>
