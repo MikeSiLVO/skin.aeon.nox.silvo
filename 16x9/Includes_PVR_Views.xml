@@ -307,7 +307,7 @@
 						<width>440</width>
 						<height>175</height>
 						<aspectratio>stretch</aspectratio>
-						<texture colordiffuse="33FFFFFF" border="4" background="true">pvr/grey_bg.png</texture>
+						<texture colordiffuse="33FFFFFF" border="4">pvr/grey_bg.png</texture>
 					</control>
 					<control type="label">
 						<left>15</left>
@@ -328,19 +328,18 @@
 						<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="3">pvr/texturebg_white.png</midtexture>
 					</control>
 					<control type="image">
-						<left>335</left>
-						<top>10</top>
-						<width>90</width>
-						<height>59</height>
-						<aspectratio align="right">keep</aspectratio>
+						<left>342</left>
+						<top>5</top>
+						<width>80</width>
+						<height>55</height>
+						<aspectratio>keep</aspectratio>
 						<texture background="true" colordiffuse="BAFFFFFF">$INFO[ListItem.Icon]</texture>
-						<animation effect="slide" start="0" end="-20" time="0" tween="sine" easing="in" condition="[ListItem.HasTimer | ListItem.IsRecording | ListItem.HasArchive]">Conditional</animation>
 					</control>
 					<control type="image">
-						<left>402</left>
-						<top>17</top>
-						<width>40</width>
-						<height>40</height>
+						<left>412</left>
+						<top>-2</top>
+						<width>30</width>
+						<height>30</height>
 						<texture>$VAR[PVRChannelStatusIcon]</texture>
 						<animation effect="fade" start="100" end="40" time="2000" pulse="true" condition="ListItem.IsRecording">Conditional</animation>
 					</control>
@@ -379,14 +378,15 @@
 				</itemlayout>
 				<focusedlayout height="180" width="445">
 					<control type="group">
-						<animation type="Focus">
-							<effect type="fade" start="80" end="100" time="200" tween="sine" easing="in" />
+						<animation type="Focus" reversible="false">
+							<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
+							<effect type="fade" start="80" end="100" time="300" tween="sine" easing="in" />
 						</animation>
 						<control type="image">
 							<width>440</width>
 							<height>175</height>
 							<aspectratio>stretch</aspectratio>
-							<texture colordiffuse="40FFFFFF" border="4" background="true">pvr/grey_bg.png</texture>
+							<texture colordiffuse="4DFFFFFF" border="4">pvr/grey_bg.png</texture>
 						</control>
 						<control type="image">
 							<left>-13</left>
@@ -414,21 +414,20 @@
 							<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="3">pvr/texturebg_white.png</midtexture>
 						</control>
 						<control type="image">
-							<left>402</left>
-							<top>17</top>
-							<width>40</width>
-							<height>40</height>
-							<texture>$VAR[PVRChannelStatusIcon]</texture>
-							<animation effect="fade" start="100" end="40" time="2000" pulse="true" condition="ListItem.IsRecording">Conditional</animation>
+							<left>342</left>
+							<top>5</top>
+							<width>80</width>
+							<height>55</height>
+							<aspectratio>keep</aspectratio>
+							<texture background="true" fallback="pvr/blank.png">$INFO[ListItem.Icon]</texture>
 						</control>
 						<control type="image">
-							<left>335</left>
-							<top>10</top>
-							<width>90</width>
-							<height>59</height>
-							<aspectratio align="right">keep</aspectratio>
-							<texture background="true" fallback="pvr/blank.png">$INFO[ListItem.Icon]</texture>
-							<animation effect="slide" start="0" end="-20" time="0" tween="sine" easing="in" condition="[ListItem.HasTimer | ListItem.IsRecording | ListItem.HasArchive]">Conditional</animation>
+							<left>412</left>
+							<top>-2</top>
+							<width>30</width>
+							<height>30</height>
+							<texture>$VAR[PVRChannelStatusIcon]</texture>
+							<animation effect="fade" start="100" end="40" time="2000" pulse="true" condition="ListItem.IsRecording">Conditional</animation>
 						</control>
 						<control type="group">
 							<left>15</left>
