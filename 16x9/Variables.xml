@@ -712,6 +712,8 @@
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31019]:[/COLOR][CR]$INFO[ListItem.Studio]</value>
 	</variable>
 	<variable name="InfoPanelLabel3Var">
+		<value condition="Control.IsVisible(57) + ListItem.IsCollection + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Genre)]</value>
+		<value condition="Control.IsVisible(57) + ListItem.IsCollection + !String.IsEmpty(Container(4500).ListItem(0).Genre)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[Container(4500).ListItem(0).Genre]</value>
 		<value condition="Control.IsVisible(57) + [Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</value>
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[563]:[/COLOR][CR]$INFO[ListItem.RatingAndVotes]$INFO[ListItem.Top250, / $LOCALIZE[13409] #]</value>
 		<value condition="Container.Content(tvshows) + !String.IsEmpty(Container(9143).ListItem.Property(Status))">[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Property(TotalSeasons)]$VAR[OneOrMoreSeasonsVar, , / ]$INFO[ListItem.Property(TotalEpisodes),, ]$VAR[OneOrMoreEpisodesVar]:[/COLOR][CR]$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[16101]]</value>
@@ -719,7 +721,8 @@
 		<value condition="Container.Content(seasons)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20360]:[/COLOR][CR]$INFO[ListItem.Property(TotalEpisodes)]</value>
 	</variable>
 	<variable name="InfoPanelLabel4Var">
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Runtime))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime),, $LOCALIZE[12391]]</value>
+		<value condition="Control.IsVisible(57) + !String.IsEmpty(ListItem.Top250)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[13409]:[/COLOR][CR]$INFO[ListItem.Top250,# ]</value>
+		<value condition="ListItem.IsCollection + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Runtime))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime),, $LOCALIZE[12391]]</value>
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + !Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</value>
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$VAR[ItemDurationVar]</value>
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</value>
@@ -1699,6 +1702,7 @@
 	<variable name="VideoResolutionLabelVar">
 		<value condition="String.IsEqual(ListItem.VideoResolution,4K)">$INFO[ListItem.VideoResolution]</value>
 		<value>$INFO[ListItem.VideoResolution]p</value>
+		<value>$INFO[ListItem.VideoResolution,,p]</value>
 	</variable>
 	<variable name="HDRTypeLabelVar">
 		<value condition="String.IsEqual(ListItem.HdrType,dolbyvision)">Dolby Vision</value>
