@@ -7,7 +7,7 @@
 		<control type="image">
 			<include>FullscreenDimensions</include>
 			<texture>colors/black50.png</texture>
-			<animation effect="fade" time="300">WindowOpen</animation>
+			<animation effect="fade" time="200">WindowOpen</animation>
 			<animation effect="fade" time="300">WindowClose</animation>
 		</control>
 		<control type="group">
@@ -26,27 +26,12 @@
 				<bordersize>1</bordersize>
 				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
 			</control>
-			<control type="image">
-				<left>1</left>
-				<top>47</top>
-				<width>908</width>
-				<height>1</height>
-				<texture colordiffuse="grey4">separator_horizontal.png</texture>
-			</control>
-			<control type="progress">
-				<left>2</left>
-				<top>1</top>
-				<width>906</width>
-				<height>40</height>
-				<info>System.Progressbar</info>
-				<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
-				<visible>Window.IsActive(progressdialog)</visible>
-			</control>
+			<include condition="Window.IsActive(progressdialog)">DialogProgress</include>
 			<control type="label">
 				<left>2</left>
 				<top>2</top>
 				<width>898</width>
-				<height>40</height>
+				<height>60</height>
 				<textoffsetx>15</textoffsetx>
 				<font>font16_title_bold</font>
 				<align>center</align>
