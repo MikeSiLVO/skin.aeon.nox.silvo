@@ -20,49 +20,46 @@
 		<control type="image">
 			<include>FullscreenDimensions</include>
 			<texture>colors/black50.png</texture>
-			<animation effect="fade" time="300">WindowOpen</animation>
+			<animation effect="fade" time="200">WindowOpen</animation>
 			<animation effect="fade" time="300">WindowClose</animation>
 		</control>
 		<control type="group">
-			<left>502</left>
-			<top>293</top>
+			<left>510</left>
+			<top>290</top>
 			<control type="image">
-				<width>916</width>
-				<height>494</height>
-				<texture border="40">dialogs/default/bg.png</texture>
-			</control>
-			<control type="image">
-				<left>17</left>
-				<top>70</top>
-				<width>882</width>
-				<height>1</height>
-				<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+				<width>910</width>
+				<height>500</height>
+				<texture>colors/black.png</texture>
+				<bordersize>1</bordersize>
+				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
 			</control>
 			<control type="label" id="1">
-				<left>30</left>
-				<top>22</top>
-				<width>856</width>
-				<height>40</height>
+				<left>2</left>
+				<top>2</top>
+				<width>898</width>
+				<height>60</height>
 				<textoffsetx>15</textoffsetx>
-				<font>font15_title</font>
+				<font>font16_title_bold</font>
 				<align>center</align>
 				<textcolor>grey2</textcolor>
 				<label>$LOCALIZE[14117]</label>
 			</control>
 			<control type="textbox" id="400">
 				<left>45</left>
-				<top>98</top>
+				<top>88</top>
 				<width>825</width>
-				<height>282</height>
-				<label>$VAR[CustomConfirmTextboxVar]</label>
+				<height>290</height>
 				<textcolor>grey2</textcolor>
+				<label>$VAR[CustomConfirmTextboxVar]</label>
 				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
 			</control>
 			<control type="grouplist" id="90100">
-				<left>30</left>
+				<left>20</left>
 				<top>402</top>
-				<width>856</width>
+				<width>876</width>
 				<orientation>horizontal</orientation>
+				<align>center</align>
+				<itemgap>5</itemgap>
 				<control type="button" id="901001">
 					<description>Yes button</description>
 					<width>421</width>
