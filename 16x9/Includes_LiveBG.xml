@@ -207,9 +207,14 @@
 			</control>
 		</control>
 		<control type="group">
+			<visible>[String.EndsWith(Container(9000).ListItem.Property(background),i:songs) | String.EndsWith(Container(9000).ListItem.Property(background),i:albums)] | [Control.HasFocus(9010) + [String.EndsWith(Container(9010).ListItem.Property(background),i:songs) | String.EndsWith(Container(9010).ListItem.Property(background),i:albums)]]</visible>
 			<animation effect="fade" time="600">WindowOpen</animation>
 			<animation effect="fade" time="600">VisibleChange</animation>
-			<visible>[String.EndsWith(Container(9000).ListItem.Property(background),i:songs) | String.EndsWith(Container(9000).ListItem.Property(background),i:albums)] | [Control.HasFocus(9010) + [String.EndsWith(Container(9010).ListItem.Property(background),i:songs) | String.EndsWith(Container(9010).ListItem.Property(background),i:albums)]]</visible>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<aspectratio align="center" aligny="top">scale</aspectratio>
+				<texture background="true">special://skin/extras/backgrounds/default_livecases.jpg</texture>
+			</control>
 			<control type="group">
 				<left>-200</left>
 				<control type="group">
@@ -513,6 +518,7 @@
 	</include>
 	<!-- Cases Content Var -->
 	<variable name="CaseContentVar">
+		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),i:random movies) | [Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),i:random movies)]">special://skin/extras/playlists/randommovies.xsp</value>
 		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),i:recent movies) | [Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),i:recent movies)]">special://skin/extras/playlists/recentmovies.xsp</value>
 		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),i:recent episodes) | [Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),i:recent episodes)]">special://skin/extras/playlists/recentepisodes.xsp</value>
 		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),i:songs) | [Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),i:songs)]">special://skin/extras/playlists/randomsongs.xsp</value>
