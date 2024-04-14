@@ -1349,7 +1349,12 @@
 		<value condition="!String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 		<value>$INFO[ListItem.Icon,views/list/]</value>
 	</variable>
-	<variable name="StarRatingDiffuseVar">
+	<variable name="StarRatingItemDiffuseVar">
+		<value condition="ListItem.IsSelected | ListItem.IsPlaying">$VAR[ThemeLabelColor]</value>
+		<value condition="!String.IsEmpty(ListItem.UserRating)">$VAR[ThemeLabelColor]</value>
+		<value>white</value>
+	</variable>
+	<variable name="StarRatingFocusedDiffuseVar">
 		<value condition="ListItem.IsSelected | ListItem.IsPlaying">$VAR[ThemeLabelColor]</value>
 		<value condition="!String.IsEmpty(ListItem.UserRating)">$VAR[ThemeLabelColor]</value>
 		<value>white</value>
@@ -1479,7 +1484,7 @@
 		<value condition="Control.HasFocus(7) | Control.HasFocus(5007)">$LOCALIZE[38023]</value>
 		<value condition="Control.HasFocus(10)">$LOCALIZE[13511]</value>
 		<value condition="Control.HasFocus(5010)">$INFO[Control.GetLabel(10)]</value>
-		<value condition="Control.HasFocus(5012) | Control.HasFocus(50012)">$INFO[Control.GetLabel(12)]</value>
+		<value condition="Control.HasFocus(5012)">$INFO[Control.GetLabel(12)]</value>
 		<value condition="Control.HasFocus(6) | Control.HasFocus(5006)">$LOCALIZE[184]</value>
 		<value condition="Control.HasFocus(208)">$LOCALIZE[31014]</value>
 		<value condition="[Control.HasFocus(9003) + !String.IsEqual(ListItem.DBTYPE,song)] | [Container(9001).HasNext + !Container(9001).HasPrevious] + Window.IsActive(musicinformation)">$LOCALIZE[31453]</value>
@@ -1696,6 +1701,10 @@
 		<value condition="Integer.IsEqual(VideoPlayer.Duration(mm),02)">$LOCALIZE[12312]m</value>
 		<value condition="Integer.IsEqual(VideoPlayer.Duration(mm),01)">$LOCALIZE[12311]m</value>
 		<value>$INFO[VideoPlayer.Duration(ss),,s]</value>
+	</variable>
+	<variable name="DialogSelectLabel2RuntimeVar">
+		<value condition="Skin.HasSetting(Enable.HourMinuteDuration)">$VAR[ItemDurationVar]</value>
+		<value condition="!Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</value>
 	</variable>
 	<variable name="SelectCaseVar">
 		<value condition="Skin.HasSetting(useclearcases)">$LOCALIZE[31722]</value>
