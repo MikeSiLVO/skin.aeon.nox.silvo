@@ -57,24 +57,26 @@
 					<width>100</width>
 					<height>80</height>
 					<texture>colors/white.png</texture>
-					<bordersize>5</bordersize>
+					<bordersize>1</bordersize>
+					<bordertexture border="1" infill="false" colordiffuse="white">colors/border_frame.png</bordertexture>
 					<colordiffuse>$INFO[ListItem.Label2]</colordiffuse>
 				</control>
 				<control type="image">
 					<width>100</width>
 					<height>80</height>
 					<texture>colors/black10.png</texture>
-					<bordersize>5</bordersize>
+					<bordersize>1</bordersize>
 				</control>
 			</itemlayout>
 			<focusedlayout width="100" height="80">
 				<control type="group">
-					<animation effect="zoom" time="300" tween="sine" easing="inout" start="100" end="120" center="50,40">Focus</animation>
+					<animation effect="zoom" time="300" tween="sine" easing="inout" start="100" end="125" center="50,40">Focus</animation>
 					<control type="image">
 						<width>100</width>
 						<height>80</height>
 						<texture>colors/white.png</texture>
-						<bordersize>5</bordersize>
+						<bordersize>1</bordersize>
+						<bordertexture border="1" infill="false" colordiffuse="white">colors/border_frame.png</bordertexture>
 						<colordiffuse>$INFO[ListItem.Label2]</colordiffuse>
 					</control>
 				</control>
@@ -102,6 +104,7 @@
 			<width>400</width>
 			<height>180</height>
 			<onup>6</onup>
+			<ondown>Control.SetFocus(6,9,absolute)</ondown>
 			<onleft>6</onleft>
 			<onright>6</onright>
 			<control type="button" id="7">
@@ -135,8 +138,8 @@
 			<width>1000</width>
 			<height>60</height>
 			<font>font16</font>
-			<label>[UPPERCASE]$INFO[ListItem.Label,, ][COLOR=$INFO[ListItem.Label2]]$INFO[ListItem.Label2][/COLOR][/UPPERCASE]</label>
-			<shadowcolor>grey2</shadowcolor>
+			<label>[UPPERCASE]$INFO[ListItem.Label]$INFO[ListItem.Label2, #][/UPPERCASE]</label>
+			<shadowcolor>shadow</shadowcolor>
 			<animation effect="slide" end="0,-60" condition="String.IsEmpty(Window(1140).Property(Reset.Color))">Conditional</animation>
 		</control>
 	</controls>
