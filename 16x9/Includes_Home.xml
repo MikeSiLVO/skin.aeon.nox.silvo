@@ -325,25 +325,24 @@
 					<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)</visible>
 				</control>
 			</control>
-			<control type="button">
-				<top>528</top>
-				<width>28</width>
-				<height>28</height>
-				<texturefocus flipx="true" colordiffuse="white">arrowright2.png</texturefocus>
-				<texturenofocus flipx="true" colordiffuse="white">arrowright2.png</texturenofocus>
-				<onclick>90001</onclick>
-				<visible>!Skin.HasSetting(HomeMenuNavVar) + String.IsEqual(Container(9000).ListItem.Property(hasSubmenu),True) + Integer.IsGreater(Container(9010).NumItems,0)</visible>
-				<animation effect="fade" time="250">Visible</animation>
-				<animation effect="fade" time="250">Hidden</animation>
-			</control>
 			<include condition="Skin.HasSetting(HomeMenuNavVar)">MainMenuListFixed</include>
 			<include condition="!Skin.HasSetting(HomeMenuNavVar)">MainMenuListWrapped</include>
 		</control>
 	</include>
 	<include name="VerticalSubMenu">
+		<control type="button" id="90000">
+			<left>-320</left>
+			<width>320</width>
+			<height>100%</height>
+			<texturefocus />
+			<texturenofocus />
+			<onfocus condition="String.IsEqual(Container(9000).ListItem.Property(hasSubmenu),True)">Control.SetVisible(9010)</onfocus>
+			<onunfocus>Control.SetHidden(9010)</onunfocus>
+			<animation effect="slide" end="320,0" time="300" tween="quadratic" easing="out" condition="Control.IsVisible(9010) | Control.HasFocus(9010)">Conditional</animation>
+		</control>
 		<control type="group" id="90001">
 			<animation effect="slide" end="-500,0" time="240">WindowClose</animation>
-			<animation effect="slide" end="380,0" time="300" tween="quadratic" easing="out" condition="Control.HasFocus(9010)">Conditional</animation>
+			<animation effect="slide" end="380,0" time="300" tween="quadratic" easing="out" condition="Control.IsVisible(9010) | Control.HasFocus(9010)">Conditional</animation>
 			<left>-380</left>
 			<control type="image">
 				<width>350</width>
@@ -353,13 +352,15 @@
 			<control type="list" id="9010">
 				<animation effect="slide" end="0,300" condition="Integer.IsLessOrEqual(Container(9010).NumItems,7)">Conditional</animation>
 				<animation effect="slide" end="0,200" condition="Integer.IsGreaterOrEqual(Container(9010).NumItems,8) + Integer.IsLess(Container(9010).NumItems,10)">Conditional</animation>
-				<top>210</top>
+				<top>150</top>
 				<width>380</width>
-				<height>840</height>
+				<height>780</height>
 				<onup>9010</onup>
 				<ondown>9010</ondown>
 				<onright>9000</onright>
 				<onback>9000</onback>
+				<onfocus condition="String.IsEqual(Container(9000).ListItem.Property(hasSubmenu),True)">Control.SetVisible(9010)</onfocus>
+				<onunfocus>Control.SetHidden(9010)</onunfocus>
 				<pagecontrol />
 				<scrolltime tween="quadratic" easing="out">300</scrolltime>
 				<itemlayout height="60" width="375">
@@ -722,16 +723,18 @@
 		<height>980</height>
 		<onup>9000</onup>
 		<ondown>9000</ondown>
-		<onleft>90001</onleft>
+		<onleft condition="String.IsEqual(Container(9000).ListItem.Property(hasSubmenu),True)">Control.SetVisible(9010)</onleft>
+		<onleft condition="String.IsEqual(Container(9000).ListItem.Property(hasSubmenu),True)">SetFocus(9010)</onleft>
 		<onright condition="Control.IsVisible(90010)">90010</onright>
 		<onright condition="!Control.IsVisible(90010) + Control.IsVisible(90020)">90020</onright>
 		<onright condition="!Control.IsVisible(90010) + !Control.IsVisible(90020) + Control.IsVisible(9027)">9020</onright>
 		<onback condition="Skin.HasSetting(Home.Hide) + !Player.Playing">SetFocus(64)</onback>
+		<onfocus>Control.SetHidden(9010)</onfocus>
 		<pagecontrol />
 		<focusposition>3</focusposition>
 		<movement>3</movement>
 		<scrolltime tween="quadratic" easing="out">200</scrolltime>
-		<animation effect="fade" time="200" start="100" end="50" reversible="true" condition="Control.HasFocus(9010)">Conditional</animation>
+		<animation effect="fade" time="200" start="100" end="50" reversible="true" condition="Control.IsVisible(9010)">Conditional</animation>
 		<itemlayout height="140" width="420">
 			<control type="label">
 				<left>30</left>
@@ -744,27 +747,13 @@
 			</control>
 		</itemlayout>
 		<focusedlayout height="140" width="420">
-			<control type="group">
-				<visible>Skin.HasSetting(HomeMenuNavVar) + Control.HasFocus(9000) + ![Container(9000).OnNext | Container(9000).OnPrevious]</visible>
-				<control type="button">
-					<top>58</top>
-					<width>28</width>
-					<height>28</height>
-					<texturefocus flipx="true" colordiffuse="white">arrowright2.png</texturefocus>
-					<texturenofocus flipx="true" colordiffuse="white">arrowright2.png</texturenofocus>
-					<onclick>90001</onclick>
-					<visible>Integer.IsGreater(Container(9010).NumItems,0)</visible>
-					<animation effect="fade" time="250">Visible</animation>
-				</control>
-			</control>
-			<control type="label">
-				<left>30</left>
-				<width>390</width>
-				<height>140</height>
-				<font>font_VerticalMainMenu</font>
-				<textcolor>$VAR[UnfocusedMainMenuColor]</textcolor>
-				<align>right</align>
-				<label>$INFO[ListItem.Label]</label>
+			<control type="image">
+				<top>58</top>
+				<width>28</width>
+				<height>28</height>
+				<texture flipx="true" colordiffuse="white">arrowright2.png</texture>
+				<visible>String.IsEqual(Container(9000).ListItem.Property(hasSubmenu),True) + ![Container(9000).OnNext | Container(9000).OnPrevious]</visible>
+				<animation effect="fade" time="250">Visible</animation>
 			</control>
 			<control type="label">
 				<left>30</left>
@@ -774,8 +763,6 @@
 				<textcolor>$VAR[FocusedMainMenuColor]</textcolor>
 				<align>right</align>
 				<label>$INFO[ListItem.Label]</label>
-				<visible>Control.HasFocus(9000)</visible>
-				<include>VisibleFadeAnimation</include>
 			</control>
 		</focusedlayout>
 		<content>
