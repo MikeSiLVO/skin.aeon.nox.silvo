@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">9000</defaultcontrol>
+	<onload condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">Control.SetHidden(9010)</onload>
 	<onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9000&amp;levels=2&amp;group=mainmenu|buttonmenu)</onload>
 	<onload condition="System.AddonIsEnabled(script.skinvariables)">RunScript(script.skinvariables,action=buildviews)</onload>
 	<onload condition="!Skin.HasSetting(AskedDefaultBackground)">SetProperty(AskDefaultBackground,True,Home)</onload>
