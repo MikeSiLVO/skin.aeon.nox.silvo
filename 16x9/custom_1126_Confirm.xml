@@ -15,15 +15,10 @@
 	<onunload>ClearProperty(NotWarnedOnMuzicVizInfo,Home)</onunload>
 	<onunload>ClearProperty(OfferReloadAfterConfirm,Home)</onunload>
 	<onunload>ClearProperty(AskDefaultBackground,Home)</onunload>
-	<include>DialogOpenCloseAnimation</include>
 	<controls>
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture>colors/black50.png</texture>
-			<animation effect="fade" time="200">WindowOpen</animation>
-			<animation effect="fade" time="300">WindowClose</animation>
-		</control>
+		<include>DimBackground</include>
 		<control type="group">
+			<include>DialogOpenCloseAnimation</include>
 			<left>510</left>
 			<top>290</top>
 			<control type="image">
