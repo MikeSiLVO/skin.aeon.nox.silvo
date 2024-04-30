@@ -12,6 +12,7 @@
 			<include>HiddenObject</include>
 		</control>
 		<include condition="!String.IsEqual(ListItem.DBTYPE,set) + System.AddonIsEnabled(plugin.video.themoviedb.helper)">HiddenActorList</include>
+		<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">TMDbHelperContentList</include>
 		<control type="fadelabel" id="4510">
 			<top>-100</top>
 			<width>2560</width>
@@ -43,7 +44,6 @@
 			<label>$INFO[ListItem.Art(poster20)]</label>
 			<include>FadeLabelTime</include>
 		</control>
-		<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">TMDbHelperContentList</include>
 		<!-- Poster Side -->
 		<control type="group">
 			<animation effect="slide" start="-730,0" end="0,0" delay="200" time="320" tween="quadratic">WindowOpen</animation>
@@ -119,7 +119,7 @@
 								<font>font_version</font>
 								<textcolor>grey</textcolor>
 								<label>$INFO[ListItem.Year,(,)]</label>
-								<visible>!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEqual(ListItem.Property(item.type),person)</visible>
+								<visible>!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)</visible>
 							</control>
 						</control>
 						<control type="group">
@@ -195,15 +195,7 @@
 						<include condition="!String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">InfoExtendedRatings</include>
 					</control>
 					<!-- TMDbHelper Person Age -->
-					<control type="label">
-						<top>103</top>
-						<width>auto</width>
-						<height>90</height>
-						<font>font48_bold</font>
-						<textcolor>grey</textcolor>
-						<label>$INFO[ListItem.Property(Age),, $LOCALIZE[31544]]</label>
-						<visible>String.IsEqual(ListItem.Property(item.type),person) + !String.IsEmpty(ListItem.Property(Age))</visible>
-					</control>
+					<include condition="String.IsEqual(ListItem.Property(item.type),person)">InfoTMDbPersonAge</include>
 					<!-- Separator End -->
 					<control type="image">
 						<left>-7</left>
@@ -518,7 +510,7 @@
 						<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
 					</control>
 					<control type="button" id="208">
-						<description>More</description>
+						<description>More...</description>
 						<font>IconMediumMD</font>
 						<width>65</width>
 						<texturenofocus />
