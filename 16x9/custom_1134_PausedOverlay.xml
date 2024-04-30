@@ -3,12 +3,10 @@
 	<visible>[VideoPlayer.IsFullscreen + Player.Paused + System.IdleTime(7) + !Skin.HasSetting(Disable.Netflix.Pause) + !System.HasActiveModalDialog]</visible>
 	<visible>VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)</visible>
 	<controls>
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture>colors/black50.png</texture>
-			<animation effect="fade" time="320">WindowOpen</animation>
-			<animation effect="fade" time="200">WindowClose</animation>
-		</control>
+		<include content="DimBackground">
+			<param name="timeopen">320</param>
+			<param name="timeclose">200</param>
+		</include>
 		<control type="group">
 			<animation type="WindowOpen" reversible="false">
 				<effect type="zoom" start="150" end="100" center="400,540" time="400" tween="cubic" easing="out" />

@@ -2,12 +2,7 @@
 <window>
 	<defaultcontrol>90000</defaultcontrol>
 	<controls>
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture>colors/black50.png</texture>
-			<animation effect="fade" time="250">WindowOpen</animation>
-			<animation effect="fade" time="250">WindowClose</animation>
-		</control>
+		<include>DimBackground</include>
 		<control type="group">
 			<animation effect="slide" end="0,60" condition="Integer.IsLess(Container(90000).NumItems,5)">Conditional</animation>
 			<include>DialogOpenCloseAnimation</include>

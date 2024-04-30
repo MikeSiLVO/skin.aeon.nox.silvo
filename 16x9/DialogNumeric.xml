@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">21</defaultcontrol>
-	<include>DialogOpenCloseAnimation</include>
 	<controls>
+		<include>DimBackground</include>
 		<control type="group">
 			<width>240</width>
 			<height>520</height>
 			<centerleft>50%</centerleft>
 			<centertop>50%</centertop>
-			<animation effect="slide" start="0,0" end="720,0" time="320" tween="cubic" easing="inout" condition="Window.IsActive(virtualkeyboard)">Conditional</animation>
+			<include>DialogOpenCloseAnimation</include>
 			<control type="image">
 				<left>-1</left>
 				<width>242</width>
@@ -143,12 +143,12 @@
 					<orientation>horizontal</orientation>
 					<top>320</top>
 					<control type="button" id="23">
-						<label></label>
+						<label></label>
 						<onup>20</onup>
 						<ondown>11</ondown>
 						<width>120</width>
 						<textwidth>190</textwidth>
-						<font>IconSmall</font>
+						<font>IconMediumMD</font>
 						<include>Objects_SingleKeyOff</include>
 					</control>
 					<control type="button" id="21">

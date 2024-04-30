@@ -5,10 +5,6 @@
 		<value condition="!String.IsEmpty(Container.Content)">$INFO[Container.Content]</value>
 		<value condition="Container.Content() + Window.IsVisible(MyVideoNav.xml)">none-videos</value>
 	</variable>
-	<variable name="ShowPasswordButtonLabelVar">
-		<value condition="String.IsEqual(Control.GetLabel(310), $LOCALIZE[12308])"></value>
-		<value></value>
-	</variable>
 	<variable name="MovieSetsPathVar">
 		<value condition="String.IsEqual(ListItem.DBTYPE,set)">videodb://movies/sets/$INFO[ListItem.DBID]/?setid=$INFO[ListItem.DBID]</value>
 	</variable>

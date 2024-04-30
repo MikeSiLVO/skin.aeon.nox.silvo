@@ -88,6 +88,21 @@
 			</control>
 		</control>
 	</include>
+	<include name="DimBackground">
+		<param name="texture">colors/black50.png</param>
+		<param name="timeopen">250</param>
+		<param name="timeclose">250</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<texture>$PARAM[texture]</texture>
+				<animation effect="fade" time="$PARAM[timeopen]">WindowOpen</animation>
+				<animation effect="fade" time="$PARAM[timeclose]">WindowClose</animation>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
+	</include>
 	<include name="VideoGenreFanart">
 		<control type="image" id="4980">
 			<include>FullscreenDimensions</include>

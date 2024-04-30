@@ -16,13 +16,10 @@
 			<ondown>PageDown(61)</ondown>
 			<include>HiddenObject</include>
 		</control>
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture>colors/black50.png</texture>
-			<animation effect="fade" time="100">WindowOpen</animation>
-			<animation effect="fade" time="50">WindowClose</animation>
-			<visible>!Window.IsVisible(addoninformation)</visible>
-		</control>
+		<include content="DimBackground">
+			<param name="timeopen">100</param>
+			<param name="timeclose">50</param>
+		</include>
 		<control type="group">
 			<animation effect="slide" end="166,0" condition="Window.IsActive(addoninformation)">Conditional</animation>
 			<include condition="String.IsEmpty(Window(Home).Property(AddonNews))">DialogOpenCloseAnimation</include>
