@@ -1469,6 +1469,24 @@
 				<label>$INFO[ListItem.Rating(themoviedb)]</label>
 			</control>
 		</control>
+		<control type="grouplist">
+			<visible>!String.IsEmpty(ListItem.Rating(tmdb))</visible>
+			<width>165</width>
+			<orientation>horizontal</orientation>
+			<itemgap>10</itemgap>
+			<control type="image">
+				<width>68</width>
+				<aspectratio>keep</aspectratio>
+				<colordiffuse>grey</colordiffuse>
+				<texture>logos/tmdb.png</texture>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<font>font16_title_bold</font>
+				<textcolor>grey</textcolor>
+				<label>$INFO[ListItem.Rating(tmdb)]</label>
+			</control>
+		</control>
 		<!-- TMDbHelper TMDb Rating -->
 		<control type="grouplist">
 			<visible>String.IsEmpty(ListItem.Rating(themoviedb)) + !String.IsEmpty(Container(9143).ListItem.Property(TMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(TMDb_Rating),0.0)</visible>
