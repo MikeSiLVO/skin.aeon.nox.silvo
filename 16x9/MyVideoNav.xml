@@ -640,12 +640,11 @@
 								<visible>[Container.Content(movies) + Control.IsVisible(50) + !Skin.HasSetting(Disable.List.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(50)]  | [Container.Content(movies) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.EpisodeMediaflags)] | Control.IsVisible(591) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(509) + !Skin.HasSetting(Disable.MyFlix.Mediaflags) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(500) | Control.IsVisible(602)</visible>
 								<include>ViewAnimation</include>
 								<include condition="!System.AddonIsEnabled(script.embuary.helper) + !System.AddonIsEnabled(plugin.video.themoviedb.helper)">NoRatingsHelperFlagAnimations</include>
-								<!-- ROTTENTOMATOES/METACRITIC -->
+								<!-- ROTTENTOMATOES/METACRITIC/TMDb/TRAKT/IMDb -->
 								<control type="grouplist">
 									<width>340</width>
 									<orientation>horizontal</orientation>
-									<include condition="System.AddonIsEnabled(script.embuary.helper)">RottenMetaFlags</include>
-									<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">TMDbHelperFlags</include>
+									<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) | System.AddonIsEnabled(script.embuary.helper)">ScriptHelperFlags</include>
 								</control>
 								<!-- MEDIAFLAGS -->
 								<control type="grouplist">

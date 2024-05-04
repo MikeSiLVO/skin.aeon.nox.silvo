@@ -1634,8 +1634,10 @@
 	<variable name="EmbuaryHelperContentVar">
 		<value condition="ListItem.IsCollection" />
 		<value condition="VideoPlayer.Content(movies)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[VideoPlayer.DBID]&amp;type=movie</value>
+		<value condition="VideoPlayer.Content(episodes)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[VideoPlayer.DBID]&amp;type=episode</value>
 		<value condition="Container.Content(movies)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
 		<value condition="Container.Content(tvshows)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
+		<value condition="Container.Content(episodes)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=episode</value>
 	</variable>
 	<variable name="ScriptLetterJumpContentVar">
 		<value condition="Container.Content() | Container.Content(actors)" />
