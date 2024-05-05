@@ -1470,7 +1470,7 @@
 			</control>
 		</control>
 		<control type="grouplist">
-			<visible>!String.IsEmpty(ListItem.Rating(tmdb))</visible>
+			<visible>!String.IsEmpty(ListItem.Rating(tmdb)) + String.IsEmpty(ListItem.Rating(themoviedb))</visible>
 			<width>165</width>
 			<orientation>horizontal</orientation>
 			<itemgap>10</itemgap>
@@ -1489,7 +1489,7 @@
 		</control>
 		<!-- TMDbHelper TMDb Rating -->
 		<control type="grouplist">
-			<visible>String.IsEmpty(ListItem.Rating(themoviedb)) + !String.IsEmpty(Container(9143).ListItem.Property(TMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(TMDb_Rating),0.0)</visible>
+			<visible>String.IsEmpty(ListItem.Rating(themoviedb)) + String.IsEmpty(ListItem.Rating(tmdb)) + !String.IsEmpty(Container(9143).ListItem.Property(TMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(TMDb_Rating),0.0)</visible>
 			<width>165</width>
 			<orientation>horizontal</orientation>
 			<itemgap>10</itemgap>
