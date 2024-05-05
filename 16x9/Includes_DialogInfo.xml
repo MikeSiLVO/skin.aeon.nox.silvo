@@ -1378,7 +1378,7 @@
 		</control>
 	</include>
 	<include name="InfoExtendedRatings">
-		<!-- Kodi Rotten Critic Rating -->
+		<!-- Kodi RT Critic Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(ListItem.Rating(tomatometerallcritics))</visible>
 			<width>165</width>
@@ -1396,25 +1396,7 @@
 				<label>$VAR[RottenFreshLabelVar]$VAR[RottenFreshLabel2Var]</label>
 			</control>
 		</control>
-		<!-- Kodi Rotten Audience Rating -->
-		<control type="grouplist">
-			<visible>!String.IsEmpty(ListItem.Rating(tomatometerallaudience))</visible>
-			<width>165</width>
-			<orientation>horizontal</orientation>
-			<control type="image">
-				<width>68</width>
-				<aspectratio>keep</aspectratio>
-				<colordiffuse>grey</colordiffuse>
-				<texture>$VAR[RottenFreshAudienceLogoVar]</texture>
-			</control>
-			<control type="label">
-				<width>auto</width>
-				<font>font16_title_bold</font>
-				<textcolor>grey</textcolor>
-				<label>$VAR[RottenFreshAudienceLabelVar]$VAR[RottenFreshAudienceLabel2Var]</label>
-			</control>
-		</control>
-		<!-- TMDbHelper Rotten Critic Rating -->
+		<!-- TMDbHelper RT Critic Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating)) + String.IsEmpty(ListItem.Rating(tomatometerallcritics)) + !String.IsEqual(ListItem.DBTYPE,episode)</visible>
 			<width>165</width>
@@ -1432,7 +1414,25 @@
 				<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_Rating),,%]</label>
 			</control>
 		</control>
-		<!-- TMDbHelper Rotten Audience Rating -->
+		<!-- Kodi RT Audience Rating -->
+		<control type="grouplist">
+			<visible>!String.IsEmpty(ListItem.Rating(tomatometerallaudience))</visible>
+			<width>165</width>
+			<orientation>horizontal</orientation>
+			<control type="image">
+				<width>68</width>
+				<aspectratio>keep</aspectratio>
+				<colordiffuse>grey</colordiffuse>
+				<texture>$VAR[RottenFreshAudienceLogoVar]</texture>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<font>font16_title_bold</font>
+				<textcolor>grey</textcolor>
+				<label>$VAR[RottenFreshAudienceLabelVar]$VAR[RottenFreshAudienceLabel2Var]</label>
+			</control>
+		</control>
+		<!-- TMDbHelper RT Audience Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter)) + String.IsEmpty(ListItem.Rating(tomatometerallaudience)) + !String.IsEqual(ListItem.DBTYPE,episode)</visible>
 			<width>165</width>
