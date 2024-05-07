@@ -116,17 +116,17 @@
 					<height>60</height>
 					<font>font15</font>
 					<textoffsetx>15</textoffsetx>
-					<textcolor>grey</textcolor>
-					<label>$INFO[VideoPlayer.Year]$INFO[VideoPlayer.MPAA,  •  ]$VAR[PlayerDurationVar,  •  ]$INFO[Player.FinishTime,  •  $LOCALIZE[31393]: ,  •  ]$VAR[PlayerTimeRemainingHourVar,, ]$VAR[PlayerTimeRemainingMinuteVar]</label>
+					<textcolor>$VAR[ThemeLabelColor]</textcolor>
+					<label>$INFO[VideoPlayer.Genre]</label>
+					<visible>!String.IsEmpty(VideoPlayer.Genre)</visible>
 				</control>
 				<control type="label">
 					<width>1720</width>
 					<height>60</height>
 					<font>font15</font>
 					<textoffsetx>15</textoffsetx>
-					<textcolor>$VAR[ThemeLabelColor]</textcolor>
-					<label>$INFO[VideoPlayer.Genre]</label>
-					<visible>!String.IsEmpty(VideoPlayer.Genre)</visible>
+					<textcolor>grey</textcolor>
+					<label>$INFO[VideoPlayer.Year]$INFO[VideoPlayer.MPAA,  •  ]$VAR[PlayerDurationVar,  •  ]$INFO[Player.FinishTime,  •  $LOCALIZE[31393]: ,  •  ]$VAR[PlayerTimeRemainingHourVar,, ]$VAR[PlayerTimeRemainingMinuteVar]</label>
 				</control>
 				<control type="label">
 					<width>1720</width>
