@@ -1562,6 +1562,168 @@
 			</control>
 		</control>
 	</include>
+	<!-- Seekbar -->
+	<include name="DefaultSeekbar">
+		<control type="group">
+			<visible>![Player.Paused + Skin.HasSetting(CleanPauseScreen) + !Window.IsActive(fullscreeninfo)]</visible>
+			<animation effect="fade" start="0" end="100" time="250">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="250">WindowClose</animation>
+			<control type="group">
+				<top>1014</top>
+				<visible>!Window.IsVisible(SliderDialog)</visible>
+				<include>VisibleFadeAnimation</include>
+				<control type="group">
+					<animation effect="slide" end="0,-90" time="200" tween="quadratic" condition="Window.IsActive(videoosd) + !Skin.HasSetting(VideoOSDOnTop)">Conditional</animation>
+					<animation effect="slide" end="0,90" time="200" tween="quadratic" condition="!Skin.HasSetting(VideoOSDOnTop) + [Window.IsVisible(SliderDialog) | Window.IsVisible(pvrchannelguide) | Window.IsVisible(PVROSDTeletext) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(SubtitleSearch) | Window.IsVisible(1114)]">Conditional</animation>
+					<control type="image">
+						<width>100%</width>
+						<height>160</height>
+						<texture border="1,32,1,1">bottombar.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<top>18</top>
+					<control type="progress">
+						<top>2</top>
+						<width>100%</width>
+						<height>46</height>
+						<texturebg>osd/texturebg.png</texturebg>
+						<midtexture border="2">osd/midtexture_cache.png</midtexture>
+						<info>Player.ProgressCache</info>
+					</control>
+					<control type="progress">
+						<width>100%</width>
+						<height>44</height>
+						<texturebg border="1">osd/texturebg_cache.png</texturebg>
+						<midtexture colordiffuse="$VAR[ThemeOSDProgressColor]" border="2">osd/midtexture.png</midtexture>
+						<info>Player.Progress</info>
+					</control>
+				</control>
+				<control type="slider" id="401">
+					<top>20</top>
+					<width>100%</width>
+					<height>28</height>
+					<texturesliderbar>seekslider2.png</texturesliderbar>
+					<textureslidernib colordiffuse="$VAR[ThemeOSDProgressColor]">slidernib_alt.png</textureslidernib>
+					<textureslidernibfocus colordiffuse="$VAR[ThemeOSDProgressColor]">slidernib_alt.png</textureslidernibfocus>
+					<visible>Player.Seeking</visible>
+				</control>
+				<control type="group">
+					<top>20</top>
+					<animation effect="fade" start="100" end="50" time="200" condition="Player.Seeking">Conditional</animation>
+					<control type="label">
+						<width>830</width>
+						<height>90</height>
+						<font>font14_title</font>
+						<textoffsetx>15</textoffsetx>
+						<textcolor>grey</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<aligny>top</aligny>
+						<textoffsety>-2</textoffsety>
+						<label>$VAR[PlayerTitleLabelVar]</label>
+						<scroll>true</scroll>
+					</control>
+					<control type="label">
+						<left>1020</left>
+						<width>900</width>
+						<height>90</height>
+						<font>font14_title</font>
+						<textoffsetx>15</textoffsetx>
+						<textcolor>grey</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<align>right</align>
+						<aligny>top</aligny>
+						<textoffsety>-2</textoffsety>
+						<label>$VAR[OSDRightLabelVar]</label>
+					</control>
+				</control>
+				<control type="label">
+					<top>20</top>
+					<width>100%</width>
+					<height>90</height>
+					<font>font14_title</font>
+					<textoffsetx>15</textoffsetx>
+					<textcolor>grey</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<align>center</align>
+					<aligny>top</aligny>
+					<textoffsety>-2</textoffsety>
+					<label>$VAR[SeekLabelVar]</label>
+				</control>
+				<control type="ranges">
+					<top>56</top>
+					<width>100%</width>
+					<height>10</height>
+					<texturebg border="2" colordiffuse="00FFFFFF">colors/white25.png</texturebg>
+					<lefttexture>colors/white.png</lefttexture>
+					<midtexture colordiffuse="red">colors/white.png</midtexture>
+					<righttexture>colors/white.png</righttexture>
+					<info>Player.Editlist</info>
+				</control>
+				<control type="ranges">
+					<top>58</top>
+					<width>100%</width>
+					<height>8</height>
+					<texturebg border="2" colordiffuse="00FFFFFF">colors/white25.png</texturebg>
+					<righttexture colordiffuse="red">colors/white.png</righttexture>
+					<info>Player.Cuts</info>
+				</control>
+				<control type="ranges">
+					<top>62</top>
+					<width>100%</width>
+					<height>4</height>
+					<texturebg border="2" colordiffuse="00FFFFFF">colors/white25.png</texturebg>
+					<righttexture>colors/white.png</righttexture>
+					<info>Player.SceneMarkers</info>
+				</control>
+				<control type="ranges">
+					<top>62</top>
+					<width>100%</width>
+					<height>4</height>
+					<texturebg border="2" colordiffuse="00FFFFFF">colors/white25.png</texturebg>
+					<righttexture>colors/white.png</righttexture>
+					<info>Player.Chapters</info>
+					<visible>!Integer.IsEqual(Player.ChapterCount,0)</visible>
+				</control>
+				<control type="image">
+					<left>1460</left>
+					<top>-244</top>
+					<width>450</width>
+					<height>260</height>
+					<aspectratio aligny="bottom" align="center">keep</aspectratio>
+					<texture background="true">$VAR[PlayerArtworkVar]</texture>
+					<visible>![Window.IsVisible(DialogSettings.xml) | Window.IsVisible(subtitlesearch) | Window.IsVisible(1114) | Window.IsVisible(fullscreeninfo)]</visible>
+					<animation effect="slide" end="0,-90" time="240" tween="quadratic" condition="Window.IsActive(videoosd) + !Skin.HasSetting(VideoOSDOnTop)">Conditional</animation>
+				</control>
+			</control>
+			<control type="group">
+				<top>447</top>
+				<include>VisibleFadeAnimation</include>
+				<visible>Player.Paused + !System.HasVisibleModalDialog</visible>
+				<control type="group">
+					<left>867</left>
+					<width>186</width>
+					<height>186</height>
+					<visible>!Skin.HasSetting(PausedLabel)</visible>
+					<control type="image">
+						<texture>osd/bg_play_large.png</texture>
+					</control>
+					<control type="image">
+						<texture>osd/btn_pause.png</texture>
+					</control>
+				</control>
+				<control type="label">
+					<width>100%</width>
+					<height>184</height>
+					<align>center</align>
+					<label>[UPPERCASE][B]$LOCALIZE[112][/B][/UPPERCASE]</label>
+					<font>BigAssTimeFont</font>
+					<textcolor>B3FFFFFF</textcolor>
+					<visible>Skin.HasSetting(PausedLabel)</visible>
+				</control>
+			</control>
+		</control>
+	</include>
 	<!-- InfoPanel -->
 	<include name="InfoPanel">
 		<control type="group" id="12000">
