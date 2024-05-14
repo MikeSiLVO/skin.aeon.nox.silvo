@@ -58,7 +58,16 @@
 				<shadowcolor>FF000000</shadowcolor>
 				<font>font13_bold</font>
 				<label>$INFO[Container.Content,[COLOR FF00FF00]Content - [/COLOR]]</label>
-				<visible>!Window.IsVisible(DialogMusicInfo.xml) + !Window.IsVisible(DialogVideoInfo.xml) + !String.IsEmpty(Container.Content)</visible>
+				<visible>!String.IsEmpty(Container.Content)</visible>
+			</control>
+			<!-- Container PluginName label -->
+			<control type="label">
+				<height>60</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<font>font13_bold</font>
+				<label>$INFO[Container.PluginName,[COLOR FF00FF00]Plugin Name - [/COLOR]]</label>
+				<visible>!String.IsEmpty(Container.PluginName)</visible>
 			</control>
 			<!-- DBTYPE label -->
 			<control type="label">
@@ -77,6 +86,51 @@
 				<font>font13_bold</font>
 				<label>$INFO[Container.ListItem.DBTYPE,[COLOR FF00FF00]Container.DBTYPE - [/COLOR]]</label>
 				<visible>!String.IsEmpty(Container.ListItem.DBTYPE)</visible>
+			</control>
+			<!-- DBID label -->
+			<control type="label">
+				<height>60</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<font>font13_bold</font>
+				<label>$INFO[ListItem.DBID,[COLOR FF00FF00]DBID - [/COLOR]]</label>
+				<visible>!String.IsEmpty(ListItem.DBID)</visible>
+			</control>
+			<!-- Container DBID label -->
+			<control type="label">
+				<height>60</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<font>font13_bold</font>
+				<label>$INFO[Container.ListItem.DBID,[COLOR FF00FF00]Container DBID - [/COLOR]]</label>
+				<visible>!String.IsEmpty(Container.ListItem.DBID)</visible>
+			</control>
+			<!-- IMDb label -->
+			<control type="label">
+				<height>60</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<font>font13_bold</font>
+				<label>$INFO[ListItem.IMDBNumber,[COLOR FF00FF00]IMDB Number - [/COLOR]]</label>
+				<visible>!String.IsEmpty(ListItem.IMDBNumber)</visible>
+			</control>
+			<!-- Property(dbid) label -->
+			<control type="label">
+				<height>60</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<font>font13_bold</font>
+				<label>$INFO[ListItem.Property(dbid),[COLOR FF00FF00]Property(dbid) - [/COLOR]]</label>
+				<visible>!String.IsEmpty(ListItem.Property(dbid))</visible>
+			</control>
+			<!-- SongVideoURL label -->
+			<control type="label">
+				<height>60</height>
+				<textcolor>FFFF0000</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<font>font13_bold</font>
+				<label>$INFO[ListItem.SongVideoURL,[COLOR FF00FF00]Song Video URL - [/COLOR]]</label>
+				<visible>!String.IsEmpty(ListItem.SongVideoURL)</visible>
 			</control>
 			<!-- Container Num Items -->
 			<control type="label">
@@ -112,6 +166,22 @@
 			<itemgap>20</itemgap>
 			<visible>Skin.HasSetting(DebugInfo)</visible>
 			<!-- DEBUG LABELS -->
+			<control type="label">
+				<height>60</height>
+				<textcolor>FF4169E1</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<font>font13_bold</font>
+				<label>$INFO[ListItem.Art(poster),[COLOR FF00FF00]ListItem.Art(poster) - [/COLOR]]</label>
+				<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
+			</control>
+			<control type="label">
+				<height>60</height>
+				<textcolor>FF4169E1</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<font>font13_bold</font>
+				<label>$INFO[ListItem.Art(poster1),[COLOR FF00FF00]ListItem.Art(poster1) - [/COLOR]]</label>
+				<visible>!String.IsEmpty(ListItem.Art(poster1))</visible>
+			</control>
 			<control type="label">
 				<height>60</height>
 				<textcolor>FF4169E1</textcolor>
