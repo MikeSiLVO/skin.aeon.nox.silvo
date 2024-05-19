@@ -1340,6 +1340,7 @@
 	</variable>
 	<variable name="VideoSubLabelVar">
 		<value condition="Container.Content(tvshows)">$INFO[ListItem.Property(TotalEpisodes),[COLOR grey]$LOCALIZE[20360]: ]$INFO[ListItem.Property(UnWatchedEpisodes), ([/COLOR],[LOWERCASE] $LOCALIZE[16101][/LOWERCASE][COLOR grey])[/COLOR]]</value>
+		<value condition="Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]</value>
 		<value>[COLOR grey]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]][/COLOR]</value>
 	</variable>
 	<variable name="StudioIconVar">
