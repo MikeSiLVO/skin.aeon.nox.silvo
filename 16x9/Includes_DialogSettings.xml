@@ -435,14 +435,10 @@
 		<control type="radiobutton" id="90208">
 			<width>1498</width>
 			<radioposx>1396</radioposx>
-			<onclick condition="System.AddonIsEnabled(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo)">Dialog.Close(1119)</onclick>
-			<onclick condition="System.AddonIsEnabled(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo) + !Window.IsActive(musicinformation)">Dialog.Close(movieinformation)</onclick>
-			<onclick condition="System.AddonIsEnabled(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo) + Window.IsActive(music) + !String.IsEqual(ListItem.DBTYPE,song)">Dialog.Close(musicinformation)</onclick>
-			<onclick condition="System.AddonIsEnabled(script.embuary.helper) + !Skin.HasSetting(Enable.BlurredVideoInfo) + Window.IsActive(music) + String.IsEqual(ListItem.DBTYPE,song)">Dialog.Close(songinformation)</onclick>
-			<onclick condition="System.AddonIsEnabled(script.embuary.helper)">Skin.ToggleSetting(Enable.BlurredVideoInfo)</onclick>
+			<onclick>Skin.ToggleSetting(Enable.BlurredVideoInfo)</onclick>
 			<selected>Skin.HasSetting(Enable.BlurredVideoInfo)</selected>
 			<label>$LOCALIZE[31174]</label>
-			<visible>System.AddonIsEnabled(script.embuary.helper)</visible>
+			<visible>System.AddonIsEnabled(script.embuary.helper) | System.AddonIsEnabled(plugin.video.themoviedb.helper)</visible>
 		</control>
 		<control type="button" id="90209">
 			<width>1498</width>
