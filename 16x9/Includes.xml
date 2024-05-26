@@ -1567,7 +1567,7 @@
 		<control type="group">
 			<visible>![Player.Paused + Skin.HasSetting(CleanPauseScreen) + !Window.IsActive(fullscreeninfo)]</visible>
 			<animation effect="fade" start="0" end="100" time="250">WindowOpen</animation>
-			<animation effect="fade" start="100" end="0" time="250">WindowClose</animation>
+			<animation effect="fade" start="100" end="0" time="250" condition="!Skin.HasSetting(CleanPauseScreen)">WindowClose</animation>
 			<control type="group">
 				<top>1014</top>
 				<visible>!Window.IsVisible(SliderDialog)</visible>
