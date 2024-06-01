@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">5003</defaultcontrol>
+	<controls>
+		<control type="image">
+			<left>-5%</left>
+			<top>940</top>
+			<width>110%</width>
+			<height>160</height>
+			<texture border="40" colordiffuse="D9FFFFFF">dialogs/default/bg.png</texture>
+			<visible>!String.IsEqual(Skin.String(LiveTV.EpgViewType),1)</visible>
+		</control>
+		<control type="image">
+			<left>-5%</left>
+			<top>-30</top>
+			<width>110%</width>
+			<height>160</height>
+			<texture border="40" flipy="true" colordiffuse="D9FFFFFF">dialogs/default/bg.png</texture>
+			<visible>String.IsEqual(Skin.String(LiveTV.EpgViewType),1)</visible>
+		</control>
+		<control type="group">
+			<animation effect="slide" end="0,-885" condition="String.IsEqual(Skin.String(LiveTV.EpgViewType),1)">Conditional</animation>
+			<control type="label">
+				<top>965</top>
+				<width>600</width>
+				<height>20</height>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font13_bold</font>
+				<label>$LOCALIZE[19325]</label>
+			</control>
+			<control type="label">
+				<left>1320</left>
+				<top>965</top>
+				<width>200</width>
+				<height>20</height>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font13_bold</font>
+				<label>$LOCALIZE[19148]</label>
+				<animation effect="slide" end="-50" condition="Control.IsVisible(6002)">Conditional</animation>
+			</control>
+			<control type="label">
+				<left>1620</left>
+				<top>965</top>
+				<width>300</width>
+				<height>20</height>
+				<align>center</align>
+				<aligny>center</aligny>
+				<font>font13_bold</font>
+				<label>$LOCALIZE[19141]</label>
+			</control>
+		</control>
+		<control type="group">
+			<animation effect="slide" end="0,-995" condition="String.IsEqual(Skin.String(LiveTV.EpgViewType),1)">Conditional</animation>
+			<control type="label">
+				<left>620</left>
+				<top>985</top>
+				<align>center</align>
+				<aligny>center</aligny>
+				<width>630</width>
+				<height>100</height>
+				<font>font14_bold</font>
+				<label>$VAR[PVRGuideControlsHelpTextVar]</label>
+			</control>
+			<control type="grouplist" id="5000">
+				<top>985</top>
+				<height>144</height>
+				<width>600</width>
+				<scrolltime tween="sine">200</scrolltime>
+				<orientation>horizontal</orientation>
+				<onup>noop</onup>
+				<ondown>noop</ondown>
+				<onleft>6007</onleft>
+				<onright>6001</onright>
+				<control type="button" id="5001">
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+					<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<width>100</width>
+					<height>100</height>
+					<onclick>PVR.EpgGridControl(FirstProgramme)</onclick>
+				</control>
+				<control type="button" id="5002">
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+					<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<width>100</width>
+					<height>100</height>
+					<onclick>PVR.EpgGridControl(-12)</onclick>
+				</control>
+				<control type="button" id="5003">
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+					<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<width>100</width>
+					<height>100</height>
+					<onclick>PVR.EpgGridControl(CurrentProgramme)</onclick>
+				</control>
+				<control type="button" id="5004">
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+					<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<width>100</width>
+					<height>100</height>
+					<onclick>PVR.EpgGridControl(+12)</onclick>
+				</control>
+				<control type="button" id="5005">
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+					<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<width>100</width>
+					<height>100</height>
+					<onclick>PVR.EpgGridControl(LastProgramme)</onclick>
+				</control>
+				<control type="button" id="5006">
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+					<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<width>100</width>
+					<height>100</height>
+					<onclick>PVR.EpgGridControl(SelectDate)</onclick>
+				</control>
+			</control>
+			<control type="grouplist" id="6000">
+				<left>1220</left>
+				<top>985</top>
+				<height>144</height>
+				<width>700</width>
+				<scrolltime tween="sine">200</scrolltime>
+				<orientation>horizontal</orientation>
+				<align>right</align>
+				<onup>noop</onup>
+				<ondown>noop</ondown>
+				<onleft>5006</onleft>
+				<onright>5001</onright>
+				<control type="button" id="6001">
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+					<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<width>100</width>
+					<height>100</height>
+					<onclick>PVR.EpgGridControl(FirstChannel)</onclick>
+				</control>
+				<control type="button" id="6002">
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+					<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<width>100</width>
+					<height>100</height>
+					<onclick>PVR.EpgGridControl(PlayingChannel)</onclick>
+					<visible>PVR.IsPlayingTV | PVR.IsPlayingRadio | PVR.IsPlayingEpgTag</visible>
+				</control>
+				<control type="button" id="6003">
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+					<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<width>100</width>
+					<height>100</height>
+					<onclick>PVR.EpgGridControl(LastChannel)</onclick>
+				</control>
+				<control type="button" id="6004">
+					<description>Blank button</description>
+					<width>100</width>
+					<height>100</height>
+					<enable>no</enable>
+					<texturenofocus />
+					<label />
+				</control>
+				<control type="button" id="6005">
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+					<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<width>100</width>
+					<height>100</height>
+					<onclick>PVR.EpgGridControl(PreviousGroup)</onclick>
+				</control>
+				<control type="button" id="6006">
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+					<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<width>100</width>
+					<height>100</height>
+					<onclick>PVR.EpgGridControl(NextGroup)</onclick>
+				</control>
+				<control type="button" id="6007">
+					<texturefocus />
+					<font>IconOSDButtons</font>
+					<label></label>
+					<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+					<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<width>100</width>
+					<height>100</height>
+					<onclick>PVR.EpgGridControl(SelectGroup)</onclick>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>
