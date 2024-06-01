@@ -584,7 +584,7 @@
 	<!-- PARAM Includes -->
 	<include name="RightListFocusedLayout">
 		<param name="visibleSubLabelNoYear" default="[Container.Content(movies) + !Skin.HasSetting(rightlistalternate)] | [!Container.Content(movies) + !Skin.HasSetting(rightlistalternatetv) + !Window.IsActive(music)]" />
-		<param name="visibleListItem.Overlay" default="true" />
+		<param name="overlay_visible">!Window.IsActive(music)</param>
 		<param name="width" />
 		<param name="labelColor" default="white" />
 		<definition>
@@ -655,6 +655,7 @@
 			<control type="group">
 				<left>832</left>
 				<top>13</top>
+				<visible>$PARAM[overlay_visible]</visible>
 				<control type="image">
 					<width>64</width>
 					<height>64</height>
@@ -674,6 +675,7 @@
 	</include>
 	<include name="RightListItemLayout">
 		<param name="visibleSubLabelNoYear" default="[Container.Content(movies) + !Skin.HasSetting(rightlistalternate)] | [!Container.Content(movies) + !Skin.HasSetting(rightlistalternatetv) + !Window.IsActive(music)]" />
+		<param name="overlay_visible">!Window.IsActive(music)</param>
 		<param name="width" />
 		<param name="labelColor" default="white" />
 		<definition>
@@ -705,6 +707,7 @@
 			<control type="group">
 				<left>832</left>
 				<top>13</top>
+				<visible>$PARAM[overlay_visible]</visible>
 				<control type="image">
 					<width>64</width>
 					<height>64</height>
