@@ -10,29 +10,32 @@
 	<views>50,51,52</views>
 	<menucontrol>9051</menucontrol>
 	<controls>
-		<include>CommonBackground</include>
 		<control type="group">
-			<include>WindowOpenCloseAnimation</include>
-			<!-- view id = 50 -->
-			<include>DefaultPVRChannels</include>
-			<!-- view id = 51 -->
-			<include condition="!Skin.HasSetting(Disable.WallPVRChannels)">WallPVRChannels</include>
-			<!-- view id = 52 -->
-			<include condition="!Skin.HasSetting(Disable.BigListPVRChannels)">BigListPVRChannels</include>
-		</control>
-		<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>
-		<include>PVRBackgroundDim</include>
-		<include>Topbar</include>
-		<include>PVRMediaMenu</include>
-		<control type="label">
-			<left>60</left>
-			<top>60</top>
-			<width>915</width>
-			<height>60</height>
-			<label>$INFO[PVR.ChannelNumberInput]</label>
-			<font>font_MainMenu</font>
-			<shadowcolor>black</shadowcolor>
-			<visible>!String.IsEmpty(PVR.ChannelNumberInput)</visible>
+			<visible>[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
+			<include>CommonBackground</include>
+			<control type="group">
+				<include>WindowOpenCloseAnimation</include>
+				<!-- view id = 50 -->
+				<include>DefaultPVRChannels</include>
+				<!-- view id = 51 -->
+				<include condition="!Skin.HasSetting(Disable.WallPVRChannels)">WallPVRChannels</include>
+				<!-- view id = 52 -->
+				<include condition="!Skin.HasSetting(Disable.BigListPVRChannels)">BigListPVRChannels</include>
+			</control>
+			<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>
+			<include>PVRBackgroundDim</include>
+			<include>Topbar</include>
+			<include>PVRMediaMenu</include>
+			<control type="label">
+				<left>60</left>
+				<top>60</top>
+				<width>915</width>
+				<height>60</height>
+				<label>$INFO[PVR.ChannelNumberInput]</label>
+				<font>font_MainMenu</font>
+				<shadowcolor>black</shadowcolor>
+				<visible>!String.IsEmpty(PVR.ChannelNumberInput)</visible>
+			</control>
 		</control>
 	</controls>
 </window>

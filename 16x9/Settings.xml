@@ -3,49 +3,22 @@
 	<defaultcontrol always="true">9000</defaultcontrol>
 	<menucontrol>9051</menucontrol>
 	<controls>
-		<include>CommonBackground</include>
-		<include>Topbar</include>
 		<control type="group">
-			<top>20</top>
-			<include>WindowOpenCloseAnimation</include>
-			<control type="panel" id="9000">
-				<left>90</left>
-				<width>1800</width>
-				<height>801</height>
-				<onup>9000</onup>
-				<ondown>9000</ondown>
-				<pagecontrol>61</pagecontrol>
-				<scrolltime tween="quadratic">300</scrolltime>
-				<itemlayout width="360" height="267">
-					<control type="image">
-						<left>2</left>
-						<top>2</top>
-						<width>242</width>
-						<height>242</height>
-						<texture colordiffuse="black">$INFO[ListItem.Icon]</texture>
-						<align>center</align>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="image">
-						<width>240</width>
-						<height>240</height>
-						<texture colordiffuse="FFFFFFFF">$INFO[ListItem.Icon]</texture>
-						<align>center</align>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="label">
-						<top>190</top>
-						<width>240</width>
-						<height>90</height>
-						<textcolor>white</textcolor>
-						<shadowcolor>shadow</shadowcolor>
-						<align>center</align>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-				</itemlayout>
-				<focusedlayout width="360" height="267">
-					<control type="group">
-						<animation effect="zoom" center="130,120" start="100" end="140" time="420" tween="back" reversible="false">Focus</animation>
+			<visible>[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
+			<include>CommonBackground</include>
+			<include>Topbar</include>
+			<control type="group">
+				<top>20</top>
+				<include>WindowOpenCloseAnimation</include>
+				<control type="panel" id="9000">
+					<left>90</left>
+					<width>1800</width>
+					<height>801</height>
+					<onup>9000</onup>
+					<ondown>9000</ondown>
+					<pagecontrol>61</pagecontrol>
+					<scrolltime tween="quadratic">300</scrolltime>
+					<itemlayout width="360" height="267">
 						<control type="image">
 							<left>2</left>
 							<top>2</top>
@@ -58,7 +31,7 @@
 						<control type="image">
 							<width>240</width>
 							<height>240</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]">$INFO[ListItem.Icon]</texture>
+							<texture colordiffuse="FFFFFFFF">$INFO[ListItem.Icon]</texture>
 							<align>center</align>
 							<aspectratio>scale</aspectratio>
 						</control>
@@ -66,117 +39,147 @@
 							<top>190</top>
 							<width>240</width>
 							<height>90</height>
-							<label>$INFO[ListItem.Label]</label>
-							<align>center</align>
-							<textcolor>$VAR[HighlightBarColor]</textcolor>
+							<textcolor>white</textcolor>
 							<shadowcolor>shadow</shadowcolor>
+							<align>center</align>
+							<label>$INFO[ListItem.Label]</label>
 						</control>
-					</control>
-				</focusedlayout>
-				<content>
-					<item>
-						<label>10003</label>
-						<property name="description">31594</property>
-						<onclick>ActivateWindow(FileManager)</onclick>
-						<icon>views/settings/filemanager.png</icon>
-					</item>
-					<item>
-						<label>24001</label>
-						<property name="description">31448</property>
-						<onclick>ActivateWindow(addonbrowser)</onclick>
-						<icon>views/settings/addons.png</icon>
-					</item>
-					<item>
-						<label>10511</label>
-						<property name="description">31405</property>
-						<onclick>ActivateWindow(SystemInfo)</onclick>
-						<icon>views/settings/systeminfo.png</icon>
-					</item>
-					<item>
-						<label>31159</label>
-						<property name="description">31595</property>
-						<onclick>ActivateWindow(EventLog)</onclick>
-						<icon>views/settings/eventlog.png</icon>
-					</item>
-					<item>
-						<label>13200</label>
-						<property name="description">31407</property>
-						<onclick>ActivateWindow(Profiles)</onclick>
-						<icon>views/settings/profiles.png</icon>
-					</item>
-					<item>
-						<label>14206</label>
-						<property name="description">31400</property>
-						<onclick>ActivateWindow(InterfaceSettings)</onclick>
-						<icon>views/settings/interface.png</icon>
-					</item>
-					<item>
-						<label>10035</label>
-						<property name="description">31593</property>
-						<onclick>ActivateWindow(SkinSettings)</onclick>
-						<icon>views/settings/skin.png</icon>
-					</item>
-					<item>
-						<label>14200</label>
-						<property name="description">31401</property>
-						<onclick>ActivateWindow(PlayerSettings)</onclick>
-						<icon>views/settings/player.png</icon>
-					</item>
-					<item>
-						<label>14211</label>
-						<property name="description">31402</property>
-						<onclick>ActivateWindow(MediaSettings)</onclick>
-						<icon>views/settings/media.png</icon>
-					</item>
-					<item>
-						<label>14204</label>
-						<property name="description">31409</property>
-						<onclick>ActivateWindow(PVRSettings)</onclick>
-						<icon>views/settings/pvr.png</icon>
-					</item>
-					<item>
-						<label>15016</label>
-						<property name="description">31441</property>
-						<onclick>ActivateWindow(GameSettings)</onclick>
-						<icon>views/settings/games.png</icon>
-					</item>
-					<item>
-						<label>14036</label>
-						<property name="description">31410</property>
-						<onclick>ActivateWindow(ServiceSettings)</onclick>
-						<icon>views/settings/service.png</icon>
-					</item>
-					<item>
-						<label>13000</label>
-						<property name="description">31406</property>
-						<onclick>ActivateWindow(SystemSettings)</onclick>
-						<icon>views/settings/system.png</icon>
-					</item>
-					<item>
-						<label>LibreELEC</label>
-						<property name="description">31318</property>
-						<onclick>RunAddon(service.libreelec.settings)</onclick>
-						<icon>views/settings/libreelec.png</icon>
-						<visible>System.HasAddon(service.libreelec.settings)</visible>
-					</item>
-					<item>
-						<label>CoreELEC</label>
-						<property name="description">31490</property>
-						<onclick>RunAddon(service.coreelec.settings)</onclick>
-						<icon>views/settings/coreelec.png</icon>
-						<visible>System.HasAddon(service.coreelec.settings)</visible>
-					</item>
-				</content>
-			</control>
-			<control type="textbox">
-				<right>80</right>
-				<top>884</top>
-				<width>1200</width>
-				<height>175</height>
-				<textcolor>grey2</textcolor>
-				<align>right</align>
-				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
-				<label>$INFO[Container(9000).ListItem.Property(description)]</label>
+					</itemlayout>
+					<focusedlayout width="360" height="267">
+						<control type="group">
+							<animation effect="zoom" center="130,120" start="100" end="140" time="420" tween="back" reversible="false">Focus</animation>
+							<control type="image">
+								<left>2</left>
+								<top>2</top>
+								<width>242</width>
+								<height>242</height>
+								<texture colordiffuse="black">$INFO[ListItem.Icon]</texture>
+								<align>center</align>
+								<aspectratio>scale</aspectratio>
+							</control>
+							<control type="image">
+								<width>240</width>
+								<height>240</height>
+								<texture colordiffuse="$VAR[HighlightBarColor]">$INFO[ListItem.Icon]</texture>
+								<align>center</align>
+								<aspectratio>scale</aspectratio>
+							</control>
+							<control type="label">
+								<top>190</top>
+								<width>240</width>
+								<height>90</height>
+								<label>$INFO[ListItem.Label]</label>
+								<align>center</align>
+								<textcolor>$VAR[HighlightBarColor]</textcolor>
+								<shadowcolor>shadow</shadowcolor>
+							</control>
+						</control>
+					</focusedlayout>
+					<content>
+						<item>
+							<label>10003</label>
+							<property name="description">31594</property>
+							<onclick>ActivateWindow(FileManager)</onclick>
+							<icon>views/settings/filemanager.png</icon>
+						</item>
+						<item>
+							<label>24001</label>
+							<property name="description">31448</property>
+							<onclick>ActivateWindow(addonbrowser)</onclick>
+							<icon>views/settings/addons.png</icon>
+						</item>
+						<item>
+							<label>10511</label>
+							<property name="description">31405</property>
+							<onclick>ActivateWindow(SystemInfo)</onclick>
+							<icon>views/settings/systeminfo.png</icon>
+						</item>
+						<item>
+							<label>31159</label>
+							<property name="description">31595</property>
+							<onclick>ActivateWindow(EventLog)</onclick>
+							<icon>views/settings/eventlog.png</icon>
+						</item>
+						<item>
+							<label>13200</label>
+							<property name="description">31407</property>
+							<onclick>ActivateWindow(Profiles)</onclick>
+							<icon>views/settings/profiles.png</icon>
+						</item>
+						<item>
+							<label>14206</label>
+							<property name="description">31400</property>
+							<onclick>ActivateWindow(InterfaceSettings)</onclick>
+							<icon>views/settings/interface.png</icon>
+						</item>
+						<item>
+							<label>10035</label>
+							<property name="description">31593</property>
+							<onclick>ActivateWindow(SkinSettings)</onclick>
+							<icon>views/settings/skin.png</icon>
+						</item>
+						<item>
+							<label>14200</label>
+							<property name="description">31401</property>
+							<onclick>ActivateWindow(PlayerSettings)</onclick>
+							<icon>views/settings/player.png</icon>
+						</item>
+						<item>
+							<label>14211</label>
+							<property name="description">31402</property>
+							<onclick>ActivateWindow(MediaSettings)</onclick>
+							<icon>views/settings/media.png</icon>
+						</item>
+						<item>
+							<label>14204</label>
+							<property name="description">31409</property>
+							<onclick>ActivateWindow(PVRSettings)</onclick>
+							<icon>views/settings/pvr.png</icon>
+						</item>
+						<item>
+							<label>15016</label>
+							<property name="description">31441</property>
+							<onclick>ActivateWindow(GameSettings)</onclick>
+							<icon>views/settings/games.png</icon>
+						</item>
+						<item>
+							<label>14036</label>
+							<property name="description">31410</property>
+							<onclick>ActivateWindow(ServiceSettings)</onclick>
+							<icon>views/settings/service.png</icon>
+						</item>
+						<item>
+							<label>13000</label>
+							<property name="description">31406</property>
+							<onclick>ActivateWindow(SystemSettings)</onclick>
+							<icon>views/settings/system.png</icon>
+						</item>
+						<item>
+							<label>LibreELEC</label>
+							<property name="description">31318</property>
+							<onclick>RunAddon(service.libreelec.settings)</onclick>
+							<icon>views/settings/libreelec.png</icon>
+							<visible>System.HasAddon(service.libreelec.settings)</visible>
+						</item>
+						<item>
+							<label>CoreELEC</label>
+							<property name="description">31490</property>
+							<onclick>RunAddon(service.coreelec.settings)</onclick>
+							<icon>views/settings/coreelec.png</icon>
+							<visible>System.HasAddon(service.coreelec.settings)</visible>
+						</item>
+					</content>
+				</control>
+				<control type="textbox">
+					<right>80</right>
+					<top>884</top>
+					<width>1200</width>
+					<height>175</height>
+					<textcolor>grey2</textcolor>
+					<align>right</align>
+					<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+					<label>$INFO[Container(9000).ListItem.Property(description)]</label>
+				</control>
 			</control>
 		</control>
 	</controls>
