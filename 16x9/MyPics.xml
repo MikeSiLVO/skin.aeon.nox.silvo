@@ -8,132 +8,135 @@
 	<views>50,54,57,504,500</views>
 	<menucontrol>9051</menucontrol>
 	<controls>
-		<include>CommonBackground</include>
 		<control type="group">
-			<include>WindowOpenCloseAnimation</include>
-			<include condition="!Skin.HasSetting(Enable.SlimList)">PictureList</include>
-			<include condition="Skin.HasSetting(Enable.SlimList)">SlimList</include>
-			<!-- view id = 50 -->
-			<include condition="!Skin.HasSetting(Disable.IconsView)">PictureIcons</include>
-			<!-- view id = 500 -->
-			<include condition="!Skin.HasSetting(Disable.ShowCaseView)">View_54_ShowCase</include>
-			<!-- view id = 54 -->
-			<include condition="!Skin.HasSetting(Disable.ShiftView)">AlbumShift</include>
-			<!-- view id = 57 -->
-			<include condition="!Skin.HasSetting(Disable.GalleryView)">View_504_Gallery</include>
-			<!-- view id = 504 -->
-		</control>
-		<control type="group">
-			<visible>Control.IsVisible(54)</visible>
-			<include>WindowOpenCloseAnimation</include>
-			<control type="label">
-				<left>300</left>
-				<top>960</top>
-				<width>1320</width>
-				<height>42</height>
-				<aligny>top</aligny>
-				<align>center</align>
-				<font>font16_title_bold</font>
-				<scroll>true</scroll>
-				<label>$VAR[FloorLabelVar]</label>
-				<textoffsety>-2</textoffsety>
-				<textoffsetx>0</textoffsetx>
+			<visible>[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
+			<include>CommonBackground</include>
+			<control type="group">
+				<include>WindowOpenCloseAnimation</include>
+				<include condition="!Skin.HasSetting(Enable.SlimList)">PictureList</include>
+				<include condition="Skin.HasSetting(Enable.SlimList)">SlimList</include>
+				<!-- view id = 50 -->
+				<include condition="!Skin.HasSetting(Disable.IconsView)">PictureIcons</include>
+				<!-- view id = 500 -->
+				<include condition="!Skin.HasSetting(Disable.ShowCaseView)">View_54_ShowCase</include>
+				<!-- view id = 54 -->
+				<include condition="!Skin.HasSetting(Disable.ShiftView)">AlbumShift</include>
+				<!-- view id = 57 -->
+				<include condition="!Skin.HasSetting(Disable.GalleryView)">View_504_Gallery</include>
+				<!-- view id = 504 -->
 			</control>
-			<control type="label">
-				<left>300</left>
-				<top>1005</top>
-				<width>1320</width>
-				<height>42</height>
-				<aligny>top</aligny>
-				<align>center</align>
-				<font>font13_title</font>
-				<scroll>true</scroll>
-				<label>$INFO[ListItem.Size]</label>
-				<textoffsety>-2</textoffsety>
-				<textoffsetx>0</textoffsetx>
-			</control>
-		</control>
-		<control type="image">
-			<top>940</top>
-			<width>100%</width>
-			<height>140</height>
-			<texture border="1">gradient_floor.png</texture>
-			<visible>Control.IsVisible(54)</visible>
-		</control>
-		<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>
-		<include>Topbar</include>
-		<control type="group">
-			<left>-440</left>
-			<include>SideBladeLeft</include>
-			<control type="grouplist" id="9050">
-				<include>MediaMenuTop</include>
-				<control type="edit" id="19">
-					<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
-					<description>Filter</description>
-					<textwidth>345</textwidth>
-					<include>ButtonCommonValues</include>
-					<label>587</label>
+			<control type="group">
+				<visible>Control.IsVisible(54)</visible>
+				<include>WindowOpenCloseAnimation</include>
+				<control type="label">
+					<left>300</left>
+					<top>960</top>
+					<width>1320</width>
+					<height>42</height>
+					<aligny>top</aligny>
+					<align>center</align>
+					<font>font16_title_bold</font>
+					<scroll>true</scroll>
+					<label>$VAR[FloorLabelVar]</label>
+					<textoffsety>-2</textoffsety>
+					<textoffsetx>0</textoffsetx>
 				</control>
-				<control type="radiobutton" id="20">
-					<visible>Container.CanFilterAdvanced</visible>
-					<description>Filter</description>
-					<include>ButtonCommonValues</include>
-					<label>587</label>
-					<onclick>right</onclick>
-					<onclick>Filter</onclick>
-				</control>
-				<control type="button" id="201">
-					<description>View options</description>
-					<textwidth>352</textwidth>
+				<control type="label">
+					<left>300</left>
+					<top>1005</top>
+					<width>1320</width>
+					<height>42</height>
+					<aligny>top</aligny>
+					<align>center</align>
 					<font>font13_title</font>
-					<include>ButtonCommonValues</include>
-					<label>31026</label>
-					<enable>no</enable>
-					<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
-				</control>
-				<control type="button" id="6">
-					<description>Slideshow</description>
-					<textwidth>352</textwidth>
-					<include>ButtonCommonValues</include>
-					<label>108</label>
-				</control>
-				<control type="button" id="7">
-					<description>Recersive Slideshow</description>
-					<textwidth>352</textwidth>
-					<include>ButtonCommonValues</include>
-					<label>361</label>
-				</control>
-				<control type="radiobutton" id="9">
-					<description>Randomize Toggle</description>
-					<include>ButtonCommonValues</include>
-					<label>13319</label>
-				</control>
-				<control type="button" id="203">
-					<description>View options</description>
-					<textwidth>352</textwidth>
-					<font>font13_title</font>
-					<include>ButtonCommonValues</include>
-					<label>31039</label>
-					<enable>no</enable>
-					<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
-				</control>
-				<control type="button" id="613">
-					<description>Get more</description>
-					<include>ButtonCommonValues</include>
-					<label>$LOCALIZE[21452]</label>
-					<onclick>ClearProperty(MediaMenu,Home)</onclick>
-					<onclick>ActivateWindow(addonbrowser,addons://more/image/,return)</onclick>
-					<visible>Container.Content(addons)</visible>
-				</control>
-				<control type="button" id="617">
-					<description>Add-on settings</description>
-					<include>ButtonCommonValues</include>
-					<label>$LOCALIZE[10140]</label>
-					<onclick>Addon.OpenSettings($INFO[Container.PluginName])</onclick>
-					<visible>!String.IsEmpty(Container.PluginName)</visible>
+					<scroll>true</scroll>
+					<label>$INFO[ListItem.Size]</label>
+					<textoffsety>-2</textoffsety>
+					<textoffsetx>0</textoffsetx>
 				</control>
 			</control>
-			<include>MediaMenuPlayerControls</include>
+			<control type="image">
+				<top>940</top>
+				<width>100%</width>
+				<height>140</height>
+				<texture border="1">gradient_floor.png</texture>
+				<visible>Control.IsVisible(54)</visible>
+			</control>
+			<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>
+			<include>Topbar</include>
+			<control type="group">
+				<left>-440</left>
+				<include>SideBladeLeft</include>
+				<control type="grouplist" id="9050">
+					<include>MediaMenuTop</include>
+					<control type="edit" id="19">
+						<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
+						<description>Filter</description>
+						<textwidth>345</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>587</label>
+					</control>
+					<control type="radiobutton" id="20">
+						<visible>Container.CanFilterAdvanced</visible>
+						<description>Filter</description>
+						<include>ButtonCommonValues</include>
+						<label>587</label>
+						<onclick>right</onclick>
+						<onclick>Filter</onclick>
+					</control>
+					<control type="button" id="201">
+						<description>View options</description>
+						<textwidth>352</textwidth>
+						<font>font13_title</font>
+						<include>ButtonCommonValues</include>
+						<label>31026</label>
+						<enable>no</enable>
+						<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
+					</control>
+					<control type="button" id="6">
+						<description>Slideshow</description>
+						<textwidth>352</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>108</label>
+					</control>
+					<control type="button" id="7">
+						<description>Recersive Slideshow</description>
+						<textwidth>352</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>361</label>
+					</control>
+					<control type="radiobutton" id="9">
+						<description>Randomize Toggle</description>
+						<include>ButtonCommonValues</include>
+						<label>13319</label>
+					</control>
+					<control type="button" id="203">
+						<description>View options</description>
+						<textwidth>352</textwidth>
+						<font>font13_title</font>
+						<include>ButtonCommonValues</include>
+						<label>31039</label>
+						<enable>no</enable>
+						<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
+					</control>
+					<control type="button" id="613">
+						<description>Get more</description>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[21452]</label>
+						<onclick>ClearProperty(MediaMenu,Home)</onclick>
+						<onclick>ActivateWindow(addonbrowser,addons://more/image/,return)</onclick>
+						<visible>Container.Content(addons)</visible>
+					</control>
+					<control type="button" id="617">
+						<description>Add-on settings</description>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[10140]</label>
+						<onclick>Addon.OpenSettings($INFO[Container.PluginName])</onclick>
+						<visible>!String.IsEmpty(Container.PluginName)</visible>
+					</control>
+				</control>
+				<include>MediaMenuPlayerControls</include>
+			</control>
 		</control>
 	</controls>
 </window>

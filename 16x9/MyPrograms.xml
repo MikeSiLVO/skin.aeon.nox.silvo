@@ -14,112 +14,151 @@
 			<onfocus>SetProperty(MediaMenu,True,Home)</onfocus>
 			<onfocus>SetFocus(9050)</onfocus>
 		</control>
-		<include>CommonBackground</include>
 		<control type="group">
-			<include>WindowOpenCloseAnimation</include>
-			<include condition="!Skin.HasSetting(Enable.SlimList)">AddonList</include>
-			<include condition="Skin.HasSetting(Enable.SlimList)">SlimList</include>
-			<!-- view id = 50 -->
-			<include condition="!Skin.HasSetting(Disable.InfoWallView)">AddonInfoWall</include>
-			<!-- view id = 51 -->
-			<include condition="!Skin.HasSetting(Disable.ShowCaseView)">View_54_ShowCase</include>
-			<!-- view id = 54 -->
-			<include condition="!Skin.HasSetting(Disable.TriPanelView)">GamesTriPanel</include>
-			<!-- view id = 55 -->
-			<include condition="!Skin.HasSetting(Disable.ShiftView)">PosterShift</include>
-			<!-- view id = 57 -->
-			<include condition="!Skin.HasSetting(Disable.IconsView)">AddonIcons</include>
-			<!-- view id = 500 -->
-			<include condition="!Skin.HasSetting(Disable.LowListView)">GamesLowList</include>
-			<!-- view id = 501 -->
-			<include condition="!Skin.HasSetting(Disable.WallView)">View_503_Wall</include>
-			<!-- view id = 503 -->
-		</control>
-		<control type="group">
-			<visible>Control.IsVisible(54) | Control.IsVisible(52) | Control.IsVisible(500) | Control.IsVisible(57) | Control.IsVisible(503)</visible>
-			<visible>!Window.IsActive(addoninformation)</visible>
-			<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">VisibleChange</animation>
-			<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">WindowOpen</animation>
-			<animation effect="slide" tween="cubic" time="720" end="0,806" start="0,0">WindowClose</animation>
-			<animation effect="slide" end="0,20" condition="Control.IsVisible(503)">Conditional</animation>
-			<top>-30</top>
+			<visible>[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
+			<include>CommonBackground</include>
 			<control type="group">
-				<visible>Control.IsVisible(54) | Control.IsVisible(52) | [Control.IsVisible(503) + Skin.HasSetting(Enable.Wall.FloorInfo.programs)]</visible>
+				<include>WindowOpenCloseAnimation</include>
+				<include condition="!Skin.HasSetting(Enable.SlimList)">AddonList</include>
+				<include condition="Skin.HasSetting(Enable.SlimList)">SlimList</include>
+				<!-- view id = 50 -->
+				<include condition="!Skin.HasSetting(Disable.InfoWallView)">AddonInfoWall</include>
+				<!-- view id = 51 -->
+				<include condition="!Skin.HasSetting(Disable.ShowCaseView)">View_54_ShowCase</include>
+				<!-- view id = 54 -->
+				<include condition="!Skin.HasSetting(Disable.TriPanelView)">GamesTriPanel</include>
+				<!-- view id = 55 -->
+				<include condition="!Skin.HasSetting(Disable.ShiftView)">PosterShift</include>
+				<!-- view id = 57 -->
+				<include condition="!Skin.HasSetting(Disable.IconsView)">AddonIcons</include>
+				<!-- view id = 500 -->
+				<include condition="!Skin.HasSetting(Disable.LowListView)">GamesLowList</include>
+				<!-- view id = 501 -->
+				<include condition="!Skin.HasSetting(Disable.WallView)">View_503_Wall</include>
+				<!-- view id = 503 -->
+			</control>
+			<control type="group">
+				<visible>Control.IsVisible(54) | Control.IsVisible(52) | Control.IsVisible(500) | Control.IsVisible(57) | Control.IsVisible(503)</visible>
+				<visible>!Window.IsActive(addoninformation)</visible>
+				<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">VisibleChange</animation>
+				<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">WindowOpen</animation>
+				<animation effect="slide" tween="cubic" time="720" end="0,806" start="0,0">WindowClose</animation>
+				<animation effect="slide" end="0,20" condition="Control.IsVisible(503)">Conditional</animation>
+				<top>-30</top>
 				<control type="group">
-					<left>410</left>
-					<top>1010</top>
-					<control type="label">
-						<width>1100</width>
-						<height>48</height>
-						<align>center</align>
-						<font>font16_title_bold</font>
-						<scroll>true</scroll>
-						<label>$INFO[ListItem.Label]</label>
-						<textoffsetx>30</textoffsetx>
+					<visible>Control.IsVisible(54) | Control.IsVisible(52) | [Control.IsVisible(503) + Skin.HasSetting(Enable.Wall.FloorInfo.programs)]</visible>
+					<control type="group">
+						<left>410</left>
+						<top>1010</top>
+						<control type="label">
+							<width>1100</width>
+							<height>48</height>
+							<align>center</align>
+							<font>font16_title_bold</font>
+							<scroll>true</scroll>
+							<label>$INFO[ListItem.Label]</label>
+							<textoffsetx>30</textoffsetx>
+						</control>
+						<control type="label">
+							<top>45</top>
+							<width>1100</width>
+							<height>30</height>
+							<align>center</align>
+							<font>font13_title</font>
+							<label>$INFO[ListItem.Label2]</label>
+							<textoffsetx>30</textoffsetx>
+						</control>
+						<control type="label">
+							<top>45</top>
+							<width>1100</width>
+							<height>30</height>
+							<align>center</align>
+							<font>font13_title</font>
+							<label>$INFO[ListItem.AddonSummary]</label>
+							<textoffsetx>30</textoffsetx>
+							<visible>String.IsEmpty(ListItem.Label2)</visible>
+						</control>
 					</control>
-					<control type="label">
-						<top>45</top>
-						<width>1100</width>
-						<height>30</height>
-						<align>center</align>
-						<font>font13_title</font>
-						<label>$INFO[ListItem.Label2]</label>
-						<textoffsetx>30</textoffsetx>
-					</control>
-					<control type="label">
-						<top>45</top>
-						<width>1100</width>
-						<height>30</height>
-						<align>center</align>
-						<font>font13_title</font>
-						<label>$INFO[ListItem.AddonSummary]</label>
-						<textoffsetx>30</textoffsetx>
-						<visible>String.IsEmpty(ListItem.Label2)</visible>
+					<control type="group">
+						<top>1010</top>
+						<width>100%</width>
+						<visible>[Container.Content(albums) | Container.Content(songs)]</visible>
+						<control type="group">
+							<left>120</left>
+							<control type="label">
+								<left>-10</left>
+								<width>155</width>
+								<height>90</height>
+								<align>center</align>
+								<label>$INFO[ListItem.Year]</label>
+								<font>font35_title_bold</font>
+								<wrapmultiline>true</wrapmultiline>
+							</control>
+						</control>
+						<control type="image">
+							<left>1600</left>
+							<colordiffuse>white</colordiffuse>
+							<width>200</width>
+							<fadetime>50</fadetime>
+							<include>MediaFlagValues</include>
+							<texture fallback="flags/rating/empty.png">$INFO[ListItem.StarRating]</texture>
+						</control>
 					</control>
 				</control>
 				<control type="group">
-					<top>1010</top>
-					<width>100%</width>
-					<visible>[Container.Content(albums) | Container.Content(songs)]</visible>
+					<visible>Control.IsVisible(500) | Control.IsVisible(57)</visible>
+					<animation effect="slide" start="0" end="40" time="720" tween="cubic" easing="inout" condition="Control.IsVisible(57)">Conditional</animation>
+					<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">VisibleChange</animation>
 					<control type="group">
-						<left>120</left>
+						<visible>Control.IsVisible(500) | Control.IsVisible(57) + !Window.IsActive(programs)</visible>
+						<animation effect="slide" start="0" end="40" time="720" tween="cubic" easing="inout" condition="Control.IsVisible(57)">Conditional</animation>
+						<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">VisibleChange</animation>
+						<control type="group">
+							<left>90</left>
+							<top>1010</top>
+							<control type="label">
+								<width>1150</width>
+								<height>48</height>
+								<font>font16_title_bold</font>
+								<scroll>true</scroll>
+								<label>$INFO[ListItem.Label]</label>
+								<textoffsetx>30</textoffsetx>
+							</control>
+							<control type="label">
+								<top>45</top>
+								<width>1500</width>
+								<height>30</height>
+								<font>font13_title</font>
+								<label>$INFO[ListItem.AddonSummary]</label>
+								<textoffsetx>30</textoffsetx>
+							</control>
+						</control>
 						<control type="label">
-							<left>-10</left>
-							<width>155</width>
+							<left>1500</left>
+							<top>1000</top>
+							<width>300</width>
 							<height>90</height>
-							<align>center</align>
-							<label>$INFO[ListItem.Year]</label>
+							<align>right</align>
+							<label>$INFO[ListItem.AddonVersion]</label>
 							<font>font35_title_bold</font>
 							<wrapmultiline>true</wrapmultiline>
 						</control>
 					</control>
-					<control type="image">
-						<left>1600</left>
-						<colordiffuse>white</colordiffuse>
-						<width>200</width>
-						<fadetime>50</fadetime>
-						<include>MediaFlagValues</include>
-						<texture fallback="flags/rating/empty.png">$INFO[ListItem.StarRating]</texture>
-					</control>
 				</control>
-			</control>
-			<control type="group">
-				<visible>Control.IsVisible(500) | Control.IsVisible(57)</visible>
-				<animation effect="slide" start="0" end="40" time="720" tween="cubic" easing="inout" condition="Control.IsVisible(57)">Conditional</animation>
-				<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">VisibleChange</animation>
 				<control type="group">
-					<visible>Control.IsVisible(500) | Control.IsVisible(57) + !Window.IsActive(programs)</visible>
-					<animation effect="slide" start="0" end="40" time="720" tween="cubic" easing="inout" condition="Control.IsVisible(57)">Conditional</animation>
+					<visible>Control.IsVisible(57)</visible>
 					<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">VisibleChange</animation>
 					<control type="group">
-						<left>90</left>
+						<left>52</left>
 						<top>1010</top>
 						<control type="label">
 							<width>1150</width>
-							<height>48</height>
+							<height>42</height>
+							<aligny>top</aligny>
 							<font>font16_title_bold</font>
 							<scroll>true</scroll>
 							<label>$INFO[ListItem.Label]</label>
+							<textoffsety>-2</textoffsety>
 							<textoffsetx>30</textoffsetx>
 						</control>
 						<control type="label">
@@ -131,99 +170,63 @@
 							<textoffsetx>30</textoffsetx>
 						</control>
 					</control>
-					<control type="label">
-						<left>1500</left>
-						<top>1000</top>
-						<width>300</width>
-						<height>90</height>
-						<align>right</align>
-						<label>$INFO[ListItem.AddonVersion]</label>
-						<font>font35_title_bold</font>
-						<wrapmultiline>true</wrapmultiline>
-					</control>
+				</control>
+				<control type="image">
+					<top>970</top>
+					<width>100%</width>
+					<height>140</height>
+					<texture border="1">gradient_floor.png</texture>
+					<visible>Control.IsVisible(54) | Control.IsVisible(52) | Control.IsVisible(500) | Control.IsVisible(57) | [Control.IsVisible(503) + Skin.HasSetting(Enable.Wall.FloorInfo.programs)]</visible>
 				</control>
 			</control>
+			<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>
+			<include>Topbar</include>
 			<control type="group">
-				<visible>Control.IsVisible(57)</visible>
-				<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">VisibleChange</animation>
-				<control type="group">
-					<left>52</left>
-					<top>1010</top>
-					<control type="label">
-						<width>1150</width>
-						<height>42</height>
-						<aligny>top</aligny>
-						<font>font16_title_bold</font>
-						<scroll>true</scroll>
-						<label>$INFO[ListItem.Label]</label>
-						<textoffsety>-2</textoffsety>
-						<textoffsetx>30</textoffsetx>
+				<left>-440</left>
+				<include>SideBladeLeft</include>
+				<control type="grouplist" id="9050">
+					<include>MediaMenuTop</include>
+					<control type="edit" id="19">
+						<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
+						<description>Filter</description>
+						<textwidth>345</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>587</label>
 					</control>
-					<control type="label">
-						<top>45</top>
-						<width>1500</width>
-						<height>30</height>
+					<control type="radiobutton" id="20">
+						<visible>Container.CanFilterAdvanced</visible>
+						<description>Filter</description>
+						<include>ButtonCommonValues</include>
+						<label>587</label>
+						<onclick>right</onclick>
+						<onclick>Filter</onclick>
+					</control>
+					<control type="button" id="203">
+						<description>View options</description>
+						<textwidth>352</textwidth>
 						<font>font13_title</font>
-						<label>$INFO[ListItem.AddonSummary]</label>
-						<textoffsetx>30</textoffsetx>
+						<include>ButtonCommonValues</include>
+						<label>31039</label>
+						<enable>no</enable>
+						<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
+					</control>
+					<control type="button" id="613">
+						<description>Get more</description>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[21452]</label>
+						<onclick>ActivateWindow(addonbrowser,addons://more/executable/,return)</onclick>
+						<visible>Container.Content(addons)</visible>
+					</control>
+					<control type="button" id="617">
+						<description>Add-on settings</description>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[10140]</label>
+						<onclick>Addon.OpenSettings($INFO[Container.PluginName])</onclick>
+						<visible>!String.IsEmpty(Container.PluginName)</visible>
 					</control>
 				</control>
+				<include>MediaMenuPlayerControls</include>
 			</control>
-			<control type="image">
-				<top>970</top>
-				<width>100%</width>
-				<height>140</height>
-				<texture border="1">gradient_floor.png</texture>
-				<visible>Control.IsVisible(54) | Control.IsVisible(52) | Control.IsVisible(500) | Control.IsVisible(57) | [Control.IsVisible(503) + Skin.HasSetting(Enable.Wall.FloorInfo.programs)]</visible>
-			</control>
-		</control>
-		<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>
-		<include>Topbar</include>
-		<control type="group">
-			<left>-440</left>
-			<include>SideBladeLeft</include>
-			<control type="grouplist" id="9050">
-				<include>MediaMenuTop</include>
-				<control type="edit" id="19">
-					<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
-					<description>Filter</description>
-					<textwidth>345</textwidth>
-					<include>ButtonCommonValues</include>
-					<label>587</label>
-				</control>
-				<control type="radiobutton" id="20">
-					<visible>Container.CanFilterAdvanced</visible>
-					<description>Filter</description>
-					<include>ButtonCommonValues</include>
-					<label>587</label>
-					<onclick>right</onclick>
-					<onclick>Filter</onclick>
-				</control>
-				<control type="button" id="203">
-					<description>View options</description>
-					<textwidth>352</textwidth>
-					<font>font13_title</font>
-					<include>ButtonCommonValues</include>
-					<label>31039</label>
-					<enable>no</enable>
-					<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
-				</control>
-				<control type="button" id="613">
-					<description>Get more</description>
-					<include>ButtonCommonValues</include>
-					<label>$LOCALIZE[21452]</label>
-					<onclick>ActivateWindow(addonbrowser,addons://more/executable/,return)</onclick>
-					<visible>Container.Content(addons)</visible>
-				</control>
-				<control type="button" id="617">
-					<description>Add-on settings</description>
-					<include>ButtonCommonValues</include>
-					<label>$LOCALIZE[10140]</label>
-					<onclick>Addon.OpenSettings($INFO[Container.PluginName])</onclick>
-					<visible>!String.IsEmpty(Container.PluginName)</visible>
-				</control>
-			</control>
-			<include>MediaMenuPlayerControls</include>
 		</control>
 	</controls>
 </window>

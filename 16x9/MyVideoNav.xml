@@ -9,6 +9,9 @@
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
 	<controls>
+		<control type="button" id="8">
+			<include>HiddenObject</include>
+		</control>
 		<control type="button" id="4400">
 			<include>HiddenObject</include>
 			<onfocus>SetProperty(Enable.FullscreenFanart,True,Home)</onfocus>
@@ -176,170 +179,82 @@
 		</control>
 		<include condition="System.AddonIsEnabled(script.embuary.helper)">EmbuaryHelperContentList</include>
 		<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">TMDbHelperContentList</include>
-		<include>CommonBackground</include>
 		<control type="group">
-			<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(59)</visible>
-			<top>-30</top>
-			<include>InfoPanel</include>
-		</control>
-		<control type="group">
-			<include>WindowOpenCloseAnimation</include>
-			<include condition="[!Skin.HasSetting(Enable.SlimList) + !System.AddonIsEnabled(script.skinvariables)] | [!Skin.HasSetting(Enable.SlimList) + $EXP[Exp_View_50_Include] + System.AddonIsEnabled(script.skinvariables)]">VideoList</include>
-			<include condition="[Skin.HasSetting(Enable.SlimList) + !System.AddonIsEnabled(script.skinvariables)] | [Skin.HasSetting(Enable.SlimList) + $EXP[Exp_View_50_Include] + System.AddonIsEnabled(script.skinvariables)]">SlimVideoList</include>
-			<!-- view id = 50 -->
-			<include condition="[!Skin.HasSetting(Disable.InfoWallView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_51_Include] + System.AddonIsEnabled(script.skinvariables)]">VideoInfoWall</include>
-			<!-- view id = 51 -->
-			<include condition="[!Skin.HasSetting(Disable.LandscapeView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_52_Include] + System.AddonIsEnabled(script.skinvariables)]">View_52_Landscape</include>
-			<!-- view id = 52 -->
-			<include condition="[!Skin.HasSetting(Disable.ShowCaseView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_53_Include] + System.AddonIsEnabled(script.skinvariables)]">View_53_ShowCase</include>
-			<!-- view id = 53 -->
-			<include condition="[!Skin.HasSetting(Disable.TriPanelView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_55_Include] + System.AddonIsEnabled(script.skinvariables)]">VideoTriPanel</include>
-			<!-- view id = 55 -->
-			<include condition="[!Skin.HasSetting(Disable.PostersView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_56_Include] + System.AddonIsEnabled(script.skinvariables)]">Video_56_Posters</include>
-			<!-- view id = 56 -->
-			<include condition="[!Skin.HasSetting(Disable.ShiftView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_57_Include] + System.AddonIsEnabled(script.skinvariables)]">PosterShift</include>
-			<!-- view id = 57 -->
-			<include condition="[!Skin.HasSetting(Disable.BannerWallView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_58_Include] + System.AddonIsEnabled(script.skinvariables)]">BannerWall</include>
-			<!-- view id = 58 -->
-			<include condition="[!Skin.HasSetting(Disable.LogoView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_59_Include] + System.AddonIsEnabled(script.skinvariables)]">View_59_Logo</include>
-			<!-- view id = 59 -->
-			<include condition="[!Skin.HasSetting(Disable.IconsView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_500_Include] + System.AddonIsEnabled(script.skinvariables)]">VideoIcons</include>
-			<!-- view id = 500 -->
-			<include condition="[!Skin.HasSetting(Disable.LowListView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_501_Include] + System.AddonIsEnabled(script.skinvariables)]">VideoLowList</include>
-			<!-- view id = 501 -->
-			<include condition="[!Skin.HasSetting(Disable.EpisodeView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_502_Include] + System.AddonIsEnabled(script.skinvariables)]">VideoEpisode</include>
-			<!-- view id = 502 -->
-			<include condition="[!Skin.HasSetting(Disable.WallView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_503_Include] + System.AddonIsEnabled(script.skinvariables)]">View_503_Wall</include>
-			<!-- view id = 503 -->
-			<include condition="[!Skin.HasSetting(Disable.GalleryView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_504_Include] + System.AddonIsEnabled(script.skinvariables)]">View_504_Gallery</include>
-			<!-- view id = 504 -->
-			<include condition="[!Skin.HasSetting(Disable.PanelView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_505_Include] + System.AddonIsEnabled(script.skinvariables)]">View_505_Panel</include>
-			<!-- view id = 505 -->
-			<include condition="[!Skin.HasSetting(Disable.RightListView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_506_Include] + System.AddonIsEnabled(script.skinvariables)]">Video_RightList</include>
-			<!-- view id = 506 -->
-			<include condition="[!Skin.HasSetting(Disable.BigListView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_507_Include] + System.AddonIsEnabled(script.skinvariables)]">View_507_BigList</include>
-			<!-- view id = 507 -->
-			<include condition="[!Skin.HasSetting(Disable.MyFlixView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_509_Include] + System.AddonIsEnabled(script.skinvariables)]">View_509_MyFlix</include>
-			<!-- view id = 509 -->
-			<include condition="[!Skin.HasSetting(Disable.BigFanView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_591_Include] + System.AddonIsEnabled(script.skinvariables)]">View_591_BigFan</include>
-			<!-- view id = 591 -->
-			<include condition="[!Skin.HasSetting(Disable.FanartListView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_602_Include] + System.AddonIsEnabled(script.skinvariables)]">VideoFanartList</include>
-			<!-- view id = 602 -->
-			<include condition="[!Skin.HasSetting(Disable.FullscreenWallView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_609_Include] + System.AddonIsEnabled(script.skinvariables)]">View_609_Fullscreen_Wall</include>
-			<!-- view id = 609 -->
-		</control>
-		<control type="group">
-			<visible>!Window.IsActive(addoninformation)</visible>
-			<include>WindowOpenCloseAnimation</include>
+			<visible>[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
+			<include>CommonBackground</include>
 			<control type="group">
+				<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(59)</visible>
 				<top>-30</top>
-				<visible>!Container.Content() + !Container.Content(playlists)</visible>
-				<!-- Floor Labels (Landscape - ShowCase - Wall) -->
+				<include>InfoPanel</include>
+			</control>
+			<control type="group">
+				<include>WindowOpenCloseAnimation</include>
+				<include condition="[!Skin.HasSetting(Enable.SlimList) + !System.AddonIsEnabled(script.skinvariables)] | [!Skin.HasSetting(Enable.SlimList) + $EXP[Exp_View_50_Include] + System.AddonIsEnabled(script.skinvariables)]">VideoList</include>
+				<include condition="[Skin.HasSetting(Enable.SlimList) + !System.AddonIsEnabled(script.skinvariables)] | [Skin.HasSetting(Enable.SlimList) + $EXP[Exp_View_50_Include] + System.AddonIsEnabled(script.skinvariables)]">SlimVideoList</include>
+				<!-- view id = 50 -->
+				<include condition="[!Skin.HasSetting(Disable.InfoWallView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_51_Include] + System.AddonIsEnabled(script.skinvariables)]">VideoInfoWall</include>
+				<!-- view id = 51 -->
+				<include condition="[!Skin.HasSetting(Disable.LandscapeView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_52_Include] + System.AddonIsEnabled(script.skinvariables)]">View_52_Landscape</include>
+				<!-- view id = 52 -->
+				<include condition="[!Skin.HasSetting(Disable.ShowCaseView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_53_Include] + System.AddonIsEnabled(script.skinvariables)]">View_53_ShowCase</include>
+				<!-- view id = 53 -->
+				<include condition="[!Skin.HasSetting(Disable.TriPanelView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_55_Include] + System.AddonIsEnabled(script.skinvariables)]">VideoTriPanel</include>
+				<!-- view id = 55 -->
+				<include condition="[!Skin.HasSetting(Disable.PostersView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_56_Include] + System.AddonIsEnabled(script.skinvariables)]">Video_56_Posters</include>
+				<!-- view id = 56 -->
+				<include condition="[!Skin.HasSetting(Disable.ShiftView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_57_Include] + System.AddonIsEnabled(script.skinvariables)]">PosterShift</include>
+				<!-- view id = 57 -->
+				<include condition="[!Skin.HasSetting(Disable.BannerWallView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_58_Include] + System.AddonIsEnabled(script.skinvariables)]">BannerWall</include>
+				<!-- view id = 58 -->
+				<include condition="[!Skin.HasSetting(Disable.LogoView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_59_Include] + System.AddonIsEnabled(script.skinvariables)]">View_59_Logo</include>
+				<!-- view id = 59 -->
+				<include condition="[!Skin.HasSetting(Disable.IconsView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_500_Include] + System.AddonIsEnabled(script.skinvariables)]">VideoIcons</include>
+				<!-- view id = 500 -->
+				<include condition="[!Skin.HasSetting(Disable.LowListView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_501_Include] + System.AddonIsEnabled(script.skinvariables)]">VideoLowList</include>
+				<!-- view id = 501 -->
+				<include condition="[!Skin.HasSetting(Disable.EpisodeView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_502_Include] + System.AddonIsEnabled(script.skinvariables)]">VideoEpisode</include>
+				<!-- view id = 502 -->
+				<include condition="[!Skin.HasSetting(Disable.WallView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_503_Include] + System.AddonIsEnabled(script.skinvariables)]">View_503_Wall</include>
+				<!-- view id = 503 -->
+				<include condition="[!Skin.HasSetting(Disable.GalleryView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_504_Include] + System.AddonIsEnabled(script.skinvariables)]">View_504_Gallery</include>
+				<!-- view id = 504 -->
+				<include condition="[!Skin.HasSetting(Disable.PanelView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_505_Include] + System.AddonIsEnabled(script.skinvariables)]">View_505_Panel</include>
+				<!-- view id = 505 -->
+				<include condition="[!Skin.HasSetting(Disable.RightListView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_506_Include] + System.AddonIsEnabled(script.skinvariables)]">Video_RightList</include>
+				<!-- view id = 506 -->
+				<include condition="[!Skin.HasSetting(Disable.BigListView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_507_Include] + System.AddonIsEnabled(script.skinvariables)]">View_507_BigList</include>
+				<!-- view id = 507 -->
+				<include condition="[!Skin.HasSetting(Disable.MyFlixView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_509_Include] + System.AddonIsEnabled(script.skinvariables)]">View_509_MyFlix</include>
+				<!-- view id = 509 -->
+				<include condition="[!Skin.HasSetting(Disable.BigFanView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_591_Include] + System.AddonIsEnabled(script.skinvariables)]">View_591_BigFan</include>
+				<!-- view id = 591 -->
+				<include condition="[!Skin.HasSetting(Disable.FanartListView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_602_Include] + System.AddonIsEnabled(script.skinvariables)]">VideoFanartList</include>
+				<!-- view id = 602 -->
+				<include condition="[!Skin.HasSetting(Disable.FullscreenWallView) + !System.AddonIsEnabled(script.skinvariables)] | [$EXP[Exp_View_609_Include] + System.AddonIsEnabled(script.skinvariables)]">View_609_Fullscreen_Wall</include>
+				<!-- view id = 609 -->
+			</control>
+			<control type="group">
+				<visible>!Window.IsActive(addoninformation)</visible>
+				<include>WindowOpenCloseAnimation</include>
 				<control type="group">
-					<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(503)</visible>
-					<include>ViewAnimation</include>
+					<top>-30</top>
+					<visible>!Container.Content() + !Container.Content(playlists)</visible>
+					<!-- Floor Labels (Landscape - ShowCase - Wall) -->
 					<control type="group">
-						<visible>!ListItem.IsCollection</visible>
-						<animation effect="slide" end="0,70" condition="Container.Content(genres) + Control.IsVisible(53) + Skin.HasSetting(ShowCaseGenreLabels)">Conditional</animation>
-						<animation effect="slide" end="0,12" condition="[Control.IsVisible(52) + Container.Content(movies) + Skin.HasSetting(Disable.Landscape.MovieGenre)] | [Control.IsVisible(53) + Container.Content(movies) + Skin.HasSetting(Disable.Showcase.MovieGenre)] | [Control.IsVisible(503) + Container.Content(movies) + Skin.HasSetting(Disable.Wall.MovieGenre)]">Conditional</animation>
-						<animation effect="slide" end="0,34" condition="Control.IsVisible(53) + Container.Content(movies) + Skin.HasSetting(Enable.ShowCase.Logo) + String.IsEmpty(ListItem.Art(clearlogo)) | Control.IsVisible(52) + Container.Content(movies) + Skin.HasSetting(Enable.Landscape.Logo) | Control.IsVisible(503) + [Container.Content(movies) | Container.Content(tvshows)] + Skin.HasSetting(Enable.Wall.Logo) + String.IsEmpty(ListItem.Art(clearlogo))">Conditional</animation>
+						<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(503)</visible>
+						<include>ViewAnimation</include>
 						<control type="group">
-							<visible>[Control.IsVisible(52) + Container.Content(movies) + !Skin.HasSetting(Disable.Landscape.MovieInfo) + [!Skin.HasSetting(Enable.Landscape.Logo)] | [Skin.HasSetting(Enable.Landscape.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] | [Control.IsVisible(52) + Container.Content(tvshows) + !Skin.HasSetting(Disable.Landscape.TVInfo) + [!Skin.HasSetting(Enable.Landscape.Logo)] | [Control.IsVisible(52) + Container.Content(episodes) + !Skin.HasSetting(Disable.Landscape.EpisodeInfo)]] | [Control.IsVisible(53) + Container.Content(movies) + !Skin.HasSetting(Disable.ShowCase.MovieInfo) + [!Skin.HasSetting(Enable.ShowCase.Logo)] | [Skin.HasSetting(Enable.ShowCase.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] | [Control.IsVisible(53) + Container.Content(tvshows) + !Skin.HasSetting(Disable.ShowCase.TVInfo) + !Skin.HasSetting(Enable.ShowCase.Logo)] | [Control.IsVisible(53) + Container.Content(seasons) + !Skin.HasSetting(Disable.ShowCase.FloorInfo.seasons) + !Skin.HasSetting(Enable.ShowCase.SeasonBanner)] | [Control.IsVisible(503) + Container.Content(movies) + !Skin.HasSetting(Disable.Wall.MovieInfo) + [!Skin.HasSetting(Enable.Wall.Logo) | [Skin.HasSetting(Enable.Wall.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]]] | [Control.IsVisible(503) + Container.Content(tvshows) + !Skin.HasSetting(Disable.Wall.TVInfo) + [!Skin.HasSetting(Enable.Wall.Logo) | [Skin.HasSetting(Enable.Wall.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]]] | [Control.IsVisible(503) + Container.Content(seasons) + Skin.HasSetting(Enable.Wall.FloorInfo.seasons)] | Container.Content(genres) + Control.IsVisible(53) + Skin.HasSetting(ShowCaseGenreLabels)</visible>
-							<visible>![Container.Content(files) + Control.IsVisible(503)]</visible>
-							<control type="label">
-								<left>532</left>
-								<top>985</top>
-								<width>856</width>
-								<height>46</height>
-								<align>center</align>
-								<font>font16_title_bold</font>
-								<scroll>true</scroll>
-								<shadowcolor>shadow</shadowcolor>
-								<label>$VAR[FloorLabelVar]</label>
-							</control>
+							<visible>!ListItem.IsCollection</visible>
+							<animation effect="slide" end="0,70" condition="Container.Content(genres) + Control.IsVisible(53) + Skin.HasSetting(ShowCaseGenreLabels)">Conditional</animation>
+							<animation effect="slide" end="0,12" condition="[Control.IsVisible(52) + Container.Content(movies) + Skin.HasSetting(Disable.Landscape.MovieGenre)] | [Control.IsVisible(53) + Container.Content(movies) + Skin.HasSetting(Disable.Showcase.MovieGenre)] | [Control.IsVisible(503) + Container.Content(movies) + Skin.HasSetting(Disable.Wall.MovieGenre)]">Conditional</animation>
+							<animation effect="slide" end="0,34" condition="Control.IsVisible(53) + Container.Content(movies) + Skin.HasSetting(Enable.ShowCase.Logo) + String.IsEmpty(ListItem.Art(clearlogo)) | Control.IsVisible(52) + Container.Content(movies) + Skin.HasSetting(Enable.Landscape.Logo) | Control.IsVisible(503) + [Container.Content(movies) | Container.Content(tvshows)] + Skin.HasSetting(Enable.Wall.Logo) + String.IsEmpty(ListItem.Art(clearlogo))">Conditional</animation>
 							<control type="group">
-								<left>532</left>
-								<top>1030</top>
-								<visible>[Control.IsVisible(52) + Container.Content(movies) + !Skin.HasSetting(Disable.Landscape.MovieInfo) + !Skin.HasSetting(Enable.Landscape.Logo)] | [Control.IsVisible(52) + Container.Content(tvshows) + !Skin.HasSetting(Disable.Landscape.TVInfo) + !Skin.HasSetting(Enable.Landscape.Logo)] | [Control.IsVisible(52) + Container.Content(episodes) + !Skin.HasSetting(Disable.Landscape.EpisodeInfo)] | [Control.IsVisible(53) + Container.Content(movies) + !Skin.HasSetting(Disable.ShowCase.MovieInfo) + [!Skin.HasSetting(Enable.ShowCase.Logo)]] | [Control.IsVisible(53) + Container.Content(tvshows) + !Skin.HasSetting(Disable.ShowCase.TVInfo) + [!Skin.HasSetting(Enable.ShowCase.Logo)]] | [Control.IsVisible(53) + Container.Content(seasons) + !Skin.HasSetting(Disable.ShowCase.FloorInfo.seasons) + !Skin.HasSetting(Enable.ShowCase.SeasonBanner)] | [Control.IsVisible(503) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(Disable.Wall.MovieInfo) + [!Skin.HasSetting(Enable.Wall.Logo)]] | [Control.IsVisible(503) + Container.Content(sets) + !Skin.HasSetting(Disable.Wall.SetInfo) + [!Skin.HasSetting(Enable.Wall.SetLogo)]] | [Control.IsVisible(503) + Container.Content(tvshows) + !Skin.HasSetting(Disable.Wall.TVInfo) + !Skin.HasSetting(Enable.Wall.Logo)] | [Control.IsVisible(503) + Container.Content(seasons) + Skin.HasSetting(Enable.Wall.FloorInfo.seasons) + !Skin.HasSetting(Enable.Wall.SeasonBanner)]</visible>
+								<visible>[Control.IsVisible(52) + Container.Content(movies) + !Skin.HasSetting(Disable.Landscape.MovieInfo) + [!Skin.HasSetting(Enable.Landscape.Logo)] | [Skin.HasSetting(Enable.Landscape.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] | [Control.IsVisible(52) + Container.Content(tvshows) + !Skin.HasSetting(Disable.Landscape.TVInfo) + [!Skin.HasSetting(Enable.Landscape.Logo)] | [Control.IsVisible(52) + Container.Content(episodes) + !Skin.HasSetting(Disable.Landscape.EpisodeInfo)]] | [Control.IsVisible(53) + Container.Content(movies) + !Skin.HasSetting(Disable.ShowCase.MovieInfo) + [!Skin.HasSetting(Enable.ShowCase.Logo)] | [Skin.HasSetting(Enable.ShowCase.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] | [Control.IsVisible(53) + Container.Content(tvshows) + !Skin.HasSetting(Disable.ShowCase.TVInfo) + !Skin.HasSetting(Enable.ShowCase.Logo)] | [Control.IsVisible(53) + Container.Content(seasons) + !Skin.HasSetting(Disable.ShowCase.FloorInfo.seasons) + !Skin.HasSetting(Enable.ShowCase.SeasonBanner)] | [Control.IsVisible(503) + Container.Content(movies) + !Skin.HasSetting(Disable.Wall.MovieInfo) + [!Skin.HasSetting(Enable.Wall.Logo) | [Skin.HasSetting(Enable.Wall.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]]] | [Control.IsVisible(503) + Container.Content(tvshows) + !Skin.HasSetting(Disable.Wall.TVInfo) + [!Skin.HasSetting(Enable.Wall.Logo) | [Skin.HasSetting(Enable.Wall.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]]] | [Control.IsVisible(503) + Container.Content(seasons) + Skin.HasSetting(Enable.Wall.FloorInfo.seasons)] | Container.Content(genres) + Control.IsVisible(53) + Skin.HasSetting(ShowCaseGenreLabels)</visible>
+								<visible>![Container.Content(files) + Control.IsVisible(503)]</visible>
 								<control type="label">
+									<left>532</left>
+									<top>985</top>
 									<width>856</width>
-									<height>30</height>
-									<align>center</align>
-									<font>font13_bold</font>
-									<textcolor>grey</textcolor>
-									<shadowcolor>shadow</shadowcolor>
-									<label>$VAR[FloorSubLabelVar]</label>
-									<textoffsetx>30</textoffsetx>
-								</control>
-								<control type="label">
-									<top>38</top>
-									<width>856</width>
-									<height>22</height>
-									<align>center</align>
-									<font>font13_bold</font>
-									<shadowcolor>shadow</shadowcolor>
-									<label>$INFO[ListItem.Genre]</label>
-									<textoffsetx>30</textoffsetx>
-									<visible>Control.IsVisible(52) + [Container.Content(movies) + !Skin.HasSetting(Disable.Landscape.MovieGenre)] | Control.IsVisible(53) + [Container.Content(movies) + !Skin.HasSetting(Disable.Showcase.MovieGenre)] | Control.IsVisible(53) + [Container.Content(tvshows) + Skin.HasSetting(Enable.Showcase.TVShowGenre)] | Control.IsVisible(52) + [Container.Content(tvshows) + Skin.HasSetting(Enable.Landscape.TVShowGenre)] | Control.IsVisible(503) + [Container.Content(movies) + !Skin.HasSetting(Disable.Wall.MovieGenre)] | Control.IsVisible(503) + [Container.Content(tvshows) + Skin.HasSetting(Enable.Wall.TVShowGenre)]</visible>
-								</control>
-								<control type="group">
-									<visible>[Control.IsVisible(52) + Container.Content(tvshows) + !Skin.HasSetting(Enable.Landscape.TVShowGenre)] | [Control.IsVisible(53) + Container.Content(tvshows) + !Skin.HasSetting(Enable.Showcase.TVShowGenre)] | [Control.IsVisible(503) + Container.Content(tvshows) + !Skin.HasSetting(Enable.Wall.TVShowGenre)]</visible>
-									<left>-272</left>
-									<top>38</top>
-									<!-- Next Aired -->
-									<control type="label">
-										<width>1400</width>
-										<height>22</height>
-										<align>center</align>
-										<font>font13_bold</font>
-										<shadowcolor>shadow</shadowcolor>
-										<label>$VAR[NextAiredSubLabelVar]</label>
-										<textoffsetx>30</textoffsetx>
-										<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(52).OnNext + !Container(52).OnPrevious">Conditional</animation>
-										<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(53).OnNext + !Container(53).OnPrevious">Conditional</animation>
-										<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(503).OnNext + !Container(503).OnPrevious">Conditional</animation>
-										<animation effect="fade" time="250" delay="300" reversible="false">Visible</animation>
-										<visible>String.IsEmpty(Window(Home).Property(TMDbHelper.IsUpdating))</visible>
-									</control>
-								</control>
-								<control type="label">
-									<top>38</top>
-									<width>800</width>
-									<height>25</height>
-									<align>center</align>
-									<font>font13_bold</font>
-									<textcolor>$VAR[UnWatchedEpColor]</textcolor>
-									<shadowcolor>shadow</shadowcolor>
-									<label>[COLOR grey]$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)][/COLOR] $INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)]</label>
-									<textoffsetx>30</textoffsetx>
-									<visible>[Control.IsVisible(53) + Container.Content(seasons)]</visible>
-								</control>
-								<control type="label">
-									<top>38</top>
-									<width>800</width>
-									<height>25</height>
-									<align>center</align>
-									<font>font13_bold</font>
-									<shadowcolor>shadow</shadowcolor>
-									<label>$INFO[ListItem.Premiered,$LOCALIZE[31452]: ]</label>
-									<textoffsetx>30</textoffsetx>
-									<visible>[Control.IsVisible(52) + Container.Content(episodes) + !Skin.HasSetting(Disable.Landscape.EpisodeInfo)]</visible>
-								</control>
-							</control>
-						</control>
-						<!-- Music Videos -->
-						<control type="group">
-							<top>1010</top>
-							<visible>Container.Content(musicvideos) + Control.IsVisible(53) + !Skin.HasSetting(Enable.ShowCase.MusicVidLogo)</visible>
-							<control type="grouplist">
-								<left>60</left>
-								<width>1800</width>
-								<height>46</height>
-								<align>center</align>
-								<itemgap>10</itemgap>
-								<orientation>horizontal</orientation>
-								<control type="label">
-									<width>auto</width>
 									<height>46</height>
 									<align>center</align>
 									<font>font16_title_bold</font>
@@ -347,567 +262,555 @@
 									<shadowcolor>shadow</shadowcolor>
 									<label>$VAR[FloorLabelVar]</label>
 								</control>
+								<control type="group">
+									<left>532</left>
+									<top>1030</top>
+									<visible>[Control.IsVisible(52) + Container.Content(movies) + !Skin.HasSetting(Disable.Landscape.MovieInfo) + !Skin.HasSetting(Enable.Landscape.Logo)] | [Control.IsVisible(52) + Container.Content(tvshows) + !Skin.HasSetting(Disable.Landscape.TVInfo) + !Skin.HasSetting(Enable.Landscape.Logo)] | [Control.IsVisible(52) + Container.Content(episodes) + !Skin.HasSetting(Disable.Landscape.EpisodeInfo)] | [Control.IsVisible(53) + Container.Content(movies) + !Skin.HasSetting(Disable.ShowCase.MovieInfo) + [!Skin.HasSetting(Enable.ShowCase.Logo)]] | [Control.IsVisible(53) + Container.Content(tvshows) + !Skin.HasSetting(Disable.ShowCase.TVInfo) + [!Skin.HasSetting(Enable.ShowCase.Logo)]] | [Control.IsVisible(53) + Container.Content(seasons) + !Skin.HasSetting(Disable.ShowCase.FloorInfo.seasons) + !Skin.HasSetting(Enable.ShowCase.SeasonBanner)] | [Control.IsVisible(503) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(Disable.Wall.MovieInfo) + [!Skin.HasSetting(Enable.Wall.Logo)]] | [Control.IsVisible(503) + Container.Content(sets) + !Skin.HasSetting(Disable.Wall.SetInfo) + [!Skin.HasSetting(Enable.Wall.SetLogo)]] | [Control.IsVisible(503) + Container.Content(tvshows) + !Skin.HasSetting(Disable.Wall.TVInfo) + !Skin.HasSetting(Enable.Wall.Logo)] | [Control.IsVisible(503) + Container.Content(seasons) + Skin.HasSetting(Enable.Wall.FloorInfo.seasons) + !Skin.HasSetting(Enable.Wall.SeasonBanner)]</visible>
+									<control type="label">
+										<width>856</width>
+										<height>30</height>
+										<align>center</align>
+										<font>font13_bold</font>
+										<textcolor>grey</textcolor>
+										<shadowcolor>shadow</shadowcolor>
+										<label>$VAR[FloorSubLabelVar]</label>
+										<textoffsetx>30</textoffsetx>
+									</control>
+									<control type="label">
+										<top>38</top>
+										<width>856</width>
+										<height>22</height>
+										<align>center</align>
+										<font>font13_bold</font>
+										<shadowcolor>shadow</shadowcolor>
+										<label>$INFO[ListItem.Genre]</label>
+										<textoffsetx>30</textoffsetx>
+										<visible>Control.IsVisible(52) + [Container.Content(movies) + !Skin.HasSetting(Disable.Landscape.MovieGenre)] | Control.IsVisible(53) + [Container.Content(movies) + !Skin.HasSetting(Disable.Showcase.MovieGenre)] | Control.IsVisible(53) + [Container.Content(tvshows) + Skin.HasSetting(Enable.Showcase.TVShowGenre)] | Control.IsVisible(52) + [Container.Content(tvshows) + Skin.HasSetting(Enable.Landscape.TVShowGenre)] | Control.IsVisible(503) + [Container.Content(movies) + !Skin.HasSetting(Disable.Wall.MovieGenre)] | Control.IsVisible(503) + [Container.Content(tvshows) + Skin.HasSetting(Enable.Wall.TVShowGenre)]</visible>
+									</control>
+									<control type="group">
+										<visible>[Control.IsVisible(52) + Container.Content(tvshows) + !Skin.HasSetting(Enable.Landscape.TVShowGenre)] | [Control.IsVisible(53) + Container.Content(tvshows) + !Skin.HasSetting(Enable.Showcase.TVShowGenre)] | [Control.IsVisible(503) + Container.Content(tvshows) + !Skin.HasSetting(Enable.Wall.TVShowGenre)]</visible>
+										<left>-272</left>
+										<top>38</top>
+										<!-- Next Aired -->
+										<control type="label">
+											<width>1400</width>
+											<height>22</height>
+											<align>center</align>
+											<font>font13_bold</font>
+											<shadowcolor>shadow</shadowcolor>
+											<label>$VAR[NextAiredSubLabelVar]</label>
+											<textoffsetx>30</textoffsetx>
+											<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(52).OnNext + !Container(52).OnPrevious">Conditional</animation>
+											<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(53).OnNext + !Container(53).OnPrevious">Conditional</animation>
+											<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(503).OnNext + !Container(503).OnPrevious">Conditional</animation>
+											<animation effect="fade" time="250" delay="300" reversible="false">Visible</animation>
+											<visible>String.IsEmpty(Window(Home).Property(TMDbHelper.IsUpdating))</visible>
+										</control>
+									</control>
+									<control type="label">
+										<top>38</top>
+										<width>800</width>
+										<height>25</height>
+										<align>center</align>
+										<font>font13_bold</font>
+										<textcolor>$VAR[UnWatchedEpColor]</textcolor>
+										<shadowcolor>shadow</shadowcolor>
+										<label>[COLOR grey]$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)][/COLOR] $INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)]</label>
+										<textoffsetx>30</textoffsetx>
+										<visible>[Control.IsVisible(53) + Container.Content(seasons)]</visible>
+									</control>
+									<control type="label">
+										<top>38</top>
+										<width>800</width>
+										<height>25</height>
+										<align>center</align>
+										<font>font13_bold</font>
+										<shadowcolor>shadow</shadowcolor>
+										<label>$INFO[ListItem.Premiered,$LOCALIZE[31452]: ]</label>
+										<textoffsetx>30</textoffsetx>
+										<visible>[Control.IsVisible(52) + Container.Content(episodes) + !Skin.HasSetting(Disable.Landscape.EpisodeInfo)]</visible>
+									</control>
+								</control>
 							</control>
-							<control type="label">
-								<left>60</left>
-								<top>52</top>
-								<width>1800</width>
-								<height>30</height>
-								<align>center</align>
-								<font>font13_bold</font>
-								<textcolor>grey</textcolor>
-								<shadowcolor>shadow</shadowcolor>
-								<label>$VAR[FloorSubLabelVar]</label>
-							</control>
-						</control>
-					</control>
-					<!-- SETS -->
-					<control type="group">
-						<visible>ListItem.IsCollection + ![Container.OnNext | Container.OnPrevious]</visible>
-						<animation effect="fade" time="140" delay="100">Visible</animation>
-						<animation effect="fade" time="140" delay="600">WindowOpen</animation>
-						<left>450</left>
-						<top>997</top>
-						<control type="group">
-							<visible>[[[!Skin.HasSetting(Enable.Landscape.Logo) + !Skin.HasSetting(Disable.Landscape.MovieInfo)] | [Skin.HasSetting(Enable.Landscape.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] + Control.IsVisible(52) + Container.Content(movies)] | [[[!Skin.HasSetting(Enable.Landscape.SetLogo) + !Skin.HasSetting(Disable.Landscape.SetInfo)] | [Skin.HasSetting(Enable.Landscape.SetLogo) + String.IsEmpty(ListItem.Art(clearlogo))]] + Control.IsVisible(52) + Container.Content(sets)] | [[[!Skin.HasSetting(Enable.ShowCase.Logo) + !Skin.HasSetting(Disable.ShowCase.MovieInfo)] | [Skin.HasSetting(Enable.ShowCase.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] + Control.IsVisible(53) + Container.Content(movies)] | [[[!Skin.HasSetting(Enable.ShowCase.SetLogo) + !Skin.HasSetting(Disable.ShowCase.SetInfo)] | [Skin.HasSetting(Enable.ShowCase.SetLogo) + String.IsEmpty(ListItem.Art(clearlogo))]] + Control.IsVisible(53) + Container.Content(sets)] | [[[!Skin.HasSetting(Enable.Wall.Logo) + !Skin.HasSetting(Disable.Wall.MovieInfo)] | [Skin.HasSetting(Enable.Wall.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] + Control.IsVisible(503) + Container.Content(movies)] | [[[!Skin.HasSetting(Enable.Wall.SetLogo) + !Skin.HasSetting(Disable.Wall.SetInfo)] | [Skin.HasSetting(Enable.Wall.SetLogo) + String.IsEmpty(ListItem.Art(clearlogo))]] + Control.IsVisible(503) + Container.Content(sets)]</visible>
-							<animation effect="slide" end="0,-12" condition="[Control.IsVisible(52) + !Skin.HasSetting(Disable.Landscape.MovieGenre) + ![Skin.HasSetting(Enable.Landscape.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] | [Control.IsVisible(53) + !Skin.HasSetting(Disable.ShowCase.MovieGenre) + ![Skin.HasSetting(Enable.ShowCase.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] | [Control.IsVisible(503) + !Skin.HasSetting(Disable.Wall.MovieGenre) + ![Skin.HasSetting(Enable.Wall.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]]">Conditional</animation>
-							<animation effect="slide" end="0,22" condition="[Control.IsVisible(52) + Container.Content(movies) + Skin.HasSetting(Enable.Landscape.Logo)] | [Control.IsVisible(53) + Container.Content(movies) + Skin.HasSetting(Enable.ShowCase.Logo)] | [Control.IsVisible(503) + Container.Content(movies) + Skin.HasSetting(Enable.Wall.Logo)] | [Control.IsVisible(52) + Container.Content(sets) + Skin.HasSetting(Enable.Landscape.SetLogo)] | [Control.IsVisible(53) + Container.Content(sets) + Skin.HasSetting(Enable.ShowCase.SetLogo)] | [Control.IsVisible(503) + Container.Content(sets) + Skin.HasSetting(Enable.Wall.SetLogo)]">Conditional</animation>
-							<control type="label">
-								<width>1020</width>
-								<height>46</height>
-								<align>center</align>
-								<font>font16_title_bold</font>
-								<scroll>true</scroll>
-								<shadowcolor>shadow</shadowcolor>
-								<label>$INFO[ListItem.Label]</label>
-							</control>
+							<!-- Music Videos -->
 							<control type="group">
-								<visible>[[[Container.Content(movies) + !Skin.HasSetting(Enable.Landscape.Logo)] | [Container.Content(sets) + !Skin.HasSetting(Enable.Landscape.SetLogo)]] + Control.IsVisible(52)] | [[[Container.Content(movies) + !Skin.HasSetting(Enable.ShowCase.Logo)] | [Container.Content(sets) + !Skin.HasSetting(Enable.ShowCase.SetLogo)]] + Control.IsVisible(53)] | [[[Container.Content(movies) + !Skin.HasSetting(Enable.Wall.Logo)] | [Container.Content(sets) + !Skin.HasSetting(Enable.Wall.SetLogo)]] + Control.IsVisible(503)]</visible>
-								<top>45</top>
+								<top>1010</top>
+								<visible>Container.Content(musicvideos) + Control.IsVisible(53) + !Skin.HasSetting(Enable.ShowCase.MusicVidLogo)</visible>
+								<control type="grouplist">
+									<left>60</left>
+									<width>1800</width>
+									<height>46</height>
+									<align>center</align>
+									<itemgap>10</itemgap>
+									<orientation>horizontal</orientation>
+									<control type="label">
+										<width>auto</width>
+										<height>46</height>
+										<align>center</align>
+										<font>font16_title_bold</font>
+										<scroll>true</scroll>
+										<shadowcolor>shadow</shadowcolor>
+										<label>$VAR[FloorLabelVar]</label>
+									</control>
+								</control>
 								<control type="label">
-									<width>1020</width>
+									<left>60</left>
+									<top>52</top>
+									<width>1800</width>
 									<height>30</height>
 									<align>center</align>
 									<font>font13_bold</font>
 									<textcolor>grey</textcolor>
 									<shadowcolor>shadow</shadowcolor>
-									<label>$INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]$INFO[Container(4500).NumItems, • , $LOCALIZE[342]]$INFO[ListItem.RatingAndVotes, • ]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime), • , $LOCALIZE[12391]]</label>
-									<textoffsetx>30</textoffsetx>
-									<visible>!String.IsEqual(Container(4500).NumItems,0)</visible>
+									<label>$VAR[FloorSubLabelVar]</label>
 								</control>
+							</control>
+						</control>
+						<!-- SETS -->
+						<control type="group">
+							<visible>ListItem.IsCollection + ![Container.OnNext | Container.OnPrevious]</visible>
+							<animation effect="fade" time="140" delay="100">Visible</animation>
+							<animation effect="fade" time="140" delay="600">WindowOpen</animation>
+							<left>450</left>
+							<top>997</top>
+							<control type="group">
+								<visible>[[[!Skin.HasSetting(Enable.Landscape.Logo) + !Skin.HasSetting(Disable.Landscape.MovieInfo)] | [Skin.HasSetting(Enable.Landscape.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] + Control.IsVisible(52) + Container.Content(movies)] | [[[!Skin.HasSetting(Enable.Landscape.SetLogo) + !Skin.HasSetting(Disable.Landscape.SetInfo)] | [Skin.HasSetting(Enable.Landscape.SetLogo) + String.IsEmpty(ListItem.Art(clearlogo))]] + Control.IsVisible(52) + Container.Content(sets)] | [[[!Skin.HasSetting(Enable.ShowCase.Logo) + !Skin.HasSetting(Disable.ShowCase.MovieInfo)] | [Skin.HasSetting(Enable.ShowCase.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] + Control.IsVisible(53) + Container.Content(movies)] | [[[!Skin.HasSetting(Enable.ShowCase.SetLogo) + !Skin.HasSetting(Disable.ShowCase.SetInfo)] | [Skin.HasSetting(Enable.ShowCase.SetLogo) + String.IsEmpty(ListItem.Art(clearlogo))]] + Control.IsVisible(53) + Container.Content(sets)] | [[[!Skin.HasSetting(Enable.Wall.Logo) + !Skin.HasSetting(Disable.Wall.MovieInfo)] | [Skin.HasSetting(Enable.Wall.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] + Control.IsVisible(503) + Container.Content(movies)] | [[[!Skin.HasSetting(Enable.Wall.SetLogo) + !Skin.HasSetting(Disable.Wall.SetInfo)] | [Skin.HasSetting(Enable.Wall.SetLogo) + String.IsEmpty(ListItem.Art(clearlogo))]] + Control.IsVisible(503) + Container.Content(sets)]</visible>
+								<animation effect="slide" end="0,-12" condition="[Control.IsVisible(52) + !Skin.HasSetting(Disable.Landscape.MovieGenre) + ![Skin.HasSetting(Enable.Landscape.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] | [Control.IsVisible(53) + !Skin.HasSetting(Disable.ShowCase.MovieGenre) + ![Skin.HasSetting(Enable.ShowCase.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]] | [Control.IsVisible(503) + !Skin.HasSetting(Disable.Wall.MovieGenre) + ![Skin.HasSetting(Enable.Wall.Logo) + String.IsEmpty(ListItem.Art(clearlogo))]]">Conditional</animation>
+								<animation effect="slide" end="0,22" condition="[Control.IsVisible(52) + Container.Content(movies) + Skin.HasSetting(Enable.Landscape.Logo)] | [Control.IsVisible(53) + Container.Content(movies) + Skin.HasSetting(Enable.ShowCase.Logo)] | [Control.IsVisible(503) + Container.Content(movies) + Skin.HasSetting(Enable.Wall.Logo)] | [Control.IsVisible(52) + Container.Content(sets) + Skin.HasSetting(Enable.Landscape.SetLogo)] | [Control.IsVisible(53) + Container.Content(sets) + Skin.HasSetting(Enable.ShowCase.SetLogo)] | [Control.IsVisible(503) + Container.Content(sets) + Skin.HasSetting(Enable.Wall.SetLogo)]">Conditional</animation>
 								<control type="label">
-									<top>38</top>
 									<width>1020</width>
-									<height>22</height>
+									<height>46</height>
 									<align>center</align>
-									<font>font13_bold</font>
+									<font>font16_title_bold</font>
+									<scroll>true</scroll>
 									<shadowcolor>shadow</shadowcolor>
-									<label>$VAR[MovieSetGenreVar]</label>
-									<textoffsetx>30</textoffsetx>
-									<visible>[Control.IsVisible(52) + !Skin.HasSetting(Disable.Landscape.MovieGenre)] | [Control.IsVisible(53) + !Skin.HasSetting(Disable.Showcase.MovieGenre)] | [Control.IsVisible(503) + !Skin.HasSetting(Disable.Wall.MovieGenre)]</visible>
+									<label>$INFO[ListItem.Label]</label>
 								</control>
-							</control>
-						</control>
-					</control>
-				</control>
-				<!-- Floor Labels (Shift - BannerWall - Small Icons - Icons) -->
-				<control type="group">
-					<visible>Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(500)</visible>
-					<include>ViewAnimation</include>
-					<animation effect="slide" end="34.5" condition="Control.IsVisible(500) + Skin.HasSetting(500.SmallerIcons) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets) | Container.Content(genres)]">Conditional</animation>
-					<animation effect="slide" end="400,-34" condition="Control.IsVisible(57) + !Skin.HasSetting(Enable.Shift.Small) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos)]">Conditional</animation>
-					<animation effect="slide" end="260,-40" condition="Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos)]">Conditional</animation>
-					<animation effect="slide" end="-40,20" condition="Control.IsVisible(57) + ![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos)]">Conditional</animation>
-					<control type="group">
-						<left>90</left>
-						<top>935</top>
-						<visible>!ListItem.IsParentFolder + !Container.Content(tags) + !Container.Content(genres)</visible>
-						<!-- Main Label -->
-						<control type="label">
-							<width>1450</width>
-							<height>42</height>
-							<aligny>top</aligny>
-							<font>font16_title_bold</font>
-							<scroll>true</scroll>
-							<label>$INFO[ListItem.Label]</label>
-							<textoffsety>-2</textoffsety>
-							<textoffsetx>30</textoffsetx>
-						</control>
-						<control type="group">
-							<top>50</top>
-							<!-- Sub Label -->
-							<control type="label">
-								<width>1800</width>
-								<height>30</height>
-								<font>font13_bold</font>
-								<label>$VAR[FloorSubLabelVar]</label>
-								<textoffsetx>30</textoffsetx>
-								<visible>!ListItem.IsCollection</visible>
-							</control>
-							<!-- Sets -->
-							<control type="group">
-								<visible>ListItem.IsCollection</visible>
-								<control type="label">
-									<width>950</width>
-									<height>30</height>
-									<scroll>true</scroll>
-									<label>$INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]$INFO[Container(4500).NumItems, • , $LOCALIZE[342]]$INFO[ListItem.RatingAndVotes, • ]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime), • , $LOCALIZE[12391]]</label>
-									<font>font13_bold</font>
-									<textoffsetx>30</textoffsetx>
-									<visible>!String.IsEqual(Container(4500).NumItems,0)</visible>
-								</control>
-							</control>
-							<!-- Next Aired + Genre -->
-							<control type="group">
-								<visible>!Control.IsVisible(57) + [Container.Content(tvshows) | Container.Content(seasons)]</visible>
-								<control type="label">
-									<top>40</top>
-									<width>950</width>
-									<height>30</height>
-									<scroll>true</scroll>
-									<label>$INFO[ListItem.Genre]</label>
-									<font>font13_bold</font>
-									<textoffsetx>30</textoffsetx>
-									<visible>!String.IsEmpty(ListItem.Genre)</visible>
-								</control>
-								<control type="label">
-									<top>80</top>
-									<width>950</width>
-									<height>30</height>
-									<scroll>true</scroll>
-									<font>font13_bold</font>
-									<label>$VAR[NextAiredSubLabelVar]</label>
-									<textoffsetx>30</textoffsetx>
-									<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(57).OnNext + !Container(57).OnPrevious">Conditional</animation>
-									<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(58).OnNext + !Container(58).OnPrevious">Conditional</animation>
-									<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(500).OnNext + !Container(500).OnPrevious">Conditional</animation>
-									<animation effect="fade" time="250" delay="300" reversible="false">Visible</animation>
-									<visible>String.IsEmpty(Window(Home).Property(TMDbHelper.IsUpdating))</visible>
-								</control>
-							</control>
-						</control>
-					</control>
-				</control>
-				<control type="image">
-					<top>890</top>
-					<width>100%</width>
-					<height>300</height>
-					<texture border="1">gradient_floor.png</texture>
-					<animation effect="slide" end="0,-80" condition="Control.IsVisible(57) | Control.IsVisible(591)">Conditional</animation>
-					<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(59) | Control.IsVisible(500) | Control.IsVisible(503) | Control.IsVisible(591)</visible>
-				</control>
-				<!-- MEDIAFLAGS -->
-				<control type="group">
-					<visible>!ListItem.IsParentFolder + !ListItem.IsCollection + !Container.Content(genres)</visible>
-					<!-- (Landscape - ShowCase - Logo - Wall) -->
-					<control type="group">
-						<top>995</top>
-						<visible>[[Control.IsVisible(52) + Container.Content(movies) + !String.IsEqual(Skin.String(52.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(52) + Container.Content(tvshows) + !String.IsEqual(Skin.String(52.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(52) + Container.Content(episodes) + !String.IsEqual(Skin.String(52.Episodes.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(movies) + !String.IsEqual(Skin.String(53.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(tvshows) + !String.IsEqual(Skin.String(53.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(seasons) + !String.IsEqual(Skin.String(53.Seasons.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(59) + Container.Content(movies) + !String.IsEqual(Skin.String(59.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(59) + Container.Content(tvshows) + !String.IsEqual(Skin.String(59.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(movies) + !String.IsEqual(Skin.String(503.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(tvshows) + !String.IsEqual(Skin.String(503.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(seasons) + !String.IsEqual(Skin.String(503.Seasons.ViewFlags),$LOCALIZE[1223])]]</visible>
-						<include>ViewAnimation</include>
-						<control type="group">
-							<left>23</left>
-							<control type="image" id="911">
-								<include>MediaFlagValues</include>
-								<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
-							</control>
-							<control type="label">
-								<width>177</width>
-								<height>90</height>
-								<align>center</align>
-								<font>font10</font>
-								<textcolor>grey2</textcolor>
-								<wrapmultiline>true</wrapmultiline>
-								<label>$INFO[ListItem.Studio]</label>
-								<visible>String.IsEmpty(Control.GetLabel(911))</visible>
-							</control>
-						</control>
-						<control type="image">
-							<left>1720</left>
-							<include>MediaFlagValues</include>
-							<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
-						</control>
-						<control type="group">
-							<visible>[Control.IsVisible(52) + String.IsEqual(Skin.String(52.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)] | [Control.IsVisible(52) + String.IsEqual(Skin.String(52.Episodes.ViewFlags),$LOCALIZE[31160]) + Container.Content(episodes)] | [Control.IsVisible(53) + String.IsEqual(Skin.String(53.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)] | [Control.IsVisible(59) + String.IsEqual(Skin.String(59.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)] | [Control.IsVisible(503) + String.IsEqual(Skin.String(503.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)]</visible>
-							<control type="image">
-								<left>194</left>
-								<include>MediaFlagValues</include>
-								<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
-							</control>
-							<control type="image">
-								<left>388</left>
-								<include>MediaFlagValues</include>
-								<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
-							</control>
-							<control type="image">
-								<left>388</left>
-								<include>MediaFlagValues</include>
-								<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
-								<visible>String.IsEmpty(ListItem.HdrType)</visible>
-							</control>
-							<control type="image">
-								<left>1393</left>
-								<include>MediaFlagValues</include>
-								<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[AudioCodecFlagVar]</texture>
-							</control>
-							<control type="image">
-								<left>1580</left>
-								<include>MediaFlagValues</include>
-								<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
-							</control>
-						</control>
-						<!-- LANGUAGE FLAGS -->
-						<control type="group">
-							<left>1858</left>
-							<top>20</top>
-							<control type="grouplist">
-								<height>90</height>
-								<width>35</width>
-								<itemgap>-5</itemgap>
-								<visible>String.IsEqual(Skin.String(LanguageFlags),1) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
-								<control type="image">
-									<width>30</width>
-									<height>30</height>
-									<aspectratio>keep</aspectratio>
-									<colordiffuse>grey</colordiffuse>
-									<texture>flags/audio.png</texture>
-									<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1)) | [!String.IsEmpty(ListItem.Property(AudioLanguage.2)) + !String.IsEqual(ListItem.Property(AudioLanguage.1),ListItem.Property(AudioLanguage.2))]</visible>
-								</control>
-								<control type="image">
-									<width>30</width>
-									<height>30</height>
-									<aspectratio>keep</aspectratio>
-									<colordiffuse>grey</colordiffuse>
-									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.1),,.png]</texture>
-									<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
-								</control>
-								<control type="image">
-									<width>30</width>
-									<height>30</height>
-									<aspectratio>keep</aspectratio>
-									<colordiffuse>grey</colordiffuse>
-									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.2),,.png]</texture>
-									<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.2)) + !String.IsEqual(ListItem.Property(AudioLanguage.2),ListItem.Property(AudioLanguage.1))</visible>
-								</control>
-							</control>
-							<control type="grouplist">
-								<left>32</left>
-								<height>90</height>
-								<width>35</width>
-								<itemgap>-5</itemgap>
-								<visible>String.IsEqual(Skin.String(LanguageFlags),2) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
-								<control type="image">
-									<width>30</width>
-									<height>30</height>
-									<aspectratio>keep</aspectratio>
-									<colordiffuse>grey</colordiffuse>
-									<texture>flags/subtitles.png</texture>
-									<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1)) | [!String.IsEmpty(ListItem.Property(SubtitleLanguage.2)) + !String.IsEqual(ListItem.Property(SubtitleLanguage.1),ListItem.Property(SubtitleLanguage.2))]</visible>
-								</control>
-								<control type="image">
-									<width>30</width>
-									<height>30</height>
-									<aspectratio>keep</aspectratio>
-									<colordiffuse>grey</colordiffuse>
-									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.1),,.png]</texture>
-									<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
-								</control>
-								<control type="image">
-									<width>30</width>
-									<height>30</height>
-									<aspectratio>keep</aspectratio>
-									<colordiffuse>grey</colordiffuse>
-									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.2),,.png]</texture>
-									<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.2))</visible>
-									<visible>!String.IsEqual(ListItem.Property(SubtitleLanguage.1),ListItem.Property(SubtitleLanguage.2))</visible>
-								</control>
-							</control>
-						</control>
-					</control>
-					<!-- (List - Tripanel - Posters - Shift - BannerWall - Icons - RightList - MyFlix - BigFan - FanartList) -->
-					<control type="group">
-						<visible>Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | [Control.IsVisible(58)] | Control.IsVisible(500) | Control.IsVisible(506) | Control.IsVisible(509) | Control.IsVisible(591) | Control.IsVisible(602)</visible>
-						<include>ViewAnimation</include>
-						<top>1014</top>
-						<height>90</height>
-						<!-- Movies + Episodes -->
-						<control type="group">
-							<visible>![Container.Content(addons) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
-							<animation effect="slide" end="85" condition="String.IsEmpty(Skin.String(LanguageFlags)) + [System.AddonIsEnabled(script.embuary.helper) | System.AddonIsEnabled(plugin.video.themoviedb.helper)]">Conditional</animation>
-							<animation effect="slide" end="80" condition="Control.IsVisible(50) + Container.Content(movies)">Conditional</animation>
-							<control type="group">
-								<left>40</left>
-								<visible>[Container.Content(movies) + Control.IsVisible(50) + !Skin.HasSetting(Disable.List.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(50)]  | [Container.Content(movies) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.EpisodeMediaflags)] | Control.IsVisible(591) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(509) + !Skin.HasSetting(Disable.MyFlix.Mediaflags) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(500) | Control.IsVisible(602)</visible>
-								<include>ViewAnimation</include>
-								<include condition="!System.AddonIsEnabled(script.embuary.helper) + !System.AddonIsEnabled(plugin.video.themoviedb.helper)">NoRatingsHelperFlagAnimations</include>
-								<!-- ROTTENTOMATOES/METACRITIC/TMDb/TRAKT/IMDb -->
-								<control type="grouplist">
-									<width>340</width>
-									<orientation>horizontal</orientation>
-									<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) | System.AddonIsEnabled(script.embuary.helper)">ScriptHelperFlags</include>
-								</control>
-								<!-- MEDIAFLAGS -->
-								<control type="grouplist">
-									<left>340</left>
-									<width>1500</width>
-									<orientation>horizontal</orientation>
-									<control type="group">
-										<width>170</width>
-										<visible>![Container.Content(movies) + Control.IsVisible(50)]</visible>
-										<control type="image" id="912">
-											<include>MediaFlagValues</include>
-											<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
-										</control>
-										<control type="label">
-											<width>170</width>
-											<height>78</height>
-											<align>center</align>
-											<label>$INFO[ListItem.Studio]</label>
-											<font>font10</font>
-											<textcolor>grey</textcolor>
-											<wrapmultiline>true</wrapmultiline>
-											<visible>String.IsEmpty(Control.GetLabel(912))</visible>
-										</control>
-									</control>
-									<control type="image">
-										<include>MediaFlagValues</include>
-										<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
-										<visible>!String.StartsWith(Container.FolderPath,plugin://)</visible>
-									</control>
-									<control type="image">
-										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
-									</control>
-									<control type="image">
-										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/$VAR[HDRFlagsVar]</texture>
-									</control>
-									<control type="image">
-										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
-									</control>
-									<control type="image">
-										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/aspectratio/$INFO[ListItem.VideoAspect,,.png]</texture>
-									</control>
-									<control type="image">
-										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[AudioCodecFlagVar]</texture>
-									</control>
-									<control type="image">
-										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
-									</control>
-									<!-- LANGUAGE FLAGS -->
-									<control type="grouplist">
-										<height>78</height>
-										<align>center</align>
-										<control type="grouplist">
-											<width>140</width>
-											<height>30</height>
-											<orientation>horizontal</orientation>
-											<itemgap>5</itemgap>
-											<visible>String.IsEqual(Skin.String(LanguageFlags),1) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
-											<control type="image">
-												<width>30</width>
-												<height>30</height>
-												<aspectratio>keep</aspectratio>
-												<colordiffuse>grey</colordiffuse>
-												<texture>flags/audio.png</texture>
-												<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1)) | !String.IsEmpty(ListItem.Property(AudioLanguage.2)) | !String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
-											</control>
-											<control type="image">
-												<width>30</width>
-												<height>30</height>
-												<aspectratio>keep</aspectratio>
-												<colordiffuse>grey</colordiffuse>
-												<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.1),,.png]</texture>
-												<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
-											</control>
-											<control type="image">
-												<width>30</width>
-												<height>30</height>
-												<aspectratio>keep</aspectratio>
-												<colordiffuse>grey</colordiffuse>
-												<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.2),,.png]</texture>
-												<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.2))</visible>
-											</control>
-											<control type="image">
-												<width>30</width>
-												<height>30</height>
-												<aspectratio>keep</aspectratio>
-												<colordiffuse>grey</colordiffuse>
-												<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.3),,.png]</texture>
-												<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
-											</control>
-										</control>
-										<control type="grouplist">
-											<top>30</top>
-											<width>140</width>
-											<height>30</height>
-											<orientation>horizontal</orientation>
-											<itemgap>5</itemgap>
-											<visible>String.IsEqual(Skin.String(LanguageFlags),2) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
-											<control type="image">
-												<width>30</width>
-												<height>30</height>
-												<aspectratio>keep</aspectratio>
-												<colordiffuse>grey</colordiffuse>
-												<texture>flags/subtitles.png</texture>
-												<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1)) | !String.IsEmpty(ListItem.Property(SubtitleLanguage.2)) | !String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
-											</control>
-											<control type="image">
-												<width>30</width>
-												<height>30</height>
-												<aspectratio>keep</aspectratio>
-												<colordiffuse>grey</colordiffuse>
-												<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.1),,.png]</texture>
-												<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
-											</control>
-											<control type="image">
-												<width>30</width>
-												<height>30</height>
-												<aspectratio>keep</aspectratio>
-												<colordiffuse>grey</colordiffuse>
-												<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.2),,.png]</texture>
-												<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.2))</visible>
-											</control>
-											<control type="image">
-												<width>30</width>
-												<height>30</height>
-												<aspectratio>keep</aspectratio>
-												<colordiffuse>grey</colordiffuse>
-												<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.3),,.png]</texture>
-												<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
-											</control>
-										</control>
-									</control>
-								</control>
-							</control>
-						</control>
-						<!-- Shows + Seasons -->
-						<control type="group">
-							<left>1000</left>
-							<control type="group">
-								<visible>!Control.IsVisible(50) + !Control.IsVisible(506) + [Container.Content(tvshows) | Container.Content(seasons)] | Control.IsVisible(50) + !Skin.HasSetting(Disable.List.TVMediaflags) + [Container.Content(tvshows) | Container.Content(seasons)] | Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.TVMediaflags) + [Container.Content(tvshows) | Container.Content(seasons)]</visible>
-								<!-- Shows -->
 								<control type="group">
-									<width>987.5</width>
-									<visible>Container.Content(tvshows)</visible>
-									<animation effect="slide" end="-520" condition="Control.IsVisible(57)">Conditional</animation>
-									<animation effect="slide" end="-140" condition="Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
-									<animation effect="slide" end="-1000" condition="Control.IsVisible(509)">Conditional</animation>
-									<control type="group">
-										<visible>!String.IsEmpty(ListItem.Studio)</visible>
-										<include>VisibleFadeAnimation</include>
-										<width>200</width>
-										<control type="image" id="913">
-											<top>2</top>
-											<width>200</width>
-											<include>MediaFlagValues</include>
-											<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
-											<visible>!Control.IsVisible(50)</visible>
-										</control>
-										<control type="label">
-											<width>200</width>
-											<height>90</height>
-											<align>center</align>
-											<label>$INFO[ListItem.Studio]</label>
-											<font>font10</font>
-											<textcolor>grey</textcolor>
-											<wrapmultiline>true</wrapmultiline>
-											<visible>String.IsEmpty(Control.GetLabel(913))</visible>
-										</control>
+									<visible>[[[Container.Content(movies) + !Skin.HasSetting(Enable.Landscape.Logo)] | [Container.Content(sets) + !Skin.HasSetting(Enable.Landscape.SetLogo)]] + Control.IsVisible(52)] | [[[Container.Content(movies) + !Skin.HasSetting(Enable.ShowCase.Logo)] | [Container.Content(sets) + !Skin.HasSetting(Enable.ShowCase.SetLogo)]] + Control.IsVisible(53)] | [[[Container.Content(movies) + !Skin.HasSetting(Enable.Wall.Logo)] | [Container.Content(sets) + !Skin.HasSetting(Enable.Wall.SetLogo)]] + Control.IsVisible(503)]</visible>
+									<top>45</top>
+									<control type="label">
+										<width>1020</width>
+										<height>30</height>
+										<align>center</align>
+										<font>font13_bold</font>
+										<textcolor>grey</textcolor>
+										<shadowcolor>shadow</shadowcolor>
+										<label>$INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]$INFO[Container(4500).NumItems, • , $LOCALIZE[342]]$INFO[ListItem.RatingAndVotes, • ]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime), • , $LOCALIZE[12391]]</label>
+										<textoffsetx>30</textoffsetx>
+										<visible>!String.IsEqual(Container(4500).NumItems,0)</visible>
+									</control>
+									<control type="label">
+										<top>38</top>
+										<width>1020</width>
+										<height>22</height>
+										<align>center</align>
+										<font>font13_bold</font>
+										<shadowcolor>shadow</shadowcolor>
+										<label>$VAR[MovieSetGenreVar]</label>
+										<textoffsetx>30</textoffsetx>
+										<visible>[Control.IsVisible(52) + !Skin.HasSetting(Disable.Landscape.MovieGenre)] | [Control.IsVisible(53) + !Skin.HasSetting(Disable.Showcase.MovieGenre)] | [Control.IsVisible(503) + !Skin.HasSetting(Disable.Wall.MovieGenre)]</visible>
+									</control>
+								</control>
+							</control>
+						</control>
+					</control>
+					<!-- Floor Labels (Shift - BannerWall - Small Icons - Icons) -->
+					<control type="group">
+						<visible>Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(500)</visible>
+						<include>ViewAnimation</include>
+						<animation effect="slide" end="34.5" condition="Control.IsVisible(500) + Skin.HasSetting(500.SmallerIcons) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets) | Container.Content(genres)]">Conditional</animation>
+						<animation effect="slide" end="400,-34" condition="Control.IsVisible(57) + !Skin.HasSetting(Enable.Shift.Small) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos)]">Conditional</animation>
+						<animation effect="slide" end="260,-40" condition="Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos)]">Conditional</animation>
+						<animation effect="slide" end="-40,20" condition="Control.IsVisible(57) + ![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos)]">Conditional</animation>
+						<control type="group">
+							<left>90</left>
+							<top>935</top>
+							<visible>!ListItem.IsParentFolder + !Container.Content(tags) + !Container.Content(genres)</visible>
+							<!-- Main Label -->
+							<control type="label">
+								<width>1450</width>
+								<height>42</height>
+								<aligny>top</aligny>
+								<font>font16_title_bold</font>
+								<scroll>true</scroll>
+								<label>$INFO[ListItem.Label]</label>
+								<textoffsety>-2</textoffsety>
+								<textoffsetx>30</textoffsetx>
+							</control>
+							<control type="group">
+								<top>50</top>
+								<!-- Sub Label -->
+								<control type="label">
+									<width>1800</width>
+									<height>30</height>
+									<font>font13_bold</font>
+									<label>$VAR[FloorSubLabelVar]</label>
+									<textoffsetx>30</textoffsetx>
+									<visible>!ListItem.IsCollection</visible>
+								</control>
+								<!-- Sets -->
+								<control type="group">
+									<visible>ListItem.IsCollection</visible>
+									<control type="label">
+										<width>950</width>
+										<height>30</height>
+										<scroll>true</scroll>
+										<label>$INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]$INFO[Container(4500).NumItems, • , $LOCALIZE[342]]$INFO[ListItem.RatingAndVotes, • ]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime), • , $LOCALIZE[12391]]</label>
+										<font>font13_bold</font>
+										<textoffsetx>30</textoffsetx>
+										<visible>!String.IsEqual(Container(4500).NumItems,0)</visible>
+									</control>
+								</control>
+								<!-- Next Aired + Genre -->
+								<control type="group">
+									<visible>!Control.IsVisible(57) + [Container.Content(tvshows) | Container.Content(seasons)]</visible>
+									<control type="label">
+										<top>40</top>
+										<width>950</width>
+										<height>30</height>
+										<scroll>true</scroll>
+										<label>$INFO[ListItem.Genre]</label>
+										<font>font13_bold</font>
+										<textoffsetx>30</textoffsetx>
+										<visible>!String.IsEmpty(ListItem.Genre)</visible>
+									</control>
+									<control type="label">
+										<top>80</top>
+										<width>950</width>
+										<height>30</height>
+										<scroll>true</scroll>
+										<font>font13_bold</font>
+										<label>$VAR[NextAiredSubLabelVar]</label>
+										<textoffsetx>30</textoffsetx>
+										<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(57).OnNext + !Container(57).OnPrevious">Conditional</animation>
+										<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(58).OnNext + !Container(58).OnPrevious">Conditional</animation>
+										<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(500).OnNext + !Container(500).OnPrevious">Conditional</animation>
+										<animation effect="fade" time="250" delay="300" reversible="false">Visible</animation>
+										<visible>String.IsEmpty(Window(Home).Property(TMDbHelper.IsUpdating))</visible>
+									</control>
+								</control>
+							</control>
+						</control>
+					</control>
+					<control type="image">
+						<top>890</top>
+						<width>100%</width>
+						<height>300</height>
+						<texture border="1">gradient_floor.png</texture>
+						<animation effect="slide" end="0,-80" condition="Control.IsVisible(57) | Control.IsVisible(591)">Conditional</animation>
+						<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(59) | Control.IsVisible(500) | Control.IsVisible(503) | Control.IsVisible(591)</visible>
+					</control>
+					<!-- MEDIAFLAGS -->
+					<control type="group">
+						<visible>!ListItem.IsParentFolder + !ListItem.IsCollection + !Container.Content(genres)</visible>
+						<!-- (Landscape - ShowCase - Logo - Wall) -->
+						<control type="group">
+							<top>995</top>
+							<visible>[[Control.IsVisible(52) + Container.Content(movies) + !String.IsEqual(Skin.String(52.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(52) + Container.Content(tvshows) + !String.IsEqual(Skin.String(52.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(52) + Container.Content(episodes) + !String.IsEqual(Skin.String(52.Episodes.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(movies) + !String.IsEqual(Skin.String(53.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(tvshows) + !String.IsEqual(Skin.String(53.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(seasons) + !String.IsEqual(Skin.String(53.Seasons.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(59) + Container.Content(movies) + !String.IsEqual(Skin.String(59.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(59) + Container.Content(tvshows) + !String.IsEqual(Skin.String(59.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(movies) + !String.IsEqual(Skin.String(503.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(tvshows) + !String.IsEqual(Skin.String(503.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(seasons) + !String.IsEqual(Skin.String(503.Seasons.ViewFlags),$LOCALIZE[1223])]]</visible>
+							<include>ViewAnimation</include>
+							<control type="group">
+								<left>23</left>
+								<control type="image" id="911">
+									<include>MediaFlagValues</include>
+									<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
+								</control>
+								<control type="label">
+									<width>177</width>
+									<height>90</height>
+									<align>center</align>
+									<font>font10</font>
+									<textcolor>grey2</textcolor>
+									<wrapmultiline>true</wrapmultiline>
+									<label>$INFO[ListItem.Studio]</label>
+									<visible>String.IsEmpty(Control.GetLabel(911))</visible>
+								</control>
+							</control>
+							<control type="image">
+								<left>1720</left>
+								<include>MediaFlagValues</include>
+								<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
+							</control>
+							<control type="group">
+								<visible>[Control.IsVisible(52) + String.IsEqual(Skin.String(52.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)] | [Control.IsVisible(52) + String.IsEqual(Skin.String(52.Episodes.ViewFlags),$LOCALIZE[31160]) + Container.Content(episodes)] | [Control.IsVisible(53) + String.IsEqual(Skin.String(53.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)] | [Control.IsVisible(59) + String.IsEqual(Skin.String(59.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)] | [Control.IsVisible(503) + String.IsEqual(Skin.String(503.Movies.ViewFlags),$LOCALIZE[31160]) + Container.Content(movies)]</visible>
+								<control type="image">
+									<left>194</left>
+									<include>MediaFlagValues</include>
+									<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
+								</control>
+								<control type="image">
+									<left>388</left>
+									<include>MediaFlagValues</include>
+									<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
+								</control>
+								<control type="image">
+									<left>388</left>
+									<include>MediaFlagValues</include>
+									<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
+									<visible>String.IsEmpty(ListItem.HdrType)</visible>
+								</control>
+								<control type="image">
+									<left>1393</left>
+									<include>MediaFlagValues</include>
+									<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[AudioCodecFlagVar]</texture>
+								</control>
+								<control type="image">
+									<left>1580</left>
+									<include>MediaFlagValues</include>
+									<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
+								</control>
+							</control>
+							<!-- LANGUAGE FLAGS -->
+							<control type="group">
+								<left>1858</left>
+								<top>20</top>
+								<control type="grouplist">
+									<height>90</height>
+									<width>35</width>
+									<itemgap>-5</itemgap>
+									<visible>String.IsEqual(Skin.String(LanguageFlags),1) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
+									<control type="image">
+										<width>30</width>
+										<height>30</height>
+										<aspectratio>keep</aspectratio>
+										<colordiffuse>grey</colordiffuse>
+										<texture>flags/audio.png</texture>
+										<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1)) | [!String.IsEmpty(ListItem.Property(AudioLanguage.2)) + !String.IsEqual(ListItem.Property(AudioLanguage.1),ListItem.Property(AudioLanguage.2))]</visible>
 									</control>
 									<control type="image">
-										<left>200</left>
-										<width>200</width>
-										<include>MediaFlagValues</include>
-										<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
-										<visible>![String.IsEmpty(ListItem.MPAA) + String.StartsWith(Container.FolderPath,plugin://)]</visible>
+										<width>30</width>
+										<height>30</height>
+										<aspectratio>keep</aspectratio>
+										<colordiffuse>grey</colordiffuse>
+										<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.1),,.png]</texture>
+										<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
 									</control>
+									<control type="image">
+										<width>30</width>
+										<height>30</height>
+										<aspectratio>keep</aspectratio>
+										<colordiffuse>grey</colordiffuse>
+										<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.2),,.png]</texture>
+										<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.2)) + !String.IsEqual(ListItem.Property(AudioLanguage.2),ListItem.Property(AudioLanguage.1))</visible>
+									</control>
+								</control>
+								<control type="grouplist">
+									<left>32</left>
+									<height>90</height>
+									<width>35</width>
+									<itemgap>-5</itemgap>
+									<visible>String.IsEqual(Skin.String(LanguageFlags),2) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
+									<control type="image">
+										<width>30</width>
+										<height>30</height>
+										<aspectratio>keep</aspectratio>
+										<colordiffuse>grey</colordiffuse>
+										<texture>flags/subtitles.png</texture>
+										<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1)) | [!String.IsEmpty(ListItem.Property(SubtitleLanguage.2)) + !String.IsEqual(ListItem.Property(SubtitleLanguage.1),ListItem.Property(SubtitleLanguage.2))]</visible>
+									</control>
+									<control type="image">
+										<width>30</width>
+										<height>30</height>
+										<aspectratio>keep</aspectratio>
+										<colordiffuse>grey</colordiffuse>
+										<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.1),,.png]</texture>
+										<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
+									</control>
+									<control type="image">
+										<width>30</width>
+										<height>30</height>
+										<aspectratio>keep</aspectratio>
+										<colordiffuse>grey</colordiffuse>
+										<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.2),,.png]</texture>
+										<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.2))</visible>
+										<visible>!String.IsEqual(ListItem.Property(SubtitleLanguage.1),ListItem.Property(SubtitleLanguage.2))</visible>
+									</control>
+								</control>
+							</control>
+						</control>
+						<!-- (List - Tripanel - Posters - Shift - BannerWall - Icons - RightList - MyFlix - BigFan - FanartList) -->
+						<control type="group">
+							<visible>Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | [Control.IsVisible(58)] | Control.IsVisible(500) | Control.IsVisible(506) | Control.IsVisible(509) | Control.IsVisible(591) | Control.IsVisible(602)</visible>
+							<include>ViewAnimation</include>
+							<top>1014</top>
+							<height>90</height>
+							<!-- Movies + Episodes -->
+							<control type="group">
+								<visible>![Container.Content(addons) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
+								<animation effect="slide" end="85" condition="String.IsEmpty(Skin.String(LanguageFlags)) + [System.AddonIsEnabled(script.embuary.helper) | System.AddonIsEnabled(plugin.video.themoviedb.helper)]">Conditional</animation>
+								<animation effect="slide" end="80" condition="Control.IsVisible(50) + Container.Content(movies)">Conditional</animation>
+								<control type="group">
+									<left>40</left>
+									<visible>[Container.Content(movies) + Control.IsVisible(50) + !Skin.HasSetting(Disable.List.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(50)]  | [Container.Content(movies) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.EpisodeMediaflags)] | Control.IsVisible(591) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(509) + !Skin.HasSetting(Disable.MyFlix.Mediaflags) + [Container.Content(movies) | Container.Content(episodes)] | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(500) | Control.IsVisible(602)</visible>
+									<include>ViewAnimation</include>
+									<include condition="!System.AddonIsEnabled(script.embuary.helper) + !System.AddonIsEnabled(plugin.video.themoviedb.helper)">NoRatingsHelperFlagAnimations</include>
+									<!-- ROTTENTOMATOES/METACRITIC/TMDb/TRAKT/IMDb -->
 									<control type="grouplist">
-										<left>400</left>
-										<width>487.5</width>
+										<width>340</width>
+										<orientation>horizontal</orientation>
+										<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) | System.AddonIsEnabled(script.embuary.helper)">ScriptHelperFlags</include>
+									</control>
+									<!-- MEDIAFLAGS -->
+									<control type="grouplist">
+										<left>340</left>
+										<width>1500</width>
 										<orientation>horizontal</orientation>
 										<control type="group">
-											<width>162.5</width>
-											<visible>!String.IsEmpty(ListItem.Property(TotalSeasons))</visible>
-											<control type="label">
-												<top>2</top>
-												<height>60</height>
-												<align>center</align>
-												<label>$INFO[ListItem.Property(TotalSeasons)]</label>
-												<font>font48_bold</font>
-												<wrapmultiline>true</wrapmultiline>
-												<textcolor>grey</textcolor>
+											<width>170</width>
+											<visible>![Container.Content(movies) + Control.IsVisible(50)]</visible>
+											<control type="image" id="912">
+												<include>MediaFlagValues</include>
+												<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
 											</control>
 											<control type="label">
-												<top>52</top>
-												<height>30</height>
+												<width>170</width>
+												<height>78</height>
 												<align>center</align>
-												<label>[LOWERCASE]$VAR[OneOrMoreSeasonsVar][/LOWERCASE]</label>
-												<font>font12</font>
+												<label>$INFO[ListItem.Studio]</label>
+												<font>font10</font>
 												<textcolor>grey</textcolor>
+												<wrapmultiline>true</wrapmultiline>
+												<visible>String.IsEmpty(Control.GetLabel(912))</visible>
 											</control>
 										</control>
-										<control type="group">
-											<visible>!String.IsEmpty(ListItem.Property(TotalEpisodes))</visible>
-											<width>162.5</width>
-											<control type="label">
-												<top>2</top>
-												<height>60</height>
-												<align>center</align>
-												<label>$INFO[ListItem.Property(TotalEpisodes)]</label>
-												<font>font48_bold</font>
-												<wrapmultiline>true</wrapmultiline>
-												<textcolor>grey</textcolor>
-											</control>
-											<control type="label">
-												<top>52</top>
-												<height>30</height>
-												<align>center</align>
-												<label>[LOWERCASE]$VAR[OneOrMoreEpisodesVar][/LOWERCASE]</label>
-												<font>font12</font>
-												<textcolor>grey</textcolor>
-											</control>
+										<control type="image">
+											<include>MediaFlagValues</include>
+											<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
+											<visible>!String.StartsWith(Container.FolderPath,plugin://)</visible>
 										</control>
-										<control type="group">
-											<visible>!String.IsEmpty(ListItem.Property(UnWatchedEpisodes))</visible>
-											<width>162.5</width>
-											<control type="label">
-												<height>60</height>
-												<align>center</align>
-												<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
-												<font>font48_bold</font>
-												<wrapmultiline>true</wrapmultiline>
-												<textcolor>$VAR[UnWatchedEpColor]</textcolor>
-											</control>
-											<control type="label">
-												<top>52</top>
+										<control type="image">
+											<include>MediaFlagValues</include>
+											<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
+										</control>
+										<control type="image">
+											<include>MediaFlagValues</include>
+											<texture>$VAR[MediaFlagsPathVar]/$VAR[HDRFlagsVar]</texture>
+										</control>
+										<control type="image">
+											<include>MediaFlagValues</include>
+											<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
+										</control>
+										<control type="image">
+											<include>MediaFlagValues</include>
+											<texture>$VAR[MediaFlagsPathVar]/aspectratio/$INFO[ListItem.VideoAspect,,.png]</texture>
+										</control>
+										<control type="image">
+											<include>MediaFlagValues</include>
+											<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[AudioCodecFlagVar]</texture>
+										</control>
+										<control type="image">
+											<include>MediaFlagValues</include>
+											<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
+										</control>
+										<!-- LANGUAGE FLAGS -->
+										<control type="grouplist">
+											<height>78</height>
+											<align>center</align>
+											<control type="grouplist">
+												<width>140</width>
 												<height>30</height>
-												<align>center</align>
-												<label>[LOWERCASE]$LOCALIZE[16101][/LOWERCASE]</label>
-												<font>font12</font>
-												<textcolor>$VAR[UnWatchedEpColor]</textcolor>
+												<orientation>horizontal</orientation>
+												<itemgap>5</itemgap>
+												<visible>String.IsEqual(Skin.String(LanguageFlags),1) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
+												<control type="image">
+													<width>30</width>
+													<height>30</height>
+													<aspectratio>keep</aspectratio>
+													<colordiffuse>grey</colordiffuse>
+													<texture>flags/audio.png</texture>
+													<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1)) | !String.IsEmpty(ListItem.Property(AudioLanguage.2)) | !String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
+												</control>
+												<control type="image">
+													<width>30</width>
+													<height>30</height>
+													<aspectratio>keep</aspectratio>
+													<colordiffuse>grey</colordiffuse>
+													<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.1),,.png]</texture>
+													<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
+												</control>
+												<control type="image">
+													<width>30</width>
+													<height>30</height>
+													<aspectratio>keep</aspectratio>
+													<colordiffuse>grey</colordiffuse>
+													<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.2),,.png]</texture>
+													<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.2))</visible>
+												</control>
+												<control type="image">
+													<width>30</width>
+													<height>30</height>
+													<aspectratio>keep</aspectratio>
+													<colordiffuse>grey</colordiffuse>
+													<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.3),,.png]</texture>
+													<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
+												</control>
+											</control>
+											<control type="grouplist">
+												<top>30</top>
+												<width>140</width>
+												<height>30</height>
+												<orientation>horizontal</orientation>
+												<itemgap>5</itemgap>
+												<visible>String.IsEqual(Skin.String(LanguageFlags),2) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
+												<control type="image">
+													<width>30</width>
+													<height>30</height>
+													<aspectratio>keep</aspectratio>
+													<colordiffuse>grey</colordiffuse>
+													<texture>flags/subtitles.png</texture>
+													<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1)) | !String.IsEmpty(ListItem.Property(SubtitleLanguage.2)) | !String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
+												</control>
+												<control type="image">
+													<width>30</width>
+													<height>30</height>
+													<aspectratio>keep</aspectratio>
+													<colordiffuse>grey</colordiffuse>
+													<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.1),,.png]</texture>
+													<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
+												</control>
+												<control type="image">
+													<width>30</width>
+													<height>30</height>
+													<aspectratio>keep</aspectratio>
+													<colordiffuse>grey</colordiffuse>
+													<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.2),,.png]</texture>
+													<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.2))</visible>
+												</control>
+												<control type="image">
+													<width>30</width>
+													<height>30</height>
+													<aspectratio>keep</aspectratio>
+													<colordiffuse>grey</colordiffuse>
+													<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.3),,.png]</texture>
+													<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
+												</control>
 											</control>
 										</control>
 									</control>
 								</control>
-								<!-- Seasons -->
+							</control>
+							<!-- Shows + Seasons -->
+							<control type="group">
+								<left>1000</left>
 								<control type="group">
-									<visible>Container.Content(seasons)</visible>
-									<animation effect="slide" end="162.5" condition="!Control.IsVisible(509)">Conditional</animation>
+									<visible>!Control.IsVisible(50) + !Control.IsVisible(506) + [Container.Content(tvshows) | Container.Content(seasons)] | Control.IsVisible(50) + !Skin.HasSetting(Disable.List.TVMediaflags) + [Container.Content(tvshows) | Container.Content(seasons)] | Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.TVMediaflags) + [Container.Content(tvshows) | Container.Content(seasons)]</visible>
+									<!-- Shows -->
 									<control type="group">
 										<width>987.5</width>
-										<animation effect="slide" start="0,0" end="-1000" condition="Control.IsVisible(509)">Conditional</animation>
+										<visible>Container.Content(tvshows)</visible>
+										<animation effect="slide" end="-520" condition="Control.IsVisible(57)">Conditional</animation>
+										<animation effect="slide" end="-140" condition="Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
+										<animation effect="slide" end="-1000" condition="Control.IsVisible(509)">Conditional</animation>
 										<control type="group">
 											<visible>!String.IsEmpty(ListItem.Studio)</visible>
+											<include>VisibleFadeAnimation</include>
 											<width>200</width>
-											<control type="image" id="914">
+											<control type="image" id="913">
 												<top>2</top>
 												<width>200</width>
 												<include>MediaFlagValues</include>
 												<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
+												<visible>!Control.IsVisible(50)</visible>
 											</control>
 											<control type="label">
 												<width>200</width>
@@ -917,7 +820,7 @@
 												<font>font10</font>
 												<textcolor>grey</textcolor>
 												<wrapmultiline>true</wrapmultiline>
-												<visible>String.IsEmpty(Control.GetLabel(914))</visible>
+												<visible>String.IsEmpty(Control.GetLabel(913))</visible>
 											</control>
 										</control>
 										<control type="image">
@@ -925,12 +828,33 @@
 											<width>200</width>
 											<include>MediaFlagValues</include>
 											<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
-											<visible>!String.IsEmpty(ListItem.Studio) + ![String.IsEmpty(ListItem.MPAA) + String.StartsWith(Container.FolderPath,plugin://)]</visible>
+											<visible>![String.IsEmpty(ListItem.MPAA) + String.StartsWith(Container.FolderPath,plugin://)]</visible>
 										</control>
 										<control type="grouplist">
 											<left>400</left>
 											<width>487.5</width>
 											<orientation>horizontal</orientation>
+											<control type="group">
+												<width>162.5</width>
+												<visible>!String.IsEmpty(ListItem.Property(TotalSeasons))</visible>
+												<control type="label">
+													<top>2</top>
+													<height>60</height>
+													<align>center</align>
+													<label>$INFO[ListItem.Property(TotalSeasons)]</label>
+													<font>font48_bold</font>
+													<wrapmultiline>true</wrapmultiline>
+													<textcolor>grey</textcolor>
+												</control>
+												<control type="label">
+													<top>52</top>
+													<height>30</height>
+													<align>center</align>
+													<label>[LOWERCASE]$VAR[OneOrMoreSeasonsVar][/LOWERCASE]</label>
+													<font>font12</font>
+													<textcolor>grey</textcolor>
+												</control>
+											</control>
 											<control type="group">
 												<visible>!String.IsEmpty(ListItem.Property(TotalEpisodes))</visible>
 												<width>162.5</width>
@@ -974,297 +898,376 @@
 											</control>
 										</control>
 									</control>
+									<!-- Seasons -->
+									<control type="group">
+										<visible>Container.Content(seasons)</visible>
+										<animation effect="slide" end="162.5" condition="!Control.IsVisible(509)">Conditional</animation>
+										<control type="group">
+											<width>987.5</width>
+											<animation effect="slide" start="0,0" end="-1000" condition="Control.IsVisible(509)">Conditional</animation>
+											<control type="group">
+												<visible>!String.IsEmpty(ListItem.Studio)</visible>
+												<width>200</width>
+												<control type="image" id="914">
+													<top>2</top>
+													<width>200</width>
+													<include>MediaFlagValues</include>
+													<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
+												</control>
+												<control type="label">
+													<width>200</width>
+													<height>90</height>
+													<align>center</align>
+													<label>$INFO[ListItem.Studio]</label>
+													<font>font10</font>
+													<textcolor>grey</textcolor>
+													<wrapmultiline>true</wrapmultiline>
+													<visible>String.IsEmpty(Control.GetLabel(914))</visible>
+												</control>
+											</control>
+											<control type="image">
+												<left>200</left>
+												<width>200</width>
+												<include>MediaFlagValues</include>
+												<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
+												<visible>!String.IsEmpty(ListItem.Studio) + ![String.IsEmpty(ListItem.MPAA) + String.StartsWith(Container.FolderPath,plugin://)]</visible>
+											</control>
+											<control type="grouplist">
+												<left>400</left>
+												<width>487.5</width>
+												<orientation>horizontal</orientation>
+												<control type="group">
+													<visible>!String.IsEmpty(ListItem.Property(TotalEpisodes))</visible>
+													<width>162.5</width>
+													<control type="label">
+														<top>2</top>
+														<height>60</height>
+														<align>center</align>
+														<label>$INFO[ListItem.Property(TotalEpisodes)]</label>
+														<font>font48_bold</font>
+														<wrapmultiline>true</wrapmultiline>
+														<textcolor>grey</textcolor>
+													</control>
+													<control type="label">
+														<top>52</top>
+														<height>30</height>
+														<align>center</align>
+														<label>[LOWERCASE]$VAR[OneOrMoreEpisodesVar][/LOWERCASE]</label>
+														<font>font12</font>
+														<textcolor>grey</textcolor>
+													</control>
+												</control>
+												<control type="group">
+													<visible>!String.IsEmpty(ListItem.Property(UnWatchedEpisodes))</visible>
+													<width>162.5</width>
+													<control type="label">
+														<height>60</height>
+														<align>center</align>
+														<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
+														<font>font48_bold</font>
+														<wrapmultiline>true</wrapmultiline>
+														<textcolor>$VAR[UnWatchedEpColor]</textcolor>
+													</control>
+													<control type="label">
+														<top>52</top>
+														<height>30</height>
+														<align>center</align>
+														<label>[LOWERCASE]$LOCALIZE[16101][/LOWERCASE]</label>
+														<font>font12</font>
+														<textcolor>$VAR[UnWatchedEpColor]</textcolor>
+													</control>
+												</control>
+											</control>
+										</control>
+									</control>
+								</control>
+							</control>
+						</control>
+						<!-- Music Videos -->
+						<control type="group">
+							<top>1010</top>
+							<visible>Container.Content(musicvideos) + Control.IsVisible(53) + !String.IsEqual(Skin.String(53.MusicVideos.ViewFlags),$LOCALIZE[1223])</visible>
+							<control type="image">
+								<left>120</left>
+								<include>MediaFlagValues</include>
+								<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[AudioCodecFlagVar]</texture>
+							</control>
+							<control type="image">
+								<left>1675</left>
+								<include>MediaFlagValues</include>
+								<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
+								<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
+							</control>
+						</control>
+					</control>
+					<!-- SET MEDIAFLAGS -->
+					<!-- (Landscape - ShowCase - Logo - Wall) -->
+					<control type="group">
+						<visible>ListItem.IsCollection</visible>
+						<animation effect="fade" time="140" delay="100">Visible</animation>
+						<animation effect="fade" time="140">Hidden</animation>
+						<animation effect="fade" time="140" delay="600">WindowOpen</animation>
+						<control type="group">
+							<top>995</top>
+							<visible>[[Control.IsVisible(52) + Container.Content(movies) + !String.IsEqual(Skin.String(52.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(52) + Container.Content(tvshows) + !String.IsEqual(Skin.String(52.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(52) + Container.Content(episodes) + !String.IsEqual(Skin.String(52.Episodes.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + [Container.Content(movies) | Container.Content(sets)] + !String.IsEqual(Skin.String(53.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(tvshows) + !String.IsEqual(Skin.String(53.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(seasons) + !String.IsEqual(Skin.String(53.Seasons.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(59) + [Container.Content(movies) | Container.Content(sets)] + !String.IsEqual(Skin.String(59.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(59) + Container.Content(tvshows) + !String.IsEqual(Skin.String(59.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + [Container.Content(movies) | Container.Content(sets)] + !String.IsEqual(Skin.String(503.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(tvshows) + !String.IsEqual(Skin.String(503.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(seasons) + !String.IsEqual(Skin.String(503.Seasons.ViewFlags),$LOCALIZE[1223])]]</visible>
+							<include>ViewAnimation</include>
+							<control type="group">
+								<left>23</left>
+								<control type="image" id="916">
+									<include>MediaFlagValues</include>
+									<texture>$VAR[PathFlagsStudios]$INFO[Container(4500).ListItem(0).Studio,,.png]</texture>
+								</control>
+								<control type="label">
+									<width>177</width>
+									<height>90</height>
+									<align>center</align>
+									<label>$INFO[Container(4500).ListItem(0).Studio]</label>
+									<font>font10</font>
+									<textcolor>grey2</textcolor>
+									<wrapmultiline>true</wrapmultiline>
+									<visible>String.IsEmpty(Control.GetLabel(916))</visible>
+								</control>
+							</control>
+							<control type="image">
+								<left>1720</left>
+								<include>MediaFlagValues</include>
+								<texture>$VAR[MediaFlagsPathVar]/mpaa/$VAR[SetRatingFlagVar]</texture>
+							</control>
+						</control>
+					</control>
+					<!-- (List - Tripanel - Posters - Shift - BannerWall - Small Icons - Icons - RightList - MyFlix - BigFan) -->
+					<control type="group">
+						<visible>ListItem.IsCollection</visible>
+						<animation effect="fade" time="140" delay="100">Visible</animation>
+						<animation effect="slide" end="1200" condition="Control.IsVisible(50) + Container.Content(sets)">Conditional</animation>
+						<animation effect="slide" end="1320" condition="Control.IsVisible(506)">Conditional</animation>
+						<animation effect="slide" end="-70" condition="Control.IsVisible(509)">Conditional</animation>
+						<animation effect="slide" end="-1152.5" condition="Control.IsVisible(591)">Conditional</animation>
+						<control type="grouplist">
+							<visible>Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(500) | [Control.IsVisible(506) + Container.Content(movies) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Control.IsVisible(506) + Container.Content(sets) + !Skin.HasSetting(Disable.RightList.SetMediaflags)] | Control.IsVisible(509) | Control.IsVisible(591) | Control.IsVisible(602)</visible>
+							<left>60</left>
+							<top>1014</top>
+							<height>90</height>
+							<orientation>horizontal</orientation>
+							<control type="group">
+								<width>170</width>
+								<control type="image" id="917">
+									<include>MediaFlagValues</include>
+									<texture>$VAR[PathFlagsStudios]$INFO[Container(4500).ListItem(0).Studio,,.png]</texture>
+								</control>
+								<control type="label">
+									<left>20</left>
+									<width>130</width>
+									<height>78</height>
+									<align>center</align>
+									<font>font10</font>
+									<textcolor>grey</textcolor>
+									<wrapmultiline>true</wrapmultiline>
+									<label>$INFO[Container(4500).ListItem(0).Studio]</label>
+									<visible>String.IsEmpty(Control.GetLabel(917))</visible>
+								</control>
+							</control>
+							<control type="image">
+								<include>MediaFlagValues</include>
+								<texture>$VAR[MediaFlagsPathVar]/mpaa/$VAR[SetRatingFlagVar]</texture>
+							</control>
+							<control type="group">
+								<width>170</width>
+								<visible>![Control.IsVisible(55) | Control.IsVisible(57) | Control.IsVisible(500) | Control.IsVisible(509) | Control.IsVisible(591)]</visible>
+								<visible>!String.IsEqual(Container(4500).NumItems,0)</visible>
+								<control type="label">
+									<height>60</height>
+									<align>center</align>
+									<label>$INFO[Container(4500).NumItems]</label>
+									<font>font48_bold</font>
+									<textcolor>grey</textcolor>
+								</control>
+								<control type="label">
+									<top>52</top>
+									<height>30</height>
+									<align>center</align>
+									<label>$LOCALIZE[342]</label>
+									<font>font12</font>
+									<textcolor>grey</textcolor>
 								</control>
 							</control>
 						</control>
 					</control>
-					<!-- Music Videos -->
+					<!-- Floor Logo + Banner (Landscape - ShowCase - Wall) -->
 					<control type="group">
-						<top>1010</top>
-						<visible>Container.Content(musicvideos) + Control.IsVisible(53) + !String.IsEqual(Skin.String(53.MusicVideos.ViewFlags),$LOCALIZE[1223])</visible>
-						<control type="image">
-							<left>120</left>
-							<include>MediaFlagValues</include>
-							<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[AudioCodecFlagVar]</texture>
-						</control>
-						<control type="image">
-							<left>1675</left>
-							<include>MediaFlagValues</include>
-							<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
-							<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
-						</control>
-					</control>
-				</control>
-				<!-- SET MEDIAFLAGS -->
-				<!-- (Landscape - ShowCase - Logo - Wall) -->
-				<control type="group">
-					<visible>ListItem.IsCollection</visible>
-					<animation effect="fade" time="140" delay="100">Visible</animation>
-					<animation effect="fade" time="140">Hidden</animation>
-					<animation effect="fade" time="140" delay="600">WindowOpen</animation>
-					<control type="group">
-						<top>995</top>
-						<visible>[[Control.IsVisible(52) + Container.Content(movies) + !String.IsEqual(Skin.String(52.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(52) + Container.Content(tvshows) + !String.IsEqual(Skin.String(52.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(52) + Container.Content(episodes) + !String.IsEqual(Skin.String(52.Episodes.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + [Container.Content(movies) | Container.Content(sets)] + !String.IsEqual(Skin.String(53.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(tvshows) + !String.IsEqual(Skin.String(53.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(seasons) + !String.IsEqual(Skin.String(53.Seasons.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(59) + [Container.Content(movies) | Container.Content(sets)] + !String.IsEqual(Skin.String(59.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(59) + Container.Content(tvshows) + !String.IsEqual(Skin.String(59.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + [Container.Content(movies) | Container.Content(sets)] + !String.IsEqual(Skin.String(503.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(tvshows) + !String.IsEqual(Skin.String(503.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(seasons) + !String.IsEqual(Skin.String(503.Seasons.ViewFlags),$LOCALIZE[1223])]]</visible>
+						<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(503)</visible>
 						<include>ViewAnimation</include>
-						<control type="group">
-							<left>23</left>
-							<control type="image" id="916">
-								<include>MediaFlagValues</include>
-								<texture>$VAR[PathFlagsStudios]$INFO[Container(4500).ListItem(0).Studio,,.png]</texture>
-							</control>
-							<control type="label">
-								<width>177</width>
-								<height>90</height>
-								<align>center</align>
-								<label>$INFO[Container(4500).ListItem(0).Studio]</label>
-								<font>font10</font>
-								<textcolor>grey2</textcolor>
-								<wrapmultiline>true</wrapmultiline>
-								<visible>String.IsEmpty(Control.GetLabel(916))</visible>
-							</control>
-						</control>
 						<control type="image">
-							<left>1720</left>
-							<include>MediaFlagValues</include>
-							<texture>$VAR[MediaFlagsPathVar]/mpaa/$VAR[SetRatingFlagVar]</texture>
+							<left>770</left>
+							<top>972</top>
+							<width>380</width>
+							<height>120</height>
+							<fadetime>200</fadetime>
+							<texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
+							<visible>!Container.Content(seasons)</visible>
+							<visible>[Control.IsVisible(52) + !Container.Content(sets) + Skin.HasSetting(Enable.Landscape.Logo) + [!Skin.HasSetting(Enable.Landscape.BannerLogo) | [Skin.HasSetting(Enable.Landscape.Logo) + Skin.HasSetting(Enable.Landscape.BannerLogo) + String.IsEmpty(Control.GetLabel(915))]]] | [Control.IsVisible(52) + Container.Content(sets) + Skin.HasSetting(Enable.Landscape.SetLogo) + [!Skin.HasSetting(Enable.Landscape.SetBannerLogo) | [Skin.HasSetting(Enable.Landscape.SetLogo) + Skin.HasSetting(Enable.Landscape.SetBannerLogo) + String.IsEmpty(Control.GetLabel(915))]]] | [Control.IsVisible(53) + !Container.Content(sets) + !Container.Content(musicvideos) + Skin.HasSetting(Enable.ShowCase.Logo) + [!Skin.HasSetting(Enable.ShowCase.BannerLogo) | [Skin.HasSetting(Enable.ShowCase.Logo) + Skin.HasSetting(Enable.ShowCase.BannerLogo) + String.IsEmpty(Control.GetLabel(915))]]] | [Control.IsVisible(53) + Container.Content(sets) + Skin.HasSetting(Enable.ShowCase.SetLogo) + [!Skin.HasSetting(Enable.ShowCase.SetBannerLogo) | [Skin.HasSetting(Enable.ShowCase.SetLogo) + Skin.HasSetting(Enable.ShowCase.SetBannerLogo) + String.IsEmpty(Control.GetLabel(915))]]] | [Control.IsVisible(53) + Container.Content(musicvideos) + Skin.HasSetting(Enable.ShowCase.MusicVidLogo) + [!Skin.HasSetting(Enable.ShowCase.MusicVidBannerLogo) | [Skin.HasSetting(Enable.ShowCase.MusicVidLogo) + Skin.HasSetting(Enable.ShowCase.MusicVidBannerLogo) + String.IsEmpty(Control.GetLabel(915))]]] | [Control.IsVisible(503) + !Container.Content(sets) + Skin.HasSetting(Enable.Wall.Logo) + [!Skin.HasSetting(Enable.Wall.BannerLogo) | [Skin.HasSetting(Enable.Wall.Logo) + Skin.HasSetting(Enable.Wall.BannerLogo) + String.IsEmpty(Control.GetLabel(915))]]] | [Control.IsVisible(503) + Container.Content(sets) + Skin.HasSetting(Enable.Wall.SetLogo) + [!Skin.HasSetting(Enable.Wall.SetBannerLogo) | [Skin.HasSetting(Enable.Wall.SetLogo) + Skin.HasSetting(Enable.Wall.SetBannerLogo) + String.IsEmpty(Control.GetLabel(915))]]]</visible>
+						</control>
+						<control type="image" id="915">
+							<left>670</left>
+							<top>990</top>
+							<width>580</width>
+							<height>90</height>
+							<fadetime>200</fadetime>
+							<texture background="true">$INFO[ListItem.Art(banner)]</texture>
+							<visible>[Control.IsVisible(52) + !Container.Content(sets) + Skin.HasSetting(Enable.Landscape.Logo) + Skin.HasSetting(Enable.Landscape.BannerLogo)] | [Control.IsVisible(52) + Container.Content(sets) + Skin.HasSetting(Enable.Landscape.SetLogo) + Skin.HasSetting(Enable.Landscape.SetBannerLogo)] | [Control.IsVisible(53) + !Container.Content(sets) + Skin.HasSetting(Enable.ShowCase.Logo) + Skin.HasSetting(Enable.ShowCase.BannerLogo)] | [Control.IsVisible(53) + Container.Content(sets) + Skin.HasSetting(Enable.ShowCase.SetLogo) + Skin.HasSetting(Enable.ShowCase.SetBannerLogo)] | [Control.IsVisible(53) + Container.Content(musicvideos) + Skin.HasSetting(Enable.ShowCase.MusicVidLogo) + Skin.HasSetting(Enable.ShowCase.MusicVidBannerLogo)] | [Control.IsVisible(53) + Container.Content(seasons) + Skin.HasSetting(Enable.ShowCase.SeasonBanner)] | [Control.IsVisible(503) + !Container.Content(sets) + Skin.HasSetting(Enable.Wall.Logo) + Skin.HasSetting(Enable.Wall.BannerLogo)] | [Control.IsVisible(503) + Container.Content(sets) + Skin.HasSetting(Enable.Wall.SetLogo) + Skin.HasSetting(Enable.Wall.SetBannerLogo)] | [Control.IsVisible(503) + Container.Content(seasons) + Skin.HasSetting(Enable.Wall.SeasonBanner)]</visible>
+							<animation effect="slide" end="0,15" time="0" condition="Control.IsVisible(52)">Conditional</animation>
 						</control>
 					</control>
 				</control>
-				<!-- (List - Tripanel - Posters - Shift - BannerWall - Small Icons - Icons - RightList - MyFlix - BigFan) -->
-				<control type="group">
-					<visible>ListItem.IsCollection</visible>
-					<animation effect="fade" time="140" delay="100">Visible</animation>
-					<animation effect="slide" end="1200" condition="Control.IsVisible(50) + Container.Content(sets)">Conditional</animation>
-					<animation effect="slide" end="1320" condition="Control.IsVisible(506)">Conditional</animation>
-					<animation effect="slide" end="-70" condition="Control.IsVisible(509)">Conditional</animation>
-					<animation effect="slide" end="-1152.5" condition="Control.IsVisible(591)">Conditional</animation>
-					<control type="grouplist">
-						<visible>Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(500) | [Control.IsVisible(506) + Container.Content(movies) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Control.IsVisible(506) + Container.Content(sets) + !Skin.HasSetting(Disable.RightList.SetMediaflags)] | Control.IsVisible(509) | Control.IsVisible(591) | Control.IsVisible(602)</visible>
-						<left>60</left>
-						<top>1014</top>
-						<height>90</height>
-						<orientation>horizontal</orientation>
-						<control type="group">
-							<width>170</width>
-							<control type="image" id="917">
-								<include>MediaFlagValues</include>
-								<texture>$VAR[PathFlagsStudios]$INFO[Container(4500).ListItem(0).Studio,,.png]</texture>
-							</control>
-							<control type="label">
-								<left>20</left>
-								<width>130</width>
-								<height>78</height>
-								<align>center</align>
-								<font>font10</font>
-								<textcolor>grey</textcolor>
-								<wrapmultiline>true</wrapmultiline>
-								<label>$INFO[Container(4500).ListItem(0).Studio]</label>
-								<visible>String.IsEmpty(Control.GetLabel(917))</visible>
-							</control>
-						</control>
-						<control type="image">
-							<include>MediaFlagValues</include>
-							<texture>$VAR[MediaFlagsPathVar]/mpaa/$VAR[SetRatingFlagVar]</texture>
-						</control>
-						<control type="group">
-							<width>170</width>
-							<visible>![Control.IsVisible(55) | Control.IsVisible(57) | Control.IsVisible(500) | Control.IsVisible(509) | Control.IsVisible(591)]</visible>
-							<visible>!String.IsEqual(Container(4500).NumItems,0)</visible>
-							<control type="label">
-								<height>60</height>
-								<align>center</align>
-								<label>$INFO[Container(4500).NumItems]</label>
-								<font>font48_bold</font>
-								<textcolor>grey</textcolor>
-							</control>
-							<control type="label">
-								<top>52</top>
-								<height>30</height>
-								<align>center</align>
-								<label>$LOCALIZE[342]</label>
-								<font>font12</font>
-								<textcolor>grey</textcolor>
-							</control>
-						</control>
+				<!-- Scrollbars -->
+				<include>BottomScrollbars</include>
+			</control>
+			<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>
+			<include>Topbar</include>
+			<control type="group">
+				<left>-440</left>
+				<include>SideBladeLeft</include>
+				<control type="grouplist" id="9050">
+					<include>MediaMenuTop</include>
+					<control type="button" id="6051">
+						<description>Show Info Toggle</description>
+						<textwidth>255</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31018]</label>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[InfoPanelLabelVar][/COLOR]</label2>
+						<onclick condition="Control.IsVisible(52)">$VAR[52VideoInfoPanelVar]</onclick>
+						<onclick condition="Control.IsVisible(53)">$VAR[53VideoInfoPanelVar]</onclick>
+						<onclick condition="Control.IsVisible(57)">$VAR[57VideoInfoPanelVar]</onclick>
+						<onclick condition="Control.IsVisible(58)">$VAR[58VideoInfoPanelVar]</onclick>
+						<onclick condition="Control.IsVisible(59)">$VAR[59VideoInfoPanelVar]</onclick>
+						<onclick condition="Control.IsVisible(503)">Skin.ToggleSetting(503.InfoPanel)</onclick>
+						<visible>![Container.Content(genres) | Container.Content(musicvideos)]</visible>
+						<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(59) | Control.IsVisible(503)</visible>
+					</control>
+					<control type="radiobutton" id="6052">
+						<description>InfoPanel Settings button</description>
+						<textwidth>352</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>   - $LOCALIZE[413]</label>
+						<onclick>Skin.ToggleSetting(Enable.ManualInfoPanel)</onclick>
+						<onclick condition="!Skin.HasSetting(Enable.ManualInfoPanel)">Skin.Reset(InfoPanel.Delay)</onclick>
+						<selected>Skin.HasSetting(Enable.ManualInfoPanel)</selected>
+						<visible>!Container.Content(genres) + Window.IsActive(videos) + Control.IsVisible(6051) + [!String.IsEmpty(Control.GetLabel(4420)) | !String.IsEmpty(Control.GetLabel(4421))]</visible>
+					</control>
+					<control type="button" id="201">
+						<description>View options</description>
+						<textwidth>352</textwidth>
+						<font>font13_title</font>
+						<include>ButtonCommonValues</include>
+						<label>31026</label>
+						<enable>no</enable>
+						<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
+					</control>
+					<control type="button" id="10">
+						<description>Watched Toggle</description>
+						<textwidth>255</textwidth>
+						<include>ButtonCommonValues</include>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Container.NumItems][/COLOR]</label2>
+					</control>
+					<control type="button" id="11118">
+						<description>Search</description>
+						<include>ButtonCommonValues</include>
+						<label>137</label>
+						<onclick>ClearProperty(MediaMenu,Home)</onclick>
+						<onclick>SetFocus(50)</onclick>
+						<onclick condition="!Skin.HasSetting(Disable.MultiSearch)">SetProperty(CustomSelect,search,Home)</onclick>
+						<onclick condition="!Skin.HasSetting(Disable.MultiSearch)">ActivateWindow(1129)</onclick>
+						<onclick condition="Skin.HasSetting(Disable.MultiSearch)">SendClick(videos,8)</onclick>
+					</control>
+					<control type="edit" id="19">
+						<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
+						<description>Filter</description>
+						<textwidth>345</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>587</label>
+					</control>
+					<control type="button" id="98">
+						<visible>Container.CanFilterAdvanced</visible>
+						<description>Filter</description>
+						<include>ButtonCommonValues</include>
+						<label>587</label>
+						<onclick>ClearProperty(MediaMenu,Home)</onclick>
+						<onclick>SetFocus(50)</onclick>
+						<onclick>Filter</onclick>
+					</control>
+					<control type="radiobutton" id="16">
+						<description>PartyMode</description>
+						<label>589</label>
+						<include>ButtonCommonValues</include>
+						<visible>Container.Content(MusicVideos)</visible>
+					</control>
+					<control type="radiobutton" id="11">
+						<description>Unlock Shares</description>
+						<textwidth>255</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>20336</label>
+						<onclick>Mastermode</onclick>
+						<selected>System.IsMaster</selected>
+						<visible>System.HasLocks</visible>
+					</control>
+					<control type="button" id="203">
+						<description>View options</description>
+						<textwidth>352</textwidth>
+						<font>font13_title</font>
+						<include>ButtonCommonValues</include>
+						<label>31039</label>
+						<enable>no</enable>
+						<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
+					</control>
+					<control type="togglebutton" id="20">
+						<description>Update library</description>
+						<include>ButtonCommonValues</include>
+						<label>653</label>
+						<altlabel>13353</altlabel>
+						<usealttexture>library.isscanningvideo</usealttexture>
+					</control>
+					<control type="button" id="612">
+						<description>Go to playlist</description>
+						<include>ButtonCommonValues</include>
+						<label>13350</label>
+						<onclick>ClearProperty(MediaMenu,Home)</onclick>
+						<onclick>ActivateWindow(videoplaylist)</onclick>
+						<visible>!String.IsEqual(Playlist.Length(video),0)</visible>
+					</control>
+					<control type="button" id="613">
+						<description>Get more</description>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[21452]</label>
+						<onclick>ClearProperty(MediaMenu,Home)</onclick>
+						<onclick>ActivateWindow(addonbrowser,addons://more/video/,return)</onclick>
+						<visible>Container.Content(addons)</visible>
+					</control>
+					<control type="button" id="617">
+						<description>Add-on settings</description>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[10140]</label>
+						<onclick>Addon.OpenSettings($INFO[Container.PluginName])</onclick>
+						<visible>!String.IsEmpty(Container.PluginName)</visible>
 					</control>
 				</control>
-				<!-- Floor Logo + Banner (Landscape - ShowCase - Wall) -->
-				<control type="group">
-					<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(503)</visible>
-					<include>ViewAnimation</include>
-					<control type="image">
-						<left>770</left>
-						<top>972</top>
-						<width>380</width>
-						<height>120</height>
-						<fadetime>200</fadetime>
-						<texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
-						<visible>!Container.Content(seasons)</visible>
-						<visible>[Control.IsVisible(52) + !Container.Content(sets) + Skin.HasSetting(Enable.Landscape.Logo) + [!Skin.HasSetting(Enable.Landscape.BannerLogo) | [Skin.HasSetting(Enable.Landscape.Logo) + Skin.HasSetting(Enable.Landscape.BannerLogo) + String.IsEmpty(Control.GetLabel(915))]]] | [Control.IsVisible(52) + Container.Content(sets) + Skin.HasSetting(Enable.Landscape.SetLogo) + [!Skin.HasSetting(Enable.Landscape.SetBannerLogo) | [Skin.HasSetting(Enable.Landscape.SetLogo) + Skin.HasSetting(Enable.Landscape.SetBannerLogo) + String.IsEmpty(Control.GetLabel(915))]]] | [Control.IsVisible(53) + !Container.Content(sets) + !Container.Content(musicvideos) + Skin.HasSetting(Enable.ShowCase.Logo) + [!Skin.HasSetting(Enable.ShowCase.BannerLogo) | [Skin.HasSetting(Enable.ShowCase.Logo) + Skin.HasSetting(Enable.ShowCase.BannerLogo) + String.IsEmpty(Control.GetLabel(915))]]] | [Control.IsVisible(53) + Container.Content(sets) + Skin.HasSetting(Enable.ShowCase.SetLogo) + [!Skin.HasSetting(Enable.ShowCase.SetBannerLogo) | [Skin.HasSetting(Enable.ShowCase.SetLogo) + Skin.HasSetting(Enable.ShowCase.SetBannerLogo) + String.IsEmpty(Control.GetLabel(915))]]] | [Control.IsVisible(53) + Container.Content(musicvideos) + Skin.HasSetting(Enable.ShowCase.MusicVidLogo) + [!Skin.HasSetting(Enable.ShowCase.MusicVidBannerLogo) | [Skin.HasSetting(Enable.ShowCase.MusicVidLogo) + Skin.HasSetting(Enable.ShowCase.MusicVidBannerLogo) + String.IsEmpty(Control.GetLabel(915))]]] | [Control.IsVisible(503) + !Container.Content(sets) + Skin.HasSetting(Enable.Wall.Logo) + [!Skin.HasSetting(Enable.Wall.BannerLogo) | [Skin.HasSetting(Enable.Wall.Logo) + Skin.HasSetting(Enable.Wall.BannerLogo) + String.IsEmpty(Control.GetLabel(915))]]] | [Control.IsVisible(503) + Container.Content(sets) + Skin.HasSetting(Enable.Wall.SetLogo) + [!Skin.HasSetting(Enable.Wall.SetBannerLogo) | [Skin.HasSetting(Enable.Wall.SetLogo) + Skin.HasSetting(Enable.Wall.SetBannerLogo) + String.IsEmpty(Control.GetLabel(915))]]]</visible>
-					</control>
-					<control type="image" id="915">
-						<left>670</left>
-						<top>990</top>
-						<width>580</width>
-						<height>90</height>
-						<fadetime>200</fadetime>
-						<texture background="true">$INFO[ListItem.Art(banner)]</texture>
-						<visible>[Control.IsVisible(52) + !Container.Content(sets) + Skin.HasSetting(Enable.Landscape.Logo) + Skin.HasSetting(Enable.Landscape.BannerLogo)] | [Control.IsVisible(52) + Container.Content(sets) + Skin.HasSetting(Enable.Landscape.SetLogo) + Skin.HasSetting(Enable.Landscape.SetBannerLogo)] | [Control.IsVisible(53) + !Container.Content(sets) + Skin.HasSetting(Enable.ShowCase.Logo) + Skin.HasSetting(Enable.ShowCase.BannerLogo)] | [Control.IsVisible(53) + Container.Content(sets) + Skin.HasSetting(Enable.ShowCase.SetLogo) + Skin.HasSetting(Enable.ShowCase.SetBannerLogo)] | [Control.IsVisible(53) + Container.Content(musicvideos) + Skin.HasSetting(Enable.ShowCase.MusicVidLogo) + Skin.HasSetting(Enable.ShowCase.MusicVidBannerLogo)] | [Control.IsVisible(53) + Container.Content(seasons) + Skin.HasSetting(Enable.ShowCase.SeasonBanner)] | [Control.IsVisible(503) + !Container.Content(sets) + Skin.HasSetting(Enable.Wall.Logo) + Skin.HasSetting(Enable.Wall.BannerLogo)] | [Control.IsVisible(503) + Container.Content(sets) + Skin.HasSetting(Enable.Wall.SetLogo) + Skin.HasSetting(Enable.Wall.SetBannerLogo)] | [Control.IsVisible(503) + Container.Content(seasons) + Skin.HasSetting(Enable.Wall.SeasonBanner)]</visible>
-						<animation effect="slide" end="0,15" time="0" condition="Control.IsVisible(52)">Conditional</animation>
-					</control>
+				<include>MediaMenuPlayerControls</include>
+			</control>
+			<include condition="!System.AddonIsEnabled(script.embuary.helper)">DefaultLetterJump</include>
+			<include condition="System.AddonIsEnabled(script.embuary.helper)">ScriptLetterJump</include>
+			<!-- Fullscreen Fanart -->
+			<control type="group">
+				<visible>!String.IsEmpty(Window(Home).Property(Enable.FullscreenFanart))</visible>
+				<include>FullscreenDimensions</include>
+				<visible>Window.IsActive(1113)</visible>
+				<control type="image">
+					<texture>colors/black.png</texture>
+				</control>
+				<control type="multiimage">
+					<include>MultiImageTime</include>
+					<animation effect="fade" time="500">Visible</animation>
+					<imagepath background="true">$VAR[GlobalBackgroundVar]</imagepath>
 				</control>
 			</control>
-			<!-- Scrollbars -->
-			<include>BottomScrollbars</include>
-		</control>
-		<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>
-		<include>Topbar</include>
-		<control type="group">
-			<left>-440</left>
-			<include>SideBladeLeft</include>
-			<control type="grouplist" id="9050">
-				<include>MediaMenuTop</include>
-				<control type="button" id="6051">
-					<description>Show Info Toggle</description>
-					<textwidth>255</textwidth>
-					<include>ButtonCommonValues</include>
-					<label>$LOCALIZE[31018]</label>
-					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[InfoPanelLabelVar][/COLOR]</label2>
-					<onclick condition="Control.IsVisible(52)">$VAR[52VideoInfoPanelVar]</onclick>
-					<onclick condition="Control.IsVisible(53)">$VAR[53VideoInfoPanelVar]</onclick>
-					<onclick condition="Control.IsVisible(57)">$VAR[57VideoInfoPanelVar]</onclick>
-					<onclick condition="Control.IsVisible(58)">$VAR[58VideoInfoPanelVar]</onclick>
-					<onclick condition="Control.IsVisible(59)">$VAR[59VideoInfoPanelVar]</onclick>
-					<onclick condition="Control.IsVisible(503)">Skin.ToggleSetting(503.InfoPanel)</onclick>
-					<visible>![Container.Content(genres) | Container.Content(musicvideos)]</visible>
-					<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(59) | Control.IsVisible(503)</visible>
-				</control>
-				<control type="radiobutton" id="6052">
-					<description>InfoPanel Settings button</description>
-					<textwidth>352</textwidth>
-					<include>ButtonCommonValues</include>
-					<label>   - $LOCALIZE[413]</label>
-					<onclick>Skin.ToggleSetting(Enable.ManualInfoPanel)</onclick>
-					<onclick condition="!Skin.HasSetting(Enable.ManualInfoPanel)">Skin.Reset(InfoPanel.Delay)</onclick>
-					<selected>Skin.HasSetting(Enable.ManualInfoPanel)</selected>
-					<visible>!Container.Content(genres) + Window.IsActive(videos) + Control.IsVisible(6051) + [!String.IsEmpty(Control.GetLabel(4420)) | !String.IsEmpty(Control.GetLabel(4421))]</visible>
-				</control>
-				<control type="button" id="201">
-					<description>View options</description>
-					<textwidth>352</textwidth>
-					<font>font13_title</font>
-					<include>ButtonCommonValues</include>
-					<label>31026</label>
-					<enable>no</enable>
-					<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
-				</control>
-				<control type="button" id="10">
-					<description>Watched Toggle</description>
-					<textwidth>255</textwidth>
-					<include>ButtonCommonValues</include>
-					<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Container.NumItems][/COLOR]</label2>
-				</control>
-				<control type="button" id="11118">
-					<description>Search</description>
-					<include>ButtonCommonValues</include>
-					<label>137</label>
-					<onclick>ClearProperty(MediaMenu,Home)</onclick>
-					<onclick>SetFocus(50)</onclick>
-					<onclick condition="!Skin.HasSetting(Disable.MultiSearch)">SetProperty(CustomSelect,search,Home)</onclick>
-					<onclick condition="!Skin.HasSetting(Disable.MultiSearch)">ActivateWindow(1129)</onclick>
-					<onclick condition="Skin.HasSetting(Disable.MultiSearch)">SendClick(videos,8)</onclick>
-				</control>
-				<control type="edit" id="19">
-					<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
-					<description>Filter</description>
-					<textwidth>345</textwidth>
-					<include>ButtonCommonValues</include>
-					<label>587</label>
-				</control>
-				<control type="button" id="98">
-					<visible>Container.CanFilterAdvanced</visible>
-					<description>Filter</description>
-					<include>ButtonCommonValues</include>
-					<label>587</label>
-					<onclick>ClearProperty(MediaMenu,Home)</onclick>
-					<onclick>SetFocus(50)</onclick>
-					<onclick>Filter</onclick>
-				</control>
-				<control type="radiobutton" id="16">
-					<description>PartyMode</description>
-					<label>589</label>
-					<include>ButtonCommonValues</include>
-					<visible>Container.Content(MusicVideos)</visible>
-				</control>
-				<control type="radiobutton" id="11">
-					<description>Unlock Shares</description>
-					<textwidth>255</textwidth>
-					<include>ButtonCommonValues</include>
-					<label>20336</label>
-					<onclick>Mastermode</onclick>
-					<selected>System.IsMaster</selected>
-					<visible>System.HasLocks</visible>
-				</control>
-				<control type="button" id="203">
-					<description>View options</description>
-					<textwidth>352</textwidth>
-					<font>font13_title</font>
-					<include>ButtonCommonValues</include>
-					<label>31039</label>
-					<enable>no</enable>
-					<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
-				</control>
-				<control type="togglebutton" id="20">
-					<description>Update library</description>
-					<include>ButtonCommonValues</include>
-					<label>653</label>
-					<altlabel>13353</altlabel>
-					<usealttexture>library.isscanningvideo</usealttexture>
-				</control>
-				<control type="button" id="612">
-					<description>Go to playlist</description>
-					<include>ButtonCommonValues</include>
-					<label>13350</label>
-					<onclick>ClearProperty(MediaMenu,Home)</onclick>
-					<onclick>ActivateWindow(videoplaylist)</onclick>
-					<visible>!String.IsEqual(Playlist.Length(video),0)</visible>
-				</control>
-				<control type="button" id="613">
-					<description>Get more</description>
-					<include>ButtonCommonValues</include>
-					<label>$LOCALIZE[21452]</label>
-					<onclick>ClearProperty(MediaMenu,Home)</onclick>
-					<onclick>ActivateWindow(addonbrowser,addons://more/video/,return)</onclick>
-					<visible>Container.Content(addons)</visible>
-				</control>
-				<control type="button" id="617">
-					<description>Add-on settings</description>
-					<include>ButtonCommonValues</include>
-					<label>$LOCALIZE[10140]</label>
-					<onclick>Addon.OpenSettings($INFO[Container.PluginName])</onclick>
-					<visible>!String.IsEmpty(Container.PluginName)</visible>
-				</control>
-			</control>
-			<include>MediaMenuPlayerControls</include>
-		</control>
-		<include condition="!System.AddonIsEnabled(script.embuary.helper)">DefaultLetterJump</include>
-		<include condition="System.AddonIsEnabled(script.embuary.helper)">ScriptLetterJump</include>
-		<!-- Fullscreen Fanart -->
-		<control type="group">
-			<visible>!String.IsEmpty(Window(Home).Property(Enable.FullscreenFanart))</visible>
-			<include>FullscreenDimensions</include>
-			<visible>Window.IsActive(1113)</visible>
-			<control type="image">
-				<texture>colors/black.png</texture>
-			</control>
-			<control type="multiimage">
-				<include>MultiImageTime</include>
-				<animation effect="fade" time="500">Visible</animation>
-				<imagepath background="true">$VAR[GlobalBackgroundVar]</imagepath>
-			</control>
-		</control>
-		<control type="button" id="8">
-			<include>HiddenObject</include>
 		</control>
 	</controls>
 </window>

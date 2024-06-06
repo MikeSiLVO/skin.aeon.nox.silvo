@@ -8,27 +8,30 @@
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
 	<controls>
-		<include>CommonBackground</include>
 		<control type="group">
-			<include>WindowOpenCloseAnimation</include>
-			<include condition="!Skin.HasSetting(Enable.SlimList)">AddonList</include>
-			<include condition="Skin.HasSetting(Enable.SlimList)">SlimList</include>
-			<!-- view id = 50 -->
-		</control>
-		<include>Topbar</include>
-		<control type="group">
-			<left>-440</left>
-			<include>SideBladeLeft</include>
-			<control type="grouplist" id="9050">
-				<include>MediaMenuTop</include>
-				<control type="edit" id="19">
-					<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
-					<textwidth>345</textwidth>
-					<include>ButtonCommonValues</include>
-					<label>587</label>
-				</control>
+			<visible>[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
+			<include>CommonBackground</include>
+			<control type="group">
+				<include>WindowOpenCloseAnimation</include>
+				<include condition="!Skin.HasSetting(Enable.SlimList)">AddonList</include>
+				<include condition="Skin.HasSetting(Enable.SlimList)">SlimList</include>
+				<!-- view id = 50 -->
 			</control>
-			<include>MediaMenuPlayerControls</include>
+			<include>Topbar</include>
+			<control type="group">
+				<left>-440</left>
+				<include>SideBladeLeft</include>
+				<control type="grouplist" id="9050">
+					<include>MediaMenuTop</include>
+					<control type="edit" id="19">
+						<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
+						<textwidth>345</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>587</label>
+					</control>
+				</control>
+				<include>MediaMenuPlayerControls</include>
+			</control>
 		</control>
 	</controls>
 </window>

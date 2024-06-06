@@ -138,7 +138,7 @@
 			<onfocus condition="!Player.HasMedia">SetFocus(9000)</onfocus>
 		</control>
 		<control type="group">
-			<visible allowhiddenfocus="true">[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
+			<visible>[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
 			<include>CommonBackground</include>
 			<control type="group">
 				<visible>!Integer.IsEqual(Container(9000).NumItems,0) + !Control.HasFocus(64)</visible>

@@ -2,287 +2,290 @@
 <window>
 	<defaultcontrol>20</defaultcontrol>
 	<controls>
-		<include>CommonBackground</include>
 		<control type="group">
-			<left>50</left>
-			<top>60</top>
-			<include>WindowOpenCloseAnimation</include>
-			<control type="image">
-				<top>148</top>
-				<width>885</width>
-				<height>784</height>
-				<texture border="40">listpanel_back.png</texture>
-			</control>
-			<control type="label" id="101">
-				<top>910</top>
-				<width>821</width>
-				<height>90</height>
-				<font>font16_title</font>
-				<textoffsetx>30</textoffsetx>
-				<haspath>true</haspath>
-			</control>
-			<control type="scrollbar" id="30">
-				<left>856</left>
-				<top>182</top>
-				<width>8</width>
-				<height>720</height>
-				<texturesliderbackground />
-				<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
-				<onleft>31</onleft>
-				<onright>20</onright>
-				<ondown>20</ondown>
-				<onup>20</onup>
-				<showonepage>false</showonepage>
-			</control>
-			<control type="list" id="20">
-				<left>32</left>
-				<top>182</top>
-				<width>821</width>
-				<height>720</height>
-				<onleft>30</onleft>
-				<onright>21</onright>
-				<onup>20</onup>
-				<ondown>20</ondown>
-				<pagecontrol>30</pagecontrol>
-				<scrolltime tween="quadratic" easing="out">200</scrolltime>
-				<itemlayout height="60" width="821">
-					<control type="label">
-						<width>630</width>
-						<height>60</height>
-						<font>font14</font>
-						<textoffsetx>15</textoffsetx>
-						<textcolor>grey2</textcolor>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="label">
-						<width>821</width>
-						<height>60</height>
-						<font>font14</font>
-						<textoffsetx>15</textoffsetx>
-						<textcolor>grey2</textcolor>
-						<align>right</align>
-						<label>$INFO[ListItem.Label2]</label>
-					</control>
-				</itemlayout>
-				<focusedlayout height="60" width="821">
-					<control type="image">
-						<width>821</width>
-						<height>60</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
-						<visible>Control.HasFocus(20)</visible>
-						<include>VisibleFadeAnimation</include>
-					</control>
-					<control type="label">
-						<width>821</width>
-						<height>60</height>
-						<font>font14</font>
-						<textoffsetx>15</textoffsetx>
-						<label>$INFO[ListItem.Label]</label>
-						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(20)">Conditional</animation>
-					</control>
-					<control type="label">
-						<width>821</width>
-						<height>60</height>
-						<font>font14</font>
-						<textoffsetx>15</textoffsetx>
-						<textcolor>grey</textcolor>
-						<align>right</align>
-						<label>$INFO[ListItem.Label2]</label>
-						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(20)">Conditional</animation>
-					</control>
-				</focusedlayout>
-			</control>
-		</control>
-		<control type="group">
-			<left>985</left>
-			<top>60</top>
-			<include>WindowOpenCloseAnimation</include>
-			<control type="image">
-				<top>148</top>
-				<width>885</width>
-				<height>784</height>
-				<texture border="40">listpanel_back.png</texture>
-			</control>
-			<control type="label" id="102">
+			<visible>[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
+			<include>CommonBackground</include>
+			<control type="group">
 				<left>50</left>
-				<top>910</top>
-				<width>821</width>
-				<height>90</height>
-				<font>font16_title</font>
-				<align>right</align>
-				<textoffsetx>30</textoffsetx>
-				<haspath>true</haspath>
+				<top>60</top>
+				<include>WindowOpenCloseAnimation</include>
+				<control type="image">
+					<top>148</top>
+					<width>885</width>
+					<height>784</height>
+					<texture border="40">listpanel_back.png</texture>
+				</control>
+				<control type="label" id="101">
+					<top>910</top>
+					<width>821</width>
+					<height>90</height>
+					<font>font16_title</font>
+					<textoffsetx>30</textoffsetx>
+					<haspath>true</haspath>
+				</control>
+				<control type="scrollbar" id="30">
+					<left>856</left>
+					<top>182</top>
+					<width>8</width>
+					<height>720</height>
+					<texturesliderbackground />
+					<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
+					<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
+					<onleft>31</onleft>
+					<onright>20</onright>
+					<ondown>20</ondown>
+					<onup>20</onup>
+					<showonepage>false</showonepage>
+				</control>
+				<control type="list" id="20">
+					<left>32</left>
+					<top>182</top>
+					<width>821</width>
+					<height>720</height>
+					<onleft>30</onleft>
+					<onright>21</onright>
+					<onup>20</onup>
+					<ondown>20</ondown>
+					<pagecontrol>30</pagecontrol>
+					<scrolltime tween="quadratic" easing="out">200</scrolltime>
+					<itemlayout height="60" width="821">
+						<control type="label">
+							<width>630</width>
+							<height>60</height>
+							<font>font14</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>grey2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<control type="label">
+							<width>821</width>
+							<height>60</height>
+							<font>font14</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>grey2</textcolor>
+							<align>right</align>
+							<label>$INFO[ListItem.Label2]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="60" width="821">
+						<control type="image">
+							<width>821</width>
+							<height>60</height>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+							<visible>Control.HasFocus(20)</visible>
+							<include>VisibleFadeAnimation</include>
+						</control>
+						<control type="label">
+							<width>821</width>
+							<height>60</height>
+							<font>font14</font>
+							<textoffsetx>15</textoffsetx>
+							<label>$INFO[ListItem.Label]</label>
+							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(20)">Conditional</animation>
+						</control>
+						<control type="label">
+							<width>821</width>
+							<height>60</height>
+							<font>font14</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>grey</textcolor>
+							<align>right</align>
+							<label>$INFO[ListItem.Label2]</label>
+							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(20)">Conditional</animation>
+						</control>
+					</focusedlayout>
+				</control>
 			</control>
-			<control type="scrollbar" id="31">
-				<left>856</left>
-				<top>182</top>
-				<width>8</width>
-				<height>720</height>
-				<texturesliderbackground />
-				<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
-				<onleft>21</onleft>
-				<onright>30</onright>
-				<ondown>21</ondown>
-				<onup>21</onup>
-				<showonepage>false</showonepage>
+			<control type="group">
+				<left>985</left>
+				<top>60</top>
+				<include>WindowOpenCloseAnimation</include>
+				<control type="image">
+					<top>148</top>
+					<width>885</width>
+					<height>784</height>
+					<texture border="40">listpanel_back.png</texture>
+				</control>
+				<control type="label" id="102">
+					<left>50</left>
+					<top>910</top>
+					<width>821</width>
+					<height>90</height>
+					<font>font16_title</font>
+					<align>right</align>
+					<textoffsetx>30</textoffsetx>
+					<haspath>true</haspath>
+				</control>
+				<control type="scrollbar" id="31">
+					<left>856</left>
+					<top>182</top>
+					<width>8</width>
+					<height>720</height>
+					<texturesliderbackground />
+					<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
+					<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
+					<onleft>21</onleft>
+					<onright>30</onright>
+					<ondown>21</ondown>
+					<onup>21</onup>
+					<showonepage>false</showonepage>
+				</control>
+				<control type="list" id="21">
+					<left>32</left>
+					<top>182</top>
+					<width>821</width>
+					<height>720</height>
+					<onleft>20</onleft>
+					<onright>31</onright>
+					<onup>21</onup>
+					<ondown>21</ondown>
+					<pagecontrol>31</pagecontrol>
+					<scrolltime tween="quadratic" easing="out">200</scrolltime>
+					<itemlayout height="60" width="821">
+						<control type="label">
+							<width>630</width>
+							<height>60</height>
+							<font>font14</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>grey2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<control type="label">
+							<width>821</width>
+							<height>60</height>
+							<font>font14</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>grey2</textcolor>
+							<align>right</align>
+							<label>$INFO[ListItem.Label2]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="60" width="821">
+						<control type="image">
+							<width>821</width>
+							<height>60</height>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+							<visible>Control.HasFocus(21)</visible>
+							<include>VisibleFadeAnimation</include>
+						</control>
+						<control type="label">
+							<width>821</width>
+							<height>60</height>
+							<font>font14</font>
+							<textoffsetx>15</textoffsetx>
+							<label>$INFO[ListItem.Label]</label>
+							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(21)">Conditional</animation>
+						</control>
+						<control type="label">
+							<width>821</width>
+							<height>60</height>
+							<font>font14</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>grey</textcolor>
+							<align>right</align>
+							<label>$INFO[ListItem.Label2]</label>
+							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(21)">Conditional</animation>
+						</control>
+					</focusedlayout>
+				</control>
 			</control>
-			<control type="list" id="21">
-				<left>32</left>
-				<top>182</top>
-				<width>821</width>
-				<height>720</height>
-				<onleft>20</onleft>
-				<onright>31</onright>
-				<onup>21</onup>
-				<ondown>21</ondown>
-				<pagecontrol>31</pagecontrol>
-				<scrolltime tween="quadratic" easing="out">200</scrolltime>
-				<itemlayout height="60" width="821">
+			<control type="image">
+				<top>970</top>
+				<width>100%</width>
+				<height>140</height>
+				<texture border="1">gradient_floor.png</texture>
+			</control>
+			<include>Topbar</include>
+			<control type="group">
+				<visible>!Skin.HasSetting(Disable.TopBar) + !Window.IsActive(volumebar)</visible>
+				<include>VisibleFadeAnimation</include>
+				<animation effect="slide" start="0,-90" end="0,0" delay="800" time="480" condition="Window.Previous(Home)">WindowOpen</animation>
+				<animation effect="slide" end="0,-90" start="0,0" time="480" condition="Window.Next(Home)">WindowClose</animation>
+				<control type="grouplist">
+					<width>100%</width>
+					<height>90</height>
+					<orientation>horizontal</orientation>
+					<align>center</align>
+					<itemgap>5</itemgap>
+					<visible>Control.HasFocus(20) + !String.IsEqual(Container(20).NumItems,0)</visible>
+					<include>VisibleFadeAnimation</include>
 					<control type="label">
-						<width>630</width>
-						<height>60</height>
-						<font>font14</font>
-						<textoffsetx>15</textoffsetx>
-						<textcolor>grey2</textcolor>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="label">
-						<width>821</width>
-						<height>60</height>
-						<font>font14</font>
-						<textoffsetx>15</textoffsetx>
-						<textcolor>grey2</textcolor>
-						<align>right</align>
-						<label>$INFO[ListItem.Label2]</label>
-					</control>
-				</itemlayout>
-				<focusedlayout height="60" width="821">
-					<control type="image">
-						<width>821</width>
-						<height>60</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
-						<visible>Control.HasFocus(21)</visible>
-						<include>VisibleFadeAnimation</include>
-					</control>
-					<control type="label">
-						<width>821</width>
-						<height>60</height>
-						<font>font14</font>
-						<textoffsetx>15</textoffsetx>
-						<label>$INFO[ListItem.Label]</label>
-						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(21)">Conditional</animation>
-					</control>
-					<control type="label">
-						<width>821</width>
-						<height>60</height>
-						<font>font14</font>
-						<textoffsetx>15</textoffsetx>
+						<width>auto</width>
+						<height>90</height>
+						<font>font13_title</font>
 						<textcolor>grey</textcolor>
-						<align>right</align>
-						<label>$INFO[ListItem.Label2]</label>
-						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(21)">Conditional</animation>
+						<shadowcolor>shadow</shadowcolor>
+						<aligny>top</aligny>
+						<label>$INFO[Container(20).NumItems]</label>
 					</control>
-				</focusedlayout>
-			</control>
-		</control>
-		<control type="image">
-			<top>970</top>
-			<width>100%</width>
-			<height>140</height>
-			<texture border="1">gradient_floor.png</texture>
-		</control>
-		<include>Topbar</include>
-		<control type="group">
-			<visible>!Skin.HasSetting(Disable.TopBar) + !Window.IsActive(volumebar)</visible>
-			<include>VisibleFadeAnimation</include>
-			<animation effect="slide" start="0,-90" end="0,0" delay="800" time="480" condition="Window.Previous(Home)">WindowOpen</animation>
-			<animation effect="slide" end="0,-90" start="0,0" time="480" condition="Window.Next(Home)">WindowClose</animation>
-			<control type="grouplist">
-				<width>100%</width>
-				<height>90</height>
-				<orientation>horizontal</orientation>
-				<align>center</align>
-				<itemgap>5</itemgap>
-				<visible>Control.HasFocus(20) + !String.IsEqual(Container(20).NumItems,0)</visible>
-				<include>VisibleFadeAnimation</include>
-				<control type="label">
-					<width>auto</width>
+					<control type="label">
+						<width>30</width>
+						<height>40</height>
+						<font>IconTiny</font>
+						<textcolor>grey</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<label></label>
+					</control>
+					<control type="label">
+						<width>auto</width>
+						<height>90</height>
+						<font>font13_title</font>
+						<textcolor>grey</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<aligny>top</aligny>
+						<label>$INFO[Container(20).CurrentPage,[COLOR grey2] | ]$INFO[Container(20).NumPages,/,[/COLOR]]</label>
+					</control>
+					<control type="label">
+						<width>30</width>
+						<height>40</height>
+						<font>IconTiny</font>
+						<textcolor>grey2</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<label></label>
+					</control>
+				</control>
+				<control type="grouplist">
+					<width>100%</width>
 					<height>90</height>
-					<font>font13_title</font>
-					<textcolor>grey</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<aligny>top</aligny>
-					<label>$INFO[Container(20).NumItems]</label>
-				</control>
-				<control type="label">
-					<width>30</width>
-					<height>40</height>
-					<font>IconTiny</font>
-					<textcolor>grey</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<label></label>
-				</control>
-				<control type="label">
-					<width>auto</width>
-					<height>90</height>
-					<font>font13_title</font>
-					<textcolor>grey</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<aligny>top</aligny>
-					<label>$INFO[Container(20).CurrentPage,[COLOR grey2] | ]$INFO[Container(20).NumPages,/,[/COLOR]]</label>
-				</control>
-				<control type="label">
-					<width>30</width>
-					<height>40</height>
-					<font>IconTiny</font>
-					<textcolor>grey2</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<label></label>
-				</control>
-			</control>
-			<control type="grouplist">
-				<width>100%</width>
-				<height>90</height>
-				<orientation>horizontal</orientation>
-				<align>center</align>
-				<itemgap>5</itemgap>
-				<visible>Control.HasFocus(21) + !String.IsEqual(Container(21).NumItems,0)</visible>
-				<include>VisibleFadeAnimation</include>
-				<control type="label">
-					<width>auto</width>
-					<height>90</height>
-					<font>font13_title</font>
-					<textcolor>grey</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<aligny>top</aligny>
-					<label>$INFO[Container(21).NumItems]</label>
-				</control>
-				<control type="label">
-					<width>30</width>
-					<height>40</height>
-					<font>IconTiny</font>
-					<textcolor>grey</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<label></label>
-				</control>
-				<control type="label">
-					<width>auto</width>
-					<height>90</height>
-					<font>font13_title</font>
-					<textcolor>grey</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<aligny>top</aligny>
-					<label>$INFO[Container(21).CurrentPage,[COLOR grey2] | ]$INFO[Container(21).NumPages,/,[/COLOR]]</label>
-				</control>
-				<control type="label">
-					<width>30</width>
-					<height>40</height>
-					<font>IconTiny</font>
-					<textcolor>grey2</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<label></label>
+					<orientation>horizontal</orientation>
+					<align>center</align>
+					<itemgap>5</itemgap>
+					<visible>Control.HasFocus(21) + !String.IsEqual(Container(21).NumItems,0)</visible>
+					<include>VisibleFadeAnimation</include>
+					<control type="label">
+						<width>auto</width>
+						<height>90</height>
+						<font>font13_title</font>
+						<textcolor>grey</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<aligny>top</aligny>
+						<label>$INFO[Container(21).NumItems]</label>
+					</control>
+					<control type="label">
+						<width>30</width>
+						<height>40</height>
+						<font>IconTiny</font>
+						<textcolor>grey</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<label></label>
+					</control>
+					<control type="label">
+						<width>auto</width>
+						<height>90</height>
+						<font>font13_title</font>
+						<textcolor>grey</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<aligny>top</aligny>
+						<label>$INFO[Container(21).CurrentPage,[COLOR grey2] | ]$INFO[Container(21).NumPages,/,[/COLOR]]</label>
+					</control>
+					<control type="label">
+						<width>30</width>
+						<height>40</height>
+						<font>IconTiny</font>
+						<textcolor>grey2</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<label></label>
+					</control>
 				</control>
 			</control>
 		</control>
