@@ -5,12 +5,12 @@
 	<onload>Skin.Reset(TMDbHelper.DirectCallAuto)</onload>
 	<onload>Skin.Reset(skininfo.autoclosevideoosd)</onload>
 	<onload>Skin.Reset(skininfo.autoclosemusicosd)</onload>
-	<onload condition="!String.IsEmpty(Skin.String(StartupIntro))">SetProperty(Playing.StartupIntro,True,Home)</onload>
 	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">Skin.SetBool(Disable.NextAired)</onload>
 	<onload condition="System.AddonIsEnabled(script.skin.info.service)">RunScript(script.skin.info.service)</onload>
 	<onload condition="System.AddonIsEnabled(script.artistslideshow)">RunScript(script.artistslideshow,daemon=True)</onload>
 	<onload condition="!String.IsEmpty(Skin.String(StartupIntro))">SetFocus(10)</onload>
 	<onload condition="String.IsEmpty(Skin.String(StartupIntro))">ReplaceWindow($INFO[System.StartupWindow])</onload>
+	<onunload condition="!String.IsEmpty(Skin.String(StartupIntro))">SetProperty(Playing.StartupIntro,True,Home)</onunload>
 	<controls>
 		<control type="button" id="10">
 			<include>HiddenObject</include>
