@@ -1411,8 +1411,8 @@
 	</variable>
 	<!-- DialogInfos -->
 	<variable name="DialogInfoBackgroundVar">
-		<value condition="Skin.HasSetting(Enable.BlurredVideoInfo) + System.AddonIsEnabled(script.embuary.helper)">$INFO[Window(Home).Property(MyProp_blurred)]</value>
-		<value condition="Skin.HasSetting(Enable.BlurredVideoInfo) + System.AddonIsEnabled(plugin.video.themoviedb.helper) + !System.AddonIsEnabled(script.embuary.helper)">$INFO[Window(Home).Property(TMDbHelper.ListItem.BlurImage)]</value>
+		<value condition="Skin.HasSetting(Enable.BlurredVideoInfo) + System.AddonIsEnabled(script.embuary.helper) + !System.AddonIsEnabled(plugin.video.themoviedb.helper)">$INFO[Window(Home).Property(MyProp_blurred)]</value>
+		<value condition="Skin.HasSetting(Enable.BlurredVideoInfo) + System.AddonIsEnabled(plugin.video.themoviedb.helper)">$INFO[Window(Home).Property(TMDbHelper.ListItem.BlurImage)]</value>
 		<value>$INFO[ListItem.Art(fanart)]</value>
 	</variable>
 	<variable name="DialogInfoDimmerVar">
