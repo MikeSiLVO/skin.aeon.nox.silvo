@@ -49,6 +49,33 @@
 			</control>
 		</control>
 		<control type="grouplist">
+			<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
+			<width>170</width>
+			<orientation>horizontal</orientation>
+			<control type="image">
+				<width>60</width>
+				<include>MediaFlagValues</include>
+				<texture>$VAR[TMDbHelperRottenTomatoLogoVar]</texture>
+			</control>
+			<control type="grouplist">
+				<width>110</width>
+				<height>78</height>
+				<align>center</align>
+				<control type="label">
+					<height>26</height>
+					<font>font13_bold</font>
+					<textcolor>grey</textcolor>
+					<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_Rating),,%]</label>
+				</control>
+				<control type="label">
+					<height>20</height>
+					<font>font10</font>
+					<textcolor>grey</textcolor>
+					<label>$LOCALIZE[31475]</label>
+				</control>
+			</control>
+		</control>
+		<control type="grouplist">
 			<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience))</visible>
 			<width>170</width>
 			<orientation>horizontal</orientation>
@@ -73,33 +100,6 @@
 					<font>font10</font>
 					<textcolor>grey</textcolor>
 					<label>$LOCALIZE[31597]</label>
-				</control>
-			</control>
-		</control>
-		<control type="grouplist">
-			<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
-			<width>170</width>
-			<orientation>horizontal</orientation>
-			<control type="image">
-				<width>60</width>
-				<include>MediaFlagValues</include>
-				<texture>$VAR[TMDbHelperRottenTomatoLogoVar]</texture>
-			</control>
-			<control type="grouplist">
-				<width>110</width>
-				<height>78</height>
-				<align>center</align>
-				<control type="label">
-					<height>26</height>
-					<font>font13_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_Rating),,%]</label>
-				</control>
-				<control type="label">
-					<height>20</height>
-					<font>font10</font>
-					<textcolor>grey</textcolor>
-					<label>$LOCALIZE[31475]</label>
 				</control>
 			</control>
 		</control>
