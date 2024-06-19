@@ -2,7 +2,7 @@
 <window id="1114" type="dialog">
 	<onload>SetFocus(90201)</onload>
 	<onunload condition="!Skin.HasSetting(BlurEnabled) + String.IsEqual(Skin.String(Viz.Background),4) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd)">Skin.ToggleSetting(BlurEnabled)</onunload>
-	<onunload condition="!Skin.HasSetting(BlurEnabled) + String.IsEqual(Skin.String(Viz.Background),4) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd)">RunScript(script.embuary.helper,action=restartservice)</onunload>
+	<onunload condition="!Skin.HasSetting(BlurEnabled) + String.IsEqual(Skin.String(Viz.Background),4) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd) + System.AddonIsEnabled(script.embuary.helper)">RunScript(script.embuary.helper,action=restartservice)</onunload>
 	<onunload condition="String.IsEqual(Window(Home).Property(DialogSettings),livetv) + !Window.IsActive(skinsettings)">SetFocus(50)</onunload>
 	<onunload>ClearProperty(DialogSettings,Home)</onunload>
 	<controls>

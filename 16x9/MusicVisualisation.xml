@@ -3,7 +3,7 @@
 	<zorder>2</zorder>
 	<onload>Skin.SetString(BlurRadius,10)</onload>
 	<onload condition="!Skin.HasSetting(BlurEnabled) + String.IsEqual(Skin.String(Viz.Background),4)">Skin.ToggleSetting(BlurEnabled)</onload>
-	<onload condition="!Skin.HasSetting(BlurEnabled) + String.IsEqual(Skin.String(Viz.Background),4)">RunScript(script.embuary.helper,action=restartservice)</onload>
+	<onload condition="!Skin.HasSetting(BlurEnabled) + String.IsEqual(Skin.String(Viz.Background),4) + System.AddonIsEnabled(script.embuary.helper)">RunScript(script.embuary.helper,action=restartservice)</onload>
 	<onload condition="!Skin.HasSetting(WarnedOnMusicVizInfo)">SetProperty(Notify,True,Home)</onload>
 	<onload condition="!Skin.HasSetting(WarnedOnMusicVizInfo)">SetProperty(NotWarnedOnMuzicVizInfo,True,Home)</onload>
 	<onload condition="!Skin.HasSetting(WarnedOnMusicVizInfo)">ActivateWindow(1126)</onload>

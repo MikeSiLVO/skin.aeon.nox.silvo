@@ -456,8 +456,8 @@
 						<label></label>
 						<altlabel></altlabel>
 						<usealttexture>String.IsEqual(Container(10051).ListItem.Property(call),tv)</usealttexture>
-						<onclick condition="String.IsEqual(Container(10051).ListItem.Property(call),tv)">RunScript(script.embuary.helper,action=goto,path='"videodb://tvshows/titles/$INFO[Container(10051).ListItem.DBID]/"',target=videos)</onclick>
-						<onclick condition="!String.IsEqual(Container(10051).ListItem.Property(call),tv)">RunScript(script.embuary.helper,action=playitem,dbid=$INFO[Container(10051).ListItem.DBID])</onclick>
+						<onclick condition="String.IsEqual(Container(10051).ListItem.Property(call),tv) + System.AddonIsEnabled(script.embuary.helper)">RunScript(script.embuary.helper,action=goto,path='"videodb://tvshows/titles/$INFO[Container(10051).ListItem.DBID]/"',target=videos)</onclick>
+						<onclick condition="!String.IsEqual(Container(10051).ListItem.Property(call),tv) + System.AddonIsEnabled(script.embuary.helper)">RunScript(script.embuary.helper,action=playitem,dbid=$INFO[Container(10051).ListItem.DBID])</onclick>
 						<visible>!String.IsEmpty(Container(10051).ListItem.DBID)</visible>
 					</control>
 					<control type="button" id="901">
@@ -477,7 +477,7 @@
 						<texturenofocus />
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label></label>
-						<onclick>RunScript(script.embuary.helper,action=goto,path='"plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[Container(10051).ListItem.Title]&amp;search_type=videos"',target=videos)</onclick>
+						<onclick condition="System.AddonIsEnabled(script.embuary.helper)">RunScript(script.embuary.helper,action=goto,path='"plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[Container(10051).ListItem.Title]&amp;search_type=videos"',target=videos)</onclick>
 						<visible>System.AddonIsEnabled(plugin.video.youtube) + System.AddonIsEnabled(script.embuary.helper)</visible>
 					</control>
 					<control type="button" id="903">
