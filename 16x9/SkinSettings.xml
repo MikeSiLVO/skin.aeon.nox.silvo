@@ -5,8 +5,8 @@
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
-	<onunload condition="!String.IsEmpty(Skin.String(FanartTimePerImage))">RunScript(script.grab.fanart,mode=random,refresh=$INFO[Skin.String(FanartTimePerImage)])</onunload>
-	<onunload condition="String.IsEmpty(Skin.String(FanartTimePerImage))">RunScript(script.grab.fanart,mode=random,refresh=7)</onunload>
+	<onunload condition="!String.IsEmpty(Skin.String(FanartTimePerImage)) + System.AddonIsEnabled(script.grab.fanart)">RunScript(script.grab.fanart,mode=random,refresh=$INFO[Skin.String(FanartTimePerImage)])</onunload>
+	<onunload condition="String.IsEmpty(Skin.String(FanartTimePerImage)) + System.AddonIsEnabled(script.grab.fanart)">RunScript(script.grab.fanart,mode=random,refresh=7)</onunload>
 	<controls>
 		<control type="group">
 			<animation effect="fade" time="500" delay="400" condition="Window.Previous(home)">WindowOpen</animation>
