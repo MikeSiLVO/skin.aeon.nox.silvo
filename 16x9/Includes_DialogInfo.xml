@@ -1026,7 +1026,7 @@
 			<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(MoreInfoTitle,$LOCALIZE[20417])</onclick>
 			<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(MoreInfoContent,$ESCINFO[ListItem.Writer])</onclick>
 			<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetFocus(64)</onclick>
-			<onclick>RunScript(plugin.video.themoviedb.helper,add_query=$INFO[ListItem.Writer],type=person,call_auto=1111)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">RunScript(plugin.video.themoviedb.helper,add_query=$INFO[ListItem.Writer],type=person,call_auto=1111)</onclick>
 			<visible>!String.IsEmpty(ListItem.Writer)</visible>
 		</item>
 		<item>

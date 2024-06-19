@@ -611,20 +611,23 @@
 		<item>
 			<label>$LOCALIZE[31456]</label>
 			<onclick>Dialog.Close(1129)</onclick>
-			<onclick condition="System.hasAddon(script.globalsearch)">RunScript(script.globalsearch)</onclick>
-			<onclick condition="!System.hasAddon(script.globalsearch)">InstallAddon(script.globalsearch)</onclick>
+			<onclick condition="!System.HasAddon(script.globalsearch)">InstallAddon(script.globalsearch)</onclick>
+			<onclick condition="System.HasAddon(script.globalsearch) + !System.AddonIsEnabled(script.globalsearch)">EnableAddon(script.globalsearch)</onclick>
+			<onclick condition="System.AddonIsEnabled(script.globalsearch)">RunScript(script.globalsearch)</onclick>
 		</item>
 		<item>
 			<label>$LOCALIZE[31457]</label>
 			<onclick>Dialog.Close(1129)</onclick>
-			<onclick condition="System.hasAddon(plugin.video.youtube)">ActivateWindow(videos,"plugin://plugin.video.youtube/kodion/search/list/",return)</onclick>
-			<onclick condition="!System.hasAddon(plugin.video.youtube)">InstallAddon(plugin.video.youtube)</onclick>
+			<onclick condition="!System.HasAddon(plugin.video.youtube)">InstallAddon(plugin.video.youtube)</onclick>
+			<onclick condition="System.HasAddon(plugin.video.youtube) + !System.AddonIsEnabled(plugin.video.youtube)">EnableAddon(plugin.video.youtube)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.youtube)">ActivateWindow(videos,"plugin://plugin.video.youtube/kodion/search/list/",return)</onclick>
 		</item>
 		<item>
 			<label>$LOCALIZE[31458]</label>
 			<onclick>Dialog.Close(1129)</onclick>
-			<onclick condition="System.hasAddon(script.embuary.info)">RunScript(script.embuary.info)</onclick>
-			<onclick condition="!System.hasAddon(script.embuary.info)">InstallAddon(script.embuary.info)</onclick>
+			<onclick condition="!System.HasAddon(script.embuary.info)">InstallAddon(script.embuary.info)</onclick>
+			<onclick condition="System.HasAddon(script.embuary.info) + !System.AddonIsEnabled(script.embuary.info)">EnableAddon(script.globalsearch)</onclick>
+			<onclick condition="System.HasAddon(script.embuary.info) + System.AddonIsEnabled(script.embuary.info)">RunScript(script.embuary.info)</onclick>
 		</item>
 	</include>
 	<include name="SelectActorName">
@@ -1082,7 +1085,8 @@
 		<item>
 			<label>$LOCALIZE[31562]</label>
 			<onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
-			<onclick condition="System.HasAddon(script.image.resource.select)">RunScript(script.image.resource.select,property=musicgenreicons&amp;type=resource.images.musicgenreicons)</onclick>
+			<onclick condition="System.HasAddon(script.image.resource.select) + !System.AddonIsEnabled(script.image.resource.select)">EnableAddon(script.image.resource.select)</onclick>
+			<onclick condition="System.AddonIsEnabled(script.image.resource.select)">RunScript(script.image.resource.select,property=musicgenreicons&amp;type=resource.images.musicgenreicons)</onclick>
 			<onclick>Dialog.Close(1129)</onclick>
 		</item>
 	</include>
@@ -1101,6 +1105,7 @@
 		<item>
 			<label>$LOCALIZE[31619]</label>
 			<onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
+			<onclick condition="System.HasAddon(script.image.resource.select) + !System.AddonIsEnabled(script.image.resource.select)">EnableAddon(script.image.resource.select)</onclick>
 			<onclick condition="System.HasAddon(script.image.resource.select)">RunScript(script.image.resource.select,property=moviegenreicons&amp;type=resource.images.moviegenreicons)</onclick>
 			<onclick>Dialog.Close(1129)</onclick>
 		</item>
