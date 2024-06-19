@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<onload condition="System.AddonIsEnabled(script.embuary.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(script.embuary.helper,action=blurimg,file=$INFO[ListItem.Icon],prop=MyProp,radius=10)</onload>
-	<onload condition="!System.AddonIsEnabled(script.embuary.helper) + System.AddonIsEnabled(plugin.video.themoviedb.helper)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[PosterVar]"')</onload>
+	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) + System.AddonIsEnabled(script.embuary.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(script.embuary.helper,action=blurimg,file=$INFO[ListItem.Icon],prop=MyProp,radius=10)</onload>
+	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[PosterVar]"')</onload>
 	<onload>SetFocus(9003)</onload>
 	<onload condition="String.IsEmpty(ListItem.SongVideoURL)">SetFocus(5010)</onload>
 	<onload condition="!String.IsEmpty(ListItem.SongVideoURL)">SetFocus(5000)</onload>
