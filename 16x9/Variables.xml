@@ -427,10 +427,10 @@
 		<value>$LOCALIZE[20360]</value>
 	</variable>
 	<variable name="NoSpoilerIconVar">
-		<value condition="Container.Content(episodes) + String.IsEqual(ListItem.Overlay,OverlayUnwatched.png) + String.IsEqual(ListItem.Icon,OverlaySpoiler.png) + !String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
-		<value condition="Container.Content(episodes) + String.IsEqual(ListItem.Overlay,OverlayUnwatched.png) + String.IsEqual(ListItem.Icon,OverlaySpoiler.png) + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
-		<value condition="Container.Content(episodes) + String.IsEqual(ListItem.Overlay,OverlayUnwatched.png) + String.IsEqual(ListItem.Icon,OverlaySpoiler.png) + !String.IsEmpty(Container.Art(tvshow.fanart))">$INFO[Container.Art(tvshow.fanart)]</value>
-		<value>$INFO[ListItem.Icon]</value>
+		<value condition="Container.Content(episodes) + System.Setting(hideunwatchedepisodethumbs) + Integer.IsEqual(ListItem.Playcount,0) + !String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
+		<value condition="Container.Content(episodes) + System.Setting(hideunwatchedepisodethumbs) + Integer.IsEqual(ListItem.Playcount,0) + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<value condition="Container.Content(episodes) + System.Setting(hideunwatchedepisodethumbs) + Integer.IsEqual(ListItem.Playcount,0) + !String.IsEmpty(Container.Art(tvshow.fanart))">$INFO[Container.Art(tvshow.fanart)]</value>
+		<value>$INFO[ListItem.Art(thumb)]</value>
 	</variable>
 	<variable name="VideoPlotVar">
 		<value condition="ListItem.IsCollection + System.AddonIsEnabled(script.skin.info.service) + System.AddonIsEnabled(script.skin.info.service) + !Skin.HasSetting(ViewSetPlotToggle) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Plot))">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Plot)]</value>
