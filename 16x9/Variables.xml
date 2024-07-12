@@ -1846,6 +1846,9 @@
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigFan) + Container.Content(sets) + !String.IsEmpty(Skin.String(591.Sets.DisableOverlay))">$INFO[Skin.String(591.Sets.DisableOverlay)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigFan) + Container.Content(tvshows) + !String.IsEmpty(Skin.String(591.TV.DisableOverlay))">$INFO[Skin.String(591.TV.DisableOverlay)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigFan) + Container.Content(seasons) + !String.IsEmpty(Skin.String(591.Seasons.DisableOverlay))">$INFO[Skin.String(591.Seasons.DisableOverlay)]</value>
+		<!-- Gallery -->
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),Gallery) + Container.Content(movies) + !String.IsEmpty(Skin.String(504.Movies.DisableOverlay))">$INFO[Skin.String(504.Movies.DisableOverlay)]</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),Gallery) + Container.Content(tvshows) + !String.IsEmpty(Skin.String(504.TV.DisableOverlay))">$INFO[Skin.String(504.TV.DisableOverlay)]</value>
 		<value>$LOCALIZE[1223]</value>
 	</variable>
 	<variable name="DisableOverlayOnclickVar">
@@ -1947,6 +1950,11 @@
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigFan) + Container.Content(tvshows) + String.IsEqual(Skin.String(591.TV.DisableOverlay),$LOCALIZE[305])">Skin.Reset(591.TV.DisableOverlay)</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigFan) + Container.Content(seasons) + String.IsEmpty(Skin.String(591.Seasons.DisableOverlay))">Skin.SetString(591.Seasons.DisableOverlay,$LOCALIZE[305])</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),BigFan) + Container.Content(seasons) + String.IsEqual(Skin.String(591.Seasons.DisableOverlay),$LOCALIZE[305])">Skin.Reset(591.Seasons.DisableOverlay)</value>
+		<!-- Gallery-->
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),Gallery) + Container.Content(movies) + String.IsEmpty(Skin.String(504.Movies.DisableOverlay))">Skin.SetString(504.Movies.DisableOverlay,$LOCALIZE[305])</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),Gallery) + Container.Content(movies) + String.IsEqual(Skin.String(504.Movies.DisableOverlay),$LOCALIZE[305])">Skin.Reset(504.Movies.DisableOverlay)</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),Gallery) + Container.Content(tvshows) + String.IsEmpty(Skin.String(504.TV.DisableOverlay))">Skin.SetString(504.TV.DisableOverlay,$LOCALIZE[305])</value>
+		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),Gallery) + Container.Content(tvshows) + String.IsEqual(Skin.String(504.TV.DisableOverlay),$LOCALIZE[305])">Skin.Reset(504.TV.DisableOverlay)</value>
 	</variable>
 	<variable name="PlayerTimeRemainingHourVar">
 		<value condition="Integer.IsGreaterOrEqual(Player.TimeRemaining(h),2) + !Integer.IsEqual(Player.TimeRemaining(mm),00)">$INFO[Player.TimeRemaining(h),, $LOCALIZE[12392]]</value>
