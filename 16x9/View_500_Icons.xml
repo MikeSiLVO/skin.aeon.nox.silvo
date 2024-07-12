@@ -138,24 +138,14 @@
 						</animation>
 					</control>
 				</focusedlayout>
-				<itemlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)]">
+				<itemlayout height="360" width="420" condition="Container.Content(episodes)">
 					<control type="image">
 						<width>420</width>
 						<height>360</height>
 						<aspectratio>scale</aspectratio>
-						<texture colordiffuse="BAFFFFFF" background="true">$VAR[PosterThumb]</texture>
-						<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
-						<bordersize>2</bordersize>
-						<visible>!Container.Content(episodes)</visible>
-					</control>
-					<control type="image">
-						<width>420</width>
-						<height>360</height>
-						<aspectratio>stretch</aspectratio>
 						<texture colordiffuse="BAFFFFFF" background="true">$VAR[NoSpoilerIconVar]</texture>
 						<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
 						<bordersize>2</bordersize>
-						<visible>Container.Content(episodes)</visible>
 					</control>
 					<control type="image">
 						<left>320</left>
@@ -183,7 +173,83 @@
 						<label>$INFO[ListItem.Label]</label>
 					</control>
 				</itemlayout>
-				<focusedlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)]">
+				<focusedlayout height="360" width="420" condition="Container.Content(episodes)">
+					<control type="group">
+						<animation type="Focus" reversible="false">
+							<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
+							<effect type="fade" start="80" end="100" time="300" tween="sine" easing="in" />
+						</animation>
+						<control type="image">
+							<width>420</width>
+							<height>360</height>
+							<aspectratio>scale</aspectratio>
+							<texture colordiffuse="BAFFFFFF" background="true">$VAR[NoSpoilerIconVar]</texture>
+							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+							<bordersize>8</bordersize>
+						</control>
+						<control type="image">
+							<left>320</left>
+							<width>100</width>
+							<height>100</height>
+							<texture>$VAR[OverlayVar]</texture>
+							<aspectratio align="center" aligny="top">keep</aspectratio>
+							<bordersize>8</bordersize>
+						</control>
+						<control type="image">
+							<left>6</left>
+							<top>310</top>
+							<width>408</width>
+							<height>44</height>
+							<texture>colors/black.png</texture>
+							<bordersize>2</bordersize>
+							<colordiffuse>88ffffff</colordiffuse>
+						</control>
+						<control type="label">
+							<top>310</top>
+							<width>420</width>
+							<height>40</height>
+							<align>center</align>
+							<textoffsetx>10</textoffsetx>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</control>
+				</focusedlayout>
+				<itemlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets)]">
+					<control type="image">
+						<width>420</width>
+						<height>360</height>
+						<aspectratio>scale</aspectratio>
+						<texture colordiffuse="BAFFFFFF" background="true">$VAR[PosterThumb]</texture>
+						<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+						<bordersize>2</bordersize>
+					</control>
+					<control type="image">
+						<left>320</left>
+						<width>100</width>
+						<height>100</height>
+						<texture>$VAR[OverlayVar]</texture>
+						<aspectratio align="center" aligny="top">keep</aspectratio>
+						<bordersize>1</bordersize>
+					</control>
+					<control type="image">
+						<top>310</top>
+						<width>420</width>
+						<height>50</height>
+						<texture>colors/black.png</texture>
+						<bordersize>2</bordersize>
+						<colordiffuse>88ffffff</colordiffuse>
+					</control>
+					<control type="label">
+						<top>310</top>
+						<width>420</width>
+						<height>40</height>
+						<align>center</align>
+						<textoffsetx>10</textoffsetx>
+						<textcolor>grey2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets)]">
 					<control type="group">
 						<animation type="Focus" reversible="false">
 							<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
@@ -196,16 +262,6 @@
 							<texture background="true">$VAR[PosterThumb]</texture>
 							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
 							<bordersize>8</bordersize>
-							<visible>!Container.Content(episodes)</visible>
-						</control>
-						<control type="image">
-							<width>420</width>
-							<height>360</height>
-							<aspectratio>stretch</aspectratio>
-							<texture colordiffuse="BAFFFFFF" background="true">$VAR[NoSpoilerIconVar]</texture>
-							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
-							<bordersize>8</bordersize>
-							<visible>Container.Content(episodes)</visible>
 						</control>
 						<control type="image">
 							<left>320</left>
