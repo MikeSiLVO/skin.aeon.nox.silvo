@@ -158,22 +158,24 @@
 							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
 							<bordersize>8</bordersize>
 						</control>
-						<control type="image">
+						<control type="group">
 							<visible>![Window.IsActive(pictures) | Container.Content(artists)]</visible>
-							<left>1039</left>
-							<top>8</top>
-							<width>80</width>
-							<height>80</height>
-							<texture>$VAR[OverlayVar]</texture>
-							<aspectratio align="center" aligny="top">keep</aspectratio>
-						</control>
-						<control type="image">
-							<visible>![Window.IsActive(pictures) | Container.Content(artists)]</visible>
-							<top>420</top>
-							<width>1125</width>
-							<height>168</height>
-							<aspectratio align="center">keep</aspectratio>
-							<texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
+							<control type="image">
+								<left>1039</left>
+								<top>8</top>
+								<width>80</width>
+								<height>80</height>
+								<texture>$VAR[OverlayVar]</texture>
+								<aspectratio align="center" aligny="top">keep</aspectratio>
+								<visible>[!String.IsEmpty(Skin.String(504.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(504.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
+							</control>
+							<control type="image">
+								<top>420</top>
+								<width>1125</width>
+								<height>168</height>
+								<aspectratio align="center">keep</aspectratio>
+								<texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
+							</control>
 						</control>
 						<control type="image">
 							<visible>Window.IsActive(pictures)</visible>
