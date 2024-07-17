@@ -272,7 +272,7 @@
 		<value condition="String.IsEqual(ListItem.Property(WatchedEpisodePercent),100)">overlays/list/OverlayWatched.png</value>
 		<value condition="ListItem.IsResumable + ![String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEqual(Container.SortMethod,$LOCALIZE[20360])">overlays/list/resumable.png</value>
 		<value condition="!String.IsEmpty(ListItem.Overlay)">$INFO[ListItem.Overlay,overlays/list/]</value>
-		<value condition="!ListItem.IsParentFolder + !Container.Content(years) + !Container.Content(actors) + !Container.Content(tags) + !Container.Content(genres) + !Container.Content(playlists)">overlays/list/OverlayUnWatched.png</value>
+		<value condition="!ListItem.IsParentFolder + !Container.Content(years) + !Container.Content(actors) + !Container.Content(tags) + !Container.Content(genres) + !Container.Content(playlists) + !String.IsEqual(Container.FolderPath,sources://video/)">overlays/list/OverlayUnWatched.png</value>
 	</variable>
 	<variable name="ListItemOverlayShowsVar">
 		<value condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),99) + !String.IsEqual(ListItem.Property(TotalEpisodes),ListItem.Property(UnWatchedEpisodes))">   99 +</value>
