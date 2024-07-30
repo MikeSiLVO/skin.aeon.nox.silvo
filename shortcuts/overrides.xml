@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <overrides>
+	<alwaysRestore>True</alwaysRestore>
+	<defaultwidgetsGetMore>False</defaultwidgetsGetMore>
+	<thumbnailBrowseDefault>special://skin/extras/icons/</thumbnailBrowseDefault>
+	<contextmenu />
+	<groupoverride group="mainmenu" condition="String.IsEqual(ListItem.Property(path),ActivateWindow(1129))">SetProperty(CustomSelect,search,Home)</groupoverride>
 	<override action="ActivateWindow(favourites)">
 		<action>ActivateWindow(favouritesbrowser)</action>
 	</override>
-	<contextmenu />
-	<groupoverride group="mainmenu" condition="String.IsEqual(ListItem.Property(path),ActivateWindow(1129))">SetProperty(CustomSelect,search,Home)</groupoverride>
+	<override action="RebootFromNand">
+		<action>System.ExecWait("/usr/sbin/rebootfromnand")</action>
+		<action>Reboot()</action>
+	</override>
+	<override action="ActivateWindow(skinsettings)" group="buttonmenu">
+		<action>Dialog.Close(all,true)</action>
+		<action>::ACTION::</action>
+	</override>
+	<override action="ActivateWindow(favouritesbrowser)" group="buttonmenu">
+		<action>Dialog.Close(all,true)</action>
+		<action>::ACTION::</action>
+	</override>
 	<visibleoverride condition="Library.HasContent(music)">ActivateWindow(Music,files)</visibleoverride>
 	<visibleoverride condition="Library.HasContent(movies)">ActivateWindow(videos,files,return)</visibleoverride>
 	<visibleoverride condition="Library.HasContent(tvshows)">ActivateWindow(videos,files,return)</visibleoverride>
@@ -13,9 +28,6 @@
 	<visibleoverride condition="!String.IsEmpty(Weather.Plugin)">ActivateWindow(servicesettings,weather)</visibleoverride>
 	<warn heading="19098" message="31377">ActivateWindow(Settings)</warn>
 	<warn heading="19098" message="31377">ActivateWindow(SkinSettings)</warn>
-	<alwaysRestore>True</alwaysRestore>
-	<defaultwidgetsGetMore>False</defaultwidgetsGetMore>
-	<thumbnailBrowseDefault>special://skin/extras/icons/</thumbnailBrowseDefault>
 	<!-- Backgrounds -->
 	<backgroundBrowse>True</backgroundBrowse>
 	<background label="$LOCALIZE[31548]">Kodi.Movie.Fanart</background>
