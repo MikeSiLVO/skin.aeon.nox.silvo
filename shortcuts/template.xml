@@ -4913,6 +4913,30 @@
 			</item>
 		</controls>
 	</other>
+	<!-- Other Includes -->
+	<other include="HomeRandomFanartLists">
+		<propertyGroup>widgetCommon</propertyGroup>
+		<condition tag="property" attribute="name|background">Kodi.Movie.Fanart</condition>
+		<property name="listid" tag="property" attribute="name|background" value="Kodi.Movie.Fanart">9035</property>
+		<property name="content" tag="property" attribute="name|background" value="Kodi.Movie.Fanart">videodb://movies/titles/</property>
+		<condition tag="property" attribute="name|background">Kodi.TV.Fanart</condition>
+		<property name="listid" tag="property" attribute="name|background" value="Kodi.TV.Fanart">9036</property>
+		<property name="content" tag="property" attribute="name|background" value="Kodi.TV.Fanart">videodb://tvshows/titles/</property>
+		<condition tag="property" attribute="name|background">Kodi.Music.Fanart</condition>
+		<property name="listid" tag="property" attribute="name|background" value="Kodi.Music.Fanart">9037</property>
+		<property name="content" tag="property" attribute="name|background" value="Kodi.Music.Fanart">musicdb://artists/?albumartistsonly=true</property>
+		<condition tag="property" attribute="name|background">Kodi.MusicVideo.Fanart</condition>
+		<property name="listid" tag="property" attribute="name|background" value="Kodi.MusicVideo.Fanart">9038</property>
+		<property name="content" tag="property" attribute="name|background" value="Kodi.MusicVideo.Fanart">videodb://musicvideos/titles/</property>
+		<match>any</match>
+		<controls>
+			<control type="wraplist" id="$SKINSHORTCUTS[listid]">
+				<include>HiddenList</include>
+				<include>ListAutoscrollTime</include>
+				<content sortby="random" limit="100">$SKINSHORTCUTS[content]</content>
+			</control>
+		</controls>
+	</other>
 	<!-- Property Groups -->
 	<propertyGroup name="widget1Common">
 		<!-- Retrieve Properties -->
