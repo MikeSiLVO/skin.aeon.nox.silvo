@@ -112,26 +112,8 @@
 			<label>$INFO[Container.ListItem.Art(albumartist.fanart19)]</label>
 			<label>$INFO[Container.ListItem.Art(albumartist.fanart20)]</label>
 		</control>
-		<control type="fadelabel" id="4411">
-			<top>-100</top>
-			<width>2560</width>
-			<height>0</height>
-			<scroll>false</scroll>
-			<scrollout>false</scrollout>
-			<randomize>true</randomize>
-			<resetonlabelchange>true</resetonlabelchange>
-			<include>FadeLabelTime</include>
-			<!-- All Movies -->
-			<label>$INFO[Container(9035).ListItem.Art(fanart)]</label>
-			<!-- All TV Shows -->
-			<label>$INFO[Container(9036).ListItem.Art(fanart)]</label>
-			<!-- All Album Artists -->
-			<label>$INFO[Container(9037).ListItem.Art(fanart)]</label>
-			<!-- All Music Videos -->
-			<label>$INFO[Container(9038).ListItem.Art(fanart)]</label>
-		</control>
 		<!-- <include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">TMDbHelperContentList</include> -->
-		<include>HomeFanartLists</include>
+		<include>skinshortcuts-template-HomeRandomFanartLists</include>
 		<control type="button" id="9051">
 			<include>HiddenObject</include>
 			<onfocus condition="Player.HasMedia">ActivateWindow(playercontrols)</onfocus>
