@@ -83,7 +83,6 @@
 		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,6)">$INFO[Skin.String(weatherfanart.path)]$INFO[Window(Weather).Property(Current.FanartCode)]$VAR[WeatherBackgroundTypeVar]</value>
 		<value condition="!String.IsEmpty(Container(9033).ListItem.Thumb)">$INFO[Container(9033).ListItem.Thumb]</value>
 		<value condition="String.IsEmpty(Container(9033).ListItem.Art(thumb)) + !String.IsEmpty(Skin.String(CustomDefaultBackground.path))">$INFO[Skin.String(CustomDefaultBackground.path)]</value>
-		<value>$INFO[Window(Home).Property(fakelabel)]</value>
 	</variable>
 	<variable name="FanartVar">
 		<value condition="!String.IsEmpty(Control.GetLabel(4411)) + !Skin.HasSetting(Disable.Extrafanart)">$INFO[Control.GetLabel(4411)]</value>
