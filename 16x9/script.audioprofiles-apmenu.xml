@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="11112">
+	<defaultcontrol>10070</defaultcontrol>
+	<include>DialogOpenCloseAnimation</include>
+	<controls>
+		<control type="group" id="10072">
+			<width>600</width>
+			<control type="image">
+				<width>600</width>
+				<height>60</height>
+				<texture>colors/black.png</texture>
+			</control>
+			<control type="label" id="10071">
+				<width>600</width>
+				<height>60</height>
+				<align>center</align>
+				<aligny>center</aligny>
+				<textcolor>grey2</textcolor>
+				<font>font16_title_bold</font>
+				<textoffsetx>35</textoffsetx>
+				<label />
+			</control>
+			<control type="image">
+				<top>59</top>
+				<width>600</width>
+				<height>1</height>
+				<texture colordiffuse="grey4">separator_horizontal.png</texture>
+			</control>
+			<control type="panel" id="10070">
+				<top>60</top>
+				<width>600</width>
+				<onleft>10070</onleft>
+				<onright>10070</onright>
+				<onup>10070</onup>
+				<ondown>10070</ondown>
+				<itemlayout height="60" width="600">
+					<control type="image">
+						<width>600</width>
+						<height>60</height>
+						<texture>button_nofocus.png</texture>
+					</control>
+					<control type="label">
+						<width>600</width>
+						<height>60</height>
+						<textcolor>grey2</textcolor>
+						<font>font14</font>
+						<textoffsetx>35</textoffsetx>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="60" width="600">
+					<control type="image">
+						<width>600</width>
+						<height>60</height>
+						<texture colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texture>
+					</control>
+					<control type="label">
+						<width>600</width>
+						<height>60</height>
+						<textcolor>white</textcolor>
+						<font>font14</font>
+						<textoffsetx>35</textoffsetx>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="group" id="10073" />
+		</control>
+	</controls>
+</window>
