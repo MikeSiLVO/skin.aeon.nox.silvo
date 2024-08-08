@@ -3,6 +3,7 @@
 	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) + System.AddonIsEnabled(script.embuary.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(script.embuary.helper,action=blurimg,file='"$VAR[PosterVar]"',prop=MyProp,radius=10)</onload>
 	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[PosterVar]"')</onload>
 	<onload>SetFocus(90003)</onload>
+	<onload condition="String.IsEqual(ListItem.Property(item.type),person)">SetFocus(9876)</onload>
 	<onload condition="![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + ![String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.preshowexperience)] + !String.IsEqual(ListItem.Property(item.type),person)">SetFocus(8)</onload>
 	<onload condition="![Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.preshowexperience)">SetFocus(909)</onload>
 	<onload condition="Window.IsActive(home) + String.IsEqual(ListItem.DBTYPE,tvshow)">SetFocus(808)</onload>
@@ -500,6 +501,23 @@
 						<onclick>SetProperty(FSFanart,$INFO[ListItem.Art(fanart)],movieinformation)</onclick>
 						<onclick>ActivateWindow(1119)</onclick>
 					</control>
+				</control>
+				<control type="button" id="9876">
+					<right>0</right>
+					<top>544</top>
+					<height>60</height>
+					<onleft>9000</onleft>
+					<onright>9000</onright>
+					<onup>300</onup>
+					<ondown>90001</ondown>
+					<description>Browse to Item</description>
+					<font>IconMediumMD</font>
+					<width>65</width>
+					<texturenofocus />
+					<include>ButtonInfoDialogsCommonValues</include>
+					<label></label>
+					<onclick>SetFocus(900020)</onclick>
+					<visible>String.IsEqual(ListItem.Property(item.type),person)</visible>
 				</control>
 				<control type="image">
 					<left>3</left>
