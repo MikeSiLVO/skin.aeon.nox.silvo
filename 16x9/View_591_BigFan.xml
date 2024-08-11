@@ -13,7 +13,7 @@
 		<viewtype label="$LOCALIZE[31249]">list</viewtype>
 		<preloaditems>2</preloaditems>
 		<scrolltime tween="quadratic">200</scrolltime>
-		<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_591]</visible>
+		<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_591]</visible>
 		<itemlayout width="1080" height="1920" />
 		<focusedlayout width="1080" height="1920">
 			<control type="group">

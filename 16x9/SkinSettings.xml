@@ -439,44 +439,51 @@
 						<height>810</height>
 						<onleft>9000</onleft>
 						<visible>Container(9000).HasFocus(4)</visible>
-						<control type="button" id="4000">
+						<control type="radiobutton" id="4000">
 							<include>SettingsButtonCommonValues</include>
-							<label>$LOCALIZE[31615]</label>
-							<onclick>RunScript(script.skinvariables,action=buildviews,configure)</onclick>
+							<label>$LOCALIZE[31003]</label>
+							<onclick>Skin.ToggleSetting(skinvariables.viewtypes)</onclick>
+							<selected>Skin.HasSetting(skinvariables.viewtypes)</selected>
 							<visible>System.AddonIsEnabled(script.skinvariables)</visible>
 						</control>
 						<control type="button" id="4001">
+							<include>SettingsButtonCommonValues</include>
+							<label>   - $LOCALIZE[31615]</label>
+							<onclick>RunScript(script.skinvariables,action=buildviews,configure)</onclick>
+							<visible>System.AddonIsEnabled(script.skinvariables) + Skin.HasSetting(skinvariables.viewtypes)</visible>
+						</control>
+						<control type="button" id="4002">
 							<include>SettingsButtonCommonValues</include>
 							<label>31939</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[InfoPanelDelayLocalizeVar][/COLOR]</label2>
 							<onclick condition="Skin.HasSetting(Enable.ManualInfoPanel)">Skin.Reset(Enable.ManualInfoPanel)</onclick>
 							<onclick>$VAR[InfoPanelDelayOnClickVar]</onclick>
 						</control>
-						<control type="radiobutton" id="4002">
+						<control type="radiobutton" id="4003">
 							<include>SettingsButtonCommonValues</include>
 							<label>31941</label>
 							<onclick>SetProperty(OfferReloadAfterConfirm,True,Home)</onclick>
 							<onclick>ActivateWindow(1126)</onclick>
 							<selected>Skin.HasSetting(KioskMode.Enabled)</selected>
 						</control>
-						<control type="radiobutton" id="4003">
+						<control type="radiobutton" id="4004">
 							<include>SettingsButtonCommonValues</include>
 							<label>$LOCALIZE[31587]</label>
 							<onclick>Skin.ToggleSetting(Disable.MultiSearch)</onclick>
 							<selected>Skin.HasSetting(Disable.MultiSearch)</selected>
 						</control>
-						<control type="button" id="4004">
+						<control type="button" id="4005">
 							<include>SettingsButtonCommonValues</include>
 							<label>31943</label>
 							<onclick>ActivateWindow(1127)</onclick>
 						</control>
-						<control type="button" id="4005">
+						<control type="button" id="4006">
 							<include>SettingsButtonCommonValues</include>
 							<label>31094</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[SlimListSettingVar][/COLOR]</label2>
 							<onclick>Skin.ToggleSetting(Enable.SlimList)</onclick>
 						</control>
-						<control type="radiobutton" id="4006">
+						<control type="radiobutton" id="4007">
 							<include>SettingsButtonCommonValues</include>
 							<label>31961</label>
 							<onclick>Skin.ToggleSetting(Enable.HideRatings)</onclick>

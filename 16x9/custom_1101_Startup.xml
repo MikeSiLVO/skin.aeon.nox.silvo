@@ -7,6 +7,7 @@
 	<onload>Skin.Reset(skininfo.autoclosemusicosd)</onload>
 	<onload condition="!System.AddonIsEnabled(script.embuary.helper) + !System.AddonIsEnabled(plugin.video.themoviedb.helper)">Skin.Reset(Enable.BlurredVideoInfo)</onload>
 	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">Skin.SetBool(Disable.NextAired)</onload>
+	<onload condition="!System.AddonIsEnabled(script.skinvariables)">Skin.Reset(skinvariables.viewtypes)</onload>
 	<onload condition="System.AddonIsEnabled(script.skin.info.service)">RunScript(script.skin.info.service)</onload>
 	<onload condition="System.AddonIsEnabled(script.artistslideshow)">RunScript(script.artistslideshow,daemon=True)</onload>
 	<onload condition="!String.IsEmpty(Skin.String(StartupIntro))">SetFocus(10)</onload>

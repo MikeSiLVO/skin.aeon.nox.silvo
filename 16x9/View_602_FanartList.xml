@@ -100,7 +100,7 @@
 					<viewtype label="$LOCALIZE[31240]">list</viewtype>
 					<pagecontrol>60260</pagecontrol>
 					<preloaditems>2</preloaditems>
-					<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_602]</visible>
+					<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_602]</visible>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
 					<itemlayout height="70" width="1056" condition="Container.Content(movies)">
 						<control type="label">

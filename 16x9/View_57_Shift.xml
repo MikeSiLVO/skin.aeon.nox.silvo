@@ -146,7 +146,7 @@
 				<preloaditems>2</preloaditems>
 				<scrolltime tween="quadratic">400</scrolltime>
 				<focusposition>1</focusposition>
-				<visible>!System.AddonIsEnabled(script.skinvariables) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(musicvideos) | Container.Content(seasons) | Container.Content(genres) | Container.Content(sets) | Container.Content(addons)] | System.AddonIsEnabled(script.skinvariables) + $EXP[Exp_View_57]</visible>
+				<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(musicvideos) | Container.Content(seasons) | Container.Content(genres) | Container.Content(sets) | Container.Content(addons)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_57]</visible>
 				<itemlayout width="315" height="750" condition="!Skin.HasSetting(Enable.Shift.Small) + !Container.Content(addons)">
 					<include>ShiftPosterThumbs</include>
 				</itemlayout>
