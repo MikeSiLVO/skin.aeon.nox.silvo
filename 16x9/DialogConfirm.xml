@@ -3,17 +3,14 @@
 	<defaultcontrol>9000</defaultcontrol>
 	<onload condition="Control.IsVisible(10)">SetFocus(10)</onload>
 	<controls>
+		<control type="label" id="1">
+			<include>HiddenObject</include>
+		</control>
 		<include>DimBackground</include>
 		<control type="group">
 			<include>DialogOpenCloseAnimation</include>
 			<left>510</left>
 			<top>290</top>
-			<control type="label" id="1">
-				<width>0</width>
-				<height>0</height>
-				<font />
-				<visible>false</visible>
-			</control>
 			<control type="image">
 				<width>910</width>
 				<height>500</height>
@@ -31,7 +28,7 @@
 				<font>font16_title_bold</font>
 				<align>center</align>
 				<textcolor>grey2</textcolor>
-				<label>$INFO[Control.GetLabel(1)] $INFO[System.Progressbar,- ,%]</label>
+				<label>$INFO[Control.GetLabel(1)]$INFO[System.Progressbar,  ,%]</label>
 			</control>
 			<control type="textbox" id="9">
 				<left>45</left>
@@ -52,34 +49,25 @@
 				<control type="button" id="11">
 					<description>Yes button</description>
 					<width>287</width>
-					<height>60</height>
 					<label>107</label>
 					<font>font15_title</font>
 					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
 					<align>center</align>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texturefocus>
 				</control>
 				<control type="button" id="10">
 					<description>No button</description>
 					<width>287</width>
-					<height>60</height>
 					<label>106</label>
 					<font>font15_title</font>
 					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
 					<align>center</align>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texturefocus>
 				</control>
 				<control type="button" id="12">
 					<description>Settings button</description>
 					<width>287</width>
-					<height>60</height>
 					<font>font15_title</font>
 					<textcolor>grey2</textcolor>
-					<focusedcolor>white</focusedcolor>
 					<align>center</align>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texturefocus>
 				</control>
 			</control>
 		</control>
