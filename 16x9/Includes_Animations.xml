@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<include name="NoRatingsHelperFlagAnimations">
-		<animation effect="slide" end="-320" condition="[Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(57) | Control.IsVisible(602)] + Container.Content(movies)">Conditional</animation>
-		<animation effect="slide" end="-355" condition="Control.IsVisible(56) | Control.IsVisible(509)">Conditional</animation>
-		<animation effect="slide" end="-300" condition="[Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(602)] + Container.Content(episodes)">Conditional</animation>
-		<animation effect="slide" end="-280" condition="[Control.IsVisible(500) + !Skin.HasSetting(500.SmallerIcons)] + Container.Content(episodes) | Control.IsVisible(58)">Conditional</animation>
-		<animation effect="slide" end="-240" condition="[Control.IsVisible(500) + Skin.HasSetting(500.SmallerIcons)] + Container.Content(episodes)">Conditional</animation>
-	</include>
 	<include name="WindowOpenCloseAnimation">
 		<animation effect="slide" tween="cubic" time="600" start="0,1080" end="0,0">WindowOpen</animation>
 		<animation effect="slide" tween="cubic" time="600" end="0,1080" start="0,0">WindowClose</animation>
@@ -24,6 +17,10 @@
 	<include name="VisibleFadeAnimation">
 		<animation effect="fade" time="250">Visible</animation>
 		<animation effect="fade" time="250">Hidden</animation>
+	</include>
+	<include name="FadeAnimation">
+		<animation effect="fade" time="250">Visible</animation>
+		<animation effect="fade" time="50">Hidden</animation>
 	</include>
 	<include name="SettingsFadeAnimation">
 		<animation effect="fade" time="250" delay="100">Visible</animation>

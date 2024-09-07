@@ -59,7 +59,7 @@
 						<top>18</top>
 						<width>120</width>
 						<height>76</height>
-						<texture>$INFO[ListItem.Property(Radio)]</texture>
+						<texture colordiffuse="$INFO[ListItem.Property(color_diffuse)]">$INFO[ListItem.Property(Radio)]</texture>
 					</control>
 				</itemlayout>
 				<focusedlayout height="100" width="628">
@@ -92,7 +92,7 @@
 						<top>18</top>
 						<width>120</width>
 						<height>76</height>
-						<texture>$INFO[ListItem.Property(Radio)]</texture>
+						<texture colordiffuse="$INFO[ListItem.Property(color_diffuse)]">$INFO[ListItem.Property(Radio)]</texture>
 					</control>
 				</focusedlayout>
 				<content>
@@ -100,56 +100,64 @@
 						<label>$LOCALIZE[13404]</label>
 						<icon>overlays/resumable.png</icon>
 						<onclick>Skin.SetBool(Disable.Resumable)</onclick>
-						<property name="Radio">android/btn_radio_on_holo_dark.png</property>
+						<property name="Radio">android/radio_on.png</property>
+						<property name="color_diffuse">$VAR[ThemeLabelColor]</property>
 						<visible>!Skin.HasSetting(Disable.Resumable)</visible>
 					</item>
 					<item>
 						<label>$LOCALIZE[13404]</label>
 						<icon>overlays/resumable.png</icon>
 						<onclick>Skin.Reset(Disable.Resumable)</onclick>
-						<property name="Radio">android/btn_radio_off_holo_dark.png</property>
+						<property name="Radio">android/radio_off.png</property>
+						<property name="color_diffuse">grey</property>
 						<visible>Skin.HasSetting(Disable.Resumable)</visible>
 					</item>
 					<item>
 						<label>$LOCALIZE[16102]</label>
 						<icon>overlays/OverlayWatched.png</icon>
 						<onclick>Skin.SetBool(Disable.OverlayWatched)</onclick>
-						<property name="Radio">android/btn_radio_on_holo_dark.png</property>
+						<property name="Radio">android/radio_on.png</property>
+						<property name="color_diffuse">$VAR[ThemeLabelColor]</property>
 						<visible>!Skin.HasSetting(Disable.OverlayWatched)</visible>
 					</item>
 					<item>
 						<label>$LOCALIZE[16102]</label>
 						<icon>overlays/OverlayWatched.png</icon>
 						<onclick>Skin.Reset(Disable.OverlayWatched)</onclick>
-						<property name="Radio">android/btn_radio_off_holo_dark.png</property>
+						<property name="Radio">android/radio_off.png</property>
+						<property name="color_diffuse">grey</property>
 						<visible>Skin.HasSetting(Disable.OverlayWatched)</visible>
 					</item>
 					<item>
 						<label>$LOCALIZE[16101]</label>
 						<icon>overlays/OverlayUnwatched.png</icon>
 						<onclick>Skin.SetBool(Disable.OverlayUnwatched)</onclick>
-						<property name="Radio">android/btn_radio_on_holo_dark.png</property>
+						<property name="Radio">android/radio_on.png</property>
+						<property name="color_diffuse">$VAR[ThemeLabelColor]</property>
 						<visible>!Skin.HasSetting(Disable.OverlayUnwatched)</visible>
 					</item>
 					<item>
 						<label>$LOCALIZE[16101]</label>
 						<icon>overlays/OverlayUnwatched.png</icon>
 						<onclick>Skin.Reset(Disable.OverlayUnwatched)</onclick>
-						<property name="Radio">android/btn_radio_off_holo_dark.png</property>
+						<property name="Radio">android/radio_off.png</property>
+						<property name="color_diffuse">grey</property>
 						<visible>Skin.HasSetting(Disable.OverlayUnwatched)</visible>
 					</item>
 					<item>
 						<label>$LOCALIZE[31109]</label>
 						<icon>dialogs/settings/circle.png</icon>
 						<onclick>Skin.Reset(Disable.UnwatchedIcon)</onclick>
-						<property name="Radio">android/btn_radio_on_holo_dark.png</property>
+						<property name="Radio">android/radio_on.png</property>
+						<property name="color_diffuse">$VAR[ThemeLabelColor]</property>
 						<visible>Skin.HasSetting(Disable.UnwatchedIcon)</visible>
 					</item>
 					<item>
 						<label>$LOCALIZE[31109]</label>
 						<icon>dialogs/settings/circle.png</icon>
 						<onclick>Skin.SetBool(Disable.UnwatchedIcon)</onclick>
-						<property name="Radio">android/btn_radio_off_holo_dark.png</property>
+						<property name="Radio">android/radio_off.png</property>
+						<property name="color_diffuse">grey</property>
 						<visible>!Skin.HasSetting(Disable.UnwatchedIcon)</visible>
 					</item>
 				</content>

@@ -39,7 +39,7 @@
 				<top>334</top>
 				<width>100%</width>
 				<height>820</height>
-				<texture colordiffuse="$VAR[ThemeLabelColor]">floor.png</texture>
+				<texture colordiffuse="$VAR[ThemeFloorGlowBarColor]">floor.png</texture>
 			</control>
 			<control type="image">
 				<left>55</left>
@@ -48,7 +48,11 @@
 				<height>130</height>
 				<texture>aeon-nox-logo.png</texture>
 			</control>
-			<include>SystemPanel</include>
+			<control type="group">
+				<visible>!Window.IsVisible(dialogcolorpicker)</visible>
+				<include>SettingsFadeAnimation</include>
+				<include>SystemPanel</include>
+			</control>
 			<control type="group">
 				<visible>!Window.IsActive(script-skinshortcuts.xml)</visible>
 				<control type="list" id="9000">
@@ -62,7 +66,7 @@
 					<onup>9000</onup>
 					<ondown>9000</ondown>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
-					<visible>!Window.IsActive(1140) + !Window.IsActive(1117)</visible>
+					<visible>!Window.IsActive(1115) + !Window.IsActive(1117) + !Window.IsActive(1140)</visible>
 					<include>SettingsFadeAnimation</include>
 					<itemlayout height="81" width="356">
 						<control type="label">
@@ -134,7 +138,7 @@
 					</content>
 				</control>
 				<control type="group" id="90000">
-					<visible>!Window.IsActive(1140) + !Window.IsActive(1117)</visible>
+					<visible>!Window.IsActive(1115) + !Window.IsActive(1117) + !Window.IsActive(1140)</visible>
 					<include>SettingsFadeAnimation</include>
 					<control type="grouplist" id="9009">
 						<left>437</left>
@@ -489,6 +493,14 @@
 							<onclick>Skin.ToggleSetting(Enable.HideRatings)</onclick>
 							<selected>Skin.HasSetting(Enable.HideRatings)</selected>
 						</control>
+						<control type="button" id="4008">
+							<height>80</height>
+							<include>SettingsButtonCommonValues</include>
+							<label>$LOCALIZE[31282]</label>
+							<onclick>SetProperty(CustomSelect,startupintro,Home)</onclick>
+							<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Skin.String(StartupIntro)][/COLOR]</label2>
+							<onclick>ActivateWindow(1129)</onclick>
+						</control>
 						<control type="radiobutton" id="4010">
 							<include>SettingsButtonCommonValues</include>
 							<label>$LOCALIZE[31283]</label>
@@ -515,13 +527,6 @@
 							<label>$LOCALIZE[31260]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[FanartTimePerImageLabelVar][/COLOR]</label2>
 							<onclick>SetProperty(CustomSelect,fanarttimeperimage,home)</onclick>
-							<onclick>ActivateWindow(1129)</onclick>
-						</control>
-						<control type="button" id="5002">
-							<include>SettingsButtonCommonValues</include>
-							<label>$LOCALIZE[31219]</label>
-							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[LanguageFlagsLabelVar][/COLOR]</label2>
-							<onclick>SetProperty(CustomSelect,languageflags,Home)</onclick>
 							<onclick>ActivateWindow(1129)</onclick>
 						</control>
 						<control type="radiobutton" id="5009">
@@ -578,6 +583,11 @@
 							<label>$LOCALIZE[31281]</label>
 							<onclick>ActivateWindow(1140)</onclick>
 						</control>
+						<control type="button" id="6006">
+							<include>SettingsButtonCommonValues</include>
+							<label>$LOCALIZE[31021]</label>
+							<onclick>ActivateWindow(1115)</onclick>
+						</control>
 						<control type="button" id="6002">
 							<include>SettingsButtonCommonValues</include>
 							<label>$LOCALIZE[31375]</label>
@@ -606,14 +616,6 @@
 							<width>1401</width>
 							<height>1</height>
 							<texture colordiffuse="grey4">separator_horizontal.png</texture>
-						</control>
-						<control type="button" id="6009">
-							<height>80</height>
-							<include>SettingsButtonCommonValues</include>
-							<label>$LOCALIZE[31282]</label>
-							<onclick>SetProperty(CustomSelect,startupintro,Home)</onclick>
-							<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Skin.String(StartupIntro)][/COLOR]</label2>
-							<onclick>ActivateWindow(1129)</onclick>
 						</control>
 						<control type="button" id="6007">
 							<include>SettingsButtonCommonValues</include>
@@ -801,7 +803,7 @@
 					<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
 					<animation effect="fade" start="0" end="100" time="300" tween="sine" easing="inout">Visible</animation>
 					<animation effect="fade" start="100" end="0" time="0" tween="sine" easing="inout">Hidden</animation>
-					<visible>ControlGroup(90000).HasFocus() + !Window.IsActive(1140) + !Window.IsActive(1117)</visible>
+					<visible>ControlGroup(90000).HasFocus() + !Window.IsActive(1115) + !Window.IsActive(1117) + !Window.IsActive(1140)</visible>
 				</control>
 			</control>
 		</control>

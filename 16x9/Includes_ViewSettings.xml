@@ -501,7 +501,7 @@
 			<label>$LOCALIZE[31257]</label>
 			<onclick>Skin.ToggleSetting(Enable.Logo.MovieSetList)</onclick>
 			<selected>Skin.HasSetting(Enable.Logo.MovieSetList)</selected>
-			<visible>[System.GetBool(videolibrary.groupmoviesets) + Container.Content(movies)] | Container.Content(sets)</visible>
+			<visible>System.AddonIsEnabled(script.skin.info.service) + [Container.Content(movies) | Container.Content(sets)]</visible>
 		</control>
 	</include>
 	<include name="IconsViewSettings">
@@ -970,6 +970,13 @@
 			<onclick>Skin.ToggleSetting(Enable.MyFlix.TVLogo)</onclick>
 			<selected>Skin.HasSetting(Enable.MyFlix.TVLogo)</selected>
 			<visible>Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
+		</control>
+		<control type="radiobutton" id="1512">
+			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[31005]</label>
+			<onclick>Skin.ToggleSetting(MyFlixWrap)</onclick>
+			<selected>!Skin.HasSetting(MyFlixWrap)</selected>
+			<include>ReloadWindowOnClick</include>
 		</control>
 		<control type="button" id="1513">
 			<include>ButtonCommonValues</include>

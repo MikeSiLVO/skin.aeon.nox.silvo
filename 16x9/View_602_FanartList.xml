@@ -564,6 +564,18 @@
 					<showonepage>false</showonepage>
 				</control>
 			</control>
+			<include content="MediaFlagsFull">
+				<param name="visible">Control.IsVisible(602)</param>
+				<param name="left">80</param>
+				<param name="align">left</param>
+				<param name="view_id">602</param>
+			</include>
+			<include content="MediaFlagsTV">
+				<param name="visible">Control.IsVisible(602) + !Skin.HasSetting(DisableFanartList_TVflags) + [Container.Content(tvshows) | Container.Content(seasons)]</param>
+				<param name="left">60</param>
+				<param name="align">left</param>
+				<param name="view_id">602</param>
+			</include>
 		</control>
 	</include>
 </includes>

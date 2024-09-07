@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) + System.AddonIsEnabled(script.embuary.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(script.embuary.helper,action=blurimg,file=$INFO[ListItem.Icon],prop=MyProp,radius=10)</onload>
-	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[PosterVar]"')</onload>
+	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(plugin.video.themoviedb.helper,blur_image='"$INFO[ListItem.Icon]"')</onload>
 	<onload>SetFocus(9003)</onload>
 	<onload condition="String.IsEmpty(ListItem.SongVideoURL)">SetFocus(5010)</onload>
 	<onload condition="!String.IsEmpty(ListItem.SongVideoURL)">SetFocus(5000)</onload>
@@ -804,8 +803,8 @@
 							<include>ButtonInfoDialogsCommonValues</include>
 							<texturenofocus />
 							<alttexturenofocus />
-							<label></label>
-							<altlabel></altlabel>
+							<label></label>
+							<altlabel></altlabel>
 							<onclick>SendClick(7)</onclick>
 							<usealttexture>!String.IsEmpty(ListItem.UserRating)</usealttexture>
 						</control>
@@ -815,7 +814,7 @@
 							<width>70</width>
 							<texturenofocus />
 							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
+							<label></label>
 							<onclick>SendClick(6)</onclick>
 							<enable>!Skin.HasSetting(KioskMode.Enabled)</enable>
 						</control>

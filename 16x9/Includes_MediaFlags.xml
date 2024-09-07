@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="MediaFlagsFull">
+		<control type="group">
+			<animation effect="fade" time="200" delay="200">Visible</animation>
+			<animation effect="fade" time="200" delay="500">WindowOpen</animation>
+			<visible>!ListItem.IsCollection</visible>
+			<control type="group">
+				<visible>Container.Content(movies) | Container.Content(episodes)</visible>
+				<control type="grouplist">
+					<left>$PARAM[left]</left>
+					<bottom>14</bottom>
+					<width>100%</width>
+					<height>78</height>
+					<orientation>horizontal</orientation>
+					<align>$PARAM[align]</align>
+					<visible>$PARAM[visible]</visible>
+					<include>FadeAnimation</include>
+					<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) | System.AddonIsEnabled(script.embuary.helper)">RatingsMediaFlags</include>
+					<control type="grouplist">
+						<width>1500</width>
+						<orientation>horizontal</orientation>
+						<control type="group">
+							<width>170</width>
+							<visible>![Container.Content(movies) + Control.IsVisible(50)]</visible>
+							<visible>![Container.Content(movies) + Skin.HasSetting(DisableFlag_MovieStudio)]</visible>
+							<visible>![Container.Content(episodes) + Skin.HasSetting(DisableFlag_EpisodeStudio)]</visible>
+							<control type="image" id="$PARAM[view_id]555">
+								<include>MediaFlagValues</include>
+								<texture background="true">$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
+							</control>
+							<control type="label">
+								<width>170</width>
+								<height>78</height>
+								<align>center</align>
+								<font>font10</font>
+								<textcolor>grey</textcolor>
+								<wrapmultiline>true</wrapmultiline>
+								<label>$INFO[ListItem.Studio]</label>
+								<visible>String.IsEmpty(Control.GetLabel($PARAM[view_id]555))</visible>
+							</control>
+						</control>
+						<control type="image">
+							<include>MediaFlagValues</include>
+							<texture>$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
+							<visible>!String.StartsWith(Container.FolderPath,plugin://) | !String.IsEmpty(ListItem.MPAA)</visible>
+							<visible>![Container.Content(movies) + Skin.HasSetting(DisableFlag_MovieMPAA)]</visible>
+							<visible>![Container.Content(episodes) + Skin.HasSetting(DisableFlag_EpisodeMPAA)]</visible>
+						</control>
+						<control type="grouplist">
+							<width>1020</width>
+							<orientation>horizontal</orientation>
+							<control type="image">
+								<include>MediaFlagValues</include>
+								<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
+								<visible>![Container.Content(movies) + Skin.HasSetting(DisableFlag_MovieResolution)]</visible>
+								<visible>![Container.Content(episodes) + Skin.HasSetting(DisableFlag_EpisodeResolution)]</visible>
+							</control>
+							<control type="image">
+								<include>MediaFlagValues</include>
+								<texture>$VAR[MediaFlagsPathVar]/$VAR[HDRFlagsVar]</texture>
+								<visible>![Container.Content(movies) + Skin.HasSetting(DisableFlag_MovieHDRType)]</visible>
+								<visible>![Container.Content(episodes) + Skin.HasSetting(DisableFlag_EpisodeHDRType)]</visible>
+							</control>
+							<control type="image">
+								<include>MediaFlagValues</include>
+								<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
+								<visible>![Container.Content(movies) + Skin.HasSetting(DisableFlag_MovieSource)]</visible>
+								<visible>![Container.Content(episodes) + Skin.HasSetting(DisableFlag_EpisodeSource)]</visible>
+							</control>
+							<control type="image">
+								<include>MediaFlagValues</include>
+								<texture>$VAR[MediaFlagsPathVar]/aspectratio/$INFO[ListItem.VideoAspect,,.png]</texture>
+								<visible>![Container.Content(movies) + Skin.HasSetting(DisableFlag_MovieAspect)]</visible>
+								<visible>![Container.Content(episodes) + Skin.HasSetting(DisableFlag_EpisodeAspect)]</visible>
+							</control>
+							<control type="image">
+								<include>MediaFlagValues</include>
+								<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[AudioCodecFlagVar]</texture>
+								<visible>![Container.Content(movies) + Skin.HasSetting(DisableFlag_MovieAudioCodec)]</visible>
+								<visible>![Container.Content(episodes) + Skin.HasSetting(DisableFlag_EpisodeAudioCodec)]</visible>
+							</control>
+							<control type="image">
+								<include>MediaFlagValues</include>
+								<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
+								<visible>![Container.Content(movies) + Skin.HasSetting(DisableFlag_MovieAudioChannels)]</visible>
+								<visible>![Container.Content(episodes) + Skin.HasSetting(DisableFlag_EpisodeAudioChannels)]</visible>
+							</control>
+						</control>
+						<!-- LANGUAGE FLAGS -->
+						<control type="grouplist">
+							<width>140</width>
+							<height>78</height>
+							<align>center</align>
+							<visible>!String.IsEmpty(Skin.String(LanguageFlags)) + [Container.Content(movies) | Container.Content(episodes)]</visible>
+							<control type="grouplist">
+								<width>140</width>
+								<height>30</height>
+								<orientation>horizontal</orientation>
+								<itemgap>5</itemgap>
+								<visible>String.IsEqual(Skin.String(LanguageFlags),1) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
+								<control type="image">
+									<width>28</width>
+									<height>28</height>
+									<aspectratio>keep</aspectratio>
+									<colordiffuse>grey</colordiffuse>
+									<texture>flags/audio.png</texture>
+									<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1)) | !String.IsEmpty(ListItem.Property(AudioLanguage.2)) | !String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
+								</control>
+								<control type="image">
+									<width>30</width>
+									<height>30</height>
+									<aspectratio>keep</aspectratio>
+									<colordiffuse>grey</colordiffuse>
+									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.1),,.png]</texture>
+									<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
+								</control>
+								<control type="image">
+									<width>30</width>
+									<height>30</height>
+									<aspectratio>keep</aspectratio>
+									<colordiffuse>grey</colordiffuse>
+									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.2),,.png]</texture>
+									<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.2))</visible>
+								</control>
+								<control type="image">
+									<width>30</width>
+									<height>30</height>
+									<aspectratio>keep</aspectratio>
+									<colordiffuse>grey</colordiffuse>
+									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.3),,.png]</texture>
+									<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
+								</control>
+							</control>
+							<control type="grouplist">
+								<top>30</top>
+								<width>140</width>
+								<height>30</height>
+								<orientation>horizontal</orientation>
+								<itemgap>5</itemgap>
+								<visible>String.IsEqual(Skin.String(LanguageFlags),2) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
+								<control type="image">
+									<width>28</width>
+									<height>28</height>
+									<aspectratio>keep</aspectratio>
+									<colordiffuse>grey</colordiffuse>
+									<texture>flags/subtitles.png</texture>
+									<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1)) | !String.IsEmpty(ListItem.Property(SubtitleLanguage.2)) | !String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
+								</control>
+								<control type="image">
+									<width>30</width>
+									<height>30</height>
+									<aspectratio>keep</aspectratio>
+									<colordiffuse>grey</colordiffuse>
+									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.1),,.png]</texture>
+									<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
+								</control>
+								<control type="image">
+									<width>30</width>
+									<height>30</height>
+									<aspectratio>keep</aspectratio>
+									<colordiffuse>grey</colordiffuse>
+									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.2),,.png]</texture>
+									<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.2))</visible>
+								</control>
+								<control type="image">
+									<width>30</width>
+									<height>30</height>
+									<aspectratio>keep</aspectratio>
+									<colordiffuse>grey</colordiffuse>
+									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.3),,.png]</texture>
+									<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
+								</control>
+							</control>
+						</control>
+					</control>
+				</control>
+			</control>
+		</control>
+	</include>
+	<include name="MediaFlagsSplit">
+	</include>
+	<include name="MediaFlagsTV">
+		<control type="group">
+			<visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
+			<control type="grouplist">
+				<left>$PARAM[left]</left>
+				<bottom>14</bottom>
+				<width>850</width>
+				<height>78</height>
+				<orientation>horizontal</orientation>
+				<align>$PARAM[align]</align>
+				<visible>$PARAM[visible]</visible>
+				<include>FadeAnimation</include>
+				<control type="group">
+					<visible>!String.IsEmpty(ListItem.Studio)</visible>
+					<visible>!Skin.HasSetting(DisableFlag_TVStudio)</visible>
+					<width>170</width>
+					<control type="image" id="$PARAM[view_id]5555">
+						<include>MediaFlagValues</include>
+						<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
+					</control>
+					<control type="label">
+						<width>170</width>
+						<height>78</height>
+						<align>center</align>
+						<font>font10</font>
+						<textcolor>grey</textcolor>
+						<wrapmultiline>true</wrapmultiline>
+						<label>$INFO[ListItem.Studio]</label>
+						<visible>String.IsEmpty(Control.GetLabel($PARAM[view_id]5555))</visible>
+					</control>
+				</control>
+				<control type="image">
+					<include>MediaFlagValues</include>
+					<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
+					<visible>![String.IsEmpty(ListItem.MPAA) + String.StartsWith(Container.FolderPath,plugin://)]</visible>
+					<visible>!Skin.HasSetting(DisableFlag_TVMPAA)</visible>
+				</control>
+				<control type="group">
+					<width>170</width>
+					<visible>!Container.Content(seasons) + !String.IsEmpty(ListItem.Property(TotalSeasons))</visible>
+					<visible>!Skin.HasSetting(DisableFlag_TVSeasons)</visible>
+					<control type="label">
+						<height>50</height>
+						<font>font48_bold</font>
+						<textcolor>grey</textcolor>
+						<align>center</align>
+						<wrapmultiline>true</wrapmultiline>
+						<label>$INFO[ListItem.Property(TotalSeasons)]</label>
+					</control>
+					<control type="label">
+						<top>42</top>
+						<height>30</height>
+						<align>center</align>
+						<label>[LOWERCASE]$VAR[OneOrMoreSeasonsVar][/LOWERCASE]</label>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+					</control>
+				</control>
+				<control type="group">
+					<visible>!String.IsEmpty(ListItem.Property(TotalEpisodes))</visible>
+					<visible>!Skin.HasSetting(DisableFlag_TVEpisodes)</visible>
+					<width>170</width>
+					<control type="label">
+						<height>50</height>
+						<font>font48_bold</font>
+						<textcolor>grey</textcolor>
+						<align>center</align>
+						<wrapmultiline>true</wrapmultiline>
+						<label>$INFO[ListItem.Property(TotalEpisodes)]</label>
+					</control>
+					<control type="label">
+						<top>42</top>
+						<height>30</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<align>center</align>
+						<label>[LOWERCASE]$VAR[OneOrMoreEpisodesVar][/LOWERCASE]</label>
+					</control>
+				</control>
+				<control type="group">
+					<visible>!String.IsEmpty(ListItem.Property(UnWatchedEpisodes))</visible>
+					<visible>!Skin.HasSetting(DisableFlag_TVUnWatchedEpisodes)</visible>
+					<width>170</width>
+					<control type="label">
+						<height>50</height>
+						<font>font48_bold</font>
+						<textcolor>$VAR[UnWatchedEpColor]</textcolor>
+						<align>center</align>
+						<wrapmultiline>true</wrapmultiline>
+						<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
+					</control>
+					<control type="label">
+						<top>42</top>
+						<height>30</height>
+						<font>font12</font>
+						<textcolor>$VAR[UnWatchedEpColor]</textcolor>
+						<align>center</align>
+						<label>[LOWERCASE]$LOCALIZE[16101][/LOWERCASE]</label>
+					</control>
+				</control>
+			</control>
+		</control>
+	</include>
+	<include name="RatingsMediaFlags">
+		<control type="grouplist">
+			<width>340</width>
+			<orientation>horizontal</orientation>
+			<control type="grouplist">
+				<visible>[!String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics)) | !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating))] + [Container.Content(movies) | Container.Content(tvshows)]</visible>
+				<visible>!Skin.HasSetting(DisableFlag_RTCritic)</visible>
+				<width>170</width>
+				<orientation>horizontal</orientation>
+				<control type="image">
+					<width>60</width>
+					<include>MediaFlagValues</include>
+					<texture>$VAR[RottenFreshLogoVar]</texture>
+				</control>
+				<control type="grouplist">
+					<width>110</width>
+					<height>78</height>
+					<align>center</align>
+					<control type="label">
+						<height>26</height>
+						<font>font13_bold</font>
+						<textcolor>grey</textcolor>
+						<label>$VAR[RottenFreshLabelVar]$VAR[RottenFreshLabel2Var]</label>
+					</control>
+					<control type="label">
+						<height>20</height>
+						<font>font10</font>
+						<textcolor>grey</textcolor>
+						<label>$LOCALIZE[31475]</label>
+					</control>
+				</control>
+			</control>
+			<control type="grouplist">
+				<visible>[!String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience)) | !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter))] + [Container.Content(movies) | Container.Content(tvshows)]</visible>
+				<visible>!Skin.HasSetting(DisableFlag_RTAudience)</visible>
+				<width>170</width>
+				<orientation>horizontal</orientation>
+				<itemgap>6</itemgap>
+				<control type="image">
+					<width>60</width>
+					<include>MediaFlagValues</include>
+					<texture>$VAR[RottenFreshAudienceLogoVar]</texture>
+				</control>
+				<control type="grouplist">
+					<width>110</width>
+					<height>78</height>
+					<align>center</align>
+					<control type="label">
+						<height>26</height>
+						<font>font13_bold</font>
+						<textcolor>grey</textcolor>
+						<label>$VAR[RottenFreshAudienceLabelVar]$VAR[RottenFreshAudienceLabel2Var]</label>
+					</control>
+					<control type="label">
+						<height>20</height>
+						<font>font10</font>
+						<textcolor>grey</textcolor>
+						<label>$LOCALIZE[31597]</label>
+					</control>
+				</control>
+			</control>
+			<control type="grouplist">
+				<visible>!String.IsEmpty(Container(9142).ListItem.Rating(themoviedb)) | !String.IsEmpty(Container(9142).ListItem.Rating(tmdb)) | !String.IsEmpty(Container(9143).ListItem.Property(TMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(TMDb_Rating),0.0)</visible>
+				<visible>!Skin.HasSetting(DisableFlag_TMDb)</visible>
+				<width>170</width>
+				<orientation>horizontal</orientation>
+				<itemgap>15</itemgap>
+				<control type="image">
+					<width>60</width>
+					<include>MediaFlagValues</include>
+					<texture>logos/tmdb.png</texture>
+				</control>
+				<control type="label">
+					<width>95</width>
+					<height>78</height>
+					<font>font13_bold</font>
+					<textcolor>grey</textcolor>
+					<label>$VAR[TMDbRatingsLabelVar]</label>
+				</control>
+			</control>
+			<control type="grouplist">
+				<visible>!String.IsEmpty(Container(9142).ListItem.Rating(trakt)) | !String.IsEmpty(Container(9143).ListItem.Property(Trakt_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(Trakt_Rating),0.0)</visible>
+				<visible>!Skin.HasSetting(DisableFlag_Trakt)</visible>
+				<width>170</width>
+				<orientation>horizontal</orientation>
+				<itemgap>6</itemgap>
+				<control type="image">
+					<width>60</width>
+					<include>MediaFlagValues</include>
+					<texture>logos/trakt-clearlogo.png</texture>
+				</control>
+				<control type="label">
+					<width>104</width>
+					<height>78</height>
+					<font>font13_bold</font>
+					<textcolor>grey</textcolor>
+					<label>$VAR[TraktRatingsLabelVar]</label>
+				</control>
+			</control>
+			<control type="grouplist">
+				<visible>!String.IsEmpty(Container(9142).ListItem.Rating(imdb)) | !String.IsEmpty(Container(9143).ListItem.Property(IMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(IMDb_Rating),0.0)</visible>
+				<visible>!Skin.HasSetting(DisableFlag_IMDb)</visible>
+				<width>170</width>
+				<orientation>horizontal</orientation>
+				<itemgap>15</itemgap>
+				<control type="image">
+					<width>60</width>
+					<include>MediaFlagValues</include>
+					<texture>logos/imdb.png</texture>
+				</control>
+				<control type="label">
+					<width>95</width>
+					<height>78</height>
+					<font>font13_bold</font>
+					<textcolor>grey</textcolor>
+					<label>$VAR[IMDbRatingsLabelVar]</label>
+				</control>
+			</control>
+		</control>
+	</include>
+</includes>

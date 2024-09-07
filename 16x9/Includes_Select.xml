@@ -19,11 +19,11 @@
 				<param name="more_visible">Control.IsVisible(8)</param>
 			</include>
 			<control type="group">
-				<left>957</left>
+				<left>959</left>
 				<top>68</top>
 				<visible>Control.IsVisible(6)</visible>
 				<control type="image">
-					<left>2</left>
+					<left>1</left>
 					<top>1</top>
 					<width>539</width>
 					<height>539</height>
@@ -41,7 +41,7 @@
 				<control type="list" id="3">
 					<left>1</left>
 					<top>68</top>
-					<width>956</width>
+					<width>958</width>
 					<height>540</height>
 					<onup>3</onup>
 					<ondown>3</ondown>
@@ -70,11 +70,11 @@
 							<label>$INFO[ListItem.Label2]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout height="60" width="956">
+					<focusedlayout height="60" width="958">
 						<control type="group">
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(3)">Conditional</animation>
 							<control type="image">
-								<width>956</width>
+								<width>958</width>
 								<height>60</height>
 								<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
 							</control>
@@ -161,7 +161,7 @@
 				</control>
 			</control>
 			<control type="scrollbar" id="60">
-				<left>948</left>
+				<left>951</left>
 				<top>69</top>
 				<width>8</width>
 				<height>540</height>
@@ -209,7 +209,7 @@
 				<height>345</height>
 				<texture colordiffuse="99FFFFFF" flipy="true" border="1,40,1,1">topbar.png</texture>
 			</control>
-			<control type="panel" id="11">
+			<control type="list" id="11">
 				<left>5</left>
 				<top>25</top>
 				<width>100%</width>
@@ -465,7 +465,7 @@
 				</control>
 			</focusedlayout>
 			<content>
-				<include condition="!String.IsEmpty(Window(movieinformation).Property(ActorName))">SelectActorName</include>
+				<include condition="!String.IsEmpty(Window(Home).Property(person_id)) | !String.IsEmpty(Window(Home).Property(ActorName))">SelectActorName</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),search)">SelectSearch</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),mainmenulayout)">SelectMainMenuLayout</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),fanarttimeperimage)">SelectFanartTimePerImage</include>
@@ -604,17 +604,18 @@
 	<include name="SelectSearch">
 		<item>
 			<label>$LOCALIZE[31472]</label>
+			<onclick>ClearProperty(library_search_string,Home)</onclick>
 			<onclick>Dialog.Close(1129)</onclick>
-			<onclick>SendClick(videos,8)</onclick>
-			<visible>Window.IsActive(videos)</visible>
+			<onclick condition="Window.IsActive(videos)">SendClick(videos,8)</onclick>
+			<onclick condition="Window.IsActive(Home)">RunScript(script.skinvariables,run_dialog=input,heading=search library,"executebuiltin=SetProperty(library_search_string,{v},Home)||ActivateWindow(1125)")</onclick>
 		</item>
-		<item>
+		<!-- <item>
 			<label>$LOCALIZE[31456]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick condition="!System.HasAddon(script.globalsearch)">InstallAddon(script.globalsearch)</onclick>
 			<onclick condition="System.HasAddon(script.globalsearch) + !System.AddonIsEnabled(script.globalsearch)">EnableAddon(script.globalsearch)</onclick>
 			<onclick condition="System.AddonIsEnabled(script.globalsearch)">RunScript(script.globalsearch)</onclick>
-		</item>
+		</item> -->
 		<item>
 			<label>$LOCALIZE[31457]</label>
 			<onclick>Dialog.Close(1129)</onclick>
@@ -623,26 +624,36 @@
 			<onclick condition="System.AddonIsEnabled(plugin.video.youtube)">ActivateWindow(videos,"plugin://plugin.video.youtube/kodion/search/list/",return)</onclick>
 		</item>
 		<item>
-			<label>$LOCALIZE[31458]</label>
+			<label>$LOCALIZE[31458] $LOCALIZE[20338]</label>
+			<onclick>ClearProperty(tmdb_search_string,Home)</onclick>
 			<onclick>Dialog.Close(1129)</onclick>
-			<onclick condition="!System.HasAddon(script.embuary.info)">InstallAddon(script.embuary.info)</onclick>
-			<onclick condition="System.HasAddon(script.embuary.info) + !System.AddonIsEnabled(script.embuary.info)">EnableAddon(script.globalsearch)</onclick>
-			<onclick condition="System.HasAddon(script.embuary.info) + System.AddonIsEnabled(script.embuary.info)">RunScript(script.embuary.info)</onclick>
+			<onclick>RunScript(script.skinvariables,run_dialog=input,heading=search movie,"executebuiltin=SetProperty(tmdb_movie_search_string,{v},Home)||ActivateWindow(1107)")</onclick>
+			<visible>System.AddonIsEnabled(plugin.video.themoviedb.helper)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[31458] $LOCALIZE[20364]</label>
+			<onclick>ClearProperty(tmdb_search_type,Home)</onclick>
+			<onclick>ClearProperty(tmdb_search_string,Home)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>SetProperty(tmdb_search_type,tv,Home)</onclick>
+			<onclick>RunScript(script.skinvariables,run_dialog=input,heading=search tv show,"executebuiltin=SetProperty(tmdb_search_string,{v},Home)||ActivateWindow(1107)")</onclick>
+			<visible>System.AddonIsEnabled(plugin.video.themoviedb.helper)</visible>
 		</item>
 	</include>
 	<include name="SelectActorName">
 		<item>
 			<label>$LOCALIZE[31148]</label>
 			<onclick>Dialog.Close(1129)</onclick>
-			<onclick>SetProperty(DoAction,True,movieinformation)</onclick>
+			<onclick>SetProperty(DoAction,True,Home)</onclick>
+			<onclick>ClearProperty(person_id,Home)</onclick>
 		</item>
 		<item>
 			<label>$LOCALIZE[31149]</label>
 			<onclick>Dialog.Close(1129)</onclick>
-			<onclick>ClearProperty(ActorID,movieinformation)</onclick>
-			<onclick>ClearProperty(DirectorID,movieinformation)</onclick>
-			<onclick>RunScript(plugin.video.themoviedb.helper,add_query='"$ESCINFO[Window(movieinformation).Property(ActorName)]"',type=person,call_auto=1111)</onclick>
-			<onclick>ClearProperty(ActorName,movieinformation)</onclick>
+			<onclick condition="!String.IsEmpty(Window(Home).Property(ActorName))">RunScript(plugin.video.themoviedb.helper,add_query='"$ESCINFO[Window(Home).Property(ActorName)]"',type=person,call_auto=1111)</onclick>
+			<onclick condition="!String.IsEmpty(Window(Home).Property(ActorName))">ClearProperty(ActorName,Home)</onclick>
+			<onclick condition="String.IsEmpty(Window(Home).Property(ActorName))">ActivateWindow(1109)</onclick>
+			<onclick>ClearProperty(person_id,Home)</onclick>
 		</item>
 	</include>
 	<include name="SelectMainMenuLayout">
@@ -1117,57 +1128,57 @@
 			<onclick>Skin.Reset(AutoCloseVideoOSD)</onclick>
 		</item>
 		<item>
-			<label>5 $LOCALIZE[31090]</label>
+			<label>$NUMBER[5] $LOCALIZE[31090]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.SetString(AutoCloseVideoOSD,5)</onclick>
 		</item>
 		<item>
-			<label>6 $LOCALIZE[31090]</label>
+			<label>$NUMBER[6] $LOCALIZE[31090]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.SetString(AutoCloseVideoOSD,6)</onclick>
 		</item>
 		<item>
-			<label>7 $LOCALIZE[31090]</label>
+			<label>$NUMBER[7] $LOCALIZE[31090]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.SetString(AutoCloseVideoOSD,7)</onclick>
 		</item>
 		<item>
-			<label>8 $LOCALIZE[31090]</label>
+			<label>$NUMBER[8] $LOCALIZE[31090]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.SetString(AutoCloseVideoOSD,8)</onclick>
 		</item>
 		<item>
-			<label>9 $LOCALIZE[31090]</label>
+			<label>$NUMBER[9] $LOCALIZE[31090]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.SetString(AutoCloseVideoOSD,9)</onclick>
 		</item>
 		<item>
-			<label>10 $LOCALIZE[31090]</label>
+			<label>$NUMBER[10] $LOCALIZE[31090]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.SetString(AutoCloseVideoOSD,10)</onclick>
 		</item>
 		<item>
-			<label>15 $LOCALIZE[31090]</label>
+			<label>$NUMBER[15] $LOCALIZE[31090]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.SetString(AutoCloseVideoOSD,15)</onclick>
 		</item>
 		<item>
-			<label>20 $LOCALIZE[31090]</label>
+			<label>$NUMBER[20] $LOCALIZE[31090]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.SetString(AutoCloseVideoOSD,20)</onclick>
 		</item>
 		<item>
-			<label>30 $LOCALIZE[31090]</label>
+			<label>$NUMBER[30] $LOCALIZE[31090]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.SetString(AutoCloseVideoOSD,30)</onclick>
 		</item>
 		<item>
-			<label>60 $LOCALIZE[31090]</label>
+			<label>$NUMBER[60] $LOCALIZE[31090]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.SetString(AutoCloseVideoOSD,60)</onclick>
 		</item>
 		<item>
-			<label>90 $LOCALIZE[31090]</label>
+			<label>$NUMBER[90] $LOCALIZE[31090]</label>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>Skin.SetString(AutoCloseVideoOSD,90)</onclick>
 		</item>
@@ -1337,6 +1348,8 @@
 		<include>ResetSkinColorsOnclick</include>
 		<onclick>Skin.SetString(ThemeLabelColor,FFFF9800)</onclick>
 		<onclick>Skin.SetString(ThemeBorderColor,FF0F0F0F)</onclick>
+		<onclick>Skin.SetString(ThemeFloorGlowBarColor,FFFF9800)</onclick>
+		<onclick>Skin.SetString(TopBarGlowBarColor,FFFF9800)</onclick>
 		<onclick>Skin.SetString(ThemeHomeMenuBarColor,FFFF9800)</onclick>
 		<onclick>Skin.SetString(FocusedMainMenuColor,white)</onclick>
 		<onclick>Skin.SetString(UnfocusedMainMenuColor,FF000000)</onclick>
@@ -1381,10 +1394,28 @@
 		<onclick>Skin.SetString(ThemeHomeSystemBarsColor,FF000000)</onclick>
 		<onclick>Skin.SetString(WidgetHighlightBarColor,FFD50000)</onclick>
 	</include>
+	<include name="SetPresetSupermanTheme">
+		<include>ResetSkinColorsOnclick</include>
+		<onclick>Skin.SetString(ThemeLabelColor,FF0099F7)</onclick>
+		<onclick>Skin.SetString(ThemeBorderColor,FFFEE202)</onclick>
+		<onclick>Skin.SetString(ThemeFloorGlowBarColor,FFFEE202)</onclick>
+		<onclick>Skin.SetString(TopBarGlowBarColor,FFFEE202)</onclick>
+		<onclick>Skin.SetString(ThemeHomeMenuBarColor,FF0099F7)</onclick>
+		<onclick>Skin.SetString(ThemeHomeMenuGlowBarColor,FFFEE202)</onclick>
+		<onclick>Skin.SetString(ThemeHomeSystemGlowBarsColor,FFFEE202)</onclick>
+		<onclick>Skin.SetString(FocusedMainMenuColor,FFBB070E)</onclick>
+		<onclick>Skin.SetString(UnfocusedMainMenuColor,FF34F9FE)</onclick>
+		<onclick>Skin.SetString(UnFocusedMainMenuIconLabelColor,FF000000)</onclick>
+		<onclick>Skin.SetString(HighlightBarColor,FFBB070E)</onclick>
+		<onclick>Skin.SetString(ThemeHomeSystemBarsColor,FF000000)</onclick>
+		<onclick>Skin.SetString(WidgetHighlightBarColor,FFBB070E)</onclick>
+	</include>
 	<include name="ResetSkinColorsOnclick">
 		<onclick>Skin.Reset(ThemeLabelColor)</onclick>
 		<onclick>Skin.Reset(ThemeBorderColor)</onclick>
+		<onclick>Skin.Reset(ThemeFloorGlowBarColor)</onclick>
 		<onclick>Skin.Reset(TopBarColor)</onclick>
+		<onclick>Skin.Reset(TopBarGlowBarColor)</onclick>
 		<onclick>Skin.Reset(HighlightBarColor)</onclick>
 		<onclick>Skin.Reset(ThemeHomeLabelColor)</onclick>
 		<onclick>Skin.Reset(ThemeHomeSystemBarsColor)</onclick>

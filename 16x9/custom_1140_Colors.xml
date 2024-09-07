@@ -4,61 +4,368 @@
 	<controls>
 		<control type="group">
 			<top>64</top>
-			<control type="list" id="9000">
-				<left>81</left>
-				<top>32</top>
-				<width>356</width>
-				<height>840</height>
-				<onleft>9010</onleft>
-				<onright>9010</onright>
-				<onup>9000</onup>
-				<ondown>9000</ondown>
-				<pagecontrol />
-				<scrolltime tween="quadratic" easing="out">200</scrolltime>
+			<control type="group">
+				<visible>!Window.IsVisible(dialogcolorpicker)</visible>
 				<include>SettingsFadeAnimation</include>
-				<itemlayout height="90" width="356">
-					<control type="label">
-						<width>356</width>
-						<height>90</height>
-						<font>font15</font>
-						<textoffsetx>20</textoffsetx>
-						<textcolor>grey</textcolor>
-						<label>$INFO[ListItem.Label]</label>
+				<control type="list" id="9000">
+					<left>81</left>
+					<top>32</top>
+					<width>356</width>
+					<height>840</height>
+					<onleft>9010</onleft>
+					<onright>9010</onright>
+					<onup>9000</onup>
+					<ondown>9000</ondown>
+					<pagecontrol />
+					<scrolltime tween="quadratic" easing="out">200</scrolltime>
+					<itemlayout height="90" width="356">
+						<control type="label">
+							<width>356</width>
+							<height>90</height>
+							<font>font15</font>
+							<textoffsetx>20</textoffsetx>
+							<textcolor>grey</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="90" width="356">
+						<control type="image">
+							<width>355</width>
+							<height>90</height>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
+						</control>
+						<control type="label">
+							<width>356</width>
+							<height>90</height>
+							<font>font15</font>
+							<textoffsetx>20</textoffsetx>
+							<label>$INFO[ListItem.Label]</label>
+							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
+						</control>
+					</focusedlayout>
+					<content>
+						<item id="4">
+							<label>$LOCALIZE[31493]</label>
+						</item>
+						<item id="2">
+							<label>$LOCALIZE[16000]</label>
+						</item>
+						<item id="1">
+							<label>$LOCALIZE[513]</label>
+						</item>
+						<item id="3">
+							<label>$LOCALIZE[31155]</label>
+						</item>
+						<item id="5">
+							<label>$LOCALIZE[478]</label>
+						</item>
+					</content>
+				</control>
+				<control type="group" id="9010">
+					<control type="grouplist" id="9004">
+						<left>437</left>
+						<top>32</top>
+						<width>1401</width>
+						<height>810</height>
+						<pagecontrol>60</pagecontrol>
+						<onleft>9000</onleft>
+						<onright>60</onright>
+						<onup>9004</onup>
+						<ondown>9004</ondown>
+						<visible>Container(9000).HasFocus(4)</visible>
+						<control type="radiobutton" id="400">
+							<label>SiLVO</label>
+							<onclick>SetProperty(SetSkinColors,SiLVO,Home)</onclick>
+							<onclick>ActivateWindow(1126)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">FFFF9800</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="401">
+							<label>$LOCALIZE[762]</label>
+							<onclick>SetProperty(SetSkinColors,Blue,Home)</onclick>
+							<onclick>ActivateWindow(1126)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">FF2A52BE</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="402">
+							<label>$LOCALIZE[13342]</label>
+							<onclick>SetProperty(SetSkinColors,Orange,Home)</onclick>
+							<onclick>ActivateWindow(1126)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">FFFF9800</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="403">
+							<label>$LOCALIZE[13343]</label>
+							<onclick>SetProperty(SetSkinColors,Red,Home)</onclick>
+							<onclick>ActivateWindow(1126)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">FFD50000</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="404">
+							<label>Superman</label>
+							<onclick>SetProperty(SetSkinColors,Superman,Home)</onclick>
+							<onclick>ActivateWindow(1126)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">FF0099F7</param>
+							</include>
+						</control>
+						<control type="button" id="410">
+							<include>SettingsButtonCommonValues</include>
+							<label>$LOCALIZE[31496]</label>
+							<onclick>SetProperty(SetSkinColors,Reset,Home)</onclick>
+							<onclick>ActivateWindow(1126)</onclick>
+						</control>
 					</control>
-				</itemlayout>
-				<focusedlayout height="90" width="356">
-					<control type="image">
-						<width>355</width>
-						<height>90</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
-						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
+					<control type="grouplist" id="9001">
+						<left>437</left>
+						<top>32</top>
+						<width>1401</width>
+						<height>810</height>
+						<pagecontrol>60</pagecontrol>
+						<onleft>9000</onleft>
+						<onright>60</onright>
+						<onup>9001</onup>
+						<ondown>9001</ondown>
+						<visible>Container(9000).HasFocus(1)</visible>
+						<control type="radiobutton" id="100">
+							<label>$LOCALIZE[15111]</label>
+							<onclick>SetProperty(Reset.Color,ThemeHomeLabelColor)</onclick>
+							<onclick>Skin.SetColor(ThemeHomeLabelColor, 15111, FFFF9800, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[ThemeHomeLabelColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="109">
+							<label>$LOCALIZE[31302]</label>
+							<onclick>SetProperty(Reset.Color,ThemeHomeMenuBarColor)</onclick>
+							<onclick>Skin.SetColor(ThemeHomeMenuBarColor, 31302, FFFF9800, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[ThemeHomeMenuBarColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="110">
+							<label>$LOCALIZE[31522]</label>
+							<onclick>SetProperty(Reset.Color,ThemeHomeMenuGlowBarColor)</onclick>
+							<onclick>Skin.SetColor(ThemeHomeMenuGlowBarColor, 31522, FFFF9800, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[ThemeHomeMenuGlowBarColor]</param>
+							</include>
+							<visible>!String.IsEqual(Skin.String(MainMenu.Layout),vertical)</visible>
+						</control>
+						<control type="radiobutton" id="111">
+							<label>$LOCALIZE[31303]</label>
+							<onclick>SetProperty(Reset.Color,ThemeHomeSystemBarsColor)</onclick>
+							<onclick>Skin.SetColor(ThemeHomeSystemBarsColor, 31303, FF000000, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[ThemeHomeSystemBarsColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="112">
+							<label>$LOCALIZE[31524]</label>
+							<onclick>SetProperty(Reset.Color,ThemeHomeSystemGlowBarsColor)</onclick>
+							<onclick>Skin.SetColor(ThemeHomeSystemGlowBarsColor, 31524, 00FFFFFF, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[ThemeHomeSystemGlowBarsColor]</param>
+							</include>
+							<visible>!String.IsEqual(Skin.String(MainMenu.Layout),vertical)</visible>
+						</control>
+						<control type="radiobutton" id="102">
+							<label>$LOCALIZE[31294]</label>
+							<onclick>SetProperty(Reset.Color,FocusedMainMenuColor)</onclick>
+							<onclick>Skin.SetColor(FocusedMainMenuColor, 31294, FFE5E5E5, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[FocusedMainMenuColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="103">
+							<label>$LOCALIZE[31295]</label>
+							<onclick>SetProperty(Reset.Color,UnfocusedMainMenuColor)</onclick>
+							<onclick>Skin.SetColor(UnfocusedMainMenuColor, 31295, FF000000, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[UnfocusedMainMenuColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="104">
+							<label>$LOCALIZE[31296]</label>
+							<onclick>SetProperty(Reset.Color,FocusedSubMenuColor)</onclick>
+							<onclick>Skin.SetColor(FocusedSubMenuColor, 31296, FFE5E5E5, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[FocusedSubMenuColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="105">
+							<label>$LOCALIZE[31297]</label>
+							<onclick>SetProperty(Reset.Color,UnfocusedSubMenuColor)</onclick>
+							<onclick>Skin.SetColor(UnfocusedSubMenuColor, 31297, FFBDBDBD, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[UnfocusedSubMenuColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="106">
+							<label>$LOCALIZE[31298]</label>
+							<onclick>SetProperty(Reset.Color,FocusedMainMenuIconLabelColor)</onclick>
+							<onclick>Skin.SetColor(FocusedMainMenuIconLabelColor, 31298, FFE5E5E5, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[FocusedMainMenuIconLabelColor]</param>
+							</include>
+							<visible>String.IsEqual(Skin.String(MainMenu.Layout),icons)</visible>
+						</control>
+						<control type="radiobutton" id="107">
+							<label>$LOCALIZE[31299]</label>
+							<onclick>SetProperty(Reset.Color,UnfocusedMainMenuIconLabelColor)</onclick>
+							<onclick>Skin.SetColor(UnfocusedMainMenuIconLabelColor, 31299, FF000000, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[UnfocusedMainMenuIconLabelColor]</param>
+							</include>
+							<visible>String.IsEqual(Skin.String(MainMenu.Layout),icons)</visible>
+						</control>
+						<control type="radiobutton" id="108">
+							<label>$LOCALIZE[31220]</label>
+							<onclick>SetProperty(Reset.Color,RSSFeedColor)</onclick>
+							<onclick>Skin.SetColor(RSSFeedColor, 31220, FFBDBDBD, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[RSSFeedColor]</param>
+							</include>
+						</control>
 					</control>
-					<control type="label">
-						<width>356</width>
-						<height>90</height>
-						<font>font15</font>
-						<textoffsetx>20</textoffsetx>
-						<label>$INFO[ListItem.Label]</label>
-						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
+					<control type="grouplist" id="9002">
+						<left>437</left>
+						<top>32</top>
+						<width>1401</width>
+						<height>810</height>
+						<pagecontrol>60</pagecontrol>
+						<onleft>9000</onleft>
+						<onright>60</onright>
+						<onup>9002</onup>
+						<ondown>9002</ondown>
+						<visible>Container(9000).HasFocus(2)</visible>
+						<control type="radiobutton" id="200">
+							<label>$LOCALIZE[15111]</label>
+							<onclick>SetProperty(Reset.Color,ThemeLabelColor)</onclick>
+							<onclick>Skin.SetColor(ThemeLabelColor, 15111, FFFF9800, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[ThemeLabelColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="205">
+							<label>$LOCALIZE[31598]</label>
+							<onclick>SetProperty(Reset.Color,ThemeBorderColor)</onclick>
+							<onclick>Skin.SetColor(ThemeBorderColor, 31598, FF000000, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[ThemeBorderColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="206">
+							<label>$LOCALIZE[31013]</label>
+							<onclick>SetProperty(Reset.Color,ThemeFloorGlowBarColor)</onclick>
+							<onclick>Skin.SetColor(ThemeFloorGlowBarColor, 31013, FFFF9800, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[ThemeFloorGlowBarColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="201">
+							<label>$LOCALIZE[31304]</label>
+							<onclick>SetProperty(Reset.Color,HighlightBarColor)</onclick>
+							<onclick>Skin.SetColor(HighlightBarColor, 31304, FF2A52BE, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[HighlightBarColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="202">
+							<label>$LOCALIZE[31305]</label>
+							<onclick>SetProperty(Reset.Color,UnWatchedEpColor)</onclick>
+							<onclick>Skin.SetColor(UnWatchedEpColor, 31305, FFE5E5E5, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[UnWatchedEpColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="203">
+							<label>$LOCALIZE[31252]</label>
+							<onclick>SetProperty(Reset.Color,TopBarColor)</onclick>
+							<onclick>Skin.SetColor(TopBarColor, 31252, FF000000, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[TopBarColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="204">
+							<label>$LOCALIZE[31009]</label>
+							<onclick>SetProperty(Reset.Color,TopBarGlowBarColor)</onclick>
+							<onclick>Skin.SetColor(TopBarGlowBarColor, 31009, 00FFFFFF, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[TopBarGlowBarColor]</param>
+							</include>
+						</control>
 					</control>
-				</focusedlayout>
-				<content>
-					<item id="4">
-						<label>31493</label>
-					</item>
-					<item id="2">
-						<label>16000</label>
-					</item>
-					<item id="1">
-						<label>513</label>
-					</item>
-					<item id="3">
-						<label>31155</label>
-					</item>
-					<item id="5">
-						<label>$LOCALIZE[478]</label>
-					</item>
-				</content>
+					<control type="grouplist" id="9003">
+						<left>437</left>
+						<top>32</top>
+						<width>1401</width>
+						<height>810</height>
+						<pagecontrol>60</pagecontrol>
+						<onleft>9000</onleft>
+						<onright>60</onright>
+						<onup>9003</onup>
+						<ondown>9003</ondown>
+						<visible>Container(9000).HasFocus(3)</visible>
+						<control type="radiobutton" id="300">
+							<label>$LOCALIZE[31304]</label>
+							<onclick>SetProperty(Reset.Color,WidgetHighlightBarColor)</onclick>
+							<onclick>Skin.SetColor(WidgetHighlightBarColor, 31304, FFFF9800, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[WidgetHighlightBarColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="301">
+							<label>$LOCALIZE[31102]</label>
+							<onclick>SetProperty(Reset.Color,WidgetBackgroundColor)</onclick>
+							<onclick>Skin.SetColor(WidgetBackgroundColor, 31102, FFFF9800, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[WidgetBackgroundColor]</param>
+							</include>
+						</control>
+					</control>
+					<control type="grouplist" id="9005">
+						<left>437</left>
+						<top>32</top>
+						<width>1401</width>
+						<height>810</height>
+						<pagecontrol>60</pagecontrol>
+						<onleft>9000</onleft>
+						<onright>60</onright>
+						<onup>9005</onup>
+						<ondown>9005</ondown>
+						<visible>Container(9000).HasFocus(5)</visible>
+						<control type="radiobutton" id="500">
+							<label>$LOCALIZE[31346]</label>
+							<onclick>SetProperty(Reset.Color,ThemeOSDProgressColor)</onclick>
+							<onclick>Skin.SetColor(ThemeOSDProgressColor, 31346, FFFF9800, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[ThemeOSDProgressColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="501">
+							<label>$LOCALIZE[31625]</label>
+							<onclick>SetProperty(Reset.Color,FocusedOSDButtonsColor)</onclick>
+							<onclick>Skin.SetColor(FocusedOSDButtonsColor, 31625, FFFF9800, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[FocusedOSDButtonsColor]</param>
+							</include>
+						</control>
+						<control type="radiobutton" id="502">
+							<label>$LOCALIZE[31626]</label>
+							<onclick>SetProperty(Reset.Color,UnfocusedOSDButtonsColor)</onclick>
+							<onclick>Skin.SetColor(UnfocusedOSDButtonsColor, 31626, FFFF9800, special://skin/extras/colors.xml)</onclick>
+							<include content="CustomColorRadioButton">
+								<param name="ColorStringVar">$VAR[UnfocusedOSDButtonsColor]</param>
+							</include>
+						</control>
+					</control>
+				</control>
 			</control>
 			<control type="textbox">
 				<include>SettingsTextboxValues</include>
@@ -67,286 +374,6 @@
 				<animation effect="fade" start="0" end="100" time="300" tween="sine" easing="inout">Visible</animation>
 				<animation effect="fade" start="100" end="0" time="0" tween="sine" easing="inout">Hidden</animation>
 				<visible>ControlGroup(9010).HasFocus()</visible>
-			</control>
-			<control type="group" id="9010">
-				<control type="grouplist" id="9004">
-					<left>437</left>
-					<top>32</top>
-					<width>1401</width>
-					<height>810</height>
-					<pagecontrol>60</pagecontrol>
-					<onleft>9000</onleft>
-					<onright>60</onright>
-					<onup>9004</onup>
-					<ondown>9004</ondown>
-					<visible>Container(9000).HasFocus(4)</visible>
-					<control type="radiobutton" id="400">
-						<label>SiLVO</label>
-						<onclick>SetProperty(SetSiLVOSkinColors,True,Home)</onclick>
-						<onclick>ActivateWindow(1126)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">FFFF9800</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="401">
-						<label>$LOCALIZE[762]</label>
-						<onclick>SetProperty(SetBlueSkinColors,True,Home)</onclick>
-						<onclick>ActivateWindow(1126)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">FF2A52BE</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="402">
-						<label>$LOCALIZE[13342]</label>
-						<onclick>SetProperty(SetOrangeSkinColors,True,Home)</onclick>
-						<onclick>ActivateWindow(1126)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">FFFF9800</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="403">
-						<label>$LOCALIZE[13343]</label>
-						<onclick>SetProperty(SetRedSkinColors,True,Home)</onclick>
-						<onclick>ActivateWindow(1126)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">FFD50000</param>
-						</include>
-					</control>
-					<control type="button" id="410">
-						<include>SettingsButtonCommonValues</include>
-						<label>$LOCALIZE[31496]</label>
-						<onclick>SetProperty(ResetSkinColors,True,Home)</onclick>
-						<onclick>ActivateWindow(1126)</onclick>
-					</control>
-				</control>
-				<control type="grouplist" id="9001">
-					<left>437</left>
-					<top>32</top>
-					<width>1401</width>
-					<height>810</height>
-					<pagecontrol>60</pagecontrol>
-					<onleft>9000</onleft>
-					<onright>60</onright>
-					<onup>9001</onup>
-					<ondown>9001</ondown>
-					<visible>Container(9000).HasFocus(1)</visible>
-					<control type="radiobutton" id="100">
-						<label>$LOCALIZE[15111]</label>
-						<onclick>SetProperty(Reset.Color,ThemeHomeLabelColor)</onclick>
-						<onclick>Skin.SetColor(ThemeHomeLabelColor, 15111, FFFF9800, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[ThemeHomeLabelColor]</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="109">
-						<label>$LOCALIZE[31302]</label>
-						<onclick>SetProperty(Reset.Color,ThemeHomeMenuBarColor)</onclick>
-						<onclick>Skin.SetColor(ThemeHomeMenuBarColor, 31302, FFFF9800, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[ThemeHomeMenuBarColor]</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="110">
-						<label>$LOCALIZE[31522]</label>
-						<onclick>SetProperty(Reset.Color,ThemeHomeMenuGlowBarColor)</onclick>
-						<onclick>Skin.SetColor(ThemeHomeMenuGlowBarColor, 31522, FFFF9800, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[ThemeHomeMenuGlowBarColor]</param>
-						</include>
-						<visible>!String.IsEqual(Skin.String(MainMenu.Layout),vertical)</visible>
-					</control>
-					<control type="radiobutton" id="111">
-						<label>$LOCALIZE[31303]</label>
-						<onclick>SetProperty(Reset.Color,ThemeHomeSystemBarsColor)</onclick>
-						<onclick>Skin.SetColor(ThemeHomeSystemBarsColor, 31303, FF000000, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[ThemeHomeSystemBarsColor]</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="112">
-						<label>$LOCALIZE[31524]</label>
-						<onclick>SetProperty(Reset.Color,ThemeHomeSystemGlowBarsColor)</onclick>
-						<onclick>Skin.SetColor(ThemeHomeSystemGlowBarsColor, 31524, 00FFFFFF, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[ThemeHomeSystemGlowBarsColor]</param>
-						</include>
-						<visible>!String.IsEqual(Skin.String(MainMenu.Layout),vertical)</visible>
-					</control>
-					<control type="radiobutton" id="102">
-						<label>$LOCALIZE[31294]</label>
-						<onclick>SetProperty(Reset.Color,FocusedMainMenuColor)</onclick>
-						<onclick>Skin.SetColor(FocusedMainMenuColor, 31294, FFE5E5E5, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[FocusedMainMenuColor]</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="103">
-						<label>$LOCALIZE[31295]</label>
-						<onclick>SetProperty(Reset.Color,UnfocusedMainMenuColor)</onclick>
-						<onclick>Skin.SetColor(UnfocusedMainMenuColor, 31295, FF000000, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[UnfocusedMainMenuColor]</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="104">
-						<label>$LOCALIZE[31296]</label>
-						<onclick>SetProperty(Reset.Color,FocusedSubMenuColor)</onclick>
-						<onclick>Skin.SetColor(FocusedSubMenuColor, 31296, FFE5E5E5, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[FocusedSubMenuColor]</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="105">
-						<label>$LOCALIZE[31297]</label>
-						<onclick>SetProperty(Reset.Color,UnfocusedSubMenuColor)</onclick>
-						<onclick>Skin.SetColor(UnfocusedSubMenuColor, 31297, FFBDBDBD, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[UnfocusedSubMenuColor]</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="106">
-						<label>$LOCALIZE[31298]</label>
-						<onclick>SetProperty(Reset.Color,FocusedMainMenuIconLabelColor)</onclick>
-						<onclick>Skin.SetColor(FocusedMainMenuIconLabelColor, 31298, FFE5E5E5, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[FocusedMainMenuIconLabelColor]</param>
-						</include>
-						<visible>String.IsEqual(Skin.String(MainMenu.Layout),icons)</visible>
-					</control>
-					<control type="radiobutton" id="107">
-						<label>$LOCALIZE[31299]</label>
-						<onclick>SetProperty(Reset.Color,UnfocusedMainMenuIconLabelColor)</onclick>
-						<onclick>Skin.SetColor(UnfocusedMainMenuIconLabelColor, 31299, FF000000, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[UnfocusedMainMenuIconLabelColor]</param>
-						</include>
-						<visible>String.IsEqual(Skin.String(MainMenu.Layout),icons)</visible>
-					</control>
-					<control type="radiobutton" id="108">
-						<label>$LOCALIZE[31220]</label>
-						<onclick>SetProperty(Reset.Color,RSSFeedColor)</onclick>
-						<onclick>Skin.SetColor(RSSFeedColor, 31220, FFBDBDBD, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[RSSFeedColor]</param>
-						</include>
-					</control>
-				</control>
-				<control type="grouplist" id="9002">
-					<left>437</left>
-					<top>32</top>
-					<width>1401</width>
-					<height>810</height>
-					<pagecontrol>60</pagecontrol>
-					<onleft>9000</onleft>
-					<onright>60</onright>
-					<onup>9002</onup>
-					<ondown>9002</ondown>
-					<visible>Container(9000).HasFocus(2)</visible>
-					<control type="radiobutton" id="200">
-						<label>$LOCALIZE[15111]</label>
-						<onclick>SetProperty(Reset.Color,ThemeLabelColor)</onclick>
-						<onclick>Skin.SetColor(ThemeLabelColor, 15111, FFFF9800, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[ThemeLabelColor]</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="205">
-						<label>$LOCALIZE[31598]</label>
-						<onclick>SetProperty(Reset.Color,ThemeBorderColor)</onclick>
-						<onclick>Skin.SetColor(ThemeBorderColor, 31598, FF000000, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[ThemeBorderColor]</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="201">
-						<label>$LOCALIZE[31304]</label>
-						<onclick>SetProperty(Reset.Color,HighlightBarColor)</onclick>
-						<onclick>Skin.SetColor(HighlightBarColor, 31304, FF2A52BE, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[HighlightBarColor]</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="202">
-						<label>$LOCALIZE[31305]</label>
-						<onclick>SetProperty(Reset.Color,UnWatchedEpColor)</onclick>
-						<onclick>Skin.SetColor(UnWatchedEpColor, 31305, FFE5E5E5, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[UnWatchedEpColor]</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="203">
-						<label>$LOCALIZE[31252]</label>
-						<onclick>SetProperty(Reset.Color,TopBarColor)</onclick>
-						<onclick>Skin.SetColor(TopBarColor, 31252, FF000000, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[TopBarColor]</param>
-						</include>
-					</control>
-				</control>
-				<control type="grouplist" id="9003">
-					<left>437</left>
-					<top>32</top>
-					<width>1401</width>
-					<height>810</height>
-					<pagecontrol>60</pagecontrol>
-					<onleft>9000</onleft>
-					<onright>60</onright>
-					<onup>9003</onup>
-					<ondown>9003</ondown>
-					<visible>Container(9000).HasFocus(3)</visible>
-					<control type="radiobutton" id="300">
-						<label>$LOCALIZE[31304]</label>
-						<onclick>SetProperty(Reset.Color,WidgetHighlightBarColor)</onclick>
-						<onclick>Skin.SetColor(WidgetHighlightBarColor, 31304, FFFF9800, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[WidgetHighlightBarColor]</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="301">
-						<label>$LOCALIZE[31102]</label>
-						<onclick>SetProperty(Reset.Color,WidgetBackgroundColor)</onclick>
-						<onclick>Skin.SetColor(WidgetBackgroundColor, 31102, FFFF9800, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[WidgetBackgroundColor]</param>
-						</include>
-					</control>
-				</control>
-				<control type="grouplist" id="9005">
-					<left>437</left>
-					<top>32</top>
-					<width>1401</width>
-					<height>810</height>
-					<pagecontrol>60</pagecontrol>
-					<onleft>9000</onleft>
-					<onright>60</onright>
-					<onup>9005</onup>
-					<ondown>9005</ondown>
-					<visible>Container(9000).HasFocus(5)</visible>
-					<control type="radiobutton" id="500">
-						<label>$LOCALIZE[31346]</label>
-						<onclick>SetProperty(Reset.Color,ThemeOSDProgressColor)</onclick>
-						<onclick>Skin.SetColor(ThemeOSDProgressColor, 31346, FFFF9800, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[ThemeOSDProgressColor]</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="501">
-						<label>$LOCALIZE[31625]</label>
-						<onclick>SetProperty(Reset.Color,FocusedOSDButtonsColor)</onclick>
-						<onclick>Skin.SetColor(FocusedOSDButtonsColor, 31625, FFFF9800, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[FocusedOSDButtonsColor]</param>
-						</include>
-					</control>
-					<control type="radiobutton" id="502">
-						<label>$LOCALIZE[31626]</label>
-						<onclick>SetProperty(Reset.Color,UnfocusedOSDButtonsColor)</onclick>
-						<onclick>Skin.SetColor(UnfocusedOSDButtonsColor, 31626, FFFF9800, special://skin/extras/colors.xml)</onclick>
-						<include content="CustomColorRadioButton">
-							<param name="ColorStringVar">$VAR[UnfocusedOSDButtonsColor]</param>
-						</include>
-					</control>
-				</control>
 			</control>
 		</control>
 	</controls>

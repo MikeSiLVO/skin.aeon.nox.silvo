@@ -105,6 +105,7 @@
 						<width>856</width>
 						<height>35</height>
 						<align>center</align>
+						<textcolor>grey</textcolor>
 						<label>$INFO[ListItem.Top250,$LOCALIZE[13409] # ,]</label>
 						<visible>!String.IsEmpty(ListItem.Top250)</visible>
 					</control>
@@ -113,6 +114,7 @@
 						<height>40</height>
 						<align>center</align>
 						<font>font14_bold</font>
+						<textcolor>grey2</textcolor>
 						<scroll>true</scroll>
 						<label>$INFO[ListItem.Tagline]</label>
 						<visible>!String.IsEmpty(ListItem.Tagline)</visible>
@@ -122,6 +124,7 @@
 						<height>35</height>
 						<align>center</align>
 						<font>font13_bold</font>
+						<textcolor>grey3</textcolor>
 						<label>$VAR[FloorSubLabelVar]</label>
 					</control>
 				</control>
@@ -129,43 +132,46 @@
 					<visible>ListItem.IsCollection + !Skin.HasSetting(noextendedinfomovies)</visible>
 					<animation effect="fade" time="140" delay="100" condition="!Skin.HasSetting(noextendedinfomovies)">Visible</animation>
 					<left>495</left>
-					<top>845</top>
+					<top>945</top>
 					<control type="grouplist">
-						<visible>!Skin.HasSetting(Enable.Logo.MovieSetList)</visible>
-						<top>130</top>
 						<width>930</width>
-						<height>100</height>
-						<itemgap>5</itemgap>
+						<height>110</height>
+						<align>center</align>
 						<control type="label">
 							<width>auto</width>
 							<height>40</height>
 							<align>center</align>
-							<font>font13_bold</font>
+							<font>font14_bold</font>
+							<textcolor>grey2</textcolor>
 							<label>$INFO[Container(4500).NumItems,, $LOCALIZE[342]]</label>
+							<visible>!Skin.HasSetting(Enable.Logo.MovieSetList)</visible>
 						</control>
 						<control type="label">
 							<width>auto</width>
-							<height>40</height>
+							<height>35</height>
 							<align>center</align>
 							<font>font13_bold</font>
+							<textcolor>grey3</textcolor>
 							<label>$INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]$INFO[ListItem.RatingAndVotes, • ]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime), • , $LOCALIZE[12391]]</label>
+							<visible>!Skin.HasSetting(Enable.Logo.MovieSetList)</visible>
 						</control>
-					</control>
-					<control type="group">
-						<visible>Skin.HasSetting(Enable.Logo.MovieSetList)</visible>
 						<control type="label">
 							<width>930</width>
+							<height>32</height>
 							<align>center</align>
+							<textcolor>grey2</textcolor>
 							<label>$INFO[Container(4500).NumItems,, $LOCALIZE[342]]</label>
+							<visible>Skin.HasSetting(Enable.Logo.MovieSetList)</visible>
 						</control>
 						<control type="textbox">
 							<align>center</align>
-							<top>145</top>
 							<width>930</width>
-							<height>88</height>
-							<font>font14_textbox2</font>
+							<height>78</height>
+							<font>font14</font>
+							<textcolor>grey3</textcolor>
 							<label>[B]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Title)][/B]</label>
 							<autoscroll time="2500" delay="2500" repeat="3000">true</autoscroll>
+							<visible>Skin.HasSetting(Enable.Logo.MovieSetList)</visible>
 						</control>
 					</control>
 				</control>
@@ -177,6 +183,7 @@
 						<left>350</left>
 						<width>1220</width>
 						<align>center</align>
+						<textcolor>grey</textcolor>
 						<label>$VAR[NextAiredSubLabelVar]</label>
 						<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(59).OnNext + !Container(59).OnPrevious">Conditional</animation>
 					</control>
@@ -186,6 +193,7 @@
 						<width>1120</width>
 						<align>center</align>
 						<font>font14_bold</font>
+						<textcolor>grey2</textcolor>
 						<label>$INFO[ListItem.Property(TotalEpisodes),$LOCALIZE[20360]: ][COLOR $VAR[UnWatchedEpColor]]$INFO[ListItem.Property(UnWatchedEpisodes),  ($LOCALIZE[16101]: ,)][/COLOR]</label>
 					</control>
 					<control type="label">
@@ -194,6 +202,7 @@
 						<width>1000</width>
 						<align>center</align>
 						<font>font13_bold</font>
+						<textcolor>grey</textcolor>
 						<label>$INFO[ListItem.RatingAndVotes]</label>
 					</control>
 				</control>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<onload>SetFocus(90000)</onload>
 	<controls>
+		<control type="list" id="5999">
+			<include>HiddenList</include>
+		</control>
 		<control type="group">
 			<width>100%</width>
 			<!-- Background -->
@@ -20,12 +22,12 @@
 				</control>
 			</control>
 			<control type="image">
-				<left>1500</left>
+				<top>10</top>
+				<left>1520</left>
 				<width>400</width>
-				<height>110</height>
+				<height>100</height>
 				<aspectratio>keep</aspectratio>
-				<align>right</align>
-				<texture background="true">$INFO[Window.Property(clearlogo)]</texture>
+				<texture background="true">$INFO[Container(5999).ListItem.Art(clearlogo)]</texture>
 			</control>
 			<control type="grouplist" id="90000">
 				<left>40</left>
@@ -35,14 +37,14 @@
 				<itemgap>0</itemgap>
 				<usecontrolcoords>true</usecontrolcoords>
 				<scrolltime tween="quadratic" easing="out">300</scrolltime>
-				<!-- Cast -->
+				<!-- Recommended -->
 				<control type="label" id="8000">
 					<left>30</left>
 					<width>1100</width>
 					<height>60</height>
 					<font>font35_title_bold</font>
 					<textcolor>grey</textcolor>
-					<label>$LOCALIZE[206]</label>
+					<label>$LOCALIZE[31335]</label>
 					<visible>String.IsEqual(Window.Property(List_5000_Visible),True)</visible>
 				</control>
 				<control type="panel" id="5000">
@@ -63,202 +65,6 @@
 							<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Art(poster)]</texture>
 						</control>
 						<control type="image">
-							<width>260</width>
-							<height>400</height>
-							<bordersize>20</bordersize>
-							<texture>poster_bottom_fade.png</texture>
-						</control>
-						<control type="label">
-							<left>25</left>
-							<top>340</top>
-							<width>208</width>
-							<height>30</height>
-							<align>center</align>
-							<font>font13</font>
-							<shadowcolor>shadow</shadowcolor>
-							<textcolor>white2</textcolor>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
-						<control type="label">
-							<left>10</left>
-							<top>380</top>
-							<width>240</width>
-							<height>30</height>
-							<align>center</align>
-							<font>font13</font>
-							<shadowcolor>shadow</shadowcolor>
-							<textcolor>white2</textcolor>
-							<label>$INFO[ListItem.Label2]</label>
-						</control>
-					</itemlayout>
-					<focusedlayout width="260" height="460">
-						<control type="group">
-							<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
-							<control type="image">
-								<width>260</width>
-								<height>400</height>
-								<bordersize>22</bordersize>
-								<bordertexture border="20">thumbs/shadow.png</bordertexture>
-								<aspectratio aligny="top">scale</aspectratio>
-								<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Art(poster)]</texture>
-							</control>
-							<control type="image">
-								<width>260</width>
-								<height>400</height>
-								<bordersize>20</bordersize>
-								<texture>poster_bottom_fade.png</texture>
-							</control>
-							<control type="label">
-								<left>25</left>
-								<top>340</top>
-								<width>208</width>
-								<height>30</height>
-								<align>center</align>
-								<font>font13</font>
-								<shadowcolor>shadow</shadowcolor>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<label>$INFO[ListItem.Label]</label>
-							</control>
-							<control type="label">
-								<left>10</left>
-								<top>380</top>
-								<width>240</width>
-								<height>30</height>
-								<align>center</align>
-								<font>font13</font>
-								<shadowcolor>shadow</shadowcolor>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<label>$INFO[ListItem.Label2]</label>
-							</control>
-						</control>
-					</focusedlayout>
-				</control>
-				<!-- Crew -->
-				<control type="label" id="8001">
-					<left>30</left>
-					<width>1100</width>
-					<height>60</height>
-					<font>font35_title_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$LOCALIZE[31545]</label>
-					<visible>String.IsEqual(Window.Property(List_5001_Visible),True)</visible>
-				</control>
-				<control type="panel" id="5001">
-					<left>10</left>
-					<width>1880</width>
-					<height>420</height>
-					<orientation>horizontal</orientation>
-					<preloaditems>2</preloaditems>
-					<scrolltime tween="quadratic" easing="out">300</scrolltime>
-					<visible>String.IsEqual(Window.Property(List_5001_Visible),True)</visible>
-					<itemlayout width="260" height="460">
-						<control type="image">
-							<width>260</width>
-							<height>400</height>
-							<bordersize>22</bordersize>
-							<bordertexture border="20">thumbs/shadow.png</bordertexture>
-							<aspectratio aligny="top">scale</aspectratio>
-							<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Art(poster)]</texture>
-						</control>
-						<control type="image">
-							<width>260</width>
-							<height>400</height>
-							<bordersize>20</bordersize>
-							<texture>poster_bottom_fade.png</texture>
-						</control>
-						<control type="label">
-							<left>25</left>
-							<top>340</top>
-							<width>208</width>
-							<height>30</height>
-							<align>center</align>
-							<font>font13</font>
-							<shadowcolor>shadow</shadowcolor>
-							<textcolor>white2</textcolor>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
-						<control type="label">
-							<left>10</left>
-							<top>380</top>
-							<width>240</width>
-							<height>30</height>
-							<align>center</align>
-							<font>font13</font>
-							<shadowcolor>shadow</shadowcolor>
-							<textcolor>white2</textcolor>
-							<label>$INFO[ListItem.Label2]</label>
-						</control>
-					</itemlayout>
-					<focusedlayout width="260" height="460">
-						<control type="group">
-							<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
-							<control type="image">
-								<width>260</width>
-								<height>400</height>
-								<bordersize>22</bordersize>
-								<bordertexture border="20">thumbs/shadow.png</bordertexture>
-								<aspectratio aligny="top">scale</aspectratio>
-								<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Art(poster)]</texture>
-							</control>
-							<control type="image">
-								<width>260</width>
-								<height>400</height>
-								<bordersize>20</bordersize>
-								<texture>poster_bottom_fade.png</texture>
-							</control>
-							<control type="label">
-								<left>25</left>
-								<top>340</top>
-								<width>208</width>
-								<height>30</height>
-								<align>center</align>
-								<font>font13</font>
-								<shadowcolor>shadow</shadowcolor>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<label>$INFO[ListItem.Label]</label>
-							</control>
-							<control type="label">
-								<left>10</left>
-								<top>380</top>
-								<width>240</width>
-								<height>30</height>
-								<align>center</align>
-								<font>font13</font>
-								<shadowcolor>shadow</shadowcolor>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<label>$INFO[ListItem.Label2]</label>
-							</control>
-						</control>
-					</focusedlayout>
-				</control>
-				<!-- Similar -->
-				<control type="label" id="8002">
-					<left>30</left>
-					<width>1100</width>
-					<height>60</height>
-					<font>font35_title_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$LOCALIZE[31111]</label>
-					<visible>String.IsEqual(Window.Property(List_5002_Visible),True)</visible>
-				</control>
-				<control type="panel" id="5002">
-					<left>10</left>
-					<width>1880</width>
-					<height>420</height>
-					<orientation>horizontal</orientation>
-					<preloaditems>2</preloaditems>
-					<scrolltime tween="quadratic" easing="out">300</scrolltime>
-					<visible>String.IsEqual(Window.Property(List_5002_Visible),True)</visible>
-					<itemlayout width="260" height="460">
-						<control type="image">
-							<width>260</width>
-							<height>400</height>
-							<bordersize>20</bordersize>
-							<bordertexture border="20">thumbs/shadow.png</bordertexture>
-							<aspectratio aligny="top">scale</aspectratio>
-							<texture background="true" fallback="DefaultMovies.png">$INFO[ListItem.Art(poster)]</texture>
-						</control>
-						<control type="image">
 							<left>20</left>
 							<top>20</top>
 							<width>55</width>
@@ -277,18 +83,10 @@
 							<textcolor>white2</textcolor>
 							<label>$INFO[ListItem.Year]</label>
 						</control>
-						<control type="image">
-							<left>205</left>
-							<top>20</top>
-							<width>35</width>
-							<height>35</height>
-							<texture>overlays/addons/enabled.png</texture>
-							<visible>!String.IsEmpty(ListItem.DBID)</visible>
-						</control>
 						<control type="label">
-							<left>10</left>
+							<left>25</left>
 							<top>380</top>
-							<width>240</width>
+							<width>208</width>
 							<height>30</height>
 							<align>center</align>
 							<font>font13</font>
@@ -303,10 +101,10 @@
 							<control type="image">
 								<width>260</width>
 								<height>400</height>
-								<bordersize>20</bordersize>
+								<bordersize>22</bordersize>
 								<bordertexture border="20">thumbs/shadow.png</bordertexture>
 								<aspectratio aligny="top">scale</aspectratio>
-								<texture background="true" fallback="DefaultMovies.png">$INFO[ListItem.Art(poster)]</texture>
+								<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Art(poster)]</texture>
 							</control>
 							<control type="image">
 								<left>20</left>
@@ -327,13 +125,205 @@
 								<textcolor>$VAR[ThemeLabelColor]</textcolor>
 								<label>$INFO[ListItem.Year]</label>
 							</control>
+							<control type="label">
+								<left>25</left>
+								<top>380</top>
+								<width>208</width>
+								<height>30</height>
+								<align>center</align>
+								<font>font13</font>
+								<shadowcolor>shadow</shadowcolor>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</control>
+					</focusedlayout>
+				</control>
+				<!-- Similar -->
+				<control type="label" id="8001">
+					<left>30</left>
+					<width>1100</width>
+					<height>60</height>
+					<font>font35_title_bold</font>
+					<textcolor>grey</textcolor>
+					<label>$LOCALIZE[31111]</label>
+					<visible>String.IsEqual(Window.Property(List_5001_Visible),True)</visible>
+				</control>
+				<control type="panel" id="5001">
+					<left>10</left>
+					<width>1880</width>
+					<height>420</height>
+					<orientation>horizontal</orientation>
+					<preloaditems>2</preloaditems>
+					<scrolltime tween="quadratic" easing="out">300</scrolltime>
+					<visible>String.IsEqual(Window.Property(List_5001_Visible),True)</visible>
+					<itemlayout width="260" height="460">
+						<control type="image">
+							<width>260</width>
+							<height>400</height>
+							<bordersize>22</bordersize>
+							<bordertexture border="20">thumbs/shadow.png</bordertexture>
+							<aspectratio aligny="top">scale</aspectratio>
+							<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Art(poster)]</texture>
+						</control>
+						<control type="image">
+							<left>20</left>
+							<top>20</top>
+							<width>55</width>
+							<height>25</height>
+							<texture>colors/black50.png</texture>
+							<aspectratio aligny="center">scale</aspectratio>
+							<visible>!String.IsEmpty(ListItem.Year)</visible>
+						</control>
+						<control type="label">
+							<left>20</left>
+							<top>15</top>
+							<width>55</width>
+							<height>30</height>
+							<font>font12</font>
+							<shadowcolor>shadow</shadowcolor>
+							<textcolor>white2</textcolor>
+							<label>$INFO[ListItem.Year]</label>
+						</control>
+						<control type="label">
+							<left>25</left>
+							<top>380</top>
+							<width>208</width>
+							<height>30</height>
+							<align>center</align>
+							<font>font13</font>
+							<shadowcolor>shadow</shadowcolor>
+							<textcolor>white2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout width="260" height="460">
+						<control type="group">
+							<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
 							<control type="image">
-								<left>205</left>
+								<width>260</width>
+								<height>400</height>
+								<bordersize>22</bordersize>
+								<bordertexture border="20">thumbs/shadow.png</bordertexture>
+								<aspectratio aligny="top">scale</aspectratio>
+								<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Art(poster)]</texture>
+							</control>
+							<control type="image">
+								<left>20</left>
 								<top>20</top>
-								<width>35</width>
-								<height>35</height>
-								<texture>overlays/addons/enabled.png</texture>
-								<visible>!String.IsEmpty(ListItem.DBID)</visible>
+								<width>55</width>
+								<height>25</height>
+								<texture>colors/black50.png</texture>
+								<aspectratio aligny="center">scale</aspectratio>
+								<visible>!String.IsEmpty(ListItem.Year)</visible>
+							</control>
+							<control type="label">
+								<left>20</left>
+								<top>15</top>
+								<width>55</width>
+								<height>30</height>
+								<font>font12</font>
+								<shadowcolor>shadow</shadowcolor>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<label>$INFO[ListItem.Year]</label>
+							</control>
+							<control type="label">
+								<left>25</left>
+								<top>380</top>
+								<width>208</width>
+								<height>30</height>
+								<align>center</align>
+								<font>font13</font>
+								<shadowcolor>shadow</shadowcolor>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</control>
+					</focusedlayout>
+				</control>
+				<!-- Crew -->
+				<control type="label" id="8002">
+					<left>30</left>
+					<width>1100</width>
+					<height>60</height>
+					<font>font35_title_bold</font>
+					<textcolor>grey</textcolor>
+					<label>$LOCALIZE[31545]</label>
+					<visible>String.IsEqual(Window.Property(List_5002_Visible),True)</visible>
+				</control>
+				<control type="panel" id="5002">
+					<left>10</left>
+					<width>1880</width>
+					<height>420</height>
+					<orientation>horizontal</orientation>
+					<preloaditems>2</preloaditems>
+					<scrolltime tween="quadratic" easing="out">300</scrolltime>
+					<visible>String.IsEqual(Window.Property(List_5002_Visible),True)</visible>
+					<itemlayout width="260" height="460">
+						<control type="image">
+							<width>260</width>
+							<height>400</height>
+							<bordersize>20</bordersize>
+							<bordertexture border="20">thumbs/shadow.png</bordertexture>
+							<aspectratio aligny="top">scale</aspectratio>
+							<texture background="true" fallback="DefaultMovies.png">$INFO[ListItem.Art(poster)]</texture>
+						</control>
+						<control type="image">
+							<width>260</width>
+							<height>400</height>
+							<bordersize>20</bordersize>
+							<texture>poster_bottom_fade.png</texture>
+						</control>
+						<control type="label">
+							<left>10</left>
+							<top>340</top>
+							<width>240</width>
+							<height>30</height>
+							<align>center</align>
+							<font>font13</font>
+							<shadowcolor>shadow</shadowcolor>
+							<textcolor>white2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<control type="label">
+							<left>10</left>
+							<top>380</top>
+							<width>240</width>
+							<height>30</height>
+							<align>center</align>
+							<font>font13</font>
+							<shadowcolor>shadow</shadowcolor>
+							<textcolor>white2</textcolor>
+							<label>$INFO[ListItem.Label2]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout width="260" height="460">
+						<control type="group">
+							<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
+							<control type="image">
+								<width>260</width>
+								<height>400</height>
+								<bordersize>20</bordersize>
+								<bordertexture border="20">thumbs/shadow.png</bordertexture>
+								<aspectratio aligny="top">scale</aspectratio>
+								<texture background="true" fallback="DefaultMovies.png">$INFO[ListItem.Art(poster)]</texture>
+							</control>
+							<control type="image">
+								<width>260</width>
+								<height>400</height>
+								<bordersize>20</bordersize>
+								<texture>poster_bottom_fade.png</texture>
+							</control>
+							<control type="label">
+								<left>10</left>
+								<top>340</top>
+								<width>240</width>
+								<height>30</height>
+								<align>center</align>
+								<font>font13</font>
+								<shadowcolor>shadow</shadowcolor>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<label>$INFO[ListItem.Label]</label>
 							</control>
 							<control type="label">
 								<left>10</left>
@@ -344,7 +334,7 @@
 								<font>font13</font>
 								<shadowcolor>shadow</shadowcolor>
 								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<label>$INFO[ListItem.Label]</label>
+								<label>$INFO[ListItem.Label2]</label>
 							</control>
 						</control>
 					</focusedlayout>
@@ -461,5 +451,9 @@
 				</control>
 			</control>
 		</control>
+		<include content="BusySpinner">
+			<param name="visible">String.IsEqual(Window.Property(List_5000_IsUpdating),True) | String.IsEqual(Window.Property(List_5001_IsUpdating),True) | String.IsEqual(Window.Property(List_5003_IsUpdating),True)</param>
+			<param name="texture">colors/black.png</param>
+		</include>
 	</controls>
 </window>

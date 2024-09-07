@@ -1159,6 +1159,18 @@
 				<visible allowhiddenfocus="true">Control.HasFocus(8401)</visible>
 				<animation effect="fade" time="160">Hidden</animation>
 			</control>
+			<include content="MediaFlagsFull">
+				<param name="visible">Control.IsVisible(56)</param>
+				<param name="left">20</param>
+				<param name="align">left</param>
+				<param name="view_id">56</param>
+			</include>
+			<include content="MediaFlagsTV">
+				<param name="visible">Control.IsVisible(56) + !Skin.HasSetting(DisablePoster_TVflags) + [Container.Content(tvshows) | Container.Content(seasons)]</param>
+				<param name="left">1050</param>
+				<param name="align">right</param>
+				<param name="view_id">56</param>
+			</include>
 		</control>
 	</include>
 </includes>

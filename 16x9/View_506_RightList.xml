@@ -16,7 +16,7 @@
 			</control>
 			<control type="group">
 				<left>5</left>
-				<top>380</top>
+				<top>376</top>
 				<visible>[!Skin.HasSetting(Enable.Rightlist.HidePoster.Movies) + Container.Content(movies)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.Sets) + Container.Content(sets)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.tvshows) + Container.Content(tvshows)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.seasons) + Container.Content(seasons)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.episodes) + Container.Content(episodes)]</visible>
 				<control type="group">
 					<top>-170</top>
@@ -39,22 +39,14 @@
 						<visible>ListItem.IsCollection + String.IsEmpty(ListItem.Art(discart))</visible>
 					</control>
 				</control>
-				<control type="multiimage">
-					<left>40</left>
-					<top>40</top>
-					<width>370</width>
-					<height>555</height>
-					<aspectratio aligny="bottom">stretch</aspectratio>
-					<imagepath background="true">$VAR[FocusedPosterThumbVar]</imagepath>
-					<fadetime>IconCrossfadeTime</fadetime>
-				</control>
 				<control type="image">
 					<left>20</left>
 					<top>20</top>
 					<width>410</width>
 					<height>595</height>
 					<aspectratio aligny="bottom">stretch</aspectratio>
-					<texture>colors/black10.png</texture>
+					<fadetime>IconCrossfadeTime</fadetime>
+					<texture background="true">$VAR[FocusedPosterThumbVar]</texture>
 					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
 					<bordersize>20</bordersize>
 				</control>
@@ -273,6 +265,18 @@
 					<showonepage>false</showonepage>
 				</control>
 			</control>
+			<include content="MediaFlagsFull">
+				<param name="visible">[Container.Content(movies) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.EpisodeMediaflags)]</param>
+				<param name="left">-40</param>
+				<param name="align">right</param>
+				<param name="view_id">506</param>
+			</include>
+			<include content="MediaFlagsTV">
+				<param name="visible">Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.TVMediaflags) + [Container.Content(tvshows) | Container.Content(seasons)]</param>
+				<param name="left">1050</param>
+				<param name="align">right</param>
+				<param name="view_id">506</param>
+			</include>
 			<control type="group">
 				<include content="InfoPopup">
 					<param name="StudioLabelID">506</param>

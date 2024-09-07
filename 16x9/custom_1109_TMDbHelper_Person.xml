@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1109" type="dialog">
+	<onload>SetFocus(11096)</onload>
+	<onload>SetFocus(11091)</onload>
+	<onunload>ClearProperty(person_id,Home)</onunload>
+	<controls>
+		<control type="list" id="11090">
+			<include>HiddenList</include>
+			<content sortby="year" sortorder="descending">$INFO[Window(Home).Property(person_id)]</content>
+		</control>
+		<control type="group">
+			<visible>!Container(11090).IsUpdating</visible>
+			<include>VisibleFadeAnimation</include>
+			<!-- Poster Side -->
+			<control type="group">
+				<animation effect="slide" start="-720,0" end="0,0" delay="100" time="300" tween="quadratic">WindowOpen</animation>
+				<animation effect="slide" end="-720,0" time="300" tween="quadratic">WindowClose</animation>
+				<width>720</width>
+				<height>100%</height>
+				<include content="InfoPoster">
+					<param name="imagepath">$VAR[TMDbHInfoPersonPosterVar]</param>
+				</include>
+			</control>
+			<!-- Details Side -->
+			<control type="group">
+				<animation effect="slide" start="1210,0" end="0,0" delay="100" time="300" tween="quadratic">WindowOpen</animation>
+				<animation effect="slide" end="1210,0" time="300" tween="quadratic">WindowClose</animation>
+				<left>720</left>
+				<control type="group">
+					<width>1200</width>
+					<!-- Info Background -->
+					<control type="group">
+						<height>100%</height>
+						<control type="image">
+							<texture>colors/black.png</texture>
+						</control>
+						<control type="image">
+							<aspectratio align="center">scale</aspectratio>
+							<texture background="true">$VAR[InfoTMDBhBackgroundVar]</texture>
+							<fadetime>IconCrossfadeTime</fadetime>
+						</control>
+						<control type="image">
+							<texture border="4">dialogs/info/info_rightpaneltop.png</texture>
+							<colordiffuse>$VAR[DialogInfoDimmerVar]</colordiffuse>
+						</control>
+					</control>
+					<!-- Top Section -->
+					<control type="group">
+						<left>10</left>
+						<!-- Name -->
+						<control type="label">
+							<width>1065</width>
+							<height>60</height>
+							<font>font30_title_bold</font>
+							<textcolor>grey</textcolor>
+							<scroll>true</scroll>
+							<label>$INFO[Container(11090).ListItem.Title]</label>
+						</control>
+						<control type="label">
+							<top>60</top>
+							<height>30</height>
+							<font>font15</font>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<scroll>true</scroll>
+							<label>$INFO[Container(11090).ListItem.Property(Department),$LOCALIZE[31546] ]</label>
+						</control>
+						<!-- Separator Start -->
+						<control type="image">
+							<left>-7</left>
+							<top>105</top>
+							<height>1</height>
+							<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+						</control>
+						<!-- Age -->
+						<control type="label">
+							<top>103</top>
+							<width>auto</width>
+							<height>90</height>
+							<font>font48_bold</font>
+							<textcolor>grey</textcolor>
+							<label>$INFO[Container(11090).ListItem.Property(Age),, $LOCALIZE[31544]]</label>
+						</control>
+						<!-- Separator End -->
+						<control type="image">
+							<left>-7</left>
+							<height>1</height>
+							<top>192</top>
+							<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+						</control>
+					</control>
+					<!-- Details Panel -->
+					<include content="InfoDetailsPanel">
+						<param name="button_id">11092</param>
+						<param name="window_id">1109</param>
+						<param name="panel_id">11093</param>
+						<param name="panel_ondown">11091</param>
+						<param name="include">TMDbHInfoContentPerson</param>
+					</include>
+					<!-- Buttons LABEL -->
+					<control type="group">
+						<left>-5</left>
+						<top>542</top>
+						<control type="button">
+							<width>650</width>
+							<texturenofocus />
+							<disabledcolor>grey</disabledcolor>
+							<font>font30_title_bold</font>
+							<align>left</align>
+							<textoffsetx>16</textoffsetx>
+							<include>ButtonInfoDialogsCommonValues</include>
+							<label>$VAR[TMDbHPersonButtonLabelVar]</label>
+							<enable>no</enable>
+						</control>
+					</control>
+					<!-- Buttons -->
+					<control type="grouplist" id="11091">
+						<right>0</right>
+						<top>544</top>
+						<width>585</width>
+						<height>60</height>
+						<onup>11093</onup>
+						<ondown>11096</ondown>
+						<align>right</align>
+						<orientation>horizontal</orientation>
+						<control type="button" id="1109100">
+							<font>IconMediumMD</font>
+							<width>65</width>
+							<texturenofocus />
+							<include>ButtonInfoDialogsCommonValues</include>
+							<label></label>
+							<onclick>SetFocus(900020)</onclick>
+						</control>
+					</control>
+					<control type="image">
+						<left>3</left>
+						<top>604</top>
+						<height>1</height>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+					</control>
+				</control>
+				<!-- Bottom Section -->
+				<control type="grouplist" id="11094">
+					<left>-7</left>
+					<top>606</top>
+					<width>2800</width>
+					<height>500</height>
+					<onup>11091</onup>
+					<ondown>noop</ondown>
+					<usecontrolcoords>true</usecontrolcoords>
+					<scrolltime tween="quadratic" easing="out">300</scrolltime>
+					<control type="group" id="11095">
+						<width>1200</width>
+						<height>500</height>
+						<control type="button" id="11096">
+							<left>10</left>
+							<top>-2</top>
+							<width>1200</width>
+							<height>500</height>
+							<onup>11091</onup>
+							<ondown>900010</ondown>
+							<onclick>SetProperty(TextViewerHeader,$ESCINFO[Container(11090).ListItem.Title,[B],[/B]],Home)</onclick>
+							<onclick>SetProperty(TextViewerContent,$ESCINFO[Container(11090).ListItem.Plot],Home)</onclick>
+							<onclick>SetProperty(TextViewerSubHeader,$INFO[Container(11090).ListItem.Property(Department),$LOCALIZE[31546] ]$INFO[Container(11090).ListItem.Property(Age), - , $LOCALIZE[31544]],Home)</onclick>
+							<onclick>ActivateWindow(1112)</onclick>
+							<include>ButtonInfoDialogsCommonValues</include>
+						</control>
+						<!-- Bio -->
+						<control type="group" id="11097">
+							<left>26</left>
+							<top>22</top>
+							<control type="textbox" id="11098">
+								<top>-15</top>
+								<width>1162</width>
+								<height>460</height>
+								<label>$INFO[Container(11090).ListItem.Plot]</label>
+								<align>justify</align>
+								<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(11096)</autoscroll>
+								<animation effect="fade" start="100" end="78" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(11096)">Conditional</animation>
+							</control>
+						</control>
+					</control>
+					<include>TMDbHelperPersonList</include>
+				</control>
+			</control>
+		</control>
+		<control id="99" type="button">
+			<onclick>SetFocus(900020)</onclick>
+			<onback>900020</onback>
+			<onup>noop</onup>
+			<ondown>noop</ondown>
+			<onleft condition="!String.IsEmpty(Container(900020).ListItemNoWrap(-1).Label)">Control.Move(900020,-1)</onleft>
+			<onright condition="!String.IsEmpty(Container(900020).ListItemNoWrap(1).Label)">Control.Move(900020,1)</onright>
+			<include>HiddenObject</include>
+		</control>
+		<control type="group">
+			<visible>Control.HasFocus(99)</visible>
+			<include>VisibleFadeAnimation</include>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<texture>colors/black.png</texture>
+			</control>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<aspectratio>keep</aspectratio>
+				<texture>$INFO[Container(900020).ListItem.Icon]</texture>
+			</control>
+		</control>
+		<include content="BusySpinner">
+			<param name="visible">Container(11090).IsUpdating</param>
+			<param name="texture">colors/black.png</param>
+		</include>
+	</controls>
+</window>

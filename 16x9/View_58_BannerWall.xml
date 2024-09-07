@@ -5,96 +5,47 @@
 		<control type="group">
 			<visible>Control.IsVisible(58) + !Window.IsActive(addoninformation)</visible>
 			<include>ViewAnimation</include>
-			<animation effect="slide" start="0" end="0,60" condition="!Skin.HasSetting(Disable.BannerWallInfo)">Conditional</animation>
-			<include content="BackPanel">
-				<param name="left">107</param>
-				<param name="top">109</param>
-				<param name="width">1694</param>
-				<param name="height">772</param>
-				<param name="visible">!Skin.HasSetting(BannerPlex) | !Skin.HasSetting(Disable.BannerWallInfo)</param>
-			</include>
-			<include content="BackPanel">
-				<param name="left">107</param>
-				<param name="top">549</param>
-				<param name="width">1694</param>
-				<param name="height">332</param>
-				<param name="visible">Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)</param>
-			</include>
-			<control type="panel" id="58">
-				<left>120</left>
-				<include condition="!Skin.HasSetting(Disable.BannerWallInfo)">BannerWallInfoWidth</include>
-				<include condition="Skin.HasSetting(Disable.BannerWallInfo)">BannerWallNoInfoWidth</include>
-				<include condition="!Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo) | !Skin.HasSetting(Disable.BannerWallInfo)">BannerWallHigh</include>
-				<include condition="Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)">BannerWallLow</include>
-				<onleft condition="Control.IsVisible(95860)">95860</onleft>
-				<onleft condition="!Control.IsVisible(95860)">SetProperty(MediaMenu,True,Home)</onleft>
-				<onleft condition="!Control.IsVisible(95860)">SetFocus(9050)</onleft>
-				<onright>95861</onright>
-				<onup>58</onup>
-				<ondown>58</ondown>
-				<pagecontrol>95860</pagecontrol>
-				<preloaditems>2</preloaditems>
-				<viewtype label="31088">wide</viewtype>
-				<scrolltime tween="quadratic" easing="out">300</scrolltime>
-				<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(tvshows) | Container.Content(movies)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_58]</visible>
-				<itemlayout height="110" width="560">
-					<control type="image">
-						<width>560</width>
-						<height>110</height>
-						<aspectratio>scale</aspectratio>
-						<texture colordiffuse="BAFFFFFF" background="true">$VAR[BannerThumb]</texture>
-						<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
-						<bordersize>4</bordersize>
-						<visible>!String.IsEmpty(ListItem.Art(banner)) | String.IsEmpty(ListItem.Art(fanart))</visible>
-					</control>
-					<control type="group">
-						<visible>String.IsEmpty(ListItem.Art(banner))</visible>
+			<control type="group">
+				<animation effect="slide" start="0" end="0,60" condition="!Skin.HasSetting(Disable.BannerWallInfo)">Conditional</animation>
+				<include content="BackPanel">
+					<param name="left">107</param>
+					<param name="top">109</param>
+					<param name="width">1694</param>
+					<param name="height">772</param>
+					<param name="visible">!Skin.HasSetting(BannerPlex) | !Skin.HasSetting(Disable.BannerWallInfo)</param>
+				</include>
+				<include content="BackPanel">
+					<param name="left">107</param>
+					<param name="top">549</param>
+					<param name="width">1694</param>
+					<param name="height">332</param>
+					<param name="visible">Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)</param>
+				</include>
+				<control type="panel" id="58">
+					<left>120</left>
+					<include condition="!Skin.HasSetting(Disable.BannerWallInfo)">BannerWallInfoWidth</include>
+					<include condition="Skin.HasSetting(Disable.BannerWallInfo)">BannerWallNoInfoWidth</include>
+					<include condition="!Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo) | !Skin.HasSetting(Disable.BannerWallInfo)">BannerWallHigh</include>
+					<include condition="Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)">BannerWallLow</include>
+					<onleft condition="Control.IsVisible(95860)">95860</onleft>
+					<onleft condition="!Control.IsVisible(95860)">SetProperty(MediaMenu,True,Home)</onleft>
+					<onleft condition="!Control.IsVisible(95860)">SetFocus(9050)</onleft>
+					<onright>95861</onright>
+					<onup>58</onup>
+					<ondown>58</ondown>
+					<pagecontrol>95860</pagecontrol>
+					<preloaditems>2</preloaditems>
+					<viewtype label="31088">wide</viewtype>
+					<scrolltime tween="quadratic" easing="out">300</scrolltime>
+					<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(tvshows) | Container.Content(movies)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_58]</visible>
+					<itemlayout height="110" width="560">
 						<control type="image">
 							<width>560</width>
 							<height>110</height>
 							<aspectratio>scale</aspectratio>
-							<texture colordiffuse="BAFFFFFF" background="true">$INFO[ListItem.Art(fanart)]</texture>
+							<texture colordiffuse="BAFFFFFF" background="true">$VAR[BannerThumb]</texture>
 							<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
 							<bordersize>4</bordersize>
-						</control>
-						<control type="image">
-							<top>5</top>
-							<width>300</width>
-							<height>100</height>
-							<aspectratio>keep</aspectratio>
-							<texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
-							<bordersize>4</bordersize>
-							<colordiffuse>BAffffff</colordiffuse>
-						</control>
-					</control>
-					<control type="image">
-						<left>519</left>
-						<width>42</width>
-						<height>42</height>
-						<texture>$VAR[OverlayVar]</texture>
-						<aspectratio align="center" aligny="top">keep</aspectratio>
-						<bordersize>4</bordersize>
-						<visible>[!String.IsEmpty(Skin.String(58.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(58.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
-					</control>
-					<control type="group">
-						<left>10</left>
-						<top>10</top>
-						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
-					</control>
-				</itemlayout>
-				<focusedlayout height="110" width="560">
-					<control type="group">
-						<animation type="Focus" reversible="false">
-							<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
-							<effect type="fade" start="80" end="100" time="300" tween="sine" easing="in" />
-						</animation>
-						<control type="image">
-							<width>560</width>
-							<height>110</height>
-							<aspectratio>scale</aspectratio>
-							<texture background="true">$VAR[BannerThumb]</texture>
-							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
-							<bordersize>8</bordersize>
 							<visible>!String.IsEmpty(ListItem.Art(banner)) | String.IsEmpty(ListItem.Art(fanart))</visible>
 						</control>
 						<control type="group">
@@ -103,9 +54,9 @@
 								<width>560</width>
 								<height>110</height>
 								<aspectratio>scale</aspectratio>
-								<texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-								<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
-								<bordersize>8</bordersize>
+								<texture colordiffuse="BAFFFFFF" background="true">$INFO[ListItem.Art(fanart)]</texture>
+								<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+								<bordersize>4</bordersize>
 							</control>
 							<control type="image">
 								<top>5</top>
@@ -114,11 +65,11 @@
 								<aspectratio>keep</aspectratio>
 								<texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
 								<bordersize>4</bordersize>
+								<colordiffuse>BAffffff</colordiffuse>
 							</control>
 						</control>
 						<control type="image">
-							<left>515</left>
-							<top>4</top>
+							<left>519</left>
 							<width>42</width>
 							<height>42</height>
 							<texture>$VAR[OverlayVar]</texture>
@@ -131,89 +82,152 @@
 							<top>10</top>
 							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
 						</control>
-					</control>
-				</focusedlayout>
-			</control>
-			<control type="scrollbar" id="95860">
-				<left>108</left>
-				<width>12</width>
-				<include condition="!Skin.HasSetting(BannerPlex) | !Skin.HasSetting(Disable.BannerWallInfo)">BannerWallScrollbarHigh</include>
-				<include condition="Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)">BannerWallScrollbarLow</include>
-				<onup>95860</onup>
-				<ondown>95860</ondown>
-				<onright>50</onright>
-				<onleft>SetProperty(MediaMenu,True,Home)</onleft>
-				<onleft>SetFocus(9050)</onleft>
-				<showonepage>false</showonepage>
-				<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-				<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
-			</control>
-			<control type="group">
-				<left>1240</left>
-				<top>120</top>
-				<visible>!Skin.HasSetting(Disable.BannerWallInfo)</visible>
-				<control type="image">
-					<width>560</width>
-					<height>330</height>
-					<aspectratio>scale</aspectratio>
-					<texture background="true">$VAR[GlobalBackgroundVar]</texture>
-					<fadetime>300</fadetime>
-					<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
-					<bordersize>2</bordersize>
+					</itemlayout>
+					<focusedlayout height="110" width="560">
+						<control type="group">
+							<animation type="Focus" reversible="false">
+								<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
+								<effect type="fade" start="80" end="100" time="300" tween="sine" easing="in" />
+							</animation>
+							<control type="image">
+								<width>560</width>
+								<height>110</height>
+								<aspectratio>scale</aspectratio>
+								<texture background="true">$VAR[BannerThumb]</texture>
+								<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+								<bordersize>8</bordersize>
+								<visible>!String.IsEmpty(ListItem.Art(banner)) | String.IsEmpty(ListItem.Art(fanart))</visible>
+							</control>
+							<control type="group">
+								<visible>String.IsEmpty(ListItem.Art(banner))</visible>
+								<control type="image">
+									<width>560</width>
+									<height>110</height>
+									<aspectratio>scale</aspectratio>
+									<texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+									<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+									<bordersize>8</bordersize>
+								</control>
+								<control type="image">
+									<top>5</top>
+									<width>300</width>
+									<height>100</height>
+									<aspectratio>keep</aspectratio>
+									<texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
+									<bordersize>4</bordersize>
+								</control>
+							</control>
+							<control type="image">
+								<left>515</left>
+								<top>4</top>
+								<width>42</width>
+								<height>42</height>
+								<texture>$VAR[OverlayVar]</texture>
+								<aspectratio align="center" aligny="top">keep</aspectratio>
+								<bordersize>4</bordersize>
+								<visible>[!String.IsEmpty(Skin.String(58.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(58.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
+							</control>
+							<control type="group">
+								<left>10</left>
+								<top>10</top>
+								<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
+							</control>
+						</control>
+					</focusedlayout>
 				</control>
-				<control type="label">
-					<top>325</top>
-					<width>560</width>
-					<height>60</height>
-					<font>font16_title_bold</font>
-					<textcolor>grey</textcolor>
-					<scroll>true</scroll>
-					<label>$VAR[FloorLabelVar]</label>
-					<textoffsetx>15</textoffsetx>
-				</control>
-				<control type="button">
-					<top>370</top>
-					<width>559</width>
-					<label>$INFO[ListItem.Genre,[COLOR grey],[/COLOR][CR]]$VAR[VideoSubLabelVar]</label>
-					<textcolor>$VAR[UnWatchedEpColor]</textcolor>
-					<include>DefaultButtonsValues</include>
-					<visible>!ListItem.IsCollection</visible>
-				</control>
-				<control type="button">
-					<top>370</top>
-					<width>559</width>
-					<label>$VAR[MovieSetGenreVar][CR]$INFO[Container(4500).NumItems,, $LOCALIZE[342]]</label>
-					<include>DefaultButtonsValues</include>
-					<visible>ListItem.IsCollection</visible>
-				</control>
-				<control type="textbox">
-					<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Tagline,, - ][/COLOR]$VAR[VideoPlotVar]</label>
-					<left>15</left>
-					<top>456</top>
-					<width>530</width>
-					<height>299</height>
-					<font>font14_textbox</font>
-					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(95861)</autoscroll>
-					<pagecontrol>95861</pagecontrol>
-					<include>DefaultButtonsValues</include>
-				</control>
-				<control type="scrollbar" id="95861">
-					<left>548</left>
-					<top>468</top>
+				<control type="scrollbar" id="95860">
+					<left>108</left>
 					<width>12</width>
-					<height>302</height>
-					<onleft>50</onleft>
-					<onright>SetProperty(MediaMenu,True,Home)</onright>
-					<onright>SetFocus(9050)</onright>
-					<ondown>95861</ondown>
-					<onup>95861</onup>
+					<include condition="!Skin.HasSetting(BannerPlex) | !Skin.HasSetting(Disable.BannerWallInfo)">BannerWallScrollbarHigh</include>
+					<include condition="Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)">BannerWallScrollbarLow</include>
+					<onup>95860</onup>
+					<ondown>95860</ondown>
+					<onright>50</onright>
+					<onleft>SetProperty(MediaMenu,True,Home)</onleft>
+					<onleft>SetFocus(9050)</onleft>
 					<showonepage>false</showonepage>
 					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
 					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 				</control>
+				<control type="group">
+					<left>1240</left>
+					<top>120</top>
+					<visible>!Skin.HasSetting(Disable.BannerWallInfo)</visible>
+					<control type="image">
+						<width>560</width>
+						<height>330</height>
+						<aspectratio>scale</aspectratio>
+						<texture background="true">$VAR[GlobalBackgroundVar]</texture>
+						<fadetime>300</fadetime>
+						<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+						<bordersize>2</bordersize>
+					</control>
+					<control type="label">
+						<top>325</top>
+						<width>560</width>
+						<height>60</height>
+						<font>font16_title_bold</font>
+						<textcolor>grey</textcolor>
+						<scroll>true</scroll>
+						<label>$VAR[FloorLabelVar]</label>
+						<textoffsetx>15</textoffsetx>
+					</control>
+					<control type="button">
+						<top>370</top>
+						<width>559</width>
+						<label>$INFO[ListItem.Genre,[COLOR grey],[/COLOR][CR]]$VAR[VideoSubLabelVar]</label>
+						<textcolor>$VAR[UnWatchedEpColor]</textcolor>
+						<include>DefaultButtonsValues</include>
+						<visible>!ListItem.IsCollection</visible>
+					</control>
+					<control type="button">
+						<top>370</top>
+						<width>559</width>
+						<label>$VAR[MovieSetGenreVar][CR]$INFO[Container(4500).NumItems,, $LOCALIZE[342]]</label>
+						<include>DefaultButtonsValues</include>
+						<visible>ListItem.IsCollection</visible>
+					</control>
+					<control type="textbox">
+						<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Tagline,, - ][/COLOR]$VAR[VideoPlotVar]</label>
+						<left>15</left>
+						<top>456</top>
+						<width>530</width>
+						<height>299</height>
+						<font>font14_textbox</font>
+						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(95861)</autoscroll>
+						<pagecontrol>95861</pagecontrol>
+						<include>DefaultButtonsValues</include>
+					</control>
+					<control type="scrollbar" id="95861">
+						<left>548</left>
+						<top>468</top>
+						<width>12</width>
+						<height>302</height>
+						<onleft>50</onleft>
+						<onright>SetProperty(MediaMenu,True,Home)</onright>
+						<onright>SetFocus(9050)</onright>
+						<ondown>95861</ondown>
+						<onup>95861</onup>
+						<showonepage>false</showonepage>
+						<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
+						<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
+						<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					</control>
+				</control>
 			</control>
+			<include content="MediaFlagsFull">
+				<param name="visible">Control.IsVisible(58)</param>
+				<param name="left">80</param>
+				<param name="align">center</param>
+				<param name="view_id">58</param>
+			</include>
+			<include content="MediaFlagsTV">
+				<param name="visible">Control.IsVisible(58) + !Skin.HasSetting(DisableBannerWall_TVflags) + [Container.Content(tvshows) | Container.Content(seasons)]</param>
+				<param name="left">980</param>
+				<param name="align">right</param>
+				<param name="view_id">58</param>
+			</include>
 			<control type="group">
 				<include content="InfoPopup">
 					<param name="StudioLabelID">58</param>

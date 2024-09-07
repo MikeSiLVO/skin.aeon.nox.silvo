@@ -308,172 +308,20 @@
 					</control>
 				</control>
 			</control>
-			<control type="fixedlist" id="509">
-				<top>530</top>
-				<width>1920</width>
-				<height>600</height>
-				<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_509]</visible>
-				<onleft>509</onleft>
-				<onright>509</onright>
-				<onup>SetProperty(MediaMenu,True,Home)</onup>
-				<onup>SetFocus(9050)</onup>
-				<ondown condition="Control.IsVisible(50960)">50960</ondown>
-				<ondown condition="!Control.IsVisible(50960)">4400</ondown>
-				<viewtype label="$LOCALIZE[31244]">bigwrap</viewtype>
-				<pagecontrol>50960</pagecontrol>
-				<orientation>horizontal</orientation>
-				<preloaditems>2</preloaditems>
-				<itemlayout height="525" width="271" condition="[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets) | [Container.Content(tvshows) + !Skin.HasSetting(Enable.MyFlix.TVLandscape)]">
-					<control type="image">
-						<include>FlixNoCaseVars</include>
-						<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
-					</control>
-					<control type="image">
-						<include>FlixNoClearCaseVars</include>
-						<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
-					</control>
-					<include>FlixPoster</include>
-					<include>FlixPosterOverlay</include>
-					<control type="image">
-						<left>10</left>
-						<top>75</top>
-						<width>268</width>
-						<height>390</height>
-						<texture>colors/black.png</texture>
-						<colordiffuse>$VAR[MyFlixDimmerVar]</colordiffuse>
-						<bordersize>20</bordersize>
-					</control>
-					<control type="image">
-						<include>FlixCaseVars</include>
-						<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
-					</control>
-				</itemlayout>
-				<focusedlayout height="525" width="271" condition="[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets) | [Container.Content(tvshows) + !Skin.HasSetting(Enable.MyFlix.TVLandscape)]">
-					<control type="group">
-						<visible>[[Container.Content(movies) | Container.Content(sets)] + Control.IsVisible(7000) + Skin.HasSetting(Enable.MyFlix.OpenCase)] | [[Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(Enable.MyFlix.OpenCase)] | Container.Content(tvshows)</visible>
-						<control type="image">
-							<include>FlixNoCaseVars</include>
-							<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
-						</control>
-						<control type="image">
-							<include>FlixNoClearCaseVars</include>
-							<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
-						</control>
-						<include>FlixPoster</include>
-						<control type="image">
-							<include>FlixCaseVars</include>
-							<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
-						</control>
-						<include>FlixPosterOverlay</include>
-					</control>
-				</focusedlayout>
-				<itemlayout height="525" width="271" condition="Container.Content(seasons)">
-					<control type="image">
-						<include>FlixNoCaseVars</include>
-						<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
-					</control>
-					<control type="image">
-						<include>FlixNoClearCaseVars</include>
-						<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
-					</control>
-					<include>FlixPoster</include>
-					<include>FlixPosterOverlay</include>
-					<control type="image">
-						<left>10</left>
-						<top>75</top>
-						<width>268</width>
-						<height>390</height>
-						<texture>colors/black.png</texture>
-						<colordiffuse>$VAR[MyFlixDimmerVar]</colordiffuse>
-						<bordersize>20</bordersize>
-					</control>
-					<control type="image">
-						<include>FlixCaseVars</include>
-						<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
-					</control>
-				</itemlayout>
-				<focusedlayout height="525" width="271" condition="Container.Content(seasons)">
-					<control type="image">
-						<include>FlixNoCaseVars</include>
-						<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
-					</control>
-					<control type="image">
-						<include>FlixNoClearCaseVars</include>
-						<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
-					</control>
-					<include>FlixPoster</include>
-					<control type="image">
-						<include>FlixCaseVars</include>
-						<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
-					</control>
-					<include>FlixPosterOverlay</include>
-				</focusedlayout>
-				<itemlayout height="270" width="480" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)]">
-					<include>FlixLandscape</include>
-					<control type="image">
-						<left>410</left>
-						<top>217</top>
-						<width>40</width>
-						<height>40</height>
-						<texture>$VAR[OverlayVar]</texture>
-						<aspectratio align="center" aligny="top">keep</aspectratio>
-						<visible>[!String.IsEmpty(Skin.String(509.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(509.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(509.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
-					</control>
-					<control type="image">
-						<left>-10</left>
-						<top>197</top>
-						<width>480</width>
-						<height>270</height>
-						<texture>colors/black.png</texture>
-						<colordiffuse>$VAR[MyFlixDimmerVar]</colordiffuse>
-						<bordersize>20</bordersize>
-					</control>
-				</itemlayout>
-				<focusedlayout height="270" width="480" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)]">
-					<include>FlixLandscape</include>
-					<control type="image">
-						<left>410</left>
-						<top>217</top>
-						<width>40</width>
-						<height>40</height>
-						<texture>$VAR[OverlayVar]</texture>
-						<aspectratio align="center" aligny="top">keep</aspectratio>
-						<visible>[!String.IsEmpty(Skin.String(509.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(509.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(509.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
-					</control>
-				</focusedlayout>
-				<itemlayout height="270" width="480" condition="Container.Content(episodes)">
-					<include>FlixEpisodeThumb</include>
-					<control type="image">
-						<left>420</left>
-						<top>218</top>
-						<width>40</width>
-						<height>40</height>
-						<texture>$VAR[OverlayVar]</texture>
-						<aspectratio align="center" aligny="top">keep</aspectratio>
-						<visible>!String.IsEmpty(Skin.String(509.Episodes.DisableOverlay)) + Container.Content(episodes)</visible>
-					</control>
-					<control type="image">
-						<top>197</top>
-						<width>480</width>
-						<height>270</height>
-						<texture>colors/black.png</texture>
-						<colordiffuse>$VAR[MyFlixDimmerVar]</colordiffuse>
-						<bordersize>20</bordersize>
-					</control>
-				</itemlayout>
-				<focusedlayout height="270" width="480" condition="Container.Content(episodes)">
-					<include>FlixEpisodeThumb</include>
-					<control type="image">
-						<left>420</left>
-						<top>218</top>
-						<width>40</width>
-						<height>40</height>
-						<texture>$VAR[OverlayVar]</texture>
-						<aspectratio align="center" aligny="top">keep</aspectratio>
-						<visible>!String.IsEmpty(Skin.String(509.Episodes.DisableOverlay)) + Container.Content(episodes)</visible>
-					</control>
-				</focusedlayout>
-			</control>
+			<include content="MediaFlagsFull">
+				<param name="visible">Control.IsVisible(509) + !Skin.HasSetting(Disable.MyFlix.Mediaflags) + [Container.Content(movies) | Container.Content(episodes)]</param>
+				<param name="left">40</param>
+				<param name="align">left</param>
+				<param name="view_id">509</param>
+			</include>
+			<include content="MediaFlagsTV">
+				<param name="visible">Control.IsVisible(509) + !Skin.HasSetting(DisableMyFlix_TVflags) + [Container.Content(tvshows) | Container.Content(seasons)]</param>
+				<param name="left">40</param>
+				<param name="align">left</param>
+				<param name="view_id">509</param>
+			</include>
+			<include condition="!Skin.HasSetting(MyFlixWrap)">MyFlixFixed</include>
+			<include condition="Skin.HasSetting(MyFlixWrap)">MyFlixWrapped</include>
 			<control type="group">
 				<top>530</top>
 				<visible>[[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets)] + !Control.IsVisible(7000) + Skin.HasSetting(Enable.MyFlix.OpenCase)</visible>
@@ -526,6 +374,182 @@
 				<include>FlixPosterOverlay</include>
 			</control>
 		</control>
+	</include>
+	<include name="MyFlixFixed">
+		<control type="fixedlist" id="509">
+			<include>MyFlixContent</include>
+		</control>
+	</include>
+	<include name="MyFlixWrapped">
+		<control type="wraplist" id="509">
+			<include>MyFlixContent</include>
+		</control>
+	</include>
+	<include name="MyFlixContent">
+		<top>530</top>
+		<width>1920</width>
+		<height>600</height>
+		<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_509]</visible>
+		<onleft>509</onleft>
+		<onright>509</onright>
+		<onup>SetProperty(MediaMenu,True,Home)</onup>
+		<onup>SetFocus(9050)</onup>
+		<ondown condition="Control.IsVisible(50960)">50960</ondown>
+		<ondown condition="!Control.IsVisible(50960)">4400</ondown>
+		<viewtype label="$LOCALIZE[31244]">bigwrap</viewtype>
+		<pagecontrol>50960</pagecontrol>
+		<orientation>horizontal</orientation>
+		<preloaditems>2</preloaditems>
+		<itemlayout height="525" width="271" condition="[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets) | [Container.Content(tvshows) + !Skin.HasSetting(Enable.MyFlix.TVLandscape)]">
+			<control type="image">
+				<include>FlixNoCaseVars</include>
+				<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
+			</control>
+			<control type="image">
+				<include>FlixNoClearCaseVars</include>
+				<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
+			</control>
+			<include>FlixPoster</include>
+			<include>FlixPosterOverlay</include>
+			<control type="image">
+				<left>10</left>
+				<top>75</top>
+				<width>268</width>
+				<height>390</height>
+				<texture>colors/black.png</texture>
+				<colordiffuse>$VAR[MyFlixDimmerVar]</colordiffuse>
+				<bordersize>20</bordersize>
+			</control>
+			<control type="image">
+				<include>FlixCaseVars</include>
+				<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
+			</control>
+		</itemlayout>
+		<focusedlayout height="525" width="271" condition="[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets) | [Container.Content(tvshows) + !Skin.HasSetting(Enable.MyFlix.TVLandscape)]">
+			<control type="group">
+				<visible>[[Container.Content(movies) | Container.Content(sets)] + Control.IsVisible(7000) + Skin.HasSetting(Enable.MyFlix.OpenCase)] | [[Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(Enable.MyFlix.OpenCase)] | Container.Content(tvshows)</visible>
+				<control type="image">
+					<include>FlixNoCaseVars</include>
+					<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
+				</control>
+				<control type="image">
+					<include>FlixNoClearCaseVars</include>
+					<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
+				</control>
+				<include>FlixPoster</include>
+				<control type="image">
+					<include>FlixCaseVars</include>
+					<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
+				</control>
+				<include>FlixPosterOverlay</include>
+			</control>
+		</focusedlayout>
+		<itemlayout height="525" width="271" condition="Container.Content(seasons)">
+			<control type="image">
+				<include>FlixNoCaseVars</include>
+				<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
+			</control>
+			<control type="image">
+				<include>FlixNoClearCaseVars</include>
+				<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
+			</control>
+			<include>FlixPoster</include>
+			<include>FlixPosterOverlay</include>
+			<control type="image">
+				<left>10</left>
+				<top>75</top>
+				<width>268</width>
+				<height>390</height>
+				<texture>colors/black.png</texture>
+				<colordiffuse>$VAR[MyFlixDimmerVar]</colordiffuse>
+				<bordersize>20</bordersize>
+			</control>
+			<control type="image">
+				<include>FlixCaseVars</include>
+				<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
+			</control>
+		</itemlayout>
+		<focusedlayout height="525" width="271" condition="Container.Content(seasons)">
+			<control type="image">
+				<include>FlixNoCaseVars</include>
+				<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
+			</control>
+			<control type="image">
+				<include>FlixNoClearCaseVars</include>
+				<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
+			</control>
+			<include>FlixPoster</include>
+			<control type="image">
+				<include>FlixCaseVars</include>
+				<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
+			</control>
+			<include>FlixPosterOverlay</include>
+		</focusedlayout>
+		<itemlayout height="270" width="480" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)]">
+			<include>FlixLandscape</include>
+			<control type="image">
+				<left>410</left>
+				<top>217</top>
+				<width>40</width>
+				<height>40</height>
+				<texture>$VAR[OverlayVar]</texture>
+				<aspectratio align="center" aligny="top">keep</aspectratio>
+				<visible>[!String.IsEmpty(Skin.String(509.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(509.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(509.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
+			</control>
+			<control type="image">
+				<left>-10</left>
+				<top>197</top>
+				<width>480</width>
+				<height>270</height>
+				<texture>colors/black.png</texture>
+				<colordiffuse>$VAR[MyFlixDimmerVar]</colordiffuse>
+				<bordersize>20</bordersize>
+			</control>
+		</itemlayout>
+		<focusedlayout height="270" width="480" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)]">
+			<include>FlixLandscape</include>
+			<control type="image">
+				<left>410</left>
+				<top>217</top>
+				<width>40</width>
+				<height>40</height>
+				<texture>$VAR[OverlayVar]</texture>
+				<aspectratio align="center" aligny="top">keep</aspectratio>
+				<visible>[!String.IsEmpty(Skin.String(509.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(509.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(509.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
+			</control>
+		</focusedlayout>
+		<itemlayout height="270" width="480" condition="Container.Content(episodes)">
+			<include>FlixEpisodeThumb</include>
+			<control type="image">
+				<left>420</left>
+				<top>218</top>
+				<width>40</width>
+				<height>40</height>
+				<texture>$VAR[OverlayVar]</texture>
+				<aspectratio align="center" aligny="top">keep</aspectratio>
+				<visible>!String.IsEmpty(Skin.String(509.Episodes.DisableOverlay)) + Container.Content(episodes)</visible>
+			</control>
+			<control type="image">
+				<top>197</top>
+				<width>480</width>
+				<height>270</height>
+				<texture>colors/black.png</texture>
+				<colordiffuse>$VAR[MyFlixDimmerVar]</colordiffuse>
+				<bordersize>20</bordersize>
+			</control>
+		</itemlayout>
+		<focusedlayout height="270" width="480" condition="Container.Content(episodes)">
+			<include>FlixEpisodeThumb</include>
+			<control type="image">
+				<left>420</left>
+				<top>218</top>
+				<width>40</width>
+				<height>40</height>
+				<texture>$VAR[OverlayVar]</texture>
+				<aspectratio align="center" aligny="top">keep</aspectratio>
+				<visible>!String.IsEmpty(Skin.String(509.Episodes.DisableOverlay)) + Container.Content(episodes)</visible>
+			</control>
+		</focusedlayout>
 	</include>
 	<include name="FlixPoster">
 		<control type="image">

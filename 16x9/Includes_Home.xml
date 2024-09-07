@@ -100,13 +100,13 @@
 					<width>100%</width>
 					<height>87</height>
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_bar.png</texture>
-					<visible>[String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] + [String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) | String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+					<visible>String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 				</control>
 				<control type="image">
 					<width>100%</width>
 					<height>87</height>
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_bar_white.png</texture>
-					<visible>[!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] | [!String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) + !String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+					<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | !String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 				</control>
 				<include condition="System.AddonIsEnabled(script.embuary.helper)">PlayListStatsList</include>
 				<control type="label">
@@ -235,14 +235,14 @@
 				<width>100%</width>
 				<height>229</height>
 				<texture>homemenu_back.png</texture>
-				<visible>String.StartsWith(Skin.String(ThemeHomeMenuBarColor),ff) | String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)</visible>
+				<visible>String.StartsWith(Skin.String(ThemeHomeMenuBarColor),ff) | String.IsEmpty(Skin.String(ThemeHomeMenuBarColor))</visible>
 			</control>
 			<control type="image">
 				<left>-5%</left>
 				<width>110%</width>
 				<height>229</height>
 				<texture colordiffuse="$VAR[ThemeHomeMenuBarColor]">homemenu_back_white.png</texture>
-				<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)</visible>
+				<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor))</visible>
 			</control>
 			<!-- Horizontal Menu Content -->
 			<include condition="Skin.HasSetting(HomeMenuNavVar) + !String.IsEqual(Skin.String(MainMenu.Layout),1)">MainMenuListFixed</include>
@@ -286,13 +286,13 @@
 					<width>100%</width>
 					<height>97</height>
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_bar.png</texture>
-					<visible>[String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] + [String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) | String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+					<visible>String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 				</control>
 				<control type="image">
 					<width>100%</width>
 					<height>97</height>
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_bar_white.png</texture>
-					<visible>[!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] | [!String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) + !String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+					<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | !String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 				</control>
 				<include>HorizontalSubMenu</include>
 				<control type="image">
@@ -317,12 +317,12 @@
 				<control type="image">
 					<texture border="40">mediamenu_back.png</texture>
 					<animation effect="fade" start="100" end="80" condition="true">Conditional</animation>
-					<visible>[String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)]</visible>
+					<visible>String.IsEmpty(Skin.String(ThemeHomeMenuBarColor))</visible>
 				</control>
 				<control type="image">
 					<texture colordiffuse="$VAR[ThemeHomeMenuBarColor]" border="40">mediamenu_back_white.png</texture>
 					<animation effect="fade" start="100" end="80" condition="true">Conditional</animation>
-					<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)</visible>
+					<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor))</visible>
 				</control>
 			</control>
 			<include condition="Skin.HasSetting(HomeMenuNavVar)">MainMenuListFixed</include>
@@ -403,7 +403,7 @@
 			<control type="group">
 				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="$EXP[HasVerticalMenuWithExtended]">Conditional</animation>
 				<control type="group">
-					<visible>[String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] + [String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) | String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+					<visible>String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 					<height>87</height>
 					<control type="group">
 						<visible>system.getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEmpty(Skin.String(VerticalMenuSystemBar.Position))]</visible>
@@ -433,7 +433,7 @@
 					</control>
 				</control>
 				<control type="group">
-					<visible>[!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] | [!String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) + !String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+					<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | !String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 					<height>87</height>
 					<control type="group">
 						<visible>system.getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEmpty(Skin.String(VerticalMenuSystemBar.Position))]</visible>
@@ -1280,12 +1280,12 @@
 				<control type="image">
 					<height>97</height>
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_bar.png</texture>
-					<visible>[String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] + [String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) | String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+					<visible>String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 				</control>
 				<control type="image">
 					<height>96</height>
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_bar_white.png</texture>
-					<visible>[!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] | [!String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) + !String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+					<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | !String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 				</control>
 			</control>
 			<control type="group">
@@ -1295,13 +1295,13 @@
 				<control type="image">
 					<height>87</height>
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_bar.png</texture>
-					<visible>[String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] + [String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) | String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+					<visible>String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 				</control>
 				<control type="image">
 					<top>-3</top>
 					<height>91</height>
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_bar_white.png</texture>
-					<visible>[!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] | [!String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) + !String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+					<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | !String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 				</control>
 			</control>
 			<control type="label">
@@ -1343,13 +1343,13 @@
 					<width>100%</width>
 					<height>87</height>
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_bar.png</texture>
-					<visible>[String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] + [String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) | String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+					<visible>String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 				</control>
 				<control type="image">
 					<width>100%</width>
 					<height>88</height>
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_bar_white.png</texture>
-					<visible>[!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] | [!String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) + !String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+					<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | !String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 				</control>
 			</control>
 			<control type="group">
@@ -1404,7 +1404,7 @@
 					<control type="group">
 						<visible>[system.getbool(lookandfeel.enablerssfeeds) + String.IsEmpty(Skin.String(VerticalMenuRSS.Position))] | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEmpty(Skin.String(VerticalMenuSystemBar.Position))]</visible>
 						<control type="group">
-							<visible>[String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] + [String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) | String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+							<visible>String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 							<control type="image" id="90101">
 								<left>420</left>
 								<width>90</width>
@@ -1417,7 +1417,7 @@
 							</control>
 						</control>
 						<control type="group">
-							<visible>[!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] | [!String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) + !String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+							<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | !String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 							<control type="image" id="90102">
 								<left>422</left>
 								<width>90</width>
@@ -1433,7 +1433,7 @@
 					<control type="group">
 						<visible>[system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419])] | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]</visible>
 						<control type="group">
-							<visible>[String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] + [String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) | String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+							<visible>String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 							<control type="image" id="90101">
 								<left>420</left>
 								<width>90</width>
@@ -1446,7 +1446,7 @@
 							</control>
 						</control>
 						<control type="group">
-							<visible>[!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] | [!String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) + !String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
+							<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | !String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 							<control type="image" id="90102">
 								<left>422</left>
 								<width>90</width>

@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1115" type="dialog">
+	<defaultcontrol always="true">9000</defaultcontrol>
+	<controls>
+		<control type="group">
+			<top>64</top>
+			<control type="group">
+				<!-- <visible></visible> -->
+				<!-- <include>SettingsFadeAnimation</include> -->
+				<control type="list" id="9000">
+					<left>80</left>
+					<top>32</top>
+					<width>476</width>
+					<height>810</height>
+					<onleft>9010</onleft>
+					<onright>9010</onright>
+					<onup>9000</onup>
+					<ondown>9000</ondown>
+					<pagecontrol />
+					<scrolltime tween="quadratic" easing="out">200</scrolltime>
+					<itemlayout height="81" width="476">
+						<control type="label">
+							<width>476</width>
+							<height>81</height>
+							<font>font15</font>
+							<textoffsetx>20</textoffsetx>
+							<textcolor>grey</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="81" width="476">
+						<control type="image">
+							<width>475</width>
+							<height>81</height>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
+						</control>
+						<control type="label">
+							<width>476</width>
+							<height>81</height>
+							<font>font15</font>
+							<textoffsetx>20</textoffsetx>
+							<label>$INFO[ListItem.Label]</label>
+							<animation effect="fade" start="100" end="80" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
+						</control>
+					</focusedlayout>
+					<content>
+						<item id="1">
+							<label>Ratings</label>
+							<property name="description">Customise the ratings mediaflags. If preferred ratings are not available and no others are enabled there will be no fallback rating.</property>
+							<visible>System.AddonIsEnabled(plugin.video.themoviedb.helper) | System.AddonIsEnabled(script.embuary.helper)</visible>
+						</item>
+						<item id="2">
+							<label>$LOCALIZE[342]</label>
+						</item>
+						<item id="3">
+							<label>$LOCALIZE[20360]</label>
+						</item>
+						<item id="4">
+							<label>$LOCALIZE[20343]</label>
+						</item>
+						<item id="5">
+							<label>$LOCALIZE[31219]</label>
+						</item>
+					</content>
+				</control>
+				<control type="group" id="9010">
+					<control type="grouplist" id="9001">
+						<left>557</left>
+						<top>32</top>
+						<width>1281</width>
+						<height>810</height>
+						<pagecontrol>60</pagecontrol>
+						<onleft>9000</onleft>
+						<onright>60</onright>
+						<visible>Container(9000).HasFocus(1)</visible>
+						<control type="radiobutton" id="100">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>RT $LOCALIZE[31475]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_RTCritic)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_RTCritic)</selected>
+						</control>
+						<control type="radiobutton" id="101">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>RT $LOCALIZE[31597]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_RTAudience)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_RTAudience)</selected>
+						</control>
+						<control type="radiobutton" id="102">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>TMDb</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_TMDb)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_TMDb)</selected>
+						</control>
+						<control type="radiobutton" id="103">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>Trakt</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_Trakt)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_Trakt)</selected>
+						</control>
+						<control type="radiobutton" id="104">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>IMDb</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_IMDb)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_IMDb)</selected>
+						</control>
+					</control>
+					<control type="grouplist" id="9002">
+						<left>557</left>
+						<top>32</top>
+						<width>1281</width>
+						<height>810</height>
+						<pagecontrol>60</pagecontrol>
+						<onleft>9000</onleft>
+						<onright>60</onright>
+						<visible>Container(9000).HasFocus(2)</visible>
+						<control type="radiobutton" id="200">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[572]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_MovieStudio)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_MovieStudio)</selected>
+						</control>
+						<control type="radiobutton" id="201">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[20074]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_MovieMPAA)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_MovieMPAA)</selected>
+						</control>
+						<control type="radiobutton" id="202">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[21805]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_MovieResolution)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_MovieResolution)</selected>
+						</control>
+						<control type="radiobutton" id="203">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[20474]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_MovieHDRType)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_MovieHDRType)</selected>
+						</control>
+						<control type="radiobutton" id="204">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[31024] / $LOCALIZE[21445]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_MovieSource)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_MovieSource)</selected>
+						</control>
+						<control type="radiobutton" id="205">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[21374]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_MovieAspect)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_MovieAspect)</selected>
+						</control>
+						<control type="radiobutton" id="206">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[21446]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_MovieAudioCodec)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_MovieAudioCodec)</selected>
+						</control>
+						<control type="radiobutton" id="307">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[21444]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_MovieAudioChannels)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_MovieAudioChannels)</selected>
+						</control>
+					</control>
+					<control type="grouplist" id="9003">
+						<left>557</left>
+						<top>32</top>
+						<width>1281</width>
+						<height>810</height>
+						<pagecontrol>60</pagecontrol>
+						<onleft>9000</onleft>
+						<onright>60</onright>
+						<visible>Container(9000).HasFocus(3)</visible>
+						<control type="radiobutton" id="300">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[572]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_EpisodeStudio)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_EpisodeStudio)</selected>
+						</control>
+						<control type="radiobutton" id="301">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[20074]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_EpisodeMPAA)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_EpisodeMPAA)</selected>
+						</control>
+						<control type="radiobutton" id="302">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[21805]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_EpisodeResolution)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_EpisodeResolution)</selected>
+						</control>
+						<control type="radiobutton" id="303">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[20474]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_EpisodeHDRType)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_EpisodeHDRType)</selected>
+						</control>
+						<control type="radiobutton" id="304">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[31024] / $LOCALIZE[21445]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_EpisodeSource)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_EpisodeSource)</selected>
+						</control>
+						<control type="radiobutton" id="305">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[21374]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_EpisodeAspect)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_EpisodeAspect)</selected>
+						</control>
+						<control type="radiobutton" id="306">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[21446]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_EpisodeAudioCodec)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_EpisodeAudioCodec)</selected>
+						</control>
+						<control type="radiobutton" id="307">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[21444]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_EpisodeAudioChannels)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_EpisodeAudioChannels)</selected>
+						</control>
+					</control>
+					<control type="grouplist" id="9004">
+						<left>557</left>
+						<top>32</top>
+						<width>1281</width>
+						<height>810</height>
+						<pagecontrol>60</pagecontrol>
+						<onleft>9000</onleft>
+						<onright>60</onright>
+						<visible>Container(9000).HasFocus(4)</visible>
+						<control type="radiobutton" id="400">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[572]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_TVStudio)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_TVStudio)</selected>
+						</control>
+						<control type="radiobutton" id="401">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[20074]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_TVMPAA)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_TVMPAA)</selected>
+						</control>
+						<control type="radiobutton" id="402">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[33054]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_TVSeasons)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_TVSeasons)</selected>
+						</control>
+						<control type="radiobutton" id="403">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[20360]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_TVEpisodes)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_TVEpisodes)</selected>
+						</control>
+						<control type="radiobutton" id="404">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[31109]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_TVUnWatchedEpisodes)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_TVUnWatchedEpisodes)</selected>
+						</control>
+					</control>
+					<control type="grouplist" id="9005">
+						<left>557</left>
+						<top>32</top>
+						<width>1281</width>
+						<height>810</height>
+						<pagecontrol>60</pagecontrol>
+						<onleft>9000</onleft>
+						<onright>60</onright>
+						<visible>Container(9000).HasFocus(5)</visible>
+						<control type="button" id="500">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[31219]</label>
+							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[LanguageFlagsLabelVar][/COLOR]</label2>
+							<onclick>SetProperty(CustomSelect,languageflags,Home)</onclick>
+							<onclick>ActivateWindow(1129)</onclick>
+						</control>
+					</control>
+				</control>
+			</control>
+			<control type="textbox">
+				<left>587</left>
+				<width>1221</width>
+				<include>SettingsTextboxValues</include>
+				<label>$VAR[CustomMediaFlagsDescriptionVar]</label>
+				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+				<animation effect="fade" start="0" end="100" time="300" tween="sine" easing="inout">Visible</animation>
+				<animation effect="fade" start="100" end="0" time="0" tween="sine" easing="inout">Hidden</animation>
+			</control>
+		</control>
+	</controls>
+</window>

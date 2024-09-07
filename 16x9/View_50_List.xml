@@ -11,15 +11,13 @@
 			<control type="group">
 				<left>80</left>
 				<top>-50</top>
-				<control type="image">
-					<left>-1</left>
-					<top>179</top>
-					<width>1162</width>
-					<height>842</height>
-					<texture>colors/black75.png</texture>
-					<bordersize>1</bordersize>
-					<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">-1</param>
+					<param name="top">179</param>
+					<param name="width">1162</param>
+					<param name="height">842</param>
+					<param name="texture">colors/black75.png</param>
+				</include>
 				<control type="panel" id="50">
 					<top>180</top>
 					<width>1160</width>
@@ -1063,20 +1061,13 @@
 				</control>
 				<control type="group">
 					<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons)</visible>
-					<control type="multiimage">
-						<width>506</width>
-						<height>759</height>
-						<aspectratio aligny="bottom">stretch</aspectratio>
-						<imagepath background="true">$VAR[FocusedPosterThumbVar]</imagepath>
-						<fadetime>IconCrossfadeTime</fadetime>
-					</control>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
 						<width>546</width>
 						<height>799</height>
 						<aspectratio aligny="bottom">stretch</aspectratio>
-						<texture>colors/black10.png</texture>
+						<texture background="true">$VAR[FocusedPosterThumbVar]</texture>
 						<fadetime>IconCrossfadeTime</fadetime>
 						<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
 						<bordersize>20</bordersize>
@@ -1304,19 +1295,32 @@
 					<control type="image">
 						<width>96</width>
 						<height>96</height>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">android/spinner_48_inner_holo.png</texture>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">android/busyspinner_clockwise.png</texture>
 						<aspectratio>keep</aspectratio>
 						<animation effect="rotate" start="0" end="360" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
 					</control>
 					<control type="image">
 						<width>96</width>
 						<height>96</height>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">android/spinner_48_outer_holo.png</texture>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">android/busyspinner_counterclockwise.png</texture>
 						<aspectratio>keep</aspectratio>
 						<animation effect="rotate" start="360" end="0" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
 					</control>
 				</control>
 			</control>
+			<include content="MediaFlagsFull">
+				<param name="visible">[Container.Content(movies) + Control.IsVisible(50) + !Skin.HasSetting(Disable.List_movieflags)] | [Container.Content(episodes) + Control.IsVisible(50) + !Skin.HasSetting(Disable.List_episodeflags)]</param>
+				<param name="tv_visible">Control.IsVisible(50) + !Skin.HasSetting(Disable.List.TVMediaflags)</param>
+				<param name="left">100</param>
+				<param name="align">left</param>
+				<param name="view_id">50</param>
+			</include>
+			<include content="MediaFlagsTV">
+				<param name="visible">Control.IsVisible(50) + !Skin.HasSetting(Disable.List.TVMediaflags) + [Container.Content(tvshows) | Container.Content(seasons)]</param>
+				<param name="left">1070</param>
+				<param name="align">center</param>
+				<param name="view_id">50</param>
+			</include>
 		</control>
 	</include>
 	<!-- Music List -->
@@ -1849,14 +1853,14 @@
 					<control type="image">
 						<width>96</width>
 						<height>96</height>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">android/spinner_48_inner_holo.png</texture>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">android/busyspinner_clockwise.png</texture>
 						<aspectratio>keep</aspectratio>
 						<animation effect="rotate" start="0" end="360" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
 					</control>
 					<control type="image">
 						<width>96</width>
 						<height>96</height>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">android/spinner_48_outer_holo.png</texture>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">android/busyspinner_counterclockwise.png</texture>
 						<aspectratio>keep</aspectratio>
 						<animation effect="rotate" start="360" end="0" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
 					</control>
@@ -2537,21 +2541,12 @@
 				</control>
 				<control type="group">
 					<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.StartsWith(ListItem.Icon,Default)</visible>
-					<control type="multiimage">
-						<left>20</left>
-						<top>20</top>
-						<width>530</width>
-						<height>775</height>
-						<aspectratio aligny="bottom">stretch</aspectratio>
-						<imagepath background="true">$VAR[FocusedPosterThumbVar]</imagepath>
-						<fadetime>IconCrossfadeTime</fadetime>
-					</control>
 					<control type="image">
 						<width>570</width>
 						<height>815</height>
 						<aspectratio aligny="bottom">stretch</aspectratio>
-						<texture>colors/black10.png</texture>
 						<fadetime>IconCrossfadeTime</fadetime>
+						<texture background="true">$VAR[FocusedPosterThumbVar]</texture>
 						<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
 						<bordersize>20</bordersize>
 					</control>
@@ -2790,14 +2785,14 @@
 					<control type="image">
 						<width>96</width>
 						<height>96</height>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">android/spinner_48_inner_holo.png</texture>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">android/busyspinner_clockwise.png</texture>
 						<aspectratio>keep</aspectratio>
 						<animation effect="rotate" start="0" end="360" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
 					</control>
 					<control type="image">
 						<width>96</width>
 						<height>96</height>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">android/spinner_48_outer_holo.png</texture>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">android/busyspinner_counterclockwise.png</texture>
 						<aspectratio>keep</aspectratio>
 						<animation effect="rotate" start="360" end="0" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
 					</control>

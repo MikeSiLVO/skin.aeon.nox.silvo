@@ -7,7 +7,6 @@
 	<views>50</views>
 	<controls>
 		<include>CommonBackground</include>
-		<include>Topbar</include>
 		<control type="label" id="991">
 			<include>HiddenObject</include>
 		</control>
@@ -16,19 +15,20 @@
 			<control type="group">
 				<top>30</top>
 				<control type="image">
-					<left>51</left>
-					<width>1818</width>
-					<height>965</height>
-					<texture colordiffuse="C4FFFFFF" border="40">listpanel_back.png</texture>
+					<top>31</top>
+					<left>79</left>
+					<width>1760</width>
+					<height>916</height>
+					<texture>colors/black75.png</texture>
+					<bordersize>1</bordersize>
+					<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
 				</control>
 				<control type="image">
 					<left>436</left>
 					<top>32</top>
 					<width>1</width>
-					<height>900</height>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">separator_vertical.png</texture>
-					<animation effect="slide" end="90" condition="Window.IsActive(profiles)">Conditional</animation>
-					<animation effect="slide" end="275" condition="Window.IsActive(script-skinshortcuts.xml) + String.IsEmpty(Window(Home).Property(skinshortcuts-management-widget))">Conditional</animation>
+					<height>810</height>
+					<texture colordiffuse="grey4">separator_vertical.png</texture>
 				</control>
 				<control type="list" id="9000">
 					<left>82</left>
@@ -41,7 +41,8 @@
 					<onup>9000</onup>
 					<ondown>9000</ondown>
 					<pagecontrol>60</pagecontrol>
-					<scrolltime tween="quadratic">300</scrolltime>
+					<scrolltime tween="quadratic" easing="out">200</scrolltime>
+					<include>VisibleFadeAnimation</include>
 					<itemlayout height="90" width="356">
 						<control type="label">
 							<width>356</width>
@@ -130,10 +131,11 @@
 					<onright>61</onright>
 					<onup>50</onup>
 					<ondown>50</ondown>
-					<viewtype label="535">list</viewtype>
+					<viewtype label="">icon</viewtype>
 					<preloaditems>2</preloaditems>
-					<animation effect="fade" time="200">VisibleChange</animation>
-					<scrolltime tween="cubic" easing="out">500</scrolltime>
+					<visible>!Container(9000).OnNext + !Container(9000).OnPrevious</visible>
+					<include>ViewAnimation</include>
+					<scrolltime tween="quadratic" easing="out">300</scrolltime>
 					<itemlayout width="200" height="370" condition="Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons)">
 						<control type="image">
 							<width>200</width>
@@ -197,11 +199,11 @@
 							</control>
 						</control>
 					</focusedlayout>
-					<itemlayout width="280.2" height="246.66" condition="Container.Content(episodes)">
+					<itemlayout width="280" height="246" condition="Container.Content(episodes)">
 						<control type="image">
 							<top>1</top>
-							<width>280.2</width>
-							<height>186.8</height>
+							<width>280</width>
+							<height>186</height>
 							<aspectratio>scale</aspectratio>
 							<texture background="true">$INFO[ListItem.Icon]</texture>
 							<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
@@ -209,7 +211,7 @@
 						</control>
 						<control type="label">
 							<top>188</top>
-							<width>280.2</width>
+							<width>280</width>
 							<height>30</height>
 							<font>font12</font>
 							<align>center</align>
@@ -218,7 +220,7 @@
 						</control>
 						<control type="label">
 							<top>218</top>
-							<width>280.2</width>
+							<width>280</width>
 							<height>30</height>
 							<font>font12</font>
 							<align>center</align>
@@ -226,15 +228,15 @@
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout width="280.2" height="246.66" condition="Container.Content(episodes)">
+					<focusedlayout width="280" height="246" condition="Container.Content(episodes)">
 						<control type="group">
 							<animation type="Focus">
 								<effect type="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto" />
 							</animation>
 							<control type="image">
 								<top>1</top>
-								<width>280.2</width>
-								<height>186.8</height>
+								<width>280</width>
+								<height>186</height>
 								<aspectratio>scale</aspectratio>
 								<texture background="true">$INFO[ListItem.Icon]</texture>
 								<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="4">thumbs/thumbnail_focused.png</bordertexture>
@@ -242,7 +244,7 @@
 							</control>
 							<control type="label">
 								<top>188</top>
-								<width>280.2</width>
+								<width>280</width>
 								<height>30</height>
 								<font>font12</font>
 								<align>center</align>
@@ -252,7 +254,7 @@
 							</control>
 							<control type="label">
 								<top>218</top>
-								<width>280.2</width>
+								<width>280</width>
 								<height>30</height>
 								<font>font12</font>
 								<align>center</align>
@@ -262,10 +264,10 @@
 							</control>
 						</control>
 					</focusedlayout>
-					<itemlayout width="280.2" height="370" condition="Container.Content(artists) | Container.Content(albums)">
+					<itemlayout width="280" height="370" condition="Container.Content(artists) | Container.Content(albums)">
 						<control type="image">
-							<width>280.2</width>
-							<height>280.2</height>
+							<width>280</width>
+							<height>280</height>
 							<aspectratio>scale</aspectratio>
 							<texture background="true">$INFO[ListItem.Icon]</texture>
 							<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
@@ -274,7 +276,7 @@
 						</control>
 						<control type="label">
 							<top>285</top>
-							<width>280.2</width>
+							<width>280</width>
 							<height>26</height>
 							<font>font12</font>
 							<align>center</align>
@@ -284,7 +286,7 @@
 						</control>
 						<control type="label">
 							<top>285</top>
-							<width>280.2</width>
+							<width>280</width>
 							<height>26</height>
 							<font>font12</font>
 							<align>center</align>
@@ -293,7 +295,7 @@
 						</control>
 						<control type="label">
 							<top>315</top>
-							<width>280.2</width>
+							<width>280</width>
 							<height>26</height>
 							<font>font12</font>
 							<align>center</align>
@@ -303,7 +305,7 @@
 						</control>
 						<control type="label">
 							<top>315</top>
-							<width>280.2</width>
+							<width>280</width>
 							<height>26</height>
 							<font>font12</font>
 							<align>center</align>
@@ -312,14 +314,14 @@
 							<visible>String.IsEmpty(ListItem.Property(Artist_YearsActive))</visible>
 						</control>
 					</itemlayout>
-					<focusedlayout width="280.2" height="370" condition="Container.Content(artists) | Container.Content(albums)">
+					<focusedlayout width="280" height="370" condition="Container.Content(artists) | Container.Content(albums)">
 						<control type="group">
 							<animation type="Focus">
 								<effect type="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto" />
 							</animation>
 							<control type="image">
-								<width>280.2</width>
-								<height>280.2</height>
+								<width>280</width>
+								<height>280</height>
 								<aspectratio>scale</aspectratio>
 								<texture background="true">$INFO[ListItem.Icon]</texture>
 								<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="4">thumbs/thumbnail_focused.png</bordertexture>
@@ -327,7 +329,7 @@
 							</control>
 							<control type="label">
 								<top>285</top>
-								<width>280.2</width>
+								<width>280</width>
 								<height>26</height>
 								<font>font13</font>
 								<align>center</align>
@@ -338,7 +340,7 @@
 							</control>
 							<control type="label">
 								<top>285</top>
-								<width>280.2</width>
+								<width>280</width>
 								<height>26</height>
 								<font>font13</font>
 								<align>center</align>
@@ -348,7 +350,7 @@
 							</control>
 							<control type="label">
 								<top>315</top>
-								<width>280.2</width>
+								<width>280</width>
 								<height>26</height>
 								<font>font13</font>
 								<align>center</align>
@@ -359,7 +361,7 @@
 							</control>
 							<control type="label">
 								<top>315</top>
-								<width>280.2</width>
+								<width>280</width>
 								<height>26</height>
 								<font>font13</font>
 								<align>center</align>
@@ -370,10 +372,10 @@
 							</control>
 						</control>
 					</focusedlayout>
-					<itemlayout width="280.2" height="370" condition="Container.Content(songs) | Container.Content(livetv)">
+					<itemlayout width="280" height="370" condition="Container.Content(songs) | Container.Content(livetv)">
 						<control type="image">
-							<width>280.2</width>
-							<height>280.2</height>
+							<width>280</width>
+							<height>280</height>
 							<aspectratio>keep</aspectratio>
 							<texture background="true">$INFO[ListItem.Icon]</texture>
 							<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
@@ -382,7 +384,7 @@
 						</control>
 						<control type="label">
 							<top>285</top>
-							<width>280.2</width>
+							<width>280</width>
 							<height>26</height>
 							<font>font12</font>
 							<align>center</align>
@@ -391,7 +393,7 @@
 						</control>
 						<control type="label">
 							<top>285</top>
-							<width>280.2</width>
+							<width>280</width>
 							<height>26</height>
 							<font>font12</font>
 							<align>center</align>
@@ -401,7 +403,7 @@
 						</control>
 						<control type="label">
 							<top>315</top>
-							<width>280.2</width>
+							<width>280</width>
 							<height>26</height>
 							<font>font12</font>
 							<align>center</align>
@@ -409,14 +411,14 @@
 							<label>$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Label]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout width="280.2" height="370" condition="Container.Content(songs) | Container.Content(livetv)">
+					<focusedlayout width="280" height="370" condition="Container.Content(songs) | Container.Content(livetv)">
 						<control type="group">
 							<animation type="Focus">
 								<effect type="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto" />
 							</animation>
 							<control type="image">
-								<width>280.2</width>
-								<height>280.2</height>
+								<width>280</width>
+								<height>280</height>
 								<aspectratio>keep</aspectratio>
 								<texture background="true">$INFO[ListItem.Icon]</texture>
 								<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="4">thumbs/thumbnail_focused.png</bordertexture>
@@ -424,7 +426,7 @@
 							</control>
 							<control type="label">
 								<top>285</top>
-								<width>280.2</width>
+								<width>280</width>
 								<height>26</height>
 								<font>font12</font>
 								<align>center</align>
@@ -434,7 +436,7 @@
 							</control>
 							<control type="label">
 								<top>285</top>
-								<width>280.2</width>
+								<width>280</width>
 								<height>26</height>
 								<font>font12</font>
 								<align>center</align>
@@ -445,7 +447,7 @@
 							</control>
 							<control type="label">
 								<top>315</top>
-								<width>280.2</width>
+								<width>280</width>
 								<height>26</height>
 								<font>font12</font>
 								<align>center</align>
@@ -670,6 +672,7 @@
 				<animation effect="fade" start="100" end="0" time="500" delay="500" condition="!Control.HasFocus(61) + !Container.Scrolling">Conditional</animation>
 			</control>
 		</control>
+		<include>Topbar</include>
 		<control type="group">
 			<left>-440</left>
 			<include>SideBladeLeft</include>
@@ -698,45 +701,13 @@
 					<include>ButtonCommonValues</include>
 					<label>$ADDON[script.globalsearch 32299]?</label>
 					<onclick>ClearProperty(MediaMenu,Home)</onclick>
-					<visible>![Container(9000).IsUpdating | Container(50).IsUpdating]</visible>
 				</control>
 			</control>
 			<include>MediaMenuPlayerControls</include>
 		</control>
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture>colors/black75.png</texture>
-			<animation effect="fade" time="100">VisibleChange</animation>
-			<visible>!Control.IsVisible(990)</visible>
-		</control>
-		<control type="group">
-			<visible>!Control.IsVisible(990)</visible>
-			<animation type="Visible" reversible="false">
-				<effect type="zoom" start="150" end="100" center="960,540" time="250" tween="cubic" easing="out" />
-				<effect type="fade" end="100" time="100" />
-			</animation>
-			<animation type="Hidden" reversible="false">
-				<effect type="fade" start="100" end="0" time="100" delay="100" />
-				<effect type="zoom" start="100" end="130" center="960,540" time="250" tween="cubic" easing="in" />
-			</animation>
-			<left>912</left>
-			<top>492</top>
-			<control type="image">
-				<description>Busy animation</description>
-				<width>96</width>
-				<height>96</height>
-				<texture colordiffuse="$VAR[ThemeLabelColor]">android/spinner_48_inner_holo.png</texture>
-				<aspectratio>keep</aspectratio>
-				<animation effect="rotate" start="0" end="360" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
-			</control>
-			<control type="image">
-				<description>Busy animation</description>
-				<width>96</width>
-				<height>96</height>
-				<texture colordiffuse="$VAR[ThemeLabelColor]">android/spinner_48_outer_holo.png</texture>
-				<aspectratio>keep</aspectratio>
-				<animation effect="rotate" start="360" end="0" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
-			</control>
-		</control>
+		<include content="BusySpinner">
+			<param name="visible">Container(9000).IsUpdating | Container(50).IsUpdating</param>
+			<param name="texture">colors/black.png</param>
+		</include>
 	</controls>
 </window>

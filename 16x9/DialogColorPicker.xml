@@ -3,143 +3,139 @@
 	<defaultcontrol always="true">6</defaultcontrol>
 	<include>DialogOpenCloseAnimation</include>
 	<onunload>ClearProperty(Reset.Color,1140)</onunload>
+	<menucontrol>97</menucontrol>
 	<controls>
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture>colors/black.png</texture>
-			<animation effect="fade" time="300">WindowOpen</animation>
-			<animation effect="fade" time="300">WindowClose</animation>
-		</control>
-		<control type="image">
-			<top>5</top>
-			<left>4</left>
-			<width>1912</width>
-			<height>1070</height>
-			<texture>colors/black90.png</texture>
-			<bordersize>1</bordersize>
-			<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-		</control>
 		<control type="label" id="1">
-			<left>360</left>
-			<width>1200</width>
-			<height>80</height>
-			<align>center</align>
-			<font>font35_title_bold</font>
-			<label />
-			<shadowcolor>black</shadowcolor>
+			<include>HiddenObject</include>
 		</control>
+		<control type="button" id="7">
+			<include>HiddenObject</include>
+		</control>
+		<include content="BackPanel">
+			<param name="left">109</param>
+			<param name="top">105</param>
+			<param name="width">1702</param>
+			<param name="height">796</param>
+			<param name="texture">colors/black75.png</param>
+		</include>
 		<control type="image">
-			<left>5</left>
-			<top>77</top>
-			<width>1910</width>
+			<left>111</left>
+			<top>179</top>
+			<width>1698</width>
 			<height>1</height>
 			<texture colordiffuse="grey4">separator_horizontal.png</texture>
 		</control>
-		<control type="image">
-			<left>5</left>
-			<top>882</top>
-			<width>1910</width>
-			<height>1</height>
-			<texture colordiffuse="grey4">separator_horizontal.png</texture>
+		<control type="group">
+			<left>110</left>
+			<top>106</top>
+			<control type="label">
+				<width>1700</width>
+				<textoffsetx>15</textoffsetx>
+				<height>70</height>
+				<label>$VAR[DialogColorPickerHeaderVar]</label>
+				<font>font16_title_bold</font>
+				<textcolor>dialogheader</textcolor>
+				<shadowcolor>black</shadowcolor>
+			</control>
+			<control type="grouplist" id="9001">
+				<width>1725</width>
+				<align>right</align>
+				<orientation>horizontal</orientation>
+				<itemgap>-20</itemgap>
+				<ondown>6</ondown>
+				<control type="button" id="98">
+					<description>Reset button</description>
+					<texturefocus />
+					<texturenofocus />
+					<width>100</width>
+					<height>70</height>
+					<font>IconMediumMD</font>
+					<textcolor>grey2</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<focusedcolor>$VAR[HighlightBarColor]</focusedcolor>
+					<label></label>
+					<onclick>Skin.Reset($INFO[Window(1140).Property(Reset.Color)])</onclick>
+					<onclick>SendClick(7)</onclick>
+					<visible>!String.IsEmpty(Window(1140).Property(Reset.Color))</visible>
+				</control>
+				<control type="button" id="95">
+					<description>Manual input button</description>
+					<texturefocus />
+					<texturenofocus />
+					<width>100</width>
+					<height>70</height>
+					<font>IconMediumMD</font>
+					<textcolor>grey2</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<focusedcolor>$VAR[HighlightBarColor]</focusedcolor>
+					<label></label>
+					<!-- <onclick>Dialog.Close(dialogcolorpicker)</onclick> -->
+					<onclick>Skin.SetString($INFO[Window(1140).Property(Reset.Color)])</onclick>
+					<visible>!String.IsEmpty(Window(1140).Property(Reset.Color))</visible>
+				</control>
+				<control type="button" id="97">
+					<description>Cancel button</description>
+					<texturefocus />
+					<texturenofocus />
+					<width>100</width>
+					<height>70</height>
+					<font>IconMediumMD</font>
+					<textcolor>grey2</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<focusedcolor>$VAR[HighlightBarColor]</focusedcolor>
+					<label></label>
+					<onclick>SendClick(7)</onclick>
+				</control>
+			</control>
 		</control>
 		<control type="panel" id="6">
-			<viewtype label="536">icon</viewtype>
-			<top>80</top>
-			<left>10</left>
-			<width>1900</width>
-			<height>800</height>
-			<onleft>9001</onleft>
-			<onright>9001</onright>
-			<ondown>9001</ondown>
-			<preloaditems>4</preloaditems>
+			<top>180</top>
+			<left>110</left>
+			<width>1700</width>
+			<height>720</height>
+			<onleft>97</onleft>
+			<onright>97</onright>
+			<preloaditems>0</preloaditems>
+			<scrolltime tween="quadratic" easing="out">300</scrolltime>
 			<itemlayout width="100" height="80">
 				<control type="image">
 					<width>100</width>
 					<height>80</height>
-					<texture>colors/white.png</texture>
-					<bordersize>1</bordersize>
-					<bordertexture border="1" infill="false" colordiffuse="white">colors/border_frame.png</bordertexture>
-					<colordiffuse>$INFO[ListItem.Label2]</colordiffuse>
+					<texture>colors/black.png</texture>
+					<bordersize>4</bordersize>
+				</control>
+				<control type="image">
+					<width>100</width>
+					<height>80</height>
+					<texture colordiffuse="$INFO[ListItem.Label2]">colors/white.png</texture>
+					<bordersize>4</bordersize>
+					<bordertexture border="4" infill="false" colordiffuse="black">thumbs/poster_focus.png</bordertexture>
 				</control>
 				<control type="image">
 					<width>100</width>
 					<height>80</height>
 					<texture>colors/black10.png</texture>
-					<bordersize>1</bordersize>
+					<bordersize>4</bordersize>
 				</control>
 			</itemlayout>
 			<focusedlayout width="100" height="80">
 				<control type="group">
-					<animation effect="zoom" time="300" tween="sine" easing="inout" start="100" end="125" center="50,40">Focus</animation>
+					<animation effect="zoom" time="300" tween="sine" easing="inout" start="100" end="110" center="50,40">Focus</animation>
 					<control type="image">
 						<width>100</width>
 						<height>80</height>
-						<texture>colors/white.png</texture>
-						<bordersize>1</bordersize>
-						<bordertexture border="1" infill="false" colordiffuse="white">colors/border_frame.png</bordertexture>
-						<colordiffuse>$INFO[ListItem.Label2]</colordiffuse>
+						<texture>colors/black.png</texture>
+						<bordersize>2</bordersize>
+					</control>
+					<control type="image">
+						<width>100</width>
+						<height>80</height>
+						<texture colordiffuse="$INFO[ListItem.Label2]">colors/white.png</texture>
+						<bordersize>2</bordersize>
+						<bordertexture border="2" infill="false" colordiffuse="white">thumbs/poster_focus.png</bordertexture>
 					</control>
 				</control>
 			</focusedlayout>
-		</control>
-		<control type="image">
-			<top>886</top>
-			<left>15</left>
-			<width>300</width>
-			<height>184</height>
-			<texture colordiffuse="$INFO[ListItem.Label2]">colors/white.png</texture>
-			<animation effect="fade" start="100" end="0" condition="!Control.HasFocus(6)">Conditional</animation>
-		</control>
-		<control type="image">
-			<top>884</top>
-			<left>13</left>
-			<width>304</width>
-			<height>188</height>
-			<bordersize>1</bordersize>
-			<texture colordiffuse="grey4" border="1" infill="false">colors/border_frame.png</texture>
-		</control>
-		<control type="grouplist" id="9001">
-			<left>1615</left>
-			<top>894</top>
-			<width>400</width>
-			<height>180</height>
-			<onup>6</onup>
-			<ondown>Control.SetFocus(6,9,absolute)</ondown>
-			<onleft>6</onleft>
-			<onright>6</onright>
-			<control type="button" id="7">
-				<width>300</width>
-				<height>60</height>
-				<align>right</align>
-				<label />
-			</control>
-			<control type="button" id="99">
-				<width>300</width>
-				<height>60</height>
-				<align>right</align>
-				<label>$LOCALIZE[13007]</label>
-				<onclick>Skin.Reset($INFO[Window(1140).Property(Reset.Color)])</onclick>
-				<onclick>SendClick(7)</onclick>
-				<visible>!String.IsEmpty(Window(1140).Property(Reset.Color))</visible>
-			</control>
-			<control type="button" id="98">
-				<width>300</width>
-				<height>60</height>
-				<align>right</align>
-				<label>$LOCALIZE[31617]</label>
-				<onclick>Dialog.Close(dialogcolorpicker)</onclick>
-				<onclick>Skin.SetString($INFO[Window(1140).Property(Reset.Color)])</onclick>
-				<visible>!String.IsEmpty(Window(1140).Property(Reset.Color))</visible>
-			</control>
-		</control>
-		<control type="label" id="3010">
-			<top>1000</top>
-			<left>325</left>
-			<width>1000</width>
-			<height>60</height>
-			<font>font16</font>
-			<label>[UPPERCASE]$INFO[ListItem.Label][CR]$INFO[ListItem.Label2,#][/UPPERCASE]</label>
-			<shadowcolor>shadow</shadowcolor>
 		</control>
 	</controls>
 </window>

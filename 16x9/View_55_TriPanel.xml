@@ -145,21 +145,12 @@
 				<top>154</top>
 				<animation effect="slide" end="540,0" time="640" easing="inout" tween="circle" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
 				<animation effect="zoom" center="850,700" start="100" end="90" time="240" tween="back" reversible="false" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
-				<control type="multiimage">
-					<left>20</left>
-					<top>20</top>
-					<width>530</width>
-					<height>795</height>
-					<aspectratio aligny="bottom" align="right">scale</aspectratio>
-					<imagepath background="true">$VAR[FocusedPosterThumbVar]</imagepath>
-					<fadetime>IconCrossfadeTime</fadetime>
-				</control>
 				<control type="image">
 					<width>570</width>
 					<height>835</height>
 					<aspectratio aligny="bottom" align="right">scale</aspectratio>
-					<texture>colors/black10.png</texture>
 					<fadetime>IconCrossfadeTime</fadetime>
+					<texture background="true">$VAR[FocusedPosterThumbVar]</texture>
 					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
 					<bordersize>20</bordersize>
 				</control>
@@ -592,6 +583,17 @@
 					<showonepage>false</showonepage>
 				</control>
 			</control>
+			<include content="MediaFlagsFull">
+				<param name="visible">Control.IsVisible(55)</param>
+				<param name="align">center</param>
+				<param name="view_id">55</param>
+			</include>
+			<include content="MediaFlagsTV">
+				<param name="visible">Control.IsVisible(55) + !Skin.HasSetting(DisableTriPanel_TVflags) + [Container.Content(tvshows) | Container.Content(seasons)]</param>
+				<param name="left">1010</param>
+				<param name="align">right</param>
+				<param name="view_id">55</param>
+			</include>
 		</control>
 	</include>
 	<!-- Music TriPanel -->

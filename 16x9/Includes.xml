@@ -10,6 +10,7 @@
 	<include file="Includes_Home.xml" />
 	<include file="Includes_LiveBG.xml" />
 	<include file="Includes_Lyrics.xml" />
+	<include file="Includes_MediaFlags.xml" />
 	<include file="Includes_PVR.xml" />
 	<include file="Includes_PVR_Views.xml" />
 	<include file="Includes_Select.xml" />
@@ -20,282 +21,9 @@
 	<include file="script-skinviewtypes-includes.xml" />
 	<include file="Variables.xml" />
 	<include file="Variables_Widgets.xml" />
-	<include name="ScriptHelperFlags">
-		<control type="grouplist">
-			<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
-			<width>170</width>
-			<orientation>horizontal</orientation>
-			<control type="image">
-				<width>60</width>
-				<include>MediaFlagValues</include>
-				<texture>$VAR[RottenFreshLogoVar]</texture>
-			</control>
-			<control type="grouplist">
-				<width>110</width>
-				<height>78</height>
-				<align>center</align>
-				<control type="label">
-					<height>26</height>
-					<font>font13_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$VAR[RottenFreshLabelVar]$VAR[RottenFreshLabel2Var]</label>
-				</control>
-				<control type="label">
-					<height>20</height>
-					<font>font10</font>
-					<textcolor>grey</textcolor>
-					<label>$LOCALIZE[31475]</label>
-				</control>
-			</control>
-		</control>
-		<control type="grouplist">
-			<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
-			<width>170</width>
-			<orientation>horizontal</orientation>
-			<control type="image">
-				<width>60</width>
-				<include>MediaFlagValues</include>
-				<texture>$VAR[TMDbHelperRottenTomatoLogoVar]</texture>
-			</control>
-			<control type="grouplist">
-				<width>110</width>
-				<height>78</height>
-				<align>center</align>
-				<control type="label">
-					<height>26</height>
-					<font>font13_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_Rating),,%]</label>
-				</control>
-				<control type="label">
-					<height>20</height>
-					<font>font10</font>
-					<textcolor>grey</textcolor>
-					<label>$LOCALIZE[31475]</label>
-				</control>
-			</control>
-		</control>
-		<control type="grouplist">
-			<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience))</visible>
-			<width>170</width>
-			<orientation>horizontal</orientation>
-			<itemgap>6</itemgap>
-			<control type="image">
-				<width>60</width>
-				<include>MediaFlagValues</include>
-				<texture>$VAR[RottenFreshAudienceLogoVar]</texture>
-			</control>
-			<control type="grouplist">
-				<width>110</width>
-				<height>78</height>
-				<align>center</align>
-				<control type="label">
-					<height>26</height>
-					<font>font13_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$VAR[RottenFreshAudienceLabelVar]$VAR[RottenFreshAudienceLabel2Var]</label>
-				</control>
-				<control type="label">
-					<height>20</height>
-					<font>font10</font>
-					<textcolor>grey</textcolor>
-					<label>$LOCALIZE[31597]</label>
-				</control>
-			</control>
-		</control>
-		<control type="grouplist">
-			<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience))</visible>
-			<width>170</width>
-			<orientation>horizontal</orientation>
-			<itemgap>6</itemgap>
-			<control type="image">
-				<width>60</width>
-				<include>MediaFlagValues</include>
-				<texture>$VAR[RottenFreshAudienceTMDbHelperLogoVar]</texture>
-			</control>
-			<control type="grouplist">
-				<width>110</width>
-				<height>78</height>
-				<align>center</align>
-				<control type="label">
-					<height>26</height>
-					<font>font13_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_UserMeter),,%]</label>
-				</control>
-				<control type="label">
-					<height>20</height>
-					<font>font10</font>
-					<textcolor>grey</textcolor>
-					<label>$LOCALIZE[31597]</label>
-				</control>
-			</control>
-		</control>
-		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9142).ListItem.Rating(themoviedb))</visible>
-			<width>170</width>
-			<orientation>horizontal</orientation>
-			<usecontrolcoords>true</usecontrolcoords>
-			<control type="image">
-				<width>60</width>
-				<include>MediaFlagValues</include>
-				<texture>logos/tmdb.png</texture>
-			</control>
-			<control type="grouplist">
-				<left>10</left>
-				<width>100</width>
-				<height>78</height>
-				<align>center</align>
-				<control type="label">
-					<height>26</height>
-					<font>font13_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$INFO[Container(9142).ListItem.Rating(themoviedb)]</label>
-				</control>
-			</control>
-		</control>
-		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9142).ListItem.Rating(tmdb)) + String.IsEmpty(Container(9142).ListItem.Rating(themoviedb))</visible>
-			<width>170</width>
-			<orientation>horizontal</orientation>
-			<usecontrolcoords>true</usecontrolcoords>
-			<control type="image">
-				<width>60</width>
-				<include>MediaFlagValues</include>
-				<texture>logos/tmdb.png</texture>
-			</control>
-			<control type="grouplist">
-				<left>10</left>
-				<width>100</width>
-				<height>78</height>
-				<align>center</align>
-				<control type="label">
-					<height>26</height>
-					<font>font13_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$INFO[Container(9142).ListItem.Rating(tmdb)]</label>
-				</control>
-			</control>
-		</control>
-		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9143).ListItem.Property(TMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(TMDb_Rating),0.0) + String.IsEmpty(Container(9142).ListItem.Rating(themoviedb)) + String.IsEmpty(Container(9142).ListItem.Rating(tmdb))</visible>
-			<width>170</width>
-			<orientation>horizontal</orientation>
-			<usecontrolcoords>true</usecontrolcoords>
-			<control type="image">
-				<width>60</width>
-				<include>MediaFlagValues</include>
-				<texture>logos/tmdb.png</texture>
-			</control>
-			<control type="grouplist">
-				<left>10</left>
-				<width>100</width>
-				<height>78</height>
-				<align>center</align>
-				<control type="label">
-					<height>60</height>
-					<font>font13_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$INFO[Container(9143).ListItem.Property(TMDb_Rating)]</label>
-				</control>
-			</control>
-		</control>
-		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9142).ListItem.Rating(trakt))</visible>
-			<width>170</width>
-			<orientation>horizontal</orientation>
-			<usecontrolcoords>true</usecontrolcoords>
-			<control type="image">
-				<width>60</width>
-				<include>MediaFlagValues</include>
-				<texture>logos/trakt-clearlogo.png</texture>
-			</control>
-			<control type="grouplist">
-				<left>10</left>
-				<width>100</width>
-				<height>78</height>
-				<align>center</align>
-				<control type="label">
-					<height>26</height>
-					<font>font13_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$INFO[Container(9142).ListItem.Rating(trakt)]</label>
-				</control>
-			</control>
-		</control>
-		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9143).ListItem.Property(Trakt_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(Trakt_Rating),0.0) + String.IsEmpty(Container(9142).ListItem.Rating(trakt))</visible>
-			<width>170</width>
-			<orientation>horizontal</orientation>
-			<usecontrolcoords>true</usecontrolcoords>
-			<control type="image">
-				<width>60</width>
-				<include>MediaFlagValues</include>
-				<texture>logos/trakt-clearlogo.png</texture>
-			</control>
-			<control type="grouplist">
-				<left>10</left>
-				<width>100</width>
-				<height>78</height>
-				<align>center</align>
-				<control type="label">
-					<height>60</height>
-					<font>font13_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$INFO[Container(9143).ListItem.Property(Trakt_Rating)]</label>
-				</control>
-			</control>
-		</control>
-		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9142).ListItem.Rating(imdb))</visible>
-			<width>170</width>
-			<orientation>horizontal</orientation>
-			<usecontrolcoords>true</usecontrolcoords>
-			<control type="image">
-				<width>60</width>
-				<include>MediaFlagValues</include>
-				<texture>logos/imdb.png</texture>
-			</control>
-			<control type="grouplist">
-				<left>10</left>
-				<width>100</width>
-				<height>78</height>
-				<align>center</align>
-				<control type="label">
-					<height>26</height>
-					<font>font13_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$INFO[Container(9142).ListItem.Rating(imdb)]</label>
-				</control>
-			</control>
-		</control>
-		<control type="grouplist">
-			<visible>!String.IsEmpty(Container(9143).ListItem.Property(IMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(IMDb_Rating),0.0) + String.IsEmpty(Container(9142).ListItem.Rating(imdb))</visible>
-			<width>170</width>
-			<orientation>horizontal</orientation>
-			<usecontrolcoords>true</usecontrolcoords>
-			<control type="image">
-				<width>60</width>
-				<include>MediaFlagValues</include>
-				<texture>logos/imdb.png</texture>
-			</control>
-			<control type="grouplist">
-				<left>10</left>
-				<width>100</width>
-				<height>78</height>
-				<align>center</align>
-				<control type="label">
-					<height>60</height>
-					<font>font13_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$INFO[Container(9143).ListItem.Property(IMDb_Rating)]</label>
-				</control>
-			</control>
-		</control>
-	</include>
 	<!-- Media Menu -->
 	<include name="SideBladeLeft">
-		<animation effect="slide" start="440,0" end="0,0" time="400" tween="quadratic" easing="out" condition="String.IsEmpty(Window(Home).Property(MediaMenu))">Conditional</animation>
+		<animation effect="slide" start="440,0" end="0,0" time="400" tween="quadratic" easing="out" condition="String.IsEmpty(Window(Home).Property(MediaMenu)) | Window.IsActive(videos) + Window.IsVisible(selectdialog)">Conditional</animation>
 		<animation effect="slide" start="0,0" end="-440,0" time="400" tween="quadratic" easing="out">WindowClose</animation>
 		<control type="image">
 			<width>432</width>
@@ -790,13 +518,19 @@
 				<width>100%</width>
 				<height>87</height>
 				<texture colordiffuse="$VAR[TopBarColor]">submenu_bar.png</texture>
-				<visible>String.IsEmpty(Skin.String(TopBarColor)) | String.IsEqual(Skin.String(TopBarColor),None)</visible>
+				<visible>String.IsEmpty(Skin.String(TopBarColor))</visible>
 			</control>
 			<control type="image">
 				<width>100%</width>
 				<height>88</height>
 				<texture colordiffuse="$VAR[TopBarColor]">submenu_bar_white.png</texture>
-				<visible>!String.IsEmpty(Skin.String(TopBarColor)) + !String.IsEqual(Skin.String(TopBarColor),None)</visible>
+				<visible>!String.IsEmpty(Skin.String(TopBarColor))</visible>
+			</control>
+			<control type="image">
+				<width>100%</width>
+				<top>41</top>
+				<height>2</height>
+				<texture colordiffuse="$VAR[TopBarGlowBarColor]">separator_horizontal.png</texture>
 			</control>
 			<control type="group">
 				<visible>!Window.IsActive(volumebar)</visible>
@@ -1020,6 +754,7 @@
 			<texture colordiffuse="grey4">separator_vertical.png</texture>
 			<animation effect="slide" end="91" condition="Window.IsActive(profiles)">Conditional</animation>
 			<animation effect="slide" end="275" condition="Window.IsActive(script-skinshortcuts.xml) + String.IsEmpty(Window(Home).Property(skinshortcuts-management-widget))">Conditional</animation>
+			<animation effect="slide" end="120" condition="Window.IsVisible(1115)">Conditional</animation>
 		</control>
 	</include>
 	<include name="SystemLeftPanel">
@@ -3079,8 +2814,8 @@
 	<!-- Fullscreen Info -->
 	<include name="FullscreenInfo">
 		<control type="group">
-			<animation effect="fade" end="100" time="239.76">WindowOpen</animation>
-			<animation effect="fade" end="0" time="239.76">WindowClose</animation>
+			<animation effect="fade" end="100" time="250">WindowOpen</animation>
+			<animation effect="fade" end="0" time="250">WindowClose</animation>
 			<control type="image">
 				<left>-5%</left>
 				<top>-30</top>
@@ -3089,7 +2824,7 @@
 				<texture border="40" flipy="true" colordiffuse="E6FFFFFF">dialogs/default/bg.png</texture>
 				<visible>!Window.IsVisible(playerprocessinfo)</visible>
 				<visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(SubtitleSearch) | Window.IsVisible(1114)]</visible>
-				<animation effect="fade" end="100" time="239.76">Visible</animation>
+				<animation effect="fade" end="100" time="250">Visible</animation>
 			</control>
 			<!-- Media Flags -->
 			<control type="grouplist">
@@ -3100,7 +2835,7 @@
 				<align>center</align>
 				<orientation>horizontal</orientation>
 				<visible>![Window.IsActive(videoosd) + Skin.HasSetting(VideoOSDOnTop) | Window.IsVisible(playerprocessinfo) | Window.IsVisible(SliderDialog) | Window.IsVisible(pvrchannelguide) | Window.IsVisible(PVROSDTeletext) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(SubtitleSearch) | Window.IsVisible(1114)]</visible>
-				<animation effect="fade" end="100" time="239.76">Visible</animation>
+				<animation effect="fade" end="100" time="250">Visible</animation>
 				<control type="group">
 					<visible>!String.IsEmpty(VideoPlayer.Studio)</visible>
 					<width>240</width>
@@ -3118,7 +2853,7 @@
 						<font>font10</font>
 						<textcolor>grey2</textcolor>
 						<wrapmultiline>true</wrapmultiline>
-						<animation effect="fade" time="239.76" delay="100">Visible</animation>
+						<animation effect="fade" time="250" delay="100">Visible</animation>
 						<visible>String.IsEmpty(Control.GetLabel(142099))</visible>
 					</control>
 				</control>
@@ -3932,13 +3667,12 @@
 			<control type="image">
 				<width>60</width>
 				<height>100%</height>
-				<texture>verticalsubmenu_back.png</texture>
-				<animation effect="rotate" end="180" center="auto" condition="true">Conditional</animation>
+				<texture>colors/black.png</texture>
 			</control>
 			<control type="grouplist">
-				<top>40</top>
+				<top>44</top>
 				<width>60</width>
-				<height>1000</height>
+				<height>1036</height>
 				<include>AlphabetNumber</include>
 				<include content="AlphabetLetter">
 					<param name="letter">A</param>
@@ -4115,6 +3849,35 @@
 				<include content="AlphabetLetter">
 					<param name="letter">Z</param>
 				</include>
+			</control>
+		</control>
+	</include>
+	<include name="BusySpinner">
+		<control type="group">
+			<visible>$PARAM[visible]</visible>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<texture>$PARAM[texture]</texture>
+			</control>
+			<control type="group">
+				<left>912</left>
+				<top>492</top>
+				<control type="image">
+					<description>Busy animation</description>
+					<width>96</width>
+					<height>96</height>
+					<texture colordiffuse="$VAR[ThemeLabelColor]">android/busyspinner_clockwise.png</texture>
+					<aspectratio>keep</aspectratio>
+					<animation effect="rotate" start="0" end="360" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
+				</control>
+				<control type="image">
+					<description>Busy animation</description>
+					<width>96</width>
+					<height>96</height>
+					<texture colordiffuse="$VAR[ThemeLabelColor]">android/busyspinner_counterclockwise.png</texture>
+					<aspectratio>keep</aspectratio>
+					<animation effect="rotate" start="360" end="0" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
+				</control>
 			</control>
 		</control>
 	</include>
