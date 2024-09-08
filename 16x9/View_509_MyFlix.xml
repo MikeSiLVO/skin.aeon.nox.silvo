@@ -262,29 +262,12 @@
 						</control>
 						<control type="label">
 							<height>45</height>
+							<width>1200</width>
 							<textcolor>grey</textcolor>
 							<shadowcolor>shadow</shadowcolor>
 							<include>DefaultButtonsValues</include>
-							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]: [/COLOR]$INFO[Container(9143).ListItem.Property(Status)]</label>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]: [/COLOR]$INFO[Container(9143).ListItem.Property(Status)]$VAR[TMDbHelperNextAiredLabelVar, - ]</label>
 							<visible>!String.IsEmpty(Container(9143).ListItem.Property(Status))</visible>
-						</control>
-						<control type="label">
-							<width>800</width>
-							<height>45</height>
-							<textcolor>grey</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<include>DefaultButtonsValues</include>
-							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31010]: [/COLOR]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]$INFO[Container(9143).ListItem.Property(Next_Aired), (,)]</label>
-							<visible>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) + !Skin.HasSetting(Disable.NextAired)</visible>
-						</control>
-						<control type="label">
-							<width>800</width>
-							<height>45</height>
-							<textcolor>grey</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<include>DefaultButtonsValues</include>
-							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31011]: [/COLOR]$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E,  -]$INFO[Container(9143).ListItem.Property(Last_Aired.Name)]$INFO[Container(9143).ListItem.Property(Last_Aired), (,)]</label>
-							<visible>!String.IsEmpty(Container(9143).ListItem.Property(Last_Aired)) + String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))</visible>
 						</control>
 						<control type="label">
 							<height>45</height>
