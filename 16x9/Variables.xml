@@ -779,7 +779,7 @@
 	</variable>
 	<variable name="FloorSubLabelVar">
 		<value condition="ListItem.IsCollection">$INFO[Container(4500).NumItems,, $LOCALIZE[342]]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ]$INFO[ListItem.Duration(mins), • , $LOCALIZE[12391]]</value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ]$VAR[ItemDurationVar, • ]</value>
 		<value condition="Container.Content(episodes)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="Container.Content(addons)">$INFO[ListItem.AddonSummary]</value>
