@@ -7,6 +7,7 @@
 			<visible>!ListItem.IsCollection</visible>
 			<control type="group">
 				<visible>Container.Content(movies) | Container.Content(episodes)</visible>
+				<animation effect="fade" time="250" delay="200">Visible</animation>
 				<control type="grouplist">
 					<left>$PARAM[left]</left>
 					<bottom>14</bottom>
@@ -43,7 +44,6 @@
 						<control type="image">
 							<include>MediaFlagValues</include>
 							<texture>$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
-							<visible>!String.StartsWith(Container.FolderPath,plugin://) | !String.IsEmpty(ListItem.MPAA)</visible>
 							<visible>![Container.Content(movies) + Skin.HasSetting(DisableFlag_MovieMPAA)]</visible>
 							<visible>![Container.Content(episodes) + Skin.HasSetting(DisableFlag_EpisodeMPAA)]</visible>
 						</control>
@@ -183,15 +183,17 @@
 	<include name="MediaFlagsTV">
 		<control type="group">
 			<visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
+			<animation effect="fade" time="250" delay="200">Visible</animation>
 			<control type="grouplist">
 				<left>$PARAM[left]</left>
 				<bottom>14</bottom>
-				<width>850</width>
+				<width>1190</width>
 				<height>78</height>
 				<orientation>horizontal</orientation>
 				<align>$PARAM[align]</align>
 				<visible>$PARAM[visible]</visible>
 				<include>FadeAnimation</include>
+				<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) | System.AddonIsEnabled(script.embuary.helper)">RatingsMediaFlags</include>
 				<control type="group">
 					<visible>!String.IsEmpty(ListItem.Studio)</visible>
 					<visible>!Skin.HasSetting(DisableFlag_TVStudio)</visible>
