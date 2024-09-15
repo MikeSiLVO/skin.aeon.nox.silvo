@@ -250,7 +250,6 @@
 		<value condition="!String.IsEmpty(Skin.String(weatherfanart.ext))">$INFO[Skin.String(weatherfanart.ext)]</value>
 		<value>.jpg</value>
 	</variable>
-	<!-- Genres -->
 	<variable name="VideoGenreVar">
 		<value condition="System.AddonIsEnabled(script.skin.info.service) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre)) + ListItem.IsCollection">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Genre)]</value>
 		<value condition="ListItem.IsCollection + !String.IsEmpty(Container(4500).ListItem(0).Genre)">$INFO[Container(4500).ListItem(0).Genre]</value>
@@ -259,6 +258,14 @@
 	<variable name="MovieSetGenreVar">
 		<value condition="System.AddonIsEnabled(script.skin.info.service) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre))">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Genre)]</value>
 		<value>$INFO[Container(4500).ListItem(0).Genre]</value>
+	</variable>
+	<variable name="MovieSetDirectorVar">
+		<value condition="System.AddonIsEnabled(script.skin.info.service) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Director))">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Director)]</value>
+		<value>$INFO[Container(4500).ListItemNoWrap(0).Director]$INFO[Container(4500).ListItemNoWrap(1).Director, / ]$INFO[Container(4500).ListItemNoWrap(2).Director, / ]$INFO[Container(4500).ListItemNoWrap(3).Director, / ]</value>
+	</variable>
+	<variable name="MovieSetWriterVar">
+		<value condition="System.AddonIsEnabled(script.skin.info.service) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Writer))">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Writer)]</value>
+		<value>$INFO[Container(4500).ListItemNoWrap(0).Writer]$INFO[Container(4500).ListItemNoWrap(1).Writer, / ]$INFO[Container(4500).ListItemNoWrap(2).Writer, / ]$INFO[Container(4500).ListItemNoWrap(3).Writer, / ]</value>
 	</variable>
 	<variable name="MusicGenreIconsPathVar">
 		<value condition="!String.IsEmpty(Skin.String(musicgenreicons.path))">$INFO[Skin.String(musicgenreicons.path)]</value>
@@ -787,12 +794,14 @@
 		<value condition="ListItem.IsCollection + ![Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(500)]">$INFO[Container(4500).NumItems,, $LOCALIZE[342]]</value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ]$INFO[ListItem.Duration(mins), • , $LOCALIZE[12391]]</value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ]$VAR[ItemDurationVar, • ]</value>
-		<value condition="Container.Content(episodes)">$INFO[ListItem.TvShowTitle]</value>
+		<value condition="!Control.IsVisible(509) + Container.Content(episodes)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="Container.Content(addons)">$INFO[ListItem.AddonSummary]</value>
 		<value condition="Container.Content(musicvideos)">$INFO[ListItem.Artist]</value>
 		<value condition="ListItem.IsResumable + !Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ]</value>
 		<value condition="ListItem.IsResumable + Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ]</value>
-		<value condition="!Skin.HasSetting(Enable.HourMinuteDuration) + !String.IsEmpty(ListItem.Duration)">$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ]</value>
+		<value condition="Control.IsVisible(509) + Container.Content(episodes) + !Skin.HasSetting(Enable.HourMinuteDuration) + !String.IsEmpty(ListItem.Duration)">$INFO[ListItem.Premiered,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ]</value>
+		<value condition="Skin.HasSetting(Enable.HourMinuteDuration) + !String.IsEmpty(ListItem.Duration)">$INFO[ListItem.Premiered,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ]</value>
+		<value condition="Control.IsVisible(509) + Container.Content(episodes) + !Skin.HasSetting(Enable.HourMinuteDuration) + !String.IsEmpty(ListItem.Duration)">$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ]</value>
 		<value condition="Skin.HasSetting(Enable.HourMinuteDuration) + !String.IsEmpty(ListItem.Duration)">$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ]</value>
 		<value condition="!String.IsEmpty(ListItem.Year)">$INFO[ListItem.Year]</value>
 	</variable>
@@ -1645,6 +1654,14 @@
 	<variable name="TMDbHelperNextAiredLabelVar">
 		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19031]:[/COLOR] $INFO[Container(9143).ListItem.Property(Next_Aired),, • ]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]</value>
 		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31374]:[/COLOR] $INFO[Container(9143).ListItem.Property(Last_Aired),, • ]$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Name)]</value>
+	</variable>
+	<variable name="NextAiredLabelVar">
+		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))">$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)][LIGHT]$INFO[Container(9143).ListItem.Property(Next_Aired), • ][/LIGHT]</value>
+		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))">$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Name)][LIGHT]$INFO[Container(9143).ListItem.Property(Last_Aired), • ][/LIGHT]</value>
+	</variable>
+	<variable name="TVShowStatusLabelVar">
+		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Status))">$INFO[Container(9143).ListItem.Property(Status)]</value>
+		<value>$INFO[ListItem.Status]</value>
 	</variable>
 	<variable name="TMDbHelperDBTYPEPathVar">
 		<value condition="String.IsEqual(ListItem.DBTYPE,movie)">movie</value>
