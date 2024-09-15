@@ -64,6 +64,13 @@
 					<visible>!Container.Content(genres) + !Container.Content(sets)</visible>
 					<visible>String.IsEqual(Window(Home).Property(actualViewtype),ShowCase) | [String.IsEqual(Window(Home).Property(actualViewtype),Landscape) + !Window.IsActive(music)] | [String.IsEqual(Window(Home).Property(actualViewtype),Wall) + ![Container.Content(programs) | Container.Content(addons) | Window.IsActive(music)]] | String.IsEqual(Window(Home).Property(actualViewtype),Logo)</visible>
 				</control>
+				<!-- <control type="radiobutton" id="1503">
+					<include>ButtonCommonValues</include>
+					<label>$LOCALIZE[31255]</label>
+					<onclick></onclick>
+					<selected></selected>
+					<visible></visible>
+				</control> -->
 				<!-- View Settings -->
 				<!-- Button IDs (1510-1549) -->
 				<include condition="String.IsEqual(Window(Home).Property(actualViewtype),List)">ListViewSettings</include>

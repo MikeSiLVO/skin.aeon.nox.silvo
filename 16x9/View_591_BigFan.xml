@@ -144,10 +144,10 @@
 				</control>
 			</control>
 			<control type="textbox">
-				<top>840</top>
+				<top>830</top>
 				<left>330</left>
 				<width>1550</width>
-				<height>155</height>
+				<height>148</height>
 				<font>font14_textbox</font>
 				<textcolor>$VAR[ThemeLabelColor]</textcolor>
 				<aligny>top</aligny>
@@ -156,17 +156,17 @@
 				<label>$INFO[ListItem.Tagline,, - ][COLOR grey]$VAR[VideoPlotVar][/COLOR]</label>
 				<visible>Skin.HasSetting(EnableBigFanPlot)</visible>
 			</control>
-			<include content="MediaFlagsFull">
-				<param name="visible">Control.IsVisible(591)</param>
-				<param name="left">40</param>
-				<param name="align">left</param>
-				<param name="view_id">591</param>
-			</include>
-			<include content="MediaFlagsTV">
-				<param name="visible">Control.IsVisible(591) + !Skin.HasSetting(DisableBigFan_TVflags) + [Container.Content(tvshows) | Container.Content(seasons)]</param>
-				<param name="left">40</param>
-				<param name="align">left</param>
-				<param name="view_id">591</param>
+			<include content="MediaFlags">
+				<param name="full_visible">[Control.IsVisible(591) + Container.Content(movies) + !Skin.HasSetting(DisableBigFan_Movieflags)]</param>
+				<param name="full_left">80</param>
+				<param name="full_align">left</param>
+				<param name="movie_studio_id">59155</param>
+				<param name="tv_visible">Control.IsVisible(591) + !Skin.HasSetting(DisableBigFan_TVflags)</param>
+				<param name="tv_left">660</param>
+				<param name="tv_align">right</param>
+				<param name="tv_studio_id">591555</param>
+				<param name="season_visible">Control.IsVisible(591) + !Skin.HasSetting(DisableBigFan_Seasonflags)</param>
+				<param name="season_studio_id">5915555</param>
 			</include>
 		</control>
 	</include>

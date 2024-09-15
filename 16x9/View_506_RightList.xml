@@ -158,27 +158,12 @@
 					<control type="group">
 						<visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
 						<control type="label">
-							<width>570</width>
-							<height>55</height>
-							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]:[/COLOR] $INFO[Container(9143).ListItem.Property(Status)]</label>
-							<include>DefaultButtonsValues</include>
-							<visible>!String.IsEmpty(Container(9143).ListItem.Property(Status)) + !Skin.HasSetting(Disable.NextAired)</visible>
-						</control>
-						<control type="label">
-							<top>55</top>
+							<top>110</top>
 							<width>570</width>
 							<height>55</height>
 							<label>$VAR[TMDbHelperNextAiredLabelVar]</label>
 							<include>DefaultButtonsValues</include>
 							<visible>!Skin.HasSetting(Disable.NextAired)</visible>
-						</control>
-						<control type="label">
-							<top>110</top>
-							<width>570</width>
-							<height>55</height>
-							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR] $INFO[ListItem.Genre]</label>
-							<include>DefaultButtonsValues</include>
-							<visible>!String.IsEmpty(ListItem.Genre)</visible>
 						</control>
 					</control>
 					<control type="group">
@@ -265,17 +250,17 @@
 					<showonepage>false</showonepage>
 				</control>
 			</control>
-			<include content="MediaFlagsFull">
-				<param name="visible">[Container.Content(movies) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Container.Content(episodes) + Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.EpisodeMediaflags)]</param>
-				<param name="left">-40</param>
-				<param name="align">right</param>
-				<param name="view_id">506</param>
-			</include>
-			<include content="MediaFlagsTV">
-				<param name="visible">Control.IsVisible(506) + !Skin.HasSetting(Disable.RightList.TVMediaflags) + [Container.Content(tvshows) | Container.Content(seasons)]</param>
-				<param name="left">1050</param>
-				<param name="align">right</param>
-				<param name="view_id">506</param>
+			<include content="MediaFlags">
+				<param name="full_visible">[Control.IsVisible(506) + Container.Content(movies) + !Skin.HasSetting(DisableRightList_Movieflags)] | [Control.IsVisible(506) + Container.Content(episodes) + !Skin.HasSetting(DisableRightList_Episodeflags)]</param>
+				<param name="full_left">25</param>
+				<param name="full_align">right</param>
+				<param name="movie_studio_id">50655</param>
+				<param name="tv_visible">Control.IsVisible(506) + !Skin.HasSetting(DisableRightList_TVflags)</param>
+				<param name="tv_left">710</param>
+				<param name="tv_align">right</param>
+				<param name="tv_studio_id">506555</param>
+				<param name="season_visible">Control.IsVisible(506) + !Skin.HasSetting(DisableRightList_Seasonflags)</param>
+				<param name="season_studio_id">5065555</param>
 			</include>
 			<control type="group">
 				<include content="InfoPopup">

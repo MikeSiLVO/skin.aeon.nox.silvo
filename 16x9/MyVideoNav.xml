@@ -311,11 +311,7 @@
 											<shadowcolor>shadow</shadowcolor>
 											<label>$VAR[NextAiredSubLabelVar]</label>
 											<textoffsetx>30</textoffsetx>
-											<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(52).OnNext + !Container(52).OnPrevious">Conditional</animation>
-											<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(53).OnNext + !Container(53).OnPrevious">Conditional</animation>
-											<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(503).OnNext + !Container(503).OnPrevious">Conditional</animation>
-											<animation effect="fade" time="250" delay="300" reversible="false">Visible</animation>
-											<visible>String.IsEmpty(Window(Home).Property(TMDbHelper.IsUpdating))</visible>
+											<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container.OnNext + !Container.OnPrevious">Conditional</animation>
 										</control>
 									</control>
 									<control type="label">
@@ -430,85 +426,49 @@
 					<control type="group">
 						<visible>Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(500)</visible>
 						<include>ViewAnimation</include>
-						<animation effect="slide" end="34.5" condition="Control.IsVisible(500) + Skin.HasSetting(500.SmallerIcons) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets) | Container.Content(genres)]">Conditional</animation>
-						<animation effect="slide" end="400,-34" condition="Control.IsVisible(57) + !Skin.HasSetting(Enable.Shift.Small) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos)]">Conditional</animation>
-						<animation effect="slide" end="260,-40" condition="Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos)]">Conditional</animation>
-						<animation effect="slide" end="-40,20" condition="Control.IsVisible(57) + ![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos)]">Conditional</animation>
 						<control type="group">
-							<left>90</left>
-							<top>935</top>
-							<visible>!ListItem.IsParentFolder + !Container.Content(tags) + !Container.Content(genres)</visible>
-							<!-- Main Label -->
-							<control type="label">
-								<width>1450</width>
-								<height>42</height>
-								<aligny>top</aligny>
-								<font>font16_title_bold</font>
-								<textcolor>grey</textcolor>
-								<scroll>true</scroll>
-								<label>$INFO[ListItem.Label]</label>
-								<textoffsety>-2</textoffsety>
-								<textoffsetx>30</textoffsetx>
-							</control>
+							<animation effect="slide" end="350,-14" condition="Control.IsVisible(57) + !Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
+							<animation effect="slide" end="210,-14" condition="Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
 							<control type="group">
-								<top>50</top>
-								<!-- Sub Label -->
+								<left>120</left>
+								<top>915</top>
+								<visible>!ListItem.IsParentFolder + !Container.Content(tags) + !Container.Content(genres)</visible>
+								<!-- Main Label -->
 								<control type="label">
-									<width>1800</width>
-									<height>30</height>
-									<font>font13_bold</font>
-									<textcolor>grey2</textcolor>
-									<label>$VAR[FloorSubLabelVar]</label>
-									<textoffsetx>30</textoffsetx>
-									<visible>!ListItem.IsCollection</visible>
+									<width>860</width>
+									<height>40</height>
+									<aligny>top</aligny>
+									<font>font16_title_bold</font>
+									<textcolor>grey</textcolor>
+									<scroll>true</scroll>
+									<label>$INFO[ListItem.Label]</label>
 								</control>
-								<!-- Sets -->
 								<control type="group">
-									<visible>ListItem.IsCollection</visible>
+									<top>50</top>
+									<!-- Sub Label -->
 									<control type="label">
-										<width>950</width>
-										<height>30</height>
-										<scroll>true</scroll>
-										<label>$INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]$INFO[Container(4500).NumItems, • , $LOCALIZE[342]]$INFO[ListItem.RatingAndVotes, • ]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime), • , $LOCALIZE[12391]]</label>
+										<width>1800</width>
+										<height>32</height>
 										<font>font13_bold</font>
 										<textcolor>grey2</textcolor>
-										<textoffsetx>30</textoffsetx>
-										<visible>!String.IsEqual(Container(4500).NumItems,0)</visible>
-									</control>
-								</control>
-								<!-- Next Aired + Genre -->
-								<control type="group">
-									<visible>!Control.IsVisible(57) + [Container.Content(tvshows) | Container.Content(seasons)]</visible>
-									<control type="label">
-										<top>40</top>
-										<width>950</width>
-										<height>30</height>
-										<scroll>true</scroll>
-										<label>$INFO[ListItem.Genre]</label>
-										<font>font13_bold</font>
-										<textcolor>grey</textcolor>
-										<textoffsetx>30</textoffsetx>
-										<visible>!String.IsEmpty(ListItem.Genre)</visible>
-									</control>
-									<control type="label">
-										<top>80</top>
-										<width>950</width>
-										<height>30</height>
-										<scroll>true</scroll>
-										<font>font13_bold</font>
-										<textcolor>grey2</textcolor>
-										<label>$VAR[NextAiredSubLabelVar]</label>
-										<textoffsetx>30</textoffsetx>
-										<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(57).OnNext + !Container(57).OnPrevious">Conditional</animation>
-										<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(58).OnNext + !Container(58).OnPrevious">Conditional</animation>
-										<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(500).OnNext + !Container(500).OnPrevious">Conditional</animation>
-										<animation effect="fade" time="250" delay="300" reversible="false">Visible</animation>
-										<visible>String.IsEmpty(Window(Home).Property(TMDbHelper.IsUpdating))</visible>
+										<label>$VAR[FloorSubLabelVar]</label>
 									</control>
 								</control>
 							</control>
 						</control>
 					</control>
+					<include content="NextAiredGenreRight">
+						<param name="visible">Control.IsVisible(56) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(500)</param>
+						<param name="pos">130</param>
+						<param name="top">924</param>
+						<param name="max_width">650</param>
+					</include>
+					<include content="NextAiredGenreLeft">
+						<param name="visible">!Container.Content(movies) + !Container.Content(episodes) + [Control.IsVisible(50) | Control.IsVisible(506)]</param>
+						<param name="pos">84</param>
+						<param name="top">1024</param>
+						<param name="max_width">600</param>
+					</include>
 					<!-- MEDIAFLAGS -->
 					<control type="group">
 						<visible>!ListItem.IsParentFolder + !ListItem.IsCollection + !Container.Content(genres)</visible>

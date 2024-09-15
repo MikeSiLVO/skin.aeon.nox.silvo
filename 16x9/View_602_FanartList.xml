@@ -564,17 +564,17 @@
 					<showonepage>false</showonepage>
 				</control>
 			</control>
-			<include content="MediaFlagsFull">
-				<param name="visible">Control.IsVisible(602)</param>
-				<param name="left">80</param>
-				<param name="align">left</param>
-				<param name="view_id">602</param>
-			</include>
-			<include content="MediaFlagsTV">
-				<param name="visible">Control.IsVisible(602) + !Skin.HasSetting(DisableFanartList_TVflags) + [Container.Content(tvshows) | Container.Content(seasons)]</param>
-				<param name="left">60</param>
-				<param name="align">left</param>
-				<param name="view_id">602</param>
+			<include content="MediaFlags">
+				<param name="full_visible">Control.IsVisible(602) + Container.Content(movies) + !Skin.HasSetting(DisableFanartList_Movieflags) | Control.IsVisible(602) + Container.Content(episodes) + !Skin.HasSetting(DisableFanartList_Episodeflags)</param>
+				<param name="full_left">90</param>
+				<param name="full_align">left</param>
+				<param name="movie_studio_id">60255</param>
+				<param name="tv_visible">Control.IsVisible(602) + !Skin.HasSetting(DisableFanartList_TVflags)</param>
+				<param name="tv_left">640</param>
+				<param name="tv_align">right</param>
+				<param name="tv_studio_id">602555</param>
+				<param name="season_visible">Control.IsVisible(602) + !Skin.HasSetting(DisableFanartList_Seasonflags)</param>
+				<param name="season_studio_id">6025555</param>
 			</include>
 		</control>
 	</include>

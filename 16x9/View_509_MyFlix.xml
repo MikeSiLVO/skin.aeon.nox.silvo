@@ -291,17 +291,17 @@
 					</control>
 				</control>
 			</control>
-			<include content="MediaFlagsFull">
-				<param name="visible">Control.IsVisible(509) + !Skin.HasSetting(Disable.MyFlix.Mediaflags) + [Container.Content(movies) | Container.Content(episodes)]</param>
-				<param name="left">40</param>
-				<param name="align">left</param>
-				<param name="view_id">509</param>
-			</include>
-			<include content="MediaFlagsTV">
-				<param name="visible">Control.IsVisible(509) + !Skin.HasSetting(DisableMyFlix_TVflags) + [Container.Content(tvshows) | Container.Content(seasons)]</param>
-				<param name="left">40</param>
-				<param name="align">left</param>
-				<param name="view_id">509</param>
+			<include content="MediaFlags">
+				<param name="full_visible">Control.IsVisible(509) + Container.Content(movies) + !Skin.HasSetting(DisableMyFlix_Movieflags) | Control.IsVisible(509) + Container.Content(episodes) + !Skin.HasSetting(DisableMyFlix_Episodeflags)</param>
+				<param name="full_left">40</param>
+				<param name="full_align">left</param>
+				<param name="movie_studio_id">50955</param>
+				<param name="tv_visible">Control.IsVisible(509) + !Skin.HasSetting(DisableMyFlix_TVflags)</param>
+				<param name="tv_left">40</param>
+				<param name="tv_align">left</param>
+				<param name="tv_studio_id">509555</param>
+				<param name="season_visible">Control.IsVisible(509) + !Skin.HasSetting(DisableMyFlix_Seasonflags)</param>
+				<param name="season_studio_id">5095555</param>
 			</include>
 			<include condition="!Skin.HasSetting(MyFlixWrap)">MyFlixFixed</include>
 			<include condition="Skin.HasSetting(MyFlixWrap)">MyFlixWrapped</include>

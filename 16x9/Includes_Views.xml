@@ -40,4 +40,145 @@
 			</control>
 		</definition>
 	</include>
+	<include name="NextAiredGenreLeft">
+		<control type="group">
+			<left>$PARAM[pos]</left>
+			<top>$PARAM[top]</top>
+			<width>650</width>
+			<visible>$PARAM[visible]</visible>
+			<include>ViewAnimation</include>
+			<!-- Next Aired + Genre -->
+			<control type="group">
+				<width>630</width>
+				<height>80</height>
+				<animation effect="slide" end="-36" condition="Control.IsVisible(506)">Conditional</animation>
+				<visible>![Container.OnNext | Container.OnPrevious]</visible>
+				<animation effect="fade" time="250" delay="300">Visible</animation>
+				<!-- Next Aired -->
+				<control type="group">
+					<visible>[!String.IsEmpty(ListItem.Status) | !String.IsEmpty(Container(9143).ListItem.Status)] + !Container.Content(movies)</visible>
+					<width>650</width>
+					<height>40</height>
+					<control type="label">
+						<left>40</left>
+						<width max="$PARAM[max_width]">auto</width>
+						<height>40</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<scroll>true</scroll>
+						<label>[B]$VAR[NextAiredSubLabelVar][/B]</label>
+					</control>
+					<control type="togglebutton">
+						<left>0</left>
+						<width>40</width>
+						<height>40</height>
+						<font>IconTinyMD</font>
+						<textcolor>grey</textcolor>
+						<include>NoFocusObject</include>
+						<label></label>
+						<altlabel></altlabel>
+						<usealttexture>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired.Name))</usealttexture>
+					</control>
+				</control>
+				<!-- Genre -->
+				<control type="group">
+					<top>34</top>
+					<width>650</width>
+					<height>40</height>
+					<visible>!Control.IsVisible(50)</visible>
+					<visible>!String.IsEmpty(ListItem.Genre) | ListItem.IsCollection + [!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre)) | !String.IsEmpty(Container(4500).ListItem(0).Genre)]</visible>
+					<control type="label">
+						<left>40</left>
+						<width max="$PARAM[max_width]">auto</width>
+						<height>40</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<scroll>true</scroll>
+						<label>[B]$VAR[VideoGenreVar][/B]</label>
+					</control>
+					<control type="label">
+						<left>0</left>
+						<width>40</width>
+						<height>40</height>
+						<font>IconTinyMD</font>
+						<textcolor>grey</textcolor>
+						<label></label>
+					</control>
+				</control>
+			</control>
+		</control>
+	</include>
+	<include name="NextAiredGenreRight">
+		<control type="group">
+			<right>$PARAM[pos]</right>
+			<top>$PARAM[top]</top>
+			<width>650</width>
+			<visible>$PARAM[visible]</visible>
+			<include>ViewAnimation</include>
+			<!-- Next Aired + Genre -->
+			<control type="group">
+				<width>650</width>
+				<height>80</height>
+				<animation effect="slide" end="100" condition="Control.IsVisible(56)">Conditional</animation>
+				<animation effect="slide" end="114,-11" condition="Control.IsVisible(57)">Conditional</animation>
+				<visible>![Container.OnNext | Container.OnPrevious]</visible>
+				<animation effect="fade" time="250" delay="300">Visible</animation>
+				<!-- Next Aired -->
+				<control type="group">
+					<visible>[!String.IsEmpty(ListItem.Status) | !String.IsEmpty(Container(9143).ListItem.Status)] + !Container.Content(movies)</visible>
+					<animation effect="fade" time="250" delay="300">Visible</animation>
+					<width>650</width>
+					<height>40</height>
+					<control type="label">
+						<right>40</right>
+						<width max="$PARAM[max_width]">auto</width>
+						<height>40</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<align>right</align>
+						<scroll>true</scroll>
+						<label>[B]$VAR[NextAiredSubLabelVar][/B]</label>
+					</control>
+					<control type="togglebutton">
+						<right>0</right>
+						<width>40</width>
+						<height>40</height>
+						<font>IconTinyMD</font>
+						<textcolor>grey</textcolor>
+						<align>right</align>
+						<include>NoFocusObject</include>
+						<label></label>
+						<altlabel></altlabel>
+						<usealttexture>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired.Name))</usealttexture>
+					</control>
+				</control>
+				<!-- Genre -->
+				<control type="group">
+					<top>34</top>
+					<width>650</width>
+					<height>40</height>
+					<visible>!String.IsEmpty(ListItem.Genre) | ListItem.IsCollection + [!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre)) | !String.IsEmpty(Container(4500).ListItem(0).Genre)]</visible>
+					<control type="label">
+						<right>40</right>
+						<width max="$PARAM[max_width]">auto</width>
+						<height>40</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<align>right</align>
+						<scroll>true</scroll>
+						<label>[B]$VAR[VideoGenreVar][/B]</label>
+					</control>
+					<control type="label">
+						<right>0</right>
+						<width>40</width>
+						<height>40</height>
+						<font>IconTinyMD</font>
+						<textcolor>grey</textcolor>
+						<align>right</align>
+						<label></label>
+					</control>
+				</control>
+			</control>
+		</control>
+	</include>
 </includes>

@@ -131,7 +131,7 @@
 			<visible>Control.IsVisible(57) + !Window.IsActive(addoninformation)</visible>
 			<top>-36</top>
 			<control type="fixedlist" id="57">
-				<left>-200</left>
+				<left>-240</left>
 				<top>296</top>
 				<width>2170</width>
 				<height>750</height>
@@ -195,17 +195,17 @@
 					</control>
 				</focusedlayout>
 			</control>
-			<include content="MediaFlagsFull">
-				<param name="visible">Control.IsVisible(57)</param>
-				<param name="left">40</param>
-				<param name="align">left</param>
-				<param name="view_id">57</param>
-			</include>
-			<include content="MediaFlagsTV">
-				<param name="visible">Control.IsVisible(57)</param>
-				<param name="left">500</param>
-				<param name="align">left</param>
-				<param name="view_id">57</param>
+			<include content="MediaFlags">
+				<param name="full_visible">Control.IsVisible(57) + Container.Content(movies) + !Skin.HasSetting(DisableShift_Movieflags)</param>
+				<param name="full_left">50</param>
+				<param name="full_align">left</param>
+				<param name="movie_studio_id">5755</param>
+				<param name="tv_visible">Control.IsVisible(57) + !Skin.HasSetting(DisableShift_TVflags)</param>
+				<param name="tv_left">740</param>
+				<param name="tv_align">right</param>
+				<param name="tv_studio_id">57555</param>
+				<param name="season_visible">Control.IsVisible(57) + !Skin.HasSetting(DisableShift_Seasonflags)</param>
+				<param name="season_studio_id">575555</param>
 			</include>
 		</control>
 	</include>
