@@ -328,13 +328,13 @@
 								<width>60</width>
 								<height>45</height>
 								<font>IconSmallMD</font>
-								<label></label>
+								<label></label>
 							</control>
 							<control type="label">
 								<left>40</left>
 								<width>860</width>
 								<height>40</height>
-								<textcolor>grey</textcolor>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
 								<shadowcolor>shadow</shadowcolor>
 								<include>DefaultButtonsValues</include>
 								<label>$VAR[TVShowStatusLabelVar]</label>
@@ -400,7 +400,7 @@
 								<textcolor>grey</textcolor>
 								<shadowcolor>shadow</shadowcolor>
 								<include>DefaultButtonsValues</include>
-								<label>$INFO[ListItem.Premiered]$INFO[ListItem.RatingAndVotes, • ]$INFO[ListItem.Duration(mins), • , $LOCALIZE[12391]]</label>
+								<label>$VAR[FloorSubLabelVar]</label>
 							</control>
 						</control>
 					</control>
@@ -712,9 +712,9 @@
 			<texture>homewidgets/label_back_landscape.png</texture>
 		</control>
 		<control type="label">
-			<left>20</left>
-			<top>415</top>
-			<width>440</width>
+			<left>25</left>
+			<top>407</top>
+			<width>430</width>
 			<height>40</height>
 			<label>$INFO[ListItem.Label]</label>
 		</control>
