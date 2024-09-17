@@ -792,8 +792,9 @@
 	<variable name="FloorSubLabelVar">
 		<value condition="ListItem.IsCollection + [Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(500)]">$INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]$INFO[Container(4500).NumItems, • , $LOCALIZE[342]]$INFO[ListItem.RatingAndVotes, • ]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime), • , $LOCALIZE[12391]]</value>
 		<value condition="ListItem.IsCollection + ![Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(500)]">$INFO[Container(4500).NumItems,, $LOCALIZE[342]]</value>
-		<value condition="Control.IsVisible(509) + Container.Content(episodes)">$INFO[ListItem.Premiered, • ]$INFO[ListItem.RatingAndVotes, • ]$VAR[DurationVar, • ]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ]</value>
-		<value condition="Container.Content(seasons) + Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),0)">$INFO[ListItem.Year]$INFO[ListItem.Property(WatchedEpisodePercent), • ,% $LOCALIZE[19256]]</value>
+		<value condition="Control.IsVisible(509) + Container.Content(episodes)">$INFO[ListItem.Premiered]$INFO[ListItem.RatingAndVotes, • ]$VAR[DurationVar, • ]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ]</value>
+		<value condition="Control.IsVisible(509) + Container.Content(seasons) + Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),0)">$INFO[ListItem.Year]$INFO[ListItem.Property(WatchedEpisodePercent), • ,% $LOCALIZE[19256]]</value>
+		<value condition="Control.IsVisible(509) + Container.Content(tvshows) + Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),0)">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ]$VAR[DurationVar, • ]$INFO[ListItem.Property(WatchedEpisodePercent), • ,% $LOCALIZE[19256]]</value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ]$VAR[DurationVar, • ]</value>
 		<value condition="Container.Content(episodes)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="Container.Content(addons)">$INFO[ListItem.AddonSummary]</value>
