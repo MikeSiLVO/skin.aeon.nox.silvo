@@ -1761,8 +1761,8 @@
 			<height>90</height>
 			<font>font48_bold</font>
 			<textcolor>grey</textcolor>
-			<label>$VAR[ItemDurationVar]</label>
-			<visible>[!String.IsEmpty(Container(9143).ListItem.Property(Duration)) + !String.IsEqual(Container(9143).ListItem.Property(Duration),0) | !String.IsEmpty(ListItem.Duration)]</visible>
+			<label>$VAR[DurationVar]</label>
+			<visible>!String.IsEmpty(ListItem.Duration)</visible>
 		</control>
 	</include>
 	<include name="InfoEpNumber">
