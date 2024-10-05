@@ -46,7 +46,7 @@
 					</focusedlayout>
 					<content>
 						<item id="1">
-							<label>Ratings</label>
+							<label>$LOCALIZE[563]</label>
 							<property name="description">Customise the ratings mediaflags. If preferred ratings are not available and no others are enabled there will be no fallback rating.</property>
 							<visible>System.AddonIsEnabled(plugin.video.themoviedb.helper) | System.AddonIsEnabled(script.embuary.helper)</visible>
 						</item>
@@ -54,13 +54,17 @@
 							<label>$LOCALIZE[342]</label>
 						</item>
 						<item id="3">
-							<label>$LOCALIZE[20360]</label>
+							<label>$LOCALIZE[20434]</label>
 						</item>
 						<item id="4">
-							<label>$LOCALIZE[20343]</label>
+							<label>$LOCALIZE[20360]</label>
 						</item>
 						<item id="5">
+							<label>$LOCALIZE[20343]</label>
+						</item>
+						<item id="6">
 							<label>$LOCALIZE[31219]</label>
+							<property name="description">$LOCALIZE[31515]</property>
 						</item>
 					</content>
 				</control>
@@ -118,6 +122,15 @@
 							<label>IMDb</label>
 							<onclick>Skin.ToggleSetting(DisableFlag_IMDb)</onclick>
 							<selected>!Skin.HasSetting(DisableFlag_IMDb)</selected>
+						</control>
+						<control type="radiobutton" id="105">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[20434]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_SetRating)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_SetRating)</selected>
 						</control>
 					</control>
 					<control type="grouplist" id="9002">
@@ -216,6 +229,43 @@
 							<height>81</height>
 							<textoffsetx>30</textoffsetx>
 							<font>font15</font>
+							<label>$LOCALIZE[31520]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_SetCount)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_SetCount)</selected>
+						</control>
+						<control type="radiobutton" id="301">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[572]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_SetStudio)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_SetStudio)</selected>
+						</control>
+						<control type="radiobutton" id="302">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
+							<label>$LOCALIZE[20074]</label>
+							<onclick>Skin.ToggleSetting(DisableFlag_SetMPAA)</onclick>
+							<selected>!Skin.HasSetting(DisableFlag_SetMPAA)</selected>
+						</control>
+					</control>
+					<control type="grouplist" id="9004">
+						<left>557</left>
+						<top>32</top>
+						<width>1281</width>
+						<height>810</height>
+						<pagecontrol>60</pagecontrol>
+						<onleft>9000</onleft>
+						<onright>60</onright>
+						<visible>Container(9000).HasFocus(4)</visible>
+						<control type="radiobutton" id="300">
+							<width>1281</width>
+							<height>81</height>
+							<textoffsetx>30</textoffsetx>
+							<font>font15</font>
 							<label>$LOCALIZE[572]</label>
 							<onclick>Skin.ToggleSetting(DisableFlag_EpisodeStudio)</onclick>
 							<selected>!Skin.HasSetting(DisableFlag_EpisodeStudio)</selected>
@@ -284,7 +334,7 @@
 							<selected>!Skin.HasSetting(DisableFlag_EpisodeAudioChannels)</selected>
 						</control>
 					</control>
-					<control type="grouplist" id="9004">
+					<control type="grouplist" id="9005">
 						<left>557</left>
 						<top>32</top>
 						<width>1281</width>
@@ -292,7 +342,7 @@
 						<pagecontrol>60</pagecontrol>
 						<onleft>9000</onleft>
 						<onright>60</onright>
-						<visible>Container(9000).HasFocus(4)</visible>
+						<visible>Container(9000).HasFocus(5)</visible>
 						<control type="radiobutton" id="400">
 							<width>1281</width>
 							<height>81</height>
@@ -339,7 +389,7 @@
 							<selected>!Skin.HasSetting(DisableFlag_TVUnWatchedEpisodes)</selected>
 						</control>
 					</control>
-					<control type="grouplist" id="9005">
+					<control type="grouplist" id="9006">
 						<left>557</left>
 						<top>32</top>
 						<width>1281</width>
@@ -347,7 +397,7 @@
 						<pagecontrol>60</pagecontrol>
 						<onleft>9000</onleft>
 						<onright>60</onright>
-						<visible>Container(9000).HasFocus(5)</visible>
+						<visible>Container(9000).HasFocus(6)</visible>
 						<control type="button" id="500">
 							<width>1281</width>
 							<height>81</height>

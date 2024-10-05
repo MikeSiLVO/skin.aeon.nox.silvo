@@ -44,20 +44,21 @@
 		<control type="group">
 			<left>$PARAM[pos]</left>
 			<top>$PARAM[top]</top>
-			<width>650</width>
 			<visible>$PARAM[visible]</visible>
 			<include>ViewAnimation</include>
 			<!-- Next Aired + Genre -->
 			<control type="group">
-				<width>630</width>
 				<height>80</height>
+				<!-- <visible>![Container.OnNext | Container.OnPrevious] + !Control.IsVisible(591) | Control.IsVisible(591)</visible>
+				<animation effect="fade" time="250" delay="300">Visible</animation> -->
+				<animation effect="slide" end="20" condition="Control.IsVisible(50) + Skin.HasSetting(Enable.SlimList)">Conditional</animation>
 				<animation effect="slide" end="-36" condition="Control.IsVisible(506)">Conditional</animation>
-				<visible>![Container.OnNext | Container.OnPrevious]</visible>
-				<animation effect="fade" time="250" delay="300">Visible</animation>
+				<animation effect="slide" end="240,-100" condition="Control.IsVisible(591)">Conditional</animation>
 				<!-- Next Aired -->
 				<control type="group">
+					<visible>![Control.IsVisible(50) + !Skin.HasSetting(Enable.SlimList)]</visible>
 					<visible>[!String.IsEmpty(ListItem.Status) | !String.IsEmpty(Container(9143).ListItem.Status)] + !Container.Content(movies)</visible>
-					<width>650</width>
+					<width>700</width>
 					<height>40</height>
 					<control type="label">
 						<left>40</left>
@@ -69,7 +70,6 @@
 						<label>[B]$VAR[NextAiredSubLabelVar][/B]</label>
 					</control>
 					<control type="togglebutton">
-						<left>0</left>
 						<width>40</width>
 						<height>40</height>
 						<font>IconTinyMD</font>
@@ -83,9 +83,8 @@
 				<!-- Genre -->
 				<control type="group">
 					<top>34</top>
-					<width>650</width>
-					<height>40</height>
-					<visible>!Control.IsVisible(50)</visible>
+					<width>700</width>
+					<visible>![Control.IsVisible(50) + !Skin.HasSetting(Enable.SlimList)]</visible>
 					<visible>!String.IsEmpty(ListItem.Genre) | ListItem.IsCollection + [!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre)) | !String.IsEmpty(Container(4500).ListItem(0).Genre)]</visible>
 					<control type="label">
 						<left>40</left>
@@ -97,12 +96,55 @@
 						<label>[B]$VAR[VideoGenreVar][/B]</label>
 					</control>
 					<control type="label">
-						<left>0</left>
 						<width>40</width>
 						<height>40</height>
 						<font>IconTinyMD</font>
 						<textcolor>grey</textcolor>
 						<label></label>
+					</control>
+				</control>
+				<!-- List View -->
+				<control type="group">
+					<visible>Control.IsVisible(50) + !Skin.HasSetting(Enable.SlimList) + [Container.Content(tvshows) | Container.Content(seasons)]</visible>
+					<width>700</width>
+					<height>40</height>
+					<control type="label">
+						<left>40</left>
+						<width max="700">auto</width>
+						<height>40</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<scroll>true</scroll>
+						<label>[B]$VAR[VideoInfoTVSubtitleVar][/B]</label>
+					</control>
+					<control type="label">
+						<width>40</width>
+						<height>40</height>
+						<font>IconTinyMD</font>
+						<textcolor>grey</textcolor>
+						<label></label>
+					</control>
+					<control type="group">
+						<top>34</top>
+						<control type="label">
+							<left>40</left>
+							<width max="700">auto</width>
+							<height>40</height>
+							<font>font12</font>
+							<textcolor>grey</textcolor>
+							<scroll>true</scroll>
+							<label>[B]$VAR[NextAiredLabelVar][/B]</label>
+						</control>
+						<control type="togglebutton">
+							<left>-3</left>
+							<width>40</width>
+							<height>40</height>
+							<font>IconSmallMD</font>
+							<include>NoFocusObject</include>
+							<label></label>
+							<altlabel></altlabel>
+							<usealttexture>String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) + !String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))</usealttexture>
+						</control>
 					</control>
 				</control>
 			</control>
@@ -119,13 +161,13 @@
 			<control type="group">
 				<width>650</width>
 				<height>80</height>
-				<animation effect="slide" end="100" condition="Control.IsVisible(56)">Conditional</animation>
+				<animation effect="slide" end="100,10" condition="Control.IsVisible(56)">Conditional</animation>
 				<animation effect="slide" end="114,-11" condition="Control.IsVisible(57)">Conditional</animation>
-				<visible>![Container.OnNext | Container.OnPrevious]</visible>
-				<animation effect="fade" time="250" delay="300">Visible</animation>
+				<!-- <visible>![Container.OnNext | Container.OnPrevious] | Container.Content(seasons)</visible>
+				<animation effect="fade" time="250" delay="300" condition="!Container.Content(seasons)">Visible</animation> -->
 				<!-- Next Aired -->
 				<control type="group">
-					<visible>[!String.IsEmpty(ListItem.Status) | !String.IsEmpty(Container(9143).ListItem.Status)] + !Container.Content(movies)</visible>
+					<visible>!Control.IsVisible(56) + ![String.IsEmpty(ListItem.Status) + String.IsEmpty(Container(9143).ListItem.Status)] + !Container.Content(movies)</visible>
 					<animation effect="fade" time="250" delay="300">Visible</animation>
 					<width>650</width>
 					<height>40</height>
@@ -150,6 +192,30 @@
 						<label></label>
 						<altlabel></altlabel>
 						<usealttexture>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired.Name))</usealttexture>
+					</control>
+				</control>
+				<!-- Year -->
+				<control type="group">
+					<visible>Control.IsVisible(56) + !String.IsEmpty(ListItem.Year) + Container.Content(seasons)</visible>
+					<width>650</width>
+					<height>40</height>
+					<control type="label">
+						<right>40</right>
+						<width max="$PARAM[max_width]">auto</width>
+						<height>40</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<align>right</align>
+						<scroll>true</scroll>
+						<label>[B]$INFO[ListItem.Year][/B]</label>
+					</control>
+					<control type="label">
+						<right>0</right>
+						<width>40</width>
+						<height>40</height>
+						<font>IconTinyMD</font>
+						<align>right</align>
+						<label></label>
 					</control>
 				</control>
 				<!-- Genre -->

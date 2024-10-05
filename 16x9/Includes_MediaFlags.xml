@@ -1,34 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<include name="MediaFlags">
-		<param name="full_condition">true</param>
-		<param name="tv_condition">true</param>
-		<param name="season_condition">true</param>
-		<definition>
-			<control type="group">
-				<animation effect="fade" time="300" delay="200">WindowOpen</animation>
-				<visible>!ListItem.IsParentFolder</visible>
-				<include content="MediaFlagsFull" condition="$PARAM[full_condition]">
-					<param name="full_left">$PARAM[full_left]</param>
-					<param name="full_align">$PARAM[full_align]</param>
-					<param name="full_visible">$PARAM[full_visible]</param>
-					<param name="movie_studio_id">$PARAM[movie_studio_id]</param>
-				</include>
-				<include content="MediaFlagsTV" condition="$PARAM[tv_condition]">
-					<param name="tv_left">$PARAM[tv_left]</param>
-					<param name="tv_align">$PARAM[tv_align]</param>
-					<param name="tv_visible">$PARAM[tv_visible]</param>
-					<param name="tv_studio_id">$PARAM[tv_studio_id]</param>
-				</include>
-				<include content="MediaFlagsSeason" condition="$PARAM[season_condition]">
-					<param name="tv_left">$PARAM[tv_left]</param>
-					<param name="tv_align">$PARAM[tv_align]</param>
-					<param name="season_visible">$PARAM[season_visible]</param>
-					<param name="season_studio_id">$PARAM[season_studio_id]</param>
-				</include>
-			</control>
-		</definition>
-	</include>
 	<include name="MediaFlagsFull">
 		<control type="grouplist">
 			<left>$PARAM[full_left]</left>
@@ -37,7 +8,7 @@
 			<height>78</height>
 			<orientation>horizontal</orientation>
 			<align>$PARAM[full_align]</align>
-			<visible>$PARAM[full_visible] + [Container.Content(movies) | Container.Content(episodes)]</visible>
+			<visible>$PARAM[full_visible]</visible>
 			<visible>!ListItem.IsCollection</visible>
 			<animation effect="fade" time="300" delay="200">Visible</animation>
 			<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) | System.AddonIsEnabled(script.embuary.helper)">RatingsMediaFlags</include>
@@ -190,16 +161,101 @@
 				</control>
 			</control>
 		</control>
-		<!-- <control type="grouplist">
-			<left>$PARAM[full_left]</left>
+	</include>
+	<include name="MediaFlagsSets">
+		<control type="grouplist">
+			<animation effect="slide" end="390" condition="Control.IsVisible(57)">Conditional</animation>
+			<left>$PARAM[sets_left]</left>
 			<bottom>14</bottom>
-			<width>1870</width>
+			<width>680</width>
 			<height>78</height>
 			<orientation>horizontal</orientation>
 			<align>$PARAM[sets_align]</align>
-			<visible>$PARAM[full_visible] + ListItem.IsCollection</visible>
+			<visible>$PARAM[sets_visible]</visible>
+			<visible>ListItem.IsCollection</visible>
 			<animation effect="fade" time="300" delay="200">Visible</animation>
-		</control> -->
+			<control type="group">
+				<visible>!String.IsEmpty(ListItem.Rating) + !Skin.HasSetting(DisableFlag_SetRating)</visible>
+				<width>170</width>
+				<control type="image">
+					<width>60</width>
+					<include>MediaFlagValues</include>
+					<texture>flags/sets_rating.png</texture>
+				</control>
+				<control type="group">
+					<left>62</left>
+					<width>110</width>
+					<height>78</height>
+					<control type="label">
+						<top>10</top>
+						<height>39</height>
+						<font>font13_bold</font>
+						<textcolor>grey</textcolor>
+						<label>$INFO[ListItem.Rating]</label>
+					</control>
+					<control type="label">
+						<top>34</top>
+						<height>39</height>
+						<font>font10</font>
+						<textcolor>grey</textcolor>
+						<label>[LOWERCASE]$LOCALIZE[563][/LOWERCASE]</label>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<width>170</width>
+				<visible>!String.IsEqual(Container(4500).NumItems,0) + !Skin.HasSetting(DisableFlag_SetCount)</visible>
+				<control type="image">
+					<top>-14</top>
+					<width>106</width>
+					<height>106</height>
+					<include>MediaFlagValues</include>
+					<texture>views/list/DefaultSets.png</texture>
+				</control>
+				<control type="group">
+					<left>90</left>
+					<width>110</width>
+					<height>78</height>
+					<control type="label">
+						<top>10</top>
+						<height>39</height>
+						<font>font13_bold</font>
+						<textcolor>grey</textcolor>
+						<label>$INFO[Container(4500).NumItems]</label>
+					</control>
+					<control type="label">
+						<top>34</top>
+						<height>39</height>
+						<font>font10</font>
+						<textcolor>grey</textcolor>
+						<label>$LOCALIZE[36901]</label>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<width>170</width>
+				<visible>!String.IsEmpty(Container(4500).ListItem(0).Studio) + !Skin.HasSetting(DisableFlag_SetStudio)</visible>
+				<control type="image" id="$PARAM[sets_studio_id]">
+					<include>MediaFlagValues</include>
+					<texture>$VAR[PathFlagsStudios]$INFO[Container(4500).ListItem(0).Studio,,.png]</texture>
+				</control>
+				<control type="label">
+					<width>170</width>
+					<height>78</height>
+					<align>center</align>
+					<label>$INFO[Container(4500).ListItem(0).Studio]</label>
+					<font>font10</font>
+					<textcolor>grey2</textcolor>
+					<wrapmultiline>true</wrapmultiline>
+					<visible>String.IsEmpty(Control.GetLabel($PARAM[sets_studio_id]))</visible>
+				</control>
+			</control>
+			<control type="image">
+				<include>MediaFlagValues</include>
+				<texture>$VAR[MediaFlagsPathVar]/mpaa/$VAR[SetRatingFlagVar]</texture>
+				<visible>!Skin.HasSetting(DisableFlag_SetMPAA)</visible>
+			</control>
+		</control>
 	</include>
 	<include name="MediaFlagsSplit">
 	</include>
@@ -211,7 +267,7 @@
 			<height>78</height>
 			<orientation>horizontal</orientation>
 			<align>$PARAM[tv_align]</align>
-			<visible>$PARAM[tv_visible] + Container.Content(tvshows)</visible>
+			<visible>[$PARAM[tv_visible]] + Container.Content(tvshows)</visible>
 			<animation effect="fade" time="300" delay="200">Visible</animation>
 			<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) | System.AddonIsEnabled(script.embuary.helper)">RatingsMediaFlags</include>
 			<control type="group">
@@ -311,7 +367,7 @@
 			<height>78</height>
 			<orientation>horizontal</orientation>
 			<align>$PARAM[tv_align]</align>
-			<visible>$PARAM[season_visible] + Container.Content(seasons)</visible>
+			<visible>[$PARAM[season_visible]] + Container.Content(seasons)</visible>
 			<animation effect="fade" time="300" delay="200">Visible</animation>
 			<control type="group">
 				<visible>!String.IsEmpty(ListItem.Studio)</visible>

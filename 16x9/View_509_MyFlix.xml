@@ -350,10 +350,10 @@
 								<width>60</width>
 								<height>40</height>
 								<font>IconSmallMD</font>
+								<include>NoFocusObject</include>
 								<label></label>
 								<altlabel></altlabel>
 								<usealttexture>String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))</usealttexture>
-								<include>NoFocusObject</include>
 							</control>
 							<control type="label">
 								<left>40</left>
@@ -419,18 +419,6 @@
 					</control>
 				</control>
 			</control>
-			<include content="MediaFlags">
-				<param name="full_visible">Control.IsVisible(509) + Container.Content(movies) + !Skin.HasSetting(DisableMyFlix_Movieflags) | Control.IsVisible(509) + Container.Content(episodes) + !Skin.HasSetting(DisableMyFlix_Episodeflags)</param>
-				<param name="full_left">40</param>
-				<param name="full_align">left</param>
-				<param name="movie_studio_id">50955</param>
-				<param name="tv_visible">Control.IsVisible(509) + !Skin.HasSetting(DisableMyFlix_TVflags)</param>
-				<param name="tv_left">40</param>
-				<param name="tv_align">left</param>
-				<param name="tv_studio_id">509555</param>
-				<param name="season_visible">Control.IsVisible(509) + !Skin.HasSetting(DisableMyFlix_Seasonflags)</param>
-				<param name="season_studio_id">5095555</param>
-			</include>
 			<include condition="!Skin.HasSetting(MyFlixWrap)">MyFlixFixed</include>
 			<include condition="Skin.HasSetting(MyFlixWrap)">MyFlixWrapped</include>
 			<control type="group">

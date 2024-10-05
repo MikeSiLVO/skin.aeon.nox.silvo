@@ -247,7 +247,7 @@
 				<control type="group">
 					<top>-30</top>
 					<visible>!Container.Content() + !Container.Content(playlists)</visible>
-					<!-- Floor Labels (Landscape - ShowCase - Wall) -->
+					<!-- Main + Sub Labels -->
 					<control type="group">
 						<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(503)</visible>
 						<include>ViewAnimation</include>
@@ -422,7 +422,6 @@
 							</control>
 						</control>
 					</control>
-					<!-- Floor Labels (Shift - BannerWall - Small Icons - Icons) -->
 					<control type="group">
 						<visible>Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(500)</visible>
 						<include>ViewAnimation</include>
@@ -457,6 +456,7 @@
 							</control>
 						</control>
 					</control>
+					<!-- Next Aired / Genre -->
 					<include content="NextAiredGenreRight">
 						<param name="visible">Control.IsVisible(56) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(500)</param>
 						<param name="pos">130</param>
@@ -464,18 +464,69 @@
 						<param name="max_width">650</param>
 					</include>
 					<include content="NextAiredGenreLeft">
-						<param name="visible">!Container.Content(movies) + !Container.Content(episodes) + [Control.IsVisible(50) | Control.IsVisible(506)]</param>
+						<param name="visible">!Container.Content(movies) + !Container.Content(episodes) + [Control.IsVisible(50) | Control.IsVisible(506) | Control.IsVisible(602)]</param>
 						<param name="pos">84</param>
 						<param name="top">1024</param>
 						<param name="max_width">600</param>
 					</include>
 					<!-- MEDIAFLAGS -->
+					<!-- List - Tripanel - Posters - Shift - BannerWall - Icons - RightList - MyFlix - BigFan  - FanartList -->
+					<control type="group">
+						<visible>!ListItem.IsParentFolder</visible>
+						<animation effect="fade" time="300" delay="200">WindowOpen</animation>
+						<!-- LEFT ALIGN -->
+						<control type="group">
+							<animation effect="slide" end="-40" condition="Control.IsVisible(509)">Conditional</animation>
+							<include content="MediaFlagsFull">
+								<param name="full_left">80</param>
+								<param name="full_align">left</param>
+								<param name="movie_studio_id">99025</param>
+								<param name="full_visible">[Control.IsVisible(50) + Container.Content(movies) + !Skin.HasSetting(DisableList_Movieflags)] | [Control.IsVisible(50) + Container.Content(episodes) + !Skin.HasSetting(DisableList_Episodeflags)] | [Control.IsVisible(55) + Container.Content(movies) + !Skin.HasSetting(DisableTriPanel_Movieflags)] | [Control.IsVisible(55) + Container.Content(episodes) + !Skin.HasSetting(DisableTriPanel_Episodeflags)] | [Control.IsVisible(58) + Container.Content(movies) + !Skin.HasSetting(DisableBannerWall_Movieflags)] | [Control.IsVisible(500) + Container.Content(movies) + !Skin.HasSetting(DisableIcons_Movieflags)] | [Control.IsVisible(500) + Container.Content(episodes) + !Skin.HasSetting(DisableIcons_Episodeflags)] | [Control.IsVisible(509) + Container.Content(movies) + !Skin.HasSetting(DisableMyFlix_Movieflags)] | [Control.IsVisible(509) + Container.Content(episodes) + !Skin.HasSetting(DisableMyFlix_Episodeflags)] | [Control.IsVisible(591) + Container.Content(movies) + !Skin.HasSetting(DisableBigFan_Movieflags)] | [Control.IsVisible(602) + Container.Content(movies) + !Skin.HasSetting(DisableFanartList_Movieflags)] | [Control.IsVisible(602) + Container.Content(episodes) + !Skin.HasSetting(DisableFanartList_Episodeflags)]</param>
+							</include>
+							<include content="MediaFlagsSets">
+								<param name="sets_left">80</param>
+								<param name="sets_align">left</param>
+								<param name="sets_studio_id">99024</param>
+								<param name="sets_visible">[Control.IsVisible(50) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableList_Movieflags)] | [Control.IsVisible(55) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableTriPanel_Movieflags)] | [Control.IsVisible(57) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableShift_Movieflags)] | [Control.IsVisible(58) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableBannerWall_Movieflags)] | [Control.IsVisible(500) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableIcons_Movieflags)] | [Control.IsVisible(509) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableMyFlix_Movieflags)] | [Control.IsVisible(591) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableBigFan_Movieflags)] | [Control.IsVisible(602) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableFanartList_Movieflags)]</param>
+							</include>
+						</control>
+						<!-- RIGHT ALIGN -->
+						<include content="MediaFlagsFull">
+							<param name="full_left">25</param>
+							<param name="full_align">right</param>
+							<param name="movie_studio_id">99925</param>
+							<param name="full_visible">[Control.IsVisible(56) + Container.Content(movies) + !Skin.HasSetting(DisablePosters_Movieflags)] | [Control.IsVisible(57) + Container.Content(movies) + !Skin.HasSetting(DisableShift_Movieflags)] | [Control.IsVisible(506) + Container.Content(movies) + !Skin.HasSetting(DisableRightList_Movieflags)] | [Control.IsVisible(506) + Container.Content(episodes) + !Skin.HasSetting(DisableRightList_Episodeflags)]</param>
+						</include>
+						<include content="MediaFlagsSets">
+							<param name="sets_left">1215</param>
+							<param name="sets_align">right</param>
+							<param name="sets_studio_id">99924</param>
+							<param name="sets_visible">[Control.IsVisible(56) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisablePosters_Movieflags)] | [Control.IsVisible(506) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableRightList_Movieflags)]</param>
+						</include>
+						<control type="group">
+							<animation effect="slide" end="70" condition="Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(506)">Conditional</animation>
+							<!-- TV SHOWS -->
+							<include content="MediaFlagsTV">
+								<param name="tv_left">660</param>
+								<param name="tv_align">right</param>
+								<param name="tv_studio_id">99026</param>
+								<param name="tv_visible">[Control.IsVisible(50) + !Skin.HasSetting(DisableList_TVflags)] | [Control.IsVisible(55) + !Skin.HasSetting(DisableTriPanel_TVflags)] | [Control.IsVisible(56) + !Skin.HasSetting(DisablePosters_TVflags)] | [Control.IsVisible(57) + !Skin.HasSetting(DisableShift_TVflags)] | [Control.IsVisible(58) + !Skin.HasSetting(DisableBannerWall_TVflags)] | [Control.IsVisible(500) + !Skin.HasSetting(DisableIcons_TVflags)] | [Control.IsVisible(506) + !Skin.HasSetting(DisableRightList_TVflags)] | [Control.IsVisible(509) + !Skin.HasSetting(DisableMyFlix_TVflags)] | [Control.IsVisible(591) + !Skin.HasSetting(DisableBigFan_TVflags)] | [Control.IsVisible(602) + !Skin.HasSetting(DisableFanartList_TVflags)]</param>
+							</include>
+							<!-- SEASONS -->
+							<include content="MediaFlagsSeason">
+								<param name="tv_left">660</param>
+								<param name="tv_align">right</param>
+								<param name="season_studio_id">99027</param>
+								<param name="season_visible">[Control.IsVisible(50) + !Skin.HasSetting(DisableList_Seasonflags)] | [Control.IsVisible(55) + !Skin.HasSetting(DisableTriPanel_Seasonflags)] | [Control.IsVisible(56) + !Skin.HasSetting(DisablePosters_Seasonflags)] | [Control.IsVisible(57) + !Skin.HasSetting(DisableShift_Seasonflags)] | [Control.IsVisible(500) + !Skin.HasSetting(DisableIcons_Seasonflags)] | Control.IsVisible(506) + !Skin.HasSetting(DisableRightList_Seasonflags) | [Control.IsVisible(509) + !Skin.HasSetting(DisableMyFlix_Seasonflags)] | [Control.IsVisible(591) + !Skin.HasSetting(DisableBigFan_Seasonflags)] | [Control.IsVisible(602) + !Skin.HasSetting(DisableFanartList_Seasonflags)]</param>
+							</include>
+						</control>
+					</control>
+					<!-- (Landscape - ShowCase - Logo - Wall) -->
 					<control type="group">
 						<visible>!ListItem.IsParentFolder + !ListItem.IsCollection + !Container.Content(genres)</visible>
 						<animation effect="fade" time="200" delay="200">Visible</animation>
 						<animation effect="fade" time="100">Hidden</animation>
 						<animation effect="fade" time="200" delay="500">WindowOpen</animation>
-						<!-- (Landscape - ShowCase - Logo - Wall) -->
 						<control type="group">
 							<top>995</top>
 							<visible>[[Control.IsVisible(52) + Container.Content(movies) + !String.IsEqual(Skin.String(52.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(52) + Container.Content(tvshows) + !String.IsEqual(Skin.String(52.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(52) + Container.Content(episodes) + !String.IsEqual(Skin.String(52.Episodes.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(movies) + !String.IsEqual(Skin.String(53.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(tvshows) + !String.IsEqual(Skin.String(53.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(53) + Container.Content(seasons) + !String.IsEqual(Skin.String(53.Seasons.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(59) + Container.Content(movies) + !String.IsEqual(Skin.String(59.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(59) + Container.Content(tvshows) + !String.IsEqual(Skin.String(59.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(movies) + !String.IsEqual(Skin.String(503.Movies.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(tvshows) + !String.IsEqual(Skin.String(503.TV.ViewFlags),$LOCALIZE[1223])] | [Control.IsVisible(503) + Container.Content(seasons) + !String.IsEqual(Skin.String(503.Seasons.ViewFlags),$LOCALIZE[1223])]]</visible>
@@ -648,67 +699,6 @@
 								<left>1720</left>
 								<include>MediaFlagValues</include>
 								<texture>$VAR[MediaFlagsPathVar]/mpaa/$VAR[SetRatingFlagVar]</texture>
-							</control>
-						</control>
-					</control>
-					<!-- (List - Tripanel - Posters - Shift - BannerWall - Small Icons - Icons - RightList - MyFlix - BigFan) -->
-					<control type="group">
-						<visible>ListItem.IsCollection</visible>
-						<animation effect="fade" time="200" delay="200">Visible</animation>
-						<animation effect="fade" time="100">Hidden</animation>
-						<animation effect="fade" time="200" delay="500">WindowOpen</animation>
-						<animation effect="slide" end="1200" condition="Control.IsVisible(50) + Container.Content(sets)">Conditional</animation>
-						<animation effect="slide" end="1320" condition="Control.IsVisible(506)">Conditional</animation>
-						<animation effect="slide" end="-50" condition="Control.IsVisible(56) | Control.IsVisible(509)">Conditional</animation>
-						<animation effect="slide" end="40" condition="Control.IsVisible(500)">Conditional</animation>
-						<animation effect="slide" end="250" condition="Control.IsVisible(591)">Conditional</animation>
-						<control type="grouplist">
-							<visible>Control.IsVisible(50) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(500) | [Control.IsVisible(506) + Container.Content(movies) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Control.IsVisible(506) + Container.Content(sets) + !Skin.HasSetting(Disable.RightList.SetMediaflags)] | Control.IsVisible(509) | Control.IsVisible(591) | Control.IsVisible(602)</visible>
-							<left>60</left>
-							<top>1014</top>
-							<height>90</height>
-							<orientation>horizontal</orientation>
-							<control type="group">
-								<width>170</width>
-								<control type="image" id="917">
-									<include>MediaFlagValues</include>
-									<texture>$VAR[PathFlagsStudios]$INFO[Container(4500).ListItem(0).Studio,,.png]</texture>
-								</control>
-								<control type="label">
-									<left>20</left>
-									<width>130</width>
-									<height>78</height>
-									<align>center</align>
-									<font>font10</font>
-									<textcolor>grey</textcolor>
-									<wrapmultiline>true</wrapmultiline>
-									<label>$INFO[Container(4500).ListItem(0).Studio]</label>
-									<visible>String.IsEmpty(Control.GetLabel(917))</visible>
-								</control>
-							</control>
-							<control type="image">
-								<include>MediaFlagValues</include>
-								<texture>$VAR[MediaFlagsPathVar]/mpaa/$VAR[SetRatingFlagVar]</texture>
-							</control>
-							<control type="group">
-								<width>170</width>
-								<visible>![Control.IsVisible(55) | Control.IsVisible(57) | Control.IsVisible(500) | Control.IsVisible(509) | Control.IsVisible(591)]</visible>
-								<visible>!String.IsEqual(Container(4500).NumItems,0)</visible>
-								<control type="label">
-									<height>60</height>
-									<align>center</align>
-									<label>$INFO[Container(4500).NumItems]</label>
-									<font>font48_bold</font>
-									<textcolor>grey</textcolor>
-								</control>
-								<control type="label">
-									<top>52</top>
-									<height>30</height>
-									<align>center</align>
-									<label>$LOCALIZE[342]</label>
-									<font>font12</font>
-									<textcolor>grey</textcolor>
-								</control>
 							</control>
 						</control>
 					</control>

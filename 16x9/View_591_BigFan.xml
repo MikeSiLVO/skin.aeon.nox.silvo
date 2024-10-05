@@ -63,84 +63,54 @@
 			</control>
 			<control type="group">
 				<animation effect="slide" end="0,-140" condition="Skin.HasSetting(EnableBigFanPlot)">Conditional</animation>
-				<top>-65</top>
+				<top>845</top>
+				<left>330</left>
 				<control type="label">
-					<left>300</left>
-					<top>910</top>
 					<width>1400</width>
-					<height>42</height>
+					<height>50</height>
 					<aligny>top</aligny>
 					<font>font16_title</font>
 					<textcolor>grey</textcolor>
 					<scroll>true</scroll>
 					<label>[B]$INFO[ListItem.Label][/B]</label>
-					<textoffsety>-2</textoffsety>
-					<textoffsetx>30</textoffsetx>
 				</control>
-				<control type="label">
-					<left>300</left>
-					<top>960</top>
-					<width>1105</width>
-					<height>30</height>
-					<font>font13_bold</font>
-					<textcolor>grey2</textcolor>
-					<label>$VAR[FloorSubLabelVar]</label>
-					<textoffsetx>30</textoffsetx>
-					<visible>Container.Content(movies) + !ListItem.IsCollection</visible>
+				<control type="group">
+					<top>50</top>
+					<control type="label">
+						<width>60</width>
+						<height>45</height>
+						<font>IconSmallMD</font>
+						<textcolor>grey2</textcolor>
+						<label></label>
+					</control>
+					<control type="label">
+						<left>40</left>
+						<width>1105</width>
+						<height>43</height>
+						<font>font13_bold</font>
+						<textcolor>grey2</textcolor>
+						<label>$VAR[FloorSubLabelVar]</label>
+					</control>
 				</control>
-				<control type="label">
-					<left>300</left>
-					<top>960</top>
-					<width>1105</width>
-					<height>30</height>
-					<font>font13_bold</font>
-					<textcolor>grey2</textcolor>
-					<label>$INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]$INFO[Container(4500).NumItems, • , $LOCALIZE[342]]$INFO[ListItem.RatingAndVotes, • ]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime), • , $LOCALIZE[12391]]</label>
-					<textoffsetx>30</textoffsetx>
-					<visible>ListItem.IsCollection</visible>
-				</control>
-				<control type="label">
-					<left>300</left>
-					<top>1000</top>
-					<width>1305</width>
-					<height>30</height>
-					<label>$INFO[ListItem.Genre]</label>
-					<font>font13_bold</font>
-					<textcolor>grey3</textcolor>
-					<textoffsetx>30</textoffsetx>
-					<scroll>true</scroll>
-				</control>
-				<control type="label">
-					<left>300</left>
-					<top>1000</top>
-					<width>1305</width>
-					<height>30</height>
-					<label>$VAR[MovieSetGenreVar]</label>
-					<font>font13_bold</font>
-					<textcolor>grey3</textcolor>
-					<textoffsetx>30</textoffsetx>
-					<scroll>true</scroll>
-					<visible>ListItem.IsCollection</visible>
-				</control>
-				<control type="label">
-					<top>960</top>
-					<left>330</left>
-					<width>1220</width>
-					<height>30</height>
-					<font>font13_bold</font>
-					<textcolor>grey2</textcolor>
-					<label>$LOCALIZE[31010]: $INFO[Container(9143).ListItem.Property(Next_Aired),, • ]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]</label>
-					<visible>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))</visible>
-				</control>
-				<control type="label">
-					<left>330</left>
-					<top>960</top>
-					<width>1220</width>
-					<height>30</height>
-					<label>$INFO[Container(9143).ListItem.Property(Status)]</label>
-					<font>font13_bold</font>
-					<textcolor>grey3</textcolor>
-					<visible>!Container.Content(movies) + String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))</visible>
+				<control type="group">
+					<top>95</top>
+					<visible>!String.IsEmpty(ListItem.Genre) | !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre)) | !String.IsEmpty(Container(4500).ListItem(0).Genre)</visible>
+					<control type="label">
+						<width>60</width>
+						<height>40</height>
+						<font>IconSmallMD</font>
+						<textcolor>grey2</textcolor>
+						<label></label>
+					</control>
+					<control type="label">
+						<left>40</left>
+						<width>1305</width>
+						<height>40</height>
+						<font>font13_bold</font>
+						<textcolor>grey2</textcolor>
+						<scroll>true</scroll>
+						<label>$VAR[VideoGenreVar]</label>
+					</control>
 				</control>
 			</control>
 			<control type="textbox">
@@ -156,18 +126,6 @@
 				<label>$INFO[ListItem.Tagline,, - ][COLOR grey]$VAR[VideoPlotVar][/COLOR]</label>
 				<visible>Skin.HasSetting(EnableBigFanPlot)</visible>
 			</control>
-			<include content="MediaFlags">
-				<param name="full_visible">[Control.IsVisible(591) + Container.Content(movies) + !Skin.HasSetting(DisableBigFan_Movieflags)]</param>
-				<param name="full_left">80</param>
-				<param name="full_align">left</param>
-				<param name="movie_studio_id">59155</param>
-				<param name="tv_visible">Control.IsVisible(591) + !Skin.HasSetting(DisableBigFan_TVflags)</param>
-				<param name="tv_left">660</param>
-				<param name="tv_align">right</param>
-				<param name="tv_studio_id">591555</param>
-				<param name="season_visible">Control.IsVisible(591) + !Skin.HasSetting(DisableBigFan_Seasonflags)</param>
-				<param name="season_studio_id">5915555</param>
-			</include>
 		</control>
 	</include>
 </includes>
