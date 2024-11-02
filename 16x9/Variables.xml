@@ -2311,6 +2311,14 @@
 		<value condition="Control.HasFocus(95)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31617][/COLOR]</value>
 		<value>$INFO[Control.GetLabel(1)][UPPERCASE]$INFO[ListItem.Label, • ]$INFO[ListItem.Label2, #,[/UPPERCASE]]</value>
 	</variable>
+	<variable name="LibrarySearchCountLabelVar">
+		<value condition="ControlGroup(11025).HasFocus(112501)">$LOCALIZE[342]$INFO[Container(112501).CurrentItem,[CR] (,/]$INFO[Container(112501).NumItems,,)]</value>
+		<value condition="ControlGroup(11025).HasFocus(112502)">$LOCALIZE[20343]$INFO[Container(112502).CurrentItem,[CR] (,/]$INFO[Container(112502).NumItems,,)]</value>
+		<value condition="ControlGroup(11025).HasFocus(112503)">$LOCALIZE[20360]$INFO[Container(112503).CurrentItem,[CR] (,/]$INFO[Container(112503).NumItems,,)]</value>
+		<!-- <value condition="ControlGroup(11025).HasFocus(112504)">$INFO[Container(112504).CurrentItem,[CR] (,/]$INFO[Container(112504).NumItems,,)]</value>
+		<value condition="ControlGroup(11025).HasFocus(112505)">$INFO[Container(112505).CurrentItem,[CR] (,/]$INFO[Container(112505).NumItems,,)]</value>
+		<value condition="ControlGroup(11025).HasFocus(112506)">$INFO[Container(112506).CurrentItem,[CR] (,/]$INFO[Container(112506).NumItems,,)]</value> -->
+	</variable>
 	<!-- Color Picker VARs -->
 	<variable name="ThemeLabelColor">
 		<value condition="!String.IsEmpty(Skin.String(ThemeLabelColor))">$INFO[Skin.String(ThemeLabelColor)]</value>

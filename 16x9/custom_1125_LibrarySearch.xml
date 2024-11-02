@@ -40,8 +40,8 @@
 				<width>1500</width>
 				<height>72</height>
 				<align>right</align>
-				<font>font15_title</font>
-				<label>Movie results[CR]$INFO[ListItem.CurrentItem,,/]$INFO[ListItem.NumItems]</label>
+				<font>font14_title</font>
+				<label>$VAR[LibrarySearchCountLabelVar]</label>
 			</control>
 			<control type="group">
 				<right>15</right>
@@ -88,257 +88,134 @@
 					<onclick>noop</onclick>
 					<onfocus>SetProperty(TMDbHelper.WidgetContainer,112502,Home)</onfocus>
 				</control>
+				<control type="panel" id="112503">
+					<include content="SearchPosterLayout">
+						<param name="list_id">112503</param>
+						<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22episodes%22%7D]</param>
+					</include>
+					<visible allowhiddenfocus="true">Integer.IsGreater(Container(112503).NumItems,0)</visible>
+					<onclick>noop</onclick>
+					<onfocus>SetProperty(TMDbHelper.WidgetContainer,112503,Home)</onfocus>
+				</control>
 			</control>
 			<control type="group">
 				<top>1000</top>
 				<height>90</height>
-				<!-- Movies + Episodes -->
 				<control type="grouplist">
 					<width>100%</width>
 					<align>center</align>
 					<orientation>horizontal</orientation>
-					<!-- RATINGS FLAGS -->
 					<control type="grouplist">
 						<width>340</width>
 						<orientation>horizontal</orientation>
-						<control type="grouplist">
-							<visible>[!String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics)) + Container(112501).HasFocus]</visible>
+						<control type="group">
+							<visible>[!String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics)) | !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating))] + [ControlGroup(11025).HasFocus(112501) | ControlGroup(11025).HasFocus(112502)]</visible>
 							<width>170</width>
-							<orientation>horizontal</orientation>
 							<control type="image">
 								<width>60</width>
 								<include>MediaFlagValues</include>
 								<texture>$VAR[RottenFreshLogoVar]</texture>
 							</control>
-							<control type="grouplist">
+							<control type="group">
+								<left>62</left>
 								<width>110</width>
 								<height>78</height>
-								<align>center</align>
 								<control type="label">
-									<height>26</height>
+									<top>10</top>
+									<height>39</height>
 									<font>font13_bold</font>
 									<textcolor>grey</textcolor>
 									<label>$VAR[RottenFreshLabelVar]$VAR[RottenFreshLabel2Var]</label>
 								</control>
 								<control type="label">
-									<height>20</height>
+									<top>34</top>
+									<height>39</height>
 									<font>font10</font>
 									<textcolor>grey</textcolor>
 									<label>$LOCALIZE[31475]</label>
 								</control>
 							</control>
 						</control>
-						<control type="grouplist">
-							<visible>[String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics)) + !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating)) + Container(112501).HasFocus]</visible>
+						<control type="group">
+							<visible>[!String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience)) | !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter))] + [ControlGroup(11025).HasFocus(112501) | ControlGroup(11025).HasFocus(112502)]</visible>
 							<width>170</width>
-							<orientation>horizontal</orientation>
-							<control type="image">
-								<width>60</width>
-								<include>MediaFlagValues</include>
-								<texture>$VAR[TMDbHelperRottenTomatoLogoVar]</texture>
-							</control>
-							<control type="grouplist">
-								<width>110</width>
-								<height>78</height>
-								<align>center</align>
-								<control type="label">
-									<height>26</height>
-									<font>font13_bold</font>
-									<textcolor>grey</textcolor>
-									<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_Rating),,%]</label>
-								</control>
-								<control type="label">
-									<height>20</height>
-									<font>font10</font>
-									<textcolor>grey</textcolor>
-									<label>$LOCALIZE[31475]</label>
-								</control>
-							</control>
-						</control>
-						<control type="grouplist">
-							<visible>[!String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience)) + Container(112501).HasFocus]</visible>
-							<width>170</width>
-							<orientation>horizontal</orientation>
-							<itemgap>6</itemgap>
 							<control type="image">
 								<width>60</width>
 								<include>MediaFlagValues</include>
 								<texture>$VAR[RottenFreshAudienceLogoVar]</texture>
 							</control>
-							<control type="grouplist">
-								<width>104</width>
+							<control type="group">
+								<left>66</left>
+								<width>110</width>
 								<height>78</height>
-								<align>center</align>
 								<control type="label">
-									<height>26</height>
+									<top>10</top>
+									<height>39</height>
 									<font>font13_bold</font>
 									<textcolor>grey</textcolor>
 									<label>$VAR[RottenFreshAudienceLabelVar]$VAR[RottenFreshAudienceLabel2Var]</label>
 								</control>
 								<control type="label">
-									<height>20</height>
+									<top>34</top>
+									<height>39</height>
 									<font>font10</font>
 									<textcolor>grey</textcolor>
 									<label>$LOCALIZE[31597]</label>
 								</control>
 							</control>
 						</control>
-						<control type="grouplist">
-							<visible>[String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience)) + !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter)) + Container(112501).HasFocus]</visible>
+						<control type="group">
+							<visible>[!String.IsEmpty(Container(9142).ListItem.Rating(themoviedb)) | !String.IsEmpty(Container(9142).ListItem.Rating(tmdb)) | !String.IsEmpty(Container(9143).ListItem.Property(TMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(TMDb_Rating),0.0)]</visible>
 							<width>170</width>
-							<orientation>horizontal</orientation>
-							<itemgap>6</itemgap>
-							<control type="image">
-								<width>60</width>
-								<include>MediaFlagValues</include>
-								<texture>$VAR[RottenFreshAudienceTMDbHelperLogoVar]</texture>
-							</control>
-							<control type="grouplist">
-								<width>104</width>
-								<height>78</height>
-								<align>center</align>
-								<control type="label">
-									<height>26</height>
-									<font>font13_bold</font>
-									<textcolor>grey</textcolor>
-									<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_UserMeter),,%]</label>
-								</control>
-								<control type="label">
-									<height>20</height>
-									<font>font10</font>
-									<textcolor>grey</textcolor>
-									<label>$LOCALIZE[31597]</label>
-								</control>
-							</control>
-						</control>
-						<control type="grouplist">
-							<visible>!String.IsEmpty(Container(9142).ListItem.Rating(themoviedb))</visible>
-							<width>170</width>
-							<orientation>horizontal</orientation>
-							<itemgap>15</itemgap>
 							<control type="image">
 								<width>60</width>
 								<include>MediaFlagValues</include>
 								<texture>logos/tmdb.png</texture>
 							</control>
 							<control type="label">
+								<left>75</left>
 								<width>95</width>
 								<height>78</height>
 								<font>font13_bold</font>
 								<textcolor>grey</textcolor>
-								<label>$INFO[Container(9142).ListItem.Rating(themoviedb)]</label>
+								<label>$VAR[TMDbRatingsLabelVar]</label>
 							</control>
 						</control>
-						<control type="grouplist">
-							<visible>!String.IsEmpty(Container(9142).ListItem.Rating(tmdb)) + String.IsEmpty(Container(9142).ListItem.Rating(themoviedb))</visible>
+						<control type="group">
+							<visible>[!String.IsEmpty(Container(9142).ListItem.Rating(trakt)) | !String.IsEmpty(Container(9143).ListItem.Property(Trakt_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(Trakt_Rating),0.0)]</visible>
 							<width>170</width>
-							<orientation>horizontal</orientation>
-							<itemgap>15</itemgap>
-							<control type="image">
-								<width>60</width>
-								<include>MediaFlagValues</include>
-								<texture>logos/tmdb.png</texture>
-							</control>
-							<control type="label">
-								<width>95</width>
-								<height>78</height>
-								<font>font13_bold</font>
-								<textcolor>grey</textcolor>
-								<label>$INFO[Container(9142).ListItem.Rating(tmdb)]</label>
-							</control>
-						</control>
-						<control type="grouplist">
-							<visible>!String.IsEmpty(Container(9143).ListItem.Property(TMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(TMDb_Rating),0.0) + String.IsEmpty(Container(9142).ListItem.Rating(themoviedb)) + String.IsEmpty(Container(9142).ListItem.Rating(tmdb))</visible>
-							<width>170</width>
-							<orientation>horizontal</orientation>
-							<itemgap>15</itemgap>
-							<control type="image">
-								<width>60</width>
-								<include>MediaFlagValues</include>
-								<texture>logos/tmdb.png</texture>
-							</control>
-							<control type="label">
-								<width>95</width>
-								<height>78</height>
-								<font>font13_bold</font>
-								<textcolor>grey</textcolor>
-								<label>$INFO[Container(9143).ListItem.Property(TMDb_Rating)]</label>
-							</control>
-						</control>
-						<control type="grouplist">
-							<visible>!String.IsEmpty(Container(9142).ListItem.Rating(trakt))</visible>
-							<width>170</width>
-							<orientation>horizontal</orientation>
-							<itemgap>6</itemgap>
 							<control type="image">
 								<width>60</width>
 								<include>MediaFlagValues</include>
 								<texture>logos/trakt-clearlogo.png</texture>
 							</control>
 							<control type="label">
+								<left>66</left>
 								<width>104</width>
 								<height>78</height>
 								<font>font13_bold</font>
 								<textcolor>grey</textcolor>
-								<label>$INFO[Container(9142).ListItem.Rating(trakt)]</label>
+								<label>$VAR[TraktRatingsLabelVar]</label>
 							</control>
 						</control>
-						<control type="grouplist">
-							<visible>!String.IsEmpty(Container(9143).ListItem.Property(Trakt_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(Trakt_Rating),0.0) + String.IsEmpty(Container(9142).ListItem.Rating(trakt))</visible>
+						<control type="group">
+							<visible>[!String.IsEmpty(Container(9142).ListItem.Rating(imdb)) | !String.IsEmpty(Container(9143).ListItem.Property(IMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(IMDb_Rating),0.0)]</visible>
 							<width>170</width>
-							<orientation>horizontal</orientation>
-							<itemgap>6</itemgap>
-							<control type="image">
-								<width>60</width>
-								<include>MediaFlagValues</include>
-								<texture>logos/trakt-clearlogo.png</texture>
-							</control>
-							<control type="label">
-								<width>104</width>
-								<height>78</height>
-								<font>font13_bold</font>
-								<textcolor>grey</textcolor>
-								<label>$INFO[Container(9143).ListItem.Property(Trakt_Rating)]</label>
-							</control>
-						</control>
-						<control type="grouplist">
-							<visible>!String.IsEmpty(Container(9142).ListItem.Rating(imdb))</visible>
-							<width>170</width>
-							<orientation>horizontal</orientation>
-							<itemgap>15</itemgap>
 							<control type="image">
 								<width>60</width>
 								<include>MediaFlagValues</include>
 								<texture>logos/imdb.png</texture>
 							</control>
 							<control type="label">
+								<left>75</left>
 								<width>95</width>
 								<height>78</height>
 								<font>font13_bold</font>
 								<textcolor>grey</textcolor>
-								<label>$INFO[Container(9142).ListItem.Rating(imdb)]</label>
-							</control>
-						</control>
-						<control type="grouplist">
-							<visible>!String.IsEmpty(Container(9143).ListItem.Property(IMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(IMDb_Rating),0.0) + String.IsEmpty(Container(9142).ListItem.Rating(imdb))</visible>
-							<width>170</width>
-							<orientation>horizontal</orientation>
-							<itemgap>15</itemgap>
-							<control type="image">
-								<width>60</width>
-								<include>MediaFlagValues</include>
-								<texture>logos/imdb.png</texture>
-							</control>
-							<control type="label">
-								<width>95</width>
-								<height>78</height>
-								<font>font13_bold</font>
-								<textcolor>grey</textcolor>
-								<label>$INFO[Container(9143).ListItem.Property(IMDb_Rating)]</label>
+								<label>$VAR[IMDbRatingsLabelVar]</label>
 							</control>
 						</control>
 					</control>
-					<!-- DETAILS FLAGS -->
 					<control type="grouplist">
 						<width>1500</width>
 						<orientation>horizontal</orientation>
@@ -387,7 +264,7 @@
 							<include>MediaFlagValues</include>
 							<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
 						</control>
-						<!-- LANGUAGE FLAGS -->
+						<!-- LANGUAGE -->
 						<control type="grouplist">
 							<height>78</height>
 							<width>140</width>
@@ -471,7 +348,7 @@
 						</control>
 					</control>
 				</control>
-				<!-- Shows + Seasons -->
+				<!-- SHOWS + SEASONS -->
 				<control type="group">
 					<left>1000</left>
 					<control type="group">
