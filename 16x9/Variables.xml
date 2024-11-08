@@ -1674,7 +1674,9 @@
 		<value />
 	</variable> -->
 	<variable name="EmbuaryHelperContentVar">
-		<value condition="Window.IsVisible(1125) + Container(112501).HasFocus">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
+		<value condition="Window.IsVisible(1125) + ControlGroup(11025).HasFocus(112501)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
+		<value condition="Window.IsVisible(1125) + ControlGroup(11025).HasFocus(112502)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
+		<value condition="Window.IsVisible(1125) + ControlGroup(11025).HasFocus(112503)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=episode</value>
 		<value condition="ListItem.IsCollection" />
 		<value condition="VideoPlayer.Content(movies)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[VideoPlayer.DBID]&amp;type=movie</value>
 		<value condition="VideoPlayer.Content(episodes)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[VideoPlayer.DBID]&amp;type=episode</value>
