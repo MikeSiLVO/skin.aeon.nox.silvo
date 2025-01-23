@@ -11,7 +11,7 @@
 				<left>81</left>
 				<top>32</top>
 				<width>355</width>
-				<height>810</height>
+				<height>720</height>
 				<onup>9000</onup>
 				<ondown>9000</ondown>
 				<onright>60</onright>
@@ -21,7 +21,7 @@
 					<height>90</height>
 					<font>font15</font>
 					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="3">listselect_fo.png</texturefocus>
-					<label>20037</label>
+					<label>$LOCALIZE[20037]</label>
 				</control>
 				<control type="button" id="94">
 					<description>Button Storage</description>
@@ -29,7 +29,7 @@
 					<height>90</height>
 					<font>font15</font>
 					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="3">listselect_fo.png</texturefocus>
-					<label>13277</label>
+					<label>$LOCALIZE[13277]</label>
 				</control>
 				<control type="button" id="96">
 					<description>Button Network</description>
@@ -37,7 +37,7 @@
 					<height>90</height>
 					<font>font15</font>
 					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="3">listselect_fo.png</texturefocus>
-					<label>13279</label>
+					<label>$LOCALIZE[13279]</label>
 				</control>
 				<control type="button" id="97">
 					<description>Button Video</description>
@@ -45,7 +45,7 @@
 					<height>90</height>
 					<font>font15</font>
 					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="3">listselect_fo.png</texturefocus>
-					<label>13280</label>
+					<label>$LOCALIZE[13280]</label>
 				</control>
 				<control type="button" id="98">
 					<description>Button Hardware</description>
@@ -53,7 +53,7 @@
 					<height>90</height>
 					<font>font15</font>
 					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="3">listselect_fo.png</texturefocus>
-					<label>13281</label>
+					<label>$LOCALIZE[13281]</label>
 				</control>
 				<control type="button" id="99">
 					<description>Button PVR</description>
@@ -61,15 +61,7 @@
 					<height>90</height>
 					<font>font15</font>
 					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="3">listselect_fo.png</texturefocus>
-					<label>19191</label>
-				</control>
-				<control type="button" id="91000">
-					<description>Button Kodi Build Info</description>
-					<width>356</width>
-					<height>90</height>
-					<font>font15</font>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="3">listselect_fo.png</texturefocus>
-					<label>482</label>
+					<label>$LOCALIZE[19191]</label>
 				</control>
 				<control type="button" id="100">
 					<description>Button Kodi Privacy Policy</description>
@@ -77,128 +69,159 @@
 					<height>90</height>
 					<font>font15</font>
 					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="3">listselect_fo.png</texturefocus>
-					<label>12389</label>
+					<label>$LOCALIZE[12389]</label>
+				</control>
+				<control type="button" id="101">
+					<description>Button Thanks</description>
+					<width>356</width>
+					<height>90</height>
+					<font>font15</font>
+					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="3">listselect_fo.png</texturefocus>
+					<label>$LOCALIZE[12396]</label>
 				</control>
 			</control>
 			<control type="grouplist" id="9001">
-				<left>437</left>
+				<left>467</left>
 				<top>29.5</top>
-				<width>1401</width>
-				<height>810</height>
+				<width>1371</width>
+				<height>720</height>
+				<onleft>9000</onleft>
 				<onright condition="Control.IsVisible(30)">60</onright>
-				<visible>!Control.IsVisible(30) | [Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
-				<control type="button" id="2">
+				<control type="label" id="2">
 					<description>Label 1</description>
-					<height>73</height>
-					<include>SettingsButtonCommonValues</include>
-					<visible>!String.IsEmpty(Control.GetLabel(2)) + !Control.HasFocus(91000) + ![Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
+					<height>60</height>
+					<font>font13mono</font>
 				</control>
-				<control type="button" id="3">
+				<control type="label" id="3">
 					<description>Label 2</description>
-					<height>73</height>
-					<include>SettingsButtonCommonValues</include>
-					<visible>!String.IsEmpty(Control.GetLabel(3)) + !Control.HasFocus(91000) + ![Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
+					<height>60</height>
+					<font>font13mono</font>
 				</control>
-				<control type="button" id="4">
+				<control type="label" id="4">
 					<description>Label 3</description>
-					<height>73</height>
-					<include>SettingsButtonCommonValues</include>
-					<visible>!String.IsEmpty(Control.GetLabel(4)) + !Control.HasFocus(91000) + ![Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
+					<height>60</height>
+					<font>font13mono</font>
 				</control>
-				<control type="button" id="5">
+				<control type="label" id="5">
 					<description>Label 4</description>
-					<height>73</height>
-					<include>SettingsButtonCommonValues</include>
-					<visible>!String.IsEmpty(Control.GetLabel(5)) + !Control.HasFocus(91000) + ![Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
+					<height>60</height>
+					<font>font13mono</font>
 				</control>
-				<control type="button" id="6">
+				<control type="label" id="6">
 					<description>Label 5</description>
-					<height>73</height>
-					<include>SettingsButtonCommonValues</include>
-					<visible>!String.IsEmpty(Control.GetLabel(6)) + !Control.HasFocus(91000) + ![Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
+					<height>60</height>
+					<font>font13mono</font>
 				</control>
-				<control type="button" id="7">
+				<control type="label" id="7">
 					<description>Label 6</description>
-					<height>73</height>
-					<include>SettingsButtonCommonValues</include>
-					<visible>!String.IsEmpty(Control.GetLabel(7)) + !Control.HasFocus(91000) + ![Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
+					<height>60</height>
+					<font>font13mono</font>
 				</control>
-				<control type="button" id="8">
+				<control type="label" id="8">
 					<description>Label 7</description>
-					<height>73</height>
-					<include>SettingsButtonCommonValues</include>
-					<visible>!String.IsEmpty(Control.GetLabel(8)) + !Control.HasFocus(91000) + ![Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
+					<height>60</height>
+					<font>font13mono</font>
 				</control>
-				<control type="button" id="9">
+				<control type="label" id="9">
 					<description>Label 8</description>
-					<height>73</height>
-					<include>SettingsButtonCommonValues</include>
-					<visible>!String.IsEmpty(Control.GetLabel(9)) + !Control.HasFocus(91000) + ![Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
+					<height>60</height>
+					<font>font13mono</font>
 				</control>
-				<control type="button" id="10">
+				<control type="label" id="10">
 					<description>Label 9</description>
-					<height>73</height>
-					<include>SettingsButtonCommonValues</include>
-					<visible>!String.IsEmpty(Control.GetLabel(10)) + !Control.HasFocus(91000) + ![Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
+					<height>60</height>
+					<font>font13mono</font>
 				</control>
-				<control type="button" id="11">
+				<control type="label" id="11">
 					<description>Label 10</description>
-					<height>73</height>
-					<include>SettingsButtonCommonValues</include>
-					<visible>!String.IsEmpty(Control.GetLabel(11)) + !Control.HasFocus(91000) + ![Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
+					<height>60</height>
+					<font>font13mono</font>
 				</control>
-				<control type="button" id="12">
+				<control type="label" id="12">
 					<description>Label 11</description>
-					<height>73</height>
-					<include>SettingsButtonCommonValues</include>
-					<visible>!String.IsEmpty(Control.GetLabel(12)) + !Control.HasFocus(91000) + ![Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
+					<height>60</height>
+					<font>font13mono</font>
 				</control>
-				<control type="button" id="1001">
-					<description>Version Label</description>
-					<height>73</height>
-					<include>SettingsButtonCommonValues</include>
-					<label>$INFO[System.BuildVersionShort,$LOCALIZE[144] ]$INFO[System.BuildVersionCode, (,)]</label>
-					<visible>Control.HasFocus(91000) | [Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
-				</control>
-				<control type="button" id="1002">
-					<description>Version Label</description>
-					<height>73</height>
-					<include>SettingsButtonCommonValues</include>
-					<label>$INFO[System.BuildVersionGit,Git: ]</label>
-					<visible>Control.HasFocus(91000) | [Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
-				</control>
-				<control type="button" id="1003">
-					<description>Version Label</description>
-					<height>73</height>
-					<include>SettingsButtonCommonValues</include>
-					<label>$INFO[System.BuildDate,$LOCALIZE[174] ]</label>
-					<visible>Control.HasFocus(91000) | [Control.HasFocus(1001) | Control.HasFocus(1002)]</visible>
+				<control type="label" id="13">
+					<description>Label 12</description>
+					<height>60</height>
+					<font>font13mono</font>
 				</control>
 			</control>
 			<control type="textbox" id="30">
-				<left>467</left>
-				<top>62</top>
+				<left>465</left>
+				<top>52</top>
 				<width>1341</width>
 				<align>justify</align>
-				<height>755</height>
+				<height>695</height>
 				<textcolor>grey</textcolor>
 				<pagecontrol>60</pagecontrol>
-				<visible>!Control.HasFocus(91000) + !Control.HasFocus(1001) + !Control.HasFocus(1002)</visible>
+				<autoscroll>5000</autoscroll>
 			</control>
 			<control type="scrollbar" id="60">
-				<left>1836</left>
+				<left>1824</left>
 				<top>32</top>
 				<width>14</width>
-				<height>808</height>
+				<height>719</height>
 				<onleft>9000</onleft>
 				<onright>9000</onright>
 				<ondown>60</ondown>
 				<onup>60</onup>
 				<showonepage>false</showonepage>
-				<texturesliderbackground />
-				<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
+				<texturesliderbackground>colors/black90.png</texturesliderbackground>
+				<texturesliderbar colordiffuse="$VAR[ThemeLabelColor]" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
+				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 				<visible>Control.IsVisible(30)</visible>
+			</control>
+			<control type="group" id="102">
+				<left>437</left>
+				<top>20</top>
+				<control type="multiimage" id="103">
+					<top>100</top>
+					<width>1401</width>
+					<height>500</height>
+					<imagepath>special://xbmc/media/qr/kodilove/</imagepath>
+					<aspectratio>keep</aspectratio>
+					<timeperimage>7000</timeperimage>
+					<randomize>false</randomize>
+				</control>
+				<control type="textbox">
+					<left>115</left>
+					<top>620</top>
+					<width>1171</width>
+					<height>110</height>
+					<align>center</align>
+					<font>font13</font>
+					<label>$LOCALIZE[12397][CR][I][B]$LOCALIZE[12398][/B][/I]</label>
+				</control>
+			</control>
+			<control type="image">
+				<left>81</left>
+				<top>752</top>
+				<width>1757</width>
+				<height>1</height>
+				<texture colordiffuse="grey4">separator_horizontal.png</texture>
+			</control>
+			<control type="image">
+				<left>81</left>
+				<top>752</top>
+				<width>355</width>
+				<height>90</height>
+				<aspectratio>keep</aspectratio>
+				<texture>xbmc-logo.png</texture>
+			</control>
+			<control type="group">
+				<left>466</left>
+				<top>755</top>
+				<control type="label">
+					<height>40</height>
+					<label>$INFO[System.BuildVersionShort,$LOCALIZE[144] ][LIGHT]$INFO[System.BuildVersionCode, v,][/LIGHT]</label>
+				</control>
+				<control type="label">
+					<top>40</top>
+					<height>40</height>
+					<label>$INFO[System.BuildDate,$LOCALIZE[174] ][LIGHT]$INFO[System.BuildVersionGit, Git: ][/LIGHT]</label>
+				</control>
 			</control>
 			<control type="group">
 				<left>467</left>
@@ -246,7 +269,7 @@
 						<textcolor>grey</textcolor>
 						<font>font12_title</font>
 						<align>right</align>
-						<label>$INFO[system.memory(used.percent)]</label>
+						<label>$INFO[system.memory(used)]$INFO[system.memory(total), / ]$INFO[system.memory(used.percent), - ]</label>
 					</control>
 					<control type="progress">
 						<description>Memory BAR</description>
