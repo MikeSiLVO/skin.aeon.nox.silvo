@@ -8,6 +8,14 @@
 	<variable name="MovieSetsPathVar">
 		<value condition="String.IsEqual(ListItem.DBTYPE,set)">videodb://movies/sets/$INFO[ListItem.DBID]/?setid=$INFO[ListItem.DBID]</value>
 	</variable>
+	<variable name="SkinVariableDBContainerPluginPath">
+		<value condition="Container.Content(sets) | String.IsEqual(ListItem.DBTYPE,set)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_movieset_details&amp;dbid=]</value>
+		<value condition="Container.Content(movies) | String.IsEqual(ListItem.DBTYPE,movie)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_movie_details&amp;dbid=]</value>
+		<value condition="Container.Content(tvshows) | String.IsEqual(ListItem.DBTYPE,tvshow)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_tvshow_details&amp;dbid=]</value>
+		<value condition="Container.Content(seasons) | String.IsEqual(ListItem.DBTYPE,season)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_season_details&amp;dbid=]</value>
+		<value condition="Container.Content(episodes) | String.IsEqual(ListItem.DBTYPE,episode)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_episode_details&amp;dbid=]</value>
+		<!-- <value>plugin://script.skinvariables/?info=get_dbitem_addon_details&amp;dbid=$INFO[Container(4501).ListItem.Property()]</value> -->
+	</variable>
 	<variable name="SkinShortcutsIconLabelVar">
 		<value condition="[String.EndsWith(Window.Property(groupname),.1) | String.EndsWith(Window.Property(groupname),.2)] + !String.IsEqual(Container(211).ListItem.Icon,special://skin/extras/icons/) + !String.IsEqual(Container(211).ListItem.Icon,DefaultShortcut.png)">$INFO[Container(211).ListItem.Icon]</value>
 	</variable>
