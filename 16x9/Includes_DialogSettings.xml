@@ -15,7 +15,7 @@
 				<texture>colors/black.png</texture>
 				<bordersize>1</bordersize>
 				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-				<visible>$PARAM[icon_visible]</visible>
+				<visible>$PARAM[icon_visible] + !Window.IsVisible(dialogselectsubtitle) + !Window.IsVisible(dialogselectvideo) + !Window.IsVisible(dialogselectaudio)</visible>
 			</control>
 			<control type="image">
 				<width>960</width>
@@ -23,7 +23,7 @@
 				<texture>colors/black.png</texture>
 				<bordersize>1</bordersize>
 				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-				<visible>!$PARAM[icon_visible]</visible>
+				<visible>!$PARAM[icon_visible] | Window.IsVisible(dialogselectsubtitle) | Window.IsVisible(dialogselectvideo) | Window.IsVisible(dialogselectaudio)</visible>
 			</control>
 			<control type="label" id="$PARAM[header_id]">
 				<description>Header label</description>
@@ -34,7 +34,7 @@
 				<align>left</align>
 				<label>$PARAM[header_label]</label>
 				<textcolor>dialogheader</textcolor>
-				<visible>$PARAM[icon_visible]</visible>
+				<visible>$PARAM[icon_visible] + !Window.IsVisible(dialogselectsubtitle) + !Window.IsVisible(dialogselectvideo) + !Window.IsVisible(dialogselectaudio)</visible>
 			</control>
 			<control type="label" id="$PARAM[header_id]">
 				<description>Header label</description>
@@ -45,7 +45,7 @@
 				<align>left</align>
 				<label>$PARAM[header_label]</label>
 				<textcolor>dialogheader</textcolor>
-				<visible>!$PARAM[icon_visible]</visible>
+				<visible>!$PARAM[icon_visible] | Window.IsVisible(dialogselectsubtitle) | Window.IsVisible(dialogselectvideo) | Window.IsVisible(dialogselectaudio)</visible>
 			</control>
 			<control type="grouplist" id="90000">
 				<left>1245</left>
@@ -53,7 +53,7 @@
 				<align>right</align>
 				<orientation>horizontal</orientation>
 				<itemgap>-20</itemgap>
-				<animation effect="slide" end="-540" condition="!$PARAM[icon_visible]">Conditional</animation>
+				<animation effect="slide" end="-540" condition="!$PARAM[icon_visible] | Window.IsVisible(dialogselectsubtitle) | Window.IsVisible(dialogselectvideo) | Window.IsVisible(dialogselectaudio)">Conditional</animation>
 				<control type="button" id="98">
 					<description>More... button</description>
 					<texturefocus />
@@ -108,7 +108,7 @@
 				<width>1498</width>
 				<height>1</height>
 				<texture colordiffuse="grey4">separator_horizontal.png</texture>
-				<visible>$PARAM[icon_visible]</visible>
+				<visible>$PARAM[icon_visible] + !Window.IsVisible(dialogselectsubtitle) + !Window.IsVisible(dialogselectvideo) + !Window.IsVisible(dialogselectaudio)</visible>
 			</control>
 			<control type="image">
 				<left>1</left>
@@ -116,7 +116,7 @@
 				<width>958</width>
 				<height>1</height>
 				<texture colordiffuse="grey4">separator_horizontal.png</texture>
-				<visible>!$PARAM[icon_visible]</visible>
+				<visible>!$PARAM[icon_visible] | Window.IsVisible(dialogselectsubtitle) | Window.IsVisible(dialogselectvideo) | Window.IsVisible(dialogselectaudio)</visible>
 			</control>
 			<control type="group">
 				<visible>$PARAM[has_inner]</visible>

@@ -7,7 +7,7 @@
 			<include>DialogOpenCloseAnimation</include>
 			<left>210</left>
 			<top>234</top>
-			<animation effect="slide" end="270" condition="!Control.IsVisible(6)">Conditional</animation>
+			<animation effect="slide" end="270" condition="!Control.IsVisible(6) | Window.IsVisible(dialogselectsubtitle) | Window.IsVisible(dialogselectvideo) | Window.IsVisible(dialogselectaudio)">Conditional</animation>
 			<include content="DialogPanel">
 				<param name="icon_visible">Control.IsVisible(6)</param>
 				<param name="height">611</param>
@@ -21,7 +21,7 @@
 			<control type="group">
 				<left>959</left>
 				<top>68</top>
-				<visible>Control.IsVisible(6)</visible>
+				<visible>Control.IsVisible(6) + !Window.IsVisible(dialogselectsubtitle)</visible>
 				<control type="image">
 					<left>1</left>
 					<top>1</top>
@@ -445,6 +445,15 @@
 					<textcolor>grey2</textcolor>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
+				<control type="label">
+					<width>628</width>
+					<height>60</height>
+					<textoffsetx>15</textoffsetx>
+					<font>font14</font>
+					<scroll>true</scroll>
+					<align>right</align>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
 			</itemlayout>
 			<focusedlayout height="60" width="628">
 				<control type="image">
@@ -454,14 +463,25 @@
 					<visible>Control.HasFocus(90100)</visible>
 					<include>VisibleFadeAnimation</include>
 				</control>
-				<control type="label">
-					<width>628</width>
-					<height>60</height>
-					<textoffsetx>15</textoffsetx>
-					<font>font14</font>
-					<scroll>true</scroll>
-					<label>$INFO[ListItem.Label]</label>
+				<control type="group">
 					<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90100)">Conditional</animation>
+					<control type="label">
+						<width>628</width>
+						<height>60</height>
+						<textoffsetx>15</textoffsetx>
+						<font>font14</font>
+						<scroll>true</scroll>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<width>628</width>
+						<height>60</height>
+						<textoffsetx>15</textoffsetx>
+						<font>font14</font>
+						<scroll>true</scroll>
+						<align>right</align>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
 				</control>
 			</focusedlayout>
 			<content>
@@ -485,6 +505,7 @@
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),rightlistbackgrounddim)">SelectRightListBackgroundDim</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),fallbackbackground)">SelectFallbackBackground</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),startupintro)">SelectStartupIntro</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),avsettings)">SelectAVSettings</include>
 			</content>
 		</control>
 		<control type="scrollbar" id="60">
@@ -1341,6 +1362,23 @@
 			<label>$LOCALIZE[636]</label>
 			<onclick>Skin.SetFile(StartupIntro,.mp4|.mkv|.avi)</onclick>
 			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+	</include>
+	<include name="SelectAVSettings">
+		<item>
+			<label>$LOCALIZE[287]</label>
+			<label2>[UPPERCASE]$INFO[VideoPlayer.SubtitlesLanguage][/UPPERCASE]</label2>
+			<onclick>ActivateWindow(osdsubtitlesettings)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[292]</label>
+			<label2>$VAR[AudioCodecLabelVar]$VAR[AudioChannelsLabelVar, • ]</label2>
+			<onclick>ActivateWindow(osdaudiosettings)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[157]</label>
+			<label2>$INFO[Player.Process(videowidth)]$INFO[Player.Process(videoheight),x]$INFO[Player.Process(videoscantype)]</label2>
+			<onclick>ActivateWindow(osdvideosettings)</onclick>
 		</item>
 	</include>
 	<!-- Custom Confirm -->

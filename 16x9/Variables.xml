@@ -60,6 +60,7 @@
 		<value>$LOCALIZE[12317] $LOCALIZE[31090]</value>
 	</variable>
 	<variable name="CustomSelectLabelVar">
+		<value condition="String.IsEqual(Window(Home).Property(CustomSelect),avsettings)">$LOCALIZE[5]</value>
 		<value condition="String.IsEqual(Window(Home).Property(CustomSelect),gameosdsettings)">$LOCALIZE[35221]</value>
 		<value condition="String.IsEqual(Window(Home).Property(CustomSelect),search)">$LOCALIZE[137]</value>
 		<value>$LOCALIZE[22080]</value>
@@ -528,13 +529,11 @@
 		<value>$INFO[VideoPlayer.VideoCodec,,.png]</value>
 	</variable>
 	<variable name="AudioCodecFlagVar">
-		<value condition="String.Contains(ListItem.Filename,atmos)">atmos.png</value>
-		<value condition="String.Contains(ListItem.Filename,dtsx) | String.Contains(ListItem.Filename,dts-x)">dtsx.png</value>
+		<value condition="String.Contains(ListItem.AudioCodec,atmos)">atmos.png</value>
 		<value>$INFO[ListItem.AudioCodec,,.png]</value>
 	</variable>
 	<variable name="PlayerAudioCodecFlagVar">
-		<value condition="String.Contains(Player.Filename,atmos)">atmos.png</value>
-		<value condition="String.Contains(Player.Filename,dtsx) | String.Contains(Player.Filename,dts-x)">dtsx.png</value>
+		<value condition="String.Contains(VideoPlayer.AudioCodec,atmos)">atmos.png</value>
 		<value>$INFO[VideoPlayer.AudioCodec,,.png]</value>
 	</variable>
 	<!-- InfoPanel -->
@@ -1618,6 +1617,7 @@
 		<value condition="String.EndsWith(ListItem.Rating(tomatometerallaudience),.2) | String.EndsWith(Container(9142).ListItem.Rating(tomatometerallaudience),.2)">2%</value>
 		<value condition="String.EndsWith(ListItem.Rating(tomatometerallaudience),.1) | String.EndsWith(Container(9142).ListItem.Rating(tomatometerallaudience),.1)">1%</value>
 		<value>$INFO[Container(9143).ListItem.Property(RottenTomatoes_UserMeter),,%]</value>
+		<value>$INFO[Container(4501).]</value>
 	</variable>
 	<variable name="TMDbRatingsLabelVar">
 		<value condition="!String.IsEmpty(Container(9142).ListItem.Rating(themoviedb))">$INFO[Container(9142).ListItem.Rating(themoviedb)]</value>
@@ -1691,9 +1691,14 @@
 	</variable>
 	<variable name="DialogSelectLabelVar">
 		<value condition="Window.IsVisible(selectvideoversion)">$INFO[ListItem.VideoVersionName]</value>
+		<value condition="Window.IsVisible(dialogselectvideo)">$INFO[ListItem.Property(stream.codec)]$INFO[ListItem.Property(stream.hdrtype),$COMMA ]$INFO[ListItem.Property(stream.resolution),$COMMA ]$INFO[Player.Process(videoscantype)]$INFO[ListItem.Property(stream.bitrate),$COMMA , kbps]$INFO[ListItem.Property(stream.fps),$COMMA , fps]</value>
+		<value condition="Window.IsVisible(dialogselectaudio)">$VAR[AudioCodecLabelVar]$VAR[AudioChannelsLabelVar, • ]</value>
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="DialogSelectLabel2Var">
+		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEmpty(ListItem.Property(stream.description))">$VAR[DialogSelectSubtitleLabel2Var]</value>
+		<value condition="Window.IsVisible(dialogselectsubtitle) + !String.IsEmpty(ListItem.Property(stream.description))">$VAR[DialogSelectSubtitleLabel2Var,, | ]$INFO[ListItem.Property(stream.description)]</value>
+		<value condition="Window.IsVisible(dialogselectaudio)">$INFO[ListItem.Property(stream.codecdesc)]$INFO[ListItem.Property(stream.description), - ]</value>
 		<value condition="Window.IsVisible(selectvideoextra)">$VAR[DialogSelectLabel2RuntimeVar]</value>
 		<value condition="Window.IsVisible(selectvideoversion)">$VAR[DialogSelectLabel2RuntimeVar]$VAR[VideoResolutionLabelVar, | ]$VAR[HDRTypeLabelVar, • ]$VAR[SourceLabelVar, • ]$VAR[AudioCodecLabelVar, | ]$VAR[AudioChannelsLabelVar, • ]</value>
 		<value condition="String.IsEqual(Control.GetLabel(1),$LOCALIZE[25006])">$INFO[ListItem.Duration(mins),, [LOWERCASE]$LOCALIZE[12391][/LOWERCASE]]</value>
@@ -1701,6 +1706,19 @@
 		<value condition="!String.IsEmpty(ListItem.Label2)">$INFO[ListItem.Label2]</value>
 		<value condition="!String.IsEmpty(ListItem.AddonVersion)">$INFO[ListItem.AddonVersion]</value>
 		<value condition="String.IsEqual(Control.GetLabel(1),$LOCALIZE[13511]) + !String.IsEmpty(Container(6).ListItem.Icon) + !String.StartsWith(Container(6).ListItem.Icon,Default)">[COLOR FF00991F]•[/COLOR]</value>
+	</variable>
+	<variable name="DialogSelectSubtitleLabel2Var">
+		<value condition="String.IsEqual(ListItem.Property(stream.isoriginal),true) + String.IsEqual(ListItem.Property(stream.isforced),true) + String.IsEqual(ListItem.Property(stream.ishearingimpaired),true)">$LOCALIZE[39111], $LOCALIZE[39106], $LOCALIZE[39107]</value>
+		<value condition="String.IsEqual(ListItem.Property(stream.isoriginal),true) + String.IsEqual(ListItem.Property(stream.isforced),true) + String.IsEqual(ListItem.Property(stream.isvisualimpaired),true)">$LOCALIZE[39111], $LOCALIZE[39106], $LOCALIZE[39108]</value>
+		<value condition="String.IsEqual(ListItem.Property(stream.isoriginal),true) + String.IsEqual(ListItem.Property(stream.isforced),true)">$LOCALIZE[39111], $LOCALIZE[39106]</value>
+		<value condition="String.IsEqual(ListItem.Property(stream.isoriginal),true) + String.IsEqual(ListItem.Property(stream.ishearingimpaired),true)">$LOCALIZE[39111], $LOCALIZE[39107]</value>
+		<value condition="String.IsEqual(ListItem.Property(stream.isoriginal),true) + String.IsEqual(ListItem.Property(stream.isvisualimpaired),true)">$LOCALIZE[39111], $LOCALIZE[39108]</value>
+		<value condition="String.IsEqual(ListItem.Property(stream.isforced),true) + String.IsEqual(ListItem.Property(stream.ishearingimpaired),true)">$LOCALIZE[39106], $LOCALIZE[39107]</value>
+		<value condition="String.IsEqual(ListItem.Property(stream.isforced),true) + String.IsEqual(ListItem.Property(stream.isvisualimpaired),true)">$LOCALIZE[39106], $LOCALIZE[39108]</value>
+		<value condition="String.IsEqual(ListItem.Property(stream.ishearingimpaired),true)">$LOCALIZE[39107]</value>
+		<value condition="String.IsEqual(ListItem.Property(stream.isvisualimpaired),true)">$LOCALIZE[39108]</value>
+		<value condition="String.IsEqual(ListItem.Property(stream.isforced),true)">$LOCALIZE[39106]</value>
+		<value condition="String.IsEqual(ListItem.Property(stream.isoriginal),true)">$LOCALIZE[39111]</value>
 	</variable>
 	<variable name="DialogSelectLabel2RuntimeVar">
 		<value condition="Skin.HasSetting(Enable.HourMinuteDuration)">$VAR[ItemDurationVar]</value>
@@ -1711,7 +1729,8 @@
 		<value>$INFO[ListItem.VideoResolution,,p]</value>
 	</variable>
 	<variable name="HDRTypeLabelVar">
-		<value condition="String.IsEqual(ListItem.HdrType,dolbyvision)">Dolby Vision</value>
+		<value condition="String.IsEqual(ListItem.HdrType,dolbyvision) | Window.IsVisible(fullscreenvideo) + String.IsEqual(VideoPlayer.HdrType,dolbyvision)">Dolby Vision</value>
+		<value condition="Window.IsVisible(fullscreenvideo) + !String.IsEmpty(VideoPlayer.HdrType)">[UPPERCASE]$INFO[VideoPlayer.HdrType][/UPPERCASE]</value>
 		<value condition="!String.IsEmpty(ListItem.HdrType)">[UPPERCASE]$INFO[ListItem.HdrType][/UPPERCASE]</value>
 	</variable>
 	<variable name="SourceLabelVar">
@@ -1725,39 +1744,39 @@
 		<value>$INFO[ListItem.VideoCodec]</value>
 	</variable>
 	<variable name="AudioCodecLabelVar">
-		<value condition="String.Contains(ListItem.Filename,atmos)">Atmos</value>
-		<value condition="String.Contains(ListItem.Filename,dtsx) | String.Contains(ListItem.Filename,dts-x)">DTS-X</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,aac_latm)">AAC</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,ac3)">Dolby</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,aif)">AIFF</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,aifc)">AIFF</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,dca)">DTS</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,dolbydigital)">Dolby</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,dts)">DTS</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,dtshd_hra)">DTS-HD HR</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,dtshd_ma)">DTS-HD MA</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,dtsma)">DTS-HD MA</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,eac3)">Dolby+</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,mp3float)">MP3</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,pcm_bluray)">PCM</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,pcm_s16le)">PCM</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,pcm_s24le)">PCM</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,truehd)">True HD</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,wavpack)">WAVP</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,wmapro)">WMA-PRO</value>
-		<value condition="String.IsEqual(ListItem.AudioCodec,wmav2)">WMA</value>
+		<value condition="String.Contains(ListItem.AudioCodec,atmos) | Window.IsActive(fullscreenvideo) + String.Contains(VideoPlayer.AudioCodec,atmos) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.Contains(ListItem.Property(stream.codec),atmos)">Atmos</value>
+		<value condition="String.IsEqual(ListItem.Filename,dtshd_ma_x)| Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dtshd_ma_x)">DTS-X</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,aac_latm) | Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,aac_latm) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),aac_latm)">AAC</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,ac3) | Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,ac3) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),ac3)">Dolby</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,aif) | String.IsEqual(ListItem.AudioCodec,aifc) | Window.IsActive(fullscreenvideo) + [String.IsEqual(VideoPlayer.AudioCodec,aif) | String.IsEqual(VideoPlayer.AudioCodec,aifc)] + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + [String.IsEqual(ListItem.Property(stream.codec),aif) | String.IsEqual(ListItem.Property(stream.codec),aifc)]">AIFF</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dca) | Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,dca) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dca)">DTS</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dolbydigital) | Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,dolbydigital) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dolbydigital)">Dolby</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dtshd_hra) | Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,dtshd_hra) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dtshd_hra)">DTS-HD HR</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dtshd_ma) | Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dtshd_ma)">DTS-HD MA</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,dtsma) | Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,dtsma) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dtsma)">DTS-HD MA</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,eac3) | Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,eac3) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),eac3)">Dolby+</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,mp3float) | Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,mp3float) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),mp3float)">MP3</value>
+		<value condition="String.Contains(ListItem.AudioCodec,pcm) | Window.IsActive(fullscreenvideo) + String.Contains(VideoPlayer.AudioCodec,pcm) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.Contains(ListItem.Property(stream.codec),pcm)">PCM</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,truehd) | Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,truehd) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),truehd)">True HD</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,wavpack) | Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,wavpack) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),wavpack)">WAVP</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,wmapro) | Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,wmapro) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),wmapro)">WMA-PRO</value>
+		<value condition="String.IsEqual(ListItem.AudioCodec,wmav2) | Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,wmav2) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),wmav2)">WMA</value>
+		<value condition="Window.IsVisible(fullscreenvideo) + !Window.IsVisible(dialogselectaudio)">[UPPERCASE]$INFO[VideoPlayer.AudioCodec][/UPPERCASE]</value>
+		<value condition="Window.IsVisible(dialogselectaudio)">[UPPERCASE]$INFO[ListItem.Property(stream.codec)][/UPPERCASE]</value>
 		<value>[UPPERCASE]$INFO[ListItem.AudioCodec][/UPPERCASE]</value>
 	</variable>
 	<variable name="AudioChannelsLabelVar">
-		<value condition="String.IsEqual(ListItem.AudioChannels,1)">1.0</value>
-		<value condition="String.IsEqual(ListItem.AudioChannels,2)">2.0</value>
-		<value condition="String.IsEqual(ListItem.AudioChannels,3)">2.1</value>
-		<value condition="String.IsEqual(ListItem.AudioChannels,4)">4.0</value>
-		<value condition="String.IsEqual(ListItem.AudioChannels,5)">4.1</value>
-		<value condition="String.IsEqual(ListItem.AudioChannels,6)">5.1</value>
-		<value condition="String.IsEqual(ListItem.AudioChannels,7)">6.1</value>
-		<value condition="String.IsEqual(ListItem.AudioChannels,8)">7.1</value>
-		<value condition="String.IsEqual(ListItem.AudioChannels,10)">9.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,1) | Window.IsVisible(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioChannels,1) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.channels),1)">1.0</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,2) | Window.IsVisible(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioChannels,2) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.channels),2)">2.0</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,3) | Window.IsVisible(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioChannels,3) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.channels),3)">2.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,4) | Window.IsVisible(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioChannels,4) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.channels),4)">4.0</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,5) | Window.IsVisible(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioChannels,5) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.channels),5)">4.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,6) | Window.IsVisible(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioChannels,6) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.channels),6)">5.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,7) | Window.IsVisible(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioChannels,7) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.channels),7)">6.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,8) | Window.IsVisible(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioChannels,8) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.channels),8)">7.1</value>
+		<value condition="String.IsEqual(ListItem.AudioChannels,10) | Window.IsVisible(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioChannels,10) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.channels),10)">9.1</value>
+		<value condition="Window.IsVisible(fullscreenvideo) + !Window.IsVisible(dialogselectaudio)">$INFO[VideoPlayer.AudioChannels]</value>
+		<value condition="Window.IsVisible(dialogselectaudio)">[UPPERCASE]$INFO[ListItem.Property(stream.channels)][/UPPERCASE]</value>
 		<value>$INFO[ListItem.AudioChannels]</value>
 	</variable>
 	<variable name="EpisodeCountVar">

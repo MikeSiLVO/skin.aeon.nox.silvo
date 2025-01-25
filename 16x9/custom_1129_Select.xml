@@ -7,6 +7,7 @@
 	<onunload condition="!String.IsEmpty(Window(Home).Property(actor_id)) + !String.IsEmpty(Window(Home).Property(DoAction))">SetFocus(90050)</onunload>
 	<onunload condition="!String.IsEmpty(Window(Home).Property(DirectorID)) + !String.IsEmpty(Window(Home).Property(DoAction))">SendClick(2003,13)</onunload>
 	<onunload condition="!String.IsEmpty(Skin.String(ItemToEdit.MultiFanart))">Skin.SetString($INFO[Window(Home).Property(Nox.Temp)],$INFO[Skin.String(ItemToEdit.MultiFanart)])</onunload>
+	<onunload condition="String.IsEqual(Window(Home).Property(CustomSelect),avsettings)">SetFocus(708)</onunload>
 	<onunload>ClearProperty(actor_id,Home)</onunload>
 	<onunload>ClearProperty(ActorName,Home)</onunload>
 	<onunload>ClearProperty(DirectorID,Home)</onunload>
@@ -14,14 +15,14 @@
 	<onunload>ClearProperty(CustomSelect,Home)</onunload>
 	<controls>
 		<include content="DimBackground">
-			<param name="visible">!Window.IsVisible(1114)</param>
+			<param name="visible">!Window.IsVisible(1114) + !Window.IsActive(DialogSettings.xml)</param>
 		</include>
 		<control type="group">
 			<include>DialogOpenCloseAnimation</include>
 			<visible>![Window.IsActive(gamestretchmode) | Window.IsActive(gamevideofilter) | Window.IsActive(gamevideorotation) | Window.IsActive(gamevolume) | Window.IsActive(InGameSaves)]</visible>
 			<include>VisibleFadeAnimation</include>
-			<include condition="!String.IsEqual(Window(Home).Property(CustomSelect),search) + !String.IsEqual(Window(Home).Property(CustomSelect),gameosdsettings) + String.IsEmpty(Window(Home).Property(actor_id)) + !String.IsEqual(Window(Home).Property(CustomSelect),pvrguidelogos) + !String.IsEqual(Window(Home).Property(CustomSelect),musicgenreiconpath) + !String.IsEqual(Window(Home).Property(CustomSelect),moviegenreiconpath) + !String.IsEqual(Window(Home).Property(CustomSelect),startupintro) + String.IsEmpty(Window(Home).Property(person_id))">CustomSelectDefaultBackPanel</include>
-			<include condition="String.IsEqual(Window(Home).Property(CustomSelect),search) | !String.IsEmpty(Window(Home).Property(actor_id)) | String.IsEqual(Window(Home).Property(CustomSelect),pvrguidelogos) | String.IsEqual(Window(Home).Property(CustomSelect),musicgenreiconpath) | String.IsEqual(Window(Home).Property(CustomSelect),moviegenreiconpath) | String.IsEqual(Window(Home).Property(CustomSelect),startupintro) | !String.IsEmpty(Window(Home).Property(person_id))">CustomSelectSearchBackPanel</include>
+			<include condition="!String.IsEqual(Window(Home).Property(CustomSelect),search) + !String.IsEqual(Window(Home).Property(CustomSelect),gameosdsettings) + String.IsEmpty(Window(Home).Property(actor_id)) + !String.IsEqual(Window(Home).Property(CustomSelect),pvrguidelogos) + !String.IsEqual(Window(Home).Property(CustomSelect),musicgenreiconpath) + !String.IsEqual(Window(Home).Property(CustomSelect),moviegenreiconpath) + !String.IsEqual(Window(Home).Property(CustomSelect),startupintro) + !String.IsEqual(Window(Home).Property(CustomSelect),avsettings) + String.IsEmpty(Window(Home).Property(person_id))">CustomSelectDefaultBackPanel</include>
+			<include condition="String.IsEqual(Window(Home).Property(CustomSelect),search) | !String.IsEmpty(Window(Home).Property(actor_id)) | String.IsEqual(Window(Home).Property(CustomSelect),pvrguidelogos) | String.IsEqual(Window(Home).Property(CustomSelect),musicgenreiconpath) | String.IsEqual(Window(Home).Property(CustomSelect),moviegenreiconpath) | String.IsEqual(Window(Home).Property(CustomSelect),startupintro) | String.IsEqual(Window(Home).Property(CustomSelect),avsettings) | !String.IsEmpty(Window(Home).Property(person_id))">CustomSelectSearchBackPanel</include>
 			<include condition="String.IsEqual(Window(Home).Property(CustomSelect),gameosdsettings)">CustomSelectGameOSDBackPanel</include>
 			<include condition="!String.IsEqual(Window(Home).Property(CustomSelect),gameosdsettings)">CustomSelectLayout</include>
 			<include condition="String.IsEqual(Window(Home).Property(CustomSelect),gameosdsettings)">CustomGameOSDLayout</include>
