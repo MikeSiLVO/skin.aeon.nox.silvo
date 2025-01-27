@@ -271,6 +271,15 @@
 			<onclick>Addon.OpenSettings(script.cu.lrclyrics)</onclick>
 			<visible>System.HasAddon(script.cu.lrclyrics) + System.AddonIsEnabled(script.cu.lrclyrics)</visible>
 		</control>
+		<control type="radiobutton" id="90219">
+			<description>CU Lyrics background dim</description>
+			<width>1498</width>
+			<radioposx>1396</radioposx>
+			<label> - $LOCALIZE[31027]</label>
+			<onclick>Skin.ToggleSetting(HideLyricsBackground)</onclick>
+			<selected>!Skin.HasSetting(HideLyricsBackground)</selected>
+			<visible>System.HasAddon(script.cu.lrclyrics) + System.AddonIsEnabled(script.cu.lrclyrics) + Skin.HasSetting(Disable.VideoLyrics)</visible>
+		</control>
 		<control type="radiobutton" id="90205">
 			<description>Hide Player Controls</description>
 			<width>1498</width>
