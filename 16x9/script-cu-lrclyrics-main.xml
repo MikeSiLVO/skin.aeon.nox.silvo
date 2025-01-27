@@ -2,50 +2,39 @@
 <window>
 	<zorder>0</zorder>
 	<controls>
-		<control type="group">
-			<control type="image">
-				<left>-5%</left>
-				<top>-30</top>
-				<width>110%</width>
-				<height>615</height>
-				<texture border="40" flipy="true" colordiffuse="E6FFFFFF">dialogs/default/bg.png</texture>
-				<visible>Control.IsVisible(110) + Skin.HasSetting(Disable.VideoLyrics)</visible>
-				<animation effect="fade" end="50" condition="true">Conditional</animation>
-			</control>
-			<control type="list" id="110">
-				<left>45</left>
-				<top>45</top>
-				<width>1830</width>
-				<height>500</height>
-				<onleft>PlayerControl(previous)</onleft>
-				<onright>PlayerControl(next)</onright>
-				<onup>110</onup>
-				<ondown>110</ondown>
-				<pagecontrol>101</pagecontrol>
-				<scrolltime>200</scrolltime>
-				<itemlayout height="100">
-					<include condition="Skin.HasSetting(Disable.VideoLyrics)">NormalLyrics</include>
-				</itemlayout>
-				<focusedlayout height="100">
-					<include condition="Skin.HasSetting(Disable.VideoLyrics)" content="NormalLyrics">
-						<param name="textcolor">$VAR[ThemeLabelColor]</param>
-					</include>
-				</focusedlayout>
-			</control>
-			<control type="label">
-				<left>870</left>
-				<top>1020</top>
-				<width>825</width>
-				<height>45</height>
-				<label>$LOCALIZE[31205] - $INFO[Control.GetLabel(200)]</label>
-				<font>font12_title</font>
-				<align>right</align>
-				<textcolor>grey2</textcolor>
-				<visible>false</visible>
-			</control>
-			<control type="label" id="200">
-				<visible>false</visible>
-			</control>
+		<control type="list" id="110">
+			<left>45</left>
+			<top>45</top>
+			<width>1830</width>
+			<height>500</height>
+			<onleft>PlayerControl(previous)</onleft>
+			<onright>PlayerControl(next)</onright>
+			<onup>110</onup>
+			<ondown>110</ondown>
+			<pagecontrol>101</pagecontrol>
+			<scrolltime>200</scrolltime>
+			<itemlayout height="100">
+				<include condition="Skin.HasSetting(Disable.VideoLyrics)">NormalLyrics</include>
+			</itemlayout>
+			<focusedlayout height="100">
+				<include condition="Skin.HasSetting(Disable.VideoLyrics)" content="NormalLyrics">
+					<param name="textcolor">$VAR[ThemeLabelColor]</param>
+				</include>
+			</focusedlayout>
+		</control>
+		<control type="label">
+			<left>870</left>
+			<top>1020</top>
+			<width>825</width>
+			<height>45</height>
+			<label>$INFO[Control.GetLabel(200),$LOCALIZE[31205] - ]</label>
+			<font>font12_title</font>
+			<align>right</align>
+			<textcolor>grey2</textcolor>
+			<visible>false</visible>
+		</control>
+		<control type="label" id="200">
+			<visible>false</visible>
 		</control>
 		<include condition="!Skin.HasSetting(Disable.VideoLyrics)">VideoLyrics</include>
 		<control type="group">

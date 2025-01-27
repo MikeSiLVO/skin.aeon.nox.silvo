@@ -158,6 +158,12 @@
 			<visible>!Skin.HasSetting(hidevizbehindfanart) + [Player.HasAudio + [String.IsEqual(Visualisation.Name,waveform) | String.Contains(Visualisation.Name,spectrum)]]</visible>
 			<include>FullscreenDimensions</include>
 		</control>
+		<include content="DimBackground">
+			<param name="texture">colors/black50.png</param>
+			<param name="timeopen">100</param>
+			<param name="timeclose">50</param>
+			<param name="visible">Window.IsVisible(script-cu-lrclyrics-main.xml) + !String.IsEmpty(Window(Home).Property(culrc.lyrics)) + Skin.HasSetting(Disable.VideoLyrics) + !Skin.HasSetting(HideLyricsBackground)</param>
+		</include>
 		<control type="fadelabel">
 			<width>100%</width>
 			<scroll>true</scroll>
