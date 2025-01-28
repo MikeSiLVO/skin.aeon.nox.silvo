@@ -283,6 +283,10 @@
 		<value condition="!String.IsEmpty(Skin.String(musicgenreicons.path))">$INFO[Skin.String(musicgenreicons.name)]</value>
 		<value condition="!String.IsEmpty(Skin.String(MusicGenreIconPath))">$INFO[Skin.String(MusicGenreIconPath)]</value>
 	</variable>
+	<variable name="MovieGenreIconsPathVar">
+		<value condition="!String.IsEmpty(Skin.String(moviegenreicons.path))">$INFO[Skin.String(moviegenreicons.path)]</value>
+		<value condition="!String.IsEmpty(Skin.String(MovieGenreIconPath))">$INFO[Skin.String(MovieGenreIconPath)]</value>
+	</variable>
 	<variable name="MovieGenreIconsPathLabelVar">
 		<value condition="!String.IsEmpty(Skin.String(moviegenreicons.path))">$INFO[Skin.String(moviegenreicons.name)]</value>
 		<value condition="!String.IsEmpty(Skin.String(MovieGenreIconPath))">$INFO[Skin.String(MovieGenreIconPath)]</value>
@@ -445,6 +449,7 @@
 	</variable>
 	<variable name="GenreIconVar">
 		<value condition="!String.IsEmpty(Skin.String(moviegenreicons.path))">$INFO[Skin.String(moviegenreicons.path)]$INFO[ListItem.Label]$INFO[Skin.String(moviegenreicons.ext)]</value>
+		<value condition="!String.IsEmpty(Skin.String(MovieGenreIconPath))">$INFO[Skin.String(MovieGenreIconPath)]$INFO[ListItem.Label,,.jpg]</value>
 		<value condition="!Skin.HasSetting(coloredflags)">$INFO[ListItem.Label,special://skin/extras/moviegenres/default/,.jpg]</value>
 		<value condition="Skin.HasSetting(coloredflags)">$INFO[ListItem.Label,special://skin/extras/moviegenres/colored/,.jpg]</value>
 		<value>$INFO[ListItem.Icon]</value>
@@ -768,6 +773,7 @@
 	<variable name="PosterThumbVar">
 		<value condition="Window.Next(home)" />
 		<value condition="Container.Content(genres) + !String.IsEmpty(Skin.String(moviegenreicons.path))">$INFO[Skin.String(moviegenreicons.path)]$INFO[ListItem.Label]$INFO[Skin.String(moviegenreicons.ext)]</value>
+		<value condition="Container.Content(genres) + !String.IsEmpty(Skin.String(MovieGenreIconPath))">$INFO[Skin.String(MovieGenreIconPath)]$INFO[ListItem.Label,,.jpg]</value>
 		<value condition="Container.Content(genres) + !Skin.HasSetting(coloredflags)">$INFO[ListItem.Label,special://skin/extras/moviegenres/default/,.jpg]</value>
 		<value condition="Container.Content(genres) + Skin.HasSetting(coloredflags)">$INFO[ListItem.Label,special://skin/extras/moviegenres/colored/,.jpg]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
@@ -928,82 +934,109 @@
 		<value condition="Player.ChapterCount + Window.IsVisible(fullscreeninfo)">$INFO[Player.Chapter,$LOCALIZE[21396] ]$INFO[Player.ChapterCount, / ]</value>
 		<value>$INFO[Player.Title]</value>
 	</variable>
+	<variable name="OSLogoVar">
+		<value condition="System.HasAddon(service.libreelec.settings)">libreelec/logo.png</value>
+		<value condition="System.HasAddon(service.coreelec.settings)">coreelec/logo.png</value>
+		<value condition="System.Platform.Linux">logos/linux-logo.png</value>
+		<value condition="System.Platform.Windows">logos/windows-logo.png</value>
+		<value condition="System.Platform.UWP">logos/uwp-logo.png</value>
+		<value condition="System.Platform.OSX">logos/macOS-logo.png</value>
+		<value condition="System.Platform.IOS">logos/iOS-logo.png</value>
+		<value condition="System.Platform.TVOS">logos/tvOS-logo.png</value>
+		<value condition="System.Platform.Darwin">logos/apple-logo.png</value>
+		<value condition="System.Platform.Android">logos/android-logo.png</value>
+		<value condition="System.Platform.WebOS">logos/webOS-logo.png</value>
+	</variable>
 	<!-- Decription VARs -->
 	<variable name="SkinSettingsDescriptionVar">
-		<value condition="Control.HasFocus(1000)">$LOCALIZE[31912]</value>
-		<value condition="Control.HasFocus(1001)">$LOCALIZE[31914]</value>
-		<value condition="Control.HasFocus(1002)">$LOCALIZE[31929]</value>
-		<value condition="Control.HasFocus(1003)">$LOCALIZE[31262]</value>
-		<value condition="Control.HasFocus(1004)">$LOCALIZE[31980]</value>
-		<value condition="Control.HasFocus(1005)">$LOCALIZE[31161]</value>
-		<value condition="Control.HasFocus(1006)">$LOCALIZE[31261]</value>
-		<value condition="Control.HasFocus(1007)">$LOCALIZE[31905]</value>
-		<value condition="Control.HasFocus(1008) | Control.HasFocus(1017)">$LOCALIZE[31168]</value>
-		<value condition="Control.HasFocus(1009)">$LOCALIZE[31264]</value>
-		<value condition="Control.HasFocus(1010)">$LOCALIZE[31169]</value>
-		<value condition="Control.HasFocus(1011)">$LOCALIZE[31920]</value>
-		<value condition="Control.HasFocus(1012)">$LOCALIZE[31921]</value>
-		<value condition="Control.HasFocus(1013)">$LOCALIZE[31265]</value>
-		<value condition="Control.HasFocus(1014)">$LOCALIZE[31344]</value>
-		<value condition="Control.HasFocus(1015)">$LOCALIZE[31464]</value>
-		<value condition="Control.HasFocus(1016)">$LOCALIZE[31463]</value>
-		<value condition="Control.HasFocus(1018)">$LOCALIZE[31497]</value>
-		<value condition="Control.HasFocus(1019)">$LOCALIZE[31590]</value>
-		<value condition="Control.HasFocus(20000)">$LOCALIZE[31917]</value>
-		<value condition="Control.HasFocus(20001)">$LOCALIZE[31918]</value>
-		<value condition="Control.HasFocus(20002)">$LOCALIZE[31919]</value>
-		<value condition="Control.HasFocus(20003)">$LOCALIZE[31467]</value>
-		<value condition="Control.HasFocus(20004)">$LOCALIZE[31372]</value>
-		<value condition="Control.HasFocus(20005)">$LOCALIZE[31170]</value>
-		<value condition="Control.HasFocus(20007)">$LOCALIZE[31199]</value>
-		<value condition="Control.HasFocus(20008)">$LOCALIZE[31500]</value>
-		<value condition="Control.HasFocus(20009)">$LOCALIZE[31572]</value>
-		<value condition="Control.HasFocus(3000)">$LOCALIZE[31922]</value>
-		<value condition="Control.HasFocus(3001)">$LOCALIZE[31924]</value>
-		<value condition="Control.HasFocus(3002)">$LOCALIZE[31382]</value>
-		<value condition="Control.HasFocus(3003)">$LOCALIZE[31383]</value>
-		<value condition="Control.HasFocus(3004)">$LOCALIZE[31122]</value>
-		<value condition="Control.HasFocus(3005)">$LOCALIZE[31938]</value>
-		<value condition="Control.HasFocus(3006)">$LOCALIZE[31384]</value>
-		<value condition="Control.HasFocus(3008)">$LOCALIZE[31381]</value>
-		<value condition="Control.HasFocus(3009)">$LOCALIZE[31516]</value>
-		<value condition="Control.HasFocus(3010)">$LOCALIZE[31591]</value>
-		<value condition="Control.HasFocus(4000)">Add description</value>
-		<value condition="Control.HasFocus(4001)">Add description</value>
-		<value condition="Control.HasFocus(4002)">$LOCALIZE[31940]</value>
-		<value condition="Control.HasFocus(4003)">$LOCALIZE[31942]</value>
-		<value condition="Control.HasFocus(4004)">$LOCALIZE[31589]</value>
-		<value condition="Control.HasFocus(4005)">$LOCALIZE[31944]</value>
-		<value condition="Control.HasFocus(4006)">$LOCALIZE[31945]</value>
-		<value condition="Control.HasFocus(4007)">$LOCALIZE[31962]</value>
-		<value condition="Control.HasFocus(4008)">$LOCALIZE[31380]</value>
-		<value condition="Control.HasFocus(4010)">$LOCALIZE[31290]</value>
-		<value condition="Control.HasFocus(5000)">$LOCALIZE[31988]</value>
-		<value condition="Control.HasFocus(5001)">$LOCALIZE[31856]</value>
-		<value condition="Control.HasFocus(5004)">$LOCALIZE[31984]</value>
-		<value condition="Control.HasFocus(5006)">$LOCALIZE[31986]</value>
-		<value condition="Control.HasFocus(5009)">$LOCALIZE[31165]</value>
-		<value condition="Control.HasFocus(5014)">$LOCALIZE[31201]</value>
-		<value condition="Control.HasFocus(5015)">$LOCALIZE[31198]</value>
-		<value condition="Control.HasFocus(6000)">$LOCALIZE[31912]</value>
-		<value condition="Control.HasFocus(6001)">$LOCALIZE[31373]</value>
-		<value condition="Control.HasFocus(6002)">$LOCALIZE[31366]</value>
-		<value condition="Control.HasFocus(6003)">$LOCALIZE[31367]</value>
-		<value condition="Control.HasFocus(6004)">$LOCALIZE[31368]</value>
-		<value condition="Control.HasFocus(6005)">$LOCALIZE[31399]</value>
-		<value condition="Control.HasFocus(6006)">Customise the mediaflags for the following views:[CR]List - Tripanel - Posters - Shift - BannerWall - Small Icons - Icons - RightList - MyFlix - BigFan</value>
-		<value condition="Control.HasFocus(6007)">$LOCALIZE[31461]</value>
-		<value condition="Control.HasFocus(6008)">$LOCALIZE[31462]</value>
-		<value condition="Control.HasFocus(6011)">Configure the shutdown menu. To prevent blocking access to Kodi settings, i.e. changing to a different skin, the settings button cannot be altered.</value>
-		<value condition="Control.HasFocus(7005)">$LOCALIZE[31342]</value>
-		<value condition="Control.HasFocus(7006)">$LOCALIZE[31378]</value>
-		<value condition="Control.HasFocus(7007)">$LOCALIZE[31379]</value>
-		<value condition="Control.HasFocus(7008)">$LOCALIZE[31404]</value>
-		<value condition="Control.HasFocus(7009)">$LOCALIZE[31447]</value>
-		<value condition="Control.HasFocus(8001)">$LOCALIZE[31385]</value>
-		<value condition="Control.HasFocus(8002) | Control.HasFocus(8003)">$LOCALIZE[31386]</value>
-		<value condition="Control.HasFocus(8004)">$LOCALIZE[31387]</value>
-		<value condition="Control.HasFocus(8006)">$LOCALIZE[31388]</value>
+		<!-- Main Menu -->
+		<value condition="Control.HasFocus(10000) | Control.HasFocus(30000)">$LOCALIZE[31912]</value>
+		<value condition="Control.HasFocus(10001)">$LOCALIZE[31914]</value>
+		<value condition="Control.HasFocus(10002)">$LOCALIZE[31929]</value>
+		<value condition="Control.HasFocus(10003)">$LOCALIZE[31262]</value>
+		<value condition="Control.HasFocus(10004)">$LOCALIZE[31980]</value>
+		<value condition="Control.HasFocus(10005)">$LOCALIZE[31590]</value>
+		<value condition="Control.HasFocus(10006)">$LOCALIZE[31464]</value>
+		<value condition="Control.HasFocus(10007)">$LOCALIZE[31161]</value>
+		<value condition="Control.HasFocus(10008) | Control.HasFocus(10012)">$LOCALIZE[31168]</value>
+		<value condition="Control.HasFocus(10009)">$LOCALIZE[31497]</value>
+		<value condition="Control.HasFocus(10010)">$LOCALIZE[31261]</value>
+		<value condition="Control.HasFocus(10011)">$LOCALIZE[31905]</value>
+		<value condition="Control.HasFocus(10013)">$LOCALIZE[31169]</value>
+		<value condition="Control.HasFocus(10014)">$LOCALIZE[31265]</value>
+		<!-- Home Window -->
+		<value condition="Control.HasFocus(20000)">$LOCALIZE[31264]</value>
+		<value condition="Control.HasFocus(20001)">$LOCALIZE[31463]</value>
+		<value condition="Control.HasFocus(20002)">$LOCALIZE[31344]</value>
+		<value condition="Control.HasFocus(20003)">$LOCALIZE[31920]</value>
+		<value condition="Control.HasFocus(20004)">$LOCALIZE[31921]</value>
+		<!-- Customization -->
+		<value condition="Control.HasFocus(30001)">$LOCALIZE[31028]</value>
+		<value condition="Control.HasFocus(30002)">$LOCALIZE[31373]</value>
+		<value condition="Control.HasFocus(30003)">$LOCALIZE[31032]</value>
+		<value condition="Control.HasFocus(30004)">$LOCALIZE[31368]</value>
+		<value condition="Control.HasFocus(30005)">$LOCALIZE[31366]</value>
+		<value condition="Control.HasFocus(30006)">$LOCALIZE[31367]</value>
+		<value condition="Control.HasFocus(30007)">$LOCALIZE[31399]</value>
+		<value condition="Control.HasFocus(30008)">$LOCALIZE[31461]</value>
+		<value condition="Control.HasFocus(30009)">$LOCALIZE[31462]</value>
+		<!-- General -->
+		<value condition="Control.HasFocus(40000)">$LOCALIZE[31467]</value>
+		<value condition="Control.HasFocus(40001)">$LOCALIZE[31372]</value>
+		<value condition="Control.HasFocus(40002)">$LOCALIZE[31572]</value>
+		<value condition="Control.HasFocus(40003)">$LOCALIZE[31917]</value>
+		<value condition="Control.HasFocus(40004)">$LOCALIZE[31918]</value>
+		<value condition="Control.HasFocus(40005)">$LOCALIZE[31919]</value>
+		<value condition="Control.HasFocus(40006)">$LOCALIZE[31170]</value>
+		<value condition="Control.HasFocus(40007)">$LOCALIZE[31199]</value>
+		<value condition="Control.HasFocus(40008)">$LOCALIZE[31500]</value>
+		<!-- Advanced -->
+		<value condition="Control.HasFocus(50000)">$LOCALIZE[31034]</value>
+		<value condition="Control.HasFocus(50001)">$LOCALIZE[31035]</value>
+		<value condition="Control.HasFocus(50002)">$LOCALIZE[31940]</value>
+		<value condition="Control.HasFocus(50003)">$LOCALIZE[31942]</value>
+		<value condition="Control.HasFocus(50004)">$LOCALIZE[31589]</value>
+		<value condition="Control.HasFocus(50005)">$LOCALIZE[31944]</value>
+		<value condition="Control.HasFocus(50006)">$LOCALIZE[31945]</value>
+		<value condition="Control.HasFocus(50007)">$LOCALIZE[31962]</value>
+		<value condition="Control.HasFocus(50008)">$LOCALIZE[31380]</value>
+		<value condition="Control.HasFocus(50009)">$LOCALIZE[31290]</value>
+		<!-- Widgets -->
+		<value condition="Control.HasFocus(60000)">$LOCALIZE[31385]</value>
+		<value condition="Control.HasFocus(60001)">$LOCALIZE[31386]</value>
+		<value condition="Control.HasFocus(60002)">$LOCALIZE[31036]</value>
+		<value condition="Control.HasFocus(60003)">$LOCALIZE[31387]</value>
+		<value condition="Control.HasFocus(60004)">$LOCALIZE[31388]</value>
+		<!-- Extras -->
+		<value condition="Control.HasFocus(70000)">$LOCALIZE[31938]</value>
+		<value condition="Control.HasFocus(70001)">$LOCALIZE[31516]</value>
+		<value condition="Control.HasFocus(70002)">$LOCALIZE[31122]</value>
+		<value condition="Control.HasFocus(70003)">$LOCALIZE[31381]</value>
+		<value condition="Control.HasFocus(70004)">$LOCALIZE[31037]</value>
+		<value condition="Control.HasFocus(70005)">$LOCALIZE[31922]</value>
+		<value condition="Control.HasFocus(70006)">$LOCALIZE[31382]</value>
+		<value condition="Control.HasFocus(70007)">$LOCALIZE[31591]</value>
+		<value condition="Control.HasFocus(70008)">$LOCALIZE[31924]</value>
+		<value condition="Control.HasFocus(70009)">$LOCALIZE[31383]</value>
+		<value condition="Control.HasFocus(70010)">$LOCALIZE[31384]</value>
+		<!-- Extras 2 -->
+		<value condition="Control.HasFocus(80000)">$LOCALIZE[31988]</value>
+		<value condition="Control.HasFocus(80001)">$LOCALIZE[31856]</value>
+		<value condition="Control.HasFocus(80002)">$LOCALIZE[31165]</value>
+		<value condition="Control.HasFocus(80003)">$LOCALIZE[31201]</value>
+		<value condition="Control.HasFocus(80004)">$LOCALIZE[31984]</value>
+		<value condition="Control.HasFocus(80005)">$LOCALIZE[31198]</value>
+		<value condition="Control.HasFocus(80006)">$LOCALIZE[31986]</value>
+		<!-- Help -->
+		<value condition="Control.HasFocus(90000)">$LOCALIZE[31342]</value>
+		<value condition="Control.HasFocus(90001)">$LOCALIZE[31378]</value>
+		<value condition="Control.HasFocus(90002)">$LOCALIZE[31379]</value>
+		<value condition="Control.HasFocus(90003)">$LOCALIZE[31404]</value>
+		<value condition="Control.HasFocus(90004)">$LOCALIZE[31447]</value>
+		<!-- Backup & Restore -->
+		<!-- <value condition="Control.HasFocus(100000)"></value>
+		<value condition="Control.HasFocus(100001)"></value>
+		<value condition="Control.HasFocus(100002)"></value> -->
 	</variable>
 	<variable name="SkinShortcutsDescriptionVar">
 		<!-- Shortcut Controls -->
@@ -2137,8 +2170,8 @@
 		<value>$LOCALIZE[351]</value>
 	</variable>
 	<variable name="KodiVersionLabelVar">
-		<value condition="String.StartsWith(System.BuildVersion,21.)">$INFO[System.BuildVersionShort,Omega - v]$INFO[System.BuildDate, (,)]</value>
-		<value>$INFO[System.BuildVersionShort,v]$INFO[System.BuildVersionGit, (,)] - [COLOR invalid]$LOCALIZE[31341][/COLOR]</value>
+		<value condition="String.StartsWith(System.BuildVersion,21.)">$INFO[System.BuildVersion,Omega - v]</value>
+		<value>$INFO[System.BuildVersion,v] - [COLOR invalid]$LOCALIZE[31341][/COLOR]</value>
 	</variable>
 	<variable name="MyFlixTitleLabelVar">
 		<value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)">$INFO[ListItem.TVShowTitle]</value>
