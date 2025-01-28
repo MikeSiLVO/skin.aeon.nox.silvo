@@ -106,6 +106,7 @@
 					<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Skin.String(InfoPopup.Delay),, $LOCALIZE[31090]][/COLOR]</label2>
 					<onclick>$VAR[InfoPopupDelayOnClickVar]</onclick>
 					<visible>[String.IsEqual(Window(Home).Property(actualViewtype),FullscreenWall) + Skin.HasSetting(Enable.FullscreenWallInfoPopup)] | [String.IsEqual(Window(Home).Property(actualViewtype),RightList) + Skin.HasSetting(Enable.RightlistInfoPopup) + Skin.HasSetting(inforightlist)] | [String.IsEqual(Window(Home).Property(actualViewtype),Icons) + Skin.HasSetting(Enable.IconsInfoPopup)] | [String.IsEqual(Window(Home).Property(actualViewtype),BannerWall) + Skin.HasSetting(Disable.BannerWallInfo) + Skin.HasSetting(Enable.BannerWallInfoPopup)] + !Window.IsActive(music)</visible>
+					<visible>!Container.Content(genres)</visible>
 				</control>
 				<!-- HD/SD/3D Indicators -->
 				<control type="button" id="1551">
