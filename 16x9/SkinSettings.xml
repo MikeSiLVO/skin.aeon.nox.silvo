@@ -721,48 +721,59 @@
 						<left>437</left>
 						<top>32</top>
 						<visible>Container(9000).HasFocus(9)</visible>
-						<control type="group">
-							<top>3</top>
-							<control type="image">
-								<width>400</width>
-								<height>122</height>
-								<texture>aeon-nox-logo.png</texture>
-							</control>
-							<control type="label">
-								<left>390</left>
-								<width>400</width>
-								<height>122</height>
-								<textcolor>grey</textcolor>
-								<font>font_version</font>
-								<label>$INFO[System.AddonVersion(skin.aeon.nox.silvo),v,]</label>
-							</control>
-							<control type="label">
-								<width>1371</width>
-								<height>40</height>
-								<textcolor>grey</textcolor>
-								<font>font15</font>
-								<align>right</align>
-								<label>$INFO[System.Uptime, $LOCALIZE[12390]: ]</label>
-							</control>
-							<control type="label">
-								<top>44</top>
-								<width>1371</width>
-								<height>40</height>
-								<textcolor>grey</textcolor>
-								<font>font15</font>
-								<align>right</align>
-								<label>$INFO[System.TotalUptime, $LOCALIZE[12394]: ]</label>
-							</control>
-							<control type="label">
-								<left>0</left>
-								<top>88</top>
-								<width>1371</width>
-								<height>40</height>
-								<textcolor>grey</textcolor>
-								<font>font15</font>
-								<align>right</align>
-								<label>$INFO[Network.LinkState]$INFO[Network.IPAddress, • $LOCALIZE[150]: ]</label>
-							</control>
+						<control type="image">
+							<top>-20</top>
+							<width>400</width>
+							<height>122</height>
+							<aspectratio>keep</aspectratio>
+							<texture>aeon-nox-logo.png</texture>
+						</control>
+						<control type="label">
+							<top>80</top>
+							<width>400</width>
+							<height>40</height>
+							<textcolor>grey</textcolor>
+							<font>font_version</font>
+							<align>center</align>
+							<label>$INFO[System.AddonVersion(skin.aeon.nox.silvo),v,]</label>
+						</control>
+						<control type="fadelabel">
+							<width>1371</width>
+							<height>40</height>
+							<textcolor>grey</textcolor>
+							<font>font15</font>
+							<align>right</align>
+							<scrollout>false</scrollout>
+							<pauseatend>5000</pauseatend>
+							<resetonlabelchange>false</resetonlabelchange>
+							<label>$INFO[System.Uptime, $LOCALIZE[12390]: ]</label>
+							<label>$INFO[System.CPUUsage(used.percent),$LOCALIZE[140] ]</label>
+						</control>
+						<control type="fadelabel">
+							<top>44</top>
+							<width>1371</width>
+							<height>40</height>
+							<textcolor>grey</textcolor>
+							<font>font15</font>
+							<align>right</align>
+							<scrollout>false</scrollout>
+							<pauseatend>5000</pauseatend>
+							<resetonlabelchange>false</resetonlabelchange>
+							<label>$INFO[System.TotalUptime, $LOCALIZE[12394]: ]</label>
+							<label>$LOCALIZE[131]: $INFO[System.ScreenWidth]x$INFO[System.ScreenHeight]$INFO[System.FPS, @ ,fps]</label>
+						</control>
+						<control type="fadelabel">
+							<top>88</top>
+							<width>1371</width>
+							<height>40</height>
+							<textcolor>grey</textcolor>
+							<font>font15</font>
+							<align>right</align>
+							<scrollout>false</scrollout>
+							<pauseatend>5000</pauseatend>
+							<resetonlabelchange>false</resetonlabelchange>
+							<label>$INFO[Network.LinkState]$INFO[Network.IPAddress, • $LOCALIZE[150]: ]</label>
+							<label>$LOCALIZE[31309]: $INFO[system.memory(used)]$INFO[system.memory(total), / ]$INFO[system.memory(used.percent), - ]</label>
 						</control>
 						<control type="image">
 							<top>134</top>
@@ -802,22 +813,6 @@
 								<font>font_version</font>
 								<label>$INFO[System.OSVersionInfo]</label>
 							</control>
-							<!-- <control type="image">
-								<top>132</top>
-								<width>400</width>
-								<height>80</height>
-								<aspectratio>keep</aspectratio>
-								<texture colordiffuse="grey">libreelec/logo.png</texture>
-								<visible>System.HasAddon(service.libreelec.settings) | !System.HasAddon(service.coreelec.settings)</visible>
-							</control>
-							<control type="image">
-								<top>132</top>
-								<width>400</width>
-								<height>80</height>
-								<aspectratio>keep</aspectratio>
-								<texture colordiffuse="grey">coreelec/logo.png</texture>
-								<visible>System.HasAddon(service.coreelec.settings)</visible>
-							</control> -->
 						</control>
 						<control type="image">
 							<top>403</top>
