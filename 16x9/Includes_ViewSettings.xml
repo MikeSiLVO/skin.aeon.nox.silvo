@@ -82,7 +82,7 @@
 			<label>$LOCALIZE[31005]</label>
 			<selected>Skin.HasSetting(LandscapeWrapList)</selected>
 			<onclick>Skin.ToggleSetting(LandscapeWrapList)</onclick>
-			<include>ReloadWindowOnClick</include>
+			<include>ReloadWindowOnclick</include>
 		</control>
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
@@ -169,7 +169,7 @@
 			<label>$LOCALIZE[31005]</label>
 			<selected>Skin.HasSetting(ShowCaseWrapList)</selected>
 			<onclick>Skin.ToggleSetting(ShowCaseWrapList)</onclick>
-			<include>ReloadWindowOnClick</include>
+			<include>ReloadWindowOnclick</include>
 		</control>
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
@@ -322,8 +322,8 @@
 		<control type="button" id="1525">
 			<include>ButtonCommonValues</include>
 			<label>   - $LOCALIZE[31973]</label>
-			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[ShowcaseDelayLocalizeVar][/COLOR]</label2>
-			<onclick>$VAR[ShowcaseModDelayOnClickVar]</onclick>
+			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[ShowcaseModDelayOnclickLabelVar][/COLOR]</label2>
+			<onclick>$VAR[ShowcaseModDelayOnclickVar]</onclick>
 			<visible>[Container.Content(movies) | Container.Content(sets)] + [Skin.HasSetting(showcasemod) | Skin.HasSetting(boxsetmod)]</visible>
 		</control>
 	</include>
@@ -334,7 +334,7 @@
 			<label>$LOCALIZE[31005]</label>
 			<selected>Skin.HasSetting(ShowCaseWrapList)</selected>
 			<onclick>Skin.ToggleSetting(ShowCaseWrapList)</onclick>
-			<include>ReloadWindowOnClick</include>
+			<include>ReloadWindowOnclick</include>
 		</control>
 		<control type="radiobutton" id="1511">
 			<include>ButtonCommonValues</include>
@@ -364,13 +364,13 @@
 			<onclick condition="String.IsEmpty(Skin.String(Showcase.Delay))">Skin.SetString(Showcase.Delay,2)</onclick>
 			<onclick>Skin.ToggleSetting(Enable.ShowCaseSquare.ArtistCDArt)</onclick>
 			<selected>Skin.HasSetting(Enable.ShowCaseSquare.ArtistCDArt)</selected>
-			<visible>System.AddonIsEnabled(script.skin.info.service) + Container.Content(artists)</visible>
+			<visible>Container.Content(artists)</visible>
 		</control>
 		<control type="button" id="1515">
 			<include>ButtonCommonValues</include>
 			<label>   - $LOCALIZE[31973]</label>
-			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[ShowcaseDelayLocalizeVar][/COLOR]</label2>
-			<onclick>$VAR[ShowcaseModDelayOnClickVar]</onclick>
+			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[ShowcaseModDelayOnclickLabelVar][/COLOR]</label2>
+			<onclick>$VAR[ShowcaseModDelayOnclickVar]</onclick>
 			<visible>Container.Content(artists) + Skin.HasSetting(Enable.ShowCaseSquare.ArtistCDArt) | [Container.Content(albums) | Container.Content(songs)] + Skin.HasSetting(Enable.ShowCaseSquare.CDArt)</visible>
 		</control>
 	</include>
@@ -409,7 +409,7 @@
 			<textwidth>255</textwidth>
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31189]</label>
-			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[TriPanelLayoutLabelVar][/COLOR]</label2>
+			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[TriPanelLayoutOnclickLabelVar][/COLOR]</label2>
 			<onclick>$VAR[TriPanelLayoutOnclickVar]</onclick>
 			<visible>!Window.IsActive(music)</visible>
 		</control>
@@ -442,7 +442,7 @@
 			<label>$LOCALIZE[31005]</label>
 			<selected>Skin.HasSetting(PostersWrapList)</selected>
 			<onclick>Skin.ToggleSetting(PostersWrapList)</onclick>
-			<include>ReloadWindowOnClick</include>
+			<include>ReloadWindowOnclick</include>
 		</control>
 	</include>
 	<include name="ShiftViewSettings">
@@ -501,13 +501,13 @@
 			<label>$LOCALIZE[31966]</label>
 			<onclick>Skin.ToggleSetting(Enable.Shift.ArtistCDArt)</onclick>
 			<selected>Skin.HasSetting(Enable.Shift.ArtistCDArt)</selected>)
-			<visible>System.AddonIsEnabled(script.skin.info.service) + Container.Content(artists)</visible>
+			<visible>Container.Content(artists)</visible>
 		</control>
 		<control type="button" id="1518">
 			<include>ButtonCommonValues</include>
 			<label>   - $LOCALIZE[31973]</label>
-			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[ShowcaseDelayLocalizeVar][/COLOR]</label2>
-			<onclick>$VAR[ShowcaseModDelayOnClickVar]</onclick>
+			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[ShowcaseModDelayOnclickLabelVar][/COLOR]</label2>
+			<onclick>$VAR[ShowcaseModDelayOnclickVar]</onclick>
 			<visible>Control.IsVisible(1514) + Skin.HasSetting(Enable.Shift.ArtistCDArt)</visible>
 		</control>
 		<control type="radiobutton" id="1519">
@@ -525,7 +525,7 @@
 			<label>$LOCALIZE[31604]</label>
 			<onclick condition="Skin.HasSetting(Disable.BannerWallInfo) + Skin.HasSetting(BannerPlex)">Skin.Reset(BannerPlex)</onclick>
 			<onclick>Skin.ToggleSetting(Disable.BannerWallInfo)</onclick>
-			<include>ReloadWindowOnClick</include>
+			<include>ReloadWindowOnclick</include>
 			<selected>!Skin.HasSetting(Disable.BannerWallInfo)</selected>
 		</control>
 		<control type="radiobutton" id="1511">
@@ -533,7 +533,7 @@
 			<label>$LOCALIZE[31248]</label>
 			<onclick condition="!Skin.HasSetting(BannerPlex) + !Skin.HasSetting(Disable.BannerWallInfo)">Skin.SetBool(Disable.BannerWallInfo)</onclick>
 			<onclick>Skin.ToggleSetting(BannerPlex)</onclick>
-			<include>ReloadWindowOnClick</include>
+			<include>ReloadWindowOnclick</include>
 			<selected>Skin.HasSetting(BannerPlex)</selected>
 		</control>
 		<control type="radiobutton" id="1512">
@@ -566,7 +566,7 @@
 			<label>$LOCALIZE[31005]</label>
 			<selected>Skin.HasSetting(LogoWrapList)</selected>
 			<onclick>Skin.ToggleSetting(LogoWrapList)</onclick>
-			<include>ReloadWindowOnClick</include>
+			<include>ReloadWindowOnclick</include>
 		</control>
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
@@ -606,7 +606,7 @@
 			<label>$LOCALIZE[31257]</label>
 			<onclick>Skin.ToggleSetting(Enable.Logo.MovieSetList)</onclick>
 			<selected>Skin.HasSetting(Enable.Logo.MovieSetList)</selected>
-			<visible>System.AddonIsEnabled(script.skin.info.service) + [Container.Content(movies) | Container.Content(sets)]</visible>
+			<visible>Container.Content(movies) | Container.Content(sets)</visible>
 		</control>
 	</include>
 	<include name="IconsViewSettings">
@@ -663,7 +663,7 @@
 			<label>$LOCALIZE[31499]</label>
 			<onclick>Skin.ToggleSetting(nohighlist)</onclick>
 			<selected>Skin.HasSetting(nohighlist)</selected>
-			<include>ReloadWindowOnClick</include>
+			<include>ReloadWindowOnclick</include>
 			<visible>![Control.IsVisible(501) + String.Contains(Container.FolderPath,plugin.program.advanced.launcher)]</visible>
 			<visible>!Window.IsActive(music)</visible>
 		</control>
@@ -673,7 +673,7 @@
 			<label>$LOCALIZE[31499]</label>
 			<onclick>Skin.ToggleSetting(nohighlistgame)</onclick>
 			<selected>Skin.HasSetting(nohighlistgame)</selected>
-			<include>ReloadWindowOnClick</include>
+			<include>ReloadWindowOnclick</include>
 			<visible>Control.IsVisible(501) + String.Contains(Container.FolderPath,plugin.program.advanced.launcher)</visible>
 		</control>
 		<control type="radiobutton" id="1510">
@@ -913,8 +913,8 @@
 		<control type="button" id="1514">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31620]</label>
-			<onclick>$VAR[ViewFloorOnClickVar]</onclick>
-			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[ViewFloorLabelVar][/COLOR]</label2>
+			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[ViewFloorOnclickLabelVar][/COLOR]</label2>
+			<onclick>$VAR[ViewFloorOnclickVar]</onclick>
 			<visible>!Window.IsActive(music)</visible>
 		</control>
 		<control type="button" id="1515">
@@ -929,7 +929,7 @@
 			<label>$LOCALIZE[31005]</label>
 			<selected>Skin.HasSetting(RightListFixedList)</selected>
 			<onclick>Skin.ToggleSetting(RightListFixedList)</onclick>
-			<include>ReloadWindowOnClick</include>
+			<include>ReloadWindowOnclick</include>
 		</control>
 		<control type="radiobutton" id="1517">
 			<include>ButtonCommonValues</include>
@@ -1144,7 +1144,7 @@
 			<label>$LOCALIZE[31005]</label>
 			<onclick>Skin.ToggleSetting(MyFlixWrap)</onclick>
 			<selected>!Skin.HasSetting(MyFlixWrap)</selected>
-			<include>ReloadWindowOnClick</include>
+			<include>ReloadWindowOnclick</include>
 		</control>
 		<control type="button" id="1517">
 			<include>ButtonCommonValues</include>
@@ -1184,8 +1184,8 @@
 		<control type="button" id="1522">
 			<include>ButtonCommonValues</include>
 			<label>   - $LOCALIZE[31973]</label>
-			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[MyFlixDelayLocalizeVar][/COLOR]</label2>
-			<onclick>$VAR[MyFlixModDelayOnClickVar]</onclick>
+			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[MyFlixModDelayOnclickLabelVar][/COLOR]</label2>
+			<onclick>$VAR[MyFlixModDelayOnclickVar]</onclick>
 			<visible>[Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(Enable.MyFlix.MovieLandscape) + Skin.HasSetting(Enable.MyFlix.OpenCase)</visible>
 		</control>
 		<control type="radiobutton" id="1523">
@@ -1265,16 +1265,16 @@
 			<visible>!Window.IsActive(music)</visible>
 		</control>
 	</include>
-	<include name="ReloadWindowOnClick">
-		<onclick condition="Window.IsActive(addonbrowser)">SetProperty(ActiveWindow,addons,home)</onclick>
-		<onclick condition="Window.IsActive(music)">SetProperty(ActiveWindow,music,home)</onclick>
-		<onclick condition="Window.IsActive(musicplaylist)">SetProperty(ActiveWindow,musicplaylist,home)</onclick>
-		<onclick condition="Window.IsActive(videoplaylist)">SetProperty(ActiveWindow,videoplaylist,home)</onclick>
-		<onclick condition="Window.IsActive(videos)">SetProperty(ActiveWindow,videos,home)</onclick>
-		<onclick condition="Window.IsActive(programs)">SetProperty(ActiveWindow,programs,home)</onclick>
-		<onclick condition="Window.IsActive(tvguide)">SetProperty(ActiveWindow,tvguide,home)</onclick>
-		<onclick>SetProperty(ContainerPath,$ESCINFO[Container.FolderPath],home)</onclick>
-		<onclick condition="!Window.IsActive(tvguide)">Dialog.Close(1131)</onclick>
+	<include name="ReloadWindowOnclick">
+		<onclick condition="Window.IsActive(addonbrowser)">SetProperty(ActiveWindow,addons,Home)</onclick>
+		<onclick condition="Window.IsActive(music)">SetProperty(ActiveWindow,music,Home)</onclick>
+		<onclick condition="Window.IsActive(musicplaylist)">SetProperty(ActiveWindow,musicplaylist,Home)</onclick>
+		<onclick condition="Window.IsActive(videoplaylist)">SetProperty(ActiveWindow,videoplaylist,Home)</onclick>
+		<onclick condition="Window.IsActive(videos)">SetProperty(ActiveWindow,videos,Home)</onclick>
+		<onclick condition="Window.IsActive(programs)">SetProperty(ActiveWindow,programs,Home)</onclick>
+		<onclick condition="Window.IsActive(tvguide)">SetProperty(ActiveWindow,tvguide,Home)</onclick>
+		<onclick>SetProperty(ContainerPath,$ESCINFO[Container.FolderPath],Home)</onclick>
+		<onclick condition="!Window.IsActive(tvguide)">Dialog.Close(1104)</onclick>
 		<onclick condition="Window.IsActive(tvguide)">Dialog.Close(1114)</onclick>
 		<onclick>ReplaceWindow(1135)</onclick>
 	</include>

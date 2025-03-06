@@ -81,7 +81,7 @@
 				<onclick>RunScript(script.metadata.editor,dbid=$INFO[ListItem.DBID],type=$INFO[ListItem.DBType])</onclick>
 				<label>$LOCALIZE[21435]</label>
 				<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
-				<visible>!Skin.HasSetting(KioskMode.Enabled) + !Window.IsActive(home)</visible>
+				<visible>!Skin.HasSetting(KioskMode.Enabled) + !Window.IsActive(Home)</visible>
 				<visible>System.AddonIsEnabled(script.metadata.editor)</visible>
 			</control>
 			<control type="button" id="90207">

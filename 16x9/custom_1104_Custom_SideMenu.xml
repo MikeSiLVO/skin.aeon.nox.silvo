@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1104" type="dialog">
+	<onunload>ClearProperty(actualViewtype,Home)</onunload>
+	<onunload>ClearProperty(CustomSideMenu,Home)</onunload>
+	<defaultcontrol always="true">90100</defaultcontrol>
+	<controls>
+		<control type="group">
+			<include>WindowSettingsFadeAnimation</include>
+			<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1132)">Conditional</animation>
+			<control type="button" id="90099">
+				<left>365</left>
+				<top>-11</top>
+				<width>64</width>
+				<height>48</height>
+				<label></label>
+				<font>CloseButton</font>
+				<textcolor>grey</textcolor>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<onclick>Dialog.Close(1104)</onclick>
+				<texturefocus />
+				<texturenofocus />
+				<visible>system.getbool(input.enablemouse)</visible>
+			</control>
+			<control type="label">
+				<top>80</top>
+				<width>400</width>
+				<height>48</height>
+				<textoffsetx>15</textoffsetx>
+				<font>font13_title</font>
+				<label>$VAR[CustomSideMenuHeaderLabelVar]</label>
+				<textcolor>$VAR[ThemeLabelColor]</textcolor>
+			</control>
+			<control type="grouplist" id="90100">
+				<top>128</top>
+				<width>400</width>
+				<height>900</height>
+				<onleft>Dialog.Close(1104)</onleft>
+				<onright>Dialog.Close(1104)</onright>
+				<onup>90100</onup>
+				<ondown condition="!String.IsEqual(Window(Home).Property(CustomSideMenu),viewselection)">90100</ondown>
+				<ondown condition="String.IsEqual(Window(Home).Property(CustomSideMenu),viewselection)">90098</ondown>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSideMenu),viewsettings)">ViewSettingsButtons</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSideMenu),backgroundsettings)">BackgroundSettingsButtons</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSideMenu),viewselection)">ViewSelection</include>
+			</control>
+			<control type="button" id="90098">
+				<visible>!Skin.HasSetting(KioskMode.Enabled) + String.IsEqual(Window(Home).Property(CustomSideMenu),viewselection)</visible>
+				<top>1024</top>
+				<width>400</width>
+				<align>center</align>
+				<textoffsetx>30</textoffsetx>
+				<font>IconMedium</font>
+				<label></label>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<texturefocus />
+				<onleft>90100</onleft>
+				<onright>90100</onright>
+				<onup>90100</onup>
+				<ondown>SetFocus(1500)</ondown>
+				<onclick>ActivateWindow(1132)</onclick>
+			</control>
+		</control>
+	</controls>
+</window>

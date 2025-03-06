@@ -505,6 +505,17 @@
 				<font>font15</font>
 				<textcolor>$VAR[ThemeLabelColor]</textcolor>
 				<label>$INFO[ListItem.Year]$INFO[ListItem.Duration(mins), - , $LOCALIZE[12391]]</label>
+				<visible>!ListItem.IsCollection</visible>
+			</control>
+			<control type="label">
+				<left>50</left>
+				<top>330</top>
+				<width>550</width>
+				<height>20</height>
+				<font>font15</font>
+				<textcolor>$VAR[ThemeLabelColor]</textcolor>
+				<label>$INFO[Container(4500).NumItems,, $LOCALIZE[20342]]</label>
+				<visible>ListItem.IsCollection</visible>
 			</control>
 			<control type="label">
 				<left>50</left>

@@ -58,11 +58,39 @@
 		<radioposx>300</radioposx>
 	</include>
 	<include name="SettingsButtonCommonValues">
-		<width>1401</width>
+		<param name="is_addon_status" default="false" />
+		<param name="addon">$PARAM[addon]</param>
+		<definition>
+			<width>1401</width>
+			<font>font15</font>
+			<textoffsetx>30</textoffsetx>
+			<include condition="!$PARAM[is_addon_status]">SettingsButtonDefaults</include>
+			<include condition="$PARAM[is_addon_status]" content="AddonStatusButtonCommonValuesValues">
+				<param name="addon">$PARAM[addon]</param>
+			</include>
+		</definition>
+	</include>
+	<include name="SettingsButtonDefaults">
 		<height>81</height>
-		<textoffsetx>30</textoffsetx>
-		<font>font15</font>
 		<radioposx>1281</radioposx>
+	</include>
+	<include name="AddonStatusButtonCommonValuesValues">
+		<onback>Control.SetHidden(7999)</onback>
+		<onback>Control.SetVisible(9900)</onback>
+		<onback>90000</onback>
+		<height>54</height>
+		<label>$PARAM[addon]</label>
+		<radiowidth>100</radiowidth>
+		<radioheight>48</radioheight>
+		<radioposx>1301</radioposx>
+		<textureradioonfocus colordiffuse="darkgreen">buttons/check_box_enabled.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="darkgreen">buttons/check_box_enabled.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="darkorange">buttons/download.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="darkorange">buttons/download.png</textureradiooffnofocus>
+		<onclick condition="System.AddonIsEnabled($PARAM[addon])">Addon.OpenSettings($PARAM[addon])</onclick>
+		<onclick condition="System.HasAddon($PARAM[addon]) + !System.AddonIsEnabled($PARAM[addon])">EnableAddon($PARAM[addon])</onclick>
+		<onclick condition="!System.HasAddon($PARAM[addon])">InstallAddon($PARAM[addon])</onclick>
+		<selected>System.AddonIsEnabled($PARAM[addon]) + System.HasAddon($PARAM[addon])</selected>
 	</include>
 	<include name="SettingsTextboxValues">
 		<left>467</left>
@@ -162,4 +190,8 @@
 	<!-- EXP -->
 	<expression name="HasVerticalMenuWithExtended">String.IsEqual(Skin.String(MainMenu.Layout),vertical) + [String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus] | [String.Contains(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus]</expression>
 	<expression name="WidgetFanartVisible">[[String.IsEmpty(Container(9000).ListItem.Property(widgetDisableFanart)) + ControlGroup(90010).HasFocus] | [String.IsEmpty(Container(9000).ListItem.Property(widgetDisableFanart.2)) + ControlGroup(90020).HasFocus]]</expression>
+	<expression name="HasInfoPlotArt">[String.IsEqual(ListItem.DBTYPE,movie) + Skin.HasSetting(discartoninfo) + !String.IsEmpty(ListItem.Art(discart))] | [String.IsEqual(ListItem.DBTYPE,tvshow) + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(ListItem.Art(clearart))] | [String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)] + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(ListItem.Art(tvshow.clearart))</expression>
+	<expression name="NoInfoPlotArt">[String.IsEqual(ListItem.DBTYPE,movie) + [!Skin.HasSetting(discartoninfo) | String.IsEmpty(ListItem.Art(discart))]] | [String.IsEqual(ListItem.DBTYPE,tvshow) + [!Skin.HasSetting(CharacterOnInfo) | String.IsEmpty(ListItem.Art(clearart))]] | [[String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)] + [!Skin.HasSetting(CharacterOnInfo) | String.IsEmpty(ListItem.Art(tvshow.clearart))]] | String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.Property(item.type),person) | String.IsEqual(ListItem.DBTYPE,musicvideo)</expression>
+	<expression name="HasCustomInfoPlotArt">[String.IsEqual(Window(Home).Property(item_dbtype),movie) + Skin.HasSetting(discartoninfo) + !String.IsEmpty(Container(4800).ListItem.Art(discart))] | [String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(Container(4800).ListItem.Art(clearart))] | [String.IsEqual(Window(Home).Property(item_dbtype),episode) | String.IsEqual(Window(Home).Property(item_dbtype),season)] + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(Container(4800).ListItem.Art(tvshow.clearart))</expression>
+	<expression name="NoCustomInfoPlotArt">[String.IsEqual(Window(Home).Property(item_dbtype),movie) + [!Skin.HasSetting(discartoninfo) | String.IsEmpty(Container(4800).ListItem.Art(discart))]] | [String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + [!Skin.HasSetting(CharacterOnInfo) | String.IsEmpty(Container(4800).ListItem.Art(clearart))]] | [[String.IsEqual(Window(Home).Property(item_dbtype),episode) | String.IsEqual(Window(Home).Property(item_dbtype),season)] + [!Skin.HasSetting(CharacterOnInfo) | String.IsEmpty(Container(4800).ListItem.Art(tvshow.clearart))]]</expression>
 </includes>

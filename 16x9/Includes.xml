@@ -20,10 +20,14 @@
 	<include file="script-skinshortcuts-includes.xml" />
 	<include file="script-skinviewtypes-includes.xml" />
 	<include file="Variables.xml" />
+	<include file="Variables_Artwork.xml" />
+	<include file="Variables_InfoPanel.xml" />
+	<include file="Variables_Onclick.xml" />
+	<include file="Variables_Paths.xml" />
 	<include file="Variables_Widgets.xml" />
 	<!-- Media Menu -->
 	<include name="SideBladeLeft">
-		<animation effect="slide" start="440,0" end="0,0" time="400" tween="quadratic" easing="out" condition="String.IsEmpty(Window(Home).Property(MediaMenu)) | Window.IsActive(videos) + Window.IsVisible(selectdialog)">Conditional</animation>
+		<animation effect="slide" start="440,0" end="0,0" time="400" tween="quadratic" easing="out" condition="String.IsEmpty(Window(Home).Property(MediaMenu)) | Window.IsActive(videos) + Window.IsVisible(selectdialog) | Window.IsVisible(1126) | Window.IsVisible(progressdialog)">Conditional</animation>
 		<animation effect="slide" start="0,0" end="-440,0" time="400" tween="quadratic" easing="out">WindowClose</animation>
 		<control type="image">
 			<width>432</width>
@@ -50,7 +54,7 @@
 			<onclick>SetFocus(50)</onclick>
 			<texturefocus />
 			<texturenofocus />
-			<visible>system.getbool(input.enablemouse) + !Window.IsVisible(1128) + !Window.IsVisible(1130) + !Window.IsVisible(1131) + !Window.IsVisible(1132)</visible>
+			<visible>system.getbool(input.enablemouse) + !Window.IsVisible(1104) + !Window.IsVisible(1132)</visible>
 		</control>
 		<control type="image">
 			<top>-20</top>
@@ -79,7 +83,7 @@
 		<onback>ClearProperty(MediaMenu,Home)</onback>
 		<onback>50</onback>
 		<include condition="Skin.HasSetting(KioskMode.Enabled)">KioskModeButton</include>
-		<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1128) | Window.IsVisible(1130) | Window.IsVisible(1131) | Window.IsVisible(1132)" reversible="true">Conditional</animation>
+		<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1104) | Window.IsVisible(1132)" reversible="true">Conditional</animation>
 		<control type="button" id="200">
 			<label>31006</label>
 			<textwidth>352</textwidth>
@@ -94,7 +98,8 @@
 			<textwidth>352</textwidth>
 			<include>ButtonCommonValues</include>
 			<label>$INFO[Container.Viewmode,$LOCALIZE[31100] ]</label>
-			<onclick condition="!Skin.HasSetting(skinvariables.viewtypes) | !Window.IsActive(MyVideoNav.xml)">ActivateWindow(1130)</onclick>
+			<onclick condition="!Skin.HasSetting(skinvariables.viewtypes) | !Window.IsActive(MyVideoNav.xml)">SetProperty(CustomSideMenu,viewselection,Home)</onclick>
+			<onclick condition="!Skin.HasSetting(skinvariables.viewtypes) | !Window.IsActive(MyVideoNav.xml)">ActivateWindow(1104)</onclick>
 			<onclick condition="Skin.HasSetting(skinvariables.viewtypes) + Window.IsActive(MyVideoNav.xml)">Runscript(script.skinvariables,action=buildviews,contentid=$VAR[SkinVariablesContentVar],pluginname=$INFO[Container.PluginName])</onclick>
 			<visible>!Window.IsActive(tvchannels)</visible>
 		</control>
@@ -127,7 +132,8 @@
 			<onclick condition="Control.IsVisible(602)">SetProperty(actualViewtype,FanartList,Home)</onclick>
 			<onclick condition="Control.IsVisible(603)">SetProperty(actualViewtype,MusicJukebox,Home)</onclick>
 			<onclick condition="Control.IsVisible(609)">SetProperty(actualViewtype,FullscreenWall,Home)</onclick>
-			<onclick>ActivateWindow(1131)</onclick>
+			<onclick>SetProperty(CustomSideMenu,viewsettings,Home)</onclick>
+			<onclick>ActivateWindow(1104)</onclick>
 		</control>
 		<control type="button" id="3">
 			<description>Sort by button</description>
@@ -144,7 +150,8 @@
 		<control type="button" id="2001">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[33068]</label>
-			<onclick>ActivateWindow(1128)</onclick>
+			<onclick>SetProperty(CustomSideMenu,backgroundsettings,Home)</onclick>
+			<onclick>ActivateWindow(1104)</onclick>
 		</control>
 	</include>
 	<include name="PVRMediaMenu">
@@ -167,7 +174,7 @@
 				<onback>ClearProperty(MediaMenu,Home)</onback>
 				<onback>50</onback>
 				<include condition="Skin.HasSetting(KioskMode.Enabled)">KioskModeButton</include>
-				<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1128)" reversible="true">Conditional</animation>
+				<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1104)" reversible="true">Conditional</animation>
 				<control type="button" id="203">
 					<description>Quicknav</description>
 					<textwidth>352</textwidth>
@@ -271,7 +278,8 @@
 				<control type="button" id="2001">
 					<include>ButtonCommonValues</include>
 					<label>$LOCALIZE[33068]</label>
-					<onclick>ActivateWindow(1128)</onclick>
+					<onclick>SetProperty(CustomSideMenu,backgroundsettings,Home)</onclick>
+					<onclick>ActivateWindow(1104)</onclick>
 				</control>
 				<control type="button" id="201">
 					<description>View options</description>
@@ -324,7 +332,7 @@
 		<onback>ClearProperty(MediaMenu,Home)</onback>
 		<onback>50</onback>
 		<include condition="Skin.HasSetting(KioskMode.Enabled)">KioskModeButton</include>
-		<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1128)" reversible="true">Conditional</animation>
+		<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1104)" reversible="true">Conditional</animation>
 		<control type="label" id="200">
 			<width>400</width>
 			<height>52</height>
@@ -336,14 +344,15 @@
 		<control type="button" id="2001">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[33068]</label>
-			<onclick>ActivateWindow(1128)</onclick>
+			<onclick>SetProperty(CustomSideMenu,backgroundsettings,Home)</onclick>
+			<onclick>ActivateWindow(1104)</onclick>
 			<visible>!Window.IsActive(profiles)</visible>
 		</control>
 		<control type="button" id="2002">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[13200]: $LOCALIZE[33068]</label>
 			<onclick>Skin.Reset(ItemToEdit.MultiFanart)</onclick>
-			<onclick>$VAR[FallbackBackgroundOnClickVar]</onclick>
+			<onclick>$VAR[FallbackBackgroundOnclickVar]</onclick>
 			<onclick>SetProperty(CustomSelect,fallbackbackground,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 			<visible>Window.IsActive(profiles)</visible>
@@ -371,7 +380,7 @@
 			<onright>9950</onright>
 			<onback>ClearProperty(MediaMenu,Home)</onback>
 			<onback>50</onback>
-			<visible>Player.HasMedia + !String.IsEmpty(Window(Home).Property(MediaMenu)) + !Window.IsVisible(1128) + !Window.IsVisible(1130) + !Window.IsVisible(1131) + !Window.IsVisible(1132)</visible>
+			<visible>Player.HasMedia + !String.IsEmpty(Window(Home).Property(MediaMenu)) + !Window.IsVisible(1104) + !Window.IsVisible(1132)</visible>
 			<control type="button" id="9958">
 				<texturefocus />
 				<font>IconMediaMenuButtons</font>
@@ -2128,7 +2137,7 @@
 						<visible>ListItem.IsCollection</visible>
 						<control type="group">
 							<height>40</height>
-							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Director)) | !String.IsEmpty(Container(4500).ListItem(0).Director)</visible>
+							<visible>!String.IsEmpty(Container(4501).ListItem.Property(director.collection)) | !String.IsEmpty(Container(4500).ListItem(0).Director)</visible>
 							<control type="label">
 								<left>5</left>
 								<width>60</width>
@@ -2147,7 +2156,7 @@
 						</control>
 						<control type="group">
 							<height>40</height>
-							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre)) | !String.IsEmpty(Container(4500).ListItem(0).Genre)</visible>
+							<visible>!String.IsEmpty(Container(4501).ListItem.Property(genre.collection)) | !String.IsEmpty(Container(4500).ListItem(0).Genre)</visible>
 							<control type="label">
 								<left>5</left>
 								<width>60</width>
@@ -3217,7 +3226,7 @@
 									<itemgap>10</itemgap>
 									<orientation>horizontal</orientation>
 									<control type="grouplist">
-										<visible>VideoPlayer.Content(movies) + !String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
+										<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Container(4501).ListItem.Property(ratings.tomatometerallaudience.rating)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating))]</visible>
 										<width>140</width>
 										<orientation>horizontal</orientation>
 										<control type="image">
@@ -3236,7 +3245,7 @@
 										</control>
 									</control>
 									<control type="grouplist">
-										<visible>VideoPlayer.Content(movies) + !String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience))</visible>
+										<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(VideoPlayer.Rating(tomatometerallaudience)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter))]</visible>
 										<width>140</width>
 										<orientation>horizontal</orientation>
 										<control type="image">
@@ -3255,45 +3264,7 @@
 										</control>
 									</control>
 									<control type="grouplist">
-										<visible>VideoPlayer.Content(movies) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics))</visible>
-										<width>140</width>
-										<orientation>horizontal</orientation>
-										<control type="image">
-											<width>60</width>
-											<height>55</height>
-											<aspectratio>keep</aspectratio>
-											<colordiffuse>grey</colordiffuse>
-											<texture>$VAR[TMDbHelperRottenTomatoLogoVar]</texture>
-										</control>
-										<control type="label">
-											<width>auto</width>
-											<height>60</height>
-											<font>font14_bold</font>
-											<textcolor>grey</textcolor>
-											<label>$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating),,%]</label>
-										</control>
-									</control>
-									<control type="grouplist">
-										<visible>VideoPlayer.Content(movies) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter)) + String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience))</visible>
-										<width>140</width>
-										<orientation>horizontal</orientation>
-										<control type="image">
-											<width>60</width>
-											<height>48</height>
-											<aspectratio>keep</aspectratio>
-											<colordiffuse>grey</colordiffuse>
-											<texture>$VAR[RottenFreshAudienceTMDbHelperLogoVar]</texture>
-										</control>
-										<control type="label">
-											<width>auto</width>
-											<height>60</height>
-											<font>font14_bold</font>
-											<textcolor>grey</textcolor>
-											<label>$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter),,%]</label>
-										</control>
-									</control>
-									<control type="grouplist">
-										<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.TMDb_Rating))</visible>
+										<visible>!String.IsEmpty(Container(4501).ListItem.Property(ratings.themoviedb.rating)) | !String.IsEmpty(Container(4501).ListItem.Property(ratings.tmdb.rating)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.TMDb_Rating))</visible>
 										<width>140</width>
 										<itemgap>10</itemgap>
 										<orientation>horizontal</orientation>
@@ -3309,7 +3280,7 @@
 											<height>60</height>
 											<font>font14_bold</font>
 											<textcolor>grey</textcolor>
-											<label>$INFO[Window(Home).Property(TMDbHelper.Player.TMDb_Rating)]</label>
+											<label>$VAR[TMDbRatingsLabelVar]</label>
 										</control>
 									</control>
 									<control type="grouplist">
@@ -3331,26 +3302,6 @@
 											<label>$INFO[Window(Home).Property(TMDbHelper.Player.Trakt_Rating)]</label>
 										</control>
 									</control>
-									<!-- <control type="grouplist">
-										<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.IMDb_Rating))</visible>
-										<width>140</width>
-										<itemgap>10</itemgap>
-										<orientation>horizontal</orientation>
-										<control type="image">
-											<width>60</width>
-											<height>60</height>
-											<aspectratio>keep</aspectratio>
-											<colordiffuse>grey</colordiffuse>
-											<texture>logos/imdb.png</texture>
-										</control>
-										<control type="label">
-											<width>auto</width>
-											<height>60</height>
-											<font>font14_bold</font>
-											<textcolor>grey</textcolor>
-											<label>$INFO[Window(Home).Property(TMDbHelper.Player.IMDb_Rating)]</label>
-										</control>
-									</control> -->
 								</control>
 							</control>
 						</control>
@@ -3705,10 +3656,10 @@
 		</control>
 	</include>
 	<!-- Content Lists -->
-	<include name="EmbuaryHelperContentList">
-		<control type="list" id="9142">
+	<include name="SkinVariablesContentList">
+		<control type="list" id="4501">
 			<include>HiddenList</include>
-			<content limit="1">$VAR[EmbuaryHelperContentVar]</content>
+			<content>$VAR[SkinVariableDBContainerPluginPath]</content>
 		</control>
 	</include>
 	<include name="TMDbHelperContentList">
@@ -3978,32 +3929,47 @@
 		</control>
 	</include>
 	<include name="BusySpinner">
-		<control type="group">
-			<visible>$PARAM[visible]</visible>
-			<control type="image">
-				<include>FullscreenDimensions</include>
-				<texture>$PARAM[texture]</texture>
-			</control>
-			<control type="group">
-				<left>912</left>
-				<top>492</top>
+		<param name="left">912</param>
+		<param name="top">492</param>
+		<param name="size">96</param>
+		<definition>
+			<control type="group" id="99999">
+				<visible>$PARAM[visible]</visible>
 				<control type="image">
-					<description>Busy animation</description>
-					<width>96</width>
-					<height>96</height>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">android/busyspinner_clockwise.png</texture>
-					<aspectratio>keep</aspectratio>
-					<animation effect="rotate" start="0" end="360" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
+					<include>FullscreenDimensions</include>
+					<texture>$PARAM[texture]</texture>
 				</control>
-				<control type="image">
-					<description>Busy animation</description>
-					<width>96</width>
-					<height>96</height>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">android/busyspinner_counterclockwise.png</texture>
-					<aspectratio>keep</aspectratio>
-					<animation effect="rotate" start="360" end="0" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
+				<control type="group">
+					<left>$PARAM[left]</left>
+					<top>$PARAM[top]</top>
+					<control type="image">
+						<description>Busy animation</description>
+						<width>$PARAM[size]</width>
+						<height>$PARAM[size]</height>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">android/busyspinner_clockwise.png</texture>
+						<aspectratio>keep</aspectratio>
+						<animation effect="rotate" start="0" end="360" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
+					</control>
+					<control type="image">
+						<description>Busy animation</description>
+						<width>$PARAM[size]</width>
+						<height>$PARAM[size]</height>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">android/busyspinner_counterclockwise.png</texture>
+						<aspectratio>keep</aspectratio>
+						<animation effect="rotate" start="360" end="0" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
+					</control>
+					<!-- <control type="label">
+						<description>Busy label</description>
+						<width>96</width>
+						<height>96</height>
+						<textcolor>grey</textcolor>
+						<align>center</align>
+						<label>$INFO[Control.GetLabel(10),,%]</label>
+						<font>font12</font>
+						<visible>!Integer.IsEqual(Control.GetLabel(10), 0) + Window.IsVisible(busydialog)</visible>
+					</control> -->
 				</control>
 			</control>
-		</control>
+		</definition>
 	</include>
 </includes>

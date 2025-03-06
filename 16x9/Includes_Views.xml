@@ -85,7 +85,7 @@
 					<top>34</top>
 					<width>700</width>
 					<visible>![Control.IsVisible(50) + !Skin.HasSetting(Enable.SlimList)]</visible>
-					<visible>!String.IsEmpty(ListItem.Genre) | ListItem.IsCollection + [!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre)) | !String.IsEmpty(Container(4500).ListItem(0).Genre)]</visible>
+					<visible>!String.IsEmpty(ListItem.Genre) | ListItem.IsCollection + [!String.IsEmpty(Container(4501).ListItem.Property(genre.collection)) | !String.IsEmpty(Container(4500).ListItem(0).Genre)]</visible>
 					<control type="label">
 						<left>40</left>
 						<width max="$PARAM[max_width]">auto</width>
@@ -223,7 +223,7 @@
 					<top>34</top>
 					<width>650</width>
 					<height>40</height>
-					<visible>!String.IsEmpty(ListItem.Genre) | ListItem.IsCollection + [!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre)) | !String.IsEmpty(Container(4500).ListItem(0).Genre)]</visible>
+					<visible>!String.IsEmpty(ListItem.Genre) | ListItem.IsCollection + [!String.IsEmpty(Container(4501).ListItem.Property(genre.collection)) | !String.IsEmpty(Container(4500).ListItem(0).Genre)]</visible>
 					<control type="label">
 						<right>40</right>
 						<width max="$PARAM[max_width]">auto</width>

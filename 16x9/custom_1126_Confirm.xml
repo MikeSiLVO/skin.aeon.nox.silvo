@@ -6,11 +6,10 @@
 	<onunload>ClearProperty(ResetSkinSettings,Home)</onunload>
 	<onunload>ClearProperty(NotWarnedOnHidingViz,Home)</onunload>
 	<onunload>ClearProperty(Notify,Home)</onunload>
-	<onunload>ClearProperty(NotifyFileManager,Home)</onunload>
-	<onunload>ClearProperty(NotifyNoRepo,Home)</onunload>
 	<onunload>ClearProperty(NotWarnedOnMuzicVizInfo,Home)</onunload>
 	<onunload>ClearProperty(OfferReloadAfterConfirm,Home)</onunload>
 	<onunload>ClearProperty(AskDefaultBackground,Home)</onunload>
+	<onunload>ClearProperty(CustomConfirm,Home)</onunload>
 	<controls>
 		<include>DimBackground</include>
 		<control type="group">
@@ -24,7 +23,7 @@
 				<bordersize>1</bordersize>
 				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
 			</control>
-			<control type="label" id="1">
+			<control type="label">
 				<left>2</left>
 				<top>2</top>
 				<width>898</width>
@@ -33,7 +32,7 @@
 				<font>font16_title_bold</font>
 				<align>center</align>
 				<textcolor>grey2</textcolor>
-				<label>$LOCALIZE[14117]</label>
+				<label>$VAR[CustomConfirmHeaderLabelVar]</label>
 			</control>
 			<control type="textbox" id="400">
 				<left>45</left>
@@ -64,6 +63,7 @@
 					<onup>noop</onup>
 					<ondown>noop</ondown>
 					<onclick>Dialog.Close(1126)</onclick>
+					<onclick condition="String.IsEqual(Window(Home).Property(CustomConfirm),cleanlibrary)">CleanLibrary(video)</onclick>
 					<include condition="String.IsEqual(Window(Home).Property(SetSkinColors),SiLVO)">SetPresetSiLVOTheme</include>
 					<include condition="String.IsEqual(Window(Home).Property(SetSkinColors),Blue)">SetPresetBlueTheme</include>
 					<include condition="String.IsEqual(Window(Home).Property(SetSkinColors),Orange)">SetPresetOrangeTheme</include>
@@ -113,8 +113,6 @@
 					<onright>noop</onright>
 					<onup>noop</onup>
 					<ondown>noop</ondown>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(NotifyFileManager))">Skin.SetBool(WarnedOnFileManager)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(NotifyNoRepo))">ClearProperty(NotifyNoRepo,Home)</onclick>
 					<onclick condition="!String.IsEmpty(Window(Home).Property(NotWarnedOnMuzicVizInfo))">ClearProperty(NotWarnedOnMuzicVizInfo,Home)</onclick>
 					<onclick condition="!Skin.HasSetting(WarnedOnMusicVizInfo) + !String.IsEmpty(Window(Home).Property(NotWarnedOnMuzicVizInfo))">Skin.SetBool(WarnedOnMusicVizInfo)</onclick>
 					<onclick condition="!Skin.HasSetting(WarnedOnFullscreenInfo) + !String.IsEmpty(Window(Home).Property(NotWarnedOnFullscreenInfo))">Skin.SetBool(WarnedOnFullscreenInfo)</onclick>

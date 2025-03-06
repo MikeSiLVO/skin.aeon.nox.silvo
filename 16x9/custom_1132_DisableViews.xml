@@ -2,24 +2,24 @@
 <window id="1132" type="dialog">
 	<defaultcontrol always="true">9012</defaultcontrol>
 	<onload>ClearProperty(DisableView,1132)</onload>
-	<onunload>SetFocus(9012)</onunload>
+	<onunload>SetFocus(90098)</onunload>
 	<controls>
-		<control type="button" id="8999">
-			<left>365</left>
-			<top>-11</top>
-			<width>64</width>
-			<height>48</height>
-			<label></label>
-			<font>CloseButton</font>
-			<textcolor>grey</textcolor>
-			<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
-			<onclick>Dialog.Close(1132)</onclick>
-			<texturefocus />
-			<texturenofocus />
-			<visible>system.getbool(input.enablemouse)</visible>
-		</control>
 		<control type="group">
 			<include>WindowSettingsFadeAnimation</include>
+			<control type="button" id="8999">
+				<left>365</left>
+				<top>-11</top>
+				<width>64</width>
+				<height>48</height>
+				<label></label>
+				<font>CloseButton</font>
+				<textcolor>grey</textcolor>
+				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+				<onclick>Dialog.Close(1132)</onclick>
+				<texturefocus />
+				<texturenofocus />
+				<visible>system.getbool(input.enablemouse)</visible>
+			</control>
 			<control type="label">
 				<top>80</top>
 				<width>400</width>
@@ -237,7 +237,8 @@
 				<label>$LOCALIZE[31449]</label>
 				<onup>9012</onup>
 				<ondown>1615</ondown>
-				<onclick>ReloadSkin()</onclick>
+				<onclick condition="!String.IsEmpty(Window(1132).Property(DisableView))">ReloadSkin()</onclick>
+				<onclick condition="String.IsEmpty(Window(1132).Property(DisableView))">Dialog.Close(1132)</onclick>
 			</control>
 		</control>
 	</controls>

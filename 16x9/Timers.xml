@@ -29,4 +29,18 @@
 		<stop>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(askdefaultbackground),3)</stop>
 		<onstop>ActivateWindow(1126)</onstop>
 	</timer>
+	<timer>
+		<name>autoclosecustomtrailer</name>
+		<start reset="true">Window.IsVisible(1103) + Player.HasVideo</start>
+		<reset>Player.HasVideo</reset>
+		<stop>!Player.HasVideo | Window.IsVisible(okdialog)</stop>
+		<onstop>Dialog.Close(1103)</onstop>
+	</timer>
+	<timer>
+		<name>autoclosenotrailer</name>
+		<start reset="true">Window.IsVisible(1103)</start>
+		<reset>Player.HasVideo</reset>
+		<stop>Window.IsVisible(okdialog)</stop>
+		<onstop>Dialog.Close(1103)</onstop>
+	</timer>
 </timers>

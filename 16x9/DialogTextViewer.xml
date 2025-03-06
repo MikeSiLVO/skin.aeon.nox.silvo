@@ -3,19 +3,18 @@
 	<defaultcontrol always="true">62</defaultcontrol>
 	<controls>
 		<control type="button" id="62">
+			<include>HiddenObject</include>
 			<onclick>Dialog.Close(textviewer)</onclick>
 			<onleft>Dialog.Close(textviewer)</onleft>
 			<onright>Dialog.Close(textviewer)</onright>
 			<onup>PageUp(61)</onup>
 			<ondown>PageDown(61)</ondown>
-			<include>HiddenObject</include>
 		</control>
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture>colors/black25.png</texture>
-			<animation effect="fade" time="100">WindowOpen</animation>
-			<animation effect="fade" time="50">WindowClose</animation>
-		</control>
+		<include content="DimBackground">
+			<param name="texture">colors/black75.png</param>
+			<param name="timeopen">100</param>
+			<param name="timeclose">50</param>
+		</include>
 		<control type="group">
 			<include>WindowSettingsFadeAnimation</include>
 			<left>270</left>

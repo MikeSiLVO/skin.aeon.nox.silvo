@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1103" type="dialog">
+	<defaultcontrol always="true">64</defaultcontrol>
+	<onload condition="!String.IsEmpty(Window(Home).Property(trailer))">PlayMedia($ESCINFO[Window(Home).Property(trailer)],1)</onload>
+	<onunload condition="Player.HasVideo">Action(Stop)</onunload>
+	<onunload>ClearProperty(trailer,Home)</onunload>
+	<onunload condition="Window.IsVisible(okdialog)">SetFocus(11)</onunload>
+	<onunload condition="Window.IsVisible(1102) + !Window.IsVisible(okdialog)">SetFocus(4612)</onunload>
+	<onunload condition="!Window.IsVisible(1102) + !Window.IsVisible(okdialog)">SetFocus(913)</onunload>
+	<controls>
+		<control type="button" id="64">
+			<include>HiddenObject</include>
+			<onleft condition="Player.HasVideo">Seek(-5)</onleft>
+			<onright condition="Player.HasVideo">Seek(5)</onright>
+			<onclick>Dialog.Close(1103)</onclick>
+		</control>
+		<control type="group">
+			<include>WindowSettingsFadeAnimation</include>
+			<include content="DimBackground">
+				<param name="texture">colors/black.png</param>
+				<param name="timeopen">100</param>
+				<param name="timeclose">50</param>
+				<param name="visible">Player.HasVideo</param>
+			</include>
+			<control type="videowindow">
+				<include>FullscreenDimensions</include>
+			</control>
+			<control type="group">
+				<bottom>0</bottom>
+				<width>100%</width>
+				<height>8</height>
+				<visible>Player.Caching | Player.Seeking | Player.HasPerformedSeek(2) | Player.Forwarding | Player.Rewinding</visible>
+				<control type="progress">
+					<texturebg border="2">osd/texturebg.png</texturebg>
+					<lefttexture />
+					<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="2">osd/midtexture.png</midtexture>
+					<righttexture />
+					<overlaytexture />
+					<info>Player.Progress</info>
+				</control>
+				<control type="slider" id="65">
+					<texturesliderbar colordiffuse="00FFFFFF">osd/progress/nub_bar.png</texturesliderbar>
+					<textureslidernib colordiffuse="$VAR[ThemeLabelColor]">osd/progress/nub_bar.png</textureslidernib>
+					<textureslidernibfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</textureslidernibfocus>
+					<info>Player.Progress</info>
+					<action>seek</action>
+					<visible>Player.SeekEnabled</visible>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>

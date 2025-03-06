@@ -366,7 +366,7 @@
 			<control type="group" id="501102">
 				<left>1270</left>
 				<top>733</top>
-				<visible>ListItem.IsCollection + System.AddonIsEnabled(script.skin.info.service) + !Skin.HasSetting(nohighlist)</visible>
+				<visible>ListItem.IsCollection +  !Skin.HasSetting(nohighlist)</visible>
 				<include>VisibleFadeAnimation</include>
 				<control type="textbox" id="70">
 					<label>$VAR[VideoPlotVar]</label>
@@ -380,37 +380,6 @@
 					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(50161)</autoscroll>
 				</control>
 				<control type="scrollbar" id="50162">
-					<left>636</left>
-					<top>99</top>
-					<width>14</width>
-					<height>250</height>
-					<onup>PageUp(70)</onup>
-					<ondown>PageUp(70)</ondown>
-					<onleft>50</onleft>
-					<onright condition="!Control.IsVisible(615)">4400</onright>
-					<onright condition="Control.IsVisible(615)">615</onright>
-					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
-					<showonepage>false</showonepage>
-				</control>
-			</control>
-			<control type="group" id="501103">
-				<left>1270</left>
-				<top>713</top>
-				<visible>ListItem.IsCollection + !System.AddonIsEnabled(script.skin.info.service) + !Skin.HasSetting(nohighlist)</visible>
-				<include>VisibleFadeAnimation</include>
-				<control type="textbox" id="70">
-					<label>$VAR[VideoPlotVar]</label>
-					<left>15</left>
-					<width>615</width>
-					<height>350</height>
-					<font>font14_textbox</font>
-					<pagecontrol>50163</pagecontrol>
-					<include>DefaultButtonsValues</include>
-					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(50161)</autoscroll>
-				</control>
-				<control type="scrollbar" id="50163">
 					<left>636</left>
 					<top>99</top>
 					<width>14</width>
@@ -754,13 +723,25 @@
 						<label>$INFO[ListItem.Rating]</label>
 						<visible>[!ListItem.IsCollection] + [!Skin.HasSetting(Enable.HideRatings) | String.IsEqual(Container.SortMethod,$LOCALIZE[563])]</visible>
 					</control>
-					<control type="image">
-						<left>742</left>
+					<control type="group">
+						<left>739</left>
 						<top>2</top>
-						<width>64</width>
-						<height>64</height>
-						<aspectratio>keep</aspectratio>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+						<control type="label">
+							<left>3</left>
+							<width>64</width>
+							<height>64</height>
+							<textcolor>white3</textcolor>
+							<font>IconMediumMD</font>
+							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
+						</control>
+						<control type="label">
+							<width>64</width>
+							<height>64</height>
+							<textcolor>white3</textcolor>
+							<font>IconMediumMD</font>
+							<label>$VAR[ListItemOverlayProgress]</label>
+							<animation effect="zoom" start="70" end="70" center="auto" condition="true">Conditional</animation>
+						</control>
 					</control>
 				</itemlayout>
 				<focusedlayout height="68" width="806" condition="Container.Content(movies)">
@@ -817,13 +798,25 @@
 						<visible>[!ListItem.IsCollection] + [!Skin.HasSetting(Enable.HideRatings) | String.IsEqual(Container.SortMethod,$LOCALIZE[563])]</visible>
 						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(501)">Conditional</animation>
 					</control>
-					<control type="image">
-						<left>742</left>
+					<control type="group">
+						<left>739</left>
 						<top>2</top>
-						<width>64</width>
-						<height>64</height>
-						<aspectratio>keep</aspectratio>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+						<control type="label">
+							<left>3</left>
+							<width>64</width>
+							<height>64</height>
+							<textcolor>white3</textcolor>
+							<font>IconMediumMD</font>
+							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
+						</control>
+						<control type="label">
+							<width>64</width>
+							<height>64</height>
+							<textcolor>white3</textcolor>
+							<font>IconMediumMD</font>
+							<label>$VAR[ListItemOverlayProgress]</label>
+							<animation effect="zoom" start="70" end="70" center="auto" condition="true">Conditional</animation>
+						</control>
 					</control>
 				</focusedlayout>
 				<itemlayout height="68" width="806" condition="Container.Content(tvshows)">
@@ -854,13 +847,24 @@
 						<label>$INFO[ListItem.Rating]</label>
 						<visible>!Skin.HasSetting(Enable.HideRatings) | String.IsEqual(Container.SortMethod,$LOCALIZE[563])</visible>
 					</control>
-					<control type="image">
+					<control type="group">
 						<left>742</left>
 						<top>2</top>
-						<width>64</width>
-						<height>64</height>
-						<aspectratio>keep</aspectratio>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+						<control type="label">
+							<left>7</left>
+							<width>64</width>
+							<height>64</height>
+							<textcolor>white3</textcolor>
+							<font>IconMediumMD</font>
+							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
+						</control>
+						<control type="label">
+							<width>64</width>
+							<height>64</height>
+							<font>font12_title</font>
+							<align>center</align>
+							<label>$VAR[ListItemOverlayShowsVar]</label>
+						</control>
 					</control>
 				</itemlayout>
 				<focusedlayout height="68" width="806" condition="Container.Content(tvshows)">
@@ -898,13 +902,24 @@
 						<visible>!Skin.HasSetting(Enable.HideRatings) | String.IsEqual(Container.SortMethod,$LOCALIZE[563])</visible>
 						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(501)">Conditional</animation>
 					</control>
-					<control type="image">
+					<control type="group">
 						<left>742</left>
 						<top>2</top>
-						<width>64</width>
-						<height>64</height>
-						<aspectratio>keep</aspectratio>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+						<control type="label">
+							<left>7</left>
+							<width>64</width>
+							<height>64</height>
+							<textcolor>white3</textcolor>
+							<font>IconMediumMD</font>
+							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
+						</control>
+						<control type="label">
+							<width>64</width>
+							<height>64</height>
+							<font>font12_title</font>
+							<align>center</align>
+							<label>$VAR[ListItemOverlayShowsVar]</label>
+						</control>
 					</control>
 				</focusedlayout>
 				<itemlayout height="68" width="806" condition="Container.Content(seasons)">
@@ -928,11 +943,13 @@
 					<control type="group">
 						<left>742</left>
 						<top>2</top>
-						<control type="image">
+						<control type="label">
+							<left>7</left>
 							<width>64</width>
 							<height>64</height>
-							<aspectratio>keep</aspectratio>
-							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+							<textcolor>white3</textcolor>
+							<font>IconMediumMD</font>
+							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
 						</control>
 						<control type="label">
 							<width>64</width>
@@ -972,11 +989,13 @@
 					<control type="group">
 						<left>742</left>
 						<top>2</top>
-						<control type="image">
+						<control type="label">
+							<left>7</left>
 							<width>64</width>
 							<height>64</height>
-							<aspectratio>keep</aspectratio>
-							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+							<textcolor>white3</textcolor>
+							<font>IconMediumMD</font>
+							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
 						</control>
 						<control type="label">
 							<width>64</width>
@@ -1007,13 +1026,25 @@
 						<label>$INFO[ListItem.Rating]</label>
 						<visible>!Skin.HasSetting(Enable.HideRatings) | String.IsEqual(Container.SortMethod,$LOCALIZE[563])</visible>
 					</control>
-					<control type="image">
-						<left>742</left>
+					<control type="group">
+						<left>739</left>
 						<top>2</top>
-						<width>64</width>
-						<height>64</height>
-						<aspectratio>keep</aspectratio>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+						<control type="label">
+							<left>3</left>
+							<width>64</width>
+							<height>64</height>
+							<textcolor>white3</textcolor>
+							<font>IconMediumMD</font>
+							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
+						</control>
+						<control type="label">
+							<width>64</width>
+							<height>64</height>
+							<textcolor>white3</textcolor>
+							<font>IconMediumMD</font>
+							<label>$VAR[ListItemOverlayProgress]</label>
+							<animation effect="zoom" start="70" end="70" center="auto" condition="true">Conditional</animation>
+						</control>
 					</control>
 				</itemlayout>
 				<focusedlayout height="68" width="806" condition="Container.Content(episodes)">
@@ -1042,13 +1073,25 @@
 						<visible>!Skin.HasSetting(Enable.HideRatings) | String.IsEqual(Container.SortMethod,$LOCALIZE[563])</visible>
 						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(501)">Conditional</animation>
 					</control>
-					<control type="image">
-						<left>742</left>
+					<control type="group">
+						<left>739</left>
 						<top>2</top>
-						<width>64</width>
-						<height>64</height>
-						<aspectratio>keep</aspectratio>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+						<control type="label">
+							<left>3</left>
+							<width>64</width>
+							<height>64</height>
+							<textcolor>white3</textcolor>
+							<font>IconMediumMD</font>
+							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
+						</control>
+						<control type="label">
+							<width>64</width>
+							<height>64</height>
+							<textcolor>white3</textcolor>
+							<font>IconMediumMD</font>
+							<label>$VAR[ListItemOverlayProgress]</label>
+							<animation effect="zoom" start="70" end="70" center="auto" condition="true">Conditional</animation>
+						</control>
 					</control>
 				</focusedlayout>
 			</control>
@@ -1063,13 +1106,12 @@
 				<onleft>50</onleft>
 				<onright condition="Control.IsVisible(501101) + Control.IsVisible(50161)">50161</onright>
 				<onright condition="Control.IsVisible(501102) + Control.IsVisible(50162)">50162</onright>
-				<onright condition="Control.IsVisible(501103) + Control.IsVisible(50163)">50163</onright>
 				<onright condition="Control.IsVisible(501104) + Control.IsVisible(50164)">50164</onright>
 				<onright condition="Control.IsVisible(501105) + Control.IsVisible(50165)">50165</onright>
 				<onright condition="Control.IsVisible(501106) + Control.IsVisible(50166)">50166</onright>
 				<onright condition="Control.IsVisible(501107) + Control.IsVisible(50167)">50167</onright>
-				<onright condition="!Control.IsVisible(615) + ![Control.IsVisible(501101) + Control.IsVisible(50161)] + ![Control.IsVisible(501102) + Control.IsVisible(50162)] + ![Control.IsVisible(501103) + Control.IsVisible(50163)] + ![Control.IsVisible(501104) + Control.IsVisible(50164)] + ![Control.IsVisible(501105) + Control.IsVisible(50165)] + ![Control.IsVisible(501106) + Control.IsVisible(50166)] + ![Control.IsVisible(501107) + Control.IsVisible(50167)]">4400</onright>
-				<onright condition="Control.IsVisible(615) + ![Control.IsVisible(501101) + Control.IsVisible(50161)] + ![Control.IsVisible(501102) + Control.IsVisible(50162)] + ![Control.IsVisible(501103) + Control.IsVisible(50163)] + ![Control.IsVisible(501104) + Control.IsVisible(50164)] + ![Control.IsVisible(501105) + Control.IsVisible(50165)] + ![Control.IsVisible(501106) + Control.IsVisible(50166)] + ![Control.IsVisible(501107) + Control.IsVisible(50167)]">615</onright>
+				<onright condition="!Control.IsVisible(615) + ![Control.IsVisible(501101) + Control.IsVisible(50161)] + ![Control.IsVisible(501102) + Control.IsVisible(50162)] + ![Control.IsVisible(501103)] + ![Control.IsVisible(501104) + Control.IsVisible(50164)] + ![Control.IsVisible(501105) + Control.IsVisible(50165)] + ![Control.IsVisible(501106) + Control.IsVisible(50166)] + ![Control.IsVisible(501107) + Control.IsVisible(50167)]">4400</onright>
+				<onright condition="Control.IsVisible(615) + ![Control.IsVisible(501101) + Control.IsVisible(50161)] + ![Control.IsVisible(501102) + Control.IsVisible(50162)] + ![Control.IsVisible(501103)] + ![Control.IsVisible(501104) + Control.IsVisible(50164)] + ![Control.IsVisible(501105) + Control.IsVisible(50165)] + ![Control.IsVisible(501106) + Control.IsVisible(50166)] + ![Control.IsVisible(501107) + Control.IsVisible(50167)]">615</onright>
 				<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
 				<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
 				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>

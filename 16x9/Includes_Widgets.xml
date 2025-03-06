@@ -39,6 +39,7 @@
 			<animation effect="fade" start="100" end="0" condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(Disable.Videoinfo) + Player.HasVideo + !ControlGroup(90020).HasFocus">Conditional</animation>
 			<animation effect="fade" start="100" end="0" condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(Disable.Musicinfo) + Player.HasAudio + !ControlGroup(90020).HasFocus">Conditional</animation>
 			<animation effect="fade" start="100" end="0" condition="!String.IsEmpty(Container(9000).ListItem.Property(widgetLiveTV)) + [PVR.HasNonRecordingTimer | PVR.IsRecording] + !ControlGroup(90020).HasFocus">Conditional</animation>
+			<ondown condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + Skin.HasSetting(centermainmenu)">90010</ondown>
 			<visible>!String.IsEmpty(Container(9000).ListItem.Property(widgetType.2))</visible>
 			<include>skinshortcuts-template-widget2</include>
 		</control>

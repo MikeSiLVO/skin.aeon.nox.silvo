@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<variable name="SkinVariablesContentVar">
+		<value condition="String.IsEqual(Container.Content,genres) + Window.IsVisible(MyMusicNav.xml)">genres-music</value>
+		<value condition="String.Contains(Container.FolderPath,setid)">movies-sets</value>
+		<value condition="!String.IsEmpty(Container.Content)">$INFO[Container.Content]</value>
+		<value condition="Container.Content() + Window.IsVisible(MyVideoNav.xml)">none-videos</value>
+	</variable>
+	<variable name="SkinVariableDBContainerPluginPath">
+		<value condition="Window.IsActive(fullscreenvideo) + VideoPlayer.Content(movies)">$INFO[VideoPlayer.DBID,plugin://script.skinvariables/?info=get_dbitem_movie_details&amp;dbid=]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,set)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_movieset_details&amp;dbid=]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,movie) | Window.IsVisible(1125) + ControlGroup(5000).HasFocus(5001)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_movie_details&amp;dbid=]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_tvshow_details&amp;dbid=]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,season)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_season_details&amp;dbid=]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,episode)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_episode_details&amp;dbid=]</value>
+		<!-- <value>plugin://script.skinvariables/?info=get_dbitem_addon_details&amp;dbid=]</value> -->
+	</variable>
+	<variable name="SkinVariablesCastPanelContentVar">
+		<value condition="!String.IsEqual(ListItem.DBTYPE,set)">plugin://script.skinvariables/?info=get_container_labels&amp;containers=50&amp;infolabel=Label&amp;thumb=Icon&amp;label2=Label2&amp;reload=$INFO[ListItem.DBID]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,set)">plugin://script.skinvariables/?info=get_dotted_properties&amp;source=Container(4501).ListItem&amp;string=movies.{x}.item.cast.{y}.&amp;infoproperties=name/role/thumbnail&amp;label=name&amp;thumb=thumbnail&amp;xmax=15&amp;ymax=20&amp;no_label_dupes=true&amp;reload=$INFO[Container(4501).ListItem.Label]</value>
+	</variable>
+	<variable name="SkinVariablesCustomInfoContentVar">
+		<value condition="String.IsEqual(Window(Home).Property(item_dbtype),movie)">$INFO[Window(Home).Property(item_dbid),plugin://script.skinvariables/?info=get_dbitem_movie_details&amp;dbid=]</value>
+		<value condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow)">$INFO[Window(Home).Property(item_dbid),plugin://script.skinvariables/?info=get_dbitem_tvshow_details&amp;dbid=]</value>
+	</variable>
+	<variable name="MovieSetsPathVar">
+		<value condition="String.IsEqual(ListItem.DBTYPE,set)">videodb://movies/sets/$INFO[ListItem.DBID]/?setid=$INFO[ListItem.DBID]</value>
+	</variable>
+	<variable name="JukeBoxContentPathVar">
+		<value condition="Container.Content(albums)">$INFO[Container(603).ListItem.DBID,musicdb://albums/,/]</value>
+		<value>musicdb://artists/$INFO[ListItem.DBID]/*</value>
+	</variable>
+	<variable name="ArtistInfoPathVar">
+		<value condition="!System.GetBool(musiclibrary.showcompilationartists)">musicdb://artists/$INFO[ListItem.DBID]/?albumartistsonly=true</value>
+		<value>musicdb://artists/$INFO[ListItem.DBID]/?albumartistsonly=false</value>
+	</variable>
+	<variable name="ArtistAlbumInfoPathVar">
+		<value condition="!System.GetBool(musiclibrary.showcompilationartists)">musicdb://artists/$INFO[ListItem.DBID]/$INFO[Window(musicinformation).Property(AlbumDBID)]/?albumartistsonly=true&amp;artistid=$INFO[ListItem.DBID]</value>
+		<value>musicdb://artists/$INFO[ListItem.DBID]/$INFO[Window(musicinformation).Property(AlbumDBID)]/?albumartistsonly=false&amp;artistid=$INFO[ListItem.DBID]</value>
+	</variable>
+	<variable name="ListContentVar">
+		<value condition="String.IsEmpty(Container.PluginName)">$INFO[Container(50).ListItem.FolderPath]</value>
+		<value />
+	</variable>
+	<variable name="WeatherIconsPathVar">
+		<value condition="!String.IsEmpty(Skin.String(weathericons.path))">$INFO[Skin.String(weathericons.path)]</value>
+		<value>resource://resource.images.weathericons.default/</value>
+	</variable>
+	<variable name="MovieGenreIconsPathVar">
+		<value condition="!String.IsEmpty(Skin.String(moviegenreicons.path))">$INFO[Skin.String(moviegenreicons.path)]</value>
+		<value condition="!String.IsEmpty(Skin.String(MovieGenreIconPath))">$INFO[Skin.String(MovieGenreIconPath)]</value>
+	</variable>
+	<variable name="MusicGenreIconsPathVar">
+		<value condition="!String.IsEmpty(Skin.String(musicgenreicons.path))">$INFO[Skin.String(musicgenreicons.path)]</value>
+		<value condition="!String.IsEmpty(Skin.String(MusicGenreIconPath))">$INFO[Skin.String(MusicGenreIconPath)]</value>
+	</variable>
+	<variable name="PlaylistStatsContentVar">
+		<value condition="String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31097])">plugin://script.skinvariables/?info=get_filter_dir&amp;library=video&amp;stats_filter_key__watched=playcount&amp;stats_filter_value__watched=0&amp;stats_filter_operator__watched=gt&amp;stats_filter_key__unwatched=playcount&amp;stats_filter_value__unwatched=0&amp;stats_filter_operator__unwatched=eq&amp;stats_filter_empty__unwatched=true&amp;window_prop=Stats&amp;window_id=Home&amp;&amp;$INFO[Container(9000).ListItem.Property(list)]</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31098])">plugin://script.skinvariables/?info=get_filter_dir&amp;library=video&amp;stats_filter_key__watched=watchedepisodepercent&amp;stats_filter_value__watched=100&amp;stats_filter_operator__watched=eq&amp;stats_filter_key__unwatched=watchedepisodes&amp;stats_filter_value__unwatched=0&amp;stats_filter_operator__unwatched=eq&amp;window_prop=Stats&amp;window_id=Home&amp;&amp;$INFO[Container(9000).ListItem.Property(list)]</value>
+		<value condition="String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31099])">plugin://script.skinvariables/?info=get_filter_dir&amp;library=video&amp;stats_filter_key__watched=playcount&amp;stats_filter_value__watched=0&amp;stats_filter_operator__watched=gt&amp;stats_filter_key__unwatched=playcount&amp;stats_filter_value__unwatched=0&amp;stats_filter_operator__unwatched=eq&amp;stats_filter_empty__unwatched=true&amp;window_prop=Stats&amp;window_id=Home&amp;&amp;$INFO[Container(9000).ListItem.Property(list)]</value>
+	</variable>
+	<variable name="MediaFlagsPathVar">
+		<value condition="Skin.HasSetting(coloredflags)">flags/colored</value>
+		<value>flags/default</value>
+	</variable>
+	<variable name="PathFlagsStudios">
+		<value condition="Skin.HasSetting(coloredflags)">resource://resource.images.studios.coloured/</value>
+		<value>resource://resource.images.studios.white/</value>
+	</variable>
+	<variable name="PathFlagsLanguage">
+		<value>flags/language/default/</value>
+	</variable>
+	<variable name="CaseBackPathVar">
+		<value condition="!Skin.HasSetting(useclearcases)">thumbs/boxes/default/back/</value>
+		<value condition="Skin.HasSetting(useclearcases)">thumbs/boxes/clearcases/back/</value>
+	</variable>
+	<variable name="CaseTypePathVar">
+		<value condition="!Skin.HasSetting(useclearcases)">thumbs/boxes/default/</value>
+		<value condition="Skin.HasSetting(useclearcases)">thumbs/boxes/clearcases/</value>
+	</variable>
+	<!-- TMDbH -->
+	<!-- <variable name="TMDbHWidgetParams">
+		<value>&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</value>
+	</variable> -->
+	<!-- <variable name="TMDbHelperLocalDBVar">
+		<value condition="Addon.SettingBool(plugin.video.themoviedb.helper,local_db)">&amp;exclude_key=dbid&amp;exclude_value=is_empty&amp;length=6</value>
+		<value />
+	</variable> -->
+	<variable name="TMDbHelperDBTYPEPathVar">
+		<value condition="String.IsEqual(ListItem.DBTYPE,movie)">movie</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow)">tv</value>
+	</variable>
+	<variable name="VideoInfoTMDbCastVar">
+		<value condition="String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,set)">plugin://plugin.video.themoviedb.helper?info=cast&amp;tmdb_type=movie&amp;tmdb_id=$INFO[Container(9143).ListItem.Property(TMDb_ID)]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow)">plugin://plugin.video.themoviedb.helper?info=cast&amp;tmdb_type=tv&amp;tmdb_id=$INFO[Container(9143).ListItem.Property(TMDb_ID)]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,episode)">plugin://plugin.video.themoviedb.helper?info=cast&amp;tmdb_type=tv&amp;tmdb_id=$INFO[Container(9143).ListItem.Property(TVShow.TMDb_ID)]$INFO[Container(9143).ListItem.Season,&amp;season=]$INFO[Container(9143).ListItem.Episode,&amp;episode=]</value>
+		<value>plugin://plugin.video.themoviedb.helper?info=cast&amp;tmdb_type=tv&amp;tmdb_id=$INFO[Container(9143).ListItem.Property(TVShow.TMDb_ID)]$INFO[Container(9143).ListItem.Season,&amp;season=]</value>
+	</variable>
+	<variable name="TMDbHVideoContentVar">
+		<value condition="!String.IsEmpty(Window(Home).Property(tmdb_id))">$INFO[Window(Home).Property(tmdb_id)]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(imdb_id))">$INFO[Window(Home).Property(imdb_id)]</value>
+	</variable>
+	<variable name="TMDbHContentTypeVar">
+		<value condition="String.IsEqual(Window(Home).Property(item_dbtype),movie)">&amp;type=$INFO[Window(Home).Property(item_dbtype)]</value>
+		<value condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow)">&amp;type=tv</value>
+	</variable>
+	<variable name="TMDbHSearchContentVar">
+		<value condition="!String.IsEmpty(Window(Home).Property(tmdb_movie_search_string))">$INFO[Window(Home).Property(tmdb_movie_search_string),plugin://plugin.video.themoviedb.helper?info=search&amp;type=movie&amp;query=,&amp;nextpage=false]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(tmdb_tv_search_string))">$INFO[Window(Home).Property(tmdb_tv_search_string),plugin://plugin.video.themoviedb.helper?info=search&amp;type=tv&amp;query=,&amp;nextpage=false]</value>
+	</variable>
+	<variable name="SeasonsBackgroundPathVar">
+		<value condition="String.IsEqual(Skin.String(SeasonsBackground),MakeItSnow)">snow/snow</value>
+		<value condition="String.IsEqual(Skin.String(SeasonsBackground),AutumnLeaves)">leaf/leaf</value>
+	</variable>
+</includes>

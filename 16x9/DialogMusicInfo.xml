@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(plugin.video.themoviedb.helper,blur_image='"$INFO[ListItem.Icon]"')</onload>
 	<onload>SetFocus(9003)</onload>
 	<onload condition="String.IsEmpty(ListItem.SongVideoURL)">SetFocus(5010)</onload>
 	<onload condition="!String.IsEmpty(ListItem.SongVideoURL)">SetFocus(5000)</onload>
+	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) | !Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(TMDbHelper.EnableBlur)</onload>
+	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.SetBool(TMDbHelper.EnableBlur)</onload>
+	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(thumb)|Icon,Home)</onload>
 	<controls>
 		<control type="group">
-			<animation effect="slide" start="-729,0" end="0,0" time="320" tween="quadratic" condition="!Skin.HasSetting(Enable.BlurredVideoInfo)">WindowOpen</animation>
-			<animation effect="slide" start="-729,0" end="0,0" delay="250" time="320" tween="quadratic" condition="Skin.HasSetting(Enable.BlurredVideoInfo)">WindowOpen</animation>
-			<animation effect="slide" end="-729,0" time="500" tween="quadratic">WindowClose</animation>
+			<animation effect="slide" start="-729,0" end="0,0" delay="300" time="400" tween="quadratic">WindowOpen</animation>
+			<animation effect="slide" end="-729,0" time="400" tween="quadratic">WindowClose</animation>
 			<control type="image">
 				<width>729</width>
 				<height>1080</height>
@@ -39,9 +40,8 @@
 			</control>
 		</control>
 		<control type="group">
-			<animation effect="slide" start="1242,0" end="0,0" time="320" tween="quadratic" condition="!Skin.HasSetting(Enable.BlurredVideoInfo)">WindowOpen</animation>
-			<animation effect="slide" start="1242,0" end="0,0" delay="250" time="320" tween="quadratic" condition="Skin.HasSetting(Enable.BlurredVideoInfo)">WindowOpen</animation>
-			<animation effect="slide" end="1242,0" time="500" tween="quadratic">WindowClose</animation>
+			<animation effect="slide" start="1242,0" end="0,0" delay="300" time="400" tween="quadratic">WindowOpen</animation>
+			<animation effect="slide" end="1242,0" time="400" tween="quadratic">WindowClose</animation>
 			<left>729</left>
 			<control type="group">
 				<width>1200</width>
@@ -874,12 +874,10 @@
 					<height>490</height>
 					<preloaditems>2</preloaditems>
 					<onup>9003</onup>
-					<viewtype label="">list</viewtype>
 					<scrolltime tween="quadratic" easing="out">300</scrolltime>
 					<orientation>horizontal</orientation>
 					<onclick>Dialog.Close(musicinformation)</onclick>
-					<onclick condition="!System.AddonIsEnabled(script.embuary.helper)">ActivateWindow(Music,"musicdb://albums/$INFO[ListItem.DBID]/")</onclick>
-					<onclick condition="System.AddonIsEnabled(script.embuary.helper)">RunScript(script.embuary.helper,action=goto,path='"musicdb://albums/$INFO[ListItem.DBID]/"',target=music)</onclick>
+					<onclick>ActivateWindow(Music,musicdb://albums/$INFO[Container(9050).ListItem.DBID]/,return)</onclick>
 					<visible>String.IsEqual(ListItem.DBTYPE,artist)</visible>
 					<itemlayout height="245" width="239">
 						<control type="image">
@@ -940,7 +938,6 @@
 					<height>492</height>
 					<onleft>50</onleft>
 					<onright>50</onright>
-					<viewtype label="">list</viewtype>
 					<pagecontrol>61</pagecontrol>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
 					<orientation>horizontal</orientation>
@@ -998,7 +995,6 @@
 				<width>1186</width>
 				<height>240</height>
 				<onup>9050</onup>
-				<viewtype label="">list</viewtype>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<orientation>horizontal</orientation>
 				<visible>Control.HasFocus(9050) | Control.HasFocus(9060)</visible>

@@ -60,7 +60,13 @@
             "plugins": "50"
         },
         "movies": {
-            "rule": "Container.Content(movies)",
+            "rule": "Container.Content(movies) + !String.Contains(Container.FolderPath,setid)",
+            "viewtypes": ["50", "506", "501", "507", "602", "59", "509", "503", "609", "55", "51", "53", "52", "56", "57", "58", "500", "591", "504", "505"],
+            "library": "506",
+            "plugins": "506"
+        },
+        "movies-sets": {
+            "rule": "Container.Content(movies) + String.Contains(Container.FolderPath,setid)",
             "viewtypes": ["50", "506", "501", "507", "602", "59", "509", "503", "609", "55", "51", "53", "52", "56", "57", "58", "500", "591", "504", "505"],
             "library": "506",
             "plugins": "506"
