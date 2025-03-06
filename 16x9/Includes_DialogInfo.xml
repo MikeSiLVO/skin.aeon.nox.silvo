@@ -588,7 +588,7 @@
 			<param name="numitems">1</param>
 			<param name="id">90017</param>
 			<param name="overlayVisibility">false</param>
-			<param name="content">plugin://script.skinvariables/?info=get_filter_dir&amp;library=video&amp;filter_key=setid&amp;filter_value=$INFO[ListItem.SetID]&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.Title]&amp;&amp;videodb://movies/titles/</param>
+			<param name="content">videodb://movies/titles/?xsp={"rules":{"and":[{"field":"set","operator":"is","value":["$INFO[ListItem.Set]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title)]"]}]},"type":"movies"}</param>
 			<param name="sortby">year</param>
 		</include>
 	</include>
