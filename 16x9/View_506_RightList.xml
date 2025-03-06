@@ -88,36 +88,26 @@
 						<textcolor>goldenrod</textcolor>
 						<visible>!String.IsEmpty(ListItem.Top250)</visible>
 					</control>
-					<control type="group">
-						<visible>Container.Content(movies) + !ListItem.IsCollection</visible>
-						<control type="grouplist">
-							<height>110</height>
-							<control type="label">
-								<width>570</width>
-								<height>55</height>
-								<label />
-								<include>DefaultButtonsValues</include>
-								<visible>String.IsEmpty(ListItem.Director) | String.IsEmpty(ListItem.Writer)</visible>
-							</control>
-							<control type="label">
-								<width>570</width>
-								<height>55</height>
-								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20339]:[/COLOR] $INFO[ListItem.Director]</label>
-								<include>DefaultButtonsValues</include>
-								<visible>!String.IsEmpty(ListItem.Director)</visible>
-							</control>
-							<control type="label">
-								<width>570</width>
-								<height>55</height>
-								<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20417]:[/COLOR] $INFO[ListItem.Writer]</label>
-								<include>DefaultButtonsValues</include>
-								<visible>!String.IsEmpty(ListItem.Writer)</visible>
-							</control>
+					<control type="grouplist">
+						<visible>[Container.Content(movies) + !ListItem.IsCollection]</visible>
+						<height>180</height>
+						<control type="label">
+							<width>570</width>
+							<height>60</height>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20339]:[/COLOR] $INFO[ListItem.Director]</label>
+							<include>DefaultButtonsValues</include>
+							<visible>!String.IsEmpty(ListItem.Director)</visible>
 						</control>
 						<control type="label">
-							<top>110</top>
 							<width>570</width>
-							<height>55</height>
+							<height>60</height>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20417]:[/COLOR] $INFO[ListItem.Writer]</label>
+							<include>DefaultButtonsValues</include>
+							<visible>!String.IsEmpty(ListItem.Writer)</visible>
+						</control>
+						<control type="label">
+							<width>570</width>
+							<height>60</height>
 							<include>DefaultButtonsValues</include>
 							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR] $INFO[ListItem.Genre]</label>
 							<visible>!String.IsEmpty(ListItem.Genre)</visible>
@@ -125,32 +115,31 @@
 					</control>
 					<control type="grouplist">
 						<visible>ListItem.IsCollection</visible>
-						<animation effect="slide" end="0,110" condition="!System.AddonIsEnabled(script.skin.info.service)">Conditional</animation>
-						<animation effect="fade" time="250" condition="System.AddonIsEnabled(script.skin.info.service)">Visible</animation>
-						<control type="label">
+						<height>180</height>
+						<!-- <control type="label">
 							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[342]:[/COLOR] $INFO[Container(4500).NumItems]</label>
 							<width>570</width>
 							<height>55</height>
 							<include>DefaultButtonsValues</include>
 							<visible>!String.IsEqual(Container(4500).NumItems,0) + Skin.HasSetting(Disable.RightList.Mediaflags)</visible>
-						</control>
+						</control> -->
 						<control type="label">
 							<width>570</width>
-							<height>55</height>
-							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20348]:[/COLOR] $INFO[Window(Home).Property(SkinInfo.Set.Movies.Director)]</label>
+							<height>60</height>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20348]:[/COLOR] $INFO[Container(4501).ListItem.Property(director.collection)]</label>
 							<include>DefaultButtonsValues</include>
-							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Director))</visible>
+							<visible>!String.IsEmpty(Container(4501).ListItem.Property(director.collection))</visible>
 						</control>
 						<control type="label">
 							<width>570</width>
-							<height>55</height>
-							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20418]:[/COLOR] $INFO[Window(Home).Property(SkinInfo.Set.Movies.Writer)]</label>
+							<height>60</height>
+							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20418]:[/COLOR] $INFO[Container(4501).ListItem.Property(writer.collection)]</label>
 							<include>DefaultButtonsValues</include>
-							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Writer)) + !Skin.HasSetting(Disable.RightList.Mediaflags)</visible>
+							<visible>!String.IsEmpty(Container(4501).ListItem.Property(writer.collection))</visible>
 						</control>
 						<control type="label">
 							<width>570</width>
-							<height>55</height>
+							<height>60</height>
 							<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR] $VAR[MovieSetGenreVar]</label>
 							<include>DefaultButtonsValues</include>
 						</control>
@@ -624,22 +613,34 @@
 				<visible>!Container.Content(episodes)</visible>
 			</control>
 			<control type="group">
-				<left>832</left>
+				<left>830</left>
 				<top>13</top>
 				<visible>$PARAM[overlay_visible]</visible>
-				<control type="image">
+				<control type="label">
+					<left>7</left>
 					<width>64</width>
 					<height>64</height>
-					<aspectratio>keep</aspectratio>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+					<textcolor>white3</textcolor>
+					<font>IconMediumMD</font>
+					<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
 					<animation effect="slide" end="-70" time="0" condition="Container.Content(episodes) + !Skin.HasSetting(rightlistalternatetv)">Conditional</animation>
+				</control>
+				<control type="label">
+					<left>4</left>
+					<width>64</width>
+					<height>64</height>
+					<textcolor>white3</textcolor>
+					<font>IconMediumMD</font>
+					<label>$VAR[ListItemOverlayProgress]</label>
+					<animation effect="slide" end="-70" time="0" condition="Container.Content(episodes) + !Skin.HasSetting(rightlistalternatetv)">Conditional</animation>
+					<animation effect="zoom" start="70" end="70" center="auto" condition="true">Conditional</animation>
 				</control>
 				<control type="label">
 					<width>64</width>
 					<height>64</height>
 					<font>font12_title</font>
 					<align>center</align>
-					<label>$VAR[RightListItemOverlayShowsVar]</label>
+					<label>$VAR[ListItemOverlayShowsVar]</label>
 				</control>
 			</control>
 		</definition>
@@ -676,15 +677,27 @@
 				<visible>$PARAM[visibleSubLabelNoYear]</visible>
 			</control>
 			<control type="group">
-				<left>832</left>
+				<left>830</left>
 				<top>13</top>
 				<visible>$PARAM[overlay_visible]</visible>
-				<control type="image">
+				<control type="label">
+					<left>7</left>
 					<width>64</width>
 					<height>64</height>
-					<aspectratio>keep</aspectratio>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItemOverlay]</texture>
+					<textcolor>white3</textcolor>
+					<font>IconMediumMD</font>
+					<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
 					<animation effect="slide" end="-70" time="0" condition="Container.Content(episodes) + !Skin.HasSetting(rightlistalternatetv)">Conditional</animation>
+				</control>
+				<control type="label">
+					<left>4</left>
+					<width>64</width>
+					<height>64</height>
+					<textcolor>white3</textcolor>
+					<font>IconMediumMD</font>
+					<label>$VAR[ListItemOverlayProgress]</label>
+					<animation effect="slide" end="-70" time="0" condition="Container.Content(episodes) + !Skin.HasSetting(rightlistalternatetv)">Conditional</animation>
+					<animation effect="zoom" start="70" end="70" center="auto" condition="true">Conditional</animation>
 				</control>
 				<control type="label">
 					<width>64</width>
@@ -692,7 +705,7 @@
 					<font>font12_title</font>
 					<align>center</align>
 					<textcolor>grey</textcolor>
-					<label>$VAR[RightListItemOverlayShowsVar]</label>
+					<label>$VAR[ListItemOverlayShowsVar]</label>
 				</control>
 			</control>
 		</definition>

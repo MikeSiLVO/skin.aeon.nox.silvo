@@ -33,7 +33,7 @@
     <expression name="Exp_View_504_Include">False</expression>
     <expression name="Exp_View_505">[False]</expression>
     <expression name="Exp_View_505_Include">False</expression>
-    <expression name="Exp_View_506">[[Container.Content(movies) + [[String.IsEmpty(Container.PluginName)] | [!String.IsEmpty(Container.PluginName)]]] | [Container.Content(episodes) + [[String.IsEmpty(Container.PluginName)] | [!String.IsEmpty(Container.PluginName)]]] | [Container.Content(seasons) + [[String.IsEmpty(Container.PluginName)] | [!String.IsEmpty(Container.PluginName)]]] | [Container.Content(songs) + [[String.IsEmpty(Container.PluginName)] | [!String.IsEmpty(Container.PluginName)]]]]</expression>
+    <expression name="Exp_View_506">[[Container.Content(movies) + !String.Contains(Container.FolderPath,setid) + [[String.IsEmpty(Container.PluginName)] | [!String.IsEmpty(Container.PluginName)]]] | [Container.Content(movies) + String.Contains(Container.FolderPath,setid) + [[String.IsEmpty(Container.PluginName)] | [!String.IsEmpty(Container.PluginName)]]] | [Container.Content(episodes) + [[String.IsEmpty(Container.PluginName)] | [!String.IsEmpty(Container.PluginName)]]] | [Container.Content(seasons) + [[String.IsEmpty(Container.PluginName)] | [!String.IsEmpty(Container.PluginName)]]] | [Container.Content(songs) + [[String.IsEmpty(Container.PluginName)] | [!String.IsEmpty(Container.PluginName)]]]]</expression>
     <expression name="Exp_View_506_Include">True</expression>
     <expression name="Exp_View_507">[False]</expression>
     <expression name="Exp_View_507_Include">False</expression>

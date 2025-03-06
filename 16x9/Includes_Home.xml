@@ -108,7 +108,7 @@
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu_bar_white.png</texture>
 					<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | !String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))</visible>
 				</control>
-				<include condition="System.AddonIsEnabled(script.embuary.helper)">PlayListStatsList</include>
+				<include condition="System.AddonIsEnabled(script.skinvariables)">PlayListStatsList</include>
 				<control type="label">
 					<top>46</top>
 					<width>1080</width>
@@ -467,7 +467,7 @@
 				<animation effect="slide" end="0,45" time="320" tween="cubic" easing="inout" condition="system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]">Conditional</animation>
 				<control type="group">
 					<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="$EXP[HasVerticalMenuWithExtended]">Conditional</animation>
-					<include condition="System.AddonIsEnabled(script.embuary.helper)">PlayListStatsList</include>
+					<include condition="System.AddonIsEnabled(script.skinvariables)">PlayListStatsList</include>
 					<control type="label">
 						<left>485</left>
 						<width>740</width>
@@ -535,8 +535,8 @@
 		<animation effect="slide" start="0" end="0,20" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),icons) + Skin.HasSetting(Disable.IconsMenuLabel)">Conditional</animation>
 		<animation effect="slide" end="-0,5" condition="String.IsEqual(Skin.Font,$LOCALIZE[31483])">Conditional</animation>
 		<onup condition="Control.IsVisible(9027)">9020</onup>
-		<onup condition="Control.IsVisible(90010) + !Control.IsVisible(9027)">90010</onup>
-		<onup condition="!Control.IsVisible(90010) + Control.IsVisible(90020) + !Control.IsVisible(9027) + !Skin.HasSetting(centermainmenu)">90020</onup>
+		<onup condition="Integer.IsGreater(Container(55000).NumItems,0) + !Skin.HasSetting(centermainmenu) + !Control.IsVisible(9027)">55000</onup>
+		<onup condition="Skin.HasSetting(centermainmenu) + !Control.IsVisible(9027) + [Control.IsVisible(90010) | Control.IsVisible(90020)]">90010</onup>
 		<ondown condition="String.IsEqual(Container(9000).ListItem.Property(hasSubmenu),True)">9001</ondown>
 		<ondown condition="!String.IsEqual(Container(9000).ListItem.Property(hasSubmenu),True) + Skin.HasSetting(centermainmenu) + Control.IsVisible(90020)">90020</ondown>
 		<onback condition="Skin.HasSetting(Home.Hide) + !Player.Playing">SetFocus(64)</onback>
@@ -725,8 +725,7 @@
 		<ondown>9000</ondown>
 		<onleft condition="String.IsEqual(Container(9000).ListItem.Property(hasSubmenu),True)">Control.SetVisible(9010)</onleft>
 		<onleft condition="String.IsEqual(Container(9000).ListItem.Property(hasSubmenu),True)">SetFocus(9010)</onleft>
-		<onright condition="Control.IsVisible(90010)">90010</onright>
-		<onright condition="!Control.IsVisible(90010) + Control.IsVisible(90020)">90020</onright>
+		<onright condition="Integer.IsGreater(Container(55000).NumItems,0)">55000</onright>
 		<onright condition="!Control.IsVisible(90010) + !Control.IsVisible(90020) + Control.IsVisible(9027)">9020</onright>
 		<onback condition="Skin.HasSetting(Home.Hide) + !Player.Playing">SetFocus(64)</onback>
 		<onfocus>Control.SetHidden(9010)</onfocus>
@@ -791,6 +790,12 @@
 		<focusposition>2</focusposition>
 	</include>
 	<include name="PlayListStatsList">
+		<include content="BusySpinner">
+			<param name="visible">Container(43260).IsUpdating + [String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31097]) | String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31098]) | String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31099])]</param>
+			<param name="left">5</param>
+			<param name="top">53</param>
+			<param name="size">30</param>
+		</include>
 		<control type="list" id="43260">
 			<include>HiddenList</include>
 			<content>$VAR[PlaylistStatsContentVar]</content>
@@ -805,6 +810,7 @@
 			<align>center</align>
 			<font>IconTiny</font>
 			<textcolor>grey</textcolor>
+			<focusedcolor>$VAR[ThemeHomeLabelColor]</focusedcolor>
 			<shadowcolor>shadow</shadowcolor>
 			<onclick>SetProperty(CustomSelect,search,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>

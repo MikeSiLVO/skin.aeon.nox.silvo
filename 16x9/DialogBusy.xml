@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
+	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + String.IsEqual(Skin.String(Viz.Background),4) + Window.IsVisible(visualisation)">RunScript(plugin.video.themoviedb.helper,blur_image=$INFO[Player.Icon],prefix=MusicVisIcon)</onload>
 	<controls>
 		<control type="group">
 			<visible>!Window.IsVisible(startup) + String.IsEmpty(Window(Home).Property(script.preshowexperience.running))</visible>
@@ -9,48 +10,11 @@
 				<animation effect="fade" time="300">WindowOpen</animation>
 				<animation effect="fade" time="300">WindowClose</animation>
 			</control>
-			<control type="progress" id="10">
-				<description>progress control</description>
-				<width>1</width>
-				<height>1</height>
-				<texturebg />
-				<lefttexture />
-				<midtexture />
-				<righttexture />
-				<overlaytexture />
-			</control>
 			<control type="group">
 				<include>DialogOpenCloseAnimation</include>
-				<control type="group">
-					<left>912</left>
-					<top>492</top>
-					<control type="image">
-						<description>Busy animation</description>
-						<width>96</width>
-						<height>96</height>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">android/busyspinner_clockwise.png</texture>
-						<aspectratio>keep</aspectratio>
-						<animation effect="rotate" start="0" end="360" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
-					</control>
-					<control type="image">
-						<description>Busy animation</description>
-						<width>96</width>
-						<height>96</height>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">android/busyspinner_counterclockwise.png</texture>
-						<aspectratio>keep</aspectratio>
-						<animation effect="rotate" start="360" end="0" center="auto" time="2000" loop="true" condition="true">Conditional</animation>
-					</control>
-					<control type="label">
-						<description>Busy label</description>
-						<width>96</width>
-						<height>96</height>
-						<textcolor>grey</textcolor>
-						<align>center</align>
-						<label>$INFO[Control.GetLabel(10),,%]</label>
-						<font>font12</font>
-						<visible>!Integer.IsEqual(Control.GetLabel(10), 0)</visible>
-					</control>
-				</control>
+				<include content="BusySpinner">
+					<param name="visible">true</param>
+				</include>
 			</control>
 		</control>
 	</controls>

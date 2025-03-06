@@ -37,7 +37,7 @@
 			<onleft condition="VideoPlayer.Content(livetv) + String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">SetProperty(LiveTVNext,True,fullscreeninfo)</onleft>
 			<onleft condition="VideoPlayer.Content(livetv) + !String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">ClearProperty(LiveTVNext,fullscreeninfo)</onleft>
 		</control>
-		<include condition="System.AddonIsEnabled(script.embuary.helper) + VideoPlayer.Content(movies)">EmbuaryHelperContentList</include>
+		<include>SkinVariablesContentList</include>
 		<include condition="!VideoPlayer.Content(LiveTV)">FullscreenInfo</include>
 		<include condition="VideoPlayer.Content(LiveTV)">LiveTVFullscreenInfo</include>
 	</controls>

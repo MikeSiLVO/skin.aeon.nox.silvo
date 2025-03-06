@@ -6,11 +6,14 @@
 	<onload condition="Skin.HasSetting(skinvariables.viewtypes)">RunScript(script.skinvariables,action=buildviews)</onload>
 	<onload condition="!Skin.HasSetting(AskedDefaultBackground)">SetProperty(AskDefaultBackground,True,Home)</onload>
 	<onload condition="!Skin.HasSetting(AskedDefaultBackground) + !Control.IsVisible(9999)">Skin.TimerStart(askdefaultbackground)</onload>
-	<onload condition="System.AddonIsEnabled(script.skin.info.service) + String.IsEmpty(Window(Home).Property(skininfos_daemon_running))">RunScript(script.skin.info.service)</onload>
 	<onload condition="!String.IsEmpty(Skin.String(StartupIntro)) + !String.IsEmpty(Window(Home).Property(Playing.StartupIntro))">AlarmClock(Clear_PlayingIntroProp,ClearProperty(Playing.StartupIntro,Home),00:10,silent)</onload>
 	<onunload condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">Control.SetHidden(9010)</onunload>
 	<menucontrol>9051</menucontrol>
 	<controls>
+		<control type="group">
+			<include condition="Skin.HasSetting(PreLoadWidgets)">skinshortcuts-template-WidgetPreLoad</include>
+			<include condition="Skin.HasSetting(PreLoadWidgets)">skinshortcuts-template-WidgetPreLoad.2</include>
+		</control>
 		<control type="button" id="64">
 			<include>HiddenObject</include>
 			<onback>SetFocus(9000)</onback>
@@ -127,8 +130,10 @@
 				<include>VisibleFadeAnimation</include>
 				<include condition="!Skin.HasSetting(Disable.Videoinfo)">NowPlayingVideoWidget</include>
 				<include condition="!Skin.HasSetting(Disable.Musicinfo)">NowPlayingMusicWidget</include>
-				<include>Widget1</include>
-				<include>Widget2</include>
+				<control type="grouplist" id="55000">
+					<include>Widget1</include>
+					<include>Widget2</include>
+				</control>
 				<include>LiveTVWidget</include>
 				<!-- Horizontal Menu -->
 				<!-- RSS Feeds -->

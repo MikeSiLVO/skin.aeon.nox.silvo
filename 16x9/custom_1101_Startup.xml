@@ -3,10 +3,10 @@
 	<onload>Skin.SetBool(TMDbHelper.Service)</onload>
 	<onload>Skin.SetString(TMDbHelper.MonitorContainer,9143)</onload>
 	<onload>Skin.SetBool(TMDbHelper.DisableArtwork)</onload>
+	<onload>Skin.SetBool(TMDbHelper.DisableExtendedProperties)</onload>
 	<onload>Skin.Reset(TMDbHelper.DirectCallAuto)</onload>
-	<onload>Skin.Reset(skininfo.autoclosevideoosd)</onload>
-	<onload>Skin.Reset(skininfo.autoclosemusicosd)</onload>
-	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">Skin.Reset(Enable.BlurredVideoInfo)</onload>
+	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) | !Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(TMDbHelper.EnableBlur)</onload>
+	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.SetBool(TMDbHelper.EnableBlur)</onload>
 	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">Skin.SetBool(Disable.NextAired)</onload>
 	<onload condition="!System.AddonIsEnabled(script.skinvariables)">Skin.Reset(skinvariables.viewtypes)</onload>
 	<onload condition="System.AddonIsEnabled(script.skin.info.service)">RunScript(script.skin.info.service)</onload>

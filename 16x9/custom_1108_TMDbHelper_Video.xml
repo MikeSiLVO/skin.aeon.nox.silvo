@@ -5,11 +5,11 @@
 	<onunload>ClearProperty(tmdb_id,Home)</onunload>
 	<onunload>ClearProperty(imdb_id,Home)</onunload>
 	<onunload>ClearProperty(tmdb_type,Home)</onunload>
-	<onunload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[PosterVar]"')</onunload>
+	<!-- <onunload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[PosterVar]"')</onunload> -->
 	<controls>
 		<control type="list" id="11080">
 			<include>HiddenList</include>
-			<content sortby="year" sortorder="descending">$VAR[TMDbHVideoContentVar]</content>
+			<content sortby="year" sortorder="descending">$VAR[TMDbHVideoContentVar]$INFO[Window(Home).Property(tmdb_type),&amp;]</content>
 		</control>
 		<control type="list" id="9150">
 			<include>HiddenList</include>

@@ -1,426 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window type="window" id="1125">
-	<defaultcontrol always="true">11025</defaultcontrol>
+	<defaultcontrol always="true">5000</defaultcontrol>
 	<onload condition="String.IsEmpty(Window(Home).Property(library_search_string))">Action(Close)</onload>
 	<controls>
-		<include condition="System.AddonIsEnabled(script.embuary.helper)">EmbuaryHelperContentList</include>
+		<include>SkinVariablesContentList</include>
 		<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">TMDbHelperContentList</include>
-		<include>LibrarySearchBG</include>
+		<include>CommonBackground</include>
+		<include>DimBackground</include>
 		<control type="group">
 			<include>WindowOpenCloseAnimation</include>
-			<control type="image">
-				<bottom>462</bottom>
-				<width>100%</width>
-				<height>1</height>
-				<texture colordiffuse="grey4">separator_horizontal.png</texture>
-			</control>
-			<control type="image">
-				<bottom>0</bottom>
-				<width>100%</width>
-				<height>462</height>
-				<texture>colors/black.png</texture>
-			</control>
-			<control type="image">
-				<bottom>381</bottom>
-				<width>100%</width>
-				<height>1</height>
-				<texture colordiffuse="grey4">separator_horizontal.png</texture>
-			</control>
-			<control type="label">
+			<control type="grouplist" id="5000">
 				<left>15</left>
-				<bottom>380</bottom>
-				<width>1500</width>
-				<height>80</height>
-				<font>font16_title_bold</font>
-				<label>$INFO[ListItem.Label]</label>
-			</control>
-			<control type="label">
-				<right>80</right>
-				<bottom>388</bottom>
-				<width>1500</width>
-				<height>72</height>
-				<align>right</align>
-				<font>font14_title</font>
-				<label>$VAR[LibrarySearchCountLabelVar]</label>
-			</control>
-			<control type="group">
-				<right>15</right>
-				<bottom>382</bottom>
-				<width>60</width>
-				<height>78</height>
-				<control type="image">
-					<width>60</width>
-					<height>36</height>
-					<texture colordiffuse="grey">android/spin_up.png</texture>
-					<visible>Container(11025).HasPrevious</visible>
-					<include>VisibleFadeAnimation</include>
-				</control>
-				<control type="image">
-					<top>36</top>
-					<width>60</width>
-					<height>36</height>
-					<texture colordiffuse="grey">android/spin_down.png</texture>
-					<visible>Container(11025).HasNext</visible>
-					<include>VisibleFadeAnimation</include>
-				</control>
-			</control>
-			<control type="grouplist" id="11025">
-				<left>15</left>
-				<bottom>80</bottom>
-				<height>300</height>
+				<top>50</top>
+				<width>1890</width>
+				<height>1020</height>
 				<ondown>noop</ondown>
 				<onup>noop</onup>
-				<control type="panel" id="112501">
+				<control type="label" id="4001">
+					<height>40</height>
+					<font>font30_title</font>
+					<label>$LOCALIZE[342]$INFO[Container(5001).CurrentItem, [B](,/]$INFO[Container(5001).NumItems,,)][/B]</label>
+					<visible>Integer.IsGreater(Container(5001).NumItems,0)</visible>
+				</control>
+				<control type="panel" id="5001">
 					<include content="SearchPosterLayout">
-						<param name="list_id">112501</param>
+						<param name="list_id">5001</param>
 						<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</param>
 					</include>
-					<visible allowhiddenfocus="true">Integer.IsGreater(Container(112501).NumItems,0)</visible>
-					<onclick>noop</onclick>
-					<onfocus>SetProperty(TMDbHelper.WidgetContainer,112501,Home)</onfocus>
+					<visible allowhiddenfocus="true">Integer.IsGreater(Container(5001).NumItems,0)</visible>
+					<onfocus>SetProperty(TMDbHelper.WidgetContainer,5001,Home)</onfocus>
 				</control>
-				<control type="panel" id="112502">
+				<control type="label" id="4002">
+					<height>40</height>
+					<font>font30_title</font>
+					<label>$LOCALIZE[20343]$INFO[Container(5002).CurrentItem, [B](,/]$INFO[Container(5002).NumItems,,)][/B]</label>
+				</control>
+				<control type="panel" id="5002">
 					<include content="SearchPosterLayout">
-						<param name="list_id">112502</param>
+						<param name="list_id">5002</param>
 						<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D]</param>
 					</include>
-					<visible allowhiddenfocus="true">Integer.IsGreater(Container(112502).NumItems,0)</visible>
+					<visible allowhiddenfocus="true">Integer.IsGreater(Container(5002).NumItems,0)</visible>
 					<onclick>noop</onclick>
-					<onfocus>SetProperty(TMDbHelper.WidgetContainer,112502,Home)</onfocus>
+					<onfocus>SetProperty(TMDbHelper.WidgetContainer,5002,Home)</onfocus>
 				</control>
-				<control type="panel" id="112503">
+				<control type="label" id="4003">
+					<height>40</height>
+					<font>font16_title</font>
+					<label>$LOCALIZE[20360]$INFO[Container(5003).CurrentItem, [B](,/]$INFO[Container(5003).NumItems,,)][/B]</label>
+				</control>
+				<control type="panel" id="5003">
 					<include content="SearchPosterLayout">
-						<param name="list_id">112503</param>
+						<param name="list_id">5003</param>
 						<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22episodes%22%7D]</param>
 					</include>
-					<visible allowhiddenfocus="true">Integer.IsGreater(Container(112503).NumItems,0)</visible>
+					<visible allowhiddenfocus="true">Integer.IsGreater(Container(5003).NumItems,0)</visible>
 					<onclick>noop</onclick>
-					<onfocus>SetProperty(TMDbHelper.WidgetContainer,112503,Home)</onfocus>
-				</control>
-			</control>
-			<control type="group">
-				<top>1000</top>
-				<height>90</height>
-				<control type="grouplist">
-					<width>100%</width>
-					<align>center</align>
-					<orientation>horizontal</orientation>
-					<control type="grouplist">
-						<width>340</width>
-						<orientation>horizontal</orientation>
-						<control type="group">
-							<visible>[!String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallcritics)) | !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating))] + [ControlGroup(11025).HasFocus(112501) | ControlGroup(11025).HasFocus(112502)]</visible>
-							<width>170</width>
-							<control type="image">
-								<width>60</width>
-								<include>MediaFlagValues</include>
-								<texture>$VAR[RottenFreshLogoVar]</texture>
-							</control>
-							<control type="group">
-								<left>62</left>
-								<width>110</width>
-								<height>78</height>
-								<control type="label">
-									<top>10</top>
-									<height>39</height>
-									<font>font13_bold</font>
-									<textcolor>grey</textcolor>
-									<label>$VAR[RottenFreshLabelVar]$VAR[RottenFreshLabel2Var]</label>
-								</control>
-								<control type="label">
-									<top>34</top>
-									<height>39</height>
-									<font>font10</font>
-									<textcolor>grey</textcolor>
-									<label>$LOCALIZE[31475]</label>
-								</control>
-							</control>
-						</control>
-						<control type="group">
-							<visible>[!String.IsEmpty(Container(9142).ListItem.Rating(tomatometerallaudience)) | !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter))] + [ControlGroup(11025).HasFocus(112501) | ControlGroup(11025).HasFocus(112502)]</visible>
-							<width>170</width>
-							<control type="image">
-								<width>60</width>
-								<include>MediaFlagValues</include>
-								<texture>$VAR[RottenFreshAudienceLogoVar]</texture>
-							</control>
-							<control type="group">
-								<left>66</left>
-								<width>110</width>
-								<height>78</height>
-								<control type="label">
-									<top>10</top>
-									<height>39</height>
-									<font>font13_bold</font>
-									<textcolor>grey</textcolor>
-									<label>$VAR[RottenFreshAudienceLabelVar]$VAR[RottenFreshAudienceLabel2Var]</label>
-								</control>
-								<control type="label">
-									<top>34</top>
-									<height>39</height>
-									<font>font10</font>
-									<textcolor>grey</textcolor>
-									<label>$LOCALIZE[31597]</label>
-								</control>
-							</control>
-						</control>
-						<control type="group">
-							<visible>[!String.IsEmpty(Container(9142).ListItem.Rating(themoviedb)) | !String.IsEmpty(Container(9142).ListItem.Rating(tmdb)) | !String.IsEmpty(Container(9143).ListItem.Property(TMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(TMDb_Rating),0.0)]</visible>
-							<width>170</width>
-							<control type="image">
-								<width>60</width>
-								<include>MediaFlagValues</include>
-								<texture>logos/tmdb.png</texture>
-							</control>
-							<control type="label">
-								<left>75</left>
-								<width>95</width>
-								<height>78</height>
-								<font>font13_bold</font>
-								<textcolor>grey</textcolor>
-								<label>$VAR[TMDbRatingsLabelVar]</label>
-							</control>
-						</control>
-						<control type="group">
-							<visible>[!String.IsEmpty(Container(9142).ListItem.Rating(trakt)) | !String.IsEmpty(Container(9143).ListItem.Property(Trakt_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(Trakt_Rating),0.0)]</visible>
-							<width>170</width>
-							<control type="image">
-								<width>60</width>
-								<include>MediaFlagValues</include>
-								<texture>logos/trakt-clearlogo.png</texture>
-							</control>
-							<control type="label">
-								<left>66</left>
-								<width>104</width>
-								<height>78</height>
-								<font>font13_bold</font>
-								<textcolor>grey</textcolor>
-								<label>$VAR[TraktRatingsLabelVar]</label>
-							</control>
-						</control>
-						<control type="group">
-							<visible>[!String.IsEmpty(Container(9142).ListItem.Rating(imdb)) | !String.IsEmpty(Container(9143).ListItem.Property(IMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(IMDb_Rating),0.0)]</visible>
-							<width>170</width>
-							<control type="image">
-								<width>60</width>
-								<include>MediaFlagValues</include>
-								<texture>logos/imdb.png</texture>
-							</control>
-							<control type="label">
-								<left>75</left>
-								<width>95</width>
-								<height>78</height>
-								<font>font13_bold</font>
-								<textcolor>grey</textcolor>
-								<label>$VAR[IMDbRatingsLabelVar]</label>
-							</control>
-						</control>
-					</control>
-					<control type="grouplist">
-						<width>1500</width>
-						<orientation>horizontal</orientation>
-						<control type="group">
-							<width>170</width>
-							<control type="image" id="112599">
-								<include>MediaFlagValues</include>
-								<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
-							</control>
-							<control type="label">
-								<width>170</width>
-								<height>78</height>
-								<align>center</align>
-								<label>$INFO[ListItem.Studio]</label>
-								<font>font10</font>
-								<textcolor>grey</textcolor>
-								<wrapmultiline>true</wrapmultiline>
-								<visible>String.IsEmpty(Control.GetLabel(112599))</visible>
-							</control>
-						</control>
-						<control type="image">
-							<include>MediaFlagValues</include>
-							<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
-						</control>
-						<control type="image">
-							<include>MediaFlagValues</include>
-							<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
-						</control>
-						<control type="image">
-							<include>MediaFlagValues</include>
-							<texture>$VAR[MediaFlagsPathVar]/$VAR[HDRFlagsVar]</texture>
-						</control>
-						<control type="image">
-							<include>MediaFlagValues</include>
-							<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
-						</control>
-						<control type="image">
-							<include>MediaFlagValues</include>
-							<texture>$VAR[MediaFlagsPathVar]/aspectratio/$INFO[ListItem.VideoAspect,,.png]</texture>
-						</control>
-						<control type="image">
-							<include>MediaFlagValues</include>
-							<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[AudioCodecFlagVar]</texture>
-						</control>
-						<control type="image">
-							<include>MediaFlagValues</include>
-							<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
-						</control>
-						<!-- LANGUAGE -->
-						<control type="grouplist">
-							<height>78</height>
-							<width>140</width>
-							<control type="grouplist">
-								<width>140</width>
-								<height>30</height>
-								<orientation>horizontal</orientation>
-								<itemgap>5</itemgap>
-								<control type="image">
-									<width>30</width>
-									<height>30</height>
-									<aspectratio>keep</aspectratio>
-									<colordiffuse>grey</colordiffuse>
-									<texture>flags/audio.png</texture>
-									<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1)) | !String.IsEmpty(ListItem.Property(AudioLanguage.2)) | !String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
-								</control>
-								<control type="image">
-									<width>30</width>
-									<height>30</height>
-									<aspectratio>keep</aspectratio>
-									<colordiffuse>grey</colordiffuse>
-									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.1),,.png]</texture>
-									<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
-								</control>
-								<control type="image">
-									<width>30</width>
-									<height>30</height>
-									<aspectratio>keep</aspectratio>
-									<colordiffuse>grey</colordiffuse>
-									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.2),,.png]</texture>
-									<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.2))</visible>
-								</control>
-								<control type="image">
-									<width>30</width>
-									<height>30</height>
-									<aspectratio>keep</aspectratio>
-									<colordiffuse>grey</colordiffuse>
-									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.3),,.png]</texture>
-									<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
-								</control>
-							</control>
-							<control type="grouplist">
-								<top>30</top>
-								<width>140</width>
-								<height>30</height>
-								<orientation>horizontal</orientation>
-								<itemgap>5</itemgap>
-								<control type="image">
-									<width>30</width>
-									<height>30</height>
-									<aspectratio>keep</aspectratio>
-									<colordiffuse>grey</colordiffuse>
-									<texture>flags/subtitles.png</texture>
-									<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1)) | !String.IsEmpty(ListItem.Property(SubtitleLanguage.2)) | !String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
-								</control>
-								<control type="image">
-									<width>30</width>
-									<height>30</height>
-									<aspectratio>keep</aspectratio>
-									<colordiffuse>grey</colordiffuse>
-									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.1),,.png]</texture>
-									<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
-								</control>
-								<control type="image">
-									<width>30</width>
-									<height>30</height>
-									<aspectratio>keep</aspectratio>
-									<colordiffuse>grey</colordiffuse>
-									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.2),,.png]</texture>
-									<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.2))</visible>
-								</control>
-								<control type="image">
-									<width>30</width>
-									<height>30</height>
-									<aspectratio>keep</aspectratio>
-									<colordiffuse>grey</colordiffuse>
-									<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.3),,.png]</texture>
-									<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
-								</control>
-							</control>
-						</control>
-					</control>
-				</control>
-				<!-- SHOWS + SEASONS -->
-				<control type="group">
-					<left>1000</left>
-					<control type="group">
-						<width>987.5</width>
-						<control type="grouplist">
-							<left>400</left>
-							<width>487.5</width>
-							<orientation>horizontal</orientation>
-							<control type="group">
-								<width>162.5</width>
-								<visible>!String.IsEmpty(ListItem.Property(TotalSeasons))</visible>
-								<control type="label">
-									<top>2</top>
-									<height>60</height>
-									<align>center</align>
-									<label>$INFO[ListItem.Property(TotalSeasons)]</label>
-									<font>font48_bold</font>
-									<wrapmultiline>true</wrapmultiline>
-									<textcolor>grey</textcolor>
-								</control>
-								<control type="label">
-									<top>52</top>
-									<height>30</height>
-									<align>center</align>
-									<label>[LOWERCASE]$VAR[OneOrMoreSeasonsVar][/LOWERCASE]</label>
-									<font>font12</font>
-									<textcolor>grey</textcolor>
-								</control>
-							</control>
-							<control type="group">
-								<visible>!String.IsEmpty(ListItem.Property(TotalEpisodes))</visible>
-								<width>162.5</width>
-								<control type="label">
-									<top>2</top>
-									<height>60</height>
-									<align>center</align>
-									<label>$INFO[ListItem.Property(TotalEpisodes)]</label>
-									<font>font48_bold</font>
-									<wrapmultiline>true</wrapmultiline>
-									<textcolor>grey</textcolor>
-								</control>
-								<control type="label">
-									<top>52</top>
-									<height>30</height>
-									<align>center</align>
-									<label>[LOWERCASE]$VAR[OneOrMoreEpisodesVar][/LOWERCASE]</label>
-									<font>font12</font>
-									<textcolor>grey</textcolor>
-								</control>
-							</control>
-							<control type="group">
-								<visible>!String.IsEmpty(ListItem.Property(UnWatchedEpisodes))</visible>
-								<width>162.5</width>
-								<control type="label">
-									<height>60</height>
-									<align>center</align>
-									<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
-									<font>font48_bold</font>
-									<wrapmultiline>true</wrapmultiline>
-									<textcolor>$VAR[UnWatchedEpColor]</textcolor>
-								</control>
-								<control type="label">
-									<top>52</top>
-									<height>30</height>
-									<align>center</align>
-									<label>[LOWERCASE]$LOCALIZE[16101][/LOWERCASE]</label>
-									<font>font12</font>
-									<textcolor>$VAR[UnWatchedEpColor]</textcolor>
-								</control>
-							</control>
-						</control>
-					</control>
+					<onfocus>SetProperty(TMDbHelper.WidgetContainer,5003,Home)</onfocus>
 				</control>
 			</control>
 		</control>

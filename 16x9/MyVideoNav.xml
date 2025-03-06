@@ -3,7 +3,7 @@
 	<defaultcontrol always="true">50</defaultcontrol>
 	<views>50,51,52,53,55,56,57,58,59,500,501,502,503,504,505,506,507,509,591,592,602,609</views>
 	<menucontrol>9051</menucontrol>
-	<onload condition="System.AddonIsEnabled(script.skin.info.service) + String.IsEmpty(Window(home).Property(skininfos_daemon_running))">RunScript(script.skin.info.service)</onload>
+	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(poster)|Art(season.poster)|Art(tvshow.poster)|Art(thumb)|Icon,Home)</onload>
 	<onload>SetProperty(Window.HasSettings,True,Home)</onload>
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
@@ -178,15 +178,11 @@
 			<include>HiddenList</include>
 			<content sortby="year" sortorder="ascending">$VAR[MovieSetsPathVar]</content>
 		</control>
-		<control type="list" id="4501">
-			<include>HiddenList</include>
-			<content>$VAR[SkinVariableDBContainerPluginPath]</content>
-		</control>
+		<include>SkinVariablesContentList</include>
 		<!-- <control type="list" id="4502">
 			<include>HiddenList</include>
 			<content>plugin://script.skinvariables/?info=get_file_exists&amp;window_prop=animated_poster&amp;window_id=Home&amp;&amp;$INFO[ListItem.Path,,poster.gif]</content>
 		</control> -->
-		<include condition="System.AddonIsEnabled(script.embuary.helper)">EmbuaryHelperContentList</include>
 		<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">TMDbHelperContentList</include>
 		<control type="group">
 			<visible>[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
@@ -836,6 +832,13 @@
 						<label>653</label>
 						<altlabel>13353</altlabel>
 						<usealttexture>library.isscanningvideo</usealttexture>
+					</control>
+					<control type="button" id="2099">
+						<description>Update library</description>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[14247]</label>
+						<onclick>SetProperty(CustomConfirm,cleanlibrary,Home)</onclick>
+						<onclick>ActivateWindow(1126)</onclick>
 					</control>
 					<control type="button" id="612">
 						<description>Go to playlist</description>
