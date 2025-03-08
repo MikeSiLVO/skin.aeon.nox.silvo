@@ -6,6 +6,7 @@
 	<onload>Skin.SetBool(TMDbHelper.DisableExtendedProperties)</onload>
 	<onload>Skin.Reset(TMDbHelper.DirectCallAuto)</onload>
 	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) | !Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(TMDbHelper.EnableBlur)</onload>
+	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(poster)|Art(season.poster)|Art(tvshow.poster)|Art(thumb)|Icon,Home)</onload>
 	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.SetBool(TMDbHelper.EnableBlur)</onload>
 	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">Skin.SetBool(Disable.NextAired)</onload>
 	<onload condition="!System.AddonIsEnabled(script.skinvariables)">Skin.Reset(skinvariables.viewtypes)</onload>
