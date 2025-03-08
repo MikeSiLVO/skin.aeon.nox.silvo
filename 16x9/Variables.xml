@@ -7,7 +7,8 @@
 	</variable>
 	<variable name="CustomConfirmHeaderLabelVar">
 		<value condition="String.IsEqual(Window(Home).Property(CustomConfirm),cleanlibrary)">$LOCALIZE[313]</value>
-		<value>$VAR[BackgroundLabelVar] $LOCALIZE[14117]</value>
+		<value>$LOCALIZE[14117]</value>
+		<!-- <value>$VAR[BackgroundLabelVar] $LOCALIZE[14117]</value> -->
 	</variable>
 	<variable name="SkinShortcutsIconLabelVar">
 		<value condition="[String.EndsWith(Window.Property(groupname),.1) | String.EndsWith(Window.Property(groupname),.2)] + !String.IsEqual(Container(211).ListItem.Icon,special://skin/extras/icons/) + !String.IsEqual(Container(211).ListItem.Icon,DefaultShortcut.png)">$INFO[Container(211).ListItem.Icon]</value>
