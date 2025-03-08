@@ -2,7 +2,6 @@
 <window id="1126" type="dialog">
 	<onload condition="String.IsEmpty(Window(Home).Property(Notify))">SetFocus(901002)</onload>
 	<onload condition="!String.IsEmpty(Window(Home).Property(Notify))">SetFocus(901003)</onload>
-	<onunload>ClearProperty(SetSkinColors,Home)</onunload>
 	<onunload>ClearProperty(ResetSkinSettings,Home)</onunload>
 	<onunload>ClearProperty(NotWarnedOnHidingViz,Home)</onunload>
 	<onunload>ClearProperty(Notify,Home)</onunload>
@@ -63,12 +62,12 @@
 					<ondown>noop</ondown>
 					<onclick>Dialog.Close(1126)</onclick>
 					<onclick condition="String.IsEqual(Window(Home).Property(CustomConfirm),cleanlibrary)">CleanLibrary(video)</onclick>
-					<include condition="String.IsEqual(Window(Home).Property(SetSkinColors),SiLVO)">SetPresetSiLVOTheme</include>
-					<include condition="String.IsEqual(Window(Home).Property(SetSkinColors),Blue)">SetPresetBlueTheme</include>
-					<include condition="String.IsEqual(Window(Home).Property(SetSkinColors),Orange)">SetPresetOrangeTheme</include>
-					<include condition="String.IsEqual(Window(Home).Property(SetSkinColors),Red)">SetPresetRedTheme</include>
-					<include condition="String.IsEqual(Window(Home).Property(SetSkinColors),Superman)">SetPresetSupermanTheme</include>
-					<include condition="String.IsEqual(Window(Home).Property(SetSkinColors),Reset)">ResetSkinColorsOnclick</include>
+					<include condition="String.IsEqual(Window(Home).Property(CustomConfirm),SiLVOcolors)">SetPresetSiLVOTheme</include>
+					<include condition="String.IsEqual(Window(Home).Property(CustomConfirm),bluecolors)">SetPresetBlueTheme</include>
+					<include condition="String.IsEqual(Window(Home).Property(CustomConfirm),orangecolors)">SetPresetOrangeTheme</include>
+					<include condition="String.IsEqual(Window(Home).Property(CustomConfirm),redcolors)">SetPresetRedTheme</include>
+					<include condition="String.IsEqual(Window(Home).Property(CustomConfirm),supermancolors)">SetPresetSupermanTheme</include>
+					<include condition="String.IsEqual(Window(Home).Property(CustomConfirm),resetcolors)">ResetSkinColorsOnclick</include>
 					<onclick condition="!String.IsEmpty(Window(Home).Property(ResetSkinSettings))">Skin.ResetSettings</onclick>
 					<onclick condition="!Skin.HasSetting(WarnedOnHidingViz) + !String.IsEmpty(Window(Home).Property(NotWarnedOnHidingViz))">Skin.ToggleSetting(hidevizbehindfanart)</onclick>
 					<onclick condition="!Skin.HasSetting(WarnedOnHidingViz) + !String.IsEmpty(Window(Home).Property(NotWarnedOnHidingViz))">Skin.SetBool(WarnedOnHidingViz)</onclick>

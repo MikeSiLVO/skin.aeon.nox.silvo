@@ -19,8 +19,8 @@
 	</variable>
 	<variable name="CustomConfirmTextboxVar">
 		<value condition="String.IsEqual(Window(Home).Property(CustomConfirm),cleanlibrary)">$LOCALIZE[333]</value>
-		<value condition="String.IsEqual(Window(Home).Property(SetSkinColors),Reset)">$LOCALIZE[31495]</value>
-		<value condition="!String.IsEmpty(Window(Home).Property(SetSkinColors))">$LOCALIZE[31525]</value>
+		<value condition="String.IsEqual(Window(Home).Property(CustomConfirm),resetcolors)">$LOCALIZE[31495]</value>
+		<value condition="String.EndsWith(Window(Home).Property(CustomConfirm),colors)">$LOCALIZE[31525]</value>
 		<value condition="!String.IsEmpty(Window(Home).Property(ResetSkinSettings))">$LOCALIZE[31398]</value>
 		<value condition="!String.IsEmpty(Window(Home).Property(OfferReloadAfterConfirm))">$LOCALIZE[31316]</value>
 		<value condition="!String.IsEmpty(Window(Home).Property(NotWarnedOnHidingViz))">$LOCALIZE[31322]</value>
@@ -1184,7 +1184,7 @@
 	</variable>
 	<variable name="ThemeBorderColor">
 		<value condition="!String.IsEmpty(Skin.String(ThemeBorderColor))">$INFO[Skin.String(ThemeBorderColor)]</value>
-		<value>black</value>
+		<value>FF000000</value>
 	</variable>
 	<variable name="ThemeFloorGlowBarColor">
 		<value condition="!String.IsEmpty(Skin.String(ThemeFloorGlowBarColor))">$INFO[Skin.String(ThemeFloorGlowBarColor)]</value>
@@ -1192,7 +1192,7 @@
 	</variable>
 	<variable name="TopBarColor">
 		<value condition="!String.IsEmpty(Skin.String(TopBarColor))">$INFO[Skin.String(TopBarColor)]</value>
-		<value>black</value>
+		<value>FF000000</value>
 	</variable>
 	<variable name="TopBarGlowBarColor">
 		<value condition="!String.IsEmpty(Skin.String(TopBarGlowBarColor))">$INFO[Skin.String(TopBarGlowBarColor)]</value>
@@ -1208,7 +1208,7 @@
 	</variable>
 	<variable name="ThemeHomeSystemBarsColor">
 		<value condition="!String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor))">$INFO[Skin.String(ThemeHomeSystemBarsColor)]</value>
-		<value>black</value>
+		<value>FF000000</value>
 	</variable>
 	<variable name="ThemeHomeSystemGlowBarsColor">
 		<value condition="!String.IsEmpty(Skin.String(ThemeHomeSystemGlowBarsColor))">$INFO[Skin.String(ThemeHomeSystemGlowBarsColor)]</value>
@@ -1225,31 +1225,31 @@
 	</variable>
 	<variable name="FocusedMainMenuColor">
 		<value condition="!String.IsEmpty(Skin.String(FocusedMainMenuColor))">$INFO[Skin.String(FocusedMainMenuColor)]</value>
-		<value>white</value>
+		<value>FFE5E5E5</value>
 	</variable>
 	<variable name="UnfocusedMainMenuColor">
 		<value condition="!String.IsEmpty(Skin.String(UnfocusedMainMenuColor))">$INFO[Skin.String(UnfocusedMainMenuColor)]</value>
-		<value>grey3</value>
+		<value>FF606060</value>
 	</variable>
 	<variable name="FocusedMainMenuIconLabelColor">
 		<value condition="!String.IsEmpty(Skin.String(FocusedMainMenuIconLabelColor))">$INFO[Skin.String(FocusedMainMenuIconLabelColor)]</value>
-		<value>white</value>
+		<value>FFE5E5E5</value>
 	</variable>
 	<variable name="UnfocusedMainMenuIconLabelColor">
 		<value condition="!String.IsEmpty(Skin.String(UnFocusedMainMenuIconLabelColor))">$INFO[Skin.String(UnFocusedMainMenuIconLabelColor)]</value>
-		<value>grey3</value>
+		<value>FF606060</value>
 	</variable>
 	<variable name="FocusedSubMenuColor">
 		<value condition="!String.IsEmpty(Skin.String(FocusedSubMenuColor))">$INFO[Skin.String(FocusedSubMenuColor)]</value>
-		<value>white</value>
+		<value>FFE5E5E5</value>
 	</variable>
 	<variable name="UnfocusedSubMenuColor">
 		<value condition="!String.IsEmpty(Skin.String(UnfocusedSubMenuColor))">$INFO[Skin.String(UnfocusedSubMenuColor)]</value>
-		<value>grey</value>
+		<value>FFBDBDBD</value>
 	</variable>
 	<variable name="RSSFeedColor">
 		<value condition="!String.IsEmpty(Skin.String(RSSFeedColor))">$INFO[Skin.String(RSSFeedColor)]</value>
-		<value>grey</value>
+		<value>FFBDBDBD</value>
 	</variable>
 	<variable name="WidgetHighlightBarColor">
 		<value condition="!String.IsEmpty(Skin.String(WidgetHighlightBarColor))">$INFO[Skin.String(WidgetHighlightBarColor)]</value>
@@ -1262,7 +1262,7 @@
 	</variable>
 	<variable name="UnWatchedEpColor">
 		<value condition="!String.IsEmpty(Skin.String(UnWatchedEpColor))">$INFO[Skin.String(UnWatchedEpColor)]</value>
-		<value>white</value>
+		<value>FFE5E5E5</value>
 	</variable>
 	<variable name="ThemeOSDProgressColor">
 		<value condition="!String.IsEmpty(Skin.String(ThemeOSDProgressColor))">$INFO[Skin.String(ThemeOSDProgressColor)]</value>
@@ -1275,6 +1275,6 @@
 	</variable>
 	<variable name="UnfocusedOSDButtonsColor">
 		<value condition="!String.IsEmpty(Skin.String(UnfocusedOSDButtonsColor))">$INFO[Skin.String(UnfocusedOSDButtonsColor)]</value>
-		<value>white</value>
+		<value>FFE5E5E5</value>
 	</variable>
 </includes>
