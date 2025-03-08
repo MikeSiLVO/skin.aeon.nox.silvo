@@ -12,15 +12,13 @@
 				<effect type="zoom" start="150" end="100" center="auto" time="500" tween="cubic" easing="out" />
 				<effect type="fade" end="100" time="250" />
 			</animation>
-			<control type="image">
-				<left>-1</left>
-				<top>-1</top>
-				<width>1802</width>
-				<height>902</height>
-				<texture>colors/black90.png</texture>
-				<bordersize>1</bordersize>
-				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-			</control>
+			<include content="BackPanel">
+				<param name="left">-4</param>
+				<param name="top">-4</param>
+				<param name="width">1810</param>
+				<param name="height">910</param>
+				<param name="texture">colors/black90.png</param>
+			</include>
 			<control type="image">
 				<width>360</width>
 				<height>360</height>

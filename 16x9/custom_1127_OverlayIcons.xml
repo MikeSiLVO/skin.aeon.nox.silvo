@@ -2,27 +2,26 @@
 <window id="1127" type="dialog">
 	<defaultcontrol always="true">90100</defaultcontrol>
 	<controls>
-		<include>DimBackground</include>
+		<include content="DimBackground">
+			<param name="texture">colors/black75.png</param>
+		</include>
 		<control type="group">
 			<left>457</left>
 			<top>240</top>
 			<include>DialogOpenCloseAnimation</include>
-			<control type="image">
-				<left>188</left>
-				<top>20</top>
-				<width>630</width>
-				<height>469</height>
-				<texture>colors/black.png</texture>
-				<bordersize>1</bordersize>
-				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-			</control>
-			<control type="label" id="1">
+			<include content="BackPanel">
+				<param name="left">184</param>
+				<param name="top">16</param>
+				<param name="width">638</param>
+				<param name="height">478</param>
+			</include>
+			<control type="label">
 				<left>30</left>
 				<top>32</top>
 				<width>940</width>
 				<height>40</height>
 				<font>font15_title</font>
-				<label>$LOCALIZE[31091]</label>
+				<label>$LOCALIZE[31188]</label>
 				<align>center</align>
 				<textcolor>dialogheader</textcolor>
 			</control>
@@ -34,8 +33,6 @@
 				<onup>90100</onup>
 				<ondown>90100</ondown>
 				<onleft>90100</onleft>
-				<onright>60</onright>
-				<pagecontrol>60</pagecontrol>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<itemlayout height="100" width="628">
 					<control type="label">
@@ -48,14 +45,15 @@
 						<label>$INFO[ListItem.Label]</label>
 					</control>
 					<control type="image">
-						<top>10</top>
-						<left>10</left>
-						<width>80</width>
-						<height>80</height>
+						<top>20</top>
+						<left>20</left>
+						<width>60</width>
+						<height>60</height>
+						<aspectratio>keep</aspectratio>
 						<texture>$INFO[ListItem.Icon]</texture>
 					</control>
 					<control type="image">
-						<left>528</left>
+						<left>518</left>
 						<top>18</top>
 						<width>120</width>
 						<height>76</height>
@@ -81,14 +79,15 @@
 						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90100)">Conditional</animation>
 					</control>
 					<control type="image">
-						<top>10</top>
-						<left>10</left>
-						<width>80</width>
-						<height>80</height>
+						<top>20</top>
+						<left>20</left>
+						<width>60</width>
+						<height>60</height>
+						<aspectratio>keep</aspectratio>
 						<texture>$INFO[ListItem.Icon]</texture>
 					</control>
 					<control type="image">
-						<left>528</left>
+						<left>518</left>
 						<top>18</top>
 						<width>120</width>
 						<height>76</height>
@@ -161,20 +160,6 @@
 						<visible>!Skin.HasSetting(Disable.UnwatchedIcon)</visible>
 					</item>
 				</content>
-			</control>
-			<control type="scrollbar" id="60">
-				<left>819</left>
-				<top>88</top>
-				<height>480</height>
-				<width>14</width>
-				<onleft>90100</onleft>
-				<onright>90100</onright>
-				<ondown>60</ondown>
-				<onup>60</onup>
-				<showonepage>false</showonepage>
-				<texturesliderbackground />
-				<texturesliderbar colordiffuse="80FFFFFF" border="4">scrollbar/texturesliderbar3.png</texturesliderbar>
-				<texturesliderbarfocus border="4">scrollbar/texturesliderbar3.png</texturesliderbarfocus>
 			</control>
 		</control>
 	</controls>

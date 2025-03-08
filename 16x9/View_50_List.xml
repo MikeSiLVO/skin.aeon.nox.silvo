@@ -10,12 +10,12 @@
 			<top>10</top>
 			<control type="group">
 				<left>80</left>
-				<top>-50</top>
+				<top>-54</top>
 				<include content="BackPanel">
-					<param name="left">-1</param>
-					<param name="top">179</param>
-					<param name="width">1162</param>
-					<param name="height">842</param>
+					<param name="left">-4</param>
+					<param name="top">175</param>
+					<param name="width">1170</param>
+					<param name="height">850</param>
 					<param name="texture">colors/black75.png</param>
 				</include>
 				<control type="panel" id="50">
@@ -1040,9 +1040,9 @@
 				</control>
 				<control type="scrollbar" id="95060">
 					<left>1148</left>
-					<top>180</top>
-					<width>12</width>
-					<height>840</height>
+					<top>179</top>
+					<width>14</width>
+					<height>842</height>
 					<onup>95060</onup>
 					<ondown>95060</ondown>
 					<onleft>50</onleft>
@@ -1124,18 +1124,16 @@
 			</control>
 			<control type="group" id="8001">
 				<left>1280</left>
-				<top>130</top>
+				<top>125</top>
 				<visible>![Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content() | Container.Content(files) | Container.Content(addons)]</visible>
 				<animation effect="fade" time="250">Visible</animation>
-				<control type="image">
-					<left>-1</left>
-					<top>-1</top>
-					<width>554</width>
-					<height>842</height>
-					<texture>colors/black75.png</texture>
-					<bordersize>1</bordersize>
-					<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">-4</param>
+					<param name="top">-4</param>
+					<param name="width">562</param>
+					<param name="height">850</param>
+					<param name="texture">colors/black75.png</param>
+				</include>
 				<control type="image">
 					<width>552</width>
 					<height>352</height>
@@ -1332,15 +1330,13 @@
 			<control type="group">
 				<left>100</left>
 				<top>-40</top>
-				<control type="image">
-					<left>-1</left>
-					<top>179</top>
-					<width>1162</width>
-					<height>842</height>
-					<texture>colors/black75.png</texture>
-					<bordersize>1</bordersize>
-					<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">-4</param>
+					<param name="top">175</param>
+					<param name="width">1170</param>
+					<param name="height">850</param>
+					<param name="texture">colors/black75.png</param>
+				</include>
 				<control type="panel" id="50">
 					<top>180</top>
 					<width>1160</width>
@@ -1389,21 +1385,21 @@
 						</control>
 						<control type="label">
 							<left>135</left>
-							<width>40</width>
-							<height>75</height>
-							<font>IconTinyMD</font>
+							<width>50</width>
+							<height>72</height>
+							<font>IconMediaMenuButtons</font>
 							<textcolor>grey2</textcolor>
 							<label></label>
 							<visible>!String.IsEmpty(ListItem.SongVideoURL)</visible>
 						</control>
 						<control type="label">
 							<left>135</left>
-							<width>985</width>
+							<width>835</width>
 							<height>70</height>
 							<font>font30</font>
 							<textcolor>grey2</textcolor>
 							<label>$VAR[MusicListLabel3Var]</label>
-							<animation effect="slide" end="40" condition="!String.IsEmpty(ListItem.SongVideoURL)">Conditional</animation>
+							<animation effect="slide" end="50" condition="!String.IsEmpty(ListItem.SongVideoURL)">Conditional</animation>
 							<visible>!String.IsEmpty(ListItem.Artist)</visible>
 						</control>
 						<control type="label">
@@ -1482,19 +1478,19 @@
 						</control>
 						<control type="label">
 							<left>135</left>
-							<width>40</width>
-							<height>75</height>
-							<font>IconTinyMD</font>
+							<width>50</width>
+							<height>72</height>
+							<font>IconMediaMenuButtons</font>
 							<label></label>
 							<visible>!String.IsEmpty(ListItem.SongVideoURL)</visible>
 						</control>
 						<control type="label">
 							<left>135</left>
-							<width>985</width>
+							<width>835</width>
 							<height>70</height>
 							<font>font30</font>
 							<label>$VAR[MusicListLabel3Var]</label>
-							<animation effect="slide" end="40" condition="!String.IsEmpty(ListItem.SongVideoURL)">Conditional</animation>
+							<animation effect="slide" end="50" condition="!String.IsEmpty(ListItem.SongVideoURL)">Conditional</animation>
 							<visible>!String.IsEmpty(ListItem.Artist)</visible>
 						</control>
 						<control type="label">
@@ -1715,9 +1711,9 @@
 				</control>
 				<control type="scrollbar" id="95060">
 					<left>1148</left>
-					<top>180</top>
-					<width>12</width>
-					<height>840</height>
+					<top>179</top>
+					<width>14</width>
+					<height>842</height>
 					<onup>95060</onup>
 					<ondown>95060</ondown>
 					<onleft>50</onleft>
@@ -1877,15 +1873,13 @@
 			<control type="group">
 				<left>100</left>
 				<top>-40</top>
-				<control type="image">
-					<left>-1</left>
-					<top>179</top>
-					<width>1162</width>
-					<height>842</height>
-					<texture>colors/black75.png</texture>
-					<bordersize>1</bordersize>
-					<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">-4</param>
+					<param name="top">175</param>
+					<param name="width">1170</param>
+					<param name="height">850</param>
+					<param name="texture">colors/black90.png</param>
+				</include>
 				<control type="panel" id="50">
 					<top>180</top>
 					<width>1160</width>
@@ -2043,10 +2037,10 @@
 					</focusedlayout>
 				</control>
 				<control type="scrollbar" id="95060">
-					<left>1146</left>
-					<top>180</top>
+					<left>1148</left>
+					<top>179</top>
 					<width>14</width>
-					<height>840</height>
+					<height>842</height>
 					<onup>95060</onup>
 					<ondown>95060</ondown>
 					<onleft>50</onleft>
@@ -2082,10 +2076,10 @@
 				<left>100</left>
 				<top>-40</top>
 				<include content="BackPanel">
-					<param name="left">-1</param>
-					<param name="top">179</param>
-					<param name="width">1156</param>
-					<param name="height">842</param>
+					<param name="left">-4</param>
+					<param name="top">174</param>
+					<param name="width">1164</param>
+					<param name="height">850</param>
 					<param name="texture">colors/black75.png</param>
 				</include>
 				<control type="panel" id="50">
@@ -2282,9 +2276,9 @@
 				</control>
 				<control type="scrollbar" id="95060">
 					<left>1142</left>
-					<top>180</top>
-					<width>12</width>
-					<height>840</height>
+					<top>178</top>
+					<width>14</width>
+					<height>842</height>
 					<onup>95060</onup>
 					<ondown>95060</ondown>
 					<onleft>50</onleft>
@@ -2317,16 +2311,14 @@
 			<include>ViewAnimation</include>
 			<control type="group">
 				<left>100</left>
-				<top>-40</top>
-				<control type="image">
-					<left>-1</left>
-					<top>178</top>
-					<width>1152</width>
-					<height>843</height>
-					<texture>colors/black75.png</texture>
-					<bordersize>1</bordersize>
-					<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-				</control>
+				<top>-44</top>
+				<include content="BackPanel">
+					<param name="left">-4</param>
+					<param name="top">175</param>
+					<param name="width">1160</param>
+					<param name="height">850</param>
+					<param name="texture">colors/black75.png</param>
+				</include>
 				<control type="panel" id="50">
 					<top>180</top>
 					<width>1150</width>
@@ -2511,9 +2503,9 @@
 				</control>
 				<control type="scrollbar" id="95060">
 					<left>1138</left>
-					<top>180</top>
-					<width>12</width>
-					<height>840</height>
+					<top>179</top>
+					<width>14</width>
+					<height>842</height>
 					<onup>95060</onup>
 					<ondown>95060</ondown>
 					<onleft>50</onleft>
@@ -2523,8 +2515,8 @@
 					<onright condition="Control.IsVisible(8000) + !Control.IsVisible(95063)">8000</onright>
 					<onright condition="Control.IsVisible(95063)">95063</onright>
 					<onright condition="Control.IsVisible(8001) + !Control.IsVisible(95061)">4400</onright>
-					<texturesliderbackground />
-					<texturesliderbar>colors/white50.png</texturesliderbar>
+					<texturesliderbackground>colors/black.png</texturesliderbackground>
+					<texturesliderbar>colors/white25.png</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>

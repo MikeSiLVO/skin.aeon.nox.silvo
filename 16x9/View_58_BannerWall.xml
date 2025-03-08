@@ -3,22 +3,23 @@
 	<!-- BannerWall -->
 	<include name="BannerWall">
 		<control type="group">
+			<top>-4</top>
 			<visible>Control.IsVisible(58) + !Window.IsActive(addoninformation)</visible>
 			<include>ViewAnimation</include>
 			<control type="group">
 				<animation effect="slide" start="0" end="0,60" condition="!Skin.HasSetting(Disable.BannerWallInfo)">Conditional</animation>
 				<include content="BackPanel">
-					<param name="left">107</param>
-					<param name="top">109</param>
-					<param name="width">1694</param>
-					<param name="height">772</param>
+					<param name="left">104</param>
+					<param name="top">106</param>
+					<param name="width">1702</param>
+					<param name="height">778</param>
 					<param name="visible">!Skin.HasSetting(BannerPlex) | !Skin.HasSetting(Disable.BannerWallInfo)</param>
 				</include>
 				<include content="BackPanel">
-					<param name="left">107</param>
-					<param name="top">549</param>
-					<param name="width">1694</param>
-					<param name="height">332</param>
+					<param name="left">104</param>
+					<param name="top">545</param>
+					<param name="width">1702</param>
+					<param name="height">340</param>
 					<param name="visible">Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)</param>
 				</include>
 				<control type="panel" id="58">
@@ -137,7 +138,7 @@
 				</control>
 				<control type="scrollbar" id="95860">
 					<left>108</left>
-					<width>12</width>
+					<width>14</width>
 					<include condition="!Skin.HasSetting(BannerPlex) | !Skin.HasSetting(Disable.BannerWallInfo)">BannerWallScrollbarHigh</include>
 					<include condition="Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)">BannerWallScrollbarLow</include>
 					<onup>95860</onup>
