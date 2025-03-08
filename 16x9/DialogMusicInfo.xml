@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<onload>SetFocus(9003)</onload>
+	<onload>SetFocus(90003)</onload>
 	<onload condition="String.IsEmpty(ListItem.SongVideoURL)">SetFocus(5010)</onload>
 	<onload condition="!String.IsEmpty(ListItem.SongVideoURL)">SetFocus(5000)</onload>
-	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) | !Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(TMDbHelper.EnableBlur)</onload>
+	<!-- <onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) | !Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(TMDbHelper.EnableBlur)</onload>
 	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.SetBool(TMDbHelper.EnableBlur)</onload>
-	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(thumb)|Icon,Home)</onload>
+	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(thumb)|Icon,Home)</onload> -->
 	<controls>
 		<control type="group">
-			<animation effect="slide" start="-729,0" end="0,0" delay="300" time="400" tween="quadratic">WindowOpen</animation>
-			<animation effect="slide" end="-729,0" time="400" tween="quadratic">WindowClose</animation>
+			<animation effect="slide" start="-729,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
+			<animation effect="slide" end="-729,0" time="500" tween="quadratic">WindowClose</animation>
 			<control type="image">
 				<width>729</width>
 				<height>1080</height>
@@ -40,8 +40,8 @@
 			</control>
 		</control>
 		<control type="group">
-			<animation effect="slide" start="1242,0" end="0,0" delay="300" time="400" tween="quadratic">WindowOpen</animation>
-			<animation effect="slide" end="1242,0" time="400" tween="quadratic">WindowClose</animation>
+			<animation effect="slide" start="1242,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
+			<animation effect="slide" end="1242,0" time="500" tween="quadratic">WindowClose</animation>
 			<left>729</left>
 			<control type="group">
 				<width>1200</width>
@@ -738,7 +738,7 @@
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label>[B]$VAR[VideoInfoButtonLabelVar][/B]</label>
 						<enable>no</enable>
-						<visible>!ControlGroup(9001).HasFocus | ControlGroup(9001).HasFocus(9003)</visible>
+						<visible>!ControlGroup(9001).HasFocus | ControlGroup(9001).HasFocus(90003)</visible>
 					</control>
 					<control type="button">
 						<top>516</top>
@@ -751,7 +751,7 @@
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label>$VAR[DialogInfoDetailsLabelVar]</label>
 						<enable>no</enable>
-						<visible>ControlGroup(9001).HasFocus + !Control(9003).HasFocus</visible>
+						<visible>ControlGroup(9001).HasFocus + !Control(90003).HasFocus</visible>
 					</control>
 					<control type="grouplist" id="9000">
 						<left>620</left>
@@ -842,7 +842,7 @@
 				<control type="group" id="9002">
 					<width>1190</width>
 					<height>510</height>
-					<control type="button" id="9003">
+					<control type="button" id="90003">
 						<description>FS Plot</description>
 						<texturenofocus />
 						<width>1186</width>
@@ -866,14 +866,14 @@
 						<align>justify</align>
 						<label>$VAR[MusicInfoPlotVar]</label>
 						<autoscroll time="3000" delay="6000" repeat="6000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
-						<animation effect="fade" start="100" end="78" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9003)">Conditional</animation>
+						<animation effect="fade" start="100" end="78" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90003)">Conditional</animation>
 					</control>
 				</control>
 				<control type="panel" id="9050">
 					<width>1195</width>
 					<height>490</height>
 					<preloaditems>2</preloaditems>
-					<onup>9003</onup>
+					<onup>90003</onup>
 					<scrolltime tween="quadratic" easing="out">300</scrolltime>
 					<orientation>horizontal</orientation>
 					<onclick>Dialog.Close(musicinformation)</onclick>

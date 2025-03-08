@@ -434,15 +434,13 @@
 			<animation effect="slide" end="320,0" time="300" tween="cubic" easing="inout" condition="Container(503).Column(3)">Conditional</animation>
 			<animation effect="slide" end="320,0" time="300" tween="cubic" easing="inout" condition="Container(503).Column(5) | Container(503).Column(3) | Container(503).Column(2)">Conditional</animation>
 			<animation effect="slide" end="320,0" time="300" tween="cubic" easing="inout" condition="Container(503).Column(5) | Container(503).Column(4) | Container(503).Column(3) | Container(503).Column(2) | Container(503).Column(1)">Conditional</animation>
-			<control type="image">
-				<left>25</left>
-				<top>-4</top>
-				<width>608</width>
-				<height>428</height>
-				<texture>colors/black90.png</texture>
-				<bordersize>1</bordersize>
-				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-			</control>
+			<include content="BackPanel">
+				<param name="left">21</param>
+				<param name="top">-8</param>
+				<param name="width">616</param>
+				<param name="height">436</param>
+				<param name="texture">colors/black90.png</param>
+			</include>
 			<control type="image">
 				<top>192</top>
 				<width>19</width>
@@ -465,7 +463,7 @@
 				<height>20</height>
 				<font>font15</font>
 				<textcolor>grey</textcolor>
-				<label>$INFO[ListItem.Label]</label>
+				<label>$INFO[ListItem.Label]$INFO[ListItem.Year, (,)]</label>
 			</control>
 			<control type="image">
 				<left>50</left>
@@ -475,7 +473,7 @@
 				<aspectratio>keep</aspectratio>
 				<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
 				<texture fallback="flags/rating/0.0.png">$INFO[ListItem.Rating,flags/rating/,.png]</texture>
-				<visible>!ListItem.IsParentFolder + String.IsEmpty(ListItem.UserRating)</visible>
+				<visible>String.IsEmpty(ListItem.UserRating)</visible>
 			</control>
 			<control type="image">
 				<left>50</left>
@@ -485,7 +483,7 @@
 				<aspectratio>keep</aspectratio>
 				<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
 				<texture>$INFO[ListItem.UserRating,flags/rating/,.png]</texture>
-				<visible>!ListItem.IsParentFolder + !String.IsEmpty(ListItem.UserRating)</visible>
+				<visible>!String.IsEmpty(ListItem.UserRating)</visible>
 			</control>
 			<control type="textbox">
 				<left>50</left>
@@ -504,8 +502,8 @@
 				<height>20</height>
 				<font>font15</font>
 				<textcolor>$VAR[ThemeLabelColor]</textcolor>
-				<label>$INFO[ListItem.Year]$INFO[ListItem.Duration(mins), - , $LOCALIZE[12391]]</label>
-				<visible>!ListItem.IsCollection</visible>
+				<label>$VAR[DurationVar]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ]</label>
+				<visible>!ListItem.IsCollection + Skin.HasSetting(Disable.Wall.MovieInfo)</visible>
 			</control>
 			<control type="label">
 				<left>50</left>

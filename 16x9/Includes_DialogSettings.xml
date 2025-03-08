@@ -10,19 +10,23 @@
 		<param name="ondown_condition2">false</param>
 		<definition>
 			<control type="image">
-				<width>1500</width>
+				<left>-4</left>
+				<top>-4</top>
+				<width>1508</width>
 				<height>$PARAM[height]</height>
-				<texture>colors/black.png</texture>
-				<bordersize>1</bordersize>
-				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
+				<texture border="4">colors/black.png</texture>
+				<bordersize>4</bordersize>
+				<bordertexture border="4" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/white.png</bordertexture>
 				<visible>$PARAM[icon_visible] + !Window.IsVisible(dialogselectsubtitle) + !Window.IsVisible(dialogselectvideo) + !Window.IsVisible(dialogselectaudio)</visible>
 			</control>
 			<control type="image">
-				<width>960</width>
+				<left>-4</left>
+				<top>-4</top>
+				<width>968</width>
 				<height>$PARAM[height]</height>
-				<texture>colors/black.png</texture>
-				<bordersize>1</bordersize>
-				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
+				<texture border="4">colors/black.png</texture>
+				<bordersize>4</bordersize>
+				<bordertexture border="4" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/white.png</bordertexture>
 				<visible>!$PARAM[icon_visible] | Window.IsVisible(dialogselectsubtitle) | Window.IsVisible(dialogselectvideo) | Window.IsVisible(dialogselectaudio)</visible>
 			</control>
 			<control type="label" id="$PARAM[header_id]">
@@ -122,19 +126,21 @@
 				<visible>$PARAM[has_inner]</visible>
 				<control type="image">
 					<description>Dialog inner left</description>
-					<left>1</left>
-					<top>68</top>
-					<width>970</width>
-					<height>542</height>
-					<texture border="1" infill="false" colordiffuse="grey4">colors/border_frame.png</texture>
+					<left>-2</left>
+					<top>65</top>
+					<width>974</width>
+					<height>546</height>
+					<texture border="2" infill="false" colordiffuse="grey4">colors/white.png</texture>
+					<bordersize>2</bordersize>
 				</control>
 				<control type="image">
 					<description>Dialog inner right</description>
-					<left>970</left>
-					<top>68</top>
-					<width>529</width>
-					<height>542</height>
-					<texture border="1" infill="false" colordiffuse="grey4">colors/border_frame.png</texture>
+					<left>968</left>
+					<top>65</top>
+					<width>533</width>
+					<height>546</height>
+					<texture border="2" infill="false" colordiffuse="grey4">colors/white.png</texture>
+					<bordersize>2</bordersize>
 				</control>
 			</control>
 		</definition>

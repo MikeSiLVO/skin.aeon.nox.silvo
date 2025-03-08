@@ -25,17 +25,19 @@
 	<include file="View_603_Music_JukeBox.xml" />
 	<include file="View_609_Fullscreen_Wall.xml" />
 	<include name="BackPanel">
-		<param name="texture">colors/black.png</param>
-		<param name="visible">true</param>
+		<param name="texture" default="colors/black.png" />
+		<param name="border" default="4" />
+		<param name="borderdiffuse" default="$VAR[ThemeBorderColor]" />
+		<param name="visible" default="true" />
 		<definition>
 			<control type="image">
 				<left>$PARAM[left]</left>
 				<top>$PARAM[top]</top>
 				<width>$PARAM[width]</width>
 				<height>$PARAM[height]</height>
-				<texture>$PARAM[texture]</texture>
-				<bordersize>1</bordersize>
-				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
+				<texture border="$PARAM[border]">$PARAM[texture]</texture>
+				<bordersize>$PARAM[border]</bordersize>
+				<bordertexture border="$PARAM[border]" infill="false" colordiffuse="$PARAM[borderdiffuse]">colors/white.png</bordertexture>
 				<visible>$PARAM[visible]</visible>
 			</control>
 		</definition>

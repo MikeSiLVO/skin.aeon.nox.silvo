@@ -28,15 +28,14 @@
 			<animation effect="fade" time="50" condition="!String.IsEmpty(Window(Home).Property(AddonNews))">WindowClose</animation>
 			<left>270</left>
 			<top>72.5</top>
-			<control type="image">
-				<left>20</left>
-				<width>1342</width>
-				<height>935</height>
-				<texture>colors/black90.png</texture>
-				<bordersize>1</bordersize>
-				<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/border_frame.png</bordertexture>
-				<visible>String.IsEmpty(Window(Home).Property(AddonNews))</visible>
-			</control>
+			<include content="BackPanel">
+				<param name="left">16</param>
+				<param name="top">-4</param>
+				<param name="width">1350</param>
+				<param name="height">942</param>
+				<param name="texture">colors/black90.png</param>
+				<param name="visible">String.IsEmpty(Window(Home).Property(AddonNews))</param>
+			</include>
 			<control type="label">
 				<left>62</left>
 				<top>40</top>
@@ -77,7 +76,7 @@
 				<onup>61</onup>
 				<showonepage>false</showonepage>
 				<texturesliderbackground>colors/black90.png</texturesliderbackground>
-				<texturesliderbar colordiffuse="$VAR[ThemeLabelColor]" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
+				<texturesliderbar colordiffuse="$VAR[ThemeLabelColor]" border="1">colors/white50.png</texturesliderbar>
 			</control>
 		</control>
 	</controls>

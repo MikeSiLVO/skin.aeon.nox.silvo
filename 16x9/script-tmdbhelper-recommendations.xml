@@ -360,15 +360,15 @@
 					<itemlayout width="520" height="460">
 						<control type="group">
 							<top>40</top>
-							<control type="image">
-								<left>10</left>
-								<top>-10</top>
-								<width>500</width>
-								<height>340</height>
-								<texture>colors/black25.png</texture>
-								<bordersize>2</bordersize>
-								<bordertexture border="2" infill="false" colordiffuse="black">colors/border_frame.png</bordertexture>
-							</control>
+							<include content="BackPanel">
+								<param name="left">8</param>
+								<param name="top">-12</param>
+								<param name="width">504</param>
+								<param name="height">344</param>
+								<param name="texture">colors/black25.png</param>
+								<param name="border">2</param>
+								<param name="borderdiffuse">black</param>
+							</include>
 							<control type="textbox">
 								<left>30</left>
 								<top>0</top>
@@ -406,15 +406,15 @@
 							<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
 							<control type="group">
 								<top>40</top>
-								<control type="image">
-									<left>10</left>
-									<top>-10</top>
-									<width>500</width>
-									<height>340</height>
-									<texture>colors/black25.png</texture>
-									<bordersize>1</bordersize>
-									<bordertexture border="1" infill="false" colordiffuse="$VAR[ThemeLabelColor]">colors/border_frame.png</bordertexture>
-								</control>
+								<include content="BackPanel">
+									<param name="left">8</param>
+									<param name="top">-12</param>
+									<param name="width">504</param>
+									<param name="height">344</param>
+									<param name="texture">colors/black25.png</param>
+									<param name="border">2</param>
+									<param name="borderdiffuse">$VAR[ThemeLabelColor]</param>
+								</include>
 								<control type="textbox">
 									<left>30</left>
 									<top>0</top>
