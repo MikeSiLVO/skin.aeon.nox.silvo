@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="ListViewSettings">
-		<!-- List -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31255]</label>
@@ -53,7 +52,6 @@
 		</control>
 	</include>
 	<include name="InfoWallViewSettings">
-		<!-- InfoWall -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31253]</label>
@@ -76,7 +74,6 @@
 		</control>
 	</include>
 	<include name="LandscapeViewSettings">
-		<!-- Landscape -->
 		<control type="radiobutton" id="1521">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31005]</label>
@@ -163,7 +160,6 @@
 		</control>
 	</include>
 	<include name="ShowCaseViewSettings">
-		<!-- ShowCase -->
 		<control type="radiobutton" id="1529">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31005]</label>
@@ -328,7 +324,6 @@
 		</control>
 	</include>
 	<include name="ShowCaseSquareViewSettings">
-		<!-- ShowCaseSquare -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31005]</label>
@@ -375,7 +370,6 @@
 		</control>
 	</include>
 	<include name="TriPanelViewSettings">
-		<!-- TriPanel -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31255]</label>
@@ -415,7 +409,6 @@
 		</control>
 	</include>
 	<include name="PostersViewSettings">
-		<!-- Posters -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31255]</label>
@@ -446,7 +439,6 @@
 		</control>
 	</include>
 	<include name="ShiftViewSettings">
-		<!-- Shift -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31255]</label>
@@ -519,7 +511,6 @@
 		</control>
 	</include>
 	<include name="BannerWallViewSettings">
-		<!-- BannerWall -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31604]</label>
@@ -560,57 +551,62 @@
 		</control>
 	</include>
 	<include name="LogoViewSettings">
-		<!-- Logo -->
-		<control type="radiobutton" id="1516">
+		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31005]</label>
 			<selected>Skin.HasSetting(LogoWrapList)</selected>
 			<onclick>Skin.ToggleSetting(LogoWrapList)</onclick>
 			<include>ReloadWindowOnclick</include>
 		</control>
-		<control type="radiobutton" id="1510">
+		<control type="radiobutton" id="1511">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31156]</label>
 			<onclick>Skin.ToggleSetting(Enable.Logo.clearart)</onclick>
 			<selected>Skin.HasSetting(Enable.Logo.clearart)</selected>
 		</control>
-		<control type="radiobutton" id="1511">
+		<control type="radiobutton" id="1512">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31604]</label>
 			<onclick>Skin.ToggleSetting(noextendedinfomovies)</onclick>
 			<selected>!Skin.HasSetting(noextendedinfomovies)</selected>
 			<visible>Container.Content(movies)</visible>
 		</control>
-		<control type="radiobutton" id="1512">
+		<control type="radiobutton" id="1513">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31604]</label>
 			<onclick>Skin.ToggleSetting(noextendedinfotvshows)</onclick>
 			<selected>!Skin.HasSetting(noextendedinfotvshows)</selected>
 			<visible>Container.Content(tvshows)</visible>
 		</control>
-		<control type="radiobutton" id="1513">
+		<control type="radiobutton" id="1514">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31217]</label>
 			<onclick>Skin.ToggleSetting(Logo.SingleLayout)</onclick>
 			<selected>Skin.HasSetting(Logo.SingleLayout)</selected>
 		</control>
-		<control type="radiobutton" id="1514">
+		<control type="radiobutton" id="1515">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31354]</label>
 			<onclick>Skin.ToggleSetting(Enable.Logo.UnfocusFade)</onclick>
 			<selected>Skin.HasSetting(Enable.Logo.UnfocusFade)</selected>
 			<visible>!Skin.HasSetting(Logo.SingleLayout)</visible>
 		</control>
-		<control type="radiobutton" id="1515">
+		<control type="radiobutton" id="1516">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31257]</label>
 			<onclick>Skin.ToggleSetting(Enable.Logo.MovieSetList)</onclick>
 			<selected>Skin.HasSetting(Enable.Logo.MovieSetList)</selected>
 			<visible>Container.Content(movies) | Container.Content(sets)</visible>
 		</control>
+		<control type="radiobutton" id="1517">
+			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[31109]</label>
+			<onclick>Skin.ToggleSetting(Logo.UnwatchedIcon)</onclick>
+			<selected>Skin.HasSetting(Logo.UnwatchedIcon)</selected>
+			<visible>Container.Content(tvshows)</visible>
+		</control>
 	</include>
 	<include name="IconsViewSettings">
-		<!-- Icons -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31255]</label>
@@ -656,7 +652,6 @@
 		</control>
 	</include>
 	<include name="LowListViewSettings">
-		<!-- LowList -->
 		<control type="radiobutton" id="1517">
 			<description>LowList Toggle</description>
 			<include>ButtonCommonValues</include>
@@ -727,7 +722,6 @@
 		</control>
 	</include>
 	<include name="EpisodeViewSettings">
-		<!-- Episode -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31605]</label>
@@ -736,7 +730,6 @@
 		</control>
 	</include>
 	<include name="WallViewSettings">
-		<!-- Wall -->
 		<control type="radiobutton" id="1510">
 			<description>Enable Wall Floor Info</description>
 			<include>ButtonCommonValues</include>
@@ -873,15 +866,12 @@
 		</control>
 	</include>
 	<include name="GalleryViewSettings">
-		<!-- Gallery -->
 		<description />
 	</include>
 	<include name="PanelViewSettings">
-		<!-- Panel -->
 		<description />
 	</include>
 	<include name="RightListViewSettings">
-		<!-- RightList -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31255]</label>
@@ -1083,7 +1073,6 @@
 		</control>
 	</include>
 	<include name="BigListViewSettings">
-		<!-- BigList -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31605]</label>
@@ -1092,11 +1081,9 @@
 		</control>
 	</include>
 	<include name="SongListViewSettings">
-		<!-- SongList -->
 		<description />
 	</include>
 	<include name="MyFlixViewSettings">
-		<!-- MyFlix -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31255]</label>
@@ -1197,7 +1184,6 @@
 		</control>
 	</include>
 	<include name="BigFanViewSettings">
-		<!-- BigFan -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[207]</label>
@@ -1206,7 +1192,6 @@
 		</control>
 	</include>
 	<include name="FanartListViewSettings">
-		<!-- FanartList -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31255]</label>
@@ -1237,11 +1222,9 @@
 		</control>
 	</include>
 	<include name="MusicJukeBoxViewSettings">
-		<!-- MusicJukeBox -->
 		<description />
 	</include>
 	<include name="FullscreenWallViewSettings">
-		<!-- FullscreenWall -->
 		<control type="radiobutton" id="1510">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31254]</label>

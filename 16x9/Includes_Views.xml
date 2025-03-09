@@ -249,4 +249,33 @@
 			</control>
 		</control>
 	</include>
+	<include name="UnwatchedEpisodeOverlay">
+		<param name="left" default="0" />
+		<param name="top" default="0" />
+		<param name="height" default="40" />
+		<param name="label" default="$INFO[ListItem.Property(UnWatchedEpisodes)]" />
+		<param name="visible" default="Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)" />
+		<definition>
+			<control type="group">
+				<visible>[Container.Content(tvshows) | Container.Content(seasons)] + $PARAM[visible]</visible>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<control type="image">
+					<width>40</width>
+					<height>$PARAM[height]</height>
+					<texture>overlays/OverlayEpisodes.png</texture>
+				</control>
+				<control type="label">
+					<left>-2</left>
+					<width>40</width>
+					<height>$PARAM[height]</height>
+					<align>center</align>
+					<font>font10</font>
+					<textcolor>white</textcolor>
+					<scroll>false</scroll>
+					<label>[B]$PARAM[label][/B]</label>
+				</control>
+			</control>
+		</definition>
+	</include>
 </includes>

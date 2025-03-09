@@ -315,15 +315,14 @@
 							<bordersize>1</bordersize>
 							<visible>[!String.IsEmpty(Skin.String(503.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(503.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(503.Seasons.DisableOverlay)) + Container.Content(seasons)]</visible>
 						</control>
-						<control type="group">
-							<left>30</left>
-							<top>45</top>
-							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
-						</control>
+						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+							<param name="left">20</param>
+							<param name="top">19</param>
+						</include>
 						<control type="image">
 							<width>300</width>
 							<height>430</height>
-							<texture>colors/black25.png</texture>
+							<texture>colors/black10.png</texture>
 							<bordersize>20</bordersize>
 						</control>
 						<control type="image">
@@ -358,19 +357,10 @@
 							<bordersize>1</bordersize>
 							<visible>[!String.IsEmpty(Skin.String(503.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(503.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(503.Seasons.DisableOverlay)) + Container.Content(seasons)]</visible>
 						</control>
-						<control type="group">
-							<left>30</left>
-							<top>45</top>
-							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
-						</control>
-						<control type="image">
-							<width>300</width>
-							<height>430</height>
-							<texture>colors/black25.png</texture>
-							<animation effect="fade" start="100" end="0" time="200" reversible="false">Focus</animation>
-							<animation effect="fade" start="0" end="100" time="200" reversible="false">UnFocus</animation>
-							<bordersize>20</bordersize>
-						</control>
+						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+							<param name="left">20</param>
+							<param name="top">19</param>
+						</include>
 						<control type="image">
 							<left>-33</left>
 							<top>-20</top>

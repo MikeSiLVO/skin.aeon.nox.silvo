@@ -126,11 +126,7 @@
 						<bordersize>1</bordersize>
 						<visible>[!String.IsEmpty(Skin.String(51.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(51.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
 					</control>
-					<control type="group">
-						<left>15</left>
-						<top>15</top>
-						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
-					</control>
+					<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedEpisodeOverlay</include>
 				</itemlayout>
 				<focusedlayout height="300" width="200" condition="![Skin.HasSetting(Enable.InfoWall.TVBanners) + Container.Content(tvshows)] + ![Skin.HasSetting(Enable.InfoWall.MovieBanners) + Container.Content(movies)] + !Skin.HasSetting(Enable.AlternateInfowall)">
 					<control type="group">
@@ -156,11 +152,10 @@
 							<bordersize>1</bordersize>
 							<visible>[!String.IsEmpty(Skin.String(51.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(51.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
 						</control>
-						<control type="group">
-							<left>15</left>
-							<top>15</top>
-							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
-						</control>
+						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+							<param name="left">6</param>
+							<param name="top">6</param>
+						</include>
 					</control>
 				</focusedlayout>
 				<itemlayout height="300" width="200" condition="![Skin.HasSetting(Enable.InfoWall.TVBanners) + Container.Content(tvshows)] + ![Skin.HasSetting(Enable.InfoWall.MovieBanners) + Container.Content(movies)] + Skin.HasSetting(Enable.AlternateInfowall)">
@@ -181,11 +176,7 @@
 						<bordersize>1</bordersize>
 						<visible>[!String.IsEmpty(Skin.String(51.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(51.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
 					</control>
-					<control type="group">
-						<left>15</left>
-						<top>15</top>
-						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
-					</control>
+					<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedEpisodeOverlay</include>
 				</itemlayout>
 				<focusedlayout height="300" width="200" condition="![Skin.HasSetting(Enable.InfoWall.TVBanners) + Container.Content(tvshows)] + ![Skin.HasSetting(Enable.InfoWall.MovieBanners) + Container.Content(movies)] + Skin.HasSetting(Enable.AlternateInfowall)">
 					<control type="group">
@@ -211,11 +202,10 @@
 							<bordersize>1</bordersize>
 							<visible>[!String.IsEmpty(Skin.String(51.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(51.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
 						</control>
-						<control type="group">
-							<left>15</left>
-							<top>15</top>
-							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
-						</control>
+						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+							<param name="left">6</param>
+							<param name="top">6</param>
+						</include>
 					</control>
 				</focusedlayout>
 				<itemlayout width="1000" height="180" condition="Skin.HasSetting(Enable.InfoWall.TVBanners) + Container.Content(tvshows)">

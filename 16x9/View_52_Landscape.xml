@@ -223,22 +223,24 @@
 			<include>LandscapeThumbCommonValues</include>
 			<texture background="true" diffuse="thumbs/thumb_mask.png">$VAR[LandscapeItem-3Var]</texture>
 		</control>
-		<control type="group">
-			<left>42</left>
-			<top>42</top>
-			<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon-3</include>
-		</control>
+		<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+			<param name="left">20</param>
+			<param name="top">20</param>
+			<param name="label">$INFO[ListItem(-3).Property(UnWatchedEpisodes)]</param>
+			<param name="visible">Integer.IsGreater(ListItem(-3).Property(UnWatchedEpisodes),0)</param>
+		</include>
 	</include>
 	<include name="LandscapeItem-2">
 		<control type="image">
 			<include>LandscapeThumbCommonValues</include>
 			<texture background="true" diffuse="thumbs/thumb_mask.png">$VAR[LandscapeItem-2Var]</texture>
 		</control>
-		<control type="group">
-			<left>42</left>
-			<top>42</top>
-			<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon-2</include>
-		</control>
+		<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+			<param name="left">20</param>
+			<param name="top">20</param>
+			<param name="label">$INFO[ListItem(-2).Property(UnWatchedEpisodes)]</param>
+			<param name="visible">Integer.IsGreater(ListItem(-2).Property(UnWatchedEpisodes),0)</param>
+		</include>
 	</include>
 	<include name="LandscapeItem-1">
 		<control type="image">
@@ -249,11 +251,12 @@
 			<include>WatchedOverlayLandscape</include>
 			<texture>$VAR[IconOverlay-1Var]</texture>
 		</control>
-		<control type="group">
-			<left>42</left>
-			<top>42</top>
-			<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon-1</include>
-		</control>
+		<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+			<param name="left">20</param>
+			<param name="top">20</param>
+			<param name="label">$INFO[ListItem(-1).Property(UnWatchedEpisodes)]</param>
+			<param name="visible">Integer.IsGreater(ListItem(-1).Property(UnWatchedEpisodes),0)</param>
+		</include>
 	</include>
 	<include name="LandscapeItem0">
 		<control type="image">
@@ -264,11 +267,10 @@
 			<include>WatchedOverlayLandscape</include>
 			<texture>$VAR[IconOverlay0Var]</texture>
 		</control>
-		<control type="group">
-			<left>42</left>
-			<top>42</top>
-			<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
-		</control>
+		<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+			<param name="left">20</param>
+			<param name="top">20</param>
+		</include>
 	</include>
 	<include name="LandscapeItem1">
 		<control type="image">
@@ -279,11 +281,12 @@
 			<include>WatchedOverlayLandscape</include>
 			<texture>$VAR[IconOverlay1Var]</texture>
 		</control>
-		<control type="group">
-			<left>42</left>
-			<top>42</top>
-			<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon1</include>
-		</control>
+		<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+			<param name="left">20</param>
+			<param name="top">20</param>
+			<param name="label">$INFO[ListItem(1).Property(UnWatchedEpisodes)]</param>
+			<param name="visible">Integer.IsGreater(ListItem(1).Property(UnWatchedEpisodes),0)</param>
+		</include>
 	</include>
 	<include name="LandscapeItem2">
 		<control type="image">
@@ -303,36 +306,6 @@
 		<control type="image">
 			<include>WatchedOverlayLandscape</include>
 			<texture>$VAR[IconOverlay3Var]</texture>
-		</control>
-	</include>
-	<include name="UnwatchedIcon-1">
-		<control type="group">
-			<visible>[Container.Content(tvshows) | Container.Content(seasons)] + Integer.IsGreater(ListItem(-1).Property(UnWatchedEpisodes),0)</visible>
-			<include>UnwatchedIconCircle</include>
-			<control type="label">
-				<include>UnwatchedIconVars</include>
-				<label>$INFO[ListItem(-1).Property(UnWatchedEpisodes)]</label>
-			</control>
-		</control>
-	</include>
-	<include name="UnwatchedIcon-2">
-		<control type="group">
-			<visible>[Container.Content(tvshows) | Container.Content(seasons)] + Integer.IsGreater(ListItem(-2).Property(UnWatchedEpisodes),0)</visible>
-			<include>UnwatchedIconCircle</include>
-			<control type="label">
-				<include>UnwatchedIconVars</include>
-				<label>$INFO[ListItem(-2).Property(UnWatchedEpisodes)]</label>
-			</control>
-		</control>
-	</include>
-	<include name="UnwatchedIcon-3">
-		<control type="group">
-			<visible>[Container.Content(tvshows) | Container.Content(seasons)] + Integer.IsGreater(ListItem(-3).Property(UnWatchedEpisodes),0)</visible>
-			<include>UnwatchedIconCircle</include>
-			<control type="label">
-				<include>UnwatchedIconVars</include>
-				<label>$INFO[ListItem(-3).Property(UnWatchedEpisodes)]</label>
-			</control>
 		</control>
 	</include>
 	<variable name="LandscapeItem-3Var">
