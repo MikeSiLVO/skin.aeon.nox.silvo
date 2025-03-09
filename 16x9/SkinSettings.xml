@@ -80,6 +80,7 @@
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
 					<visible>!Window.IsActive(1115) + !Window.IsActive(1140)</visible>
 					<include>SettingsFadeAnimation</include>
+					<animation effect="fade" start="100" end="50" time="300" tween="sine" easing="inout" condition="Control.IsVisible(7999)">Conditional</animation>
 					<itemlayout height="81" width="356">
 						<control type="label">
 							<width>356</width>
@@ -921,6 +922,9 @@
 							<width>8</width>
 							<height>810</height>
 							<onleft>8000</onleft>
+							<onback>Control.SetHidden(7999)</onback>
+							<onback>Control.SetVisible(9900)</onback>
+							<onback>90000</onback>
 							<showonepage>false</showonepage>
 							<texturesliderbackground>colors/black90.png</texturesliderbackground>
 							<texturesliderbar colordiffuse="$VAR[ThemeLabelColor]">scrollbar/texturesliderbar2.png</texturesliderbar>
