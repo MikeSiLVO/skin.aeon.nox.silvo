@@ -38,9 +38,26 @@
 			</control>
 		</control>
 		<control type="group">
-			<left>20</left>
+			<left>10</left>
 			<top>300</top>
-			<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
+			<visible>Skin.HasSetting(Logo.UnwatchedIcon) + [Container.Content(tvshows) | Container.Content(seasons)] + Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
+			<control type="image">
+				<width>36</width>
+				<height>36</height>
+				<aspectratio>keep</aspectratio>
+				<texture>circle.png</texture>
+			</control>
+			<control type="label">
+				<top>2</top>
+				<width>36</width>
+				<height>36</height>
+				<align>center</align>
+				<aligny>top</aligny>
+				<font>font10</font>
+				<textcolor>FF000000</textcolor>
+				<scroll>false</scroll>
+				<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
+			</control>
 		</control>
 	</include>
 	<include name="LogoFixed">

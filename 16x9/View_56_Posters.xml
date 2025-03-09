@@ -355,11 +355,11 @@
 								<texture>$VAR[IconOverlay1Var]</texture>
 								<visible>[!String.IsEmpty(Skin.String(56.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(56.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(56.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(56.Seasons.DisableOverlay)) + Container.Content(seasons)]</visible>
 							</control>
-							<control type="group">
-								<left>94</left>
-								<top>80</top>
-								<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon1</include>
-							</control>
+							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+								<param name="left">74</param>
+								<param name="top">62</param>
+								<param name="label">$INFO[ListItem(1).Property(UnWatchedEpisodes)]</param>
+							</include>
 						</control>
 					</control>
 					<!-- Show Far Left Thumb On Move Previous -->
@@ -1120,11 +1120,10 @@
 								<texture>$VAR[IconOverlay0Var]</texture>
 								<visible>[!String.IsEmpty(Skin.String(56.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(56.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(56.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(56.Seasons.DisableOverlay)) + Container.Content(seasons)]</visible>
 							</control>
-							<control type="group">
-								<left>94</left>
-								<top>80</top>
-								<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
-							</control>
+							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+								<param name="left">74</param>
+								<param name="top">62</param>
+							</include>
 						</control>
 					</control>
 				</control>

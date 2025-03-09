@@ -52,11 +52,7 @@
 							<aspectratio align="center" aligny="top">keep</aspectratio>
 							<visible>[!String.IsEmpty(Skin.String(609.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(609.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(609.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
 						</control>
-						<control type="group">
-							<left>10</left>
-							<top>20</top>
-							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
-						</control>
+						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedEpisodeOverlay</include>
 					</control>
 				</itemlayout>
 				<focusedlayout width="240" height="360" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + !Skin.HasSetting(Enable.SmallerFullscreenWallPosters)">
@@ -79,11 +75,10 @@
 							<aspectratio align="center" aligny="top">keep</aspectratio>
 							<visible>[!String.IsEmpty(Skin.String(609.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(609.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(609.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
 						</control>
-						<control type="group">
-							<left>10</left>
-							<top>20</top>
-							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
-						</control>
+						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+							<param name="left">8</param>
+							<param name="top">8</param>
+						</include>
 					</control>
 				</focusedlayout>
 				<itemlayout width="192" height="270" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + Skin.HasSetting(Enable.SmallerFullscreenWallPosters) + !Skin.HasSetting(Enable.TinyFullscreenWallPosters)">
@@ -106,11 +101,9 @@
 							<aspectratio align="center" aligny="top">keep</aspectratio>
 							<visible>[!String.IsEmpty(Skin.String(609.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(609.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(609.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
 						</control>
-						<control type="group">
-							<left>10</left>
-							<top>20</top>
-							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
-						</control>
+						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+							<param name="height">32</param>
+						</include>
 					</control>
 				</itemlayout>
 				<focusedlayout width="192" height="270" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + Skin.HasSetting(Enable.SmallerFullscreenWallPosters) + !Skin.HasSetting(Enable.TinyFullscreenWallPosters)">
@@ -132,11 +125,11 @@
 							<aspectratio align="center" aligny="top">keep</aspectratio>
 							<visible>[!String.IsEmpty(Skin.String(609.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(609.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(609.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
 						</control>
-						<control type="group">
-							<left>10</left>
-							<top>20</top>
-							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
-						</control>
+						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+							<param name="left">8</param>
+							<param name="top">8</param>
+							<param name="height">32</param>
+						</include>
 					</control>
 				</focusedlayout>
 				<itemlayout width="128" height="180" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + Skin.HasSetting(Enable.SmallerFullscreenWallPosters) + Skin.HasSetting(Enable.TinyFullscreenWallPosters)">
@@ -159,25 +152,9 @@
 							<aspectratio align="center" aligny="top">keep</aspectratio>
 							<visible>[!String.IsEmpty(Skin.String(609.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(609.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(609.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
 						</control>
-						<control type="group">
-							<left>-2</left>
-							<top>-5</top>
-							<visible>Skin.HasSetting(Disable.UnwatchedIcon)</visible>
-							<visible>[Container.Content(tvshows) | Container.Content(seasons)] + Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
-							<control type="image">
-								<top>4</top>
-								<width>26</width>
-								<height>26</height>
-								<aspectratio>keep</aspectratio>
-								<texture>circle.png</texture>
-							</control>
-							<control type="label">
-								<width>25</width>
-								<height>25</height>
-								<include>UnwatchedIconVars</include>
-								<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
-							</control>
-						</control>
+						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+							<param name="height">22</param>
+						</include>
 					</control>
 				</itemlayout>
 				<focusedlayout width="128" height="180" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + Skin.HasSetting(Enable.SmallerFullscreenWallPosters) + Skin.HasSetting(Enable.TinyFullscreenWallPosters)">
@@ -191,7 +168,7 @@
 							<bordersize>4</bordersize>
 						</control>
 						<control type="image">
-							<left>102</left>
+							<left>99</left>
 							<top>4</top>
 							<width>25</width>
 							<height>25</height>
@@ -199,24 +176,11 @@
 							<aspectratio align="center" aligny="top">keep</aspectratio>
 							<visible>[!String.IsEmpty(Skin.String(609.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(609.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(609.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
 						</control>
-						<control type="group">
-							<left>2</left>
-							<visible>Skin.HasSetting(Disable.UnwatchedIcon)</visible>
-							<visible>[Container.Content(tvshows) | Container.Content(seasons)] + Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
-							<control type="image">
-								<top>4</top>
-								<width>26</width>
-								<height>26</height>
-								<aspectratio>keep</aspectratio>
-								<texture>circle.png</texture>
-							</control>
-							<control type="label">
-								<width>25</width>
-								<height>25</height>
-								<include>UnwatchedIconVars</include>
-								<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
-							</control>
-						</control>
+						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+							<param name="left">4</param>
+							<param name="top">4</param>
+							<param name="height">22</param>
+						</include>
 					</control>
 				</focusedlayout>
 				<itemlayout width="274" height="270" condition="Container.Content(artists) | Container.Content(albums) | [Window.IsActive(music) + Container.Content(files)]">
