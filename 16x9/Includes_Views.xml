@@ -220,6 +220,30 @@
 						<label></label>
 					</control>
 				</control>
+				<!-- Director -->
+				<control type="group">
+					<visible>!String.IsEmpty(ListItem.Director) | !String.IsEmpty(Container(4501).ListItem.Property(director.collection))</visible>
+					<width>650</width>
+					<height>40</height>
+					<control type="label">
+						<right>40</right>
+						<width max="$PARAM[max_width]">auto</width>
+						<height>40</height>
+						<font>font12</font>
+						<textcolor>grey</textcolor>
+						<align>right</align>
+						<scroll>true</scroll>
+						<label>[B]$VAR[VideoDirectorVar][/B]</label>
+					</control>
+					<control type="label">
+						<right>0</right>
+						<width>40</width>
+						<height>40</height>
+						<font>IconTinyMD</font>
+						<align>right</align>
+						<label></label>
+					</control>
+				</control>
 				<!-- Genre -->
 				<control type="group">
 					<top>34</top>
