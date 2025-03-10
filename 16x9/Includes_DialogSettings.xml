@@ -662,7 +662,7 @@
 			<label>$LOCALIZE[31188]</label>
 			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[DisableOverlayOnclickLabelVar][/COLOR]</label2>
 			<onclick>$VAR[DisableOverlayOnclickVar]</onclick>
-			<visible>[!String.IsEmpty(Skin.String(Overlay.Toggle)) | !Skin.HasSetting(Disable.Resumable)] + !Window.IsActive(music) + !Window.IsActive(programs) + !Container.Content(genres)</visible>
+			<visible>[!Skin.HasSetting(Disable.Resumable) | !Skin.HasSetting(Disable.OverlayWatched) | !Skin.HasSetting(Disable.OverlayUnwatched)] + !Window.IsActive(music) + !Window.IsActive(programs) + !Container.Content(genres)</visible>
 			<visible>[String.IsEqual(Window(Home).Property(actualViewtype),Landscape) | String.IsEqual(Window(Home).Property(actualViewtype),ShowCase) | String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) | String.IsEqual(Window(Home).Property(actualViewtype),Icons) | String.IsEqual(Window(Home).Property(actualViewtype),Wall) | [String.IsEqual(Window(Home).Property(actualViewtype),FullscreenWall) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)]] | String.IsEqual(Window(Home).Property(actualViewtype),InfoWall) | String.IsEqual(Window(Home).Property(actualViewtype),BannerWall) | String.IsEqual(Window(Home).Property(actualViewtype),BigList) | String.IsEqual(Window(Home).Property(actualViewtype),Shift) | String.IsEqual(Window(Home).Property(actualViewtype),Posters) | String.IsEqual(Window(Home).Property(actualViewtype),BigFan) | String.IsEqual(Window(Home).Property(actualViewtype),Gallery)]</visible>
 		</control>
 		<!-- Mediaflags -->
