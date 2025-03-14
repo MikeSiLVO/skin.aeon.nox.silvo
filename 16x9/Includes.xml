@@ -641,45 +641,45 @@
 						<label>[COLOR white]$INFO[VideoPlayer.TVShowTitle,, - ]$INFO[MusicPlayer.Artist,, - ]$INFO[Player.Title][/COLOR]</label>
 						<label>$VAR[BreadcrumbsVar]</label>
 					</control>
-					<control type="grouplist">
-						<width>100%</width>
-						<orientation>horizontal</orientation>
-						<align>center</align>
-						<itemgap>5</itemgap>
-						<visible>![String.IsEqual(Container.NumItems,0) | String.IsEmpty(Container.NumItems)]</visible>
-						<include>VisibleFadeAnimation</include>
-						<control type="label">
-							<width>auto</width>
-							<height>42</height>
-							<font>font14_title</font>
-							<textcolor>grey</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<label>$INFO[Container.NumItems]</label>
-						</control>
-						<control type="label">
-							<width>45</width>
-							<height>46</height>
-							<font>IconSmallMD</font>
-							<textcolor>grey</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<label></label>
-						</control>
-						<control type="label">
-							<width>auto</width>
-							<height>42</height>
-							<font>font14_title</font>
-							<textcolor>grey</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<label>$INFO[Container.CurrentPage,[COLOR grey2]• ]$INFO[Container.NumPages,/,[/COLOR]]</label>
-						</control>
-						<control type="label">
-							<width>45</width>
-							<height>46</height>
-							<font>IconSmallMD</font>
-							<textcolor>grey2</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<label></label>
-						</control>
+				</control>
+				<control type="grouplist">
+					<width>100%</width>
+					<orientation>horizontal</orientation>
+					<align>center</align>
+					<itemgap>5</itemgap>
+					<visible>![String.IsEqual(Container.NumItems,0) | String.IsEmpty(Container.NumItems)]</visible>
+					<include>VisibleFadeAnimation</include>
+					<control type="label">
+						<width>auto</width>
+						<height>42</height>
+						<font>font14_title</font>
+						<textcolor>grey</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<label>$INFO[Container.NumItems]</label>
+					</control>
+					<control type="label">
+						<width>45</width>
+						<height>46</height>
+						<font>IconSmallMD</font>
+						<textcolor>grey</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<label></label>
+					</control>
+					<control type="label">
+						<width>auto</width>
+						<height>42</height>
+						<font>font14_title</font>
+						<textcolor>grey</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<label>$INFO[Container.CurrentPage,[COLOR grey2]• ]$INFO[Container.NumPages,/,[/COLOR]]</label>
+					</control>
+					<control type="label">
+						<width>45</width>
+						<height>46</height>
+						<font>IconSmallMD</font>
+						<textcolor>grey2</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<label></label>
 					</control>
 				</control>
 				<control type="label">
