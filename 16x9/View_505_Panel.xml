@@ -56,7 +56,7 @@
 					<control type="image">
 						<width>555</width>
 						<height>730</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]">listselect_fo.png</texture>
+						<texture colordiffuse="$VAR[HighlightBarColor]">colors/white50.png</texture>
 					</control>
 					<control type="label">
 						<top>327</top>
@@ -116,8 +116,10 @@
 				<visible>Container.Content(movies) | Container.Content(tvshows)</visible>
 				<width>525</width>
 				<height>296</height>
-				<texture fallback="special://skin/extras/backgrounds/fallback_movies.jpg" background="true">$INFO[ListItem.Art(fanart)]</texture>
 				<aspectratio align="center" aligny="center">scale</aspectratio>
+				<texture background="true" fallback="special://skin/extras/backgrounds/fallback_movies.jpg" border="2">$INFO[ListItem.Art(fanart)]</texture>
+				<bordersize>2</bordersize>
+				<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 			</control>
 			<control type="image">
 				<visible>Container.Content(movies) | Container.Content(tvshows)</visible>
@@ -134,13 +136,17 @@
 				<texture fallback="special://skin/extras/backgrounds/fallback_movies.jpg" background="true">$VAR[NoSpoilerIconVar]</texture>
 				<aspectratio align="center" aligny="center">scale</aspectratio>
 			</control>
-			<control type="image">
-				<left>476</left>
-				<width>50</width>
-				<height>50</height>
-				<texture>$VAR[OverlayVar]</texture>
-				<aspectratio align="center" aligny="top">keep</aspectratio>
-			</control>
+			<include content="PosterStatusOverlay">
+				<param name="left">473</param>
+				<param name="top">2</param>
+				<param name="size">50</param>
+				<!-- <param name="visible">[!String.IsEmpty(Skin.String(505.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(505.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(505.Episodes.DisableOverlay)) + Container.Content(episodes)]</param> -->
+				<param name="visible">true</param>
+			</include>
+			<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
+				<param name="left">2</param>
+				<param name="top">2</param>
+			</include>
 		</control>
 	</include>
 </includes>

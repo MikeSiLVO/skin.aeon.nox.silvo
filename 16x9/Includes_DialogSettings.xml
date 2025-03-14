@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="DialogPanel">
-		<param name="icon_visible">true</param>
-		<param name="has_inner">false</param>
-		<param name="close_onclick">back</param>
-		<param name="ok_visible">false</param>
-		<param name="more_visible">false</param>
-		<param name="ondown_condition">true</param>
-		<param name="ondown_condition2">false</param>
+		<param name="icon_visible" default="true" />
+		<param name="has_inner" default="false" />
+		<param name="close_onclick" default="back" />
+		<param name="ok_visible" default="false" />
+		<param name="more_visible" default="false" />
+		<param name="ondown_condition" default="true" />
+		<param name="ondown_condition2" default="false" />
+		<param name="onup_condition" default="false" />
 		<definition>
 			<control type="image">
 				<left>-4</left>
@@ -52,19 +53,21 @@
 				<visible>!$PARAM[icon_visible] | Window.IsVisible(dialogselectsubtitle) | Window.IsVisible(dialogselectvideo) | Window.IsVisible(dialogselectaudio)</visible>
 			</control>
 			<control type="grouplist" id="90000">
-				<left>1245</left>
-				<width>255</width>
+				<left>1305</left>
+				<width>210</width>
 				<align>right</align>
 				<orientation>horizontal</orientation>
 				<itemgap>-20</itemgap>
 				<animation effect="slide" end="-540" condition="!$PARAM[icon_visible] | Window.IsVisible(dialogselectsubtitle) | Window.IsVisible(dialogselectvideo) | Window.IsVisible(dialogselectaudio)">Conditional</animation>
+				<onup condition="$PARAM[onup_condition]">$PARAM[buttons_onup]</onup>
 				<control type="button" id="98">
 					<description>More... button</description>
 					<texturefocus />
 					<texturenofocus />
+					<textoffsetx />
 					<width>70</width>
 					<height>70</height>
-					<font>IconMedium</font>
+					<font>IconMediumMD</font>
 					<textcolor>grey2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
 					<focusedcolor>$VAR[HighlightBarColor]</focusedcolor>
@@ -78,9 +81,10 @@
 					<description>Ok button</description>
 					<texturefocus />
 					<texturenofocus />
+					<textoffsetx />
 					<width>70</width>
 					<height>70</height>
-					<font>IconMedium</font>
+					<font>IconMediumMD</font>
 					<textcolor>grey2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
 					<focusedcolor>$VAR[HighlightBarColor]</focusedcolor>
@@ -94,13 +98,14 @@
 					<description>Cancel button</description>
 					<texturefocus />
 					<texturenofocus />
+					<textoffsetx />
 					<width>70</width>
 					<height>70</height>
-					<font>IconMedium</font>
+					<font>IconMediumMD</font>
 					<textcolor>grey2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
 					<focusedcolor>$VAR[HighlightBarColor]</focusedcolor>
-					<label></label>
+					<label></label>
 					<onclick>$PARAM[close_onclick]</onclick>
 					<ondown condition="$PARAM[ondown_condition]">$PARAM[buttons_ondown]</ondown>
 					<ondown condition="$PARAM[ondown_condition2]">$PARAM[buttons_ondown2]</ondown>
@@ -111,7 +116,7 @@
 				<top>67</top>
 				<width>1498</width>
 				<height>1</height>
-				<texture colordiffuse="grey4">separator_horizontal.png</texture>
+				<texture colordiffuse="grey4">colors/white.png</texture>
 				<visible>$PARAM[icon_visible] + !Window.IsVisible(dialogselectsubtitle) + !Window.IsVisible(dialogselectvideo) + !Window.IsVisible(dialogselectaudio)</visible>
 			</control>
 			<control type="image">
@@ -119,29 +124,16 @@
 				<top>67</top>
 				<width>958</width>
 				<height>1</height>
-				<texture colordiffuse="grey4">separator_horizontal.png</texture>
+				<texture colordiffuse="grey4">colors/white.png</texture>
 				<visible>!$PARAM[icon_visible] | Window.IsVisible(dialogselectsubtitle) | Window.IsVisible(dialogselectvideo) | Window.IsVisible(dialogselectaudio)</visible>
 			</control>
-			<control type="group">
+			<control type="image">
+				<left>968</left>
+				<top>68</top>
+				<width>2</width>
+				<height>540</height>
+				<texture colordiffuse="grey4">colors/white.png</texture>
 				<visible>$PARAM[has_inner]</visible>
-				<control type="image">
-					<description>Dialog inner left</description>
-					<left>-2</left>
-					<top>65</top>
-					<width>974</width>
-					<height>546</height>
-					<texture border="2" infill="false" colordiffuse="grey4">colors/white.png</texture>
-					<bordersize>2</bordersize>
-				</control>
-				<control type="image">
-					<description>Dialog inner right</description>
-					<left>968</left>
-					<top>65</top>
-					<width>533</width>
-					<height>546</height>
-					<texture border="2" infill="false" colordiffuse="grey4">colors/white.png</texture>
-					<bordersize>2</bordersize>
-				</control>
 			</control>
 		</definition>
 	</include>
@@ -629,19 +621,17 @@
 	</include>
 	<include name="DialogProgress">
 		<control type="progress">
-			<left>2</left>
-			<top>0</top>
-			<width>906</width>
-			<height>60</height>
+			<left>1</left>
+			<width>907</width>
+			<height>67</height>
 			<info>System.Progressbar</info>
-			<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
 		</control>
 		<control type="image">
 			<left>1</left>
 			<top>68</top>
 			<width>908</width>
 			<height>1</height>
-			<texture colordiffuse="grey4">separator_horizontal.png</texture>
+			<texture colordiffuse="grey4">colors/white.png</texture>
 		</control>
 	</include>
 	<!-- View Settings -->
@@ -770,7 +760,7 @@
 		<control type="button" id="1501">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31510]</label>
-			<onclick>Container.SetViewMode(603)</onclick>
+			<onclick>Container.SetViewMode(513)</onclick>
 			<visible>Window.IsActive(music)</visible>
 			<visible>[Container.Content(artists) | Container.Content(albums)] + !Skin.HasSetting(Disable.JukeBox)</visible>
 		</control>
@@ -798,7 +788,7 @@
 		<control type="button" id="1505">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31240]</label>
-			<onclick>Container.SetViewMode(602)</onclick>
+			<onclick>Container.SetViewMode(510)</onclick>
 			<visible>Window.IsActive(videos)</visible>
 			<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + !Skin.HasSetting(Disable.FanartListView)</visible>
 		</control>
@@ -938,14 +928,14 @@
 		<control type="button" id="1525">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31246]</label>
-			<onclick>Container.SetViewMode(609)</onclick>
+			<onclick>Container.SetViewMode(511)</onclick>
 			<visible>Window.IsActive(videos)</visible>
 			<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + !Skin.HasSetting(Disable.FullscreenWallView)</visible>
 		</control>
 		<control type="button" id="1526">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31246]</label>
-			<onclick>Container.SetViewMode(609)</onclick>
+			<onclick>Container.SetViewMode(511)</onclick>
 			<visible>Window.IsActive(music)</visible>
 			<visible>[Container.Content(artists) | Container.Content(albums)] | [Window.IsActive(music) + Container.Content(files)] + !Skin.HasSetting(Disable.FullscreenWallView)</visible>
 		</control>
@@ -980,7 +970,7 @@
 		<control type="button" id="1531">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31249]</label>
-			<onclick>Container.SetViewMode(591)</onclick>
+			<onclick>Container.SetViewMode(512)</onclick>
 			<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)] + !Skin.HasSetting(Disable.BigFanView)</visible>
 		</control>
 		<control type="button" id="1532">

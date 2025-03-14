@@ -71,11 +71,12 @@
 					<onclick condition="!String.IsEmpty(Window(Home).Property(ResetSkinSettings))">Skin.ResetSettings</onclick>
 					<onclick condition="!Skin.HasSetting(WarnedOnHidingViz) + !String.IsEmpty(Window(Home).Property(NotWarnedOnHidingViz))">Skin.ToggleSetting(hidevizbehindfanart)</onclick>
 					<onclick condition="!Skin.HasSetting(WarnedOnHidingViz) + !String.IsEmpty(Window(Home).Property(NotWarnedOnHidingViz))">Skin.SetBool(WarnedOnHidingViz)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(OfferReloadAfterConfirm))">Skin.ToggleSetting(KioskMode.Enabled)</onclick>
+					<onclick condition="String.IsEqual(Window(Home).Property(OfferReloadAfterConfirm),kiosk_mode)">Skin.ToggleSetting(KioskMode.Enabled)</onclick>
+					<onclick condition="!String.IsEmpty(Window(Home).Property(OfferReloadAfterConfirm))">ReloadSkin()</onclick>
 					<onclick condition="!String.IsEmpty(Window(Home).Property(AskDefaultBackground))">Skin.SetBool(AskedDefaultBackground)</onclick>
 					<onclick condition="!String.IsEmpty(Window(Home).Property(AskDefaultBackground))">SetProperty(CustomSelect,defaultbackground,Home)</onclick>
 					<onclick condition="!String.IsEmpty(Window(Home).Property(AskDefaultBackground))">ActivateWindow(1129)</onclick>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texturefocus>
+					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texturefocus>
 					<visible>String.IsEmpty(Window(Home).Property(Notify))</visible>
 				</control>
 				<control type="button" id="901002">
@@ -94,7 +95,7 @@
 					<ondown>noop</ondown>
 					<onclick>Dialog.Close(1126)</onclick>
 					<onclick condition="!String.IsEmpty(Window(Home).Property(AskDefaultBackground))">Skin.SetBool(AskedDefaultBackground)</onclick>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texturefocus>
+					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texturefocus>
 					<visible>String.IsEmpty(Window(Home).Property(Notify))</visible>
 				</control>
 				<control type="button" id="901003">
@@ -115,7 +116,7 @@
 					<onclick condition="!Skin.HasSetting(WarnedOnMusicVizInfo) + !String.IsEmpty(Window(Home).Property(NotWarnedOnMuzicVizInfo))">Skin.SetBool(WarnedOnMusicVizInfo)</onclick>
 					<onclick condition="!Skin.HasSetting(WarnedOnFullscreenInfo) + !String.IsEmpty(Window(Home).Property(NotWarnedOnFullscreenInfo))">Skin.SetBool(WarnedOnFullscreenInfo)</onclick>
 					<onclick>Dialog.Close(1126)</onclick>
-					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texturefocus>
+					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texturefocus>
 					<texturenofocus border="5">dialogs/default/inner.png</texturenofocus>
 					<visible>!String.IsEmpty(Window(Home).Property(Notify))</visible>
 				</control>

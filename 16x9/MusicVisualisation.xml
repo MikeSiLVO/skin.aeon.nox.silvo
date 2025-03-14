@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<zorder>2</zorder>
+	<onload condition="String.IsEqual(Skin.String(Viz.Background),4) + !Skin.HasSetting(TMDbHelper.EnableBlur)">Skin.SetBool(TMDbHelper.EnableBlur)</onload>
 	<onload condition="!Skin.HasSetting(WarnedOnMusicVizInfo)">SetProperty(Notify,True,Home)</onload>
 	<onload condition="!Skin.HasSetting(WarnedOnMusicVizInfo)">SetProperty(NotWarnedOnMuzicVizInfo,True,Home)</onload>
 	<onload condition="!Skin.HasSetting(WarnedOnMusicVizInfo)">ActivateWindow(1126)</onload>
-	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + String.IsEqual(Skin.String(Viz.Background),4) + Window.IsVisible(visualisation)">RunScript(plugin.video.themoviedb.helper,blur_image=$INFO[Player.Icon],prefix=MusicVisIcon)</onload>
+	<onunload condition="!String.IsEqual(Skin.String(Viz.Background),4) | String.IsEqual(Skin.String(Viz.Background),4) + !Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(TMDbHelper.EnableBlur)</onunload>
+	<!-- <onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + String.IsEqual(Skin.String(Viz.Background),4)">RunScript(plugin.video.themoviedb.helper,blur_image=$INFO[Player.Icon],prefix=MusicVisIcon)</onload> -->
 	<controls>
 		<control type="fadelabel" id="4410">
 			<top>-100</top>
@@ -99,9 +101,9 @@
 				<fadetime>2000</fadetime>
 				<include>FullscreenDimensions</include>
 				<include>MultiImageTime</include>
-				<texture background="true">$INFO[Window(Home).Property(TMDbHelper.MusicVisIcon.BlurImage)]</texture>
+				<texture background="true">$INFO[Window(Home).Property(TMDbHelper.Player.Poster.BlurImage)]</texture>
 				<animation effect="fade" start="100" end="20" time="0" condition="![String.IsEqual(Visualisation.Name,waveform) | String.Contains(Visualisation.Name,spectrum) | String.IsEmpty(Visualisation.Name)] + !Skin.HasSetting(HideVisualizationFanart)">Conditional</animation>
-				<visible>String.IsEqual(Skin.String(Viz.Background),4) + !Control.IsVisible(90400)</visible>
+				<visible>String.IsEqual(Skin.String(Viz.Background),4) + !Control.IsVisible(90400) + !String.IsEqual(Player.Icon,DefaultAlbumCover.png)</visible>
 			</control>
 		</control>
 		<control type="group">
@@ -124,22 +126,22 @@
 					<control type="image">
 						<width>192</width>
 						<height>192</height>
-						<aspectratio>scale</aspectratio>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
 						<fadetime>400</fadetime>
-						<bordertexture border="1,1,2,1">thumbs/panel_border3.png</bordertexture>
-						<bordersize>1,1,2,1</bordersize>
+						<aspectratio>scale</aspectratio>
+						<texture border="2" background="true">$INFO[ListItem.Icon]</texture>
+						<bordersize>2</bordersize>
+						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 					</control>
 				</itemlayout>
 				<focusedlayout height="192" width="192">
 					<control type="image">
 						<width>192</width>
 						<height>192</height>
-						<aspectratio>scale</aspectratio>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
 						<fadetime>400</fadetime>
-						<bordertexture border="1,1,2,1">thumbs/panel_border3.png</bordertexture>
-						<bordersize>1,1,2,1</bordersize>
+						<aspectratio>scale</aspectratio>
+						<texture border="2" background="true">$INFO[ListItem.Icon]</texture>
+						<bordersize>2</bordersize>
+						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 					</control>
 				</focusedlayout>
 				<content sortby="random">special://skin/extras/playlists/albumwall.xsp</content>
@@ -186,12 +188,8 @@
 		</control>
 		<include condition="!String.IsEmpty(Skin.String(SeasonsBackground))">SnowBackground</include>
 		<control type="group">
-			<animation type="WindowOpen" reversible="false">
-				<effect type="slide" start="0,-540" end="0" tween="cubic" easing="inout" time="720" />
-			</animation>
-			<animation type="WindowClose" reversible="false">
-				<effect type="slide" end="0,-540" start="0" tween="cubic" easing="inout" time="720" />
-			</animation>
+			<animation effect="slide" tween="cubic" time="600" start="0,-1080" end="0,0">WindowOpen</animation>
+			<animation effect="slide" tween="cubic" time="600" end="0,-1080" start="0,0">WindowClose</animation>
 			<animation effect="slide" end="575" time="300" condition="String.IsEmpty(Skin.String(MusicVizLayout)) + [Skin.HasSetting(HideMusicVizAlbum) | Skin.HasSetting(HideMusicVizCD)] + Skin.HasSetting(SlideMusicLabelsRight)">Conditional</animation>
 			<animation effect="slide" end="-575" time="300" condition="String.IsEqual(Skin.String(MusicVizLayout),1) + [Skin.HasSetting(HideMusicVizAlbum) | Skin.HasSetting(HideMusicVizCD)] + Skin.HasSetting(SlideMusicLabelsLeft)">Conditional</animation>
 			<visible>Player.ShowInfo + !Skin.HasSetting(Disable.MusicVizTime) + !Window.IsVisible(musicosd)</visible>
@@ -199,55 +197,32 @@
 			<control type="image">
 				<left>610</left>
 				<width>700</width>
-				<height>87</height>
-				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_bar.png</texture>
-				<visible>!Skin.HasSetting(Enable.ColoredSystemBars)</visible>
-			</control>
-			<control type="image">
-				<left>610</left>
-				<width>700</width>
-				<height>87</height>
-				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_bar_white.png</texture>
-				<visible>Skin.HasSetting(Enable.ColoredSystemBars)</visible>
+				<height>45</height>
+				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu.png</texture>
 			</control>
 			<control type="image">
 				<left>520</left>
 				<width>90</width>
-				<height>87</height>
-				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_end.png</texture>
-				<visible>!Skin.HasSetting(Enable.ColoredSystemBars)</visible>
-			</control>
-			<control type="image">
-				<left>522</left>
-				<width>90</width>
-				<height>87</height>
-				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_end_white.png</texture>
-				<visible>Skin.HasSetting(Enable.ColoredSystemBars)</visible>
+				<height>45</height>
+				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenuend.png</texture>
 			</control>
 			<control type="image">
 				<left>1310</left>
 				<width>90</width>
-				<height>87</height>
-				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipx="true">submenu_end.png</texture>
-				<visible>!Skin.HasSetting(Enable.ColoredSystemBars)</visible>
-			</control>
-			<control type="image">
-				<left>1308</left>
-				<width>90</width>
-				<height>87</height>
-				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipx="true">submenu_end_white.png</texture>
-				<visible>Skin.HasSetting(Enable.ColoredSystemBars)</visible>
+				<height>45</height>
+				<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipx="true">submenuend.png</texture>
 			</control>
 			<control type="grouplist">
-				<left>610</left>
-				<width>700</width>
+				<left>520</left>
+				<width>880</width>
 				<height>41</height>
 				<align>center</align>
 				<orientation>horizontal</orientation>
 				<usecontrolcoords>true</usecontrolcoords>
+				<itemgap>5</itemgap>
 				<control type="multiimage">
-					<width>42</width>
-					<height>42</height>
+					<width>45</width>
+					<height>45</height>
 					<imagepath>$VAR[WeatherIconsPathVar]$INFO[Weather.FanartCode]$VAR[WeatherIconsExtVar]</imagepath>
 					<aspectratio>keep</aspectratio>
 					<timeperimage>70</timeperimage>
@@ -274,151 +249,54 @@
 			</control>
 		</control>
 		<control type="group">
-			<top>520</top>
 			<include>WindowOpenCloseAnimation</include>
-			<include>VisibleFadeAnimation</include>
-			<visible>[Player.ShowInfo | Window.IsActive(MusicOSD)] + ![Window.IsVisible(AddonSettings) | Window.IsVisible(SelectDialog) | Window.IsVisible(VisualisationPresetList)]</visible>
-			<!-- Test Layout -->
 			<control type="group">
-				<top>-470</top>
-				<visible>String.IsEqual(Skin.String(MusicVizLayout),3)</visible>
-				<control type="image">
-					<left>-50</left>
-					<top>599</top>
-					<width>2020</width>
-					<height>960</height>
-					<texture colordiffuse="B3FFFFFF" border="40">listpanel_back.png</texture>
-				</control>
-				<control type="image">
-					<left>170</left>
-					<top>607.5</top>
-					<width>445</width>
-					<height>445</height>
-					<aligny>top</aligny>
-					<aspectratio align="left">keep</aspectratio>
-					<fadetime>300</fadetime>
-					<animation effect="rotate" end="-360" center="auto" time="8333" loop="true" reversible="false" condition="!Player.Paused">Conditional</animation>
-					<texture background="true" diffuse="thumbs/boxes/cdart_mask.png">$VAR[PlayerArtworkDiscVar]</texture>
-					<bordersize>30</bordersize>
-				</control>
-				<control type="image">
-					<left>-20</left>
-					<top>610</top>
-					<width>440</width>
-					<height>440</height>
-					<aspectratio align="center">scale</aspectratio>
-					<texture diffuse="thumbs/boxes/cdcover_mask2.png" fallback="DefaultAlbumCover.png">$INFO[Player.Art(thumb)]</texture>
-					<bordertexture border="28">thumbs/boxes/cd_shadow2.png</bordertexture>
-					<bordersize>28</bordersize>
-				</control>
+				<top>520</top>
+				<include>VisibleFadeAnimation</include>
+				<visible>[Player.ShowInfo | Window.IsActive(MusicOSD)] + ![Window.IsVisible(AddonSettings) | Window.IsVisible(SelectDialog) | Window.IsVisible(VisualisationPresetList)]</visible>
+				<!-- Test Layout -->
 				<control type="group">
-					<left>-130</left>
-					<top>620</top>
-					<height>200</height>
-					<control type="label">
-						<left>760</left>
-						<top>90</top>
-						<width>700</width>
-						<height>80</height>
-						<font>font_musicviz</font>
-						<shadowcolor>black</shadowcolor>
-						<label>$INFO[MusicPlayer.Artist]</label>
-						<scroll>true</scroll>
-						<scrollsuffix>  -  </scrollsuffix>
-						<visible>[String.IsEmpty(Player.Art(artist.clearlogo)) + String.IsEmpty(Player.Art(clearlogo))] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
-						<include>VisibleFadeAnimation</include>
+					<top>-470</top>
+					<visible>String.IsEqual(Skin.String(MusicVizLayout),3)</visible>
+					<control type="image">
+						<left>-50</left>
+						<top>599</top>
+						<width>2020</width>
+						<height>960</height>
+						<texture colordiffuse="B3FFFFFF" border="40">listpanel_back.png</texture>
 					</control>
 					<control type="image">
-						<left>-65</left>
-						<top>20</top>
-						<width>100%</width>
-						<height>155</height>
-						<aspectratio aligny="bottom" align="center">keep</aspectratio>
-						<texture background="true">$VAR[PlayerArtworkLogoVar]</texture>
+						<left>170</left>
+						<top>607.5</top>
+						<width>445</width>
+						<height>445</height>
+						<aligny>top</aligny>
+						<aspectratio align="left">keep</aspectratio>
 						<fadetime>300</fadetime>
-						<visible>!Skin.HasSetting(Disable.MusicVizLogo)</visible>
-					</control>
-				</control>
-				<control type="grouplist">
-					<left>630</left>
-					<top>810</top>
-					<height>200</height>
-					<itemgap>10</itemgap>
-					<control type="label">
-						<width>750</width>
-						<height>40</height>
-						<font>font48</font>
-						<textcolor>white2</textcolor>
-						<shadowcolor>black</shadowcolor>
-						<label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[Player.Title]</label>
-					</control>
-					<control type="label">
-						<width>750</width>
-						<height>40</height>
-						<font>font15</font>
-						<textcolor>white2</textcolor>
-						<shadowcolor>black</shadowcolor>
-						<label>$INFO[MusicPlayer.Album]$INFO[musicplayer.discnumber, - $LOCALIZE[427]:]</label>
-					</control>
-					<control type="label">
-						<height>50</height>
-						<width>750</width>
-						<label>[COLOR white2]$INFO[Player.Time][/COLOR]$INFO[Player.Duration, / [COLOR=white2],[/COLOR]]</label>
-						<font>font48</font>
-						<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
-						<shadowcolor>black</shadowcolor>
-					</control>
-					<control type="label">
-						<width>750</width>
-						<height>40</height>
-						<font>font15</font>
-						<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
-						<shadowcolor>black</shadowcolor>
-						<label>$INFO[MusicPlayer.Genre,$LOCALIZE[515]: [COLOR white2],[/COLOR]]</label>
-						<visible>!String.IsEmpty(MusicPlayer.Genre)</visible>
+						<animation effect="rotate" end="-360" center="auto" time="8333" loop="true" reversible="false" condition="!Player.Paused">Conditional</animation>
+						<texture background="true" diffuse="thumbs/boxes/cdart_mask.png">$VAR[PlayerArtworkDiscVar]</texture>
+						<bordersize>30</bordersize>
 					</control>
 					<control type="image">
-						<width>400</width>
-						<height>45</height>
-						<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
-						<texture fallback="flags/rating/empty.png">$INFO[MusicPlayer.UserRating,flags/rating/,.png]</texture>
-						<aspectratio align="left" aligny="bottom">keep</aspectratio>
-						<visible>!Player.IsInternetStream</visible>
+						<left>-20</left>
+						<top>610</top>
+						<width>440</width>
+						<height>440</height>
+						<aspectratio align="center">scale</aspectratio>
+						<texture diffuse="thumbs/boxes/cdcover_mask2.png" fallback="DefaultAlbumCover.png">$INFO[Player.Art(thumb)]</texture>
+						<bordertexture border="28">thumbs/boxes/cd_shadow2.png</bordertexture>
+						<bordersize>28</bordersize>
 					</control>
-				</control>
-				<control type="textbox">
-					<left>1400</left>
-					<top>626</top>
-					<width>500</width>
-					<height>375</height>
-					<font>font15</font>
-					<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
-					<shadowcolor>black</shadowcolor>
-					<label>$INFO[MusicPlayer.offset(1).TrackNumber,$LOCALIZE[19031]:[CR][COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(1).Artist,, - ]$INFO[MusicPlayer.offset(1).Title][/COLOR][CR]$INFO[MusicPlayer.offset(2).TrackNumber,[COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(2).Artist,, - ]$INFO[MusicPlayer.offset(2).Title][/COLOR][CR]$INFO[MusicPlayer.offset(3).TrackNumber,[COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(3).Artist,, - ]$INFO[MusicPlayer.offset(3).Title][/COLOR][CR]$INFO[MusicPlayer.offset(4).TrackNumber,[COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(4).Artist,, - ]$INFO[MusicPlayer.offset(4).Title][/COLOR][CR]$INFO[MusicPlayer.offset(5).TrackNumber,[COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(5).Artist,, - ]$INFO[MusicPlayer.offset(5).Title][/COLOR][CR]$INFO[MusicPlayer.offset(6).TrackNumber,[COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(6).Artist,, - ]$INFO[MusicPlayer.offset(6).Title][/COLOR][CR]$INFO[MusicPlayer.offset(7).TrackNumber,[COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(7).Artist,, - ]$INFO[MusicPlayer.offset(7).Title][/COLOR][CR]$INFO[MusicPlayer.offset(8).TrackNumber,[COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(8).Artist,, - ]$INFO[MusicPlayer.offset(8).Title][/COLOR]</label>
-				</control>
-			</control>
-			<control type="group">
-				<visible>!String.IsEqual(Skin.String(MusicVizLayout),3)</visible>
-				<control type="image">
-					<top>-200</top>
-					<width>100%</width>
-					<height>760</height>
-					<texture border="1">nowplaying_shadow.png</texture>
-				</control>
-				<control type="group">
-					<!-- Right Aligned -->
 					<control type="group">
-						<visible>String.IsEmpty(Skin.String(MusicVizLayout))</visible>
-						<top>150</top>
-						<animation effect="slide" end="535,0" time="300" condition="Skin.HasSetting(HideMusicVizAlbum) + Skin.HasSetting(HideMusicVizCD) + Skin.HasSetting(SlideMusicLabelsRight)">Conditional</animation>
-						<animation effect="slide" end="235,0" time="300" condition="[Skin.HasSetting(HideMusicVizAlbum) | Skin.HasSetting(HideMusicVizCD)] + Skin.HasSetting(SlideMusicLabelsRight)">Conditional</animation>
+						<left>-130</left>
+						<top>620</top>
+						<height>200</height>
 						<control type="label">
-							<left>30</left>
-							<top>-40</top>
-							<width>1100</width>
+							<left>760</left>
+							<top>90</top>
+							<width>700</width>
 							<height>80</height>
 							<font>font_musicviz</font>
-							<align>right</align>
 							<shadowcolor>black</shadowcolor>
 							<label>$INFO[MusicPlayer.Artist]</label>
 							<scroll>true</scroll>
@@ -427,197 +305,55 @@
 							<include>VisibleFadeAnimation</include>
 						</control>
 						<control type="image">
-							<top>-120</top>
+							<left>-65</left>
+							<top>20</top>
 							<width>100%</width>
 							<height>155</height>
 							<aspectratio aligny="bottom" align="center">keep</aspectratio>
 							<texture background="true">$VAR[PlayerArtworkLogoVar]</texture>
 							<fadetime>300</fadetime>
 							<visible>!Skin.HasSetting(Disable.MusicVizLogo)</visible>
-						</control>
-						<control type="label">
-							<left>30</left>
-							<top>70</top>
-							<width>1100</width>
-							<height>20</height>
-							<align>right</align>
-							<font>font30</font>
-							<label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[Player.Title,[COLOR white],[/COLOR]]</label>
-							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<shadowcolor>black</shadowcolor>
-							<scroll>true</scroll>
-						</control>
-						<control type="label">
-							<left>30</left>
-							<top>140</top>
-							<width>1100</width>
-							<height>20</height>
-							<align>right</align>
-							<font>font30</font>
-							<label>$INFO[MusicPlayer.Album]$INFO[MusicPlayer.DiscNumber, - $LOCALIZE[427]: ,][COLOR $VAR[ThemeLabelColor]]$INFO[MusicPlayer.Year, [,]][/COLOR]</label>
-							<shadowcolor>black</shadowcolor>
-							<scroll>true</scroll>
-							<scrollsuffix>  -  </scrollsuffix>
-						</control>
-						<control type="label">
-							<left>395</left>
-							<top>210</top>
-							<width>755</width>
-							<height>18</height>
-							<align>right</align>
-							<font>font30</font>
-							<label>[COLOR=white]$INFO[Player.Time][/COLOR]$INFO[Player.Duration, / [COLOR=white],[/COLOR] ]</label>
-							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<shadowcolor>black</shadowcolor>
-						</control>
-						<control type="label">
-							<left>30</left>
-							<top>250</top>
-							<width>1100</width>
-							<height>65</height>
-							<align>right</align>
-							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<scroll>true</scroll>
-							<scrollsuffix>  -  </scrollsuffix>
-							<label>$INFO[MusicPlayer.Genre,[COLOR white][LOWERCASE], [/LOWERCASE]· [/COLOR]]$VAR[MusicPlayerCodecVar]$INFO[MusicPlayer.Bitrate,[COLOR white] · , [/COLOR]kbps[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.BitsPerSample,[COLOR white] ,[/COLOR] bit[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.Samplerate,[COLOR white] ,[/COLOR] kHz]</label>
-						</control>
-						<control type="image">
-							<left>745</left>
-							<top>315</top>
-							<width>400</width>
-							<height>45</height>
-							<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
-							<texture fallback="flags/rating/empty.png">$INFO[MusicPlayer.UserRating,flags/rating/,.png]</texture>
-							<aspectratio align="right" aligny="bottom">keep</aspectratio>
-							<visible>!Player.IsInternetStream</visible>
 						</control>
 					</control>
-					<!-- Left Aligned -->
-					<control type="group">
-						<visible>String.IsEqual(Skin.String(MusicVizLayout),1)</visible>
-						<left>320</left>
-						<top>150</top>
-						<animation effect="slide" end="-485,0" time="300" condition="Skin.HasSetting(HideMusicVizAlbum) + Skin.HasSetting(HideMusicVizCD) + Skin.HasSetting(SlideMusicLabelsLeft)">Conditional</animation>
-						<animation effect="slide" end="-205,0" time="300" condition="[Skin.HasSetting(HideMusicVizAlbum) | Skin.HasSetting(HideMusicVizCD)] + Skin.HasSetting(SlideMusicLabelsLeft)">Conditional</animation>
-						<include>VisibleFadeAnimation</include>
-						<control type="group">
-							<visible>!Skin.HasSetting(Disable.MusicPlayerNextTrack)</visible>
-							<control type="label">
-								<left>478</left>
-								<top>-40</top>
-								<width>755</width>
-								<height>80</height>
-								<font>font_musicviz</font>
-								<shadowcolor>black</shadowcolor>
-								<label>$INFO[MusicPlayer.Artist]</label>
-								<scroll>true</scroll>
-								<scrollsuffix>  -  </scrollsuffix>
-								<visible>[String.IsEmpty(Player.Art(artist.clearlogo)) + String.IsEmpty(Player.Art(clearlogo))] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
-								<include>VisibleFadeAnimation</include>
-							</control>
-							<control type="label">
-								<left>475</left>
-								<top>70</top>
-								<width>755</width>
-								<height>20</height>
-								<font>font30</font>
-								<label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[Player.Title,[COLOR white],[/COLOR]]</label>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<shadowcolor>black</shadowcolor>
-								<scroll>true</scroll>
-							</control>
-							<control type="label">
-								<left>475</left>
-								<top>140</top>
-								<width>755</width>
-								<height>20</height>
-								<font>font30</font>
-								<label>$INFO[MusicPlayer.Album]$INFO[MusicPlayer.DiscNumber, - $LOCALIZE[427]: ,][COLOR $VAR[ThemeLabelColor]]$INFO[MusicPlayer.Year, [,]][/COLOR]</label>
-								<shadowcolor>black</shadowcolor>
-								<scroll>true</scroll>
-								<scrollsuffix>  -  </scrollsuffix>
-							</control>
-							<control type="label">
-								<left>475</left>
-								<top>250</top>
-								<width>780</width>
-								<height>65</height>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<scroll>true</scroll>
-								<scrollsuffix>  -  </scrollsuffix>
-								<label>$INFO[MusicPlayer.Genre,[COLOR white][LOWERCASE], [/LOWERCASE]· [/COLOR]]$VAR[MusicPlayerCodecVar]$INFO[MusicPlayer.Bitrate,[COLOR white] · , [/COLOR]kbps[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.BitsPerSample,[COLOR white] ,[/COLOR] bit[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.Samplerate,[COLOR white] ,[/COLOR] kHz]</label>
-							</control>
-						</control>
-						<control type="group">
-							<visible>Skin.HasSetting(Disable.MusicPlayerNextTrack)</visible>
-							<control type="label">
-								<left>478</left>
-								<top>-40</top>
-								<width>1100</width>
-								<height>80</height>
-								<font>font_musicviz</font>
-								<shadowcolor>black</shadowcolor>
-								<label>$INFO[MusicPlayer.Artist]</label>
-								<scroll>true</scroll>
-								<scrollsuffix>  -  </scrollsuffix>
-								<visible>[String.IsEmpty(Player.Art(artist.clearlogo)) + String.IsEmpty(Player.Art(clearlogo))] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
-								<include>VisibleFadeAnimation</include>
-							</control>
-							<control type="label">
-								<left>475</left>
-								<top>70</top>
-								<width>1100</width>
-								<height>20</height>
-								<font>font30</font>
-								<label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[Player.Title,[COLOR white],[/COLOR]]</label>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<shadowcolor>black</shadowcolor>
-								<scroll>true</scroll>
-							</control>
-							<control type="label">
-								<left>475</left>
-								<top>140</top>
-								<width>1100</width>
-								<height>20</height>
-								<font>font30</font>
-								<label>$INFO[MusicPlayer.Album]$INFO[MusicPlayer.DiscNumber, - $LOCALIZE[427]: ,][COLOR $VAR[ThemeLabelColor]]$INFO[MusicPlayer.Year, [,]][/COLOR]</label>
-								<shadowcolor>black</shadowcolor>
-								<scroll>true</scroll>
-								<scrollsuffix>  -  </scrollsuffix>
-							</control>
-							<control type="label">
-								<left>475</left>
-								<top>250</top>
-								<width>1100</width>
-								<height>65</height>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<scroll>true</scroll>
-								<scrollsuffix>  -  </scrollsuffix>
-								<label>$INFO[MusicPlayer.Genre,[COLOR white][LOWERCASE], [/LOWERCASE]· [/COLOR]]$VAR[MusicPlayerCodecVar]$INFO[MusicPlayer.Bitrate,[COLOR white] · , [/COLOR]kbps[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.BitsPerSample,[COLOR white] ,[/COLOR] bit[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.Samplerate,[COLOR white] ,[/COLOR] kHz]</label>
-							</control>
-						</control>
-						<control type="image">
-							<top>-120</top>
-							<width>100%</width>
-							<height>155</height>
-							<aspectratio aligny="bottom" align="center">keep</aspectratio>
-							<texture background="true">$VAR[PlayerArtworkLogoVar]</texture>
-							<fadetime>300</fadetime>
-							<visible>!Skin.HasSetting(Disable.MusicVizLogo)</visible>
+					<control type="grouplist">
+						<left>630</left>
+						<top>810</top>
+						<height>200</height>
+						<itemgap>10</itemgap>
+						<control type="label">
+							<width>750</width>
+							<height>40</height>
+							<font>font48</font>
+							<textcolor>white2</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[Player.Title]</label>
 						</control>
 						<control type="label">
-							<left>475</left>
-							<top>210</top>
-							<width>740</width>
-							<height>18</height>
-							<font>font30</font>
-							<label>[COLOR=white]$INFO[Player.Time][/COLOR]$INFO[Player.Duration, / [COLOR=white],[/COLOR] ]</label>
-							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<width>750</width>
+							<height>40</height>
+							<font>font15</font>
+							<textcolor>white2</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<label>$INFO[MusicPlayer.Album]$INFO[musicplayer.discnumber, - $LOCALIZE[427]:]</label>
+						</control>
+						<control type="label">
+							<height>50</height>
+							<width>750</width>
+							<label>[COLOR white2]$INFO[Player.Time][/COLOR]$INFO[Player.Duration, / [COLOR=white2],[/COLOR]]</label>
+							<font>font48</font>
+							<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
 							<shadowcolor>black</shadowcolor>
 						</control>
+						<control type="label">
+							<width>750</width>
+							<height>40</height>
+							<font>font15</font>
+							<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<label>$INFO[MusicPlayer.Genre,$LOCALIZE[515]: [COLOR white2],[/COLOR]]</label>
+							<visible>!String.IsEmpty(MusicPlayer.Genre)</visible>
+						</control>
 						<control type="image">
-							<left>465</left>
-							<top>315</top>
 							<width>400</width>
 							<height>45</height>
 							<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
@@ -626,256 +362,496 @@
 							<visible>!Player.IsInternetStream</visible>
 						</control>
 					</control>
-					<!-- Center Aligned -->
+					<control type="textbox">
+						<left>1400</left>
+						<top>626</top>
+						<width>500</width>
+						<height>375</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
+						<shadowcolor>black</shadowcolor>
+						<label>$INFO[MusicPlayer.offset(1).TrackNumber,$LOCALIZE[19031]:[CR][COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(1).Artist,, - ]$INFO[MusicPlayer.offset(1).Title][/COLOR][CR]$INFO[MusicPlayer.offset(2).TrackNumber,[COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(2).Artist,, - ]$INFO[MusicPlayer.offset(2).Title][/COLOR][CR]$INFO[MusicPlayer.offset(3).TrackNumber,[COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(3).Artist,, - ]$INFO[MusicPlayer.offset(3).Title][/COLOR][CR]$INFO[MusicPlayer.offset(4).TrackNumber,[COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(4).Artist,, - ]$INFO[MusicPlayer.offset(4).Title][/COLOR][CR]$INFO[MusicPlayer.offset(5).TrackNumber,[COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(5).Artist,, - ]$INFO[MusicPlayer.offset(5).Title][/COLOR][CR]$INFO[MusicPlayer.offset(6).TrackNumber,[COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(6).Artist,, - ]$INFO[MusicPlayer.offset(6).Title][/COLOR][CR]$INFO[MusicPlayer.offset(7).TrackNumber,[COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(7).Artist,, - ]$INFO[MusicPlayer.offset(7).Title][/COLOR][CR]$INFO[MusicPlayer.offset(8).TrackNumber,[COLOR white2],.[/COLOR] ][COLOR white2]$INFO[MusicPlayer.offset(8).Artist,, - ]$INFO[MusicPlayer.offset(8).Title][/COLOR]</label>
+					</control>
+				</control>
+				<control type="group">
+					<visible>!String.IsEqual(Skin.String(MusicVizLayout),3)</visible>
+					<control type="image">
+						<top>-200</top>
+						<width>100%</width>
+						<height>760</height>
+						<texture border="1">nowplaying_shadow.png</texture>
+					</control>
 					<control type="group">
-						<visible>String.IsEqual(Skin.String(MusicVizLayout),2)</visible>
-						<top>150</top>
-						<control type="label">
-							<top>-40</top>
-							<width>100%</width>
-							<height>80</height>
-							<font>font_musicviz</font>
-							<align>center</align>
-							<shadowcolor>black</shadowcolor>
-							<label>$INFO[MusicPlayer.Artist]</label>
-							<scroll>true</scroll>
-							<scrollsuffix>  -  </scrollsuffix>
-							<visible>String.IsEmpty(Player.Art(artist.clearlogo)) + String.IsEmpty(Player.Art(clearlogo)) | Skin.HasSetting(Disable.MusicVizLogo)</visible>
+						<!-- Right Aligned -->
+						<control type="group">
+							<visible>String.IsEmpty(Skin.String(MusicVizLayout))</visible>
+							<top>150</top>
+							<animation effect="slide" end="535,0" time="300" condition="Skin.HasSetting(HideMusicVizAlbum) + Skin.HasSetting(HideMusicVizCD) + Skin.HasSetting(SlideMusicLabelsRight)">Conditional</animation>
+							<animation effect="slide" end="235,0" time="300" condition="[Skin.HasSetting(HideMusicVizAlbum) | Skin.HasSetting(HideMusicVizCD)] + Skin.HasSetting(SlideMusicLabelsRight)">Conditional</animation>
+							<control type="label">
+								<left>30</left>
+								<top>-40</top>
+								<width>1100</width>
+								<height>80</height>
+								<font>font_musicviz</font>
+								<align>right</align>
+								<shadowcolor>black</shadowcolor>
+								<label>$INFO[MusicPlayer.Artist]</label>
+								<scroll>true</scroll>
+								<scrollsuffix>  -  </scrollsuffix>
+								<visible>[String.IsEmpty(Player.Art(artist.clearlogo)) + String.IsEmpty(Player.Art(clearlogo))] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
+								<include>VisibleFadeAnimation</include>
+							</control>
+							<control type="image">
+								<top>-120</top>
+								<width>100%</width>
+								<height>155</height>
+								<aspectratio aligny="bottom" align="center">keep</aspectratio>
+								<texture background="true">$VAR[PlayerArtworkLogoVar]</texture>
+								<fadetime>300</fadetime>
+								<visible>!Skin.HasSetting(Disable.MusicVizLogo)</visible>
+							</control>
+							<control type="label">
+								<left>30</left>
+								<top>70</top>
+								<width>1100</width>
+								<height>20</height>
+								<align>right</align>
+								<font>font30</font>
+								<label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[Player.Title,[COLOR white],[/COLOR]]</label>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<shadowcolor>black</shadowcolor>
+								<scroll>true</scroll>
+							</control>
+							<control type="label">
+								<left>30</left>
+								<top>140</top>
+								<width>1100</width>
+								<height>20</height>
+								<align>right</align>
+								<font>font30</font>
+								<label>$INFO[MusicPlayer.Album]$INFO[MusicPlayer.DiscNumber, - $LOCALIZE[427]: ,][COLOR $VAR[ThemeLabelColor]]$INFO[MusicPlayer.Year, [,]][/COLOR]</label>
+								<shadowcolor>black</shadowcolor>
+								<scroll>true</scroll>
+								<scrollsuffix>  -  </scrollsuffix>
+							</control>
+							<control type="label">
+								<left>395</left>
+								<top>210</top>
+								<width>755</width>
+								<height>18</height>
+								<align>right</align>
+								<font>font30</font>
+								<label>[COLOR=white]$INFO[Player.Time][/COLOR]$INFO[Player.Duration, / [COLOR=white],[/COLOR] ]</label>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<shadowcolor>black</shadowcolor>
+							</control>
+							<control type="label">
+								<left>30</left>
+								<top>250</top>
+								<width>1100</width>
+								<height>65</height>
+								<align>right</align>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<scroll>true</scroll>
+								<scrollsuffix>  -  </scrollsuffix>
+								<label>$INFO[MusicPlayer.Genre,[COLOR white][LOWERCASE], [/LOWERCASE]· [/COLOR]]$VAR[MusicPlayerCodecVar]$INFO[MusicPlayer.Bitrate,[COLOR white] · , [/COLOR]kbps[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.BitsPerSample,[COLOR white] ,[/COLOR] bit[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.Samplerate,[COLOR white] ,[/COLOR] kHz]</label>
+							</control>
+							<control type="image">
+								<left>745</left>
+								<top>315</top>
+								<width>400</width>
+								<height>45</height>
+								<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
+								<texture fallback="flags/rating/empty.png">$INFO[MusicPlayer.UserRating,flags/rating/,.png]</texture>
+								<aspectratio align="right" aligny="bottom">keep</aspectratio>
+								<visible>!Player.IsInternetStream</visible>
+							</control>
+						</control>
+						<!-- Left Aligned -->
+						<control type="group">
+							<visible>String.IsEqual(Skin.String(MusicVizLayout),1)</visible>
+							<left>320</left>
+							<top>150</top>
+							<animation effect="slide" end="-485,0" time="300" condition="Skin.HasSetting(HideMusicVizAlbum) + Skin.HasSetting(HideMusicVizCD) + Skin.HasSetting(SlideMusicLabelsLeft)">Conditional</animation>
+							<animation effect="slide" end="-205,0" time="300" condition="[Skin.HasSetting(HideMusicVizAlbum) | Skin.HasSetting(HideMusicVizCD)] + Skin.HasSetting(SlideMusicLabelsLeft)">Conditional</animation>
 							<include>VisibleFadeAnimation</include>
-						</control>
-						<control type="image">
-							<top>-120</top>
-							<width>100%</width>
-							<height>155</height>
-							<aspectratio aligny="bottom" align="center">keep</aspectratio>
-							<texture background="true">$VAR[PlayerArtworkLogoVar]</texture>
-							<fadetime>300</fadetime>
-							<visible>!Skin.HasSetting(Disable.MusicVizLogo)</visible>
-						</control>
-						<control type="label">
-							<top>70</top>
-							<width>100%</width>
-							<height>20</height>
-							<align>center</align>
-							<font>font30</font>
-							<label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[Player.Title,[COLOR white],[/COLOR]]</label>
-							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<shadowcolor>black</shadowcolor>
-							<scroll>true</scroll>
-						</control>
-						<control type="label">
-							<top>140</top>
-							<width>100%</width>
-							<height>20</height>
-							<align>center</align>
-							<font>font30</font>
-							<label>$INFO[MusicPlayer.Album]$INFO[MusicPlayer.DiscNumber, - $LOCALIZE[427]: ,][COLOR $VAR[ThemeLabelColor]]$INFO[MusicPlayer.Year, [,]][/COLOR]</label>
-							<shadowcolor>black</shadowcolor>
-							<scroll>true</scroll>
-							<scrollsuffix>  -  </scrollsuffix>
-						</control>
-						<control type="label">
-							<top>210</top>
-							<width>100%</width>
-							<height>18</height>
-							<align>center</align>
-							<font>font30</font>
-							<label>[COLOR=white]$INFO[Player.Time][/COLOR]$INFO[Player.Duration, / [COLOR=white],[/COLOR] ]</label>
-							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<shadowcolor>black</shadowcolor>
-						</control>
-						<control type="label">
-							<top>250</top>
-							<width>100%</width>
-							<height>65</height>
-							<align>center</align>
-							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<scroll>true</scroll>
-							<scrollsuffix>  -  </scrollsuffix>
-							<label>$INFO[MusicPlayer.Genre,[COLOR white][LOWERCASE], [/LOWERCASE]· [/COLOR]]$VAR[MusicPlayerCodecVar]$INFO[MusicPlayer.Bitrate,[COLOR white] · , [/COLOR]kbps[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.BitsPerSample,[COLOR white] ,[/COLOR] bit[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.Samplerate,[COLOR white] ,[/COLOR] kHz]</label>
-						</control>
-						<control type="image">
-							<left>854</left>
-							<top>315</top>
-							<width>400</width>
-							<height>45</height>
-							<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
-							<texture fallback="flags/rating/empty.png">$INFO[MusicPlayer.UserRating,flags/rating/,.png]</texture>
-							<aspectratio align="left" aligny="bottom">keep</aspectratio>
-							<visible>!Player.IsInternetStream</visible>
-						</control>
-					</control>
-					<!-- Album + CD -->
-					<control type="group">
-						<left>1135</left>
-						<top>-12</top>
-						<visible>!String.IsEqual(Skin.String(MusicVizLayout),2)</visible>
-						<animation effect="slide" end="-1090,0" time="0" condition="String.IsEqual(Skin.String(MusicVizLayout),1)">Conditional</animation>
-						<animation effect="slide" end="235,0" time="400" condition="String.IsEmpty(Skin.String(MusicVizLayout)) + Skin.HasSetting(HideMusicVizCD) + Skin.HasSetting(SlideMusicLabelsRight)">Conditional</animation>
-						<animation effect="slide" end="-235,0" time="400" condition="!Skin.HasSetting(HideMusicVizCD) + Skin.HasSetting(HideMusicVizAlbum) + String.IsEqual(Skin.String(MusicVizLayout),1) + Skin.HasSetting(SlideMusicLabelsLeft)">Conditional</animation>
-						<include>VisibleFadeAnimation</include>
-						<control type="image">
-							<left>220</left>
-							<top>3</top>
-							<width>545</width>
-							<height>545</height>
-							<aligny>top</aligny>
-							<aspectratio align="left">keep</aspectratio>
-							<fadetime>300</fadetime>
-							<animation effect="rotate" end="-360" center="auto" time="8333" loop="true" reversible="false" condition="!Player.Paused">Conditional</animation>
-							<texture background="true" diffuse="thumbs/boxes/cdart_mask.png">$VAR[PlayerArtworkDiscVar]</texture>
-							<bordersize>30</bordersize>
-							<visible>!Skin.HasSetting(HideMusicVizCD)</visible>
-						</control>
-						<control type="group">
-							<visible>String.IsEmpty(Player.Art(album.discart)) + String.IsEmpty(Player.Art(discart))</visible>
-							<visible>!Skin.HasSetting(HideMusicVizCD) + !Skin.HasSetting(MusicDiscFallback.Vinyl)</visible>
-							<control type="label">
-								<left>360</left>
-								<top>80</top>
-								<width>265</width>
-								<height>89</height>
-								<align>center</align>
-								<font>fontCDartist</font>
-								<label>$INFO[MusicPlayer.Artist, ,]</label>
-								<animation effect="rotate" end="-360" center="495,275" time="8000" loop="true" reversible="false" condition="!Player.Paused">Conditional</animation>
-								<textcolor>black</textcolor>
-								<wrapmultiline>true</wrapmultiline>
+							<control type="group">
+								<visible>!Skin.HasSetting(Disable.MusicPlayerNextTrack)</visible>
+								<control type="label">
+									<left>478</left>
+									<top>-40</top>
+									<width>755</width>
+									<height>80</height>
+									<font>font_musicviz</font>
+									<shadowcolor>black</shadowcolor>
+									<label>$INFO[MusicPlayer.Artist]</label>
+									<scroll>true</scroll>
+									<scrollsuffix>  -  </scrollsuffix>
+									<visible>[String.IsEmpty(Player.Art(artist.clearlogo)) + String.IsEmpty(Player.Art(clearlogo))] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
+									<include>VisibleFadeAnimation</include>
+								</control>
+								<control type="label">
+									<left>475</left>
+									<top>70</top>
+									<width>755</width>
+									<height>20</height>
+									<font>font30</font>
+									<label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[Player.Title,[COLOR white],[/COLOR]]</label>
+									<textcolor>$VAR[ThemeLabelColor]</textcolor>
+									<shadowcolor>black</shadowcolor>
+									<scroll>true</scroll>
+								</control>
+								<control type="label">
+									<left>475</left>
+									<top>140</top>
+									<width>755</width>
+									<height>20</height>
+									<font>font30</font>
+									<label>$INFO[MusicPlayer.Album]$INFO[MusicPlayer.DiscNumber, - $LOCALIZE[427]: ,][COLOR $VAR[ThemeLabelColor]]$INFO[MusicPlayer.Year, [,]][/COLOR]</label>
+									<shadowcolor>black</shadowcolor>
+									<scroll>true</scroll>
+									<scrollsuffix>  -  </scrollsuffix>
+								</control>
+								<control type="label">
+									<left>475</left>
+									<top>250</top>
+									<width>780</width>
+									<height>65</height>
+									<textcolor>$VAR[ThemeLabelColor]</textcolor>
+									<scroll>true</scroll>
+									<scrollsuffix>  -  </scrollsuffix>
+									<label>$INFO[MusicPlayer.Genre,[COLOR white][LOWERCASE], [/LOWERCASE]· [/COLOR]]$VAR[MusicPlayerCodecVar]$INFO[MusicPlayer.Bitrate,[COLOR white] · , [/COLOR]kbps[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.BitsPerSample,[COLOR white] ,[/COLOR] bit[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.Samplerate,[COLOR white] ,[/COLOR] kHz]</label>
+								</control>
 							</control>
-							<control type="label">
-								<left>350</left>
-								<top>370</top>
-								<width>280</width>
-								<height>99</height>
-								<align>center</align>
-								<font>fontCDalbum</font>
-								<label>$INFO[MusicPlayer.Album, ,]</label>
-								<animation effect="rotate" end="-360" center="495,275" time="8000" loop="true" reversible="false" condition="!Player.Paused">Conditional</animation>
-								<textcolor>black</textcolor>
-								<wrapmultiline>true</wrapmultiline>
-							</control>
-						</control>
-						<control type="image">
-							<width>550</width>
-							<height>550</height>
-							<aspectratio align="right">scale</aspectratio>
-							<texture diffuse="thumbs/boxes/cdcover_mask2.png" fallback="DefaultAlbumCover.png">$INFO[Player.Art(thumb)]</texture>
-							<bordertexture border="28">thumbs/boxes/cd_shadow2.png</bordertexture>
-							<bordersize>28</bordersize>
-							<visible>!Skin.HasSetting(HideMusicVizAlbum)</visible>
-						</control>
-					</control>
-					<control type="group">
-						<visible>String.IsEqual(Skin.String(MusicVizLayout),1) + MusicPlayer.Offset(1).Exists + !Skin.HasSetting(Disable.MusicPlayerNextTrack)</visible>
-						<left>1640</left>
-						<top>-133</top>
-						<animation effect="rotate" end="-2" center="auto" condition="true">Conditional</animation>
-						<animation effect="rotatey" end="45" center="auto" condition="true">Conditional</animation>
-						<include>VisibleFadeAnimation</include>
-						<control type="group">
-							<control type="image">
-								<top>78</top>
-								<left>120</left>
-								<width>234</width>
-								<height>480</height>
-								<texture>colors/black.png</texture>
+							<control type="group">
+								<visible>Skin.HasSetting(Disable.MusicPlayerNextTrack)</visible>
+								<control type="label">
+									<left>478</left>
+									<top>-40</top>
+									<width>1100</width>
+									<height>80</height>
+									<font>font_musicviz</font>
+									<shadowcolor>black</shadowcolor>
+									<label>$INFO[MusicPlayer.Artist]</label>
+									<scroll>true</scroll>
+									<scrollsuffix>  -  </scrollsuffix>
+									<visible>[String.IsEmpty(Player.Art(artist.clearlogo)) + String.IsEmpty(Player.Art(clearlogo))] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
+									<include>VisibleFadeAnimation</include>
+								</control>
+								<control type="label">
+									<left>475</left>
+									<top>70</top>
+									<width>1100</width>
+									<height>20</height>
+									<font>font30</font>
+									<label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[Player.Title,[COLOR white],[/COLOR]]</label>
+									<textcolor>$VAR[ThemeLabelColor]</textcolor>
+									<shadowcolor>black</shadowcolor>
+									<scroll>true</scroll>
+								</control>
+								<control type="label">
+									<left>475</left>
+									<top>140</top>
+									<width>1100</width>
+									<height>20</height>
+									<font>font30</font>
+									<label>$INFO[MusicPlayer.Album]$INFO[MusicPlayer.DiscNumber, - $LOCALIZE[427]: ,][COLOR $VAR[ThemeLabelColor]]$INFO[MusicPlayer.Year, [,]][/COLOR]</label>
+									<shadowcolor>black</shadowcolor>
+									<scroll>true</scroll>
+									<scrollsuffix>  -  </scrollsuffix>
+								</control>
+								<control type="label">
+									<left>475</left>
+									<top>250</top>
+									<width>1100</width>
+									<height>65</height>
+									<textcolor>$VAR[ThemeLabelColor]</textcolor>
+									<scroll>true</scroll>
+									<scrollsuffix>  -  </scrollsuffix>
+									<label>$INFO[MusicPlayer.Genre,[COLOR white][LOWERCASE], [/LOWERCASE]· [/COLOR]]$VAR[MusicPlayerCodecVar]$INFO[MusicPlayer.Bitrate,[COLOR white] · , [/COLOR]kbps[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.BitsPerSample,[COLOR white] ,[/COLOR] bit[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.Samplerate,[COLOR white] ,[/COLOR] kHz]</label>
+								</control>
 							</control>
 							<control type="image">
-								<top>110</top>
-								<left>120</left>
-								<width>232</width>
-								<height>271</height>
-								<texture background="true">$INFO[MusicPlayer.offset(1).Cover]</texture>
-							</control>
-							<control type="image">
-								<top>55</top>
-								<left>54</left>
-								<width>410</width>
-								<height>630</height>
-								<texture background="true">music_player_new.png</texture>
+								<left>475</left>
+								<top>-120</top>
+								<width>740</width>
+								<height>155</height>
+								<aspectratio aligny="bottom" align="left">keep</aspectratio>
+								<texture background="true">$VAR[PlayerArtworkLogoVar]</texture>
+								<fadetime>300</fadetime>
+								<visible>!Skin.HasSetting(Disable.MusicVizLogo)</visible>
 							</control>
 							<control type="label">
-								<left>135</left>
-								<top>380</top>
-								<width>200</width>
-								<height>36</height>
-								<align>center</align>
-								<aligny>top</aligny>
-								<font>font11</font>
-								<scroll>true</scroll>
+								<left>475</left>
+								<top>210</top>
+								<width>740</width>
+								<height>18</height>
+								<font>font30</font>
+								<label>[COLOR=white]$INFO[Player.Time][/COLOR]$INFO[Player.Duration, / [COLOR=white],[/COLOR] ]</label>
 								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<label>$LOCALIZE[19031][COLOR white]:[/COLOR]</label>
+								<shadowcolor>black</shadowcolor>
+							</control>
+							<control type="image">
+								<left>465</left>
+								<top>315</top>
+								<width>400</width>
+								<height>45</height>
+								<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
+								<texture fallback="flags/rating/empty.png">$INFO[MusicPlayer.UserRating,flags/rating/,.png]</texture>
+								<aspectratio align="left" aligny="bottom">keep</aspectratio>
+								<visible>!Player.IsInternetStream</visible>
+							</control>
+						</control>
+						<!-- Center Aligned -->
+						<control type="group">
+							<visible>String.IsEqual(Skin.String(MusicVizLayout),2)</visible>
+							<top>150</top>
+							<control type="label">
+								<top>-40</top>
+								<width>100%</width>
+								<height>80</height>
+								<font>font_musicviz</font>
+								<align>center</align>
+								<shadowcolor>black</shadowcolor>
+								<label>$INFO[MusicPlayer.Artist]</label>
+								<scroll>true</scroll>
+								<scrollsuffix>  -  </scrollsuffix>
+								<visible>String.IsEmpty(Player.Art(artist.clearlogo)) + String.IsEmpty(Player.Art(clearlogo)) | Skin.HasSetting(Disable.MusicVizLogo)</visible>
+								<include>VisibleFadeAnimation</include>
+							</control>
+							<control type="image">
+								<top>-120</top>
+								<width>100%</width>
+								<height>155</height>
+								<aspectratio aligny="bottom" align="center">keep</aspectratio>
+								<texture background="true">$VAR[PlayerArtworkLogoVar]</texture>
+								<fadetime>300</fadetime>
+								<visible>!Skin.HasSetting(Disable.MusicVizLogo)</visible>
 							</control>
 							<control type="label">
-								<left>135</left>
-								<top>410</top>
-								<width>200</width>
-								<height>36</height>
+								<top>70</top>
+								<width>100%</width>
+								<height>20</height>
 								<align>center</align>
-								<aligny>top</aligny>
-								<font>font11</font>
+								<font>font30</font>
+								<label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[Player.Title,[COLOR white],[/COLOR]]</label>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<shadowcolor>black</shadowcolor>
 								<scroll>true</scroll>
-								<label>$INFO[MusicPlayer.offset(1).Artist]</label>
 							</control>
 							<control type="label">
-								<left>135</left>
-								<top>440</top>
-								<width>200</width>
-								<height>36</height>
+								<top>140</top>
+								<width>100%</width>
+								<height>20</height>
 								<align>center</align>
-								<aligny>top</aligny>
-								<font>font11</font>
+								<font>font30</font>
+								<label>$INFO[MusicPlayer.Album]$INFO[MusicPlayer.DiscNumber, - $LOCALIZE[427]: ,][COLOR $VAR[ThemeLabelColor]]$INFO[MusicPlayer.Year, [,]][/COLOR]</label>
+								<shadowcolor>black</shadowcolor>
 								<scroll>true</scroll>
-								<label>[COLOR $VAR[ThemeLabelColor]]$INFO[MusicPlayer.offset(1).TrackNumber,,. ][/COLOR]$INFO[MusicPlayer.offset(1).Title]</label>
+								<scrollsuffix>  -  </scrollsuffix>
+							</control>
+							<control type="label">
+								<top>210</top>
+								<width>100%</width>
+								<height>18</height>
+								<align>center</align>
+								<font>font30</font>
+								<label>[COLOR=white]$INFO[Player.Time][/COLOR]$INFO[Player.Duration, / [COLOR=white],[/COLOR] ]</label>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<shadowcolor>black</shadowcolor>
+							</control>
+							<control type="label">
+								<top>250</top>
+								<width>100%</width>
+								<height>65</height>
+								<align>center</align>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<scroll>true</scroll>
+								<scrollsuffix>  -  </scrollsuffix>
+								<label>$INFO[MusicPlayer.Genre,[COLOR white][LOWERCASE], [/LOWERCASE]· [/COLOR]]$VAR[MusicPlayerCodecVar]$INFO[MusicPlayer.Bitrate,[COLOR white] · , [/COLOR]kbps[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.BitsPerSample,[COLOR white] ,[/COLOR] bit[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.Samplerate,[COLOR white] ,[/COLOR] kHz]</label>
+							</control>
+							<control type="image">
+								<left>854</left>
+								<top>315</top>
+								<width>400</width>
+								<height>45</height>
+								<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
+								<texture fallback="flags/rating/empty.png">$INFO[MusicPlayer.UserRating,flags/rating/,.png]</texture>
+								<aspectratio align="left" aligny="bottom">keep</aspectratio>
+								<visible>!Player.IsInternetStream</visible>
+							</control>
+						</control>
+						<!-- Album + CD -->
+						<control type="group">
+							<left>1135</left>
+							<top>-12</top>
+							<visible>!String.IsEqual(Skin.String(MusicVizLayout),2)</visible>
+							<animation effect="slide" end="-1090,0" time="0" condition="String.IsEqual(Skin.String(MusicVizLayout),1)">Conditional</animation>
+							<animation effect="slide" end="235,0" time="400" condition="String.IsEmpty(Skin.String(MusicVizLayout)) + Skin.HasSetting(HideMusicVizCD) + Skin.HasSetting(SlideMusicLabelsRight)">Conditional</animation>
+							<animation effect="slide" end="-235,0" time="400" condition="!Skin.HasSetting(HideMusicVizCD) + Skin.HasSetting(HideMusicVizAlbum) + String.IsEqual(Skin.String(MusicVizLayout),1) + Skin.HasSetting(SlideMusicLabelsLeft)">Conditional</animation>
+							<include>VisibleFadeAnimation</include>
+							<control type="image">
+								<left>220</left>
+								<top>3</top>
+								<width>545</width>
+								<height>545</height>
+								<aligny>top</aligny>
+								<aspectratio align="left">keep</aspectratio>
+								<fadetime>300</fadetime>
+								<animation effect="rotate" end="-360" center="auto" time="8333" loop="true" reversible="false" condition="!Player.Paused">Conditional</animation>
+								<texture background="true" diffuse="thumbs/boxes/cdart_mask.png">$VAR[PlayerArtworkDiscVar]</texture>
+								<bordersize>30</bordersize>
+								<visible>!Skin.HasSetting(HideMusicVizCD)</visible>
+							</control>
+							<control type="group">
+								<visible>String.IsEmpty(Player.Art(album.discart)) + String.IsEmpty(Player.Art(discart))</visible>
+								<visible>!Skin.HasSetting(HideMusicVizCD) + !Skin.HasSetting(MusicDiscFallback.Vinyl)</visible>
+								<control type="label">
+									<left>360</left>
+									<top>80</top>
+									<width>265</width>
+									<height>89</height>
+									<align>center</align>
+									<font>fontCDartist</font>
+									<label>$INFO[MusicPlayer.Artist, ,]</label>
+									<animation effect="rotate" end="-360" center="495,275" time="8000" loop="true" reversible="false" condition="!Player.Paused">Conditional</animation>
+									<textcolor>black</textcolor>
+									<wrapmultiline>true</wrapmultiline>
+								</control>
+								<control type="label">
+									<left>350</left>
+									<top>370</top>
+									<width>280</width>
+									<height>99</height>
+									<align>center</align>
+									<font>fontCDalbum</font>
+									<label>$INFO[MusicPlayer.Album, ,]</label>
+									<animation effect="rotate" end="-360" center="495,275" time="8000" loop="true" reversible="false" condition="!Player.Paused">Conditional</animation>
+									<textcolor>black</textcolor>
+									<wrapmultiline>true</wrapmultiline>
+								</control>
+							</control>
+							<control type="image">
+								<width>550</width>
+								<height>550</height>
+								<aspectratio align="right">scale</aspectratio>
+								<texture diffuse="thumbs/boxes/cdcover_mask2.png" fallback="DefaultAlbumCover.png">$INFO[Player.Art(thumb)]</texture>
+								<bordertexture border="28">thumbs/boxes/cd_shadow2.png</bordertexture>
+								<bordersize>28</bordersize>
+								<visible>!Skin.HasSetting(HideMusicVizAlbum)</visible>
+							</control>
+						</control>
+						<control type="group">
+							<visible>String.IsEqual(Skin.String(MusicVizLayout),1) + MusicPlayer.Offset(1).Exists + !Skin.HasSetting(Disable.MusicPlayerNextTrack)</visible>
+							<left>1640</left>
+							<top>-133</top>
+							<animation effect="rotate" end="-2" center="auto" condition="true">Conditional</animation>
+							<animation effect="rotatey" end="45" center="auto" condition="true">Conditional</animation>
+							<include>VisibleFadeAnimation</include>
+							<control type="group">
+								<control type="image">
+									<top>78</top>
+									<left>120</left>
+									<width>234</width>
+									<height>480</height>
+									<texture>colors/black.png</texture>
+								</control>
+								<control type="image">
+									<top>110</top>
+									<left>120</left>
+									<width>232</width>
+									<height>271</height>
+									<texture background="true">$INFO[MusicPlayer.offset(1).Cover]</texture>
+								</control>
+								<control type="image">
+									<top>55</top>
+									<left>54</left>
+									<width>410</width>
+									<height>630</height>
+									<texture background="true">music_player_new.png</texture>
+								</control>
+								<control type="label">
+									<left>135</left>
+									<top>380</top>
+									<width>200</width>
+									<height>36</height>
+									<align>center</align>
+									<aligny>top</aligny>
+									<font>font11</font>
+									<scroll>true</scroll>
+									<textcolor>$VAR[ThemeLabelColor]</textcolor>
+									<label>$LOCALIZE[19031][COLOR white]:[/COLOR]</label>
+								</control>
+								<control type="label">
+									<left>135</left>
+									<top>410</top>
+									<width>200</width>
+									<height>36</height>
+									<align>center</align>
+									<aligny>top</aligny>
+									<font>font11</font>
+									<scroll>true</scroll>
+									<label>$INFO[MusicPlayer.offset(1).Artist]</label>
+								</control>
+								<control type="label">
+									<left>135</left>
+									<top>440</top>
+									<width>200</width>
+									<height>36</height>
+									<align>center</align>
+									<aligny>top</aligny>
+									<font>font11</font>
+									<scroll>true</scroll>
+									<label>[COLOR $VAR[ThemeLabelColor]]$INFO[MusicPlayer.offset(1).TrackNumber,,. ][/COLOR]$INFO[MusicPlayer.offset(1).Title]</label>
+								</control>
 							</control>
 						</control>
 					</control>
 				</control>
 			</control>
-		</control>
-		<!-- RSS Feed: similar artists-->
-		<control type="group">
-			<animation effect="slide" end="1870,0" time="240">WindowClose</animation>
-			<animation effect="slide" start="1870" end="0" time="240">VisibleChange</animation>
-			<animation effect="slide" start="1870,0" end="0,0" delay="800" time="480" condition="Window.Previous(startup)">WindowOpen</animation>
-			<visible>System.AddonIsEnabled(script.artistslideshow) + [!String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.ArtistBiography)) | !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.1.AlbumName)) | !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.1.SimilarName))]</visible>
-			<visible>[Player.ShowInfo + Skin.HasSetting(Enable.VizInfo)] | Skin.HasSetting(Enable.VizPersistent)</visible>
-			<top>993</top>
+			<!-- RSS Feed: similar artists-->
 			<control type="group">
-				<control type="image">
-					<left>140</left>
-					<width>1780</width>
-					<height>87</height>
-					<texture flipy="true">submenu_bar.png</texture>
+				<visible>System.AddonIsEnabled(script.artistslideshow) + [!String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.ArtistBiography)) | !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.1.AlbumName)) | !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.1.SimilarName))]</visible>
+				<visible>[Player.ShowInfo + Skin.HasSetting(Enable.VizInfo)] | Skin.HasSetting(Enable.VizPersistent)</visible>
+				<include>VisibleFadeAnimation</include>
+				<top>993</top>
+				<control type="group">
+					<top>45</top>
+					<height>45</height>
+					<control type="image">
+						<left>130</left>
+						<width>1800</width>
+						<texture flipy="true" colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu.png</texture>
+					</control>
+					<control type="image">
+						<left>70</left>
+						<width>60</width>
+						<texture flipy="true" colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenuend.png</texture>
+					</control>
 				</control>
-				<control type="image">
-					<left>50</left>
-					<width>90</width>
-					<height>87</height>
-					<texture flipy="true" border="78,0,0,0">submenu_end.png</texture>
-				</control>
-			</control>
-			<control type="group">
-				<control type="label">
-					<left>1880</left>
-					<top>44</top>
-					<width>60</width>
-					<height>41</height>
-					<label></label>
-					<font>IconSmall</font>
-					<textcolor>$VAR[ThemeLabelColor]</textcolor>
-				</control>
-				<control type="fadelabel">
-					<left>140</left>
-					<top>44</top>
-					<height>30</height>
-					<width>1730</width>
-					<textcolor>$VAR[ThemeLabelColor]</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<label>$INFO[Window(Visualisation).Property(ArtistSlideshow.ArtistBiography),$LOCALIZE[21887]: [COLOR grey],[/COLOR]]</label>
-					<label>$INFO[MusicPlayer.Artist,$LOCALIZE[31105] ,: ]$INFO[Window(Visualisation).Property(ArtistSlideshow.1.AlbumName),[COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.2.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.3.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.4.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.5.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.6.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.7.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.8.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.9.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.10.AlbumName), • [COLOR grey],[/COLOR]]</label>
-					<label>$INFO[Window(Visualisation).Property(ArtistSlideshow.1.SimilarName),$LOCALIZE[31104]: [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.2.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.3.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.4.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.5.SimilarName), •	[COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.6.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.7.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.8.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.9.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.10.SimilarName), • [COLOR grey],[/COLOR]]</label>
-					<scrollspeed>60</scrollspeed>
+				<control type="group">
+					<control type="label">
+						<right>10</right>
+						<top>44</top>
+						<width>40</width>
+						<height>40</height>
+						<label></label>
+						<font>IconSmallMD</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+					</control>
+					<control type="fadelabel">
+						<right>70</right>
+						<top>44</top>
+						<height>30</height>
+						<width>1740</width>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<label>$INFO[Window(Visualisation).Property(ArtistSlideshow.ArtistBiography),$LOCALIZE[21887]: [COLOR grey],[/COLOR]]</label>
+						<label>$INFO[MusicPlayer.Artist,$LOCALIZE[31105] ,: ]$INFO[Window(Visualisation).Property(ArtistSlideshow.1.AlbumName),[COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.2.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.3.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.4.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.5.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.6.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.7.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.8.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.9.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.10.AlbumName), • [COLOR grey],[/COLOR]]</label>
+						<label>$INFO[Window(Visualisation).Property(ArtistSlideshow.1.SimilarName),$LOCALIZE[31104]: [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.2.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.3.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.4.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.5.SimilarName), •	[COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.6.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.7.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.8.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.9.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.10.SimilarName), • [COLOR grey],[/COLOR]]</label>
+						<scrollspeed>60</scrollspeed>
+					</control>
 				</control>
 			</control>
 		</control>

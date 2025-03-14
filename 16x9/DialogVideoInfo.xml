@@ -189,7 +189,7 @@
 							<left>-7</left>
 							<top>105</top>
 							<height>1</height>
-							<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+							<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
 						</control>
 						<!-- Runtime/Ratings Bar -->
 						<control type="grouplist">
@@ -223,7 +223,7 @@
 							<left>-7</left>
 							<height>1</height>
 							<top>192</top>
-							<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+							<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
 						</control>
 					</control>
 					<!-- Details Panel -->
@@ -275,7 +275,7 @@
 						<ondown>90001</ondown>
 						<align>right</align>
 						<orientation>horizontal</orientation>
-						<visible>!String.IsEqual(ListItem.Property(item.type),person) + !ControlGroup(90001).HasFocus(50) + !ControlGroup(90001).HasFocus(90050) + !ControlGroup(90001).HasFocus(90011) + !ControlGroup(90001).HasFocus(90012) + !ControlGroup(90001).HasFocus(90013) + !ControlGroup(90001).HasFocus(90014) + !ControlGroup(90001).HasFocus(90015) + !ControlGroup(90001).HasFocus(90017)</visible>
+						<visible>!String.IsEqual(ListItem.Property(item.type),person) + !ControlGroup(90001).HasFocus(50) + !ControlGroup(90001).HasFocus(90050) + !ControlGroup(90001).HasFocus(90011) + !ControlGroup(90001).HasFocus(90012) + !ControlGroup(90001).HasFocus(90013) + !ControlGroup(90001).HasFocus(90014) + !ControlGroup(90001).HasFocus(90015) + !ControlGroup(90001).HasFocus(90016) + !ControlGroup(90001).HasFocus(90017)</visible>
 						<!-- <control type="button" id="8088">
 							<description>Test button</description>
 							<font>IconMediumMD</font>
@@ -330,7 +330,7 @@
 							<label></label>
 							<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetFocus(50)</onclick>
 							<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetFocus(90050)</onclick>
-							<visible>!String.IsEmpty(ListItem.Cast)</visible>
+							<visible>!String.IsEmpty(ListItem.Cast) | String.IsEqual(ListItem.DBTYPE,set)</visible>
 						</control>
 						<control type="button" id="14">
 							<description>Versions</description>
@@ -438,7 +438,7 @@
 						<left>3</left>
 						<top>604</top>
 						<height>1</height>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
 					</control>
 					<!-- Bottom Section -->
 					<control type="grouplist" id="90001">

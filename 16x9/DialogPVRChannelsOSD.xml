@@ -55,7 +55,7 @@
 				<onup>11</onup>
 				<ondown>11</ondown>
 				<scrolltime tween="quadratic">200</scrolltime>
-				<itemlayout height="60" width="970">
+				<itemlayout height="60" width="970" infoupdate="5000">
 					<control type="label">
 						<width>70</width>
 						<height>60</height>
@@ -68,9 +68,9 @@
 						<top>23</top>
 						<width>80</width>
 						<height>12</height>
+						<texturebg border="2" infill="false" colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturebg>
+						<midtexture border="2" colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</midtexture>
 						<info>ListItem.Progress</info>
-						<texturebg colordiffuse="$VAR[ThemeLabelColor]" border="3">pvr/texturebg_border_white.png</texturebg>
-						<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="3">pvr/texturebg_white.png</midtexture>
 					</control>
 					<control type="label">
 						<left>180</left>
@@ -98,12 +98,12 @@
 						<animation effect="slide" start="0" end="-18" time="0" tween="sine" easing="in" condition="[ListItem.HasTimer | ListItem.IsRecording | ListItem.IsRecording | ListItem.HasArchive]">Conditional</animation>
 					</control>
 				</itemlayout>
-				<focusedlayout height="60" width="970">
+				<focusedlayout height="60" width="970" infoupdate="5000">
 					<control type="image">
 						<left>1</left>
 						<width>990</width>
 						<height>60</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 					</control>
 					<control type="label">
 						<width>70</width>
@@ -118,9 +118,9 @@
 						<top>23</top>
 						<width>80</width>
 						<height>12</height>
+						<texturebg border="2" infill="false" colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturebg>
+						<midtexture border="2" colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</midtexture>
 						<info>ListItem.Progress</info>
-						<texturebg colordiffuse="$VAR[ThemeLabelColor]" border="3">pvr/texturebg_border_white.png</texturebg>
-						<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="3">pvr/texturebg_white.png</midtexture>
 					</control>
 					<control type="label">
 						<left>180</left>
@@ -173,9 +173,9 @@
 					<control type="progress">
 						<width>460</width>
 						<height>20</height>
+						<texturebg border="2" infill="false" colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturebg>
+						<midtexture border="2" colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</midtexture>
 						<info>Container(11).ListItem.Progress</info>
-						<texturebg colordiffuse="$VAR[ThemeLabelColor]" border="3">pvr/texturebg_border_white.png</texturebg>
-						<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="3">pvr/texturebg_white.png</midtexture>
 					</control>
 					<control type="group">
 						<top>10</top>
@@ -241,8 +241,7 @@
 						<top>45</top>
 						<width>695</width>
 						<height>2</height>
-						<texture>separator_horizontal.png</texture>
-						<colordiffuse>grey3</colordiffuse>
+						<texture colordiffuse="grey3">colors/white.png</texture>
 					</control>
 					<control type="label">
 						<top>55</top>

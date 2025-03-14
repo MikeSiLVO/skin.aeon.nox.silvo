@@ -41,26 +41,33 @@
 			<onfocus condition="!String.IsEmpty(Window(Home).Property(MediaMenu))">ClearProperty(MediaMenu,Home)</onfocus>
 			<onfocus condition="!String.IsEmpty(Window(Home).Property(MediaMenu))">SetFocus(50)</onfocus>
 		</control>
-		<control type="button" id="8999">
-			<left>365</left>
-			<top>-11</top>
-			<width>64</width>
-			<height>48</height>
-			<label></label>
-			<font>CloseButton</font>
-			<textcolor>grey</textcolor>
-			<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
-			<onclick>ClearProperty(MediaMenu,Home)</onclick>
-			<onclick>SetFocus(50)</onclick>
-			<texturefocus />
-			<texturenofocus />
-			<visible>system.getbool(input.enablemouse) + !Window.IsVisible(1104) + !Window.IsVisible(1132)</visible>
-		</control>
+		<include content="CloseButton">
+			<param name="visible">system.getbool(input.enablemouse) + !Window.IsVisible(1104) + !Window.IsVisible(1132)</param>
+		</include>
 		<control type="image">
 			<top>-20</top>
 			<width>400</width>
 			<height>130</height>
 			<texture>aeon-nox-logo.png</texture>
+		</control>
+	</include>
+	<include name="CloseButton">
+		<control type="button" id="8999">
+			<left>360</left>
+			<top>-11</top>
+			<width>64</width>
+			<height>48</height>
+			<label></label>
+			<font>IconTinyMD</font>
+			<textcolor>grey</textcolor>
+			<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+			<onclick condition="!Window.IsVisible(1104) + !Window.IsVisible(1132)">ClearProperty(MediaMenu,Home)</onclick>
+			<onclick condition="!Window.IsVisible(1104) + !Window.IsVisible(1132)">SetFocus(50)</onclick>
+			<onclick condition="Window.IsVisible(1104)">Dialog.Close(1104)</onclick>
+			<onclick condition="Window.IsVisible(1132)">Dialog.Close(1132)</onclick>
+			<texturefocus />
+			<texturenofocus />
+			<visible>$PARAM[visible]</visible>
 		</control>
 	</include>
 	<include name="KioskModeButton">
@@ -100,7 +107,7 @@
 			<label>$INFO[Container.Viewmode,$LOCALIZE[31100] ]</label>
 			<onclick condition="!Skin.HasSetting(skinvariables.viewtypes) | !Window.IsActive(MyVideoNav.xml)">SetProperty(CustomSideMenu,viewselection,Home)</onclick>
 			<onclick condition="!Skin.HasSetting(skinvariables.viewtypes) | !Window.IsActive(MyVideoNav.xml)">ActivateWindow(1104)</onclick>
-			<onclick condition="Skin.HasSetting(skinvariables.viewtypes) + Window.IsActive(MyVideoNav.xml)">Runscript(script.skinvariables,action=buildviews,contentid=$VAR[SkinVariablesContentVar],pluginname=$INFO[Container.PluginName])</onclick>
+			<onclick condition="Skin.HasSetting(skinvariables.viewtypes) + Window.IsActive(MyVideoNav.xml)">Runscript(script.skinvariables,action=buildviews,contentid=$VAR[SkinVariablesContentIDVar],pluginname=$INFO[Container.PluginName])</onclick>
 			<visible>!Window.IsActive(tvchannels)</visible>
 		</control>
 		<control type="button" id="7031">
@@ -128,10 +135,10 @@
 			<onclick condition="Control.IsVisible(507)">SetProperty(actualViewtype,BigList,Home)</onclick>
 			<onclick condition="Control.IsVisible(508)">SetProperty(actualViewtype,SongList,Home)</onclick>
 			<onclick condition="Control.IsVisible(509)">SetProperty(actualViewtype,MyFlix,Home)</onclick>
-			<onclick condition="Control.IsVisible(591)">SetProperty(actualViewtype,BigFan,Home)</onclick>
-			<onclick condition="Control.IsVisible(602)">SetProperty(actualViewtype,FanartList,Home)</onclick>
-			<onclick condition="Control.IsVisible(603)">SetProperty(actualViewtype,MusicJukebox,Home)</onclick>
-			<onclick condition="Control.IsVisible(609)">SetProperty(actualViewtype,FullscreenWall,Home)</onclick>
+			<onclick condition="Control.IsVisible(512)">SetProperty(actualViewtype,BigFan,Home)</onclick>
+			<onclick condition="Control.IsVisible(510)">SetProperty(actualViewtype,FanartList,Home)</onclick>
+			<onclick condition="Control.IsVisible(513)">SetProperty(actualViewtype,MusicJukebox,Home)</onclick>
+			<onclick condition="Control.IsVisible(511)">SetProperty(actualViewtype,FullscreenWall,Home)</onclick>
 			<onclick>SetProperty(CustomSideMenu,viewsettings,Home)</onclick>
 			<onclick>ActivateWindow(1104)</onclick>
 		</control>
@@ -520,27 +527,19 @@
 		<control type="group">
 			<animation effect="slide" start="0,-90" end="0,0" time="500">WindowOpen</animation>
 			<animation effect="slide" end="0,-90" start="0,0" time="500">WindowClose</animation>
-			<animation effect="slide" start="0,0" end="0,-90" time="500" tween="cubic" condition="Control.IsVisible(503) + String.IsEmpty(Skin.String(503.NoTopBar)) + System.IdleTime(2) + !Window.IsVisible(addoninformation)">Conditional</animation>
-			<animation effect="slide" start="0,0" end="0,-90" time="500" tween="cubic" condition="Control.IsVisible(609) + String.IsEmpty(Skin.String(609.NoTopBar)) + System.IdleTime(2)">Conditional</animation>
-			<visible>[Control.IsVisible(50) + String.IsEmpty(Skin.String(50.NoTopBar))] | [Control.IsVisible(51) + String.IsEmpty(Skin.String(51.NoTopBar))] | [Control.IsVisible(52) + String.IsEmpty(Skin.String(52.NoTopBar))] | [Control.IsVisible(53) + String.IsEmpty(Skin.String(53.NoTopBar))] | [Control.IsVisible(54) + String.IsEmpty(Skin.String(54.NoTopBar))] | [Control.IsVisible(55) + String.IsEmpty(Skin.String(55.NoTopBar))] | [Control.IsVisible(56) + String.IsEmpty(Skin.String(56.NoTopBar))] | [Control.IsVisible(57) + String.IsEmpty(Skin.String(57.NoTopBar))] | [Control.IsVisible(58) + String.IsEmpty(Skin.String(58.NoTopBar))] | [Control.IsVisible(59) + String.IsEmpty(Skin.String(59.NoTopBar))] | [Control.IsVisible(500) + String.IsEmpty(Skin.String(500.NoTopBar))] | [Control.IsVisible(501) + String.IsEmpty(Skin.String(501.NoTopBar))] | [Control.IsVisible(502) + String.IsEmpty(Skin.String(502.NoTopBar))] | [Control.IsVisible(503) + String.IsEmpty(Skin.String(503.NoTopBar))] | [Control.IsVisible(504) + String.IsEmpty(Skin.String(504.NoTopBar))] | [Control.IsVisible(505) + String.IsEmpty(Skin.String(505.NoTopBar))] | [Control.IsVisible(507) + String.IsEmpty(Skin.String(507.NoTopBar))] | [Control.IsVisible(508) + String.IsEmpty(Skin.String(508.NoTopBar))] | [Control.IsVisible(591) + String.IsEmpty(Skin.String(591.NoTopBar))] | [Control.IsVisible(592) + String.IsEmpty(Skin.String(592.NoTopBar))] | [Control.IsVisible(602) + String.IsEmpty(Skin.String(602.NoTopBar))] | [Control.IsVisible(603) + String.IsEmpty(Skin.String(603.NoTopBar))] | [Control.IsVisible(609) + String.IsEmpty(Skin.String(609.NoTopBar))] | [Control.IsVisible(506) + String.IsEmpty(Skin.String(506.NoTopBar))] | [Control.IsVisible(509) + String.IsEmpty(Skin.String(509.NoTopBar))] | [Control.IsVisible(603) + String.IsEmpty(Skin.String(603.NoTopBar))] | !Window.IsMedia | Window.IsActive(tvguide)</visible>
+			<animation effect="slide" start="0,0" end="0,-90" time="500" tween="cubic" condition="Control.IsVisible(503) + String.IsEmpty(Skin.String(503.NoTopBar)) + System.IdleTime(2) + !Window.IsVisible(addoninformation) | Control.IsVisible(511) + String.IsEmpty(Skin.String(511.NoTopBar)) + System.IdleTime(2) | Control.IsVisible(511) + String.IsEmpty(Skin.String(511.NoTopBar)) + Control.HasFocus(51160)">Conditional</animation>
+			<visible>[Control.IsVisible(50) + String.IsEmpty(Skin.String(50.NoTopBar))] | [Control.IsVisible(51) + String.IsEmpty(Skin.String(51.NoTopBar))] | [Control.IsVisible(52) + String.IsEmpty(Skin.String(52.NoTopBar))] | [Control.IsVisible(53) + String.IsEmpty(Skin.String(53.NoTopBar))] | [Control.IsVisible(54) + String.IsEmpty(Skin.String(54.NoTopBar))] | [Control.IsVisible(55) + String.IsEmpty(Skin.String(55.NoTopBar))] | [Control.IsVisible(56) + String.IsEmpty(Skin.String(56.NoTopBar))] | [Control.IsVisible(57) + String.IsEmpty(Skin.String(57.NoTopBar))] | [Control.IsVisible(58) + String.IsEmpty(Skin.String(58.NoTopBar))] | [Control.IsVisible(59) + String.IsEmpty(Skin.String(59.NoTopBar))] | [Control.IsVisible(500) + String.IsEmpty(Skin.String(500.NoTopBar))] | [Control.IsVisible(501) + String.IsEmpty(Skin.String(501.NoTopBar))] | [Control.IsVisible(502) + String.IsEmpty(Skin.String(502.NoTopBar))] | [Control.IsVisible(503) + String.IsEmpty(Skin.String(503.NoTopBar))] | [Control.IsVisible(504) + String.IsEmpty(Skin.String(504.NoTopBar))] | [Control.IsVisible(505) + String.IsEmpty(Skin.String(505.NoTopBar))] | [Control.IsVisible(507) + String.IsEmpty(Skin.String(507.NoTopBar))] | [Control.IsVisible(508) + String.IsEmpty(Skin.String(508.NoTopBar))] | [Control.IsVisible(512) + String.IsEmpty(Skin.String(512.NoTopBar))] | [Control.IsVisible(592) + String.IsEmpty(Skin.String(592.NoTopBar))] | [Control.IsVisible(510) + String.IsEmpty(Skin.String(510.NoTopBar))] | [Control.IsVisible(513) + String.IsEmpty(Skin.String(513.NoTopBar))] | [Control.IsVisible(511) + String.IsEmpty(Skin.String(511.NoTopBar))] | [Control.IsVisible(506) + String.IsEmpty(Skin.String(506.NoTopBar))] | [Control.IsVisible(509) + String.IsEmpty(Skin.String(509.NoTopBar))] | [Control.IsVisible(513) + String.IsEmpty(Skin.String(513.NoTopBar))] | !Window.IsMedia | Window.IsActive(tvguide)</visible>
 			<visible>!Skin.HasSetting(Disable.TopBar)</visible>
 			<control type="image">
 				<width>100%</width>
-				<height>87</height>
-				<texture colordiffuse="$VAR[TopBarColor]">submenu_bar.png</texture>
-				<visible>String.IsEmpty(Skin.String(TopBarColor))</visible>
+				<height>45</height>
+				<texture colordiffuse="$VAR[TopBarColor]">colors/white.png</texture>
 			</control>
 			<control type="image">
 				<width>100%</width>
-				<height>88</height>
-				<texture colordiffuse="$VAR[TopBarColor]">submenu_bar_white.png</texture>
-				<visible>!String.IsEmpty(Skin.String(TopBarColor))</visible>
-			</control>
-			<control type="image">
-				<width>100%</width>
-				<top>41</top>
+				<top>45</top>
 				<height>2</height>
-				<texture colordiffuse="$VAR[TopBarGlowBarColor]">separator_horizontal.png</texture>
+				<texture colordiffuse="$VAR[TopBarGlowBarColor]">colors/white.png</texture>
 			</control>
 			<control type="group">
 				<visible>!Window.IsActive(volumebar)</visible>
@@ -550,51 +549,42 @@
 					<include>VisibleFadeAnimation</include>
 					<control type="label">
 						<left>20</left>
-						<top>6</top>
-						<width>auto</width>
-						<height>40</height>
-						<font>IconTiny</font>
+						<width>55</width>
+						<height>42</height>
+						<font>IconMediaMenuButtons</font>
 						<textcolor>grey</textcolor>
 						<shadowcolor>shadow</shadowcolor>
-						<aligny>top</aligny>
 						<label>$VAR[BreadcrumbsIconVar]</label>
 					</control>
 					<control type="grouplist">
-						<left>56</left>
-						<width>780</width>
-						<height>90</height>
+						<left>75</left>
+						<width>740</width>
+						<height>42</height>
 						<orientation>horizontal</orientation>
-						<usecontrolcoords>true</usecontrolcoords>
-						<itemgap>5</itemgap>
 						<control type="label">
-							<top>6</top>
-							<width>30</width>
-							<height>40</height>
-							<font>IconTiny</font>
+							<width>55</width>
+							<height>42</height>
+							<font>IconMediaMenuButtons</font>
 							<textcolor>grey</textcolor>
 							<shadowcolor>shadow</shadowcolor>
-							<aligny>top</aligny>
-							<label></label>
+							<label></label>
 							<visible>String.IsEqual(Control.GetLabel(10),$LOCALIZE[16101])</visible>
 						</control>
 						<control type="label">
-							<top>6</top>
-							<width>30</width>
-							<height>40</height>
-							<font>IconTiny</font>
+							<width>55</width>
+							<height>42</height>
+							<font>IconMediaMenuButtons</font>
 							<textcolor>grey</textcolor>
 							<shadowcolor>shadow</shadowcolor>
-							<aligny>top</aligny>
-							<label></label>
+							<label></label>
 							<visible>String.IsEqual(Control.GetLabel(10),$LOCALIZE[16102])</visible>
 						</control>
 						<control type="label">
-							<width min="100" max="750">auto</width>
-							<height>90</height>
-							<font>font13_title</font>
+							<width min="80" max="740">auto</width>
+							<height>42</height>
+							<font>font14_title</font>
 							<textcolor>grey</textcolor>
 							<shadowcolor>shadow</shadowcolor>
-							<aligny>top</aligny>
 							<scroll>true</scroll>
 							<label>$VAR[BreadcrumbsVar]</label>
 						</control>
@@ -605,53 +595,41 @@
 					<include>VisibleFadeAnimation</include>
 					<control type="progress">
 						<width>100%</width>
-						<height>42</height>
-						<texturebg border="2" colordiffuse="B3FFFFFF">osd/texturebg.png</texturebg>
-						<lefttexture />
-						<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="2">osd/midtexture_cache.png</midtexture>
-						<righttexture />
-						<overlaytexture />
+						<height>45</height>
+						<texturebg>colors/black75.png</texturebg>
+						<midtexture colordiffuse="$VAR[ThemeOSDProgressColor]">colors/white10.png</midtexture>
 						<info>Player.ProgressCache</info>
 					</control>
 					<control type="progress">
 						<width>100%</width>
-						<height>37</height>
-						<texturebg border="2">osd/texturebg_cache.png</texturebg>
-						<lefttexture />
-						<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="2">osd/midtexture.png</midtexture>
-						<righttexture />
-						<overlaytexture />
+						<height>45</height>
+						<texturebg>colors/blank.png</texturebg>
+						<midtexture colordiffuse="$VAR[ThemeOSDProgressColor]">colors/grey.png</midtexture>
 						<info>Player.Progress</info>
 						<visible>!Pvr.IsPlayingTv</visible>
 					</control>
 					<control type="progress">
 						<width>100%</width>
-						<height>37</height>
-						<texturebg border="2">osd/texturebg_cache.png</texturebg>
-						<lefttexture />
-						<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="2">osd/midtexture.png</midtexture>
-						<righttexture />
-						<overlaytexture />
+						<height>41</height>
+						<texturebg>osd/texturebg_cache.png</texturebg>
+						<midtexture colordiffuse="$VAR[ThemeOSDProgressColor]">colors/grey.png</midtexture>
 						<info>PVR.EpgEventProgress</info>
 						<visible>Pvr.IsPlayingTv</visible>
 					</control>
 					<control type="label">
 						<left>5</left>
-						<top>6</top>
-						<width>165</width>
-						<height>90</height>
-						<font>IconTiny</font>
+						<width>110</width>
+						<height>42</height>
+						<font>IconMediaMenuButtons</font>
 						<textcolor>white</textcolor>
 						<shadowcolor>shadow</shadowcolor>
-						<textoffsetx>10</textoffsetx>
-						<aligny>top</aligny>
 						<label>$VAR[PlayerProgressIconVar]</label>
 					</control>
 					<control type="fadelabel">
-						<left>80</left>
-						<width>690</width>
+						<left>100</left>
+						<width>750</width>
 						<height>90</height>
-						<font>font13_title</font>
+						<font>font14_title</font>
 						<textcolor>grey</textcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<scroll>true</scroll>
@@ -663,66 +641,61 @@
 						<label>[COLOR white]$INFO[VideoPlayer.TVShowTitle,, - ]$INFO[MusicPlayer.Artist,, - ]$INFO[Player.Title][/COLOR]</label>
 						<label>$VAR[BreadcrumbsVar]</label>
 					</control>
-				</control>
-				<control type="grouplist">
-					<width>100%</width>
-					<height>90</height>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<itemgap>5</itemgap>
-					<visible>![String.IsEqual(Container.NumItems,0) | String.IsEmpty(Container.NumItems)]</visible>
-					<include>VisibleFadeAnimation</include>
-					<control type="label">
-						<width>auto</width>
-						<height>90</height>
-						<font>font13_title</font>
-						<textcolor>grey</textcolor>
-						<shadowcolor>shadow</shadowcolor>
-						<aligny>top</aligny>
-						<label>$INFO[Container.NumItems]</label>
-					</control>
-					<control type="label">
-						<width>30</width>
-						<height>42</height>
-						<font>IconTinyMD</font>
-						<textcolor>grey</textcolor>
-						<shadowcolor>shadow</shadowcolor>
-						<label></label>
-					</control>
-					<control type="label">
-						<width>auto</width>
-						<height>90</height>
-						<font>font13_title</font>
-						<textcolor>grey</textcolor>
-						<shadowcolor>shadow</shadowcolor>
-						<aligny>top</aligny>
-						<label>$INFO[Container.CurrentPage,[COLOR grey2] • ]$INFO[Container.NumPages,/,[/COLOR]]</label>
-					</control>
-					<control type="label">
-						<width>30</width>
-						<height>42</height>
-						<font>IconTinyMD</font>
-						<textcolor>grey2</textcolor>
-						<shadowcolor>shadow</shadowcolor>
-						<label></label>
+					<control type="grouplist">
+						<width>100%</width>
+						<orientation>horizontal</orientation>
+						<align>center</align>
+						<itemgap>5</itemgap>
+						<visible>![String.IsEqual(Container.NumItems,0) | String.IsEmpty(Container.NumItems)]</visible>
+						<include>VisibleFadeAnimation</include>
+						<control type="label">
+							<width>auto</width>
+							<height>42</height>
+							<font>font14_title</font>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label>$INFO[Container.NumItems]</label>
+						</control>
+						<control type="label">
+							<width>45</width>
+							<height>46</height>
+							<font>IconSmallMD</font>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label></label>
+						</control>
+						<control type="label">
+							<width>auto</width>
+							<height>42</height>
+							<font>font14_title</font>
+							<textcolor>grey</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label>$INFO[Container.CurrentPage,[COLOR grey2]• ]$INFO[Container.NumPages,/,[/COLOR]]</label>
+						</control>
+						<control type="label">
+							<width>45</width>
+							<height>46</height>
+							<font>IconSmallMD</font>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label></label>
+						</control>
 					</control>
 				</control>
 				<control type="label">
-					<left>1160</left>
+					<right>10</right>
 					<width>760</width>
-					<height>90</height>
-					<font>font13_title</font>
-					<textoffsetx>10</textoffsetx>
+					<height>42</height>
+					<font>font14_title</font>
 					<textcolor>grey</textcolor>
 					<shadowcolor>shadow</shadowcolor>
 					<align>right</align>
-					<aligny>top</aligny>
 					<label>$VAR[TopBarRightLabelVar]</label>
 				</control>
 			</control>
 			<control type="button" id="90022">
 				<left>-27</left>
-				<top>3</top>
+				<top>5</top>
 				<label />
 				<texturenofocus colordiffuse="grey">mediamenu_indicator.png</texturenofocus>
 				<texturefocus colordiffuse="FFFFFFFF">mediamenu_indicator.png</texturefocus>
@@ -736,7 +709,6 @@
 			<onclick condition="String.IsEmpty(Window(Home).Property(MediaMenu))">SetProperty(MediaMenu,True,Home)</onclick>
 			<onclick condition="!String.IsEmpty(Window(Home).Property(MediaMenu))">ClearProperty(MediaMenu,Home)</onclick>
 			<onfocus condition="String.IsEmpty(Window(Home).Property(MediaMenu)) + Skin.HasSetting(Enable.AutoOpenMediaMenuOnMouseOver)">SetProperty(MediaMenu,True,Home)</onfocus>
-			<onfocus condition="!String.IsEmpty(Window(Home).Property(MediaMenu)) + Skin.HasSetting(Enable.AutoOpenMediaMenuOnMouseOver)">ClearProperty(MediaMenu,Home)</onfocus>
 			<texturenofocus />
 			<texturefocus />
 			<width>100</width>
@@ -759,10 +731,11 @@
 			<top>32</top>
 			<width>1</width>
 			<height>810</height>
-			<texture colordiffuse="grey4">separator_vertical.png</texture>
+			<texture colordiffuse="grey4">colors/white.png</texture>
 			<animation effect="slide" end="91" condition="Window.IsActive(profiles)">Conditional</animation>
 			<animation effect="slide" end="275" condition="Window.IsActive(script-skinshortcuts.xml) + String.IsEmpty(Window(Home).Property(skinshortcuts-management-widget))">Conditional</animation>
 			<animation effect="slide" end="120" condition="Window.IsVisible(1115)">Conditional</animation>
+			<visible>!Window.IsVisible(1117)</visible>
 		</control>
 	</include>
 	<include name="SystemLeftPanel">
@@ -786,23 +759,15 @@
 		<control type="group">
 			<animation effect="fade" start="100" end="0" time="300" condition="String.IsEmpty(Container(5000).ListItem.Label)">Conditional</animation>
 			<visible>!System.HasHiddenInput</visible>
-			<control type="image">
-				<top>540</top>
-				<width>1340</width>
-				<height>220</height>
-				<texture border="40">dialogs/default/bg.png</texture>
-			</control>
-			<control type="image">
-				<left>30</left>
-				<top>572</top>
-				<width>1280</width>
-				<height>161</height>
-				<texture border="5">dialogs/default/inner.png</texture>
-			</control>
+			<include content="BackPanel">
+				<param name="left">-4</param>
+				<param name="top">520</param>
+				<param name="width">1368</param>
+				<param name="height">168</param>
+			</include>
 			<control type="panel" id="5000">
-				<left>30</left>
-				<top>572</top>
-				<width>1280</width>
+				<top>524</top>
+				<width>1368</width>
 				<height>160</height>
 				<onleft>5000</onleft>
 				<onright>5000</onright>
@@ -810,14 +775,9 @@
 				<ondown>4000</ondown>
 				<onback>noop</onback>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
-				<itemlayout height="80" width="320">
-					<control type="image">
-						<width>320</width>
-						<height>80</height>
-						<texture border="4">thumbs/panel_border.png</texture>
-					</control>
+				<itemlayout height="80" width="340">
 					<control type="label">
-						<width>320</width>
+						<width>340.5</width>
 						<height>80</height>
 						<align>center</align>
 						<textcolor>grey2</textcolor>
@@ -825,21 +785,15 @@
 						<label>$INFO[ListItem.Label]</label>
 					</control>
 				</itemlayout>
-				<focusedlayout height="80" width="320">
+				<focusedlayout height="80" width="340">
 					<control type="image">
-						<width>320</width>
+						<width>340</width>
 						<height>80</height>
-						<texture border="4">thumbs/panel_border.png</texture>
-						<visible>!Control.HasFocus(5000)</visible>
-					</control>
-					<control type="image">
-						<width>320</width>
-						<height>80</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texture>
 						<visible>Control.HasFocus(5000)</visible>
 					</control>
 					<control type="label">
-						<width>320</width>
+						<width>340</width>
 						<height>80</height>
 						<align>center</align>
 						<font>font15</font>
@@ -1338,20 +1292,17 @@
 					</control>
 				</control>
 				<control type="group">
-					<top>18</top>
+					<top>20</top>
 					<control type="progress">
-						<top>2</top>
 						<width>100%</width>
 						<height>46</height>
-						<texturebg>osd/texturebg.png</texturebg>
-						<midtexture border="2">osd/midtexture_cache.png</midtexture>
 						<info>Player.ProgressCache</info>
 					</control>
 					<control type="progress">
 						<width>100%</width>
-						<height>44</height>
-						<texturebg border="1">osd/texturebg_cache.png</texturebg>
-						<midtexture colordiffuse="$VAR[ThemeOSDProgressColor]" border="2">osd/midtexture.png</midtexture>
+						<height>46</height>
+						<texturebg>colors/blank.png</texturebg>
+						<midtexture colordiffuse="$VAR[ThemeOSDProgressColor]">colors/grey.png</midtexture>
 						<info>Player.Progress</info>
 					</control>
 				</control>
@@ -1359,7 +1310,7 @@
 					<top>20</top>
 					<width>100%</width>
 					<height>28</height>
-					<texturesliderbar>seekslider2.png</texturesliderbar>
+					<texturesliderbar>seekslider.png</texturesliderbar>
 					<textureslidernib colordiffuse="$VAR[ThemeOSDProgressColor]">slidernib_alt.png</textureslidernib>
 					<textureslidernibfocus colordiffuse="$VAR[ThemeOSDProgressColor]">slidernib_alt.png</textureslidernibfocus>
 					<visible>Player.Seeking</visible>
@@ -1375,7 +1326,6 @@
 						<textcolor>grey</textcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<aligny>top</aligny>
-						<textoffsety>-2</textoffsety>
 						<label>$VAR[PlayerTitleLabelVar]</label>
 						<scroll>true</scroll>
 					</control>
@@ -1389,7 +1339,6 @@
 						<shadowcolor>shadow</shadowcolor>
 						<align>right</align>
 						<aligny>top</aligny>
-						<textoffsety>-2</textoffsety>
 						<label>$VAR[OSDRightLabelVar]</label>
 					</control>
 				</control>
@@ -1403,7 +1352,6 @@
 					<shadowcolor>shadow</shadowcolor>
 					<align>center</align>
 					<aligny>top</aligny>
-					<textoffsety>-2</textoffsety>
 					<label>$VAR[SeekLabelVar]</label>
 				</control>
 				<control type="ranges">
@@ -1591,9 +1539,9 @@
 						<width>673</width>
 						<height>360</height>
 						<fadetime>200</fadetime>
-						<texture background="true">$VAR[GlobalBackgroundVar]</texture>
-						<bordertexture border="1,1,2,1">thumbs/panel_border.png</bordertexture>
-						<bordersize>1,1,2,1</bordersize>
+						<texture border="2" background="true">$VAR[GlobalBackgroundVar]</texture>
+						<bordersize>2</bordersize>
+						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 					</control>
 				</control>
 				<control type="group">
@@ -1662,9 +1610,9 @@
 						<height>360</height>
 						<fadetime>200</fadetime>
 						<aspectratio align="right">keep</aspectratio>
-						<texture background="true">$VAR[PosterThumbVar]</texture>
-						<bordertexture border="1,1,2,1">thumbs/panel_border.png</bordertexture>
-						<bordersize>1,1,2,1</bordersize>
+						<texture border="2" background="true">$VAR[PosterThumbVar]</texture>
+						<bordersize>2</bordersize>
+						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 					</control>
 				</control>
 				<control type="group">
@@ -1748,9 +1696,9 @@
 						<width>540</width>
 						<height>330</height>
 						<fadetime>200</fadetime>
-						<texture background="true">$VAR[GlobalBackgroundVar]</texture>
-						<bordertexture border="1,1,2,1">thumbs/panel_border.png</bordertexture>
-						<bordersize>1,1,2,1</bordersize>
+						<texture border="2" background="true">$VAR[GlobalBackgroundVar]</texture>
+						<bordersize>2</bordersize>
+						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 					</control>
 				</control>
 				<control type="group">
@@ -1840,9 +1788,9 @@
 						<width>240</width>
 						<height>340</height>
 						<fadetime>200</fadetime>
-						<texture background="true">$VAR[PosterThumbVar]</texture>
-						<bordertexture border="1,1,2,1">thumbs/panel_border.png</bordertexture>
-						<bordersize>1,1,2,1</bordersize>
+						<texture border="2" background="true">$VAR[PosterThumbVar]</texture>
+						<bordersize>2</bordersize>
+						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 						<animation effect="slide" end="74" condition="Control.IsVisible(57)">Conditional</animation>
 					</control>
 				</control>
@@ -1986,7 +1934,7 @@
 	<include name="InfoPopup">
 		<control type="group">
 			<visible>!ListItem.IsParentFolder</visible>
-			<visible>[Control.IsVisible(58) + Control.HasFocus(58) + Skin.HasSetting(Enable.BannerWallInfoPopup)] | [Control.IsVisible(500) + Control.HasFocus(500) + Skin.HasSetting(Enable.IconsInfoPopup)] | [Control.IsVisible(506) + Control.HasFocus(506) + Skin.HasSetting(inforightlist) + Skin.HasSetting(Enable.RightListInfoPopup)] | [Control.IsVisible(609) + Control.HasFocus(609) + Skin.HasSetting(Enable.FullscreenWallInfoPopup)]</visible>
+			<visible>[Control.IsVisible(58) + Control.HasFocus(58) + Skin.HasSetting(Enable.BannerWallInfoPopup)] | [Control.IsVisible(500) + Control.HasFocus(500) + Skin.HasSetting(Enable.IconsInfoPopup)] | [Control.IsVisible(506) + Control.HasFocus(506) + Skin.HasSetting(inforightlist) + Skin.HasSetting(Enable.RightListInfoPopup)] | [Control.IsVisible(511) + Control.HasFocus(511) + Skin.HasSetting(Enable.FullscreenWallInfoPopup)]</visible>
 			<control type="image">
 				<include>FullscreenDimensions</include>
 				<texture>colors/black50.png</texture>
@@ -2786,18 +2734,8 @@
 	</include>
 	<include name="CommonIconFonts">
 		<font>
-			<name>IconTiny</name>
-			<filename>icons/webhostinghub-glyphs.ttf</filename>
-			<size>26</size>
-		</font>
-		<font>
 			<name>IconTinyMD</name>
 			<filename>icons/MaterialSymbolsOutlined_Filled-Regular.ttf</filename>
-			<size>30</size>
-		</font>
-		<font>
-			<name>IconSmall</name>
-			<filename>icons/webhostinghub-glyphs.ttf</filename>
 			<size>30</size>
 		</font>
 		<font>
@@ -2806,19 +2744,9 @@
 			<size>35</size>
 		</font>
 		<font>
-			<name>IconMedium</name>
-			<filename>icons/webhostinghub-glyphs.ttf</filename>
-			<size>38</size>
-		</font>
-		<font>
 			<name>IconMediumMD</name>
 			<filename>icons/MaterialSymbolsOutlined_Filled-Regular.ttf</filename>
 			<size>50</size>
-		</font>
-		<font>
-			<name>CloseButton</name>
-			<filename>icons/webhostinghub-glyphs.ttf</filename>
-			<size>20</size>
 		</font>
 		<font>
 			<name>IconOSDButtons</name>
@@ -3586,7 +3514,7 @@
 				<control type="image">
 					<width>1809</width>
 					<height>2</height>
-					<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+					<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
 				</control>
 				<control type="label">
 					<width>1000</width>
@@ -3657,7 +3585,7 @@
 	<include name="SkinVariablesContentList">
 		<control type="list" id="4501">
 			<include>HiddenList</include>
-			<content>$VAR[SkinVariableDBContainerPluginPath]</content>
+			<content>$VAR[SkinVariableDBContainerPluginPathVar]</content>
 		</control>
 	</include>
 	<include name="TMDbHelperContentList">
@@ -3711,8 +3639,8 @@
 			<description>Go to Letter</description>
 			<include>HiddenObject</include>
 			<onleft>SetFocus(50)</onleft>
-			<onright condition="!Control.IsVisible(51) + !Control.IsVisible(500) + !Control.IsVisible(609)">4400</onright>
-			<onright condition="Control.IsVisible(51) | Control.IsVisible(500) | Control.IsVisible(609)">SetFocus(50)</onright>
+			<onright condition="!Control.IsVisible(51) + !Control.IsVisible(500) + !Control.IsVisible(511)">4400</onright>
+			<onright condition="Control.IsVisible(51) | Control.IsVisible(500) | Control.IsVisible(511)">SetFocus(50)</onright>
 			<onup>SetFocus(50)</onup>
 			<onup>Action(prevletter)</onup>
 			<onup>SetFocus(615)</onup>
@@ -3967,6 +3895,39 @@
 						<visible>!Integer.IsEqual(Control.GetLabel(10), 0) + Window.IsVisible(busydialog)</visible>
 					</control> -->
 				</control>
+			</control>
+		</definition>
+	</include>
+	<include name="Pointer">
+		<param name="size" default="50" />
+		<definition>
+			<control type="image" id="1">
+				<description>Pointer</description>
+				<width>$PARAM[size]</width>
+				<height>$PARAM[size]</height>
+				<texture>pointer_arrow.png</texture>
+				<visible>String.IsEmpty(Window(Home).Property(Enable.ScreenshotMode))</visible>
+			</control>
+			<control type="image" id="2">
+				<description>Pointer Focus</description>
+				<width>$PARAM[size]</width>
+				<height>$PARAM[size]</height>
+				<texture>pointer_arrow.png</texture>
+				<visible>String.IsEmpty(Window(Home).Property(Enable.ScreenshotMode))</visible>
+			</control>
+			<control type="image" id="3">
+				<description>Pointer Drag</description>
+				<width>$PARAM[size]</width>
+				<height>$PARAM[size]</height>
+				<texture>pointer_arrow.png</texture>
+				<visible>String.IsEmpty(Window(Home).Property(Enable.ScreenshotMode))</visible>
+			</control>
+			<control type="image" id="4">
+				<description>Pointer Click</description>
+				<width>$PARAM[size]</width>
+				<height>$PARAM[size]</height>
+				<texture>pointer_click.png</texture>
+				<visible>String.IsEmpty(Window(Home).Property(Enable.ScreenshotMode))</visible>
 			</control>
 		</definition>
 	</include>

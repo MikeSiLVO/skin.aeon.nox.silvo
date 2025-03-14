@@ -41,7 +41,7 @@
 		<align>center</align>
 		<aligny>top</aligny>
 		<textoffsety>3</textoffsety>
-		<font>IconSmall</font>
+		<font>IconSmallMD</font>
 		<textcolor>grey</textcolor>
 		<focusedcolor>white</focusedcolor>
 		<shadowcolor>ff000000</shadowcolor>
@@ -61,7 +61,6 @@
 		<param name="is_addon_status" default="false" />
 		<param name="addon">$PARAM[addon]</param>
 		<definition>
-			<width>1401</width>
 			<font>font15</font>
 			<textoffsetx>30</textoffsetx>
 			<include condition="!$PARAM[is_addon_status]">SettingsButtonDefaults</include>
@@ -71,18 +70,17 @@
 		</definition>
 	</include>
 	<include name="SettingsButtonDefaults">
+		<width>1401</width>
 		<height>81</height>
 		<radioposx>1281</radioposx>
 	</include>
 	<include name="AddonStatusButtonCommonValuesValues">
-		<onback>Control.SetHidden(7999)</onback>
-		<onback>Control.SetVisible(9900)</onback>
-		<onback>90000</onback>
+		<width>1757</width>
 		<height>54</height>
 		<label>$PARAM[addon]</label>
 		<radiowidth>100</radiowidth>
 		<radioheight>48</radioheight>
-		<radioposx>1301</radioposx>
+		<radioposx>1657</radioposx>
 		<textureradioonfocus colordiffuse="darkgreen">buttons/check_box_enabled.png</textureradioonfocus>
 		<textureradioonnofocus colordiffuse="darkgreen">buttons/check_box_enabled.png</textureradioonnofocus>
 		<textureradioofffocus colordiffuse="darkorange">buttons/download.png</textureradioofffocus>
@@ -125,13 +123,13 @@
 		<left>-123</left>
 		<width>320</width>
 		<height>80</height>
-		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texturefocus>
 		<include>Objects_KeyOff</include>
 	</include>
 	<include name="Objects_SingleKeyOff">
 		<width>80</width>
 		<height>80</height>
-		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texturefocus>
 		<include>Objects_KeyOff</include>
 	</include>
 	<include name="ShowCaseInfoPanelButtonsValues">
@@ -184,7 +182,7 @@
 			<textureradioonnofocus colordiffuse="$PARAM[ColorStringVar]">colors/grey.png</textureradioonnofocus>
 			<textureradioofffocus colordiffuse="$PARAM[ColorStringVar]">colors/grey.png</textureradioofffocus>
 			<textureradiooffnofocus colordiffuse="$PARAM[ColorStringVar]">colors/grey.png</textureradiooffnofocus>
-			<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">listselect_fo.png</texturefocus>
+			<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">colors/white50.png</texturefocus>
 		</definition>
 	</include>
 	<!-- EXP -->

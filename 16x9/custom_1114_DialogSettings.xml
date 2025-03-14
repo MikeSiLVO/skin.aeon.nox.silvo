@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1114" type="dialog">
 	<onload>SetFocus(90201)</onload>
-	<onunload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) | !Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(TMDbHelper.EnableBlur)</onunload>
-	<onunload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.SetBool(TMDbHelper.EnableBlur)</onunload>
+	<onunload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + [Skin.HasSetting(Enable.BlurredVideoInfo) | Window.IsVisible(visualisation) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd) + String.IsEqual(Skin.String(Viz.Background),4)]">Skin.SetBool(TMDbHelper.EnableBlur)</onunload>
+	<onunload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo) + String.IsEmpty(Window(Home).Property(TMDbHelper.Blur.SourceImage))">SetProperty(TMDbHelper.Blur.SourceImage,Art(poster)|Art(season.poster)|Art(tvshow.poster)|Art(thumb)|Icon,Home)</onunload>
+	<onunload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) | !Skin.HasSetting(Enable.BlurredVideoInfo) + !String.IsEqual(Skin.String(Viz.Background),4)">Skin.Reset(TMDbHelper.EnableBlur)</onunload>
 	<onunload condition="String.IsEqual(Window(Home).Property(DialogSettings),livetv) + !Window.IsActive(skinsettings)">SetFocus(50)</onunload>
 	<onunload>ClearProperty(DialogSettings,Home)</onunload>
 	<controls>
@@ -43,8 +44,8 @@
 				<onleft>90200</onleft>
 				<onright>97</onright>
 				<texturesliderbackground>colors/black.png</texturesliderbackground>
-				<texturesliderbar>colors/white25.png</texturesliderbar>
-				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+				<texturesliderbar colordiffuse="$VAR[HighlightBarColor]">colors/darkgrey.png</texturesliderbar>
+				<texturesliderbarfocus colordiffuse="$VAR[HighlightBarColor]">colors/white.png</texturesliderbarfocus>
 				<showonepage>false</showonepage>
 			</control>
 		</control>

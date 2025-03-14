@@ -13,7 +13,7 @@
 			<include content="DialogPanel">
 				<param name="icon_visible">true</param>
 				<param name="has_inner">true</param>
-				<param name="height">620</param>
+				<param name="height">616</param>
 				<param name="header_label">$VAR[DialogSettingsHeaderVar]</param>
 				<param name="buttons_ondown">450</param>
 				<param name="buttons_ondown2">451</param>
@@ -26,12 +26,9 @@
 				<param name="more_visible">Control.IsEnabled(415)</param>
 			</include>
 			<control type="group">
-				<left>1</left>
 				<top>68</top>
 				<control type="list" id="450">
-					<left>1</left>
-					<top>1</top>
-					<width>960</width>
+					<width>968</width>
 					<height>540</height>
 					<onleft>90000</onleft>
 					<onright condition="Control.IsVisible(60)">60</onright>
@@ -42,9 +39,9 @@
 					<pagecontrol>60</pagecontrol>
 					<viewtype>list</viewtype>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
-					<itemlayout height="60" width="960">
+					<itemlayout height="60" width="968">
 						<control type="label">
-							<width>960</width>
+							<width>968</width>
 							<height>60</height>
 							<font>font14</font>
 							<textoffsetx>15</textoffsetx>
@@ -53,16 +50,16 @@
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout height="60" width="960">
+					<focusedlayout height="60" width="968">
 						<control type="image">
-							<width>960</width>
+							<width>968</width>
 							<height>62</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texture>
 							<visible>Control.HasFocus(450)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
 						<control type="label">
-							<width>960</width>
+							<width>968</width>
 							<height>60</height>
 							<font>font14</font>
 							<textoffsetx>15</textoffsetx>
@@ -72,8 +69,6 @@
 					</focusedlayout>
 				</control>
 				<control type="panel" id="451">
-					<left>1</left>
-					<top>1</top>
 					<width>960</width>
 					<height>540</height>
 					<onleft>90000</onleft>
@@ -120,14 +115,14 @@
 							<control type="image">
 								<width>320</width>
 								<height>180</height>
-								<texture border="8" colordiffuse="$VAR[HighlightBarColor]">thumbs/thumbnail_focused.png</texture>
+								<texture border="6" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</texture>
 							</control>
 							<control type="image">
 								<width>320</width>
 								<height>180</height>
 								<aspectratio>keep</aspectratio>
 								<texture background="true">$INFO[ListItem.Icon]</texture>
-								<bordersize>8</bordersize>
+								<bordersize>6</bordersize>
 							</control>
 							<control type="image">
 								<top>120</top>
@@ -149,10 +144,9 @@
 					</focusedlayout>
 				</control>
 				<control type="scrollbar" id="60">
-					<left>961</left>
-					<top>1</top>
+					<left>960</left>
 					<width>8</width>
-					<height>538</height>
+					<height>540</height>
 					<onleft>450</onleft>
 					<onright condition="Control.IsEnabled(416)">9000</onright>
 					<onright condition="!Control.IsEnabled(416)">90000</onright>
@@ -164,13 +158,15 @@
 			</control>
 			<control type="group">
 				<left>972</left>
-				<top>69</top>
+				<top>67</top>
 				<control type="image">
 					<width>526</width>
 					<height>480</height>
 					<fadetime>300</fadetime>
 					<aspectratio>keep</aspectratio>
-					<texture background="true">$INFO[ListItem.Icon]</texture>
+					<texture border="1" background="true">$INFO[ListItem.Icon]</texture>
+					<bordersize>1</bordersize>
+					<bordertexture border="1" infill="false" colordiffuse="grey4">colors/white.png</bordertexture>
 					<visible>!String.Contains(Control.GetLabel(416),*)</visible>
 				</control>
 				<control type="image">
@@ -178,7 +174,9 @@
 					<height>480</height>
 					<fadetime>300</fadetime>
 					<aspectratio>keep</aspectratio>
-					<texture background="true" flipx="true">$INFO[ListItem.Icon]</texture>
+					<texture border="1" background="true" flipx="true">$INFO[ListItem.Icon]</texture>
+					<bordersize>1</bordersize>
+					<bordertexture border="1" infill="false" colordiffuse="grey4">colors/white.png</bordertexture>
 					<visible>String.Contains(Control.GetLabel(416),*)</visible>
 				</control>
 				<control type="grouplist" id="9000">
@@ -192,7 +190,7 @@
 					<ondown>9000</ondown>
 					<control type="radiobutton" id="416">
 						<description>Flip image button</description>
-						<texturenofocus colordiffuse="grey3" border="1">listselect_fo.png</texturenofocus>
+						<texturenofocus colordiffuse="grey3" border="1">colors/white50.png</texturenofocus>
 						<width>527</width>
 						<radioposx>430</radioposx>
 						<label>$LOCALIZE[749]</label>
@@ -200,7 +198,7 @@
 					</control>
 					<control type="button" id="4016">
 						<description>Empty button</description>
-						<texturenofocus colordiffuse="grey3" border="1">listselect_fo.png</texturenofocus>
+						<texturenofocus colordiffuse="grey3" border="1">colors/white50.png</texturenofocus>
 						<width>527</width>
 						<visible>!Control.IsEnabled(416)</visible>
 					</control>

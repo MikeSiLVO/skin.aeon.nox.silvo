@@ -10,10 +10,11 @@
 				<left>280</left>
 				<top>280</top>
 				<include>DialogOpenCloseAnimation</include>
+				<animation effect="slide" end="0,-84" condition="System.AddonIsEnabled(plugin.program.autocompletion) + Skin.HasSetting(Enable.Autocomplete)">Conditional</animation>
 				<include content="BackPanel">
 					<param name="left">-4</param>
 					<param name="top">-4</param>
-					<param name="width">1370</param>
+					<param name="width">1368</param>
 					<param name="height">528</param>
 				</include>
 				<control type="label" id="311">
@@ -475,7 +476,7 @@
 							<left>126</left>
 							<width>480</width>
 							<height>80</height>
-							<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texturefocus>
+							<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texturefocus>
 							<label>$LOCALIZE[20182]</label>
 							<onup>164</onup>
 							<ondown condition="!Control.IsVisible(5000)">104</ondown>
@@ -497,7 +498,7 @@
 							<left>567</left>
 							<width>320</width>
 							<height>80</height>
-							<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texturefocus>
+							<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texturefocus>
 							<label>20181</label>
 							<onup condition="!Control.IsVisible(310)">169</onup>
 							<onup condition="Control.IsVisible(310)">3100</onup>

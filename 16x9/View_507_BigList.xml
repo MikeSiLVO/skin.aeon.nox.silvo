@@ -8,7 +8,7 @@
 				<param name="left">54</param>
 				<param name="top">90</param>
 				<param name="width">1824</param>
-				<param name="height">948</param>
+				<param name="height">960</param>
 				<param name="texture">colors/black75.png</param>
 				<param name="visible">!Skin.HasSetting(alternatebiglistlayout)</param>
 			</include>
@@ -28,300 +28,94 @@
 				<pagecontrol>50760</pagecontrol>
 				<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes)] | Window.IsActive(music) + [Container.Content(artists) | Container.Content(albums)] | !Window.IsActive(music) + Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_507]</visible>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
-				<itemlayout width="1808" height="238">
-					<include>view_BigList-LandscapeCommons</include>
+				<itemlayout width="1808" height="238" condition="Container.Content(movies)">
+					<include>view_507_BigListLandscape</include>
+					<include>view_507_BigListLayout</include>
+				</itemlayout>
+				<focusedlayout width="1808" height="238" condition="Container.Content(movies)">
+					<include>view_507_BigListFocus</include>
+					<include>view_507_BigListLandscape</include>
+					<include content="view_507_BigListLayout">
+						<param name="autoscroll">Skin.HasSetting(Enable.AutoScroll)</param>
+					</include>
+				</focusedlayout>
+				<itemlayout width="1808" height="238" condition="Container.Content(tvshows)">
 					<control type="group">
-						<left>382</left>
-						<top>6</top>
-						<animation effect="fade" start="100" end="75" condition="true">Conditional</animation>
-						<control type="label">
-							<width>1310</width>
-							<label>$INFO[ListItem.Label]</label>
-							<font>font16_title_bold</font>
-							<shadowcolor>shadow</shadowcolor>
-							<aligny>top</aligny>
-							<visible>!ListItem.IsCollection</visible>
-						</control>
-						<control type="label">
-							<top>55</top>
-							<width>1310</width>
-							<label>$INFO[ListItem.Label]</label>
-							<shadowcolor>shadow</shadowcolor>
-							<font>font45caps_title</font>
-							<aligny>top</aligny>
-							<visible>ListItem.IsCollection</visible>
-						</control>
-						<control type="label">
-							<top>42</top>
-							<width>1310</width>
-							<label>$VAR[FloorSubLabelVar]</label>
-							<shadowcolor>shadow</shadowcolor>
-							<aligny>top</aligny>
-							<font>font15</font>
-							<visible>Container.Content(movies) + !ListItem.IsParentFolder</visible>
-							<visible>!ListItem.IsCollection</visible>
-						</control>
-						<control type="label">
-							<top>42</top>
-							<width>1310</width>
-							<label>$INFO[ListItem.Duration(mins)]</label>
-							<shadowcolor>shadow</shadowcolor>
-							<aligny>top</aligny>
-							<font>font15</font>
-							<visible>Container.Content(songs)</visible>
-						</control>
-						<control type="label">
-							<top>42</top>
-							<width>1310</width>
-							<label>$LOCALIZE[20360]: [COLOR white]$INFO[ListItem.Property(TotalEpisodes)] $INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)] • $INFO[ListItem.RatingAndVotes][/COLOR]</label>
-							<aligny>top</aligny>
-							<font>font15</font>
-							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<visible>Container.Content(tvshows) + !ListItem.IsParentFolder</visible>
-						</control>
-						<control type="label">
-							<top>42</top>
-							<width>1310</width>
-							<label>$INFO[ListItem.Premiered,(,)]$INFO[ListItem.RatingAndVotes, • , • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</label>
-							<shadowcolor>shadow</shadowcolor>
-							<aligny>top</aligny>
-							<font>font15</font>
-							<visible>Container.Content(episodes) + !ListItem.IsParentFolder</visible>
-						</control>
-						<control type="label">
-							<top>42</top>
-							<width>1310</width>
-							<label>$INFO[ListItem.Property(Artist_Genre)]</label>
-							<shadowcolor>shadow</shadowcolor>
-							<aligny>top</aligny>
-							<font>font15</font>
-							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<visible>Container.Content(artists) | Container.Content(albums)</visible>
-						</control>
-						<control type="label">
-							<top>42</top>
-							<width>1310</width>
-							<label>$INFO[ListItem.Artist]</label>
-							<aligny>top</aligny>
-							<font>font15</font>
-							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<visible>Container.Content(albums)</visible>
-						</control>
-						<control type="textbox">
-							<top>90</top>
-							<width>1310</width>
-							<height>106</height>
-							<label>$INFO[ListItem.Tagline,, - ]$VAR[VideoPlotVar,[COLOR white],[/COLOR]]</label>
-							<autoscroll>false</autoscroll>
-							<font>font14_textbox</font>
-							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<visible>!Container.Content(artists)</visible>
-							<visible>!ListItem.IsCollection</visible>
-						</control>
-						<control type="textbox">
-							<top>90</top>
-							<width>1310</width>
-							<height>106</height>
-							<label>$VAR[MusicPlotVar]</label>
-							<shadowcolor>shadow</shadowcolor>
-							<autoscroll>false</autoscroll>
-							<font>font14_textbox</font>
-							<visible>[Container.Content(artists) | Container.Content(albums)]</visible>
-						</control>
-						<control type="image">
-							<left>1200</left>
-							<top>16</top>
-							<width>192</width>
-							<height>33</height>
-							<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
-							<aspectratio>keep</aspectratio>
-							<texture fallback="flags/rating/empty.png">$INFO[ListItem.UserRating,flags/rating/,.png]</texture>
-							<visible>Container.Content(albums) | Container.Content(songs)</visible>
-						</control>
-						<control type="group">
-							<left>1356</left>
-							<control type="label">
-								<left>7</left>
-								<width>64</width>
-								<height>64</height>
-								<textcolor>white3</textcolor>
-								<font>IconMediumMD</font>
-								<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-							</control>
-							<control type="label">
-								<width>64</width>
-								<height>64</height>
-								<font>font12_title</font>
-								<align>center</align>
-								<label>$VAR[ListItemOverlayShowsVar]</label>
-							</control>
-						</control>
-						<control type="image">
-							<left>1320</left>
-							<top>9</top>
-							<width>68</width>
-							<height>30</height>
-							<colordiffuse>grey</colordiffuse>
-							<aspectratio>keep</aspectratio>
-							<texture>$VAR[UnFocusHDIndicator]</texture>
-							<visible>!String.IsEmpty(ListItem.VideoResolution) + Skin.HasSetting(noindicatorbiglist)</visible>
-						</control>
+						<animation effect="fade" start="100" end="80" condition="true">Conditional</animation>
+						<include>view_507_BigListLandscape</include>
+						<include content="view_507_BigListLayout">
+							<param name="sublabel">[LIGHT]$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)] $INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)] • $INFO[ListItem.RatingAndVotes][/LIGHT]</param>
+							<param name="textbox">[COLOR white][B]$INFO[ListItem.Plot][/B][/COLOR]</param>
+						</include>
 					</control>
 				</itemlayout>
-				<focusedlayout width="1808" height="238">
-					<control type="image">
-						<top>-8</top>
-						<width>1803</width>
-						<height>231</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]">listselect_fo.png</texture>
-						<visible>Control.HasFocus(507)</visible>
-						<include>VisibleFadeAnimation</include>
-					</control>
-					<include>view_BigList-LandscapeCommons</include>
+				<focusedlayout width="1808" height="238" condition="Container.Content(tvshows)">
+					<include>view_507_BigListFocus</include>
+					<include>view_507_BigListLandscape</include>
+					<include content="view_507_BigListLayout">
+						<param name="sublabel">[LIGHT]$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)] $INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)] • $INFO[ListItem.RatingAndVotes][/LIGHT]</param>
+						<param name="textbox">[COLOR white][B]$INFO[ListItem.Plot][/B][/COLOR]</param>
+						<param name="autoscroll">Skin.HasSetting(Enable.AutoScroll)</param>
+					</include>
+				</focusedlayout>
+				<itemlayout width="1808" height="238" condition="Container.Content(episodes)">
 					<control type="group">
-						<left>382</left>
-						<top>6</top>
-						<control type="group">
-							<control type="label">
-								<width>1310</width>
-								<label>$INFO[ListItem.Label]</label>
-								<shadowcolor>shadow</shadowcolor>
-								<font>font16_title_bold</font>
-								<aligny>top</aligny>
-								<visible>!ListItem.IsCollection</visible>
-							</control>
-							<control type="label">
-								<top>55</top>
-								<width>1310</width>
-								<label>$INFO[ListItem.Label]</label>
-								<shadowcolor>shadow</shadowcolor>
-								<font>font45caps_title</font>
-								<aligny>top</aligny>
-								<visible>ListItem.IsCollection</visible>
-							</control>
-							<control type="label">
-								<top>42</top>
-								<width>1310</width>
-								<label>$VAR[FloorSubLabelVar]</label>
-								<shadowcolor>shadow</shadowcolor>
-								<aligny>top</aligny>
-								<font>font15</font>
-								<visible>Container.Content(movies) + !ListItem.IsParentFolder</visible>
-								<visible>!ListItem.IsCollection</visible>
-							</control>
-							<control type="label">
-								<top>42</top>
-								<width>1310</width>
-								<label>$INFO[ListItem.Duration(mins)]</label>
-								<shadowcolor>shadow</shadowcolor>
-								<aligny>top</aligny>
-								<font>font15</font>
-								<visible>Container.Content(songs)</visible>
-							</control>
-							<control type="label">
-								<top>42</top>
-								<width>1310</width>
-								<label>$LOCALIZE[20360]: [COLOR white]$INFO[ListItem.Property(TotalEpisodes)] $INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)]$INFO[ListItem.RatingAndVotes, • ][/COLOR]</label>
-								<aligny>top</aligny>
-								<font>font15</font>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<shadowcolor>shadow</shadowcolor>
-								<visible>Container.Content(tvshows) + !ListItem.IsParentFolder</visible>
-							</control>
-							<control type="label">
-								<top>42</top>
-								<width>1310</width>
-								<label>$INFO[ListItem.Premiered,(,)]$INFO[ListItem.RatingAndVotes, • , • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</label>
-								<shadowcolor>shadow</shadowcolor>
-								<aligny>top</aligny>
-								<font>font15</font>
-								<visible>Container.Content(episodes) + !ListItem.IsParentFolder</visible>
-								<visible>!ListItem.IsCollection</visible>
-							</control>
-							<control type="label">
-								<top>42</top>
-								<width>1310</width>
-								<label>$INFO[ListItem.Property(Artist_Genre)]</label>
-								<aligny>top</aligny>
-								<font>font15</font>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<shadowcolor>shadow</shadowcolor>
-								<visible>Container.Content(artists)</visible>
-							</control>
-							<control type="label">
-								<top>42</top>
-								<width>1310</width>
-								<label>$INFO[ListItem.Artist]</label>
-								<aligny>top</aligny>
-								<font>font15</font>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<shadowcolor>shadow</shadowcolor>
-								<visible>Container.Content(albums)</visible>
-							</control>
-							<control type="textbox">
-								<top>90</top>
-								<width>1310</width>
-								<height>106</height>
-								<label>$INFO[ListItem.Tagline,, - ]$VAR[VideoPlotVar,[COLOR white],[/COLOR]]</label>
-								<font>font14_textbox</font>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<shadowcolor>shadow</shadowcolor>
-								<autoscroll time="3500" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
-								<visible>!Container.Content(artists)</visible>
-								<visible>!ListItem.IsCollection</visible>
-							</control>
-							<control type="textbox">
-								<top>90</top>
-								<width>1310</width>
-								<height>106</height>
-								<label>$VAR[MusicPlotVar]</label>
-								<shadowcolor>shadow</shadowcolor>
-								<font>font14_textbox</font>
-								<autoscroll time="3500" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
-								<visible>[Container.Content(artists) | Container.Content(albums)]</visible>
-							</control>
-							<control type="image">
-								<left>1200</left>
-								<top>16</top>
-								<width>192</width>
-								<height>33</height>
-								<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
-								<aspectratio>keep</aspectratio>
-								<texture fallback="flags/rating/empty.png">$INFO[ListItem.UserRating,flags/rating/,.png]</texture>
-								<visible>Container.Content(albums) | Container.Content(songs)</visible>
-							</control>
-							<control type="group">
-								<left>1356</left>
-								<control type="label">
-									<left>7</left>
-									<width>64</width>
-									<height>64</height>
-									<textcolor>white3</textcolor>
-									<font>IconMediumMD</font>
-									<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-								</control>
-								<control type="label">
-									<width>64</width>
-									<height>64</height>
-									<font>font12_title</font>
-									<align>center</align>
-									<label>$VAR[ListItemOverlayShowsVar]</label>
-								</control>
-							</control>
-							<control type="image">
-								<left>1320</left>
-								<top>9</top>
-								<width>68</width>
-								<height>30</height>
-								<aspectratio>keep</aspectratio>
-								<texture>$VAR[UnFocusHDIndicator]</texture>
-								<visible>!String.IsEmpty(ListItem.VideoResolution) + Skin.HasSetting(noindicatorbiglist)</visible>
-							</control>
-						</control>
+						<animation effect="fade" start="100" end="80" condition="true">Conditional</animation>
+						<include content="view_507_BigListLandscape">
+							<param name="texture">$VAR[NoSpoilerIconVar]</param>
+						</include>
+						<include content="view_507_BigListLayout">
+							<param name="sublabel">[LIGHT]$INFO[ListItem.Premiered,(,)]$INFO[ListItem.RatingAndVotes, • , • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]][/LIGHT]</param>
+							<param name="textbox">[COLOR white][B]$INFO[ListItem.Plot][/B][/COLOR]</param>
+						</include>
 					</control>
+				</itemlayout>
+				<focusedlayout width="1808" height="238" condition="Container.Content(episodes)">
+					<include>view_507_BigListFocus</include>
+					<include content="view_507_BigListLandscape">
+						<param name="texture">$VAR[NoSpoilerIconVar]</param>
+					</include>
+					<include content="view_507_BigListLayout">
+						<param name="sublabel">[LIGHT]$INFO[ListItem.Premiered,(,)]$INFO[ListItem.RatingAndVotes, • , • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]][/LIGHT]</param>
+						<param name="textbox">[COLOR white][B]$INFO[ListItem.Plot][/B][/COLOR]</param>
+						<param name="autoscroll">Skin.HasSetting(Enable.AutoScroll)</param>
+					</include>
+				</focusedlayout>
+				<itemlayout width="1808" height="238" condition="Container.Content(artists)">
+					<control type="group">
+						<animation effect="fade" start="100" end="80" condition="true">Conditional</animation>
+						<include>view_507_BigListLandscape</include>
+						<include content="view_507_BigListLayout">
+							<param name="sublabel">[LIGHT]$INFO[ListItem.Property(Artist_Genre)][/LIGHT]</param>
+							<param name="textbox">[COLOR white][B]$VAR[MusicPlotVar][/B][/COLOR]</param>
+						</include>
+					</control>
+				</itemlayout>
+				<focusedlayout width="1808" height="238" condition="Container.Content(artists)">
+					<include>view_507_BigListFocus</include>
+						<include>view_507_BigListLandscape</include>
+						<include content="view_507_BigListLayout">
+							<param name="sublabel">[LIGHT]$INFO[ListItem.Property(Artist_Genre)][/LIGHT]</param>
+							<param name="textbox">[COLOR white][B]$VAR[MusicPlotVar][/B][/COLOR]</param>
+						</include>
+				</focusedlayout>
+				<itemlayout width="1808" height="238" condition="Container.Content(albums)">
+					<control type="group">
+						<animation effect="fade" start="100" end="80" condition="true">Conditional</animation>
+						<include>view_507_BigListIcon</include>
+						<include content="view_507_BigListLayout">
+							<param name="sublabel">[LIGHT]$INFO[ListItem.Artist][/LIGHT]</param>
+							<param name="textbox">[COLOR white][B]$VAR[MusicPlotVar][/B][/COLOR]</param>
+						</include>
+					</control>
+				</itemlayout>
+				<focusedlayout width="1808" height="238" condition="Container.Content(albums)">
+					<include>view_507_BigListFocus</include>
+						<include>view_507_BigListIcon</include>
+						<include content="view_507_BigListLayout">
+							<param name="sublabel">[LIGHT]$INFO[ListItem.Artist][/LIGHT]</param>
+							<param name="textbox">[COLOR white][B]$VAR[MusicPlotVar][/B][/COLOR]</param>
+						</include>
 				</focusedlayout>
 			</control>
 			<control type="scrollbar" id="50760">
@@ -339,10 +133,47 @@
 			</control>
 		</control>
 	</include>
-	<include name="view_BigList-LandscapeCommons">
+	<include name="view_507_BigListLandscape">
+		<param name="texture" default="$INFO[ListItem.Art(landscape)]" />
+		<definition>
+			<control type="group">
+				<left>18</left>
+				<top>19</top>
+				<control type="image">
+					<width>346</width>
+					<height>195</height>
+					<aspectratio>scale</aspectratio>
+					<texture background="true">$PARAM[texture]</texture>
+				</control>
+				<control type="group">
+					<visible>String.IsEmpty(ListItem.Art(landscape)) + !Container.Content(episodes)</visible>
+					<control type="image">
+						<width>346</width>
+						<height>195</height>
+						<aspectratio>scale</aspectratio>
+						<texture background="true" colordiffuse="CCFFFFFF">$INFO[ListItem.Art(fanart)]</texture>
+					</control>
+					<control type="image">
+						<top>90</top>
+						<width>346</width>
+						<height>98</height>
+						<aspectratio align="center" aligny="bottom">keep</aspectratio>
+						<texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
+					</control>
+				</control>
+				<include content="PosterStatusOverlay">
+					<param name="left">306</param>
+					<param name="size">40</param>
+					<param name="visible">[!String.IsEmpty(Skin.String(507.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(507.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(507.Episodes.DisableOverlay)) + Container.Content(episodes)]</param>
+				</include>
+				<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedEpisodeOverlay</include>
+			</control>
+		</definition>
+	</include>
+	<include name="view_507_BigListIcon">
 		<control type="group">
 			<left>18</left>
-			<top>10</top>
+			<top>19</top>
 			<control type="image">
 				<left>70</left>
 				<top>-2</top>
@@ -350,38 +181,89 @@
 				<height>200</height>
 				<aspectratio>scale</aspectratio>
 				<texture background="true">$INFO[ListItem.Icon]</texture>
-				<visible>Container.Content(albums) | Container.Content(songs)</visible>
 			</control>
-			<control type="image">
-				<width>346</width>
-				<height>195</height>
-				<texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-				<aspectratio>scale</aspectratio>
-				<visible>![Container.Content(episodes) | Container.Content(albums) | Container.Content(songs)]</visible>
+		</control>
+	</include>
+	<include name="view_507_BigListLayout">
+		<param name="sublabel" default="[LIGHT]$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ]$VAR[DurationVar, • ]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ][/LIGHT]" />
+		<param name="textbox" default="$INFO[ListItem.Tagline,, - ][COLOR white][B]$VAR[VideoPlotVar][/B][/COLOR]" />
+		<param name="autoscroll" default="false" />
+		<definition>
+			<control type="group">
+				<left>382</left>
+				<top>15</top>
+				<visible>!ListItem.IsParentFolder</visible>
+				<control type="label">
+					<width>1310</width>
+					<height>45</height>
+					<font>font16_title_bold</font>
+					<shadowcolor>shadow</shadowcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="group">
+					<visible>!ListItem.IsCollection</visible>
+					<top>45</top>
+					<control type="label">
+						<width>1310</width>
+						<height>45</height>
+						<font>font15</font>
+						<shadowcolor>shadow</shadowcolor>
+						<label>$PARAM[sublabel]</label>
+					</control>
+					<control type="textbox">
+						<top>48</top>
+						<width>1310</width>
+						<height>106</height>
+						<font>font14_textbox</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<label>$PARAM[textbox]</label>
+						<autoscroll time="3500" delay="4000" repeat="5000">$PARAM[autoscroll]</autoscroll>
+					</control>
+				</control>
+				<control type="group">
+					<visible>Container.Content(movies) + ListItem.IsCollection</visible>
+					<top>45</top>
+					<control type="label">
+						<width>1310</width>
+						<height>45</height>
+						<font>font15</font>
+						<shadowcolor>shadow</shadowcolor>
+						<label>$INFO[ListItem.Rating]</label>
+					</control>
+					<control type="textbox">
+						<top>48</top>
+						<width>1310</width>
+						<height>106</height>
+						<font>font14_textbox</font>
+						<shadowcolor>shadow</shadowcolor>
+						<label>[B]$INFO[ListItem.Plot][/B]</label>
+						<autoscroll time="3500" delay="4000" repeat="5000">$PARAM[autoscroll]</autoscroll>
+					</control>
+				</control>
+				<include content="ListStatusIndicators">
+					<param name="left">1356</param>
+				</include>
+				<control type="image">
+					<left>1352</left>
+					<top>54</top>
+					<width>70</width>
+					<height>30</height>
+					<colordiffuse>grey</colordiffuse>
+					<aspectratio>keep</aspectratio>
+					<texture>$VAR[UnFocusHDIndicator]</texture>
+					<visible>Skin.HasSetting(noindicatorbiglist)</visible>
+				</control>
 			</control>
-			<control type="image">
-				<width>346</width>
-				<height>195</height>
-				<texture background="true">$VAR[NoSpoilerIconVar]</texture>
-				<aspectratio>scale</aspectratio>
-				<visible>Container.Content(episodes)</visible>
-			</control>
-			<control type="image">
-				<left>296</left>
-				<width>50</width>
-				<height>50</height>
-				<texture>$VAR[OverlayVar]</texture>
-				<aspectratio align="right" aligny="top">keep</aspectratio>
-				<visible>[!String.IsEmpty(Skin.String(507.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(507.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(507.Episodes.DisableOverlay)) + Container.Content(episodes)]</visible>
-			</control>
-			<control type="image">
-				<top>90</top>
-				<width>346</width>
-				<height>98</height>
-				<aspectratio align="center" aligny="bottom">keep</aspectratio>
-				<texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
-				<visible>![Container.Content(episodes) | Container.Content(artists)] + !Container.Content(albums)</visible>
-			</control>
+		</definition>
+	</include>
+	<include name="view_507_BigListFocus">
+		<control type="image">
+			<width>1802</width>
+			<height>238</height>
+			<texture colordiffuse="$VAR[HighlightBarColor]">colors/white50.png</texture>
+			<visible>Control.HasFocus(507)</visible>
+			<include>VisibleFadeAnimation</include>
 		</control>
 	</include>
 </includes>

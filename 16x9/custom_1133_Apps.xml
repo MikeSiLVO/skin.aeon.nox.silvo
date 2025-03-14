@@ -75,7 +75,7 @@
 						<control type="image">
 							<width>830</width>
 							<height>120</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 							<visible>Control.HasFocus(50)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
@@ -189,9 +189,9 @@
 					<ondown>60</ondown>
 					<onleft>50</onleft>
 					<onright>51</onright>
-					<texturesliderbackground>colors/black.png</texturesliderbackground>
-					<texturesliderbar>colors/white25.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbackground>colors/black75.png</texturesliderbackground>
+					<texturesliderbar colordiffuse="$VAR[HighlightBarColor]">colors/darkgrey.png</texturesliderbar>
+					<texturesliderbarfocus colordiffuse="$VAR[HighlightBarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
 			</control>
@@ -245,7 +245,16 @@
 							<font>font30</font>
 							<textcolor>grey2</textcolor>
 							<label>$INFO[ListItem.Label]</label>
-							<animation effect="slide" start="0,0" end="0,25" time="0" condition="String.IsEmpty(ListItem.AddonSummary)">Conditional</animation>
+							<visible>!String.IsEmpty(ListItem.AddonSummary)</visible>
+						</control>
+						<control type="label">
+							<left>135</left>
+							<width>655</width>
+							<height>120</height>
+							<font>font30</font>
+							<textcolor>grey2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>String.IsEmpty(ListItem.AddonSummary)</visible>
 						</control>
 						<control type="label">
 							<left>135</left>
@@ -270,7 +279,7 @@
 						<control type="image">
 							<width>830</width>
 							<height>120</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 							<visible>Control.HasFocus(51)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
@@ -298,7 +307,15 @@
 							<height>70</height>
 							<font>font30</font>
 							<label>$INFO[ListItem.Label]</label>
-							<animation effect="slide" start="0,0" end="0,25" time="0" condition="String.IsEmpty(ListItem.AddonSummary)">Conditional</animation>
+							<visible>!String.IsEmpty(ListItem.AddonSummary)</visible>
+						</control>
+						<control type="label">
+							<left>135</left>
+							<width>655</width>
+							<height>120</height>
+							<font>font30</font>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>String.IsEmpty(ListItem.AddonSummary)</visible>
 						</control>
 						<control type="label">
 							<left>135</left>
@@ -328,9 +345,9 @@
 					<ondown>60</ondown>
 					<onleft>51</onleft>
 					<onright>noop</onright>
-					<texturesliderbackground>colors/black.png</texturesliderbackground>
-					<texturesliderbar>colors/white25.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+					<texturesliderbackground>colors/black75.png</texturesliderbackground>
+					<texturesliderbar colordiffuse="$VAR[HighlightBarColor]">colors/darkgrey.png</texturesliderbar>
+					<texturesliderbarfocus colordiffuse="$VAR[HighlightBarColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
 			</control>
@@ -359,11 +376,11 @@
 				</control>
 				<control type="label">
 					<width>30</width>
-					<height>40</height>
-					<font>IconTiny</font>
+					<height>42</height>
+					<font>IconTinyMD</font>
 					<textcolor>grey</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<label></label>
+					<label></label>
 				</control>
 				<control type="label">
 					<width>auto</width>
@@ -376,11 +393,11 @@
 				</control>
 				<control type="label">
 					<width>30</width>
-					<height>40</height>
-					<font>IconTiny</font>
+					<height>42</height>
+					<font>IconTinyMD</font>
 					<textcolor>grey2</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<label></label>
+					<label></label>
 				</control>
 			</control>
 		</control>

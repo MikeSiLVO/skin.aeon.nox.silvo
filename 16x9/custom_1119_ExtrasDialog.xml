@@ -5,12 +5,10 @@
 	<onunload condition="!String.IsEmpty(Window(Home).Property(Enable.FullscreenFanart))">ClearProperty(Enable.FullscreenFanart,Home)</onunload>
 	<include>DialogOpenCloseAnimation</include>
 	<controls>
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture>colors/black25.png</texture>
-			<animation effect="fade" time="100">WindowOpen</animation>
-			<animation effect="fade" time="50">WindowClose</animation>
-		</control>
+		<include content="DimBackground">
+			<param name="timeopen">100</param>
+			<param name="timeclose">50</param>
+		</include>
 		<control type="grouplist" id="90200">
 			<left>705</left>
 			<width>510</width>

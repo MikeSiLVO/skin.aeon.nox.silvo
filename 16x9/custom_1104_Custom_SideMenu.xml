@@ -7,20 +7,9 @@
 		<control type="group">
 			<include>WindowSettingsFadeAnimation</include>
 			<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1132)">Conditional</animation>
-			<control type="button" id="90099">
-				<left>365</left>
-				<top>-11</top>
-				<width>64</width>
-				<height>48</height>
-				<label></label>
-				<font>CloseButton</font>
-				<textcolor>grey</textcolor>
-				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
-				<onclick>Dialog.Close(1104)</onclick>
-				<texturefocus />
-				<texturenofocus />
-				<visible>system.getbool(input.enablemouse)</visible>
-			</control>
+			<include content="CloseButton">
+				<param name="visible">system.getbool(input.enablemouse)</param>
+			</include>
 			<control type="label">
 				<top>80</top>
 				<width>400</width>
@@ -49,8 +38,8 @@
 				<width>400</width>
 				<align>center</align>
 				<textoffsetx>30</textoffsetx>
-				<font>IconMedium</font>
-				<label></label>
+				<font>IconMediumMD</font>
+				<label></label>
 				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
 				<texturefocus />
 				<onleft>90100</onleft>

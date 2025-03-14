@@ -68,15 +68,16 @@
 				<label>$INFO[Window(Home).Property(TextViewerContent)]</label>
 			</control>
 			<control type="scrollbar" id="61">
-				<left>1341</left>
+				<left>1336</left>
 				<top>145</top>
-				<width>20</width>
+				<width>14</width>
 				<height>750</height>
 				<ondown>61</ondown>
 				<onup>61</onup>
 				<showonepage>false</showonepage>
 				<texturesliderbackground>colors/black90.png</texturesliderbackground>
-				<texturesliderbar colordiffuse="$VAR[ThemeLabelColor]" border="1">colors/white50.png</texturesliderbar>
+				<texturesliderbar colordiffuse="$VAR[HighlightBarColor]">colors/grey.png</texturesliderbar>
+				<animation effect="fade" start="80" end="40" time="1000" pulse="true" condition="Control.HasFocus(64)">Conditional</animation>
 			</control>
 		</control>
 	</controls>

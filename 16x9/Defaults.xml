@@ -28,7 +28,27 @@
 	<default type="button">
 		<width>450</width>
 		<height>60</height>
-		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">listselect_fo.png</texturefocus>
+		<texturefocus border="1" colordiffuse="$VAR[HighlightBarColor]">colors/white50.png</texturefocus>
+		<font>font14</font>
+		<textcolor>grey</textcolor>
+		<focusedcolor>white</focusedcolor>
+		<disabledcolor>grey3</disabledcolor>
+		<textoffsetx>15</textoffsetx>
+		<aligny>center</aligny>
+		<pulseonselect>false</pulseonselect>
+	</default>
+	<default type="radiobutton">
+		<width>450</width>
+		<height>60</height>
+		<radiowidth>120</radiowidth>
+		<radioheight>76</radioheight>
+		<textureradioonfocus colordiffuse="$VAR[ThemeLabelColor]">android/radio_on.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="$VAR[ThemeLabelColor]">android/radio_on.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="grey">android/radio_off.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="grey">android/radio_off.png</textureradiooffnofocus>
+		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">colors/white50.png</texturefocus>
+		<textureradioondisabled colordiffuse="40FFFFFF">android/radio_on.png</textureradioondisabled>
+		<textureradiooffdisabled colordiffuse="40FFFFFF">android/radio_off.png</textureradiooffdisabled>
 		<font>font14</font>
 		<textcolor>grey</textcolor>
 		<focusedcolor>white</focusedcolor>
@@ -51,14 +71,14 @@
 		<texturecolordisabledmask colordiffuse="40FFFFFF">colors/white.png</texturecolordisabledmask>
 		<font>font15</font>
 		<textoffsetx>30</textoffsetx>
-		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="3">listselect_fo.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="3">colors/white50.png</texturefocus>
 	</default>
 	<default type="togglebutton">
 		<width>30</width>
 		<height>60</height>
 		<textoffsetx>15</textoffsetx>
-		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">listselect_fo.png</texturefocus>
-		<alttexturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">listselect_fo.png</alttexturefocus>
+		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">colors/white50.png</texturefocus>
+		<alttexturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">colors/white50.png</alttexturefocus>
 		<textcolor>grey</textcolor>
 		<focusedcolor>white</focusedcolor>
 		<disabledcolor>grey3</disabledcolor>
@@ -78,8 +98,8 @@
 		<lefttexture />
 		<righttexture />
 		<overlaytexture />
-		<midtexture border="2">osd/midtexture.png</midtexture>
-		<texturebg border="1">osd/texturebg_cache.png</texturebg>
+		<texturebg>colors/blank.png</texturebg>
+		<midtexture colordiffuse="$VAR[ThemeOSDProgressColor]">colors/white50.png</midtexture>
 	</default>
 	<default type="spincontrol">
 		<textureup colordiffuse="grey">android/spin_up.png</textureup>
@@ -106,7 +126,7 @@
 		<height>60</height>
 		<spinwidth>40</spinwidth>
 		<spinheight>25</spinheight>
-		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">listselect_fo.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">colors/white50.png</texturefocus>
 		<textureup colordiffuse="grey">android/spin_up.png</textureup>
 		<texturedown colordiffuse="grey">android/spin_down.png</texturedown>
 		<textureupfocus colordiffuse="$VAR[HighlightBarColor]">android/spin_up.png</textureupfocus>
@@ -122,26 +142,6 @@
 		<reverse>true</reverse>
 		<pulseonselect>false</pulseonselect>
 	</default>
-	<default type="radiobutton">
-		<width>450</width>
-		<height>60</height>
-		<radiowidth>120</radiowidth>
-		<radioheight>76</radioheight>
-		<textureradioonfocus colordiffuse="$VAR[ThemeLabelColor]">android/radio_on.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="$VAR[ThemeLabelColor]">android/radio_on.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="grey">android/radio_off.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="grey">android/radio_off.png</textureradiooffnofocus>
-		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">listselect_fo.png</texturefocus>
-		<textureradioondisabled colordiffuse="40FFFFFF">android/radio_on.png</textureradioondisabled>
-		<textureradiooffdisabled colordiffuse="40FFFFFF">android/radio_off.png</textureradiooffdisabled>
-		<font>font14</font>
-		<textcolor>grey</textcolor>
-		<focusedcolor>white</focusedcolor>
-		<disabledcolor>grey3</disabledcolor>
-		<textoffsetx>15</textoffsetx>
-		<aligny>center</aligny>
-		<pulseonselect>false</pulseonselect>
-	</default>
 	<default type="slider">
 		<orientation>horizontal</orientation>
 	</default>
@@ -149,7 +149,7 @@
 		<height>60</height>
 		<textoffsetx>15</textoffsetx>
 		<aligny>center</aligny>
-		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">listselect_fo.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">colors/white50.png</texturefocus>
 		<sliderwidth>150</sliderwidth>
 		<sliderheight>28</sliderheight>
 		<texturesliderbar>buttons/slider-back.png</texturesliderbar>
@@ -163,7 +163,7 @@
 		<scrollspeed>60</scrollspeed>
 	</default>
 	<default type="mover">
-		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">listselect_fo.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">colors/white50.png</texturefocus>
 		<pulseonselect>false</pulseonselect>
 		<movingspeed acceleration="180" maxvelocity="300" resettimeout="200" delta="1">
 			<eventconfig type="up" />
@@ -173,13 +173,13 @@
 		</movingspeed>
 	</default>
 	<default type="resize">
-		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">listselect_fo.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">colors/white50.png</texturefocus>
 		<pulseonselect>false</pulseonselect>
 	</default>
 	<default type="edit">
 		<width>450</width>
 		<height>60</height>
-		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">listselect_fo.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="1">colors/white50.png</texturefocus>
 		<font>font14</font>
 		<textcolor>grey</textcolor>
 		<focusedcolor>white</focusedcolor>

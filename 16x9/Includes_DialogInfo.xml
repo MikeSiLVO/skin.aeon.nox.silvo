@@ -153,10 +153,10 @@
 							<top>8</top>
 							<width>286</width>
 							<height>418</height>
-							<bordersize>4</bordersize>
-							<bordertexture border="2" colordiffuse="$VAR[ThemeLabelColor]">thumbs/thumbnail_focused.png</bordertexture>
 							<aspectratio aligny="top">scale</aspectratio>
 							<texture fallback="$PARAM[fallback]" background="true">$PARAM[texture]</texture>
+							<bordersize>4</bordersize>
+							<bordertexture border="2" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 						</control> -->
 						<control type="group">
 							<visible>$PARAM[labelVisibility]</visible>
@@ -241,10 +241,10 @@
 				<control type="image">
 					<width>210</width>
 					<height>300</height>
-					<bordersize>3</bordersize>
-					<bordertexture border="3" colordiffuse="black">thumbs/poster_focus.png</bordertexture>
 					<aspectratio>scale</aspectratio>
-					<texture background="true">$PARAM[texture]</texture>
+					<texture border="3" background="true">$PARAM[texture]</texture>
+					<bordersize>3</bordersize>
+					<bordertexture border="3" infill="false">colors/black.png</bordertexture>
 				</control>
 				<!-- <control type="label">
 					<left>20</left>
@@ -275,10 +275,10 @@
 					<control type="image">
 						<width>210</width>
 						<height>300</height>
-						<bordersize>8</bordersize>
-						<bordertexture border="6" colordiffuse="$VAR[HighlightBarColor]">thumbs/poster_focus.png</bordertexture>
 						<aspectratio>scale</aspectratio>
-						<texture background="true">$PARAM[texture]</texture>
+						<texture border="3" background="true">$PARAM[texture]</texture>
+						<bordersize>3</bordersize>
+						<bordertexture border="3" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 					</control>
 					<!-- <control type="label">
 						<left>20</left>
@@ -927,7 +927,7 @@
 						<top>5</top>
 						<width>1198</width>
 						<height>62</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 						<visible>Control.HasFocus($PARAM[panel_id])</visible>
 						<include>VisibleFadeAnimation</include>
 					</control>
@@ -955,7 +955,7 @@
 						<top>5</top>
 						<width>599</width>
 						<height>62</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 						<visible>Control.HasFocus($PARAM[panel_id])</visible>
 						<include>VisibleFadeAnimation</include>
 					</control>
@@ -997,7 +997,7 @@
 			<control type="image">
 				<top>433</top>
 				<height>1</height>
-				<texture colordiffuse="$VAR[ThemeLabelColor]">separator_horizontal.png</texture>
+				<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
 			</control>
 		</control>
 	</include>
