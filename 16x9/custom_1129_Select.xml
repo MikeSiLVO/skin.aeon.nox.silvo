@@ -19,6 +19,7 @@
 			<param name="visible">!Window.IsVisible(1114)</param>
 		</include>
 		<control type="group">
+			<visible>String.IsEmpty(Window(Home).Property(OfferReloadAfterConfirm))</visible>
 			<include>DialogOpenCloseAnimation</include>
 			<visible>![Window.IsActive(gamestretchmode) | Window.IsActive(gamevideofilter) | Window.IsActive(gamevideorotation) | Window.IsActive(gamevolume) | Window.IsActive(InGameSaves)]</visible>
 			<include>VisibleFadeAnimation</include>

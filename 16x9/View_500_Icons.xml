@@ -7,20 +7,20 @@
 			<include>ViewAnimation</include>
 			<control type="group">
 				<top>-22</top>
-				<animation effect="slide" end="34.5" condition="Skin.HasSetting(500.SmallerIcons)">Conditional</animation>
+				<animation effect="slide" end="34.5" condition="!Container.Content(episodes) + !Container.Content(videos) + Skin.HasSetting(500.SmallerIcons)">Conditional</animation>
 				<include content="BackPanel">
 					<param name="left">116</param>
 					<param name="top">175</param>
 					<param name="width">1700</param>
 					<param name="height">728</param>
-					<param name="visible">!Skin.HasSetting(500.SmallerIcons)</param>
+					<param name="visible">!Skin.HasSetting(500.SmallerIcons) | Container.Content(episodes) | Container.Content(videos)</param>
 				</include>
 				<include content="BackPanel">
 					<param name="left">116</param>
 					<param name="top">175</param>
 					<param name="width">1620</param>
 					<param name="height">728</param>
-					<param name="visible">Skin.HasSetting(500.SmallerIcons)</param>
+					<param name="visible">Skin.HasSetting(500.SmallerIcons) + !Container.Content(episodes) + !Container.Content(videos)</param>
 				</include>
 				<control type="panel" id="500">
 					<left>120</left>
@@ -40,20 +40,16 @@
 						<control type="image">
 							<width>240</width>
 							<height>360</height>
-							<texture colordiffuse="BAFFFFFF" background="true">$VAR[PosterThumb]</texture>
-							<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+							<texture border="2" colordiffuse="BFFFFFFF" background="true">$VAR[PosterThumb]</texture>
 							<bordersize>2</bordersize>
+							<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 						</control>
-						<control type="image">
-							<left>196</left>
-							<top>-6</top>
-							<width>50</width>
-							<height>50</height>
-							<texture>$VAR[OverlayVar]</texture>
-							<aspectratio align="center" aligny="top">keep</aspectratio>
-							<bordersize>8</bordersize>
-							<visible>[!String.IsEmpty(Skin.String(500.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(500.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(500.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(500.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
-						</control>
+						<include content="PosterStatusOverlay">
+							<param name="left">198</param>
+							<param name="top">2</param>
+							<param name="size">40</param>
+							<param name="visible">[!String.IsEmpty(Skin.String(500.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(500.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(500.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(500.Sets.DisableOverlay)) + Container.Content(sets)]</param>
+						</include>
 						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedEpisodeOverlay</include>
 					</itemlayout>
 					<focusedlayout height="360" width="240" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)] + !Skin.HasSetting(500.SmallerIcons)">
@@ -65,19 +61,16 @@
 							<control type="image">
 								<width>240</width>
 								<height>360</height>
-								<texture background="true">$VAR[PosterThumb]</texture>
-								<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+								<texture border="8" background="true">$VAR[PosterThumb]</texture>
 								<bordersize>8</bordersize>
+								<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 							</control>
-							<control type="image">
-								<left>190</left>
-								<width>50</width>
-								<height>50</height>
-								<texture>$VAR[OverlayVar]</texture>
-								<aspectratio align="center" aligny="top">keep</aspectratio>
-								<bordersize>8</bordersize>
-								<visible>[!String.IsEmpty(Skin.String(500.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(500.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(500.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(500.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
-							</control>
+							<include content="PosterStatusOverlay">
+								<param name="left">192</param>
+								<param name="top">8</param>
+								<param name="size">40</param>
+								<param name="visible">[!String.IsEmpty(Skin.String(500.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(500.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(500.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(500.Sets.DisableOverlay)) + Container.Content(sets)]</param>
+							</include>
 							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
 								<param name="left">8</param>
 								<param name="top">8</param>
@@ -89,9 +82,9 @@
 							<width>240</width>
 							<height>360</height>
 							<aspectratio>scale</aspectratio>
-							<texture colordiffuse="BAFFFFFF" background="true" fallback="special://skin/extras/moviegenres/default/Default.jpg">$VAR[GenreIconVar]</texture>
-							<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+							<texture border="2" colordiffuse="BFFFFFFF" background="true" fallback="special://skin/extras/moviegenres/default/Default.jpg">$VAR[GenreIconVar]</texture>
 							<bordersize>2</bordersize>
+							<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 						</control>
 					</itemlayout>
 					<focusedlayout height="360" width="240" condition="Container.Content(genres) + !Skin.HasSetting(500.SmallerIcons)">
@@ -104,9 +97,9 @@
 								<width>240</width>
 								<height>360</height>
 								<aspectratio>scale</aspectratio>
-								<texture colordiffuse="BAFFFFFF" background="true" fallback="special://skin/extras/moviegenres/default/Default.jpg">$VAR[GenreIconVar]</texture>
-								<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+								<texture border="8" colordiffuse="BAFFFFFF" background="true" fallback="special://skin/extras/moviegenres/default/Default.jpg">$VAR[GenreIconVar]</texture>
 								<bordersize>8</bordersize>
+								<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 							</control>
 						</control>
 					</focusedlayout>
@@ -115,9 +108,9 @@
 							<width>240</width>
 							<height>240</height>
 							<aspectratio>scale</aspectratio>
-							<texture colordiffuse="BAFFFFFF" background="true">$INFO[ListItem.Icon]</texture>
-							<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+							<texture border="2" colordiffuse="BFFFFFFF" background="true">$INFO[ListItem.Icon]</texture>
 							<bordersize>2</bordersize>
+							<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 						</control>
 					</itemlayout>
 					<focusedlayout height="240" width="240" condition="Container.Content(addons)">
@@ -125,9 +118,9 @@
 							<width>240</width>
 							<height>240</height>
 							<aspectratio>scale</aspectratio>
-							<texture background="true">$INFO[ListItem.Icon]</texture>
-							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+							<texture border="8" background="true">$INFO[ListItem.Icon]</texture>
 							<bordersize>8</bordersize>
+							<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 							<animation type="Focus" reversible="false">
 								<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 								<effect type="fade" start="80" end="100" time="300" tween="sine" easing="in" />
@@ -139,36 +132,32 @@
 							<width>420</width>
 							<height>360</height>
 							<aspectratio>scale</aspectratio>
-							<texture colordiffuse="BAFFFFFF" background="true">$VAR[NoSpoilerIconVar]</texture>
-							<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+							<texture border="2" colordiffuse="BFFFFFFF" background="true">$VAR[NoSpoilerIconVar]</texture>
 							<bordersize>2</bordersize>
+							<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 						</control>
 						<control type="image">
-							<left>360</left>
-							<width>60</width>
-							<height>60</height>
-							<texture>$VAR[OverlayVar]</texture>
-							<aspectratio align="center" aligny="top">keep</aspectratio>
-							<bordersize>1</bordersize>
-							<visible>!String.IsEmpty(Skin.String(500.Episodes.DisableOverlay)) + Container.Content(episodes)</visible>
-						</control>
-						<control type="image">
-							<top>310</top>
+							<top>300</top>
 							<width>420</width>
-							<height>50</height>
-							<texture>colors/black.png</texture>
+							<height>60</height>
+							<texture>colors/black50.png</texture>
 							<bordersize>2</bordersize>
-							<colordiffuse>88ffffff</colordiffuse>
 						</control>
 						<control type="label">
-							<top>310</top>
+							<top>300</top>
 							<width>420</width>
-							<height>40</height>
+							<height>50</height>
 							<align>center</align>
 							<textoffsetx>10</textoffsetx>
 							<textcolor>grey2</textcolor>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
+						<include content="PosterStatusOverlay">
+							<param name="left">368</param>
+							<param name="top">2</param>
+							<param name="size">50</param>
+							<param name="visible">!String.IsEmpty(Skin.String(500.Episodes.DisableOverlay)) + Container.Content(episodes)</param>
+						</include>
 					</itemlayout>
 					<focusedlayout height="360" width="420" condition="Container.Content(episodes)">
 						<control type="group">
@@ -180,36 +169,31 @@
 								<width>420</width>
 								<height>360</height>
 								<aspectratio>scale</aspectratio>
-								<texture colordiffuse="BAFFFFFF" background="true">$VAR[NoSpoilerIconVar]</texture>
-								<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+								<texture border="8" colordiffuse="BAFFFFFF" background="true">$VAR[NoSpoilerIconVar]</texture>
 								<bordersize>8</bordersize>
+								<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 							</control>
 							<control type="image">
-								<left>360</left>
-								<width>60</width>
+								<top>300</top>
+								<width>420</width>
 								<height>60</height>
-								<texture>$VAR[OverlayVar]</texture>
-								<aspectratio align="center" aligny="top">keep</aspectratio>
-								<bordersize>8</bordersize>
-								<visible>!String.IsEmpty(Skin.String(500.Episodes.DisableOverlay)) + Container.Content(episodes)</visible>
-							</control>
-							<control type="image">
-								<left>6</left>
-								<top>310</top>
-								<width>408</width>
-								<height>44</height>
-								<texture>colors/black.png</texture>
-								<bordersize>2</bordersize>
-								<colordiffuse>88ffffff</colordiffuse>
+								<texture>colors/black50.png</texture>
+								<bordersize>8,0,8,8</bordersize>
 							</control>
 							<control type="label">
-								<top>310</top>
+								<top>300</top>
 								<width>420</width>
-								<height>40</height>
+								<height>50</height>
 								<align>center</align>
 								<textoffsetx>10</textoffsetx>
 								<label>$INFO[ListItem.Label]</label>
 							</control>
+							<include content="PosterStatusOverlay">
+								<param name="left">362</param>
+								<param name="top">8</param>
+								<param name="size">50</param>
+								<param name="visible">!String.IsEmpty(Skin.String(500.Episodes.DisableOverlay)) + Container.Content(episodes)</param>
+							</include>
 						</control>
 					</focusedlayout>
 					<itemlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets)]">
@@ -217,30 +201,26 @@
 							<width>420</width>
 							<height>360</height>
 							<aspectratio>scale</aspectratio>
-							<texture colordiffuse="BAFFFFFF" background="true">$VAR[PosterThumb]</texture>
-							<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+							<texture border="2" colordiffuse="BFFFFFFF" background="true">$VAR[PosterThumb]</texture>
 							<bordersize>2</bordersize>
+							<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 						</control>
+						<include content="PosterStatusOverlay">
+							<param name="left">368</param>
+							<param name="top">2</param>
+							<param name="size">50</param>
+						</include>
 						<control type="image">
-							<left>360</left>
-							<width>60</width>
-							<height>60</height>
-							<texture>$VAR[OverlayVar]</texture>
-							<aspectratio align="center" aligny="top">keep</aspectratio>
-							<bordersize>1</bordersize>
-						</control>
-						<control type="image">
-							<top>310</top>
+							<top>300</top>
 							<width>420</width>
-							<height>50</height>
-							<texture>colors/black.png</texture>
+							<height>60</height>
+							<texture>colors/black50.png</texture>
 							<bordersize>2</bordersize>
-							<colordiffuse>88ffffff</colordiffuse>
 						</control>
 						<control type="label">
-							<top>310</top>
+							<top>300</top>
 							<width>420</width>
-							<height>40</height>
+							<height>50</height>
 							<align>center</align>
 							<textoffsetx>10</textoffsetx>
 							<textcolor>grey2</textcolor>
@@ -257,31 +237,26 @@
 								<width>420</width>
 								<height>360</height>
 								<aspectratio>scale</aspectratio>
-								<texture background="true">$VAR[PosterThumb]</texture>
-								<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+								<texture border="8" background="true">$VAR[PosterThumb]</texture>
 								<bordersize>8</bordersize>
+								<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 							</control>
+							<include content="PosterStatusOverlay">
+								<param name="left">362</param>
+								<param name="top">8</param>
+								<param name="size">50</param>
+							</include>
 							<control type="image">
-								<left>360</left>
-								<width>60</width>
+								<top>300</top>
+								<width>420</width>
 								<height>60</height>
-								<texture>$VAR[OverlayVar]</texture>
-								<aspectratio align="center" aligny="top">keep</aspectratio>
-								<bordersize>8</bordersize>
-							</control>
-							<control type="image">
-								<left>6</left>
-								<top>310</top>
-								<width>408</width>
-								<height>44</height>
-								<texture>colors/black.png</texture>
-								<bordersize>2</bordersize>
-								<colordiffuse>88ffffff</colordiffuse>
+								<texture>colors/black50.png</texture>
+								<bordersize>8,0,8,8</bordersize>
 							</control>
 							<control type="label">
-								<top>310</top>
+								<top>300</top>
 								<width>420</width>
-								<height>40</height>
+								<height>50</height>
 								<align>center</align>
 								<textoffsetx>10</textoffsetx>
 								<label>$INFO[ListItem.Label]</label>
@@ -292,20 +267,16 @@
 						<control type="image">
 							<width>160</width>
 							<height>240</height>
-							<texture colordiffuse="BAFFFFFF" background="true">$VAR[PosterThumb]</texture>
-							<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+							<texture border="2" colordiffuse="BFFFFFFF" background="true">$VAR[PosterThumb]</texture>
 							<bordersize>2</bordersize>
+							<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 						</control>
-						<control type="image">
-							<left>129</left>
-							<top>1</top>
-							<width>30</width>
-							<height>30</height>
-							<texture>$VAR[OverlayVar]</texture>
-							<aspectratio align="center" aligny="top">keep</aspectratio>
-							<bordersize>1</bordersize>
-							<visible>[!String.IsEmpty(Skin.String(500.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(500.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(500.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(500.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
-						</control>
+						<include content="PosterStatusOverlay">
+							<param name="left">128</param>
+							<param name="top">2</param>
+							<param name="size">30</param>
+							<param name="visible">[!String.IsEmpty(Skin.String(500.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(500.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(500.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(500.Sets.DisableOverlay)) + Container.Content(sets)]</param>
+						</include>
 						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
 							<param name="height">32</param>
 						</include>
@@ -319,20 +290,16 @@
 							<control type="image">
 								<width>160</width>
 								<height>240</height>
-								<texture background="true">$VAR[PosterThumb]</texture>
-								<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="4">thumbs/thumbnail_focused.png</bordertexture>
+								<texture border="4" background="true">$VAR[PosterThumb]</texture>
 								<bordersize>4</bordersize>
+								<bordertexture border="4" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 							</control>
-							<control type="image">
-								<left>127</left>
-								<top>3</top>
-								<width>30</width>
-								<height>30</height>
-								<texture>$VAR[OverlayVar]</texture>
-								<aspectratio align="center" aligny="top">keep</aspectratio>
-								<bordersize>1</bordersize>
-								<visible>[!String.IsEmpty(Skin.String(500.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(500.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(500.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(500.Sets.DisableOverlay)) + Container.Content(sets)]</visible>
-							</control>
+							<include content="PosterStatusOverlay">
+								<param name="left">126</param>
+								<param name="top">4</param>
+								<param name="size">30</param>
+								<param name="visible">[!String.IsEmpty(Skin.String(500.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(500.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(500.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(500.Sets.DisableOverlay)) + Container.Content(sets)]</param>
+							</include>
 							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
 								<param name="left">4</param>
 								<param name="top">4</param>
@@ -345,9 +312,9 @@
 							<width>160</width>
 							<height>240</height>
 							<aspectratio>scale</aspectratio>
-							<texture colordiffuse="BAFFFFFF" background="true" fallback="special://skin/extras/moviegenres/default/Default.jpg">$VAR[GenreIconVar]</texture>
-							<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+							<texture border="2" colordiffuse="BFFFFFFF" background="true" fallback="special://skin/extras/moviegenres/default/Default.jpg">$VAR[GenreIconVar]</texture>
 							<bordersize>2</bordersize>
+							<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 						</control>
 					</itemlayout>
 					<focusedlayout height="240" width="160" condition="Container.Content(genres) + Skin.HasSetting(500.SmallerIcons)">
@@ -360,9 +327,9 @@
 								<width>160</width>
 								<height>240</height>
 								<aspectratio>scale</aspectratio>
-								<texture colordiffuse="BAFFFFFF" background="true" fallback="special://skin/extras/moviegenres/default/Default.jpg">$VAR[GenreIconVar]</texture>
-								<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+								<texture border="8" colordiffuse="BAFFFFFF" background="true" fallback="special://skin/extras/moviegenres/default/Default.jpg">$VAR[GenreIconVar]</texture>
 								<bordersize>8</bordersize>
+								<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 							</control>
 						</control>
 					</focusedlayout>
@@ -382,7 +349,7 @@
 					<texturesliderbar>colors/white25.png</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
-					<animation effect="slide" end="-80" condition="Skin.HasSetting(500.SmallerIcons)">Conditional</animation>
+					<animation effect="slide" end="-80" condition="!Container.Content(episodes) + !Container.Content(videos) + Skin.HasSetting(500.SmallerIcons)">Conditional</animation>
 				</control>
 			</control>
 		</control>
@@ -416,9 +383,9 @@
 						<width>240</width>
 						<height>240</height>
 						<aspectratio>scale</aspectratio>
-						<texture colordiffuse="BAFFFFFF" background="true">$INFO[ListItem.Icon]</texture>
-						<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+						<texture border="2" colordiffuse="BFFFFFFF" background="true">$INFO[ListItem.Icon]</texture>
 						<bordersize>2</bordersize>
+						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 					</control>
 					<control type="group">
 						<visible>Container.Content(artists)</visible>
@@ -426,9 +393,8 @@
 							<top>190</top>
 							<width>240</width>
 							<height>50</height>
-							<texture>colors/black.png</texture>
+							<texture>colors/black50.png</texture>
 							<bordersize>2</bordersize>
-							<colordiffuse>88ffffff</colordiffuse>
 						</control>
 						<control type="label">
 							<top>200</top>
@@ -451,9 +417,9 @@
 							<width>240</width>
 							<height>240</height>
 							<aspectratio>scale</aspectratio>
-							<texture background="true">$INFO[ListItem.Icon]</texture>
-							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+							<texture border="8" background="true">$INFO[ListItem.Icon]</texture>
 							<bordersize>8</bordersize>
+							<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 						</control>
 					</control>
 				</focusedlayout>
@@ -462,9 +428,9 @@
 						<width>240</width>
 						<height>240</height>
 						<aspectratio>scale</aspectratio>
-						<texture colordiffuse="BAFFFFFF" background="true" fallback="special://skin/extras/musicgenres/Default.jpg">$VAR[MusicGenreIconsPathVar]$INFO[ListItem.Label,,.jpg]</texture>
-						<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
-						<bordersize>2</bordersize>
+							<texture border="2" colordiffuse="BFFFFFFF" background="true" fallback="special://skin/extras/musicgenres/Default.jpg">$VAR[MusicGenreIconsPathVar]$INFO[ListItem.Label,,.jpg]</texture>
+							<bordersize>2</bordersize>
+							<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 					</control>
 				</itemlayout>
 				<focusedlayout height="240" width="240" condition="Container.Content(genres)">
@@ -472,9 +438,9 @@
 						<width>240</width>
 						<height>240</height>
 						<aspectratio>scale</aspectratio>
-						<texture background="true" fallback="special://skin/extras/musicgenres/Default.jpg">$VAR[MusicGenreIconsPathVar]$INFO[ListItem.Label,,.jpg]</texture>
-						<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+						<texture border="8" background="true" fallback="special://skin/extras/musicgenres/Default.jpg">$VAR[MusicGenreIconsPathVar]$INFO[ListItem.Label,,.jpg]</texture>
 						<bordersize>8</bordersize>
+						<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 						<animation type="Focus" reversible="false">
 							<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 							<effect type="fade" start="80" end="100" time="300" tween="sine" easing="in" />
@@ -529,9 +495,9 @@
 						<width>240</width>
 						<height>240</height>
 						<aspectratio>scale</aspectratio>
-						<texture colordiffuse="BAFFFFFF" background="true">$INFO[ListItem.Icon]</texture>
-						<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+						<texture border="2" colordiffuse="BFFFFFFF" background="true">$INFO[ListItem.Icon]</texture>
 						<bordersize>2</bordersize>
+						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 					</control>
 					<control type="image">
 						<left>190</left>
@@ -553,9 +519,9 @@
 							<width>240</width>
 							<height>240</height>
 							<aspectratio>scale</aspectratio>
-							<texture background="true">$INFO[ListItem.Icon]</texture>
-							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+							<texture border="8" background="true">$INFO[ListItem.Icon]</texture>
 							<bordersize>8</bordersize>
+							<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 						</control>
 						<control type="image">
 							<left>190</left>
@@ -617,9 +583,9 @@
 						<width>560</width>
 						<height>300</height>
 						<aspectratio>scale</aspectratio>
-						<texture colordiffuse="BAFFFFFF" background="true">$INFO[ListItem.Icon]</texture>
-						<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+						<texture border="2" colordiffuse="BFFFFFFF" background="true">$INFO[ListItem.Icon]</texture>
 						<bordersize>2</bordersize>
+						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 					</control>
 					<control type="image">
 						<top>250</top>
@@ -652,9 +618,9 @@
 						<width>560</width>
 						<height>300</height>
 						<aspectratio>scale</aspectratio>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-						<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+						<texture border="8" background="true">$INFO[ListItem.Icon]</texture>
 						<bordersize>8</bordersize>
+						<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 						<animation type="Focus" reversible="false">
 							<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 							<effect type="fade" start="80" end="100" time="300" tween="sine" easing="in" />

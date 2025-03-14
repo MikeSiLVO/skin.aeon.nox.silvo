@@ -5,7 +5,7 @@
 		<control type="group">
 			<visible>Control.IsVisible(55)</visible>
 			<include>ViewAnimation</include>
-			<top>-12</top>
+			<top>-15</top>
 			<control type="group">
 				<left>1400</left>
 				<top>136</top>
@@ -239,21 +239,16 @@
 							<visible>!ListItem.IsCollection</visible>
 							<visible>!Skin.HasSetting(Enable.HideRatings) | [String.IsEqual(ListItem.Label2, ListItem.Rating) + String.IsEqual(Container.SortMethod,$LOCALIZE[563])]</visible>
 						</control>
-						<control type="label">
-							<left>749</left>
-							<top>3</top>
-							<width>64</width>
-							<height>64</height>
-							<textcolor>white3</textcolor>
-							<font>IconMediumMD</font>
-							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-						</control>
+						<include content="ListStatusIndicators">
+							<param name="left">742</param>
+							<param name="top">3</param>
+						</include>
 					</itemlayout>
 					<focusedlayout height="70" width="806" condition="Container.Content(movies)">
 						<control type="image">
 							<width>806</width>
 							<height>70</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 							<visible>Control.HasFocus(55)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
@@ -305,15 +300,10 @@
 							<visible>!Skin.HasSetting(Enable.HideRatings) | [String.IsEqual(ListItem.Label2, ListItem.Rating) + String.IsEqual(Container.SortMethod,$LOCALIZE[563])]</visible>
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(55)">Conditional</animation>
 						</control>
-						<control type="label">
-							<left>749</left>
-							<top>3</top>
-							<width>64</width>
-							<height>64</height>
-							<textcolor>white3</textcolor>
-							<font>IconMediumMD</font>
-							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-						</control>
+						<include content="ListStatusIndicators">
+							<param name="left">742</param>
+							<param name="top">3</param>
+						</include>
 					</focusedlayout>
 					<itemlayout height="70" width="806" condition="Container.Content(tvshows)">
 						<control type="label">
@@ -343,32 +333,16 @@
 							<label>$INFO[ListItem.Rating]</label>
 							<visible>!Skin.HasSetting(Enable.HideRatings)</visible>
 						</control>
-						<control type="group">
-							<left>742</left>
-							<top>3</top>
-							<control type="label">
-								<left>7</left>
-								<width>64</width>
-								<height>64</height>
-								<textcolor>white3</textcolor>
-								<font>IconMediumMD</font>
-								<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-							</control>
-							<control type="label">
-								<width>64</width>
-								<height>64</height>
-								<font>font12_title</font>
-								<align>center</align>
-								<label>$VAR[ListItemOverlayShowsVar]</label>
-								<textcolor>grey2</textcolor>
-							</control>
-						</control>
+						<include content="ListStatusIndicators">
+							<param name="left">742</param>
+							<param name="top">3</param>
+						</include>
 					</itemlayout>
 					<focusedlayout height="70" width="806" condition="Container.Content(tvshows)">
 						<control type="image">
 							<width>806</width>
 							<height>70</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 							<visible>Control.HasFocus(55)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
@@ -399,25 +373,10 @@
 							<visible>!Skin.HasSetting(Enable.HideRatings)</visible>
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(55)">Conditional</animation>
 						</control>
-						<control type="group">
-							<left>742</left>
-							<top>3</top>
-							<control type="label">
-								<left>7</left>
-								<width>64</width>
-								<height>64</height>
-								<textcolor>white3</textcolor>
-								<font>IconMediumMD</font>
-								<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-							</control>
-							<control type="label">
-								<width>64</width>
-								<height>64</height>
-								<font>font12_title</font>
-								<align>center</align>
-								<label>$VAR[ListItemOverlayShowsVar]</label>
-							</control>
-						</control>
+						<include content="ListStatusIndicators">
+							<param name="left">742</param>
+							<param name="top">3</param>
+						</include>
 					</focusedlayout>
 					<itemlayout height="70" width="806" condition="Container.Content(episodes)">
 						<control type="label">
@@ -438,31 +397,16 @@
 							<label>$INFO[ListItem.Rating]</label>
 							<visible>!Skin.HasSetting(Enable.HideRatings)</visible>
 						</control>
-						<control type="group">
-							<left>742</left>
-							<top>3</top>
-							<control type="label">
-								<left>7</left>
-								<width>64</width>
-								<height>64</height>
-								<textcolor>white3</textcolor>
-								<font>IconMediumMD</font>
-								<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-							</control>
-							<control type="label">
-								<width>64</width>
-								<height>64</height>
-								<font>font12_title</font>
-								<align>center</align>
-								<label>$VAR[ListItemOverlayShowsVar]</label>
-							</control>
-						</control>
+						<include content="ListStatusIndicators">
+							<param name="left">742</param>
+							<param name="top">3</param>
+						</include>
 					</itemlayout>
 					<focusedlayout height="70" width="806" condition="Container.Content(episodes)">
 						<control type="image">
 							<width>806</width>
 							<height>70</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 							<visible>Control.HasFocus(55)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
@@ -484,15 +428,10 @@
 							<visible>!Skin.HasSetting(Enable.HideRatings)</visible>
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(55)">Conditional</animation>
 						</control>
-						<control type="label">
-							<left>749</left>
-							<top>3</top>
-							<width>64</width>
-							<height>64</height>
-							<textcolor>white3</textcolor>
-							<font>IconMediumMD</font>
-							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-						</control>
+						<include content="ListStatusIndicators">
+							<param name="left">742</param>
+							<param name="top">3</param>
+						</include>
 					</focusedlayout>
 					<itemlayout height="70" width="806" condition="Container.Content(seasons)">
 						<control type="label">
@@ -512,32 +451,16 @@
 							<textcolor>grey2</textcolor>
 							<label>$INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20453]]</label>
 						</control>
-						<control type="group">
-							<left>742</left>
-							<top>3</top>
-							<control type="label">
-								<left>7</left>
-								<width>64</width>
-								<height>64</height>
-								<textcolor>white3</textcolor>
-								<font>IconMediumMD</font>
-								<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-							</control>
-							<control type="label">
-								<width>64</width>
-								<height>64</height>
-								<font>font12_title</font>
-								<align>center</align>
-								<label>$VAR[ListItemOverlayShowsVar]</label>
-								<textcolor>grey2</textcolor>
-							</control>
-						</control>
+						<include content="ListStatusIndicators">
+							<param name="left">742</param>
+							<param name="top">3</param>
+						</include>
 					</itemlayout>
 					<focusedlayout height="70" width="806" condition="Container.Content(seasons)">
 						<control type="image">
 							<width>806</width>
 							<height>70</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 							<visible>Control.HasFocus(55)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
@@ -558,25 +481,10 @@
 							<label>$INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20453]]</label>
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(55)">Conditional</animation>
 						</control>
-						<control type="group">
-							<left>742</left>
-							<top>3</top>
-							<control type="label">
-								<left>7</left>
-								<width>64</width>
-								<height>64</height>
-								<textcolor>white3</textcolor>
-								<font>IconMediumMD</font>
-								<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-							</control>
-							<control type="label">
-								<width>64</width>
-								<height>64</height>
-								<font>font12_title</font>
-								<align>center</align>
-								<label>$VAR[ListItemOverlayShowsVar]</label>
-							</control>
-						</control>
+						<include content="ListStatusIndicators">
+							<param name="left">742</param>
+							<param name="top">3</param>
+						</include>
 					</focusedlayout>
 				</control>
 				<control type="scrollbar" id="95560">
@@ -810,7 +718,7 @@
 						<control type="image">
 							<width>806</width>
 							<height>70</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 							<visible>Control.HasFocus(55)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
@@ -865,7 +773,7 @@
 						<control type="image">
 							<width>806</width>
 							<height>70</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 							<visible>Control.HasFocus(55)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>
@@ -1064,7 +972,7 @@
 						<control type="image">
 							<width>806</width>
 							<height>70</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 							<visible>Control.HasFocus(55)</visible>
 							<include>VisibleFadeAnimation</include>
 						</control>

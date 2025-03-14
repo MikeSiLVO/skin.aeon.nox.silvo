@@ -20,10 +20,10 @@
 	<include file="View_507_BigList.xml" />
 	<include file="View_508_SongList.xml" />
 	<include file="View_509_MyFlix.xml" />
-	<include file="View_591_BigFan.xml" />
-	<include file="View_602_FanartList.xml" />
-	<include file="View_603_Music_JukeBox.xml" />
-	<include file="View_609_Fullscreen_Wall.xml" />
+	<include file="View_510_FanartList.xml" />
+	<include file="View_511_Fullscreen_Wall.xml" />
+	<include file="View_512_BigFan.xml" />
+	<include file="View_513_Music_JukeBox.xml" />
 	<include name="BackPanel">
 		<param name="texture" default="colors/black.png" />
 		<param name="border" default="4" />
@@ -51,11 +51,11 @@
 			<!-- Next Aired + Genre -->
 			<control type="group">
 				<height>80</height>
-				<!-- <visible>![Container.OnNext | Container.OnPrevious] + !Control.IsVisible(591) | Control.IsVisible(591)</visible>
+				<!-- <visible>![Container.OnNext | Container.OnPrevious] + !Control.IsVisible(512) | Control.IsVisible(512)</visible>
 				<animation effect="fade" time="250" delay="300">Visible</animation> -->
 				<animation effect="slide" end="20" condition="Control.IsVisible(50) + Skin.HasSetting(Enable.SlimList)">Conditional</animation>
 				<animation effect="slide" end="-36" condition="Control.IsVisible(506)">Conditional</animation>
-				<animation effect="slide" end="240,-100" condition="Control.IsVisible(591)">Conditional</animation>
+				<animation effect="slide" end="240,-100" condition="Control.IsVisible(512)">Conditional</animation>
 				<!-- Next Aired -->
 				<control type="group">
 					<visible>![Control.IsVisible(50) + !Skin.HasSetting(Enable.SlimList)]</visible>
@@ -169,7 +169,7 @@
 				<animation effect="fade" time="250" delay="300" condition="!Container.Content(seasons)">Visible</animation> -->
 				<!-- Next Aired -->
 				<control type="group">
-					<visible>!Control.IsVisible(56) + ![String.IsEmpty(ListItem.Status) + String.IsEmpty(Container(9143).ListItem.Status)] + !Container.Content(movies)</visible>
+					<visible>!Control.IsVisible(56) + ![String.IsEmpty(ListItem.Status) + String.IsEmpty(Container(9143).ListItem.Status)] + !Container.Content(movies) + ![Container.Content(episodes) + !String.IsEmpty(ListItem.Director)]</visible>
 					<animation effect="fade" time="250" delay="300">Visible</animation>
 					<width>650</width>
 					<height>40</height>
@@ -273,6 +273,20 @@
 			</control>
 		</control>
 	</include>
+	<include name="PosterStatusOverlay">
+		<param name="texture" default="$VAR[OverlayVar]" />
+		<definition>
+			<control type="image">
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[size]</width>
+				<height>$PARAM[size]</height>
+				<texture>$PARAM[texture]</texture>
+				<aspectratio>keep</aspectratio>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
+	</include>
 	<include name="UnwatchedEpisodeOverlay">
 		<param name="left" default="0" />
 		<param name="top" default="0" />
@@ -298,6 +312,32 @@
 					<textcolor>white</textcolor>
 					<scroll>false</scroll>
 					<label>[B]$PARAM[label][/B]</label>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<include name="ListStatusIndicators">
+		<param name="visible" default="true" />
+		<definition>
+			<control type="group">
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<visible>$PARAM[visible]</visible>
+				<control type="label">
+					<left>7</left>
+					<width>64</width>
+					<height>64</height>
+					<textcolor>white3</textcolor>
+					<font>IconMediumMD</font>
+					<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
+				</control>
+				<control type="label">
+					<width>64</width>
+					<height>64</height>
+					<font>font12_title</font>
+					<align>center</align>
+					<label>$VAR[ListItemOverlayShowsVar]</label>
+					<textcolor>grey3</textcolor>
 				</control>
 			</control>
 		</definition>

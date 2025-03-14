@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">9000</defaultcontrol>
-	<onload>Control.SetHidden(7999)</onload>
 	<onload>SetProperty(Window.HasSettings,True,Home)</onload>
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
@@ -78,9 +77,8 @@
 					<onup>9000</onup>
 					<ondown>9000</ondown>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
-					<visible>!Window.IsActive(1115) + !Window.IsActive(1140)</visible>
+					<visible>!Window.IsActive(1115) + !Window.IsVisible(1117) + !Window.IsActive(1140)</visible>
 					<include>SettingsFadeAnimation</include>
-					<animation effect="fade" start="100" end="50" time="300" tween="sine" easing="inout" condition="Control.IsVisible(7999)">Conditional</animation>
 					<itemlayout height="81" width="356">
 						<control type="label">
 							<width>356</width>
@@ -95,7 +93,7 @@
 						<control type="image">
 							<width>356</width>
 							<height>81</height>
-							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 							<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
 						</control>
 						<control type="label">
@@ -143,7 +141,7 @@
 				<control type="group" id="9900">
 					<left>437</left>
 					<top>32</top>
-					<visible>!Window.IsActive(1115) + !Window.IsActive(1140)</visible>
+					<visible>!Window.IsActive(1115) + !Window.IsVisible(1117) + !Window.IsActive(1140)</visible>
 					<include>SettingsFadeAnimation</include>
 					<control type="grouplist" id="9001">
 						<width>1401</width>
@@ -346,7 +344,7 @@
 						<control type="image" id="31000">
 							<width>1401</width>
 							<height>1</height>
-							<texture colordiffuse="grey4">separator_horizontal.png</texture>
+							<texture colordiffuse="grey4">colors/white.png</texture>
 						</control>
 						<control type="button" id="30008">
 							<include>SettingsButtonCommonValues</include>
@@ -455,7 +453,7 @@
 						<control type="radiobutton" id="50003">
 							<include>SettingsButtonCommonValues</include>
 							<label>31941</label>
-							<onclick>SetProperty(OfferReloadAfterConfirm,True,Home)</onclick>
+							<onclick>SetProperty(OfferReloadAfterConfirm,kiosk_mode,Home)</onclick>
 							<onclick>ActivateWindow(1126)</onclick>
 							<selected>Skin.HasSetting(KioskMode.Enabled)</selected>
 						</control>
@@ -567,7 +565,8 @@
 							<include>SettingsButtonCommonValues</include>
 							<label>$LOCALIZE[31121]</label>
 							<onclick condition="!System.HasAddon(plugin.program.autocompletion)">InstallAddon(plugin.program.autocompletion)</onclick>
-							<onclick condition="System.HasAddon(plugin.program.autocompletion)">Skin.ToggleSetting(Enable.Autocomplete)</onclick>
+							<onclick condition="System.HasAddon(plugin.program.autocompletion) + !System.AddonIsEnabled(plugin.program.autocompletion)">EnableAddon(plugin.program.autocompletion)</onclick>
+							<onclick condition="System.HasAddon(plugin.program.autocompletion) + System.AddonIsEnabled(plugin.program.autocompletion)">Skin.ToggleSetting(Enable.Autocomplete)</onclick>
 							<selected>Skin.HasSetting(Enable.Autocomplete)</selected>
 						</control>
 						<control type="button" id="70003">
@@ -670,6 +669,13 @@
 							<onclick>Skin.ToggleSetting(useclearcases)</onclick>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[SelectCaseVar][/COLOR]</label2>
 						</control>
+						<control type="button" id="80007">
+							<include>SettingsButtonCommonValues</include>
+							<label>$LOCALIZE[31060]</label>
+							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[PointerSizeLabelVar][/COLOR]</label2>
+							<onclick>SetProperty(CustomSelect,pointersize,Home)</onclick>
+							<onclick>ActivateWindow(1129)</onclick>
+						</control>
 					</control>
 					<control type="grouplist" id="9009">
 						<top>405</top>
@@ -681,9 +687,7 @@
 							<include>SettingsButtonCommonValues</include>
 							<align>center</align>
 							<label>$LOCALIZE[31337]</label>
-							<onclick>Control.SetHidden(9900)</onclick>
-							<onclick>Control.SetVisible(7999)</onclick>
-							<onclick>SetFocus(7999)</onclick>
+							<onclick>ActivateWindow(1117)</onclick>
 						</control>
 						<control type="button" id="90001">
 							<include>SettingsButtonCommonValues</include>
@@ -751,7 +755,7 @@
 							<top>403</top>
 							<width>1401</width>
 							<height>2</height>
-							<texture colordiffuse="grey4">separator_horizontal.png</texture>
+							<texture colordiffuse="grey4">colors/white.png</texture>
 						</control>
 					</control>
 					<control type="grouplist" id="9010">
@@ -782,155 +786,6 @@
 					<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
 					<include>SettingsFadeAnimation</include>
 					<visible>!Window.IsVisible(1115) + !Window.IsVisible(1140)</visible>
-				</control>
-				<control type="group" id="7999">
-					<top>32</top>
-					<control type="group">
-						<left>437</left>
-						<include>WindowSettingsFadeAnimation</include>
-						<control type="grouplist" id="8000">
-							<width>1401</width>
-							<height>810</height>
-							<onleft>Control.SetHidden(7999)</onleft>
-							<onleft>Control.SetVisible(9900)</onleft>
-							<onleft>90000</onleft>
-							<onright>62</onright>
-							<pagecontrol>62</pagecontrol>
-							<control type="label" id="8001">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">[COLOR $VAR[ThemeLabelColor]][UPPERCASE]$LOCALIZE[31334][/UPPERCASE][/COLOR]</param>
-								</include>
-							</control>
-							<control type="radiobutton" id="100">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">script.skinshortcuts</param>
-								</include>
-								<label2>$INFO[System.AddonVersion(script.skinshortcuts),v,       ]</label2>
-							</control>
-							<control type="radiobutton" id="101">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">script.skinvariables</param>
-								</include>
-								<label2>$INFO[System.AddonVersion(script.skinvariables),v,       ]</label2>
-							</control>
-							<control type="radiobutton" id="102">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">resource.images.studios.white</param>
-								</include>
-								<label2>$INFO[System.AddonVersion(resource.images.studios.white),v,       ]</label2>
-								<visible>!Skin.HasSetting(coloredflags)</visible>
-							</control>
-							<control type="radiobutton" id="103">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">resource.images.studios.coloured</param>
-								</include>
-								<label2>$INFO[System.AddonVersion(resource.images.studios.coloured),v,       ]</label2>
-								<visible>Skin.HasSetting(coloredflags)</visible>
-							</control>
-							<control type="radiobutton" id="104">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">resource.images.recordlabels.white</param>
-								</include>
-								<label2>$INFO[System.AddonVersion(resource.images.recordlabels.white),v,       ]</label2>
-							</control>
-							<control type="label" id="8002">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">[COLOR $VAR[ThemeLabelColor]][UPPERCASE]$LOCALIZE[31335][/UPPERCASE][/COLOR]</param>
-								</include>
-							</control>
-							<control type="radiobutton" id="200">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">plugin.video.themoviedb.helper</param>
-								</include>
-								<label2>$INFO[System.AddonVersion(plugin.video.themoviedb.helper),v,       ]</label2>
-							</control>
-							<control type="radiobutton" id="201">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">script.trakt</param>
-								</include>
-								<label2>$INFO[System.AddonVersion(script.trakt),v,       ]</label2>
-							</control>
-							<control type="radiobutton" id="202">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">script.artistslideshow</param>
-								</include>
-								<label2>$INFO[System.AddonVersion(script.artistslideshow),v,       ]</label2>
-							</control>
-							<control type="radiobutton" id="300">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">script.metadata.editor</param>
-								</include>
-								<label2>$INFO[System.AddonVersion(script.metadata.editor),v,       ]</label2>
-							</control>
-							<control type="label" id="8003">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">[COLOR $VAR[ThemeLabelColor]][UPPERCASE]$LOCALIZE[31336][/UPPERCASE][/COLOR]</param>
-								</include>
-							</control>
-							<control type="radiobutton" id="301">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">script.xbmcbackup</param>
-								</include>
-								<label2>$INFO[System.AddonVersion(script.xbmcbackup),v,       ]</label2>
-							</control>
-							<control type="radiobutton" id="302">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">script.cu.lrclyrics</param>
-								</include>
-								<label2>$INFO[System.AddonVersion(script.cu.lrclyrics),v,       ]</label2>
-							</control>
-							<control type="radiobutton" id="303">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">script.grab.fanart</param>
-								</include>
-								<label2>$INFO[System.AddonVersion(script.grab.fanart),v,       ]</label2>
-							</control>
-							<control type="radiobutton" id="304">
-								<textureradioofffocus colordiffuse="darkred">buttons/check_box_disabled.png</textureradioofffocus>
-								<textureradiooffnofocus colordiffuse="darkred">buttons/check_box_disabled.png</textureradiooffnofocus>
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">script.preshowexperience</param>
-								</include>
-								<label2>$INFO[System.AddonVersion(script.preshowexperience),v,       ]</label2>
-							</control>
-							<control type="radiobutton" id="305">
-								<include content="SettingsButtonCommonValues">
-									<param name="is_addon_status">true</param>
-									<param name="addon">script.image.resource.select</param>
-								</include>
-								<label2>$INFO[System.AddonVersion(script.image.resource.select),v,       ]</label2>
-							</control>
-						</control>
-						<control type="scrollbar" id="62">
-							<left>1393</left>
-							<width>8</width>
-							<height>810</height>
-							<onleft>8000</onleft>
-							<onback>Control.SetHidden(7999)</onback>
-							<onback>Control.SetVisible(9900)</onback>
-							<onback>90000</onback>
-							<showonepage>false</showonepage>
-							<texturesliderbackground>colors/black90.png</texturesliderbackground>
-							<texturesliderbar colordiffuse="$VAR[ThemeLabelColor]">scrollbar/texturesliderbar2.png</texturesliderbar>
-							<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]" border="1">colors/white.png</texturesliderbarfocus>
-						</control>
-					</control>
 				</control>
 			</control>
 		</control>

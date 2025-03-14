@@ -45,6 +45,11 @@
 		<value condition="String.IsEqual(Window(Home).Property(CustomSelect),search)">$LOCALIZE[137]</value>
 		<value>$LOCALIZE[22080]</value>
 	</variable>
+	<variable name="PointerSizeLabelVar">
+		<value condition="String.IsEqual(Skin.String(PointerSize),large)">$LOCALIZE[31048]</value>
+		<value condition="String.IsEqual(Skin.String(PointerSize),medium)">$LOCALIZE[31045]</value>
+		<value>$LOCALIZE[571]</value>
+	</variable>
 	<variable name="FanartTitleVar">
 		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),Movie.Fanart) + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),.Fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),Movie.Fanart)">$INFO[Window(Home).Property(script.grab.fanart.Movie.Title)]</value>
 		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),TV.Fanart) + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),.Fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),TV.Fanart)">$INFO[Window(Home).Property(script.grab.fanart.TV.Title)]</value>
@@ -106,6 +111,10 @@
 		<value condition="ListItem.IsCollection + !String.IsEmpty(Container(4500).ListItem(0).Genre)">$INFO[Container(4500).ListItem(0).Genre]</value>
 		<value>$INFO[ListItem.Genre]</value>
 	</variable>
+	<variable name="VideoDirectorVar">
+		<value condition="ListItem.IsCollection + !String.IsEmpty(Container(4501).ListItem.Property(director.collection))">$INFO[Container(4501).ListItem.Property(director.collection)]</value>
+		<value>$INFO[ListItem.Director]</value>
+	</variable>
 	<variable name="MovieSetGenreVar">
 		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(genre.collection))">$INFO[Container(4501).ListItem.Property(genre.collection)]</value>
 		<value>$INFO[Container(4500).ListItem(0).Genre]</value>
@@ -127,15 +136,16 @@
 		<value condition="!String.IsEmpty(Skin.String(MovieGenreIconPath))">$INFO[Skin.String(MovieGenreIconPath)]</value>
 	</variable>
 	<variable name="OverlayVar">
+		<!-- <value condition="String.IsEqual(ListItem.Label2,$LOCALIZE[449])">overlays/addons/enabled.png</value> -->
 		<value condition="ListItem.IsResumable + !Skin.HasSetting(Disable.Resumable)">overlays/resumable.png</value>
 		<value condition="!Skin.HasSetting(Disable.OverlayUnwatched) + String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">overlays/OverlayUnwatched.png</value>
 		<value condition="!Skin.HasSetting(Disable.OverlayWatched) + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">overlays/OverlayWatched.png</value>
 	</variable>
 	<variable name="ListItemOverlay">
 		<value condition="String.IsEqual(ListItem.Property(WatchedEpisodePercent),100)">[COLOR $VAR[ThemeLabelColor]][/COLOR]</value>
-		<value condition="ListItem.IsResumable + !String.IsEmpty(ListItem.PlayCount) + ![String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEqual(Container.SortMethod,$LOCALIZE[20360])">[COLOR $VAR[ThemeLabelColor]][/COLOR]</value>
 		<value condition="ListItem.IsResumable + String.IsEqual(ListItem.DBTYPE,set)">[COLOR white2][/COLOR]</value>
-		<value condition="ListItem.IsResumable + ![String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEqual(Container.SortMethod,$LOCALIZE[20360])">[COLOR grey][/COLOR]</value>
+		<value condition="ListItem.IsResumable + !String.IsEmpty(ListItem.PlayCount) + ![String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEqual(Container.SortMethod,$LOCALIZE[20360])">[COLOR $VAR[ThemeLabelColor]][/COLOR]</value>
+		<value condition="ListItem.IsResumable + ![String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEqual(Container.SortMethod,$LOCALIZE[20360])">[COLOR grey][/COLOR]</value>
 		<value condition="String.IsEmpty(ListItem.PlayCount) + ListItem.HasVideoVersions">[COLOR grey][/COLOR]</value>
 		<value condition="!String.IsEmpty(ListItem.PlayCount) + ListItem.HasVideoVersions">[COLOR $VAR[ThemeLabelColor]][/COLOR]</value>
 		<value condition="String.IsEmpty(ListItem.PlayCount) + ListItem.HasVideoExtras">[COLOR grey][/COLOR]</value>
@@ -144,37 +154,32 @@
 		<value condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + ListItem.IsResumable"></value>
 		<value condition="!ListItem.IsParentFolder + !Container.Content(years) + !Container.Content(actors) + !Container.Content(tags) + !Container.Content(genres) + !Container.Content(playlists) + !String.IsEqual(Container.FolderPath,sources://video/)"></value>
 	</variable>
-	<variable name="ListItemOverlayProgress">
-		<value condition="String.IsEqual(ListItem.DBTYPE,set)" />
-		<value condition="ListItem.IsResumable + !String.IsEmpty(ListItem.PlayCount) + ![String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season) | Container.Content(recordings)] + !String.IsEqual(Container.SortMethod,$LOCALIZE[20360]) | ListItem.IsResumable + !String.IsEmpty(ListItem.PlayCount) + Container.Content(recordings)">[COLOR $VAR[ThemeLabelColor]][/COLOR]</value>
-		<value condition="ListItem.IsResumable + ![String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season) | Container.Content(recordings)] + !String.IsEqual(Container.SortMethod,$LOCALIZE[20360]) | ListItem.IsResumable + Container.Content(recordings)">[COLOR grey][/COLOR]</value>
-	</variable>
 	<variable name="ListItemOverlayShowsVar">
 		<value condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),99) + !String.IsEqual(ListItem.Property(TotalEpisodes),ListItem.Property(UnWatchedEpisodes))">   99 +</value>
 		<value condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEqual(ListItem.Property(TotalEpisodes),ListItem.Property(UnWatchedEpisodes)) + !String.IsEqual(ListItem.Property(UnWatchedEpisodes),0)">$INFO[ListItem.Property(UnWatchedEpisodes)]</value>
 	</variable>
 	<variable name="PlayerProgressIconVar">
-		<value condition="Player.Playing + Player.HasVideo + VideoPlayer.Content(movies)"> </value>
-		<value condition="Player.Paused + Player.HasVideo + VideoPlayer.Content(movies)"> </value>
-		<value condition="Player.Playing + Player.HasVideo + [VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv)]"> </value>
-		<value condition="Player.Paused + Player.HasVideo + [VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv)]"> </value>
-		<value condition="Player.Playing + Player.HasAudio"> </value>
-		<value condition="Player.Paused + Player.HasAudio"> </value>
+		<value condition="Player.Playing + Player.HasVideo + VideoPlayer.Content(movies)"></value>
+		<value condition="Player.Paused + Player.HasVideo + VideoPlayer.Content(movies)"></value>
+		<value condition="Player.Playing + Player.HasVideo + [VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv)]"></value>
+		<value condition="Player.Paused + Player.HasVideo + [VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv)]"></value>
+		<value condition="Player.Playing + Player.HasAudio"></value>
+		<value condition="Player.Paused + Player.HasAudio"></value>
 	</variable>
 	<variable name="BreadcrumbsIconVar">
-		<value condition="Window.IsActive(script-globalsearch.xml) | Window.IsVisible(1125)"></value>
-		<value condition="String.IsEqual(Container.FolderPath,sources://video/)"></value>
-		<value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Window.IsActive(tvchannels) | Window.IsActive(TVGuide) | Window.IsActive(TVRecordings) | Window.IsActive(TVTimers) | Window.IsActive(TVSearch) | [Container.Content(genres) + String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]"></value>
-		<value condition="Container.Content(movies) | Container.Content(sets) | [Container.Content(genres) + String.StartsWith(Container.FolderPath,videodb://movies/genres/)]"></value>
-		<value condition="Window.IsActive(videos)"></value>
-		<value condition="Container.Content(artists) | Container.Content(albums) | Container.Content(songs)"></value>
-		<value condition="Window.IsActive(music)"></value>
-		<value condition="Window.IsActive(addonbrowser) | Window.IsActive(addoninformation) | Window.IsActive(eventlog) | Window.IsActive(filemanager) | Window.IsActive(settings) | Window.IsActive(SettingsCategory.xml) | Window.IsActive(skinsettings) | Window.IsActive(profiles) | Window.IsActive(systeminfo)"></value>
-		<value condition="Window.IsActive(games)"></value>
-		<value condition="Window.IsActive(programs) | Window.IsActive(1133)"></value>
-		<value condition="Window.IsActive(pictures)"></value>
-		<value condition="Window.IsActive(weather)"></value>
-		<value condition="Window.IsActive(favouritesbrowser)"></value>
+		<value condition="Window.IsActive(script-globalsearch.xml) | Window.IsVisible(1125)"></value>
+		<value condition="String.IsEqual(Container.FolderPath,sources://video/)"></value>
+		<value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Window.IsActive(tvchannels) | Window.IsActive(TVGuide) | Window.IsActive(TVRecordings) | Window.IsActive(TVTimers) | Window.IsActive(TVSearch) | [Container.Content(genres) + String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]"></value>
+		<value condition="Container.Content(movies) | Container.Content(sets) | [Container.Content(genres) + String.StartsWith(Container.FolderPath,videodb://movies/genres/)]"></value>
+		<value condition="Window.IsActive(videos)"></value>
+		<value condition="Container.Content(artists) | Container.Content(albums) | Container.Content(songs)"></value>
+		<value condition="Window.IsActive(music)"></value>
+		<value condition="Window.IsActive(addonbrowser) | Window.IsActive(addoninformation) | Window.IsActive(eventlog) | Window.IsActive(filemanager) | Window.IsActive(settings) | Window.IsActive(SettingsCategory.xml) | Window.IsActive(skinsettings) | Window.IsActive(profiles) | Window.IsActive(systeminfo)"></value>
+		<value condition="Window.IsActive(games)"></value>
+		<value condition="Window.IsActive(programs) | Window.IsActive(1133)"></value>
+		<value condition="Window.IsActive(pictures)"></value>
+		<value condition="Window.IsActive(weather)"></value>
+		<value condition="Window.IsActive(favouritesbrowser)"></value>
 	</variable>
 	<variable name="BreadcrumbsFillerVar">
 		<value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(movies) | Container.Content(genres) | Window.IsActive(music) | Window.IsActive(games) | Window.IsActive(programs) | Window.IsActive(tvchannels) | Window.IsActive(TVRecordings) | Window.IsActive(TVTimers) | Window.IsActive(TVSearch) | Window.IsActive(videos)" />
@@ -337,12 +342,12 @@
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="FloorSubLabelVar">
-		<value condition="ListItem.IsCollection + [Control.IsVisible(57) + Skin.HasSetting(DisableShift_Movieflags) | Control.IsVisible(58) | Control.IsVisible(500) | Control.IsVisible(591)]">$INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]$INFO[Container(4500).NumItems, • , $LOCALIZE[342]]$INFO[ListItem.Rating, • ]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime), • , $LOCALIZE[12391]]</value>
+		<value condition="ListItem.IsCollection + [Control.IsVisible(57) + Skin.HasSetting(DisableShift_Movieflags) | Control.IsVisible(58) | Control.IsVisible(500) | Control.IsVisible(512)]">$INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]$INFO[Container(4500).NumItems, • , $LOCALIZE[342]]$INFO[ListItem.Rating, • ]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime), • , $LOCALIZE[12391]]</value>
 		<value condition="ListItem.IsCollection + [Control.IsVisible(57) + !Skin.HasSetting(DisableShift_Movieflags)]">$INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime), • , $LOCALIZE[12391]]</value>
-		<value condition="ListItem.IsCollection + ![Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(500) | Control.IsVisible(591)]">$INFO[Container(4500).NumItems,, $LOCALIZE[342]]</value>
+		<value condition="ListItem.IsCollection + ![Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(500) | Control.IsVisible(512)]">$INFO[Container(4500).NumItems,, $LOCALIZE[342]]</value>
 		<value condition="Control.IsVisible(509) + Container.Content(episodes)">$INFO[ListItem.Premiered]$INFO[ListItem.RatingAndVotes, • ]$VAR[DurationVar, • ]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ]</value>
-		<value condition="[Control.IsVisible(509) | Control.IsVisible(591)] + Container.Content(seasons) + Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),0)">$INFO[ListItem.Year]$INFO[ListItem.Property(WatchedEpisodePercent), • ,% $LOCALIZE[19256]]</value>
-		<value condition="[Control.IsVisible(509) | Control.IsVisible(591)] + Container.Content(tvshows) + Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),0)">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ]$VAR[DurationVar, • ]$INFO[ListItem.Property(WatchedEpisodePercent), • ,% $LOCALIZE[19256]]</value>
+		<value condition="[Control.IsVisible(509) | Control.IsVisible(512)] + Container.Content(seasons) + Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),0)">$INFO[ListItem.Year]$INFO[ListItem.Property(WatchedEpisodePercent), • ,% $LOCALIZE[19256]]</value>
+		<value condition="[Control.IsVisible(509) | Control.IsVisible(512)] + Container.Content(tvshows) + Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),0)">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ]$VAR[DurationVar, • ]$INFO[ListItem.Property(WatchedEpisodePercent), • ,% $LOCALIZE[19256]]</value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ]$VAR[DurationVar, • ]</value>
 		<value condition="Container.Content(episodes)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="Container.Content(addons)">$INFO[ListItem.AddonSummary]</value>
@@ -365,10 +370,10 @@
 	</variable>
 	<variable name="RightListSubLabelVar">
 		<value condition="ListItem.IsParentFolder" />
-		<value condition="Skin.HasSetting(KarellenSublabelMovies) + !Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.LastPlayed,$LOCALIZE[568] , • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.PlayCount, • $LOCALIZE[31488]: ,][/COLOR]</value>
-		<value condition="Skin.HasSetting(KarellenSublabelMovies) + Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.LastPlayed,$LOCALIZE[568] , • ]$VAR[ItemDurationVar]$INFO[ListItem.PlayCount, • $LOCALIZE[31488]: ,][/COLOR]</value>
-		<value condition="Skin.HasSetting(KarellenSublabelMovies) + !Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.LastPlayed,$LOCALIZE[568] , • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.PlayCount, • $LOCALIZE[31488]: ,][/COLOR]</value>
-		<value condition="Skin.HasSetting(KarellenSublabelMovies) + Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.LastPlayed,$LOCALIZE[568] , • ]$VAR[ItemDurationVar]$INFO[ListItem.PlayCount, • $LOCALIZE[31488]: ,][/COLOR]</value>
+		<value condition="Skin.HasSetting(KarellenSublabelMovies) + !Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.LastPlayed,$LOCALIZE[568]: , • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.PlayCount, • $LOCALIZE[31488]: ,][/COLOR]</value>
+		<value condition="Skin.HasSetting(KarellenSublabelMovies) + Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.LastPlayed,$LOCALIZE[568]: , • ]$VAR[ItemDurationVar]$INFO[ListItem.PlayCount, • $LOCALIZE[31488]: ,][/COLOR]</value>
+		<value condition="Skin.HasSetting(KarellenSublabelMovies) + !Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.LastPlayed,$LOCALIZE[568]: , • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.PlayCount, • $LOCALIZE[31488]: ,][/COLOR]</value>
+		<value condition="Skin.HasSetting(KarellenSublabelMovies) + Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.LastPlayed,$LOCALIZE[568]: , • ]$VAR[ItemDurationVar]$INFO[ListItem.PlayCount, • $LOCALIZE[31488]: ,][/COLOR]</value>
 		<value condition="!Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)] + !String.IsEmpty(ListItem.Duration)">[COLOR white]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
 		<value condition="Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)] + !String.IsEmpty(ListItem.Duration)">[COLOR white]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
 		<value condition="!Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)] + !String.IsEmpty(ListItem.Duration)">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
@@ -424,21 +429,7 @@
 	</variable>
 	<!-- Decription VARs -->
 	<variable name="SkinSettingsDescriptionVar">
-		<value condition="Control.HasFocus(100)">$LOCALIZE[31427]</value>
-		<value condition="Control.HasFocus(101)">$LOCALIZE[31433]</value>
-		<value condition="Control.HasFocus(102)">$LOCALIZE[31430]</value>
-		<value condition="Control.HasFocus(103)">$LOCALIZE[31514]</value>
-		<value condition="Control.HasFocus(104)">$LOCALIZE[31431]</value>
-		<value condition="Control.HasFocus(200)">$LOCALIZE[31126]</value>
-		<value condition="Control.HasFocus(201)">$LOCALIZE[31477]</value>
-		<value condition="Control.HasFocus(202)">$LOCALIZE[31478]</value>
-		<value condition="Control.HasFocus(300)">$LOCALIZE[31473]</value>
-		<value condition="Control.HasFocus(301)">$LOCALIZE[31480]</value>
-		<value condition="Control.HasFocus(302)">$LOCALIZE[31474]</value>
-		<value condition="Control.HasFocus(303)">$LOCALIZE[31428]</value>
-		<value condition="Control.HasFocus(304)">$LOCALIZE[31479]</value>
-		<value condition="Control.HasFocus(305)">$LOCALIZE[31200]</value>
-		<!-- <value condition="Control.HasFocus(208) | Control.HasFocus(209)">$LOCALIZE[31551]</value> -->
+		<value condition="Window.IsVisible(1117)" />
 		<value condition="Control.HasFocus(10000) | Control.HasFocus(30000)">$LOCALIZE[31912]</value>
 		<value condition="Control.HasFocus(10001)">$LOCALIZE[31914]</value>
 		<value condition="Control.HasFocus(10002)">$LOCALIZE[31929]</value>
@@ -526,6 +517,23 @@
 		<!-- <value condition="Control.HasFocus(100000)"></value>
 		<value condition="Control.HasFocus(100001)"></value>
 		<value condition="Control.HasFocus(100002)"></value> -->
+	</variable>
+	<variable name="AddonStatusDescriptionVar">
+		<value condition="Control.HasFocus(100)">$LOCALIZE[31427]</value>
+		<value condition="Control.HasFocus(101)">$LOCALIZE[31433]</value>
+		<value condition="Control.HasFocus(102)">$LOCALIZE[31430]</value>
+		<value condition="Control.HasFocus(103)">$LOCALIZE[31514]</value>
+		<value condition="Control.HasFocus(104)">$LOCALIZE[31431]</value>
+		<value condition="Control.HasFocus(200)">$LOCALIZE[31126]</value>
+		<value condition="Control.HasFocus(201)">$LOCALIZE[31477]</value>
+		<value condition="Control.HasFocus(202)">$LOCALIZE[31478]</value>
+		<value condition="Control.HasFocus(300)">$LOCALIZE[31473]</value>
+		<value condition="Control.HasFocus(301)">$LOCALIZE[31480]</value>
+		<value condition="Control.HasFocus(302)">$LOCALIZE[31474]</value>
+		<value condition="Control.HasFocus(303)">$LOCALIZE[31428]</value>
+		<value condition="Control.HasFocus(304)">$LOCALIZE[31479]</value>
+		<value condition="Control.HasFocus(305)">$LOCALIZE[31200]</value>
+		<!-- <value condition="Control.HasFocus()">$LOCALIZE[31551]</value> -->
 	</variable>
 	<variable name="SkinShortcutsDescriptionVar">
 		<value condition="Control.HasFocus(304)">$ADDON[script.skinshortcuts 32003]</value>
@@ -697,9 +705,9 @@
 		<value condition="String.IsEqual(ListItem.DBTYPE,season)">$LOCALIZE[31271]</value>
 	</variable>
 	<variable name="ContainerHasNextPreviousLabelVar">
+		<value condition="Container(90001).HasPrevious + !Container(90001).HasNext | String.IsEqual(ListItem.DBTYPE,season)"></value>
 		<value condition="Container(90001).HasNext + !Container(90001).HasPrevious"></value>
 		<value condition="Container(90001).HasPrevious + Container(90001).HasNext"></value>
-		<value condition="Container(90001).HasPrevious + !Container(90001).HasNext"></value>
 	</variable>
 	<variable name="CustomVideoButtonLabelVar">
 		<value condition="Control.HasFocus(4610)">$LOCALIZE[208]</value>
@@ -1116,7 +1124,7 @@
 	</variable>
 	<variable name="TopBarRightLabelVar">
 		<value condition="Pvr.IsPlayingTv">$INFO[System.Date][COLOR grey2]$INFO[System.Time, • ][/COLOR][COLOR white]$INFO[PVR.EpgEventRemainingTime,   - ][/COLOR]</value>
-		<value>$INFO[System.Date][COLOR grey2]$INFO[System.Time, • ][/COLOR][COLOR white]$INFO[Player.TimeRemaining,   - ][/COLOR]</value>
+		<value>$INFO[System.Date][COLOR grey2]$INFO[System.Time, • ][/COLOR][COLOR white][LIGHT]$INFO[Player.TimeRemaining, - ][/LIGHT][/COLOR]</value>
 	</variable>
 	<variable name="PVRTimerIcon">
 		<value condition="ListItem.IsRecording">pvr/icons/PVR-IsRecording.png</value>
@@ -1140,13 +1148,15 @@
 	<variable name="DialogSettingsHeaderVar">
 		<value condition="Control.HasFocus(97) + Window.IsVisible(contentsettings)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[222][/COLOR]</value>
 		<value condition="Control.HasFocus(97)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[15067][/COLOR]</value>
-		<value condition="Control.HasFocus(95) + [Window.IsVisible(FileBrowser.xml) | Window.IsVisible(contentsettings) | Window.IsVisible(mediafilter)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[186][/COLOR]</value>
+		<value condition="Control.HasFocus(95) + [Window.IsVisible(FileBrowser.xml) | Window.IsVisible(contentsettings) | Window.IsVisible(mediafilter) | Window.IsVisible(smartplaylisteditor) | Window.IsVisible(addonsettings) | Window.IsVisible(mediasource)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[186][/COLOR]</value>
+		<value condition="Control.HasFocus(98) + Window.IsVisible(addonsettings)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[571][/COLOR]</value>
 		<value condition="Control.HasFocus(98) + Window.IsVisible(FileBrowser.xml)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[119][/COLOR]</value>
 		<value condition="Control.HasFocus(98) + Window.IsVisible(mediafilter)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[192][/COLOR]</value>
+		<value condition="Window.IsVisible(smartplaylisteditor)">$LOCALIZE[21432]</value>
 		<value condition="Window.IsVisible(FileBrowser.xml)">$INFO[Control.GetLabel(411)][COLOR $VAR[ThemeLabelColor]]$INFO[Control.GetLabel(412), - ][/COLOR]</value>
 		<value condition="Window.IsVisible(DialogSelect.xml) + Control.HasFocus(95)">[COLOR $VAR[ThemeLabelColor]]$INFO[Control.GetLabel(5)][/COLOR]</value>
 		<value condition="Window.IsVisible(DialogSelect.xml) | Window.IsVisible(selectvideoversion)">$INFO[Control.GetLabel(1)]</value>
-		<value condition="Window.IsVisible(DialogSettings.xml)">$INFO[Control.GetLabel(2)]</value>
+		<value condition="Window.IsVisible(DialogSettings.xml) | Window.IsVisible(addonsettings) | Window.IsVisible(mediasource)">$INFO[Control.GetLabel(2)]</value>
 		<value condition="Window.IsVisible(1114) + String.IsEqual(Window(Home).Property(DialogSettings),videoosd)">$LOCALIZE[31375] $LOCALIZE[5]</value>
 		<value condition="Window.IsVisible(1114) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd)">$LOCALIZE[31376] $LOCALIZE[5]</value>
 		<value condition="Window.IsVisible(1114) + String.IsEqual(Window(Home).Property(DialogSettings),videoinfo)">$LOCALIZE[31190] $LOCALIZE[5]</value>
@@ -1154,14 +1164,15 @@
 		<value />
 	</variable>
 	<variable name="DialogSettingsOkButtonLabelVar">
-		<value condition="Window.IsVisible(selectvideoversion)"></value>
-		<value condition="Window.IsVisible(selectvideoextra)"></value>
-		<value></value>
+		<value condition="Window.IsVisible(selectvideoversion)"></value>
+		<value condition="Window.IsVisible(selectvideoextra)"></value>
+		<value></value>
 	</variable>
 	<variable name="DialogSettingsMoreButtonLabelVar">
-		<value condition="Window.IsVisible(FileBrowser.xml)"></value>
-		<value condition="Window.IsVisible(mediafilter)"></value>
-		<value></value>
+		<value condition="Window.IsVisible(FileBrowser.xml)"></value>
+		<value condition="Window.IsVisible(mediafilter)"></value>
+		<value condition="Window.IsVisible(addonsettings)"></value>
+		<value></value>
 	</variable>
 	<variable name="DialogColorPickerHeaderVar">
 		<value condition="Control.HasFocus(98)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[13007][/COLOR]</value>
@@ -1192,11 +1203,11 @@
 	</variable>
 	<variable name="TopBarColor">
 		<value condition="!String.IsEmpty(Skin.String(TopBarColor))">$INFO[Skin.String(TopBarColor)]</value>
-		<value>FF000000</value>
+		<value>80000000</value>
 	</variable>
 	<variable name="TopBarGlowBarColor">
 		<value condition="!String.IsEmpty(Skin.String(TopBarGlowBarColor))">$INFO[Skin.String(TopBarGlowBarColor)]</value>
-		<value>00FFFFFF</value>
+		<value>FF000000</value>
 	</variable>
 	<variable name="HighlightBarColor">
 		<value condition="!String.IsEmpty(Skin.String(HighlightBarColor))">$INFO[Skin.String(HighlightBarColor)]</value>

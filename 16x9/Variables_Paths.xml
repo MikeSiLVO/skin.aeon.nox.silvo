@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<variable name="SkinVariablesContentVar">
+	<variable name="SkinVariablesContentIDVar">
 		<value condition="String.IsEqual(Container.Content,genres) + Window.IsVisible(MyMusicNav.xml)">genres-music</value>
 		<value condition="String.Contains(Container.FolderPath,setid)">movies-sets</value>
 		<value condition="!String.IsEmpty(Container.Content)">$INFO[Container.Content]</value>
 		<value condition="Container.Content() + Window.IsVisible(MyVideoNav.xml)">none-videos</value>
 	</variable>
-	<variable name="SkinVariableDBContainerPluginPath">
+	<variable name="SkinVariableDBContainerPluginPathVar">
 		<value condition="Window.IsActive(fullscreenvideo) + VideoPlayer.Content(movies)">$INFO[VideoPlayer.DBID,plugin://script.skinvariables/?info=get_dbitem_movie_details&amp;dbid=]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,set)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_movieset_details&amp;dbid=]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,movie) | Window.IsVisible(1125) + ControlGroup(5000).HasFocus(5001)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_movie_details&amp;dbid=]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_tvshow_details&amp;dbid=]</value>
+		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBTYPE,season)">$INFO[ListItem.TVShowDBID,plugin://script.skinvariables/?info=get_dbitem_tvshow_details&amp;dbid=]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,season)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_season_details&amp;dbid=]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,episode)">$INFO[ListItem.DBID,plugin://script.skinvariables/?info=get_dbitem_episode_details&amp;dbid=]</value>
 		<!-- <value>plugin://script.skinvariables/?info=get_dbitem_addon_details&amp;dbid=]</value> -->
 	</variable>
 	<variable name="SkinVariablesCastPanelContentVar">
-		<value condition="!String.IsEqual(ListItem.DBTYPE,set)">plugin://script.skinvariables/?info=get_container_labels&amp;containers=50&amp;infolabel=Label&amp;thumb=Icon&amp;label2=Label2&amp;reload=$INFO[ListItem.DBID]</value>
-		<value condition="String.IsEqual(ListItem.DBTYPE,set)">plugin://script.skinvariables/?info=get_dotted_properties&amp;source=Container(4501).ListItem&amp;string=movies.{x}.item.cast.{y}.&amp;infoproperties=name/role/thumbnail&amp;label=name&amp;thumb=thumbnail&amp;xmax=15&amp;ymax=20&amp;no_label_dupes=true&amp;reload=$INFO[Container(4501).ListItem.Label]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,season)">plugin://script.skinvariables/?info=get_dotted_properties&amp;source=Container(4501).ListItem&amp;string=cast.{y}.&amp;infoproperties=name/role/thumbnail&amp;ymax=200&amp;label=name&amp;thumb=thumbnail&amp;no_label_dupes=true&amp;reload=$INFO[Container(4501).ListItem.DBID]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,set)">plugin://script.skinvariables/?info=get_dotted_properties&amp;source=Container(4501).ListItem&amp;string=movies.{x}.item.cast.{y}.&amp;infoproperties=name/role/thumbnail&amp;label=name&amp;thumb=thumbnail&amp;xmax=15&amp;ymax=20&amp;no_label_dupes=true&amp;reload=$INFO[Container(4501).ListItem.DBID]</value>
+		<value>plugin://script.skinvariables/?info=get_container_labels&amp;containers=50&amp;infolabel=Label&amp;thumb=Icon&amp;label2=Label2&amp;reload=$INFO[ListItem.DBID]</value>
 	</variable>
 	<variable name="SkinVariablesCustomInfoContentVar">
 		<value condition="String.IsEqual(Window(Home).Property(item_dbtype),movie)">$INFO[Window(Home).Property(item_dbid),plugin://script.skinvariables/?info=get_dbitem_movie_details&amp;dbid=]</value>
@@ -27,7 +29,7 @@
 		<value condition="String.IsEqual(ListItem.DBTYPE,set)">videodb://movies/sets/$INFO[ListItem.DBID]/?setid=$INFO[ListItem.DBID]</value>
 	</variable>
 	<variable name="JukeBoxContentPathVar">
-		<value condition="Container.Content(albums)">$INFO[Container(603).ListItem.DBID,musicdb://albums/,/]</value>
+		<value condition="Container.Content(albums)">$INFO[Container(513).ListItem.DBID,musicdb://albums/,/]</value>
 		<value>musicdb://artists/$INFO[ListItem.DBID]/*</value>
 	</variable>
 	<variable name="ArtistInfoPathVar">

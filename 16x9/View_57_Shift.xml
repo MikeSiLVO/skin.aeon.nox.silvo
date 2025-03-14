@@ -18,16 +18,12 @@
 			<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
 			<visible>[Container.Content(movies) |Container.Content(tvshows) | Container.Content(seasons)] + Skin.HasSetting(Enable.Shift.Covers)</visible>
 		</control>
-		<control type="image">
-			<left>269</left>
-			<top>169</top>
-			<width>40</width>
-			<height>40</height>
-			<texture>$VAR[OverlayVar]</texture>
-			<aspectratio align="center" aligny="top">keep</aspectratio>
-			<bordersize>1</bordersize>
-			<visible>[!String.IsEmpty(Skin.String(57.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(57.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(57.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(57.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(57.MusicVideos.DisableOverlay)) + Container.Content(musicvideos)]</visible>
-		</control>
+		<include content="PosterStatusOverlay">
+			<param name="left">268</param>
+			<param name="top">170</param>
+			<param name="size">40</param>
+			<param name="visible">[!String.IsEmpty(Skin.String(57.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(57.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(57.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(57.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(57.MusicVideos.DisableOverlay)) + Container.Content(musicvideos)]</param>
+		</include>
 		<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
 			<param name="left">8</param>
 			<param name="top">170</param>
@@ -51,16 +47,12 @@
 			<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
 			<visible>[Container.Content(movies) |Container.Content(tvshows) | Container.Content(seasons)] + Skin.HasSetting(Enable.Shift.Covers)</visible>
 		</control>
-		<control type="image">
-			<left>271</left>
-			<top>364</top>
-			<width>30</width>
-			<height>30</height>
-			<texture>$VAR[OverlayVar]</texture>
-			<aspectratio align="center" aligny="top">keep</aspectratio>
-			<bordersize>1</bordersize>
-			<visible>[!String.IsEmpty(Skin.String(57.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(57.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(57.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(57.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(57.MusicVideos.DisableOverlay)) + Container.Content(musicvideos)]</visible>
-		</control>
+		<include content="PosterStatusOverlay">
+			<param name="left">270</param>
+			<param name="top">365</param>
+			<param name="size">30</param>
+			<param name="visible">[!String.IsEmpty(Skin.String(57.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(57.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(57.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(57.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(57.MusicVideos.DisableOverlay)) + Container.Content(musicvideos)]</param>
+		</include>
 		<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
 			<param name="left">140</param>
 			<param name="top">364</param>
@@ -89,15 +81,6 @@
 			<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
 			<bordersize>20</bordersize>
 			<visible>Container.Content(genres)</visible>
-		</control>
-		<control type="image">
-			<left>200</left>
-			<top>149</top>
-			<width>100</width>
-			<height>100</height>
-			<texture>$VAR[OverlayVar]</texture>
-			<aspectratio align="center" aligny="top">keep</aspectratio>
-			<bordersize>1</bordersize>
 		</control>
 		<control type="image">
 			<left>278</left>

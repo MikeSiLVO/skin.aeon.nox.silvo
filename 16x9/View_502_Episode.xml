@@ -15,10 +15,10 @@
 				<animation effect="slide" end="1450" condition="Skin.HasSetting(alternatelayoutepisode)">Conditional</animation>
 			</control>
 			<control type="fixedlist" id="502">
-				<left>60</left>
-				<top>80</top>
+				<left>100</left>
+				<top>100</top>
 				<width>1820</width>
-				<height>980</height>
+				<height>880</height>
 				<movement>3</movement>
 				<focusposition>3</focusposition>
 				<onleft>SetProperty(MediaMenu,True,Home)</onleft>
@@ -36,7 +36,6 @@
 				<animation effect="slide" end="0,0" time="160" condition="Container(502).Row(3)">Conditional</animation>
 				<animation effect="slide" end="0,0" time="160" condition="Container(502).Row(4)">Conditional</animation>
 				<animation effect="slide" end="0,0" time="160" condition="Container(502).Row(5)">Conditional</animation>
-				<animation effect="slide" end="-113,0" condition="Skin.HasSetting(alternatelayoutepisode)">Conditional</animation>
 				<itemlayout height="100" width="1920" condition="Container.Content(episodes)">
 					<control type="label">
 						<left>920</left>
@@ -50,7 +49,7 @@
 						<visible>!Skin.HasSetting(alternatelayoutepisode)</visible>
 					</control>
 					<control type="label">
-						<left>200</left>
+						<left>0</left>
 						<width>790</width>
 						<height>70</height>
 						<font>font30</font>
@@ -60,30 +59,16 @@
 						<visible>Skin.HasSetting(alternatelayoutepisode)</visible>
 					</control>
 					<control type="group">
-						<left>1747</left>
-						<top>5</top>
-						<control type="label">
-							<left>3</left>
-							<width>64</width>
-							<height>64</height>
-							<textcolor>white3</textcolor>
-							<font>IconMediumMD</font>
-							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-							<animation effect="slide" end="-1650" condition="Skin.HasSetting(alternatelayoutepisode)">Conditional</animation>
-						</control>
-						<control type="label">
-							<width>64</width>
-							<height>64</height>
-							<textcolor>white3</textcolor>
-							<font>IconMediumMD</font>
-							<label>$VAR[ListItemOverlayProgress]</label>
-							<animation effect="zoom" start="70" end="70" center="auto" condition="true">Conditional</animation>
-						</control>
+						<animation effect="slide" end="-1825" condition="Skin.HasSetting(alternatelayoutepisode)">Conditional</animation>
+						<include content="ListStatusIndicators">
+							<param name="left">1743</param>
+							<param name="top">5</param>
+						</include>
 					</control>
 				</itemlayout>
 				<focusedlayout height="275" width="1920" condition="Container.Content(episodes)">
 					<control type="group">
-						<animation effect="slide" end="-1060" condition="Skin.HasSetting(alternatelayoutepisode)">Conditional</animation>
+						<animation effect="slide" end="-1268" condition="Skin.HasSetting(alternatelayoutepisode)">Conditional</animation>
 						<control type="image">
 							<left>1250</left>
 							<top>-20</top>
@@ -100,8 +85,7 @@
 							<top>200</top>
 							<width>444</width>
 							<height>50</height>
-							<texture>colors/black.png</texture>
-							<colordiffuse>88ffffff</colordiffuse>
+							<texture>colors/black50.png</texture>
 							<visible>!ListItem.IsParentFolder</visible>
 						</control>
 						<control type="label">
@@ -119,72 +103,60 @@
 					</control>
 					<control type="group">
 						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(502)">Conditional</animation>
-						<control type="label">
-							<top>-15</top>
-							<width>1220</width>
-							<height>70</height>
-							<font>font30</font>
-							<textcolor>white2</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<align>right</align>
-							<label>$INFO[ListItem.Label]</label>
+						<control type="group">
 							<visible>!Skin.HasSetting(alternatelayoutepisode)</visible>
+							<control type="label">
+								<top>-15</top>
+								<width>1220</width>
+								<height>70</height>
+								<font>font30</font>
+								<textcolor>white2</textcolor>
+								<shadowcolor>shadow</shadowcolor>
+								<align>right</align>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="textbox">
+								<label>$VAR[VideoPlotVar]</label>
+								<top>70</top>
+								<right>700</right>
+								<width>900</width>
+								<height>180</height>
+								<align>right</align>
+								<textcolor>white2</textcolor>
+								<shadowcolor>shadow</shadowcolor>
+								<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+							</control>
 						</control>
-						<control type="label">
-							<top>-15</top>
-							<left>700</left>
-							<width>1220</width>
-							<height>70</height>
-							<font>font30</font>
-							<textcolor>white2</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<label>$INFO[ListItem.Label]</label>
+						<control type="group">
 							<visible>Skin.HasSetting(alternatelayoutepisode)</visible>
-						</control>
-						<control type="textbox">
-							<label>$VAR[VideoPlotVar]</label>
-							<top>70</top>
-							<left>220</left>
-							<width>1000</width>
-							<height>180</height>
-							<align>right</align>
-							<textcolor>white2</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<visible>!Skin.HasSetting(alternatelayoutepisode)</visible>
-							<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
-						</control>
-						<control type="textbox">
-							<label>$VAR[VideoPlotVar]</label>
-							<top>70</top>
-							<left>700</left>
-							<width>1000</width>
-							<height>180</height>
-							<textcolor>white2</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<visible>Skin.HasSetting(alternatelayoutepisode)</visible>
-							<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+							<control type="label">
+								<top>-15</top>
+								<left>480</left>
+								<width>1220</width>
+								<height>70</height>
+								<font>font30</font>
+								<textcolor>white2</textcolor>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+							<control type="textbox">
+								<label>$VAR[VideoPlotVar]</label>
+								<top>70</top>
+								<left>480</left>
+								<width>900</width>
+								<height>180</height>
+								<textcolor>white2</textcolor>
+								<shadowcolor>shadow</shadowcolor>
+								<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+							</control>
 						</control>
 					</control>
 					<control type="group">
-						<left>1747</left>
-						<top>5</top>
-						<control type="label">
-							<left>3</left>
-							<width>64</width>
-							<height>64</height>
-							<textcolor>white3</textcolor>
-							<font>IconMediumMD</font>
-							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-							<animation effect="slide" end="-1650" condition="Skin.HasSetting(alternatelayoutepisode)">Conditional</animation>
-						</control>
-						<control type="label">
-							<width>64</width>
-							<height>64</height>
-							<textcolor>white3</textcolor>
-							<font>IconMediumMD</font>
-							<label>$VAR[ListItemOverlayProgress]</label>
-							<animation effect="zoom" start="70" end="70" center="auto" condition="true">Conditional</animation>
-						</control>
+						<animation effect="slide" end="-1825" condition="Skin.HasSetting(alternatelayoutepisode)">Conditional</animation>
+						<include content="ListStatusIndicators">
+							<param name="left">1743</param>
+							<param name="top">5</param>
+						</include>
 					</control>
 				</focusedlayout>
 			</control>

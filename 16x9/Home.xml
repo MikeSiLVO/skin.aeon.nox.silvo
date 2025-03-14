@@ -7,7 +7,7 @@
 	<onload condition="!Skin.HasSetting(AskedDefaultBackground)">SetProperty(AskDefaultBackground,True,Home)</onload>
 	<onload condition="!Skin.HasSetting(AskedDefaultBackground) + !Control.IsVisible(9999)">Skin.TimerStart(askdefaultbackground)</onload>
 	<onload condition="!String.IsEmpty(Skin.String(StartupIntro)) + !String.IsEmpty(Window(Home).Property(Playing.StartupIntro))">AlarmClock(Clear_PlayingIntroProp,ClearProperty(Playing.StartupIntro,Home),00:10,silent)</onload>
-	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(poster)|Art(season.poster)|Art(tvshow.poster)|Art(thumb)|Icon,Home)</onload>
+	<!-- <onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(poster)|Art(season.poster)|Art(tvshow.poster)|Art(thumb)|Icon,Home)</onload> -->
 	<onunload condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">Control.SetHidden(9010)</onunload>
 	<menucontrol>9051</menucontrol>
 	<controls>

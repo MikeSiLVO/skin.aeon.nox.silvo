@@ -23,9 +23,9 @@
 				<width>360</width>
 				<height>360</height>
 				<aspectratio>keep</aspectratio>
-				<texture background="true">$INFO[ListItem.Icon]</texture>
-				<bordertexture border="1">thumbs/panel_border.png</bordertexture>
-				<bordersize>1</bordersize>
+				<texture border="2" background="true">$INFO[ListItem.Icon]</texture>
+				<bordersize>2</bordersize>
+				<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 			</control>
 			<control type="grouplist" id="9000">
 				<top>360</top>
@@ -132,7 +132,7 @@
 				<left>360</left>
 				<width>1</width>
 				<height>900</height>
-				<texture colordiffuse="grey4">separator_vertical.png</texture>
+				<texture colordiffuse="grey4">colors/white.png</texture>
 			</control>
 			<control type="group">
 				<left>361</left>
@@ -188,13 +188,13 @@
 					<top>200</top>
 					<width>1439</width>
 					<height>3</height>
-					<texture colordiffuse="grey4">separator_horizontal.png</texture>
+					<texture colordiffuse="grey4">colors/white.png</texture>
 				</control>
 				<control type="image">
 					<top>740</top>
 					<width>1439</width>
 					<height>3</height>
-					<texture colordiffuse="grey4">separator_horizontal.png</texture>
+					<texture colordiffuse="grey4">colors/white.png</texture>
 					<visible>[!String.IsEqual(ListItem.AddonLifecycleType,$LOCALIZE[24169]) | !String.IsEmpty(ListItem.AddonDisclaimer)] + String.IsEmpty(Window(Home).Property(AddonNews))</visible>
 				</control>
 				<control type="group">

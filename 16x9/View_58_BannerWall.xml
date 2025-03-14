@@ -44,9 +44,9 @@
 							<width>560</width>
 							<height>110</height>
 							<aspectratio>scale</aspectratio>
-							<texture colordiffuse="BAFFFFFF" background="true">$VAR[BannerThumb]</texture>
-							<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+							<texture border="4" colordiffuse="BFFFFFFF" background="true">$VAR[BannerThumb]</texture>
 							<bordersize>4</bordersize>
+							<bordertexture border="4" infill="false" colordiffuse="shadow">colors/black.png</bordertexture>
 							<visible>!String.IsEmpty(ListItem.Art(banner)) | String.IsEmpty(ListItem.Art(fanart))</visible>
 						</control>
 						<control type="group">
@@ -55,29 +55,25 @@
 								<width>560</width>
 								<height>110</height>
 								<aspectratio>scale</aspectratio>
-								<texture colordiffuse="BAFFFFFF" background="true">$INFO[ListItem.Art(fanart)]</texture>
-								<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+								<texture border="4" colordiffuse="BFFFFFFF" background="true">$INFO[ListItem.Art(fanart)]</texture>
 								<bordersize>4</bordersize>
+								<bordertexture border="4" infill="false" colordiffuse="shadow">colors/black.png</bordertexture>
 							</control>
 							<control type="image">
 								<top>5</top>
 								<width>300</width>
 								<height>100</height>
 								<aspectratio>keep</aspectratio>
-								<texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
+								<texture colordiffuse="BFFFFFFF" background="true">$INFO[ListItem.Art(clearlogo)]</texture>
 								<bordersize>4</bordersize>
-								<colordiffuse>BAffffff</colordiffuse>
 							</control>
 						</control>
-						<control type="image">
-							<left>519</left>
-							<width>42</width>
-							<height>42</height>
-							<texture>$VAR[OverlayVar]</texture>
-							<aspectratio align="center" aligny="top">keep</aspectratio>
-							<bordersize>4</bordersize>
-							<visible>[!String.IsEmpty(Skin.String(58.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(58.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
-						</control>
+						<include content="PosterStatusOverlay">
+							<param name="left">522</param>
+							<param name="top">4</param>
+							<param name="size">34</param>
+							<param name="visible">[!String.IsEmpty(Skin.String(58.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(58.TV.DisableOverlay)) + Container.Content(tvshows)]</param>
+						</include>
 						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedEpisodeOverlay</include>
 					</itemlayout>
 					<focusedlayout height="110" width="560">
@@ -90,9 +86,9 @@
 								<width>560</width>
 								<height>110</height>
 								<aspectratio>scale</aspectratio>
-								<texture background="true">$VAR[BannerThumb]</texture>
-								<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+								<texture border="8" background="true">$VAR[BannerThumb]</texture>
 								<bordersize>8</bordersize>
+								<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 								<visible>!String.IsEmpty(ListItem.Art(banner)) | String.IsEmpty(ListItem.Art(fanart))</visible>
 							</control>
 							<control type="group">
@@ -101,9 +97,9 @@
 									<width>560</width>
 									<height>110</height>
 									<aspectratio>scale</aspectratio>
-									<texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-									<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
+									<texture border="8" background="true">$INFO[ListItem.Art(fanart)]</texture>
 									<bordersize>8</bordersize>
+									<bordertexture border="8" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 								</control>
 								<control type="image">
 									<top>5</top>
@@ -111,19 +107,15 @@
 									<height>100</height>
 									<aspectratio>keep</aspectratio>
 									<texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
-									<bordersize>4</bordersize>
+									<bordersize>8</bordersize>
 								</control>
 							</control>
-							<control type="image">
-								<left>515</left>
-								<top>4</top>
-								<width>42</width>
-								<height>42</height>
-								<texture>$VAR[OverlayVar]</texture>
-								<aspectratio align="center" aligny="top">keep</aspectratio>
-								<bordersize>4</bordersize>
-								<visible>[!String.IsEmpty(Skin.String(58.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(58.TV.DisableOverlay)) + Container.Content(tvshows)]</visible>
-							</control>
+							<include content="PosterStatusOverlay">
+								<param name="left">518</param>
+								<param name="top">8</param>
+								<param name="size">34</param>
+								<param name="visible">[!String.IsEmpty(Skin.String(58.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(58.TV.DisableOverlay)) + Container.Content(tvshows)]</param>
+							</include>
 							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
 								<param name="left">8</param>
 								<param name="top">8</param>
@@ -153,11 +145,11 @@
 					<control type="image">
 						<width>560</width>
 						<height>330</height>
-						<aspectratio>scale</aspectratio>
-						<texture background="true">$VAR[GlobalBackgroundVar]</texture>
 						<fadetime>300</fadetime>
-						<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
+						<aspectratio>scale</aspectratio>
+						<texture border="2" background="true">$VAR[GlobalBackgroundVar]</texture>
 						<bordersize>2</bordersize>
+						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 					</control>
 					<control type="label">
 						<top>325</top>

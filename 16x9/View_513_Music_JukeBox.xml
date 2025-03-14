@@ -2,7 +2,7 @@
 <includes>
 	<include name="Music_JukeBox">
 		<control type="group">
-			<visible>Control.IsVisible(603) + !Window.IsActive(addoninformation)</visible>
+			<visible>Control.IsVisible(513) + !Window.IsActive(addoninformation)</visible>
 			<include>ViewAnimation</include>
 			<include>WindowOpenCloseAnimation</include>
 			<control type="group">
@@ -16,16 +16,16 @@
 						<height>606</height>
 						<texture colordiffuse="E6FFFFFF" border="40">listpanel_back.png</texture>
 					</control>
-					<control type="panel" id="603">
+					<control type="panel" id="513">
 						<top>180</top>
 						<width>810</width>
 						<height>540</height>
-						<onleft>60360</onleft>
-						<onright>60350</onright>
-						<onup>603</onup>
-						<ondown>603</ondown>
+						<onleft>51360</onleft>
+						<onright>51350</onright>
+						<onup>513</onup>
+						<ondown>513</ondown>
 						<viewtype label="$LOCALIZE[31510]">list</viewtype>
-						<pagecontrol>60360</pagecontrol>
+						<pagecontrol>51360</pagecontrol>
 						<scrolltime tween="quadratic" easing="out">200</scrolltime>
 						<itemlayout height="90" width="810">
 							<control type="label">
@@ -42,8 +42,8 @@
 							<control type="image">
 								<width>810</width>
 								<height>90</height>
-								<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
-								<visible>Control.HasFocus(603)</visible>
+								<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
+								<visible>Control.HasFocus(513)</visible>
 								<include>VisibleFadeAnimation</include>
 							</control>
 							<control type="label">
@@ -56,16 +56,16 @@
 							</control>
 						</focusedlayout>
 					</control>
-					<control type="scrollbar" id="60360">
+					<control type="scrollbar" id="51360">
 						<left>-16</left>
 						<top>180</top>
 						<width>12</width>
 						<height>540</height>
-						<onup>60360</onup>
-						<ondown>60360</ondown>
+						<onup>51360</onup>
+						<ondown>51360</ondown>
 						<onleft>SetProperty(MediaMenu,True,Home)</onleft>
 						<onleft>SetFocus(9050)</onleft>
-						<onright>603</onright>
+						<onright>513</onright>
 						<showonepage>false</showonepage>
 						<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
 						<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
@@ -81,15 +81,15 @@
 						<height>606</height>
 						<texture colordiffuse="E6FFFFFF" border="40">listpanel_back.png</texture>
 					</control>
-					<control type="panel" id="60350">
+					<control type="panel" id="51350">
 						<top>180</top>
 						<width>810</width>
 						<height>540</height>
-						<onleft>603</onleft>
+						<onleft>513</onleft>
 						<onright>61</onright>
-						<onup>60350</onup>
-						<ondown>60350</ondown>
-						<animation effect="fade" start="100" end="0" time="300" condition="Container(60350).IsUpdating">Conditional</animation>
+						<onup>51350</onup>
+						<ondown>51350</ondown>
+						<animation effect="fade" start="100" end="0" time="300" condition="Container(51350).IsUpdating">Conditional</animation>
 						<viewtype label="535">list</viewtype>
 						<pagecontrol>61</pagecontrol>
 						<scrolltime tween="quadratic" easing="out">200</scrolltime>
@@ -137,8 +137,8 @@
 							<control type="image">
 								<width>810</width>
 								<height>90</height>
-								<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
-								<visible>Control.HasFocus(60350)</visible>
+								<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
+								<visible>Control.HasFocus(51350)</visible>
 								<include>VisibleFadeAnimation</include>
 							</control>
 							<control type="label">
@@ -188,7 +188,7 @@
 						<height>540</height>
 						<onup>61</onup>
 						<ondown>61</ondown>
-						<onleft>60350</onleft>
+						<onleft>51350</onleft>
 						<onright condition="!Control.IsVisible(615)">SetProperty(MediaMenu,True,Home)</onright>
 						<onright condition="!Control.IsVisible(615)">SetFocus(9050)</onright>
 						<onright condition="Control.IsVisible(615)">615</onright>
@@ -199,7 +199,7 @@
 					</control>
 					<control type="group">
 						<description>Busy animation</description>
-						<visible>Container(60350).IsUpdating</visible>
+						<visible>Container(51350).IsUpdating</visible>
 						<include>SettingsFadeAnimation</include>
 						<left>370</left>
 						<top>380</top>
@@ -237,7 +237,7 @@
 					<width>400</width>
 					<height>400</height>
 					<aspectratio aligny="bottom">keep</aspectratio>
-					<texture background="true">$INFO[Container(60350).ListItem.Icon]</texture>
+					<texture background="true">$INFO[Container(51350).ListItem.Icon]</texture>
 					<fadetime>IconCrossfadeTime</fadetime>
 					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
 					<bordersize>20</bordersize>

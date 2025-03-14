@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">50</defaultcontrol>
-	<views>50,51,52,53,55,56,57,58,59,500,501,502,503,504,505,506,507,509,591,592,602,609</views>
+	<views>50,51,52,53,55,56,57,58,59,500,501,502,503,504,505,506,507,509,510,511,512</views>
 	<menucontrol>9051</menucontrol>
-	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(poster)|Art(season.poster)|Art(tvshow.poster)|Art(thumb)|Icon,Home)</onload>
+	<!-- <onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(poster)|Art(season.poster)|Art(tvshow.poster)|Art(thumb)|Icon,Home)</onload> -->
 	<onload>SetProperty(Window.HasSettings,True,Home)</onload>
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
@@ -231,12 +231,12 @@
 				<!-- view id = 507 -->
 				<include condition="[!Skin.HasSetting(Disable.MyFlixView) + !Skin.HasSetting(skinvariables.viewtypes)] | [$EXP[Exp_View_509_Include] + Skin.HasSetting(skinvariables.viewtypes)]">View_509_MyFlix</include>
 				<!-- view id = 509 -->
-				<include condition="[!Skin.HasSetting(Disable.BigFanView) + !Skin.HasSetting(skinvariables.viewtypes)] | [$EXP[Exp_View_591_Include] + Skin.HasSetting(skinvariables.viewtypes)]">View_591_BigFan</include>
-				<!-- view id = 591 -->
-				<include condition="[!Skin.HasSetting(Disable.FanartListView) + !Skin.HasSetting(skinvariables.viewtypes)] | [$EXP[Exp_View_602_Include] + Skin.HasSetting(skinvariables.viewtypes)]">VideoFanartList</include>
-				<!-- view id = 602 -->
-				<include condition="[!Skin.HasSetting(Disable.FullscreenWallView) + !Skin.HasSetting(skinvariables.viewtypes)] | [$EXP[Exp_View_609_Include] + Skin.HasSetting(skinvariables.viewtypes)]">View_609_Fullscreen_Wall</include>
-				<!-- view id = 609 -->
+				<include condition="[!Skin.HasSetting(Disable.FanartListView) + !Skin.HasSetting(skinvariables.viewtypes)] | [$EXP[Exp_View_510_Include] + Skin.HasSetting(skinvariables.viewtypes)]">VideoFanartList</include>
+				<!-- view id = 510 -->
+				<include condition="[!Skin.HasSetting(Disable.FullscreenWallView) + !Skin.HasSetting(skinvariables.viewtypes)] | [$EXP[Exp_View_511_Include] + Skin.HasSetting(skinvariables.viewtypes)]">View_511_Fullscreen_Wall</include>
+				<!-- view id = 511 -->
+				<include condition="[!Skin.HasSetting(Disable.BigFanView) + !Skin.HasSetting(skinvariables.viewtypes)] | [$EXP[Exp_View_512_Include] + Skin.HasSetting(skinvariables.viewtypes)]">View_512_BigFan</include>
+				<!-- view id = 512 -->
 			</control>
 			<control type="group">
 				<visible>!Window.IsActive(addoninformation)</visible>
@@ -461,7 +461,7 @@
 						<param name="max_width">650</param>
 					</include>
 					<include content="NextAiredGenreLeft">
-						<param name="visible">!Container.Content(movies) + !Container.Content(episodes) + [Control.IsVisible(50) | Control.IsVisible(506) | Control.IsVisible(602)]</param>
+						<param name="visible">!Container.Content(movies) + !Container.Content(episodes) + [Control.IsVisible(50) | Control.IsVisible(506) | Control.IsVisible(510)]</param>
 						<param name="pos">84</param>
 						<param name="top">1024</param>
 						<param name="max_width">600</param>
@@ -478,13 +478,13 @@
 								<param name="full_left">80</param>
 								<param name="full_align">left</param>
 								<param name="movie_studio_id">99025</param>
-								<param name="full_visible">[Control.IsVisible(50) + Container.Content(movies) + !Skin.HasSetting(DisableList_Movieflags)] | [Control.IsVisible(50) + Container.Content(episodes) + !Skin.HasSetting(DisableList_Episodeflags)] | [Control.IsVisible(55) + Container.Content(movies) + !Skin.HasSetting(DisableTriPanel_Movieflags)] | [Control.IsVisible(55) + Container.Content(episodes) + !Skin.HasSetting(DisableTriPanel_Episodeflags)] | [Control.IsVisible(58) + Container.Content(movies) + !Skin.HasSetting(DisableBannerWall_Movieflags)] | [Control.IsVisible(500) + Container.Content(movies) + !Skin.HasSetting(DisableIcons_Movieflags)] | [Control.IsVisible(500) + Container.Content(episodes) + !Skin.HasSetting(DisableIcons_Episodeflags)] | [Control.IsVisible(509) + Container.Content(movies) + !Skin.HasSetting(DisableMyFlix_Movieflags)] | [Control.IsVisible(509) + Container.Content(episodes) + !Skin.HasSetting(DisableMyFlix_Episodeflags)] | [Control.IsVisible(591) + Container.Content(movies) + !Skin.HasSetting(DisableBigFan_Movieflags)] | [Control.IsVisible(602) + Container.Content(movies) + !Skin.HasSetting(DisableFanartList_Movieflags)] | [Control.IsVisible(602) + Container.Content(episodes) + !Skin.HasSetting(DisableFanartList_Episodeflags)]</param>
+								<param name="full_visible">[Control.IsVisible(50) + Container.Content(movies) + !Skin.HasSetting(DisableList_Movieflags)] | [Control.IsVisible(50) + Container.Content(episodes) + !Skin.HasSetting(DisableList_Episodeflags)] | [Control.IsVisible(55) + Container.Content(movies) + !Skin.HasSetting(DisableTriPanel_Movieflags)] | [Control.IsVisible(55) + Container.Content(episodes) + !Skin.HasSetting(DisableTriPanel_Episodeflags)] | [Control.IsVisible(58) + Container.Content(movies) + !Skin.HasSetting(DisableBannerWall_Movieflags)] | [Control.IsVisible(500) + Container.Content(movies) + !Skin.HasSetting(DisableIcons_Movieflags)] | [Control.IsVisible(500) + Container.Content(episodes) + !Skin.HasSetting(DisableIcons_Episodeflags)] | [Control.IsVisible(509) + Container.Content(movies) + !Skin.HasSetting(DisableMyFlix_Movieflags)] | [Control.IsVisible(509) + Container.Content(episodes) + !Skin.HasSetting(DisableMyFlix_Episodeflags)] | [Control.IsVisible(512) + Container.Content(movies) + !Skin.HasSetting(DisableBigFan_Movieflags)] | [Control.IsVisible(510) + Container.Content(movies) + !Skin.HasSetting(DisableFanartList_Movieflags)] | [Control.IsVisible(510) + Container.Content(episodes) + !Skin.HasSetting(DisableFanartList_Episodeflags)]</param>
 							</include>
 							<include content="MediaFlagsSets">
 								<param name="sets_left">80</param>
 								<param name="sets_align">left</param>
 								<param name="sets_studio_id">99024</param>
-								<param name="sets_visible">[Control.IsVisible(50) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableList_Movieflags)] | [Control.IsVisible(55) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableTriPanel_Movieflags)] | [Control.IsVisible(57) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableShift_Movieflags)] | [Control.IsVisible(58) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableBannerWall_Movieflags)] | [Control.IsVisible(500) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableIcons_Movieflags)] | [Control.IsVisible(509) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableMyFlix_Movieflags)] | [Control.IsVisible(591) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableBigFan_Movieflags)] | [Control.IsVisible(602) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableFanartList_Movieflags)]</param>
+								<param name="sets_visible">[Control.IsVisible(50) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableList_Movieflags)] | [Control.IsVisible(55) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableTriPanel_Movieflags)] | [Control.IsVisible(57) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableShift_Movieflags)] | [Control.IsVisible(58) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableBannerWall_Movieflags)] | [Control.IsVisible(500) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableIcons_Movieflags)] | [Control.IsVisible(509) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableMyFlix_Movieflags)] | [Control.IsVisible(512) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableBigFan_Movieflags)] | [Control.IsVisible(510) + [Container.Content(movies) | Container.Content(sets)] + !Skin.HasSetting(DisableFanartList_Movieflags)]</param>
 							</include>
 						</control>
 						<!-- RIGHT ALIGN -->
@@ -507,14 +507,14 @@
 								<param name="tv_left">660</param>
 								<param name="tv_align">right</param>
 								<param name="tv_studio_id">99026</param>
-								<param name="tv_visible">[Control.IsVisible(50) + !Skin.HasSetting(DisableList_TVflags)] | [Control.IsVisible(55) + !Skin.HasSetting(DisableTriPanel_TVflags)] | [Control.IsVisible(56) + !Skin.HasSetting(DisablePosters_TVflags)] | [Control.IsVisible(57) + !Skin.HasSetting(DisableShift_TVflags)] | [Control.IsVisible(58) + !Skin.HasSetting(DisableBannerWall_TVflags)] | [Control.IsVisible(500) + !Skin.HasSetting(DisableIcons_TVflags)] | [Control.IsVisible(506) + !Skin.HasSetting(DisableRightList_TVflags)] | [Control.IsVisible(509) + !Skin.HasSetting(DisableMyFlix_TVflags)] | [Control.IsVisible(591) + !Skin.HasSetting(DisableBigFan_TVflags)] | [Control.IsVisible(602) + !Skin.HasSetting(DisableFanartList_TVflags)]</param>
+								<param name="tv_visible">[Control.IsVisible(50) + !Skin.HasSetting(DisableList_TVflags)] | [Control.IsVisible(55) + !Skin.HasSetting(DisableTriPanel_TVflags)] | [Control.IsVisible(56) + !Skin.HasSetting(DisablePosters_TVflags)] | [Control.IsVisible(57) + !Skin.HasSetting(DisableShift_TVflags)] | [Control.IsVisible(58) + !Skin.HasSetting(DisableBannerWall_TVflags)] | [Control.IsVisible(500) + !Skin.HasSetting(DisableIcons_TVflags)] | [Control.IsVisible(506) + !Skin.HasSetting(DisableRightList_TVflags)] | [Control.IsVisible(509) + !Skin.HasSetting(DisableMyFlix_TVflags)] | [Control.IsVisible(512) + !Skin.HasSetting(DisableBigFan_TVflags)] | [Control.IsVisible(510) + !Skin.HasSetting(DisableFanartList_TVflags)]</param>
 							</include>
 							<!-- SEASONS -->
 							<include content="MediaFlagsSeason">
 								<param name="tv_left">660</param>
 								<param name="tv_align">right</param>
 								<param name="season_studio_id">99027</param>
-								<param name="season_visible">[Control.IsVisible(50) + !Skin.HasSetting(DisableList_Seasonflags)] | [Control.IsVisible(55) + !Skin.HasSetting(DisableTriPanel_Seasonflags)] | [Control.IsVisible(56) + !Skin.HasSetting(DisablePosters_Seasonflags)] | [Control.IsVisible(57) + !Skin.HasSetting(DisableShift_Seasonflags)] | [Control.IsVisible(500) + !Skin.HasSetting(DisableIcons_Seasonflags)] | Control.IsVisible(506) + !Skin.HasSetting(DisableRightList_Seasonflags) | [Control.IsVisible(509) + !Skin.HasSetting(DisableMyFlix_Seasonflags)] | [Control.IsVisible(591) + !Skin.HasSetting(DisableBigFan_Seasonflags)] | [Control.IsVisible(602) + !Skin.HasSetting(DisableFanartList_Seasonflags)]</param>
+								<param name="season_visible">[Control.IsVisible(50) + !Skin.HasSetting(DisableList_Seasonflags)] | [Control.IsVisible(55) + !Skin.HasSetting(DisableTriPanel_Seasonflags)] | [Control.IsVisible(56) + !Skin.HasSetting(DisablePosters_Seasonflags)] | [Control.IsVisible(57) + !Skin.HasSetting(DisableShift_Seasonflags)] | [Control.IsVisible(500) + !Skin.HasSetting(DisableIcons_Seasonflags)] | Control.IsVisible(506) + !Skin.HasSetting(DisableRightList_Seasonflags) | [Control.IsVisible(509) + !Skin.HasSetting(DisableMyFlix_Seasonflags)] | [Control.IsVisible(512) + !Skin.HasSetting(DisableBigFan_Seasonflags)] | [Control.IsVisible(510) + !Skin.HasSetting(DisableFanartList_Seasonflags)]</param>
 							</include>
 						</control>
 					</control>

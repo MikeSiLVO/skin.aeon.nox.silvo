@@ -698,13 +698,6 @@
 						<visible>String.IsEmpty(ListItem.Property(Album_Style))</visible>
 					</control>
 				</control>
-				<control type="image">
-					<left>638</left>
-					<top>162</top>
-					<width>2</width>
-					<height>179</height>
-					<texture border="1">separator3.png</texture>
-				</control>
 				<control type="textbox">
 					<label>$VAR[OtherPlotVar,$LOCALIZE[183]:[CR][COLOR white2],[/COLOR]]</label>
 					<top>342</top>
@@ -752,9 +745,9 @@
 					<width>640</width>
 					<height>360</height>
 					<fadetime>200</fadetime>
-					<texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-					<bordertexture border="1,1,2,1">thumbs/panel_border.png</bordertexture>
-					<bordersize>1,1,2,1</bordersize>
+					<texture border="2" background="true">$INFO[ListItem.Art(fanart)]</texture>
+					<bordersize>2</bordersize>
+					<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 				</control>
 			</control>
 			<control type="group">
@@ -801,13 +794,6 @@
 						<visible>!String.IsEmpty(ListItem.Property(Artist_Style))</visible>
 					</control>
 				</control>
-				<control type="image">
-					<left>638</left>
-					<top>162</top>
-					<width>2</width>
-					<height>359</height>
-					<texture border="1">separator3.png</texture>
-				</control>
 				<control type="textbox">
 					<left>655</left>
 					<label>$VAR[OtherPlotVar]</label>
@@ -841,9 +827,9 @@
 					<height>360</height>
 					<fadetime>200</fadetime>
 					<aspectratio align="right">keep</aspectratio>
-					<texture background="true">$VAR[PosterThumbVar]</texture>
-					<bordertexture border="1,1,2,1">thumbs/panel_border.png</bordertexture>
-					<bordersize>1,1,2,1</bordersize>
+					<texture border="2" background="true">$VAR[PosterThumbVar]</texture>
+					<bordersize>2</bordersize>
+					<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 				</control>
 			</control>
 		</control>

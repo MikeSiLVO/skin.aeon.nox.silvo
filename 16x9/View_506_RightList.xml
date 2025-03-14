@@ -401,32 +401,8 @@
 						<param name="width">810</param>
 					</include>
 				</itemlayout>
-				<focusedlayout height="90" width="806" condition="!Skin.HasSetting(RightList.AlternateMusic) + [Container.Content(genres) | Container.Content(artists) | Container.Content(files)]">
-					<control type="image">
-						<include>RightListFocusedHighLightContent</include>
-						<include>VisibleFadeAnimation</include>
-					</control>
+				<focusedlayout height="90" width="806" condition="[Container.Content(genres) | Container.Content(artists) | Container.Content(albums) | Container.Content(files)]">
 					<include content="RightListItemLayout">
-						<param name="width">810</param>
-					</include>
-				</focusedlayout>
-				<focusedlayout height="90" width="806" condition="Skin.HasSetting(RightList.AlternateMusic) + [Container.Content(genres) | Container.Content(artists) | Container.Content(files)]">
-					<include content="RightListItemLayout">
-						<param name="width">810</param>
-						<param name="labelColor">$VAR[ThemeLabelColor]</param>
-					</include>
-				</focusedlayout>
-				<focusedlayout height="90" width="806" condition="!Skin.HasSetting(RightList.AlternateMusic) + [Container.Content(genres) | Container.Content(albums) | Container.Content(songs)]">
-					<control type="image">
-						<include>RightListFocusedHighLightContent</include>
-						<include>VisibleFadeAnimation</include>
-					</control>
-					<include content="RightListFocusedLayout">
-						<param name="width">810</param>
-					</include>
-				</focusedlayout>
-				<focusedlayout height="90" width="806" condition="Skin.HasSetting(RightList.AlternateMusic) + [Container.Content(genres) | Container.Content(albums) | Container.Content(songs)]">
-					<include content="RightListFocusedLayout">
 						<param name="width">810</param>
 						<param name="labelColor">$VAR[ThemeLabelColor]</param>
 					</include>
@@ -448,13 +424,6 @@
 				<showonepage>false</showonepage>
 			</control>
 		</control>
-	</include>
-	<include name="RightListFocusedHighLightContent">
-		<left>30</left>
-		<width>880</width>
-		<height>90</height>
-		<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
-		<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(506)">Conditional</animation>
 	</include>
 	<include name="fixedlistrightlist">
 		<control type="fixedlist" id="506">
@@ -507,18 +476,16 @@
 				<param name="width">770</param>
 			</include>
 		</itemlayout>
-		<focusedlayout height="82" width="806" condition="[!Skin.HasSetting(rightlistalternate) + Container.Content(movies)]" infoupdate="5000">
+		<focusedlayout height="82" width="806" condition="[!Skin.HasSetting(rightlistalternate) + Container.Content(movies)]" infoupdate="1000">
 			<control type="image">
-				<include>RightListFocusedHighLightContent</include>
 				<include>VisibleFadeAnimation</include>
 			</control>
 			<include content="RightListFocusedLayout">
 				<param name="width">700</param>
 			</include>
 		</focusedlayout>
-		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + !Skin.HasSetting(rightlistalternatetv)" infoupdate="5000">
+		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + !Skin.HasSetting(rightlistalternatetv)" infoupdate="1000">
 			<control type="image">
-				<include>RightListFocusedHighLightContent</include>
 				<include>VisibleFadeAnimation</include>
 			</control>
 			<control type="group">
@@ -528,25 +495,21 @@
 				</include>
 			</control>
 		</focusedlayout>
-		<focusedlayout height="82" width="806" condition="[Skin.HasSetting(rightlistalternate) + Container.Content(movies)]" infoupdate="5000">
+		<focusedlayout height="82" width="806" condition="[Skin.HasSetting(rightlistalternate) + Container.Content(movies)]" infoupdate="1000">
 			<include content="RightListFocusedLayout">
 				<param name="width">770</param>
-				<param name="labelColor">$VAR[ThemeLabelColor]</param>
 			</include>
 		</focusedlayout>
-		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + Skin.HasSetting(rightlistalternatetv)" infoupdate="5000">
+		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + Skin.HasSetting(rightlistalternatetv)" infoupdate="1000">
 			<include content="RightListFocusedLayout">
 				<param name="width">770</param>
-				<param name="labelColor">$VAR[ThemeLabelColor]</param>
 			</include>
 		</focusedlayout>
 	</include>
-	<!-- PARAM Includes -->
 	<include name="RightListFocusedLayout">
 		<param name="visibleSubLabelNoYear" default="[Container.Content(movies) + !Skin.HasSetting(rightlistalternate)] | [!Container.Content(movies) + !Skin.HasSetting(rightlistalternatetv) + !Window.IsActive(music)]" />
-		<param name="overlay_visible">!Window.IsActive(music)</param>
 		<param name="width" />
-		<param name="labelColor" default="white" />
+		<param name="labelColor" default="$VAR[ThemeLabelColor]" />
 		<definition>
 			<control type="label">
 				<top>5</top>
@@ -599,55 +562,28 @@
 				</control>
 			</control>
 			<control type="label">
-				<left>735</left>
+				<left>730</left>
 				<top>25</top>
 				<width>100</width>
 				<height>40</height>
 				<font>font16</font>
 				<align>right</align>
 				<shadowcolor>shadow</shadowcolor>
-				<label>$INFO[ListItem.Year]</label>
+				<label>[LIGHT]$INFO[ListItem.Year][/LIGHT]</label>
 				<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(506)">Conditional</animation>
 				<animation effect="slide" end="7" condition="String.IsEqual(Skin.Font,$LOCALIZE[31483])">Conditional</animation>
 				<visible>$PARAM[visibleSubLabelNoYear]</visible>
 				<visible>!Container.Content(episodes)</visible>
 			</control>
-			<control type="group">
-				<left>830</left>
-				<top>13</top>
-				<visible>$PARAM[overlay_visible]</visible>
-				<control type="label">
-					<left>7</left>
-					<width>64</width>
-					<height>64</height>
-					<textcolor>white3</textcolor>
-					<font>IconMediumMD</font>
-					<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-					<animation effect="slide" end="-70" time="0" condition="Container.Content(episodes) + !Skin.HasSetting(rightlistalternatetv)">Conditional</animation>
-				</control>
-				<control type="label">
-					<left>4</left>
-					<width>64</width>
-					<height>64</height>
-					<textcolor>white3</textcolor>
-					<font>IconMediumMD</font>
-					<label>$VAR[ListItemOverlayProgress]</label>
-					<animation effect="slide" end="-70" time="0" condition="Container.Content(episodes) + !Skin.HasSetting(rightlistalternatetv)">Conditional</animation>
-					<animation effect="zoom" start="70" end="70" center="auto" condition="true">Conditional</animation>
-				</control>
-				<control type="label">
-					<width>64</width>
-					<height>64</height>
-					<font>font12_title</font>
-					<align>center</align>
-					<label>$VAR[ListItemOverlayShowsVar]</label>
-				</control>
-			</control>
+			<include content="ListStatusIndicators">
+				<param name="left">830</param>
+				<param name="top">13</param>
+				<param name="visible">!Window.IsActive(music)</param>
+			</include>
 		</definition>
 	</include>
 	<include name="RightListItemLayout">
 		<param name="visibleSubLabelNoYear" default="[Container.Content(movies) + !Skin.HasSetting(rightlistalternate)] | [!Container.Content(movies) + !Skin.HasSetting(rightlistalternatetv) + !Window.IsActive(music)]" />
-		<param name="overlay_visible">!Window.IsActive(music)</param>
 		<param name="width" />
 		<param name="labelColor" default="white" />
 		<definition>
@@ -663,7 +599,7 @@
 				<label>$VAR[RightListItemLabelVar]</label>
 			</control>
 			<control type="label">
-				<left>735</left>
+				<left>730</left>
 				<top>25</top>
 				<width>100</width>
 				<height>40</height>
@@ -671,43 +607,16 @@
 				<align>right</align>
 				<textcolor>$VAR[ThemeLabelColor]</textcolor>
 				<shadowcolor>shadow</shadowcolor>
-				<label>$INFO[ListItem.Year]</label>
+				<label>[LIGHT]$INFO[ListItem.Year][/LIGHT]</label>
 				<animation effect="slide" end="7" condition="String.IsEqual(Skin.Font,$LOCALIZE[31483])">Conditional</animation>
 				<visible>!Container.Content(episodes)</visible>
 				<visible>$PARAM[visibleSubLabelNoYear]</visible>
 			</control>
-			<control type="group">
-				<left>830</left>
-				<top>13</top>
-				<visible>$PARAM[overlay_visible]</visible>
-				<control type="label">
-					<left>7</left>
-					<width>64</width>
-					<height>64</height>
-					<textcolor>white3</textcolor>
-					<font>IconMediumMD</font>
-					<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-					<animation effect="slide" end="-70" time="0" condition="Container.Content(episodes) + !Skin.HasSetting(rightlistalternatetv)">Conditional</animation>
-				</control>
-				<control type="label">
-					<left>4</left>
-					<width>64</width>
-					<height>64</height>
-					<textcolor>white3</textcolor>
-					<font>IconMediumMD</font>
-					<label>$VAR[ListItemOverlayProgress]</label>
-					<animation effect="slide" end="-70" time="0" condition="Container.Content(episodes) + !Skin.HasSetting(rightlistalternatetv)">Conditional</animation>
-					<animation effect="zoom" start="70" end="70" center="auto" condition="true">Conditional</animation>
-				</control>
-				<control type="label">
-					<width>64</width>
-					<height>64</height>
-					<font>font12_title</font>
-					<align>center</align>
-					<textcolor>grey</textcolor>
-					<label>$VAR[ListItemOverlayShowsVar]</label>
-				</control>
-			</control>
+			<include content="ListStatusIndicators">
+				<param name="left">830</param>
+				<param name="top">13</param>
+				<param name="visible">!Window.IsActive(music)</param>
+			</include>
 		</definition>
 	</include>
 </includes>

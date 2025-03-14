@@ -87,7 +87,7 @@
 					<control type="image">
 						<width>821</width>
 						<height>120</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 						<visible>Control.HasFocus(50)</visible>
 						<include>VisibleFadeAnimation</include>
 					</control>
@@ -673,7 +673,7 @@
 								<left>1</left>
 								<width>970</width>
 								<height>63</height>
-								<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+								<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 								<animation effect="fade" start="100" end="0" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(52)">Conditional</animation>
 							</control>
 							<control type="label">
@@ -945,29 +945,15 @@
 						<textcolor>grey2</textcolor>
 						<label>$VAR[EpisodeCountVar,, - ]$INFO[ListItem.Label]</label>
 					</control>
-					<control type="label">
-						<left>946</left>
-						<width>64</width>
-						<height>64</height>
-						<textcolor>white3</textcolor>
-						<font>IconMediumMD</font>
-						<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-					</control>
-					<control type="label">
-						<left>943</left>
-						<width>64</width>
-						<height>64</height>
-						<textcolor>white3</textcolor>
-						<font>IconMediumMD</font>
-						<label>$VAR[ListItemOverlayProgress]</label>
-						<animation effect="zoom" start="70" end="70" center="auto" condition="true">Conditional</animation>
-					</control>
+					<include content="ListStatusIndicators">
+						<param name="left">940</param>
+					</include>
 				</itemlayout>
 				<focusedlayout height="60" width="1140">
 					<control type="image">
 						<width>1020</width>
 						<height>60</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 						<visible>Control.HasFocus(50)</visible>
 						<include>VisibleFadeAnimation</include>
 					</control>
@@ -988,23 +974,9 @@
 						<label>$VAR[EpisodeCountVar,, - ]$INFO[ListItem.Label]</label>
 						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
 					</control>
-					<control type="label">
-						<left>946</left>
-						<width>64</width>
-						<height>64</height>
-						<textcolor>white3</textcolor>
-						<font>IconMediumMD</font>
-						<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-					</control>
-					<control type="label">
-						<left>943</left>
-						<width>64</width>
-						<height>64</height>
-						<textcolor>white3</textcolor>
-						<font>IconMediumMD</font>
-						<label>$VAR[ListItemOverlayProgress]</label>
-						<animation effect="zoom" start="70" end="70" center="auto" condition="true">Conditional</animation>
-					</control>
+					<include content="ListStatusIndicators">
+						<param name="left">940</param>
+					</include>
 				</focusedlayout>
 			</control>
 			<control type="group">
@@ -1220,35 +1192,28 @@
 						<aspectratio>keep</aspectratio>
 						<texture background="true">$INFO[ListItem.Icon]</texture>
 					</control>
-					<control type="group">
-						<animation effect="slide" end="0,25" condition="ListItem.IsFolder">Conditional</animation>
-						<control type="label">
-							<left>135</left>
-							<width>790</width>
-							<height>70</height>
-							<font>font30</font>
-							<textcolor>grey2</textcolor>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
-						<control type="label">
-							<left>1076</left>
-							<top>4</top>
-							<width>64</width>
-							<height>64</height>
-							<textcolor>white3</textcolor>
-							<font>IconMediumMD</font>
-							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-						</control>
-						<control type="label">
-							<left>1073</left>
-							<width>64</width>
-							<height>64</height>
-							<textcolor>white3</textcolor>
-							<font>IconMediumMD</font>
-							<label>$VAR[ListItemOverlayProgress]</label>
-							<animation effect="zoom" start="70" end="70" center="auto" condition="true">Conditional</animation>
-						</control>
+					<control type="label">
+						<left>135</left>
+						<width>790</width>
+						<height>70</height>
+						<font>font30</font>
+						<textcolor>grey2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>!ListItem.IsFolder</visible>
 					</control>
+					<control type="label">
+						<left>135</left>
+						<width>790</width>
+						<height>120</height>
+						<font>font30</font>
+						<textcolor>grey2</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>ListItem.IsFolder</visible>
+					</control>
+					<include content="ListStatusIndicators">
+						<param name="left">1070</param>
+						<param name="top">28</param>
+					</include>
 					<control type="label">
 						<left>135</left>
 						<top>55</top>
@@ -1273,7 +1238,7 @@
 					<control type="image">
 						<width>1140</width>
 						<height>120</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 						<visible>Control.HasFocus(51)</visible>
 						<include>VisibleFadeAnimation</include>
 					</control>
@@ -1285,34 +1250,26 @@
 						<aspectratio>keep</aspectratio>
 						<texture background="true" fallback="views/list/DefaultVideo.png">$INFO[ListItem.Icon]</texture>
 					</control>
-					<control type="group">
-						<animation effect="slide" end="0,25" condition="ListItem.IsFolder">Conditional</animation>
-						<control type="label">
-							<left>135</left>
-							<width>790</width>
-							<height>70</height>
-							<font>font30</font>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
-						<control type="label">
-							<left>1076</left>
-							<top>4</top>
-							<width>64</width>
-							<height>64</height>
-							<textcolor>white3</textcolor>
-							<font>IconMediumMD</font>
-							<label>[LIGHT]$VAR[ListItemOverlay][/LIGHT]</label>
-						</control>
-						<control type="label">
-							<left>1073</left>
-							<width>64</width>
-							<height>64</height>
-							<textcolor>white3</textcolor>
-							<font>IconMediumMD</font>
-							<label>$VAR[ListItemOverlayProgress]</label>
-							<animation effect="zoom" start="70" end="70" center="auto" condition="true">Conditional</animation>
-						</control>
+					<control type="label">
+						<left>135</left>
+						<width>790</width>
+						<height>70</height>
+						<font>font30</font>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>!ListItem.IsFolder</visible>
 					</control>
+					<control type="label">
+						<left>135</left>
+						<width>790</width>
+						<height>120</height>
+						<font>font30</font>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>ListItem.IsFolder</visible>
+					</control>
+					<include content="ListStatusIndicators">
+						<param name="left">1070</param>
+						<param name="top">28</param>
+					</include>
 					<control type="label">
 						<left>135</left>
 						<top>55</top>

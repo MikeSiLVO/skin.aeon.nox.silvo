@@ -2,7 +2,9 @@
 <includes>
 	<!-- Built-in-Select -->
 	<include name="DefaultSelect">
-		<include>DimBackground</include>
+		<include content="DimBackground">
+			<param name="visible">!Window.IsVisible(smartplaylistrule)</param>
+		</include>
 		<control type="group">
 			<include>DialogOpenCloseAnimation</include>
 			<left>210</left>
@@ -34,7 +36,7 @@
 				<control type="image">
 					<width>1</width>
 					<height>542</height>
-					<texture colordiffuse="grey4">separator_vertical.png</texture>
+					<texture colordiffuse="grey4">colors/white.png</texture>
 				</control>
 			</control>
 			<control type="group" id="9000">
@@ -76,7 +78,7 @@
 							<control type="image">
 								<width>958</width>
 								<height>60</height>
-								<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+								<texture colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texture>
 							</control>
 							<control type="label">
 								<width>950</width>
@@ -137,7 +139,7 @@
 							<control type="image">
 								<width>956</width>
 								<height>60</height>
-								<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+								<texture colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texture>
 							</control>
 							<control type="label">
 								<width>950</width>
@@ -330,7 +332,7 @@
 					<control type="image">
 						<width>430</width>
 						<height>255</height>
-						<texture colordiffuse="$VAR[ThemeLabelColor]" border="10">thumbs/thumbnail_focused.png</texture>
+						<texture border="10" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</texture>
 						<bordersize>10</bordersize>
 						<include>FocusFadeInAnimation</include>
 					</control>
@@ -363,7 +365,7 @@
 			<top>67</top>
 			<width>628</width>
 			<height>1</height>
-			<texture colordiffuse="grey4">separator_horizontal.png</texture>
+			<texture colordiffuse="grey4">colors/white.png</texture>
 		</control>
 		<control type="label" id="1">
 			<width>630</width>
@@ -388,7 +390,7 @@
 			<top>67</top>
 			<width>628</width>
 			<height>1</height>
-			<texture colordiffuse="grey4">separator_horizontal.png</texture>
+			<texture colordiffuse="grey4">colors/white.png</texture>
 		</control>
 		<control type="label" id="1">
 			<width>630</width>
@@ -413,7 +415,7 @@
 			<top>67</top>
 			<width>798</width>
 			<height>1</height>
-			<texture colordiffuse="grey4">separator_horizontal.png</texture>
+			<texture colordiffuse="grey4">colors/white.png</texture>
 		</control>
 		<control type="label" id="1">
 			<width>800</width>
@@ -459,7 +461,7 @@
 				<control type="image">
 					<width>629</width>
 					<height>60</height>
-					<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+					<texture colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texture>
 					<visible>Control.HasFocus(90100)</visible>
 					<include>VisibleFadeAnimation</include>
 				</control>
@@ -505,6 +507,7 @@
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),rightlistbackgrounddim)">SelectRightListBackgroundDim</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),fallbackbackground)">SelectFallbackBackground</include>
 				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),startupintro)">SelectStartupIntro</include>
+				<include condition="String.IsEqual(Window(Home).Property(CustomSelect),pointersize)">SelectPointerSize</include>
 			</content>
 		</control>
 		<control type="scrollbar" id="60">
@@ -554,7 +557,7 @@
 				<control type="image">
 					<width>798</width>
 					<height>60</height>
-					<texture colordiffuse="$VAR[HighlightBarColor]" border="5">listselect_fo.png</texture>
+					<texture colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texture>
 					<visible>Control.HasFocus(90100)</visible>
 					<include>VisibleFadeAnimation</include>
 				</control>
@@ -1068,7 +1071,6 @@
 			<onclick condition="System.HasAddon(plugin.video.themoviedb.helper) + !System.AddonIsEnabled(plugin.video.themoviedb.helper)">EnableAddon(plugin.video.themoviedb.helper)</onclick>
 			<onclick condition="!System.HasAddon(plugin.video.themoviedb.helper)">InstallAddon(plugin.video.themoviedb.helper)</onclick>
 			<onclick condition="System.HasAddon(plugin.video.themoviedb.helper)">Skin.SetString(Viz.Background,4)</onclick>
-			<onclick condition="System.HasAddon(plugin.video.themoviedb.helper) + Window.IsActive(visualisation)">RunScript(plugin.video.themoviedb.helper,blur_image=$INFO[Player.Icon],prefix=MusicVisIcon)</onclick>
 		</item>
 		<item>
 			<label>$ADDON[script.skinshortcuts 32051]</label>
@@ -1363,6 +1365,29 @@
 			<label>$LOCALIZE[636]</label>
 			<onclick>Skin.SetFile(StartupIntro,.mp4|.mkv|.avi)</onclick>
 			<onclick>Dialog.Close(1129)</onclick>
+		</item>
+	</include>
+	<include name="SelectPointerSize">
+		<item>
+			<label>$LOCALIZE[571]</label>
+			<onclick>Skin.Reset(PointerSize)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>SetProperty(OfferReloadAfterConfirm,kiosk_mode,Home)</onclick>
+			<onclick>ActivateWindow(1126)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31045]</label>
+			<onclick>Skin.SetString(PointerSize,medium)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>SetProperty(OfferReloadAfterConfirm,kiosk_mode,Home)</onclick>
+			<onclick>ActivateWindow(1126)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31048]</label>
+			<onclick>Skin.SetString(PointerSize,large)</onclick>
+			<onclick>Dialog.Close(1129)</onclick>
+			<onclick>SetProperty(OfferReloadAfterConfirm,kiosk_mode,Home)</onclick>
+			<onclick>ActivateWindow(1126)</onclick>
 		</item>
 	</include>
 	<!-- Custom Confirm -->
