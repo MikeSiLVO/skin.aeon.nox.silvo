@@ -139,14 +139,14 @@
 						</control>
 					</focusedlayout>
 				</control>
-				<!-- Similar -->
+				<!-- Trakt Comments -->
 				<control type="label" id="8001">
 					<left>30</left>
 					<width>1100</width>
 					<height>60</height>
 					<font>font35_title_bold</font>
 					<textcolor>grey</textcolor>
-					<label>$LOCALIZE[31111]</label>
+					<label>Trakt $ADDON[plugin.video.themoviedb.helper 32188]</label>
 					<visible>String.IsEqual(Window.Property(List_5001_Visible),True)</visible>
 				</control>
 				<control type="panel" id="5001">
@@ -157,82 +157,90 @@
 					<preloaditems>2</preloaditems>
 					<scrolltime tween="quadratic" easing="out">300</scrolltime>
 					<visible>String.IsEqual(Window.Property(List_5001_Visible),True)</visible>
-					<itemlayout width="260" height="460">
-						<control type="image">
-							<width>260</width>
-							<height>400</height>
-							<bordersize>22</bordersize>
-							<bordertexture border="20">thumbs/shadow.png</bordertexture>
-							<aspectratio aligny="top">scale</aspectratio>
-							<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Art(poster)]</texture>
-						</control>
-						<control type="image">
-							<left>20</left>
-							<top>20</top>
-							<width>55</width>
-							<height>25</height>
-							<texture>colors/black50.png</texture>
-							<aspectratio aligny="center">scale</aspectratio>
-							<visible>!String.IsEmpty(ListItem.Year)</visible>
+					<itemlayout width="520" height="460">
+						<control type="group">
+							<top>40</top>
+							<include content="BackPanel">
+								<param name="left">8</param>
+								<param name="top">-12</param>
+								<param name="width">504</param>
+								<param name="height">344</param>
+								<param name="texture">colors/black25.png</param>
+								<param name="border">2</param>
+								<param name="borderdiffuse">black</param>
+							</include>
+							<control type="textbox">
+								<left>30</left>
+								<top>0</top>
+								<width>470</width>
+								<height>320</height>
+								<font>font13</font>
+								<shadowcolor>shadow</shadowcolor>
+								<textcolor>white2</textcolor>
+								<label>$INFO[ListItem.Plot]</label>
+							</control>
 						</control>
 						<control type="label">
-							<left>20</left>
-							<top>15</top>
-							<width>55</width>
+							<left>10</left>
+							<top>382</top>
+							<width>40</width>
 							<height>30</height>
-							<font>font12</font>
+							<font>IconTinyMD</font>
 							<shadowcolor>shadow</shadowcolor>
 							<textcolor>white2</textcolor>
-							<label>$INFO[ListItem.Year]</label>
+							<label></label>
 						</control>
 						<control type="label">
-							<left>25</left>
+							<left>50</left>
 							<top>380</top>
-							<width>208</width>
+							<width>460</width>
 							<height>30</height>
-							<align>center</align>
 							<font>font13</font>
 							<shadowcolor>shadow</shadowcolor>
 							<textcolor>white2</textcolor>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout width="260" height="460">
+					<focusedlayout width="520" height="460">
 						<control type="group">
 							<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
-							<control type="image">
-								<width>260</width>
-								<height>400</height>
-								<bordersize>22</bordersize>
-								<bordertexture border="20">thumbs/shadow.png</bordertexture>
-								<aspectratio aligny="top">scale</aspectratio>
-								<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Art(poster)]</texture>
-							</control>
-							<control type="image">
-								<left>20</left>
-								<top>20</top>
-								<width>55</width>
-								<height>25</height>
-								<texture>colors/black50.png</texture>
-								<aspectratio aligny="center">scale</aspectratio>
-								<visible>!String.IsEmpty(ListItem.Year)</visible>
+							<control type="group">
+								<top>40</top>
+								<include content="BackPanel">
+									<param name="left">8</param>
+									<param name="top">-12</param>
+									<param name="width">504</param>
+									<param name="height">344</param>
+									<param name="texture">colors/black25.png</param>
+									<param name="border">2</param>
+									<param name="borderdiffuse">$VAR[ThemeLabelColor]</param>
+								</include>
+								<control type="textbox">
+									<left>30</left>
+									<top>0</top>
+									<width>470</width>
+									<height>320</height>
+									<font>font13</font>
+									<shadowcolor>shadow</shadowcolor>
+									<textcolor>white</textcolor>
+									<autoscroll time="2000" delay="2000" repeat="3000">true</autoscroll>
+									<label>$INFO[ListItem.Plot]</label>
+								</control>
 							</control>
 							<control type="label">
-								<left>20</left>
-								<top>15</top>
-								<width>55</width>
+								<left>10</left>
+								<top>382</top>
+								<width>40</width>
 								<height>30</height>
-								<font>font12</font>
+								<font>IconTinyMD</font>
 								<shadowcolor>shadow</shadowcolor>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<label>$INFO[ListItem.Year]</label>
+								<label></label>
 							</control>
 							<control type="label">
-								<left>25</left>
+								<left>50</left>
 								<top>380</top>
-								<width>208</width>
+								<width>460</width>
 								<height>30</height>
-								<align>center</align>
 								<font>font13</font>
 								<shadowcolor>shadow</shadowcolor>
 								<textcolor>$VAR[ThemeLabelColor]</textcolor>
@@ -339,120 +347,10 @@
 						</control>
 					</focusedlayout>
 				</control>
-				<!-- Trakt Comments -->
-				<control type="label" id="8003">
-					<left>30</left>
-					<width>1100</width>
-					<height>60</height>
-					<font>font35_title_bold</font>
-					<textcolor>grey</textcolor>
-					<label>Trakt $ADDON[plugin.video.themoviedb.helper 32188]</label>
-					<visible>String.IsEqual(Window.Property(List_5003_Visible),True)</visible>
-				</control>
-				<control type="panel" id="5003">
-					<left>10</left>
-					<width>1880</width>
-					<height>420</height>
-					<orientation>horizontal</orientation>
-					<preloaditems>2</preloaditems>
-					<scrolltime tween="quadratic" easing="out">300</scrolltime>
-					<visible>String.IsEqual(Window.Property(List_5003_Visible),True)</visible>
-					<itemlayout width="520" height="460">
-						<control type="group">
-							<top>40</top>
-							<include content="BackPanel">
-								<param name="left">8</param>
-								<param name="top">-12</param>
-								<param name="width">504</param>
-								<param name="height">344</param>
-								<param name="texture">colors/black25.png</param>
-								<param name="border">2</param>
-								<param name="borderdiffuse">black</param>
-							</include>
-							<control type="textbox">
-								<left>30</left>
-								<top>0</top>
-								<width>470</width>
-								<height>320</height>
-								<font>font13</font>
-								<shadowcolor>shadow</shadowcolor>
-								<textcolor>white2</textcolor>
-								<label>$INFO[ListItem.Plot]</label>
-							</control>
-						</control>
-						<control type="label">
-							<left>10</left>
-							<top>382</top>
-							<width>40</width>
-							<height>30</height>
-							<font>IconTinyMD</font>
-							<shadowcolor>shadow</shadowcolor>
-							<textcolor>white2</textcolor>
-							<label></label>
-						</control>
-						<control type="label">
-							<left>50</left>
-							<top>380</top>
-							<width>460</width>
-							<height>30</height>
-							<font>font13</font>
-							<shadowcolor>shadow</shadowcolor>
-							<textcolor>white2</textcolor>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
-					</itemlayout>
-					<focusedlayout width="520" height="460">
-						<control type="group">
-							<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
-							<control type="group">
-								<top>40</top>
-								<include content="BackPanel">
-									<param name="left">8</param>
-									<param name="top">-12</param>
-									<param name="width">504</param>
-									<param name="height">344</param>
-									<param name="texture">colors/black25.png</param>
-									<param name="border">2</param>
-									<param name="borderdiffuse">$VAR[ThemeLabelColor]</param>
-								</include>
-								<control type="textbox">
-									<left>30</left>
-									<top>0</top>
-									<width>470</width>
-									<height>320</height>
-									<font>font13</font>
-									<shadowcolor>shadow</shadowcolor>
-									<textcolor>white</textcolor>
-									<autoscroll time="2000" delay="2000" repeat="3000">true</autoscroll>
-									<label>$INFO[ListItem.Plot]</label>
-								</control>
-							</control>
-							<control type="label">
-								<left>10</left>
-								<top>382</top>
-								<width>40</width>
-								<height>30</height>
-								<font>IconTinyMD</font>
-								<shadowcolor>shadow</shadowcolor>
-								<label></label>
-							</control>
-							<control type="label">
-								<left>50</left>
-								<top>380</top>
-								<width>460</width>
-								<height>30</height>
-								<font>font13</font>
-								<shadowcolor>shadow</shadowcolor>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<label>$INFO[ListItem.Label]</label>
-							</control>
-						</control>
-					</focusedlayout>
-				</control>
 			</control>
 		</control>
 		<include content="BusySpinner">
-			<param name="visible">String.IsEqual(Window.Property(List_5000_IsUpdating),True) | String.IsEqual(Window.Property(List_5001_IsUpdating),True) | String.IsEqual(Window.Property(List_5003_IsUpdating),True)</param>
+			<param name="visible">String.IsEqual(Window.Property(List_5000_IsUpdating),True) | String.IsEqual(Window.Property(List_5001_IsUpdating),True) | String.IsEqual(Window.Property(List_5002_IsUpdating),True)</param>
 			<param name="texture">colors/black.png</param>
 		</include>
 	</controls>
