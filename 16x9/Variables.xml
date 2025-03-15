@@ -1155,7 +1155,9 @@
 	<variable name="DialogSettingsHeaderVar">
 		<value condition="Control.HasFocus(97) + Window.IsVisible(contentsettings)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[222][/COLOR]</value>
 		<value condition="Control.HasFocus(97)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[15067][/COLOR]</value>
-		<value condition="Control.HasFocus(95) + [Window.IsVisible(FileBrowser.xml) | Window.IsVisible(contentsettings) | Window.IsVisible(mediafilter) | Window.IsVisible(smartplaylisteditor) | Window.IsVisible(addonsettings) | Window.IsVisible(mediasource)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[186][/COLOR]</value>
+		<value condition="Control.HasFocus(95) + [Window.IsVisible(addonsettings)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[190][/COLOR]</value>
+
+		<value condition="Control.HasFocus(95) + [Window.IsVisible(FileBrowser.xml) | Window.IsVisible(contentsettings) | Window.IsVisible(mediafilter) | Window.IsVisible(smartplaylisteditor) | Window.IsVisible(mediasource)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[186][/COLOR]</value>
 		<value condition="Control.HasFocus(98) + Window.IsVisible(addonsettings)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[571][/COLOR]</value>
 		<value condition="Control.HasFocus(98) + Window.IsVisible(FileBrowser.xml)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[119][/COLOR]</value>
 		<value condition="Control.HasFocus(98) + Window.IsVisible(mediafilter)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[192][/COLOR]</value>
@@ -1173,6 +1175,8 @@
 	<variable name="DialogSettingsOkButtonLabelVar">
 		<value condition="Window.IsVisible(selectvideoversion)"></value>
 		<value condition="Window.IsVisible(selectvideoextra)"></value>
+		<value condition="Window.IsVisible(addonsettings)"></value>
+		<value condition="String.IsEqual(Control.GetLabel(5),$LOCALIZE[21452])"></value>
 		<value></value>
 	</variable>
 	<variable name="DialogSettingsMoreButtonLabelVar">
