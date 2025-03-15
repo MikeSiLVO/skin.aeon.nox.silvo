@@ -12,7 +12,7 @@
 			<animation effect="slide" end="270" condition="!Control.IsVisible(6)">Conditional</animation>
 			<include content="DialogPanel">
 				<param name="icon_visible">Control.IsVisible(6)</param>
-				<param name="height">620</param>
+				<param name="height">616</param>
 				<param name="header_label">$VAR[DialogSettingsHeaderVar]</param>
 				<param name="buttons_ondown">6</param>
 				<param name="ok_onclick">SendClick(5)</param>
@@ -35,7 +35,7 @@
 				</control>
 				<control type="image">
 					<width>1</width>
-					<height>542</height>
+					<height>540</height>
 					<texture colordiffuse="grey4">colors/white.png</texture>
 				</control>
 			</control>
@@ -104,7 +104,7 @@
 				<control type="list" id="6">
 					<left>1</left>
 					<top>68</top>
-					<width>956</width>
+					<width>958</width>
 					<height>540</height>
 					<onup>6</onup>
 					<ondown>6</ondown>
@@ -133,11 +133,11 @@
 							<label>$VAR[DialogSelectLabel2Var]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout height="60" width="956">
+					<focusedlayout height="60" width="958">
 						<control type="group">
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(6)">Conditional</animation>
 							<control type="image">
-								<width>956</width>
+								<width>958</width>
 								<height>60</height>
 								<texture colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texture>
 							</control>
