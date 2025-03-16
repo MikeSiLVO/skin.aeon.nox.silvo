@@ -814,7 +814,7 @@
 			<!-- RSS Feed: similar artists-->
 			<control type="group">
 				<visible>System.AddonIsEnabled(script.artistslideshow) + [!String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.ArtistBiography)) | !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.1.AlbumName)) | !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.1.SimilarName))]</visible>
-				<visible>[Player.ShowInfo + Skin.HasSetting(Enable.VizInfo)] | Skin.HasSetting(Enable.VizPersistent)</visible>
+				<visible>Skin.HasSetting(Enable.VizInfo) + [Player.ShowInfo | Window.IsActive(MusicOSD)] | Skin.HasSetting(Enable.VizPersistent)</visible>
 				<include>VisibleFadeAnimation</include>
 				<top>993</top>
 				<control type="image">
