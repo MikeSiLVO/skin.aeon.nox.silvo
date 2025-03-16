@@ -10,21 +10,20 @@
 	<onunload>ClearProperty(tmdb_id,Home)</onunload>
 	<onunload>ClearProperty(imdb_id,Home)</onunload>
 	<onunload>ClearProperty(item_poster,Home)</onunload>
-	<onunload>ClearProperty(item_top250,Home)</onunload>
 	<onunload>ClearProperty(item_percentplayed,Home)</onunload>
 	<onunload>ClearProperty(item_filename,Home)</onunload>
 	<onunload>ClearProperty(item_ext,Home)</onunload>
 	<onunload>ClearProperty(custom_actor,Home)</onunload>
 	<onunload condition="!String.IsEmpty(Window(Home).Property(item_origin))">SetFocus($INFO[Window(Home).Property(item_origin)])</onunload>
 	<controls>
-		<control type="list" id="4800">
-			<include>HiddenList</include>
-			<content>$VAR[SkinVariablesCustomInfoContentVar]</content>
-			<!-- <content>plugin://script.skinvariables/?info=get_dbitem_movie_details&amp;dbid=</content> -->
-		</control>
+		<include content="SkinVariablesContentList">
+			<param name="id">4800</param>
+			<param name="content">$VAR[SkinVariablesCustomInfoContentVar]</param>
+			<!-- <param name="content">plugin://script.skinvariables/?info=get_dbitem_movie_details&amp;dbid=</param> -->
+		</include>
 		<control type="list" id="4801">
 			<include>HiddenList</include>
-			<content>$VAR[TMDbHVideoContentVar]$VAR[TMDbHContentTypeVar]</content>
+			<content sortby="userpreference">$VAR[TMDbHVideoContentVar]$VAR[TMDbHContentTypeVar]</content>
 		</control>
 		<control type="fadelabel" id="4810">
 			<left>-300</left>
@@ -43,7 +42,7 @@
 		<control type="group">
 			<animation effect="slide" start="-730,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
 			<animation effect="slide" end="-730,0" time="500" tween="quadratic">WindowClose</animation>
-			<animation effect="slide" start="-730,0" end="0,0" delay="250" time="500" tween="quadratic" condition="![Container(4800) + !Window.IsVisible(1103).IsUpdating]">Conditional</animation>
+			<animation effect="slide" start="-730,0" end="0,0" delay="250" time="500" tween="quadratic" condition="![Container(4800).IsUpdating + !Window.IsVisible(1103)]">Conditional</animation>
 			<animation effect="slide" end="-730,0" time="500" tween="quadratic" condition="Container(4800).IsUpdating + !Window.IsVisible(1103)">Conditional</animation>
 			<width>720</width>
 			<height>100%</height>
@@ -55,7 +54,7 @@
 		<control type="group">
 			<animation effect="slide" start="1210,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
 			<animation effect="slide" end="1210,0" time="500" tween="quadratic">WindowClose</animation>
-			<animation effect="slide" start="1210,0" end="0,0" delay="250" time="500" tween="quadratic" condition="![Container(4800) + !Window.IsVisible(1103).IsUpdating]">Conditional</animation>
+			<animation effect="slide" start="1210,0" end="0,0" delay="250" time="500" tween="quadratic" condition="![Container(4800).IsUpdating + !Window.IsVisible(1103)]">Conditional</animation>
 			<animation effect="slide" end="1210,0" time="500" tween="quadratic" condition="Container(4800).IsUpdating + !Window.IsVisible(1103)">Conditional</animation>
 			<left>720</left>
 			<control type="group">
@@ -92,33 +91,52 @@
 								<label>$INFO[Container(4800).ListItem.Year,(,)]</label>
 							</control>
 						</control>
-						<control type="fadelabel">
-							<width>1075</width>
+						<control type="group">
+							<visible>String.IsEqual(Window(Home).Property(item_dbtype),movie)</visible>
 							<height>45</height>
-							<align>left</align>
-							<aligny>center</aligny>
-							<font>font15</font>
-							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<scrollout>false</scrollout>
-							<pauseatend>5500</pauseatend>
-							<label>$INFO[Container(4800).ListItem.Tagline]</label>
-							<label>$INFO[Container(4801).ListItem.Property(Awards)]</label>
-							<visible>!String.IsEmpty(Container(4800).ListItem.Property(tagline)) + [String.IsEmpty(Container(4800).ListItem.Property(originaltitle)) | String.IsEqual(Container(4800).ListItem.Property(originaltitle),Container(4800).ListItem.Property(title))]</visible>
+							<control type="fadelabel">
+								<width>1075</width>
+								<height>45</height>
+								<align>left</align>
+								<aligny>center</aligny>
+								<font>font15</font>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<scrollout>false</scrollout>
+								<pauseatend>5500</pauseatend>
+								<label>$INFO[Container(4800).ListItem.Tagline]</label>
+								<label>$INFO[Container(4801).ListItem.Property(Awards)]</label>
+								<visible>!String.IsEmpty(Container(4800).ListItem.Property(tagline)) + [String.IsEmpty(Container(4800).ListItem.Property(originaltitle)) | String.IsEqual(Container(4800).ListItem.Property(originaltitle),Container(4800).ListItem.Property(title))]</visible>
+							</control>
+							<control type="fadelabel">
+								<width>1075</width>
+								<height>45</height>
+								<align>left</align>
+								<aligny>center</aligny>
+								<font>font15</font>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<scroll>true</scroll>
+								<scrollout>false</scrollout>
+								<pauseatend>5500</pauseatend>
+								<label>$INFO[Container(4800).ListItem.Property(tagline)]</label>
+								<label>$INFO[Container(4801).ListItem.Property(Awards)]</label>
+								<label>$INFO[Container(4800).ListItem.Property(originaltitle)]</label>
+								<visible>!String.IsEmpty(Container(4800).ListItem.Property(tagline)) + !String.IsEqual(Container(4800).ListItem.Property(originaltitle),Container(4800).ListItem.Property(title))</visible>
+							</control>
 						</control>
 						<control type="fadelabel">
-							<width>1075</width>
-							<height>45</height>
+							<width>1175</width>
+							<height>30</height>
 							<align>left</align>
 							<aligny>center</aligny>
 							<font>font15</font>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
 							<scroll>true</scroll>
 							<scrollout>false</scrollout>
-							<pauseatend>5500</pauseatend>
-							<label>$INFO[Container(4800).ListItem.Property(tagline)]</label>
+							<pauseatend>4500</pauseatend>
+							<label>$VAR[CustomInfoTVSubtitleVar]</label>
 							<label>$INFO[Container(4801).ListItem.Property(Awards)]</label>
-							<label>$INFO[Container(4800).ListItem.Property(originaltitle)]</label>
-							<visible>!String.IsEmpty(Container(4800).ListItem.Property(tagline)) + !String.IsEqual(Container(4800).ListItem.Property(originaltitle),Container(4800).ListItem.Property(title))</visible>
+							<visible>[!String.IsEmpty(Container(4800).ListItem.Status) | !String.IsEmpty(Container(4801).ListItem.Status)] + !String.IsEmpty(Container(4801).ListItem.Property(Awards))</visible>
+							<visible>String.IsEqual(Window(Home).Property(item_dbtype),tvshow)</visible>
 						</control>
 					</control>
 					<!-- Kodi User Rating -->
@@ -198,7 +216,7 @@
 						</control>
 						<!-- Top 250 -->
 						<control type="grouplist">
-							<visible>!String.IsEmpty(Window(Home).Property(item_top250))</visible>
+							<visible>!String.IsEmpty(Container(4800).ListItem.Top250)</visible>
 							<width>165</width>
 							<orientation>horizontal</orientation>
 							<control type="image">
@@ -212,7 +230,7 @@
 								<align>center</align>
 								<font>font16_title_bold</font>
 								<textcolor>grey</textcolor>
-								<label>$INFO[Window(Home).Property(item_top250), #]</label>
+								<label>$INFO[Container(4800).ListItem.Top250, #]</label>
 							</control>
 						</control>
 						<!-- Extended Ratings -->
@@ -321,6 +339,16 @@
 						<label>$VAR[CustomVideoButtonLabelVar]</label>
 						<enable>no</enable>
 					</control>
+					<control type="label">
+						<right>0</right>
+						<width>100</width>
+						<height>60</height>
+						<align>right</align>
+						<font>IconMediumMD</font>
+						<textcolor>grey</textcolor>
+						<label>$VAR[ContainerHasNextPreviousLabelVar]</label>
+						<visible>Control.HasFocus(50001) | Control.HasFocus(50002) | Control.HasFocus(50003)</visible>
+					</control>
 				</control>
 				<!-- Buttons -->
 				<control type="grouplist" id="4601">
@@ -332,7 +360,7 @@
 					<ondown>4702</ondown>
 					<align>right</align>
 					<orientation>horizontal</orientation>
-					<visible>!Control.HasFocus(50002) + !Control.HasFocus(50003)</visible>
+					<visible>!Control.HasFocus(50001) + !Control.HasFocus(50002) + !Control.HasFocus(50003)</visible>
 					<control type="togglebutton" id="4610">
 						<description>Play/browse to Show</description>
 						<font>IconMediumMD</font>
@@ -508,70 +536,67 @@
 									<visible>!String.IsEmpty(Container(4800).ListItem.AudioChannels)</visible>
 								</control>
 								<control type="group">
-									<visible>String.IsEqual(Window(Home).Property(item_dbtype),tvshow)</visible>
-									<control type="group">
-										<visible>!String.IsEmpty(Container(4800).ListItem.Property(TotalSeasons))</visible>
-										<width>200</width>
-										<left>-20</left>
-										<control type="label">
-											<top>2</top>
-											<height>60</height>
-											<align>center</align>
-											<label>$INFO[Container(4800).ListItem.Property(TotalSeasons)]</label>
-											<font>font48_bold</font>
-											<wrapmultiline>true</wrapmultiline>
-											<textcolor>grey</textcolor>
-										</control>
-										<control type="label">
-											<top>52</top>
-											<height>30</height>
-											<align>center</align>
-											<label>[LOWERCASE]$VAR[OneOrMoreSeasonsVar][/LOWERCASE]</label>
-											<font>font12</font>
-											<textcolor>grey</textcolor>
-										</control>
+									<visible>!String.IsEmpty(Container(4800).ListItem.Property(TotalSeasons))</visible>
+									<width>200</width>
+									<left>-20</left>
+									<control type="label">
+										<top>2</top>
+										<height>60</height>
+										<align>center</align>
+										<label>$INFO[Container(4800).ListItem.Property(TotalSeasons)]</label>
+										<font>font48_bold</font>
+										<wrapmultiline>true</wrapmultiline>
+										<textcolor>grey</textcolor>
 									</control>
-									<control type="group">
-										<visible>!String.IsEmpty(Container(4800).ListItem.Property(TotalEpisodes))</visible>
-										<width>200</width>
-										<control type="label">
-											<top>2</top>
-											<height>60</height>
-											<align>center</align>
-											<label>$INFO[Container(4800).ListItem.Property(TotalEpisodes)]</label>
-											<font>font48_bold</font>
-											<wrapmultiline>true</wrapmultiline>
-											<textcolor>grey</textcolor>
-										</control>
-										<control type="label">
-											<top>52</top>
-											<height>30</height>
-											<align>center</align>
-											<label>[LOWERCASE]$VAR[OneOrMoreEpisodesVar][/LOWERCASE]</label>
-											<font>font12</font>
-											<textcolor>grey</textcolor>
-										</control>
+									<control type="label">
+										<top>52</top>
+										<height>30</height>
+										<align>center</align>
+										<label>[LOWERCASE]$VAR[OneOrMoreSeasonsVar][/LOWERCASE]</label>
+										<font>font12</font>
+										<textcolor>grey</textcolor>
 									</control>
-									<control type="group">
-										<visible>!String.IsEmpty(Container(4800).ListItem.Property(UnWatchedEpisodes))</visible>
-										<width>200</width>
-										<control type="label">
-											<top>2</top>
-											<height>60</height>
-											<align>center</align>
-											<label>$INFO[Container(4800).ListItem.Property(UnWatchedEpisodes)]</label>
-											<font>font48_bold</font>
-											<wrapmultiline>true</wrapmultiline>
-											<textcolor>grey</textcolor>
-										</control>
-										<control type="label">
-											<top>52</top>
-											<height>30</height>
-											<align>center</align>
-											<label>[LOWERCASE]$LOCALIZE[16101][/LOWERCASE]</label>
-											<font>font12</font>
-											<textcolor>grey</textcolor>
-										</control>
+								</control>
+								<control type="group">
+									<visible>!String.IsEmpty(Container(4800).ListItem.Property(TotalEpisodes))</visible>
+									<width>200</width>
+									<control type="label">
+										<top>2</top>
+										<height>60</height>
+										<align>center</align>
+										<label>$INFO[Container(4800).ListItem.Property(TotalEpisodes)]</label>
+										<font>font48_bold</font>
+										<wrapmultiline>true</wrapmultiline>
+										<textcolor>grey</textcolor>
+									</control>
+									<control type="label">
+										<top>52</top>
+										<height>30</height>
+										<align>center</align>
+										<label>[LOWERCASE]$VAR[OneOrMoreEpisodesVar][/LOWERCASE]</label>
+										<font>font12</font>
+										<textcolor>grey</textcolor>
+									</control>
+								</control>
+								<control type="group">
+									<visible>!String.IsEmpty(Container(4800).ListItem.Property(UnwatchedEpisodes))</visible>
+									<width>200</width>
+									<control type="label">
+										<top>2</top>
+										<height>60</height>
+										<align>center</align>
+										<label>$INFO[Container(4800).ListItem.Property(UnwatchedEpisodes)]</label>
+										<font>font48_bold</font>
+										<wrapmultiline>true</wrapmultiline>
+										<textcolor>grey</textcolor>
+									</control>
+									<control type="label">
+										<top>52</top>
+										<height>30</height>
+										<align>center</align>
+										<label>[LOWERCASE]$LOCALIZE[16101][/LOWERCASE]</label>
+										<font>font12</font>
+										<textcolor>grey</textcolor>
 									</control>
 								</control>
 							</control>

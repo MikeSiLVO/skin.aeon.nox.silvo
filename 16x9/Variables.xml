@@ -138,9 +138,9 @@
 	</variable>
 	<variable name="OverlayVar">
 		<!-- <value condition="String.IsEqual(ListItem.Label2,$LOCALIZE[449])">overlays/addons/enabled.png</value> -->
-		<value condition="ListItem.IsResumable + !Skin.HasSetting(Disable.Resumable)">overlays/resumable.png</value>
-		<value condition="!Skin.HasSetting(Disable.OverlayUnwatched) + String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">overlays/OverlayUnwatched.png</value>
-		<value condition="!Skin.HasSetting(Disable.OverlayWatched) + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">overlays/OverlayWatched.png</value>
+		<value condition="ListItem.IsResumable + !Skin.HasSetting(Disable.Resumable)">overlays/resumable_1.png</value>
+		<value condition="!Skin.HasSetting(Disable.OverlayUnwatched) + String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">overlays/OverlayUnwatched_1.png</value>
+		<value condition="!Skin.HasSetting(Disable.OverlayWatched) + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">overlays/OverlayWatched_1.png</value>
 	</variable>
 	<variable name="ListItemOverlay">
 		<value condition="String.IsEqual(ListItem.Property(WatchedEpisodePercent),100)">[COLOR $VAR[ThemeLabelColor]][/COLOR]</value>
@@ -287,11 +287,11 @@
 		<value>$INFO[Container(4800).ListItem.Votes,, $LOCALIZE[205]]</value>
 	</variable>
 	<variable name="OneOrMoreSeasonsVar">
-		<value condition="String.IsEqual(ListItem.Property(TotalSeasons),1)">$LOCALIZE[20373]</value>
+		<value condition="!Window.IsVisible(1102) + Integer.IsEqual(ListItem.Property(TotalSeasons),1) | Window.IsVisible(1102) + Integer.IsEqual(Container(4800).ListItem.Property(TotalSeasons),1)">$LOCALIZE[20373]</value>
 		<value>$LOCALIZE[33054]</value>
 	</variable>
 	<variable name="OneOrMoreEpisodesVar">
-		<value condition="String.IsEqual(Container.ListItem.Property(TotalEpisodes),1) | String.IsEqual(ListItem.Property(TotalEpisodes),1)">$LOCALIZE[20359]</value>
+		<value condition="!Window.IsVisible(1102) + [Integer.IsEqual(Container.ListItem.Property(TotalEpisodes),1) | Integer.IsEqual(ListItem.Property(TotalEpisodes),1)] | Window.IsVisible(1102) + Integer.IsEqual(Container(4800).ListItem.Property(TotalEpisodes),1)">$LOCALIZE[20359]</value>
 		<value>$LOCALIZE[20360]</value>
 	</variable>
 	<variable name="VideoPlotVar">
@@ -706,6 +706,9 @@
 		<value condition="String.IsEqual(ListItem.DBTYPE,season)">$LOCALIZE[31271]</value>
 	</variable>
 	<variable name="ContainerHasNextPreviousLabelVar">
+		<value condition="Window.IsVisible(1102) + Container(4702).HasPrevious + !Container(4702).HasNext"></value>
+		<value condition="Window.IsVisible(1102) + Container(4702).HasNext + !Container(4702).HasPrevious"></value>
+		<value condition="Window.IsVisible(1102) + Container(4702).HasPrevious + Container(4702).HasNext"></value>
 		<value condition="Container(90001).HasPrevious + !Container(90001).HasNext | String.IsEqual(ListItem.DBTYPE,season)"></value>
 		<value condition="Container(90001).HasNext + !Container(90001).HasPrevious"></value>
 		<value condition="Container(90001).HasPrevious + Container(90001).HasNext"></value>
@@ -750,6 +753,10 @@
 	<variable name="VideoInfoTVSubtitleVar">
 		<value condition="!String.IsEmpty(Container(9143).ListItem.Status)">$INFO[Container(9143).ListItem.Status]</value>
 		<value condition="!String.IsEmpty(ListItem.Status)">$INFO[ListItem.Status]</value>
+	</variable>
+	<variable name="CustomInfoTVSubtitleVar">
+		<value condition="!String.IsEmpty(Container(4801).ListItem.Status)">$INFO[Container(4801).ListItem.Status]</value>
+		<value condition="!String.IsEmpty(Container(4800).ListItem.Status)">$INFO[Container(4800).ListItem.Status]</value>
 	</variable>
 	<variable name="VideoInfoCastLabel2Var">
 		<value condition="Skin.HasSetting(OnlineCast)">$INFO[System.AddonTitle(plugin.video.themoviedb.helper)]</value>
@@ -866,13 +873,6 @@
 		<value condition="String.IsEqual(Container(9143).ListItem.Property(RottenTomatoes_Image),fresh)">logos/rottentomatoes/fresh.png</value>
 		<value condition="String.IsEqual(Container(9143).ListItem.Property(RottenTomatoes_Image),rotten)">logos/rottentomatoes/rotten.png</value>
 		<value condition="Integer.IsGreater(Container(9143).ListItem.Property(RottenTomatoes_Rating),59)">logos/rottentomatoes/fresh.png</value>
-		<value>logos/rottentomatoes/rotten.png</value>
-	</variable>
-	<variable name="CustomTMDbHelperRottenTomatoLogoVar">
-		<value condition="String.IsEqual(Container(4801).ListItem.Property(RottenTomatoes_Image),certified)">logos/rottentomatoes/certified.png</value>
-		<value condition="String.IsEqual(Container(4801).ListItem.Property(RottenTomatoes_Image),fresh)">logos/rottentomatoes/fresh.png</value>
-		<value condition="String.IsEqual(Container(4801).ListItem.Property(RottenTomatoes_Image),rotten)">logos/rottentomatoes/rotten.png</value>
-		<value condition="Integer.IsGreater(Container(4801).ListItem.Property(RottenTomatoes_Rating),59)">logos/rottentomatoes/fresh.png</value>
 		<value>logos/rottentomatoes/rotten.png</value>
 	</variable>
 	<variable name="TMDbHelperNextAiredLabelVar">
@@ -1190,14 +1190,6 @@
 		<value condition="Control.HasFocus(97)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[15067][/COLOR]</value>
 		<value condition="Control.HasFocus(95)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31617][/COLOR]</value>
 		<value>$INFO[Control.GetLabel(1)][UPPERCASE]$INFO[ListItem.Label, • ]$INFO[ListItem.Label2, #,[/UPPERCASE]]</value>
-	</variable>
-	<variable name="LibrarySearchCountLabelVar">
-		<value condition="ControlGroup(5000).HasFocus(5001)">$LOCALIZE[342]$INFO[Container(5001).CurrentItem,[CR] (,/]$INFO[Container(5001).NumItems,,)]</value>
-		<value condition="ControlGroup(5000).HasFocus(5002)">$LOCALIZE[20343]$INFO[Container(5002).CurrentItem,[CR] (,/]$INFO[Container(5002).NumItems,,)]</value>
-		<value condition="ControlGroup(5000).HasFocus(5003)">$LOCALIZE[20360]$INFO[Container(5003).CurrentItem,[CR] (,/]$INFO[Container(5003).NumItems,,)]</value>
-		<!-- <value condition="ControlGroup(5000).HasFocus(5004)">$INFO[Container(5004).CurrentItem,[CR] (,/]$INFO[Container(5004).NumItems,,)]</value>
-		<value condition="ControlGroup(5000).HasFocus(5005)">$INFO[Container(5005).CurrentItem,[CR] (,/]$INFO[Container(5005).NumItems,,)]</value>
-		<value condition="ControlGroup(5000).HasFocus(5006)">$INFO[Container(5006).CurrentItem,[CR] (,/]$INFO[Container(5006).NumItems,,)]</value> -->
 	</variable>
 	<!-- Color Picker VARs -->
 	<variable name="ThemeLabelColor">
