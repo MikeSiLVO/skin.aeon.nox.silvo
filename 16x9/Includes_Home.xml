@@ -213,7 +213,7 @@
 					<top>45</top>
 					<height>2</height>
 					<texture colordiffuse="$VAR[ThemeHomeSystemGlowBarsColor]">colors/white.png</texture>
-					<visible>String.IsEmpty(Skin.String(HorizontalRSSPosition)) | !String.IsEmpty(Skin.String(HorizontalRSSPosition)) + system.getbool(lookandfeel.enablerssfeeds) | [!system.getbool(lookandfeel.enablerssfeeds) + !Skin.HasSetting(Enable.VisibleSubmenu)]</visible>
+					<visible>String.IsEmpty(Skin.String(HorizontalRSSPosition)) | !String.IsEmpty(Skin.String(HorizontalRSSPosition)) + System.Getbool(lookandfeel.enablerssfeeds) | [!System.Getbool(lookandfeel.enablerssfeeds) + !Skin.HasSetting(Enable.VisibleSubmenu)]</visible>
 					<animation effect="slide" end="0,45" condition="![System.GetBool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(HorizontalRSSPosition),high)] + [System.GetBool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(HorizontalRSSPosition),high) + Skin.HasSetting(SystemBarOnTop) + Skin.HasSetting(centermainmenu)] | [!System.GetBool(lookandfeel.enablerssfeeds) + Skin.HasSetting(SystemBarOnTop) + Skin.HasSetting(centermainmenu)] | ![System.GetBool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(HorizontalRSSPosition),high)] + [System.GetBool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(HorizontalRSSPosition),high) + Skin.HasSetting(SystemBarOnTop) + !Skin.HasSetting(centermainmenu)] | [!System.GetBool(lookandfeel.enablerssfeeds) + Skin.HasSetting(SystemBarOnTop) + !Skin.HasSetting(centermainmenu)]">Conditional</animation>
 				</control>
 			</control>
@@ -224,7 +224,7 @@
 			<top>453</top>
 			<animation effect="slide" end="0,338" time="320" tween="cubic" easing="inout" condition="!Skin.HasSetting(centermainmenu)">Conditional</animation>
 			<include>WindowOpenCloseAnimation</include>
-			<include condition="system.getbool(input.enablemouse)">SubmenuMouseButton</include>
+			<include condition="System.Getbool(input.enablemouse)">SubmenuMouseButton</include>
 			<control type="image">
 				<width>100%</width>
 				<height>229</height>
@@ -275,7 +275,7 @@
 			</control>
 			<control type="group" id="9001">
 				<top>162</top>
-				<include condition="[String.IsEmpty(Skin.String(HorizontalRSSPosition)) | !String.IsEmpty(Skin.String(HorizontalRSSPosition)) + !Skin.HasSetting(Enable.VisibleSubmenu)] + system.getbool(lookandfeel.enablerssfeeds) | [!system.getbool(lookandfeel.enablerssfeeds) + !Skin.HasSetting(Enable.VisibleSubmenu)]">SubMenuAnimation</include>
+				<include condition="[String.IsEmpty(Skin.String(HorizontalRSSPosition)) | !String.IsEmpty(Skin.String(HorizontalRSSPosition)) + !Skin.HasSetting(Enable.VisibleSubmenu)] + System.Getbool(lookandfeel.enablerssfeeds) | [!System.Getbool(lookandfeel.enablerssfeeds) + !Skin.HasSetting(Enable.VisibleSubmenu)]">SubMenuAnimation</include>
 				<control type="image">
 					<width>100%</width>
 					<height>45</height>
@@ -386,11 +386,11 @@
 			<animation effect="slide" end="1870,0" time="240">WindowClose</animation>
 			<animation effect="slide" start="1400,0" end="0,0" delay="300" time="240" condition="!Window.Previous(startup)">WindowOpen</animation>
 			<animation effect="slide" start="1400,0" end="0,0" delay="800" time="480" condition="Window.Previous(startup)">WindowOpen</animation>
-			<animation effect="slide" end="0,993" time="320" tween="cubic" easing="inout" condition="system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]">Conditional</animation>
+			<animation effect="slide" end="0,993" time="320" tween="cubic" easing="inout" condition="System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]">Conditional</animation>
 			<control type="group">
 				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="$EXP[HasVerticalMenuWithExtended]">Conditional</animation>
 				<control type="group">
-					<visible>system.getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEmpty(Skin.String(VerticalMenuSystemBar.Position))]</visible>
+					<visible>System.Getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!System.Getbool(lookandfeel.enablerssfeeds) + String.IsEmpty(Skin.String(VerticalMenuSystemBar.Position))]</visible>
 					<left>460</left>
 					<control type="image">
 						<left>60</left>
@@ -405,7 +405,7 @@
 					</control>
 				</control>
 				<control type="group">
-					<visible>system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]</visible>
+					<visible>System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]</visible>
 					<left>460</left>
 					<top>45</top>
 					<control type="image">
@@ -422,7 +422,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<animation effect="slide" end="0,45" time="320" tween="cubic" easing="inout" condition="system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]">Conditional</animation>
+				<animation effect="slide" end="0,45" time="320" tween="cubic" easing="inout" condition="System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]">Conditional</animation>
 				<control type="group">
 					<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="$EXP[HasVerticalMenuWithExtended]">Conditional</animation>
 					<include condition="System.AddonIsEnabled(script.skinvariables)">PlayListStatsList</include>
@@ -1269,7 +1269,7 @@
 				<width>100%</width>
 				<height>2</height>
 				<texture colordiffuse="$VAR[ThemeHomeSystemGlowBarsColor]">colors/white.png</texture>
-				<animation effect="slide" end="0,47" condition="[String.IsEqual(Skin.String(HorizontalRSSPosition),low) | String.IsEmpty(Skin.String(HorizontalRSSPosition))] + [system.getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical)] + String.IsEmpty(Skin.String(HorizontalRSSPosition))">Conditional</animation>
+				<animation effect="slide" end="0,47" condition="[String.IsEqual(Skin.String(HorizontalRSSPosition),low) | String.IsEmpty(Skin.String(HorizontalRSSPosition))] + [System.Getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical)] + String.IsEmpty(Skin.String(HorizontalRSSPosition))">Conditional</animation>
 			</control>
 		</control>
 	</include>
@@ -1320,18 +1320,18 @@
 			<animation effect="slide" end="1870,0" time="240">WindowClose</animation>
 			<animation effect="slide" start="1400,0" end="0,0" delay="300" time="240" condition="!Window.Previous(startup)">WindowOpen</animation>
 			<animation effect="slide" start="1400,0" end="0,0" delay="800" time="480" condition="Window.Previous(startup)">WindowOpen</animation>
-			<animation effect="slide" end="0,-993" time="320" tween="cubic" easing="inout" condition="[system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419])] | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]">Conditional</animation>
-			<animation effect="slide" end="1250,0" time="320" tween="cubic" easing="inout" condition="!system.getbool(lookandfeel.enablerssfeeds)">Conditional</animation>
-			<animation effect="slide" end="100,0" time="320" tween="cubic" easing="inout" condition="!system.getbool(lookandfeel.enablerssfeeds) + !Skin.HasSetting(Disable.SearchButton) + !System.HasMediaDVD">Conditional</animation>
-			<animation effect="slide" end="50,0" time="320" tween="cubic" easing="inout" condition="!system.getbool(lookandfeel.enablerssfeeds) + Skin.HasSetting(Disable.SearchButton) + System.HasMediaDVD">Conditional</animation>
-			<visible>system.getbool(lookandfeel.enablerssfeeds) | [System.AddonIsEnabled(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)] | System.HasMediaDVD</visible>
+			<animation effect="slide" end="0,-993" time="320" tween="cubic" easing="inout" condition="[System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419])] | [!System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]">Conditional</animation>
+			<animation effect="slide" end="1250,0" time="320" tween="cubic" easing="inout" condition="!System.Getbool(lookandfeel.enablerssfeeds)">Conditional</animation>
+			<animation effect="slide" end="100,0" time="320" tween="cubic" easing="inout" condition="!System.Getbool(lookandfeel.enablerssfeeds) + !Skin.HasSetting(Disable.SearchButton) + !System.HasMediaDVD">Conditional</animation>
+			<animation effect="slide" end="50,0" time="320" tween="cubic" easing="inout" condition="!System.Getbool(lookandfeel.enablerssfeeds) + Skin.HasSetting(Disable.SearchButton) + System.HasMediaDVD">Conditional</animation>
+			<visible>System.Getbool(lookandfeel.enablerssfeeds) | [System.AddonIsEnabled(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)] | System.HasMediaDVD</visible>
 			<top>1036</top>
 			<control type="group">
 				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
 				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.Contains(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus">Conditional</animation>
 				<control type="group">
 					<control type="group">
-						<visible>[system.getbool(lookandfeel.enablerssfeeds) + String.IsEmpty(Skin.String(VerticalMenuRSS.Position))] | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEmpty(Skin.String(VerticalMenuSystemBar.Position))]</visible>
+						<visible>[System.Getbool(lookandfeel.enablerssfeeds) + String.IsEmpty(Skin.String(VerticalMenuRSS.Position))] | [!System.Getbool(lookandfeel.enablerssfeeds) + String.IsEmpty(Skin.String(VerticalMenuSystemBar.Position))]</visible>
 						<control type="group">
 							<height>45</height>
 							<control type="image">
@@ -1347,7 +1347,7 @@
 						</control>
 					</control>
 					<control type="group">
-						<visible>[system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419])] | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]</visible>
+						<visible>[System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419])] | [!System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]</visible>
 						<control type="group">
 							<top>-45</top>
 							<control type="image">
@@ -1367,7 +1367,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<animation effect="slide" end="0,-46" time="320" tween="cubic" easing="inout" condition="[system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419])] | [!system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]">Conditional</animation>
+				<animation effect="slide" end="0,-46" time="320" tween="cubic" easing="inout" condition="[System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419])] | [!System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]">Conditional</animation>
 				<control type="grouplist" id="9020">
 					<top>3</top>
 					<left>510</left>
@@ -1399,7 +1399,7 @@
 						<titlecolor>$VAR[ThemeHomeLabelColor]</titlecolor>
 						<headlinecolor>$VAR[RSSFeedColor]</headlinecolor>
 						<shadowcolor>shadow</shadowcolor>
-						<visible>system.getbool(lookandfeel.enablerssfeeds)</visible>
+						<visible>System.Getbool(lookandfeel.enablerssfeeds)</visible>
 						<animation effect="slide" end="-410,0" condition="[!ControlGroup(90010).HasFocus + !ControlGroup(90020).HasFocus] | [!String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus] | [!String.Contains(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus]">Conditional</animation>
 					</control>
 				</control>
@@ -1410,7 +1410,7 @@
 					<label></label>
 					<font>IconSmallMD</font>
 					<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
-					<visible>system.getbool(lookandfeel.enablerssfeeds)</visible>
+					<visible>System.Getbool(lookandfeel.enablerssfeeds)</visible>
 				</control>
 			</control>
 		</control>
