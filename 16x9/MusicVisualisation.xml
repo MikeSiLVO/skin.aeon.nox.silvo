@@ -258,6 +258,7 @@
 				<control type="group">
 					<top>-470</top>
 					<visible>String.IsEqual(Skin.String(MusicVizLayout),3)</visible>
+					<animation effect="slide" end="0,-32" time="320" tween="quadratic" condition="Skin.HasSetting(Enable.VizInfo) | Skin.HasSetting(Enable.VizPersistent)">Conditional</animation>
 					<control type="image">
 						<left>-50</left>
 						<top>599</top>
@@ -816,19 +817,11 @@
 				<visible>[Player.ShowInfo + Skin.HasSetting(Enable.VizInfo)] | Skin.HasSetting(Enable.VizPersistent)</visible>
 				<include>VisibleFadeAnimation</include>
 				<top>993</top>
-				<control type="group">
+				<control type="image">
 					<top>45</top>
+					<width>100%</width>
 					<height>45</height>
-					<control type="image">
-						<left>130</left>
-						<width>1800</width>
-						<texture flipy="true" colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu.png</texture>
-					</control>
-					<control type="image">
-						<left>70</left>
-						<width>60</width>
-						<texture flipy="true" colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenuend.png</texture>
-					</control>
+					<texture flipy="true" colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu.png</texture>
 				</control>
 				<control type="group">
 					<control type="label">
@@ -838,13 +831,12 @@
 						<height>40</height>
 						<label></label>
 						<font>IconSmallMD</font>
-						<textcolor>$VAR[ThemeLabelColor]</textcolor>
 					</control>
 					<control type="fadelabel">
 						<right>70</right>
 						<top>44</top>
 						<height>30</height>
-						<width>1740</width>
+						<width>1840</width>
 						<textcolor>$VAR[ThemeLabelColor]</textcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[Window(Visualisation).Property(ArtistSlideshow.ArtistBiography),$LOCALIZE[21887]: [COLOR grey],[/COLOR]]</label>

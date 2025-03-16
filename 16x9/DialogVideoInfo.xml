@@ -445,7 +445,7 @@
 						<left>-7</left>
 						<top>606</top>
 						<width>2800</width>
-						<height>500</height>
+						<height>480</height>
 						<onup condition="!String.IsEqual(ListItem.Property(item.type),person)">9000</onup>
 						<onup condition="String.IsEqual(ListItem.Property(item.type),person)">9876</onup>
 						<ondown condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.Property(item.type),person)">Runscript(plugin.video.themoviedb.helper,recommendations=5000|info=recommendations|true|info||5001|info=trakt_comments&amp;sort=likes|true|text||5002|info=crew|true|info||5999|info=details|true,window_id=1110,tmdb_type=$VAR[TMDbHelperDBTYPEPathVar],tmdb_id=$INFO[Container(9143).ListItem.UniqueID(tmdb)])</ondown>
@@ -454,12 +454,12 @@
 						<scrolltime tween="quadratic" easing="out">300</scrolltime>
 						<control type="group" id="90002">
 							<width>1200</width>
-							<height>500</height>
+							<height>480</height>
 							<control type="button" id="90003">
 								<left>10</left>
 								<top>-2</top>
 								<width>1200</width>
-								<height>500</height>
+								<height>480</height>
 								<onup condition="!String.IsEqual(ListItem.Property(item.type),person)">9000</onup>
 								<onup condition="String.IsEqual(ListItem.Property(item.type),person)">9876</onup>
 								<ondown condition="String.IsEqual(ListItem.Property(item.type),person)">990010</ondown>

@@ -3568,10 +3568,14 @@
 	</include>
 	<!-- Content Lists -->
 	<include name="SkinVariablesContentList">
-		<control type="list" id="4501">
-			<include>HiddenList</include>
-			<content>$VAR[SkinVariableDBContainerPluginPathVar]</content>
-		</control>
+		<param name="id" default="4501" />
+		<param name="content" default="$VAR[SkinVariableDBContainerPluginPathVar]" />
+		<definition>
+			<control type="list" id="$PARAM[id]">
+				<include>HiddenList</include>
+				<content sortby="userpreference">$PARAM[content]</content>
+			</control>
+		</definition>
 	</include>
 	<include name="TMDbHelperContentList">
 		<control type="list" id="9143">

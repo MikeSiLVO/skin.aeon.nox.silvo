@@ -10,54 +10,47 @@
 		<control type="group">
 			<include>WindowOpenCloseAnimation</include>
 			<control type="grouplist" id="5000">
-				<left>15</left>
-				<top>50</top>
-				<width>1890</width>
-				<height>1020</height>
+				<left>60</left>
+				<top>54</top>
+				<width>1800</width>
+				<height>1040</height>
+				<!-- <onleft></onleft> -->
 				<ondown>noop</ondown>
 				<onup>noop</onup>
+				<scrolltime tween="quadratic" easing="out">300</scrolltime>
 				<control type="label" id="4001">
 					<height>40</height>
-					<font>font30_title</font>
+					<font>font16_title</font>
 					<label>$LOCALIZE[342]$INFO[Container(5001).CurrentItem, [B](,/]$INFO[Container(5001).NumItems,,)][/B]</label>
 					<visible>Integer.IsGreater(Container(5001).NumItems,0)</visible>
 				</control>
-				<control type="panel" id="5001">
-					<include content="SearchPosterLayout">
-						<param name="list_id">5001</param>
-						<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</param>
-					</include>
-					<visible allowhiddenfocus="true">Integer.IsGreater(Container(5001).NumItems,0)</visible>
-					<onfocus>SetProperty(TMDbHelper.WidgetContainer,5001,Home)</onfocus>
-				</control>
+				<include content="ExtendedInfoListLayout">
+					<param name="id">5001</param>
+					<param name="width">1800</param>
+					<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</param>
+				</include>
 				<control type="label" id="4002">
 					<height>40</height>
-					<font>font30_title</font>
+					<font>font16_title</font>
 					<label>$LOCALIZE[20343]$INFO[Container(5002).CurrentItem, [B](,/]$INFO[Container(5002).NumItems,,)][/B]</label>
+					<visible>Integer.IsGreater(Container(5002).NumItems,0)</visible>
 				</control>
-				<control type="panel" id="5002">
-					<include content="SearchPosterLayout">
-						<param name="list_id">5002</param>
-						<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D]</param>
-					</include>
-					<visible allowhiddenfocus="true">Integer.IsGreater(Container(5002).NumItems,0)</visible>
-					<onclick>noop</onclick>
-					<onfocus>SetProperty(TMDbHelper.WidgetContainer,5002,Home)</onfocus>
-				</control>
+				<include content="ExtendedInfoListLayout">
+					<param name="id">5002</param>
+					<param name="width">1800</param>
+					<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D]</param>
+				</include>
 				<control type="label" id="4003">
 					<height>40</height>
 					<font>font16_title</font>
 					<label>$LOCALIZE[20360]$INFO[Container(5003).CurrentItem, [B](,/]$INFO[Container(5003).NumItems,,)][/B]</label>
+					<visible>Integer.IsGreater(Container(5003).NumItems,0)</visible>
 				</control>
-				<control type="panel" id="5003">
-					<include content="SearchPosterLayout">
-						<param name="list_id">5003</param>
-						<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22episodes%22%7D]</param>
-					</include>
-					<visible allowhiddenfocus="true">Integer.IsGreater(Container(5003).NumItems,0)</visible>
-					<onclick>noop</onclick>
-					<onfocus>SetProperty(TMDbHelper.WidgetContainer,5003,Home)</onfocus>
-				</control>
+				<include content="ExtendedInfoListLayout">
+					<param name="id">5003</param>
+					<param name="width">1800</param>
+					<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22episodes%22%7D]</param>
+				</include>
 			</control>
 		</control>
 		<include>Topbar</include>

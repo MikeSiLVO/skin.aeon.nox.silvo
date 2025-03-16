@@ -39,7 +39,7 @@
 	</include>
 	<include name="ExtendedInfoListLayout">
 		<param name="numitems" default="0" />
-		<param name="width" default="1196" />
+		<param name="width" default="1200" />
 		<param name="overlayVisibility">!String.IsEmpty(ListItem.Property(DBID))</param>
 		<param name="labelVisibility">false</param>
 		<param name="label" default="$INFO[ListItem.Label2]" />
@@ -53,7 +53,7 @@
 				<visible allowhiddenfocus="true">Integer.IsGreater(Container($PARAM[id]).NumItems,$PARAM[numitems])</visible>
 				<left>15</left>
 				<width>$PARAM[width]</width>
-				<height>500</height>
+				<height>480</height>
 				<orientation>horizontal</orientation>
 				<preloaditems>2</preloaditems>
 				<scrolltime tween="quadratic" easing="out">300</scrolltime>
@@ -67,7 +67,7 @@
 				<onclick condition="[Control.HasFocus(50002) | Control.HasFocus(50003) | Control.HasFocus(50004)]">SetFocus(4610)</onclick>
 				<onclick condition="Control.HasFocus(990010) | Control.HasFocus(990011) | Control.HasFocus(990012)">RunScript(plugin.video.themoviedb.helper,add_path=$INFO[ListItem.FolderPath],type=tv,call_auto=1111)</onclick>
 				<onclick condition="Control.HasFocus(990020)">SetFocus(99)</onclick>
-				<itemlayout height="500" width="299">
+				<itemlayout height="480" width="300">
 					<control type="image">
 						<left>-15</left>
 						<top>-10</top>
@@ -135,7 +135,7 @@
 						<visible>$PARAM[overlayVisibility]</visible>
 					</control>
 				</itemlayout>
-				<focusedlayout height="500" width="299">
+				<focusedlayout height="480" width="300">
 					<control type="group">
 						<animation effect="zoom" start="90" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
 						<control type="image">
@@ -225,89 +225,6 @@
 			</control>
 		</definition>
 	</include>
-	<include name="SearchPosterLayout">
-		<param name="width" default="1890" />
-		<param name="texture" default="$VAR[PosterVar]" />
-		<!-- <param name="label" default="$INFO[ListItem.Label]" />
-		<param name="label2" default="$INFO[ListItem.Year]$INFO[ListItem.Rating, • ]" /> -->
-		<param name="target" default="videos" />
-		<definition>
-			<width>$PARAM[width]</width>
-			<height>300</height>
-			<orientation>horizontal</orientation>
-			<preloaditems>2</preloaditems>
-			<scrolltime tween="quadratic" easing="out">300</scrolltime>
-			<itemlayout height="300" width="210">
-				<control type="image">
-					<width>210</width>
-					<height>300</height>
-					<aspectratio>scale</aspectratio>
-					<texture border="3" background="true">$PARAM[texture]</texture>
-					<bordersize>3</bordersize>
-					<bordertexture border="3" infill="false">colors/black.png</bordertexture>
-				</control>
-				<!-- <control type="label">
-					<left>20</left>
-					<bottom>50</bottom>
-					<width>190</width>
-					<height>50</height>
-					<align>center</align>
-					<font>font14</font>
-					<textcolor>white2</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<label>$PARAM[label]</label>
-				</control>
-				<control type="label">
-					<left>20</left>
-					<bottom>0</bottom>
-					<width>190</width>
-					<height>50</height>
-					<align>center</align>
-					<font>font14</font>
-					<textcolor>white2</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<label>$PARAM[label2]</label>
-				</control> -->
-			</itemlayout>
-			<focusedlayout height="300" width="210">
-				<control type="group">
-					<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
-					<control type="image">
-						<width>210</width>
-						<height>300</height>
-						<aspectratio>scale</aspectratio>
-						<texture border="3" background="true">$PARAM[texture]</texture>
-						<bordersize>3</bordersize>
-						<bordertexture border="3" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
-					</control>
-					<!-- <control type="label">
-						<left>20</left>
-						<bottom>50</bottom>
-						<width>190</width>
-						<height>50</height>
-						<align>center</align>
-						<font>font14</font>
-						<textcolor>$VAR[ThemeLabelColor]</textcolor>
-						<shadowcolor>shadow</shadowcolor>
-						<label>$PARAM[label]</label>
-					</control>
-					<control type="label">
-						<left>20</left>
-						<bottom>0</bottom>
-						<width>190</width>
-						<height>50</height>
-						<align>center</align>
-						<font>font14</font>
-						<shadowcolor>shadow</shadowcolor>
-						<textcolor>$VAR[ThemeLabelColor]</textcolor>
-						<label>$PARAM[label2]</label>
-						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
-					</control> -->
-				</control>
-			</focusedlayout>
-			<content sortby="$PARAM[sortby]" limit="$PARAM[limit]" target="$PARAM[target]" browse="never">$PARAM[content]</content>
-		</definition>
-	</include>
 	<include name="SkinVariablesCastPanelContent">
 		<content>$VAR[SkinVariablesCastPanelContentVar]</content>
 	</include>
@@ -323,11 +240,11 @@
 		<control type="panel" id="50">
 			<left>15</left>
 			<width>1196</width>
-			<height>500</height>
+			<height>480</height>
 			<orientation>horizontal</orientation>
 			<preloaditems>2</preloaditems>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
-			<itemlayout height="500" width="299">
+			<itemlayout height="480" width="299">
 				<control type="image">
 					<left>-15</left>
 					<top>-10</top>
@@ -367,7 +284,7 @@
 					<label>$INFO[ListItem.Label2]</label>
 				</control>
 			</itemlayout>
-			<focusedlayout height="500" width="299">
+			<focusedlayout height="480" width="299">
 				<control type="group">
 					<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
 					<control type="image">
@@ -417,8 +334,8 @@
 	<include name="CustomActorList">
 		<control type="panel" id="90050">
 			<left>15</left>
-			<width>1196</width>
-			<height>500</height>
+			<width>1200</width>
+			<height>480</height>
 			<orientation>horizontal</orientation>
 			<preloaditems>2</preloaditems>
 			<onclick condition="!String.IsEmpty(Container(90050).ListItem.Property(tmdb_id))">SetProperty(person_id,$INFO[Container(90050).ListItem.Property(tmdb_id),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_type=person&amp;tmdb_id=],Home)</onclick>
@@ -427,7 +344,7 @@
 			<onclick condition="!String.IsEqual(ListItem.DBTYPE,season) + !Skin.HasSetting(OnlineCast)">ActivateWindow(1129)</onclick>
 			<onclick condition="String.IsEqual(ListItem.DBTYPE,season) | Skin.HasSetting(OnlineCast)">ActivateWindow(1109)</onclick>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
-			<itemlayout height="500" width="299">
+			<itemlayout height="480" width="300">
 				<control type="image">
 					<left>-15</left>
 					<top>-10</top>
@@ -478,7 +395,7 @@
 					<label>$INFO[ListItem.Property(role)]</label>
 				</control>
 			</itemlayout>
-			<focusedlayout height="500" width="299">
+			<focusedlayout height="480" width="300">
 				<control type="group">
 					<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
 					<control type="image">
@@ -625,10 +542,8 @@
 		<onclick>SetProperty(item_dbtype,$INFO[Container($PARAM[id]).Listitem.DBTYPE],Home)</onclick>
 		<onclick>SetProperty(item_dbid,$INFO[Container($PARAM[id]).Listitem.DBID],Home)</onclick>
 		<onclick>SetProperty(item_poster,$INFO[Container($PARAM[id]).Listitem.Art(poster)],Home)</onclick>
-		<onclick>SetProperty(tmdb_type,tmdb_type=$INFO[Container($PARAM[id]).Listitem.DBTYPE,Home)</onclick>
 		<onclick>SetProperty(item_filename,$INFO[Container($PARAM[id]).Listitem.FileName],Home)</onclick>
-		<onclick>SetProperty(item_ext,tmdb_type=$INFO[Container($PARAM[id]).Listitem.FileExtension,Home)</onclick>
-		<onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.Top250)">SetProperty(item_top250,$INFO[Container($PARAM[id]).ListItem.Top250],Home)</onclick>
+		<onclick>SetProperty(item_ext,$INFO[Container($PARAM[id]).Listitem.FileExtension,Home)</onclick>
 		<onclick condition="Container($PARAM[id]).ListItem.IsResumable + !String.IsEqual(Container($PARAM[id]).ListItem.PercentPlayed,0)">SetProperty(item_percentplayed,$INFO[Container($PARAM[id]).ListItem.PercentPlayed,,%],Home)</onclick>
 		<onclick condition="Container($PARAM[id]).ListItem.IsResumable + !String.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedEpisodePercent),0)">SetProperty(item_percentplayed,$INFO[Container($PARAM[id]).ListItem.Property(WatchedEpisodePercent),,%],Home)</onclick>
 		<onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.UniqueID(tmdb))">SetProperty(tmdb_id,$INFO[Container($PARAM[id]).ListItem.UniqueID(tmdb),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_id=],Home)</onclick>
