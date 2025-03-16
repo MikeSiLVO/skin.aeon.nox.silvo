@@ -207,7 +207,7 @@
 							<label>   - $LOCALIZE[31157]</label>
 							<onclick>Skin.ToggleSetting(Enable.VisibleSubmenu)</onclick>
 							<selected>Skin.HasSetting(Enable.VisibleSubmenu)</selected>
-							<visible>[system.getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !String.IsEmpty(Skin.String(HorizontalRSSPosition))]</visible>
+							<visible>[System.Getbool(lookandfeel.enablerssfeeds) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !String.IsEmpty(Skin.String(HorizontalRSSPosition))]</visible>
 						</control>
 						<control type="radiobutton" id="10009">
 							<include>SettingsButtonCommonValues</include>
@@ -223,7 +223,7 @@
 							<label>$LOCALIZE[31220]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[VerticalMenuRSSLabelVar][/COLOR]</label2>
 							<onclick>$VAR[VerticalMenuRSSPositionVar]</onclick>
-							<visible>system.getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(MainMenu.Layout),vertical)</visible>
+							<visible>System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(MainMenu.Layout),vertical)</visible>
 							<visible>!Skin.HasSetting(HideSystemBars)</visible>
 						</control>
 						<control type="button" id="10011">
@@ -231,7 +231,7 @@
 							<label>$LOCALIZE[31280]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[VerticalMenuSystemBarPositionLabelVar][/COLOR]</label2>
 							<onclick>$VAR[VerticalMenuSystemBarPositionVar]</onclick>
-							<visible>String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !system.getbool(lookandfeel.enablerssfeeds)</visible>
+							<visible>String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !System.Getbool(lookandfeel.enablerssfeeds)</visible>
 							<visible>!Skin.HasSetting(HideSystemBars)</visible>
 						</control>
 						<control type="radiobutton" id="10012">
@@ -239,7 +239,7 @@
 							<label>$LOCALIZE[31157]</label>
 							<onclick>Skin.ToggleSetting(Enable.VisibleSubmenu)</onclick>
 							<selected>Skin.HasSetting(Enable.VisibleSubmenu)</selected>
-							<visible>!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !system.getbool(lookandfeel.enablerssfeeds)</visible>
+							<visible>!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !System.Getbool(lookandfeel.enablerssfeeds)</visible>
 						</control>
 						<control type="radiobutton" id="10013">
 							<include>SettingsButtonCommonValues</include>
@@ -493,7 +493,7 @@
 							<label>$LOCALIZE[31283]</label>
 							<onclick>Skin.ToggleSetting(Enable.AutoOpenMediaMenuOnMouseOver)</onclick>
 							<selected>Skin.HasSetting(Enable.AutoOpenMediaMenuOnMouseOver)</selected>
-							<visible>system.getbool(input.enablemouse)</visible>
+							<visible>System.Getbool(input.enablemouse)</visible>
 						</control>
 					</control>
 					<control type="grouplist" id="9006">
@@ -675,6 +675,7 @@
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[PointerSizeLabelVar][/COLOR]</label2>
 							<onclick>SetProperty(CustomSelect,pointersize,Home)</onclick>
 							<onclick>ActivateWindow(1129)</onclick>
+							<visible>System.GetBool(input.enablemouse)</visible>
 						</control>
 					</control>
 					<control type="grouplist" id="9009">
