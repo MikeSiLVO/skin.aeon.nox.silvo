@@ -1222,10 +1222,10 @@
 				<top>-44</top>
 				<include content="BackPanel">
 					<param name="left">-4</param>
-					<param name="top">175</param>
-					<param name="width">1170</param>
-					<param name="height">850</param>
-					<param name="texture">colors/black75.png</param>
+					<param name="top">176</param>
+					<param name="width">1168</param>
+					<param name="height">848</param>
+					<param name="texture">colors/black90.png</param>
 				</include>
 				<control type="panel" id="50">
 					<top>180</top>
@@ -1233,7 +1233,8 @@
 					<height>840</height>
 					<onleft>SetProperty(MediaMenu,True,Home)</onleft>
 					<onleft>SetFocus(9050)</onleft>
-					<onright condition="Control.IsVisible(95060)">95060</onright>
+					<onright condition="Integer.IsGreater(Container(8000).NumItems,0)">8000</onright>
+					<onright condition="Control.IsVisible(95060) + !Control.IsVisible(8001)">95060</onright>
 					<onright condition="!Control.IsVisible(95060) + Control.IsVisible(95061)">95061</onright>
 					<onright condition="!Control.IsVisible(95060) + Control.IsVisible(95063)">95063</onright>
 					<onright condition="!Control.IsVisible(95060) + !Control.IsVisible(95061)">4400</onright>
@@ -1601,16 +1602,15 @@
 				</control>
 				<control type="scrollbar" id="95060">
 					<left>1148</left>
-					<top>179</top>
-					<width>14</width>
-					<height>842</height>
+					<top>180</top>
+					<width>12</width>
+					<height>840</height>
 					<onup>95060</onup>
 					<ondown>95060</ondown>
 					<onleft>50</onleft>
 					<onright condition="!Control.IsVisible(615)">4400</onright>
 					<onright condition="Control.IsVisible(615)">615</onright>
-					<texturesliderbackground>colors/black.png</texturesliderbackground>
-					<texturesliderbar>colors/white25.png</texturesliderbar>
+					<texturesliderbar colordiffuse="$VAR[ThemeLabelColor]">colors/darkgrey.png</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
@@ -1653,25 +1653,25 @@
 				</control>
 			</control>
 			<control type="group" id="8001">
-				<left>1280</left>
-				<top>-40</top>
+				<left>1263</left>
+				<top>-44</top>
 				<visible>Container.Content(playlists)</visible>
 				<animation effect="fade" time="250">Visible</animation>
-				<control type="image">
-					<top>148</top>
-					<width>570</width>
-					<height>904</height>
-					<texture colordiffuse="E6FFFFFF" border="40">listpanel_back.png</texture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">27</param>
+					<param name="top">176</param>
+					<param name="width">526</param>
+					<param name="height">848</param>
+					<param name="texture">colors/black90.png</param>
+				</include>
 				<control type="scrollbar" id="95063">
-					<left>540</left>
+					<left>537</left>
 					<top>180</top>
 					<width>12</width>
 					<height>840</height>
 					<onleft>8000</onleft>
 					<onright>4400</onright>
-					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
+					<texturesliderbar colordiffuse="$VAR[ThemeLabelColor]">colors/darkgrey.png</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 					<showonepage>false</showonepage>
 				</control>
