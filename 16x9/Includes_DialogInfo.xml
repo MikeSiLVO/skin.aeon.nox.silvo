@@ -1224,7 +1224,8 @@
 			<label2>$LOCALIZE[573]:</label2>
 			<onclick>Dialog.Close(movieinformation)</onclick>
 			<onclick>ActivateWindow(Videos,$INFO[ListItem.Path],return)</onclick>
-			<visible>!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEmpty(ListItem.Path) + !Skin.HasSetting(Disable.VideoInfoPathDetails)</visible>
+			<visible>!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEmpty(ListItem.Path) + !Skin.HasSetting(Disable.VideoInfoPathDetails) + !String.StartsWith(ListItem.FilenameAndPath,stack://)</visible>
+			<visible>Container.IsStacked</visible>
 		</item>
 		<item>
 			<label>$INFO[ListItem.Filename]</label>
@@ -1232,7 +1233,15 @@
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[21800])</onclick>
 			<onclick>SetProperty(MoreInfoContent,$ESCINFO[ListItem.Filename])</onclick>
 			<onclick>SetFocus(64)</onclick>
-			<visible>!String.IsEmpty(ListItem.Filename) + !Skin.HasSetting(Disable.VideoInfoPathDetails)</visible>
+			<visible>!String.IsEmpty(ListItem.Filename) + !Skin.HasSetting(Disable.VideoInfoPathDetails) + !String.StartsWith(ListItem.FilenameAndPath,stack://)</visible>
+		</item>
+		<item>
+			<label>$INFO[ListItem.FilenameAndPath]</label>
+			<label2>$LOCALIZE[573]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[573])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[ListItem.FilenameAndPath])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(ListItem.FilenameAndPath) + !Skin.HasSetting(Disable.VideoInfoPathDetails) + String.StartsWith(ListItem.FilenameAndPath,stack://)</visible>
 		</item>
 	</include>
 	<include name="CustomInfoContentGeneral">
