@@ -262,9 +262,11 @@
 					<textoffsetx>30</textoffsetx>
 					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
 					<texturefocus />
-					<label>$LOCALIZE[31449]</label>
 					<onup>90102</onup>
-					<ondown>1615</ondown>
+					<ondown>1600</ondown>
+					<label>$LOCALIZE[13012]</label>
+					<altlabel>$LOCALIZE[31449]</altlabel>
+					<usealttexture>!String.IsEmpty(Window(1104).Property(DisableView))</usealttexture>
 					<onclick condition="!String.IsEmpty(Window(1104).Property(DisableView))">ReloadSkin()</onclick>
 					<onclick condition="String.IsEmpty(Window(1104).Property(DisableView))">Control.SetHidden(90098)</onclick>
 					<onclick condition="String.IsEmpty(Window(1104).Property(DisableView))">Control.SetVisible(90099)</onclick>
