@@ -11,7 +11,7 @@
 				<include condition="!String.IsEmpty(Skin.String(MyFlix.Delay))">MyFlixDelayAnimation</include>
 				<animation effect="fade" end="100" time="120" delay="1600">WindowOpen</animation>
 				<animation effect="fade" end="100" time="120" delay="1600">Visible</animation>
-				<visible>Skin.HasSetting(Enable.MyFlix.OpenCase) + !ListItem.IsCollection + Container.Content(movies)</visible>
+				<visible>Skin.HasSetting(Enable.MyFlix.OpenCase) + !String.IsEqual(ListItem.DBTYPE,set) + Container.Content(movies)</visible>
 			</control>
 			<control type="label" id="4448">
 				<description>MyFlix Open Case Sets</description>
@@ -20,7 +20,7 @@
 				<include condition="!String.IsEmpty(Skin.String(MyFlix.Delay))">MyFlixDelayAnimation</include>
 				<animation effect="fade" end="100" time="120" delay="1600">WindowOpen</animation>
 				<animation effect="fade" end="100" time="120" delay="1600">Visible</animation>
-				<visible>Skin.HasSetting(Enable.MyFlix.OpenCase) + ListItem.IsCollection</visible>
+				<visible>Skin.HasSetting(Enable.MyFlix.OpenCase) + String.IsEqual(ListItem.DBTYPE,set)</visible>
 			</control>
 			<control type="group">
 				<animation effect="slide" start="0" end="0,120" condition="[Container.Content(movies) + Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | [Container.Content(tvshows) + Skin.HasSetting(Enable.MyFlix.TVLandscape)]">Conditional</animation>
@@ -424,7 +424,9 @@
 			<control type="group">
 				<top>530</top>
 				<visible>[[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets)] + !Control.IsVisible(7000) + Skin.HasSetting(Enable.MyFlix.OpenCase)</visible>
-				<include>FlixCase</include>
+				<include content="FlixCase">
+					<param name="casepath">$VAR[CaseBackPathVar]</param>
+				</include>
 				<include>FlixNoCase</include>
 				<include>FlixNoClearCase</include>
 			</control>
@@ -457,8 +459,8 @@
 				<visible>[[[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets)] + !Control.IsVisible(7000) + Skin.HasSetting(Enable.MyFlix.OpenCase)]</visible>
 				<include>MyFlixModAnimation</include>
 				<include>FlixPoster</include>
-				<include>FlixCase</include>
 				<include>FlixPosterOverlay</include>
+				<include>FlixCase</include>
 			</control>
 		</control>
 	</include>
@@ -487,6 +489,7 @@
 		<pagecontrol>50960</pagecontrol>
 		<orientation>horizontal</orientation>
 		<preloaditems>2</preloaditems>
+		<scrolltime tween="quadratic" easing="out">300</scrolltime>
 		<itemlayout height="525" width="271" condition="[Container.Content(movies) + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)] | Container.Content(sets) | [Container.Content(tvshows) + !Skin.HasSetting(Enable.MyFlix.TVLandscape)]">
 			<include>FlixNoCase</include>
 			<include>FlixNoClearCase</include>
@@ -621,14 +624,18 @@
 		</control>
 	</include>
 	<include name="FlixCase">
-		<control type="image">
-			<left>-16</left>
-			<top>60</top>
-			<width>292</width>
-			<height>408</height>
-			<texture background="true">$VAR[CaseBackPathVar]$VAR[GlobalCaseVar]</texture>
-			<visible>Skin.HasSetting(Enable.MyFlix.Cases) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
-		</control>
+		<param name="casepath" default="$VAR[CaseTypePathVar]" />
+		<definition>
+			<control type="image">
+				<left>-16</left>
+				<top>60</top>
+				<width>292</width>
+				<height>408</height>
+				<texture background="true">$PARAM[casepath]$VAR[GlobalCaseVar]</texture>
+				<!-- <texture background="true">$VAR[CaseBackPathVar]</texture> -->
+				<visible>Skin.HasSetting(Enable.MyFlix.Cases) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
+			</control>
+		</definition>
 	</include>
 	<include name="FlixNoCase">
 		<control type="image">
@@ -670,7 +677,7 @@
 	<include name="MyFlixRollingMovieSetDiscs">
 		<control type="image">
 			<texture background="true" fallback="special://skin/extras/cdart/bd.png">$INFO[ListItem(0).Art(discart)]</texture>
-			<animation type="Conditional" condition="[!String.IsEmpty(Control.GetLabel(4447)) + Control.IsVisible(4447)]" reversible="false">
+			<animation type="Conditional" condition="Control.IsVisible(4447)" reversible="false">
 				<effect type="slide" start="1900,0" end="0,0" delay="0" time="3000" tween="cubic" easing="inout" />
 				<effect type="rotate" start="0" center="auto" end="1080" delay="0" time="3000" tween="cubic" easing="inout" />
 			</animation>
@@ -681,7 +688,7 @@
 			<control type="image">
 				<aspectratio>keep</aspectratio>
 				<texture background="true">$INFO[Container(4500).ListItemAbsolute(0).Art(discart)]</texture>
-				<animation type="Conditional" condition="[!String.IsEmpty(Control.GetLabel(4448)) + Control.IsVisible(4448)]" reversible="false">
+				<animation type="Conditional" condition="Control.IsVisible(4448)" reversible="false">
 					<effect type="slide" start="1900,0" end="0,0" delay="0" time="3000" tween="cubic" easing="inout" />
 					<effect type="rotate" start="0" center="auto" end="1080" delay="0" time="3000" tween="cubic" easing="inout" />
 				</animation>
@@ -690,7 +697,7 @@
 			<control type="image">
 				<aspectratio>keep</aspectratio>
 				<texture background="true">$INFO[Container(4500).ListItemAbsolute(1).Art(discart)]</texture>
-				<animation type="Conditional" condition="[!String.IsEmpty(Control.GetLabel(4448)) + Control.IsVisible(4448)]" reversible="false">
+				<animation type="Conditional" condition="Control.IsVisible(4448)" reversible="false">
 					<effect type="slide" start="1900,0" end="0,0" delay="500" time="3000" tween="cubic" easing="inout" />
 					<effect type="rotate" start="0" center="auto" end="1080" delay="500" time="3000" tween="cubic" easing="inout" />
 				</animation>
@@ -699,7 +706,7 @@
 			<control type="image">
 				<aspectratio>keep</aspectratio>
 				<texture background="true">$INFO[Container(4500).ListItemAbsolute(2).Art(discart)]</texture>
-				<animation type="Conditional" condition="[!String.IsEmpty(Control.GetLabel(4448)) + Control.IsVisible(4448)]" reversible="false">
+				<animation type="Conditional" condition="Control.IsVisible(4448)" reversible="false">
 					<effect type="slide" start="1900,0" end="0,0" delay="1000" time="3000" tween="cubic" easing="inout" />
 					<effect type="rotate" start="0" center="auto" end="1080" delay="1000" time="3000" tween="cubic" easing="inout" />
 				</animation>
@@ -708,7 +715,7 @@
 			<control type="image">
 				<aspectratio>keep</aspectratio>
 				<texture background="true">$INFO[Container(4500).ListItemAbsolute(3).Art(discart)]</texture>
-				<animation type="Conditional" condition="[!String.IsEmpty(Control.GetLabel(4448)) + Control.IsVisible(4448)]" reversible="false">
+				<animation type="Conditional" condition="Control.IsVisible(4448)" reversible="false">
 					<effect type="slide" start="1900,0" end="0,0" delay="1500" time="3000" tween="cubic" easing="inout" />
 					<effect type="rotate" start="0" center="auto" end="1080" delay="1500" time="3000" tween="cubic" easing="inout" />
 				</animation>
@@ -717,7 +724,7 @@
 			<control type="image">
 				<aspectratio>keep</aspectratio>
 				<texture background="true">$INFO[Container(4500).ListItemAbsolute(4).Art(discart)]</texture>
-				<animation type="Conditional" condition="[!String.IsEmpty(Control.GetLabel(4448)) + Control.IsVisible(4448)]" reversible="false">
+				<animation type="Conditional" condition="Control.IsVisible(4448)" reversible="false">
 					<effect type="slide" start="1900,0" end="0,0" delay="2000" time="3000" tween="cubic" easing="inout" />
 					<effect type="rotate" start="0" center="auto" end="1080" delay="2000" time="3000" tween="cubic" easing="inout" />
 				</animation>
@@ -726,7 +733,7 @@
 			<control type="image">
 				<aspectratio>keep</aspectratio>
 				<texture background="true">$INFO[Container(4500).ListItemAbsolute(5).Art(discart)]</texture>
-				<animation type="Conditional" condition="[!String.IsEmpty(Control.GetLabel(4448)) + Control.IsVisible(4448)]" reversible="false">
+				<animation type="Conditional" condition="Control.IsVisible(4448)" reversible="false">
 					<effect type="slide" start="1900,0" end="0,0" delay="2500" time="3000" tween="cubic" easing="inout" />
 					<effect type="rotate" start="0" center="auto" end="1080" delay="2500" time="3000" tween="cubic" easing="inout" />
 				</animation>
@@ -735,7 +742,7 @@
 			<control type="image">
 				<aspectratio>keep</aspectratio>
 				<texture background="true">$INFO[Container(4500).ListItemAbsolute(6).Art(discart)]</texture>
-				<animation type="Conditional" condition="[!String.IsEmpty(Control.GetLabel(4448)) + Control.IsVisible(4448)]" reversible="false">
+				<animation type="Conditional" condition="Control.IsVisible(4448)" reversible="false">
 					<effect type="slide" start="1900,0" end="0,0" delay="3000" time="3000" tween="cubic" easing="inout" />
 					<effect type="rotate" start="0" center="auto" end="1080" delay="3000" time="3000" tween="cubic" easing="inout" />
 				</animation>
@@ -744,7 +751,7 @@
 			<control type="image">
 				<aspectratio>keep</aspectratio>
 				<texture background="true">$INFO[Container(4500).ListItemAbsolute(7).Art(discart)]</texture>
-				<animation type="Conditional" condition="[!String.IsEmpty(Control.GetLabel(4448)) + Control.IsVisible(4448)]" reversible="false">
+				<animation type="Conditional" condition="Control.IsVisible(4448)" reversible="false">
 					<effect type="slide" start="1900,0" end="0,0" delay="3500" time="3000" tween="cubic" easing="inout" />
 					<effect type="rotate" start="0" center="auto" end="1080" delay="3500" time="3000" tween="cubic" easing="inout" />
 				</animation>

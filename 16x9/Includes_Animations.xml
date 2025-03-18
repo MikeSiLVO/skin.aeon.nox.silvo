@@ -80,21 +80,37 @@
 		</animation>
 	</include>
 	<include name="MyFlixModAnimation">
-		<animation type="Conditional" reversible="false" condition="Control.IsVisible(4447) + Skin.HasSetting(Enable.MyFlix.OpenCase) + Skin.HasSetting(Enable.MyFlix.OpenCase)">
+		<animation type="Conditional" reversible="false" condition="Control.IsVisible(4447)">
 			<effect type="rotatey" center="19" start="0" end="40" time="1000" tween="quadratic" easing="out" />
-			<effect type="rotatey" delay="3500" center="19" start="0" end="-40" time="1000" tween="quadratic" easing="out" />
+			<effect type="rotatey" delay="2000" center="19" start="0" end="-40" time="1000" tween="quadratic" easing="out" />
 		</animation>
-		<animation type="Conditional" reversible="false" condition="Control.IsVisible(4448) + Skin.HasSetting(Enable.MyFlix.OpenCase) + Skin.HasSetting(Enable.MyFlix.OpenCase) + !String.IsEmpty(Container(4500).ListItemAbsolute(7).Art(discart))">
+		<animation type="Conditional" reversible="false" condition="Control.IsVisible(4448) + !String.IsEmpty(Container(4500).ListItemAbsolute(7).Art(discart))">
 			<effect type="rotatey" center="19" start="0" end="40" time="1000" tween="quadratic" easing="out" />
 			<effect type="rotatey" delay="6000" center="19" start="0" end="-40" time="1000" tween="quadratic" easing="out" />
 		</animation>
-		<animation type="Conditional" reversible="false" condition="Control.IsVisible(4448) + Skin.HasSetting(Enable.MyFlix.OpenCase) + Skin.HasSetting(Enable.MyFlix.OpenCase) + !String.IsEmpty(Container(4500).ListItemAbsolute(5).Art(discart)) + [String.IsEmpty(Container(4500).ListItemAbsolute(6).Art(discart)) | String.IsEmpty(Container(4500).ListItemAbsolute(7).Art(discart))]">
+		<animation type="Conditional" reversible="false" condition="Control.IsVisible(4448) + !String.IsEmpty(Container(4500).ListItemAbsolute(6).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(7).Art(discart))">
+			<effect type="rotatey" center="19" start="0" end="40" time="1000" tween="quadratic" easing="out" />
+			<effect type="rotatey" delay="5000" center="19" start="0" end="-40" time="1000" tween="quadratic" easing="out" />
+		</animation>
+		<animation type="Conditional" reversible="false" condition="Control.IsVisible(4448) + !String.IsEmpty(Container(4500).ListItemAbsolute(5).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(6).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(7).Art(discart))">
+			<effect type="rotatey" center="19" start="0" end="40" time="1000" tween="quadratic" easing="out" />
+			<effect type="rotatey" delay="4500" center="19" start="0" end="-40" time="1000" tween="quadratic" easing="out" />
+		</animation>
+		<animation type="Conditional" reversible="false" condition="Control.IsVisible(4448) + !String.IsEmpty(Container(4500).ListItemAbsolute(4).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(5).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(6).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(7).Art(discart))">
 			<effect type="rotatey" center="19" start="0" end="40" time="1000" tween="quadratic" easing="out" />
 			<effect type="rotatey" delay="4000" center="19" start="0" end="-40" time="1000" tween="quadratic" easing="out" />
 		</animation>
-		<animation type="Conditional" reversible="false" condition="Control.IsVisible(4448) + Skin.HasSetting(Enable.MyFlix.OpenCase) + Skin.HasSetting(Enable.MyFlix.OpenCase) + [String.IsEmpty(Container(4500).ListItemAbsolute(5).Art(discart)) | String.IsEmpty(Container(4500).ListItemAbsolute(6).Art(discart)) | String.IsEmpty(Container(4500).ListItemAbsolute(7).Art(discart))]">
+		<animation type="Conditional" reversible="false" condition="Control.IsVisible(4448) + !String.IsEmpty(Container(4500).ListItemAbsolute(3).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(4).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(5).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(6).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(7).Art(discart))">
 			<effect type="rotatey" center="19" start="0" end="40" time="1000" tween="quadratic" easing="out" />
 			<effect type="rotatey" delay="3500" center="19" start="0" end="-40" time="1000" tween="quadratic" easing="out" />
+		</animation>
+		<animation type="Conditional" reversible="false" condition="Control.IsVisible(4448) + !String.IsEmpty(Container(4500).ListItemAbsolute(2).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(3).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(4).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(5).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(6).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(7).Art(discart))">
+			<effect type="rotatey" center="19" start="0" end="40" time="1000" tween="quadratic" easing="out" />
+			<effect type="rotatey" delay="3000" center="19" start="0" end="-40" time="1000" tween="quadratic" easing="out" />
+		</animation>
+		<animation type="Conditional" reversible="false" condition="Control.IsVisible(4448) + !String.IsEmpty(Container(4500).ListItemAbsolute(0).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(2).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(3).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(4).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(5).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(6).Art(discart)) + String.IsEmpty(Container(4500).ListItemAbsolute(7).Art(discart))">
+			<effect type="rotatey" center="19" start="0" end="40" time="1000" tween="quadratic" easing="out" />
+			<effect type="rotatey" delay="2500" center="19" start="0" end="-40" time="1000" tween="quadratic" easing="out" />
 		</animation>
 	</include>
 	<include name="ShowCaseModDiscAnimation">
