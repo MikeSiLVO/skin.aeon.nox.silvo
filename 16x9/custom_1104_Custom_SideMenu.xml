@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1104" type="dialog">
+	<onload>Control.SetVisible(90099)</onload>
+	<onload>Control.SetHidden(90098)</onload>
+	<onload>ClearProperty(DisableView,1104)</onload>
 	<onunload>ClearProperty(actualViewtype,Home)</onunload>
 	<onunload>ClearProperty(CustomSideMenu,Home)</onunload>
 	<defaultcontrol always="true">90100</defaultcontrol>
 	<controls>
 		<control type="group">
 			<include>WindowSettingsFadeAnimation</include>
-			<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1132)">Conditional</animation>
 			<include content="CloseButton">
 				<param name="visible">System.Getbool(input.enablemouse)</param>
 			</include>
@@ -19,34 +21,255 @@
 				<label>$VAR[CustomSideMenuHeaderLabelVar]</label>
 				<textcolor>$VAR[ThemeLabelColor]</textcolor>
 			</control>
-			<control type="grouplist" id="90100">
-				<top>128</top>
-				<width>400</width>
-				<height>900</height>
-				<onleft>Dialog.Close(1104)</onleft>
-				<onright>Dialog.Close(1104)</onright>
-				<onup>90100</onup>
-				<ondown condition="!String.IsEqual(Window(Home).Property(CustomSideMenu),viewselection)">90100</ondown>
-				<ondown condition="String.IsEqual(Window(Home).Property(CustomSideMenu),viewselection)">90098</ondown>
-				<include condition="String.IsEqual(Window(Home).Property(CustomSideMenu),viewsettings)">ViewSettingsButtons</include>
-				<include condition="String.IsEqual(Window(Home).Property(CustomSideMenu),backgroundsettings)">BackgroundSettingsButtons</include>
-				<include condition="String.IsEqual(Window(Home).Property(CustomSideMenu),viewselection)">ViewSelection</include>
+			<control type="group" id="90099">
+				<control type="grouplist" id="90100">
+					<top>128</top>
+					<width>400</width>
+					<height>900</height>
+					<onleft>Dialog.Close(1104)</onleft>
+					<onright>Dialog.Close(1104)</onright>
+					<onup>90100</onup>
+					<ondown condition="!String.IsEqual(Window(Home).Property(CustomSideMenu),viewselection)">90100</ondown>
+					<ondown condition="String.IsEqual(Window(Home).Property(CustomSideMenu),viewselection)">90101</ondown>
+					<include condition="String.IsEqual(Window(Home).Property(CustomSideMenu),viewsettings)">ViewSettingsButtons</include>
+					<include condition="String.IsEqual(Window(Home).Property(CustomSideMenu),backgroundsettings)">BackgroundSettingsButtons</include>
+					<include condition="String.IsEqual(Window(Home).Property(CustomSideMenu),viewselection)">ViewSelection</include>
+				</control>
+				<control type="button" id="90101">
+					<visible>!Skin.HasSetting(KioskMode.Enabled) + String.IsEqual(Window(Home).Property(CustomSideMenu),viewselection)</visible>
+					<top>1024</top>
+					<width>400</width>
+					<align>center</align>
+					<textoffsetx>30</textoffsetx>
+					<font>IconMediumMD</font>
+					<label></label>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<texturefocus />
+					<onleft>90100</onleft>
+					<onright>90100</onright>
+					<onup>90100</onup>
+					<ondown>SetFocus(1500)</ondown>
+					<onclick>Control.SetHidden(90099)</onclick>
+					<onclick>Control.SetVisible(90098)</onclick>
+					<onclick>SetFocus(90102)</onclick>
+				</control>
 			</control>
-			<control type="button" id="90098">
-				<visible>!Skin.HasSetting(KioskMode.Enabled) + String.IsEqual(Window(Home).Property(CustomSideMenu),viewselection)</visible>
-				<top>1024</top>
-				<width>400</width>
-				<align>center</align>
-				<textoffsetx>30</textoffsetx>
-				<font>IconMediumMD</font>
-				<label></label>
-				<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
-				<texturefocus />
-				<onleft>90100</onleft>
-				<onright>90100</onright>
-				<onup>90100</onup>
-				<ondown>SetFocus(1500)</ondown>
-				<onclick>ActivateWindow(1132)</onclick>
+			<control type="group" id="90098">
+				<control type="grouplist" id="90102">
+					<top>128</top>
+					<width>400</width>
+					<height>900</height>
+					<onleft>Control.SetHidden(90098)</onleft>
+					<onleft>Control.SetVisible(90099)</onleft>
+					<onleft>SetFocus(90100)</onleft>
+					<onright>Dialog.Close(1104)</onright>
+					<ondown>90103</ondown>
+					<control type="radiobutton" id="1600">
+						<description>Disable SongList</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31238]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.SongListView)</onclick>
+						<selected>!Skin.HasSetting(Disable.SongListView)</selected>
+					</control>
+					<control type="radiobutton" id="1601">
+						<description>Disable RightList</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31239]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.RightListView)</onclick>
+						<selected>!Skin.HasSetting(Disable.RightListView)</selected>
+					</control>
+					<control type="radiobutton" id="1602">
+						<description>Disable FanartList</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31240]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.FanartListView)</onclick>
+						<selected>!Skin.HasSetting(Disable.FanartListView)</selected>
+					</control>
+					<control type="radiobutton" id="1603">
+						<description>Disable LowList</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31241]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.LowListView)</onclick>
+						<selected>!Skin.HasSetting(Disable.LowListView)</selected>
+					</control>
+					<control type="radiobutton" id="1604">
+						<description>Disable BigList</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31242]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.BigListView)</onclick>
+						<selected>!Skin.HasSetting(Disable.BigListView)</selected>
+					</control>
+					<control type="radiobutton" id="1605">
+						<description>Disable Logo</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31606]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.LogoView)</onclick>
+						<selected>!Skin.HasSetting(Disable.LogoView)</selected>
+					</control>
+					<control type="radiobutton" id="1606">
+						<description>Disable Episode</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>[CAPITALIZE]$LOCALIZE[36906][/CAPITALIZE]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.EpisodeView)</onclick>
+						<selected>!Skin.HasSetting(Disable.EpisodeView)</selected>
+					</control>
+					<control type="radiobutton" id="1607">
+						<description>Disable ShowCase</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31077]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.ShowCaseView)</onclick>
+						<selected>!Skin.HasSetting(Disable.ShowCaseView)</selected>
+					</control>
+					<control type="radiobutton" id="1608">
+						<description>Disable Shift</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31079]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.ShiftView)</onclick>
+						<selected>!Skin.HasSetting(Disable.ShiftView)</selected>
+					</control>
+					<control type="radiobutton" id="1609">
+						<description>Disable Posters</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31243]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.PostersView)</onclick>
+						<selected>!Skin.HasSetting(Disable.PostersView)</selected>
+					</control>
+					<control type="radiobutton" id="1610">
+						<description>Disable Myflix</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31244]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.MyFlixView)</onclick>
+						<selected>!Skin.HasSetting(Disable.MyFlixView)</selected>
+					</control>
+					<control type="radiobutton" id="1611">
+						<description>Disable TriPanel</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31078]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.TriPanelView)</onclick>
+						<selected>!Skin.HasSetting(Disable.TriPanelView)</selected>
+					</control>
+					<control type="radiobutton" id="1612">
+						<description>Disable Icons</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[536]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.IconsView)</onclick>
+						<selected>!Skin.HasSetting(Disable.IconsView)</selected>
+					</control>
+					<control type="radiobutton" id="1613">
+						<description>Disable Wall</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31245]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.WallView)</onclick>
+						<selected>!Skin.HasSetting(Disable.WallView)</selected>
+					</control>
+					<control type="radiobutton" id="1614">
+						<description>Disable Fullscreen Wall</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31246]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.FullscreenWallView)</onclick>
+						<selected>!Skin.HasSetting(Disable.FullscreenWallView)</selected>
+					</control>
+					<control type="radiobutton" id="1615">
+						<description>Disable InfoWall</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31247]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.InfoWallView)</onclick>
+						<selected>!Skin.HasSetting(Disable.InfoWallView)</selected>
+					</control>
+					<control type="radiobutton" id="1616">
+						<description>Disable BannerWall</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31088]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.BannerWallView)</onclick>
+						<selected>!Skin.HasSetting(Disable.BannerWallView)</selected>
+					</control>
+					<control type="radiobutton" id="1617">
+						<description>Disable Landscape</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31076]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.LandscapeView)</onclick>
+						<selected>!Skin.HasSetting(Disable.LandscapeView)</selected>
+					</control>
+					<control type="radiobutton" id="1618">
+						<description>Disable BigFan</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31249]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.BigFanView)</onclick>
+						<selected>!Skin.HasSetting(Disable.BigFanView)</selected>
+					</control>
+					<control type="radiobutton" id="1619">
+						<description>Disable Gallery</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31251]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.GalleryView)</onclick>
+						<selected>!Skin.HasSetting(Disable.GalleryView)</selected>
+					</control>
+					<control type="radiobutton" id="1620">
+						<description>Disable Panel</description>
+						<textwidth>375</textwidth>
+						<include>ButtonCommonValues</include>
+						<label>$LOCALIZE[31314]</label>
+						<onclick>SetProperty(DisableView,True,1104)</onclick>
+						<onclick>Skin.ToggleSetting(Disable.PanelView)</onclick>
+						<selected>!Skin.HasSetting(Disable.PanelView)</selected>
+					</control>
+				</control>
+				<control type="togglebutton" id="90103">
+					<visible>!Skin.HasSetting(KioskMode.Enabled)</visible>
+					<top>1022</top>
+					<width>400</width>
+					<align>center</align>
+					<textoffsetx>30</textoffsetx>
+					<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
+					<texturefocus />
+					<label>$LOCALIZE[31449]</label>
+					<onup>90102</onup>
+					<ondown>1615</ondown>
+					<onclick condition="!String.IsEmpty(Window(1104).Property(DisableView))">ReloadSkin()</onclick>
+					<onclick condition="String.IsEmpty(Window(1104).Property(DisableView))">Control.SetHidden(90098)</onclick>
+					<onclick condition="String.IsEmpty(Window(1104).Property(DisableView))">Control.SetVisible(90099)</onclick>
+					<onclick condition="String.IsEmpty(Window(1104).Property(DisableView))">SetFocus(90100)</onclick>
+				</control>
 			</control>
 		</control>
 	</controls>

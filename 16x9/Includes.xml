@@ -42,7 +42,7 @@
 			<onfocus condition="!String.IsEmpty(Window(Home).Property(MediaMenu))">SetFocus(50)</onfocus>
 		</control>
 		<include content="CloseButton">
-			<param name="visible">System.Getbool(input.enablemouse) + !Window.IsVisible(1104) + !Window.IsVisible(1132)</param>
+			<param name="visible">System.Getbool(input.enablemouse) + !Window.IsVisible(1104)</param>
 		</include>
 		<control type="image">
 			<top>-20</top>
@@ -61,10 +61,9 @@
 			<font>IconTinyMD</font>
 			<textcolor>grey</textcolor>
 			<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
-			<onclick condition="!Window.IsVisible(1104) + !Window.IsVisible(1132)">ClearProperty(MediaMenu,Home)</onclick>
-			<onclick condition="!Window.IsVisible(1104) + !Window.IsVisible(1132)">SetFocus(50)</onclick>
+			<onclick condition="!Window.IsVisible(1104)">ClearProperty(MediaMenu,Home)</onclick>
+			<onclick condition="!Window.IsVisible(1104)">SetFocus(50)</onclick>
 			<onclick condition="Window.IsVisible(1104)">Dialog.Close(1104)</onclick>
-			<onclick condition="Window.IsVisible(1132)">Dialog.Close(1132)</onclick>
 			<texturefocus />
 			<texturenofocus />
 			<visible>$PARAM[visible]</visible>
@@ -90,7 +89,7 @@
 		<onback>ClearProperty(MediaMenu,Home)</onback>
 		<onback>50</onback>
 		<include condition="Skin.HasSetting(KioskMode.Enabled)">KioskModeButton</include>
-		<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1104) | Window.IsVisible(1132)" reversible="true">Conditional</animation>
+		<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1104)" reversible="true">Conditional</animation>
 		<control type="button" id="200">
 			<label>31006</label>
 			<textwidth>352</textwidth>
@@ -387,7 +386,7 @@
 			<onright>9950</onright>
 			<onback>ClearProperty(MediaMenu,Home)</onback>
 			<onback>50</onback>
-			<visible>Player.HasMedia + !String.IsEmpty(Window(Home).Property(MediaMenu)) + !Window.IsVisible(1104) + !Window.IsVisible(1132)</visible>
+			<visible>Player.HasMedia + !String.IsEmpty(Window(Home).Property(MediaMenu)) + !Window.IsVisible(1104)</visible>
 			<control type="button" id="9958">
 				<texturefocus />
 				<font>IconMediaMenuButtons</font>
