@@ -19,12 +19,13 @@
 				<effect type="zoom" start="100" end="80" center="640,360" easing="in" tween="back" time="300" />
 				<effect type="fade" start="100" end="0" time="300" />
 			</animation>
-			<control type="image">
-				<top>148</top>
-				<width>885</width>
-				<height>784</height>
-				<texture border="40">listpanel_back.png</texture>
-			</control>
+			<include content="BackPanel">
+				<param name="left">28</param>
+				<param name="top">178</param>
+				<param name="width">837</param>
+				<param name="height">728</param>
+				<param name="texture">colors/black75.png</param>
+			</include>
 			<control type="label" id="12">
 				<top>910</top>
 				<width>821</width>
@@ -34,17 +35,16 @@
 				<haspath>true</haspath>
 			</control>
 			<control type="scrollbar" id="60">
-				<left>856</left>
+				<left>853</left>
 				<top>182</top>
 				<width>8</width>
 				<height>720</height>
-				<texturesliderbackground />
-				<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
 				<onleft>50</onleft>
 				<onright>100</onright>
 				<ondown>60</ondown>
 				<onup>60</onup>
+				<texturesliderbar colordiffuse="$VAR[ThemeLabelColor]">colors/darkgrey.png</texturesliderbar>
+				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 				<showonepage>false</showonepage>
 			</control>
 			<control type="list" id="50">
@@ -120,12 +120,13 @@
 				<effect type="zoom" start="100" end="80" center="640,360" easing="in" tween="back" time="300" />
 				<effect type="fade" start="100" end="0" time="300" />
 			</animation>
-			<control type="image">
-				<top>148</top>
-				<width>885</width>
-				<height>784</height>
-				<texture border="40">listpanel_back.png</texture>
-			</control>
+			<include content="BackPanel">
+				<param name="left">28</param>
+				<param name="top">178</param>
+				<param name="width">837</param>
+				<param name="height">728</param>
+				<param name="texture">colors/black75.png</param>
+			</include>
 			<control type="label" id="101">
 				<left>871</left>
 				<top>910</top>
@@ -137,18 +138,17 @@
 				<haspath>true</haspath>
 			</control>
 			<control type="scrollbar" id="61">
-				<left>856</left>
+				<left>853</left>
 				<top>182</top>
 				<width>8</width>
 				<height>720</height>
-				<texturesliderbackground />
-				<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
 				<onleft>100</onleft>
 				<onright>SetProperty(MediaMenu,True,Home)</onright>
 				<onright>SetFocus(9050)</onright>
 				<ondown>21</ondown>
 				<onup>21</onup>
+				<texturesliderbar colordiffuse="$VAR[ThemeLabelColor]">colors/darkgrey.png</texturesliderbar>
+				<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
 				<showonepage>false</showonepage>
 			</control>
 			<control type="list" id="100">
@@ -238,19 +238,19 @@
 					<height>52</height>
 					<textoffsetx>15</textoffsetx>
 					<font>font13_title</font>
-					<label>31006</label>
+					<label>$LOCALIZE[31006]</label>
 					<textcolor>$VAR[ThemeLabelColor]</textcolor>
 				</control>
 				<control type="button" id="3">
 					<description>Sort by button</description>
 					<include>ButtonCommonValues</include>
-					<label>103</label>
+					<label>$LOCALIZE[103]</label>
 				</control>
 				<control type="togglebutton" id="4">
 					<description>Sort asc</description>
 					<include>ButtonCommonValues</include>
-					<label>31051</label>
-					<altlabel>31050</altlabel>
+					<label>$LOCALIZE[31051]</label>
+					<altlabel>$LOCALIZE[31050]</altlabel>
 					<usealttexture>Container.SortDirection(Ascending)</usealttexture>
 				</control>
 				<control type="button" id="201">
@@ -258,24 +258,21 @@
 					<textwidth>352</textwidth>
 					<font>font13_title</font>
 					<include>ButtonCommonValues</include>
-					<label>559</label>
+					<label>$LOCALIZE[559]</label>
 					<enable>no</enable>
 					<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
 				</control>
 				<control type="button" id="6">
-					<description>Search</description>
 					<include>ButtonCommonValues</include>
-					<label>31055</label>
+					<label>$LOCALIZE[31055]</label>
 				</control>
 				<control type="button" id="7">
-					<description>Search</description>
 					<include>ButtonCommonValues</include>
-					<label>31056</label>
+					<label>$LOCALIZE[31056]</label>
 				</control>
 				<control type="button" id="8">
-					<description>Search</description>
 					<include>ButtonCommonValues</include>
-					<label>31057</label>
+					<label>$LOCALIZE[31057]</label>
 				</control>
 			</control>
 			<include>MediaMenuPlayerControls</include>
