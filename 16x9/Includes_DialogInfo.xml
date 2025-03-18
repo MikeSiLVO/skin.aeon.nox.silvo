@@ -1225,7 +1225,6 @@
 			<onclick>Dialog.Close(movieinformation)</onclick>
 			<onclick>ActivateWindow(Videos,$INFO[ListItem.Path],return)</onclick>
 			<visible>!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEmpty(ListItem.Path) + !Skin.HasSetting(Disable.VideoInfoPathDetails) + !String.StartsWith(ListItem.FilenameAndPath,stack://)</visible>
-			<visible>Container.IsStacked</visible>
 		</item>
 		<item>
 			<label>$INFO[ListItem.Filename]</label>
