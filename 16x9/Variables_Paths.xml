@@ -19,7 +19,7 @@
 	<variable name="SkinVariablesCastPanelContentVar">
 		<value condition="String.IsEqual(ListItem.DBTYPE,season)">plugin://script.skinvariables/?info=get_dotted_properties&amp;source=Container(4501).ListItem&amp;string=cast.{y}.&amp;infoproperties=name/role/thumbnail&amp;ymax=200&amp;label=name&amp;thumb=thumbnail&amp;no_label_dupes=true&amp;reload=$INFO[Container(4501).ListItem.DBID]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,set)">plugin://script.skinvariables/?info=get_dotted_properties&amp;source=Container(4501).ListItem&amp;string=movies.{x}.item.cast.{y}.&amp;infoproperties=name/role/thumbnail&amp;label=name&amp;thumb=thumbnail&amp;xmax=15&amp;ymax=20&amp;no_label_dupes=true&amp;reload=$INFO[Container(4501).ListItem.DBID]</value>
-		<value>plugin://script.skinvariables/?info=get_container_labels&amp;containers=50&amp;infolabel=Label&amp;thumb=Icon&amp;label2=Label2&amp;reload=$INFO[ListItem.DBID]</value>
+		<value>plugin://script.skinvariables/?info=get_container_labels&amp;containers=50&amp;infolabel=Label&amp;thumb=Icon&amp;label2=Label2&amp;reload=$INFO[ListItem.DBID]&amp;reload=$INFO[System.CurrentWindow]</value>
 	</variable>
 	<variable name="SkinVariablesCustomInfoContentVar">
 		<value condition="String.IsEqual(Window(Home).Property(item_dbtype),movie)">$INFO[Window(Home).Property(item_dbid),plugin://script.skinvariables/?info=get_dbitem_movie_details&amp;dbid=]</value>
