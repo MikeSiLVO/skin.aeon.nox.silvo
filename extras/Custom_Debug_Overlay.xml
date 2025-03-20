@@ -3,304 +3,138 @@
 	<zorder>100</zorder>
 	<visible>!Window.IsVisible(startup)</visible>
 	<controls>
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture>colors/black25.png</texture>
-			<visible>Skin.HasSetting(DebugInfo) + !Skin.HasSetting(DebugGrid)</visible>
-		</control>
-		<!-- Global debug grid -->
+		<!-- DEBUG GRID -->
 		<control type="image">
 			<width>$INFO[System.ScreenWidth]</width>
 			<height>$INFO[System.ScreenHeight]</height>
-			<texture colordiffuse="80FFFFFF">special://skin/extras/debuggrid1080.png</texture>
+			<texture>special://skin/extras/debuggrid1080.png</texture>
 			<visible>Skin.HasSetting(DebugGrid)</visible>
 		</control>
-		<!-- Window/Dialog debug -->
+		<!-- DEBUG LABELS -->
 		<control type="grouplist">
-			<left>960</left>
-			<top>160</top>
-			<width>940</width>
-			<height>auto</height>
-			<itemgap>20</itemgap>
+			<left>20</left>
+			<top>120</top>
+			<width>1880</width>
+			<height max="840">auto</height>
+			<align>right</align>
 			<visible>Skin.HasSetting(DebugInfo)</visible>
-			<!-- DEBUG LABELS -->
-			<!-- Control label -->
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[System.CurrentControl,[COLOR FF00FF00]Current control - [/COLOR]]$INFO[System.CurrentControlID, (ID=,)]</label>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font16_title</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[System.CurrentWindow,[COLOR chartreuse]Window: [/COLOR](,)]</label>
 			</control>
-			<!-- Folder label -->
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[Container.FolderName,[COLOR FF00FF00]Folder name - [/COLOR]]</label>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font14_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[System.CurrentControl,[COLOR chartreuse]Current control: [/COLOR],   ]$INFO[System.CurrentControlID,[COLOR chartreuse]ID=[/COLOR] ]</label>
+			</control>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font14_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[Container.FolderName,[COLOR chartreuse]Folder name: [/COLOR]]</label>
 				<visible>!String.IsEmpty(Container.FolderName)</visible>
 			</control>
-			<!-- Path label -->
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<scroll>true</scroll>
-				<label>$INFO[Container.FolderPath,[COLOR FF00FF00]Folder path - [/COLOR]]</label>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font14_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[Container.FolderPath,[COLOR chartreuse]Folder path: [/COLOR]]</label>
 				<visible>!String.IsEmpty(Container.FolderPath)</visible>
 			</control>
-			<!-- Content label -->
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[Container.Content,[COLOR FF00FF00]Content - [/COLOR]]</label>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font14_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[Container.Content,[COLOR chartreuse]Content: [/COLOR]]</label>
 				<visible>!String.IsEmpty(Container.Content)</visible>
 			</control>
-			<!-- Container PluginName label -->
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[Container.PluginName,[COLOR FF00FF00]Plugin Name - [/COLOR]]</label>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font14_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[Container.PluginName,[COLOR chartreuse]Plugin Name: [/COLOR]]</label>
 				<visible>!String.IsEmpty(Container.PluginName)</visible>
 			</control>
-			<!-- DBTYPE label -->
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.DBTYPE,[COLOR FF00FF00]DBTYPE - [/COLOR]]</label>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font14_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[ListItem.DBTYPE,[COLOR chartreuse]DBTYPE: [/COLOR]]</label>
 				<visible>!String.IsEmpty(ListItem.DBTYPE)</visible>
 			</control>
-			<!-- Container DBTYPE label -->
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[Container.ListItem.DBTYPE,[COLOR FF00FF00]Container.DBTYPE - [/COLOR]]</label>
-				<visible>!String.IsEmpty(Container.ListItem.DBTYPE)</visible>
-			</control>
-			<!-- DBID label -->
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.DBID,[COLOR FF00FF00]DBID - [/COLOR]]</label>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font14_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[ListItem.DBID,[COLOR chartreuse]DBID: [/COLOR]]</label>
 				<visible>!String.IsEmpty(ListItem.DBID)</visible>
 			</control>
-			<!-- Container DBID label -->
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[Container.ListItem.DBID,[COLOR FF00FF00]Container DBID - [/COLOR]]</label>
-				<visible>!String.IsEmpty(Container.ListItem.DBID)</visible>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font14_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[ListItem.IMDBNumber,[COLOR chartreuse]ListItem.IMDBNumber: [/COLOR]]$INFO[ListItem.UniqueID(tmdb),[COLOR chartreuse]   UniqueID (tmdb): [/COLOR]]$INFO[ListItem.UniqueID(imdb),[COLOR chartreuse]   UniqueID (imdb): [/COLOR]]</label>
+				<visible>!String.IsEmpty(ListItem.IMDBNumber) | !String.IsEmpty(ListItem.UniqueID(tmdb)) | !String.IsEmpty(ListItem.UniqueID(imdb))</visible>
 			</control>
-			<!-- IMDb label -->
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.IMDBNumber,[COLOR FF00FF00]IMDB Number - [/COLOR]]</label>
-				<visible>!String.IsEmpty(ListItem.IMDBNumber)</visible>
-			</control>
-			<!-- Property(dbid) label -->
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.Property(dbid),[COLOR FF00FF00]Property(dbid) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(ListItem.Property(dbid))</visible>
-			</control>
-			<!-- SongVideoURL label -->
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.SongVideoURL,[COLOR FF00FF00]Song Video URL - [/COLOR]]</label>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font14_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[ListItem.SongVideoURL,[COLOR chartreuse]SongVideoURL: [/COLOR]]</label>
 				<visible>!String.IsEmpty(ListItem.SongVideoURL)</visible>
 			</control>
-			<!-- Container Num Items -->
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[Container.NumItems,[COLOR FF00FF00]Number of items in Container - [/COLOR]]</label>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font14_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
 				<label>Player.Playing</label>
 				<visible>Player.Playing</visible>
 			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FFFF0000</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font14_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
 				<label>Player.HasAudio</label>
 				<visible>Player.HasAudio</visible>
-			</control>
-		</control>
-		<!--Artwork INFOlabels -->
-		<control type="grouplist">
-			<left>20</left>
-			<top>200</top>
-			<width>1880</width>
-			<height>auto</height>
-			<itemgap>20</itemgap>
-			<visible>Skin.HasSetting(DebugInfo)</visible>
-			<!-- DEBUG LABELS -->
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.Art(poster),[COLOR FF00FF00]ListItem.Art(poster) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.Art(poster1),[COLOR FF00FF00]ListItem.Art(poster1) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(ListItem.Art(poster1))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.Art(fanart),[COLOR FF00FF00]ListItem.Art(fanart) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(ListItem.Art(fanart))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.Art(fanart1),[COLOR FF00FF00]ListItem.Art(fanart1) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(ListItem.Art(fanart1))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.Art(fanart2),[COLOR FF00FF00]ListItem.Art(fanart2) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(ListItem.Art(fanart2))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.Art(tvshow.fanart),[COLOR FF00FF00]ListItem.Art(tvshow.fanart) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(ListItem.Art(tvshow.fanart))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.Art(tvshow.fanart1),[COLOR FF00FF00]ListItem.Art(tvshow.fanart1) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(ListItem.Art(tvshow.fanart1))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.Art(tvshow.fanart2),[COLOR FF00FF00]ListItem.Art(tvshow.fanart2) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(ListItem.Art(tvshow.fanart2))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[Container.ListItem.Art(fanart),[COLOR FF00FF00]Container.ListItem.Art(fanart) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(Container.ListItem.Art(fanart))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[Container.ListItem.Art(fanart1),[COLOR FF00FF00]Container.ListItem.Art(fanart1) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(Container.ListItem.Art(fanart1))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[Container.ListItem.Art(fanart2),[COLOR FF00FF00]Container.ListItem.Art(fanart2) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(Container.ListItem.Art(fanart2))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.Art(artist.fanart),[COLOR FF00FF00]ListItem.Art(artist.fanart) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(ListItem.Art(artist.fanart))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.Art(artist.fanart1),[COLOR FF00FF00]ListItem.Art(artist.fanart1) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(ListItem.Art(artist.fanart1))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[ListItem.Art(artist.fanart2),[COLOR FF00FF00]ListItem.Art(artist.fanart2) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(ListItem.Art(artist.fanart2))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[Container.ListItem.Art(artist.fanart),[COLOR FF00FF00]Container.ListItem.Art(artist.fanart) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(Container.ListItem.Art(artist.fanart))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[Container.ListItem.Art(artist.fanart1),[COLOR FF00FF00]Container.ListItem.Art(artist.fanart1) - [/COLOR]]</label>
-				<visible>!String.IsEmpty(Container.ListItem.Art(artist.fanart1))</visible>
-			</control>
-			<control type="label">
-				<height>60</height>
-				<textcolor>FF4169E1</textcolor>
-				<shadowcolor>FF000000</shadowcolor>
-				<font>font13_bold</font>
-				<label>$INFO[Container.ListItem.Art(artist.fanart2),[COLOR FF00FF00]Container.ListItem.Art(artist.fanart2) - [/COLOR][CR]]</label>
-				<visible>!String.IsEmpty(Container.ListItem.Art(artist.fanart2))</visible>
 			</control>
 		</control>
 	</controls>
