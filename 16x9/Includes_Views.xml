@@ -42,6 +42,18 @@
 			</control>
 		</definition>
 	</include>
+	<include name="BackInfoPanel">
+		<control type="image">
+			<left>$PARAM[left]</left>
+			<top>$PARAM[top]</top>
+			<width>$PARAM[width]</width>
+			<height>$PARAM[height]</height>
+			<texture colordiffuse="BFFFFFFF" border="40">back_infopanel.png</texture>
+			<visible>$PARAM[visible]</visible>
+		</control>
+	</include>
+	<include name="InfoPanelLayout">
+	</include>
 	<include name="NextAiredGenreLeft">
 		<control type="group">
 			<left>$PARAM[pos]</left>
@@ -164,7 +176,8 @@
 				<width>650</width>
 				<height>80</height>
 				<animation effect="slide" end="100,10" condition="Control.IsVisible(56)">Conditional</animation>
-				<animation effect="slide" end="114,-11" condition="Control.IsVisible(57)">Conditional</animation>
+				<animation effect="slide" end="114" condition="Control.IsVisible(57)">Conditional</animation>
+				<animation effect="slide" end="0,16" condition="Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
 				<!-- <visible>![Container.OnNext | Container.OnPrevious] | Container.Content(seasons)</visible>
 				<animation effect="fade" time="250" delay="300" condition="!Container.Content(seasons)">Visible</animation> -->
 				<!-- Next Aired -->

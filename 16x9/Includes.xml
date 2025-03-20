@@ -1413,7 +1413,7 @@
 	</include>
 	<!-- InfoPanel -->
 	<include name="InfoPanel">
-		<control type="group" id="12000">
+		<control type="group">
 			<visible>!String.IsEmpty(Control.GetLabel(4420)) + Control.IsVisible(4420)</visible>
 			<visible>!String.IsEqual(Control.GetLabel(4420),5) + !String.IsEqual(Control.GetLabel(4420),6)</visible>
 			<visible>!Skin.HasSetting(Enable.ManualInfoPanel) | [Skin.HasSetting(Enable.ManualInfoPanel) + Control.HasFocus(4401)]</visible>
@@ -1421,86 +1421,233 @@
 			<animation effect="slide" start="0,0" end="0,-1080" time="720" tween="cubic">Hidden</animation>
 			<animation effect="slide" start="0,-1200" end="0,0" time="720" tween="cubic">WindowOpen</animation>
 			<animation effect="slide" end="0,-1200" start="0,0" time="720" tween="cubic">WindowClose</animation>
-			<animation effect="slide" end="0,16" condition="Control.IsVisible(57) + !Skin.HasSetting(Enable.Shift.Small) + !Skin.HasSetting(Enable.Shift.Covers)">Conditional</animation>
-			<animation effect="slide" end="0,-7" condition="Control.IsVisible(57) + !Skin.HasSetting(Enable.Shift.Small) + Skin.HasSetting(Enable.Shift.Covers)">Conditional</animation>
 			<animation effect="slide" start="0,0" end="0,218" condition="[Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small)] | Control.IsVisible(59)">Conditional</animation>
-			<animation effect="slide" start="0,0" end="0,-20" condition="Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small) + Skin.HasSetting(Enable.Shift.Covers)">Conditional</animation>
+			<animation effect="slide" start="0,0" end="-60,20" condition="Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
 			<animation effect="slide" start="0,0" end="0,20" time="720" tween="cubic" condition="Control.IsVisible(52)">Conditional</animation>
 			<animation effect="slide" start="0,0" end="-5,30" time="720" tween="cubic" condition="Control.IsVisible(58)">Conditional</animation>
 			<top>5</top>
-			<control type="image">
-				<left>90</left>
-				<top>130</top>
-				<width>1740</width>
-				<height>800</height>
-				<texture colordiffuse="B3FFFFFF" border="40">listpanel_back.png</texture>
-				<visible>!Control.IsVisible(57) + !Control.IsVisible(59)</visible>
-			</control>
-			<control type="image">
-				<left>50</left>
-				<top>60</top>
-				<width>1820</width>
-				<height>842</height>
-				<texture colordiffuse="B3FFFFFF" border="40">listpanel_back.png</texture>
-				<visible>Control.IsVisible(57)</visible>
-			</control>
-			<control type="image">
-				<left>90</left>
-				<top>130</top>
-				<width>1740</width>
-				<height>614</height>
-				<texture colordiffuse="B3FFFFFF" border="40">listpanel_back.png</texture>
-				<visible>Control.IsVisible(59)</visible>
-			</control>
+			<include content="BackInfoPanel">
+				<param name="left">90</param>
+				<param name="top">130</param>
+				<param name="width">1740</param>
+				<param name="height">800</param>
+				<param name="visible">!Control.IsVisible(57)</param>
+			</include>
+			<include content="BackInfoPanel">
+				<param name="left">420</param>
+				<param name="top">60</param>
+				<param name="width">1500</param>
+				<param name="height">842</param>
+				<param name="visible">Control.IsVisible(57) + !Skin.HasSetting(Enable.Shift.Small)</param>
+			</include>
+			<include content="BackInfoPanel">
+				<param name="left">350</param>
+				<param name="top">60</param>
+				<param name="width">1620</param>
+				<param name="height">842</param>
+				<param name="visible">Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small)</param>
+			</include>
 			<control type="group" id="11000">
 				<visible>![Container.OnNext | Container.OnPrevious]</visible>
 				<include>ViewAnimation</include>
 				<control type="group">
-					<visible>String.IsEqual(Control.GetLabel(4420),1)</visible>
+					<visible>String.IsEqual(Control.GetLabel(4420),1) | String.IsEqual(Control.GetLabel(4420),2)</visible>
 					<include>SettingsFadeAnimation</include>
 					<control type="grouplist">
-						<left>121</left>
-						<top>162</top>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel1Var]</label>
-							<include>ShowCaseInfoPanelButtonsValues</include>
+						<left>120</left>
+						<top>150</top>
+						<control type="group">
+							<width>550</width>
+							<height>60</height>
+							<control type="label">
+								<width>50</width>
+								<height>60</height>
+								<font>IconMediaMenuButtons</font>
+								<label>$VAR[InfoPanelLabel1IconVar]</label>
+							</control>
+							<control type="label">
+								<left>60</left>
+								<width max="500">auto</width>
+								<height>60</height>
+								<font>font14</font>
+								<textcolor>grey</textcolor>
+								<scroll>true</scroll>
+								<label>$VAR[InfoPanelLabel1Var_]</label>
+							</control>
 						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel2Var]</label>
-							<include>ShowCaseInfoPanelButtonsValues</include>
+						<control type="group">
+							<width>550</width>
+							<height>60</height>
+							<control type="label">
+								<width>50</width>
+								<height>60</height>
+								<font>IconMediaMenuButtons</font>
+								<label>$VAR[InfoPanelLabel2IconVar]</label>
+							</control>
+							<control type="label">
+								<left>60</left>
+								<width max="500">auto</width>
+								<height>60</height>
+								<font>font14</font>
+								<textcolor>grey</textcolor>
+								<scroll>true</scroll>
+								<label>$VAR[InfoPanelLabel2Var_]</label>
+							</control>
+						</control>
+						<control type="group">
+							<width>1000</width>
+							<height>60</height>
+							<visible>String.IsEqual(Control.GetLabel(4420),1)</visible>
+							<control type="label">
+								<width>50</width>
+								<height>60</height>
+								<font>IconMediaMenuButtons</font>
+								<label></label>
+							</control>
+							<control type="label">
+								<left>60</left>
+								<width max="900">auto</width>
+								<height>60</height>
+								<font>font14</font>
+								<textcolor>grey</textcolor>
+								<scroll>true</scroll>
+								<label>$VAR[VideoGenreVar]</label>
+							</control>
+						</control>
+						<control type="grouplist">
+							<width>400</width>
+							<height>180</height>
+							<visible>String.IsEqual(Control.GetLabel(4420),2)</visible>
+							<control type="group">
+								<width>400</width>
+								<height>60</height>
+								<control type="label">
+									<width>50</width>
+									<height>60</height>
+									<font>IconMediaMenuButtons</font>
+									<label>$VAR[InfoPanelLabel3IconVar]</label>
+								</control>
+								<control type="label">
+									<left>60</left>
+									<width max="450">auto</width>
+									<height>60</height>
+									<font>font14</font>
+									<textcolor>grey</textcolor>
+									<scroll>true</scroll>
+									<label>$VAR[InfoPanelLabel3Var_]</label>
+								</control>
+							</control>
+							<control type="group">
+								<width>400</width>
+								<height>60</height>
+								<control type="label">
+									<width>50</width>
+									<height>60</height>
+									<font>IconMediaMenuButtons</font>
+									<label>$VAR[InfoPanelLabel4IconVar]</label>
+								</control>
+								<control type="label">
+									<left>60</left>
+									<width max="450">auto</width>
+									<height>60</height>
+									<font>font14</font>
+									<textcolor>grey</textcolor>
+									<scroll>true</scroll>
+									<label>$VAR[InfoPanelLabel4Var_]</label>
+								</control>
+							</control>
+						</control>
+						<control type="group">
+							<width>1000</width>
+							<height>60</height>
+							<visible>String.IsEqual(Control.GetLabel(4420),2)</visible>
+							<control type="label">
+								<width>50</width>
+								<height>60</height>
+								<font>IconMediaMenuButtons</font>
+								<label></label>
+							</control>
+							<control type="label">
+								<left>60</left>
+								<width max="900">auto</width>
+								<height>60</height>
+								<font>font14</font>
+								<textcolor>grey</textcolor>
+								<scroll>true</scroll>
+								<label>$VAR[VideoGenreVar]</label>
+							</control>
 						</control>
 					</control>
 					<control type="grouplist">
-						<left>624</left>
-						<top>162</top>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel3Var]</label>
-							<include>ShowCaseInfoPanelButtonsValues</include>
+						<left>700</left>
+						<top>150</top>
+						<width>400</width>
+						<height>120</height>
+						<visible>String.IsEqual(Control.GetLabel(4420),1)</visible>
+						<control type="group">
+							<width>400</width>
+							<height>60</height>
+							<control type="label">
+								<width>50</width>
+								<height>60</height>
+								<font>IconMediaMenuButtons</font>
+								<label>$VAR[InfoPanelLabel3IconVar]</label>
+							</control>
+							<control type="label">
+								<left>60</left>
+								<width max="450">auto</width>
+								<height>60</height>
+								<font>font14</font>
+								<textcolor>grey</textcolor>
+								<scroll>true</scroll>
+								<label>$VAR[InfoPanelLabel3Var_]</label>
+							</control>
 						</control>
 						<control type="group">
-							<control type="button">
-								<label>$VAR[InfoPanelLabel4Var]</label>
-								<width>251</width>
-								<include>ShowCaseInfoPanelButtonsValues</include>
+							<width>400</width>
+							<height>60</height>
+							<control type="label">
+								<width>50</width>
+								<height>60</height>
+								<font>IconMediaMenuButtons</font>
+								<label>$VAR[InfoPanelLabel4IconVar]</label>
 							</control>
-							<control type="button">
-								<label>$VAR[InfoPanelLabel5Var]</label>
-								<left>251</left>
-								<width>250</width>
-								<include>ShowCaseInfoPanelButtonsValues</include>
+							<control type="label">
+								<left>60</left>
+								<width max="450">auto</width>
+								<height>60</height>
+								<font>font14</font>
+								<textcolor>grey</textcolor>
+								<scroll>true</scroll>
+								<label>$VAR[InfoPanelLabel4Var_]</label>
 							</control>
 						</control>
 					</control>
 					<control type="textbox">
-						<label>$VAR[VideoPlotVar]</label>
-						<top>342</top>
+						<top>334</top>
 						<left>136</left>
 						<width>970</width>
-						<height>178</height>
-						<font>font14_textbox2</font>
+						<height>196</height>
+						<align>justify</align>
+						<font>font14_textbox</font>
+						<textcolor>white2</textcolor>
+						<label>$VAR[VideoPlotVar]</label>
 						<pagecontrol>62</pagecontrol>
 						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(62)</autoscroll>
-						<include>ShowCaseInfoPanelButtonsValues</include>
+						<visible>String.IsEqual(Control.GetLabel(4420),1)</visible>
+					</control>
+					<control type="textbox">
+						<left>700</left>
+						<label>$VAR[VideoPlotVar]</label>
+						<top>160</top>
+						<width>830</width>
+						<height>196</height>
+						<align>justify</align>
+						<font>font14_textbox</font>
+						<textcolor>white2</textcolor>
+						<pagecontrol>62</pagecontrol>
+						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(62)</autoscroll>
+						<visible>String.IsEqual(Control.GetLabel(4420),2)</visible>
 					</control>
 					<control type="scrollbar" id="62">
 						<top>342</top>
@@ -1526,66 +1673,7 @@
 						<texture border="2" background="true">$VAR[GlobalBackgroundVar]</texture>
 						<bordersize>2</bordersize>
 						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
-					</control>
-				</control>
-				<control type="group">
-					<visible>String.IsEqual(Control.GetLabel(4420),2)</visible>
-					<include>SettingsFadeAnimation</include>
-					<control type="grouplist">
-						<left>121</left>
-						<top>162</top>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel1Var]</label>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel2Var]</label>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel3Var]</label>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="group">
-							<control type="button">
-								<label>$VAR[InfoPanelLabel4Var]</label>
-								<width>251</width>
-								<height>92</height>
-								<include>ShowCaseInfoPanelButtonsValues</include>
-							</control>
-							<control type="button">
-								<label>$VAR[InfoPanelLabel5Var]</label>
-								<left>251</left>
-								<width>250</width>
-								<height>92</height>
-								<include>ShowCaseInfoPanelButtonsValues</include>
-							</control>
-						</control>
-					</control>
-					<control type="textbox">
-						<left>639</left>
-						<label>$VAR[VideoPlotVar]</label>
-						<top>162</top>
-						<width>860</width>
-						<height>354</height>
-						<font>font14_textbox</font>
-						<pagecontrol>62</pagecontrol>
-						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(62)</autoscroll>
-						<include>ShowCaseInfoPanelButtonsValues</include>
-					</control>
-					<control type="scrollbar" id="62">
-						<top>162</top>
-						<left>1510</left>
-						<width>14</width>
-						<height>360</height>
-						<onleft>SetProperty(MediaMenu,True,Home)</onleft>
-						<onleft>SetFocus(9050)</onleft>
-						<onright>50</onright>
-						<ondown>50</ondown>
-						<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-						<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-						<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
-						<showonepage>false</showonepage>
+						<visible>String.IsEqual(Control.GetLabel(4420),1)</visible>
 					</control>
 					<control type="image">
 						<left>1160</left>
@@ -1597,185 +1685,110 @@
 						<texture border="2" background="true">$VAR[PosterThumbVar]</texture>
 						<bordersize>2</bordersize>
 						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
+						<visible>String.IsEqual(Control.GetLabel(4420),2)</visible>
 					</control>
 				</control>
 				<control type="group">
-					<visible>String.IsEqual(Control.GetLabel(4420),3) + Control.IsVisible(57)</visible>
+					<visible>[String.IsEqual(Control.GetLabel(4420),3) | String.IsEqual(Control.GetLabel(4420),4)] + Control.IsVisible(57)</visible>
 					<include>SettingsFadeAnimation</include>
-					<control type="grouplist">
-						<left>70</left>
-						<top>90</top>
-						<width>1200</width>
-						<orientation>horizontal</orientation>
-						<visible>Skin.HasSetting(Enable.Shift.Discart) + !Skin.HasSetting(Enable.Shift.Small) + ![ListItem.IsCollection + String.IsEmpty(ListItem.Art(discart))] + !Skin.HasSetting(Enable.ManualInfoPanel) + ![Container.Content(tvshows) | Container.Content(seasons)]</visible>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel1Var]</label>
-							<width min="100" max="400">auto</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel2Var]</label>
-							<width min="100" max="400">auto</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel3Var]</label>
-							<width min="100" max="500">auto</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel4Var]</label>
-							<width>auto</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-							<visible>!Container.Content(movies) | !String.IsEmpty(ListItem.Top250)</visible>
+					<control type="group">
+						<left>460</left>
+						<top>80</top>
+						<height>120</height>
+						<control type="grouplist">
+							<width>860</width>
+							<height>120</height>
+							<animation effect="slide" end="-60" condition="Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
+							<control type="group">
+								<height>60</height>
+								<visible>!String.IsEmpty(ListItem.Tagline) | !String.IsEmpty(Container(4500).ListItem.Tagline)</visible>
+								<control type="label">
+									<width>50</width>
+									<height>60</height>
+									<font>IconMediaMenuButtons</font>
+									<label></label>
+								</control>
+								<control type="label">
+									<left>60</left>
+									<width max="800">auto</width>
+									<height>60</height>
+									<font>font14</font>
+									<textcolor>grey</textcolor>
+									<scroll>true</scroll>
+									<label>$VAR[InfoPanelTaglineLabelVar]</label>
+								</control>
+							</control>
+							<control type="group">
+								<height>60</height>
+								<control type="label">
+									<width>50</width>
+									<height>60</height>
+									<font>IconMediaMenuButtons</font>
+									<label>$VAR[InfoPanelLabel2IconVar]</label>
+								</control>
+								<control type="label">
+									<left>60</left>
+									<width max="860">auto</width>
+									<height>60</height>
+									<font>font14</font>
+									<textcolor>grey</textcolor>
+									<scroll>true</scroll>
+									<label>$VAR[InfoPanelLabel2Var_]</label>
+								</control>
+							</control>
 						</control>
 					</control>
-					<control type="grouplist">
-						<left>70</left>
-						<top>95</top>
-						<visible>!Skin.HasSetting(Enable.Shift.Discart) | Skin.HasSetting(Enable.Shift.Small) | [ListItem.IsCollection + String.IsEmpty(ListItem.Art(discart))] | Skin.HasSetting(Enable.ManualInfoPanel) | [Container.Content(tvshows) | Container.Content(seasons)]</visible>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel1Var]</label>
+					<control type="group">
+						<visible>!String.IsEqual(Control.GetLabel(4420),4)</visible>
+						<control type="textbox">
+							<left>475</left>
+							<top>220</top>
+							<width>830</width>
+							<height>200</height>
+							<textcolor>white2</textcolor>
+							<font>font14_textbox</font>
+							<align>justify</align>
+							<label>$VAR[VideoPlotVar]</label>
+							<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+							<animation effect="slide" end="-60" condition="Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
+						</control>
+						<control type="image">
+							<right>30</right>
+							<top>92</top>
 							<width>540</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel2Var]</label>
-							<width>540</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel3Var]</label>
-							<width>540</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
+							<height>330</height>
+							<fadetime>200</fadetime>
+							<texture border="2" background="true">$VAR[GlobalBackgroundVar]</texture>
+							<bordersize>2</bordersize>
+							<bordertexture border="2" infill="false">colors/black.png</bordertexture>
+							<animation effect="slide" end="30" condition="Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
 						</control>
 					</control>
-					<control type="textbox">
-						<label>$VAR[VideoPlotVar]</label>
-						<top>95</top>
-						<left>610</left>
-						<width>660</width>
-						<height>308</height>
-						<font>font14_textbox2</font>
-						<align>justify</align>
-						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
-						<include>ShowCaseInfoPanelButtonsValues</include>
-						<visible>!Skin.HasSetting(Enable.Shift.Discart) | Skin.HasSetting(Enable.Shift.Small) | [ListItem.IsCollection + String.IsEmpty(ListItem.Art(discart))] | Skin.HasSetting(Enable.ManualInfoPanel) | [Container.Content(tvshows) | Container.Content(seasons)]</visible>
-					</control>
-					<control type="textbox">
-						<label>$VAR[VideoPlotVar]</label>
-						<top>195</top>
-						<left>500</left>
-						<width>770</width>
-						<height>218</height>
-						<font>font14_textbox2</font>
-						<align>justify</align>
-						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
-						<include>ShowCaseInfoPanelButtonsValues</include>
-						<visible>Skin.HasSetting(Enable.Shift.Discart) + !Skin.HasSetting(Enable.Shift.Small) + !Skin.HasSetting(Enable.ManualInfoPanel) + ![ListItem.IsCollection + String.IsEmpty(ListItem.Art(discart))] + ![Container.Content(tvshows) | Container.Content(seasons)]</visible>
-					</control>
-					<control type="image">
-						<left>1298</left>
-						<top>92</top>
-						<width>540</width>
-						<height>330</height>
-						<fadetime>200</fadetime>
-						<texture border="2" background="true">$VAR[GlobalBackgroundVar]</texture>
-						<bordersize>2</bordersize>
-						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
-					</control>
-				</control>
-				<control type="group">
-					<visible>String.IsEqual(Control.GetLabel(4420),4) + Control.IsVisible(57)</visible>
-					<include>SettingsFadeAnimation</include>
-					<control type="grouplist">
-						<left>150</left>
-						<top>90</top>
-						<orientation>horizontal</orientation>
-						<visible>Skin.HasSetting(Enable.Shift.Discart) + !String.IsEmpty(ListItem.Art(discart)) + !Skin.HasSetting(Enable.Shift.Small) + !Skin.HasSetting(Enable.ManualInfoPanel) + ![Container.Content(tvshows) | Container.Content(seasons)]</visible>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel1Var]</label>
-							<width>300</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
+					<control type="group">
+						<visible>String.IsEqual(Control.GetLabel(4420),4)</visible>
+						<control type="textbox">
+							<left>460</left>
+							<top>220</top>
+							<width>1150</width>
+							<height>200</height>
+							<textcolor>white2</textcolor>
+							<font>font14_textbox</font>
+							<align>justify</align>
+							<label>$VAR[VideoPlotVar]</label>
+							<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+							<animation effect="slide" end="-60" condition="Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
 						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel2Var]</label>
-							<width>300</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
+						<control type="image">
+							<right>40</right>
+							<top>91</top>
+							<width>240</width>
+							<height>340</height>
+							<fadetime>200</fadetime>
+							<texture border="2" background="true">$VAR[PosterThumbVar]</texture>
+							<bordersize>2</bordersize>
+							<bordertexture border="2" infill="false">colors/black.png</bordertexture>
+							<animation effect="slide" end="40" condition="Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
 						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel3Var]</label>
-							<width>320</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel4Var]</label>
-							<width>280</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel5Var]</label>
-							<width>260</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-					</control>
-					<control type="grouplist">
-						<left>150</left>
-						<top>90</top>
-						<visible>!Skin.HasSetting(Enable.Shift.Discart) | Skin.HasSetting(Enable.Shift.Small) | Skin.HasSetting(Enable.Shift.Discart) + String.IsEmpty(ListItem.Art(discart)) | Skin.HasSetting(Enable.ManualInfoPanel) | [Container.Content(tvshows) | Container.Content(seasons)]</visible>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel1Var]</label>
-							<width>384</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel4Var]</label>
-							<width>384</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel5Var]</label>
-							<width>384</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-					</control>
-					<control type="grouplist">
-						<left>535</left>
-						<top>90</top>
-						<orientation>horizontal</orientation>
-						<visible>!Skin.HasSetting(Enable.Shift.Discart) | Skin.HasSetting(Enable.Shift.Small) | Skin.HasSetting(Enable.Shift.Discart) + String.IsEmpty(ListItem.Art(discart)) | Skin.HasSetting(Enable.ManualInfoPanel) | [Container.Content(tvshows) | Container.Content(seasons)]</visible>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel2Var]</label>
-							<width>430</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel3Var]</label>
-							<width>440</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-					</control>
-					<control type="textbox">
-						<left>550</left>
-						<label>$VAR[VideoPlotVar]</label>
-						<top>185</top>
-						<width>950</width>
-						<height>240</height>
-						<font>font14_textbox</font>
-						<pagecontrol />
-						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
-						<include>ShowCaseInfoPanelButtonsValues</include>
-					</control>
-					<control type="image">
-						<left>1525</left>
-						<top>91</top>
-						<width>240</width>
-						<height>340</height>
-						<fadetime>200</fadetime>
-						<texture border="2" background="true">$VAR[PosterThumbVar]</texture>
-						<bordersize>2</bordersize>
-						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
-						<animation effect="slide" end="74" condition="Control.IsVisible(57)">Conditional</animation>
 					</control>
 				</control>
 			</control>

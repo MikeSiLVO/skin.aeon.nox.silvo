@@ -116,6 +116,10 @@
 		<value condition="ListItem.IsCollection + !String.IsEmpty(Container(4501).ListItem.Property(director.collection))">$INFO[Container(4501).ListItem.Property(director.collection)]</value>
 		<value>$INFO[ListItem.Director]</value>
 	</variable>
+	<variable name="VideoWriterVar">
+		<value condition="ListItem.IsCollection + !String.IsEmpty(Container(4501).ListItem.Property(director.collection))">$INFO[Container(4501).ListItem.Property(writer.collection)]</value>
+		<value>$INFO[ListItem.Writer]</value>
+	</variable>
 	<variable name="MovieSetGenreVar">
 		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(genre.collection))">$INFO[Container(4501).ListItem.Property(genre.collection)]</value>
 		<value>$INFO[Container(4500).ListItem(0).Genre]</value>
