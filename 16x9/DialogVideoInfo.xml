@@ -305,7 +305,7 @@
 							<include>ButtonInfoDialogsCommonValues</include>
 							<label></label>
 							<onclick>Dialog.Close(movieinformation)</onclick>
-							<onclick condition="String.IsEqual(ListItem.DBTYPE,movie) + String.IsEmpty(ListItem.SetID)">ActivateWindow(videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B"$INFO[ListItem.Title]"%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D)</onclick>
+							<onclick condition="String.IsEqual(ListItem.DBTYPE,movie) + String.IsEmpty(ListItem.SetID)">ActivateWindow(Videos,videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B"$INFO[ListItem.Title]"%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D,return)</onclick>
 							<onclick condition="String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEmpty(ListItem.SetID)">ActivateWindow(Videos,videodb://movies/sets/$INFO[ListItem.SetId]/?setid=$INFO[ListItem.SetId],return)</onclick>
 							<onclick condition="String.IsEqual(ListItem.DBTYPE,tvshow)">ActivateWindow(Videos,videodb://tvshows/titles/$INFO[ListItem.DBID],return)</onclick>
 							<visible>Window.IsActive(Home) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)]</visible>
