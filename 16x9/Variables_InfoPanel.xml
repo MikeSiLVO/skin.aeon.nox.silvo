@@ -210,39 +210,4 @@
 		<value condition="String.IsEqual(ListItem.DBTYPE,set)">$INFO[Container(4500).ListItem.Tagline]</value>
 		<value>$INFO[ListItem.Tagline]</value>
 	</variable>
-	<variable name="InfoPanelLabel1Var">
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31000]:[/COLOR][CR]$VAR[VideoDirectorVar]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Property(Status))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]:[/COLOR][CR]$INFO[Container(9143).ListItem.Property(Status)]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</value>
-	</variable>
-	<variable name="InfoPanelLabel2Var">
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31001]:[/COLOR][CR]$VAR[VideoWriterVar]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31010]:[/COLOR][CR]$INFO[Container(9143).ListItem.Property(Next_Aired),,: ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31011]:[/COLOR][CR]$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E,  -]$INFO[Container(9143).ListItem.Property(Last_Aired.Name)]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31019]:[/COLOR][CR]$INFO[ListItem.Studio]</value>
-	</variable>
-	<variable name="InfoPanelLabel3Var">
-		<value condition="Control.IsVisible(57) + ListItem.IsCollection + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Genre)]</value>
-		<value condition="Control.IsVisible(57) + ListItem.IsCollection + !String.IsEmpty(Container(4500).ListItem(0).Genre)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[Container(4500).ListItem(0).Genre]</value>
-		<value condition="Control.IsVisible(57) + [Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</value>
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[563]:[/COLOR][CR]$INFO[ListItem.RatingAndVotes]$INFO[ListItem.Top250, / $LOCALIZE[13409] #]</value>
-		<value condition="Container.Content(tvshows) + !String.IsEmpty(Container(9143).ListItem.Property(Status))">[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Property(TotalSeasons)]$VAR[OneOrMoreSeasonsVar, , / ]$INFO[ListItem.Property(TotalEpisodes),, ]$VAR[OneOrMoreEpisodesVar]:[/COLOR][CR]$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[16101]]</value>
-		<value condition="Container.Content(tvshows)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20360]:[/COLOR][CR]$INFO[ListItem.Property(TotalEpisodes)]$INFO[ListItem.Property(UnWatchedEpisodes), (,[LOWERCASE] $LOCALIZE[16101][/LOWERCASE])]</value>
-		<value condition="Container.Content(seasons)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20360]:[/COLOR][CR]$INFO[ListItem.Property(TotalEpisodes)]</value>
-	</variable>
-	<variable name="InfoPanelLabel4Var">
-		<value condition="Control.IsVisible(57) + !String.IsEmpty(ListItem.Top250)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[13409]:[/COLOR][CR]$INFO[ListItem.Top250,# ]</value>
-		<value condition="ListItem.IsCollection + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Runtime))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime),, $LOCALIZE[12391]]</value>
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + !Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</value>
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$VAR[ItemDurationVar]</value>
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</value>
-		<value condition="Container.Content(tvshows) + !String.IsEmpty(Container(9143).ListItem.Property(Duration))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[Container(9143).ListItem.Property(Duration),, $LOCALIZE[12391]]</value>
-		<value condition="Container.Content(tvshows)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[33054]:[/COLOR][CR]$INFO[ListItem.Property(TotalSeasons)]</value>
-		<value condition="Container.Content(seasons)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[16101]:[/COLOR][CR]$INFO[ListItem.Property(UnWatchedEpisodes)]</value>
-	</variable>
-	<variable name="InfoPanelLabel5Var">
-		<value condition="[Container.Content(movies) | Container.Content(sets)] + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Years))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[345]:[/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Years)]</value>
-		<value condition="[Container.Content(movies) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[345]:[/COLOR][CR]$INFO[ListItem.Year]</value>
-		<value condition="Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20416]:[/COLOR][CR]$INFO[ListItem.Premiered]</value>
-	</variable>
 </includes>

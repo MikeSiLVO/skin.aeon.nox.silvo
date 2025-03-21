@@ -24,6 +24,7 @@
 	<include file="View_511_Fullscreen_Wall.xml" />
 	<include file="View_512_BigFan.xml" />
 	<include file="View_513_Music_JukeBox.xml" />
+	<!-- <include file="View_514_SlimList.xml" /> -->
 	<include name="BackPanel">
 		<param name="texture" default="colors/black.png" />
 		<param name="border" default="4" />
@@ -50,9 +51,33 @@
 			<height>$PARAM[height]</height>
 			<texture colordiffuse="BFFFFFFF" border="40">back_infopanel.png</texture>
 			<visible>$PARAM[visible]</visible>
+			<!-- <include>VisibleFadeAnimation</include> -->
 		</control>
 	</include>
-	<include name="InfoPanelLayout">
+	<include name="InfoPanelLabel">
+		<param name="visible" default="true" />
+		<definition>
+		<control type="group">
+			<visible>$PARAM[visible]</visible>
+			<width>$PARAM[width]</width>
+			<height>60</height>
+			<control type="label">
+				<width>50</width>
+				<height>60</height>
+				<font>IconMediaMenuButtons</font>
+				<label>$PARAM[icon]</label>
+			</control>
+			<control type="label">
+				<left>60</left>
+				<width max="$PARAM[max_width]">auto</width>
+				<height>60</height>
+				<font>font14</font>
+				<textcolor>grey</textcolor>
+				<scroll>true</scroll>
+				<label>$PARAM[label]</label>
+			</control>
+		</control>
+	</definition>
 	</include>
 	<include name="NextAiredGenreLeft">
 		<control type="group">
