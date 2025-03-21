@@ -113,7 +113,7 @@
 			<left>15</left>
 			<top>15</top>
 			<control type="image">
-				<visible>Container.Content(movies) | Container.Content(tvshows)</visible>
+				<visible>!Container.Content(episodes)</visible>
 				<width>525</width>
 				<height>296</height>
 				<aspectratio align="center" aligny="center">scale</aspectratio>
@@ -122,7 +122,7 @@
 				<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 			</control>
 			<control type="image">
-				<visible>Container.Content(movies) | Container.Content(tvshows)</visible>
+				<visible>!Container.Content(episodes)</visible>
 				<left>75</left>
 				<width>375</width>
 				<height>278</height>
@@ -140,7 +140,7 @@
 				<param name="left">473</param>
 				<param name="top">2</param>
 				<param name="size">50</param>
-				<!-- <param name="visible">[!String.IsEmpty(Skin.String(505.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(505.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(505.Episodes.DisableOverlay)) + Container.Content(episodes)]</param> -->
+				<!-- <param name="visible">!String.IsEmpty(Skin.String(505.Movies.DisableOverlay)) + [Container.Content(movies) | Container.Content(sets)] | [!String.IsEmpty(Skin.String(505.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(505.Episodes.DisableOverlay)) + Container.Content(episodes)]</param> -->
 				<param name="visible">true</param>
 			</include>
 			<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
