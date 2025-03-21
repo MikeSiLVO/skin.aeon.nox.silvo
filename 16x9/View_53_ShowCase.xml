@@ -19,6 +19,8 @@
 		<onright>53</onright>
 		<onup condition="!ListItem.IsParentFolder">4401</onup>
 		<onup condition="ListItem.IsCollection">62</onup>
+		<!-- <onup condition="!Control.IsVisible(62)">4401</onup>
+		<onup condition="Control.IsVisible(62)">62</onup> -->
 		<ondown condition="Control.IsVisible(95360)">95360</ondown>
 		<ondown condition="!Control.IsVisible(95360)">4400</ondown>
 		<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(artists) | Container.Content(sets) | Container.Content(musicvideos)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_53]</visible>

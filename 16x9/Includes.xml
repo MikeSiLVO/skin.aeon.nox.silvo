@@ -1462,7 +1462,7 @@
 				<param name="height">842</param>
 				<param name="visible">Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small)</param>
 			</include>
-			<control type="group" id="11000">
+			<control type="group">
 				<visible>![Container.OnNext | Container.OnPrevious]</visible>
 				<include>ViewAnimation</include>
 				<control type="group">
@@ -1471,172 +1471,69 @@
 					<control type="grouplist">
 						<left>120</left>
 						<top>150</top>
-						<control type="group">
-							<width>550</width>
-							<height>60</height>
-							<control type="label">
-								<width>50</width>
-								<height>60</height>
-								<font>IconMediaMenuButtons</font>
-								<label>$VAR[InfoPanelLabel1IconVar]</label>
-							</control>
-							<control type="label">
-								<left>60</left>
-								<width max="500">auto</width>
-								<height>60</height>
-								<font>font14</font>
-								<textcolor>grey</textcolor>
-								<scroll>true</scroll>
-								<label>$VAR[InfoPanelLabel1Var_]</label>
-							</control>
-						</control>
-						<control type="group">
-							<width>550</width>
-							<height>60</height>
-							<control type="label">
-								<width>50</width>
-								<height>60</height>
-								<font>IconMediaMenuButtons</font>
-								<label>$VAR[InfoPanelLabel2IconVar]</label>
-							</control>
-							<control type="label">
-								<left>60</left>
-								<width max="500">auto</width>
-								<height>60</height>
-								<font>font14</font>
-								<textcolor>grey</textcolor>
-								<scroll>true</scroll>
-								<label>$VAR[InfoPanelLabel2Var_]</label>
-							</control>
-						</control>
-						<control type="group">
-							<width>1000</width>
-							<height>60</height>
-							<visible>String.IsEqual(Control.GetLabel(4420),1)</visible>
-							<control type="label">
-								<width>50</width>
-								<height>60</height>
-								<font>IconMediaMenuButtons</font>
-								<label></label>
-							</control>
-							<control type="label">
-								<left>60</left>
-								<width max="900">auto</width>
-								<height>60</height>
-								<font>font14</font>
-								<textcolor>grey</textcolor>
-								<scroll>true</scroll>
-								<label>$VAR[VideoGenreVar]</label>
-							</control>
-						</control>
+						<height>300</height>
+						<include content="InfoPanelLabel">
+							<param name="width">560</param>
+							<param name="max_width">500</param>
+							<param name="icon">$VAR[InfoPanelLabel1IconVar]</param>
+							<param name="label">$VAR[InfoPanelLabel1Var_]</param>
+						</include>
+						<include content="InfoPanelLabel">
+							<param name="width">560</param>
+							<param name="max_width">500</param>
+							<param name="icon">$VAR[InfoPanelLabel2IconVar]</param>
+							<param name="label">$VAR[InfoPanelLabel2Var_]</param>
+						</include>
+						<include content="InfoPanelLabel">
+							<param name="width">960</param>
+							<param name="max_width">900</param>
+							<param name="icon"></param>
+							<param name="label">$VAR[VideoGenreVar]</param>
+							<param name="visible">String.IsEqual(Control.GetLabel(4420),1)</param>
+						</include>
 						<control type="grouplist">
 							<width>400</width>
-							<height>180</height>
+							<height>120</height>
 							<visible>String.IsEqual(Control.GetLabel(4420),2)</visible>
-							<control type="group">
-								<width>400</width>
-								<height>60</height>
-								<control type="label">
-									<width>50</width>
-									<height>60</height>
-									<font>IconMediaMenuButtons</font>
-									<label>$VAR[InfoPanelLabel3IconVar]</label>
-								</control>
-								<control type="label">
-									<left>60</left>
-									<width max="450">auto</width>
-									<height>60</height>
-									<font>font14</font>
-									<textcolor>grey</textcolor>
-									<scroll>true</scroll>
-									<label>$VAR[InfoPanelLabel3Var_]</label>
-								</control>
-							</control>
-							<control type="group">
-								<width>400</width>
-								<height>60</height>
-								<control type="label">
-									<width>50</width>
-									<height>60</height>
-									<font>IconMediaMenuButtons</font>
-									<label>$VAR[InfoPanelLabel4IconVar]</label>
-								</control>
-								<control type="label">
-									<left>60</left>
-									<width max="450">auto</width>
-									<height>60</height>
-									<font>font14</font>
-									<textcolor>grey</textcolor>
-									<scroll>true</scroll>
-									<label>$VAR[InfoPanelLabel4Var_]</label>
-								</control>
-							</control>
+							<include content="InfoPanelLabel">
+								<param name="width">510</param>
+								<param name="max_width">450</param>
+								<param name="icon">$VAR[InfoPanelLabel3IconVar]</param>
+								<param name="label">$VAR[InfoPanelLabel3Var_]</param>
+							</include>
+							<include content="InfoPanelLabel">
+								<param name="width">510</param>
+								<param name="max_width">450</param>
+								<param name="icon">$VAR[InfoPanelLabel4IconVar]</param>
+								<param name="label">$VAR[InfoPanelLabel4Var_]</param>
+							</include>
 						</control>
-						<control type="group">
-							<width>1000</width>
-							<height>60</height>
-							<visible>String.IsEqual(Control.GetLabel(4420),2)</visible>
-							<control type="label">
-								<width>50</width>
-								<height>60</height>
-								<font>IconMediaMenuButtons</font>
-								<label></label>
-							</control>
-							<control type="label">
-								<left>60</left>
-								<width max="900">auto</width>
-								<height>60</height>
-								<font>font14</font>
-								<textcolor>grey</textcolor>
-								<scroll>true</scroll>
-								<label>$VAR[VideoGenreVar]</label>
-							</control>
-						</control>
+						<include content="InfoPanelLabel">
+							<param name="visible">String.IsEqual(Control.GetLabel(4420),2)</param>
+							<param name="width">960</param>
+							<param name="max_width">900</param>
+							<param name="icon"></param>
+							<param name="label">$VAR[VideoGenreVar]</param>
+						</include>
 					</control>
 					<control type="grouplist">
 						<left>700</left>
 						<top>150</top>
-						<width>400</width>
+						<width>510</width>
 						<height>120</height>
 						<visible>String.IsEqual(Control.GetLabel(4420),1)</visible>
-						<control type="group">
-							<width>400</width>
-							<height>60</height>
-							<control type="label">
-								<width>50</width>
-								<height>60</height>
-								<font>IconMediaMenuButtons</font>
-								<label>$VAR[InfoPanelLabel3IconVar]</label>
-							</control>
-							<control type="label">
-								<left>60</left>
-								<width max="450">auto</width>
-								<height>60</height>
-								<font>font14</font>
-								<textcolor>grey</textcolor>
-								<scroll>true</scroll>
-								<label>$VAR[InfoPanelLabel3Var_]</label>
-							</control>
-						</control>
-						<control type="group">
-							<width>400</width>
-							<height>60</height>
-							<control type="label">
-								<width>50</width>
-								<height>60</height>
-								<font>IconMediaMenuButtons</font>
-								<label>$VAR[InfoPanelLabel4IconVar]</label>
-							</control>
-							<control type="label">
-								<left>60</left>
-								<width max="450">auto</width>
-								<height>60</height>
-								<font>font14</font>
-								<textcolor>grey</textcolor>
-								<scroll>true</scroll>
-								<label>$VAR[InfoPanelLabel4Var_]</label>
-							</control>
-						</control>
+						<include content="InfoPanelLabel">
+							<param name="width">510</param>
+							<param name="max_width">450</param>
+							<param name="icon">$VAR[InfoPanelLabel3IconVar]</param>
+							<param name="label">$VAR[InfoPanelLabel3Var_]</param>
+						</include>
+						<include content="InfoPanelLabel">
+							<param name="width">510</param>
+							<param name="max_width">450</param>
+							<param name="icon">$VAR[InfoPanelLabel4IconVar]</param>
+							<param name="label">$VAR[InfoPanelLabel4Var_]</param>
+						</include>
 					</control>
 					<control type="textbox">
 						<top>334</top>
@@ -1645,7 +1542,7 @@
 						<height>196</height>
 						<align>justify</align>
 						<font>font14_textbox</font>
-						<textcolor>white2</textcolor>
+						<textcolor>grey</textcolor>
 						<label>$VAR[VideoPlotVar]</label>
 						<pagecontrol>62</pagecontrol>
 						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(62)</autoscroll>
@@ -1659,25 +1556,10 @@
 						<height>196</height>
 						<align>justify</align>
 						<font>font14_textbox</font>
-						<textcolor>white2</textcolor>
+						<textcolor>grey</textcolor>
 						<pagecontrol>62</pagecontrol>
 						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(62)</autoscroll>
 						<visible>String.IsEqual(Control.GetLabel(4420),2)</visible>
-					</control>
-					<control type="scrollbar" id="62">
-						<top>342</top>
-						<left>1112</left>
-						<width>14</width>
-						<height>179</height>
-						<onup>SetProperty(MediaMenu,True,Home)</onup>
-						<onup>SetFocus(9050)</onup>
-						<onleft>50</onleft>
-						<onright>50</onright>
-						<ondown>50</ondown>
-						<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-						<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-						<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
-						<showonepage>false</showonepage>
 					</control>
 					<control type="image">
 						<left>1126</left>
@@ -1702,10 +1584,25 @@
 						<bordertexture border="2" infill="false">colors/black.png</bordertexture>
 						<visible>String.IsEqual(Control.GetLabel(4420),2)</visible>
 					</control>
+					<control type="scrollbar" id="62">
+						<top>342</top>
+						<left>1112</left>
+						<width>14</width>
+						<height>179</height>
+						<onup>SetProperty(MediaMenu,True,Home)</onup>
+						<onup>SetFocus(9050)</onup>
+						<onleft>50</onleft>
+						<onright>50</onright>
+						<ondown>50</ondown>
+						<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
+						<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
+						<texturesliderbarfocus colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texturesliderbarfocus>
+						<showonepage>false</showonepage>
+					</control>
 				</control>
 				<control type="group">
 					<visible>[String.IsEqual(Control.GetLabel(4420),3) | String.IsEqual(Control.GetLabel(4420),4)] + Control.IsVisible(57)</visible>
-					<include>SettingsFadeAnimation</include>
+					<include>VisibleFadeAnimation</include>
 					<control type="group">
 						<left>460</left>
 						<top>80</top>
@@ -1714,53 +1611,29 @@
 							<width>860</width>
 							<height>120</height>
 							<animation effect="slide" end="-60" condition="Skin.HasSetting(Enable.Shift.Small)">Conditional</animation>
-							<control type="group">
-								<height>60</height>
-								<visible>!String.IsEmpty(ListItem.Tagline) | !String.IsEmpty(Container(4500).ListItem.Tagline)</visible>
-								<control type="label">
-									<width>50</width>
-									<height>60</height>
-									<font>IconMediaMenuButtons</font>
-									<label></label>
-								</control>
-								<control type="label">
-									<left>60</left>
-									<width max="800">auto</width>
-									<height>60</height>
-									<font>font14</font>
-									<textcolor>grey</textcolor>
-									<scroll>true</scroll>
-									<label>$VAR[InfoPanelTaglineLabelVar]</label>
-								</control>
-							</control>
-							<control type="group">
-								<height>60</height>
-								<control type="label">
-									<width>50</width>
-									<height>60</height>
-									<font>IconMediaMenuButtons</font>
-									<label>$VAR[InfoPanelLabel2IconVar]</label>
-								</control>
-								<control type="label">
-									<left>60</left>
-									<width max="860">auto</width>
-									<height>60</height>
-									<font>font14</font>
-									<textcolor>grey</textcolor>
-									<scroll>true</scroll>
-									<label>$VAR[InfoPanelLabel2Var_]</label>
-								</control>
-							</control>
+							<include content="InfoPanelLabel">
+								<param name="width">860</param>
+								<param name="max_width">800</param>
+								<param name="icon"></param>
+								<param name="label">$VAR[InfoPanelTaglineLabelVar]</param>
+								<param name="visible">!String.IsEmpty(ListItem.Tagline) | !String.IsEmpty(Container(4500).ListItem.Tagline)</param>
+							</include>
+							<include content="InfoPanelLabel">
+								<param name="width">860</param>
+								<param name="max_width">800</param>
+								<param name="icon">$VAR[InfoPanelLabel2IconVar]</param>
+								<param name="label">$VAR[InfoPanelLabel2Var_]</param>
+							</include>
 						</control>
 					</control>
 					<control type="group">
-						<visible>!String.IsEqual(Control.GetLabel(4420),4)</visible>
+						<visible>String.IsEqual(Control.GetLabel(4420),3)</visible>
 						<control type="textbox">
 							<left>475</left>
 							<top>220</top>
 							<width>830</width>
-							<height>200</height>
-							<textcolor>white2</textcolor>
+							<height>196</height>
+							<textcolor>grey</textcolor>
 							<font>font14_textbox</font>
 							<align>justify</align>
 							<label>$VAR[VideoPlotVar]</label>
@@ -1786,7 +1659,7 @@
 							<top>220</top>
 							<width>1150</width>
 							<height>200</height>
-							<textcolor>white2</textcolor>
+							<textcolor>grey</textcolor>
 							<font>font14_textbox</font>
 							<align>justify</align>
 							<label>$VAR[VideoPlotVar]</label>
@@ -1808,67 +1681,75 @@
 				</control>
 			</control>
 		</control>
-		<control type="group" id="13000">
-			<control type="image">
-				<include>FullscreenDimensions</include>
-				<texture>colors/black50.png</texture>
-				<visible>!Skin.HasSetting(Enable.ManualInfoPanel) + [String.IsEqual(Control.GetLabel(4420),5) | String.IsEqual(Control.GetLabel(4420),6)] | [Skin.HasSetting(Enable.ManualInfoPanel) + Control.HasFocus(4401) + [String.IsEqual(Control.GetLabel(4420),5) | String.IsEqual(Control.GetLabel(4420),6)]]</visible>
-				<animation effect="fade" time="320">Visible</animation>
-				<animation effect="fade" time="720">Hidden</animation>
-			</control>
+		<control type="group">
+			<include content="DimBackground">
+				<param name="visible">!Skin.HasSetting(Enable.ManualInfoPanel) + [String.IsEqual(Control.GetLabel(4420),5) | String.IsEqual(Control.GetLabel(4420),6)] | [Skin.HasSetting(Enable.ManualInfoPanel) + Control.HasFocus(4401) + [String.IsEqual(Control.GetLabel(4420),5) | String.IsEqual(Control.GetLabel(4420),6)]]</param>
+			</include>
 			<control type="group">
-				<visible>!String.IsEmpty(Control.GetLabel(4420)) + Control.IsVisible(4420)</visible>
-				<visible>!Skin.HasSetting(Enable.ManualInfoPanel) + [String.IsEqual(Control.GetLabel(4420),5) | String.IsEqual(Control.GetLabel(4420),6)] | [Skin.HasSetting(Enable.ManualInfoPanel) + Control.HasFocus(4401) + [String.IsEqual(Control.GetLabel(4420),5) | String.IsEqual(Control.GetLabel(4420),6)]]</visible>
+				<visible>!Skin.HasSetting(Enable.ManualInfoPanel) + Control.IsVisible(4420) + [String.IsEqual(Control.GetLabel(4420),5) | String.IsEqual(Control.GetLabel(4420),6)] | [Skin.HasSetting(Enable.ManualInfoPanel) + Control.HasFocus(4401) + [String.IsEqual(Control.GetLabel(4420),5) | String.IsEqual(Control.GetLabel(4420),6)]]</visible>
 				<animation effect="slide" start="0,-1080" end="0,0" time="840" tween="cubic">Visible</animation>
 				<animation effect="slide" start="0,0" end="0,-1080" time="720" tween="cubic">Hidden</animation>
 				<animation effect="slide" start="0,-1200" end="0,0" time="720" tween="cubic">WindowOpen</animation>
 				<animation effect="slide" end="0,-1200" start="0,0" time="720" tween="cubic">WindowClose</animation>
 				<control type="group">
 					<visible>String.IsEqual(Control.GetLabel(4420),5)</visible>
-					<include>SettingsFadeAnimation</include>
+					<include>VisibleFadeAnimation</include>
 					<control type="grouplist">
-						<left>5</left>
+						<left>20</left>
 						<top>80</top>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel1Var]</label>
-							<width>1160</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel2Var]</label>
-							<width>1160</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="group">
-							<control type="button">
-								<label>$VAR[InfoPanelLabel3Var]</label>
-								<width>auto</width>
-								<include>ShowCaseInfoPanelButtonsValues</include>
-							</control>
-							<control type="button">
-								<left>501</left>
-								<width>251</width>
-								<label>$VAR[InfoPanelLabel4Var]</label>
-								<include>ShowCaseInfoPanelButtonsValues</include>
-							</control>
-							<control type="button">
-								<left>752</left>
-								<width>250</width>
-								<label>$VAR[InfoPanelLabel5Var]</label>
-								<include>ShowCaseInfoPanelButtonsValues</include>
-							</control>
-						</control>
+						<include content="InfoPanelLabel">
+							<param name="width">710</param>
+							<param name="max_width">650</param>
+							<param name="icon">$VAR[InfoPanelLabel1IconVar]</param>
+							<param name="label">$VAR[InfoPanelLabel1Var_]</param>
+						</include>
+						<include content="InfoPanelLabel">
+							<param name="width">710</param>
+							<param name="max_width">650</param>
+							<param name="icon">$VAR[InfoPanelLabel2IconVar]</param>
+							<param name="label">$VAR[InfoPanelLabel2Var_]</param>
+						</include>
+						<include content="InfoPanelLabel">
+							<param name="width">960</param>
+							<param name="max_width">900</param>
+							<param name="icon"></param>
+							<param name="label">$VAR[VideoGenreVar]</param>
+						</include>
+						<include content="InfoPanelLabel">
+							<param name="width">960</param>
+							<param name="max_width">900</param>
+							<param name="icon"></param>
+							<param name="label">$VAR[InfoPanelTaglineLabelVar]</param>
+						</include>
+					</control>
+					<control type="grouplist">
+						<left>760</left>
+						<top>80</top>
+						<width>510</width>
+						<height>180</height>
+						<include content="InfoPanelLabel">
+							<param name="width">510</param>
+							<param name="max_width">450</param>
+							<param name="icon">$VAR[InfoPanelLabel3IconVar]</param>
+							<param name="label">$VAR[InfoPanelLabel3Var_]</param>
+						</include>
+						<include content="InfoPanelLabel">
+							<param name="width">510</param>
+							<param name="max_width">450</param>
+							<param name="icon">$VAR[InfoPanelLabel4IconVar]</param>
+							<param name="label">$VAR[InfoPanelLabel4Var_]</param>
+						</include>
 					</control>
 					<control type="textbox">
-						<label>$VAR[VideoPlotVar]</label>
-						<top>367</top>
+						<top>330</top>
 						<left>20</left>
 						<width>1090</width>
-						<height>130</height>
-						<font>font14_textbox2</font>
-						<pagecontrol />
+						<height>148</height>
+						<align>justify</align>
+						<textcolor>grey</textcolor>
+						<font>font14_textbox</font>
+						<label>$VAR[VideoPlotVar]</label>
 						<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
-						<include>ShowCaseInfoPanelButtonsValues</include>
 					</control>
 					<control type="image">
 						<left>1132</left>
@@ -1884,52 +1765,65 @@
 				</control>
 				<control type="group">
 					<visible>String.IsEqual(Control.GetLabel(4420),6)</visible>
-					<include>SettingsFadeAnimation</include>
+					<include>VisibleFadeAnimation</include>
 					<control type="grouplist">
-						<left>5</left>
+						<left>20</left>
 						<top>80</top>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel1Var]</label>
-							<width>615</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel2Var]</label>
-							<width>615</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="button">
-							<label>$VAR[InfoPanelLabel3Var]</label>
-							<width>615</width>
-							<include>ShowCaseInfoPanelButtonsValues</include>
-						</control>
-						<control type="group">
-							<control type="button">
-								<width>251</width>
-								<label>$VAR[InfoPanelLabel4Var]</label>
-								<include>ShowCaseInfoPanelButtonsValues</include>
-							</control>
-							<control type="button">
-								<left>251</left>
-								<width>364</width>
-								<label>$VAR[InfoPanelLabel5Var]</label>
-								<include>ShowCaseInfoPanelButtonsValues</include>
-							</control>
+						<include content="InfoPanelLabel">
+							<param name="width">860</param>
+							<param name="max_width">800</param>
+							<param name="icon">$VAR[InfoPanelLabel1IconVar]</param>
+							<param name="label">$VAR[InfoPanelLabel1Var_]</param>
+						</include>
+						<include content="InfoPanelLabel">
+							<param name="width">860</param>
+							<param name="max_width">800</param>
+							<param name="icon">$VAR[InfoPanelLabel2IconVar]</param>
+							<param name="label">$VAR[InfoPanelLabel2Var_]</param>
+						</include>
+						<include content="InfoPanelLabel">
+							<param name="width">860</param>
+							<param name="max_width">800</param>
+							<param name="icon"></param>
+							<param name="label">$VAR[VideoGenreVar]</param>
+						</include>
+						<include content="InfoPanelLabel">
+							<param name="width">860</param>
+							<param name="max_width">800</param>
+							<param name="icon"></param>
+							<param name="label">$VAR[InfoPanelTaglineLabelVar]</param>
+						</include>
+						<control type="grouplist">
+							<width>860</width>
+							<height>60</height>
+							<orientation>horizontal</orientation>
+							<include content="InfoPanelLabel">
+								<param name="width">500</param>
+								<param name="max_width">440</param>
+								<param name="icon">$VAR[InfoPanelLabel3IconVar]</param>
+								<param name="label">$VAR[InfoPanelLabel3Var_]</param>
+							</include>
+							<include content="InfoPanelLabel">
+								<param name="width">360</param>
+								<param name="max_width">300</param>
+								<param name="icon">$VAR[InfoPanelLabel4IconVar]</param>
+								<param name="label">$VAR[InfoPanelLabel4Var_]</param>
+							</include>
 						</control>
 					</control>
 					<control type="textbox">
-						<label>$VAR[VideoPlotVar]</label>
-						<top>92</top>
-						<left>650</left>
-						<width>900</width>
+						<top>88</top>
+						<left>920</left>
+						<width>700</width>
 						<height>345</height>
-						<font>font14_textbox2</font>
-						<pagecontrol />
+						<align>justify</align>
+						<textcolor>grey</textcolor>
+						<font>font14_textbox</font>
+						<label>$VAR[VideoPlotVar]</label>
 						<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
-						<include>ShowCaseInfoPanelButtonsValues</include>
 					</control>
 					<control type="image">
-						<left>1601</left>
+						<right>0</right>
 						<top>71</top>
 						<width>278</width>
 						<height>380</height>
