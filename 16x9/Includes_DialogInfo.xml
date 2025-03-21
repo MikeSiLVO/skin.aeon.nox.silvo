@@ -931,26 +931,26 @@
 	</include>
 	<include name="InfoContentSets">
 		<item>
-			<label>$VAR[MovieSetDirectorVar]</label>
+			<label>$VAR[VideoDirectorVar]</label>
 			<label2>$LOCALIZE[20348]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[20348])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCVAR[MovieSetDirectorVar])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCVAR[VideoDirectorVar])</onclick>
 			<onclick>SetFocus(64)</onclick>
 			<visible>!String.IsEmpty(Container(4501).ListItem.Property(director.collection)) | !String.IsEmpty(Container(4500).ListItemNoWrap(0).Director)</visible>
 		</item>
 		<item>
-			<label>$VAR[MovieSetWriterVar]</label>
+			<label>$VAR[VideoWriterVar]</label>
 			<label2>$LOCALIZE[20418]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[20418])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCVAR[MovieSetWriterVar])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCVAR[VideoWriterVar])</onclick>
 			<onclick>SetFocus(64)</onclick>
 			<visible>!String.IsEmpty(Container(4501).ListItem.Property(writer.collection)) | !String.IsEmpty(Container(4500).ListItemNoWrap(0).Writer)</visible>
 		</item>
 		<item>
-			<label>$VAR[MovieSetGenreVar]</label>
+			<label>$VAR[VideoGenreVar]</label>
 			<label2>$LOCALIZE[515]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[515])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCVAR[MovieSetGenreVar])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCVAR[VideoGenreVar])</onclick>
 			<onclick>SetFocus(64)</onclick>
 			<visible>!String.IsEmpty(Container(4501).ListItem.Property(genre.collection)) | !String.IsEmpty(Container(4500).ListItemNoWrap(0).Genre)</visible>
 		</item>
@@ -1347,7 +1347,7 @@
 		<param name="top" default="0" />
 		<param name="width" default="1162" />
 		<param name="height" default="345" />
-		<param name="label" default="$VAR[VideoInfoPlotVar]" />
+		<param name="label" default="$VAR[VideoPlotVar]" />
 		<param name="button_id" default="90003" />
 		<definition>
 			<control type="textbox">

@@ -11,13 +11,6 @@
 		<value>$LOCALIZE[14117]</value>
 		<!-- <value>$VAR[BackgroundLabelVar] $LOCALIZE[14117]</value> -->
 	</variable>
-	<variable name="SkinShortcutsIconLabelVar">
-		<value condition="[String.EndsWith(Window.Property(groupname),.1) | String.EndsWith(Window.Property(groupname),.2)] + !String.IsEqual(Container(211).ListItem.Icon,special://skin/extras/icons/) + !String.IsEqual(Container(211).ListItem.Icon,DefaultShortcut.png)">$INFO[Container(211).ListItem.Icon]</value>
-	</variable>
-	<variable name="MusicPlayerCodecVar">
-		<value condition="String.Contains(MusicPlayer.Codec,mp3)">mp3</value>
-		<value>$INFO[MusicPlayer.Codec]</value>
-	</variable>
 	<variable name="CustomConfirmTextboxVar">
 		<value condition="String.IsEqual(Window(Home).Property(CustomConfirm),cleanlibrary)">$LOCALIZE[333]</value>
 		<value condition="String.IsEqual(Window(Home).Property(CustomConfirm),resetcolors)">$LOCALIZE[31495]</value>
@@ -37,15 +30,22 @@
 		<value condition="!String.IsEmpty(Window(Home).Property(OfferReloadAfterConfirm))">$LOCALIZE[222]</value>
 		<value>$LOCALIZE[106]</value>
 	</variable>
-	<variable name="FanartTimePerImageLabelVar">
-		<value condition="!String.IsEmpty(Skin.String(FanartTimePerImage))">$INFO[Skin.String(FanartTimePerImage)] $LOCALIZE[31090]</value>
-		<value>$LOCALIZE[12317] $LOCALIZE[31090]</value>
-	</variable>
 	<variable name="CustomSelectLabelVar">
 		<value condition="String.IsEqual(Window(Home).Property(CustomSelect),avsettings)">$LOCALIZE[5]</value>
 		<value condition="String.IsEqual(Window(Home).Property(CustomSelect),gameosdsettings)">$LOCALIZE[35221]</value>
 		<value condition="String.IsEqual(Window(Home).Property(CustomSelect),search)">$LOCALIZE[137]</value>
 		<value>$LOCALIZE[22080]</value>
+	</variable>
+	<variable name="SkinShortcutsIconLabelVar">
+		<value condition="[String.EndsWith(Window.Property(groupname),.1) | String.EndsWith(Window.Property(groupname),.2)] + !String.IsEqual(Container(211).ListItem.Icon,special://skin/extras/icons/) + !String.IsEqual(Container(211).ListItem.Icon,DefaultShortcut.png)">$INFO[Container(211).ListItem.Icon]</value>
+	</variable>
+	<variable name="FanartTimePerImageLabelVar">
+		<value condition="!String.IsEmpty(Skin.String(FanartTimePerImage))">$INFO[Skin.String(FanartTimePerImage)] $LOCALIZE[31090]</value>
+		<value>$LOCALIZE[12317] $LOCALIZE[31090]</value>
+	</variable>
+	<variable name="MusicPlayerCodecVar">
+		<value condition="String.Contains(MusicPlayer.Codec,mp3)">mp3</value>
+		<value>$INFO[MusicPlayer.Codec]</value>
 	</variable>
 	<variable name="PointerSizeLabelVar">
 		<value condition="String.IsEqual(Skin.String(PointerSize),large)">$LOCALIZE[31048]</value>
@@ -115,23 +115,13 @@
 	</variable>
 	<variable name="VideoDirectorVar">
 		<value condition="ListItem.IsCollection + !String.IsEmpty(Container(4501).ListItem.Property(director.collection))">$INFO[Container(4501).ListItem.Property(director.collection)]</value>
+		<value condition="ListItem.IsCollection + !String.IsEmpty(Container(4500).ListItem(0).Director)">$INFO[Container(4500).ListItem(0).Director]</value>
 		<value>$INFO[ListItem.Director]</value>
 	</variable>
 	<variable name="VideoWriterVar">
 		<value condition="ListItem.IsCollection + !String.IsEmpty(Container(4501).ListItem.Property(director.collection))">$INFO[Container(4501).ListItem.Property(writer.collection)]</value>
+		<value condition="ListItem.IsCollection + !String.IsEmpty(Container(4500).ListItem(0).Writer)">$INFO[Container(4500).ListItem(0).Writer]</value>
 		<value>$INFO[ListItem.Writer]</value>
-	</variable>
-	<variable name="MovieSetGenreVar">
-		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(genre.collection))">$INFO[Container(4501).ListItem.Property(genre.collection)]</value>
-		<value>$INFO[Container(4500).ListItem(0).Genre]</value>
-	</variable>
-	<variable name="MovieSetDirectorVar">
-		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(director.collection))">$INFO[Container(4501).ListItem.Property(director.collection)]</value>
-		<value>$INFO[Container(4500).ListItemNoWrap(0).Director]$INFO[Container(4500).ListItemNoWrap(1).Director, / ]$INFO[Container(4500).ListItemNoWrap(2).Director, / ]$INFO[Container(4500).ListItemNoWrap(3).Director, / ]$INFO[Container(4500).ListItemNoWrap(4).Director, / ]$INFO[Container(4500).ListItemNoWrap(5).Director, / ]$INFO[Container(4500).ListItemNoWrap(6).Director, / ]$INFO[Container(4500).ListItemNoWrap(7).Director, / ]</value>
-	</variable>
-	<variable name="MovieSetWriterVar">
-		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(writer.collection))">$INFO[Container(4501).ListItem.Property(writer.collection)]</value>
-		<value>$INFO[Container(4500).ListItemNoWrap(0).Writer]$INFO[Container(4500).ListItemNoWrap(1).Writer, / ]$INFO[Container(4500).ListItemNoWrap(2).Writer, / ]$INFO[Container(4500).ListItemNoWrap(3).Writer, / ]$INFO[Container(4500).ListItemNoWrap(4).Writer, / ]$INFO[Container(4500).ListItemNoWrap(5).Writer, / ]$INFO[Container(4500).ListItemNoWrap(6).Writer, / ]$INFO[Container(4500).ListItemNoWrap(7).Writer, / ]</value>
 	</variable>
 	<variable name="MusicGenreIconsPathLabelVar">
 		<value condition="!String.IsEmpty(Skin.String(musicgenreicons.path))">$INFO[Skin.String(musicgenreicons.name)]</value>
@@ -302,10 +292,10 @@
 		<value>$LOCALIZE[20360]</value>
 	</variable>
 	<variable name="VideoPlotVar">
+		<value condition="String.IsEqual(ListItem.Property(item.type),person)">$INFO[ListItem.Property(Biography)]</value>
 		<value condition="ListItem.IsCollection + !Skin.HasSetting(ViewSetPlotToggle)">$INFO[Container(4500).ListItemNoWrap(0).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(0).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(1).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(1).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(2).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(2).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(3).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(3).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(4).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(4).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(5).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(5).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(6).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(6).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(7).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(7).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(8).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(8).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(9).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(9).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(10).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(10).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(11).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(11).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(12).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(12).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(13).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(13).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(14).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(14).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(15).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(15).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(16).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(16).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(17).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(17).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(18).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(18).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(19).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(19).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(20).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(20).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(21).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(21).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(22).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(22).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(23).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(23).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(24).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(24).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(25).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(25).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(26).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(26).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(27).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(27).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(28).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(28).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(29).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(29).Plot,[CR],[CR][CR]]</value>
 		<value condition="Container.Content(seasons)">$INFO[Container.ShowPlot]</value>
 		<value condition="!String.IsEmpty(ListItem.PlotOutline) + Skin.HasSetting(ViewInfoPlotToggle)">$INFO[ListItem.PlotOutline]</value>
-		<value condition="System.GetBool(videolibrary.showunwatchedplots)">$INFO[ListItem.Plot]</value>
 		<value>$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="OtherPlotVar">
@@ -435,7 +425,6 @@
 		<value condition="Player.ChapterCount + Window.IsVisible(fullscreeninfo)">$INFO[Player.Chapter,$LOCALIZE[21396] ]$INFO[Player.ChapterCount, / ]</value>
 		<value>$INFO[Player.Title]</value>
 	</variable>
-	<!-- Decription VARs -->
 	<variable name="SkinSettingsDescriptionVar">
 		<value condition="Window.IsVisible(1117)" />
 		<value condition="Control.HasFocus(10000) | Control.HasFocus(30000)">$LOCALIZE[31912]</value>
@@ -562,7 +551,7 @@
 		<value condition="Control.HasFocus(801)">$LOCALIZE[31559]</value>
 		<value condition="Control.HasFocus(519)">$LOCALIZE[31560]</value>
 		<!-- Widget 1 -->
-		<value condition="Control.HasFocus(312)"></value>
+		<!-- <value condition="Control.HasFocus(312)"></value>
 		<value condition="Control.HasFocus(1001)"></value>
 		<value condition="Control.HasFocus(1021)"></value>
 		<value condition="Control.HasFocus(1004)"></value>
@@ -572,9 +561,9 @@
 		<value condition="Control.HasFocus(1022)"></value>
 		<value condition="Control.HasFocus(1023)"></value>
 		<value condition="Control.HasFocus(1012)"></value>
-		<value condition="Control.HasFocus(1012)"></value>
+		<value condition="Control.HasFocus(1012)"></value> -->
 		<!-- Widget 2 Likely Can Repeat Widget 1 Strings -->
-		<value condition="Control.HasFocus(2051)"></value>
+		<!-- <value condition="Control.HasFocus(2051)"></value>
 		<value condition="Control.HasFocus(2001)"></value>
 		<value condition="Control.HasFocus(2021)"></value>
 		<value condition="Control.HasFocus(2004)"></value>
@@ -584,7 +573,7 @@
 		<value condition="Control.HasFocus(2022)"></value>
 		<value condition="Control.HasFocus(2023)"></value>
 		<value condition="Control.HasFocus(2012)"></value>
-		<value condition="Control.HasFocus(2016)"></value>
+		<value condition="Control.HasFocus(2016)"></value> -->
 	</variable>
 	<variable name="CustomColorsDescriptionVar">
 		<value condition="Control.HasFocus(200)">$LOCALIZE[31414]</value>
@@ -750,13 +739,6 @@
 		<value condition="Control.HasFocus(900013)">$LOCALIZE[31545]$INFO[Container(900013).CurrentItem, (,/]$INFO[Container(900013).NumItems,,)]</value>
 		<value condition="Control.HasFocus(900020)">$LOCALIZE[31547]$INFO[Container(900020).CurrentItem, (,/]$INFO[Container(900020).NumItems,,)]</value>
 	</variable>
-	<variable name="VideoInfoPlotVar">
-		<value condition="String.IsEqual(ListItem.Property(item.type),person)">$INFO[ListItem.Property(Biography)]</value>
-		<value condition="String.IsEqual(ListItem.DBTYPE,set) + Skin.HasSetting(SetInfoPlotToggle)">$INFO[Container(4500).ListItemNoWrap(0).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(0).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(1).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(1).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(2).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(2).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(3).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(3).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(4).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(4).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(5).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(5).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(6).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(6).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(7).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(7).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(8).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(8).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(9).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(9).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(10).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(10).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(11).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(11).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(12).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(12).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(13).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(13).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(14).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(14).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(15).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(15).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(16).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(16).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(17).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(17).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(18).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(18).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(19).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(19).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(20).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(20).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(21).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(21).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(22).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(22).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(23).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(23).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(24).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(24).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(25).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(25).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(26).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(26).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(27).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(27).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(28).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(28).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(29).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(29).Plot,[CR]]</value>
-		<value condition="Skin.HasSetting(VideoInfoPlotToggle) + !String.IsEmpty(ListItem.PlotOutline)">$INFO[ListItem.PlotOutline]</value>
-		<value condition="!String.IsEmpty(ListItem.Plot)">$INFO[ListItem.Plot]</value>
-		<value>$LOCALIZE[19055]</value>
-	</variable>
 	<variable name="VideoInfoTVSubtitleVar">
 		<value condition="!String.IsEmpty(Container(9143).ListItem.Status)">$INFO[Container(9143).ListItem.Status]</value>
 		<value condition="!String.IsEmpty(ListItem.Status)">$INFO[ListItem.Status]</value>
@@ -844,7 +826,6 @@
 		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(ratings.imdb.rating))">$INFO[Container(4501).ListItem.Property(ratings.imdb.rating_rounded)]</value>
 		<value>$INFO[Container(9143).ListItem.Property(IMDb_Rating)]</value>
 	</variable>
-	<!-- Custom Info Ratings -->
 	<variable name="CustomRottenFreshLabelVar">
 		<value condition="!String.IsEmpty(Container(4800).ListItem.Property(ratings.tomatometerallcritics.rating_percentage))">$INFO[Container(4800).ListItem.Property(ratings.tomatometerallcritics.rating_percentage)]</value>
 		<value>$INFO[Container(4801).ListItem.Property(RottenTomatoes_Rating),,%]</value>
@@ -1201,7 +1182,7 @@
 		<value condition="Control.HasFocus(95)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31617][/COLOR]</value>
 		<value>$INFO[Control.GetLabel(1)][UPPERCASE]$INFO[ListItem.Label, • ]$INFO[ListItem.Label2, #,[/UPPERCASE]]</value>
 	</variable>
-	<!-- Color Picker VARs -->
+	<!-- Color Picker -->
 	<variable name="ThemeLabelColor">
 		<value condition="!String.IsEmpty(Skin.String(ThemeLabelColor))">$INFO[Skin.String(ThemeLabelColor)]</value>
 		<value>FF6DB9E5</value>

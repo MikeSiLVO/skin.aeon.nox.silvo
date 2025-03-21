@@ -470,7 +470,7 @@
 								<onclick condition="String.IsEqual(ListItem.DBTYPE,set)">SetProperty(TextViewerSubHeader,$INFO[Container(50).NumItems,, $LOCALIZE[342],[LIGHT],[/LIGHT]],Home)</onclick>
 								<onclick condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEmpty(Container(9143).ListItem.Property(Status))">SetProperty(TextViewerSubHeader,$ESCINFO[Container(9143).ListItem.Property(Status),[LIGHT],[/LIGHT]],Home)</onclick>
 								<onclick condition="String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEmpty(ListItem.TvShowTitle)">SetProperty(TextViewerSubHeader,$ESCINFO[ListItem.TvShowTitle,[LIGHT],[/LIGHT]],Home)</onclick>
-								<onclick>SetProperty(TextViewerContent,$ESCVAR[VideoInfoPlotVar],Home)</onclick>
+								<onclick>SetProperty(TextViewerContent,$ESCVAR[VideoPlotVar],Home)</onclick>
 								<onclick condition="String.IsEqual(ListItem.Property(item.type),person)">SetProperty(TextViewerSubHeader,$INFO[ListItem.Property(Department),$LOCALIZE[31546] ]$INFO[ListItem.Property(Age), - , $LOCALIZE[31544]],Home)</onclick>
 								<onclick>ActivateWindow(1112)</onclick>
 								<onfocus condition="String.IsEmpty(Window(Home).Property(random_actor))">SetProperty(random_actor,$INFO[Control.GetLabel(9140)],Home)</onfocus>
