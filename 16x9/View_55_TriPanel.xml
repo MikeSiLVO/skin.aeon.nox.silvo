@@ -96,7 +96,7 @@
 						<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Director))</visible>
 					</control>
 					<control type="button">
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$VAR[MovieSetGenreVar]</label>
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$VAR[VideoGenreVar]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
 						<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Genre)) | !String.IsEmpty(Container(4500).ListItem(0).Genre)</visible>
@@ -198,8 +198,7 @@
 							<font>font15</font>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
 							<label fallback="• • • •">$INFO[ListItem.Year]</label>
-							<visible>!ListItem.IsParentFolder</visible>
-							<visible>!ListItem.IsCollection</visible>
+							<visible>!ListItem.IsParentFolder + !ListItem.IsCollection</visible>
 						</control>
 						<control type="image">
 							<top>-18</top>
@@ -208,7 +207,7 @@
 							<aspectratio>keep</aspectratio>
 							<texture>overlays/set.png</texture>
 							<colordiffuse>grey</colordiffuse>
-							<visible>!Container.Content(sets) + ListItem.IsCollection</visible>
+							<visible>ListItem.IsCollection</visible>
 						</control>
 						<control type="label">
 							<left>110</left>
@@ -217,16 +216,6 @@
 							<font>font15</font>
 							<textcolor>grey2</textcolor>
 							<label>$INFO[ListItem.Label]</label>
-							<visible>!Container.Content(sets)</visible>
-						</control>
-						<control type="label">
-							<left>20</left>
-							<width>720</width>
-							<height>68</height>
-							<font>font15</font>
-							<textcolor>grey2</textcolor>
-							<label>$INFO[ListItem.Label]</label>
-							<visible>Container.Content(sets)</visible>
 						</control>
 						<control type="label">
 							<left>120</left>
@@ -236,8 +225,7 @@
 							<align>right</align>
 							<textcolor>grey2</textcolor>
 							<label>$INFO[ListItem.Label2]</label>
-							<visible>!ListItem.IsCollection</visible>
-							<visible>!Skin.HasSetting(Enable.HideRatings) | [String.IsEqual(ListItem.Label2, ListItem.Rating) + String.IsEqual(Container.SortMethod,$LOCALIZE[563])]</visible>
+							<visible>!ListItem.IsCollection + !Skin.HasSetting(Enable.HideRatings) | [String.IsEqual(ListItem.Label2, ListItem.Rating) + String.IsEqual(Container.SortMethod,$LOCALIZE[563])]</visible>
 						</control>
 						<include content="ListStatusIndicators">
 							<param name="left">742</param>
@@ -259,8 +247,7 @@
 							<font>font15</font>
 							<label fallback="• • • •">$INFO[ListItem.Year]</label>
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(55)">Conditional</animation>
-							<visible>!ListItem.IsParentFolder</visible>
-							<visible>!ListItem.IsCollection</visible>
+							<visible>!ListItem.IsParentFolder + !ListItem.IsCollection</visible>
 						</control>
 						<control type="image">
 							<top>-18</top>
@@ -268,7 +255,7 @@
 							<height>105</height>
 							<aspectratio>keep</aspectratio>
 							<texture>overlays/set.png</texture>
-							<visible>!Container.Content(sets) + ListItem.IsCollection</visible>
+							<visible>ListItem.IsCollection</visible>
 						</control>
 						<control type="label">
 							<left>110</left>
@@ -276,17 +263,6 @@
 							<height>68</height>
 							<font>font15</font>
 							<label>$INFO[ListItem.Label]</label>
-							<visible>!Container.Content(sets)</visible>
-							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(55)">Conditional</animation>
-						</control>
-						<control type="label">
-							<left>20</left>
-							<width>720</width>
-							<height>68</height>
-							<font>font15</font>
-							<textcolor>grey2</textcolor>
-							<label>$INFO[ListItem.Label]</label>
-							<visible>Container.Content(sets)</visible>
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(55)">Conditional</animation>
 						</control>
 						<control type="label">
@@ -296,8 +272,43 @@
 							<font>font15</font>
 							<align>right</align>
 							<label>$INFO[ListItem.Label2]</label>
-							<visible>!ListItem.IsCollection</visible>
-							<visible>!Skin.HasSetting(Enable.HideRatings) | [String.IsEqual(ListItem.Label2, ListItem.Rating) + String.IsEqual(Container.SortMethod,$LOCALIZE[563])]</visible>
+							<visible>!ListItem.IsCollection + !Skin.HasSetting(Enable.HideRatings) | [String.IsEqual(ListItem.Label2, ListItem.Rating) + String.IsEqual(Container.SortMethod,$LOCALIZE[563])]</visible>
+							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(55)">Conditional</animation>
+						</control>
+						<include content="ListStatusIndicators">
+							<param name="left">742</param>
+							<param name="top">3</param>
+						</include>
+					</focusedlayout>
+					<itemlayout height="70" width="806" condition="Container.Content(sets)">
+						<control type="label">
+							<left>20</left>
+							<width>720</width>
+							<height>68</height>
+							<font>font15</font>
+							<textcolor>grey2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<include content="ListStatusIndicators">
+							<param name="left">742</param>
+							<param name="top">3</param>
+						</include>
+					</itemlayout>
+					<focusedlayout height="70" width="806" condition="Container.Content(sets)">
+						<control type="image">
+							<width>806</width>
+							<height>70</height>
+							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
+							<visible>Control.HasFocus(55)</visible>
+							<include>VisibleFadeAnimation</include>
+						</control>
+						<control type="label">
+							<left>20</left>
+							<width>720</width>
+							<height>68</height>
+							<font>font15</font>
+							<textcolor>grey2</textcolor>
+							<label>$INFO[ListItem.Label]</label>
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(55)">Conditional</animation>
 						</control>
 						<include content="ListStatusIndicators">
