@@ -57,27 +57,27 @@
 	<include name="InfoPanelLabel">
 		<param name="visible" default="true" />
 		<definition>
-		<control type="group">
-			<visible>$PARAM[visible]</visible>
-			<width>$PARAM[width]</width>
-			<height>60</height>
-			<control type="label">
-				<width>50</width>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<width>$PARAM[width]</width>
 				<height>60</height>
-				<font>IconMediaMenuButtons</font>
-				<label>$PARAM[icon]</label>
+				<control type="label">
+					<width>50</width>
+					<height>60</height>
+					<font>IconMediaMenuButtons</font>
+					<label>$PARAM[icon]</label>
+				</control>
+				<control type="label">
+					<left>60</left>
+					<width max="$PARAM[max_width]">auto</width>
+					<height>60</height>
+					<font>font14</font>
+					<textcolor>grey</textcolor>
+					<scroll>true</scroll>
+					<label>$PARAM[label]</label>
+				</control>
 			</control>
-			<control type="label">
-				<left>60</left>
-				<width max="$PARAM[max_width]">auto</width>
-				<height>60</height>
-				<font>font14</font>
-				<textcolor>grey</textcolor>
-				<scroll>true</scroll>
-				<label>$PARAM[label]</label>
-			</control>
-		</control>
-	</definition>
+		</definition>
 	</include>
 	<include name="NextAiredGenreLeft">
 		<control type="group">
