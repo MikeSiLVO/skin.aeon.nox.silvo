@@ -56,7 +56,7 @@
 				<param name="left">246</param>
 				<param name="top">595</param>
 				<param name="size">46</param>
-				<param name="visible">[!String.IsEmpty(Skin.String(512.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(512.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(512.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(512.Seasons.DisableOverlay)) + Container.Content(seasons)]</param>
+				<param name="visible">!String.IsEmpty(Skin.String(512.Movies.DisableOverlay)) + [Container.Content(movies) | Container.Content(sets)] | [!String.IsEmpty(Skin.String(512.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(512.Seasons.DisableOverlay)) + Container.Content(seasons)]</param>
 			</include>
 			<control type="group">
 				<animation effect="slide" end="0,-160" condition="Skin.HasSetting(EnableBigFanPlot)">Conditional</animation>

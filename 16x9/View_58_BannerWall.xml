@@ -72,7 +72,7 @@
 							<param name="left">522</param>
 							<param name="top">4</param>
 							<param name="size">34</param>
-							<param name="visible">[!String.IsEmpty(Skin.String(58.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(58.TV.DisableOverlay)) + Container.Content(tvshows)]</param>
+							<param name="visible">!String.IsEmpty(Skin.String(58.Movies.DisableOverlay)) + [Container.Content(movies) | Container.Content(sets)] | [!String.IsEmpty(Skin.String(58.TV.DisableOverlay)) + Container.Content(tvshows)]</param>
 						</include>
 						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedEpisodeOverlay</include>
 					</itemlayout>
@@ -114,7 +114,7 @@
 								<param name="left">518</param>
 								<param name="top">8</param>
 								<param name="size">34</param>
-								<param name="visible">[!String.IsEmpty(Skin.String(58.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(58.TV.DisableOverlay)) + Container.Content(tvshows)]</param>
+								<param name="visible">!String.IsEmpty(Skin.String(58.Movies.DisableOverlay)) + [Container.Content(movies) | Container.Content(sets)] | [!String.IsEmpty(Skin.String(58.TV.DisableOverlay)) + Container.Content(tvshows)]</param>
 							</include>
 							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
 								<param name="left">8</param>

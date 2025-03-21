@@ -131,7 +131,7 @@
 						<include content="PosterStatusOverlay">
 							<param name="left">1065</param>
 							<param name="size">60</param>
-							<param name="visible">[!String.IsEmpty(Skin.String(504.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(504.TV.DisableOverlay)) + Container.Content(tvshows)]</param>
+							<param name="visible">!String.IsEmpty(Skin.String(504.Movies.DisableOverlay)) + [Container.Content(movies) | Container.Content(sets)] | [!String.IsEmpty(Skin.String(504.TV.DisableOverlay)) + Container.Content(tvshows)]</param>
 						</include>
 					</control>
 				</itemlayout>
@@ -167,7 +167,7 @@
 								<param name="left">1057</param>
 								<param name="top">8</param>
 								<param name="size">60</param>
-								<param name="visible">[!String.IsEmpty(Skin.String(504.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(504.TV.DisableOverlay)) + Container.Content(tvshows)]</param>
+								<param name="visible">!String.IsEmpty(Skin.String(504.Movies.DisableOverlay)) + [Container.Content(movies) | Container.Content(sets)] | [!String.IsEmpty(Skin.String(504.TV.DisableOverlay)) + Container.Content(tvshows)]</param>
 							</include>
 							<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
 								<param name="left">8</param>
