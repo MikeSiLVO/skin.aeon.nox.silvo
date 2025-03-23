@@ -3,107 +3,110 @@
 	<defaultcontrol always="true">90200</defaultcontrol>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(FSFanart))">ClearProperty(FSFanart,movieinformation)</onunload>
 	<onunload condition="!String.IsEmpty(Window(Home).Property(Enable.FullscreenFanart))">ClearProperty(Enable.FullscreenFanart,Home)</onunload>
-	<include>DialogOpenCloseAnimation</include>
 	<controls>
-		<include content="DimBackground">
-			<param name="timeopen">100</param>
-			<param name="timeclose">50</param>
-		</include>
-		<control type="grouplist" id="90200">
-			<left>705</left>
-			<width>510</width>
-			<height>1080</height>
-			<onleft>90200</onleft>
-			<onright>90200</onright>
-			<onup>90200</onup>
-			<ondown>90200</ondown>
-			<align>center</align>
-			<control type="button" id="90202">
-				<description>FS Fanart button</description>
+		<control type="group">
+			<include>DialogOpenCloseAnimation</include>
+			<include content="DimBackground">
+				<param name="timeopen">100</param>
+				<param name="timeclose">50</param>
+			</include>
+			<control type="grouplist" id="90200">
+				<left>705</left>
 				<width>510</width>
-				<textwidth>435</textwidth>
-				<textoffsetx>35</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-				<texturenofocus>button_nofocus.png</texturenofocus>
-				<onclick>ActivateWindow(1113)</onclick>
-				<label>$LOCALIZE[31092]</label>
-			</control>
-			<control type="button" id="90203">
-				<description>Trakt Rate button</description>
-				<width>510</width>
-				<textwidth>435</textwidth>
-				<textoffsetx>35</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-				<texturenofocus>button_nofocus.png</texturenofocus>
-				<onclick>Dialog.Close(1119)</onclick>
-				<onclick>Dialog.Close(MovieInformation)</onclick>
-				<onclick>RunScript(script.trakt,action=rate)</onclick>
-				<label>$LOCALIZE[31970]</label>
-				<visible>!Skin.HasSetting(KioskMode.Enabled)</visible>
-				<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
-				<visible>System.AddonIsEnabled(script.trakt) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
-			</control>
-			<control type="button" id="90204">
-				<description>PreshowExperience</description>
-				<width>510</width>
-				<textwidth>435</textwidth>
-				<textoffsetx>35</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-				<texturenofocus>button_nofocus.png</texturenofocus>
-				<label>$INFO[System.AddonTitle(script.preshowexperience)]</label>
-				<onclick>Dialog.Close(1119)</onclick>
-				<onclick>RunScript(script.preshowexperience,experience)</onclick>
-				<visible>System.AddonIsEnabled(script.preshowexperience) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31014]) + String.IsEmpty(Window(Home).Property(script.preshowexperience.running))</visible>
-			</control>
-			<control type="button" id="90205">
-				<description>Search YouTube button</description>
-				<width>510</width>
-				<textwidth>435</textwidth>
-				<textoffsetx>35</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-				<texturenofocus>button_nofocus.png</texturenofocus>
-				<onclick>Dialog.Close(all,true)</onclick>
-				<onclick>ActivateWindow(videos,"plugin://plugin.video.youtube/kodion/search/list/",return)</onclick>
-				<label>$LOCALIZE[137] $INFO[System.AddonTitle(plugin.video.youtube)]</label>
-				<visible>!Skin.HasSetting(KioskMode.Enabled)</visible>
-				<visible>System.AddonIsEnabled(plugin.video.youtube)</visible>
-			</control>
-			<control type="button" id="90206">
-				<description>Edit button</description>
-				<width>510</width>
-				<textwidth>435</textwidth>
-				<textoffsetx>35</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-				<texturenofocus>button_nofocus.png</texturenofocus>
-				<onclick>Dialog.Close(1119)</onclick>
-				<onclick>RunScript(script.metadata.editor,dbid=$INFO[ListItem.DBID],type=$INFO[ListItem.DBType])</onclick>
-				<label>$LOCALIZE[21435]</label>
-				<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
-				<visible>!Skin.HasSetting(KioskMode.Enabled) + !Window.IsActive(Home)</visible>
-				<visible>System.AddonIsEnabled(script.metadata.editor)</visible>
-			</control>
-			<control type="button" id="90207">
-				<width>510</width>
-				<textwidth>435</textwidth>
-				<textoffsetx>35</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-				<texturenofocus>button_nofocus.png</texturenofocus>
-				<onclick>SetProperty(DialogSettings,videoinfo,Home)</onclick>
-				<onclick>ActivateWindow(1114)</onclick>
-				<label>$LOCALIZE[5]</label>
-				<visible>!Skin.HasSetting(KioskMode.Enabled) + !Window.IsActive(musicinformation)</visible>
-			</control>
-			<control type="button" id="90220">
-				<description>No extra features button</description>
-				<width>510</width>
-				<textwidth>435</textwidth>
-				<textoffsetx>35</textoffsetx>
-				<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
-				<texturenofocus>button_nofocus.png</texturenofocus>
-				<onclick>Dialog.Close(1119)</onclick>
-				<label>$LOCALIZE[31075]</label>
-				<visible>![Control.IsVisible(90202) | Control.IsVisible(90203) | Control.IsVisible(90204) | Control.IsVisible(90205) | Control.IsVisible(90206) | Control.IsVisible(90207)]</visible>
+				<height>1080</height>
+				<onleft>90200</onleft>
+				<onright>90200</onright>
+				<onup>90200</onup>
+				<ondown>90200</ondown>
+				<align>center</align>
+				<control type="button" id="90202">
+					<description>FS Fanart button</description>
+					<width>510</width>
+					<textwidth>435</textwidth>
+					<textoffsetx>35</textoffsetx>
+					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+					<texturenofocus>button_nofocus.png</texturenofocus>
+					<onclick>ActivateWindow(1113)</onclick>
+					<label>$LOCALIZE[31092]</label>
+				</control>
+				<control type="button" id="90203">
+					<description>Trakt Rate button</description>
+					<width>510</width>
+					<textwidth>435</textwidth>
+					<textoffsetx>35</textoffsetx>
+					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+					<texturenofocus>button_nofocus.png</texturenofocus>
+					<onclick>Dialog.Close(1119)</onclick>
+					<onclick>Dialog.Close(MovieInformation)</onclick>
+					<onclick>RunScript(script.trakt,action=rate)</onclick>
+					<label>$LOCALIZE[31970]</label>
+					<visible>!Skin.HasSetting(KioskMode.Enabled)</visible>
+					<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
+					<visible>System.AddonIsEnabled(script.trakt) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
+				</control>
+				<control type="button" id="90204">
+					<description>PreshowExperience</description>
+					<width>510</width>
+					<textwidth>435</textwidth>
+					<textoffsetx>35</textoffsetx>
+					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+					<texturenofocus>button_nofocus.png</texturenofocus>
+					<label>$INFO[System.AddonTitle(script.preshowexperience)]</label>
+					<onclick>Dialog.Close(1119)</onclick>
+					<onclick>RunScript(script.preshowexperience,experience)</onclick>
+					<visible>System.AddonIsEnabled(script.preshowexperience) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31014]) + String.IsEmpty(Window(Home).Property(script.preshowexperience.running))</visible>
+				</control>
+				<control type="button" id="90205">
+					<description>Search YouTube button</description>
+					<width>510</width>
+					<textwidth>435</textwidth>
+					<textoffsetx>35</textoffsetx>
+					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+					<texturenofocus>button_nofocus.png</texturenofocus>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>ActivateWindow(videos,"plugin://plugin.video.youtube/kodion/search/list/",return)</onclick>
+					<label>$LOCALIZE[137] $INFO[System.AddonTitle(plugin.video.youtube)]</label>
+					<visible>!Skin.HasSetting(KioskMode.Enabled)</visible>
+					<visible>System.AddonIsEnabled(plugin.video.youtube)</visible>
+				</control>
+				<control type="button" id="90206">
+					<description>Edit button</description>
+					<width>510</width>
+					<textwidth>435</textwidth>
+					<textoffsetx>35</textoffsetx>
+					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+					<texturenofocus>button_nofocus.png</texturenofocus>
+					<onclick>Dialog.Close(1119)</onclick>
+					<onclick>RunScript(script.metadata.editor,dbid=$INFO[ListItem.DBID],type=$INFO[ListItem.DBType])</onclick>
+					<label>$LOCALIZE[21435]</label>
+					<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
+					<visible>!Skin.HasSetting(KioskMode.Enabled) + !Window.IsActive(Home)</visible>
+					<visible>System.AddonIsEnabled(script.metadata.editor)</visible>
+				</control>
+				<control type="button" id="90207">
+					<width>510</width>
+					<textwidth>435</textwidth>
+					<textoffsetx>35</textoffsetx>
+					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+					<texturenofocus>button_nofocus.png</texturenofocus>
+					<onclick>SetProperty(DialogSettings,videoinfo,Home)</onclick>
+					<onclick>ActivateWindow(1114)</onclick>
+					<label>$LOCALIZE[5]</label>
+					<visible>!Skin.HasSetting(KioskMode.Enabled) + !Window.IsActive(musicinformation)</visible>
+				</control>
+				<control type="button" id="90220">
+					<description>No extra features button</description>
+					<width>510</width>
+					<textwidth>435</textwidth>
+					<textoffsetx>35</textoffsetx>
+					<texturefocus colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+					<texturenofocus>button_nofocus.png</texturenofocus>
+					<onclick>Dialog.Close(1119)</onclick>
+					<label>$LOCALIZE[31075]</label>
+					<visible>![Control.IsVisible(90202) | Control.IsVisible(90203) | Control.IsVisible(90204) | Control.IsVisible(90205) | Control.IsVisible(90206) | Control.IsVisible(90207)]</visible>
+				</control>
 			</control>
 		</control>
+		<include>DebugWindow</include>
 	</controls>
 </window>

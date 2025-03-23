@@ -2,7 +2,7 @@
 <window>
 	<defaultcontrol always="true">9000</defaultcontrol>
 	<controls>
-		<control type="panel" id="50">
+		<control type="list" id="50">
 			<include>HiddenList</include>
 		</control>
 		<control type="group">
@@ -274,5 +274,8 @@
 				</control>
 			</control>
 		</control>
+		<include content="DebugWindow">
+			<param name="visible">Window.IsDialogTopMost(addoninformation)</param>
+		</include>
 	</controls>
 </window>

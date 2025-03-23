@@ -37,5 +37,8 @@
 				<visible>!String.IsEmpty(PVR.ChannelNumberInput)</visible>
 			</control>
 		</control>
+		<include content="DebugWindow">
+			<param name="visible">!System.HasVisibleModalDialog | Window.IsVisible(contextmenu)</param>
+		</include>
 	</controls>
 </window>
