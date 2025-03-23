@@ -42,7 +42,7 @@
 						<width>105</width>
 						<height>105</height>
 						<aspectratio>keep</aspectratio>
-						<colordiffuse>88FFFFFF</colordiffuse>
+						<colordiffuse>BFFFFFFF</colordiffuse>
 						<texture background="true">$INFO[ListItem.Icon]</texture>
 					</control>
 					<control type="label">
@@ -52,7 +52,7 @@
 						<height>70</height>
 						<font>font60</font>
 						<label>$INFO[ListItem.Label]</label>
-						<visible>String.IsEqual(ListItem.Label,$LOCALIZE[19335]) | String.IsEqual(ListItem.Label,$LOCALIZE[19337])</visible>
+						<visible>String.IsEqual(ListItem.Label,$LOCALIZE[19335]) | String.IsEqual(ListItem.Label,$LOCALIZE[19337]) | String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
 					</control>
 					<control type="label">
 						<left>135</left>
@@ -61,7 +61,7 @@
 						<font>font30</font>
 						<textcolor>grey2</textcolor>
 						<label>$INFO[ListItem.Label]</label>
-						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19337])</visible>
+						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19337]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
 					</control>
 					<control type="label">
 						<left>135</left>
@@ -131,7 +131,7 @@
 						<height>70</height>
 						<font>font60</font>
 						<label>$INFO[ListItem.Label]</label>
-						<visible>String.IsEqual(ListItem.Label,$LOCALIZE[19335]) | String.IsEqual(ListItem.Label,$LOCALIZE[19337])</visible>
+						<visible>String.IsEqual(ListItem.Label,$LOCALIZE[19335]) | String.IsEqual(ListItem.Label,$LOCALIZE[19337]) | String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
 					</control>
 					<control type="label">
 						<left>135</left>
@@ -139,7 +139,7 @@
 						<height>70</height>
 						<font>font30</font>
 						<label>$INFO[ListItem.Label]</label>
-						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19337])</visible>
+						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19337]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
 					</control>
 					<control type="label">
 						<left>135</left>
@@ -225,5 +225,8 @@
 		<include>PVRBackgroundDim</include>
 		<include>Topbar</include>
 		<include>PVRMediaMenu</include>
+		<include content="DebugWindow">
+			<param name="visible">!System.HasVisibleModalDialog | Window.IsVisible(contextmenu)</param>
+		</include>
 	</controls>
 </window>

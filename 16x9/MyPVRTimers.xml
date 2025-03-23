@@ -41,8 +41,9 @@
 						<width>105</width>
 						<height>105</height>
 						<aspectratio>keep</aspectratio>
-						<colordiffuse>B3FFFFFF</colordiffuse>
+						<colordiffuse>BFFFFFFF</colordiffuse>
 						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
 					</control>
 					<control type="label">
 						<left>135</left>
@@ -124,6 +125,7 @@
 						<height>105</height>
 						<aspectratio>keep</aspectratio>
 						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
 					</control>
 					<control type="label">
 						<left>135</left>
@@ -209,5 +211,8 @@
 		<include>PVRBackgroundDim</include>
 		<include>Topbar</include>
 		<include>PVRMediaMenu</include>
+		<include content="DebugWindow">
+			<param name="visible">!System.HasVisibleModalDialog | Window.IsVisible(contextmenu)</param>
+		</include>
 	</controls>
 </window>

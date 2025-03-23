@@ -700,7 +700,7 @@
 							<include>SettingsButtonCommonValues</include>
 							<align>center</align>
 							<label>$LOCALIZE[31339]</label>
-							<onclick>Skin.ToggleDebug</onclick>
+							<onclick>Skin.ToggleSetting(DebugInfo)</onclick>
 						</control>
 						<control type="button" id="90003">
 							<include>SettingsButtonCommonValues</include>
@@ -799,5 +799,8 @@
 			</control>
 			<include>MediaMenuPlayerControls</include>
 		</control>
+		<include content="DebugWindow">
+			<param name="visible">!System.HasVisibleModalDialog</param>
+		</include>
 	</controls>
 </window>

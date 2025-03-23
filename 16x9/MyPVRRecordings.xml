@@ -20,5 +20,8 @@
 		<include>PVRBackgroundDim</include>
 		<include>Topbar</include>
 		<include>PVRMediaMenu</include>
+		<include content="DebugWindow">
+			<param name="visible">!System.HasVisibleModalDialog | Window.IsVisible(contextmenu)</param>
+		</include>
 	</controls>
 </window>

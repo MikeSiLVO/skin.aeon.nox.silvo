@@ -138,5 +138,8 @@
 				<include>MediaMenuPlayerControls</include>
 			</control>
 		</control>
+		<include content="DebugWindow">
+			<param name="visible">!System.HasVisibleModalDialog | Window.IsVisible(contextmenu)</param>
+		</include>
 	</controls>
 </window>

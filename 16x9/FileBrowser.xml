@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">450</defaultcontrol>
-	<include>DialogOpenCloseAnimation</include>
 	<controls>
 		<include content="DimBackground">
 			<param name="timeopen">100</param>
 			<param name="timeclose">50</param>
 		</include>
 		<control type="group">
+			<include>DialogOpenCloseAnimation</include>
 			<left>210</left>
 			<top>234</top>
 			<include content="DialogPanel">
@@ -228,5 +228,8 @@
 			<include>HiddenObject</include>
 			<label>$LOCALIZE[119]</label>
 		</control>
+		<include content="DebugWindow">
+			<param name="visible">Window.IsDialogTopMost(filebrowser)</param>
+		</include>
 	</controls>
 </window>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="DebugInfo">
+		<param name="visible" default="true" />
+		<definition>
+			<control type="grouplist">
+				<left>20</left>
+				<bottom>100</bottom>
+				<width>1880</width>
+				<height max="900">auto</height>
+				<align>right</align>
+				<visible>Skin.HasSetting(DebugInfo) + $PARAM[visible]</visible>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font14_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>$INFO[Container.Viewmode,[COLOR chartreuse]Viewmode: [/COLOR]]</label>
+					<visible>!String.IsEmpty(Container.Viewmode)</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font14_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>$INFO[System.CurrentControlID,[COLOR chartreuse]Focused ID = [/COLOR]]$INFO[System.CurrentControl,[COLOR chartreuse]   ,[/COLOR]]</label>
+					<visible>!String.IsEmpty(System.CurrentControlID)</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font14_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>$INFO[Container.FolderName,[COLOR chartreuse]Folder name: [/COLOR]]</label>
+					<visible>!String.IsEmpty(Container.FolderName)</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font14_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>$INFO[Container.FolderPath,[COLOR chartreuse]Folder path: [/COLOR]]</label>
+					<visible>!String.IsEmpty(Container.FolderPath)</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font14_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>$INFO[ListItem.FolderPath,[COLOR chartreuse]ListItem path: [/COLOR]]</label>
+					<visible>!String.IsEmpty(ListItem.FolderPath)</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font14_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>$INFO[Container.Content,[COLOR chartreuse]Content: [/COLOR]]</label>
+					<visible>!String.IsEmpty(Container.Content)</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font14_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>$INFO[Container.PluginName,[COLOR chartreuse]Plugin name: [/COLOR]]</label>
+					<visible>!String.IsEmpty(Container.PluginName)</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font14_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>$INFO[Container.PluginCategory,[COLOR chartreuse]Plugin category: [/COLOR]]</label>
+					<visible>!String.IsEmpty(Container.PluginCategory)</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font14_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>$INFO[ListItem.DBTYPE,[COLOR chartreuse]DBTYPE: [/COLOR]]$INFO[ListItem.DBID,[COLOR chartreuse]   DBID: [/COLOR]]</label>
+					<visible>!String.IsEmpty(ListItem.DBTYPE) | !String.IsEmpty(ListItem.DBID)</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font14_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>$INFO[ListItem.IMDBNumber,[COLOR chartreuse]IMDBNumber: [/COLOR]]</label>
+					<visible>!String.IsEmpty(ListItem.IMDBNumber)</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font14_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>$INFO[ListItem.UniqueID(imdb),[COLOR chartreuse]UniqueID (imdb): [/COLOR]]</label>
+					<visible>!String.IsEmpty(ListItem.UniqueID(imdb))</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font14_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>$INFO[ListItem.UniqueID(tmdb),[COLOR chartreuse]UniqueID (tmdb): [/COLOR]]</label>
+					<visible>!String.IsEmpty(ListItem.UniqueID(tmdb))</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font14_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>$INFO[ListItem.SongVideoURL,[COLOR chartreuse]SongVideoURL: [/COLOR]]</label>
+					<visible>!String.IsEmpty(ListItem.SongVideoURL)</visible>
+				</control>
+				<control type="togglebutton">
+					<width>auto</width>
+					<height>40</height>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font13mono</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<alttexturefocus>colors/black75.png</alttexturefocus>
+					<alttexturenofocus>colors/black75.png</alttexturenofocus>
+					<label>Player.Playing</label>
+					<altlabel>Player.Paused</altlabel>
+					<usealttexture>Player.Paused</usealttexture>
+					<visible>Player.Playing | Player.Paused</visible>
+				</control>
+				<control type="togglebutton">
+					<width>auto</width>
+					<height>40</height>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font13mono</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<alttexturefocus>colors/black75.png</alttexturefocus>
+					<alttexturenofocus>colors/black75.png</alttexturenofocus>
+					<label>Player.HasVideo</label>
+					<altlabel>Player.HasAudio</altlabel>
+					<usealttexture>Player.HasAudio</usealttexture>
+					<visible>Player.HasVideo | Player.HasAudio</visible>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<include name="DebugGrid">
+		<control type="image">
+			<width>$INFO[System.ScreenWidth]</width>
+			<height>$INFO[System.ScreenHeight]</height>
+			<texture>special://skin/extras/debuggrid1080.png</texture>
+			<visible>Skin.HasSetting(DebugGrid)</visible>
+		</control>
+	</include>
+	<include name="DebugWindow">
+		<param name="visible" default="true" />
+		<definition>
+			<control type="grouplist">
+				<left>20</left>
+				<top>50</top>
+				<width>1880</width>
+				<orientation>horizontal</orientation>
+				<visible>Skin.HasSetting(DebugInfo) + $PARAM[visible]</visible>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font15_title</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>[B]$INFO[Window.Property(xmlfile)][/B]</label>
+					<visible>!String.IsEmpty(Window.Property(xmlfile))</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>chartreuse</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font15_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>$VAR[DebugWindowNameVar]</label>
+				</control>
+				<!-- <control type="button">
+					<description>Test Debug Label</description>
+					<width>auto</width>
+					<textcolor>darkmagenta</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font15_bold</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label />
+					<visible />
+				</control> -->
+			</control>
+		</definition>
+	</include>
+	<variable name="DebugWindowNameVar">
+		<value condition="String.StartsWith(Window.Property(xmlfile),custom_11) | String.Contains(Window.Property(xmlfile),script-)" />
+		<value condition="Window.IsVisible(selectdialog)">selectdialog</value>
+		<value condition="Window.IsVisible(addoninformation)">addoninformation</value>
+		<value condition="Window.IsVisible(addonsettings)">addonsettings</value>
+		<value condition="Window.IsVisible(busydialog)">busydialog</value>
+		<value condition="Window.IsVisible(contentsettings)">contentsettings</value>
+		<value condition="Window.IsVisible(filebrowser)">filebrowser</value>
+		<value condition="Window.IsVisible(fullscreeninfo)">fullscreeninfo</value>
+		<value condition="Window.IsVisible(locksettings)">locksettings</value>
+		<value condition="Window.IsVisible(mediasource)">mediasource</value>
+		<value condition="Window.IsVisible(movieinformation)">movieinformation</value>
+		<value condition="Window.IsVisible(musicinformation)">musicinformation</value>
+		<value condition="Window.IsVisible(musicosd)">musicosd</value>
+		<value condition="Window.IsVisible(notification)">notification</value>
+		<value condition="Window.IsVisible(numericinput)">numericinput</value>
+		<value condition="Window.IsVisible(osdaudiosettings)">osdaudiosettings</value>
+		<value condition="Window.IsVisible(osdsubtitlesettings)">osdsubtitlesettings</value>
+		<value condition="Window.IsVisible(osdvideosettings)">osdvideosettings</value>
+		<value condition="Window.IsVisible(peripherals)">peripherals</value>
+		<value condition="Window.IsVisible(pictureinfo)">pictureinfo</value>
+		<value condition="Window.IsVisible(playercontrols)">playercontrols</value>
+		<value condition="Window.IsVisible(playerprocessinfo)">playerprocessinfo</value>
+		<value condition="Window.IsVisible(profilesettings)">profilesettings</value>
+		<value condition="Window.IsVisible(progressdialog)">progressdialog</value>
+		<value condition="Window.IsActive(pvrguidecontrols)">pvrguidecontrols</value>
+		<value condition="Window.IsVisible(pvrguideinfo)">pvrguideinfo</value>
+		<value condition="Window.IsVisible(pvrguidesearch)">pvrguidesearch</value>
+		<value condition="Window.IsVisible(pvrrecordinginfo)">pvrrecordinginfo</value>
+		<value condition="Window.IsVisible(pvrtimersetting)">pvrtimersetting</value>
+		<value condition="Window.IsVisible(shutdownmenu)">shutdownmenu</value>
+		<value condition="Window.IsVisible(sliderdialog)">sliderdialog</value>
+		<value condition="Window.IsVisible(smartplaylisteditor)">smartplaylisteditor</value>
+		<value condition="Window.IsVisible(smartplaylistrule)">smartplaylistrule</value>
+		<value condition="Window.IsVisible(songinformation)">songinformation</value>
+		<value condition="Window.IsVisible(textviewer)">textviewer</value>
+		<value condition="Window.IsVisible(videobookmarks)">videobookmarks</value>
+		<value condition="Window.IsVisible(videoosd)">videoosd</value>
+		<value condition="Window.IsVisible(virtualkeyboard)">virtualkeyboard</value>
+		<value condition="Window.IsVisible(visualisationpresetlist)">visualisationpresetlist</value>
+		<value condition="Window.IsVisible(volumebar)">volumebar</value>
+		<value condition="Window.IsVisible(yesnodialog)">yesnodialog</value>
+		<value condition="Window.IsActive(addonbrowser)">addonbrowser</value>
+		<value condition="Window.IsActive(appearancesettings)">appearancesettings</value>
+		<value condition="Window.IsActive(eventlog)">eventlog</value>
+		<value condition="Window.IsActive(filemanager)">filemanager</value>
+		<value condition="Window.IsActive(gamepadinput)">gamepadinput</value>
+		<value condition="Window.IsActive(gamesettings)">gamesettings</value>
+		<value condition="Window.IsActive(loginscreen)">loginscreen</value>
+		<value condition="Window.IsActive(mediasettings)">mediasettings</value>
+		<value condition="Window.IsActive(playersettings)">playersettings</value>
+		<value condition="Window.IsActive(profiles)">profiles</value>
+		<value condition="Window.IsActive(pvrsettings)">pvrsettings</value>
+		<value condition="Window.IsActive(servicesettings)">servicesettings</value>
+		<value condition="Window.IsActive(systemsettings)">systemsettings</value>
+		<value condition="Window.IsActive(screencalibration)">screencalibration</value>
+		<value condition="Window.IsActive(systeminfo)">systeminfo</value>
+		<value condition="Window.IsActive(skinsettings)">skinsettings</value>
+		<value condition="Window.IsActive(tvchannels)">tvchannels</value>
+		<value condition="Window.IsActive(tvguide)">tvguide</value>
+		<value condition="Window.IsActive(tvrecordings)">tvrecordings</value>
+		<value condition="Window.IsActive(tvsearch)">tvsearch</value>
+		<value condition="Window.IsActive(tvtimers)">tvtimers</value>
+		<value condition="Window.IsActive(videoplaylist)">videoplaylist</value>
+		<value>$INFO[System.CurrentWindow,[LOWERCASE],[/LOWERCASE]]</value>
+	</variable>
+</includes>

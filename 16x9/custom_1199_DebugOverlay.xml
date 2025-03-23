@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1199" type="dialog">
+	<zorder>100</zorder>
+	<visible>!Window.IsVisible(startup) + [Skin.HasSetting(DebugInfo) | Skin.HasSetting(DebugGrid)]</visible>
+	<controls>
+		<include condition="Skin.HasSetting(DebugInfo)">DebugInfo</include>
+		<include condition="Skin.HasSetting(DebugGrid)">DebugGrid</include>
+	</controls>
+</window>
