@@ -1,177 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="DebugInfo">
-		<param name="visible" default="true" />
-		<definition>
-			<control type="grouplist">
-				<left>20</left>
-				<bottom>100</bottom>
-				<width>1880</width>
-				<height max="900">auto</height>
-				<align>right</align>
-				<visible>Skin.HasSetting(DebugInfo) + $PARAM[visible]</visible>
-				<control type="button">
-					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font14_bold</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<label>$INFO[Container.Viewmode,[COLOR chartreuse]Viewmode: [/COLOR]]</label>
-					<visible>!String.IsEmpty(Container.Viewmode)</visible>
-				</control>
-				<control type="button">
-					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font14_bold</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<label>$INFO[System.CurrentControlID,[COLOR chartreuse]Focused ID = [/COLOR]]$INFO[System.CurrentControl,[COLOR chartreuse]   ,[/COLOR]]</label>
-					<visible>!String.IsEmpty(System.CurrentControlID)</visible>
-				</control>
-				<control type="button">
-					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font14_bold</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<label>$INFO[Container.FolderName,[COLOR chartreuse]Folder name: [/COLOR]]</label>
-					<visible>!String.IsEmpty(Container.FolderName)</visible>
-				</control>
-				<control type="button">
-					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font14_bold</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<label>$INFO[Container.FolderPath,[COLOR chartreuse]Folder path: [/COLOR]]</label>
-					<visible>!String.IsEmpty(Container.FolderPath)</visible>
-				</control>
-				<control type="button">
-					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font14_bold</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<label>$INFO[ListItem.FolderPath,[COLOR chartreuse]ListItem path: [/COLOR]]</label>
-					<visible>!String.IsEmpty(ListItem.FolderPath)</visible>
-				</control>
-				<control type="button">
-					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font14_bold</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<label>$INFO[Container.Content,[COLOR chartreuse]Content: [/COLOR]]</label>
-					<visible>!String.IsEmpty(Container.Content)</visible>
-				</control>
-				<control type="button">
-					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font14_bold</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<label>$INFO[Container.PluginName,[COLOR chartreuse]Plugin name: [/COLOR]]</label>
-					<visible>!String.IsEmpty(Container.PluginName)</visible>
-				</control>
-				<control type="button">
-					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font14_bold</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<label>$INFO[Container.PluginCategory,[COLOR chartreuse]Plugin category: [/COLOR]]</label>
-					<visible>!String.IsEmpty(Container.PluginCategory)</visible>
-				</control>
-				<control type="button">
-					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font14_bold</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<label>$INFO[ListItem.DBTYPE,[COLOR chartreuse]DBTYPE: [/COLOR]]$INFO[ListItem.DBID,[COLOR chartreuse]   DBID: [/COLOR]]</label>
-					<visible>!String.IsEmpty(ListItem.DBTYPE) | !String.IsEmpty(ListItem.DBID)</visible>
-				</control>
-				<control type="button">
-					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font14_bold</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<label>$INFO[ListItem.IMDBNumber,[COLOR chartreuse]IMDBNumber: [/COLOR]]</label>
-					<visible>!String.IsEmpty(ListItem.IMDBNumber)</visible>
-				</control>
-				<control type="button">
-					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font14_bold</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<label>$INFO[ListItem.UniqueID(imdb),[COLOR chartreuse]UniqueID (imdb): [/COLOR]]</label>
-					<visible>!String.IsEmpty(ListItem.UniqueID(imdb))</visible>
-				</control>
-				<control type="button">
-					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font14_bold</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<label>$INFO[ListItem.UniqueID(tmdb),[COLOR chartreuse]UniqueID (tmdb): [/COLOR]]</label>
-					<visible>!String.IsEmpty(ListItem.UniqueID(tmdb))</visible>
-				</control>
-				<control type="button">
-					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font14_bold</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<label>$INFO[ListItem.SongVideoURL,[COLOR chartreuse]SongVideoURL: [/COLOR]]</label>
-					<visible>!String.IsEmpty(ListItem.SongVideoURL)</visible>
-				</control>
-				<control type="togglebutton">
-					<width>auto</width>
-					<height>40</height>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font13mono</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<alttexturefocus>colors/black75.png</alttexturefocus>
-					<alttexturenofocus>colors/black75.png</alttexturenofocus>
-					<label>Player.Playing</label>
-					<altlabel>Player.Paused</altlabel>
-					<usealttexture>Player.Paused</usealttexture>
-					<visible>Player.Playing | Player.Paused</visible>
-				</control>
-				<control type="togglebutton">
-					<width>auto</width>
-					<height>40</height>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font13mono</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<alttexturefocus>colors/black75.png</alttexturefocus>
-					<alttexturenofocus>colors/black75.png</alttexturenofocus>
-					<label>Player.HasVideo</label>
-					<altlabel>Player.HasAudio</altlabel>
-					<usealttexture>Player.HasAudio</usealttexture>
-					<visible>Player.HasVideo | Player.HasAudio</visible>
-				</control>
+		<control type="grouplist">
+			<left>20</left>
+			<bottom>50</bottom>
+			<width>1880</width>
+			<height max="900">auto</height>
+			<align>right</align>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font13</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>[B]$INFO[System.CurrentControlID,[COLOR chartreuse]Focused id: [/COLOR]][/B]$INFO[System.CurrentControl,[COLOR chartreuse]   [I],[/I][/COLOR]]</label>
+				<visible>!String.IsEmpty(System.CurrentControlID)</visible>
 			</control>
-		</definition>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font13_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[Container.Content,[COLOR chartreuse]Content: [/COLOR],  ]$INFO[ListItem.DBTYPE,[COLOR chartreuse]DBTYPE: [/COLOR]]$INFO[ListItem.DBID,[COLOR chartreuse]   DBID: [/COLOR]]</label>
+				<visible>!String.IsEmpty(Container.Content) | !String.IsEmpty(ListItem.DBTYPE) | !String.IsEmpty(ListItem.DBID)</visible>
+			</control>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font13_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[ListItem.FolderPath,[COLOR chartreuse]Path: [/COLOR]]</label>
+				<visible>!String.IsEmpty(ListItem.FolderPath)</visible>
+			</control>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font13_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[Container.PluginName,[COLOR chartreuse]Plugin name: [/COLOR],  ]$INFO[Container.PluginCategory,[COLOR chartreuse]Plugin category: [/COLOR]]</label>
+				<visible>!String.IsEmpty(Container.PluginName) | !String.IsEmpty(Container.PluginCategory)</visible>
+			</control>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font13_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[Container.FolderName,[COLOR chartreuse]Folder name: [/COLOR],  ]$INFO[Container.FolderPath,[COLOR chartreuse]Folder path: [/COLOR]]</label>
+				<visible>!String.IsEmpty(Container.FolderName) | !String.IsEmpty(Container.FolderPath)</visible>
+			</control>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font13_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[ListItem.IMDBNumber,[COLOR chartreuse]IMDBNumber: [/COLOR],  ]$INFO[ListItem.UniqueID(imdb),[COLOR chartreuse]UniqueID (imdb): [/COLOR],  ]$INFO[ListItem.UniqueID(tmdb),[COLOR chartreuse]UniqueID (tmdb): [/COLOR]]</label>
+				<visible>!String.IsEmpty(ListItem.IMDBNumber) | !String.IsEmpty(ListItem.UniqueID(imdb))| !String.IsEmpty(ListItem.UniqueID(tmdb))</visible>
+			</control>
+			<control type="button">
+				<width>auto</width>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font13_bold</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<label>$INFO[ListItem.SongVideoURL,[COLOR chartreuse]SongVideoURL: [/COLOR]]</label>
+				<visible>!String.IsEmpty(ListItem.SongVideoURL)</visible>
+			</control>
+			<control type="togglebutton">
+				<width>auto</width>
+				<height>40</height>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font13mono</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<alttexturefocus>colors/black75.png</alttexturefocus>
+				<alttexturenofocus>colors/black75.png</alttexturenofocus>
+				<label>Player.Playing</label>
+				<altlabel>Player.Paused</altlabel>
+				<usealttexture>Player.Paused</usealttexture>
+				<visible>Player.Playing | Player.Paused</visible>
+			</control>
+			<control type="togglebutton">
+				<width>auto</width>
+				<height>40</height>
+				<textcolor>darkmagenta</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<font>font13mono</font>
+				<texturefocus>colors/black75.png</texturefocus>
+				<texturenofocus>colors/black75.png</texturenofocus>
+				<alttexturefocus>colors/black75.png</alttexturefocus>
+				<alttexturenofocus>colors/black75.png</alttexturenofocus>
+				<label>Player.HasVideo</label>
+				<altlabel>Player.HasAudio</altlabel>
+				<usealttexture>Player.HasAudio</usealttexture>
+				<visible>Player.HasVideo | Player.HasAudio</visible>
+			</control>
+		</control>
 	</include>
 	<include name="DebugGrid">
 		<control type="image">
@@ -188,44 +124,60 @@
 				<left>20</left>
 				<top>50</top>
 				<width>1880</width>
-				<orientation>horizontal</orientation>
+				<height>360</height>
 				<visible>Skin.HasSetting(DebugInfo)</visible>
 				<visible>$PARAM[visible]</visible>
-				<control type="button">
-					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
-					<shadowcolor>shadow</shadowcolor>
-					<font>font15_title</font>
-					<texturefocus>colors/black75.png</texturefocus>
-					<texturenofocus>colors/black75.png</texturenofocus>
-					<focusedcolor>darkmagenta</focusedcolor>
-					<disabledcolor>darkmagenta</disabledcolor>
-					<enable>no</enable>
-					<label>[B]$INFO[Window.Property(xmlfile)][/B]</label>
-					<visible>!String.IsEmpty(Window.Property(xmlfile))</visible>
+				<control type="grouplist">
+					<left>20</left>
+					<top>50</top>
+					<width>1880</width>
+					<height>60</height>
+					<orientation>horizontal</orientation>
+					<control type="button">
+						<width>auto</width>
+						<textcolor>darkmagenta</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<font>font15_title</font>
+						<texturefocus>colors/black75.png</texturefocus>
+						<texturenofocus>colors/black75.png</texturenofocus>
+						<focusedcolor>darkmagenta</focusedcolor>
+						<disabledcolor>darkmagenta</disabledcolor>
+						<enable>no</enable>
+						<label>[B]$INFO[Window.Property(xmlfile)][/B]</label>
+					</control>
+					<control type="button">
+						<width>auto</width>
+						<textcolor>chartreuse</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<font>font15_bold</font>
+						<texturefocus>colors/black75.png</texturefocus>
+						<texturenofocus>colors/black75.png</texturenofocus>
+						<focusedcolor>chartreuse</focusedcolor>
+						<disabledcolor>chartreuse</disabledcolor>
+						<enable>no</enable>
+						<label>$VAR[DebugWindowNameVar]</label>
+					</control>
 				</control>
 				<control type="button">
 					<width>auto</width>
-					<textcolor>chartreuse</textcolor>
+					<textcolor>darkslateblue</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<font>font15_bold</font>
+					<font>font10</font>
 					<texturefocus>colors/black75.png</texturefocus>
 					<texturenofocus>colors/black75.png</texturenofocus>
-					<focusedcolor>chartreuse</focusedcolor>
-					<disabledcolor>chartreuse</disabledcolor>
-					<enable>no</enable>
-					<label>$VAR[DebugWindowNameVar]</label>
+					<label>$INFO[Container.ListItem.FolderPath,[B],[/B]]</label>
+					<visible>!String.IsEmpty(Container.ListItem.FolderPath)</visible>
 				</control>
 				<!-- <control type="button">
 					<description>Test Debug Label</description>
 					<width>auto</width>
-					<textcolor>darkmagenta</textcolor>
+					<textcolor>chartreuse</textcolor>
 					<shadowcolor>shadow</shadowcolor>
-					<font>font15_bold</font>
+					<font>font10</font>
 					<texturefocus>colors/black75.png</texturefocus>
 					<texturenofocus>colors/black75.png</texturenofocus>
-					<label />
-					<visible />
+					<label></label>
+					<visible></visible>
 				</control> -->
 			</control>
 		</definition>
