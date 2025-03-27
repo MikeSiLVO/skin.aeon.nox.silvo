@@ -130,17 +130,11 @@
 		<value condition="Control.HasFocus(50)">$INFO[Container(50).ListItem.Label,resource://resource.images.actorart/,.png]</value>
 		<value condition="Control.HasFocus(90050)">$INFO[Container(90050).ListItem.Label,resource://resource.images.actorart/,.png]</value>
 	</variable>
-	<variable name="TMDbHInfoVideoPosterVar">
-		<value condition="ControlGroup(11084).HasFocus(90001) + !String.IsEmpty(Container(90001).ListItem.Art(poster))">$INFO[Container(90001).ListItem.Art(poster)]</value>
-		<value condition="ControlGroup(11084).HasFocus(90002) + !String.IsEmpty(Container(90002).ListItem.Art(poster))">$INFO[Container(90002).ListItem.Art(poster)]</value>
-		<value condition="ControlGroup(11084).HasFocus(90009) + !String.IsEmpty(Container(90009).ListItem.Art(poster))">$INFO[Container(90009).ListItem.Art(poster)]</value>
-		<value>$INFO[Container(11080).ListItem.Art(poster)]</value>
-	</variable>
 	<variable name="TMDbHInfoPersonPosterVar">
-		<value condition="ControlGroup(11094).HasFocus(900010) + !String.IsEmpty(Container(900010).ListItem.Art(poster))">$INFO[Container(900010).ListItem.Art(poster)]</value>
-		<value condition="ControlGroup(11094).HasFocus(900011) + !String.IsEmpty(Container(900011).ListItem.Art(poster))">$INFO[Container(900011).ListItem.Art(poster)]</value>
-		<value condition="ControlGroup(11094).HasFocus(900012) + !String.IsEmpty(Container(900012).ListItem.Art(poster))">$INFO[Container(900012).ListItem.Art(poster)]</value>
-		<value condition="ControlGroup(11094).HasFocus(900020) + !String.IsEmpty(Container(900020).ListItem.Art(poster))">$INFO[Container(900020).ListItem.Art(poster)]</value>
+		<value condition="ControlGroup(90001).HasFocus(900010) + !String.IsEmpty(Container(900010).ListItem.Art(poster))">$INFO[Container(900010).ListItem.Art(poster)]</value>
+		<value condition="ControlGroup(90001).HasFocus(900011) + !String.IsEmpty(Container(900011).ListItem.Art(poster))">$INFO[Container(900011).ListItem.Art(poster)]</value>
+		<value condition="ControlGroup(90001).HasFocus(900012) + !String.IsEmpty(Container(900012).ListItem.Art(poster))">$INFO[Container(900012).ListItem.Art(poster)]</value>
+		<value condition="ControlGroup(90001).HasFocus(900020) + !String.IsEmpty(Container(900020).ListItem.Art(poster))">$INFO[Container(900020).ListItem.Art(poster)]</value>
 		<value>$INFO[Container(11090).ListItem.Art(poster)]</value>
 	</variable>
 	<variable name="VideoInfoDetailsImageVar">
@@ -153,12 +147,6 @@
 		<value condition="[String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + Skin.HasSetting(CharacterOnInfo)]">$INFO[Container(4800).ListItem.Art(clearart)]</value>
 		<value condition="[String.IsEqual(Window(Home).Property(item_dbtype),episode) | String.IsEqual(Window(Home).Property(item_dbtype),season)] + Skin.HasSetting(CharacterOnInfo)">$INFO[Container(4800).ListItem.Art(tvshow.clearart)]</value>
 	</variable>
-	<variable name="TMDbHInfoDetailsImageVar">
-		<value condition="[String.IsEqual(Container(11080).ListItem.DBTYPE,movie) + Skin.HasSetting(discartoninfo)]">$INFO[Container(11080).ListItem.Art(discart)]</value>
-		<value condition="[String.IsEqual(Container(11080).ListItem.DBTYPE,tvshow) + Skin.HasSetting(CharacterOnInfo)]">$INFO[Container(11080).ListItem.Art(clearart)]</value>
-		<value condition="[String.IsEqual(Container(11080).ListItem.DBTYPE,episode) | String.IsEqual(Container(11080).ListItem.DBTYPE,season)] + Skin.HasSetting(CharacterOnInfo)">$INFO[Container(11080).ListItem.Art(tvshow.clearart)]</value>
-	</variable>
-	<!--  -->
 	<variable name="PlayerArtworkVar">
 		<value condition="VideoPlayer.Content(episodes) + !String.IsEmpty(Player.Art(tvshow.clearart))">$INFO[Player.Art(tvshow.clearart)]</value>
 		<value condition="VideoPlayer.Content(episodes) + !String.IsEmpty(Player.Art(tvshow.clearlogo))">$INFO[Player.Art(tvshow.clearlogo)]</value>
@@ -284,8 +272,7 @@
 		<value>$INFO[Container(4800).ListItem.Art(fanart)]</value>
 	</variable>
 	<variable name="InfoTMDBhBackgroundVar">
-		<value condition="Skin.HasSetting(Enable.BlurredVideoInfo)">$INFO[Window(Home).Property(TMDbHelper.ListItem.BlurImage)]</value>
-		<value condition="Window.IsVisible(1108) + !String.IsEmpty(Container(11080).ListItem.Art(fanart))">$INFO[Container(11080).ListItem.Art(fanart)]</value>
+		<value condition="Skin.HasSetting(Enable.BlurredVideoInfo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.BlurImage))">$INFO[Window(Home).Property(TMDbHelper.ListItem.BlurImage)]</value>
 		<value condition="Window.IsVisible(1109) + !String.IsEmpty(Container(11090).ListItem.Art(fanart))">$INFO[Container(11090).ListItem.Art(fanart)]</value>
 		<value>dialogs/tmdbh/tmdb.png</value>
 	</variable>

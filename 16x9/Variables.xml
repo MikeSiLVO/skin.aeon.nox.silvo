@@ -718,20 +718,12 @@
 		<value condition="Control.HasFocus(50003)">$LOCALIZE[31521]$INFO[Window(Home).Property(custom_actor), ]$INFO[Container(50003).CurrentItem, (,/]$INFO[Container(50003).NumItems,,)]</value>
 		<value condition="Control.HasFocus(50004)">$LOCALIZE[31521]$INFO[Window(Home).Property(custom_actor), ]$INFO[Container(50004).CurrentItem, (,/]$INFO[Container(50004).NumItems,,)]</value>
 	</variable>
-	<variable name="TMDbHVideoButtonLabelVar">
-		<value condition="Control.HasFocus(11086)">$LOCALIZE[31453]</value>
-		<value condition="Control.HasFocus(1108100)">$LOCALIZE[1024]</value>
-		<value condition="Control.HasFocus(1108101)">$LOCALIZE[206]</value>
-		<value condition="Control.HasFocus(1108102)">$LOCALIZE[20410]</value>
-		<value condition="Control.HasFocus(1108103)">$LOCALIZE[22082]</value>
-		<value condition="Control.HasFocus(90001)">$LOCALIZE[206]$INFO[Container(90001).CurrentItem, (,/]$INFO[Container(90001).NumItems,,)]</value>
-		<value condition="Control.HasFocus(90002)">$LOCALIZE[31111]$INFO[Container(90002).CurrentItem, (,/]$INFO[Container(90002).NumItems,,)]</value>
-		<value condition="Control.HasFocus(90009)">$LOCALIZE[31545]$INFO[Container(90009).CurrentItem, (,/]$INFO[Container(90009).NumItems,,)]</value>
-	</variable>
 	<variable name="TMDbHPersonButtonLabelVar">
-		<value condition="Control.HasFocus(11093)">$LOCALIZE[31271]</value>
-		<value condition="Control.HasFocus(1109100)">$LOCALIZE[31547]</value>
-		<value condition="Control.HasFocus(11096)">$LOCALIZE[31453]</value>
+		<value condition="Control.HasFocus(300)">$LOCALIZE[31271]</value>
+		<value condition="Control.HasFocus(1000)">$LOCALIZE[31547]</value>
+		<value condition="Control.HasFocus(90003)">$LOCALIZE[31453]</value>
+		<value condition="Control.HasFocus(90008)">$LOCALIZE[342]$INFO[Container(90008).CurrentItem, (,/]$INFO[Container(90008).NumItems,,)]</value>
+		<value condition="Control.HasFocus(90009)">$LOCALIZE[20343]$INFO[Container(90009).CurrentItem, (,/]$INFO[Container(90009).NumItems,,)]</value>
 		<value condition="Control.HasFocus(900010)">$LOCALIZE[31210]$INFO[Container(900010).CurrentItem, (,/]$INFO[Container(900010).NumItems,,)]</value>
 		<value condition="Control.HasFocus(900011)">$LOCALIZE[31212]$INFO[Container(900011).CurrentItem, (,/]$INFO[Container(900011).NumItems,,)]</value>
 		<value condition="Control.HasFocus(900012)">$LOCALIZE[31545]$INFO[Container(900012).CurrentItem, (,/]$INFO[Container(900012).NumItems,,)]</value>
@@ -1051,13 +1043,6 @@
 		<value condition="Integer.IsLess(ListItem.Duration(mins),60)">$INFO[ListItem.Duration(m),,m]</value>
 		<value condition="Integer.IsLess(ListItem.Duration(mins),1)">$INFO[ListItem.Duration(ss),,$LOCALIZE[31090]]</value>
 		<value>$INFO[ListItem.Duration(h),,h]$INFO[ListItem.Duration(m),,m]</value>
-	</variable>
-	<variable name="TMDbHItemDurationVar">
-		<value condition="[String.IsEqual(Container(11080).ListItem.DBTYPE,tvshow) | String.IsEqual(Container(11080).ListItem.DBTYPE,season)] + !String.IsEqual(Container(11080).ListItem.Property(Duration),0) + String.IsEmpty(Container(11080).ListItem.Duration)">$INFO[Container(11080).ListItem.Property(Duration),,m]</value>
-		<value condition="Integer.IsEqual(Container(11080).ListItem.Duration(mins),60) | Integer.IsEqual(Container(11080).ListItem.Duration(mins),120) | Integer.IsEqual(Container(11080).ListItem.Duration(mins),180) | Integer.IsEqual(ListItem.Duration(mins),240) | Integer.IsEqual(ListItem.Duration(mins),300) | Integer.IsEqual(ListItem.Duration(mins),360) | Integer.IsEqual(Container(11080).ListItem.Duration(mins),420) | Integer.IsEqual(Container(11080).ListItem.Duration(mins),480) | Integer.IsEqual(Container(11080).ListItem.Duration(mins),540) | Integer.IsEqual(Container(11080).ListItem.Duration(mins),600)">$INFO[Container(11080).ListItem.Duration(hours),,h]</value>
-		<value condition="Integer.IsLess(Container(11080).ListItem.Duration(mins),60)">$INFO[Container(11080).ListItem.Duration(m),,m]</value>
-		<value condition="Integer.IsLess(Container(11080).ListItem.Duration(mins),1)">$INFO[Container(11080).ListItem.Duration(ss),,$LOCALIZE[31090]]</value>
-		<value>$INFO[Container(11080).ListItem.Duration(h),,h]$INFO[Container(11080).ListItem.Duration(m),,m]</value>
 	</variable>
 	<variable name="DisableHDIndicatorsLabelVar">
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),List) + Skin.HasSetting(noindicatorlist)">$LOCALIZE[16041]</value>

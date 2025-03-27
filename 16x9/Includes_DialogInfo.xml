@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<!-- DialogVideoInfo -->
 	<include name="InfoBackground">
 		<control type="group">
 			<height>100%</height>
@@ -22,10 +21,10 @@
 		<control type="image">
 			<texture>colors/black.png</texture>
 		</control>
-		<control type="multiimage">
+		<control type="image">
 			<aspectratio>scale</aspectratio>
 			<fadetime>IconCrossfadeTime</fadetime>
-			<imagepath background="true">$PARAM[imagepath]</imagepath>
+			<texture background="true">$PARAM[texture]</texture>
 		</control>
 	</include>
 	<include name="InfoActorResourceImage">
@@ -49,7 +48,7 @@
 		<param name="target" default="videos" />
 		<param name="do_onclick" default="true" />
 		<definition>
-			<control type="panel" id="$PARAM[id]">
+			<control type="list" id="$PARAM[id]">
 				<visible allowhiddenfocus="true">Integer.IsGreater(Container($PARAM[id]).NumItems,$PARAM[numitems])</visible>
 				<left>15</left>
 				<width>$PARAM[width]</width>
@@ -60,13 +59,15 @@
 				<include content="ExtendedInfoOnclick" condition="$PARAM[do_onclick]">
 					<param name="id">$PARAM[id]</param>
 				</include>
-				<!-- <onclick condition="Control.HasFocus(90017)">Dialog.Close(all,true)</onclick>
-				<onclick condition="Control.HasFocus(90017)">Container.Update(videodb://movies/sets/$INFO[ListItem.SetId]/?setid=$INFO[ListItem.SetId],return)</onclick> -->
 				<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo) + [Control.HasFocus(50002) | Control.HasFocus(50003)]">RunScript(plugin.video.themoviedb.helper,blur_image='"$INFO[Container($PARAM[id]).ListItem.Art(poster)]"',prefix=custom_1102)</onclick>
+				<onclick>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_actor&amp;window_id=Home&amp;&amp;$INFO[Container(50001).ListItem.Label]")</onclick>
+				<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Control.HasFocus(50001)">RunPlugin(plugin://plugin.video.themoviedb.helper?info=search&amp;type=person&amp;query=$INFO[Container(50001).ListItem.Label])</onclick>
+				<onclick condition="Control.HasFocus(50001)">SetProperty(tmdb_person_search_string,$INFO[Container(50001).ListItem.Label],Home)</onclick>
+				<onclick condition="Control.HasFocus(50001)">ActivateWindow(1107)</onclick>
 				<onclick condition="[Control.HasFocus(50002) | Control.HasFocus(50003) | Control.HasFocus(50004)]">SetFocus(4701)</onclick>
 				<onclick condition="[Control.HasFocus(50002) | Control.HasFocus(50003) | Control.HasFocus(50004)]">SetFocus(4610)</onclick>
 				<onclick condition="Control.HasFocus(990010) | Control.HasFocus(990011) | Control.HasFocus(990012)">RunScript(plugin.video.themoviedb.helper,add_path=$INFO[ListItem.FolderPath],type=tv,call_auto=1111)</onclick>
-				<onclick condition="Control.HasFocus(990020)">SetFocus(99)</onclick>
+				<onclick condition="Control.HasFocus(990020) | Control.HasFocus(900020)">SetFocus(99)</onclick>
 				<itemlayout height="480" width="300">
 					<control type="image">
 						<left>-15</left>
@@ -237,7 +238,7 @@
 		</control>
 	</include>
 	<include name="DefaultActorList">
-		<control type="panel" id="50">
+		<control type="list" id="50">
 			<left>15</left>
 			<width>1196</width>
 			<height>480</height>
@@ -332,12 +333,13 @@
 		</control>
 	</include>
 	<include name="CustomActorList">
-		<control type="panel" id="90050">
+		<control type="list" id="90050">
 			<left>15</left>
 			<width>1200</width>
 			<height>480</height>
 			<orientation>horizontal</orientation>
 			<preloaditems>2</preloaditems>
+			<onclick>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_actor&amp;window_id=Home&amp;&amp;$INFO[Container(90050).ListItem.Label]")</onclick>
 			<onclick condition="!String.IsEmpty(Container(90050).ListItem.Property(tmdb_id))">SetProperty(person_id,$INFO[Container(90050).ListItem.Property(tmdb_id),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_type=person&amp;tmdb_id=],Home)</onclick>
 			<onclick condition="String.IsEmpty(Container(90050).ListItem.Property(tmdb_id))">SetProperty(ActorName,$INFO[Container(90050).ListItem.Label],Home)</onclick>
 			<onclick condition="!String.IsEqual(ListItem.DBTYPE,season)">SetProperty(actor_id,$INFO[Container(90050).CurrentItem],Home)</onclick>
@@ -553,53 +555,37 @@
 		<onclick>ActivateWindow(1102)</onclick>
 	</include>
 	<include name="TMDbHelperPersonList">
-		<control type="panel" id="900010">
-			<visible allowhiddenfocus="true">Integer.IsGreater(Container(900010).NumItems,0)</visible>
-			<onclick>SetProperty(tmdb_id,$INFO[Container(900010).ListItem.Property(TMDb_ID),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_id=],Home)</onclick>
-			<onclick>SetProperty(tmdb_type,tmdb_type=movie,Home)</onclick>
-			<onclick>Dialog.Close(1108)</onclick>
-			<onclick>ActivateWindow(1108)</onclick>
-			<include content="ExtendedInfoListLayout">
-				<param name="list_id">900010</param>
-				<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_movies&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]</param>
-				<param name="label">$INFO[Container(900010).ListItem.Property(Character)]</param>
-				<param name="labelVisibility">!String.IsEmpty(Container(900010).ListItem.Property(Character))</param>
-			</include>
-		</control>
-		<control type="panel" id="900011">
-			<visible allowhiddenfocus="true">Integer.IsGreater(Container(900011).NumItems,0)</visible>
-			<onclick>SetProperty(tmdb_id,$INFO[Container(900011).ListItem.Property(TMDb_ID),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_id=],Home)</onclick>
-			<onclick>SetProperty(tmdb_type,tmdb_type=tv,Home)</onclick>
-			<onclick>Dialog.Close(1108)</onclick>
-			<onclick>ActivateWindow(1108)</onclick>
-			<include content="ExtendedInfoListLayout">
-				<param name="list_id">900011</param>
-				<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_tvshows&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]</param>
-				<param name="label">$INFO[Container(900011).ListItem.Property(Character)]</param>
-				<param name="labelVisibility">!String.IsEmpty(Container(900011).ListItem.Property(Character))</param>
-			</include>
-		</control>
-		<control type="panel" id="900012">
-			<visible allowhiddenfocus="true">Integer.IsGreater(Container(900012).NumItems,0)</visible>
-			<onclick>SetProperty(tmdb_id,$INFO[Container(900012).ListItem.Property(TMDb_ID),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_id=],Home)</onclick>
-			<onclick>SetProperty(tmdb_type,tmdb_type=movie,Home)</onclick>
-			<onclick>Dialog.Close(1108)</onclick>
-			<onclick>ActivateWindow(1108)</onclick>
-			<include content="ExtendedInfoListLayout">
-				<param name="list_id">900012</param>
-				<param name="content">plugin://plugin.video.themoviedb.helper?info=crew_in_movies&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]</param>
-				<param name="label">$INFO[Container(900012).ListItem.Property(Job)]</param>
-				<param name="labelVisibility">!String.IsEmpty(Container(900012).ListItem.Property(Job))</param>
-			</include>
-		</control>
-		<control type="panel" id="900020">
-			<visible allowhiddenfocus="true">Integer.IsGreater(Container(900020).NumItems,0)</visible>
-			<onclick>SetFocus(99)</onclick>
-			<include content="ExtendedInfoListLayout">
-				<param name="list_id">900020</param>
-				<param name="content">plugin://plugin.video.themoviedb.helper?info=images&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]</param>
-			</include>
-		</control>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90008</param>
+			<param name="content">videodb://movies/titles/?xsp={"rules":{"and":[{"field":"actor","operator":"is","value":["$INFO[Window(Home).Property(encoded_actor)]"]}]},"type":"movies"}</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90009</param>
+			<param name="content">videodb://tvshows/titles/?xsp={"rules":{"and":[{"field":"actor","operator":"is","value":["$INFO[Window(Home).Property(encoded_actor)]"]}]},"type":"tvshows"}</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">900010</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_movies&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]]&amp;sort_key=vote_count</param>
+			<param name="label">$INFO[Container(900010).ListItem.Property(Character)]</param>
+			<param name="labelVisibility">!String.IsEmpty(Container(900010).ListItem.Property(Character))</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">900011</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_tvshows&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]</param>
+			<param name="label">$INFO[Container(900011).ListItem.Property(Character)]</param>
+			<param name="labelVisibility">!String.IsEmpty(Container(900011).ListItem.Property(Character))</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">900012</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=crew_in_movies&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]</param>
+			<param name="label">$INFO[Container(900012).ListItem.Property(Job)]</param>
+			<param name="labelVisibility">!String.IsEmpty(Container(900012).ListItem.Property(Job))</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">900020</param>
+			<param name="do_onclick">false</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=images&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]</param>
+		</include>
 	</include>
 	<include name="DefaultSetList">
 		<control type="panel" id="50">
@@ -961,10 +947,9 @@
 			<label2>$LOCALIZE[20339]:</label2>
 			<onfocus>ClearProperty(person_id,Home)</onfocus>
 			<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SendClick(2003,13)</onclick>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEmpty(Window(Home).Property(split_director.1))">RunScript(plugin.video.themoviedb.helper,add_query='"$INFO[ListItem.Director]"',type=person,call_auto=1111)</onclick>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + String.IsEmpty(Window(Home).Property(split_director.1))">SetProperty(person_id,$INFO[Container(9143).ListItem.Property(Director.1.TMDb_ID),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_type=person&amp;tmdb_id=],Home)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(ActorName,$INFO[ListItem.Director],Home)</onclick>
 			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(DirectorID,True,Home)</onclick>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + String.IsEmpty(Window(Home).Property(split_director.1))">ActivateWindow(1129)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">ActivateWindow(1129)</onclick>
 			<visible>!String.IsEmpty(ListItem.Director)</visible>
 		</item>
 		<item>
@@ -1535,7 +1520,6 @@
 		</definition>
 	</include> -->
 	<include name="InfoExtendedRatings">
-		<!-- Kodi RT Critic Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(ListItem.Rating(tomatometerallcritics))</visible>
 			<width>165</width>
@@ -1553,7 +1537,6 @@
 				<label>$VAR[RottenFreshLabelVar]$VAR[RottenFreshLabel2Var]</label>
 			</control>
 		</control>
-		<!-- TMDbHelper RT Critic Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating)) + String.IsEmpty(ListItem.Rating(tomatometerallcritics)) + !String.IsEqual(ListItem.DBTYPE,episode)</visible>
 			<width>165</width>
@@ -1571,7 +1554,6 @@
 				<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_Rating),,%]</label>
 			</control>
 		</control>
-		<!-- Kodi RT Audience Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(ListItem.Rating(tomatometerallaudience))</visible>
 			<width>165</width>
@@ -1589,7 +1571,6 @@
 				<label>$VAR[RottenFreshAudienceLabelVar]$VAR[RottenFreshAudienceLabel2Var]</label>
 			</control>
 		</control>
-		<!-- TMDbHelper RT Audience Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter)) + String.IsEmpty(ListItem.Rating(tomatometerallaudience)) + !String.IsEqual(ListItem.DBTYPE,episode)</visible>
 			<width>165</width>
@@ -1607,7 +1588,6 @@
 				<label>$INFO[Container(9143).ListItem.Property(RottenTomatoes_UserMeter),,%]</label>
 			</control>
 		</control>
-		<!-- Kodi TMDb Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(ListItem.Rating(themoviedb))</visible>
 			<width>165</width>
@@ -1644,7 +1624,6 @@
 				<label>$INFO[ListItem.Rating(tmdb)]</label>
 			</control>
 		</control>
-		<!-- TMDbHelper TMDb Rating -->
 		<control type="grouplist">
 			<visible>String.IsEmpty(ListItem.Rating(themoviedb)) + String.IsEmpty(ListItem.Rating(tmdb)) + !String.IsEmpty(Container(9143).ListItem.Property(TMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(TMDb_Rating),0.0)</visible>
 			<width>165</width>
@@ -1663,7 +1642,6 @@
 				<label>$INFO[Container(9143).ListItem.Property(TMDb_Rating)]</label>
 			</control>
 		</control>
-		<!-- Kodi Trakt Rating -->
 		<control type="grouplist">
 			<visible>!String.IsEmpty(ListItem.Rating(trakt))</visible>
 			<width>165</width>
@@ -1681,7 +1659,6 @@
 				<label>$INFO[ListItem.Rating(trakt)]</label>
 			</control>
 		</control>
-		<!-- TMDbHelper Trakt Rating -->
 		<control type="grouplist">
 			<visible>String.IsEmpty(ListItem.Rating(trakt)) + !String.IsEmpty(Container(9143).ListItem.Property(Trakt_Rating))</visible>
 			<width>165</width>
@@ -1710,64 +1687,11 @@
 			<label>$INFO[ListItem.Property(Age),, $LOCALIZE[31544]]</label>
 		</control>
 	</include>
-	<!-- DialogAddonInfo -->
 	<include name="AddonInfoTextboxSmall">
 		<height>520</height>
 	</include>
 	<include name="AddonInfoTextboxLarge">
 		<height>690</height>
-	</include>
-	<include name="TMDbHInfoContentVideo">
-		<include condition="String.IsEqual(Window(Home).Property(tmdb_type),tmdb_type=movie)">TMDbHInfoContentMovies</include>
-		<include>TMDbHInfoContentGeneral</include>
-	</include>
-	<include name="TMDbHInfoContentMovies">
-		<item>
-			<label>$INFO[Container(11080).ListItem.Property(Director.1.Name)]</label>
-			<label2>$LOCALIZE[20339]:</label2>
-			<onclick>SetProperty(person_id,$INFO[Container(11080).ListItem.Property(Director.1.TMDb_ID),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_type=person&amp;tmdb_id=],Home)</onclick>
-			<onclick>ActivateWindow(1109)</onclick>
-			<visible>!String.IsEmpty(Container(11080).ListItem.Property(Director.1.Name))</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(11080).ListItem.Property(Writer.1.Name)]</label>
-			<label2>$LOCALIZE[20417]:</label2>
-			<onclick>SetProperty(person_id,$INFO[Container(11080).ListItem.Property(Writer.1.TMDb_ID),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_type=person&amp;tmdb_id=],Home)</onclick>
-			<onclick>ActivateWindow(1109)</onclick>
-			<visible>!String.IsEmpty(Container(11080).ListItem.Property(Writer.1.Name))</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(11080).ListItem.Genre]</label>
-			<label2>$LOCALIZE[515]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[515])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11080).ListItem.Genre])</onclick>
-			<onclick>SetFocus(11082)</onclick>
-			<visible>!String.IsEmpty(Container(11080).ListItem.Genre)</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(11080).ListItem.Property(Budget)]</label>
-			<label2>$LOCALIZE[31850]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31850])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11080).ListItem.Property(Budget)])</onclick>
-			<onclick>SetFocus(11082)</onclick>
-			<visible>!String.IsEmpty(Container(11080).ListItem.Property(Budget)) + !String.IsEqual(Container(11080).ListItem.Property(Budget),$0) + !Skin.HasSetting(TMDbHelper.HideBudgetRevenue)</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(11080).ListItem.Property(Revenue)]</label>
-			<label2>$LOCALIZE[31851]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31851])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11080).ListItem.Property(Revenue)])</onclick>
-			<onclick>SetFocus(11082)</onclick>
-			<visible>!String.IsEmpty(Container(11080).ListItem.Property(Revenue)) + !String.IsEqual(Container(11080).ListItem.Property(Revenue),$0) + !Skin.HasSetting(TMDbHelper.HideBudgetRevenue)</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(11080).ListItem.Premiered]</label>
-			<label2>$LOCALIZE[172]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[172])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11080).ListItem.Premiered])</onclick>
-			<onclick>SetFocus(11082)</onclick>
-			<visible>!String.IsEmpty(Container(11080).ListItem.Premiered)</visible>
-		</item>
 	</include>
 	<include name="TMDbHInfoContentPerson">
 		<item>
@@ -1775,7 +1699,7 @@
 			<label2>$LOCALIZE[21893]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[21893])</onclick>
 			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(Birthday)])</onclick>
-			<onclick>SetFocus(11092)</onclick>
+			<onclick>SetFocus(64)</onclick>
 			<visible>!String.IsEmpty(Container(11090).ListItem.Property(Birthday))</visible>
 		</item>
 		<item>
@@ -1783,7 +1707,7 @@
 			<label2>$LOCALIZE[21897]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[21897])</onclick>
 			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(Deathday)])</onclick>
-			<onclick>SetFocus(11092)</onclick>
+			<onclick>SetFocus(64)</onclick>
 			<visible>!String.IsEmpty(Container(11090).ListItem.Property(Deathday))</visible>
 		</item>
 		<item>
@@ -1791,7 +1715,7 @@
 			<label2>$LOCALIZE[31600]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31600])</onclick>
 			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(Born)])</onclick>
-			<onclick>SetFocus(11092)</onclick>
+			<onclick>SetFocus(64)</onclick>
 			<visible>!String.IsEmpty(Container(11090).ListItem.Property(Born))</visible>
 		</item>
 		<item>
@@ -1799,58 +1723,24 @@
 			<label2>$LOCALIZE[39025]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[39025])</onclick>
 			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(Gender)])</onclick>
-			<onclick>SetFocus(11092)</onclick>
+			<onclick>SetFocus(64)</onclick>
 			<visible>!String.IsEmpty(Container(11090).ListItem.Property(Gender))</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(11090).ListItem.Property(Known_For.1.Title)]$INFO[Container(11090).ListItem.Property(Known_For.2.Title),$COMMA ]$INFO[Container(11090).ListItem.Property(Known_For.3.Title),$COMMA ]$INFO[Container(11090).ListItem.Property(Known_For.4.Title),$COMMA ]</label>
+			<label2>$LOCALIZE[31546]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31546])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(Known_For.1.Title),$LOCALIZE[31546]: ]$ESCINFO[Container(11090).ListItem.Property(Known_For.2.Title),$COMMA ]$ESCINFO[Container(11090).ListItem.Property(Known_For.3.Title),$COMMA ]$ESCINFO[Container(11090).ListItem.Property(Known_For.4.Title),$COMMA ])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(Container(11090).ListItem.Property(Known_For.1.Title)) + !String.IsEmpty(Container(11090).ListItem.Property(Known_For.2.Title)) + !String.IsEmpty(Container(11090).ListItem.Property(Known_For.3.Title)) + !String.IsEmpty(Container(11090).ListItem.Property(Known_For.4.Title))</visible>
 		</item>
 		<item>
 			<label>$INFO[Container(11090).ListItem.Property(Aliases)]</label>
 			<label2>$LOCALIZE[31614]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31614])</onclick>
 			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(Aliases)])</onclick>
-			<onclick>SetFocus(11092)</onclick>
+			<onclick>SetFocus(64)</onclick>
 			<visible>!String.IsEmpty(Container(11090).ListItem.Property(Aliases))</visible>
-		</item>
-	</include>
-	<include name="TMDbHInfoContentGeneral">
-		<item>
-			<label>$INFO[Container(11080).ListItem.PercentPlayed,,%]</label>
-			<label2>$LOCALIZE[575]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[575])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11080).ListItem.PercentPlayed,,%])</onclick>
-			<onclick>SetFocus(11082)</onclick>
-			<visible>Container(11080).ListItem.IsResumable + !String.IsEqual(Container(11080).ListItem.PercentPlayed,0)</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(11080).ListItem.LastPlayed]</label>
-			<label2>$LOCALIZE[568]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[568])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[ListItem.LastPlayed])</onclick>
-			<onclick>SetFocus(11082)</onclick>
-			<visible>!String.IsEmpty(Container(11080).ListItem.LastPlayed)</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(11080).ListItem.DateAdded]</label>
-			<label2>$LOCALIZE[570]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[570])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11080).ListItem.DateAdded])</onclick>
-			<onclick>SetFocus(11082)</onclick>
-			<visible>!String.IsEmpty(Container(11080).ListItem.DateAdded)</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(11080).ListItem.PlayCount]</label>
-			<label2>$LOCALIZE[567]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[567])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11080).ListItem.PlayCount])</onclick>
-			<onclick>SetFocus(11082)</onclick>
-			<visible>!String.IsEmpty(Container(11080).ListItem.PlayCount)</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(11080).ListItem.Tag]</label>
-			<label2>$LOCALIZE[20459]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[20459])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11080).ListItem.Tag])</onclick>
-			<onclick>SetFocus(11082)</onclick>
-			<visible>!String.IsEmpty(Container(11080).ListItem.Tag)</visible>
 		</item>
 	</include>
 </includes>

@@ -11,6 +11,7 @@
 	<onload condition="Window.IsActive(Home) + String.IsEqual(ListItem.DBTYPE,tvshow)">SetFocus(808)</onload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(FSFanart))">ClearProperty(FSFanart,movieinformation)</onunload>
 	<onunload>ClearProperty(random_actor,Home)</onunload>
+	<onunload>ClearProperty(encoded_actor,Home)</onunload>
 	<controls>
 		<control type="textbox" id="4">
 			<include>HiddenObject</include>
@@ -67,663 +68,659 @@
 			<!-- <label>$INFO[Container(50).ListItemAbsolute(3).Label]</label> -->
 		</control>
 		<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">TMDbHelperContentList</include>
+		<!-- Poster Side -->
 		<control type="group">
-			<visible>!Window.IsVisible(1109) + !Window.IsVisible(1108)</visible>
-			<include>VisibleFadeAnimation</include>
-			<!-- Poster Side -->
-			<control type="group">
-				<animation effect="slide" start="-730,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
-				<animation effect="slide" end="-730,0" time="500" tween="quadratic">WindowClose</animation>
-				<animation effect="slide" end="-730,0" time="500" tween="quadratic" condition="Window.IsVisible(1102)">Conditional</animation>
-				<width>720</width>
-				<height>100%</height>
-				<include content="InfoPoster">
-					<param name="imagepath">$VAR[VideoInfoPosterVar]</param>
+			<animation effect="slide" start="-730,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
+			<animation effect="slide" end="-730,0" time="500" tween="quadratic">WindowClose</animation>
+			<animation effect="slide" end="-730,0" time="500" tween="quadratic" condition="Window.IsVisible(1102) | Window.IsVisible(1109)">Conditional</animation>
+			<width>720</width>
+			<height>100%</height>
+			<include content="InfoPoster">
+				<param name="texture">$VAR[VideoInfoPosterVar]</param>
+			</include>
+			<include>InfoActorResourceImage</include>
+			<control type="group" id="9090">
+				<visible>Container(4501).IsUpdating | Container(90012).IsUpdating | Container(90016).IsUpdating | Container(90017).IsUpdating | Container(990010).IsUpdating | Container(990011).IsUpdating | Container(990012).IsUpdating | Container(990020).IsUpdating</visible>
+				<control type="image">
+					<height>120</height>
+					<texture border="1">views/wall/bottom_shadow.png</texture>
+				</control>
+				<include content="BusySpinner">
+					<param name="left">0</param>
+					<param name="top">0</param>
+					<param name="size">48</param>
+					<param name="visible">true</param>
 				</include>
-				<include>InfoActorResourceImage</include>
-				<control type="group" id="9090">
-					<visible>Container(4501).IsUpdating | Container(90012).IsUpdating | Container(90016).IsUpdating | Container(90017).IsUpdating | Container(990010).IsUpdating | Container(990011).IsUpdating | Container(990012).IsUpdating | Container(990020).IsUpdating</visible>
-					<control type="image">
-						<height>120</height>
-						<texture border="1">views/wall/bottom_shadow.png</texture>
-					</control>
-					<include content="BusySpinner">
-						<param name="left">0</param>
-						<param name="top">0</param>
-						<param name="size">48</param>
-						<param name="visible">true</param>
-					</include>
-					<control type="label">
-						<left>48</left>
-						<width>672</width>
-						<height>48</height>
-						<font>font15_title</font>
-						<shadowcolor>shadow</shadowcolor>
-						<label>$LOCALIZE[31008]</label>
-					</control>
+				<control type="label">
+					<left>48</left>
+					<width>672</width>
+					<height>48</height>
+					<font>font15_title</font>
+					<shadowcolor>shadow</shadowcolor>
+					<label>$LOCALIZE[31008]</label>
 				</control>
 			</control>
-			<!-- Details Side -->
+		</control>
+		<!-- Details Side -->
+		<control type="group">
+			<animation effect="slide" start="1210,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
+			<animation effect="slide" end="1210,0" time="500" tween="quadratic">WindowClose</animation>
+			<animation effect="slide" end="1210,0" time="500" tween="quadratic" condition="Window.IsVisible(1102) | Window.IsVisible(1109)">Conditional</animation>
+			<left>720</left>
 			<control type="group">
-				<animation effect="slide" start="1210,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
-				<animation effect="slide" end="1210,0" time="500" tween="quadratic">WindowClose</animation>
-				<animation effect="slide" end="1210,0" time="500" tween="quadratic" condition="Window.IsVisible(1102)">Conditional</animation>
-				<left>720</left>
+				<width>1200</width>
+				<!-- Info Background -->
+				<include content="InfoBackground">
+					<param name="texture">$VAR[DialogInfoBackgroundVar]</param>
+				</include>
+				<!-- Top Section -->
 				<control type="group">
-					<width>1200</width>
-					<!-- Info Background -->
-					<include content="InfoBackground">
-						<param name="texture">$VAR[DialogInfoBackgroundVar]</param>
-					</include>
-					<!-- Top Section -->
-					<control type="group">
-						<left>10</left>
-						<!-- Main Label/Sublabel -->
-						<control type="grouplist">
-							<top>-40</top>
-							<width>1200</width>
-							<height>140</height>
-							<align>center</align>
-							<!-- Title + Year -->
-							<control type="group">
-								<height>65</height>
-								<width>1180</width>
-								<control type="label">
-									<width>1065</width>
-									<font>font30_title_bold</font>
-									<textcolor>grey</textcolor>
-									<scroll>true</scroll>
-									<label>$INFO[ListItem.Title]</label>
-								</control>
-								<control type="label">
-									<left>1055</left>
-									<width>130</width>
-									<height>65</height>
-									<align>right</align>
-									<font>font30_title_bold</font>
-									<textcolor>grey</textcolor>
-									<label>$INFO[ListItem.Year,(,)]</label>
-									<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
-								</control>
-							</control>
-							<control type="group">
-								<!-- Movie Fadelabels -->
-								<include condition="String.IsEqual(ListItem.DBTYPE,movie)">InfoSublabelMovies</include>
-								<!-- Set labels -->
-								<include condition="String.IsEqual(ListItem.DBTYPE,set)">InfoSublabelSets</include>
-								<!-- TV Show Fadelabels -->
-								<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)">InfoSublabelTVShows</include>
-								<!-- Episode Fadelabels -->
-								<include condition="String.IsEqual(ListItem.DBTYPE,episode)">InfoSublabelEpisodes</include>
-								<!-- Music Video label -->
-								<include condition="String.IsEqual(ListItem.DBTYPE,musicvideo)">InfoSublabelMusicvideos</include>
-								<!-- TMDbHelper Person label -->
-								<include condition="String.IsEqual(ListItem.Property(item.type),person)">InfoSublabelTMDbHelperPerson</include>
-							</control>
-						</control>
-						<!-- Kodi User Rating -->
-						<control type="grouplist">
-							<visible>!String.IsEmpty(ListItem.UserRating) + !String.IsEqual(ListItem.Property(item.type),person)</visible>
-							<left>1065</left>
-							<top>60</top>
-							<width>120</width>
-							<height>40</height>
-							<orientation>horizontal</orientation>
-							<align>center</align>
-							<itemgap>5</itemgap>
-							<control type="image">
-								<width>40</width>
-								<aspectratio>keep</aspectratio>
-								<texture colordiffuse="$VAR[ThemeLabelColor]">favourites.png</texture>
-								<animation effect="fade" end="80" condition="true">Conditional</animation>
+					<left>10</left>
+					<!-- Main Label/Sublabel -->
+					<control type="grouplist">
+						<top>-40</top>
+						<width>1200</width>
+						<height>140</height>
+						<align>center</align>
+						<!-- Title + Year -->
+						<control type="group">
+							<height>65</height>
+							<width>1180</width>
+							<control type="label">
+								<width>1065</width>
+								<font>font30_title_bold</font>
+								<textcolor>grey</textcolor>
+								<scroll>true</scroll>
+								<label>$INFO[ListItem.Title]</label>
 							</control>
 							<control type="label">
-								<width>auto</width>
-								<font>font16_title_bold</font>
+								<left>1055</left>
+								<width>130</width>
+								<height>65</height>
+								<align>right</align>
+								<font>font30_title_bold</font>
 								<textcolor>grey</textcolor>
-								<label>$INFO[ListItem.UserRating]</label>
+								<label>$INFO[ListItem.Year,(,)]</label>
+								<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
 							</control>
 						</control>
-						<!-- Separator Start -->
-						<control type="image">
-							<left>-7</left>
-							<top>105</top>
-							<height>1</height>
-							<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
-						</control>
-						<!-- Runtime/Ratings Bar -->
-						<control type="grouplist">
-							<top>103</top>
-							<width>1200</width>
-							<height>90</height>
-							<orientation>horizontal</orientation>
-							<usecontrolcoords>true</usecontrolcoords>
-							<itemgap>8</itemgap>
-							<!-- Runtime -->
-							<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">InfoRuntime</include>
-							<!-- Episode Count -->
-							<include condition="String.IsEqual(ListItem.DBTYPE,episode)">InfoEpNumber</include>
-							<!-- MPAA -->
-							<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">InfoMPAA</include>
-							<!-- Set Rating -->
-							<include condition="String.IsEqual(ListItem.DBTYPE,set)">InfoSetRating</include>
-							<!-- TV Watched Percent -->
-							<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)">InfoTVWatchedPercent</include>
-							<!-- Main Rating -->
-							<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">InfoMainRating</include>
-							<!-- Top 250 -->
-							<include condition="String.IsEqual(ListItem.DBTYPE,movie)">InfoTop250</include>
-							<!-- Extended Ratings -->
-							<include condition="!String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">InfoExtendedRatings</include>
-						</control>
-						<!-- TMDbHelper Person Age -->
-						<include condition="String.IsEqual(ListItem.Property(item.type),person)">InfoTMDbPersonAge</include>
-						<!-- Separator End -->
-						<control type="image">
-							<left>-7</left>
-							<height>1</height>
-							<top>192</top>
-							<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
+						<control type="group">
+							<!-- Movie Fadelabels -->
+							<include condition="String.IsEqual(ListItem.DBTYPE,movie)">InfoSublabelMovies</include>
+							<!-- Set labels -->
+							<include condition="String.IsEqual(ListItem.DBTYPE,set)">InfoSublabelSets</include>
+							<!-- TV Show Fadelabels -->
+							<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)">InfoSublabelTVShows</include>
+							<!-- Episode Fadelabels -->
+							<include condition="String.IsEqual(ListItem.DBTYPE,episode)">InfoSublabelEpisodes</include>
+							<!-- Music Video label -->
+							<include condition="String.IsEqual(ListItem.DBTYPE,musicvideo)">InfoSublabelMusicvideos</include>
+							<!-- TMDbHelper Person label -->
+							<include condition="String.IsEqual(ListItem.Property(item.type),person)">InfoSublabelTMDbHelperPerson</include>
 						</control>
 					</control>
-					<!-- Details Panel -->
-					<include content="InfoDetailsPanel">
-						<param name="window_id">movieinformation</param>
-						<param name="button_id">64</param>
-						<param name="panel_id">300</param>
-						<param name="panel_ondown">9000</param>
-						<param name="ondown_condition">!String.IsEqual(ListItem.Property(item.type),person)</param>
-						<param name="panel_ondown2">9876</param>
-						<param name="ondown_condition2">String.IsEqual(ListItem.Property(item.type),person)</param>
-						<param name="include">InfoContentDetails</param>
-					</include>
-					<!-- Buttons LABEL -->
-					<control type="group">
-						<left>-5</left>
-						<top>542</top>
-						<control type="button">
-							<width>1198</width>
-							<texturenofocus />
-							<disabledcolor>grey</disabledcolor>
-							<font>font16_title_bold</font>
-							<align>left</align>
-							<textoffsetx>16</textoffsetx>
-							<include>ButtonInfoDialogsCommonValues</include>
-							<label>$VAR[VideoInfoButtonLabelVar]</label>
-							<enable>no</enable>
+					<!-- Kodi User Rating -->
+					<control type="grouplist">
+						<visible>!String.IsEmpty(ListItem.UserRating) + !String.IsEqual(ListItem.Property(item.type),person)</visible>
+						<left>1065</left>
+						<top>60</top>
+						<width>120</width>
+						<height>40</height>
+						<orientation>horizontal</orientation>
+						<align>center</align>
+						<itemgap>5</itemgap>
+						<control type="image">
+							<width>40</width>
+							<aspectratio>keep</aspectratio>
+							<texture colordiffuse="$VAR[ThemeLabelColor]">favourites.png</texture>
+							<animation effect="fade" end="80" condition="true">Conditional</animation>
 						</control>
 						<control type="label">
-							<right>0</right>
-							<width>100</width>
-							<height>60</height>
-							<align>right</align>
-							<font>IconMediumMD</font>
+							<width>auto</width>
+							<font>font16_title_bold</font>
 							<textcolor>grey</textcolor>
-							<label>$VAR[ContainerHasNextPreviousLabelVar]</label>
-							<visible>Control.HasFocus(50) | Control.HasFocus(90050) | Control.HasFocus(90011) | Control.HasFocus(90012) | Control.HasFocus(90013) | Control.HasFocus(90014) | Control.HasFocus(90015) | Control.HasFocus(90016) | Control.HasFocus(90017)</visible>
+							<label>$INFO[ListItem.UserRating]</label>
 						</control>
 					</control>
-					<!-- Buttons -->
-					<control type="grouplist" id="9000">
-						<right>0</right>
-						<top>544</top>
-						<width>650</width>
-						<height>60</height>
-						<onleft>9000</onleft>
-						<onright>9000</onright>
-						<onup>Control.SetFocus(300,0)</onup>
-						<ondown>90001</ondown>
-						<align>right</align>
+					<!-- Separator Start -->
+					<control type="image">
+						<left>-7</left>
+						<top>105</top>
+						<height>1</height>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
+					</control>
+					<!-- Runtime/Ratings Bar -->
+					<control type="grouplist">
+						<top>103</top>
+						<width>1200</width>
+						<height>90</height>
 						<orientation>horizontal</orientation>
-						<visible>!String.IsEqual(ListItem.Property(item.type),person) + !ControlGroup(90001).HasFocus(50) + !ControlGroup(90001).HasFocus(90050) + !ControlGroup(90001).HasFocus(90011) + !ControlGroup(90001).HasFocus(90012) + !ControlGroup(90001).HasFocus(90013) + !ControlGroup(90001).HasFocus(90014) + !ControlGroup(90001).HasFocus(90015) + !ControlGroup(90001).HasFocus(90016) + !ControlGroup(90001).HasFocus(90017)</visible>
-						<!-- <control type="button" id="8088">
-							<description>Test button</description>
-							<font>IconMediumMD</font>
-							<width>65</width>
-							<texturenofocus />
-							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
-							<onclick>noop</onclick>
-						</control> -->
-						<control type="togglebutton" id="8">
-							<description>Play/browse to Show</description>
-							<font>IconMediumMD</font>
-							<width>65</width>
-							<texturenofocus />
-							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
-							<altlabel></altlabel>
-							<usealttexture>String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)</usealttexture>
-							<visible>[System.AddonIsEnabled(script.preshowexperience) + !String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232])] | !System.AddonIsEnabled(script.preshowexperience)</visible>
-							<visible>![Window.IsActive(Home) + String.IsEqual(ListItem.DBTYPE,tvshow)]</visible>
-						</control>
-						<control type="button" id="808">
-							<description>Browse to Item</description>
-							<font>IconMediumMD</font>
-							<width>65</width>
-							<texturenofocus />
-							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
-							<onclick>Dialog.Close(movieinformation)</onclick>
-							<onclick condition="String.IsEqual(ListItem.DBTYPE,movie) + String.IsEmpty(ListItem.SetID)">ActivateWindow(Videos,videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B"$INFO[ListItem.Title]"%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D,return)</onclick>
-							<onclick condition="String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEmpty(ListItem.SetID)">ActivateWindow(Videos,videodb://movies/sets/$INFO[ListItem.SetId]/?setid=$INFO[ListItem.SetId],return)</onclick>
-							<onclick condition="String.IsEqual(ListItem.DBTYPE,tvshow)">ActivateWindow(Videos,videodb://tvshows/titles/$INFO[ListItem.DBID],return)</onclick>
-							<visible>Window.IsActive(Home) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)]</visible>
-						</control>
-						<control type="button" id="909">
-							<description>Preshowexperience</description>
-							<font>IconMediumMD</font>
-							<width>65</width>
-							<texturenofocus />
-							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
-							<onclick>RunScript(script.preshowexperience,experience)</onclick>
-							<visible>System.AddonIsEnabled(script.preshowexperience) + String.IsEmpty(Window(Home).Property(script.preshowexperience.running)) + !String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31014])</visible>
-							<visible>[String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode)]</visible>
-						</control>
-						<control type="button" id="910">
-							<description>Cast</description>
-							<font>IconMediumMD</font>
-							<width>65</width>
-							<texturenofocus />
-							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
-							<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetFocus(50)</onclick>
-							<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetFocus(90050)</onclick>
-							<visible>!String.IsEmpty(ListItem.Cast) | String.IsEqual(ListItem.DBTYPE,set)</visible>
-						</control>
-						<control type="button" id="14">
-							<description>Versions</description>
-							<font>IconMediumMD</font>
-							<width>65</width>
-							<texturenofocus />
-							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
-							<visible>String.IsEqual(ListItem.DBType,movie)</visible>
-						</control>
-						<control type="togglebutton" id="15">
-							<description>Extras</description>
-							<font>IconMediumMD</font>
-							<width>65</width>
-							<texturenofocus />
-							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
-							<altlabel></altlabel>
-							<usealttexture>ListItem.HasVideoExtras</usealttexture>
-							<visible>String.IsEqual(ListItem.DBType,movie)</visible>
-						</control>
-						<control type="button" id="913">
-							<description>Play Trailer</description>
-							<font>IconMediumMD</font>
-							<width>65</width>
-							<texturenofocus />
-							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
-							<onclick>SetProperty(trailer,$INFO[ListItem.Trailer],Home)</onclick>
-							<onclick>ActivateWindow(1103)</onclick>
-							<visible>!String.IsEmpty(ListItem.Trailer) + ![String.StartsWith(Container.FolderPath,plugin://) + String.Contains(Container.FolderPath,trailer)]</visible>
-						</control>
-						<control type="button" id="911">
-							<description>Search Trailer</description>
-							<font>IconMediumMD</font>
-							<width>65</width>
-							<texturenofocus />
-							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
-							<onclick>Dialog.Close(all,force)</onclick>
-							<onclick condition="!Window.IsVisible(MyVideoNav.xml)">ActivateWindow(videos,plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.Title]&amp;search_type=videos,return)</onclick>
-							<onclick condition="Window.IsVisible(MyVideoNav.xml)">Container.Update(plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.Title]&amp;search_type=videos)</onclick>
-							<visible>System.AddonIsEnabled(plugin.video.youtube) + String.IsEqual(ListItem.DBType,movie) + !Control.IsVisible(913)</visible>
-						</control>
-						<control type="togglebutton" id="7">
-							<description>Set rating</description>
-							<font>IconMediumMD</font>
-							<width>65</width>
-							<include>ButtonInfoDialogsCommonValues</include>
-							<texturenofocus />
-							<alttexturenofocus />
-							<label></label>
-							<altlabel></altlabel>
-							<usealttexture>!String.IsEmpty(ListItem.UserRating)</usealttexture>
-							<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
-						</control>
-						<control type="button" id="10">
-							<description>Get Thumb</description>
-							<font>IconMediumMD</font>
-							<width>65</width>
-							<texturenofocus />
-							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
-							<enable>!Skin.HasSetting(KioskMode.Enabled)</enable>
-						</control>
-						<control type="button" id="6">
-							<description>Refresh</description>
-							<font>IconMediumMD</font>
-							<width>65</width>
-							<texturenofocus />
-							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
-							<enable>!Skin.HasSetting(KioskMode.Enabled)</enable>
-							<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
-						</control>
-						<control type="button" id="208">
-							<description>More...</description>
-							<font>IconMediumMD</font>
-							<width>65</width>
-							<texturenofocus />
-							<include>ButtonInfoDialogsCommonValues</include>
-							<label></label>
-							<onclick>SetProperty(FSFanart,$INFO[ListItem.Art(fanart)],movieinformation)</onclick>
-							<onclick>ActivateWindow(1119)</onclick>
-						</control>
+						<usecontrolcoords>true</usecontrolcoords>
+						<itemgap>8</itemgap>
+						<!-- Runtime -->
+						<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">InfoRuntime</include>
+						<!-- Episode Count -->
+						<include condition="String.IsEqual(ListItem.DBTYPE,episode)">InfoEpNumber</include>
+						<!-- MPAA -->
+						<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">InfoMPAA</include>
+						<!-- Set Rating -->
+						<include condition="String.IsEqual(ListItem.DBTYPE,set)">InfoSetRating</include>
+						<!-- TV Watched Percent -->
+						<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)">InfoTVWatchedPercent</include>
+						<!-- Main Rating -->
+						<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">InfoMainRating</include>
+						<!-- Top 250 -->
+						<include condition="String.IsEqual(ListItem.DBTYPE,movie)">InfoTop250</include>
+						<!-- Extended Ratings -->
+						<include condition="!String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">InfoExtendedRatings</include>
 					</control>
-					<control type="button" id="9876">
+					<!-- TMDbHelper Person Age -->
+					<include condition="String.IsEqual(ListItem.Property(item.type),person)">InfoTMDbPersonAge</include>
+					<!-- Separator End -->
+					<control type="image">
+						<left>-7</left>
+						<height>1</height>
+						<top>192</top>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
+					</control>
+				</control>
+				<!-- Details Panel -->
+				<include content="InfoDetailsPanel">
+					<param name="window_id">movieinformation</param>
+					<param name="button_id">64</param>
+					<param name="panel_id">300</param>
+					<param name="panel_ondown">9000</param>
+					<param name="ondown_condition">!String.IsEqual(ListItem.Property(item.type),person)</param>
+					<param name="panel_ondown2">9876</param>
+					<param name="ondown_condition2">String.IsEqual(ListItem.Property(item.type),person)</param>
+					<param name="include">InfoContentDetails</param>
+				</include>
+				<!-- Buttons LABEL -->
+				<control type="group">
+					<left>-5</left>
+					<top>542</top>
+					<control type="button">
+						<width>1198</width>
+						<texturenofocus />
+						<disabledcolor>grey</disabledcolor>
+						<font>font16_title_bold</font>
+						<align>left</align>
+						<textoffsetx>16</textoffsetx>
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label>$VAR[VideoInfoButtonLabelVar]</label>
+						<enable>no</enable>
+					</control>
+					<control type="label">
 						<right>0</right>
-						<top>544</top>
+						<width>100</width>
 						<height>60</height>
-						<onleft>9000</onleft>
-						<onright>9000</onright>
-						<onup>300</onup>
-						<ondown>90001</ondown>
+						<align>right</align>
+						<font>IconMediumMD</font>
+						<textcolor>grey</textcolor>
+						<label>$VAR[ContainerHasNextPreviousLabelVar]</label>
+						<visible>Control.HasFocus(50) | Control.HasFocus(90050) | Control.HasFocus(90011) | Control.HasFocus(90012) | Control.HasFocus(90013) | Control.HasFocus(90014) | Control.HasFocus(90015) | Control.HasFocus(90016) | Control.HasFocus(90017)</visible>
+					</control>
+				</control>
+				<!-- Buttons -->
+				<control type="grouplist" id="9000">
+					<right>0</right>
+					<top>544</top>
+					<width>650</width>
+					<height>60</height>
+					<onleft>9000</onleft>
+					<onright>9000</onright>
+					<onup>Control.SetFocus(300,0)</onup>
+					<ondown>90001</ondown>
+					<align>right</align>
+					<orientation>horizontal</orientation>
+					<visible>!String.IsEqual(ListItem.Property(item.type),person) + !ControlGroup(90001).HasFocus(50) + !ControlGroup(90001).HasFocus(90050) + !ControlGroup(90001).HasFocus(90011) + !ControlGroup(90001).HasFocus(90012) + !ControlGroup(90001).HasFocus(90013) + !ControlGroup(90001).HasFocus(90014) + !ControlGroup(90001).HasFocus(90015) + !ControlGroup(90001).HasFocus(90016) + !ControlGroup(90001).HasFocus(90017)</visible>
+					<!-- <control type="button" id="8088">
+						<description>Test button</description>
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<texturenofocus />
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label></label>
+						<onclick>noop</onclick>
+					</control> -->
+					<control type="togglebutton" id="8">
+						<description>Play/browse to Show</description>
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<texturenofocus />
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label></label>
+						<altlabel></altlabel>
+						<usealttexture>String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)</usealttexture>
+						<visible>[System.AddonIsEnabled(script.preshowexperience) + !String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232])] | !System.AddonIsEnabled(script.preshowexperience)</visible>
+						<visible>![Window.IsActive(Home) + String.IsEqual(ListItem.DBTYPE,tvshow)]</visible>
+					</control>
+					<control type="button" id="808">
 						<description>Browse to Item</description>
 						<font>IconMediumMD</font>
 						<width>65</width>
 						<texturenofocus />
 						<include>ButtonInfoDialogsCommonValues</include>
-						<label></label>
-						<onclick>SetFocus(990020)</onclick>
-						<visible>String.IsEqual(ListItem.Property(item.type),person)</visible>
+						<label></label>
+						<onclick>Dialog.Close(movieinformation)</onclick>
+						<onclick condition="String.IsEqual(ListItem.DBTYPE,movie) + String.IsEmpty(ListItem.SetID)">ActivateWindow(Videos,videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B"$INFO[ListItem.Title]"%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D,return)</onclick>
+						<onclick condition="String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEmpty(ListItem.SetID)">ActivateWindow(Videos,videodb://movies/sets/$INFO[ListItem.SetId]/?setid=$INFO[ListItem.SetId],return)</onclick>
+						<onclick condition="String.IsEqual(ListItem.DBTYPE,tvshow)">ActivateWindow(Videos,videodb://tvshows/titles/$INFO[ListItem.DBID],return)</onclick>
+						<visible>Window.IsActive(Home) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)]</visible>
 					</control>
-					<control type="image">
-						<left>3</left>
-						<top>604</top>
-						<height>1</height>
-						<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
+					<control type="button" id="909">
+						<description>Preshowexperience</description>
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<texturenofocus />
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label></label>
+						<onclick>RunScript(script.preshowexperience,experience)</onclick>
+						<visible>System.AddonIsEnabled(script.preshowexperience) + String.IsEmpty(Window(Home).Property(script.preshowexperience.running)) + !String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31014])</visible>
+						<visible>[String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode)]</visible>
 					</control>
-					<!-- Bottom Section -->
-					<control type="grouplist" id="90001">
-						<left>-7</left>
-						<top>606</top>
-						<width>2800</width>
+					<control type="button" id="910">
+						<description>Cast</description>
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<texturenofocus />
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label></label>
+						<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetFocus(50)</onclick>
+						<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetFocus(90050)</onclick>
+						<visible>!String.IsEmpty(ListItem.Cast) | String.IsEqual(ListItem.DBTYPE,set)</visible>
+					</control>
+					<control type="button" id="14">
+						<description>Versions</description>
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<texturenofocus />
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label></label>
+						<visible>String.IsEqual(ListItem.DBType,movie)</visible>
+					</control>
+					<control type="togglebutton" id="15">
+						<description>Extras</description>
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<texturenofocus />
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label></label>
+						<altlabel></altlabel>
+						<usealttexture>ListItem.HasVideoExtras</usealttexture>
+						<visible>String.IsEqual(ListItem.DBType,movie)</visible>
+					</control>
+					<control type="button" id="913">
+						<description>Play Trailer</description>
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<texturenofocus />
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label></label>
+						<onclick>SetProperty(trailer,$INFO[ListItem.Trailer],Home)</onclick>
+						<onclick>ActivateWindow(1103)</onclick>
+						<visible>!String.IsEmpty(ListItem.Trailer) + ![String.StartsWith(Container.FolderPath,plugin://) + String.Contains(Container.FolderPath,trailer)]</visible>
+					</control>
+					<control type="button" id="911">
+						<description>Search Trailer</description>
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<texturenofocus />
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label></label>
+						<onclick>Dialog.Close(all,force)</onclick>
+						<onclick condition="!Window.IsVisible(MyVideoNav.xml)">ActivateWindow(videos,plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.Title]&amp;search_type=videos,return)</onclick>
+						<onclick condition="Window.IsVisible(MyVideoNav.xml)">Container.Update(plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.Title]&amp;search_type=videos)</onclick>
+						<visible>System.AddonIsEnabled(plugin.video.youtube) + String.IsEqual(ListItem.DBType,movie) + !Control.IsVisible(913)</visible>
+					</control>
+					<control type="togglebutton" id="7">
+						<description>Set rating</description>
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<include>ButtonInfoDialogsCommonValues</include>
+						<texturenofocus />
+						<alttexturenofocus />
+						<label></label>
+						<altlabel></altlabel>
+						<usealttexture>!String.IsEmpty(ListItem.UserRating)</usealttexture>
+						<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
+					</control>
+					<control type="button" id="10">
+						<description>Get Thumb</description>
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<texturenofocus />
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label></label>
+						<enable>!Skin.HasSetting(KioskMode.Enabled)</enable>
+					</control>
+					<control type="button" id="6">
+						<description>Refresh</description>
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<texturenofocus />
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label></label>
+						<enable>!Skin.HasSetting(KioskMode.Enabled)</enable>
+						<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
+					</control>
+					<control type="button" id="208">
+						<description>More...</description>
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<texturenofocus />
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label></label>
+						<onclick>SetProperty(FSFanart,$INFO[ListItem.Art(fanart)],movieinformation)</onclick>
+						<onclick>ActivateWindow(1119)</onclick>
+					</control>
+				</control>
+				<control type="button" id="9876">
+					<right>0</right>
+					<top>544</top>
+					<height>60</height>
+					<onleft>9000</onleft>
+					<onright>9000</onright>
+					<onup>300</onup>
+					<ondown>90001</ondown>
+					<description>Browse to Item</description>
+					<font>IconMediumMD</font>
+					<width>65</width>
+					<texturenofocus />
+					<include>ButtonInfoDialogsCommonValues</include>
+					<label></label>
+					<onclick>SetFocus(990020)</onclick>
+					<visible>String.IsEqual(ListItem.Property(item.type),person)</visible>
+				</control>
+				<control type="image">
+					<left>3</left>
+					<top>604</top>
+					<height>1</height>
+					<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
+				</control>
+				<!-- Bottom Section -->
+				<control type="grouplist" id="90001">
+					<left>-7</left>
+					<top>606</top>
+					<width>2800</width>
+					<height>480</height>
+					<onup condition="!String.IsEqual(ListItem.Property(item.type),person)">9000</onup>
+					<onup condition="String.IsEqual(ListItem.Property(item.type),person)">9876</onup>
+					<ondown condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.Property(item.type),person)">Runscript(plugin.video.themoviedb.helper,recommendations=5000|info=recommendations|true|info||5001|info=trakt_comments&amp;sort=likes|true|text||5002|info=crew|true|info||5999|info=details|true,window_id=1110,tmdb_type=$VAR[TMDbHelperDBTYPEPathVar],tmdb_id=$INFO[Container(9143).ListItem.UniqueID(tmdb)])</ondown>
+					<ondown condition="String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.Property(item.type),person)">noop</ondown>
+					<usecontrolcoords>true</usecontrolcoords>
+					<scrolltime tween="quadratic" easing="out">300</scrolltime>
+					<control type="group" id="90002">
+						<width>1200</width>
 						<height>480</height>
-						<onup condition="!String.IsEqual(ListItem.Property(item.type),person)">9000</onup>
-						<onup condition="String.IsEqual(ListItem.Property(item.type),person)">9876</onup>
-						<ondown condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.Property(item.type),person)">Runscript(plugin.video.themoviedb.helper,recommendations=5000|info=recommendations|true|info||5001|info=trakt_comments&amp;sort=likes|true|text||5002|info=crew|true|info||5999|info=details|true,window_id=1110,tmdb_type=$VAR[TMDbHelperDBTYPEPathVar],tmdb_id=$INFO[Container(9143).ListItem.UniqueID(tmdb)])</ondown>
-						<ondown condition="String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.Property(item.type),person)">noop</ondown>
-						<usecontrolcoords>true</usecontrolcoords>
-						<scrolltime tween="quadratic" easing="out">300</scrolltime>
-						<control type="group" id="90002">
+						<control type="button" id="90003">
+							<left>10</left>
+							<top>-2</top>
 							<width>1200</width>
 							<height>480</height>
-							<control type="button" id="90003">
+							<onup condition="!String.IsEqual(ListItem.Property(item.type),person)">9000</onup>
+							<onup condition="String.IsEqual(ListItem.Property(item.type),person)">9876</onup>
+							<ondown condition="String.IsEqual(ListItem.Property(item.type),person)">990010</ondown>
+							<ondown condition="[!System.AddonIsEnabled(plugin.video.themoviedb.helper) | String.IsEqual(ListItem.DBTYPE,set)] + !String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.Property(item.type),person)">50</ondown>
+							<ondown condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">90050</ondown>
+							<onclick>SetProperty(TextViewerHeader,$ESCINFO[ListItem.Label,[B],[/B]],Home)</onclick>
+							<onclick condition="String.IsEqual(ListItem.DBTYPE,movie)">SetProperty(TextViewerSubHeader,$ESCINFO[ListItem.Tagline,[LIGHT],[/LIGHT]],Home)</onclick>
+							<onclick condition="String.IsEqual(ListItem.DBTYPE,set)">SetProperty(TextViewerSubHeader,$INFO[Container(50).NumItems,, $LOCALIZE[342],[LIGHT],[/LIGHT]],Home)</onclick>
+							<onclick condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEmpty(Container(9143).ListItem.Property(Status))">SetProperty(TextViewerSubHeader,$ESCINFO[Container(9143).ListItem.Property(Status),[LIGHT],[/LIGHT]],Home)</onclick>
+							<onclick condition="String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEmpty(ListItem.TvShowTitle)">SetProperty(TextViewerSubHeader,$ESCINFO[ListItem.TvShowTitle,[LIGHT],[/LIGHT]],Home)</onclick>
+							<onclick>SetProperty(TextViewerContent,$ESCVAR[VideoPlotVar],Home)</onclick>
+							<onclick condition="String.IsEqual(ListItem.Property(item.type),person)">SetProperty(TextViewerSubHeader,$INFO[ListItem.Property(Department),$LOCALIZE[31546] ]$INFO[ListItem.Property(Age), - , $LOCALIZE[31544]],Home)</onclick>
+							<onclick>ActivateWindow(1112)</onclick>
+							<onfocus condition="String.IsEmpty(Window(Home).Property(random_actor))">SetProperty(random_actor,$INFO[Control.GetLabel(9140)],Home)</onfocus>
+							<onfocus>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_genre_0&amp;window_id=Home&amp;&amp;$INFO[Container(4501).ListItem.Property(genre.0)]")</onfocus>
+							<onfocus>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_genre_1&amp;window_id=Home&amp;&amp;$INFO[Container(4501).ListItem.Property(genre.1)]")</onfocus>
+							<onfocus>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_genre_2&amp;window_id=Home&amp;&amp;$INFO[Container(4501).ListItem.Property(genre.2)]")</onfocus>
+							<include>ButtonInfoDialogsCommonValues</include>
+						</control>
+						<!-- Plot -->
+						<control type="group">
+							<left>26</left>
+							<top>22</top>
+							<include content="InfoPlot" condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,musicvideo) + !String.IsEqual(ListItem.Property(item.type),person)">
+								<param name="width">780</param>
+								<param name="visible">$EXP[HasInfoPlotArt]</param>
+							</include>
+							<include content="InfoPlot" condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,musicvideo) + !String.IsEqual(ListItem.Property(item.type),person)">
+								<param name="visible">$EXP[NoInfoPlotArt]</param>
+							</include>
+							<include content="InfoPlot" condition="String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.DBTYPE,musicvideo) | String.IsEqual(ListItem.Property(item.type),person)">
+								<param name="top">-15</param>
+								<param name="height">460</param>
+								<param name="visible">true</param>
+							</include>
+						</control>
+						<!-- Discart -->
+						<control type="image">
+							<left>820</left>
+							<top>10</top>
+							<width>375</width>
+							<height>375</height>
+							<aspectratio>keep</aspectratio>
+							<texture background="true">$VAR[VideoInfoDetailsImageVar]</texture>
+							<visible>[String.IsEqual(ListItem.DBTYPE,movie) + Skin.HasSetting(discartoninfo)] | [String.IsEqual(ListItem.DBTYPE,tvshow) + Skin.HasSetting(CharacterOnInfo)] | [String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)] + Skin.HasSetting(CharacterOnInfo)</visible>
+						</control>
+						<!-- Mediaflags -->
+						<control type="group">
+							<top>380</top>
+							<height>90</height>
+							<control type="grouplist">
 								<left>10</left>
-								<top>-2</top>
-								<width>1200</width>
-								<height>480</height>
-								<onup condition="!String.IsEqual(ListItem.Property(item.type),person)">9000</onup>
-								<onup condition="String.IsEqual(ListItem.Property(item.type),person)">9876</onup>
-								<ondown condition="String.IsEqual(ListItem.Property(item.type),person)">990010</ondown>
-								<ondown condition="[!System.AddonIsEnabled(plugin.video.themoviedb.helper) | String.IsEqual(ListItem.DBTYPE,set)] + !String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.Property(item.type),person)">50</ondown>
-								<ondown condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">90050</ondown>
-								<onclick>SetProperty(TextViewerHeader,$ESCINFO[ListItem.Label,[B],[/B]],Home)</onclick>
-								<onclick condition="String.IsEqual(ListItem.DBTYPE,movie)">SetProperty(TextViewerSubHeader,$ESCINFO[ListItem.Tagline,[LIGHT],[/LIGHT]],Home)</onclick>
-								<onclick condition="String.IsEqual(ListItem.DBTYPE,set)">SetProperty(TextViewerSubHeader,$INFO[Container(50).NumItems,, $LOCALIZE[342],[LIGHT],[/LIGHT]],Home)</onclick>
-								<onclick condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEmpty(Container(9143).ListItem.Property(Status))">SetProperty(TextViewerSubHeader,$ESCINFO[Container(9143).ListItem.Property(Status),[LIGHT],[/LIGHT]],Home)</onclick>
-								<onclick condition="String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEmpty(ListItem.TvShowTitle)">SetProperty(TextViewerSubHeader,$ESCINFO[ListItem.TvShowTitle,[LIGHT],[/LIGHT]],Home)</onclick>
-								<onclick>SetProperty(TextViewerContent,$ESCVAR[VideoPlotVar],Home)</onclick>
-								<onclick condition="String.IsEqual(ListItem.Property(item.type),person)">SetProperty(TextViewerSubHeader,$INFO[ListItem.Property(Department),$LOCALIZE[31546] ]$INFO[ListItem.Property(Age), - , $LOCALIZE[31544]],Home)</onclick>
-								<onclick>ActivateWindow(1112)</onclick>
-								<onfocus condition="String.IsEmpty(Window(Home).Property(random_actor))">SetProperty(random_actor,$INFO[Control.GetLabel(9140)],Home)</onfocus>
-								<onfocus>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_genre_0&amp;window_id=Home&amp;&amp;$INFO[Container(4501).ListItem.Property(genre.0)]")</onfocus>
-								<onfocus>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_genre_1&amp;window_id=Home&amp;&amp;$INFO[Container(4501).ListItem.Property(genre.1)]")</onfocus>
-								<onfocus>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_genre_2&amp;window_id=Home&amp;&amp;$INFO[Container(4501).ListItem.Property(genre.2)]")</onfocus>
-								<include>ButtonInfoDialogsCommonValues</include>
-							</control>
-							<!-- Plot -->
-							<control type="group">
-								<left>26</left>
-								<top>22</top>
-								<include content="InfoPlot" condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,musicvideo) + !String.IsEqual(ListItem.Property(item.type),person)">
-									<param name="width">780</param>
-									<param name="visible">$EXP[HasInfoPlotArt]</param>
-								</include>
-								<include content="InfoPlot" condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,musicvideo) + !String.IsEqual(ListItem.Property(item.type),person)">
-									<param name="visible">$EXP[NoInfoPlotArt]</param>
-								</include>
-								<include content="InfoPlot" condition="String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.DBTYPE,musicvideo) | String.IsEqual(ListItem.Property(item.type),person)">
-									<param name="top">-15</param>
-									<param name="height">460</param>
-									<param name="visible">true</param>
-								</include>
-							</control>
-							<!-- Discart -->
-							<control type="image">
-								<left>820</left>
-								<top>10</top>
-								<width>375</width>
-								<height>375</height>
-								<aspectratio>keep</aspectratio>
-								<texture background="true">$VAR[VideoInfoDetailsImageVar]</texture>
-								<visible>[String.IsEqual(ListItem.DBTYPE,movie) + Skin.HasSetting(discartoninfo)] | [String.IsEqual(ListItem.DBTYPE,tvshow) + Skin.HasSetting(CharacterOnInfo)] | [String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)] + Skin.HasSetting(CharacterOnInfo)</visible>
-							</control>
-							<!-- Mediaflags -->
-							<control type="group">
-								<top>380</top>
+								<width>1180</width>
 								<height>90</height>
+								<align>center</align>
+								<usecontrolcoords>true</usecontrolcoords>
+								<orientation>horizontal</orientation>
+								<control type="group">
+									<width>160</width>
+									<visible>!String.IsEmpty(ListItem.Studio)</visible>
+									<control type="image" id="800011">
+										<width>160</width>
+										<include>MediaFlagValues</include>
+										<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
+									</control>
+									<control type="label">
+										<width>160</width>
+										<height>78</height>
+										<align>center</align>
+										<label>$INFO[ListItem.Studio]</label>
+										<font>font10</font>
+										<textcolor>grey</textcolor>
+										<wrapmultiline>true</wrapmultiline>
+										<visible>String.IsEmpty(Control.GetLabel(800011))</visible>
+									</control>
+								</control>
+								<control type="image">
+									<width>160</width>
+									<include>MediaFlagValues</include>
+									<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
+								</control>
+								<control type="image">
+									<width>160</width>
+									<include>MediaFlagValues</include>
+									<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
+									<visible>!String.IsEmpty(ListItem.HdrType)</visible>
+								</control>
+								<control type="image">
+									<width>160</width>
+									<include>MediaFlagValues</include>
+									<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
+									<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
+								</control>
+								<control type="image">
+									<width>160</width>
+									<include>MediaFlagValues</include>
+									<texture>$VAR[MediaFlagsPathVar]/aspectratio/$INFO[ListItem.VideoAspect,,.png]</texture>
+									<visible>!String.IsEmpty(ListItem.VideoAspect)</visible>
+								</control>
+								<control type="image">
+									<width>160</width>
+									<include>MediaFlagValues</include>
+									<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[AudioCodecFlagVar]</texture>
+									<visible>!String.IsEmpty(ListItem.AudioCodec)</visible>
+								</control>
+								<control type="image">
+									<width>160</width>
+									<include>MediaFlagValues</include>
+									<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
+									<visible>!String.IsEmpty(ListItem.AudioChannels)</visible>
+								</control>
 								<control type="grouplist">
-									<left>10</left>
-									<width>1180</width>
+									<top>15</top>
 									<height>90</height>
-									<align>center</align>
-									<usecontrolcoords>true</usecontrolcoords>
-									<orientation>horizontal</orientation>
-									<control type="group">
-										<width>160</width>
-										<visible>!String.IsEmpty(ListItem.Studio)</visible>
-										<control type="image" id="800011">
-											<width>160</width>
-											<include>MediaFlagValues</include>
-											<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
-										</control>
-										<control type="label">
-											<width>160</width>
-											<height>78</height>
-											<align>center</align>
-											<label>$INFO[ListItem.Studio]</label>
-											<font>font10</font>
-											<textcolor>grey</textcolor>
-											<wrapmultiline>true</wrapmultiline>
-											<visible>String.IsEmpty(Control.GetLabel(800011))</visible>
-										</control>
-									</control>
+									<width>30</width>
+									<itemgap>-5</itemgap>
+									<visible>String.IsEqual(Skin.String(LanguageFlags),1) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
 									<control type="image">
-										<width>160</width>
-										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[ListItem.VideoResolution,,.png]</texture>
-									</control>
-									<control type="image">
-										<width>160</width>
-										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/$INFO[ListItem.HdrType,hdr/,.png]</texture>
-										<visible>!String.IsEmpty(ListItem.HdrType)</visible>
-									</control>
-									<control type="image">
-										<width>160</width>
-										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[SourceFlagVar]</texture>
-										<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
-									</control>
-									<control type="image">
-										<width>160</width>
-										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/aspectratio/$INFO[ListItem.VideoAspect,,.png]</texture>
-										<visible>!String.IsEmpty(ListItem.VideoAspect)</visible>
-									</control>
-									<control type="image">
-										<width>160</width>
-										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[AudioCodecFlagVar]</texture>
-										<visible>!String.IsEmpty(ListItem.AudioCodec)</visible>
-									</control>
-									<control type="image">
-										<width>160</width>
-										<include>MediaFlagValues</include>
-										<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[ListItem.AudioChannels,,.png]</texture>
-										<visible>!String.IsEmpty(ListItem.AudioChannels)</visible>
-									</control>
-									<control type="grouplist">
-										<top>15</top>
-										<height>90</height>
 										<width>30</width>
-										<itemgap>-5</itemgap>
-										<visible>String.IsEqual(Skin.String(LanguageFlags),1) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
-										<control type="image">
-											<width>30</width>
-											<height>30</height>
-											<aspectratio>keep</aspectratio>
-											<colordiffuse>grey</colordiffuse>
-											<texture>flags/audio.png</texture>
-											<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1)) | [!String.IsEmpty(ListItem.Property(AudioLanguage.2)) + !String.IsEqual(ListItem.Property(AudioLanguage.1),ListItem.Property(AudioLanguage.2))]</visible>
-										</control>
-										<control type="image">
-											<width>30</width>
-											<height>30</height>
-											<include>MediaFlagValues</include>
-											<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.1),,.png]</texture>
-											<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
-										</control>
-										<control type="image">
-											<width>30</width>
-											<height>30</height>
-											<include>MediaFlagValues</include>
-											<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.2),,.png]</texture>
-											<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.2))</visible>
-											<visible>!String.IsEqual(ListItem.Property(AudioLanguage.1),ListItem.Property(AudioLanguage.2))</visible>
-										</control>
-										<control type="image">
-											<width>30</width>
-											<height>30</height>
-											<include>MediaFlagValues</include>
-											<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.3),,.png]</texture>
-											<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
-											<visible>!String.IsEqual(ListItem.Property(AudioLanguage.1),ListItem.Property(AudioLanguage.3))</visible>
-											<visible>!String.IsEqual(ListItem.Property(AudioLanguage.2),ListItem.Property(AudioLanguage.3))</visible>
-										</control>
+										<height>30</height>
+										<aspectratio>keep</aspectratio>
+										<colordiffuse>grey</colordiffuse>
+										<texture>flags/audio.png</texture>
+										<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1)) | [!String.IsEmpty(ListItem.Property(AudioLanguage.2)) + !String.IsEqual(ListItem.Property(AudioLanguage.1),ListItem.Property(AudioLanguage.2))]</visible>
 									</control>
-									<control type="grouplist">
-										<top>15</top>
-										<height>90</height>
+									<control type="image">
 										<width>30</width>
-										<itemgap>-5</itemgap>
-										<visible>String.IsEqual(Skin.String(LanguageFlags),2) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
-										<control type="image">
-											<width>30</width>
-											<height>30</height>
-											<aspectratio>keep</aspectratio>
-											<colordiffuse>grey</colordiffuse>
-											<texture>flags/subtitles.png</texture>
-											<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1)) | [!String.IsEmpty(ListItem.Property(SubtitleLanguage.2)) + !String.IsEqual(ListItem.Property(SubtitleLanguage.1),ListItem.Property(SubtitleLanguage.2))]</visible>
-										</control>
-										<control type="image">
-											<width>30</width>
-											<height>30</height>
-											<include>MediaFlagValues</include>
-											<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.1),,.png]</texture>
-											<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
-										</control>
-										<control type="image">
-											<width>30</width>
-											<height>30</height>
-											<include>MediaFlagValues</include>
-											<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.2),,.png]</texture>
-											<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.2)) + !String.IsEqual(ListItem.Property(SubtitleLanguage.2),ListItem.Property(SubtitleLanguage.1))</visible>
-										</control>
-										<control type="image">
-											<width>30</width>
-											<height>30</height>
-											<include>MediaFlagValues</include>
-											<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.3),,.png]</texture>
-											<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
-											<visible>!String.IsEqual(ListItem.Property(SubtitleLanguage.3),ListItem.Property(SubtitleLanguage.1))</visible>
-											<visible>!String.IsEqual(ListItem.Property(SubtitleLanguage.3),ListItem.Property(SubtitleLanguage.2))</visible>
-										</control>
+										<height>30</height>
+										<include>MediaFlagValues</include>
+										<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.1),,.png]</texture>
+										<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
 									</control>
-									<control type="group">
-										<visible>[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEmpty(ListItem.Property(TotalSeasons))</visible>
-										<width>200</width>
-										<left>-20</left>
-										<control type="label">
-											<top>2</top>
-											<height>60</height>
-											<align>center</align>
-											<label>$INFO[ListItem.Property(TotalSeasons)]</label>
-											<font>font48_bold</font>
-											<wrapmultiline>true</wrapmultiline>
-											<textcolor>grey</textcolor>
-										</control>
-										<control type="label">
-											<top>52</top>
-											<height>30</height>
-											<align>center</align>
-											<label>[LOWERCASE]$VAR[OneOrMoreSeasonsVar][/LOWERCASE]</label>
-											<font>font12</font>
-											<textcolor>grey</textcolor>
-										</control>
+									<control type="image">
+										<width>30</width>
+										<height>30</height>
+										<include>MediaFlagValues</include>
+										<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.2),,.png]</texture>
+										<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.2))</visible>
+										<visible>!String.IsEqual(ListItem.Property(AudioLanguage.1),ListItem.Property(AudioLanguage.2))</visible>
 									</control>
-									<control type="group">
-										<visible>[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEmpty(ListItem.Property(TotalEpisodes))</visible>
-										<width>200</width>
-										<control type="label">
-											<top>2</top>
-											<height>60</height>
-											<align>center</align>
-											<label>$INFO[ListItem.Property(TotalEpisodes)]</label>
-											<font>font48_bold</font>
-											<wrapmultiline>true</wrapmultiline>
-											<textcolor>grey</textcolor>
-										</control>
-										<control type="label">
-											<top>52</top>
-											<height>30</height>
-											<align>center</align>
-											<label>[LOWERCASE]$VAR[OneOrMoreEpisodesVar][/LOWERCASE]</label>
-											<font>font12</font>
-											<textcolor>grey</textcolor>
-										</control>
+									<control type="image">
+										<width>30</width>
+										<height>30</height>
+										<include>MediaFlagValues</include>
+										<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(AudioLanguage.3),,.png]</texture>
+										<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
+										<visible>!String.IsEqual(ListItem.Property(AudioLanguage.1),ListItem.Property(AudioLanguage.3))</visible>
+										<visible>!String.IsEqual(ListItem.Property(AudioLanguage.2),ListItem.Property(AudioLanguage.3))</visible>
 									</control>
-									<control type="group">
-										<visible>[[String.IsEqual(ListItem.DBTYPE,tvshow)] | [String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.Property(TotalEpisodes),ListItem.Property(UnWatchedEpisodes))] + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes))]</visible>
-										<width>200</width>
-										<control type="label">
-											<top>2</top>
-											<height>60</height>
-											<align>center</align>
-											<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
-											<font>font48_bold</font>
-											<wrapmultiline>true</wrapmultiline>
-											<textcolor>grey</textcolor>
-										</control>
-										<control type="label">
-											<top>52</top>
-											<height>30</height>
-											<align>center</align>
-											<label>[LOWERCASE]$LOCALIZE[16101][/LOWERCASE]</label>
-											<font>font12</font>
-											<textcolor>grey</textcolor>
-										</control>
+								</control>
+								<control type="grouplist">
+									<top>15</top>
+									<height>90</height>
+									<width>30</width>
+									<itemgap>-5</itemgap>
+									<visible>String.IsEqual(Skin.String(LanguageFlags),2) | String.IsEqual(Skin.String(LanguageFlags),3)</visible>
+									<control type="image">
+										<width>30</width>
+										<height>30</height>
+										<aspectratio>keep</aspectratio>
+										<colordiffuse>grey</colordiffuse>
+										<texture>flags/subtitles.png</texture>
+										<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1)) | [!String.IsEmpty(ListItem.Property(SubtitleLanguage.2)) + !String.IsEqual(ListItem.Property(SubtitleLanguage.1),ListItem.Property(SubtitleLanguage.2))]</visible>
+									</control>
+									<control type="image">
+										<width>30</width>
+										<height>30</height>
+										<include>MediaFlagValues</include>
+										<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.1),,.png]</texture>
+										<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
+									</control>
+									<control type="image">
+										<width>30</width>
+										<height>30</height>
+										<include>MediaFlagValues</include>
+										<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.2),,.png]</texture>
+										<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.2)) + !String.IsEqual(ListItem.Property(SubtitleLanguage.2),ListItem.Property(SubtitleLanguage.1))</visible>
+									</control>
+									<control type="image">
+										<width>30</width>
+										<height>30</height>
+										<include>MediaFlagValues</include>
+										<texture>$VAR[PathFlagsLanguage]$INFO[ListItem.Property(SubtitleLanguage.3),,.png]</texture>
+										<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
+										<visible>!String.IsEqual(ListItem.Property(SubtitleLanguage.3),ListItem.Property(SubtitleLanguage.1))</visible>
+										<visible>!String.IsEqual(ListItem.Property(SubtitleLanguage.3),ListItem.Property(SubtitleLanguage.2))</visible>
+									</control>
+								</control>
+								<control type="group">
+									<visible>[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEmpty(ListItem.Property(TotalSeasons))</visible>
+									<width>200</width>
+									<left>-20</left>
+									<control type="label">
+										<top>2</top>
+										<height>60</height>
+										<align>center</align>
+										<label>$INFO[ListItem.Property(TotalSeasons)]</label>
+										<font>font48_bold</font>
+										<wrapmultiline>true</wrapmultiline>
+										<textcolor>grey</textcolor>
+									</control>
+									<control type="label">
+										<top>52</top>
+										<height>30</height>
+										<align>center</align>
+										<label>[LOWERCASE]$VAR[OneOrMoreSeasonsVar][/LOWERCASE]</label>
+										<font>font12</font>
+										<textcolor>grey</textcolor>
+									</control>
+								</control>
+								<control type="group">
+									<visible>[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEmpty(ListItem.Property(TotalEpisodes))</visible>
+									<width>200</width>
+									<control type="label">
+										<top>2</top>
+										<height>60</height>
+										<align>center</align>
+										<label>$INFO[ListItem.Property(TotalEpisodes)]</label>
+										<font>font48_bold</font>
+										<wrapmultiline>true</wrapmultiline>
+										<textcolor>grey</textcolor>
+									</control>
+									<control type="label">
+										<top>52</top>
+										<height>30</height>
+										<align>center</align>
+										<label>[LOWERCASE]$VAR[OneOrMoreEpisodesVar][/LOWERCASE]</label>
+										<font>font12</font>
+										<textcolor>grey</textcolor>
+									</control>
+								</control>
+								<control type="group">
+									<visible>[[String.IsEqual(ListItem.DBTYPE,tvshow)] | [String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.Property(TotalEpisodes),ListItem.Property(UnWatchedEpisodes))] + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes))]</visible>
+									<width>200</width>
+									<control type="label">
+										<top>2</top>
+										<height>60</height>
+										<align>center</align>
+										<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
+										<font>font48_bold</font>
+										<wrapmultiline>true</wrapmultiline>
+										<textcolor>grey</textcolor>
+									</control>
+									<control type="label">
+										<top>52</top>
+										<height>30</height>
+										<align>center</align>
+										<label>[LOWERCASE]$LOCALIZE[16101][/LOWERCASE]</label>
+										<font>font12</font>
+										<textcolor>grey</textcolor>
 									</control>
 								</control>
 							</control>
 						</control>
-						<include condition="String.IsEqual(ListItem.Property(item.type),person)">ExtendedInfoPersonList</include>
-						<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.Property(item.type),person)">DefaultActorList</include>
-						<include condition="String.IsEqual(ListItem.DBTYPE,set)">DefaultSetList</include>
-						<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.Property(item.type),person)">CustomActorList</include>
-						<include condition="System.AddonIsEnabled(script.skinvariables) + Skin.HasSetting(Enable.ExtendedInfoIntergration) + String.IsEqual(ListItem.DBTYPE,movie)">ExtendedInfoMovieLists</include>
-						<include condition="String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEmpty(ListItem.SetID)">ExtendedMovieSetPanel</include>
-						<include condition="Skin.HasSetting(Enable.ExtendedInfoTVIntergration) + String.IsEqual(ListItem.DBTYPE,tvshow)">ExtendedInfoSeriesLists</include>
-						<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) + Integer.IsGreater(ListItem.Property(TotalSeasons),1)">ExtendedSeasonPanel</include>
 					</control>
+					<include condition="String.IsEqual(ListItem.Property(item.type),person)">ExtendedInfoPersonList</include>
+					<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.Property(item.type),person)">DefaultActorList</include>
+					<include condition="String.IsEqual(ListItem.DBTYPE,set)">DefaultSetList</include>
+					<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.Property(item.type),person)">CustomActorList</include>
+					<include condition="System.AddonIsEnabled(script.skinvariables) + Skin.HasSetting(Enable.ExtendedInfoIntergration) + String.IsEqual(ListItem.DBTYPE,movie)">ExtendedInfoMovieLists</include>
+					<include condition="String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEmpty(ListItem.SetID)">ExtendedMovieSetPanel</include>
+					<include condition="Skin.HasSetting(Enable.ExtendedInfoTVIntergration) + String.IsEqual(ListItem.DBTYPE,tvshow)">ExtendedInfoSeriesLists</include>
+					<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) + Integer.IsGreater(ListItem.Property(TotalSeasons),1)">ExtendedSeasonPanel</include>
 				</control>
 			</control>
 		</control>

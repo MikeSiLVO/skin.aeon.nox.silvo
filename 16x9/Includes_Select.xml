@@ -632,13 +632,6 @@
 			<onclick condition="Window.IsActive(videos)">SendClick(videos,8)</onclick>
 			<onclick condition="Window.IsActive(Home)">RunScript(script.skinvariables,run_dialog=input,heading=search library,"executebuiltin=SetProperty(library_search_string,{v},Home)||ActivateWindow(1125)")</onclick>
 		</item>
-		<!-- <item>
-			<label>$LOCALIZE[31456]</label>
-			<onclick>Dialog.Close(1129)</onclick>
-			<onclick condition="!System.HasAddon(script.globalsearch)">InstallAddon(script.globalsearch)</onclick>
-			<onclick condition="System.HasAddon(script.globalsearch) + !System.AddonIsEnabled(script.globalsearch)">EnableAddon(script.globalsearch)</onclick>
-			<onclick condition="System.AddonIsEnabled(script.globalsearch)">RunScript(script.globalsearch)</onclick>
-		</item> -->
 		<item>
 			<label>$LOCALIZE[31457]</label>
 			<onclick>Dialog.Close(1129)</onclick>
@@ -648,18 +641,14 @@
 		</item>
 		<item>
 			<label>$LOCALIZE[31458] $LOCALIZE[20338]</label>
-			<onclick>ClearProperty(tmdb_search_string,Home)</onclick>
 			<onclick>Dialog.Close(1129)</onclick>
 			<onclick>RunScript(script.skinvariables,run_dialog=input,heading=search movie,"executebuiltin=SetProperty(tmdb_movie_search_string,{v},Home)||ActivateWindow(1107)")</onclick>
 			<visible>System.AddonIsEnabled(plugin.video.themoviedb.helper)</visible>
 		</item>
 		<item>
 			<label>$LOCALIZE[31458] $LOCALIZE[20364]</label>
-			<onclick>ClearProperty(tmdb_search_type,Home)</onclick>
-			<onclick>ClearProperty(tmdb_search_string,Home)</onclick>
 			<onclick>Dialog.Close(1129)</onclick>
-			<onclick>SetProperty(tmdb_search_type,tv,Home)</onclick>
-			<onclick>RunScript(script.skinvariables,run_dialog=input,heading=search tv show,"executebuiltin=SetProperty(tmdb_search_string,{v},Home)||ActivateWindow(1107)")</onclick>
+			<onclick>RunScript(script.skinvariables,run_dialog=input,heading=search tv show,"executebuiltin=SetProperty(tmdb_tv_search_string,{v},Home)||ActivateWindow(1107)")</onclick>
 			<visible>System.AddonIsEnabled(plugin.video.themoviedb.helper)</visible>
 		</item>
 	</include>
@@ -672,10 +661,10 @@
 		</item>
 		<item>
 			<label>$LOCALIZE[31149]</label>
+			<onclick>Skin.TimerStart(startbusyspinner)</onclick>
+			<onclick>SetProperty(tmdb_person_search_string,$INFO[Window(Home).Property(ActorName)],Home)</onclick>
 			<onclick>Dialog.Close(1129)</onclick>
-			<onclick condition="!String.IsEmpty(Window(Home).Property(ActorName))">RunScript(plugin.video.themoviedb.helper,add_query='$ESCINFO[Window(Home).Property(ActorName)]',type=person,call_auto=1111)</onclick>
-			<!-- <onclick>ActivateWindow(1109)</onclick> -->
-			<!-- <onclick>ClearProperty(person_id,Home)</onclick> -->
+			<onclick>ActivateWindow(1107)</onclick>
 		</item>
 	</include>
 	<include name="SelectMainMenuLayout">
