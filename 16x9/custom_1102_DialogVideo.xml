@@ -40,22 +40,22 @@
 		</control>
 		<!-- Poster Side -->
 		<control type="group">
-			<animation effect="slide" start="-730,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
+			<animation effect="slide" start="-730,0" end="0,0" time="500" delay="250" tween="quadratic">WindowOpen</animation>
 			<animation effect="slide" end="-730,0" time="500" tween="quadratic">WindowClose</animation>
-			<animation effect="slide" start="-730,0" end="0,0" delay="250" time="500" tween="quadratic" condition="![Container(4800).IsUpdating + !Window.IsVisible(1103)]">Conditional</animation>
-			<animation effect="slide" end="-730,0" time="500" tween="quadratic" condition="Container(4800).IsUpdating + !Window.IsVisible(1103)">Conditional</animation>
+			<animation effect="slide" start="-730,0" end="0,0" time="500" tween="quadratic" condition="![Container(4800).IsUpdating + !Window.IsVisible(1103)] + !Window.IsVisible(1109)">Conditional</animation>
+			<animation effect="slide" end="-730,0" time="500" tween="quadratic" condition="Container(4800).IsUpdating + !Window.IsVisible(1103) + Window.IsVisible(1109)">Conditional</animation>
 			<width>720</width>
 			<height>100%</height>
 			<include content="InfoPoster">
-				<param name="imagepath">$INFO[Window(Home).Property(item_poster)]</param>
+				<param name="texture">$INFO[Window(Home).Property(item_poster)]</param>
 			</include>
 		</control>
 		<!-- Details Side -->
 		<control type="group">
-			<animation effect="slide" start="1210,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
+			<animation effect="slide" start="1210,0" end="0,0" time="500" delay="250" tween="quadratic">WindowOpen</animation>
 			<animation effect="slide" end="1210,0" time="500" tween="quadratic">WindowClose</animation>
-			<animation effect="slide" start="1210,0" end="0,0" delay="250" time="500" tween="quadratic" condition="![Container(4800).IsUpdating + !Window.IsVisible(1103)]">Conditional</animation>
-			<animation effect="slide" end="1210,0" time="500" tween="quadratic" condition="Container(4800).IsUpdating + !Window.IsVisible(1103)">Conditional</animation>
+			<animation effect="slide" start="1210,0" end="0,0" time="500" tween="quadratic" condition="![Container(4800).IsUpdating + !Window.IsVisible(1103)] + !Window.IsVisible(1109)">Conditional</animation>
+			<animation effect="slide" end="1210,0" time="500" tween="quadratic" condition="Container(4800).IsUpdating + !Window.IsVisible(1103) + Window.IsVisible(1109)">Conditional</animation>
 			<left>720</left>
 			<control type="group">
 				<width>1200</width>
@@ -182,7 +182,6 @@
 							<param name="label">$VAR[CustomDurationVar]</param>
 							<param name="visible">!String.IsEmpty(Container(4800).ListItem.Duration)</param>
 						</include>
-						<!-- Episode Count -->
 						<!-- MPAA -->
 						<include content="InfoMPAA">
 							<param name="texture">$VAR[CustomRatingFlagVar]</param>
@@ -233,7 +232,6 @@
 								<label>$INFO[Container(4800).ListItem.Top250, #]</label>
 							</control>
 						</control>
-						<!-- Extended Ratings -->
 						<!-- RT Critic Rating -->
 						<control type="grouplist">
 							<visible>!String.IsEmpty(Container(4800).ListItem.Property(ratings.tomatometerallcritics.rating)) | !String.IsEmpty(Container(4801).ListItem.Property(RottenTomatoes_Rating))</visible>

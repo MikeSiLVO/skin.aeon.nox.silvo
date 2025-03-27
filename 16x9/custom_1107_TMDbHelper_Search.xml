@@ -1,110 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<window id="1107" type="window">
-	<onload>Control.SetFocus(11070,0)</onload>
-	<defaultcontrol always="true">11070</defaultcontrol>
-	<onload condition="String.IsEmpty(Window(Home).Property(tmdb_movie_search_string)) + String.IsEmpty(Window(Home).Property(tmdb_tv_search_string))">Action(Close)</onload>
+<window id="1107" type="dialog">
+	<defaultcontrol always="true">90100</defaultcontrol>
+	<onload>Skin.TimerStart(startbusyspinner)</onload>
+	<onload condition="String.IsEmpty(Window(Home).Property(tmdb_movie_search_string)) + String.IsEmpty(Window(Home).Property(tmdb_tv_search_string)) + String.IsEmpty(Window(Home).Property(tmdb_person_search_string))">Action(Close)</onload>
 	<onunload>ClearProperty(tmdb_movie_search_string,Home)</onunload>
 	<onunload>ClearProperty(tmdb_tv_search_string,Home)</onunload>
+	<onunload>ClearProperty(tmdb_person_search_string,Home)</onunload>
+	<onunload condition="Window.IsVisible(1102) + Window.IsDialogTopmost(1102)">SetFocus(50001)</onunload>
+	<onunload condition="Window.IsVisible(movieinformation) + Window.IsDialogTopmost(movieinformation)">SetFocus(90050)</onunload>
 	<controls>
-		<include>CommonBackground</include>
+		<include>DimBackground</include>
 		<control type="group">
-			<include>WindowOpenCloseAnimation</include>
-			<control type="list" id="11070">
-				<visible allowhiddenfocus="true">Integer.IsGreater(Container(11070).NumItems,0)</visible>
-				<left>20</left>
-				<top>60</top>
-				<width>1880</width>
-				<height>900</height>
-				<preloaditems>2</preloaditems>
-				<scrolltime tween="quadratic" easing="out">300</scrolltime>
-				<onclick>info</onclick>
-				<itemlayout width="1880" height="300">
+			<left>456</left>
+			<top>262</top>
+			<include>DialogOpenCloseAnimation</include>
+			<control type="group">
+				<visible>!Skin.TimerIsRunning(startbusyspinner) + String.IsEmpty(Window(Home).Property(BusySpinner)) + !Container(90100).IsUpdating + !Control.IsVisible(99999)</visible>
+				<animation type="Visible" reversible="false">
+					<effect type="zoom" delay="500" start="150" end="100" center="504,378" time="250" tween="cubic" easing="out" />
+					<effect type="fade" delay="500" end="100" time="100" />
+				</animation>
+				<include content="BackPanel">
+					<param name="left">-4</param>
+					<param name="top">-4</param>
+					<param name="width">1008</param>
+					<param name="height">556</param>
+				</include>
+				<control type="image">
+					<left>1</left>
+					<top>67</top>
+					<width>1000</width>
+					<height>1</height>
+					<texture colordiffuse="grey4">colors/white.png</texture>
+				</control>
+				<control type="label">
+					<width>900</width>
+					<height>70</height>
+					<textoffsetx>15</textoffsetx>
+					<font>font16_title_bold</font>
+					<label>$LOCALIZE[283]</label>
+					<textcolor>dialogheader</textcolor>
+				</control>
+				<control type="button" id="97">
+					<left>940</left>
+					<description>Cancel button</description>
+					<texturefocus />
+					<texturenofocus />
+					<textoffsetx />
+					<width>70</width>
+					<height>70</height>
+					<font>IconMediumMD</font>
+					<textcolor>grey2</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<focusedcolor>$VAR[HighlightBarColor]</focusedcolor>
+					<label></label>
+					<onclick>Dialog.Close(1107)</onclick>
+					<ondown>90100</ondown>
+				</control>
+			</control>
+			<control type="list" id="90100">
+				<top>68</top>
+				<width>1000</width>
+				<height>480</height>
+				<onup>90100</onup>
+				<ondown>90100</ondown>
+				<onleft>97</onleft>
+				<onright>97</onright>
+				<scrolltime tween="quadratic" easing="out">200</scrolltime>
+				<onclick>Dialog.Close(1107)</onclick>
+				<onclick>SetProperty(person_id,$INFO[Container(90100).ListItem.Property(tmdb_id),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_type=person&amp;tmdb_id=],Home)</onclick>
+				<onclick>ActivateWindow(1109)</onclick>
+				<visible allowhiddenfocus="true">!Skin.TimerIsRunning(startbusyspinner) + String.IsEmpty(Window(Home).Property(BusySpinner)) + !Container(90100).IsUpdating + !Control.IsVisible(99999)</visible>
+				<animation type="Visible" reversible="false">
+					<effect type="zoom" delay="500" start="150" end="100" center="504,378" time="250" tween="cubic" easing="out" />
+					<effect type="fade" delay="500" end="100" time="100" />
+				</animation>
+				<itemlayout height="120" width="1000">
 					<control type="image">
-						<left>1</left>
-						<top>1</top>
-						<width>1878</width>
-						<height>298</height>
-						<texture>colors/blank.png</texture>
-						<bordertexture border="1" infill="false">colors/blank.png</bordertexture>
-						<bordersize>1</bordersize>
-					</control>
-					<control type="image">
-						<width>200</width>
-						<height>300</height>
-						<aspectratio aligny="top">scale</aspectratio>
-						<texture background="true" fallback="homewidgets/DefaultMovies_poster.png">$INFO[ListItem.Art(poster)]</texture>
-						<bordertexture border="8">thumbs/shadow.png</bordertexture>
-						<bordersize>4</bordersize>
+						<width>120</width>
+						<height>120</height>
+						<aspectratio>keep</aspectratio>
+						<texture fallback="DefaultActor.png">$INFO[ListItem.Art(poster)]</texture>
+						<bordersize>10</bordersize>
 					</control>
 					<control type="group">
-						<left>240</left>
-						<top>5</top>
+						<left>120</left>
 						<control type="label">
-							<width>1580</width>
-							<height>50</height>
-							<font>font30_title_bold</font>
-							<shadowcolor>shadow</shadowcolor>
-							<label>$INFO[ListItem.Label]</label>
+							<width>880</width>
+							<height>60</height>
+							<textoffsetx>15</textoffsetx>
+							<font>font14</font>
+							<textcolor>grey2</textcolor>
+							<label>$INFO[ListItem.Label]$INFO[ListItem.Property(Department), • [I][LIGHT],[/LIGHT][/I]]$INFO[ListItem.Property(gender),  [LOWERCASE][LIGHT](,)[/LIGHT][/LOWERCASE]]</label>
 						</control>
-						<control type="textbox">
-							<top>45</top>
-							<width>1580</width>
-							<height>120</height>
-							<font>font13</font>
-							<shadowcolor>shadow</shadowcolor>
-							<label>$INFO[ListItem.Plot]</label>
+						<control type="label">
+							<top>50</top>
+							<width>880</width>
+							<height>60</height>
+							<textoffsetx>15</textoffsetx>
+							<font>font14</font>
+							<textcolor>grey2</textcolor>
+							<label>$INFO[ListItem.Property(Known_For.1.Title),$LOCALIZE[31546]: ]$INFO[ListItem.Property(Known_For.2.Title),$COMMA ]$INFO[ListItem.Property(Known_For.3.Title),$COMMA ]$INFO[ListItem.Property(Known_For.4.Title),$COMMA ]</label>
 						</control>
 					</control>
 				</itemlayout>
-				<focusedlayout width="1180" height="300">
+				<focusedlayout height="120" width="1000">
+					<control type="image">
+						<width>1000</width>
+						<height>120</height>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texture>
+						<visible>Control.HasFocus(90100)</visible>
+						<include>VisibleFadeAnimation</include>
+					</control>
 					<control type="group">
-						<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
+						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90100)">Conditional</animation>
 						<control type="image">
-							<left>1</left>
-							<top>1</top>
-							<width>1878</width>
-							<height>298</height>
-							<texture border="2">colors/blank.png</texture>
-							<bordertexture border="2" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
-							<bordersize>2</bordersize>
-						</control>
-						<control type="image">
-							<width>200</width>
-							<height>300</height>
-							<aspectratio aligny="top">scale</aspectratio>
-							<texture background="true" fallback="homewidgets/DefaultMovies_poster.png">$INFO[ListItem.Art(poster)]</texture>
-							<bordertexture border="8">thumbs/shadow.png</bordertexture>
-							<bordersize>4</bordersize>
+							<width>120</width>
+							<height>120</height>
+							<aspectratio>keep</aspectratio>
+							<texture fallback="DefaultActor.png">$INFO[ListItem.Art(poster)]</texture>
+							<bordersize>10</bordersize>
 						</control>
 						<control type="group">
-							<left>240</left>
-							<top>5</top>
+							<left>120</left>
 							<control type="label">
-								<width>1580</width>
-								<height>50</height>
-								<font>font30_title_bold</font>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<shadowcolor>shadow</shadowcolor>
-								<label>$INFO[ListItem.Label]</label>
+								<width>880</width>
+								<height>60</height>
+								<textoffsetx>15</textoffsetx>
+								<font>font14</font>
+								<scroll>true</scroll>
+								<label>$INFO[ListItem.Label]$INFO[ListItem.Property(Department), • [I][LIGHT],[/LIGHT][/I]]$INFO[ListItem.Property(gender),  [LOWERCASE][LIGHT](,)[/LIGHT][/LOWERCASE]]</label>
 							</control>
-							<control type="textbox">
-								<top>45</top>
-								<width>1580</width>
-								<height>120</height>
-								<font>font13</font>
-								<shadowcolor>shadow</shadowcolor>
-								<label>$INFO[ListItem.Plot]</label>
+							<control type="label">
+								<top>50</top>
+								<width>880</width>
+								<height>60</height>
+								<textoffsetx>15</textoffsetx>
+								<font>font14</font>
+								<scroll>true</scroll>
+								<label>$INFO[ListItem.Property(Known_For.1.Title),$LOCALIZE[31546]: ]$INFO[ListItem.Property(Known_For.2.Title),$COMMA ]$INFO[ListItem.Property(Known_For.3.Title),$COMMA ]$INFO[ListItem.Property(Known_For.4.Title),$COMMA ]</label>
 							</control>
 						</control>
 					</control>
 				</focusedlayout>
-				<content browse="never">$VAR[TMDbHSearchContentVar]</content>
+				<content browse="never" sortby="path">$VAR[TMDbHSearchContentVar]</content>
 			</control>
 		</control>
 		<include>Topbar</include>
 		<include content="BusySpinner">
-			<param name="visible">Container(11070).IsUpdating | [String.IsEmpty(Window(Home).Property(tmdb_movie_search_string)) + String.IsEmpty(Window(Home).Property(tmdb_tv_search_string))]</param>
-			<param name="texture">colors/black.png</param>
+			<param name="visible">Skin.TimerIsRunning(startbusyspinner) | !String.IsEmpty(Window(Home).Property(BusySpinner)) | Container(90100).IsUpdating</param>
 		</include>
 		<include>DebugWindow</include>
 	</controls>

@@ -19,7 +19,7 @@
 	<variable name="SkinVariablesCastPanelContentVar">
 		<value condition="String.IsEqual(ListItem.DBTYPE,season)">plugin://script.skinvariables/?info=get_dotted_properties&amp;source=Container(4501).ListItem&amp;string=cast.{y}.&amp;infoproperties=name/role/thumbnail&amp;ymax=200&amp;label=name&amp;thumb=thumbnail&amp;no_label_dupes=true&amp;reload=$INFO[Container(4501).ListItem.DBID]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,set)">plugin://script.skinvariables/?info=get_dotted_properties&amp;source=Container(4501).ListItem&amp;string=movies.{x}.item.cast.{y}.&amp;infoproperties=name/role/thumbnail&amp;label=name&amp;thumb=thumbnail&amp;xmax=15&amp;ymax=20&amp;no_label_dupes=true&amp;reload=$INFO[Container(4501).ListItem.DBID]</value>
-		<value>plugin://script.skinvariables/?info=get_container_labels&amp;containers=50&amp;infolabel=Label&amp;thumb=Icon&amp;label2=Label2&amp;reload=$INFO[ListItem.DBID]&amp;reload=$INFO[Window(Home).Property(TMDbHelper.Recommendations.HideInfo)]</value>
+		<value>plugin://script.skinvariables/?info=get_container_labels&amp;containers=50&amp;infolabel=Label&amp;thumb=Icon&amp;label2=Label2&amp;reload=$INFO[ListItem.DBID]&amp;reload=$INFO[Window(Home).Property(TMDbHelper.Recommendations.HideInfo)]&amp;reload=$INFO[Listitem.IMDBNumber]</value>
 	</variable>
 	<variable name="SkinVariablesCustomInfoContentVar">
 		<value condition="String.IsEqual(Window(Home).Property(item_dbtype),movie)">$INFO[Window(Home).Property(item_dbid),plugin://script.skinvariables/?info=get_dbitem_movie_details&amp;dbid=]</value>
@@ -105,6 +105,7 @@
 	<variable name="TMDbHSearchContentVar">
 		<value condition="!String.IsEmpty(Window(Home).Property(tmdb_movie_search_string))">$INFO[Window(Home).Property(tmdb_movie_search_string),plugin://plugin.video.themoviedb.helper?info=search&amp;type=movie&amp;query=,&amp;nextpage=false]</value>
 		<value condition="!String.IsEmpty(Window(Home).Property(tmdb_tv_search_string))">$INFO[Window(Home).Property(tmdb_tv_search_string),plugin://plugin.video.themoviedb.helper?info=search&amp;type=tv&amp;query=,&amp;nextpage=false]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(tmdb_person_search_string))">$INFO[Window(Home).Property(tmdb_person_search_string),plugin://plugin.video.themoviedb.helper?info=search&amp;type=person&amp;query=,&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1]</value>
 	</variable>
 	<variable name="SeasonsBackgroundPathVar">
 		<value condition="String.IsEqual(Skin.String(SeasonsBackground),MakeItSnow)">snow/snow</value>
