@@ -56,11 +56,14 @@
 				<orientation>horizontal</orientation>
 				<preloaditems>2</preloaditems>
 				<scrolltime tween="quadratic" easing="out">300</scrolltime>
+				<onclick condition="Control.HasFocus(50001)">ClearProperty(DirectorID,Home)</onclick>
+				<onclick condition="Window.IsVisible(1109) + [Control.HasFocus(90050) | Control.HasFocus(50001)]">Dialog.Close(1109)</onclick>
+				<onclick condition="Window.IsVisible(1102) + [Control.HasFocus(90008) | Control.HasFocus(90009) | Control.HasFocus(900010) | Control.HasFocus(900011) | Control.HasFocus(900012)]">Skin.TimerStart(resetfocus1102)</onclick>
 				<include content="ExtendedInfoOnclick" condition="$PARAM[do_onclick]">
 					<param name="id">$PARAM[id]</param>
 				</include>
 				<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo) + [Control.HasFocus(50002) | Control.HasFocus(50003)]">RunScript(plugin.video.themoviedb.helper,blur_image='"$INFO[Container($PARAM[id]).ListItem.Art(poster)]"',prefix=custom_1102)</onclick>
-				<onclick>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_actor&amp;window_id=Home&amp;&amp;$INFO[Container(50001).ListItem.Label]")</onclick>
+				<onclick condition="Control.HasFocus(50001)">RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_actor&amp;window_id=Home&amp;&amp;$INFO[Container(50001).ListItem.Label]")</onclick>
 				<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Control.HasFocus(50001)">RunPlugin(plugin://plugin.video.themoviedb.helper?info=search&amp;type=person&amp;query=$INFO[Container(50001).ListItem.Label])</onclick>
 				<onclick condition="Control.HasFocus(50001)">SetProperty(tmdb_person_search_string,$INFO[Container(50001).ListItem.Label],Home)</onclick>
 				<onclick condition="Control.HasFocus(50001)">ActivateWindow(1107)</onclick>
@@ -339,6 +342,7 @@
 			<height>480</height>
 			<orientation>horizontal</orientation>
 			<preloaditems>2</preloaditems>
+			<onclick>ClearProperty(DirectorID,Home)</onclick>
 			<onclick>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_actor&amp;window_id=Home&amp;&amp;$INFO[Container(90050).ListItem.Label]")</onclick>
 			<onclick condition="!String.IsEmpty(Container(90050).ListItem.Property(tmdb_id))">SetProperty(person_id,$INFO[Container(90050).ListItem.Property(tmdb_id),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_type=person&amp;tmdb_id=],Home)</onclick>
 			<onclick condition="String.IsEmpty(Container(90050).ListItem.Property(tmdb_id))">SetProperty(ActorName,$INFO[Container(90050).ListItem.Label],Home)</onclick>
@@ -516,21 +520,21 @@
 			<param name="label">$INFO[Container(990010).ListItem.Property(Character)]</param>
 			<param name="labelVisibility">!String.IsEmpty(Container(990010).ListItem.Property(Character))</param>
 			<param name="do_onclick">false</param>
-			<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_movies&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(TMDb_ID)]</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_movies&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(TMDb_ID)]$VAR[TMDbHParamsVar]</param>
 		</include>
 		<include content="ExtendedInfoListLayout">
 			<param name="id">990011</param>
 			<param name="label">$INFO[Container(990011).ListItem.Property(Character)]</param>
 			<param name="labelVisibility">!String.IsEmpty(Container(990011).ListItem.Property(Character))</param>
 			<param name="do_onclick">false</param>
-			<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_tvshows&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(TMDb_ID)]</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_tvshows&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(TMDb_ID)]$VAR[TMDbHParamsVar]</param>
 		</include>
 		<include content="ExtendedInfoListLayout">
 			<param name="id">990012</param>
 			<param name="label">$INFO[Container(990012).ListItem.Property(Job)]</param>
 			<param name="labelVisibility">!String.IsEmpty(Container(990012).ListItem.Property(Job))</param>
 			<param name="do_onclick">false</param>
-			<param name="content">plugin://plugin.video.themoviedb.helper?info=crew_in_movies&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(TMDb_ID)]</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=crew_in_movies&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(TMDb_ID)]$VAR[TMDbHParamsVar]</param>
 		</include>
 		<include content="ExtendedInfoListLayout">
 			<param name="id">990020</param>
@@ -539,13 +543,13 @@
 		</include>
 	</include>
 	<include name="ExtendedInfoOnclick">
-		<onclick condition="!Window.IsVisible(1102)">SetProperty(item_origin,$INFO[System.CurrentControlID],Home)</onclick>
+		<onclick condition="Window.IsDialogTopMost(movieinformation)">SetProperty(item_origin,$INFO[System.CurrentControlID],Home)</onclick>
 		<onclick>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_title_1102&amp;window_id=Home&amp;&amp;$INFO[Container($PARAM[id]).ListItem.Title]")</onclick>
 		<onclick>SetProperty(item_dbtype,$INFO[Container($PARAM[id]).Listitem.DBTYPE],Home)</onclick>
 		<onclick>SetProperty(item_dbid,$INFO[Container($PARAM[id]).Listitem.DBID],Home)</onclick>
 		<onclick>SetProperty(item_poster,$INFO[Container($PARAM[id]).Listitem.Art(poster)],Home)</onclick>
 		<onclick>SetProperty(item_filename,$INFO[Container($PARAM[id]).Listitem.FileName],Home)</onclick>
-		<onclick>SetProperty(item_ext,$INFO[Container($PARAM[id]).Listitem.FileExtension,Home)</onclick>
+		<onclick>SetProperty(item_ext,$INFO[Container($PARAM[id]).Listitem.FileExtension],Home)</onclick>
 		<onclick condition="Container($PARAM[id]).ListItem.IsResumable + !String.IsEqual(Container($PARAM[id]).ListItem.PercentPlayed,0)">SetProperty(item_percentplayed,$INFO[Container($PARAM[id]).ListItem.PercentPlayed,,%],Home)</onclick>
 		<onclick condition="Container($PARAM[id]).ListItem.IsResumable + !String.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedEpisodePercent),0)">SetProperty(item_percentplayed,$INFO[Container($PARAM[id]).ListItem.Property(WatchedEpisodePercent),,%],Home)</onclick>
 		<onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.UniqueID(tmdb))">SetProperty(tmdb_id,$INFO[Container($PARAM[id]).ListItem.UniqueID(tmdb),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_id=],Home)</onclick>
@@ -565,19 +569,19 @@
 		</include>
 		<include content="ExtendedInfoListLayout">
 			<param name="id">900010</param>
-			<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_movies&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]]&amp;sort_key=vote_count</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_movies&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]$VAR[TMDbHParamsVar]</param>
 			<param name="label">$INFO[Container(900010).ListItem.Property(Character)]</param>
 			<param name="labelVisibility">!String.IsEmpty(Container(900010).ListItem.Property(Character))</param>
 		</include>
 		<include content="ExtendedInfoListLayout">
 			<param name="id">900011</param>
-			<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_tvshows&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=stars_in_tvshows&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]$VAR[TMDbHParamsVar]</param>
 			<param name="label">$INFO[Container(900011).ListItem.Property(Character)]</param>
 			<param name="labelVisibility">!String.IsEmpty(Container(900011).ListItem.Property(Character))</param>
 		</include>
 		<include content="ExtendedInfoListLayout">
 			<param name="id">900012</param>
-			<param name="content">plugin://plugin.video.themoviedb.helper?info=crew_in_movies&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]</param>
+			<param name="content">plugin://plugin.video.themoviedb.helper?info=crew_in_movies&amp;type=person&amp;tmdb_id=$INFO[Container(11090).ListItem.Property(TMDb_ID)]$VAR[TMDbHParamsVar]</param>
 			<param name="label">$INFO[Container(900012).ListItem.Property(Job)]</param>
 			<param name="labelVisibility">!String.IsEmpty(Container(900012).ListItem.Property(Job))</param>
 		</include>
@@ -945,7 +949,6 @@
 		<item>
 			<label>$INFO[ListItem.Director]</label>
 			<label2>$LOCALIZE[20339]:</label2>
-			<onfocus>ClearProperty(person_id,Home)</onfocus>
 			<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SendClick(2003,13)</onclick>
 			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(ActorName,$INFO[ListItem.Director],Home)</onclick>
 			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(DirectorID,True,Home)</onclick>
@@ -1000,8 +1003,10 @@
 			<label2>$LOCALIZE[20339]:</label2>
 			<onfocus>ClearProperty(person_id,Home)</onfocus>
 			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsGreater(Container(4800).ListItem.Property(director.count),1)">RunScript(plugin.video.themoviedb.helper,add_query='"$INFO[Container(4800).ListItem.Property(director.collection)]"',type=person,call_auto=1111)</onclick>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsLess(Container(4800).ListItem.Property(director.count),2)">SetProperty(person_id,$INFO[Container(4801).ListItem.Property(Director.1.TMDb_ID),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_type=person&amp;tmdb_id=],Home)</onclick>
-			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsLess(Container(4800).ListItem.Property(director.count),2)">ActivateWindow(1109)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsLess(Container(4800).ListItem.Property(director.count),2)">SetProperty(DirectorID,True,Home)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsLess(Container(4800).ListItem.Property(director.count),2)">Skin.TimerStart(startbusyspinner)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsLess(Container(4800).ListItem.Property(director.count),2)">SetProperty(tmdb_person_search_string,$INFO[Container(4800).ListItem.Director],Home)</onclick>
+			<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Integer.IsLess(Container(4800).ListItem.Property(director.count),2)">ActivateWindow(1107)</onclick>
 			<visible>!String.IsEmpty(Container(4800).ListItem.Director)</visible>
 		</item>
 		<item>

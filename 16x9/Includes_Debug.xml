@@ -168,17 +168,36 @@
 					<label>$INFO[Container.ListItem.FolderPath,[B],[/B]]</label>
 					<visible>!String.IsEmpty(Container.ListItem.FolderPath)</visible>
 				</control>
-				<!-- <control type="button">
-					<description>Test Debug Label</description>
+				<control type="button">
 					<width>auto</width>
 					<textcolor>chartreuse</textcolor>
 					<shadowcolor>shadow</shadowcolor>
 					<font>font10</font>
 					<texturefocus>colors/black75.png</texturefocus>
 					<texturenofocus>colors/black75.png</texturenofocus>
-					<label></label>
-					<visible></visible>
-				</control> -->
+					<label>Timer startbusyspinner: $INFO[Skin.TimerElapsedSecs(startbusyspinner)]</label>
+					<visible>Skin.TimerIsRunning(startbusyspinner)</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>chartreuse</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font10</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>Timer selectactor: $INFO[Skin.TimerElapsedSecs(selectactor)]</label>
+					<visible>Skin.TimerIsRunning(selectactor)</visible>
+				</control>
+				<control type="button">
+					<width>auto</width>
+					<textcolor>chartreuse</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<font>font10</font>
+					<texturefocus>colors/black75.png</texturefocus>
+					<texturenofocus>colors/black75.png</texturenofocus>
+					<label>Timer resetfocus1102: $INFO[Skin.TimerElapsedSecs(resetfocus1102)]</label>
+					<visible>Skin.TimerIsRunning(resetfocus1102)</visible>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -246,6 +265,7 @@
 		<value condition="Window.IsActive(tvsearch)">tvsearch</value>
 		<value condition="Window.IsActive(tvtimers)">tvtimers</value>
 		<value condition="Window.IsActive(videoplaylist)">videoplaylist</value>
+		<value condition="Window.IsActive(visualisation)">visualisation</value>
 		<value>$INFO[System.CurrentWindow,[LOWERCASE],[/LOWERCASE]]</value>
 	</variable>
 </includes>

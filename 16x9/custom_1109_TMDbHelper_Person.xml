@@ -2,8 +2,9 @@
 <window id="1109" type="dialog">
 	<onload>SetFocus(90003)</onload>
 	<onload>SetFocus(9000)</onload>
-	<onunload condition="Window.IsVisible(movieinformation)">SetFocus(90050)</onunload>
-	<onunload condition="Window.IsVisible(1102)">SetFocus(50001)</onunload>
+	<onunload condition="Window.IsVisible(movieinformation) + !Window.IsVisible(1102) + String.IsEmpty(Window(Home).Property(DirectorID))">SetFocus(90050)</onunload>
+	<onunload condition="Window.IsVisible(1102) + String.IsEmpty(Window(Home).Property(DirectorID))">SetFocus(50001)</onunload>
+	<onunload condition="!String.IsEmpty(Window(Home).Property(DirectorID))">SetFocus(300,0)</onunload>
 	<onunload>ClearProperty(person_id,Home)</onunload>
 	<onunload>ClearProperty(encoded_actor,Home)</onunload>
 	<controls>

@@ -45,14 +45,18 @@
 	</timer>
 	<timer>
 		<name>startbusyspinner</name>
-		<onstart>SetProperty(BusySpinner,True,Home)</onstart>
 		<stop>Window.IsVisible(1107) + !Container(90100).IsUpdating + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(startbusyspinner),1) | !Window.IsVisible(1107)</stop>
-		<onstop>ClearProperty(BusySpinner,Home)</onstop>
 	</timer>
 	<timer>
 		<name>selectactor</name>
-		<start>Window.IsVisible(1107) + !Container(90100).IsUpdating</start>
-		<stop>Integer.IsEqual(Container(90100).NumItems,1) | !Integer.IsEqual(Container(90100).NumItems,1) | !Window.IsVisible(1107)</stop>
+		<start>Window.IsVisible(1107) + Skin.TimerIsRunning(startbusyspinner)</start>
+		<stop>Integer.IsEqual(Container(90100).NumItems,1) | Integer.IsGreater(Container(90100).NumItems,1) | !Window.IsVisible(1107)</stop>
 		<onstop condition="Integer.IsEqual(Container(90100).NumItems,1)">Action(Select)</onstop>
+	</timer>
+	<timer>
+		<name>resetfocus1102</name>
+		<stop>Window.IsVisible(1102) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(resetfocus1102),1)</stop>
+		<onstop>SetFocus(4701)</onstop>
+		<onstop>SetFocus(4610)</onstop>
 	</timer>
 </timers>

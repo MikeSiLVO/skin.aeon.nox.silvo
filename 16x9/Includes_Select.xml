@@ -662,10 +662,11 @@
 		</item>
 		<item>
 			<label>$LOCALIZE[31149]</label>
-			<onclick>Skin.TimerStart(startbusyspinner)</onclick>
-			<onclick>SetProperty(tmdb_person_search_string,$INFO[Window(Home).Property(ActorName)],Home)</onclick>
+			<onclick condition="!String.IsEmpty(Window(Home).Property(DirectorID)) + !String.IsEmpty(Window(Home).Property(split_director.1))">RunScript(plugin.video.themoviedb.helper,add_query='"$INFO[ListItem.Director]"',type=person,call_auto=1111)</onclick>
+			<onclick condition="!String.IsEmpty(Window(Home).Property(DirectorID)) + String.IsEmpty(Window(Home).Property(split_director.1)) | String.IsEmpty(Window(Home).Property(DirectorID))">Skin.TimerStart(startbusyspinner)</onclick>
+			<onclick condition="!String.IsEmpty(Window(Home).Property(DirectorID)) + String.IsEmpty(Window(Home).Property(split_director.1)) | String.IsEmpty(Window(Home).Property(DirectorID))">SetProperty(tmdb_person_search_string,$INFO[Window(Home).Property(ActorName)],Home)</onclick>
 			<onclick>Dialog.Close(1129)</onclick>
-			<onclick>ActivateWindow(1107)</onclick>
+			<onclick condition="!String.IsEmpty(Window(Home).Property(DirectorID)) + String.IsEmpty(Window(Home).Property(split_director.1)) | String.IsEmpty(Window(Home).Property(DirectorID))">ActivateWindow(1107)</onclick>
 		</item>
 	</include>
 	<include name="SelectMainMenuLayout">

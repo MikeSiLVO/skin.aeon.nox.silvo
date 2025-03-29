@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1102" type="dialog">
 	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(plugin.video.themoviedb.helper,blur_image='"$INFO[Window(Home).Property(item_poster)]"',prefix=custom_1102)</onload>
-	<onload>Control.SetFocus(4600,0)</onload>
+	<onload>Control.SetFocus(300,0)</onload>
 	<onload>SetFocus(4701)</onload>
 	<onload>SetFocus(4610)</onload>
 	<onload>ClearProperty(activate_window,Home)</onload>
@@ -14,7 +14,8 @@
 	<onunload>ClearProperty(item_filename,Home)</onunload>
 	<onunload>ClearProperty(item_ext,Home)</onunload>
 	<onunload>ClearProperty(custom_actor,Home)</onunload>
-	<onunload condition="!String.IsEmpty(Window(Home).Property(item_origin))">SetFocus($INFO[Window(Home).Property(item_origin)])</onunload>
+	<onunload condition="!String.IsEmpty(Window(Home).Property(item_origin)) + !Window.IsVisible(1109)">SetFocus($INFO[Window(Home).Property(item_origin)])</onunload>
+	<onunload condition="!String.IsEmpty(Window(Home).Property(1109_origin)) + Window.IsVisible(1109)">SetFocus($INFO[Window(Home).Property(1109_origin)])</onunload>
 	<controls>
 		<include content="SkinVariablesContentList">
 			<param name="id">4800</param>
@@ -42,20 +43,20 @@
 		<control type="group">
 			<animation effect="slide" start="-730,0" end="0,0" time="500" delay="250" tween="quadratic">WindowOpen</animation>
 			<animation effect="slide" end="-730,0" time="500" tween="quadratic">WindowClose</animation>
-			<animation effect="slide" start="-730,0" end="0,0" time="500" tween="quadratic" condition="![Container(4800).IsUpdating + !Window.IsVisible(1103)] + !Window.IsVisible(1109)">Conditional</animation>
-			<animation effect="slide" end="-730,0" time="500" tween="quadratic" condition="Container(4800).IsUpdating + !Window.IsVisible(1103) + Window.IsVisible(1109)">Conditional</animation>
+			<animation effect="slide" start="-730,0" end="0,0" time="500" tween="quadratic" condition="![Container(4800).IsUpdating + !Window.IsVisible(1103)] + !Window.IsDialogTopMost(1109) + !Window.IsDialogTopMost(1107)">Conditional</animation>
+			<animation effect="slide" end="-730,0" time="500" tween="quadratic" condition="Container(4800).IsUpdating + !Window.IsVisible(1103) | Window.IsDialogTopMost(1109) | Window.IsDialogTopMost(1107)">Conditional</animation>
 			<width>720</width>
 			<height>100%</height>
 			<include content="InfoPoster">
-				<param name="texture">$INFO[Window(Home).Property(item_poster)]</param>
+				<param name="texture">$VAR[CustomPosterVar]</param>
 			</include>
 		</control>
 		<!-- Details Side -->
 		<control type="group">
 			<animation effect="slide" start="1210,0" end="0,0" time="500" delay="250" tween="quadratic">WindowOpen</animation>
 			<animation effect="slide" end="1210,0" time="500" tween="quadratic">WindowClose</animation>
-			<animation effect="slide" start="1210,0" end="0,0" time="500" tween="quadratic" condition="![Container(4800).IsUpdating + !Window.IsVisible(1103)] + !Window.IsVisible(1109)">Conditional</animation>
-			<animation effect="slide" end="1210,0" time="500" tween="quadratic" condition="Container(4800).IsUpdating + !Window.IsVisible(1103) + Window.IsVisible(1109)">Conditional</animation>
+			<animation effect="slide" start="1210,0" end="0,0" time="500" tween="quadratic" condition="![Container(4800).IsUpdating + !Window.IsVisible(1103)] + !Window.IsDialogTopMost(1109) + !Window.IsDialogTopMost(1107)">Conditional</animation>
+			<animation effect="slide" end="1210,0" time="500" tween="quadratic" condition="Container(4800).IsUpdating + !Window.IsVisible(1103) | Window.IsDialogTopMost(1109) | Window.IsDialogTopMost(1107)">Conditional</animation>
 			<left>720</left>
 			<control type="group">
 				<width>1200</width>
@@ -318,7 +319,7 @@
 				<include content="InfoDetailsPanel">
 					<param name="window_id">1102</param>
 					<param name="button_id">4700</param>
-					<param name="panel_id">4600</param>
+					<param name="panel_id">300</param>
 					<param name="panel_ondown">4601</param>
 					<param name="include">CustomInfoContentDetails</param>
 				</include>
@@ -354,7 +355,7 @@
 					<top>544</top>
 					<width>585</width>
 					<height>60</height>
-					<onup>Control.SetFocus(4600,0)</onup>
+					<onup>Control.SetFocus(300,0)</onup>
 					<ondown>4702</ondown>
 					<align>right</align>
 					<orientation>horizontal</orientation>
@@ -607,21 +608,18 @@
 						<param name="labelVisibility">true</param>
 						<param name="label">$INFO[ListItem.Property(role)]</param>
 						<param name="do_onclick">false</param>
-						<param name="content">plugin://script.skinvariables/?info=get_dotted_properties&amp;source=Container(4800).ListItem&amp;string=cast.{y}.&amp;infoproperties=name/role/thumbnail&amp;ymax=200&amp;label=name&amp;thumb=thumbnail&amp;no_label_dupes=true&amp;reload=$INFO[Container(4800).ListItem.DBID]</param>
+						<param name="content">plugin://script.skinvariables/?info=get_dotted_properties&amp;source=Container(4800).ListItem&amp;string=cast.{y}.&amp;infoproperties=name/role/thumbnail&amp;ymax=200&amp;label=name&amp;thumb=thumbnail&amp;no_label_dupes=true&amp;reload=$INFO[Container(4800).ListItem.DBID]&amp;reload=$INFO[Container(4800).Listitem.UniqueID(imdb)]&amp;reload=$INFO[Skin.TimerElapsedSecs(resetfocus1102)]</param>
 					</include>
 					<include content="ExtendedInfoListLayout" condition="String.IsEqual(Window(Home).Property(item_dbtype),movie)">
 						<param name="id">50002</param>
-						<param name="do_refresh">true</param>
 						<param name="content">videodb://movies/titles/?xsp={"rules":{"and":[{"field":"director","operator":"is","value":["$INFO[Container(4800).ListItem.Property(director.0)]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title_1102)]"]}]},"type":"movies"}</param>
 					</include>
 					<include content="ExtendedInfoListLayout" condition="String.IsEqual(Window(Home).Property(item_dbtype),movie)">
 						<param name="id">50003</param>
-						<param name="do_refresh">true</param>
 						<param name="content">videodb://movies/titles/?xsp={"rules":{"and":[{"field":"actor","operator":"is","value":["$INFO[Window(Home).Property(custom_actor)]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title_1102)]"]}]},"type":"movies"}</param>
 					</include>
 					<include content="ExtendedInfoListLayout" condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow)">
 						<param name="id">50004</param>
-						<param name="do_refresh">true</param>
 						<param name="content">videodb://tvshows/titles/?xsp={"rules":{"and":[{"field":"actor","operator":"is","value":["$INFO[Window(Home).Property(custom_actor)]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title_1102)]"]}]},"type":"tvshows"}</param>
 					</include>
 				</control>

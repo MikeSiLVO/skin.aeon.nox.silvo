@@ -7,7 +7,8 @@
 	<onunload>ClearProperty(tmdb_tv_search_string,Home)</onunload>
 	<onunload>ClearProperty(tmdb_person_search_string,Home)</onunload>
 	<onunload condition="Window.IsVisible(1102) + Window.IsDialogTopmost(1102)">SetFocus(50001)</onunload>
-	<onunload condition="Window.IsVisible(movieinformation) + Window.IsDialogTopmost(movieinformation)">SetFocus(90050)</onunload>
+	<onunload condition="Window.IsVisible(movieinformation) + Window.IsDialogTopmost(movieinformation) + String.IsEmpty(Window(Home).Property(DirectorID))">SetFocus(90050)</onunload>
+	<onunload condition="Window.IsVisible(movieinformation) + Window.IsDialogTopmost(movieinformation) + !String.IsEmpty(Window(Home).Property(DirectorID))">SetFocus(300,0)</onunload>
 	<controls>
 		<include>DimBackground</include>
 		<control type="group">
@@ -15,7 +16,7 @@
 			<top>262</top>
 			<include>DialogOpenCloseAnimation</include>
 			<control type="group">
-				<visible>!Skin.TimerIsRunning(startbusyspinner) + String.IsEmpty(Window(Home).Property(BusySpinner)) + !Container(90100).IsUpdating + !Control.IsVisible(99999)</visible>
+				<visible>!Skin.TimerIsRunning(startbusyspinner) + !Container(90100).IsUpdating</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="zoom" delay="500" start="150" end="100" center="504,378" time="250" tween="cubic" easing="out" />
 					<effect type="fade" delay="500" end="100" time="100" />
@@ -70,7 +71,7 @@
 				<onclick>Dialog.Close(1107)</onclick>
 				<onclick>SetProperty(person_id,$INFO[Container(90100).ListItem.Property(tmdb_id),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_type=person&amp;tmdb_id=],Home)</onclick>
 				<onclick>ActivateWindow(1109)</onclick>
-				<visible allowhiddenfocus="true">!Skin.TimerIsRunning(startbusyspinner) + String.IsEmpty(Window(Home).Property(BusySpinner)) + !Container(90100).IsUpdating + !Control.IsVisible(99999)</visible>
+				<visible allowhiddenfocus="true">!Skin.TimerIsRunning(startbusyspinner) + !Container(90100).IsUpdating</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="zoom" delay="500" start="150" end="100" center="504,378" time="250" tween="cubic" easing="out" />
 					<effect type="fade" delay="500" end="100" time="100" />
@@ -147,7 +148,7 @@
 			</control>
 		</control>
 		<include content="BusySpinner">
-			<param name="visible">Skin.TimerIsRunning(startbusyspinner) | !String.IsEmpty(Window(Home).Property(BusySpinner)) | Container(90100).IsUpdating</param>
+			<param name="visible">Skin.TimerIsRunning(startbusyspinner) | Container(90100).IsUpdating</param>
 		</include>
 		<include>DebugWindow</include>
 	</controls>
