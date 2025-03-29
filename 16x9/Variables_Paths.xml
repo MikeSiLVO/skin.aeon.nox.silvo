@@ -77,9 +77,9 @@
 		<value condition="Skin.HasSetting(useclearcases)">thumbs/boxes/clearcases/</value>
 	</variable>
 	<!-- TMDbH -->
-	<!-- <variable name="TMDbHWidgetParams">
+	<variable name="TMDbHParamsVar">
 		<value>&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</value>
-	</variable> -->
+	</variable>
 	<!-- <variable name="TMDbHelperLocalDBVar">
 		<value condition="Addon.SettingBool(plugin.video.themoviedb.helper,local_db)">&amp;exclude_key=dbid&amp;exclude_value=is_empty&amp;length=6</value>
 		<value />
@@ -103,9 +103,9 @@
 		<value condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow)">&amp;type=tv</value>
 	</variable>
 	<variable name="TMDbHSearchContentVar">
-		<value condition="!String.IsEmpty(Window(Home).Property(tmdb_movie_search_string))">$INFO[Window(Home).Property(tmdb_movie_search_string),plugin://plugin.video.themoviedb.helper?info=search&amp;type=movie&amp;query=,&amp;nextpage=false]</value>
-		<value condition="!String.IsEmpty(Window(Home).Property(tmdb_tv_search_string))">$INFO[Window(Home).Property(tmdb_tv_search_string),plugin://plugin.video.themoviedb.helper?info=search&amp;type=tv&amp;query=,&amp;nextpage=false]</value>
-		<value condition="!String.IsEmpty(Window(Home).Property(tmdb_person_search_string))">$INFO[Window(Home).Property(tmdb_person_search_string),plugin://plugin.video.themoviedb.helper?info=search&amp;type=person&amp;query=,&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(tmdb_movie_search_string))">$INFO[Window(Home).Property(tmdb_movie_search_string),plugin://plugin.video.themoviedb.helper?info=search&amp;type=movie&amp;query=]$VAR[TMDbHParamsVar]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(tmdb_tv_search_string))">$INFO[Window(Home).Property(tmdb_tv_search_string),plugin://plugin.video.themoviedb.helper?info=search&amp;type=tv&amp;query=]$VAR[TMDbHParamsVar]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(tmdb_person_search_string))">$INFO[Window(Home).Property(tmdb_person_search_string),plugin://plugin.video.themoviedb.helper?info=search&amp;type=person&amp;query=,&amp;filter_key=department&amp;filter_value=Acting / Directing / Writing]$VAR[TMDbHParamsVar]</value>
 	</variable>
 	<variable name="SeasonsBackgroundPathVar">
 		<value condition="String.IsEqual(Skin.String(SeasonsBackground),MakeItSnow)">snow/snow</value>

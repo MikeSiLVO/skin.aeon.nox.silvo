@@ -87,6 +87,13 @@
 		<value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
 		<value>$INFO[ListItem.Icon]</value>
 	</variable>
+	<variable name="CustomPosterVar">
+		<value condition="Control.HasFocus(50001) + !String.IsEmpty(Container(50001).ListItem.Art(thumb))">$INFO[Container(50001).ListItem.Art(thumb)]</value>
+		<value condition="Control.HasFocus(50002) + !String.IsEmpty(Container(50002).ListItem.Art(poster))">$INFO[Container(50002).ListItem.Art(poster)]</value>
+		<value condition="Control.HasFocus(50003) + !String.IsEmpty(Container(50003).ListItem.Art(poster))">$INFO[Container(50003).ListItem.Art(poster)]</value>
+		<value condition="Control.HasFocus(50004) + !String.IsEmpty(Container(50004).ListItem.Art(poster))">$INFO[Container(50004).ListItem.Art(poster)]</value>
+		<value>$INFO[Window(Home).Property(item_poster)]</value>
+	</variable>
 	<variable name="GenreIconVar">
 		<value condition="!String.IsEmpty(Skin.String(moviegenreicons.path))">$INFO[Skin.String(moviegenreicons.path)]$INFO[ListItem.Label]$INFO[Skin.String(moviegenreicons.ext)]</value>
 		<value condition="!String.IsEmpty(Skin.String(MovieGenreIconPath))">$INFO[Skin.String(MovieGenreIconPath)]$INFO[ListItem.Label,,.jpg]</value>
@@ -131,10 +138,12 @@
 		<value condition="Control.HasFocus(90050)">$INFO[Container(90050).ListItem.Label,resource://resource.images.actorart/,.png]</value>
 	</variable>
 	<variable name="TMDbHInfoPersonPosterVar">
-		<value condition="ControlGroup(90001).HasFocus(900010) + !String.IsEmpty(Container(900010).ListItem.Art(poster))">$INFO[Container(900010).ListItem.Art(poster)]</value>
-		<value condition="ControlGroup(90001).HasFocus(900011) + !String.IsEmpty(Container(900011).ListItem.Art(poster))">$INFO[Container(900011).ListItem.Art(poster)]</value>
-		<value condition="ControlGroup(90001).HasFocus(900012) + !String.IsEmpty(Container(900012).ListItem.Art(poster))">$INFO[Container(900012).ListItem.Art(poster)]</value>
-		<value condition="ControlGroup(90001).HasFocus(900020) + !String.IsEmpty(Container(900020).ListItem.Art(poster))">$INFO[Container(900020).ListItem.Art(poster)]</value>
+		<value condition="Control.HasFocus(90008) + !String.IsEmpty(Container(90008).ListItem.Art(poster))">$INFO[Container(90008).ListItem.Art(poster)]</value>
+		<value condition="Control.HasFocus(90009) + !String.IsEmpty(Container(90009).ListItem.Art(poster))">$INFO[Container(90009).ListItem.Art(poster)]</value>
+		<value condition="Control.HasFocus(900010) + !String.IsEmpty(Container(900010).ListItem.Art(poster))">$INFO[Container(900010).ListItem.Art(poster)]</value>
+		<value condition="Control.HasFocus(900011) + !String.IsEmpty(Container(900011).ListItem.Art(poster))">$INFO[Container(900011).ListItem.Art(poster)]</value>
+		<value condition="Control.HasFocus(900012) + !String.IsEmpty(Container(900012).ListItem.Art(poster))">$INFO[Container(900012).ListItem.Art(poster)]</value>
+		<value condition="Control.HasFocus(900020) + !String.IsEmpty(Container(900020).ListItem.Art(poster))">$INFO[Container(900020).ListItem.Art(poster)]</value>
 		<value>$INFO[Container(11090).ListItem.Art(poster)]</value>
 	</variable>
 	<variable name="VideoInfoDetailsImageVar">
