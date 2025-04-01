@@ -15,7 +15,7 @@
 	<onunload>ClearProperty(item_ext,Home)</onunload>
 	<onunload>ClearProperty(custom_actor,Home)</onunload>
 	<onunload condition="!String.IsEmpty(Window(Home).Property(item_origin)) + !Window.IsVisible(1109)">SetFocus($INFO[Window(Home).Property(item_origin)])</onunload>
-	<onunload condition="!String.IsEmpty(Window(Home).Property(1109_origin)) + Window.IsVisible(1109)">SetFocus($INFO[Window(Home).Property(1109_origin)])</onunload>
+	<!-- <onunload condition="!String.IsEmpty(Window(Home).Property(1109_origin)) + Window.IsVisible(1109)">SetFocus($INFO[Window(Home).Property(1109_origin)])</onunload> -->
 	<controls>
 		<include content="SkinVariablesContentList">
 			<param name="id">4800</param>
