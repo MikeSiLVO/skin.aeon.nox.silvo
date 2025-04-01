@@ -165,7 +165,7 @@
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Property(Status))"></value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]"></value>
 	</variable>
-	<variable name="InfoPanelLabel1Var_">
+	<variable name="InfoPanelLabel1Var">
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + ![String.IsEmpty(ListItem.Director) + String.IsEmpty(Container(4501).ListItem.Property(director.collection))]">$VAR[VideoDirectorVar]</value>
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">$LOCALIZE[10005]</value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Property(Status))">$INFO[Container(9143).ListItem.Property(Status)]</value>
@@ -177,7 +177,7 @@
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))"></value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]"></value>
 	</variable>
-	<variable name="InfoPanelLabel2Var_">
+	<variable name="InfoPanelLabel2Var">
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + ![String.IsEmpty(ListItem.Writer) + String.IsEmpty(Container(4501).ListItem.Property(writer.collection))]">$VAR[VideoWriterVar]</value>
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">$LOCALIZE[10005]</value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))">$INFO[Container(9143).ListItem.Property(Next_Aired),,: ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]</value>
@@ -189,7 +189,7 @@
 		<value condition="Container.Content(tvshows)"></value>
 		<value condition="Container.Content(seasons)"></value>
 	</variable>
-	<variable name="InfoPanelLabel3Var_">
+	<variable name="InfoPanelLabel3Var">
 		<value condition="!String.IsEmpty(ListItem.Top250)">$INFO[ListItem.Rating]$INFO[ListItem.Top250, / $LOCALIZE[13409] #]</value>
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">$INFO[ListItem.RatingAndVotes]</value>
 		<value condition="Container.Content(tvshows)">$INFO[ListItem.Property(TotalSeasons)]$VAR[OneOrMoreSeasonsVar, ]</value>
@@ -199,7 +199,7 @@
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets) | Container.Content(seasons)]"></value>
 		<value condition="Container.Content(tvshows)"></value>
 	</variable>
-	<variable name="InfoPanelLabel4Var_">
+	<variable name="InfoPanelLabel4Var">
 		<value condition="ListItem.IsCollection">$INFO[Container(4500).ListItem(0).Year]$INFO[Container(4500).ListItem(-1).Year, - ]</value>
 		<value condition="[Container.Content(movies) | Container.Content(sets)]">$INFO[ListItem.Year]$VAR[DurationVar, • ]</value>
 		<value condition="Container.Content(episodes)">$INFO[ListItem.Premiered]$VAR[DurationVar, • ]</value>
