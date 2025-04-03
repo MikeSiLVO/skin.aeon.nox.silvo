@@ -322,6 +322,10 @@
 		<value condition="!String.IsEmpty(ListItem.Comment)">$INFO[ListItem.Comment]</value>
 		<value>$INFO[ListItem.Plot]</value>
 	</variable>
+	<variable name="CustomPlotVar">
+		<value condition="!String.IsEmpty(Container(4800).ListItem.Plot)">$INFO[Container(4800).ListItem.Plot]</value>
+		<value>$INFO[Container(4801).ListItem.Plot]</value>
+	</variable>
 	<variable name="VideoPlotLocalizeVar">
 		<value condition="Skin.HasSetting(VideoInfoPlotToggle)">$LOCALIZE[203]</value>
 		<value>$LOCALIZE[31370]</value>
@@ -734,10 +738,6 @@
 		<value condition="!String.IsEmpty(Container(9143).ListItem.Status)">$INFO[Container(9143).ListItem.Status]</value>
 		<value condition="!String.IsEmpty(ListItem.Status)">$INFO[ListItem.Status]</value>
 	</variable>
-	<variable name="CustomInfoTVSubtitleVar">
-		<value condition="!String.IsEmpty(Container(4801).ListItem.Status)">$INFO[Container(4801).ListItem.Status]</value>
-		<value condition="!String.IsEmpty(Container(4800).ListItem.Status)">$INFO[Container(4800).ListItem.Status]</value>
-	</variable>
 	<variable name="VideoInfoCastLabel2Var">
 		<value condition="Skin.HasSetting(OnlineCast)">$INFO[System.AddonTitle(plugin.video.themoviedb.helper)]</value>
 		<value>Kodi</value>
@@ -1033,6 +1033,7 @@
 		<value condition="String.IsEmpty(Container(4800).ListItem.Duration) + !String.IsEmpty(Container(4801).ListItem.Duration) + !String.IsEqual(Container(4801).ListItem.Duration,0) + !Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[Container(4801).ListItem.Duration(mins),,m]</value>
 		<value condition="String.IsEmpty(Container(4800).ListItem.Duration) + !String.IsEmpty(Container(4801).ListItem.Duration) + Skin.HasSetting(Enable.HourMinuteDuration) + [Integer.IsEqual(Container(4801).ListItem.Duration(mins),60) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),120) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),180) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),240) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),300) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),360) | Integer.IsEqual(ListItem.Duration(mins),420) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),480) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),540) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),600)]">$INFO[Container(4801).ListItem.Duration(hours),,h]</value>
 		<value condition="String.IsEmpty(Container(4800).ListItem.Duration) + !String.IsEmpty(Container(4801).ListItem.Duration) + Skin.HasSetting(Enable.HourMinuteDuration) + Integer.IsLess(Container(4801).ListItem.Duration(mins),60)">$INFO[Container(4801).ListItem.Duration(m),,m]</value>
+		<value condition="String.IsEmpty(Container(4800).ListItem.Duration) + !String.IsEmpty(Container(4801).ListItem.Duration) + Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[Container(4801).ListItem.Duration(h),,h]$INFO[Container(4801).ListItem.Duration(m),,m]</value>
 		<value condition="Integer.IsEqual(Container(4800).ListItem.Duration(mins),60) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),120) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),180) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),240) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),300) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),360) | Integer.IsEqual(ListItem.Duration(mins),420) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),480) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),540) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),600)">$INFO[Container(4800).ListItem.Duration(hours),,h]</value>
 		<value condition="Integer.IsLess(Container(4800).ListItem.Duration(mins),60)">$INFO[Container(4800).ListItem.Duration(m),,m]</value>
 		<value>$INFO[Container(4800).ListItem.Duration(h),,h]$INFO[Container(4800).ListItem.Duration(m),,m]</value>
