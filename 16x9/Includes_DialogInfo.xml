@@ -57,8 +57,9 @@
 				<preloaditems>2</preloaditems>
 				<scrolltime tween="quadratic" easing="out">300</scrolltime>
 				<onclick condition="Control.HasFocus(50001)">ClearProperty(DirectorID,Home)</onclick>
+				<onclick condition="[Control.HasFocus(900010) | Control.HasFocus(900011) | Control.HasFocus(900012)]">SetProperty(1109_origin,$INFO[System.CurrentControlID],Home)</onclick>
 				<onclick condition="Window.IsVisible(1109) + [Control.HasFocus(90050) | Control.HasFocus(50001)]">Dialog.Close(1109)</onclick>
-				<onclick condition="Window.IsVisible(1102) + [Control.HasFocus(90008) | Control.HasFocus(90009) | Control.HasFocus(900010) | Control.HasFocus(900011) | Control.HasFocus(900012)]">Skin.TimerStart(resetfocus1102)</onclick>
+				<onclick condition="Window.IsVisible(1102) + [Control.HasFocus(50003) | Control.HasFocus(90008) | Control.HasFocus(90009) | Control.HasFocus(900010) | Control.HasFocus(900011) | Control.HasFocus(900012)]">Skin.TimerStart(resetfocus1102)</onclick>
 				<include content="ExtendedInfoOnclick" condition="$PARAM[do_onclick]">
 					<param name="id">$PARAM[id]</param>
 				</include>
@@ -545,8 +546,8 @@
 	<include name="ExtendedInfoOnclick">
 		<onclick condition="Window.IsDialogTopMost(movieinformation)">SetProperty(item_origin,$INFO[System.CurrentControlID],Home)</onclick>
 		<onclick>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_title_1102&amp;window_id=Home&amp;&amp;$INFO[Container($PARAM[id]).ListItem.Title]")</onclick>
-		<onclick>SetProperty(item_dbtype,$INFO[Container($PARAM[id]).Listitem.DBTYPE],Home)</onclick>
 		<onclick>SetProperty(item_dbid,$INFO[Container($PARAM[id]).Listitem.DBID],Home)</onclick>
+		<onclick>SetProperty(item_dbtype,$INFO[Container($PARAM[id]).Listitem.DBTYPE],Home)</onclick>
 		<onclick>SetProperty(item_poster,$INFO[Container($PARAM[id]).Listitem.Art(poster)],Home)</onclick>
 		<onclick>SetProperty(item_filename,$INFO[Container($PARAM[id]).Listitem.FileName],Home)</onclick>
 		<onclick>SetProperty(item_ext,$INFO[Container($PARAM[id]).Listitem.FileExtension],Home)</onclick>
@@ -807,7 +808,6 @@
 				</control>
 			</control>
 			<control type="panel" id="$PARAM[panel_id]">
-				<defaultcontrol always="true">0</defaultcontrol>
 				<top>78</top>
 				<width>1198</width>
 				<height>360</height>
@@ -1010,6 +1010,11 @@
 			<visible>!String.IsEmpty(Container(4800).ListItem.Director)</visible>
 		</item>
 		<item>
+			<label>$INFO[Container(4801).ListItem.Director]</label>
+			<label2>$LOCALIZE[20339]:</label2>
+			<visible>String.IsEmpty(Container(4800).ListItem.Director) + !String.IsEmpty(Container(4801).ListItem.Director)</visible>
+		</item>
+		<item>
 			<label>$INFO[Container(4800).ListItem.Writer]</label>
 			<label2>$LOCALIZE[20417]:</label2>
 			<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetProperty(MoreInfoTitle,$LOCALIZE[20417])</onclick>
@@ -1022,12 +1027,22 @@
 			<visible>!String.IsEmpty(Container(4800).ListItem.Writer)</visible>
 		</item>
 		<item>
+			<label>$INFO[Container(4801).ListItem.Writer]</label>
+			<label2>$LOCALIZE[20417]:</label2>
+			<visible>String.IsEmpty(Container(4800).ListItem.Writer) + !String.IsEmpty(Container(4801).ListItem.Writer)</visible>
+		</item>
+		<item>
 			<label>$INFO[Container(4800).ListItem.Genre]</label>
 			<label2>$LOCALIZE[515]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[515])</onclick>
 			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.Genre])</onclick>
 			<onclick>SetFocus(4700)</onclick>
 			<visible>!String.IsEmpty(Container(4800).ListItem.Genre)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4801).ListItem.Genre]</label>
+			<label2>$LOCALIZE[515]:</label2>
+			<visible>String.IsEmpty(Container(4800).ListItem.Genre) + !String.IsEmpty(Container(4801).ListItem.Genre)</visible>
 		</item>
 		<item>
 			<label>$INFO[Container(4801).ListItem.Property(Budget)]</label>
@@ -1052,6 +1067,11 @@
 			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Premiered])</onclick>
 			<onclick>SetFocus(4700)</onclick>
 			<visible>!String.IsEmpty(Container(4800).ListItem.Premiered)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4801).ListItem.Premiered]</label>
+			<label2>$LOCALIZE[172]:</label2>
+			<visible>String.IsEmpty(Container(4800).ListItem.Premiered) + !String.IsEmpty(Container(4801).ListItem.Premiered)</visible>
 		</item>
 	</include>
 	<include name="InfoContentTVShows">
@@ -1098,12 +1118,22 @@
 			<visible>!String.IsEmpty(Container(4800).ListItem.Genre)</visible>
 		</item>
 		<item>
+			<label>$INFO[Container(4801).ListItem.Genre]</label>
+			<label2>$LOCALIZE[515]:</label2>
+			<visible>String.IsEmpty(Container(4800).ListItem.Genre) + !String.IsEmpty(Container(4801).ListItem.Genre)</visible>
+		</item>
+		<item>
 			<label>$INFO[Container(4800).ListItem.Premiered]</label>
 			<label2>$LOCALIZE[31452]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31452])</onclick>
 			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Premiered])</onclick>
 			<onclick>SetFocus(4700)</onclick>
 			<visible>!String.IsEmpty(Container(4800).ListItem.Premiered)</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4801).ListItem.Premiered]</label>
+			<label2>$LOCALIZE[172]:</label2>
+			<visible>String.IsEmpty(Container(4800).ListItem.Premiered) + !String.IsEmpty(Container(4801).ListItem.Premiered)</visible>
 		</item>
 		<item>
 			<label>$INFO[Container(4801).ListItem.Property(Next_Aired.Season),S]$INFO[Container(4801).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(4801).ListItem.Property(Next_Aired.Name)]$INFO[Container(4801).ListItem.Property(Next_Aired), (,)]</label>
