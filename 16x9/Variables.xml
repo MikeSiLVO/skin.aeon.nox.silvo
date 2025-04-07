@@ -831,7 +831,7 @@
 		<value>$INFO[Container(4801).ListItem.Property(RottenTomatoes_UserMeter),,%]</value>
 	</variable>
 	<variable name="CustomRottenFreshAudienceLogoVar">
-		<value condition="Integer.IsGreaterOrEqual(Container(4800).ListItem.Property(ratings.tomatometerallaudience.rating_rounded),6.0)">logos/rottentomatoes/popcornfresh.png</value>
+		<value condition="Integer.IsGreaterOrEqual(Container(4800).ListItem.Property(ratings.tomatometerallaudience.rating_rounded),6.0) | Integer.IsGreaterOrEqual(Container(4801).ListItem.Property(RottenTomatoes_UserMeter,60))">logos/rottentomatoes/popcornfresh.png</value>
 		<value>logos/rottentomatoes/popcornrotten.png</value>
 	</variable>
 	<variable name="CustomTMDbRatingsLabelVar">
