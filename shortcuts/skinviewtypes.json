@@ -60,13 +60,19 @@
             "plugins": "50"
         },
         "movies": {
-            "rule": "Container.Content(movies) + !String.Contains(Container.FolderPath,setid)",
+            "rule": "Container.Content(movies) + !String.StartsWith(Container.FolderPath,videodb://movies/sets)",
             "viewtypes": ["50", "506", "501", "507", "510", "59", "509", "503", "511", "55", "51", "53", "52", "56", "57", "58", "500", "512", "504", "505"],
             "library": "506",
             "plugins": "506"
         },
         "movies-sets": {
-            "rule": "Container.Content(movies) + String.Contains(Container.FolderPath,setid)",
+            "rule": "Container.Content(movies) + String.StartsWith(Container.FolderPath,videodb://movies/sets)",
+            "viewtypes": ["50", "506", "501", "507", "510", "59", "509", "503", "511", "55", "51", "53", "52", "56", "57", "500", "512", "504", "505"],
+            "library": "506",
+            "plugins": "506"
+        },
+        "videoversions": {
+            "rule": "Container.Content(videoversions) + !String.StartsWith(Container.FolderPath,videodb://movies/videoversions)",
             "viewtypes": ["50", "506", "501", "507", "510", "59", "509", "503", "511", "55", "51", "53", "52", "56", "57", "58", "500", "512", "504", "505"],
             "library": "506",
             "plugins": "506"
@@ -197,8 +203,8 @@
             "library": "50",
             "plugins": "50"
         },
-        "videoversions": {
-            "rule": "Container.Content(videoversions)",
+        "videodb-versions": {
+            "rule": "Container.Content(videoversions) + String.StartsWith(Container.FolderPath,videodb://movies/videoversions)",
             "viewtypes": ["50"],
             "library": "50",
             "plugins": "50"

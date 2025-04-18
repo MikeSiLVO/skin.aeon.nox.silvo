@@ -2,7 +2,8 @@
 <includes>
 	<variable name="SkinVariablesContentIDVar">
 		<value condition="String.IsEqual(Container.Content,genres) + Window.IsVisible(MyMusicNav.xml)">genres-music</value>
-		<value condition="String.Contains(Container.FolderPath,setid)">movies-sets</value>
+		<value condition="String.StartsWith(Container.FolderPath,videodb://movies/sets) + !Container.Content(videoversions) + !Container.Content(sets)">movies-sets</value>
+		<value condition="String.StartsWith(Container.FolderPath,videodb://movies/videoversions)">videodb-versions</value>
 		<value condition="!String.IsEmpty(Container.Content)">$INFO[Container.Content]</value>
 		<value condition="Container.Content() + Window.IsVisible(MyVideoNav.xml)">none-videos</value>
 	</variable>
