@@ -872,7 +872,6 @@
 		<value>logos/rottentomatoes/popcornrotten.png</value>
 	</variable>
 	<variable name="DialogSelectLabelVar">
-		<value condition="Window.IsVisible(selectvideoversion)">$INFO[ListItem.VideoVersionName]</value>
 		<value condition="Window.IsVisible(dialogselectvideo)">$INFO[ListItem.Property(stream.codec)]$INFO[ListItem.Property(stream.hdrtype),$COMMA ]$INFO[ListItem.Property(stream.resolution),$COMMA ]$INFO[Player.Process(videoscantype)]$INFO[ListItem.Property(stream.bitrate),$COMMA , kbps]$INFO[ListItem.Property(stream.fps),$COMMA , fps]</value>
 		<value condition="Window.IsVisible(dialogselectaudio)">$VAR[AudioCodecLabelVar]$VAR[AudioChannelsLabelVar, • ]</value>
 		<value>$INFO[ListItem.Label]</value>
@@ -881,8 +880,6 @@
 		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEmpty(ListItem.Property(stream.description))">$VAR[DialogSelectSubtitleLabel2Var]</value>
 		<value condition="Window.IsVisible(dialogselectsubtitle) + !String.IsEmpty(ListItem.Property(stream.description))">$VAR[DialogSelectSubtitleLabel2Var,, | ]$INFO[ListItem.Property(stream.description)]</value>
 		<value condition="Window.IsVisible(dialogselectaudio)">$INFO[ListItem.Property(stream.codecdesc)]$INFO[ListItem.Property(stream.description), - ]</value>
-		<value condition="Window.IsVisible(selectvideoextra)">$VAR[DialogSelectLabel2RuntimeVar]</value>
-		<value condition="Window.IsVisible(selectvideoversion)">$VAR[DialogSelectLabel2RuntimeVar]$VAR[VideoResolutionLabelVar, | ]$VAR[HDRTypeLabelVar, • ]$VAR[SourceLabelVar, • ]$VAR[AudioCodecLabelVar, | ]$VAR[AudioChannelsLabelVar, • ]</value>
 		<value condition="String.IsEqual(Control.GetLabel(1),$LOCALIZE[25006])">$INFO[ListItem.Duration(mins),, [LOWERCASE]$LOCALIZE[12391][/LOWERCASE]]</value>
 		<value condition="String.IsEqual(ListItem.Label2,$LOCALIZE[16102])">√</value>
 		<value condition="!String.IsEmpty(ListItem.Label2)">$INFO[ListItem.Label2]</value>
@@ -1152,7 +1149,7 @@
 		<value condition="Window.IsVisible(smartplaylisteditor)">$LOCALIZE[21432]</value>
 		<value condition="Window.IsVisible(FileBrowser.xml)">$INFO[Control.GetLabel(411)][COLOR $VAR[ThemeLabelColor]]$INFO[Control.GetLabel(412), - ][/COLOR]</value>
 		<value condition="Window.IsVisible(DialogSelect.xml) + Control.HasFocus(95)">[COLOR $VAR[ThemeLabelColor]]$INFO[Control.GetLabel(5)][/COLOR]</value>
-		<value condition="Window.IsVisible(DialogSelect.xml) | Window.IsVisible(selectvideoversion)">$INFO[Control.GetLabel(1)]</value>
+		<value condition="Window.IsVisible(DialogSelect.xml)">$INFO[Control.GetLabel(1)]</value>
 		<value condition="Window.IsVisible(subtitlesearch)">$INFO[Control.GetLabel(100)]</value>
 		<value condition="Window.IsVisible(DialogSettings.xml) | Window.IsVisible(addonsettings) | Window.IsVisible(mediasource)">$INFO[Control.GetLabel(2)]</value>
 		<value condition="Window.IsVisible(1114) + String.IsEqual(Window(Home).Property(DialogSettings),videoosd)">$LOCALIZE[31375] $LOCALIZE[5]</value>
@@ -1162,8 +1159,6 @@
 		<value />
 	</variable>
 	<variable name="DialogSettingsOkButtonLabelVar">
-		<value condition="Window.IsVisible(selectvideoversion)"></value>
-		<value condition="Window.IsVisible(selectvideoextra)"></value>
 		<value condition="Window.IsVisible(addonsettings)"></value>
 		<value condition="String.IsEqual(Control.GetLabel(5),$LOCALIZE[21452])"></value>
 		<value></value>
