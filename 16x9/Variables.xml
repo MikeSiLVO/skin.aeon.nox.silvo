@@ -771,7 +771,8 @@
 		<value condition="String.EndsWith(ListItem.Rating(tomatometerallcritics),.2)">2%</value>
 		<value condition="String.EndsWith(ListItem.Rating(tomatometerallcritics),.1)">1%</value>
 		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(ratings.tomatometerallcritics.rating_percentage))">$INFO[Container(4501).ListItem.Property(ratings.tomatometerallcritics.rating_percentage)]</value>
-		<value>$INFO[Container(9143).ListItem.Property(RottenTomatoes_Rating),,%]</value>
+		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating))">$INFO[Container(9143).ListItem.Property(RottenTomatoes_Rating),,%]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating))">$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating),,%]</value>
 	</variable>
 	<variable name="RottenFreshAudienceLogoVar">
 		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating(tomatometerallaudience),6.0) | Integer.IsGreaterOrEqual(Container(4501).ListItem.Property(ratings.tomatometerallaudience.rating_rounded),6.0) | Integer.IsGreaterOrEqual(Container(9143).ListItem.Property(RottenTomatoes_UserMeter),60) | Integer.IsGreaterOrEqual(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter),60)">logos/rottentomatoes/popcornfresh.png</value>
@@ -801,7 +802,8 @@
 		<value condition="String.EndsWith(ListItem.Rating(tomatometerallaudience),.2)">2%</value>
 		<value condition="String.EndsWith(ListItem.Rating(tomatometerallaudience),.1)">1%</value>
 		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(ratings.tomatometerallaudience.rating_percentage))">$INFO[Container(4501).ListItem.Property(ratings.tomatometerallaudience.rating_percentage)]</value>
-		<value>$INFO[Container(9143).ListItem.Property(RottenTomatoes_UserMeter),,%]</value>
+		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter))">$INFO[Container(9143).ListItem.Property(RottenTomatoes_UserMeter),,%]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating))">$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter)]</value>
 	</variable>
 	<variable name="TMDbRatingsLabelVar">
 		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(ratings.themoviedb.rating))">$INFO[Container(4501).ListItem.Property(ratings.themoviedb.rating_rounded)]</value>
