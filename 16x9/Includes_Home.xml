@@ -1554,14 +1554,14 @@
 			<textoffsety>5</textoffsety>
 			<label>$VAR[FanartTitleVar]</label>
 			<texturenofocus border="30,0,30,30">text_shadow.png</texturenofocus>
-			<include>VisibleFadeAnimation</include>
+			<animation effect="fade" time="250">Visible</animation>
 			<include>WindowOpenCloseAnimation</include>
 			<animation effect="fade" time="600">WindowOpen</animation>
 			<animation effect="fade" time="600">WindowClose</animation>
 			<animation effect="slide" end="0,40" time="300" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">Conditional</animation>
 			<visible>![Player.HasAudio + Skin.HasSetting(Enable.ArtistSlideshowOnHome) + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.Image))]</visible>
 			<visible>![ControlGroup(90010).HasFocus() | ControlGroup(90020).HasFocus()] | [!String.IsEmpty(Container(9000).ListItem.Property(widgetDisableFanart)) + ControlGroup(90010).HasFocus() | !ControlGroup(90010).HasFocus()] + [!String.IsEmpty(Container(9000).ListItem.Property(widgetDisableFanart.2)) + ControlGroup(90020).HasFocus() | !ControlGroup(90020).HasFocus()]</visible>
-			<visible>[String.Contains(Container(9000).ListItem.Property(background),i:playlist) | String.EndsWith(Container(9000).ListItem.Property(background),.Fanart)] + !String.IsEqual(Container(9000).ListItem.Property(background),Weather.Fanart) + ![Player.HasVideo + !Skin.HasSetting(Disable.ShowBackgroundVideo)]</visible>
+			<visible>[String.Contains(Container(9000).ListItem.Property(background),i:playlist) | String.EndsWith(Container(9000).ListItem.Property(background),.Fanart)] + !String.IsEqual(Container(9000).ListItem.Property(background),Weather.Fanart) + ![Control.HasFocus(9010) + !String.IsEmpty(Container(9010).ListItem.Property(background)) + !String.EndsWith(Container(9010).ListItem.Property(background),.Fanart) + !String.StartsWith(Container(9010).ListItem.Property(background),s:playlist)] + ![Player.HasVideo + !Skin.HasSetting(Disable.ShowBackgroundVideo)]</visible>
 		</control>
 	</include>
 </includes>
