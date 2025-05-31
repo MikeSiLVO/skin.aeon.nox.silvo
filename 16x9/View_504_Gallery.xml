@@ -71,8 +71,8 @@
 				<height>100</height>
 				<textcolor>white</textcolor>
 				<shadowcolor>shadow</shadowcolor>
-				<label>$INFO[Container(9143).ListItem.Property(Status)]</label>
-				<visible>[String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) + !String.IsEmpty(Container(9143).ListItem.Property(Status)) + !Control.HasFocus(61)] + !Skin.HasSetting(Disable.NextAired) + !Container.Content(movies)</visible>
+				<label>$INFO[Container(9143).ListItem.Status]</label>
+				<visible>[String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) + !String.IsEmpty(Container(9143).ListItem.Status) + !Control.HasFocus(61)] + !Skin.HasSetting(Disable.NextAired) + !Container.Content(movies)</visible>
 			</control>
 			<control type="label">
 				<left>398</left>

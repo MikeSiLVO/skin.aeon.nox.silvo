@@ -162,13 +162,13 @@
 	</variable>
 	<variable name="InfoPanelLabel1IconVar">
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]"></value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Property(Status))"></value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Status)"></value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]"></value>
 	</variable>
 	<variable name="InfoPanelLabel1Var">
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + ![String.IsEmpty(ListItem.Director) + String.IsEmpty(Container(4501).ListItem.Property(director.collection))]">$VAR[VideoDirectorVar]</value>
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">$LOCALIZE[10005]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Property(Status))">$INFO[Container(9143).ListItem.Property(Status)]</value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Status)">$INFO[Container(9143).ListItem.Status]</value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]">$INFO[ListItem.Premiered]</value>
 	</variable>
 	<variable name="InfoPanelLabel2IconVar">

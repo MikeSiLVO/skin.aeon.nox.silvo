@@ -151,10 +151,10 @@
 						<visible>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) + !Skin.HasSetting(Disable.NextAired)</visible>
 					</control>
 					<control type="button">
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]:[/COLOR][CR]$INFO[Container(9143).ListItem.Property(Status)]</label>
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]:[/COLOR][CR]$VAR[VideoInfoTVSubtitleVar]</label>
 						<width>650</width>
 						<include>DefaultButtonsValues</include>
-						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + [!String.IsEmpty(Container(9143).ListItem.Property(Status)) + String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) + !Skin.HasSetting(Disable.NextAired)] + [Skin.HasSetting(nohighlist) | !Skin.HasSetting(nohighlist)]</visible>
+						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + [[!String.IsEmpty(ListItem.Status) | !String.IsEmpty(Container(9143).ListItem.Status)] + String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) + !Skin.HasSetting(Disable.NextAired)] + [Skin.HasSetting(nohighlist) | !Skin.HasSetting(nohighlist)]</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</label>
