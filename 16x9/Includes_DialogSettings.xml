@@ -137,7 +137,15 @@
 		</definition>
 	</include>
 	<include name="VideoOSDSettings">
-		<control type="button" id="90201">
+		<control type="radiobutton" id="90201">
+			<width>1498</width>
+			<textoffsetx>20</textoffsetx>
+			<radioposx>1388</radioposx>
+			<label>$LOCALIZE[31061]</label>
+			<onclick>Skin.ToggleSetting(hide_chapternames)</onclick>
+			<selected>!Skin.HasSetting(hide_chapternames)</selected>
+		</control>
+		<control type="button" id="90202">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<label>$LOCALIZE[31577]</label>
@@ -145,7 +153,7 @@
 			<onclick>SetProperty(CustomSelect,autohidevideoosd,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 		</control>
-		<control type="radiobutton" id="90202">
+		<control type="radiobutton" id="90203">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
@@ -153,7 +161,7 @@
 			<onclick>Skin.ToggleSetting(VideoOSDOnTop)</onclick>
 			<selected>Skin.HasSetting(VideoOSDOnTop)</selected>
 		</control>
-		<control type="radiobutton" id="90203">
+		<control type="radiobutton" id="90204">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
@@ -162,7 +170,7 @@
 			<selected>!Skin.HasSetting(Disable.FullscreenInfoLogo)</selected>
 			<visible>![Window.IsVisible(seekbar) + VideoPlayer.Content(LiveTV)]</visible>
 		</control>
-		<control type="radiobutton" id="90204">
+		<control type="radiobutton" id="90205">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
@@ -171,7 +179,7 @@
 			<selected>!Skin.HasSetting(Disable.FullscreenPoster)</selected>
 			<visible>![Window.IsVisible(seekbar) + VideoPlayer.Content(LiveTV)]</visible>
 		</control>
-		<control type="radiobutton" id="90205">
+		<control type="radiobutton" id="90206">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
@@ -181,7 +189,7 @@
 			<visible>!Skin.HasSetting(Disable.FullscreenPoster)</visible>
 			<visible>![Window.IsVisible(seekbar) + VideoPlayer.Content(LiveTV)]</visible>
 		</control>
-		<control type="radiobutton" id="90206">
+		<control type="radiobutton" id="90207">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
@@ -191,7 +199,7 @@
 			<visible>Skin.HasSetting(Disable.FullscreenPoster)</visible>
 			<visible>![Window.IsVisible(seekbar) + VideoPlayer.Content(LiveTV)]</visible>
 		</control>
-		<control type="radiobutton" id="90207">
+		<control type="radiobutton" id="90208">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
@@ -199,7 +207,7 @@
 			<onclick>Skin.ToggleSetting(CleanPauseScreen)</onclick>
 			<selected>Skin.HasSetting(CleanPauseScreen)</selected>
 		</control>
-		<control type="radiobutton" id="90208">
+		<control type="radiobutton" id="90209">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
@@ -208,7 +216,7 @@
 			<selected>Skin.HasSetting(PausedLabel)</selected>
 			<visible>!Skin.HasSetting(CleanPauseScreen)</visible>
 		</control>
-		<control type="radiobutton" id="90209">
+		<control type="radiobutton" id="90210">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
@@ -217,7 +225,7 @@
 			<selected>!Skin.HasSetting(Disable.Netflix.Pause)</selected>
 			<visible>![Window.IsVisible(seekbar) + VideoPlayer.Content(LiveTV)]</visible>
 		</control>
-		<control type="button" id="90210">
+		<control type="button" id="90211">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<label>$LOCALIZE[31224]</label>
@@ -225,7 +233,7 @@
 			<onclick>$VAR[OSDRightLabelOnclickVar]</onclick>
 			<visible>![Window.IsVisible(seekbar) + VideoPlayer.Content(LiveTV)]</visible>
 		</control>
-		<control type="radiobutton" id="90211">
+		<control type="radiobutton" id="90212">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
@@ -233,7 +241,7 @@
 			<onclick>Skin.ToggleSetting(Disable.PlayerControlButtons)</onclick>
 			<selected>Skin.HasSetting(Disable.PlayerControlButtons)</selected>
 		</control>
-		<control type="radiobutton" id="90212">
+		<control type="radiobutton" id="90213">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
