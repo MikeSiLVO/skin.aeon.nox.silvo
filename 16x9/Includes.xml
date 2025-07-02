@@ -647,7 +647,7 @@
 					<orientation>horizontal</orientation>
 					<align>center</align>
 					<itemgap>5</itemgap>
-					<visible>![String.IsEqual(Container.NumItems,0) | String.IsEmpty(Container.NumItems)]</visible>
+					<visible>![String.IsEqual(Container.NumItems,0) | String.IsEmpty(Container.NumItems)] + !Window.IsVisible(1125) | Window.IsVisible(1125) + ![String.IsEqual(Container(5000).NumItems,0) | String.IsEmpty(Container(5000).NumItems)]</visible>
 					<include>VisibleFadeAnimation</include>
 					<control type="label">
 						<width>auto</width>
@@ -655,7 +655,7 @@
 						<font>font14_title</font>
 						<textcolor>grey</textcolor>
 						<shadowcolor>shadow</shadowcolor>
-						<label>$INFO[Container.NumItems]</label>
+						<label>$VAR[TopBarNumItemsVar]</label>
 					</control>
 					<control type="label">
 						<width>45</width>
@@ -664,6 +664,7 @@
 						<textcolor>grey</textcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label></label>
+						<visible>!Window.IsVisible(1125)</visible>
 					</control>
 					<control type="label">
 						<width>auto</width>
@@ -672,6 +673,7 @@
 						<textcolor>grey</textcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label>$INFO[Container.CurrentPage,[COLOR grey2]• ]$INFO[Container.NumPages,/,[/COLOR]]</label>
+						<visible>!Window.IsVisible(1125)</visible>
 					</control>
 					<control type="label">
 						<width>45</width>
@@ -680,6 +682,7 @@
 						<textcolor>grey2</textcolor>
 						<shadowcolor>shadow</shadowcolor>
 						<label></label>
+						<visible>!Window.IsVisible(1125)</visible>
 					</control>
 				</control>
 				<control type="label">
@@ -1192,6 +1195,19 @@
 				<width>100</width>
 				<height>100</height>
 				<onclick>PlayerControl(Next)</onclick>
+			</control>
+			<control type="button" id="816">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>Dialog.Close(all,true)</onclick>
+				<onclick>ActivateWindow(fullscreeninfo)</onclick>
+				<onclick>SetProperty(show_pvr_info,True,Home)</onclick>
 			</control>
 			<control type="togglebutton" id="809">
 				<texturefocus />
@@ -3343,7 +3359,7 @@
 			<top>5</top>
 			<animation effect="fade" start="0" end="100" time="400">WindowOpen</animation>
 			<animation effect="fade" start="100" end="0" time="400">WindowClose</animation>
-			<visible>Skin.HasSetting(TogglePlotLiveTV)</visible>
+			<visible>Skin.HasSetting(TogglePlotLiveTV) | !String.IsEmpty(Window(Home).Property(show_pvr_info))</visible>
 			<!-- PlotOutLine BG -->
 			<control type="image">
 				<left>17</left>

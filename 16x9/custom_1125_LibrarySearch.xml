@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window type="window" id="1125">
 	<defaultcontrol always="true">5000</defaultcontrol>
+	<onload>SetProperty(Window.HasSettings,True,Home)</onload>
+	<onload>ClearProperty(MediaMenu,Home)</onload>
+	<onunload>ClearProperty(MediaMenu,Home)</onunload>
+	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
 	<onload condition="String.IsEmpty(Window(Home).Property(library_search_string))">Action(Close)</onload>
 	<controls>
 		<include>SkinVariablesContentList</include>
@@ -14,9 +18,8 @@
 				<top>54</top>
 				<width>1800</width>
 				<height>1040</height>
-				<!-- <onleft></onleft> -->
-				<ondown>noop</ondown>
-				<onup>noop</onup>
+				<onleft>SetProperty(MediaMenu,True,Home)</onleft>
+				<onleft>SetFocus(9050)</onleft>
 				<scrolltime tween="quadratic" easing="out">300</scrolltime>
 				<control type="label" id="4001">
 					<height>40</height>
@@ -53,9 +56,91 @@
 					<param name="width">1800</param>
 					<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22episodes%22%7D]</param>
 				</include>
+				<control type="label" id="4004">
+					<height>40</height>
+					<font>font16_title</font>
+					<label>Movies starring$INFO[Container(5004).CurrentItem, [B](,/]$INFO[Container(5004).NumItems,,)][/B]</label>
+					<visible>Integer.IsGreater(Container(5004).NumItems,0)</visible>
+				</control>
+				<include content="ExtendedInfoListLayout" condition="Skin.HasSetting(searchfor_actors)">
+					<param name="id">5004</param>
+					<param name="width">1800</param>
+					<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</param>
+				</include>
+				<control type="label" id="4005">
+					<height>40</height>
+					<font>font16_title</font>
+					<label>TV Shows starring$INFO[Container(5005).CurrentItem, [B](,/]$INFO[Container(5005).NumItems,,)][/B]</label>
+					<visible>Integer.IsGreater(Container(5005).NumItems,0)</visible>
+				</control>
+				<include content="ExtendedInfoListLayout" condition="Skin.HasSetting(searchfor_actors)">
+					<param name="id">5005</param>
+					<param name="width">1800</param>
+					<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D]</param>
+				</include>
+				<control type="label" id="4006">
+					<height>40</height>
+					<font>font16_title</font>
+					<label>Episodes starring$INFO[Container(5006).CurrentItem, [B](,/]$INFO[Container(5006).NumItems,,)][/B]</label>
+					<visible>Integer.IsGreater(Container(5006).NumItems,0)</visible>
+				</control>
+				<include content="ExtendedInfoListLayout" condition="Skin.HasSetting(searchfor_actors)">
+					<param name="id">5006</param>
+					<param name="width">1800</param>
+					<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22actor%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22,%22%5d%7d%5d%7d%2c%22type%22%3a%22episodes%22%7d]</param>
+				</include>
 			</control>
 		</control>
 		<include>Topbar</include>
+		<control type="group">
+			<left>-440</left>
+			<include>SideBladeLeft</include>
+			<control type="grouplist" id="9050">
+				<top>80</top>
+				<width>400</width>
+				<height>1080</height>
+				<onright>ClearProperty(MediaMenu,Home)</onright>
+				<onright>5000</onright>
+				<onup>9050</onup>
+				<ondown>9957</ondown>
+				<onback>ClearProperty(MediaMenu,Home)</onback>
+				<onback>5000</onback>
+				<control type="radiobutton" id="90501">
+					<textwidth>352</textwidth>
+					<font>font13_title</font>
+					<include>ButtonCommonValues</include>
+					<label>$LOCALIZE[344]</label>
+					<onclick>Skin.ToggleSetting(searchfor_actors)</onclick>
+					<include>ReloadWindowOnclick</include>
+					<selected>Skin.HasSetting(searchfor_actors)</selected>
+				</control>
+				<!-- <control type="radiobutton" id="90502">
+					<textwidth>352</textwidth>
+					<font>font13_title</font>
+					<include>ButtonCommonValues</include>
+					<label>$LOCALIZE[20348]</label>
+					<onclick>Skin.ToggleSetting(searchfor_directors)</onclick>
+					<include>ReloadWindowOnclick</include>
+					<selected>Skin.HasSetting(searchfor_directors)</selected>
+				</control>
+				<control type="radiobutton" id="90503">
+					<textwidth>352</textwidth>
+					<font>font13_title</font>
+					<include>ButtonCommonValues</include>
+					<label>$LOCALIZE[20418]</label>
+					<onclick>Skin.ToggleSetting(searchfor_writers)</onclick>
+					<include>ReloadWindowOnclick</include>
+					<selected>Skin.HasSetting(searchfor_writers)</selected>
+				</control> -->
+				<!-- <control type="edit" id="905">
+					<description>Filter</description>
+					<textwidth>345</textwidth>
+					<include>ButtonCommonValues</include>
+					<label>587</label>
+				</control> -->
+			</control>
+			<include>MediaMenuPlayerControls</include>
+		</control>
 		<include>DebugWindow</include>
 	</controls>
 </window>
