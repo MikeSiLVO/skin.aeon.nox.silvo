@@ -5,6 +5,7 @@
 	<onload condition="VideoPlayer.Content(livetv) + Skin.HasSetting(Disable.PlayerControlButtons)">SetFocus(810)</onload>
 	<onload condition="!VideoPlayer.Content(livetv) + Skin.HasSetting(Disable.PlayerControlButtons)">SetFocus(706)</onload>
 	<onload condition="!VideoPlayer.Content(livetv) + !Skin.HasSetting(Disable.PlayerControlButtons)">SetFocus(602)</onload>
+	<onunload>ClearProperty(show_pvr_info,Home)</onunload>
 	<zorder>2</zorder>
 	<controls>
 		<control type="group">

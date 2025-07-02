@@ -1164,6 +1164,10 @@
 		<value condition="Control.HasFocus(95)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31617][/COLOR]</value>
 		<value>$INFO[Control.GetLabel(1)][UPPERCASE]$INFO[ListItem.Label, • ]$INFO[ListItem.Label2, #,[/UPPERCASE]]</value>
 	</variable>
+	<variable name="TopBarNumItemsVar">
+		<value condition="Window.IsVisible(1125) + Integer.IsGreater(Container(5000).NumItems,1)">$INFO[Container(5000).NumItems,, $LOCALIZE[20094]]</value>
+		<value>$INFO[Container.NumItems]</value>
+	</variable>
 	<!-- Color Picker -->
 	<variable name="ThemeLabelColor">
 		<value condition="!String.IsEmpty(Skin.String(ThemeLabelColor))">$INFO[Skin.String(ThemeLabelColor)]</value>
