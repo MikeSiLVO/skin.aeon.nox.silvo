@@ -268,6 +268,7 @@
 						<texture background="true" diffuse="thumbs/boxes/cdart_mask.png">$VAR[ArtworkDiscVar]</texture>
 						<fadetime>IconCrossfadeTime</fadetime>
 						<include>SlideLeftSpinningDiscAnimation</include>
+						<animation effect="rotate" end="-360" center="auto" time="6400" loop="true" reversible="false" condition="Player.Playing + String.IsEqual(MusicPlayer.Album,ListItem.Album)">Conditional</animation>
 						<visible>Skin.HasSetting(Enable.RightlistCDArt)</visible>
 						<visible>!String.IsEmpty(ListItem.Art(album.discart)) | !String.IsEmpty(ListItem.Art(discart))</visible>
 					</control>
