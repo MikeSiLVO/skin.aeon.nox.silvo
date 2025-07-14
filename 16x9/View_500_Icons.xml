@@ -250,7 +250,7 @@
 							</include>
 						</control>
 					</focusedlayout>
-					<itemlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets) | Window.IsActive(videos) + [Container.Content(files) | String.StartsWith(Container.FolderPath,sources://video)]]">
+					<itemlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets) | Window.IsActive(videos) + String.StartsWith(Container.FolderPath,sources://video)]">
 						<control type="image">
 							<width>420</width>
 							<height>360</height>
@@ -281,7 +281,7 @@
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets) | Window.IsActive(videos) + [Container.Content(files) | String.StartsWith(Container.FolderPath,sources://video)]]">
+					<focusedlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets) | Window.IsActive(videos) + String.StartsWith(Container.FolderPath,sources://video)]">
 						<control type="group">
 							<animation type="Focus" reversible="false">
 								<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
