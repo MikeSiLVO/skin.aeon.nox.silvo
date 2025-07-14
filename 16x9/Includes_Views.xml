@@ -260,7 +260,7 @@
 				</control>
 				<!-- Director -->
 				<control type="group">
-					<visible>!String.IsEmpty(ListItem.Director) | !String.IsEmpty(Container(4501).ListItem.Property(director.collection))</visible>
+					<visible>!String.IsEmpty(ListItem.Director) | ListItem.IsCollection + [!String.IsEmpty(Container(4501).ListItem.Property(director.collection)) | !String.IsEmpty(Container(4500).ListItem(0).Director)]</visible>
 					<width>650</width>
 					<height>40</height>
 					<control type="label">
