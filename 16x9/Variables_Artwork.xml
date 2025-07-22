@@ -323,11 +323,17 @@
 		<value>$INFO[ListItem.VideoCodec,,.png]</value>
 	</variable>
 	<variable name="AudioCodecFlagVar">
+		<value condition="String.Contains(ListItem.AudioCodec,truehd_atmos)">truehd_atmos.png</value>
+		<value condition="String.Contains(ListItem.AudioCodec,eac3_ddp_atmos)">ddp_atmos.png</value>
 		<value condition="String.Contains(ListItem.AudioCodec,atmos)">atmos.png</value>
+		<value condition="String.Contains(ListItem.AudioCodec,aac)">aac.png</value>
 		<value>$INFO[ListItem.AudioCodec,,.png]</value>
 	</variable>
 	<variable name="PlayerAudioCodecFlagVar">
+		<value condition="String.Contains(VideoPlayer.AudioCodec,truehd_atmos)">truehd_atmos.png</value>
+		<value condition="String.Contains(VideoPlayer.AudioCodec,eac3_ddp_atmos)">ddp_atmos.png</value>
 		<value condition="String.Contains(VideoPlayer.AudioCodec,atmos)">atmos.png</value>
+		<value condition="String.Contains(VideoPlayer.AudioCodec,aac)">aac.png</value>
 		<value>$INFO[VideoPlayer.AudioCodec,,.png]</value>
 	</variable>
 	<variable name="RatingFlagVar">
