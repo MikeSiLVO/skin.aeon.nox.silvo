@@ -357,8 +357,8 @@
 		<value condition="!String.IsEmpty(ListItem.Year)">$INFO[ListItem.Year]</value>
 	</variable>
 	<variable name="NextAiredSubLabelVar">
-		<value condition="[Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(59) | Control.IsVisible(503)] + !String.IsEmpty(Container(9143).ListItem.Property(Next_Aired.Name))">$INFO[Container(9143).ListItem.Property(Next_Aired),$LOCALIZE[31010]: , • ]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]</value>
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired.Name))">$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)][LIGHT]$INFO[Container(9143).ListItem.Property(Next_Aired), • ][/LIGHT]</value>
+		<value condition="[Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(59) | Control.IsVisible(503)] + !String.IsEmpty(Container(9143).ListItem.Property(Next_Aired.Title))">$INFO[Container(9143).ListItem.Property(Next_Aired),$LOCALIZE[31010]: , • ]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)]</value>
+		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired.Title))">$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)][LIGHT]$INFO[Container(9143).ListItem.Property(Next_Aired), • ][/LIGHT]</value>
 		<value condition="!String.IsEmpty(Container(9143).ListItem.Status)">$INFO[Container(9143).ListItem.Status]</value>
 		<value>$INFO[ListItem.Status]</value>
 	</variable>
@@ -858,12 +858,12 @@
 		<value>logos/rottentomatoes/rotten.png</value>
 	</variable>
 	<variable name="TMDbHelperNextAiredLabelVar">
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19031]:[/COLOR] $INFO[Container(9143).ListItem.Property(Next_Aired),, • ]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]</value>
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31374]:[/COLOR] $INFO[Container(9143).ListItem.Property(Last_Aired),, • ]$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Name)]</value>
+		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19031]:[/COLOR] $INFO[Container(9143).ListItem.Property(Next_Aired),, • ]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)]</value>
+		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31374]:[/COLOR] $INFO[Container(9143).ListItem.Property(Last_Aired),, • ]$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Title)]</value>
 	</variable>
 	<variable name="NextAiredLabelVar">
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))">$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)][LIGHT]$INFO[Container(9143).ListItem.Property(Next_Aired), • ][/LIGHT]</value>
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))">$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Name)][LIGHT]$INFO[Container(9143).ListItem.Property(Last_Aired), • ][/LIGHT]</value>
+		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))">$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)][LIGHT]$INFO[Container(9143).ListItem.Property(Next_Aired), • ][/LIGHT]</value>
+		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))">$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Title)][LIGHT]$INFO[Container(9143).ListItem.Property(Last_Aired), • ][/LIGHT]</value>
 	</variable>
 	<variable name="TVShowStatusLabelVar">
 		<value condition="!String.IsEmpty(Container(9143).ListItem.Status)">$INFO[Container(9143).ListItem.Status]</value>
@@ -1126,7 +1126,7 @@
 		<value condition="Control.HasFocus(97) + Window.IsVisible(contentsettings)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[222][/COLOR]</value>
 		<value condition="Control.HasFocus(97)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[15067][/COLOR]</value>
 		<value condition="Control.HasFocus(95) + String.IsEqual(Control.GetLabel(5),$LOCALIZE[21452])">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[21452][/COLOR]</value>
-		<value condition="Control.HasFocus(95) + [Window.IsVisible(FileBrowser.xml) | Window.IsVisible(contentsettings) | Window.IsVisible(mediafilter) | Window.IsVisible(smartplaylisteditor) | Window.IsVisible(mediasource)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[186][/COLOR]</value>
+		<value condition="Control.HasFocus(95) + [Window.IsVisible(FileBrowser.xml) | Window.IsVisible(contentsettings) | Window.IsVisible(mediafilter) | Window.IsVisible(smartplaylisteditor) | Window.IsVisible(mediasource) | Window.IsVisible(profilesettings)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[186][/COLOR]</value>
 		<value condition="Control.HasFocus(95) + [Window.IsVisible(addonsettings) | Window.IsVisible(selectdialog)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[190][/COLOR]</value>
 		<value condition="Control.HasFocus(98) + Window.IsVisible(addonsettings)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[571][/COLOR]</value>
 		<value condition="Control.HasFocus(98) + Window.IsVisible(FileBrowser.xml)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[119][/COLOR]</value>
