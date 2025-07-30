@@ -752,7 +752,7 @@
 			<label>$INFO[ListItem.TvShowTitle]</label>
 			<label>$INFO[ListItem.EndTime,$LOCALIZE[31393]: ,]</label>
 			<label>$VAR[VideoInfoTVSubtitleVar]</label>
-			<label>$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E,  - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]$INFO[Container(9143).ListItem.Property(Next_Aired), (,)]</label>
+			<label>$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E,  - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)]$INFO[Container(9143).ListItem.Property(Next_Aired), (,)]</label>
 		</control>
 	</include>
 	<include name="InfoSublabelMusicvideos">
@@ -1085,18 +1085,18 @@
 	</include>
 	<include name="InfoContentTVShows">
 		<item>
-			<label>$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Name)]$INFO[Container(9143).ListItem.Property(Next_Aired), (,)]</label>
+			<label>$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)]$INFO[Container(9143).ListItem.Property(Next_Aired), (,)]</label>
 			<label2>$LOCALIZE[19031]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[19031])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$ESCINFO[Container(9143).ListItem.Property(Next_Aired.Name)]$INFO[Container(9143).ListItem.Property(Next_Aired), (,)])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$ESCINFO[Container(9143).ListItem.Property(Next_Aired.Title)]$INFO[Container(9143).ListItem.Property(Next_Aired), (,)])</onclick>
 			<onclick>SetFocus(64)</onclick>
 			<visible>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Name)]$INFO[Container(9143).ListItem.Property(Last_Aired), (,)]</label>
+			<label>$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Title)]$INFO[Container(9143).ListItem.Property(Last_Aired), (,)]</label>
 			<label2>$LOCALIZE[31374]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31374])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$ESCINFO[Container(9143).ListItem.Property(Last_Aired.Name)]$INFO[Container(9143).ListItem.Property(Last_Aired), (,)])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$ESCINFO[Container(9143).ListItem.Property(Last_Aired.Title)]$INFO[Container(9143).ListItem.Property(Last_Aired), (,)])</onclick>
 			<onclick>SetFocus(64)</onclick>
 			<visible>!String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))</visible>
 		</item>
@@ -1145,18 +1145,18 @@
 			<visible>String.IsEmpty(Container(4800).ListItem.Premiered) + !String.IsEmpty(Container(4801).ListItem.Premiered)</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(4801).ListItem.Property(Next_Aired.Season),S]$INFO[Container(4801).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(4801).ListItem.Property(Next_Aired.Name)]$INFO[Container(4801).ListItem.Property(Next_Aired), (,)]</label>
+			<label>$INFO[Container(4801).ListItem.Property(Next_Aired.Season),S]$INFO[Container(4801).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(4801).ListItem.Property(Next_Aired.Title)]$INFO[Container(4801).ListItem.Property(Next_Aired), (,)]</label>
 			<label2>$LOCALIZE[19031]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[19031])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4801).ListItem.Property(Next_Aired.Season),S]$INFO[Container(4801).ListItem.Property(Next_Aired.Episode),E, - ]$ESCINFO[Container(4801).ListItem.Property(Next_Aired.Name)]$INFO[Container(4801).ListItem.Property(Next_Aired), (,)])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4801).ListItem.Property(Next_Aired.Season),S]$INFO[Container(4801).ListItem.Property(Next_Aired.Episode),E, - ]$ESCINFO[Container(4801).ListItem.Property(Next_Aired.Title)]$INFO[Container(4801).ListItem.Property(Next_Aired), (,)])</onclick>
 			<onclick>SetFocus(4700)</onclick>
 			<visible>!String.IsEmpty(Container(4801).ListItem.Property(Next_Aired))</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(4801).ListItem.Property(Last_Aired.Season),S]$INFO[Container(4801).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(4801).ListItem.Property(Last_Aired.Name)]$INFO[Container(4801).ListItem.Property(Last_Aired), (,)]</label>
+			<label>$INFO[Container(4801).ListItem.Property(Last_Aired.Season),S]$INFO[Container(4801).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(4801).ListItem.Property(Last_Aired.Title)]$INFO[Container(4801).ListItem.Property(Last_Aired), (,)]</label>
 			<label2>$LOCALIZE[31374]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31374])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4801).ListItem.Property(Last_Aired.Season),S]$INFO[Container(4801).ListItem.Property(Last_Aired.Episode),E, - ]$ESCINFO[Container(4801).ListItem.Property(Last_Aired.Name)]$INFO[Container(4801).ListItem.Property(Last_Aired), (,)])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4801).ListItem.Property(Last_Aired.Season),S]$INFO[Container(4801).ListItem.Property(Last_Aired.Episode),E, - ]$ESCINFO[Container(4801).ListItem.Property(Last_Aired.Title)]$INFO[Container(4801).ListItem.Property(Last_Aired), (,)])</onclick>
 			<onclick>SetFocus(4700)</onclick>
 			<visible>!String.IsEmpty(Container(4801).ListItem.Property(Last_Aired))</visible>
 		</item>
