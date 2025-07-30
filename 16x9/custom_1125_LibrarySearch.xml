@@ -89,6 +89,28 @@
 					<param name="width">1800</param>
 					<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22actor%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22,%22%5d%7d%5d%7d%2c%22type%22%3a%22episodes%22%7d]</param>
 				</include>
+				<control type="label" id="4007">
+					<height>40</height>
+					<font>font16_title</font>
+					<label>Movies directed by$INFO[Container(5007).CurrentItem, [B](,/]$INFO[Container(5007).NumItems,,)][/B]</label>
+					<visible>Integer.IsGreater(Container(5007).NumItems,0)</visible>
+				</control>
+				<include content="ExtendedInfoListLayout" condition="Skin.HasSetting(searchfor_directors)">
+					<param name="id">5007</param>
+					<param name="width">1800</param>
+					<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22director%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</param>
+				</include>
+				<control type="label" id="4008">
+					<height>40</height>
+					<font>font16_title</font>
+					<label>Movies written by$INFO[Container(5008).CurrentItem, [B](,/]$INFO[Container(5008).NumItems,,)][/B]</label>
+					<visible>Integer.IsGreater(Container(5008).NumItems,0)</visible>
+				</control>
+				<include content="ExtendedInfoListLayout" condition="Skin.HasSetting(searchfor_writers)">
+					<param name="id">5008</param>
+					<param name="width">1800</param>
+					<param name="content">$INFO[Window(Home).Property(library_search_string),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22writers%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</param>
+				</include>
 			</control>
 		</control>
 		<include>Topbar</include>
@@ -114,7 +136,7 @@
 					<include>ReloadWindowOnclick</include>
 					<selected>Skin.HasSetting(searchfor_actors)</selected>
 				</control>
-				<!-- <control type="radiobutton" id="90502">
+				<control type="radiobutton" id="90502">
 					<textwidth>352</textwidth>
 					<font>font13_title</font>
 					<include>ButtonCommonValues</include>
@@ -131,7 +153,7 @@
 					<onclick>Skin.ToggleSetting(searchfor_writers)</onclick>
 					<include>ReloadWindowOnclick</include>
 					<selected>Skin.HasSetting(searchfor_writers)</selected>
-				</control> -->
+				</control>
 				<!-- <control type="edit" id="905">
 					<description>Filter</description>
 					<textwidth>345</textwidth>
