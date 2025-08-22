@@ -358,9 +358,9 @@
 		<value condition="!String.IsEmpty(ListItem.Year)">$INFO[ListItem.Year]</value>
 	</variable>
 	<variable name="NextAiredSubLabelVar">
-		<value condition="[Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(59) | Control.IsVisible(503)] + !String.IsEmpty(Container(9143).ListItem.Property(Next_Aired.Title))">$INFO[Container(9143).ListItem.Property(Next_Aired),$LOCALIZE[31010]: , • ]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)]</value>
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired.Title))">$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)][LIGHT]$INFO[Container(9143).ListItem.Property(Next_Aired), • ][/LIGHT]</value>
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Status)">$INFO[Container(9143).ListItem.Status]</value>
+		<value condition="[Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(59) | Control.IsVisible(503)] + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Title))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired),$LOCALIZE[31010]: , • ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Season),S]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Episode),E, - ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Title)]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Title))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Season),S]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Episode),E, - ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Title)][LIGHT]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired), • ][/LIGHT]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Status))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Status)]</value>
 		<value>$INFO[ListItem.Status]</value>
 	</variable>
 	<variable name="FloorLabel2Var">
@@ -737,7 +737,7 @@
 		<value condition="Control.HasFocus(900020)">$LOCALIZE[31547]$INFO[Container(900020).CurrentItem, (,/]$INFO[Container(900020).NumItems,,)]</value>
 	</variable>
 	<variable name="VideoInfoTVSubtitleVar">
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Status)">$INFO[Container(9143).ListItem.Status]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Status))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Status)]</value>
 		<value condition="!String.IsEmpty(ListItem.Status)">$INFO[ListItem.Status]</value>
 	</variable>
 	<variable name="VideoInfoCastLabel2Var">
@@ -745,9 +745,9 @@
 		<value>Kodi</value>
 	</variable>
 	<variable name="RottenFreshLogoVar">
-		<value condition="String.IsEqual(Container(9143).ListItem.Property(RottenTomatoes_Image),certified) | String.IsEqual(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Image),certified)">logos/rottentomatoes/certified.png</value>
-		<value condition="!String.IsEmpty(ListItem.Rating(tomatometerallcritics)) + Integer.IsLess(ListItem.Rating(tomatometerallcritics),6.0) | !String.IsEmpty(Container(4501).ListItem.Property(ratings.tomatometerallcritics.rating)) + Integer.IsLess(Container(4501).ListItem.Property(ratings.tomatometerallcritics.rating_rounded),6.0) | !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating)) + Integer.IsLess(Container(9143).ListItem.Property(RottenTomatoes_Rating),60) | String.IsEqual(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Image),rotten) | String.IsEqual(Container(9143).ListItem.Property(RottenTomatoes_Image),rotten)">logos/rottentomatoes/rotten.png</value>
-		<value>logos/rottentomatoes/fresh.png</value>
+		<value condition="String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Image),certified) | String.IsEqual(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Image),certified)">logos/rottentomatoes/certified.png</value>
+		<value condition="Integer.IsGreater(ListItem.Rating(tomatometerallcritics),6.0) | Integer.IsGreater(Container(4501).ListItem.Property(ratings.tomatometerallcritics.rating_rounded),5.9) | Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Rating),59) | Integer.IsGreater(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating),59)">logos/rottentomatoes/fresh.png</value>
+		<value>logos/rottentomatoes/rotten.png</value>
 	</variable>
 	<variable name="RottenFreshLabelVar">
 		<value condition="String.StartsWith(ListItem.Rating(tomatometerallcritics),10.)">10</value>
@@ -773,11 +773,11 @@
 		<value condition="String.EndsWith(ListItem.Rating(tomatometerallcritics),.2)">2%</value>
 		<value condition="String.EndsWith(ListItem.Rating(tomatometerallcritics),.1)">1%</value>
 		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(ratings.tomatometerallcritics.rating_percentage))">$INFO[Container(4501).ListItem.Property(ratings.tomatometerallcritics.rating_percentage)]</value>
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating))">$INFO[Container(9143).ListItem.Property(RottenTomatoes_Rating),,%]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Rating))">$INFO[Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Rating),,%]</value>
 		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating))">$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating),,%]</value>
 	</variable>
 	<variable name="RottenFreshAudienceLogoVar">
-		<value condition="Integer.IsGreaterOrEqual(ListItem.Rating(tomatometerallaudience),6.0) | Integer.IsGreaterOrEqual(Container(4501).ListItem.Property(ratings.tomatometerallaudience.rating_rounded),6.0) | Integer.IsGreaterOrEqual(Container(9143).ListItem.Property(RottenTomatoes_UserMeter),60) | Integer.IsGreaterOrEqual(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter),60)">logos/rottentomatoes/popcornfresh.png</value>
+		<value condition="Integer.IsGreater(ListItem.Rating(tomatometerallaudience),5.9) | Integer.IsGreater(Container(4501).ListItem.Property(ratings.tomatometerallaudience.rating_rounded),5.9) | Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_UserMeter),59) | Integer.IsGreater(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter),59)">logos/rottentomatoes/popcornfresh.png</value>
 		<value>logos/rottentomatoes/popcornrotten.png</value>
 	</variable>
 	<variable name="RottenFreshAudienceLabelVar">
@@ -804,22 +804,22 @@
 		<value condition="String.EndsWith(ListItem.Rating(tomatometerallaudience),.2)">2%</value>
 		<value condition="String.EndsWith(ListItem.Rating(tomatometerallaudience),.1)">1%</value>
 		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(ratings.tomatometerallaudience.rating_percentage))">$INFO[Container(4501).ListItem.Property(ratings.tomatometerallaudience.rating_percentage)]</value>
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter))">$INFO[Container(9143).ListItem.Property(RottenTomatoes_UserMeter),,%]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_UserMeter))">$INFO[Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_UserMeter),,%]</value>
 		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating))">$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter),,%]</value>
 	</variable>
 	<variable name="TMDbRatingsLabelVar">
 		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(ratings.themoviedb.rating))">$INFO[Container(4501).ListItem.Property(ratings.themoviedb.rating_rounded)]</value>
 		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(ratings.tmdb.rating))">$INFO[Container(4501).ListItem.Property(ratings.tmdb.rating_rounded)]</value>
 		<value condition="Window.IsActive(fullscreenvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.TMDb_Rating))">$INFO[Window(Home).Property(TMDbHelper.Player.TMDb_Rating)]</value>
-		<value>$INFO[Container(9143).ListItem.Property(TMDb_Rating)]</value>
+		<value>$INFO[Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating)]</value>
 	</variable>
 	<variable name="TraktRatingsLabelVar">
 		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(ratings.trakt.rating))">$INFO[Container(4501).ListItem.Property(ratings.trakt.rating_rounded)]</value>
-		<value>$INFO[Container(9143).ListItem.Property(Trakt_Rating)]</value>
+		<value>$INFO[Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating)]</value>
 	</variable>
 	<variable name="IMDbRatingsLabelVar">
 		<value condition="!String.IsEmpty(Container(4501).ListItem.Property(ratings.imdb.rating))">$INFO[Container(4501).ListItem.Property(ratings.imdb.rating_rounded)]</value>
-		<value>$INFO[Container(9143).ListItem.Property(IMDb_Rating)]</value>
+		<value>$INFO[Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating)]</value>
 	</variable>
 	<variable name="CustomRottenFreshLabelVar">
 		<value condition="!String.IsEmpty(Container(4800).ListItem.Property(ratings.tomatometerallcritics.rating_percentage))">$INFO[Container(4800).ListItem.Property(ratings.tomatometerallcritics.rating_percentage)]</value>
@@ -852,26 +852,26 @@
 		<value condition="Window.IsVisible(fullscreeninfo) + String.IsEqual(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Image),fresh)">logos/rottentomatoes/fresh.png</value>
 		<value condition="Window.IsVisible(fullscreeninfo) + String.IsEqual(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Image),rotten)">logos/rottentomatoes/rotten.png</value>
 		<value condition="Window.IsVisible(fullscreeninfo) + Integer.IsGreater(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating),59)">logos/rottentomatoes/fresh.png</value>
-		<value condition="String.IsEqual(Container(9143).ListItem.Property(RottenTomatoes_Image),certified)">logos/rottentomatoes/certified.png</value>
-		<value condition="String.IsEqual(Container(9143).ListItem.Property(RottenTomatoes_Image),fresh)">logos/rottentomatoes/fresh.png</value>
-		<value condition="String.IsEqual(Container(9143).ListItem.Property(RottenTomatoes_Image),rotten)">logos/rottentomatoes/rotten.png</value>
-		<value condition="Integer.IsGreater(Container(9143).ListItem.Property(RottenTomatoes_Rating),59)">logos/rottentomatoes/fresh.png</value>
+		<value condition="String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Image),certified)">logos/rottentomatoes/certified.png</value>
+		<value condition="String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Image),fresh)">logos/rottentomatoes/fresh.png</value>
+		<value condition="String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Image),rotten)">logos/rottentomatoes/rotten.png</value>
+		<value condition="Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Rating),59)">logos/rottentomatoes/fresh.png</value>
 		<value>logos/rottentomatoes/rotten.png</value>
 	</variable>
 	<variable name="TMDbHelperNextAiredLabelVar">
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19031]:[/COLOR] $INFO[Container(9143).ListItem.Property(Next_Aired),, • ]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)]</value>
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31374]:[/COLOR] $INFO[Container(9143).ListItem.Property(Last_Aired),, • ]$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Title)]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19031]:[/COLOR] $INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired),, • ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Season),S]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Episode),E, - ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Title)]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Last_Aired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31374]:[/COLOR] $INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired),, • ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Season),S]$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Episode),E, - ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Title)]</value>
 	</variable>
 	<variable name="NextAiredLabelVar">
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))">$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)][LIGHT]$INFO[Container(9143).ListItem.Property(Next_Aired), • ][/LIGHT]</value>
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))">$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Title)][LIGHT]$INFO[Container(9143).ListItem.Property(Last_Aired), • ][/LIGHT]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Season),S]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Episode),E, - ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Title)][LIGHT]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired), • ][/LIGHT]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Last_Aired))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Season),S]$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Episode),E, - ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Title)][LIGHT]$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired), • ][/LIGHT]</value>
 	</variable>
 	<variable name="TVShowStatusLabelVar">
-		<value condition="!String.IsEmpty(Container(9143).ListItem.Status)">$INFO[Container(9143).ListItem.Status]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Status))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Status)]</value>
 		<value>$INFO[ListItem.Status]</value>
 	</variable>
 	<variable name="RottenFreshAudienceTMDbHelperLogoVar">
-		<value condition="Integer.IsGreaterOrEqual(Container(9143).ListItem.Property(RottenTomatoes_UserMeter),60) | Integer.IsGreaterOrEqual(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter),60)">logos/rottentomatoes/popcornfresh.png</value>
+		<value condition="Integer.IsGreaterOrEqual(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_UserMeter),60) | Integer.IsGreaterOrEqual(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter),60)">logos/rottentomatoes/popcornfresh.png</value>
 		<value>logos/rottentomatoes/popcornrotten.png</value>
 	</variable>
 	<variable name="DialogSelectLabelVar">
@@ -1042,7 +1042,7 @@
 		<value>$INFO[PVR.EpgEventRemainingTime(ss)]s</value>
 	</variable>
 	<variable name="DurationVar">
-		<value condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + String.IsEmpty(ListItem.Duration) + !String.IsEmpty(Container(9143).ListItem.Property(Duration)) + !String.IsEqual(Container(9143).ListItem.Property(Duration),0)">$INFO[Container(9143).ListItem.Property(Duration),,m]</value>
+		<value condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + String.IsEmpty(ListItem.Duration) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Duration)) + !String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Duration),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Duration),,m]</value>
 		<value condition="!Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.Duration(mins),,m]</value>
 		<value condition="Integer.IsEqual(ListItem.Duration(mins),60) | Integer.IsEqual(ListItem.Duration(mins),120) | Integer.IsEqual(ListItem.Duration(mins),180) | Integer.IsEqual(ListItem.Duration(mins),240) | Integer.IsEqual(ListItem.Duration(mins),300) | Integer.IsEqual(ListItem.Duration(mins),360) | Integer.IsEqual(ListItem.Duration(mins),420) | Integer.IsEqual(ListItem.Duration(mins),480) | Integer.IsEqual(ListItem.Duration(mins),540) | Integer.IsEqual(ListItem.Duration(mins),600)">$INFO[ListItem.Duration(hours),,h]</value>
 		<value condition="Integer.IsLess(ListItem.Duration(mins),60)">$INFO[ListItem.Duration(m),,m]</value>
@@ -1059,7 +1059,7 @@
 		<value>$INFO[Container(4800).ListItem.Duration(h),,h]$INFO[Container(4800).ListItem.Duration(m),,m]</value>
 	</variable>
 	<variable name="ItemDurationVar">
-		<value condition="String.IsEmpty(ListItem.Duration) + !String.IsEqual(Container(9143).ListItem.Property(Duration),0) + String.IsEqual(ListItem.DBTYPE,tvshow)">$INFO[Container(9143).ListItem.Property(Duration),,m]</value>
+		<value condition="String.IsEmpty(ListItem.Duration) + !String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Duration),0) + String.IsEqual(ListItem.DBTYPE,tvshow)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Duration),,m]</value>
 		<value condition="Integer.IsEqual(ListItem.Duration(mins),60) | Integer.IsEqual(ListItem.Duration(mins),120) | Integer.IsEqual(ListItem.Duration(mins),180) | Integer.IsEqual(ListItem.Duration(mins),240) | Integer.IsEqual(ListItem.Duration(mins),300) | Integer.IsEqual(ListItem.Duration(mins),360) | Integer.IsEqual(ListItem.Duration(mins),420) | Integer.IsEqual(ListItem.Duration(mins),480) | Integer.IsEqual(ListItem.Duration(mins),540) | Integer.IsEqual(ListItem.Duration(mins),600)">$INFO[ListItem.Duration(hours),,h]</value>
 		<value condition="Integer.IsLess(ListItem.Duration(mins),60)">$INFO[ListItem.Duration(m),,m]</value>
 		<value condition="Integer.IsLess(ListItem.Duration(mins),1)">$INFO[ListItem.Duration(ss),,$LOCALIZE[31090]]</value>
