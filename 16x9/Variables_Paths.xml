@@ -98,10 +98,11 @@
 		<value condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow)">tv</value>
 	</variable>
 	<variable name="VideoInfoTMDbCastVar">
-		<value condition="String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,set)">plugin://plugin.video.themoviedb.helper?info=cast&amp;tmdb_type=movie&amp;tmdb_id=$INFO[Container(9143).ListItem.Property(TMDb_ID)]</value>
-		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow)">plugin://plugin.video.themoviedb.helper?info=cast&amp;tmdb_type=tv&amp;tmdb_id=$INFO[Container(9143).ListItem.Property(TMDb_ID)]</value>
-		<value condition="String.IsEqual(ListItem.DBTYPE,episode)">plugin://plugin.video.themoviedb.helper?info=cast&amp;tmdb_type=tv&amp;tmdb_id=$INFO[Container(9143).ListItem.Property(TVShow.TMDb_ID)]$INFO[Container(9143).ListItem.Season,&amp;season=]$INFO[Container(9143).ListItem.Episode,&amp;episode=]</value>
-		<value>plugin://plugin.video.themoviedb.helper?info=cast&amp;tmdb_type=tv&amp;tmdb_id=$INFO[Container(9143).ListItem.Property(TVShow.TMDb_ID)]$INFO[Container(9143).ListItem.Season,&amp;season=]</value>
+		<value condition="String.IsEmpty(ListItem.DBID)">plugin://plugin.video.themoviedb.helper?info=cast&amp;tmdb_type=movie&amp;tmdb_id=$INFO[ListItem.Property(tmdb_id)]&amp;reload=$INFO[ListItem.Property(tmdb_id)]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,movie)">plugin://plugin.video.themoviedb.helper?info=cast&amp;tmdb_type=movie&amp;tmdb_id=$INFO[Window(Home).Property(TMDbHelper.ListItem.tmdb_id)]&amp;reload=$INFO[ListItem.DBID]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow)">plugin://plugin.video.themoviedb.helper?info=cast&amp;tmdb_type=tv&amp;tmdb_id=$INFO[Window(Home).Property(TMDbHelper.ListItem.tmdb_id)]&amp;reload=$INFO[ListItem.DBID]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,episode)">plugin://plugin.video.themoviedb.helper?info=cast&amp;tmdb_type=tv&amp;tmdb_id=$INFO[Window(Home).Property(TMDbHelper.ListItem.tvshow.tmdb_id)]$INFO[ListItem.Season,&amp;season=]$INFO[ListItem.Episode,&amp;episode=]&amp;reload=$INFO[ListItem.DBID]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,season)">plugin://plugin.video.themoviedb.helper?info=cast&amp;tmdb_type=tv&amp;tmdb_id=$INFO[Window(Home).Property(TMDbHelper.ListItem.tvshow.tmdb_id)]$INFO[ListItem.Season,&amp;season=]&amp;reload=$INFO[ListItem.DBID]</value>
 	</variable>
 	<variable name="TMDbHVideoContentVar">
 		<value condition="!String.IsEmpty(Window(Home).Property(tmdb_id))">$INFO[Window(Home).Property(tmdb_id)]</value>
