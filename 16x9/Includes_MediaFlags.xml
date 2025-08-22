@@ -443,7 +443,7 @@
 			<width>340</width>
 			<orientation>horizontal</orientation>
 			<control type="group">
-				<visible>[!String.IsEmpty(Container(4501).ListItem.Property(ratings.tomatometerallcritics.rating)) | !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_Rating))] + [Container.Content(movies) | Container.Content(tvshows)]</visible>
+				<visible>[!String.IsEmpty(Container(4501).ListItem.Property(ratings.tomatometerallcritics.rating)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Rating))] + [Container.Content(movies) | Container.Content(tvshows)]</visible>
 				<visible>!Skin.HasSetting(DisableFlag_RTCritic)</visible>
 				<width>170</width>
 				<control type="image">
@@ -472,7 +472,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>[!String.IsEmpty(Container(4501).ListItem.Property(ratings.tomatometerallaudience.rating)) | !String.IsEmpty(Container(9143).ListItem.Property(RottenTomatoes_UserMeter))] + [Container.Content(movies) | Container.Content(tvshows)]</visible>
+				<visible>[!String.IsEmpty(Container(4501).ListItem.Property(ratings.tomatometerallaudience.rating)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_UserMeter))] + [Container.Content(movies) | Container.Content(tvshows)]</visible>
 				<visible>!Skin.HasSetting(DisableFlag_RTAudience)</visible>
 				<width>170</width>
 				<control type="image">
@@ -501,7 +501,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>[!String.IsEmpty(Container(4501).ListItem.Property(ratings.themoviedb.rating)) | !String.IsEmpty(Container(4501).ListItem.Property(ratings.tmdb.rating)) | !String.IsEmpty(Container(9143).ListItem.Property(TMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(TMDb_Rating),0.0)] + !Container.Content(seasons)</visible>
+				<visible>[!String.IsEmpty(Container(4501).ListItem.Property(ratings.themoviedb.rating)) | !String.IsEmpty(Container(4501).ListItem.Property(ratings.tmdb.rating)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating)) + !String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating),0.0)] + !Container.Content(seasons)</visible>
 				<visible>!Skin.HasSetting(DisableFlag_TMDb)</visible>
 				<width>170</width>
 				<control type="image">
@@ -519,7 +519,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>[!String.IsEmpty(Container(4501).ListItem.Property(ratings.trakt.rating)) | !String.IsEmpty(Container(9143).ListItem.Property(Trakt_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(Trakt_Rating),0.0)] + !Container.Content(seasons)</visible>
+				<visible>[!String.IsEmpty(Container(4501).ListItem.Property(ratings.trakt.rating)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating)) + !String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),0.0)] + !Container.Content(seasons)</visible>
 				<visible>!Skin.HasSetting(DisableFlag_Trakt)</visible>
 				<width>170</width>
 				<control type="image">
@@ -537,7 +537,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>[!String.IsEmpty(Container(4501).ListItem.Property(ratings.imdb.rating)) | !String.IsEmpty(Container(9143).ListItem.Property(IMDb_Rating)) + !String.IsEqual(Container(9143).ListItem.Property(IMDb_Rating),0.0)] + !Container.Content(seasons)</visible>
+				<visible>[!String.IsEmpty(Container(4501).ListItem.Property(ratings.imdb.rating)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating)) + !String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating),0.0)] + !Container.Content(seasons)</visible>
 				<visible>!Skin.HasSetting(DisableFlag_IMDb)</visible>
 				<width>170</width>
 				<control type="image">
