@@ -203,7 +203,6 @@
 	</include>
 	<variable name="DebugWindowNameVar">
 		<value condition="String.StartsWith(Window.Property(xmlfile),custom_11) | String.Contains(Window.Property(xmlfile),script-)" />
-		<value condition="Window.IsVisible(selectdialog)">selectdialog</value>
 		<value condition="Window.IsVisible(addoninformation)">addoninformation</value>
 		<value condition="Window.IsVisible(addonsettings)">addonsettings</value>
 		<value condition="Window.IsVisible(busydialog)">busydialog</value>
@@ -219,6 +218,8 @@
 		<value condition="Window.IsVisible(numericinput)">numericinput</value>
 		<value condition="Window.IsVisible(osdaudiosettings)">osdaudiosettings</value>
 		<value condition="Window.IsVisible(osdsubtitlesettings)">osdsubtitlesettings</value>
+		<value condition="Window.IsVisible(dialogselectsubtitle)">dialogselectsubtitle</value>
+		<value condition="Window.IsVisible(dialogselectvideo)">dialogselectvideo</value>
 		<value condition="Window.IsVisible(osdvideosettings)">osdvideosettings</value>
 		<value condition="Window.IsVisible(peripherals)">peripherals</value>
 		<value condition="Window.IsVisible(pictureinfo)">pictureinfo</value>
@@ -243,7 +244,8 @@
 		<value condition="Window.IsVisible(visualisationpresetlist)">visualisationpresetlist</value>
 		<value condition="Window.IsVisible(volumebar)">volumebar</value>
 		<value condition="Window.IsVisible(yesnodialog)">yesnodialog</value>
-		<value condition="Window.IsActive(dialogsettings)">dialogsettings</value>
+		<value condition="Window.IsActive(DialogSettings.xml)">dialogsettings</value>
+		<value condition="Window.IsActive(DialogSelect.xml)">selectdialog</value>
 		<value condition="Window.IsActive(addonbrowser)">addonbrowser</value>
 		<value condition="Window.IsActive(appearancesettings)">appearancesettings</value>
 		<value condition="Window.IsActive(eventlog)">eventlog</value>
