@@ -906,16 +906,16 @@
 		<value condition="Skin.HasSetting(Enable.HourMinuteDuration)">$VAR[ItemDurationVar]</value>
 		<value condition="!Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]</value>
 	</variable>
-	<variable name="VideoResolutionLabelVar">
+	<!-- <variable name="VideoResolutionLabelVar">
 		<value condition="String.IsEqual(ListItem.VideoResolution,4K)">$INFO[ListItem.VideoResolution]</value>
 		<value>$INFO[ListItem.VideoResolution,,p]</value>
-	</variable>
-	<variable name="HDRTypeLabelVar">
+	</variable> -->
+	<!-- <variable name="HDRTypeLabelVar">
 		<value condition="String.IsEqual(ListItem.HdrType,dolbyvision) | Window.IsVisible(fullscreenvideo) + String.IsEqual(VideoPlayer.HdrType,dolbyvision)">Dolby Vision</value>
 		<value condition="Window.IsVisible(fullscreenvideo) + !String.IsEmpty(VideoPlayer.HdrType)">[UPPERCASE]$INFO[VideoPlayer.HdrType][/UPPERCASE]</value>
 		<value condition="!String.IsEmpty(ListItem.HdrType)">[UPPERCASE]$INFO[ListItem.HdrType][/UPPERCASE]</value>
-	</variable>
-	<variable name="SourceLabelVar">
+	</variable> -->
+	<!-- <variable name="SourceLabelVar">
 		<value condition="ListItem.IsStereoscopic">BluRay 3D</value>
 		<value condition="[String.Contains(ListItem.filename,pdtv) | String.Contains(ListItem.filename,sdtv) | String.Contains(ListItem.filename,sd tv)]">SDTV</value>
 		<value condition="[String.Contains(ListItem.Filename,hdtv) | String.Contains(ListItem.Filename,hd tv)]">HDTV</value>
@@ -924,7 +924,7 @@
 		<value condition="String.Contains(ListItem.Filename,dvd) | String.IsEqual(ListItem.FileExtension,ifo)">DVD</value>
 		<value condition="[String.Contains(ListItem.Filename,bluray) | String.Contains(ListItem.Filename,blu-ray) | String.Contains(ListItem.Filename,bdrip) | String.Contains(ListItem.Filename,brrip) | String.IsEqual(ListItem.FileExtension,bdmv) | String.IsEqual(ListItem.FileExtension,iso) | String.Contains(ListItem.Filename,remux)]">BluRay</value>
 		<value>$INFO[ListItem.VideoCodec]</value>
-	</variable>
+	</variable> -->
 	<variable name="AudioCodecLabelVar">
 		<value condition="String.Contains(ListItem.AudioCodec,atmos) | Window.IsActive(fullscreenvideo) + String.Contains(VideoPlayer.AudioCodec,atmos) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.Contains(ListItem.Property(stream.codec),atmos)">Atmos</value>
 		<value condition="String.IsEqual(ListItem.Filename,dtshd_ma_x)| Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x) + !Window.IsVisible(dialogselectaudio) | Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dtshd_ma_x)">DTS-X</value>
