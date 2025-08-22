@@ -79,8 +79,10 @@
 				<onright>97</onright>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<onclick>Dialog.Close(1107)</onclick>
-				<onclick>SetProperty(person_id,$INFO[Container(90100).ListItem.Property(tmdb_id),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_type=person&amp;tmdb_id=],Home)</onclick>
-				<onclick>ActivateWindow(1109)</onclick>
+				<onclick condition="!String.IsEmpty(Window(Home).Property(tmdb_person_search_string))">SetProperty(person_id,$INFO[Container(90100).ListItem.Property(tmdb_id),plugin://plugin.video.themoviedb.helper/?info=details&amp;tmdb_type=person&amp;tmdb_id=],Home)</onclick>
+				<onclick condition="!String.IsEmpty(Window(Home).Property(tmdb_person_search_string))">ActivateWindow(1109)</onclick>
+				<onclick condition="!String.IsEmpty(Window(Home).Property(tmdb_movie_search_string))">RunScript(plugin.video.themoviedb.helper,add_path=$INFO[ListItem.FolderPath],tmdb_type=movie,call_auto=1111)</onclick>
+				<onclick condition="!String.IsEmpty(Window(Home).Property(tmdb_tv_search_string))">RunScript(plugin.video.themoviedb.helper,add_path=$INFO[ListItem.FolderPath],tmdb_type=tv,call_auto=1111)</onclick>
 				<visible allowhiddenfocus="true">!Skin.TimerIsRunning(startbusyspinner) + !Container(90100).IsUpdating</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="zoom" delay="500" start="150" end="100" center="504,378" time="250" tween="cubic" easing="out" />
