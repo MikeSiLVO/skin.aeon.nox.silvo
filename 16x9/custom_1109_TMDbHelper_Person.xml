@@ -11,7 +11,6 @@
 		<control type="list" id="11090">
 			<include>HiddenList</include>
 			<content sortby="year" sortorder="descending">$INFO[Window(Home).Property(person_id)]</content>
-			<!-- <content sortby="year" sortorder="descending">$INFO[Window(Home).Property(TMDbHelper.Path.Current)]</content> -->
 		</control>
 		<!-- Poster Side -->
 		<control type="group">
@@ -187,6 +186,9 @@
 						<ondown condition="Control.IsVisible(90008)">90008</ondown>
 						<ondown condition="Control.IsVisible(90009) + !Control.IsVisible(90008)">90009</ondown>
 						<ondown condition="Control.IsVisible(900010) + !Control.IsVisible(90008) + !Control.IsVisible(90009)">900010</ondown>
+						<ondown condition="Control.IsVisible(900011) + !Control.IsVisible(90008) + !Control.IsVisible(90009) + !Control.IsVisible(900010)">900011</ondown>
+						<ondown condition="Control.IsVisible(900012) + !Control.IsVisible(90008) + !Control.IsVisible(90009) + !Control.IsVisible(900010) + !Control.IsVisible(900011)">900012</ondown>
+						<ondown condition="Control.IsVisible(900020) + !Control.IsVisible(90008) + !Control.IsVisible(90009) + !Control.IsVisible(900010) + !Control.IsVisible(900011) + !Control.IsVisible(900012)">900020</ondown>
 						<onclick>SetProperty(TextViewerHeader,$ESCINFO[Container(11090).ListItem.Title,[B],[/B]],Home)</onclick>
 						<onclick>SetProperty(TextViewerContent,$ESCINFO[Container(11090).ListItem.Plot],Home)</onclick>
 						<onclick>SetProperty(TextViewerSubHeader,$INFO[Container(11090).ListItem.Property(Department),$LOCALIZE[31546] ]$INFO[Container(11090).ListItem.Property(Age), - , $LOCALIZE[31544]],Home)</onclick>
