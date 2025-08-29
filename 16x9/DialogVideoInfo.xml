@@ -449,7 +449,8 @@
 					<height>480</height>
 					<onup condition="!String.IsEqual(ListItem.Property(item.type),person)">9000</onup>
 					<onup condition="String.IsEqual(ListItem.Property(item.type),person)">9876</onup>
-					<ondown condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.Property(item.type),person)">Runscript(plugin.video.themoviedb.helper,recommendations=5000|info=recommendations|true|info||5001|info=trakt_comments&amp;sort=likes|true|text||5002|info=crew|true|info||5999|info=details|true,window_id=1110,tmdb_type=$VAR[TMDbHelperDBTYPEPathVar],tmdb_id=$INFO[Container(9143).ListItem.UniqueID(tmdb)])</ondown>
+					<ondown condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.Property(item.type),person)">SetProperty(tmdb_id,$VAR[TMDbIDPathVar],movieinformation)</ondown>
+					<ondown condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.Property(item.type),person)">ActivateWindow(1110)</ondown>
 					<ondown condition="String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.Property(item.type),person)">noop</ondown>
 					<usecontrolcoords>true</usecontrolcoords>
 					<scrolltime tween="quadratic" easing="out">300</scrolltime>
