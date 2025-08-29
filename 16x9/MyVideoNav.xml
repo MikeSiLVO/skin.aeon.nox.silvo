@@ -179,10 +179,6 @@
 			<content sortby="year" sortorder="ascending">$VAR[MovieSetsPathVar]</content>
 		</control>
 		<include>SkinVariablesContentList</include>
-		<!-- <control type="list" id="4502">
-			<include>HiddenList</include>
-			<content>plugin://script.skinvariables/?info=get_file_exists&amp;window_prop=animated_poster&amp;window_id=Home&amp;&amp;$INFO[ListItem.Path,,poster.gif]</content>
-		</control> -->
 		<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">TMDbHelperContentList</include>
 		<control type="group">
 			<visible>[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
