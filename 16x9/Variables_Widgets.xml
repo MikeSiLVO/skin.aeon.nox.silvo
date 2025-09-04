@@ -348,7 +348,7 @@
 	</variable>
 	<variable name="HomeWidgetInfo1Var">
 		<value condition="!String.IsEmpty(Container.ListItem.AddonName)">$INFO[Container.ListItem.AddonCreator,$LOCALIZE[31001] ]</value>
-		<value condition="!String.IsEmpty(Container.ListItem.Property(Label3))">$INFO[Container.ListItem.Property(Label3)]</value>
+		<value condition="!String.IsEmpty(Container.ListItem.Property(Label3)) | !String.IsEmpty(Container.ListItem.Property(Label4))">$INFO[Container.ListItem.Property(Label3)] | $INFO[Container.ListItem.Property(Label4)]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.album)">$INFO[Container.ListItem.Album]</value>
 		<value condition="[!String.IsEmpty(Container.ListItem.Property(Album_Mood)) | !String.IsEmpty(Container.ListItem.Property(Album_Style)) | !String.IsEmpty(Container.ListItem.Property(Artist_Style))]">$INFO[Container.ListItem.Property(Album_Mood),,  •  ]$INFO[Container.ListItem.Property(Album_Style)]$INFO[Container.ListItem.Property(Artist_Style),  •  ]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.StartDate) + !String.IsEqual(Container.ListItem.StartDate,System.Date) + String.IsEqual(Container(9000).ListItem.Property(WidgetType),pvr)">$INFO[Container.ListItem.StartDate,, ]$INFO[Container.ListItem.StartTime,@ , ]$INFO[Container.ListItem.RatingAndVotes, •  $LOCALIZE[563]: , ]$INFO[Container.ListItem.Duration, •  $LOCALIZE[2050]: ]</value>
@@ -361,7 +361,6 @@
 	</variable>
 	<variable name="HomeWidgetInfo2Var">
 		<value condition="!String.IsEmpty(Container.ListItem.AddonType)">$INFO[Container.ListItem.AddonType]</value>
-		<value condition="!String.IsEmpty(Container.ListItem.Property(Label4))">$INFO[Container.ListItem.Property(Label4)]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.Property(isSystemInfo))">[UPPERCASE]$LOCALIZE[13283][/UPPERCASE]$INFO[System.OSVersionInfo, ]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.Property(Artist_Genre))">$INFO[Container.ListItem.Property(Artist_Genre)]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.Genre)">$INFO[Container.ListItem.Genre]</value>
