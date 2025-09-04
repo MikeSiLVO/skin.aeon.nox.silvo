@@ -1098,6 +1098,7 @@
 		<value>50%</value>
 	</variable>
 	<variable name="BackgroundDimVar">
+		<value condition="Window.IsVisible(weather)">4DFFFFFF</value>
 		<value condition="!Control.IsVisible(506)">80FFFFFF</value>
 		<value condition="Control.IsVisible(506) + String.IsEmpty(Skin.String(RightList.BackgroundDim))">80FFFFFF</value>
 		<value condition="Control.IsVisible(506) + String.IsEqual(Skin.String(RightList.BackgroundDim),40%)">66FFFFFF</value>
