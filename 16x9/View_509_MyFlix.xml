@@ -322,7 +322,7 @@
 						</control>
 						<control type="group">
 							<visible>!Skin.HasSetting(Disable.NextAired) + !Container.Content(seasons)</visible>
-							<visible>!String.IsEmpty(Container(9143).ListItem.Status) | !String.IsEmpty(ListItem.Status)</visible>
+							<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Status)) | !String.IsEmpty(ListItem.Status)</visible>
 							<height>40</height>
 							<control type="label">
 								<left>10</left>
@@ -343,7 +343,7 @@
 						</control>
 						<control type="group">
 							<visible>!Skin.HasSetting(Disable.NextAired) + !Container.Content(seasons)</visible>
-							<visible>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) | !String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))</visible>
+							<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Last_Aired))</visible>
 							<height>40</height>
 							<control type="togglebutton">
 								<left>10</left>
@@ -353,7 +353,7 @@
 								<include>NoFocusObject</include>
 								<label></label>
 								<altlabel></altlabel>
-								<usealttexture>String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))</usealttexture>
+								<usealttexture>String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired))</usealttexture>
 							</control>
 							<control type="label">
 								<left>40</left>
