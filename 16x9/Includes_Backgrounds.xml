@@ -185,9 +185,8 @@
 		<control type="group">
 			<include condition="Skin.HasSetting(Enable.AnimatedBackgrounds)">AnimatedBackgroundAnimation</include>
 			<control type="multiimage">
-				<include>FullscreenDimensions</include>
-				<imagepath background="true">$VAR[HomeBackgroundVar]</imagepath>
 				<include>MultiImageTime</include>
+				<imagepath background="true">$VAR[HomeBackgroundVar]</imagepath>
 				<visible>![Player.HasAudio + Skin.HasSetting(Enable.ArtistSlideshowOnHome) + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.Image))]</visible>
 			</control>
 			<control type="image">

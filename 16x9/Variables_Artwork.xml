@@ -235,7 +235,6 @@
 		<value condition="Window.Next(Home)" />
 		<value condition="Window.IsActive(pictures) + Container.Content(images)">$INFO[ListItem.FolderPath]</value>
 		<value condition="Window.IsActive(1133) + !String.IsEmpty(Container(51).ListItem.Art(fanart)) + Control.HasFocus(51)">$INFO[Container(51).ListItem.Art(fanart)]</value>
-		<value condition="!String.IsEmpty(Control.GetLabel(4411)) + !Skin.HasSetting(Disable.Extrafanart) + !Skin.HasSetting(Disable.Fanart)">$INFO[Control.GetLabel(4411)]</value>
 		<value condition="!String.IsEmpty(Control.GetLabel(4410)) + !Skin.HasSetting(Disable.Extrafanart) + !Skin.HasSetting(Disable.Fanart)">$INFO[Control.GetLabel(4410)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[ListItem.Art(fanart)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(artist.fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[ListItem.Art(artist.fanart)]</value>
@@ -252,7 +251,6 @@
 		<value condition="String.IsEmpty(Container(9033).ListItem.Art(thumb)) + !String.IsEmpty(Skin.String(CustomDefaultBackground.path))">$INFO[Skin.String(CustomDefaultBackground.path)]</value>
 	</variable>
 	<variable name="FanartVar">
-		<value condition="!String.IsEmpty(Control.GetLabel(4411)) + !Skin.HasSetting(Disable.Extrafanart)">$INFO[Control.GetLabel(4411)]</value>
 		<value condition="!String.IsEmpty(Control.GetLabel(4410)) + !Skin.HasSetting(Disable.Extrafanart)">$INFO[Control.GetLabel(4410)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(artist.fanart))">$INFO[ListItem.Art(artist.fanart)]</value>
