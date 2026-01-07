@@ -2,6 +2,7 @@
 <includes>
 	<include name="CommonBackground">
 		<control type="group">
+			<visible>!Window.IsActive(1113)</visible>
 			<animation effect="fade" time="500" delay="300" condition="Window.Previous(Home)">WindowOpen</animation>
 			<animation effect="fade" time="500" condition="!Window.Previous(Home)">WindowOpen</animation>
 			<animation effect="fade" time="500">WindowClose</animation>
@@ -33,7 +34,7 @@
 			</control>
 		</control>
 		<control type="image">
-			<visible>Control.IsVisible(51) + Skin.HasSetting(Enable.AlternateInfowall) | Control.IsVisible(502) | Control.IsVisible(503) | Control.IsVisible(504) | Control.IsVisible(505) | Control.IsVisible(506) | Control.IsVisible(508) | Control.IsVisible(511) | Control.IsVisible(507) + Skin.HasSetting(alternatebiglistlayout) | Control.IsVisible(509) + Player.HasVideo + !Skin.HasSetting(Disable.ShowBackgroundVideo) | Window.IsVisible(settings) | Window.IsVisible(1107)</visible>
+			<visible>Control.IsVisible(51) + Skin.HasSetting(Enable.AlternateInfowall) | Control.IsVisible(502) | Control.IsVisible(503) | Control.IsVisible(504) | Control.IsVisible(505) | Control.IsVisible(506) | Control.IsVisible(508) | Control.IsVisible(511) | Control.IsVisible(507) + Skin.HasSetting(alternatebiglistlayout) | Control.IsVisible(509) + Player.HasVideo + !Skin.HasSetting(Disable.ShowBackgroundVideo) | Window.IsVisible(settings) | Window.IsVisible(1107) | Window.IsVisible(weather)</visible>
 			<include>FullscreenDimensions</include>
 			<texture>colors/black.png</texture>
 			<colordiffuse>$VAR[BackgroundDimVar]</colordiffuse>
@@ -68,7 +69,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>Window.IsActive(settings) | Window.IsActive(SettingsCategory.xml) | Window.IsActive(1140) | Window.IsActive(systeminfo) | Window.IsActive(profiles) | Window.IsActive(weather)</visible>
+				<visible>Window.IsActive(settings) | Window.IsActive(SettingsCategory.xml) | Window.IsActive(1140) | Window.IsActive(systeminfo) | Window.IsActive(profiles)</visible>
 				<visible>!Window.IsActive(service-LibreELEC-Settings-mainWindow.xml) + !Window.IsActive(service-CoreELEC-Settings-mainWindow.xml)</visible>
 				<animation effect="slide" end="30" condition="Window.IsActive(profiles)">Conditional</animation>
 				<animation effect="slide" end="0,-25" condition="Window.IsActive(settings)">Conditional</animation>

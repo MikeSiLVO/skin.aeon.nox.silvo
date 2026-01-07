@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<onload>Control.SetFocus(300,0)</onload>
-	<onload>SetFocus(90003)</onload>
-	<onload>RunPlugin("plugin://script.skinvariables/?info=get_split_string&amp;infolabel=ListItem.Director&amp;separator=' / '&amp;window_prop=split_director&amp;window_id=Home")</onload>
-	<onload>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_title&amp;window_id=Home&amp;&amp;$INFO[ListItem.Title]")</onload>
-	<onload>SetProperty(random_actor,$INFO[Control.GetLabel(9140)],Home)</onload>
-	<onload condition="String.IsEqual(ListItem.Property(item.type),person)">SetFocus(9876)</onload>
-	<onload condition="![Window.IsActive(Home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + ![String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.preshowexperience)] + !String.IsEqual(ListItem.Property(item.type),person)">SetFocus(8)</onload>
-	<onload condition="![Window.IsActive(Home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.preshowexperience)">SetFocus(909)</onload>
-	<onload condition="Window.IsActive(Home) + String.IsEqual(ListItem.DBTYPE,tvshow)">SetFocus(808)</onload>
+	<onload>SetProperty(OpenTime,$INFO[System.Time(hh:mm:ss)])</onload>
+	<onload>SetProperty(dbid,$INFO[ListItem.DBID],Home)</onload>
+	<onload>SetProperty(dbtype,$INFO[ListItem.DBTYPE],Home)</onload>
+	<onload>SetProperty(SkinInfo.CM_Focus.1,![Window.IsActive(Home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + ![String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.preshowexperience)]::8,Home)</onload>
+	<onload>SetProperty(SkinInfo.CM_Focus.2,![Window.IsActive(Home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.preshowexperience)::909,Home)</onload>
+	<onload>SetProperty(SkinInfo.CM_Focus.3,Window.IsActive(Home) + String.IsEqual(ListItem.DBTYPE,tvshow)::808,Home)</onload>
+	<onload>RunScript(script.skin.info.service,action=container_move,main_focus=300|90017|90016|90015|90014|90013|90012|90011|90050|90003)</onload>
+	<onload>RunScript(script.skin.info.service,action=split_string,string="$INFO[ListItem.Director]",separator=/,prefix=Director)</onload>
+	<onload>RunScript(script.skin.info.service,action=urlencode,string="$INFO[ListItem.Title]",prefix=Title)</onload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(FSFanart))">ClearProperty(FSFanart,movieinformation)</onunload>
-	<onunload>ClearProperty(random_actor,Home)</onunload>
 	<onunload>ClearProperty(encoded_actor,Home)</onunload>
 	<onunload>ClearProperty(item_origin,Home)</onunload>
 	<onunload>ClearProperty(1109_origin,Home)</onunload>
-	<onunload>ClearProperty(DirectorID,Home)</onunload>
+	<onunload>ClearProperty(crew_name,Home)</onunload>
 	<controls>
 		<control type="textbox" id="4">
 			<include>HiddenObject</include>
 		</control>
-		<include condition="!String.IsEqual(ListItem.DBTYPE,set) + System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.StartsWith(ListItem.FolderPath,plugin://)">HiddenActorList</include>
+		<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.StartsWith(ListItem.FolderPath,plugin://)">HiddenActorList</include>
 		<control type="list" id="4500">
 			<include>HiddenList</include>
 			<content sortby="year" sortorder="ascending">$VAR[MovieSetsPathVar]</content>
 		</control>
-		<include>SkinVariablesContentList</include>
 		<control type="fadelabel" id="4510">
 			<top>-100</top>
 			<width>2560</width>
@@ -57,20 +55,6 @@
 			<label>$INFO[ListItem.Art(poster20)]</label>
 			<include>FadeLabelTime</include>
 		</control>
-		<control type="fadelabel" id="9140">
-			<left>-300</left>
-			<top>-300</top>
-			<width>100</width>
-			<pauseatend>2000</pauseatend>
-			<scrollout>false</scrollout>
-			<randomize>true</randomize>
-			<resetonlabelchange>false</resetonlabelchange>
-			<label>$INFO[Container(50).ListItemAbsolute(0).Label]</label>
-			<label>$INFO[Container(50).ListItemAbsolute(1).Label]</label>
-			<label>$INFO[Container(50).ListItemAbsolute(2).Label]</label>
-			<!-- <label>$INFO[Container(50).ListItemAbsolute(3).Label]</label> -->
-		</control>
-		<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">TMDbHelperContentList</include>
 		<!-- Poster Side -->
 		<control type="group">
 			<animation effect="slide" start="-730,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
@@ -81,9 +65,15 @@
 			<include content="InfoPoster">
 				<param name="texture">$VAR[VideoInfoPosterVar]</param>
 			</include>
-			<include>InfoActorResourceImage</include>
+			<control type="image" id="9777">
+				<aspectratio>keep</aspectratio>
+				<fadetime>IconCrossfadeTime</fadetime>
+				<texture background="true">$VAR[VideoInfoActorResourceVar]</texture>
+				<animation effect="fade" time="300">Visible</animation>
+				<visible>[Control.HasFocus(50) | Control.HasFocus(90050)] + System.AddonIsEnabled(resource.images.actorart)</visible>
+			</control>
 			<control type="group" id="9090">
-				<visible>Container(4501).IsUpdating | Container(90012).IsUpdating | Container(90016).IsUpdating | Container(90017).IsUpdating | Container(990010).IsUpdating | Container(990011).IsUpdating | Container(990012).IsUpdating | Container(990020).IsUpdating</visible>
+				<visible>Container(4501).IsUpdating | Container(90012).IsUpdating | Container(90016).IsUpdating | Container(90017).IsUpdating | Container(990020).IsUpdating</visible>
 				<control type="image">
 					<height>120</height>
 					<texture border="1">views/wall/bottom_shadow.png</texture>
@@ -158,13 +148,11 @@
 							<include condition="String.IsEqual(ListItem.DBTYPE,episode)">InfoSublabelEpisodes</include>
 							<!-- Music Video label -->
 							<include condition="String.IsEqual(ListItem.DBTYPE,musicvideo)">InfoSublabelMusicvideos</include>
-							<!-- TMDbHelper Person label -->
-							<include condition="String.IsEqual(ListItem.Property(item.type),person)">InfoSublabelTMDbHelperPerson</include>
 						</control>
 					</control>
 					<!-- Kodi User Rating -->
 					<control type="grouplist">
-						<visible>!String.IsEmpty(ListItem.UserRating) + !String.IsEqual(ListItem.Property(item.type),person)</visible>
+						<visible>!String.IsEmpty(ListItem.UserRating)</visible>
 						<left>1065</left>
 						<top>60</top>
 						<width>120</width>
@@ -201,24 +189,22 @@
 						<usecontrolcoords>true</usecontrolcoords>
 						<itemgap>8</itemgap>
 						<!-- Runtime -->
-						<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">InfoRuntime</include>
+						<include condition="!String.IsEqual(ListItem.DBTYPE,set)">InfoRuntime</include>
 						<!-- Episode Count -->
 						<include condition="String.IsEqual(ListItem.DBTYPE,episode)">InfoEpNumber</include>
 						<!-- MPAA -->
-						<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">InfoMPAA</include>
+						<include condition="!String.IsEqual(ListItem.DBTYPE,set)">InfoMPAA</include>
 						<!-- Set Rating -->
 						<include condition="String.IsEqual(ListItem.DBTYPE,set)">InfoSetRating</include>
 						<!-- TV Watched Percent -->
 						<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)">InfoTVWatchedPercent</include>
 						<!-- Main Rating -->
-						<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">InfoMainRating</include>
+						<include condition="!String.IsEqual(ListItem.DBTYPE,set)">InfoMainRating</include>
 						<!-- Top 250 -->
 						<include condition="String.IsEqual(ListItem.DBTYPE,movie)">InfoTop250</include>
 						<!-- Extended Ratings -->
-						<include condition="!String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person)">InfoExtendedRatings</include>
+						<include condition="!String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.DBTYPE,set)">InfoExtendedRatings</include>
 					</control>
-					<!-- TMDbHelper Person Age -->
-					<include condition="String.IsEqual(ListItem.Property(item.type),person)">InfoTMDbPersonAge</include>
 					<!-- Separator End -->
 					<control type="image">
 						<left>-7</left>
@@ -233,9 +219,7 @@
 					<param name="button_id">64</param>
 					<param name="panel_id">300</param>
 					<param name="panel_ondown">9000</param>
-					<param name="ondown_condition">!String.IsEqual(ListItem.Property(item.type),person)</param>
 					<param name="panel_ondown2">9876</param>
-					<param name="ondown_condition2">String.IsEqual(ListItem.Property(item.type),person)</param>
 					<param name="include">InfoContentDetails</param>
 				</include>
 				<!-- Buttons LABEL -->
@@ -276,7 +260,7 @@
 					<ondown>90001</ondown>
 					<align>right</align>
 					<orientation>horizontal</orientation>
-					<visible>!String.IsEqual(ListItem.Property(item.type),person) + !ControlGroup(90001).HasFocus(50) + !ControlGroup(90001).HasFocus(90050) + !ControlGroup(90001).HasFocus(90011) + !ControlGroup(90001).HasFocus(90012) + !ControlGroup(90001).HasFocus(90013) + !ControlGroup(90001).HasFocus(90014) + !ControlGroup(90001).HasFocus(90015) + !ControlGroup(90001).HasFocus(90016) + !ControlGroup(90001).HasFocus(90017)</visible>
+					<visible>!ControlGroup(90001).HasFocus(50) + !ControlGroup(90001).HasFocus(90050) + !ControlGroup(90001).HasFocus(90011) + !ControlGroup(90001).HasFocus(90012) + !ControlGroup(90001).HasFocus(90013) + !ControlGroup(90001).HasFocus(90014) + !ControlGroup(90001).HasFocus(90015) + !ControlGroup(90001).HasFocus(90016) + !ControlGroup(90001).HasFocus(90017)</visible>
 					<!-- <control type="button" id="8088">
 						<description>Test button</description>
 						<font>IconMediumMD</font>
@@ -329,9 +313,7 @@
 						<texturenofocus />
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label></label>
-						<onclick condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetFocus(50)</onclick>
-						<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">SetFocus(90050)</onclick>
-						<visible>!String.IsEmpty(ListItem.Cast) | String.IsEqual(ListItem.DBTYPE,set)</visible>
+						<onclick>SetFocus(90050)</onclick>
 					</control>
 					<control type="button" id="14">
 						<description>Versions</description>
@@ -418,23 +400,6 @@
 						<onclick>ActivateWindow(1119)</onclick>
 					</control>
 				</control>
-				<control type="button" id="9876">
-					<right>0</right>
-					<top>544</top>
-					<height>60</height>
-					<onleft>9000</onleft>
-					<onright>9000</onright>
-					<onup>300</onup>
-					<ondown>90001</ondown>
-					<description>Browse to Item</description>
-					<font>IconMediumMD</font>
-					<width>65</width>
-					<texturenofocus />
-					<include>ButtonInfoDialogsCommonValues</include>
-					<label></label>
-					<onclick>SetFocus(990020)</onclick>
-					<visible>String.IsEqual(ListItem.Property(item.type),person)</visible>
-				</control>
 				<control type="image">
 					<left>3</left>
 					<top>604</top>
@@ -447,10 +412,8 @@
 					<top>606</top>
 					<width>2800</width>
 					<height>480</height>
-					<onup condition="!String.IsEqual(ListItem.Property(item.type),person)">9000</onup>
-					<onup condition="String.IsEqual(ListItem.Property(item.type),person)">9876</onup>
-					<ondown condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.Property(item.type),person)">Runscript(plugin.video.themoviedb.helper,recommendations=5000|info=recommendations|true|info||5001|info=trakt_comments&amp;sort=likes|true|text||5002|info=crew|true|info||5999|info=details|true,window_id=1110,tmdb_type=$VAR[TMDbHelperDBTYPEPathVar],tmdb_id=$INFO[Container(9143).ListItem.UniqueID(tmdb)])</ondown>
-					<ondown condition="String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.Property(item.type),person)">noop</ondown>
+					<onup>9000</onup>
+					<ondown condition="String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,set)">noop</ondown>
 					<usecontrolcoords>true</usecontrolcoords>
 					<scrolltime tween="quadratic" easing="out">300</scrolltime>
 					<control type="group" id="90002">
@@ -461,37 +424,29 @@
 							<top>-2</top>
 							<width>1200</width>
 							<height>480</height>
-							<onup condition="!String.IsEqual(ListItem.Property(item.type),person)">9000</onup>
-							<onup condition="String.IsEqual(ListItem.Property(item.type),person)">9876</onup>
-							<ondown condition="String.IsEqual(ListItem.Property(item.type),person)">990010</ondown>
-							<ondown condition="[!System.AddonIsEnabled(plugin.video.themoviedb.helper) | String.IsEqual(ListItem.DBTYPE,set)] + !String.IsEqual(ListItem.DBTYPE,season) + !String.IsEqual(ListItem.Property(item.type),person) | String.StartsWith(ListItem.FolderPath,plugin://)">50</ondown>
-							<ondown condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.Property(item.type),person) + !String.StartsWith(ListItem.FolderPath,plugin://)">90050</ondown>
+							<onup>9000</onup>
+							<ondown>90050</ondown>
 							<onclick>SetProperty(TextViewerHeader,$ESCINFO[ListItem.Label,[B],[/B]],Home)</onclick>
 							<onclick condition="String.IsEqual(ListItem.DBTYPE,movie)">SetProperty(TextViewerSubHeader,$ESCINFO[ListItem.Tagline,[LIGHT],[/LIGHT]],Home)</onclick>
 							<onclick condition="String.IsEqual(ListItem.DBTYPE,set)">SetProperty(TextViewerSubHeader,$INFO[Container(50).NumItems,, $LOCALIZE[342],[LIGHT],[/LIGHT]],Home)</onclick>
-							<onclick condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEmpty(Container(9143).ListItem.Status)">SetProperty(TextViewerSubHeader,$ESCINFO[Container(9143).ListItem.Status,[LIGHT],[/LIGHT]],Home)</onclick>
+							<onclick condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status))">SetProperty(TextViewerSubHeader,$ESCINFO[Window(Home).Property(SkinInfo.Online.Status,[LIGHT],[/LIGHT])],Home)</onclick>
 							<onclick condition="String.IsEqual(ListItem.DBTYPE,episode) + !String.IsEmpty(ListItem.TvShowTitle)">SetProperty(TextViewerSubHeader,$ESCINFO[ListItem.TvShowTitle,[LIGHT],[/LIGHT]],Home)</onclick>
 							<onclick>SetProperty(TextViewerContent,$ESCVAR[VideoPlotVar],Home)</onclick>
-							<onclick condition="String.IsEqual(ListItem.Property(item.type),person)">SetProperty(TextViewerSubHeader,$INFO[ListItem.Property(Department),$LOCALIZE[31546] ]$INFO[ListItem.Property(Age), - , $LOCALIZE[31544]],Home)</onclick>
 							<onclick>ActivateWindow(1112)</onclick>
-							<onfocus condition="String.IsEmpty(Window(Home).Property(random_actor))">SetProperty(random_actor,$INFO[Control.GetLabel(9140)],Home)</onfocus>
-							<onfocus>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_genre_0&amp;window_id=Home&amp;&amp;$INFO[Container(4501).ListItem.Property(genre.0)]")</onfocus>
-							<onfocus>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_genre_1&amp;window_id=Home&amp;&amp;$INFO[Container(4501).ListItem.Property(genre.1)]")</onfocus>
-							<onfocus>RunPlugin("plugin://script.skinvariables/?info=get_encoded_string&amp;window_prop=encoded_genre_2&amp;window_id=Home&amp;&amp;$INFO[Container(4501).ListItem.Property(genre.2)]")</onfocus>
 							<include>ButtonInfoDialogsCommonValues</include>
 						</control>
 						<!-- Plot -->
 						<control type="group">
 							<left>26</left>
 							<top>22</top>
-							<include content="InfoPlot" condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,musicvideo) + !String.IsEqual(ListItem.Property(item.type),person)">
+							<include content="InfoPlot" condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,musicvideo)">
 								<param name="width">780</param>
 								<param name="visible">$EXP[HasInfoPlotArt]</param>
 							</include>
-							<include content="InfoPlot" condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,musicvideo) + !String.IsEqual(ListItem.Property(item.type),person)">
+							<include content="InfoPlot" condition="!String.IsEqual(ListItem.DBTYPE,set) + !String.IsEqual(ListItem.DBTYPE,musicvideo)">
 								<param name="visible">$EXP[NoInfoPlotArt]</param>
 							</include>
-							<include content="InfoPlot" condition="String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.DBTYPE,musicvideo) | String.IsEqual(ListItem.Property(item.type),person)">
+							<include content="InfoPlot" condition="String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.DBTYPE,musicvideo)">
 								<param name="top">-15</param>
 								<param name="height">460</param>
 								<param name="visible">true</param>
@@ -716,36 +671,13 @@
 							</control>
 						</control>
 					</control>
-					<include condition="String.IsEqual(ListItem.Property(item.type),person)">ExtendedInfoPersonList</include>
-					<include condition="!String.IsEqual(ListItem.DBTYPE,set) + !System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.Property(item.type),person) | String.StartsWith(ListItem.FolderPath,plugin://)">DefaultActorList</include>
 					<include condition="String.IsEqual(ListItem.DBTYPE,set)">DefaultSetList</include>
-					<include condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + !String.IsEqual(ListItem.Property(item.type),person) + !String.StartsWith(ListItem.FolderPath,plugin://)">CustomActorList</include>
-					<include condition="System.AddonIsEnabled(script.skinvariables) + Skin.HasSetting(Enable.ExtendedInfoIntergration) + String.IsEqual(ListItem.DBTYPE,movie)">ExtendedInfoMovieLists</include>
+					<include>CustomActorList</include>
+					<include condition="System.AddonIsEnabled(script.skin.info.service) + Skin.HasSetting(Enable.ExtendedInfoIntergration) + String.IsEqual(ListItem.DBTYPE,movie)">ExtendedInfoMovieLists</include>
 					<include condition="String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEmpty(ListItem.SetID)">ExtendedMovieSetPanel</include>
 					<include condition="Skin.HasSetting(Enable.ExtendedInfoTVIntergration) + String.IsEqual(ListItem.DBTYPE,tvshow)">ExtendedInfoSeriesLists</include>
 					<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) + Integer.IsGreater(ListItem.Property(TotalSeasons),1)">ExtendedSeasonPanel</include>
 				</control>
-			</control>
-		</control>
-		<control id="99" type="button">
-			<onclick>SetFocus(990020)</onclick>
-			<onback>990020</onback>
-			<onup>noop</onup>
-			<ondown>noop</ondown>
-			<onleft condition="!String.IsEmpty(Container(990020).ListItemNoWrap(-1).Label)">Control.Move(990020,-1)</onleft>
-			<onright condition="!String.IsEmpty(Container(990020).ListItemNoWrap(1).Label)">Control.Move(990020,1)</onright>
-			<include>HiddenObject</include>
-		</control>
-		<control type="group">
-			<visible>Control.HasFocus(99)</visible>
-			<include>VisibleFadeAnimation</include>
-			<include>FullscreenDimensions</include>
-			<control type="image">
-				<texture>colors/black.png</texture>
-			</control>
-			<control type="image">
-				<aspectratio>keep</aspectratio>
-				<texture>$INFO[Container(990020).ListItem.Icon]</texture>
 			</control>
 		</control>
 		<include>DebugWindow</include>

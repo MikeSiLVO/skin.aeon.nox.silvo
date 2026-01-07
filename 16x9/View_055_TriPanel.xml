@@ -30,10 +30,10 @@
 						<visible>!String.IsEmpty(ListItem.Director) + Container.Content(movies)</visible>
 					</control>
 					<control type="button">
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]:[/COLOR][CR]$INFO[Container(9143).ListItem.Status]</label>
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]:[/COLOR][CR]$INFO[Container(5100).ListItem.Property(TMDb.Status)]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
-						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Status)</visible>
+						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(5100).ListItem.Property(TMDb.Status))</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20416]:[/COLOR][CR]$INFO[ListItem.Premiered]</label>
@@ -49,16 +49,16 @@
 						<visible>[[Container.Content(tvshows) | Container.Content(seasons)] + Skin.HasSetting(Disable.NextAired)] | Container.Content(episodes)</visible>
 					</control>
 					<control type="button">
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31010]: [/COLOR][CR]$INFO[Container(9143).ListItem.Property(Next_Aired),, • ]$INFO[Container(9143).ListItem.Property(Next_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)]</label>
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31010]: [/COLOR][CR]$INFO[Container(5100).ListItem.Property(TMDb.NextEpisodeAired),, • ]$INFO[Container(5100).ListItem.Property(TMDb.NextEpisodeSeason),S]$INFO[Container(5100).ListItem.Property(TMDb.NextEpisode),E, - ]$INFO[Container(5100).ListItem.Property(TMDb.NextEpisodeTitle)]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
-						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + ![String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) | String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))] + !Skin.HasSetting(Disable.NextAired)</visible>
+						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + ![String.IsEmpty(Container(5100).ListItem.Property(TMDb.NextEpisodeAired)) | String.IsEmpty(Container(5100).ListItem.Property(TMDb.LastEpisodeAired))] + !Skin.HasSetting(Disable.NextAired)</visible>
 					</control>
 					<control type="button">
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31011]: [/COLOR][CR]$INFO[Container(9143).ListItem.Property(Last_Aired),, • ]$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Last_Aired.Title)]</label>
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31011]: [/COLOR][CR]$INFO[Container(5100).ListItem.Property(TMDb.LastEpisodeAired),, • ]$INFO[Container(5100).ListItem.Property(TMDb.LastEpisodeSeason),S]$INFO[Container(5100).ListItem.Property(TMDb.LastEpisode),E, - ]$INFO[Container(5100).ListItem.Property(TMDb.LastEpisodeTitle)]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
-						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Property(Last_Aired)) + String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) + !Skin.HasSetting(Disable.NextAired)</visible>
+						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(5100).ListItem.Property(TMDb.LastEpisodeAired)) + String.IsEmpty(Container(5100).ListItem.Property(TMDb.NextEpisodeAired)) + !Skin.HasSetting(Disable.NextAired)</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</label>
@@ -188,7 +188,7 @@
 					<viewtype label="31078">list</viewtype>
 					<pagecontrol>95560</pagecontrol>
 					<preloaditems>2</preloaditems>
-					<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets) | Container.Content(videoversions)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_55]</visible>
+					<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets) | Container.Content(videoversions)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_55]</visible>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
 					<itemlayout height="70" width="806" condition="Container.Content(movies)">
 						<control type="label">

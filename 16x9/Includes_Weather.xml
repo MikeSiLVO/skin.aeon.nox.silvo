@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="WeatherItem">
+		<param name="visible" default="true" />
+		<param name="left" default="0" />
+		<param name="top" default="0" />
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<control type="label">
+					<width>264</width>
+					<height>60</height>
+					<font>font13_bold</font>
+					<align>center</align>
+					<textoffsetx>15</textoffsetx>
+					<label>$PARAM[label]</label>
+				</control>
+				<control type="multiimage">
+					<description>current weather icon</description>
+					<left>15</left>
+					<top>60</top>
+					<width>234</width>
+					<height>100</height>
+					<imagepath>$VAR[WeatherIconsPathVar]$INFO[Window.Property(Day$PARAM[day].FanartCode)]$VAR[WeatherIconsExtVar]</imagepath>
+					<timeperimage>70</timeperimage>
+					<fadetime>1</fadetime>
+					<randomize>false</randomize>
+					<aspectratio>keep</aspectratio>
+				</control>
+				<control type="textbox">
+					<left>8</left>
+					<top>162</top>
+					<width>264</width>
+					<height>85</height>
+					<font>font13_bold</font>
+					<align>center</align>
+					<label>$INFO[Window.Property(Day$PARAM[day].Outlook)]</label>
+				</control>
+				<control type="label">
+					<top>240</top>
+					<width>264</width>
+					<height>60</height>
+					<font>font15</font>
+					<align>center</align>
+					<textcolor>grey</textcolor>
+					<textoffsetx>15</textoffsetx>
+					<label>$INFO[Window.Property(Day$PARAM[day].HighTemp),[COLOR crimson],[/COLOR]]$INFO[System.TemperatureUnits,[COLOR crimson],[/COLOR]]$INFO[Window.Property(Day$PARAM[day].LowTemp), | [COLOR blue],[/COLOR]]$INFO[System.TemperatureUnits,[COLOR blue],[/COLOR]]</label>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<include name="WeatherItemHour">
+		<param name="visible" default="true" />
+		<param name="left" default="0" />
+		<param name="top" default="0" />
+		<param name="odd" default="false" />
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<control type="image">
+					<width>231</width>
+					<height>109</height>
+					<bordertexture border="2" infill="false">colors/grey.png</bordertexture>
+					<texture>colors/black50.png</texture>
+				</control>
+				<control type="label">
+					<width>151</width>
+					<height>60</height>
+					<font>font13_bold</font>
+					<textoffsetx>10</textoffsetx>
+					<label>$INFO[Window.Property(Hourly.$PARAM[hour].Time)]</label>
+					<visible>!$PARAM[odd]</visible>
+				</control>
+				<control type="label">
+					<width>151</width>
+					<height>60</height>
+					<font>font13_bold</font>
+					<textoffsetx>10</textoffsetx>
+					<label>[I]$INFO[Window.Property(Hourly.$PARAM[hour].Time)][/I]</label>
+					<visible>$PARAM[odd]</visible>
+				</control>
+				<control type="multiimage">
+					<description>current weather icon</description>
+					<width>221</width>
+					<height>60</height>
+					<imagepath>$INFO[Window.Property(Hourly.$PARAM[hour].FanartCode),resource://resource.images.weathericons.white/,.png]</imagepath>
+					<timeperimage>70</timeperimage>
+					<fadetime>1</fadetime>
+					<randomize>false</randomize>
+					<aspectratio align="right">keep</aspectratio>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<width>60</width>
+					<height>160</height>
+					<font>IconTinyMD</font>
+					<label></label>
+				</control>
+				<control type="label">
+					<left>34</left>
+					<width>231</width>
+					<height>160</height>
+					<font>font13_bold</font>
+					<textoffsetx>10</textoffsetx>
+					<label>$INFO[Window.Property(Hourly.$PARAM[hour].Precipitation)]</label>
+				</control>
+				<control type="label">
+					<left>120</left>
+					<width>60</width>
+					<height>160</height>
+					<font>IconTinyMD</font>
+					<label></label>
+				</control>
+				<control type="label">
+					<left>131</left>
+					<width>100</width>
+					<height>160</height>
+					<font>font13_bold</font>
+					<align>right</align>
+					<textoffsetx>10</textoffsetx>
+					<label>$INFO[Window.Property(Hourly.$PARAM[hour].TemperatureGraph)]$INFO[System.TemperatureUnits]</label>
+				</control>
+			</control>
+		</definition>
+	</include>
+</includes>

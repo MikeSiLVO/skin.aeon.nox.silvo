@@ -3,9 +3,6 @@
 	<onload>SetFocus(90003)</onload>
 	<onload condition="String.IsEmpty(ListItem.SongVideoURL)">SetFocus(5010)</onload>
 	<onload condition="!String.IsEmpty(ListItem.SongVideoURL)">SetFocus(5000)</onload>
-	<!-- <onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) | !Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(TMDbHelper.EnableBlur)</onload>
-	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.SetBool(TMDbHelper.EnableBlur)</onload>
-	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(thumb)|Icon,Home)</onload> -->
 	<controls>
 		<control type="group">
 			<animation effect="slide" start="-729,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>

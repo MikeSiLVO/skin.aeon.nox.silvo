@@ -150,7 +150,7 @@
 							<top>110</top>
 							<width>570</width>
 							<height>55</height>
-							<label>$VAR[TMDbHelperNextAiredLabelVar]</label>
+							<label>$VAR[SkinInfoNextAiredLabelVar]</label>
 							<include>DefaultButtonsValues</include>
 							<visible>!Skin.HasSetting(Disable.NextAired)</visible>
 						</control>
@@ -452,7 +452,7 @@
 		<ondown>506</ondown>
 		<pagecontrol>50660</pagecontrol>
 		<viewtype label="$LOCALIZE[31239]">list</viewtype>
-		<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_506]</visible>
+		<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_506]</visible>
 		<scrolltime tween="quadratic" easing="out">200</scrolltime>
 		<itemlayout height="82" width="806" condition="[!Skin.HasSetting(rightlistalternate) + Container.Content(movies)]">
 			<include content="RightListItemLayout">

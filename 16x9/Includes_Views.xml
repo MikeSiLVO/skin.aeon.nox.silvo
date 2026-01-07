@@ -96,7 +96,7 @@
 				<!-- Next Aired -->
 				<control type="group">
 					<visible>![Control.IsVisible(50) + !Skin.HasSetting(Enable.SlimList)]</visible>
-					<visible>[!String.IsEmpty(ListItem.Status) | !String.IsEmpty(Container(9143).ListItem.Status)] + !Container.Content(movies)</visible>
+					<visible>[!String.IsEmpty(ListItem.Status) | !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status))] + !Container.Content(movies)</visible>
 					<width>700</width>
 					<height>40</height>
 					<control type="label">
@@ -116,7 +116,7 @@
 						<include>NoFocusObject</include>
 						<label></label>
 						<altlabel></altlabel>
-						<usealttexture>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired.Title))</usealttexture>
+						<usealttexture>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeTitle))</usealttexture>
 					</control>
 				</control>
 				<!-- Genre -->
@@ -182,7 +182,7 @@
 							<include>NoFocusObject</include>
 							<label></label>
 							<altlabel></altlabel>
-							<usealttexture>String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) + !String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))</usealttexture>
+							<usealttexture>String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired)) + !String.IsEmpty(Window(Home).Property(SkinInfo.Online.LastEpisodeAired))</usealttexture>
 						</control>
 					</control>
 				</control>
@@ -207,7 +207,7 @@
 				<animation effect="fade" time="250" delay="300" condition="!Container.Content(seasons)">Visible</animation> -->
 				<!-- Next Aired -->
 				<control type="group">
-					<visible>!Control.IsVisible(56) + ![String.IsEmpty(ListItem.Status) + String.IsEmpty(Container(9143).ListItem.Status)] + !Container.Content(movies) + ![Container.Content(episodes) + !String.IsEmpty(ListItem.Director)]</visible>
+					<visible>!Control.IsVisible(56) + ![String.IsEmpty(ListItem.Status) + String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status))] + !Container.Content(movies) + ![Container.Content(episodes) + !String.IsEmpty(ListItem.Director)]</visible>
 					<animation effect="fade" time="250" delay="300">Visible</animation>
 					<width>650</width>
 					<height>40</height>
@@ -231,7 +231,7 @@
 						<include>NoFocusObject</include>
 						<label></label>
 						<altlabel></altlabel>
-						<usealttexture>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired.Title))</usealttexture>
+						<usealttexture>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeTitle))</usealttexture>
 					</control>
 				</control>
 				<!-- Year -->

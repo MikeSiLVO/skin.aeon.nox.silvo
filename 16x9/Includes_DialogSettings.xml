@@ -428,21 +428,20 @@
 		</control>
 	</include>
 	<include name="VideoInfoSettings">
-		<control type="button" id="90201">
-			<width>1498</width>
-			<textoffsetx>20</textoffsetx>
-			<label>$LOCALIZE[31007]</label>
-			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[VideoInfoCastLabel2Var][/COLOR]</label2>
-			<onclick>Skin.ToggleSetting(OnlineCast)</onclick>
-			<visible>System.AddonIsEnabled(plugin.video.themoviedb.helper)</visible>
-		</control>
-		<control type="radiobutton" id="90202">
+		<control type="radiobutton" id="90201">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
 			<label>$LOCALIZE[31487]</label>
 			<onclick>Skin.ToggleSetting(MoreVideoInfoDetails)</onclick>
 			<selected>Skin.HasSetting(MoreVideoInfoDetails)</selected>
+		</control>
+		<control type="button" id="90202">
+			<width>1498</width>
+			<textoffsetx>20</textoffsetx>
+			<label>$LOCALIZE[31007]</label>
+			<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[VideoInfoCastLabel2Var][/COLOR]</label2>
+			<onclick>Skin.ToggleSetting(OnlineCast)</onclick>
 		</control>
 		<control type="radiobutton" id="90203">
 			<width>1498</width>
@@ -509,8 +508,10 @@
 			<radioposx>1388</radioposx>
 			<onclick>Skin.ToggleSetting(Enable.BlurredVideoInfo)</onclick>
 			<selected>Skin.HasSetting(Enable.BlurredVideoInfo)</selected>
+			<onclick condition="Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(SkinInfo.Blur)</onclick>
+			<onclick condition="!Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.SetBool(SkinInfo.Blur)</onclick>
+			<onclick condition="!Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(SkinInfo.BlurSource,ListItem.Art(poster),home)</onclick>
 			<label>$LOCALIZE[31174]</label>
-			<visible>System.AddonIsEnabled(plugin.video.themoviedb.helper)</visible>
 		</control>
 		<control type="button" id="90211">
 			<width>1498</width>
@@ -541,10 +542,9 @@
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
-			<onclick>Skin.ToggleSetting(TMDbHelper.HideBudgetRevenue)</onclick>
-			<selected>Skin.HasSetting(TMDbHelper.HideBudgetRevenue)</selected>
+			<onclick>Skin.ToggleSetting(HideBudgetRevenue)</onclick>
+			<selected>Skin.HasSetting(HideBudgetRevenue)</selected>
 			<label>$LOCALIZE[31596]</label>
-			<visible>System.AddonIsEnabled(plugin.video.themoviedb.helper)</visible>
 		</control>
 	</include>
 	<include name="LiveTVSettings">

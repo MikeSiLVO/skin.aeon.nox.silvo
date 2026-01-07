@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1114" type="dialog">
 	<onload>SetFocus(90201)</onload>
-	<onunload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + [Skin.HasSetting(Enable.BlurredVideoInfo) | Window.IsVisible(visualisation) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd) + String.IsEqual(Skin.String(Viz.Background),4)]">Skin.SetBool(TMDbHelper.EnableBlur)</onunload>
-	<onunload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo) + String.IsEmpty(Window(Home).Property(TMDbHelper.Blur.SourceImage))">SetProperty(TMDbHelper.Blur.SourceImage,Art(poster)|Art(season.poster)|Art(tvshow.poster)|Art(thumb)|Icon,Home)</onunload>
-	<onunload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) | !Skin.HasSetting(Enable.BlurredVideoInfo) + !String.IsEqual(Skin.String(Viz.Background),4)">Skin.Reset(TMDbHelper.EnableBlur)</onunload>
+	<onunload condition="[Window.IsVisible(visualisation) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd) + String.IsEqual(Skin.String(Viz.Background),4)]">Skin.SetBool(SkinInfo.Player.Blur)</onunload>
+	<onunload condition="String.IsEqual(Skin.String(Viz.Background),4) + String.IsEmpty(Window(Home).Property(SkinInfo.Player.BlurSource))">SetProperty(SkinInfo.Player.BlurSource,Player.Art(thumb),Home)</onunload>
+	<onunload condition="!String.IsEqual(Skin.String(Viz.Background),4)">Skin.Reset(SkinInfo.Player.Blur)</onunload>
 	<onunload condition="String.IsEqual(Window(Home).Property(DialogSettings),livetv) + !Window.IsActive(skinsettings)">SetFocus(50)</onunload>
 	<onunload>ClearProperty(DialogSettings,Home)</onunload>
 	<controls>

@@ -17,9 +17,9 @@
 	<include file="Includes_Select.xml" />
 	<include file="Includes_ViewSettings.xml" />
 	<include file="Includes_Views.xml" />
+	<include file="Includes_Weather.xml" />
 	<include file="Includes_Widgets.xml" />
 	<include file="script-skinshortcuts-includes.xml" />
-	<include file="script-skinviewtypes-includes.xml" />
 	<include file="Variables.xml" />
 	<include file="Variables_Artwork.xml" />
 	<include file="Variables_InfoPanel.xml" />
@@ -28,7 +28,7 @@
 	<include file="Variables_Widgets.xml" />
 	<!-- Media Menu -->
 	<include name="SideBladeLeft">
-		<animation effect="slide" start="440,0" end="0,0" time="400" tween="quadratic" easing="out" condition="String.IsEmpty(Window(Home).Property(MediaMenu)) | Window.IsActive(videos) + Window.IsVisible(selectdialog) | Window.IsVisible(1126) | Window.IsVisible(progressdialog)">Conditional</animation>
+		<animation effect="slide" start="440,0" end="0,0" time="400" tween="quadratic" easing="out" condition="String.IsEmpty(Window(Home).Property(MediaMenu)) | Window.IsActive(videos) + Window.IsVisible(selectdialog) | Window.IsVisible(1126) | Window.IsVisible(progressdialog) | !String.IsEmpty(Window(Home).Property(SkinInfo.ToolsMenuActive))">Conditional</animation>
 		<animation effect="slide" start="0,0" end="-440,0" time="400" tween="quadratic" easing="out">WindowClose</animation>
 		<control type="image">
 			<width>432</width>
@@ -105,9 +105,9 @@
 			<textwidth>352</textwidth>
 			<include>ButtonCommonValues</include>
 			<label>$INFO[Container.Viewmode,$LOCALIZE[31100] ]</label>
-			<onclick condition="!Skin.HasSetting(skinvariables.viewtypes) | !Window.IsActive(MyVideoNav.xml)">SetProperty(CustomSideMenu,viewselection,Home)</onclick>
-			<onclick condition="!Skin.HasSetting(skinvariables.viewtypes) | !Window.IsActive(MyVideoNav.xml)">ActivateWindow(1104)</onclick>
-			<onclick condition="Skin.HasSetting(skinvariables.viewtypes) + Window.IsActive(MyVideoNav.xml)">Runscript(script.skinvariables,action=buildviews,contentid=$VAR[SkinVariablesContentIDVar],pluginname=$INFO[Container.PluginName])</onclick>
+			<onclick condition="!Skin.HasSetting(Enable_ViewLocking) | !Window.IsActive(MyVideoNav.xml)">SetProperty(CustomSideMenu,viewselection,Home)</onclick>
+			<onclick condition="!Skin.HasSetting(Enable_ViewLocking) | !Window.IsActive(MyVideoNav.xml)">ActivateWindow(1104)</onclick>
+			<onclick condition="Skin.HasSetting(Enable_ViewLocking) + Window.IsActive(MyVideoNav.xml)">RunScript(script.skinshortcuts,type=viewselect,content=$VAR[ShortcutsViewContentVar],plugin=$INFO[Container.PluginName])</onclick>
 			<visible>!Window.IsActive(tvchannels)</visible>
 		</control>
 		<control type="button" id="7031">
@@ -145,13 +145,14 @@
 		<control type="button" id="3">
 			<description>Sort by button</description>
 			<include>ButtonCommonValues</include>
-			<label>103</label>
 		</control>
 		<control type="togglebutton" id="4">
 			<description>Sort asc</description>
 			<include>ButtonCommonValues</include>
-			<label>31051</label>
-			<altlabel>31050</altlabel>
+			<label>$LOCALIZE[31051]</label>
+			<altlabel>$LOCALIZE[31050]</altlabel>
+			<texturefocus border="10,8,10,8" colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+			<alttexturefocus border="10,8,10,8" colordiffuse="$VAR[HighlightBarColor]">button_focus.png</alttexturefocus>
 			<usealttexture>Container.SortDirection(Ascending)</usealttexture>
 		</control>
 		<control type="button" id="2001">
@@ -1439,7 +1440,7 @@
 					<label>[UPPERCASE][B]$LOCALIZE[112][/B][/UPPERCASE]</label>
 					<font>BigAssTimeFont</font>
 					<textcolor>B3FFFFFF</textcolor>
-					<visible>Skin.HasSetting(PausedLabel)</visible>
+					<visible>Skin.HasSetting(PausedLabel) + !Window.IsVisible(fullscreeninfo)</visible>
 				</control>
 			</control>
 		</control>
@@ -1777,7 +1778,7 @@
 						<fadetime>200</fadetime>
 						<texture background="true">$VAR[GlobalBackgroundVar]</texture>
 						<aspectratio scalediffuse="false" aligny="center">scale</aspectratio>
-						<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
+						<bordertexture border="20" infill="false">thumbs/thumb_shadow_aa.png</bordertexture>
 						<bordersize>20</bordersize>
 					</control>
 				</control>
@@ -1847,7 +1848,7 @@
 						<height>380</height>
 						<fadetime>200</fadetime>
 						<texture background="true">$VAR[PosterThumbVar]</texture>
-						<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
+						<bordertexture border="20" infill="false">thumbs/thumb_shadow_aa.png</bordertexture>
 						<bordersize>20</bordersize>
 					</control>
 				</control>
@@ -2068,7 +2069,7 @@
 						<visible>Container.Content(tvshows)</visible>
 						<control type="group">
 							<visible>!Skin.HasSetting(Disable.NextAired)</visible>
-							<visible>!String.IsEmpty(Container(9143).ListItem.Status) | !String.IsEmpty(ListItem.Status)</visible>
+							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status)) | !String.IsEmpty(ListItem.Status)</visible>
 							<height>40</height>
 							<control type="label">
 								<left>5</left>
@@ -2089,7 +2090,7 @@
 						</control>
 						<control type="group">
 							<visible>!Skin.HasSetting(Disable.NextAired)</visible>
-							<visible>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) | !String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))</visible>
+							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Online.LastEpisodeAired))</visible>
 							<height>40</height>
 							<control type="togglebutton">
 								<left>5</left>
@@ -2099,7 +2100,7 @@
 								<include>NoFocusObject</include>
 								<label></label>
 								<altlabel></altlabel>
-								<usealttexture>String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))</usealttexture>
+								<usealttexture>String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired))</usealttexture>
 							</control>
 							<control type="label">
 								<left>40</left>
@@ -2668,6 +2669,11 @@
 			<size>35</size>
 		</font>
 		<font>
+			<name>IconMediaMenuButtons</name>
+			<filename>icons/MaterialSymbolsOutlined_Filled-Regular.ttf</filename>
+			<size>45</size>
+		</font>
+		<font>
 			<name>IconMediumMD</name>
 			<filename>icons/MaterialSymbolsOutlined_Filled-Regular.ttf</filename>
 			<size>50</size>
@@ -2678,9 +2684,9 @@
 			<size>65</size>
 		</font>
 		<font>
-			<name>IconMediaMenuButtons</name>
+			<name>IconWeather</name>
 			<filename>icons/MaterialSymbolsOutlined_Filled-Regular.ttf</filename>
-			<size>45</size>
+			<size>80</size>
 		</font>
 	</include>
 	<!-- Scrollbars -->
@@ -3076,7 +3082,7 @@
 									<itemgap>10</itemgap>
 									<orientation>horizontal</orientation>
 									<control type="grouplist">
-										<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Container(4501).ListItem.Property(ratings.tomatometerallaudience.rating)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating))]</visible>
+										<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.Tomatoes)) | !String.IsEmpty(Container(8001).ListItem.Property(Rating.Tomatoes.Percent))]</visible>
 										<width>140</width>
 										<orientation>horizontal</orientation>
 										<control type="image">
@@ -3084,18 +3090,18 @@
 											<height>55</height>
 											<aspectratio>keep</aspectratio>
 											<colordiffuse>grey</colordiffuse>
-											<texture>$VAR[RottenFreshLogoVar]</texture>
+											<texture>$VAR[PlayerRottenFreshLogoVar]</texture>
 										</control>
 										<control type="label">
 											<height>60</height>
 											<width>auto</width>
 											<font>font14_bold</font>
 											<textcolor>grey</textcolor>
-											<label>$VAR[RottenFreshLabelVar]$VAR[RottenFreshLabel2Var]</label>
+											<label>$VAR[PlayerRottenFreshLabelVar]</label>
 										</control>
 									</control>
 									<control type="grouplist">
-										<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(VideoPlayer.Rating(tomatometerallaudience)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.RottenTomatoes_UserMeter))]</visible>
+										<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.Popcorn)) | !String.IsEmpty(Container(8001).ListItem.Property(Rating.Popcorn.Percent))]</visible>
 										<width>140</width>
 										<orientation>horizontal</orientation>
 										<control type="image">
@@ -3103,18 +3109,18 @@
 											<height>55</height>
 											<aspectratio>keep</aspectratio>
 											<colordiffuse>grey</colordiffuse>
-											<texture>$VAR[RottenFreshAudienceLogoVar]</texture>
+											<texture>$VAR[PlayerRottenFreshAudienceLogoVar]</texture>
 										</control>
 										<control type="label">
 											<width>auto</width>
 											<height>60</height>
 											<font>font14_bold</font>
 											<textcolor>grey</textcolor>
-											<label>$VAR[RottenFreshAudienceLabelVar]$VAR[RottenFreshAudienceLabel2Var]</label>
+											<label>$VAR[PlayerRottenFreshAudienceLabelVar]</label>
 										</control>
 									</control>
 									<control type="grouplist">
-										<visible>!String.IsEmpty(Container(4501).ListItem.Property(ratings.themoviedb.rating)) | !String.IsEmpty(Container(4501).ListItem.Property(ratings.tmdb.rating)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.TMDb_Rating))</visible>
+										<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.themoviedb)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.tmdb)) | !String.IsEmpty(Container(8001).ListItem.Rating(themoviedb)) | !String.IsEmpty(Container(8001).ListItem.Rating(tmdb))</visible>
 										<width>140</width>
 										<itemgap>10</itemgap>
 										<orientation>horizontal</orientation>
@@ -3130,11 +3136,11 @@
 											<height>60</height>
 											<font>font14_bold</font>
 											<textcolor>grey</textcolor>
-											<label>$VAR[TMDbRatingsLabelVar]</label>
+											<label>$VAR[PlayerTMDbRatingsLabelVar]</label>
 										</control>
 									</control>
 									<control type="grouplist">
-										<visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Trakt_Rating))</visible>
+										<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.trakt)) | !String.IsEmpty(Container(8001).ListItem.Rating(trakt))</visible>
 										<width>140</width>
 										<orientation>horizontal</orientation>
 										<control type="image">
@@ -3149,7 +3155,7 @@
 											<height>60</height>
 											<font>font14_bold</font>
 											<textcolor>grey</textcolor>
-											<label>$INFO[Window(Home).Property(TMDbHelper.Player.Trakt_Rating)]</label>
+											<label>$VAR[PlayerTraktRatingsLabelVar]</label>
 										</control>
 									</control>
 								</control>
@@ -3185,8 +3191,8 @@
 							<font>font15</font>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
 							<scroll>true</scroll>
-							<label>$INFO[Window(Home).Property(TMDbHelper.Player.Budget),$LOCALIZE[31850]: [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(TMDbHelper.Player.Revenue),[COLOR grey]  •  [/COLOR]$LOCALIZE[31851]: [COLOR grey],[/COLOR]]</label>
-							<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Budget)) | !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Revenue))]</visible>
+							<label>$INFO[Container(8001).ListItem.Property(TMDb.Budget)),$LOCALIZE[31850]: [COLOR grey],[/COLOR]]$INFO[Container(8001).ListItem.Property(TMDb.Revenue)),[COLOR grey]  •  [/COLOR]$LOCALIZE[31851]: [COLOR grey],[/COLOR]]</label>
+							<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Container(8001).ListItem.Property(TMDb.Budget)) | !String.IsEmpty(Container(8001).ListItem.Property(TMDb.Revenue))]</visible>
 						</control>
 						<control type="label">
 							<width>1420</width>
@@ -3245,6 +3251,124 @@
 						<include>HiddenObject</include>
 					</control>
 				</control>
+			</control>
+			<control type="panel" id="90099">
+				<visible allowhiddenfocus="true">!String.IsEmpty(Window(fullscreeninfo).Property(ShowCast))</visible>
+				<left>480</left>
+				<top>100</top>
+				<width>1400</width>
+				<height>400</height>
+				<orientation>horizontal</orientation>
+				<itemlayout width="240" height="360">
+					<control type="image">
+						<left>10</left>
+						<width>220</width>
+						<height>290</height>
+						<bordersize>10</bordersize>
+						<bordertexture border="10">thumbs/poster_border.png</bordertexture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<texture fallback="DefaultActor.png" background="true" diffuse="thumbs/rounded_5px_mask.png">$INFO[ListItem.Icon]</texture>
+					</control>
+					<control type="label">
+						<left>10</left>
+						<top>290</top>
+						<width>220</width>
+						<height>30</height>
+						<align>center</align>
+						<font>font14</font>
+						<shadowcolor>shadow</shadowcolor>
+						<textcolor>white</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<left>10</left>
+						<top>328</top>
+						<width>220</width>
+						<height>30</height>
+						<align>center</align>
+						<font>font12</font>
+						<shadowcolor>shadow</shadowcolor>
+						<textcolor>grey</textcolor>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="480" width="300">
+					<control type="group">
+						<animation effect="zoom" start="90" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
+						<control type="image">
+							<left>-15</left>
+							<top>-10</top>
+							<width>320</width>
+							<height>450</height>
+							<bordersize>22</bordersize>
+							<bordertexture border="20" infill="false">thumbs/shadow.png</bordertexture>
+							<aspectratio aligny="top">scale</aspectratio>
+							<texture fallback="$PARAM[fallback]" background="true">$PARAM[texture]</texture>
+						</control>
+						<control type="group">
+							<visible>$PARAM[labelVisibility]</visible>
+							<control type="image">
+								<left>5</left>
+								<width>282</width>
+								<height>418</height>
+								<texture>poster_bottom_fade.png</texture>
+							</control>
+							<control type="label">
+								<left>8</left>
+								<top>374</top>
+								<width>274</width>
+								<height>43</height>
+								<align>center</align>
+								<font>font14</font>
+								<shadowcolor>shadow</shadowcolor>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<label>$PARAM[label]</label>
+								<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
+							</control>
+						</control>
+						<control type="image">
+							<left>7</left>
+							<top>12</top>
+							<width>67</width>
+							<height>30</height>
+							<texture>colors/black50.png</texture>
+							<aspectratio aligny="center">scale</aspectratio>
+							<visible>!String.IsEmpty(ListItem.Year) + !Control.HasFocus(90016)</visible>
+						</control>
+						<control type="label">
+							<left>8</left>
+							<top>4</top>
+							<width>274</width>
+							<height>43</height>
+							<font>font14</font>
+							<shadowcolor>shadow</shadowcolor>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<label>$PARAM[label2]</label>
+							<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
+						</control>
+						<control type="label">
+							<left>3</left>
+							<top>422</top>
+							<width>284</width>
+							<height>43</height>
+							<align>center</align>
+							<font>font14</font>
+							<shadowcolor>shadow</shadowcolor>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<label>$PARAM[label1]</label>
+							<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
+						</control>
+						<control type="image">
+							<left>242</left>
+							<top>13</top>
+							<width>40</width>
+							<height>40</height>
+							<texture>overlays/addons/enabled.png</texture>
+							<visible>$PARAM[overlayVisibility]</visible>
+						</control>
+					</control>
+				</focusedlayout>
+				<content browse="never">$VAR[SkinInfoCastPathVar]</content>
 			</control>
 		</control>
 	</include>
@@ -3506,20 +3630,15 @@
 		</control>
 	</include>
 	<!-- Content Lists -->
-	<include name="SkinVariablesContentList">
-		<param name="id" default="4501" />
-		<param name="content" default="$VAR[SkinVariableDBContainerPluginPathVar]" />
+	<include name="SkinInfoContentList">
+		<param name="id" default="5000" />
+		<param name="content" default="$VAR[SkinInfoLibraryPathVar]" />
 		<definition>
 			<control type="list" id="$PARAM[id]">
 				<include>HiddenList</include>
 				<content sortby="userpreference">$PARAM[content]</content>
 			</control>
 		</definition>
-	</include>
-	<include name="TMDbHelperContentList">
-		<control type="list" id="9143">
-			<include>HiddenList</include>
-		</control>
 	</include>
 	<!-- Letter Jump -->
 	<include name="AlphabetNumber">
@@ -3542,27 +3661,49 @@
 			<visible>[String.IsEqual(ListItem.SortLetter,$NUMBER[0]) | String.IsEqual(ListItem.SortLetter,$NUMBER[1]) | String.IsEqual(ListItem.SortLetter,$NUMBER[2]) | String.IsEqual(ListItem.SortLetter,$NUMBER[3]) | String.IsEqual(ListItem.SortLetter,$NUMBER[4]) | String.IsEqual(ListItem.SortLetter,$NUMBER[5]) | String.IsEqual(ListItem.SortLetter,$NUMBER[6]) | String.IsEqual(ListItem.SortLetter,$NUMBER[7]) | String.IsEqual(ListItem.SortLetter,$NUMBER[8]) | String.IsEqual(ListItem.SortLetter,$NUMBER[9])]</visible>
 		</control>
 	</include>
-	<include name="AlphabetLetter">
-		<control type="label">
-			<width>60</width>
-			<height>37</height>
-			<align>center</align>
-			<font>font15_title</font>
-			<textcolor>grey2</textcolor>
-			<label>$PARAM[letter]</label>
-			<visible>!String.IsEqual(ListItem.SortLetter,$PARAM[letter])</visible>
-		</control>
-		<control type="label">
-			<width>60</width>
-			<height>37</height>
-			<align>center</align>
-			<font>font15_title</font>
-			<textcolor>$VAR[ThemeLabelColor]</textcolor>
-			<label>$PARAM[letter]</label>
-			<visible>String.IsEqual(ListItem.SortLetter,$PARAM[letter])</visible>
+	<include name="LetterJump">
+		<control type="group">
+			<left>1860</left>
+			<animation effect="slide" end="100,0" time="200" tween="quadratic" easing="out" condition="!Control.HasFocus(615)">Conditional</animation>
+			<control type="image">
+				<width>60</width>
+				<height>100%</height>
+				<texture>colors/black.png</texture>
+			</control>
+			<control type="list" id="615">
+				<top>40</top>
+				<width>60</width>
+				<height>1000</height>
+				<onleft>50</onleft>
+				<onright condition="!Control.IsVisible(51) + !Control.IsVisible(500) + !Control.IsVisible(511)">4400</onright>
+				<onright condition="Control.IsVisible(51) | Control.IsVisible(500) | Control.IsVisible(511)">50</onright>
+				<onback>50</onback>
+				<itemlayout width="60" height="37">
+					<control type="label">
+						<width>60</width>
+						<height>37</height>
+						<align>center</align>
+						<font>font15_title</font>
+						<textcolor>grey2</textcolor>
+						<label>$INFO[ListItem.label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout width="60" height="37">
+					<control type="label">
+						<width>60</width>
+						<height>37</height>
+						<align>center</align>
+						<font>font15_title</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$INFO[ListItem.label]</label>
+					</control>
+				</focusedlayout>
+				<content>plugin://script.skin.info.service/?action=letter_jump&amp;target=506&amp;reload=$INFO[Container.SortOrder]</content>
+			</control>
 		</control>
 	</include>
-	<include name="DefaultLetterJump">
+	<!-- $INFO[Container(615).NumItems] -->
+	<!-- <include name="DefaultLetterJump">
 		<control type="button" id="615">
 			<description>Go to Letter</description>
 			<include>HiddenObject</include>
@@ -3599,90 +3740,6 @@
 				<height>100%</height>
 				<texture>colors/black.png</texture>
 			</control>
-			<control type="grouplist">
-				<top>44</top>
-				<width>60</width>
-				<height>1036</height>
-				<include>AlphabetNumber</include>
-				<include content="AlphabetLetter">
-					<param name="letter">A</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">B</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">C</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">D</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">E</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">F</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">G</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">H</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">I</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">J</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">K</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">L</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">M</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">N</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">O</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">P</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">Q</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">R</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">S</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">T</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">U</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">V</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">W</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">X</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">Y</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">Z</param>
-				</include>
-			</control>
 		</control>
 		<control type="group">
 			<top>1000</top>
@@ -3693,95 +3750,8 @@
 				<height>80</height>
 				<texture>bottombar.png</texture>
 			</control>
-			<control type="grouplist">
-				<left>60</left>
-				<top>20</top>
-				<width>1800</width>
-				<height>60</height>
-				<orientation>horizontal</orientation>
-				<align>center</align>
-				<include>AlphabetNumber</include>
-				<include content="AlphabetLetter">
-					<param name="letter">A</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">B</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">C</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">D</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">E</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">F</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">G</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">H</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">I</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">J</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">K</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">L</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">M</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">N</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">O</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">P</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">Q</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">R</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">S</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">T</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">U</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">V</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">W</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">X</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">Y</param>
-				</include>
-				<include content="AlphabetLetter">
-					<param name="letter">Z</param>
-				</include>
-			</control>
 		</control>
-	</include>
+	</include> -->
 	<include name="BusySpinner">
 		<param name="left">912</param>
 		<param name="top">492</param>

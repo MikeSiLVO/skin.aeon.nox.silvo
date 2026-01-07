@@ -56,6 +56,7 @@
 		<aligny>center</aligny>
 		<font>font13</font>
 		<radioposx>300</radioposx>
+		<texturefocus border="10,8,10,8" colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
 	</include>
 	<include name="SettingsButtonCommonValues">
 		<param name="is_addon_status" default="false" />
@@ -109,6 +110,17 @@
 		<font>font15</font>
 		<textcolor>grey</textcolor>
 		<focusedcolor>white</focusedcolor>
+	</include>
+	<include name="ButtonMenuCommonValues">
+		<width>510</width>
+		<height>60</height>
+		<font>font14</font>
+		<textoffsetx>30</textoffsetx>
+		<textcolor>grey2</textcolor>
+		<focusedcolor>white</focusedcolor>
+		<aligny>center</aligny>
+		<texturefocus border="10,8,10,8" colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+		<texturenofocus border="10,8,10,8">button_nofocus.png</texturenofocus>
 	</include>
 	<include name="Objects_KeyOff">
 		<textoffsety>32</textoffsety>
@@ -189,7 +201,18 @@
 	<expression name="HasVerticalMenuWithExtended">String.IsEqual(Skin.String(MainMenu.Layout),vertical) + [String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus] | [String.Contains(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus]</expression>
 	<expression name="WidgetFanartVisible">[[String.IsEmpty(Container(9000).ListItem.Property(widgetDisableFanart)) + ControlGroup(90010).HasFocus] | [String.IsEmpty(Container(9000).ListItem.Property(widgetDisableFanart.2)) + ControlGroup(90020).HasFocus]]</expression>
 	<expression name="HasInfoPlotArt">[String.IsEqual(ListItem.DBTYPE,movie) + Skin.HasSetting(discartoninfo) + !String.IsEmpty(ListItem.Art(discart))] | [String.IsEqual(ListItem.DBTYPE,tvshow) + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(ListItem.Art(clearart))] | [String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)] + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(ListItem.Art(tvshow.clearart))</expression>
-	<expression name="NoInfoPlotArt">[String.IsEqual(ListItem.DBTYPE,movie) + [!Skin.HasSetting(discartoninfo) | String.IsEmpty(ListItem.Art(discart))]] | [String.IsEqual(ListItem.DBTYPE,tvshow) + [!Skin.HasSetting(CharacterOnInfo) | String.IsEmpty(ListItem.Art(clearart))]] | [[String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)] + [!Skin.HasSetting(CharacterOnInfo) | String.IsEmpty(ListItem.Art(tvshow.clearart))]] | String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.Property(item.type),person) | String.IsEqual(ListItem.DBTYPE,musicvideo)</expression>
+	<expression name="NoInfoPlotArt">[String.IsEqual(ListItem.DBTYPE,movie) + [!Skin.HasSetting(discartoninfo) | String.IsEmpty(ListItem.Art(discart))]] | [String.IsEqual(ListItem.DBTYPE,tvshow) + [!Skin.HasSetting(CharacterOnInfo) | String.IsEmpty(ListItem.Art(clearart))]] | [[String.IsEqual(ListItem.DBTYPE,episode) | String.IsEqual(ListItem.DBTYPE,season)] + [!Skin.HasSetting(CharacterOnInfo) | String.IsEmpty(ListItem.Art(tvshow.clearart))]] | String.IsEqual(ListItem.DBTYPE,set) | String.IsEqual(ListItem.DBTYPE,musicvideo)</expression>
 	<expression name="HasCustomInfoPlotArt">[String.IsEqual(Window(Home).Property(item_dbtype),movie) + Skin.HasSetting(discartoninfo) + !String.IsEmpty(Container(4800).ListItem.Art(discart))] | [String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(Container(4800).ListItem.Art(clearart))] | [String.IsEqual(Window(Home).Property(item_dbtype),episode) | String.IsEqual(Window(Home).Property(item_dbtype),season)] + Skin.HasSetting(CharacterOnInfo) + !String.IsEmpty(Container(4800).ListItem.Art(tvshow.clearart))</expression>
 	<expression name="NoCustomInfoPlotArt">[String.IsEqual(Window(Home).Property(item_dbtype),movie) + [!Skin.HasSetting(discartoninfo) | String.IsEmpty(Container(4800).ListItem.Art(discart))]] | [String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + [!Skin.HasSetting(CharacterOnInfo) | String.IsEmpty(Container(4800).ListItem.Art(clearart))]] | [[String.IsEqual(Window(Home).Property(item_dbtype),episode) | String.IsEqual(Window(Home).Property(item_dbtype),season)] + [!Skin.HasSetting(CharacterOnInfo) | String.IsEmpty(Container(4800).ListItem.Art(tvshow.clearart))]]</expression>
+	<expression name="HasRTCriticRating">[!String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.Tomatoes.Percent)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.Tomatoes.Percent))] + [Container.Content(movies) | Container.Content(tvshows)] + !Skin.HasSetting(DisableFlag_RTCritic)</expression>
+	<expression name="HasRTAudienceRating">[!String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.Popcorn.Percent)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.Popcorn.Percent))] + [Container.Content(movies) | Container.Content(tvshows)] + !Skin.HasSetting(DisableFlag_RTAudience)</expression>
+	<expression name="HasTMDbRating">[!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.tmdb)) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.tmdb))] + !Container.Content(seasons) + !Skin.HasSetting(DisableFlag_TMDb)</expression>
+	<expression name="HasTraktRating">[!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.trakt)) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.trakt))] + !Container.Content(seasons) + !Skin.HasSetting(DisableFlag_Trakt)</expression>
+	<expression name="HasIMDbRating">[!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.imdb)) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.imdb))] + !Container.Content(seasons) + !Skin.HasSetting(DisableFlag_IMDb)</expression>
+	<expression name="NoRTCriticRating">[String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.Tomatoes.Percent)) + String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.Tomatoes.Percent))] | [!Container.Content(movies) + !Container.Content(tvshows)] | Skin.HasSetting(DisableFlag_RTCritic)</expression>
+	<expression name="NoRTAudienceRating">[String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.Popcorn.Percent)) + String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.Popcorn))] | [!Container.Content(movies) + !Container.Content(tvshows)] | Skin.HasSetting(DisableFlag_RTAudience)</expression>
+	<expression name="NoTMDbRating">[String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.tmdb)) + String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.tmdb))] | Container.Content(seasons) | Skin.HasSetting(DisableFlag_TMDb)</expression>
+	<expression name="NoTraktRating">[String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.trakt)) + String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.trakt))] | Container.Content(seasons) | Skin.HasSetting(DisableFlag_Trakt)</expression>
+	<expression name="NoIMDbRating">[String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.imdb)) + String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.imdb))] | Container.Content(seasons) | Skin.HasSetting(DisableFlag_IMDb)</expression>
+	<expression name="HasOnlyOneRating">[$EXP[HasRTCriticRating] + $EXP[NoRTAudienceRating] + $EXP[NoTMDbRating] + $EXP[NoTraktRating] + $EXP[NoIMDbRating]] | [$EXP[NoRTCriticRating] + $EXP[HasRTAudienceRating] + $EXP[NoTMDbRating] + $EXP[NoTraktRating] + $EXP[NoIMDbRating]] | [$EXP[NoRTCriticRating] + $EXP[NoRTAudienceRating] + $EXP[HasTMDbRating] + $EXP[NoTraktRating] + $EXP[NoIMDbRating]] | [$EXP[NoRTCriticRating] + $EXP[NoRTAudienceRating] + $EXP[NoTMDbRating] + $EXP[HasTraktRating] + $EXP[NoIMDbRating]] | [$EXP[NoRTCriticRating] + $EXP[NoRTAudienceRating] + $EXP[NoTMDbRating] + $EXP[NoTraktRating] + $EXP[HasIMDbRating]]</expression>
 </includes>

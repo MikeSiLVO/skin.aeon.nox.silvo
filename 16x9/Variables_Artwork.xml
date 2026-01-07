@@ -12,6 +12,7 @@
 		<value condition="Container.Content(genres) + !String.IsEmpty(Skin.String(MovieGenreIconPath))">$INFO[Skin.String(MovieGenreIconPath)]$INFO[ListItem.Label,,.jpg]</value>
 		<value condition="Container.Content(genres) + !Skin.HasSetting(coloredflags)">$INFO[ListItem.Label,special://skin/extras/moviegenres/default/,.jpg]</value>
 		<value condition="Container.Content(genres) + Skin.HasSetting(coloredflags)">$INFO[ListItem.Label,special://skin/extras/moviegenres/colored/,.jpg]</value>
+		<value condition="Skin.HasSetting(prefer_animated_art) + !String.IsEmpty(ListItem.Art(animatedposter))">$INFO[ListItem.Art(animatedposter)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.Art(poster))">$INFO[Container.ListItem.Art(poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(season.poster))">$INFO[ListItem.Art(season.poster)]</value>
@@ -68,10 +69,10 @@
 		<value condition="!String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(poster)]</value>
 	</variable>
 	<variable name="VideoInfoPosterVar">
-		<value condition="Control.IsVisible(9777) + !String.IsEmpty(Control.GetLabel(9777))" />
+		<value condition="[Control.HasFocus(50) | Control.HasFocus(90050)] + System.AddonIsEnabled(resource.images.actorart) + !String.IsEmpty(Control.GetLabel(9777))" />
 		<value condition="String.IsEqual(ListItem.DBTYPE,set) + ControlGroup(90001).HasFocus(50) + !String.IsEmpty(Container(50).ListItem.Art(poster))">$INFO[Container(50).ListItem.Art(poster)]</value>
 		<value condition="ControlGroup(90001).HasFocus(50) + !String.IsEmpty(Container(50).ListItem.Icon) + !String.IsEqual(Container(50).ListItem.Icon,DefaultActor.png)">$INFO[Container(50).ListItem.Icon]</value>
-		<value condition="ControlGroup(90001).HasFocus(90050) + !String.IsEmpty(Container(90050).ListItem.Icon) + !String.IsEqual(Container(90050).ListItem.Icon,DefaultActor.png)">$INFO[Container(90050).ListItem.Icon]</value>
+		<value condition="ControlGroup(90001).HasFocus(90050) + !String.IsEmpty(Container(90050).ListItem.Icon) + !String.IsEqual(Container(90050).ListItem.Icon,DefaultActor.png)">$INFO[Container(90050).ListItem.Art(thumb)]</value>
 		<value condition="ControlGroup(90001).HasFocus(90011) + !String.IsEmpty(Container(90011).ListItem.Art(poster))">$INFO[Container(90011).ListItem.Art(poster)]</value>
 		<value condition="ControlGroup(90001).HasFocus(90012) + !String.IsEmpty(Container(90012).ListItem.Art(poster))">$INFO[Container(90012).ListItem.Art(poster)]</value>
 		<value condition="ControlGroup(90001).HasFocus(90013) + !String.IsEmpty(Container(90013).ListItem.Art(poster))">$INFO[Container(90013).ListItem.Art(poster)]</value>
@@ -137,10 +138,10 @@
 		<value>trailers.png</value>
 	</variable>
 	<variable name="VideoInfoActorResourceVar">
-		<value condition="Control.HasFocus(50)">$INFO[Container(50).ListItem.Label,resource://resource.images.actorart/,.png]</value>
-		<value condition="Control.HasFocus(90050)">$INFO[Container(90050).ListItem.Label,resource://resource.images.actorart/,.png]</value>
+		<value condition="Control.HasFocus(50) + !String.IsEqual(ListItem.DBTYPE,set)">$INFO[Container(50).ListItem.Label,resource://resource.images.actorart/,.png]</value>
+		<value condition="Control.HasFocus(90050) + !String.IsEqual(ListItem.DBTYPE,set)">$INFO[Container(90050).ListItem.Label,resource://resource.images.actorart/,.png]</value>
 	</variable>
-	<variable name="TMDbHInfoPersonPosterVar">
+	<variable name="PersonInfoPosterVar">
 		<value condition="Control.HasFocus(90008) + !String.IsEmpty(Container(90008).ListItem.Art(poster))">$INFO[Container(90008).ListItem.Art(poster)]</value>
 		<value condition="Control.HasFocus(90009) + !String.IsEmpty(Container(90009).ListItem.Art(poster))">$INFO[Container(90009).ListItem.Art(poster)]</value>
 		<value condition="Control.HasFocus(900010) + !String.IsEmpty(Container(900010).ListItem.Art(poster))">$INFO[Container(900010).ListItem.Art(poster)]</value>
@@ -148,8 +149,7 @@
 		<value condition="Control.HasFocus(900012) + !String.IsEmpty(Container(900012).ListItem.Art(poster))">$INFO[Container(900012).ListItem.Art(poster)]</value>
 		<value condition="Control.HasFocus(900020) + !String.IsEmpty(Container(900020).ListItem.Art(poster))">$INFO[Container(900020).ListItem.Art(poster)]</value>
 		<value condition="Control.HasFocus(900020) + !String.IsEmpty(Container(900020).ListItem.Art(thumb))">$INFO[Container(900020).ListItem.Art(thumb)]</value>
-		<value condition="!String.IsEmpty(Container(11090).ListItem.Art(poster))">$INFO[Container(11090).ListItem.Art(poster)]</value>
-		<value>$INFO[Container(11090).ListItem.Art(thumb)]</value>
+		<value condition="!Container(11090).IsUpdating">$INFO[Container(11090).ListItem.Art(thumb)]</value>
 	</variable>
 	<variable name="VideoInfoDetailsImageVar">
 		<value condition="[String.IsEqual(ListItem.DBTYPE,movie) + Skin.HasSetting(discartoninfo)]">$INFO[ListItem.Art(discart)]</value>
@@ -214,22 +214,9 @@
 		<value condition="Player.HasAudio + Skin.HasSetting(Enable.ArtistSlideshowOnHome) + ![String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),/transparent) | String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),\transparent)] + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.ArtworkReady))">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</value>
 		<value condition="Player.HasAudio + Skin.HasSetting(Enable.ArtistSlideshowOnHome) + !String.IsEmpty(MusicPlayer.Property(Fanart_Image))">$INFO[MusicPlayer.Property(Fanart_Image)]</value>
 		<value condition="Player.HasAudio + Skin.HasSetting(Enable.ArtistSlideshowOnHome) + !String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>
-		<value condition="[Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),Container(9010).ListItem.Property(backgroundName))] + !String.IsEmpty(Container(9010).ListItem.Property(backgroundPlaylist))">$INFO[Container(9010).ListItem.Property(backgroundPlaylist)]</value>
-		<value condition="Control.HasFocus(9010) + !String.IsEmpty(Container(9010).ListItem.Property(background)) + !String.EndsWith(Container(9010).ListItem.Property(background),.Fanart) + !String.StartsWith(Container(9010).ListItem.Property(background),s:playlist)">$INFO[Container(9010).ListItem.Property(background)]</value>
-		<value condition="String.StartsWith(Container(9000).ListItem.Property(background),s:playlist) | Control.HasFocus(9010) + String.StartsWith(Container(9010).ListItem.Property(background),s:playlist)">$INFO[Container(9034).ListItem.Art(fanart)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),Kodi.Movie.Fanart) | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),Kodi.Movie.Fanart)">$INFO[Container(9035).ListItem.Art(fanart)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),Kodi.TV.Fanart) | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),Kodi.TV.Fanart)">$INFO[Container(9036).ListItem.Art(fanart)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),Kodi.Music.Fanart) | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),Kodi.Music.Fanart)">$INFO[Container(9037).ListItem.Art(fanart)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),Kodi.MusicVideo.Fanart) | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),Kodi.MusicVideo.Fanart)">$INFO[Container(9038).ListItem.Art(fanart)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),Movie.Fanart) | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),Movie.Fanart)">$INFO[Window(Home).Property(script.grab.fanart.Movie.FanArt)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),TV.Fanart) | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),TV.Fanart)">$INFO[Window(Home).Property(script.grab.fanart.TV.FanArt)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),Video.Fanart) | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),Video.Fanart)">$INFO[Window(Home).Property(script.grab.fanart.Video.FanArt)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),Music.Fanart) | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),Music.Fanart)">$INFO[Window(Home).Property(script.grab.fanart.Music.FanArt)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),Global.Fanart) | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),Global.Fanart)">$INFO[Window(Home).Property(script.grab.fanart.Global.FanArt)]</value>
-		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),Weather.Fanart) | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),Weather.Fanart)">$INFO[Skin.String(weatherfanart.path)]$INFO[Window(Weather).Property(Current.FanartCode)]$VAR[WeatherBackgroundTypeVar]</value>
-		<value condition="!String.IsEmpty(Container(9000).ListItem.Property(background))">$INFO[Container(9000).ListItem.Property(background)]</value>
+		<value condition="Control.HasFocus(9010) + !String.IsEmpty(Container(9010).ListItem.Property(backgroundPath))">$INFO[Container(9010).ListItem.Property(backgroundPath)]</value>
 		<value condition="!String.IsEmpty(Skin.String(CustomDefaultBackground.path))">$INFO[Skin.String(CustomDefaultBackground.path)]</value>
-		<value condition="!String.IsEmpty(Container.ListItem.Art(fanart))">$INFO[Container.ListItem.Art(fanart)]</value>
+		<value>$VAR[MainMenu_BackgroundPath]</value>
 	</variable>
 	<variable name="GlobalBackgroundVar">
 		<value condition="Window.Next(Home)" />
@@ -241,11 +228,11 @@
 		<value condition="!String.IsEmpty(Container.ListItem.Art(fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[Container.ListItem.Art(fanart)]</value>
 		<value condition="!String.IsEmpty(Container.Art(set.fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[Container.Art(set.fanart)]</value>
 		<value condition="!String.IsEmpty(Container.Art(tvshow.fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[Container.Art(tvshow.fanart)]</value>
-		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,1)">$INFO[Window(Home).Property(script.grab.fanart.Movie.FanArt)]</value>
-		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,2)">$INFO[Window(Home).Property(script.grab.fanart.TV.FanArt)]</value>
-		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,3)">$INFO[Window(Home).Property(script.grab.fanart.Video.FanArt)]</value>
-		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,4)">$INFO[Window(Home).Property(script.grab.fanart.Music.FanArt)]</value>
-		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,5)">$INFO[Window(Home).Property(script.grab.fanart.Global.FanArt)]</value>
+		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,1)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Movie.FanArt)]</value>
+		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,2)">$INFO[Window(Home).Property(SkinInfo.Slideshow.TV.FanArt)]</value>
+		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,3)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Video.FanArt)]</value>
+		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,4)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Music.FanArt)]</value>
+		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,5)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Global.FanArt)]</value>
 		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,6)">$INFO[Skin.String(weatherfanart.path)]$INFO[Window(Weather).Property(Current.FanartCode)]$VAR[WeatherBackgroundTypeVar]</value>
 		<value condition="!String.IsEmpty(Container(9033).ListItem.Thumb)">$INFO[Container(9033).ListItem.Thumb]</value>
 		<value condition="String.IsEmpty(Container(9033).ListItem.Art(thumb)) + !String.IsEmpty(Skin.String(CustomDefaultBackground.path))">$INFO[Skin.String(CustomDefaultBackground.path)]</value>
@@ -260,7 +247,7 @@
 		<value condition="!String.IsEmpty(Skin.String(CustomDefaultBackground.path))">$INFO[Skin.String(CustomDefaultBackground.path)]</value>
 	</variable>
 	<variable name="VizBackgroundVar">
-		<value condition="System.AddonIsEnabled(script.grab.fanart) + String.IsEqual(Skin.String(Viz.Background),2)">$INFO[Window(Home).Property(script.grab.fanart.Music.FanArt)]</value>
+		<value condition="String.IsEqual(Skin.String(Viz.Background),2)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Music.FanArt)]</value>
 		<value condition="[String.IsEqual(Skin.String(Viz.Background),5) | String.IsEqual(Skin.String(Viz.Background),6)] + !String.IsEmpty(Skin.String(CustomMusicBackground.path))">$INFO[Skin.String(CustomMusicBackground.path)]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),7) + !Control.IsVisible(4410) + !String.IsEmpty(Control.GetLabel(4411))">$INFO[Control.GetLabel(4411)]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),7) + !String.IsEmpty(Control.GetLabel(4410))">$INFO[Control.GetLabel(4410)]</value>
@@ -276,15 +263,15 @@
 		<value>special://skin/extras/backgrounds/default_settings.jpg</value>
 	</variable>
 	<variable name="DialogInfoBackgroundVar">
-		<value condition="Skin.HasSetting(Enable.BlurredVideoInfo) + System.AddonIsEnabled(plugin.video.themoviedb.helper)">$INFO[Window(Home).Property(TMDbHelper.ListItem.BlurImage)]</value>
+		<value condition="Skin.HasSetting(Enable.BlurredVideoInfo)">$INFO[Window(Home).Property(SkinInfo.BlurredImage)]</value>
 		<value>$INFO[ListItem.Art(fanart)]</value>
 	</variable>
 	<variable name="CustomDialogInfoBackgroundVar">
-		<value condition="Skin.HasSetting(Enable.BlurredVideoInfo) + System.AddonIsEnabled(plugin.video.themoviedb.helper)">$INFO[Window(Home).Property(TMDbHelper.custom_1102.BlurImage)]</value>
+		<value condition="Skin.HasSetting(Enable.BlurredVideoInfo)">$INFO[Window(1102).Property(SkinInfo.Custom.BlurredImage)]</value>
 		<value>$INFO[Container(4800).ListItem.Art(fanart)]</value>
 	</variable>
-	<variable name="InfoTMDBhBackgroundVar">
-		<value condition="Skin.HasSetting(Enable.BlurredVideoInfo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.BlurImage))">$INFO[Window(Home).Property(TMDbHelper.ListItem.BlurImage)]</value>
+	<variable name="PersonInfoBackgroundVar">
+		<value condition="Skin.HasSetting(Enable.BlurredVideoInfo)+ !String.IsEmpty(Window(Home).Property(SkinInfo.Person.BlurredImage))">$INFO[Window(Home).Property(SkinInfo.Person.BlurredImage)]</value>
 		<value condition="Window.IsVisible(1109) + !String.IsEmpty(Container(11090).ListItem.Art(fanart))">$INFO[Container(11090).ListItem.Art(fanart)]</value>
 		<value>dialogs/tmdbh/tmdb.png</value>
 	</variable>
@@ -312,14 +299,14 @@
 		<value>$INFO[VideoPlayer.VideoCodec,,.png]</value>
 	</variable>
 	<variable name="CustomSourceFlagVar">
-		<value condition="[String.Contains(Window(Home).Property(item_filename),pdtv) | String.Contains(Window(Home).Property(item_filename),sdtv) | String.Contains(Window(Home).Property(item_filename),sd tv)]">sdtv.png</value>
-		<value condition="[String.Contains(Window(Home).Property(item_filename),hdtv) | String.Contains(Window(Home).Property(item_filename),hd tv)]">hdtv.png</value>
-		<value condition="[String.Contains(Window(Home).Property(item_filename),hddvd) | String.Contains(Window(Home).Property(item_filename),hd-dvd)]">hddvd.png</value>
-		<value condition="String.Contains(Window(Home).Property(item_filename),dvb)">dvb.png</value>
-		<value condition="String.Contains(Window(Home).Property(item_filename),web-dl) | String.Contains(Window(Home).Property(item_filename),webdl) | String.Contains(Window(Home).Property(item_filename),webrip)">web-dl.png</value>
-		<value condition="String.Contains(Window(Home).Property(item_filename),dvd) | String.IsEqual(Window(Home).Property(item_ext),ifo)">dvd.png</value>
-		<value condition="[String.Contains(Window(Home).Property(item_filename),bluray) | String.Contains(Window(Home).Property(item_filename),blu-ray) | String.Contains(Window(Home).Property(item_filename),bdrip) | String.Contains(Window(Home).Property(item_filename),brrip) | String.IsEqual(Window(Home).Property(item_ext),bdmv) | String.IsEqual(Window(Home).Property(item_ext),iso) | String.Contains(Window(Home).Property(item_filename),remux)]">bluray.png</value>
-		<value>$INFO[ListItem.VideoCodec,,.png]</value>
+		<value condition="[String.Contains(Container(4800).ListItem.Property(FileName),pdtv) | String.Contains(Container(4800).ListItem.Property(FileName),sdtv) | String.Contains(Container(4800).ListItem.Property(FileName),sd tv)]">sdtv.png</value>
+		<value condition="[String.Contains(Container(4800).ListItem.Property(FileName),hdtv) | String.Contains(Container(4800).ListItem.Property(FileName),hd tv)]">hdtv.png</value>
+		<value condition="[String.Contains(Container(4800).ListItem.Property(FileName),hddvd) | String.Contains(Container(4800).ListItem.Property(FileName),hd-dvd)]">hddvd.png</value>
+		<value condition="String.Contains(Container(4800).ListItem.Property(FileName),dvb)">dvb.png</value>
+		<value condition="String.Contains(Container(4800).ListItem.Property(FileName),web-dl) | String.Contains(Container(4800).ListItem.Property(FileName),webdl) | String.Contains(Container(4800).ListItem.Property(FileName),webrip)">web-dl.png</value>
+		<value condition="String.Contains(Container(4800).ListItem.Property(FileName),dvd) | String.IsEqual(Container(4800).ListItem.Property(FileExtension),ifo)">dvd.png</value>
+		<value condition="[String.Contains(Container(4800).ListItem.Property(FileName),bluray) | String.Contains(Container(4800).ListItem.Property(FileName),blu-ray) | String.Contains(Container(4800).ListItem.Property(FileName),bdrip) | String.Contains(Container(4800).ListItem.Property(FileName),brrip) | String.IsEqual(Container(4800).ListItem.Property(FileExtension),bdmv) | String.IsEqual(Container(4800).ListItem.Property(FileExtension),iso) | String.Contains(Container(4800).ListItem.Property(FileName),remux)]">bluray.png</value>
+		<value>$INFO[Container(4800).ListItem.VideoCodec,,.png]</value>
 	</variable>
 	<variable name="AudioCodecFlagVar">
 		<value condition="String.Contains(ListItem.AudioCodec,truehd_atmos)">truehd_atmos.png</value>

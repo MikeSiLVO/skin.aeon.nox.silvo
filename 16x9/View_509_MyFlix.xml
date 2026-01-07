@@ -322,7 +322,7 @@
 						</control>
 						<control type="group">
 							<visible>!Skin.HasSetting(Disable.NextAired) + !Container.Content(seasons)</visible>
-							<visible>!String.IsEmpty(Container(9143).ListItem.Status) | !String.IsEmpty(ListItem.Status)</visible>
+							<visible>!String.IsEmpty(Container(5100).ListItem.Property(TMDb.Status)) | !String.IsEmpty(ListItem.Status)</visible>
 							<height>40</height>
 							<control type="label">
 								<left>10</left>
@@ -343,7 +343,7 @@
 						</control>
 						<control type="group">
 							<visible>!Skin.HasSetting(Disable.NextAired) + !Container.Content(seasons)</visible>
-							<visible>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) | !String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))</visible>
+							<visible>!String.IsEmpty(Container(5100).ListItem.Property(TMDb.NextEpisodeAired)) | !String.IsEmpty(Container(5100).ListItem.Property(TMDb.LastEpisodeAired))</visible>
 							<height>40</height>
 							<control type="togglebutton">
 								<left>10</left>
@@ -353,7 +353,7 @@
 								<include>NoFocusObject</include>
 								<label></label>
 								<altlabel></altlabel>
-								<usealttexture>String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))</usealttexture>
+								<usealttexture>String.IsEmpty(Container(5100).ListItem.Property(TMDb.NextEpisodeAired))</usealttexture>
 							</control>
 							<control type="label">
 								<left>40</left>
@@ -478,7 +478,7 @@
 		<top>530</top>
 		<width>1920</width>
 		<height>600</height>
-		<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_509]</visible>
+		<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_509]</visible>
 		<onleft>509</onleft>
 		<onright>509</onright>
 		<onup>SetProperty(MediaMenu,True,Home)</onup>
@@ -555,7 +555,7 @@
 			<width>268</width>
 			<height>390</height>
 			<texture background="true">$VAR[PosterThumbVar]</texture>
-			<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
+			<bordertexture border="20" infill="false">thumbs/thumb_shadow_aa.png</bordertexture>
 			<bordersize>20</bordersize>
 		</control>
 	</include>
@@ -578,7 +578,7 @@
 			<width>480</width>
 			<height>270</height>
 			<texture background="true" diffuse="thumbs/thumb_mask.png">$VAR[LandscapeItem0Var]</texture>
-			<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
+			<bordertexture border="20" infill="false">thumbs/thumb_shadow_aa.png</bordertexture>
 			<bordersize>20</bordersize>
 		</control>
 		<include content="PosterStatusOverlay">
@@ -599,7 +599,7 @@
 			<height>270</height>
 			<aspectratio>scale</aspectratio>
 			<bordersize>20</bordersize>
-			<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
+			<bordertexture border="20" infill="false">thumbs/thumb_shadow_aa.png</bordertexture>
 			<texture background="true" diffuse="thumbs/thumb_mask.png">$VAR[NoSpoilerIconVar]</texture>
 		</control>
 		<include content="PosterStatusOverlay">

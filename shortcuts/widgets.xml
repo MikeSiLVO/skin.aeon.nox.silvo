@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets showGetMore="false">
+	<!-- Video Library -->
+	<group name="video-library" label="$LOCALIZE[14236]" source="library">
+		<!-- Movies -->
+		<group name="movies-widgets" label="$LOCALIZE[20342]">
+			<widget name="random-movies-pl" label="$LOCALIZE[31031]" icon="logos/kodi-pl.png" type="movies" target="videos" source="playlist" visible="Library.HasContent(Movies)">
+				<path>special://skin/extras/playlists/randommovies.xsp</path>
+			</widget>
+			<widget name="recent-movies-pl" label="$LOCALIZE[31029]" icon="logos/kodi-pl.png" type="movies" target="videos" source="playlist" visible="Library.HasContent(Movies)">
+				<path>special://skin/extras/playlists/recentmovies.xsp</path>
+			</widget>
+			<widget name="recentlyadded-movies" label="$LOCALIZE[20386]" icon="logos/kodi.png" type="movies" target="videos" visible="Library.HasContent(Movies)">
+				<path>videodb://recentlyaddedmovies/</path>
+			</widget>
+			<widget name="inprogress-movies-pl" label="$LOCALIZE[31732]" icon="logos/kodi-pl.png" type="movies" target="videos" source="playlist" visible="Library.HasContent(Movies)">
+				<path>special://skin/extras/playlists/inprogressmovies.xsp</path>
+			</widget>
+			<widget name="unwatched-movies-pl" label="$LOCALIZE[31533]" icon="logos/kodi-pl.png" type="movies" target="videos" source="playlist" visible="Library.HasContent(Movies)">
+				<path>special://skin/extras/playlists/unwatchedmovies.xsp</path>
+			</widget>
+			<widget name="top250-movies" label="$LOCALIZE[13409]" icon="logos/kodi-pl.png" type="movies" target="videos" source="playlist" visible="Library.HasContent(Movies)">
+				<path>special://skin/extras/playlists/top250.xsp</path>
+			</widget>
+			<widget name="bestpicture-movies" label="$LOCALIZE[31534]" icon="logos/kodi-pl.png" type="movies" target="videos" source="playlist" visible="Library.HasContent(Movies)">
+				<path>special://skin/extras/playlists/bestpicture.xsp</path>
+			</widget>
+			<widget name="sets-movies" label="$LOCALIZE[20434]" icon="logos/kodi-sets.png" type="sets" target="videos" visible="Library.HasContent(MovieSets)">
+				<path>library://video/movies/sets.xml/</path>
+			</widget>
+			<widget name="recommended-movies" label="$LOCALIZE[31335]" icon="logos/skininfo-logo.png" type="movies" target="videos" source="addon" visible="Library.HasContent(movies)">
+				<path>plugin://script.skin.info.service/?action=recommended&amp;dbtype=movie&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+			</widget>
+			<widget name="tmdb-trending-day-movies" label="$ADDON[plugin.video.themoviedb.helper 32178]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
+				<path>plugin://plugin.video.themoviedb.helper?info=trending_day&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+			</widget>
+			<widget name="tmdb-trending-week-movies" label="$ADDON[plugin.video.themoviedb.helper 32179]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
+				<path>plugin://plugin.video.themoviedb.helper?info=trending_week&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+			</widget>
+			<widget name="tmdb-popular-movies" label="$ADDON[plugin.video.themoviedb.helper 32175]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
+				<path>plugin://plugin.video.themoviedb.helper?info=popular&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+			</widget>
+			<widget name="tmdb-toprated-movies" label="$ADDON[plugin.video.themoviedb.helper 32176]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
+				<path>plugin://plugin.video.themoviedb.helper?info=top_rated&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+			</widget>
+			<widget name="tmdb-nowplaying-movies" label="$ADDON[plugin.video.themoviedb.helper 32180]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
+				<path>plugin://plugin.video.themoviedb.helper?info=now_playing&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+			</widget>
+			<widget name="tmdb-upcoming-movies" label="$ADDON[plugin.video.themoviedb.helper 32177]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
+				<path>plugin://plugin.video.themoviedb.helper?info=upcoming&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+			</widget>
+			<widget name="tmdb-revenue-movies" label="$ADDON[plugin.video.themoviedb.helper 32184]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
+				<path>plugin://plugin.video.themoviedb.helper?info=revenue_movies&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+			</widget>
+			<widget name="tmdb-mostvoted-movies" label="$ADDON[plugin.video.themoviedb.helper 32185]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
+				<path>plugin://plugin.video.themoviedb.helper?info=most_voted&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+			</widget>
+		</group>
+		<!-- TV Shows -->
+		<group name="tvshows-widgets" label="$LOCALIZE[20343]">
+			<widget name="random-tvshows-pl" label="$LOCALIZE[31539]" icon="logos/kodi-pl.png" type="tvshows" target="videos" source="playlist" visible="Library.HasContent(TVShows)">
+				<path>special://skin/extras/playlists/randomtvshows.xsp</path>
+			</widget>
+			<widget name="recent-tvshows-pl" label="$LOCALIZE[31532]" icon="logos/kodi-pl.png" type="tvshows" target="videos" source="playlist" visible="Library.HasContent(TVShows)">
+				<path>special://skin/extras/playlists/recenttvshows.xsp</path>
+			</widget>
+			<widget name="inprogress-tvshows-pl" label="$LOCALIZE[626]" icon="logos/kodi-pl.png" type="tvshows" target="videos" source="playlist" visible="Library.HasContent(TVShows)">
+				<path>special://skin/extras/playlists/inprogresstvshows.xsp</path>
+			</widget>
+			<widget name="inprogress-tvshows-lib" label="$LOCALIZE[626]" icon="logos/kodi.png" type="tvshows" target="videos" visible="Library.HasContent(TVShows)">
+				<path>library://video/tvshows/inprogressshows.xml</path>
+			</widget>
+			<widget name="unwatched-tvshows-pl" label="$LOCALIZE[31535]" icon="logos/kodi-pl.png" type="tvshows" target="videos" source="playlist" visible="Library.HasContent(TVShows)">
+				<path>special://skin/extras/playlists/unwatchedtvshows.xsp</path>
+			</widget>
+			<widget name="recommended-tvshows" label="$LOCALIZE[31335]" icon="logos/skininfo-logo.png" type="tvshows" target="videos" source="addon" visible="Library.HasContent(tvshows)">
+				<path>plugin://script.skin.info.service/?action=recommended&amp;dbtype=tvshow&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+			</widget>
+		</group>
+		<!-- Episodes -->
+		<group name="episodes-widgets" label="$LOCALIZE[20360]">
+			<widget name="random-episodes-pl" label="$LOCALIZE[31033]" icon="logos/kodi-pl.png" type="episodes" target="videos" source="playlist" visible="Library.HasContent(TVShows)">
+				<path>special://skin/extras/playlists/randomepisodes.xsp</path>
+			</widget>
+			<widget name="recent-episodes-pl" label="$LOCALIZE[31030]" icon="logos/kodi-pl.png" type="episodes" target="videos" source="playlist" visible="Library.HasContent(TVShows)">
+				<path>special://skin/extras/playlists/recentepisodes.xsp</path>
+			</widget>
+			<widget name="recentlyadded-episodes" label="$LOCALIZE[20387]" icon="logos/kodi.png" type="episodes" target="videos" visible="Library.HasContent(TVShows)">
+				<path>videodb://recentlyaddedepisodes/</path>
+			</widget>
+			<widget name="inprogress-episodes-pl" label="$LOCALIZE[31733]" icon="logos/kodi-pl.png" type="episodes" target="videos" source="playlist" visible="Library.HasContent(TVShows)">
+				<path>special://skin/extras/playlists/inprogressepisodes.xsp</path>
+			</widget>
+			<widget name="nextup-episodes" label="$LOCALIZE[31089]" icon="logos/skininfo-logo.png" type="episodes" target="videos" source="addon" visible="Library.HasContent(tvshows)">
+				<path>plugin://script.skin.info.service/?action=next_up&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+			</widget>
+			<widget name="recent-episodes-grouped" label="$LOCALIZE[31093]" icon="logos/skininfo-logo.png" type="episodes" target="videos" source="addon" visible="Library.HasContent(tvshows)">
+				<path>plugin://script.skin.info.service/?action=recent_episodes_grouped&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+			</widget>
+		</group>
+		<!-- Music Videos -->
+		<group name="musicvideos-widgets" label="$LOCALIZE[20389]">
+			<widget name="random-musicvideos-pl" label="$LOCALIZE[31578]" icon="logos/kodi-pl.png" type="musicvideos" target="videos" source="playlist" visible="Library.HasContent(musicvideos)">
+				<path>special://skin/extras/playlists/randommusicvideos.xsp</path>
+			</widget>
+			<widget name="random-musicvideoartists-pl" label="$LOCALIZE[31579]" icon="logos/kodi-pl.png" type="musicvideos" target="videos" source="playlist" visible="Library.HasContent(musicvideos)">
+				<path>special://skin/extras/playlists/randommusicvideoartists.xsp</path>
+			</widget>
+			<widget name="recent-musicvideos-pl" label="$LOCALIZE[31580]" icon="logos/kodi-pl.png" type="musicvideos" target="videos" source="playlist" visible="Library.HasContent(musicvideos)">
+				<path>special://skin/extras/playlists/recentmusicvideos.xsp</path>
+			</widget>
+			<widget name="inprogress-musicvideos-pl" label="$LOCALIZE[575]" icon="logos/kodi-pl.png" type="musicvideos" target="videos" source="playlist" visible="Library.HasContent(musicvideos)">
+				<path>special://skin/extras/playlists/inprogressmusicvideos.xsp</path>
+			</widget>
+			<widget name="mostplayed-musicvideos-pl" label="$LOCALIZE[575]" icon="logos/kodi-pl.png" type="musicvideos" target="videos" source="playlist" visible="Library.HasContent(musicvideos)">
+				<path>special://skin/extras/playlists/mostplayedmusicvideos.xsp</path>
+			</widget>
+			<widget name="unwatched-musicvideos-pl" label="$LOCALIZE[31582]" icon="logos/kodi-pl.png" type="musicvideos" target="videos" source="playlist" visible="Library.HasContent(musicvideos)">
+				<path>special://skin/extras/playlists/unwatchedmusicvideos.xsp</path>
+			</widget>
+			<widget name="recentlyadded-musicvideos" label="$LOCALIZE[20390]" icon="logos/kodi.png" type="musicvideos" target="videos" visible="Library.HasContent(musicvideos)">
+				<path>videodb://recentlyaddedmusicvideos/</path>
+			</widget>
+		</group>
+		<!-- Video Sources -->
+		<group name="video-sources-widgets" label="$LOCALIZE[39031]">
+			<content source="sources" target="videos"/>
+		</group>
+		<!-- Video Playlists -->
+		<group name="video-playlists-widgets" label="$LOCALIZE[136]">
+			<content source="playlists" target="videos"/>
+		</group>
+	</group>
+	<!-- Music Library -->
+	<group name="music-library" label="$LOCALIZE[14237]" source="library">
+		<!-- Artists -->
+		<group name="artists-widgets" label="$LOCALIZE[133]">
+			<widget name="recent-artists-pl" label="$LOCALIZE[31583]" icon="logos/kodi-pl.png" type="artists" target="music" source="playlist" visible="Library.HasContent(Music)">
+				<path>special://skin/extras/playlists/recentartists.xsp</path>
+			</widget>
+			<widget name="random-artists-pl" label="$LOCALIZE[31584]" icon="logos/kodi-pl.png" type="artists" target="music" source="playlist" visible="Library.HasContent(Music)">
+				<path>special://skin/extras/playlists/randomartists.xsp</path>
+			</widget>
+		</group>
+		<!-- Albums -->
+		<group name="albums-widgets" label="$LOCALIZE[132]">
+			<widget name="recentlyadded-albums" label="$LOCALIZE[359]" icon="logos/kodi.png" type="albums" target="music" visible="Library.HasContent(Music)">
+				<path>musicdb://recentlyaddedalbums/</path>
+			</widget>
+			<widget name="recentlyplayed-albums" label="$LOCALIZE[517]" icon="logos/kodi.png" type="albums" target="music" visible="Library.HasContent(Music)">
+				<path>musicdb://recentlyplayedalbums/</path>
+			</widget>
+			<widget name="compilations-albums" label="$LOCALIZE[521]" icon="logos/kodi.png" type="albums" target="music" visible="Library.HasContent(Music)">
+				<path>musicdb://compilations/</path>
+			</widget>
+			<widget name="top100-albums" label="$LOCALIZE[10505]" icon="logos/kodi.png" type="albums" target="music" visible="Library.HasContent(Music)">
+				<path>musicdb://top100/albums/</path>
+			</widget>
+		</group>
+		<!-- Songs -->
+		<group name="songs-widgets" label="$LOCALIZE[134]">
+			<widget name="mostplayed-songs-pl" label="$LOCALIZE[31585]" icon="logos/kodi-pl.png" type="songs" target="music" source="playlist" visible="Library.HasContent(Music)">
+				<path>special://skin/extras/playlists/mostplayedsongs.xsp</path>
+			</widget>
+			<widget name="top100-songs" label="$LOCALIZE[10504]" icon="logos/kodi.png" type="songs" target="music" visible="Library.HasContent(Music)">
+				<path>musicdb://top100/songs/</path>
+			</widget>
+		</group>
+		<!-- Music Sources -->
+		<group name="music-sources-widgets" label="$LOCALIZE[39031]">
+			<content source="sources" target="music"/>
+		</group>
+		<!-- Music Playlists -->
+		<group name="music-playlists-widgets" label="$LOCALIZE[136]">
+			<content source="playlists" target="audio"/>
+		</group>
+	</group>
+	<!-- PVR/Live TV -->
+	<group name="pvr-widgets" label="$LOCALIZE[14204]" source="pvr" visible="PVR.HasTVChannels | PVR.HasRadioChannels">
+		<!-- TV Channels -->
+		<group name="pvr-tv-widgets" label="$LOCALIZE[19023]" visible="PVR.HasTVChannels">
+			<widget name="pvr-tv-allchannels" label="$LOCALIZE[19287]" icon="logos/kodi.png" type="pvr" target="pvr">
+				<path>pvr://channels/tv/*</path>
+			</widget>
+			<widget name="pvr-tv-lastplayed" label="$LOCALIZE[31440]" icon="logos/kodi.png" type="pvr" target="pvr">
+				<path>pvr://channels/tv/*?view=lastplayed</path>
+			</widget>
+			<widget name="pvr-tv-recordings" label="$LOCALIZE[31536]" icon="logos/kodi.png" type="pvr" target="pvr">
+				<path>pvr://recordings/tv/active?view=flat</path>
+			</widget>
+			<widget name="pvr-tv-channelgroups" label="$LOCALIZE[19173]" icon="logos/kodi.png" type="pvr" target="pvr">
+				<path>pvr://channels/tv</path>
+			</widget>
+		</group>
+		<!-- Radio Channels -->
+		<group name="pvr-radio-widgets" label="$LOCALIZE[19024]" visible="PVR.HasRadioChannels">
+			<widget name="pvr-radio-allchannels" label="$LOCALIZE[19287]" icon="logos/kodi.png" type="pvr" target="pvr">
+				<path>pvr://channels/radio/*</path>
+			</widget>
+			<widget name="pvr-radio-lastplayed" label="$LOCALIZE[31440]" icon="logos/kodi.png" type="pvr" target="pvr">
+				<path>pvr://channels/radio/*?view=lastplayed</path>
+			</widget>
+			<widget name="pvr-radio-recordings" label="$LOCALIZE[31536]" icon="logos/kodi.png" type="pvr" target="pvr">
+				<path>pvr://recordings/radio/active?view=flat</path>
+			</widget>
+			<widget name="pvr-radio-channelgroups" label="$LOCALIZE[19174]" icon="logos/kodi.png" type="pvr" target="pvr">
+				<path>pvr://channels/radio</path>
+			</widget>
+		</group>
+	</group>
+	<!-- System/Weather -->
+	<group name="system-widgets" label="$LOCALIZE[31537]" source="system">
+		<!-- System Info -->
+		<group name="systeminfo-widgets" label="$LOCALIZE[130]">
+			<widget name="system-info" label="$LOCALIZE[130]" icon="homewidgets/systeminfo/square/system.png" type="system">
+				<path>$INCLUDE[skinshortcuts-template-SystemContent]</path>
+			</widget>
+			<widget name="system-uptime" label="$LOCALIZE[12390]" icon="homewidgets/systeminfo/square/uptime.png" type="system">
+				<path>$INCLUDE[skinshortcuts-template-SystemUptime]</path>
+			</widget>
+			<widget name="system-battery" label="$LOCALIZE[12395]" icon="homewidgets/systeminfo/square/battery_100.png" type="system">
+				<path>$INCLUDE[skinshortcuts-template-SystemBattery]</path>
+			</widget>
+			<widget name="system-network" label="$LOCALIZE[705]" icon="homewidgets/systeminfo/square/connected.png" type="system">
+				<path>$INCLUDE[skinshortcuts-template-SystemNetwork]</path>
+			</widget>
+			<widget name="system-video" label="$LOCALIZE[13280]" icon="homewidgets/systeminfo/square/video.png" type="system">
+				<path>$INCLUDE[skinshortcuts-template-SystemVideo]</path>
+			</widget>
+			<widget name="system-cpu" label="CPU" icon="homewidgets/systeminfo/square/cpu.png" type="system">
+				<path>$INCLUDE[skinshortcuts-template-SystemCPU]</path>
+			</widget>
+			<widget name="system-memory" label="$LOCALIZE[158]" icon="homewidgets/systeminfo/square/memory.png" type="system">
+				<path>$INCLUDE[skinshortcuts-template-SystemMemory]</path>
+			</widget>
+			<widget name="system-storage" label="$LOCALIZE[154]" icon="homewidgets/systeminfo/square/storage.png" type="system">
+				<path>$INCLUDE[skinshortcuts-template-SystemStorage]</path>
+			</widget>
+			<widget name="system-pvr" label="$LOCALIZE[19020]" icon="homewidgets/systeminfo/square/pvr.png" type="system">
+				<path>$INCLUDE[skinshortcuts-template-SystemPVR]</path>
+			</widget>
+			<widget name="system-version" label="$LOCALIZE[19114]" icon="homewidgets/systeminfo/square/system.png" type="system">
+				<path>$INCLUDE[skinshortcuts-template-SystemVersion]</path>
+			</widget>
+		</group>
+		<!-- Weather -->
+		<group name="weather-widgets" label="$LOCALIZE[12600]">
+			<widget name="weather-forecast" label="$LOCALIZE[10508]" icon="$VAR[WeatherIconsPathVar]$INFO[Weather.FanartCode]$VAR[WeatherIconsExtVar]" type="weather" visible="!String.IsEmpty(Weather.Plugin)">
+				<path>$INCLUDE[skinshortcuts-template-WeatherForecastContent]</path>
+			</widget>
+			<widget name="weather-today" label="$LOCALIZE[33006]" icon="$VAR[WeatherIconsPathVar]$INFO[Weather.FanartCode]$VAR[WeatherIconsExtVar]" type="weather" visible="!String.IsEmpty(Weather.Plugin)">
+				<path>$INCLUDE[skinshortcuts-template-WeatherTodayContent]</path>
+			</widget>
+			<widget name="weather-tomorrow" label="$LOCALIZE[33007]" icon="$VAR[WeatherIconsPathVar]$INFO[Weather.FanartCode]$VAR[WeatherIconsExtVar]" type="weather" visible="!String.IsEmpty(Weather.Plugin)">
+				<path>$INCLUDE[skinshortcuts-template-WeatherTomorrowContent]</path>
+			</widget>
+		</group>
+	</group>
+	<!-- Pictures -->
+	<group name="pictures-widgets" label="$LOCALIZE[1]">
+		<!-- Picture Sources -->
+		<group name="picture-sources-widgets" label="$LOCALIZE[39031]">
+			<content source="sources" target="pictures" folder="$LOCALIZE[1]"/>
+		</group>
+	</group>
+	<!-- Favourites -->
+	<group name="favourites-widgets" label="$LOCALIZE[1036]" source="favourites">
+		<widget name="favourites-widget" label="$LOCALIZE[1036]" icon="logos/kodi.png" type="favourite">
+			<path>favourites://</path>
+		</widget>
+		<content source="favourites" folder="$LOCALIZE[1036]" icon="DefaultFolder.png"/>
+	</group>
+	<!-- Add-ons -->
+	<group name="addons-widgets" label="$LOCALIZE[24001]" source="addon">
+		<!-- Video Add-ons -->
+		<group name="video-addons-widgets" label="$LOCALIZE[1037]">
+			<widget name="video-addons" label="$LOCALIZE[1037]" icon="DefaultAddonVideo.png" type="addon" target="videos">
+				<path>addons://sources/video</path>
+			</widget>
+			<content source="addons" target="videos"/>
+		</group>
+		<!-- Music Add-ons -->
+		<group name="music-addons-widgets" label="$LOCALIZE[1038]">
+			<widget name="music-addons" label="$LOCALIZE[1038]" icon="DefaultAddonMusic.png" type="addon" target="music">
+				<path>addons://sources/audio</path>
+			</widget>
+			<content source="addons" target="audio"/>
+		</group>
+		<!-- Picture Add-ons -->
+		<group name="picture-addons-widgets" label="$LOCALIZE[1039]">
+			<widget name="picture-addons" label="$LOCALIZE[1039]" icon="DefaultAddonPicture.png" type="addon" target="pictures">
+				<path>addons://sources/image</path>
+			</widget>
+			<content source="addons" target="image"/>
+		</group>
+		<!-- Program Add-ons -->
+		<group name="program-addons-widgets" label="$LOCALIZE[1043]">
+			<widget name="programs-addons" label="$LOCALIZE[1043]" icon="DefaultAddonProgram.png" type="addon" target="programs">
+				<path>addons://sources/executable</path>
+			</widget>
+			<widget name="android-apps" label="$LOCALIZE[20244]" icon="DefaultAddonProgram.png" type="addon" target="programs" visible="System.Platform.Android">
+				<path>androidapp://sources/apps</path>
+			</widget>
+			<content source="addons" target="programs"/>
+		</group>
+		<!-- Game Add-ons -->
+		<group name="game-addons-widgets" label="$LOCALIZE[10821]">
+			<widget name="games-addons" label="$LOCALIZE[10821]" icon="DefaultAddonGame.png" type="addon" target="programs">
+				<path>addons://sources/game</path>
+			</widget>
+		</group>
+	</group>
+	<!-- Custom Widget - allows user-defined shortcut list -->
+	<widget name="customwidget" label="$LOCALIZE[31760]" type="custom" icon="DefaultFolder.png">
+		<path>$INCLUDE[skinshortcuts-{menuitem}-customwidget]</path>
+		<target>videos</target>
+	</widget>
+</widgets>

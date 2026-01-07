@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1120">
+	<defaultcontrol always="true">90120</defaultcontrol>
+	<animation effect="fade" time="200">WindowOpen</animation>
+	<animation effect="fade" time="200">WindowClose</animation>
+	<controls>
+		<!-- Background overlay -->
+		<!-- <control type="image">
+			<left>0</left>
+			<top>0</top>
+			<width>1920</width>
+			<height>1080</height>
+			<texture colordiffuse="CC000000">colors/white.png</texture>
+		</control> -->
+		<!-- Bottom panel background -->
+		<control type="image">
+			<left>-5%</left>
+			<top>570</top>
+			<width>110%</width>
+			<height>480</height>
+			<texture border="40" colordiffuse="F0000000">dialogs/default/bg.png</texture>
+		</control>
+		<!-- Header -->
+		<control type="label">
+			<left>20</left>
+			<top>600</top>
+			<width>400</width>
+			<height>50</height>
+			<font>font30_title</font>
+			<textcolor>white</textcolor>
+			<label>$LOCALIZE[206]</label>
+		</control>
+		<!-- Cast panel -->
+		<control type="panel" id="90120">
+			<left>0</left>
+			<top>650</top>
+			<width>1920</width>
+			<height>380</height>
+			<orientation>horizontal</orientation>
+			<!-- <onback>noop</onback>
+			<onleft>noop</onleft>
+			<onright>noop</onright> -->
+			<onup>Dialog.Close(1120)</onup>
+			<ondown>Dialog.Close(1120)</ondown>
+			<scrolltime>300</scrolltime>
+			<itemlayout width="240" height="360">
+				<control type="image">
+					<left>10</left>
+					<width>220</width>
+					<height>290</height>
+					<bordersize>10</bordersize>
+					<bordertexture border="10">thumbs/poster_border.png</bordertexture>
+					<aspectratio scalediffuse="false">scale</aspectratio>
+					<texture fallback="DefaultActor.png" background="true" diffuse="thumbs/rounded_5px_mask.png">$INFO[ListItem.Icon]</texture>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>300</top>
+					<width>220</width>
+					<height>30</height>
+					<align>center</align>
+					<font>font14</font>
+					<shadowcolor>shadow</shadowcolor>
+					<textcolor>white</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>340</top>
+					<width>220</width>
+					<height>30</height>
+					<align>center</align>
+					<font>font12</font>
+					<shadowcolor>shadow</shadowcolor>
+					<textcolor>grey</textcolor>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout width="240" height="360">
+				<control type="group">
+					<animation effect="zoom" start="95" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
+				<control type="image">
+					<left>10</left>
+					<width>220</width>
+					<height>290</height>
+					<bordersize>10</bordersize>
+					<bordertexture border="10">thumbs/poster_border.png</bordertexture>
+					<aspectratio scalediffuse="false">scale</aspectratio>
+					<texture fallback="DefaultActor.png" background="true" diffuse="thumbs/rounded_5px_mask.png">$INFO[ListItem.Icon]</texture>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>300</top>
+					<width>220</width>
+					<height>30</height>
+					<align>center</align>
+					<font>font14</font>
+					<shadowcolor>shadow</shadowcolor>
+					<textcolor>$VAR[ThemeLabelColor]</textcolor>
+					<scroll>true</scroll>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				<control type="label">
+					<left>10</left>
+					<top>340</top>
+					<width>220</width>
+					<height>30</height>
+					<align>center</align>
+					<font>font12</font>
+					<shadowcolor>shadow</shadowcolor>
+					<textcolor>grey</textcolor>
+					<scroll>true</scroll>
+					<label>$INFO[ListItem.Label2]</label>
+				</control>
+			</control>
+			</focusedlayout>
+			<content browse="never">$VAR[SkinInfoCastPathVar]</content>
+		</control>
+	</controls>
+</window>
