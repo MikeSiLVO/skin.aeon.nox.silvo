@@ -62,7 +62,8 @@
 				</control>
 			</focusedlayout>
 			<content>
-				<include>skinshortcuts-submenu</include>
+				<include>skinshortcuts-mainmenu-submenu</include>
+				<!-- <include>skinshortcuts-submenu</include> -->
 			</content>
 		</control>
 		<control type="button">
@@ -102,7 +103,7 @@
 					<height>45</height>
 					<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]" flipy="true">submenu.png</texture>
 				</control>
-				<include condition="System.AddonIsEnabled(script.skinvariables)">PlayListStatsList</include>
+				<include>PlayListStatsList</include>
 				<control type="label">
 					<top>46</top>
 					<width>1080</width>
@@ -258,7 +259,7 @@
 				<top>90</top>
 				<width>100%</width>
 				<height>72</height>
-				<texture border="1">gradient_floor.png</texture>
+				<texture>gradient_floor.png</texture>
 				<visible>!String.IsEqual(Skin.String(MainMenu.Layout),icons)</visible>
 			</control>
 			<control type="image">
@@ -376,7 +377,8 @@
 					</control>
 				</focusedlayout>
 				<content>
-					<include>skinshortcuts-submenu</include>
+					<include>skinshortcuts-mainmenu-submenu</include>
+					<!-- <include>skinshortcuts-submenu</include> -->
 				</content>
 			</control>
 		</control>
@@ -425,7 +427,7 @@
 				<animation effect="slide" end="0,45" time="320" tween="cubic" easing="inout" condition="System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) | [!System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]">Conditional</animation>
 				<control type="group">
 					<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="$EXP[HasVerticalMenuWithExtended]">Conditional</animation>
-					<include condition="System.AddonIsEnabled(script.skinvariables)">PlayListStatsList</include>
+					<include>PlayListStatsList</include>
 					<control type="label">
 						<left>485</left>
 						<width>740</width>
@@ -748,12 +750,12 @@
 		<focusposition>2</focusposition>
 	</include>
 	<include name="PlayListStatsList">
-		<include content="BusySpinner">
+		<!-- <include content="BusySpinner">
 			<param name="visible">Container(43260).IsUpdating + [String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31097]) | String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31098]) | String.IsEqual(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31099])]</param>
 			<param name="left">15</param>
 			<param name="top">53</param>
 			<param name="size">30</param>
-		</include>
+		</include> -->
 		<control type="list" id="43260">
 			<include>HiddenList</include>
 			<content>$VAR[PlaylistStatsContentVar]</content>
@@ -1089,7 +1091,7 @@
 						<height>356</height>
 						<aspectratio align="center">scale</aspectratio>
 						<texture diffuse="thumbs/boxes/cdcover_mask2.png" fallback="DefaultAlbumCover.png">$INFO[Player.Art(thumb)]</texture>
-						<bordertexture border="28">thumbs/boxes/cd_shadow2.png</bordertexture>
+						<bordertexture border="28" infill="false">thumbs/boxes/cd_shadow2.png</bordertexture>
 						<bordersize>28</bordersize>
 					</control>
 					<control type="grouplist">
@@ -1561,7 +1563,7 @@
 			<animation effect="slide" end="0,40" time="300" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">Conditional</animation>
 			<visible>![Player.HasAudio + Skin.HasSetting(Enable.ArtistSlideshowOnHome) + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.Image))]</visible>
 			<visible>![ControlGroup(90010).HasFocus() | ControlGroup(90020).HasFocus()] | [!String.IsEmpty(Container(9000).ListItem.Property(widgetDisableFanart)) + ControlGroup(90010).HasFocus() | !ControlGroup(90010).HasFocus()] + [!String.IsEmpty(Container(9000).ListItem.Property(widgetDisableFanart.2)) + ControlGroup(90020).HasFocus() | !ControlGroup(90020).HasFocus()]</visible>
-			<visible>[String.Contains(Container(9000).ListItem.Property(background),i:playlist) | String.EndsWith(Container(9000).ListItem.Property(background),.Fanart)] + !String.IsEqual(Container(9000).ListItem.Property(background),Weather.Fanart) + ![Control.HasFocus(9010) + !String.IsEmpty(Container(9010).ListItem.Property(background)) + !String.EndsWith(Container(9010).ListItem.Property(background),.Fanart) + !String.StartsWith(Container(9010).ListItem.Property(background),s:playlist)] + ![Player.HasVideo + !Skin.HasSetting(Disable.ShowBackgroundVideo)]</visible>
+			<visible>[String.Contains(Container(9000).ListItem.Property(background),i:playlist) | String.EndsWith(Container(9000).ListItem.Property(background),-fanart)] + !String.IsEqual(Container(9000).ListItem.Property(background),Weather.Fanart) + ![Control.HasFocus(9010) + !String.IsEmpty(Container(9010).ListItem.Property(background)) + !String.EndsWith(Container(9010).ListItem.Property(background),-fanart) + !String.StartsWith(Container(9010).ListItem.Property(background),s:playlist)] + ![Player.HasVideo + !Skin.HasSetting(Disable.ShowBackgroundVideo)]</visible>
 		</control>
 	</include>
 </includes>

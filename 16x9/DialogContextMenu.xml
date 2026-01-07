@@ -9,33 +9,21 @@
 		<effect type="fade" start="100" end="0" time="100" delay="100" />
 		<effect type="zoom" start="100" end="130" center="auto" time="200" tween="cubic" easing="in" />
 	</animation>
-	<coordinates>
-		<top>80</top>
-	</coordinates>
 	<controls>
 		<control type="image" id="999">
-			<width>450</width>
-			<height>1080</height>
-			<texture>button_nofocus.png</texture>
+			<width>510</width>
+			<height>100%</height>
+			<texture border="10,8,10,8" colordiffuse="black">button_nofocus.png</texture>
 		</control>
 		<control type="grouplist" id="996">
 			<width>510</width>
+			<onup>996</onup>
+			<ondown>996</ondown>
 			<height min="60" max="1080">auto</height>
-			<control type="button" id="999999">
-				<label>$LOCALIZE[208]</label>
-				<height>60</height>
-				<font>font14</font>
-				<textoffsetx>15</textoffsetx>
-				<onclick>Dialog.Close(musicinformation)</onclick>
-				<onclick>PlayMedia($VAR[ArtistAlbumInfoPathVar],isdir)</onclick>
-				<visible>Window.IsVisible(musicinformation)</visible>
+			<control type="button" id="1000">
+				<texturenofocus />
+				<include>ButtonMenuCommonValues</include>
 			</control>
-		</control>
-		<control type="button" id="1000">
-			<height>60</height>
-			<font>font14</font>
-			<textoffsetx>15</textoffsetx>
-			<visible>!Window.IsVisible(musicinformation)</visible>
 		</control>
 	</controls>
 </window>

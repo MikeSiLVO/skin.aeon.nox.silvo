@@ -5,7 +5,6 @@
 	<menucontrol>9051</menucontrol>
 	<onload>SetProperty(Window.HasSettings,True,Home)</onload>
 	<onload>ClearProperty(MediaMenu,Home)</onload>
-	<!-- <onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(poster)|Art(season.poster)|Art(tvshow.poster)|Art(thumb)|Icon,Home)</onload> -->
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
 	<controls>
@@ -266,7 +265,7 @@
 				<top>970</top>
 				<width>100%</width>
 				<height>140</height>
-				<texture border="1">gradient_floor.png</texture>
+				<texture>gradient_floor.png</texture>
 				<visible>Control.IsVisible(52) | Control.IsVisible(54) | Control.IsVisible(57) | Control.IsVisible(500)</visible>
 			</control>
 			<!-- Scrollbars -->

@@ -1,78 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol>90000</defaultcontrol>
+	<defaultcontrol>90100</defaultcontrol>
+	<include>DialogOpenCloseAnimation</include>
 	<controls>
-		<include>DimBackground</include>
-		<control type="group">
-			<animation effect="slide" end="0,60" condition="Integer.IsLess(Container(90000).NumItems,5)">Conditional</animation>
-			<include>DialogOpenCloseAnimation</include>
+		<!-- <include>DimBackground</include> -->
+		<control type="grouplist" id="90100">
 			<centerleft>50%</centerleft>
-			<centertop>50%</centertop>
 			<width>510</width>
-			<height>600</height>
-			<control type="panel" id="90000">
-				<width>510</width>
-				<height>600</height>
-				<onleft>90000</onleft>
-				<onright>90000</onright>
-				<onup>90000</onup>
-				<ondown>90000</ondown>
-				<scrolltime tween="quadratic" easing="out">200</scrolltime>
-				<itemlayout width="510" height="60" infoupdate="5000">
-					<control type="image">
-						<width>510</width>
-						<height>60</height>
-						<texture>button_nofocus.png</texture>
-					</control>
-					<control type="label">
-						<width>510</width>
-						<height>60</height>
-						<textcolor>grey2</textcolor>
-						<font>font14</font>
-						<textoffsetx>35</textoffsetx>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="label">
-						<width>510</width>
-						<height>60</height>
-						<textcolor>grey2</textcolor>
-						<font>font14</font>
-						<textoffsetx>35</textoffsetx>
-						<align>right</align>
-						<label>$INFO[ListItem.Label2]</label>
-					</control>
-				</itemlayout>
-				<focusedlayout width="510" height="60" infoupdate="5000">
-					<control type="image">
-						<width>510</width>
-						<height>60</height>
-						<texture colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texture>
-					</control>
-					<control type="label">
-						<width>510</width>
-						<height>60</height>
-						<font>font14</font>
-						<textoffsetx>35</textoffsetx>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="label">
-						<width>510</width>
-						<height>60</height>
-						<font>font14</font>
-						<textoffsetx>35</textoffsetx>
-						<align>right</align>
-						<label>$INFO[ListItem.Label2]</label>
-					</control>
-				</focusedlayout>
-				<content>
-					<include>skinshortcuts-group-buttonmenu</include>
-					<item>
-						<label>5</label>
-						<onclick>Dialog.Close(all,true)</onclick>
-						<onclick>ActivateWindow(settings)</onclick>
-					</item>
-				</content>
-			</control>
+			<height>100%</height>
+			<align>center</align>
+			<onup>90100</onup>
+			<ondown>90100</ondown>
+			<include>skinshortcuts-buttonmenu</include>
 		</control>
 		<include>DebugWindow</include>
 	</controls>

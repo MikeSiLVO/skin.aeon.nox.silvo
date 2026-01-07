@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1102" type="dialog">
-	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(plugin.video.themoviedb.helper,blur_image='"$INFO[Window(Home).Property(item_poster)]"',prefix=custom_1102)</onload>
+	<onload condition="Skin.HasSetting(Enable.BlurredVideoInfo)">RunScript(script.skin.info.service,action=blur,source=$INFO[Window(Home).Property(item_poster)],window_id=1102)</onload>
 	<onload>Control.SetFocus(3000,0)</onload>
 	<onload>SetFocus(4701)</onload>
 	<onload condition="!String.IsEmpty(Window(Home).Property(item_dbid))">SetFocus(4610)</onload>
@@ -11,21 +11,22 @@
 	<onunload>ClearProperty(tmdb_id,Home)</onunload>
 	<onunload>ClearProperty(imdb_id,Home)</onunload>
 	<onunload>ClearProperty(item_poster,Home)</onunload>
-	<onunload>ClearProperty(item_percentplayed,Home)</onunload>
-	<onunload>ClearProperty(item_filename,Home)</onunload>
-	<onunload>ClearProperty(item_ext,Home)</onunload>
 	<onunload>ClearProperty(custom_actor,Home)</onunload>
+	<onunload>ClearProperty(SkinInfo.BlurredImage,1102)</onunload>
 	<onunload condition="!String.IsEmpty(Window(Home).Property(item_origin)) + !Window.IsVisible(1109)">SetFocus($INFO[Window(Home).Property(item_origin)])</onunload>
 	<onunload condition="!String.IsEmpty(Window(Home).Property(1109_origin)) + Window.IsVisible(1109)">SetFocus($INFO[Window(Home).Property(1109_origin)])</onunload>
 	<controls>
-		<include content="SkinVariablesContentList">
-			<param name="id">4800</param>
-			<param name="content">$VAR[SkinVariablesCustomInfoContentVar]</param>
-			<!-- <param name="content">plugin://script.skinvariables/?info=get_dbitem_movie_details&amp;dbid=</param> -->
-		</include>
+		<control type="list" id="4800">
+			<include>HiddenList</include>
+			<content>$VAR[CustomInfoDetailsPathVar]</content>
+		</control>
 		<control type="list" id="4801">
 			<include>HiddenList</include>
-			<content sortby="userpreference">$VAR[TMDbHVideoContentVar]$VAR[TMDbHContentTypeVar]</content>
+			<content>$INFO[Window(Home).Property(SkinInfo.Search.Details)]</content>
+		</control>
+		<control type="list" id="4802">
+			<include>HiddenList</include>
+			<content>$INFO[Window(Home).Property(SkinInfo.Online.Content)]</content>
 		</control>
 		<control type="fadelabel" id="4810">
 			<left>-300</left>
@@ -106,7 +107,7 @@
 								<scrollout>false</scrollout>
 								<pauseatend>5500</pauseatend>
 								<label fallback="$INFO[Container(4801).ListItem.Tagline]">$INFO[Container(4800).ListItem.Tagline]</label>
-								<label>$INFO[Container(4801).ListItem.Property(Awards)]</label>
+								<label>$INFO[Container(4802).ListItem.Property(Awards)]</label>
 								<visible>[String.IsEmpty(Container(4800).ListItem.Property(originaltitle)) | String.IsEqual(Container(4800).ListItem.Property(originaltitle),Container(4800).ListItem.Property(title))]</visible>
 							</control>
 							<control type="fadelabel">
@@ -120,7 +121,7 @@
 								<scrollout>false</scrollout>
 								<pauseatend>5500</pauseatend>
 								<label fallback="$INFO[Container(4801).ListItem.Tagline]">$INFO[Container(4800).ListItem.Tagline]</label>
-								<label>$INFO[Container(4801).ListItem.Property(Awards)]</label>
+								<label fallback="$INFO[Container(4801).ListItem.Property(Awards)]">$INFO[Container(4802).ListItem.Property(Awards)]</label>
 								<label>$INFO[Container(4800).ListItem.Property(originaltitle)]</label>
 								<visible>!String.IsEqual(Container(4800).ListItem.Property(originaltitle),Container(4800).ListItem.Property(title))</visible>
 							</control>
@@ -135,15 +136,15 @@
 							<scroll>true</scroll>
 							<scrollout>false</scrollout>
 							<pauseatend>4500</pauseatend>
-							<label fallback="$INFO[Container(4800).ListItem.Status]">$INFO[Container(4801).ListItem.Status]</label>
-							<label>$INFO[Container(4801).ListItem.Property(Awards)]</label>
-							<visible>[!String.IsEmpty(Container(4800).ListItem.Status) | !String.IsEmpty(Container(4801).ListItem.Status)] + !String.IsEmpty(Container(4801).ListItem.Property(Awards))</visible>
+							<label fallback="$INFO[Container(4801).ListItem.Status]">$INFO[Window(Home).Property(item_status)]</label>
+							<label fallback="$INFO[Container(4801).ListItem.Property(Awards)]">$INFO[Container(4802).ListItem.Property(Awards)]</label>
+							<visible>[!String.IsEmpty(Window(Home).Property(item_status)) | !String.IsEmpty(Container(4801).ListItem.Status)]</visible>
 							<visible>String.IsEqual(Window(Home).Property(item_dbtype),tvshow)</visible>
 						</control>
 					</control>
 					<!-- Kodi User Rating -->
 					<control type="grouplist">
-						<visible>!String.IsEmpty(Container(4800).ListItem.Property(userrating)) + !String.IsEqual(Container(4800).ListItem.Property(userrating),0)</visible>
+						<visible>!String.IsEmpty(Container(4800).ListItem.UserRating) + !String.IsEqual(Container(4800).ListItem.Property(userrating),0)</visible>
 						<left>1065</left>
 						<top>60</top>
 						<width>120</width>
@@ -161,7 +162,7 @@
 							<width>auto</width>
 							<font>font16_title_bold</font>
 							<textcolor>grey</textcolor>
-							<label>$INFO[Container(4800).ListItem.Property(userrating)]</label>
+							<label>$INFO[Container(4800).ListItem.UserRating]</label>
 						</control>
 					</control>
 					<!-- Separator Start -->
@@ -190,8 +191,8 @@
 						</include>
 						<!-- TV Watched Percent -->
 						<include content="InfoTVWatchedPercent" condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow)">
-							<param name="visible">!String.IsEmpty(Window(Home).Property(item_percentplayed))</param>
-							<param name="label">$INFO[Window(Home).Property(item_percentplayed)]</param>
+							<param name="visible">Integer.IsGreater(Container(4800).ListItem.Property(WatchedEpisodePercent),0)</param>
+							<param name="label">$INFO[Container(4800).ListItem.Property(WatchedEpisodePercent),,%]</param>
 						</include>
 						<!-- Main Rating -->
 						<control type="group">
@@ -236,7 +237,7 @@
 						</control>
 						<!-- RT Critic Rating -->
 						<control type="grouplist">
-							<visible>!String.IsEmpty(Container(4800).ListItem.Property(ratings.tomatometerallcritics.rating)) | !String.IsEmpty(Container(4801).ListItem.Property(RottenTomatoes_Rating))</visible>
+							<visible>!String.IsEmpty(Container(4800).ListItem.Property(Rating.Tomatoes.Percent)) | !String.IsEmpty(Container(4801).ListItem.Property(Rating.Tomatoes.Percent))</visible>
 							<width>165</width>
 							<orientation>horizontal</orientation>
 							<control type="image">
@@ -254,7 +255,7 @@
 						</control>
 						<!-- RT Audience Rating -->
 						<control type="grouplist">
-							<visible>!String.IsEmpty(Container(4800).ListItem.Property(ratings.tomatometerallaudience.rating)) | !String.IsEmpty(Container(4801).ListItem.Property(RottenTomatoes_UserMeter))</visible>
+							<visible>!String.IsEmpty(Container(4800).ListItem.Property(Rating.Popcorn.Percent)) | !String.IsEmpty(Container(4801).ListItem.Property(Rating.Popcorn.Percent))</visible>
 							<width>165</width>
 							<orientation>horizontal</orientation>
 							<control type="image">
@@ -272,7 +273,7 @@
 						</control>
 						<!-- TMDb Rating -->
 						<control type="grouplist">
-							<visible>!String.IsEmpty(Container(4800).ListItem.Property(ratings.themoviedb.ratings)) | !String.IsEmpty(Container(4800).ListItem.Property(ratings.tmdb.rating)) | !String.IsEmpty(Container(4801).ListItem.Property(TMDb_Rating))</visible>
+							<visible>!String.IsEmpty(Container(4800).ListItem.Rating(themoviedb).Rating) | !String.IsEmpty(Container(4800).ListItem.Rating(tmdb).Rating) | !String.IsEmpty(Container(4801).ListItem.Property(TMDb_Rating))</visible>
 							<width>165</width>
 							<orientation>horizontal</orientation>
 							<itemgap>10</itemgap>
@@ -291,7 +292,7 @@
 						</control>
 						<!-- Trakt Rating -->
 						<control type="grouplist">
-							<visible>!String.IsEmpty(Container(4800).ListItem.Property(ratings.trakt.rating)) | !String.IsEmpty(Container(4801).ListItem.Property(Trakt_Rating))</visible>
+							<visible>!String.IsEmpty(Container(4800).ListItem.Rating(trakt)) | !String.IsEmpty(Container(4801).ListItem.Property(Trakt_Rating))</visible>
 							<width>165</width>
 							<orientation>horizontal</orientation>
 							<control type="image">
@@ -373,7 +374,7 @@
 						<onclick condition="String.IsEqual(Window(Home).Property(item_dbtype),movie)">PlayMedia($INFO[Container(4800).ListItem.Property(file)])</onclick>
 						<onclick condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + Window.IsActive(videos)">Container.Update($INFO[Container(4800).ListItem.FolderPath])</onclick>
 						<onclick condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + !Window.IsActive(videos)">SetProperty(activate_window,$INFO[Container(4800).ListItem.FolderPath],Home)</onclick>
-						<onclick condition="String.IsEqual(Window(Home).Property(item_dbtype),movie) + !Window.IsActive(videos)">SetProperty(activate_window,videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B"$INFO[Window(Home).Property(encoded_title_1102)]"%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D,Home)</onclick>
+						<onclick condition="String.IsEqual(Window(Home).Property(item_dbtype),movie) + !Window.IsActive(videos)">SetProperty(activate_window,videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B"$INFO[Window(Home).Property(SkinInfo.Encoded.CustomVideoTitle)]"%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D,Home)</onclick>
 						<onclick condition="String.IsEqual(Window(Home).Property(item_dbtype),movie) + Window.IsActive(videos)">Container.Update(videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B"$INFO[Window(Home).Property(encoded_title_1102)]"%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D)</onclick>
 						<onclick>Dialog.Close(all,true)</onclick>
 						<onclick condition="!Window.IsActive(videos)">ActivateWindow(videos,$INFO[Window(Home).Property(activate_window)],return)</onclick>
@@ -492,7 +493,7 @@
 									<control type="image" id="4900">
 										<width>160</width>
 										<include>MediaFlagValues</include>
-										<texture>$VAR[PathFlagsStudios]$INFO[Container(4800).ListItem.Property(studio.0),,.png]</texture>
+										<texture>$VAR[PathFlagsStudios]$INFO[Container(4800).ListItem.Studio,,.png]</texture>
 									</control>
 									<control type="label">
 										<width>160</width>
@@ -612,21 +613,21 @@
 						<param name="texture">$INFO[ListItem.Icon]</param>
 						<param name="fallback">DefaultActor.png</param>
 						<param name="labelVisibility">true</param>
-						<param name="label">$INFO[ListItem.Property(role)]</param>
+						<param name="label">$INFO[ListItem.Label2]</param>
 						<param name="do_onclick">false</param>
 						<param name="content">$VAR[CustomVideoInfoCastPanelContentVar]</param>
 					</include>
 					<include content="ExtendedInfoListLayout" condition="String.IsEqual(Window(Home).Property(item_dbtype),movie)">
 						<param name="id">50002</param>
-						<param name="content">videodb://movies/titles/?xsp={"rules":{"and":[{"field":"director","operator":"is","value":["$INFO[Container(4800).ListItem.Property(director.0)]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title_1102)]"]}]},"type":"movies"}</param>
+						<param name="content">plugin://script.skin.info.service/?action=by_director&amp;dbid=$INFO[Container(4800).ListItem.DBID]&amp;dbtype=$INFO[Container(4800).ListItem.DBType]</param>
 					</include>
 					<include content="ExtendedInfoListLayout" condition="String.IsEqual(Window(Home).Property(item_dbtype),movie)">
 						<param name="id">50003</param>
-						<param name="content">videodb://movies/titles/?xsp={"rules":{"and":[{"field":"actor","operator":"is","value":["$INFO[Window(Home).Property(custom_actor)]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title_1102)]"]}]},"type":"movies"}</param>
+						<param name="content">plugin://script.skin.info.service/?action=by_actor&amp;dbid=$INFO[Container(4800).ListItem.DBID]&amp;dbtype=movie&amp;mix=false</param>
 					</include>
 					<include content="ExtendedInfoListLayout" condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow)">
 						<param name="id">50004</param>
-						<param name="content">videodb://tvshows/titles/?xsp={"rules":{"and":[{"field":"actor","operator":"is","value":["$INFO[Window(Home).Property(custom_actor)]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title_1102)]"]}]},"type":"tvshows"}</param>
+						<param name="content">plugin://script.skin.info.service/?action=by_actor&amp;dbid=$INFO[Container(4800).ListItem.DBID]&amp;dbtype=tvshow&amp;mix=false</param>
 					</include>
 				</control>
 			</control>

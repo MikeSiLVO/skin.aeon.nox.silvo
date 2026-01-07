@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1121">
+	<defaultcontrol always="true">9121</defaultcontrol>
+	<animation effect="fade" time="200">WindowOpen</animation>
+	<animation effect="fade" time="200">WindowClose</animation>
+	<controls>
+		<!-- TOP BAR - Media Flags + Logo -->
+		<control type="group">
+			<animation effect="fade" time="200">VisibleChange</animation>
+			<!-- Background -->
+			<control type="image">
+				<left>-5%</left>
+				<top>0</top>
+				<width>110%</width>
+				<height>140</height>
+				<texture border="40" flipy="true" colordiffuse="E6000000">dialogs/default/bg.png</texture>
+			</control>
+			<!-- Media Flags -->
+			<control type="grouplist">
+				<left>30</left>
+				<top>25</top>
+				<width>1200</width>
+				<height>90</height>
+				<orientation>horizontal</orientation>
+				<itemgap>10</itemgap>
+				<!-- Studio -->
+				<control type="group">
+					<visible>!String.IsEmpty(VideoPlayer.Studio)</visible>
+					<width>200</width>
+					<height>90</height>
+					<control type="image">
+						<width>200</width>
+						<height>90</height>
+						<aspectratio>keep</aspectratio>
+						<texture>$VAR[PathFlagsStudios]$INFO[VideoPlayer.Studio,,.png]</texture>
+					</control>
+				</control>
+				<!-- MPAA -->
+				<control type="image">
+					<width>200</width>
+					<height>90</height>
+					<aspectratio>keep</aspectratio>
+					<texture>$VAR[MediaFlagsPathVar]/mpaa/$VAR[VideoRatingFlagVar]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.MPAA)</visible>
+				</control>
+				<!-- Resolution -->
+				<control type="image">
+					<width>200</width>
+					<height>90</height>
+					<aspectratio>keep</aspectratio>
+					<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[VideoPlayer.VideoResolution,,.png]</texture>
+				</control>
+				<!-- HDR -->
+				<control type="image">
+					<width>200</width>
+					<height>90</height>
+					<aspectratio>keep</aspectratio>
+					<texture>$VAR[MediaFlagsPathVar]/$INFO[VideoPlayer.HdrType,hdr/,.png]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.HdrType)</visible>
+				</control>
+				<!-- Video Codec -->
+				<control type="image">
+					<width>200</width>
+					<height>90</height>
+					<aspectratio>keep</aspectratio>
+					<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[VideoSourceFlagVar]</texture>
+				</control>
+				<!-- Audio Codec -->
+				<control type="image">
+					<width>200</width>
+					<height>90</height>
+					<aspectratio>keep</aspectratio>
+					<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[PlayerAudioCodecFlagVar]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.AudioCodec)</visible>
+				</control>
+				<!-- Audio Channels -->
+				<control type="image">
+					<width>200</width>
+					<height>90</height>
+					<aspectratio>keep</aspectratio>
+					<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[VideoPlayer.AudioChannels,,.png]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.AudioChannels)</visible>
+				</control>
+			</control>
+			<!-- Logo (top right) -->
+			<control type="image">
+				<left>1470</left>
+				<top>10</top>
+				<width>420</width>
+				<height>120</height>
+				<aspectratio>keep</aspectratio>
+				<texture background="true">$VAR[PlayerArtworkVar]</texture>
+			</control>
+		</control>
+		<!-- BOTTOM BAR -->
+		<control type="group">
+			<top>880</top>
+			<animation effect="fade" time="200">VisibleChange</animation>
+			<!-- Background -->
+			<control type="image">
+				<left>-5%</left>
+				<top>0</top>
+				<width>110%</width>
+				<height>200</height>
+				<texture border="40" colordiffuse="E6000000">dialogs/default/bg.png</texture>
+			</control>
+			<!-- Title + Year -->
+			<control type="label">
+				<left>30</left>
+				<top>20</top>
+				<width>1400</width>
+				<height>50</height>
+				<font>font30_title</font>
+				<textcolor>white</textcolor>
+				<scroll>true</scroll>
+				<label>$INFO[VideoPlayer.Title]$INFO[VideoPlayer.Year, (,)]</label>
+				<visible>!VideoPlayer.Content(episodes)</visible>
+			</control>
+			<!-- TV Show Title (for episodes) -->
+			<control type="label">
+				<left>30</left>
+				<top>20</top>
+				<width>1400</width>
+				<height>50</height>
+				<font>font30_title</font>
+				<textcolor>white</textcolor>
+				<scroll>true</scroll>
+				<label>$INFO[VideoPlayer.TvShowTitle] - $INFO[VideoPlayer.Title]</label>
+				<visible>VideoPlayer.Content(episodes)</visible>
+			</control>
+			<!-- Episode info -->
+			<control type="label">
+				<left>30</left>
+				<top>70</top>
+				<width>1000</width>
+				<height>30</height>
+				<font>font14</font>
+				<textcolor>grey</textcolor>
+				<label>$INFO[VideoPlayer.Season,S,]$INFO[VideoPlayer.Episode,E,]$INFO[VideoPlayer.Premiered,  •  Aired: ,]</label>
+				<visible>VideoPlayer.Content(episodes)</visible>
+			</control>
+			<!-- Ratings + Director + Runtime -->
+			<control type="grouplist">
+				<left>30</left>
+				<top>70</top>
+				<width>1400</width>
+				<height>40</height>
+				<orientation>horizontal</orientation>
+				<itemgap>20</itemgap>
+				<visible>!VideoPlayer.Content(episodes)</visible>
+				<!-- IMDb Rating -->
+				<control type="group">
+					<width>auto</width>
+					<height>40</height>
+					<visible>!String.IsEmpty(VideoPlayer.Rating(imdb))</visible>
+					<control type="image">
+						<width>40</width>
+						<height>40</height>
+						<texture>ratings/imdb.png</texture>
+					</control>
+					<control type="label">
+						<left>45</left>
+						<width>60</width>
+						<height>40</height>
+						<font>font14</font>
+						<textcolor>white</textcolor>
+						<label>$INFO[VideoPlayer.Rating(imdb)]</label>
+					</control>
+				</control>
+				<!-- Runtime -->
+				<control type="label">
+					<width>auto</width>
+					<height>40</height>
+					<font>font14</font>
+					<textcolor>grey</textcolor>
+					<label>$INFO[VideoPlayer.Duration]</label>
+					<visible>!String.IsEmpty(VideoPlayer.Duration)</visible>
+				</control>
+				<!-- Director -->
+				<control type="label">
+					<width>auto</width>
+					<height>40</height>
+					<font>font14</font>
+					<textcolor>grey</textcolor>
+					<label>$INFO[VideoPlayer.Director,Director: ,]</label>
+					<visible>!String.IsEmpty(VideoPlayer.Director)</visible>
+				</control>
+			</control>
+			<!-- Ends at / Time remaining -->
+			<control type="label">
+				<left>1500</left>
+				<top>20</top>
+				<width>390</width>
+				<height>40</height>
+				<align>right</align>
+				<font>font14</font>
+				<textcolor>$VAR[ThemeLabelColor]</textcolor>
+				<label>Ends $INFO[Player.FinishTime]  ($INFO[Player.TimeRemaining])</label>
+			</control>
+		</control>
+		<!-- Invisible button for navigation -->
+		<control type="button" id="9121">
+			<left>0</left>
+			<top>0</top>
+			<width>1</width>
+			<height>1</height>
+			<visible>true</visible>
+			<onleft>noop</onleft>
+			<!-- <onright>ActivateWindow(1120)</onright> -->
+			<onup>Dialog.Close(1121)</onup>
+			<ondown>Dialog.Close(1121)</ondown>
+			<onback>Dialog.Close(1121)</onback>
+		</control>
+	</controls>
+</window>

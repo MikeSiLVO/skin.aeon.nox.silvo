@@ -2,26 +2,25 @@
 <window id="1109" type="dialog">
 	<onload>SetFocus(90003)</onload>
 	<onload>SetFocus(9000)</onload>
-	<onunload condition="Window.IsVisible(movieinformation) + !Window.IsVisible(1102) + String.IsEmpty(Window(Home).Property(DirectorID))">SetFocus(90050)</onunload>
-	<onunload condition="Window.IsVisible(1102) + String.IsEmpty(Window(Home).Property(DirectorID))">SetFocus(50001)</onunload>
-	<onunload condition="!String.IsEmpty(Window(Home).Property(DirectorID))">SetFocus(300,0)</onunload>
-	<onunload>ClearProperty(person_id,Home)</onunload>
-	<onunload>ClearProperty(encoded_actor,Home)</onunload>
+	<onunload condition="Window.IsVisible(movieinformation) + !Window.IsVisible(1102) + String.IsEmpty(Window(Home).Property(crew_name))">SetFocus(90050)</onunload>
+	<onunload condition="Window.IsVisible(1102) + String.IsEmpty(Window(Home).Property(crew_name))">SetFocus(50001)</onunload>
+	<onunload condition="!String.IsEmpty(Window(Home).Property(crew_name))">SetFocus(300,0)</onunload>
+	<onunload>ClearProperty(SkinInfo.Person.Details,Home)</onunload>
 	<controls>
 		<control type="list" id="11090">
 			<include>HiddenList</include>
-			<content sortby="year" sortorder="descending">$INFO[Window(Home).Property(person_id)]</content>
+			<content>$INFO[Window(Home).Property(SkinInfo.Person.Details)]</content>
 		</control>
 		<!-- Poster Side -->
 		<control type="group">
-			<animation effect="slide" start="-730,0" end="0,0" time="500" delay="250" tween="quadratic">WindowOpen</animation>
+			<animation effect="slide" start="-730,0" end="0,0" time="500" delay="500" tween="quadratic">WindowOpen</animation>
 			<animation effect="slide" end="-730,0" time="500" tween="quadratic">WindowClose</animation>
 			<animation effect="slide" start="-730,0" end="0,0" time="500" tween="quadratic" condition="!Window.IsDialogTopMost(1102)">Conditional</animation>
 			<animation effect="slide" end="-730,0" time="500" tween="quadratic" condition="Window.IsDialogTopMost(1102)">Conditional</animation>
 			<width>720</width>
 			<height>100%</height>
 			<include content="InfoPoster">
-				<param name="texture">$VAR[TMDbHInfoPersonPosterVar]</param>
+				<param name="texture">$VAR[PersonInfoPosterVar]</param>
 			</include>
 			<control type="group" id="9090">
 				<visible>Container(11090).IsUpdating | Container(90008).IsUpdating | Container(90009).IsUpdating | Container(900010).IsUpdating | Container(900011).IsUpdating | Container(900012).IsUpdating</visible>
@@ -47,7 +46,7 @@
 		</control>
 		<!-- Details Side -->
 		<control type="group">
-			<animation effect="slide" start="1210,0" end="0,0" time="500" delay="250" tween="quadratic">WindowOpen</animation>
+			<animation effect="slide" start="1210,0" end="0,0" time="500" delay="500" tween="quadratic">WindowOpen</animation>
 			<animation effect="slide" end="1210,0" time="500" tween="quadratic">WindowClose</animation>
 			<animation effect="slide" start="1210,0" end="0,0" time="500" tween="quadratic" condition="!Window.IsDialogTopMost(1102)">Conditional</animation>
 			<animation effect="slide" end="1210,0" time="500" tween="quadratic" condition="Window.IsDialogTopMost(1102)">Conditional</animation>
@@ -62,7 +61,7 @@
 					</control>
 					<control type="image">
 						<aspectratio align="center">scale</aspectratio>
-						<texture background="true">$VAR[InfoTMDBhBackgroundVar]</texture>
+						<texture background="true">$VAR[PersonInfoBackgroundVar]</texture>
 						<fadetime>IconCrossfadeTime</fadetime>
 					</control>
 					<control type="image">
@@ -80,15 +79,20 @@
 						<font>font30_title_bold</font>
 						<textcolor>grey</textcolor>
 						<scroll>true</scroll>
-						<label>$INFO[Container(11090).ListItem.Title]</label>
+						<label>$INFO[Container(11090).ListItem.Property(Name)]</label>
 					</control>
-					<control type="label">
+					<control type="fadelabel">
 						<top>60</top>
+						<width>1075</width>
 						<height>30</height>
+						<align>left</align>
+						<aligny>center</aligny>
 						<font>font15</font>
 						<textcolor>$VAR[ThemeLabelColor]</textcolor>
-						<scroll>true</scroll>
-						<label>$INFO[Container(11090).ListItem.Property(Department),$LOCALIZE[31546] ]</label>
+						<scrollout>false</scrollout>
+						<pauseatend>5500</pauseatend>
+						<label>$INFO[Container(11090).ListItem.Property(KnownFor),$LOCALIZE[31546] ]</label>
+						<label>$INFO[Container(11090).ListItem.Property(Gender)]</label>
 					</control>
 					<!-- Separator Start -->
 					<control type="image">
@@ -120,7 +124,7 @@
 					<param name="window_id">1109</param>
 					<param name="panel_id">300</param>
 					<param name="panel_ondown">9000</param>
-					<param name="include">TMDbHInfoContentPerson</param>
+					<param name="include">PersonInfoContent</param>
 				</include>
 				<!-- Buttons LABEL -->
 				<control type="group">
@@ -134,7 +138,7 @@
 						<align>left</align>
 						<textoffsetx>16</textoffsetx>
 						<include>ButtonInfoDialogsCommonValues</include>
-						<label>$VAR[TMDbHPersonButtonLabelVar]</label>
+						<label>$VAR[PersonInfoButtonLabelVar]</label>
 						<enable>no</enable>
 					</control>
 				</control>
@@ -189,9 +193,9 @@
 						<ondown condition="Control.IsVisible(900011) + !Control.IsVisible(90008) + !Control.IsVisible(90009) + !Control.IsVisible(900010)">900011</ondown>
 						<ondown condition="Control.IsVisible(900012) + !Control.IsVisible(90008) + !Control.IsVisible(90009) + !Control.IsVisible(900010) + !Control.IsVisible(900011)">900012</ondown>
 						<ondown condition="Control.IsVisible(900020) + !Control.IsVisible(90008) + !Control.IsVisible(90009) + !Control.IsVisible(900010) + !Control.IsVisible(900011) + !Control.IsVisible(900012)">900020</ondown>
-						<onclick>SetProperty(TextViewerHeader,$ESCINFO[Container(11090).ListItem.Title,[B],[/B]],Home)</onclick>
-						<onclick>SetProperty(TextViewerContent,$ESCINFO[Container(11090).ListItem.Plot],Home)</onclick>
-						<onclick>SetProperty(TextViewerSubHeader,$INFO[Container(11090).ListItem.Property(Department),$LOCALIZE[31546] ]$INFO[Container(11090).ListItem.Property(Age), - , $LOCALIZE[31544]],Home)</onclick>
+						<onclick>SetProperty(TextViewerHeader,$ESCINFO[Container(11090).ListItem.Property(Name),[B],[/B]],Home)</onclick>
+						<onclick>SetProperty(TextViewerContent,$ESCINFO[Container(11090).ListItem.Property(Biography)],Home)</onclick>
+						<onclick>SetProperty(TextViewerSubHeader,$INFO[Container(11090).ListItem.Property(KnownFor),$LOCALIZE[31546] ]$INFO[Container(11090).ListItem.Property(Age), - , $LOCALIZE[31544]],Home)</onclick>
 						<onclick>ActivateWindow(1112)</onclick>
 						<include>ButtonInfoDialogsCommonValues</include>
 					</control>
@@ -202,12 +206,13 @@
 						<include content="InfoPlot">
 							<param name="top">-15</param>
 							<param name="height">460</param>
-							<param name="label">$INFO[Container(11090).ListItem.Plot]</param>
+							<param name="label">$INFO[Container(11090).ListItem.Property(Biography)]</param>
+							<param name="fallback">$LOCALIZE[19055]</param>
 							<param name="visible">true</param>
 						</include>
 					</control>
 				</control>
-				<include>TMDbHelperPersonList</include>
+				<include>PersonInfoLists</include>
 			</control>
 		</control>
 		<control id="99" type="button">

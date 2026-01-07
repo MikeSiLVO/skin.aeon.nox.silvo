@@ -518,13 +518,8 @@
 	</include>
 	<!-- Cases Content Var -->
 	<variable name="CaseContentVar">
-		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),i:random movies) | [Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),i:random movies)]">special://skin/extras/playlists/randommovies.xsp</value>
-		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),i:recent movies) | [Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),i:recent movies)]">special://skin/extras/playlists/recentmovies.xsp</value>
-		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),i:recent episodes) | [Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),i:recent episodes)]">special://skin/extras/playlists/recentepisodes.xsp</value>
-		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),i:songs) | [Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),i:songs)]">special://skin/extras/playlists/randomsongs.xsp</value>
-		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),i:albums) | [Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),i:albums)]">special://skin/extras/playlists/randomalbums.xsp</value>
+		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),playlist) | [Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),playlist)]">$VAR[MainMenu_BackgroundPath]</value>
 		<value condition="Control.HasFocus(9010) + !String.IsEmpty(Container(9010).ListItem.Property(backgroundPlaylist))">$INFO[Container(9010).ListItem.Property(backgroundPlaylist)]</value>
-		<value condition="!String.IsEmpty(Container(9000).ListItem.Property(backgroundPlaylist))">$INFO[Container(9000).ListItem.Property(backgroundPlaylist)]</value>
 	</variable>
 	<!-- Cases Background Vars-->
 	<variable name="Case1Var">

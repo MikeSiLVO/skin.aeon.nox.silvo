@@ -145,28 +145,28 @@
 					<visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
 					<include>VisibleFadeAnimation</include>
 					<control type="button">
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31010]:[/COLOR][CR]$INFO[Container(9143).ListItem.Property(Next_Aired),, • ]$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E, - ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)]</label>
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31010]:[/COLOR][CR]$INFO[Container(5100).ListItem.Property(TMDb.NextEpisodeAired),, • ]$INFO[Container(5100).ListItem.Property(TMDb.LastEpisodeSeason),S]$INFO[Container(5100).ListItem.Property(TMDb.LastEpisode),E, - ]$INFO[Container(5100).ListItem.Property(TMDb.NextEpisodeTitle)]</label>
 						<width>650</width>
 						<include>DefaultButtonsValues</include>
-						<visible>!String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) + !Skin.HasSetting(Disable.NextAired)</visible>
+						<visible>!String.IsEmpty(Container(5100).ListItem.Property(TMDb.NextEpisodeAired)) + !Skin.HasSetting(Disable.NextAired)</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]:[/COLOR][CR]$VAR[VideoInfoTVSubtitleVar]</label>
 						<width>650</width>
 						<include>DefaultButtonsValues</include>
-						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + [[!String.IsEmpty(ListItem.Status) | !String.IsEmpty(Container(9143).ListItem.Status)] + String.IsEmpty(Container(9143).ListItem.Property(Next_Aired)) + !Skin.HasSetting(Disable.NextAired)] + [Skin.HasSetting(nohighlist) | !Skin.HasSetting(nohighlist)]</visible>
+						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + [[!String.IsEmpty(ListItem.Status) | !String.IsEmpty(Container(5100).ListItem.Property(TMDb.Status))] + String.IsEmpty(Container(5100).ListItem.Property(TMDb.NextEpisodeAired)) + !Skin.HasSetting(Disable.NextAired)] + [Skin.HasSetting(nohighlist) | !Skin.HasSetting(nohighlist)]</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</label>
 						<width>650</width>
 						<include>DefaultButtonsValues</include>
-						<visible>!Skin.HasSetting(nohighlist) | [System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Disable.NextAired) + Skin.HasSetting(nohighlist)] | [!System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(nohighlist)]</visible>
+						<visible>!Skin.HasSetting(nohighlist) | [Skin.HasSetting(Disable.NextAired) + Skin.HasSetting(nohighlist)]</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31324]:[/COLOR][CR]$INFO[ListItem.Premiered]</label>
 						<width>650</width>
 						<include>DefaultButtonsValues</include>
-						<visible>!String.IsEmpty(ListItem.Premiered) + !Skin.HasSetting(nohighlist) + [System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Disable.NextAired) + !Skin.HasSetting(nohighlist)] | [!System.AddonIsEnabled(plugin.video.themoviedb.helper) + !Skin.HasSetting(nohighlist)]</visible>
+						<visible>!String.IsEmpty(ListItem.Premiered) + !Skin.HasSetting(nohighlist) + [Skin.HasSetting(Disable.NextAired) + !Skin.HasSetting(nohighlist)]</visible>
 					</control>
 				</control>
 				<control type="grouplist">
@@ -665,7 +665,7 @@
 				<ondown>501</ondown>
 				<pagecontrol>50160</pagecontrol>
 				<viewtype label="$LOCALIZE[31241]">list</viewtype>
-				<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions) | String.Contains(Container.FolderPath,plugin.program.advanced.launcher)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_501]</visible>
+				<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions) | String.Contains(Container.FolderPath,plugin.program.advanced.launcher)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_501]</visible>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<animation effect="slide" end="0,-203.375" time="120" condition="!Skin.HasSetting(nohighlist)">Conditional</animation>
 				<itemlayout height="68" width="806" condition="Container.Content(movies)">

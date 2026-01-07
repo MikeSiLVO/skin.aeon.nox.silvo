@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<views>
+	<!-- View definitions -->
+	<view id="50" label="$LOCALIZE[535]" icon="special://skin/extras/icons/viewtypes/view_50_list.jpg" />
+	<view id="51" label="$LOCALIZE[31247]" icon="special://skin/extras/icons/viewtypes/view_51_infowall.jpg" />
+	<view id="52" label="$LOCALIZE[31076]" icon="special://skin/extras/icons/viewtypes/view_52_landscape.jpg" />
+	<view id="53" label="$LOCALIZE[31077]" icon="special://skin/extras/icons/viewtypes/view_53_showcase.jpg" />
+	<view id="54" label="$LOCALIZE[31077]" icon="special://skin/extras/icons/viewtypes/view_54_showcase_square.jpg" />
+	<view id="55" label="$LOCALIZE[31078]" icon="special://skin/extras/icons/viewtypes/view_55_tripanel.jpg" />
+	<view id="56" label="$LOCALIZE[31243]" icon="special://skin/extras/icons/viewtypes/view_56_posters.jpg" />
+	<view id="57" label="$LOCALIZE[31079]" icon="special://skin/extras/icons/viewtypes/view_57_shift.jpg" />
+	<view id="58" label="$LOCALIZE[31088]" icon="special://skin/extras/icons/viewtypes/view_58_bannerwall.jpg" />
+	<view id="59" label="$LOCALIZE[31606]" icon="special://skin/extras/icons/viewtypes/view_59_logo.jpg" />
+	<view id="500" label="$LOCALIZE[536]" icon="special://skin/extras/icons/viewtypes/view_500_icons.jpg" />
+	<view id="501" label="$LOCALIZE[31241]" icon="special://skin/extras/icons/viewtypes/view_501_lowlist.jpg" />
+	<view id="502" label="$LOCALIZE[20359]" icon="special://skin/extras/icons/viewtypes/view_502_episode.jpg" />
+	<view id="503" label="$LOCALIZE[31245]" icon="special://skin/extras/icons/viewtypes/view_503_wall.jpg" />
+	<view id="504" label="$LOCALIZE[31251]" icon="special://skin/extras/icons/viewtypes/view_504_gallery.jpg" />
+	<view id="505" label="$LOCALIZE[31314]" icon="special://skin/extras/icons/viewtypes/view_505_panel.jpg" />
+	<view id="506" label="$LOCALIZE[31239]" icon="special://skin/extras/icons/viewtypes/view_506_rightlist.jpg" />
+	<view id="507" label="$LOCALIZE[31242]" icon="special://skin/extras/icons/viewtypes/view_507_biglist.jpg" />
+	<view id="508" label="$LOCALIZE[31238]" icon="special://skin/extras/icons/viewtypes/view_508_songlist.jpg" />
+	<view id="509" label="$LOCALIZE[31244]" icon="special://skin/extras/icons/viewtypes/view_509_myflix.jpg" />
+	<view id="510" label="$LOCALIZE[31240]" icon="special://skin/extras/icons/viewtypes/view_510_fanartlist.jpg" />
+	<view id="511" label="$LOCALIZE[31246]" icon="special://skin/extras/icons/viewtypes/view_511_fullscreen_wall.jpg" />
+	<view id="512" label="$LOCALIZE[31249]" icon="special://skin/extras/icons/viewtypes/view_512_bigfan.jpg" />
+	<view id="513" label="$LOCALIZE[31510]" icon="special://skin/extras/icons/viewtypes/view_513_jukebox.jpg" />
+	<!-- Content rules -->
+	<rules>
+		<content name="videos" label="$LOCALIZE[291]" icon="DefaultVideo.png" library="50" plugin="50">
+			<visible>Container.Content(videos)</visible>
+			<views>50, 500</views>
+		</content>
+		<content name="movies" label="$LOCALIZE[342]" icon="DefaultMovies.png" library="506" plugin="506">
+			<visible>Container.Content(movies) + !String.StartsWith(Container.FolderPath,videodb://movies/sets)</visible>
+			<views>50, 506, 501, 507, 510, 59, 509, 503, 511, 55, 51, 53, 52, 56, 57, 58, 500, 512, 504, 505</views>
+		</content>
+		<content name="movies-sets" label="$LOCALIZE[342] ($LOCALIZE[20434])" icon="DefaultMovies.png" library="506" plugin="506">
+			<visible>Container.Content(movies) + String.StartsWith(Container.FolderPath,videodb://movies/sets)</visible>
+			<views>50, 506, 501, 507, 510, 59, 509, 503, 511, 55, 51, 53, 52, 56, 57, 500, 512, 504, 505</views>
+		</content>
+		<content name="videoversions" label="Video Versions" icon="DefaultVideoVersions.png" library="506" plugin="506">
+			<visible>Container.Content(videoversions) + !String.StartsWith(Container.FolderPath,videodb://movies/videoversions)</visible>
+			<views>50, 506, 501, 507, 510, 59, 509, 503, 511, 55, 51, 53, 52, 56, 57, 58, 500, 512, 504, 505</views>
+		</content>
+		<content name="sets" label="$LOCALIZE[20434]" icon="DefaultSets.png" library="509" plugin="509">
+			<visible>Container.Content(sets)</visible>
+			<views>50, 506, 501, 510, 59, 509, 503, 511, 55, 53, 52, 56, 58, 500, 512, 504</views>
+		</content>
+		<content name="episodes" label="$LOCALIZE[20360]" icon="DefaultTVShows.png" library="506" plugin="506">
+			<visible>Container.Content(episodes)</visible>
+			<views>50, 506, 501, 502, 507, 510, 509, 55, 500, 52, 505</views>
+		</content>
+		<content name="tvshows" label="$LOCALIZE[20343]" icon="DefaultTVShows.png" library="59" plugin="59">
+			<visible>Container.Content(tvshows)</visible>
+			<views>50, 506, 501, 507, 510, 59, 509, 503, 511, 55, 51, 53, 52, 56, 57, 58, 500, 512, 504, 505</views>
+		</content>
+		<content name="seasons" label="$LOCALIZE[20373]" icon="DefaultTVShows.png" library="506" plugin="506">
+			<visible>Container.Content(seasons)</visible>
+			<views>50, 506, 501, 510, 509, 503, 511, 55, 53, 52, 56, 57, 500, 512</views>
+		</content>
+		<content name="artists" label="$LOCALIZE[133]" icon="DefaultMusicArtists.png" library="55" plugin="55">
+			<visible>Container.Content(artists)</visible>
+			<views>50, 506, 501, 507, 59, 503, 511, 55, 51, 54, 52, 57, 500</views>
+		</content>
+		<content name="albums" label="$LOCALIZE[132]" icon="DefaultMusicAlbums.png" library="501" plugin="501">
+			<visible>Container.Content(albums)</visible>
+			<views>50, 506, 501, 507, 503, 511, 55, 51, 54, 57</views>
+		</content>
+		<content name="songs" label="$LOCALIZE[134]" icon="DefaultMusicSongs.png" library="506" plugin="506">
+			<visible>Container.Content(songs)</visible>
+			<views>50, 506, 507, 501, 508, 55, 54, 57</views>
+		</content>
+		<content name="addons" label="$LOCALIZE[24001]" icon="DefaultAddonProgram.png" library="50" plugin="50">
+			<visible>Container.Content(addons)</visible>
+			<views>50, 503, 55, 51, 54, 57, 500</views>
+		</content>
+		<content name="genres" label="$LOCALIZE[135]" icon="DefaultGenre.png" library="50" plugin="50">
+			<visible>!Window.IsVisible(MyMusicNav.xml) + Container.Content(genres)</visible>
+			<views>50, 53, 56, 57, 500</views>
+		</content>
+		<content name="musicvideos" label="$LOCALIZE[20389]" icon="DefaultMusicVideos.png" library="57" plugin="57">
+			<visible>Container.Content(musicvideos)</visible>
+			<views>50, 53, 56, 57</views>
+		</content>
+		<content name="games" label="$LOCALIZE[35049]" icon="DefaultAddonGame.png" library="50" plugin="50">
+			<visible>Container.Content(games)</visible>
+			<views>50, 51, 55, 57, 500</views>
+		</content>
+		<content name="images" label="$LOCALIZE[1]" icon="DefaultPicture.png" library="50" plugin="50">
+			<visible>Container.Content(images)</visible>
+			<views>50, 54, 57, 500, 504</views>
+		</content>
+		<content name="files" label="$LOCALIZE[7]" icon="DefaultFolder.png" library="50" plugin="50">
+			<visible>!Window.IsVisible(MyMusicNav.xml) + Container.Content(files)</visible>
+			<views>50, 503, 500</views>
+		</content>
+		<content name="none-videos" label="Videos (Root)" icon="DefaultVideo.png" library="50" plugin="50">
+			<visible>Container.Content() + Window.IsVisible(MyVideoNav.xml)</visible>
+			<views>50, 500</views>
+		</content>
+		<content name="playlists" label="$LOCALIZE[559]" icon="DefaultPlaylist.png" library="50" plugin="50">
+			<visible>Container.Content(playlists)</visible>
+			<views>50</views>
+		</content>
+		<content name="actors" label="$LOCALIZE[344]" icon="DefaultActor.png" library="50" plugin="50">
+			<visible>Container.Content(actors)</visible>
+			<views>50, 500</views>
+		</content>
+		<content name="directors" label="$LOCALIZE[20348]" icon="DefaultDirector.png" library="50" plugin="50">
+			<visible>Container.Content(directors)</visible>
+			<views>50</views>
+		</content>
+		<content name="studios" label="$LOCALIZE[20388]" icon="DefaultStudios.png" library="50" plugin="50">
+			<visible>Container.Content(studios)</visible>
+			<views>50</views>
+		</content>
+		<content name="years" label="$LOCALIZE[652]" icon="DefaultYear.png" library="50" plugin="50">
+			<visible>Container.Content(years)</visible>
+			<views>50</views>
+		</content>
+		<content name="tags" label="$LOCALIZE[20459]" icon="DefaultTags.png" library="50" plugin="50">
+			<visible>Container.Content(tags)</visible>
+			<views>50</views>
+		</content>
+		<content name="countries" label="$LOCALIZE[574]" icon="DefaultCountry.png" library="50" plugin="50">
+			<visible>Container.Content(countries)</visible>
+			<views>50</views>
+		</content>
+		<content name="videodb-versions" label="Video Versions (DB)" icon="DefaultVideoVersions.png" library="50" plugin="50">
+			<visible>Container.Content(videoversions) + String.StartsWith(Container.FolderPath,videodb://movies/videoversions)</visible>
+			<views>50</views>
+		</content>
+	</rules>
+</views>

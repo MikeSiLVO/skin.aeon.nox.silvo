@@ -5,8 +5,8 @@
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
-	<onunload condition="!String.IsEmpty(Skin.String(FanartTimePerImage)) + System.AddonIsEnabled(script.grab.fanart)">RunScript(script.grab.fanart,mode=random,refresh=$INFO[Skin.String(FanartTimePerImage)])</onunload>
-	<onunload condition="String.IsEmpty(Skin.String(FanartTimePerImage)) + System.AddonIsEnabled(script.grab.fanart)">RunScript(script.grab.fanart,mode=random,refresh=7)</onunload>
+	<onunload condition="!String.IsEmpty(Skin.String(FanartTimePerImage)) + Skin.HasSetting(SkinInfo.EnableSlideshow)">Skin.SetString(SkinInfo.SlideshowRefreshInterval,$INFO[Skin.String(FanartTimePerImage)])</onunload>
+	<onunload condition="String.IsEmpty(Skin.String(FanartTimePerImage)) + Skin.HasSetting(SkinInfo.EnableSlideshow)">Skin.SetString(SkinInfo.SlideshowRefreshInterval,7)</onunload>
 	<controls>
 		<control type="group">
 			<animation effect="fade" time="500" delay="400" condition="Window.Previous(Home)">WindowOpen</animation>
@@ -151,7 +151,7 @@
 						<control type="button" id="10000">
 							<include>SettingsButtonCommonValues</include>
 							<label>31911</label>
-							<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
+							<onclick>RunScript(script.skinshortcuts,type=manage&amp;menu=mainmenu)</onclick>
 						</control>
 						<control type="button" id="10001">
 							<include>SettingsButtonCommonValues</include>
@@ -251,7 +251,7 @@
 						</control>
 						<control type="button" id="10014">
 							<include>SettingsButtonCommonValues</include>
-							<label>31978</label>
+							<label>$LOCALIZE[31978]</label>
 							<onclick>RunScript(script.skinshortcuts,type=resetall)</onclick>
 						</control>
 					</control>
@@ -300,12 +300,12 @@
 						<control type="button" id="30000">
 							<include>SettingsButtonCommonValues</include>
 							<label>31911</label>
-							<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
+							<onclick>RunScript(script.skinshortcuts,type=manage&amp;menu=mainmenu)</onclick>
 						</control>
 						<control type="button" id="30001">
 							<include>SettingsButtonCommonValues</include>
 							<label>$LOCALIZE[31624]</label>
-							<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=buttonmenu)</onclick>
+							<onclick>RunScript(script.skinshortcuts,type=manage&amp;menu=buttonmenu)</onclick>
 						</control>
 						<control type="button" id="30002">
 							<include>SettingsButtonCommonValues</include>
@@ -433,15 +433,14 @@
 						<control type="radiobutton" id="50000">
 							<include>SettingsButtonCommonValues</include>
 							<label>$LOCALIZE[31003]</label>
-							<onclick>Skin.ToggleSetting(skinvariables.viewtypes)</onclick>
-							<selected>Skin.HasSetting(skinvariables.viewtypes)</selected>
-							<visible>System.AddonIsEnabled(script.skinvariables)</visible>
+							<onclick>Skin.ToggleSetting(Enable_ViewLocking)</onclick>
+							<selected>Skin.HasSetting(Enable_ViewLocking)</selected>
 						</control>
 						<control type="button" id="50001">
 							<include>SettingsButtonCommonValues</include>
 							<label>   - $LOCALIZE[31615]</label>
-							<onclick>RunScript(script.skinvariables,action=buildviews,configure)</onclick>
-							<visible>System.AddonIsEnabled(script.skinvariables) + Skin.HasSetting(skinvariables.viewtypes)</visible>
+							<onclick>RunScript(script.skinshortcuts,type=viewselect)</onclick>
+							<visible>Skin.HasSetting(Enable_ViewLocking)</visible>
 						</control>
 						<control type="button" id="50002">
 							<include>SettingsButtonCommonValues</include>
@@ -516,7 +515,7 @@
 						</control>
 						<control type="button" id="60002">
 							<label>   - $LOCALIZE[31702]</label>
-							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[WidgetBackLabelVar][/COLOR]</label2>
+							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[GlobalWidgetBackLabelVar][/COLOR]</label2>
 							<visible>Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
 							<onclick>SetProperty(CustomSelect,widgetback,Home)</onclick>
 							<onclick>ActivateWindow(1129)</onclick>
@@ -552,7 +551,6 @@
 							<label>31083</label>
 							<onclick>Skin.ToggleSetting(Disable.NextAired)</onclick>
 							<selected>!Skin.HasSetting(Disable.NextAired)</selected>
-							<visible>System.AddonIsEnabled(plugin.video.themoviedb.helper)</visible>
 						</control>
 						<control type="radiobutton" id="70001">
 							<include>SettingsButtonCommonValues</include>
@@ -677,6 +675,12 @@
 							<onclick>ActivateWindow(1129)</onclick>
 							<visible>System.GetBool(input.enablemouse)</visible>
 						</control>
+						<control type="radiobutton" id="80008">
+							<label>Prefer animated artwork</label>
+							<onclick>Skin.ToggleSetting(prefer_animated_art)</onclick>
+							<selected>Skin.HasSetting(prefer_animated_art)</selected>
+							<include>SettingsButtonCommonValues</include>
+						</control>
 					</control>
 					<control type="grouplist" id="9009">
 						<top>405</top>
@@ -713,7 +717,7 @@
 							<include>SettingsButtonCommonValues</include>
 							<align>center</align>
 							<label>FAQ</label>
-							<onclick>RunScript(script.skinvariables,run_dialog=textviewer,heading=FAQ,text=special://skin/faq.txt,load_file)</onclick>
+							<onclick>RunScript(script.skin.info.service,dialog=textviewer,heading=FAQ,file=special://skin/faq.txt)</onclick>
 						</control>
 					</control>
 					<control type="group">

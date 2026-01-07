@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1101" type="window">
-	<onload>Skin.SetBool(TMDbHelper.Service)</onload>
-	<onload>Skin.SetString(TMDbHelper.MonitorContainer,9143)</onload>
-	<onload>Skin.SetBool(TMDbHelper.DisableArtwork)</onload>
-	<onload>Skin.SetBool(TMDbHelper.DisableExtendedProperties)</onload>
-	<onload>Skin.Reset(TMDbHelper.DirectCallAuto)</onload>
-	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper) | !Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(TMDbHelper.EnableBlur)</onload>
-	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(TMDbHelper.Blur.SourceImage,Art(poster)|Art(season.poster)|Art(tvshow.poster)|Art(thumb)|Icon,Home)</onload>
-	<onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.SetBool(TMDbHelper.EnableBlur)</onload>
-	<onload condition="!System.AddonIsEnabled(plugin.video.themoviedb.helper)">Skin.SetBool(Disable.NextAired)</onload>
-	<onload condition="!System.AddonIsEnabled(script.skinvariables)">Skin.Reset(skinvariables.viewtypes)</onload>
-	<onload condition="System.AddonIsEnabled(script.skin.info.service)">RunScript(script.skin.info.service)</onload>
+	<onload>RunScript(script.skin.info.service)</onload>
+	<onload>Skin.SetBool(SkinInfo.EnableSlideshow)</onload>
+	<onload condition="!Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(SkinInfo.Blur)</onload>
+	<onload condition="Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.SetBool(SkinInfo.Blur)</onload>
+	<onload condition="Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(SkinInfo.BlurSourceVar,PosterVar,home)</onload>
 	<onload condition="System.AddonIsEnabled(script.artistslideshow)">RunScript(script.artistslideshow,daemon=True)</onload>
 	<onload condition="!String.IsEmpty(Skin.String(StartupIntro))">SetFocus(10)</onload>
 	<onload condition="String.IsEmpty(Skin.String(StartupIntro))">ReplaceWindow($INFO[System.StartupWindow])</onload>

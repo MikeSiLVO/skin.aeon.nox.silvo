@@ -1,0 +1,1797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+	<!-- VARIABLES -->
+	<variables>
+		<!-- Case Variables -->
+		<variable name="CaseVar">
+			<value condition="String.IsEqual(Container(9000).ListItem.Property(WidgetType),tvshows)">tvseries.png</value>
+			<value condition="Container($PROPERTY[id]).ListItem.IsCollection">set.png</value>
+			<value condition="Container($PROPERTY[id]).ListItem.IsStereoscopic">3d.png</value>
+			<value condition="String.Contains(Container($PROPERTY[id]).ListItem.Filename,hddvd)">hddvd.png</value>
+			<value condition="String.Contains(Container($PROPERTY[id]).ListItem.Filename,hdtv) | String.Contains(Container($PROPERTY[id]).ListItem.Filename,hd tv)">hdtv.png</value>
+			<value condition="String.Contains(Container($PROPERTY[id]).ListItem.Filename,webdl) | String.Contains(Container($PROPERTY[id]).ListItem.Filename,web-dl) | String.Contains(Container($PROPERTY[id]).ListItem.Filename,webtv) | String.Contains(Container($PROPERTY[id]).ListItem.Filename,web-tv)">webdl.png</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.VideoResolution)">$INFO[Container($PROPERTY[id]).ListItem.VideoResolution]p.png</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Property(VideoResolution))">$INFO[Container($PROPERTY[id]).ListItem.Property(VideoResolution)]p.png</value>
+			<value condition="String.IsEmpty(Container($PROPERTY[id]).ListItem.Property(VideoResolution)) + String.IsEmpty(Container($PROPERTY[id]).ListItem.TVShowTitle) + [!String.IsEmpty(Container($PROPERTY[id]).ListItem.Trailer) | String.Contains(Container($PROPERTY[id]).ListItem.FolderPath,extendedinfo)]">trailers.png</value>
+			<value/>
+		</variable>
+		<variable name="InfoCaseVar">
+			<value condition="String.IsEqual(Skin.String(Widget.CaseInfo),Glass) + String.IsEmpty(Container($PROPERTY[id]).ListItem.Property(Label3)) + String.IsEmpty(Container($PROPERTY[id]).ListItem.ChannelName) + String.IsEmpty(Container($PROPERTY[id]).ListItem.Artist) + String.IsEmpty(Container($PROPERTY[id]).ListItem.AlbumArtist) + String.IsEmpty(Container($PROPERTY[id]).ListItem.AddonName) + !$PROPERTY[widgetsquare]">homewidgets/cases/glass/portrait.png</value>
+			<value condition="String.IsEqual(Skin.String(Widget.CaseInfo),Glass)">homewidgets/cases/glass/square.png</value>
+			<value condition="String.IsEqual(Skin.String(Widget.CaseInfo),Case) + String.IsEmpty(Container($PROPERTY[id]).ListItem.Property(Label3)) + String.IsEmpty(Container($PROPERTY[id]).ListItem.ChannelName) + String.IsEmpty(Container($PROPERTY[id]).ListItem.Artist) + String.IsEmpty(Container($PROPERTY[id]).ListItem.AlbumArtist) + String.IsEmpty(Container($PROPERTY[id]).ListItem.AddonName) + !$PROPERTY[widgetsquare]">homewidgets/cases/default/poster/$VAR[HomeWidget$PROPERTY[id]CaseVar]</value>
+			<value condition="String.IsEqual(Skin.String(Widget.CaseInfo),Case)">homewidgets/cases/default/square/cd.png</value>
+			<value condition="String.IsEqual(Skin.String(Widget.CaseInfo),Clear Case) + String.IsEmpty(Container($PROPERTY[id]).ListItem.Property(Label3)) + String.IsEmpty(Container($PROPERTY[id]).ListItem.ChannelName) + String.IsEmpty(Container($PROPERTY[id]).ListItem.Artist) + String.IsEmpty(Container($PROPERTY[id]).ListItem.AlbumArtist) + String.IsEmpty(Container($PROPERTY[id]).ListItem.AddonName) + !$PROPERTY[widgetsquare]">homewidgets/cases/clearcase/poster/$VAR[HomeWidget$PROPERTY[id]CaseVar]</value>
+			<value condition="String.IsEqual(Skin.String(Widget.CaseInfo),Clear Case)">homewidgets/cases/clearcase/square/cd.png</value>
+			<value condition="String.IsEqual(Skin.String(Widget.CaseInfo),Match widget panel) + !$PROPERTY[isglass] + String.IsEmpty(Container($PROPERTY[id]).ListItem.Property(Label3)) + String.IsEmpty(Container($PROPERTY[id]).ListItem.ChannelName) + String.IsEmpty(Container($PROPERTY[id]).ListItem.Artist) + String.IsEmpty(Container($PROPERTY[id]).ListItem.AlbumArtist) + String.IsEmpty(Container($PROPERTY[id]).ListItem.AddonName) + !$PROPERTY[widgetsquare]">homewidgets/cases/$PROPERTY[case]/poster/$VAR[HomeWidget$PROPERTY[id]CaseVar]</value>
+			<value condition="String.IsEqual(Skin.String(Widget.CaseInfo),Match widget panel) + !$PROPERTY[isglass]">homewidgets/cases/$PROPERTY[case]/square/cd.png</value>
+			<value condition="String.IsEqual(Skin.String(Widget.CaseInfo),Match widget panel) + $PROPERTY[isglass] + String.IsEmpty(Container($PROPERTY[id]).ListItem.Property(Label3)) + String.IsEmpty(Container($PROPERTY[id]).ListItem.ChannelName) + String.IsEmpty(Container($PROPERTY[id]).ListItem.Artist) + String.IsEmpty(Container($PROPERTY[id]).ListItem.AlbumArtist) + String.IsEmpty(Container($PROPERTY[id]).ListItem.AddonName) + !$PROPERTY[widgetsquare]">homewidgets/cases/glass/portrait.png</value>
+			<value condition="String.IsEqual(Skin.String(Widget.CaseInfo),Match widget panel) + $PROPERTY[isglass]">homewidgets/cases/glass/square.png</value>
+			<value/>
+		</variable>
+		<!-- Artwork Variables -->
+		<variable name="PosterVar">
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(poster))">$INFO[Container($PROPERTY[id]).ListItem.Art(poster)]</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(tvshow.poster))">$INFO[Container($PROPERTY[id]).ListItem.Art(tvshow.poster)]</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Icon)">$INFO[Container($PROPERTY[id]).ListItem.Icon]</value>
+			<value>$INFO[Container($PROPERTY[id]).ListItem.Art(thumb)]</value>
+		</variable>
+		<variable name="FanArtVar">
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(fanart))">$INFO[Container($PROPERTY[id]).ListItem.Art(fanart)]</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Property(Fanart)) + !Skin.HasSetting(weatherfanart.multi)">$INFO[Container($PROPERTY[id]).ListItem.Property(Fanart)]</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Property(WeatherMultiFanart)) + Skin.HasSetting(weatherfanart.multi)">$INFO[Container($PROPERTY[id]).ListItem.Property(WeatherMultiFanart)]</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Property(Fanart))">$INFO[Container($PROPERTY[id]).ListItem.Property(Fanart)]</value>
+			<value>$INFO[Container($PROPERTY[id]).ListItem.Art(thumb)]</value>
+		</variable>
+		<variable name="LandscapeVar">
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(landscape))">$INFO[Container($PROPERTY[id]).ListItem.Art(landscape)]</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(tvshow.landscape))">$INFO[Container($PROPERTY[id]).ListItem.Art(tvshow.landscape)]</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(fanart))">$INFO[Container($PROPERTY[id]).ListItem.Art(fanart)]</value>
+			<value>$INFO[Container($PROPERTY[id]).ListItem.Art(thumb)]</value>
+		</variable>
+		<variable name="ClearArtVar">
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(clearart))">$INFO[Container($PROPERTY[id]).ListItem.Art(clearart)]</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(tvshow.clearart))">$INFO[Container($PROPERTY[id]).ListItem.Art(tvshow.clearart)]</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(tvshow.clearlogo))">$INFO[Container($PROPERTY[id]).ListItem.Art(tvshow.clearlogo)]</value>
+			<value>$INFO[Container($PROPERTY[id]).ListItem.Art(clearlogo)]</value>
+		</variable>
+		<variable name="ClearLogoVar">
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(clearlogo))">$INFO[Container($PROPERTY[id]).ListItem.Art(clearlogo)]</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(tvshow.clearlogo))">$INFO[Container($PROPERTY[id]).ListItem.Art(tvshow.clearlogo)]</value>
+		</variable>
+		<variable name="ThumbVar">
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(thumb))">$INFO[Container($PROPERTY[id]).ListItem.Art(thumb)]</value>
+			<value>$INFO[Container($PROPERTY[id]).ListItem.Art(fanart)]</value>
+		</variable>
+		<variable name="CharacterArtVar">
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(tvshow.characterart))">$INFO[Container($PROPERTY[id]).ListItem.Art(tvshow.characterart)]</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(tvshow.clearart))">$INFO[Container($PROPERTY[id]).ListItem.Art(tvshow.clearart)]</value>
+			<value>$INFO[Container($PROPERTY[id]).ListItem.Art(tvshow.clearlogo)]</value>
+		</variable>
+		<variable name="BannerVar">
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(tvshow.banner))">$INFO[Container($PROPERTY[id]).ListItem.Art(tvshow.banner)]</value>
+			<value>$INFO[Container($PROPERTY[id]).ListItem.Art(banner)]</value>
+		</variable>
+		<!-- Title Variables -->
+		<variable name="TitleVar">
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.AddonName)">$INFO[Container($PROPERTY[id]).ListItem.AddonName]</value>
+			<value condition="[!Integer.IsGreater(Container($PROPERTY[id]).ListItem.Season,9) + !Integer.IsGreater(Container($PROPERTY[id]).ListItem.Episode,9)] + !String.StartsWith(Container($PROPERTY[id]).ListItem.Episode,S) + !String.IsEmpty(Container($PROPERTY[id]).ListItem.Episode) + !String.IsEqual(Container($PROPERTY[id]).ListItem.Label,Container($PROPERTY[id]).ListItem.TVShowTitle)">$INFO[Container($PROPERTY[id]).ListItem.Season,S0]$INFO[Container($PROPERTY[id]).ListItem.Episode,E0] $INFO[Container($PROPERTY[id]).ListItem.Title]</value>
+			<value condition="[!Integer.IsGreater(Container($PROPERTY[id]).ListItem.Season,9) + !Integer.IsGreater(Container($PROPERTY[id]).ListItem.Episode,9)] + String.StartsWith(Container($PROPERTY[id]).ListItem.Episode,S) + !String.IsEmpty(Container($PROPERTY[id]).ListItem.Episode) + !String.IsEqual(Container($PROPERTY[id]).ListItem.Label,Container($PROPERTY[id]).ListItem.TVShowTitle)">$INFO[Container($PROPERTY[id]).ListItem.Season,S0]$INFO[Container($PROPERTY[id]).ListItem.Episode] $INFO[Container($PROPERTY[id]).ListItem.Title]</value>
+			<value condition="[!Integer.IsGreater(Container($PROPERTY[id]).ListItem.Season,9) + Integer.IsGreater(Container($PROPERTY[id]).ListItem.Episode,9)] + !String.IsEmpty(Container($PROPERTY[id]).ListItem.Episode) + !String.IsEqual(Container($PROPERTY[id]).ListItem.Label,Container($PROPERTY[id]).ListItem.TVShowTitle)">$INFO[Container($PROPERTY[id]).ListItem.Season,S0]$INFO[Container($PROPERTY[id]).ListItem.Episode,E] $INFO[Container($PROPERTY[id]).ListItem.Title]</value>
+			<value condition="[Integer.IsGreater(Container($PROPERTY[id]).ListItem.Season,9) + !Integer.IsGreater(Container($PROPERTY[id]).ListItem.Episode,9)] + !String.IsEmpty(Container($PROPERTY[id]).ListItem.Episode) + !String.IsEqual(Container($PROPERTY[id]).ListItem.Label,Container($PROPERTY[id]).ListItem.TVShowTitle)">$INFO[Container($PROPERTY[id]).ListItem.Season,S]$INFO[Container($PROPERTY[id]).ListItem.Episode,E0] $INFO[Container($PROPERTY[id]).ListItem.Title]</value>
+			<value condition="[Integer.IsGreater(Container($PROPERTY[id]).ListItem.Season,9) + Integer.IsGreater(Container($PROPERTY[id]).ListItem.Episode,9)] + !String.IsEmpty(Container($PROPERTY[id]).ListItem.Episode) + !String.IsEqual(Container($PROPERTY[id]).ListItem.Label,Container($PROPERTY[id]).ListItem.TVShowTitle)">$INFO[Container($PROPERTY[id]).ListItem.Season,S]$INFO[Container($PROPERTY[id]).ListItem.Episode,E] $INFO[Container($PROPERTY[id]).ListItem.Title]</value>
+			<value>$INFO[Container($PROPERTY[id]).ListItem.Label]</value>
+		</variable>
+		<variable name="Title2Var">
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.TVShowTitle)">$INFO[Container($PROPERTY[id]).ListItem.TVShowTitle]</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.Artist)">$INFO[Container($PROPERTY[id]).ListItem.Artist]</value>
+			<value condition="!String.IsEmpty(Container($PROPERTY[id]).ListItem.AlbumArtist)">$INFO[Container($PROPERTY[id]).ListItem.AlbumArtist]</value>
+			<value>$INFO[Container($PROPERTY[id]).ListItem.Label]</value>
+		</variable>
+		<!-- VARIABLEGROUPS -->
+		<variableGroup name="caseVars">
+			<variable name="CaseVar" />
+			<variable name="InfoCaseVar" />
+		</variableGroup>
+		<variableGroup name="artworkVars">
+			<variable name="PosterVar" condition="widgetArt=Poster | Square Poster" />
+			<variable name="FanArtVar" condition="widgetArt=FanArt" />
+			<variable name="LandscapeVar" condition="widgetArt=Landscape" />
+			<variable name="ClearArtVar" condition="widgetArt=ClearArt" />
+			<variable name="ClearLogoVar" condition="widgetArt=ClearLogo" />
+			<variable name="ThumbVar" condition="widgetArt=Thumb" />
+			<variable name="CharacterArtVar" condition="widgetArt=CharacterArt" />
+			<variable name="BannerVar" condition="widgetArt=Banner" />
+		</variableGroup>
+		<variableGroup name="titleVars">
+			<variable name="TitleVar" />
+			<variable name="Title2Var" />
+		</variableGroup>
+		<variableGroup name="listWidgetVars">
+			<variableGroup content="caseVars" />
+			<variableGroup content="artworkVars" />
+			<variableGroup content="titleVars" />
+		</variableGroup>
+	</variables>
+	<!-- EXPRESSIONS -->
+	<expressions>
+		<!-- Art type -->
+		<expression name="square">widgetArt=Square Poster | DiscArt | CharacterArt</expression>
+		<expression name="landscape">widgetArt=FanArt | Landscape | ClearArt | ClearLogo | Thumb</expression>
+		<!-- Case type -->
+		<expression name="glass">widgetCase=Glass</expression>
+		<expression name="case">widgetCase=Case</expression>
+		<expression name="clearcase">widgetCase=Clear Case</expression>
+		<expression name="bdcase">widgetCase=Case </expression>
+		<!-- Widget type -->
+		<expression name="isWeatherOrSystem" nosuffix="true">widgetType=weather | system</expression>
+		<!-- Widget style -->
+		<expression name="isExtendedList">widgetStyle=Extended List</expression>
+	</expressions>
+	<!-- PRESETS -->
+	<presets>
+		<!-- List widget artwork dimensions (no case) -->
+		<preset name="listArtDimensions">
+			<!-- Poster -->
+			<values condition="widgetArt=Poster" leftart="83" topart="40" widthart="134" heightart="200" />
+			<!-- Square -->
+			<values condition="$EXP[square]" leftart="50" topart="40" widthart="200" heightart="200" />
+			<!-- Landscape -->
+			<values condition="$EXP[landscape]" leftart="0" topart="55" widthart="300" heightart="169" />
+			<!-- Default -->
+			<values leftart="0" topart="55" widthart="300" heightart="169" />
+		</preset>
+		<!-- List widget artwork dimensions with Glass case -->
+		<preset name="listArtDimensionsGlass">
+			<values condition="widgetArt=Poster" leftart="87" topart="44" widthart="126" heightart="192" />
+			<values condition="$EXP[square]" leftart="54" topart="44" widthart="192" heightart="192" />
+			<values condition="$EXP[landscape]" leftart="4" topart="59" widthart="292" heightart="161" />
+			<values leftart="4" topart="59" widthart="292" heightart="161" />
+		</preset>
+		<!-- List widget artwork dimensions with Case -->
+		<preset name="listArtDimensionsCase">
+			<values condition="widgetArt=Poster" leftart="86" topart="57" widthart="128" heightart="180" />
+			<values condition="$EXP[square]" leftart="68" topart="43" widthart="179" heightart="194" />
+			<values condition="$EXP[landscape]" leftart="2" topart="57" widthart="296" heightart="165" />
+			<values leftart="2" topart="57" widthart="296" heightart="165" />
+		</preset>
+		<!-- List widget artwork dimensions with Clear Case -->
+		<preset name="listArtDimensionsClear">
+			<values condition="widgetArt=Poster" leftart="87" topart="44" widthart="126" heightart="192" />
+			<values condition="$EXP[square]" leftart="68" topart="43" widthart="179" heightart="194" />
+			<values condition="$EXP[landscape]" leftart="4" topart="59" widthart="292" heightart="161" />
+			<values leftart="4" topart="59" widthart="292" heightart="161" />
+		</preset>
+		<!-- List widget artwork dimensions with BD Case -->
+		<preset name="listArtDimensionsBD">
+			<values condition="widgetArt=Poster" leftart="84" topart="58" widthart="129" heightart="178" />
+			<values condition="$EXP[square]" leftart="68" topart="43" widthart="179" heightart="194" />
+			<values condition="$EXP[landscape]" leftart="2" topart="57" widthart="296" heightart="165" />
+			<values leftart="2" topart="57" widthart="296" heightart="165" />
+		</preset>
+		<!-- List widget banner title dimensions -->
+		<preset name="listBannerDimensions">
+			<values leftartbanner="0" topartbanner="2.5" widthartbanner="300" heightartbanner="56" />
+		</preset>
+		<preset name="listBannerDimensionsGlass">
+			<values leftartbanner="3" topartbanner="5.5" widthartbanner="294" heightartbanner="50" />
+		</preset>
+		<preset name="listBannerDimensionsCase">
+			<values leftartbanner="2" topartbanner="4.5" widthartbanner="296" heightartbanner="52" />
+		</preset>
+		<preset name="listBannerDimensionsClear">
+			<values leftartbanner="3" topartbanner="5.5" widthartbanner="294" heightartbanner="50" />
+		</preset>
+		<!-- Panel widget container dimensions -->
+		<preset name="panelContainerDimensions">
+			<values condition="widgetArt=Poster" containerwidth="205" containerheight="300" />
+			<values condition="$EXP[square]" containerwidth="287" containerheight="282" />
+			<values condition="$EXP[landscape]" containerwidth="478.3" containerheight="266" />
+			<values condition="widgetArt=Banner" containerwidth="717.5" containerheight="137" />
+			<values containerwidth="478.3" containerheight="266" />
+		</preset>
+		<!-- Panel artwork dimensions (no case) -->
+		<preset name="panelArtDimensions">
+			<values condition="widgetArt=Poster" leftart="2.5" topart="0" widthart="200" heightart="300" />
+			<values condition="$EXP[square]" leftart="2.5" topart="0" widthart="282" heightart="282" />
+			<values condition="$EXP[landscape]" leftart="2.5" topart="0" widthart="473.3" heightart="266" />
+			<values condition="widgetArt=Banner" leftart="2.5" topart="0" widthart="712.5" heightart="132" />
+			<values leftart="2.5" topart="0" widthart="473.3" heightart="266" />
+		</preset>
+		<!-- Panel artwork dimensions with Glass case -->
+		<preset name="panelArtDimensionsGlass">
+			<values condition="widgetArt=Poster" leftart="7.5" topart="6" widthart="190" heightart="288" />
+			<values condition="$EXP[square]" leftart="8.5" topart="6" widthart="270" heightart="270" />
+			<values condition="$EXP[landscape]" leftart="8.5" topart="6" widthart="461" heightart="254" />
+			<values condition="widgetArt=Banner" leftart="9.5" topart="6" widthart="699" heightart="120" />
+			<values leftart="8.5" topart="6" widthart="461" heightart="254" />
+		</preset>
+		<!-- Panel artwork dimensions with Case -->
+		<preset name="panelArtDimensionsCase">
+			<values condition="widgetArt=Poster" leftart="7.5" topart="25" widthart="190" heightart="270" />
+			<values condition="$EXP[square]" leftart="27.5" topart="4" widthart="253" heightart="274" />
+			<values condition="$EXP[landscape]" leftart="7.5" topart="5" widthart="464" heightart="256" />
+			<values condition="widgetArt=Banner" leftart="11" topart="8" widthart="696" heightart="116" />
+			<values leftart="7.5" topart="5" widthart="464" heightart="256" />
+		</preset>
+		<!-- Panel artwork dimensions with Clear Case -->
+		<preset name="panelArtDimensionsClear">
+			<values condition="widgetArt=Poster" leftart="7.5" topart="6" widthart="190" heightart="288" />
+			<values condition="$EXP[square]" leftart="27.5" topart="4" widthart="253" heightart="274" />
+			<values condition="$EXP[landscape]" leftart="9.5" topart="7" widthart="459" heightart="252" />
+			<values condition="widgetArt=Banner" leftart="12" topart="9" widthart="694" heightart="114" />
+			<values leftart="9.5" topart="7" widthart="459" heightart="252" />
+		</preset>
+		<!-- Panel artwork dimensions with BD Case -->
+		<preset name="panelArtDimensionsBD">
+			<values condition="widgetArt=Poster" leftart="4.5" topart="27" widthart="191" heightart="267" />
+			<values condition="$EXP[square]" leftart="27.5" topart="4" widthart="253" heightart="274" />
+			<values condition="$EXP[landscape]" leftart="7.5" topart="5" widthart="464" heightart="256" />
+			<values condition="widgetArt=Banner" leftart="11" topart="8" widthart="696" heightart="116" />
+			<values leftart="7.5" topart="5" widthart="464" heightart="256" />
+		</preset>
+		<!-- Extended Panel container dimensions -->
+		<preset name="extendedPanelContainerDimensions">
+			<values condition="widgetArt=Poster" containerwidth="205" containerheight="300" />
+			<values condition="$EXP[square]" containerwidth="263.5" containerheight="258.5" />
+			<values condition="$EXP[landscape]" containerwidth="461.25" containerheight="257" />
+			<values condition="widgetArt=Banner" containerwidth="615" containerheight="118" />
+			<values containerwidth="461.25" containerheight="257" />
+		</preset>
+		<!-- Extended Panel artwork dimensions (no case) -->
+		<preset name="extendedPanelArtDimensions">
+			<values condition="widgetArt=Poster" leftart="2.5" topart="0" widthart="200" heightart="300" />
+			<values condition="$EXP[square]" leftart="2.5" topart="0" widthart="258.5" heightart="258.5" />
+			<values condition="$EXP[landscape]" leftart="2.5" topart="0" widthart="456" heightart="257" />
+			<values condition="widgetArt=Banner" leftart="2.5" topart="0" widthart="610" heightart="113" />
+			<values leftart="2.5" topart="0" widthart="456" heightart="257" />
+		</preset>
+		<!-- Extended Panel artwork dimensions with Glass case -->
+		<preset name="extendedPanelArtDimensionsGlass">
+			<values condition="widgetArt=Poster" leftart="7.5" topart="6" widthart="190" heightart="288" />
+			<values condition="$EXP[square]" leftart="8.5" topart="6" widthart="246.5" heightart="246.5" />
+			<values condition="$EXP[landscape]" leftart="8.5" topart="6" widthart="444" heightart="245" />
+			<values condition="widgetArt=Banner" leftart="9.5" topart="6" widthart="596" heightart="101" />
+			<values leftart="8.5" topart="6" widthart="444" heightart="245" />
+		</preset>
+		<!-- Extended Panel artwork dimensions with Case -->
+		<preset name="extendedPanelArtDimensionsCase">
+			<values condition="widgetArt=Poster" leftart="7.5" topart="25" widthart="190" heightart="270" />
+			<values condition="$EXP[square]" leftart="25" topart="3" widthart="233" heightart="252.5" />
+			<values condition="$EXP[landscape]" leftart="7.5" topart="5" widthart="446" heightart="247" />
+			<values condition="widgetArt=Banner" leftart="10" topart="8" widthart="595" heightart="100" />
+			<values leftart="7.5" topart="5" widthart="446" heightart="247" />
+		</preset>
+		<!-- Extended Panel artwork dimensions with Clear Case -->
+		<preset name="extendedPanelArtDimensionsClear">
+			<values condition="widgetArt=Poster" leftart="7.5" topart="6" widthart="190" heightart="288" />
+			<values condition="$EXP[square]" leftart="25" topart="3" widthart="233" heightart="252.5" />
+			<values condition="$EXP[landscape]" leftart="9.5" topart="7" widthart="442" heightart="243" />
+			<values condition="widgetArt=Banner" leftart="12" topart="9" widthart="591" heightart="95" />
+			<values leftart="9.5" topart="7" widthart="442" heightart="243" />
+		</preset>
+		<!-- Extended Panel artwork dimensions with BD Case -->
+		<preset name="extendedPanelArtDimensionsBD">
+			<values condition="widgetArt=Poster" leftart="4.5" topart="27" widthart="191" heightart="267" />
+			<values condition="$EXP[square]" leftart="25" topart="3" widthart="233" heightart="252.5" />
+			<values condition="$EXP[landscape]" leftart="7.5" topart="5" widthart="446" heightart="247" />
+			<values condition="widgetArt=Banner" leftart="10" topart="8" widthart="595" heightart="100" />
+			<values leftart="7.5" topart="5" widthart="446" heightart="247" />
+		</preset>
+		<!-- Panel layout dimensions (top, height, labelbottom) -->
+		<preset name="panelLayoutDimensions">
+			<!-- Widget 2 (suffix=.2) -->
+			<values condition="suffix=.2 + widgetArt=Poster" top="70" height="342" labelbottom="318" />
+			<values condition="suffix=.2 + $EXP[square]" top="104" height="324" labelbottom="305" />
+			<values condition="suffix=.2 + $EXP[landscape]" top="112" height="308" labelbottom="289" />
+			<values condition="suffix=.2 + widgetArt=Banner" top="111" height="311" labelbottom="292" />
+			<values condition="suffix=.2" top="112" height="308" labelbottom="289" />
+			<!-- Widget 1 (default) -->
+			<values condition="widgetArt=Poster" top="424" height="342" labelbottom="318" />
+			<values condition="$EXP[square]" top="463" height="324" labelbottom="305" />
+			<values condition="$EXP[landscape]" top="471" height="308" labelbottom="289" />
+			<values condition="widgetArt=Banner" top="470" height="311" labelbottom="292" />
+			<values top="471" height="308" labelbottom="289" />
+		</preset>
+		<!-- Extended Panel layout dimensions (top, height, labelbottom) -->
+		<preset name="extendedPanelLayoutDimensions">
+			<!-- Widget 2 (suffix=.2) -->
+			<values condition="suffix=.2 + widgetArt=Poster" top="70" height="342" labelbottom="318" />
+			<values condition="suffix=.2 + $EXP[square]" top="116" height="300" labelbottom="281" />
+			<values condition="suffix=.2 + $EXP[landscape]" top="117" height="299" labelbottom="280" />
+			<values condition="suffix=.2 + widgetArt=Banner" top="130" height="273" labelbottom="254" />
+			<values condition="suffix=.2" top="117" height="299" labelbottom="280" />
+			<!-- Widget 1 (default) -->
+			<values condition="widgetArt=Poster" top="424" height="342" labelbottom="318" />
+			<values condition="$EXP[square]" top="475" height="300" labelbottom="281" />
+			<values condition="$EXP[landscape]" top="476" height="299" labelbottom="280" />
+			<values condition="widgetArt=Banner" top="488" height="273" labelbottom="254" />
+			<values top="476" height="299" labelbottom="280" />
+		</preset>
+		<!-- Compact Panel container dimensions -->
+		<preset name="compactPanelContainerDimensions">
+			<values condition="widgetArt=Poster" containerwidth="159.4" containerheight="233" />
+			<values condition="$EXP[square]" containerwidth="205" containerheight="200" />
+			<values condition="$EXP[landscape]" containerwidth="358.7" containerheight="199" />
+			<values condition="widgetArt=Banner" containerwidth="478.3" containerheight="92" />
+			<values containerwidth="358.7" containerheight="199" />
+		</preset>
+		<!-- Compact Panel artwork dimensions (no case) -->
+		<preset name="compactPanelArtDimensions">
+			<values condition="widgetArt=Poster" leftart="2.5" topart="0" widthart="154.4" heightart="233" />
+			<values condition="$EXP[square]" leftart="2.5" topart="0" widthart="200" heightart="200" />
+			<values condition="$EXP[landscape]" leftart="2.5" topart="0" widthart="353.7" heightart="199" />
+			<values condition="widgetArt=Banner" leftart="2.5" topart="0" widthart="473.3" heightart="87" />
+			<values leftart="2.5" topart="0" widthart="353.7" heightart="199" />
+		</preset>
+		<!-- Compact Panel artwork dimensions with Glass case -->
+		<preset name="compactPanelArtDimensionsGlass">
+			<values condition="widgetArt=Poster" leftart="6.5" topart="4" widthart="146.4" heightart="225" />
+			<values condition="$EXP[square]" leftart="6.5" topart="4" widthart="192" heightart="192" />
+			<values condition="$EXP[landscape]" leftart="6.5" topart="4" widthart="345.7" heightart="191" />
+			<values condition="widgetArt=Banner" leftart="6.5" topart="4" widthart="465.3" heightart="79" />
+			<values leftart="6.5" topart="4" widthart="345.7" heightart="191" />
+		</preset>
+		<!-- Compact Panel artwork dimensions with Case -->
+		<preset name="compactPanelArtDimensionsCase">
+			<values condition="widgetArt=Poster" leftart="6.5" topart="19" widthart="146.4" heightart="211" />
+			<values condition="$EXP[square]" leftart="20.5" topart="3" widthart="178.5" heightart="194" />
+			<values condition="$EXP[landscape]" leftart="6.5" topart="4" widthart="345.7" heightart="191" />
+			<values condition="widgetArt=Banner" leftart="7.5" topart="5" widthart="463.3" heightart="77" />
+			<values leftart="6.5" topart="4" widthart="345.7" heightart="191" />
+		</preset>
+		<!-- Compact Panel artwork dimensions with Clear Case -->
+		<preset name="compactPanelArtDimensionsClear">
+			<values condition="widgetArt=Poster" leftart="7.5" topart="4" widthart="144.4" heightart="225" />
+			<values condition="$EXP[square]" leftart="20.5" topart="3" widthart="178.5" heightart="194" />
+			<values condition="$EXP[landscape]" leftart="7.5" topart="5" widthart="343.7" heightart="189" />
+			<values condition="widgetArt=Banner" leftart="9.5" topart="6" widthart="459.3" heightart="76" />
+			<values leftart="7.5" topart="5" widthart="343.7" heightart="189" />
+		</preset>
+		<!-- Compact Panel artwork dimensions with BD Case -->
+		<preset name="compactPanelArtDimensionsBD">
+			<values condition="widgetArt=Poster" leftart="3.5" topart="21" widthart="148" heightart="207" />
+			<values condition="$EXP[square]" leftart="20.5" topart="3" widthart="178.5" heightart="194" />
+			<values condition="$EXP[landscape]" leftart="6.5" topart="4" widthart="345.7" heightart="191" />
+			<values condition="widgetArt=Banner" leftart="7.5" topart="5" widthart="463.3" heightart="77" />
+			<values leftart="6.5" topart="4" widthart="345.7" heightart="191" />
+		</preset>
+		<!-- Extended Compact Panel container dimensions -->
+		<preset name="extendedCompactPanelContainerDimensions">
+			<values condition="widgetArt=Poster" containerwidth="167.7" containerheight="243" />
+			<values condition="$EXP[square]" containerwidth="205" containerheight="200" />
+			<values condition="$EXP[landscape]" containerwidth="369" containerheight="205" />
+			<values condition="widgetArt=Banner" containerwidth="461.25" containerheight="89" />
+			<values containerwidth="369" containerheight="205" />
+		</preset>
+		<!-- Extended Compact Panel artwork dimensions (no case) -->
+		<preset name="extendedCompactPanelArtDimensions">
+			<values condition="widgetArt=Poster" leftart="2.5" topart="0" widthart="162.7" heightart="243" />
+			<values condition="$EXP[square]" leftart="2.5" topart="0" widthart="200" heightart="200" />
+			<values condition="$EXP[landscape]" leftart="2.5" topart="0" widthart="364" heightart="205" />
+			<values condition="widgetArt=Banner" leftart="2.5" topart="0" widthart="456.25" heightart="84" />
+			<values leftart="2.5" topart="0" widthart="364" heightart="205" />
+		</preset>
+		<!-- Extended Compact Panel artwork dimensions with Glass case -->
+		<preset name="extendedCompactPanelArtDimensionsGlass">
+			<values condition="widgetArt=Poster" leftart="6.5" topart="4" widthart="154.7" heightart="235" />
+			<values condition="$EXP[square]" leftart="6.5" topart="4" widthart="192" heightart="192" />
+			<values condition="$EXP[landscape]" leftart="6.5" topart="4" widthart="356" heightart="197" />
+			<values condition="widgetArt=Banner" leftart="6.5" topart="4" widthart="448.25" heightart="76" />
+			<values leftart="6.5" topart="4" widthart="356" heightart="197" />
+		</preset>
+		<!-- Extended Compact Panel artwork dimensions with Case -->
+		<preset name="extendedCompactPanelArtDimensionsCase">
+			<values condition="widgetArt=Poster" leftart="6.5" topart="20" widthart="154.7" heightart="220" />
+			<values condition="$EXP[square]" leftart="20.5" topart="3" widthart="178.5" heightart="194" />
+			<values condition="$EXP[landscape]" leftart="6.5" topart="4" widthart="356" heightart="197" />
+			<values condition="widgetArt=Banner" leftart="7.5" topart="5" widthart="446.25" heightart="74" />
+			<values leftart="6.5" topart="4" widthart="356" heightart="197" />
+		</preset>
+		<!-- Extended Compact Panel artwork dimensions with Clear Case -->
+		<preset name="extendedCompactPanelArtDimensionsClear">
+			<values condition="widgetArt=Poster" leftart="7.5" topart="4" widthart="152.7" heightart="235" />
+			<values condition="$EXP[square]" leftart="20.5" topart="3" widthart="178.5" heightart="194" />
+			<values condition="$EXP[landscape]" leftart="7.5" topart="5" widthart="354" heightart="195" />
+			<values condition="widgetArt=Banner" leftart="9.5" topart="6" widthart="442.25" heightart="72" />
+			<values leftart="7.5" topart="5" widthart="354" heightart="195" />
+		</preset>
+		<!-- Extended Compact Panel artwork dimensions with BD Case -->
+		<preset name="extendedCompactPanelArtDimensionsBD">
+			<values condition="widgetArt=Poster" leftart="3.5" topart="21" widthart="157" heightart="217" />
+			<values condition="$EXP[square]" leftart="20.5" topart="3" widthart="178.5" heightart="194" />
+			<values condition="$EXP[landscape]" leftart="6.5" topart="4" widthart="356" heightart="197" />
+			<values condition="widgetArt=Banner" leftart="7.5" topart="5" widthart="446.25" heightart="74" />
+			<values leftart="6.5" topart="4" widthart="356" heightart="197" />
+		</preset>
+		<!-- Compact Panel layout dimensions (top, height, labelbottom) -->
+		<preset name="compactPanelLayoutDimensions">
+			<!-- Widget 2 (suffix=.2) -->
+			<values condition="suffix=.2 + widgetArt=Poster" top="104" height="275" labelbottom="251" />
+			<values condition="suffix=.2 + $EXP[square]" top="145" height="242" labelbottom="223" />
+			<values condition="suffix=.2 + $EXP[landscape]" top="146" height="241" labelbottom="222" />
+			<values condition="suffix=.2 + widgetArt=Banner" top="156" height="221" labelbottom="202" />
+			<values condition="suffix=.2" top="146" height="241" labelbottom="222" />
+			<!-- Widget 1 -->
+			<values condition="widgetArt=Poster" top="457" height="276" labelbottom="252" />
+			<values condition="$EXP[square]" top="504" height="242" labelbottom="223" />
+			<values condition="$EXP[landscape]" top="505" height="241" labelbottom="222" />
+			<values condition="widgetArt=Banner" top="515" height="221" labelbottom="202" />
+			<values top="505" height="241" labelbottom="222" />
+		</preset>
+		<!-- Extended Compact Panel layout dimensions (top, height, labelbottom) -->
+		<preset name="extendedCompactPanelLayoutDimensions">
+			<!-- Widget 2 (suffix=.2) -->
+			<values condition="suffix=.2 + widgetArt=Poster" top="99" height="285" labelbottom="261" />
+			<values condition="suffix=.2 + $EXP[square]" top="145" height="242" labelbottom="223" />
+			<values condition="suffix=.2 + $EXP[landscape]" top="143" height="247" labelbottom="228" />
+			<values condition="suffix=.2 + widgetArt=Banner" top="159" height="215" labelbottom="196" />
+			<values condition="suffix=.2" top="143" height="247" labelbottom="228" />
+			<!-- Widget 1 -->
+			<values condition="widgetArt=Poster" top="453" height="285" labelbottom="260" />
+			<values condition="$EXP[square]" top="504" height="242" labelbottom="223" />
+			<values condition="$EXP[landscape]" top="502" height="247" labelbottom="228" />
+			<values condition="widgetArt=Banner" top="518" height="215" labelbottom="196" />
+			<values top="502" height="247" labelbottom="228" />
+		</preset>
+		<preset name="infoPanelPosition">
+			<values condition="suffix=.2" infotop="449" infoslide1="0,-950" infoslide2="0,-697" />
+			<values infotop="90" infoslide1="0,950" infoslide2="0,677" />
+		</preset>
+		<!-- Random Fanart Lists -->
+		<preset name="randomFanartLists">
+			<values condition="background=kodi-movie-fanart" listid="9035" content="videodb://movies/titles/" />
+			<values condition="background=kodi-tv-fanart" listid="9036" content="videodb://tvshows/titles/" />
+			<values condition="background=kodi-music-fanart" listid="9037" content="musicdb://artists/?albumartistsonly=true" />
+			<values condition="background=kodi-musicvideo-fanart" listid="9038" content="videodb://musicvideos/titles/" />
+		</preset>
+	</presets>
+	<!-- PRESETGROUPS -->
+	<presetGroups>
+		<!-- Art dimensions by case type -->
+		<presetGroup name="listArtDimensions">
+			<preset content="listArtDimensionsGlass" condition="$EXP[glass]" />
+			<preset content="listArtDimensionsCase" condition="$EXP[case]" />
+			<preset content="listArtDimensionsClear" condition="$EXP[clearcase]" />
+			<preset content="listArtDimensionsBD" condition="$EXP[bdcase]" />
+			<preset content="listArtDimensions" />
+		</presetGroup>
+		<presetGroup name="listBannerDimensions">
+			<preset content="listBannerDimensionsGlass" condition="$EXP[glass]" />
+			<preset content="listBannerDimensionsCase" condition="$EXP[case]" />
+			<preset content="listBannerDimensionsClear" condition="$EXP[clearcase]" />
+			<preset content="listBannerDimensionsCase" condition="$EXP[bdcase]" />
+			<preset content="listBannerDimensions" />
+		</presetGroup>
+		<presetGroup name="panelArtDimensions">
+			<preset content="panelArtDimensionsGlass" condition="$EXP[glass]" />
+			<preset content="panelArtDimensionsCase" condition="$EXP[case]" />
+			<preset content="panelArtDimensionsClear" condition="$EXP[clearcase]" />
+			<preset content="panelArtDimensionsBD" condition="$EXP[bdcase]" />
+			<preset content="panelArtDimensions" />
+		</presetGroup>
+		<presetGroup name="extendedPanelArtDimensions">
+			<preset content="extendedPanelArtDimensionsGlass" condition="$EXP[glass]" />
+			<preset content="extendedPanelArtDimensionsCase" condition="$EXP[case]" />
+			<preset content="extendedPanelArtDimensionsClear" condition="$EXP[clearcase]" />
+			<preset content="extendedPanelArtDimensionsBD" condition="$EXP[bdcase]" />
+			<preset content="extendedPanelArtDimensions" />
+		</presetGroup>
+		<presetGroup name="extendedCompactPanelArtDimensions">
+			<preset content="extendedCompactPanelArtDimensionsGlass" condition="$EXP[glass]" />
+			<preset content="extendedCompactPanelArtDimensionsCase" condition="$EXP[case]" />
+			<preset content="extendedCompactPanelArtDimensionsClear" condition="$EXP[clearcase]" />
+			<preset content="extendedCompactPanelArtDimensionsBD" condition="$EXP[bdcase]" />
+			<preset content="extendedCompactPanelArtDimensions" />
+		</presetGroup>
+		<presetGroup name="compactPanelArtDimensions">
+			<preset content="compactPanelArtDimensionsGlass" condition="$EXP[glass]" />
+			<preset content="compactPanelArtDimensionsCase" condition="$EXP[case]" />
+			<preset content="compactPanelArtDimensionsClear" condition="$EXP[clearcase]" />
+			<preset content="compactPanelArtDimensionsBD" condition="$EXP[bdcase]" />
+			<preset content="compactPanelArtDimensions" />
+		</presetGroup>
+	</presetGroups>
+	<!-- PROPERTYGROUPS -->
+	<propertyGroups>
+		<!-- Common widget properties -->
+		<propertyGroup name="widgetProps">
+			<property name="position" from="index" />
+			<property name="itemname" from="name" />
+			<property name="widget" from="widget" />
+			<property name="widgettype" from="widgetType" />
+			<property name="content" from="widgetPath" />
+			<property name="target" from="widgetTarget" />
+			<property name="limit" from="widgetLimit" />
+			<property name="label" from="widgetLabel" />
+			<property name="sortby" from="widgetSortby" />
+			<property name="sort" from="widgetSort" />
+		</propertyGroup>
+		<!-- Artwork -->
+		<propertyGroup name="artworkVar">
+			<property name="artwork" condition="widgetArt=Poster">$VAR[PosterThumbVar]</property>
+			<property name="artwork" condition="widgetArt=Square Poster">$VAR[PosterThumbVar]</property>
+			<property name="artwork" condition="widgetArt=FanArt">$VAR[HomeWidgetFanArtVar]</property>
+			<property name="artwork" condition="widgetArt=Landscape">$VAR[HomeWidgetLandscapeVar]</property>
+			<property name="artwork" condition="widgetArt=ClearArt">$VAR[HomeWidgetClearArtVar]</property>
+			<property name="artwork" condition="widgetArt=ClearLogo">$VAR[HomeWidgetClearLogoVar]</property>
+			<property name="artwork" condition="widgetArt=Banner">$VAR[HomeWidgetBannerVar]</property>
+			<property name="artwork" condition="widgetArt=Thumb">$VAR[HomeWidgetThumbVar]</property>
+			<property name="artwork" condition="widgetArt=DiscArt">$INFO[ListItem.Art(discart)]</property>
+			<property name="artwork" condition="widgetArt=CharacterArt">$VAR[HomeWidgetCharacterArtVar]</property>
+		</propertyGroup>
+		<!-- Artwork fallback -->
+		<propertyGroup name="artworkFallback">
+			<property name="artworkfb" condition="widgetArt=DiscArt">String.IsEmpty(ListItem.Art(discart))</property>
+			<property name="artworkfb" condition="widgetArt=ClearLogo">String.IsEmpty(ListItem.Art(clearlogo)) + String.IsEmpty(ListItem.Art(tvshow.clearlogo))</property>
+			<property name="artworkfb" condition="widgetArt=ClearArt">String.IsEmpty(ListItem.Art(clearart)) + String.IsEmpty(ListItem.Art(tvshow.clearart)) + String.IsEmpty(ListItem.Art(clearlogo)) + String.IsEmpty(ListItem.Art(tvshow.clearlogo))</property>
+			<property name="artworkfb">false</property>
+		</propertyGroup>
+		<!-- Artwork aspect ratio -->
+		<propertyGroup name="artworkAspect">
+			<property name="aspect" condition="widgetType=pvr">keep</property>
+			<property name="aspect" condition="widgetArt=Square Poster | ClearArt | ClearLogo | CharacterArt | DiscArt">keep</property>
+			<property name="aspect" condition="widgetArt=Banner | Poster">stretch</property>
+			<property name="aspect">scale</property>
+		</propertyGroup>
+		<!-- Artwork aligny -->
+		<propertyGroup name="artworkAlign">
+			<property name="aligny" condition="widgetType=pvr">center</property>
+			<property name="aligny" condition="widgetArt=Poster | Square Poster | FanArt">top</property>
+			<property name="aligny">center</property>
+		</propertyGroup>
+		<!-- Artwork include name -->
+		<propertyGroup name="artworkContent">
+			<property name="artcontent" condition="widgetArt=Poster">PortraitArt</property>
+			<property name="artcontent" condition="$EXP[square]">SquareArt</property>
+			<property name="artcontent" condition="$EXP[landscape]">LandscapeArt</property>
+			<property name="artcontent" condition="widgetArt=Banner">BannerArt</property>
+		</propertyGroup>
+		<!-- Glass case texture -->
+		<propertyGroup name="glassCaseTexture">
+			<property name="glasscase" condition="widgetArt=Poster">portrait.png</property>
+			<property name="glasscase" condition="$EXP[square]">square.png</property>
+			<property name="glasscase" condition="$EXP[landscape]">landscape.png</property>
+			<property name="glasscase" condition="widgetArt=Banner">banner.png</property>
+		</propertyGroup>
+		<!-- Case texture path -->
+		<propertyGroup name="caseTexture">
+			<property name="case" condition="widgetArt=Poster">poster/$VAR[GlobalCaseVar]</property>
+			<property name="case" condition="$EXP[square]">square/cd.png</property>
+			<property name="case" condition="$EXP[landscape]">landscape/$VAR[GlobalCaseVar]</property>
+			<property name="case" condition="widgetArt=Banner">banner/$VAR[GlobalCaseVar]</property>
+		</propertyGroup>
+		<!-- Case path based on widgetCase -->
+		<propertyGroup name="casePath">
+			<property name="casepath" condition="$EXP[glass]">homewidgets/cases/glass/$PROPERTY[glasscase]</property>
+			<property name="casepath" condition="$EXP[case]">homewidgets/cases/default/$PROPERTY[case]</property>
+			<property name="casepath" condition="$EXP[clearcase]">homewidgets/cases/clearcase/$PROPERTY[case]</property>
+		</propertyGroup>
+		<!-- Widget background -->
+		<propertyGroup name="widgetBackground">
+			<property name="widgetbackground" condition="widgetBack=Flat | Colored Flat">homewidgets/bg_flat.png</property>
+			<property name="widgetbackground" condition="widgetBack=Clear | Colored Clear">homewidgets/bg_clear.png</property>
+			<property name="widgetbackground" condition="widgetBack=Clear White | Colored Clear White">homewidgets/bg_clearwhite.png</property>
+			<property name="widgetbackground" condition="widgetBack=Colored Default">homewidgets/bg_default.png</property>
+			<property name="widgetbackground" condition="widgetBack=None" />
+			<property name="widgetbackground">homewidgets/bg_default.png</property>
+		</propertyGroup>
+		<!-- Widget background color -->
+		<propertyGroup name="widgetBackgroundColor">
+			<property name="widgetbackgroundcolor" condition="widgetBack=Clear White | Colored Clear White">FFFFFFFF</property>
+			<property name="widgetbackgroundcolor" condition="widgetBack=Colored Flat | Colored Clear | Colored Clear White | Colored Default">$VAR[WidgetBackgroundColor]</property>
+			<property name="widgetbackgroundcolor">FF0B0B0B</property>
+		</propertyGroup>
+		<!-- Title visibility settings -->
+		<propertyGroup name="titleVisibility">
+			<property name="title" condition="widget=weather">false</property>
+			<property name="titlefocus" condition="widget=weather">false</property>
+			<property name="title" condition="widgetTitle=Panel">true</property>
+			<property name="titlefocus" condition="widgetTitle=Panel">true</property>
+			<property name="titlefocus" condition="widgetTitle=On Focus">true</property>
+			<property name="titlefocus">false</property>
+			<property name="title">false</property>
+		</propertyGroup>
+		<!-- Square info -->
+		<propertyGroup name="squareInfo">
+			<property name="widgetsquare" condition="$EXP[square]">true</property>
+			<property name="widgetsquare" condition="widgetType=system">true</property>
+			<property name="widgetsquare">false</property>
+		</propertyGroup>
+		<!-- Case visibility -->
+		<propertyGroup name="caseVisibility">
+			<property name="casevisible" condition="widgetCase=Case | Clear Case | Glass | Case ">true</property>
+			<property name="casevisible">false</property>
+		</propertyGroup>
+		<!-- List style artwork content include name -->
+		<propertyGroup name="listArtworkContent">
+			<property name="artcontent" condition="widgetArt=Poster">ListPortraitArt</property>
+			<property name="artcontent" condition="$EXP[square]">ListSquareArt</property>
+			<property name="artcontent" condition="$EXP[landscape]">ListLandscapeArt</property>
+		</propertyGroup>
+		<!-- List style container include name -->
+		<propertyGroup name="listContainerContent">
+			<property name="containercontent" condition="widgetType=system">ListSystem</property>
+			<property name="containercontent" condition="widgetType=weather">List</property>
+			<property name="containercontent" condition="widgetArt=Banner">ListBannerArt</property>
+			<property name="containercontent" condition="widgetList=Banner Art">ListBannerArt</property>
+			<property name="containercontent">List</property>
+		</propertyGroup>
+		<!-- List style container dimensions -->
+		<propertyGroup name="listContainerDimensions">
+			<property name="containertop" condition="widgetArt=Banner">46</property>
+			<property name="containertop" condition="widgetList=Banner Art">2.5</property>
+			<property name="containertop">5</property>
+			<property name="containerheight" condition="widgetArt=Banner">183</property>
+			<property name="containerheight" condition="widgetList=Banner Art">305</property>
+			<property name="containerheight">300</property>
+		</propertyGroup>
+		<!-- List style rotate -->
+		<propertyGroup name="listRotateSettings">
+			<property name="rotatetrue" condition="widgetType=system">false</property>
+			<property name="rotatetrue" condition="widgetArt=Banner">false</property>
+			<property name="rotatetrue">true</property>
+			<property name="rotate" condition="$EXP[isExtendedList]">1690</property>
+			<property name="rotate">1280</property>
+		</propertyGroup>
+		<!-- List style fake disc art top -->
+		<propertyGroup name="listFakeDiscArtTop">
+			<property name="topfakediscart" condition="widgetCase=Case | Clear Case | Case ">50.5</property>
+			<property name="topfakediscart">$PROPERTY[topart]</property>
+		</propertyGroup>
+		<!-- List style banner case path -->
+		<propertyGroup name="listBannerCasePath">
+			<property name="casepathbanner" condition="$EXP[glass]">homewidgets/cases/glass/banner.png</property>
+			<property name="casepathbanner" condition="$EXP[case]">homewidgets/cases/default/banner/$VAR[GlobalCaseVar]</property>
+			<property name="casepathbanner" condition="$EXP[clearcase]">homewidgets/cases/clearcase/banner/$VAR[GlobalCaseVar]</property>
+			<property name="casepathbanner" condition="$EXP[bdcase]">homewidgets/cases/default/banner/$VAR[GlobalCaseVar]</property>
+		</propertyGroup>
+		<!-- Panel style artwork include name -->
+		<propertyGroup name="panelArtworkContent">
+			<property name="artcontent" condition="widgetArt=Poster">PortraitArt</property>
+			<property name="artcontent" condition="$EXP[square]">SquareArt</property>
+			<property name="artcontent" condition="$EXP[landscape]">LandscapeArt</property>
+			<property name="artcontent" condition="widgetArt=Banner">BannerArt</property>
+		</propertyGroup>
+		<!-- Panel style fake disc art top -->
+		<propertyGroup name="panelFakeDiscArtTop">
+			<property name="topfakediscart" condition="widgetCase=Case | Clear Case | Case ">14.5</property>
+			<property name="topfakediscart">$PROPERTY[topart]</property>
+		</propertyGroup>
+		<!-- Panel style label height -->
+		<propertyGroup name="panelLabelHeight">
+			<property name="labelheightcase" condition="widgetCase=Case | Case ">5</property>
+			<property name="labelheightcase">-34</property>
+			<property name="labelheight" condition="widgetArt=Poster">$PROPERTY[labelheightcase]</property>
+			<property name="labelheight" condition="widgetArt=Banner">-45</property>
+			<property name="labelheight">-34</property>
+		</propertyGroup>
+		<!-- Panel style fonts -->
+		<propertyGroup name="panelFonts">
+			<property name="weatherfont">font14</property>
+			<property name="labelfont">font12</property>
+			<property name="labelfontback">font13_title</property>
+			<property name="fallbackfont">fontCDalbum</property>
+		</propertyGroup>
+		<!-- Panel style weather/system properties -->
+		<propertyGroup name="panelWeatherProps">
+			<property name="isweather" condition="$EXP[isWeatherOrSystem]">true</property>
+			<property name="isweather">false</property>
+			<property name="weathertop" condition="$EXP[isWeatherOrSystem]">49</property>
+			<property name="weatherheight" condition="$EXP[isWeatherOrSystem]">149</property>
+			<property name="weathertop1" condition="$EXP[isWeatherOrSystem]">5</property>
+			<property name="weathertop2" condition="$EXP[isWeatherOrSystem]">205</property>
+			<property name="weathertop3" condition="$EXP[isWeatherOrSystem]">244</property>
+		</propertyGroup>
+		<!-- Extended Panel weather/system properties -->
+		<propertyGroup name="extendedPanelWeatherProps">
+			<property name="isweather" condition="$EXP[isWeatherOrSystem]">true</property>
+			<property name="isweather">false</property>
+			<property name="weathertop" condition="$EXP[isWeatherOrSystem]">49</property>
+			<property name="weatherheight" condition="$EXP[isWeatherOrSystem]">128</property>
+			<property name="weathertop1" condition="$EXP[isWeatherOrSystem]">5</property>
+			<property name="weathertop2" condition="$EXP[isWeatherOrSystem]">182</property>
+			<property name="weathertop3" condition="$EXP[isWeatherOrSystem]">221</property>
+		</propertyGroup>
+		<!-- Panel style title visibility (widget label on panel) -->
+		<propertyGroup name="panelTitleVisibility">
+			<property name="labeltitle" condition="widgetTitle=Panel">true</property>
+			<property name="labeltitle" condition="widgetTitle=On Focus">true</property>
+			<property name="labeltitle">false</property>
+		</propertyGroup>
+		<!-- Compact Panel fonts -->
+		<propertyGroup name="compactPanelFonts">
+			<property name="weatherfont">font12</property>
+			<property name="labelfont">font11</property>
+			<property name="labelfontback">font13_title</property>
+			<property name="fallbackfont">fontCDalbum</property>
+		</propertyGroup>
+		<!-- Compact Panel weather/system properties -->
+		<propertyGroup name="compactPanelWeatherProps">
+			<property name="isweather" condition="$EXP[isWeatherOrSystem]">true</property>
+			<property name="isweather">false</property>
+			<property name="weathertop" condition="$EXP[isWeatherOrSystem]">39</property>
+			<property name="weatherheight" condition="$EXP[isWeatherOrSystem]">96</property>
+			<property name="weathertop1" condition="$EXP[isWeatherOrSystem]">0</property>
+			<property name="weathertop2" condition="$EXP[isWeatherOrSystem]">135</property>
+			<property name="weathertop3" condition="$EXP[isWeatherOrSystem]">166</property>
+		</propertyGroup>
+		<!-- Compact Panel fake disc art top -->
+		<propertyGroup name="compactPanelFakeDiscArtTop">
+			<property name="topfakediscart" condition="widgetCase=Case | Clear Case | Case ">10.75</property>
+			<property name="topfakediscart">$PROPERTY[topart]</property>
+		</propertyGroup>
+		<!-- Compact Panel label height -->
+		<propertyGroup name="compactPanelLabelHeight">
+			<property name="labelheightcase" condition="widgetCase=Case | Case ">5</property>
+			<property name="labelheightcase">-29</property>
+			<property name="labelheight" condition="widgetArt=Poster">$PROPERTY[labelheightcase]</property>
+			<property name="labelheight" condition="widgetArt=Banner">-38</property>
+			<property name="labelheight">-29</property>
+		</propertyGroup>
+		<!-- Panel layout dimensions -->
+		<propertyGroup name="panelExtendedLayoutDimensions">
+			<!-- Extended Panel dimensions -->
+			<property name="panelleft" condition="widgetStyle~Extended">37.5</property>
+			<property name="panelwidth" condition="widgetStyle~Extended">1845</property>
+			<property name="bgwidth" condition="widgetStyle~Extended">1882.5</property>
+			<property name="infowidthshadow" condition="widgetStyle~Extended">1890</property>
+			<property name="infoleft" condition="widgetStyle~Extended">40</property>
+			<property name="labelwidth" condition="widgetStyle~Extended">922</property>
+			<property name="labelleft" condition="widgetStyle~Extended">38</property>
+			<property name="labelright" condition="widgetStyle~Extended">959</property>
+			<property name="infowidth1" condition="widgetStyle~Extended">1605</property>
+			<property name="infowidth2" condition="widgetStyle~Extended">1500</property>
+			<!-- Default Panel dimensions -->
+			<property name="panelleft">242.5</property>
+			<property name="panelwidth">1435</property>
+			<property name="bgwidth">1472.5</property>
+			<property name="infowidthshadow">1470</property>
+			<property name="infoleft">245</property>
+			<property name="labelwidth">710</property>
+			<property name="labelleft">243</property>
+			<property name="labelright">965.5</property>
+			<property name="infowidth1">1195</property>
+			<property name="infowidth2">1090</property>
+		</propertyGroup>
+	</propertyGroups>
+	<!-- INCLUDES -->
+	<includes>
+		<include name="panelInfoControls">
+			<control type="group">
+				<visible>Control.HasFocus($PROPERTY[id])</visible>
+				<animation effect="slide" end="$PROPERTY[infoslide1]" condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + Skin.HasSetting(centermainmenu)">Conditional</animation>
+				<animation effect="slide" end="$PROPERTY[infoslide2]" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">Conditional</animation>
+				<top>$PROPERTY[infotop]</top>
+				<left>$PROPERTY[infoleft]</left>
+				<control type="group">
+					<animation effect="fade" end="0">WindowClose</animation>
+					<control type="image">
+						<top>-40</top>
+						<width>$PROPERTY[infowidthshadow]</width>
+						<height>391</height>
+						<texture>homewidgets/list_shadow.png</texture>
+					</control>
+					<skinshortcuts include="InfoPosterGroup" condition="!widgetsquare"/>
+					<skinshortcuts include="InfoSquareGroup" condition="widgetsquare"/>
+				</control>
+			</control>
+		</include>
+		<include name="InfoPosterGroup">
+			<include>InfoPosterContent</include>
+			<include content="InfoTextContent">
+				<param name="left">225</param>
+				<param name="width">$PROPERTY[infowidth1]</param>
+			</include>
+		</include>
+		<include name="InfoSquareGroup">
+			<include>InfoSquareContent</include>
+			<include content="InfoTextContent">
+				<param name="left">330</param>
+				<param name="width">$PROPERTY[infowidth2]</param>
+			</include>
+		</include>
+		<include name="HorizontalNavigation1">
+			<onup condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + Control.IsVisible(90020) + !Skin.HasSetting(centermainmenu)">90020</onup>
+			<onup condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + [Control.IsVisible(9027) | System.HasMediaDVD]">9020</onup>
+			<onup condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + ![Control.IsVisible(9027) | System.HasMediaDVD]">9000</onup>
+			<ondown condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + ![System.HasMediaDVD | Control.IsVisible(9027)]">9000</ondown>
+			<ondown condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + [System.HasMediaDVD | Control.IsVisible(9027)]">9020</ondown>
+			<ondown condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + Control.IsVisible(90020)">90020</ondown>
+			<ondown condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Control.IsVisible(90020) + [Control.IsVisible(9027) | System.HasMediaDVD]">9020</ondown>
+			<ondown condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Control.IsVisible(90020) + ![Control.IsVisible(9027) | System.HasMediaDVD]">9000</ondown>
+			<onleft condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">9000</onleft>
+			<onback>9000</onback>
+		</include>
+		<include name="HorizontalNavigation2">
+			<onup condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + Skin.HasSetting(centermainmenu)">9000</onup>
+			<onup condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + Control.IsVisible(90010)">90010</onup>
+			<onup condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Control.IsVisible(90010) + [Control.IsVisible(9027) | System.HasMediaDVD]">9020</onup>
+			<onup condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Control.IsVisible(90010) + ![Control.IsVisible(9027) | System.HasMediaDVD]">9000</onup>
+			<ondown condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + Control.IsVisible(90020) + Skin.HasSetting(centermainmenu)">90020</ondown>
+			<ondown condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + Control.IsVisible(90010) + !Skin.HasSetting(centermainmenu) + Integer.IsGreater(Container(55000).NumItems,1)">90010</ondown>
+			<ondown condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + Control.IsVisible(90010) + !Skin.HasSetting(centermainmenu) + Integer.IsLessOrEqual(Container(55000).NumItems,1)">9000</ondown>
+			<ondown condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Control.IsVisible(90010) + [System.HasMediaDVD | Control.IsVisible(9027)] + !Skin.HasSetting(centermainmenu)">9020</ondown>
+			<ondown condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Control.IsVisible(90010) + ![System.HasMediaDVD | Control.IsVisible(9027)] + !Skin.HasSetting(centermainmenu)">9000</ondown>
+			<ondown condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + [Control.IsVisible(9027) | System.HasMediaDVD]">9020</ondown>
+			<ondown condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + ![Control.IsVisible(9027) | System.HasMediaDVD]">9000</ondown>
+			<onleft condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">9000</onleft>
+			<onback>9000</onback>
+		</include>
+	</includes>
+	<!-- List & Extended List -->
+	<template>
+		<output include="widget1" idprefix="8011" />
+		<output include="widget2" idprefix="8021" suffix=".2" />
+		<condition>widgetStyle=List | Extended List</condition>
+		<condition>widgetPath</condition>
+		<!-- Widget properties from menu item -->
+		<propertyGroup content="widgetProps" />
+		<!-- Layout positions - Extended List -->
+		<property name="left" condition="$EXP[isExtendedList]">40</property>
+		<property name="panelleft" condition="$EXP[isExtendedList]">1540</property>
+		<property name="infowidthback" condition="$EXP[isExtendedList]">1890</property>
+		<property name="infowidth1" condition="$EXP[isExtendedList]">1289</property>
+		<property name="infowidth2" condition="$EXP[isExtendedList]">1184</property>
+		<!-- Layout positions - List -->
+		<property name="left">245</property>
+		<property name="panelleft">1130</property>
+		<property name="infowidthback">1470</property>
+		<property name="infowidth1">879</property>
+		<property name="infowidth2">774</property>
+		<!-- Artwork variables -->
+		<property name="artwork" condition="widgetArt=Poster | Square Poster">$VAR[HomeWidget$PROPERTY[id]PosterVar]</property>
+		<property name="artwork" condition="widgetArt=FanArt">$VAR[HomeWidget$PROPERTY[id]FanArtVar]</property>
+		<property name="artwork" condition="widgetArt=Landscape">$VAR[HomeWidget$PROPERTY[id]LandscapeVar]</property>
+		<property name="artwork" condition="widgetArt=ClearArt">$VAR[HomeWidget$PROPERTY[id]ClearArtVar]</property>
+		<property name="artwork" condition="widgetArt=ClearLogo">$VAR[HomeWidget$PROPERTY[id]ClearLogoVar]</property>
+		<property name="artwork" condition="widgetArt=Thumb">$VAR[HomeWidget$PROPERTY[id]ThumbVar]</property>
+		<property name="artwork" condition="widgetArt=DiscArt">$INFO[Container($PROPERTY[id]).ListItem.Art(discart)]</property>
+		<property name="artwork" condition="widgetArt=CharacterArt">$VAR[HomeWidget$PROPERTY[id]CharacterArtVar]</property>
+		<!-- Artwork fallback -->
+		<property name="artworkfb" condition="widgetArt=DiscArt">String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(discart))</property>
+		<property name="artworkfb" condition="widgetArt=ClearLogo">String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(clearlogo)) + String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(tvshow.clearlogo))</property>
+		<property name="artworkfb" condition="widgetArt=ClearArt">String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(clearart)) + String.IsEmpty(ListItem.Art(tvshow.clearart)) + String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(clearlogo)) + String.IsEmpty(Container($PROPERTY[id]).ListItem.Art(tvshow.clearlogo))</property>
+		<property name="artworkfb">false</property>
+		<!-- Artwork settings -->
+		<property name="aspect" condition="widgetType=pvr">keep</property>
+		<property name="aspect" condition="widgetArt=ClearArt | ClearLogo | CharacterArt | DiscArt">keep</property>
+		<property name="aspect" condition="widgetArt=Poster">stretch</property>
+		<property name="aspect">scale</property>
+		<propertyGroup content="artworkAlign" />
+		<propertyGroup content="listArtworkContent" />
+		<propertyGroup content="listContainerContent" />
+		<propertyGroup content="listContainerDimensions" />
+		<presetGroup content="listArtDimensions" />
+		<presetGroup content="listBannerDimensions" />
+		<propertyGroup content="listRotateSettings" />
+		<propertyGroup content="listFakeDiscArtTop" />
+		<propertyGroup content="glassCaseTexture" />
+		<!-- Case variables -->
+		<property name="case" condition="widgetArt=Poster">poster/$VAR[HomeWidget$PROPERTY[id]CaseVar]</property>
+		<property name="case" condition="$EXP[square]">square/cd.png</property>
+		<property name="case" condition="$EXP[landscape]">landscape/$VAR[HomeWidget$PROPERTY[id]CaseVar]</property>
+		<property name="case" condition="widgetArt=Banner">banner/$VAR[HomeWidget$PROPERTY[id]CaseVar]</property>
+		<propertyGroup content="casePath" />
+		<propertyGroup content="listBannerCasePath" />
+		<propertyGroup content="caseVisibility" />
+		<!-- Fonts -->
+		<property name="labelfont">font12_title</property>
+		<property name="fallbackfont">fontCDalbum</property>
+		<propertyGroup content="widgetBackground" />
+		<propertyGroup content="widgetBackgroundColor" />
+		<propertyGroup content="squareInfo" />
+		<!-- Controls -->
+		<controls>
+			<control type="group">
+				<skinshortcuts>visibility</skinshortcuts>
+				<top>449</top>
+				<left>$PROPERTY[left]</left>
+				<control type="group">
+					<visible>Integer.IsGreater(Container($PROPERTY[id]).NumItems,0)</visible>
+					<control type="group">
+						<visible>ControlGroup(90010).HasFocus</visible>
+						<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
+						<!-- Info -->
+						<control type="group">
+							<animation effect="fade" end="0">WindowClose</animation>
+							<control type="image">
+								<top>-40</top>
+								<width>$PROPERTY[infowidthback]</width>
+								<height>391</height>
+								<texture>homewidgets/list_shadow.png</texture>
+							</control>
+							<skinshortcuts include="InfoPosterGroup" condition="!widgetsquare"/>
+							<skinshortcuts include="InfoSquareGroup" condition="widgetsquare"/>
+						</control>
+					</control>
+					<control type="group">
+						<left>$PROPERTY[panelleft]</left>
+						<animation effect="slide" end="-410,0" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended)">Conditional</animation>
+						<control type="group">
+							<left>-21</left>
+							<top>-16</top>
+							<animation effect="rotatey" start="0" end="180" center="150" time="400" tween="sine" easing="inout" condition="Control.HasFocus($PROPERTY[id]) + $PROPERTY[rotatetrue]">Conditional</animation>
+							<include condition="!String.IsEmpty(Skin.String(Widget.Trans))">HomeWidgetFade</include>
+							<control type="image">
+								<width>342</width>
+								<height>342</height>
+								<visible>Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
+								<texture colordiffuse="$VAR[HomeWidgetBackColor]" border="40">$VAR[HomeWidgetBackgroundVar]</texture>
+							</control>
+							<control type="image">
+								<width>342</width>
+								<height>342</height>
+								<visible>!Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
+								<texture colordiffuse="$PROPERTY[widgetbackgroundcolor]" border="40">$PROPERTY[widgetbackground]</texture>
+							</control>
+						</control>
+						<control type="group">
+							<width>300</width>
+							<height>300</height>
+							<animation type="Conditional" condition="Control.HasFocus($PROPERTY[id]) + $PROPERTY[rotatetrue]">
+								<effect type="rotatey" start="0" end="180" center="150" time="400" tween="sine" easing="inout" />
+								<effect type="fade" start="100" end="0" time="300" tween="sine" easing="inout" />
+							</animation>
+							<visible>String.IsEmpty(Container($PROPERTY[id]).ListItem.Property(isSystemInfo))</visible>
+							<control type="label">
+								<width>300</width>
+								<top>9</top>
+								<height>20</height>
+								<align>center</align>
+								<font>$PROPERTY[labelfont]</font>
+								<textcolor>grey</textcolor>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$PROPERTY[label]</label>
+							</control>
+							<control type="label">
+								<width>300</width>
+								<top>254</top>
+								<height>40</height>
+								<align>center</align>
+								<font>$PROPERTY[labelfont]</font>
+								<textcolor>grey</textcolor>
+								<shadowcolor>shadow</shadowcolor>
+								<wrapmultiline>true</wrapmultiline>
+								<label>$VAR[HomeWidget$PROPERTY[id]TitleVar]</label>
+							</control>
+							<include content="$PROPERTY[artcontent]">
+								<param name="id">$PROPERTY[id]</param>
+								<param name="Texture">$PROPERTY[artwork]</param>
+								<param name="Title2">$VAR[HomeWidget$PROPERTY[id]Title2Var]</param>
+								<param name="leftArt">$PROPERTY[leftart]</param>
+								<param name="topArt">$PROPERTY[topart]</param>
+								<param name="widthArt">$PROPERTY[widthart]</param>
+								<param name="heightArt">$PROPERTY[heightart]</param>
+								<param name="topFakeDiscArt">$PROPERTY[topfakediscart]</param>
+								<param name="leftCase">$PROPERTY[leftartwork]</param>
+								<param name="topCase">$PROPERTY[topartwork]</param>
+								<param name="widthCase">$PROPERTY[widthartwork]</param>
+								<param name="heightCase">$PROPERTY[heightartwork]</param>
+								<param name="caseVisible">$PROPERTY[casevisible]</param>
+								<param name="labelHeight">$PROPERTY[labelheight]</param>
+								<param name="fallbackFont">$PROPERTY[fallbackfont]</param>
+								<param name="fallbackVisible">$PROPERTY[artworkfb]</param>
+								<param name="Aspect">$PROPERTY[aspect]</param>
+								<param name="Aligny">$PROPERTY[aligny]</param>
+								<param name="Diffuse">$PROPERTY[diffuse]</param>
+								<param name="Case">$PROPERTY[casepath]</param>
+							</include>
+						</control>
+					</control>
+				</control>
+				<control type="list" id="$PROPERTY[id]">
+					<top>$PROPERTY[containertop]</top>
+					<left>$PROPERTY[panelleft]</left>
+					<width>300</width>
+					<height>$PROPERTY[containerheight]</height>
+					<onleft condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + [System.HasMediaDVD | Control.IsVisible(9027)]">9020</onleft>
+					<onleft condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + ![System.HasMediaDVD | Control.IsVisible(9027)]">9000</onleft>
+					<onright condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(centermainmenu) + Control.IsVisible(90020)">90020</onright>
+					<onright condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Skin.HasSetting(centermainmenu) + !Control.IsVisible(90020)">9000</onright>
+					<onright condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + Skin.HasSetting(centermainmenu) + Control.IsVisible(90020)">90020</onright>
+					<onright condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + Skin.HasSetting(centermainmenu) + !Control.IsVisible(90020)">9000</onright>
+					<onleft condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">9000</onleft>
+					<onright condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + Control.IsVisible(90020)">90020</onright>
+					<onright condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Control.IsVisible(90020) + [System.HasMediaDVD | Control.IsVisible(9027)]">9020</onright>
+					<onright condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Control.IsVisible(90020) + ![System.HasMediaDVD | Control.IsVisible(9027)]">9000</onright>
+					<onback>9000</onback>
+					<preloaditems>2</preloaditems>
+					<scrolltime tween="quadratic" easing="out">300</scrolltime>
+					<autoscroll time="10000" delay="10000" repeat="10000">Control.IsVisible($PROPERTY[id]) + Skin.HasSetting(Enable.ListWidgetAutoscroll) + !Control.HasFocus($PROPERTY[id])</autoscroll>
+					<animation type="Conditional" condition="[!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !Control.HasFocus($PROPERTY[id]) + $PROPERTY[rotatetrue]] | [String.IsEqual(Skin.String(MainMenu.Layout),vertical) + !String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + !Control.HasFocus($PROPERTY[id]) + $PROPERTY[rotatetrue]]">
+						<effect type="rotatey" start="0" end="-180" center="$PROPERTY[rotate]" time="400" tween="sine" easing="inout" />
+						<effect type="fade" start="100" end="0" time="300" tween="sine" easing="inout" />
+					</animation>
+					<animation type="Conditional" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + !Control.HasFocus($PROPERTY[id]) + $PROPERTY[rotatetrue]">
+						<effect type="rotatey" start="0" end="-180" center="1280" time="400" tween="sine" easing="inout" />
+						<effect type="fade" start="100" end="0" time="300" tween="sine" easing="inout" />
+					</animation>
+					<animation effect="slide" end="-410,0" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended)">Conditional</animation>
+					<include content="$PROPERTY[containercontent]">
+						<param name="id">$PROPERTY[id]</param>
+						<param name="Texture">$PROPERTY[artwork]</param>
+						<param name="leftArt">$PROPERTY[leftartbanner]</param>
+						<param name="topArt">$PROPERTY[topartbanner]</param>
+						<param name="widthArt">$PROPERTY[widthartbanner]</param>
+						<param name="heightArt">$PROPERTY[heightartbanner]</param>
+						<param name="leftCase">$PROPERTY[leftartworkbanner]</param>
+						<param name="topCase">$PROPERTY[topartworkbanner]</param>
+						<param name="widthCase">$PROPERTY[widthartworkbanner]</param>
+						<param name="heightCase">$PROPERTY[heightartworkbanner]</param>
+						<param name="fallbackFont">$PROPERTY[fallbackfont]</param>
+						<param name="Case">$PROPERTY[casepathbanner]</param>
+					</include>
+					<content target="$PROPERTY[target]" sortby="$PROPERTY[sortby]" sortorder="$PROPERTY[sort]" limit="$PROPERTY[limit]" browse="never">$PROPERTY[content]</content>
+				</control>
+			</control>
+		</controls>
+		<variableGroup content="listWidgetVars" />
+	</template>
+	<!-- Panel & Extended Panel -->
+	<template>
+		<output include="widget1" idprefix="8011" />
+		<output include="widget2" idprefix="8021" suffix=".2" />
+		<condition>widgetStyle=Panel | Extended Panel</condition>
+		<condition>widgetPath</condition>
+		<!-- Widget properties from menu item -->
+		<propertyGroup content="widgetProps" />
+		<!-- Info panel position -->
+		<preset content="infoPanelPosition" />
+		<!-- Panel layout dimensions -->
+		<propertyGroup content="panelExtendedLayoutDimensions" />
+		<!-- Container height -->
+		<property name="panelcontainerheight">300</property>
+		<!-- Artwork -->
+		<propertyGroup content="artworkVar" />
+		<propertyGroup content="artworkFallback" />
+		<propertyGroup content="artworkAspect" />
+		<propertyGroup content="artworkAlign" />
+		<propertyGroup content="panelArtworkContent" />
+		<!-- Container dimensions -->
+		<preset content="extendedPanelContainerDimensions" condition="widgetStyle=Extended Panel" />
+		<preset content="panelContainerDimensions" />
+		<!-- Layout dimensions -->
+		<preset content="extendedPanelLayoutDimensions" condition="widgetStyle=Extended Panel" />
+		<preset content="panelLayoutDimensions" />
+		<!-- Art dimensions -->
+		<presetGroup content="extendedPanelArtDimensions" condition="widgetStyle=Extended Panel" />
+		<presetGroup content="panelArtDimensions" />
+		<propertyGroup content="panelFakeDiscArtTop" />
+		<propertyGroup content="panelLabelHeight" />
+		<propertyGroup content="panelFonts" />
+		<propertyGroup content="extendedPanelWeatherProps" condition="widgetStyle=Extended Panel" />
+		<propertyGroup content="panelWeatherProps" />
+		<propertyGroup content="panelTitleVisibility" />
+		<propertyGroup content="glassCaseTexture" />
+		<propertyGroup content="caseTexture" />
+		<propertyGroup content="casePath" />
+		<propertyGroup content="caseVisibility" />
+		<propertyGroup content="widgetBackground" />
+		<propertyGroup content="widgetBackgroundColor" />
+		<propertyGroup content="squareInfo" />
+		<propertyGroup content="titleVisibility" />
+		<!-- Controls -->
+		<controls>
+			<control type="group">
+				<skinshortcuts>visibility</skinshortcuts>
+				<control type="group">
+					<visible>Integer.IsGreater(Container($PROPERTY[id]).NumItems,0)</visible>
+					<!-- Info -->
+					<skinshortcuts include="panelInfoControls" condition="widgetPanelInfo" />
+					<!-- Background/Label -->
+					<control type="group">
+						<top>$PROPERTY[top]</top>
+						<control type="group">
+							<include condition="!String.IsEmpty(Skin.String(Widget.Trans))">HomeWidgetFade</include>
+							<centerleft>50%</centerleft>
+							<top>-21</top>
+							<width>$PROPERTY[bgwidth]</width>
+							<height>$PROPERTY[height]</height>
+							<control type="image">
+								<width>$PROPERTY[bgwidth]</width>
+								<height>$PROPERTY[height]</height>
+								<texture colordiffuse="$VAR[HomeWidgetBackColor]" border="40">$VAR[HomeWidgetBackgroundVar]</texture>
+								<visible>Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
+							</control>
+							<control type="image">
+								<width>$PROPERTY[bgwidth]</width>
+								<height>$PROPERTY[height]</height>
+								<texture colordiffuse="$PROPERTY[widgetbackgroundcolor]" border="40">$PROPERTY[widgetbackground]</texture>
+								<visible>!Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
+							</control>
+						</control>
+						<include content="PanelLabel">
+							<param name="id">$PROPERTY[id]</param>
+							<param name="Label">$PROPERTY[label]</param>
+							<param name="Title">$VAR[HomeWidgetInfoTitleVar]</param>
+							<param name="labelFont">$PROPERTY[labelfontback]</param>
+							<param name="labelBottom">$PROPERTY[labelbottom]</param>
+							<param name="labelWidth">$PROPERTY[labelwidth]</param>
+							<param name="labelLeft">$PROPERTY[labelleft]</param>
+							<param name="labelRight">$PROPERTY[labelright]</param>
+							<param name="labelTitle">$PROPERTY[labeltitle]</param>
+						</include>
+					</control>
+				</control>
+				<!-- Widget -->
+				<control type="group">
+					<top>$PROPERTY[top]</top>
+					<control type="panel" id="$PROPERTY[id]">
+						<left>$PROPERTY[panelleft]</left>
+						<width>$PROPERTY[panelwidth]</width>
+						<height>$PROPERTY[panelcontainerheight]</height>
+						<orientation>horizontal</orientation>
+						<preloaditems>2</preloaditems>
+						<scrolltime tween="quadratic" easing="out">300</scrolltime>
+						<skinshortcuts include="HorizontalNavigation1" condition="!suffix" />
+						<skinshortcuts include="HorizontalNavigation2" condition="suffix=.2" />
+						<include content="$PROPERTY[artcontent]">
+							<param name="containerWidth">$PROPERTY[containerwidth]</param>
+							<param name="containerHeight">$PROPERTY[containerheight]</param>
+							<param name="Texture">$PROPERTY[artwork]</param>
+							<param name="leftArt">$PROPERTY[leftart]</param>
+							<param name="topArt">$PROPERTY[topart]</param>
+							<param name="widthArt">$PROPERTY[widthart]</param>
+							<param name="heightArt">$PROPERTY[heightart]</param>
+							<param name="topFakeDiscArt">$PROPERTY[topfakediscart]</param>
+							<param name="leftCase">$PROPERTY[leftartwork]</param>
+							<param name="topCase">$PROPERTY[topartwork]</param>
+							<param name="widthCase">$PROPERTY[widthartwork]</param>
+							<param name="heightCase">$PROPERTY[heightartwork]</param>
+							<param name="labelHeight">$PROPERTY[labelheight]</param>
+							<param name="labelFont">$PROPERTY[labelfont]</param>
+							<param name="fallbackFont">$PROPERTY[fallbackfont]</param>
+							<param name="fallbackVisible">$PROPERTY[artworkfb]</param>
+							<param name="Aspect">$PROPERTY[aspect]</param>
+							<param name="Aligny">$PROPERTY[aligny]</param>
+							<param name="Diffuse">$PROPERTY[diffuse]</param>
+							<param name="Case">$PROPERTY[casepath]</param>
+							<param name="labelVisible">$PROPERTY[title]</param>
+							<param name="labelFocusVisible">$PROPERTY[titlefocus]</param>
+							<param name="isWeather">$PROPERTY[isweather]</param>
+							<param name="weatherTop">$PROPERTY[weathertop]</param>
+							<param name="weatherHeight">$PROPERTY[weatherheight]</param>
+							<param name="weatherTop1">$PROPERTY[weathertop1]</param>
+							<param name="weatherTop2">$PROPERTY[weathertop2]</param>
+							<param name="weatherTop3">$PROPERTY[weathertop3]</param>
+							<param name="weatherFont">$PROPERTY[weatherfont]</param>
+						</include>
+						<content target="$PROPERTY[target]" sortby="$PROPERTY[sortby]" sortorder="$PROPERTY[sort]" limit="$PROPERTY[limit]" browse="never">$PROPERTY[content]</content>
+					</control>
+				</control>
+			</control>
+		</controls>
+	</template>
+	<!-- Compact Panel & Extended Compact Panel -->
+	<template>
+		<output include="widget1" idprefix="8011" />
+		<output include="widget2" idprefix="8021" suffix=".2" />
+		<condition>widgetStyle=Compact Panel | Extended Compact Panel</condition>
+		<condition>widgetPath</condition>
+		<!-- Widget properties from menu item -->
+		<propertyGroup content="widgetProps" />
+		<!-- Info panel position -->
+		<preset content="infoPanelPosition" />
+		<!-- Panel layout dimensions -->
+		<propertyGroup content="panelExtendedLayoutDimensions" />
+		<!-- Container height -->
+		<property name="panelcontainerheight" condition="widgetStyle=Extended Compact Panel">243</property>
+		<property name="panelcontainerheight">233</property>
+		<!-- Artwork -->
+		<propertyGroup content="artworkVar" />
+		<propertyGroup content="artworkFallback" />
+		<propertyGroup content="artworkAspect" />
+		<propertyGroup content="artworkAlign" />
+		<propertyGroup content="panelArtworkContent" />
+		<!-- Container dimensions -->
+		<preset content="extendedCompactPanelContainerDimensions" condition="widgetStyle=Extended Compact Panel" />
+		<preset content="compactPanelContainerDimensions" />
+		<!-- Layout dimensions -->
+		<preset content="extendedCompactPanelLayoutDimensions" condition="widgetStyle=Extended Compact Panel" />
+		<preset content="compactPanelLayoutDimensions" />
+		<!-- Art dimensions -->
+		<presetGroup content="extendedCompactPanelArtDimensions" condition="widgetStyle=Extended Compact Panel" />
+		<presetGroup content="compactPanelArtDimensions" />
+		<propertyGroup content="compactPanelFakeDiscArtTop" />
+		<propertyGroup content="compactPanelLabelHeight" />
+		<propertyGroup content="compactPanelFonts" />
+		<propertyGroup content="compactPanelWeatherProps" />
+		<propertyGroup content="panelTitleVisibility" />
+		<propertyGroup content="glassCaseTexture" />
+		<propertyGroup content="caseTexture" />
+		<propertyGroup content="casePath" />
+		<propertyGroup content="caseVisibility" />
+		<propertyGroup content="widgetBackground" />
+		<propertyGroup content="widgetBackgroundColor" />
+		<propertyGroup content="squareInfo" />
+		<propertyGroup content="titleVisibility" />
+		<!-- Controls -->
+		<controls>
+			<control type="group">
+				<skinshortcuts>visibility</skinshortcuts>
+				<control type="group">
+					<visible>Integer.IsGreater(Container($PROPERTY[id]).NumItems,0)</visible>
+					<!-- Info -->
+					<skinshortcuts include="panelInfoControls" condition="widgetPanelInfo" />
+					<!-- Background/Label -->
+					<control type="group">
+						<top>$PROPERTY[top]</top>
+						<control type="group">
+							<include condition="!String.IsEmpty(Skin.String(Widget.Trans))">HomeWidgetFade</include>
+							<centerleft>50%</centerleft>
+							<top>-21</top>
+							<width>$PROPERTY[bgwidth]</width>
+							<height>$PROPERTY[height]</height>
+							<control type="image">
+								<width>$PROPERTY[bgwidth]</width>
+								<height>$PROPERTY[height]</height>
+								<texture colordiffuse="$VAR[HomeWidgetBackColor]" border="40">$VAR[HomeWidgetBackgroundVar]</texture>
+								<visible>Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
+							</control>
+							<control type="image">
+								<width>$PROPERTY[bgwidth]</width>
+								<height>$PROPERTY[height]</height>
+								<texture colordiffuse="$PROPERTY[widgetbackgroundcolor]" border="40">$PROPERTY[widgetbackground]</texture>
+								<visible>!Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
+							</control>
+						</control>
+						<include content="PanelLabel">
+							<param name="id">$PROPERTY[id]</param>
+							<param name="Label">$PROPERTY[label]</param>
+							<param name="Title">$VAR[HomeWidgetInfoTitleVar]</param>
+							<param name="labelFont">$PROPERTY[labelfontback]</param>
+							<param name="labelBottom">$PROPERTY[labelbottom]</param>
+							<param name="labelWidth">$PROPERTY[labelwidth]</param>
+							<param name="labelLeft">$PROPERTY[labelleft]</param>
+							<param name="labelRight">$PROPERTY[labelright]</param>
+							<param name="labelTitle">$PROPERTY[labeltitle]</param>
+						</include>
+					</control>
+				</control>
+				<!-- Widget -->
+				<control type="group">
+					<top>$PROPERTY[top]</top>
+					<control type="panel" id="$PROPERTY[id]">
+						<left>$PROPERTY[panelleft]</left>
+						<width>$PROPERTY[panelwidth]</width>
+						<height>$PROPERTY[panelcontainerheight]</height>
+						<orientation>horizontal</orientation>
+						<preloaditems>2</preloaditems>
+						<scrolltime tween="quadratic" easing="out">300</scrolltime>
+						<skinshortcuts include="HorizontalNavigation1" condition="!suffix" />
+						<skinshortcuts include="HorizontalNavigation2" condition="suffix=.2" />
+						<include content="$PROPERTY[artcontent]">
+							<param name="containerWidth">$PROPERTY[containerwidth]</param>
+							<param name="containerHeight">$PROPERTY[containerheight]</param>
+							<param name="Texture">$PROPERTY[artwork]</param>
+							<param name="leftArt">$PROPERTY[leftart]</param>
+							<param name="topArt">$PROPERTY[topart]</param>
+							<param name="widthArt">$PROPERTY[widthart]</param>
+							<param name="heightArt">$PROPERTY[heightart]</param>
+							<param name="topFakeDiscArt">$PROPERTY[topfakediscart]</param>
+							<param name="leftCase">$PROPERTY[leftartwork]</param>
+							<param name="topCase">$PROPERTY[topartwork]</param>
+							<param name="widthCase">$PROPERTY[widthartwork]</param>
+							<param name="heightCase">$PROPERTY[heightartwork]</param>
+							<param name="labelHeight">$PROPERTY[labelheight]</param>
+							<param name="labelFont">$PROPERTY[labelfont]</param>
+							<param name="fallbackFont">$PROPERTY[fallbackfont]</param>
+							<param name="fallbackVisible">$PROPERTY[artworkfb]</param>
+							<param name="Aspect">$PROPERTY[aspect]</param>
+							<param name="Aligny">$PROPERTY[aligny]</param>
+							<param name="Diffuse">$PROPERTY[diffuse]</param>
+							<param name="Case">$PROPERTY[casepath]</param>
+							<param name="labelVisible">$PROPERTY[title]</param>
+							<param name="labelFocusVisible">$PROPERTY[titlefocus]</param>
+							<param name="isWeather">$PROPERTY[isweather]</param>
+							<param name="weatherTop">$PROPERTY[weathertop]</param>
+							<param name="weatherHeight">$PROPERTY[weatherheight]</param>
+							<param name="weatherTop1">$PROPERTY[weathertop1]</param>
+							<param name="weatherTop2">$PROPERTY[weathertop2]</param>
+							<param name="weatherTop3">$PROPERTY[weathertop3]</param>
+							<param name="weatherFont">$PROPERTY[weatherfont]</param>
+						</include>
+						<content target="$PROPERTY[target]" sortby="$PROPERTY[sortby]" sortorder="$PROPERTY[sort]" limit="$PROPERTY[limit]" browse="never">$PROPERTY[content]</content>
+					</control>
+				</control>
+			</control>
+		</controls>
+	</template>
+	<!-- Random Fanart Lists -->
+	<template include="HomeRandomFanartLists">
+		<condition>background=kodi-movie-fanart | kodi-tv-fanart | kodi-music-fanart | kodi-musicvideo-fanart</condition>
+		<preset content="randomFanartLists" />
+		<controls>
+			<control type="wraplist" id="$PROPERTY[listid]">
+				<include>HiddenList</include>
+				<include>ListAutoscrollTime</include>
+				<content sortby="random" limit="100">$PROPERTY[content]</content>
+			</control>
+		</controls>
+	</template>
+	<!-- Weather Forecast Content -->
+	<template include="WeatherForecastContent" templateonly="auto">
+		<condition>widgetType=weather | widgetType.2=weather</condition>
+		<controls>
+			<item>
+				<label>$LOCALIZE[31909]</label>
+				<icon />
+				<visible>!Weather.IsFetched</visible>
+			</item>
+			<item>
+				<label>$INFO[Window(weather).Property(Day0.Title)]</label>
+				<label2>$INFO[Window(weather).Property(Day0.Outlook)]</label2>
+				<icon>$VAR[WeatherIconsPathVar]$INFO[Window(weather).Property(Day0.FanartCode)]$VAR[WeatherIconsExtVar]</icon>
+				<property name="Label3">[COLOR red]$INFO[Window(weather).Property(Day0.HighTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Label4">[COLOR blue]$INFO[Window(weather).Property(Day0.LowTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Fanart">$INFO[Skin.String(weatherfanart.path)]$INFO[Window(weather).Property(Day0.FanartCode)]$VAR[WeatherBackgroundTypeVar]</property>
+				<onclick>ActivateWindow(weather)</onclick>
+				<visible>!String.IsEmpty(Window(Weather).Property(Day0.Title))</visible>
+			</item>
+			<item>
+				<label>$INFO[Window(weather).Property(Day1.Title)]</label>
+				<label2>$INFO[Window(weather).Property(Day1.Outlook)]</label2>
+				<icon>$VAR[WeatherIconsPathVar]$INFO[Window(weather).Property(Day1.FanartCode)]$VAR[WeatherIconsExtVar]</icon>
+				<property name="Label3">[COLOR red]$INFO[Window(weather).Property(Day1.HighTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Label4">[COLOR blue]$INFO[Window(weather).Property(Day1.LowTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Fanart">$INFO[Skin.String(weatherfanart.path)]$INFO[Window(weather).Property(Day1.FanartCode)]$VAR[WeatherBackgroundTypeVar]</property>
+				<onclick>ActivateWindow(weather)</onclick>
+				<visible>!String.IsEmpty(Window(Weather).Property(Day1.Title))</visible>
+			</item>
+			<item>
+				<label>$INFO[Window(weather).Property(Day2.Title)]</label>
+				<label2>$INFO[Window(weather).Property(Day2.Outlook)]</label2>
+				<icon>$VAR[WeatherIconsPathVar]$INFO[Window(weather).Property(Day2.FanartCode)]$VAR[WeatherIconsExtVar]</icon>
+				<property name="Label3">[COLOR red]$INFO[Window(weather).Property(Day2.HighTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Label4">[COLOR blue]$INFO[Window(weather).Property(Day2.LowTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Fanart">$INFO[Skin.String(weatherfanart.path)]$INFO[Window(weather).Property(Day2.FanartCode)]$VAR[WeatherBackgroundTypeVar]</property>
+				<onclick>ActivateWindow(weather)</onclick>
+				<visible>!String.IsEmpty(Window(Weather).Property(Day2.Title))</visible>
+			</item>
+			<item>
+				<label>$INFO[Window(weather).Property(Day3.Title)]</label>
+				<label2>$INFO[Window(weather).Property(Day3.Outlook)]</label2>
+				<icon>$VAR[WeatherIconsPathVar]$INFO[Window(weather).Property(Day3.FanartCode)]$VAR[WeatherIconsExtVar]</icon>
+				<property name="Label3">[COLOR red]$INFO[Window(weather).Property(Day3.HighTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Label4">[COLOR blue]$INFO[Window(weather).Property(Day3.LowTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Fanart">$INFO[Skin.String(weatherfanart.path)]$INFO[Window(weather).Property(Day3.FanartCode)]$VAR[WeatherBackgroundTypeVar]</property>
+				<onclick>ActivateWindow(weather)</onclick>
+				<visible>!String.IsEmpty(Window(Weather).Property(Day3.Title))</visible>
+			</item>
+			<item>
+				<label>$INFO[Window(weather).Property(Day4.Title)]</label>
+				<label2>$INFO[Window(weather).Property(Day4.Outlook)]</label2>
+				<icon>$VAR[WeatherIconsPathVar]$INFO[Window(weather).Property(Day4.FanartCode)]$VAR[WeatherIconsExtVar]</icon>
+				<property name="Label3">[COLOR red]$INFO[Window(weather).Property(Day4.HighTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Label4">[COLOR blue]$INFO[Window(weather).Property(Day4.LowTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Fanart">$INFO[Skin.String(weatherfanart.path)]$INFO[Window(weather).Property(Day4.FanartCode)]$VAR[WeatherBackgroundTypeVar]</property>
+				<onclick>ActivateWindow(weather)</onclick>
+				<visible>!String.IsEmpty(Window(Weather).Property(Day4.Title))</visible>
+			</item>
+			<item>
+				<label>$INFO[Window(weather).Property(Day5.Title)]</label>
+				<label2>$INFO[Window(weather).Property(Day5.Outlook)]</label2>
+				<icon>$VAR[WeatherIconsPathVar]$INFO[Window(weather).Property(Day5.FanartCode)]$VAR[WeatherIconsExtVar]</icon>
+				<property name="Label3">[COLOR red]$INFO[Window(weather).Property(Day5.HighTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Label4">[COLOR blue]$INFO[Window(weather).Property(Day5.LowTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Fanart">$INFO[Skin.String(weatherfanart.path)]$INFO[Window(weather).Property(Day5.FanartCode)]$VAR[WeatherBackgroundTypeVar]</property>
+				<onclick>ActivateWindow(weather)</onclick>
+				<visible>!String.IsEmpty(Window(Weather).Property(Day5.Title))</visible>
+			</item>
+			<item>
+				<label>$INFO[Window(weather).Property(Day6.Title)]</label>
+				<label2>$INFO[Window(weather).Property(Day6.Outlook)]</label2>
+				<icon>$VAR[WeatherIconsPathVar]$INFO[Window(weather).Property(Day6.FanartCode)]$VAR[WeatherIconsExtVar]</icon>
+				<property name="Label3">[COLOR red]$INFO[Window(weather).Property(Day6.HighTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Label4">[COLOR blue]$INFO[Window(weather).Property(Day6.LowTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Fanart">$INFO[Skin.String(weatherfanart.path)]$INFO[Window(weather).Property(Day6.FanartCode)]$VAR[WeatherBackgroundTypeVar]</property>
+				<onclick>ActivateWindow(weather)</onclick>
+				<visible>!String.IsEmpty(Window(Weather).Property(Day6.Title))</visible>
+			</item>
+		</controls>
+	</template>
+	<!-- Weather Today Content -->
+	<template include="WeatherTodayContent" templateonly="auto">
+		<condition>widgetType=weather | widgetType.2=weather</condition>
+		<controls>
+			<item>
+				<label>$LOCALIZE[31909]</label>
+				<icon />
+				<visible>!Weather.IsFetched</visible>
+			</item>
+			<item>
+				<label>33006</label>
+				<label2>$INFO[Window(weather).Property(Day0.Outlook)]</label2>
+				<icon>$VAR[WeatherIconsPathVar]$INFO[Window(weather).Property(Day0.FanartCode)]$VAR[WeatherIconsExtVar]</icon>
+				<property name="Label3">[COLOR red]$INFO[Window(weather).Property(Day0.HighTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Label4">[COLOR blue]$INFO[Window(weather).Property(Day0.LowTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Fanart">$INFO[Skin.String(weatherfanart.path)]$INFO[Window(weather).Property(Day0.FanartCode)]$VAR[WeatherBackgroundTypeVar]</property>
+				<onclick>ActivateWindow(weather)</onclick>
+				<visible>!String.IsEmpty(Window(Weather).Property(Day0.Title))</visible>
+			</item>
+		</controls>
+	</template>
+	<!-- Weather Tomorrow Content -->
+	<template include="WeatherTomorrowContent" templateonly="auto">
+		<condition>widgetType=weather | widgetType.2=weather</condition>
+		<controls>
+			<item>
+				<label>$LOCALIZE[31909]</label>
+				<icon />
+				<visible>!Weather.IsFetched</visible>
+			</item>
+			<item>
+				<label>33007</label>
+				<label2>$INFO[Window(weather).Property(Day1.Outlook)]</label2>
+				<icon>$VAR[WeatherIconsPathVar]$INFO[Window(weather).Property(Day1.FanartCode)]$VAR[WeatherIconsExtVar]</icon>
+				<property name="Label3">[COLOR red]$INFO[Window(weather).Property(Day1.HighTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Label4">[COLOR blue]$INFO[Window(weather).Property(Day1.LowTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
+				<property name="Fanart">$INFO[Skin.String(weatherfanart.path)]$INFO[Window(weather).Property(Day1.FanartCode)]$VAR[WeatherBackgroundTypeVar]</property>
+				<onclick>ActivateWindow(weather)</onclick>
+				<visible>!String.IsEmpty(Window(Weather).Property(Day1.Title))</visible>
+			</item>
+		</controls>
+	</template>
+	<!-- System Content -->
+	<template include="SystemContent" templateonly="auto">
+		<condition>widgetType=system | widgetType.2=system</condition>
+		<controls>
+			<item>
+				<label>12395</label>
+				<label2>$INFO[System.BatteryLevel]</label2>
+				<icon>homewidgets/systeminfo/square/battery_100.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/battery_100.jpg</property>
+				<property name="Label3">Remaining</property>
+				<property name="isSystemInfo">true</property>
+				<visible>Integer.IsGreater(System.BatteryLevel,60)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>12395</label>
+				<label2>$INFO[System.BatteryLevel]</label2>
+				<icon>homewidgets/systeminfo/square/battery_50.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/battery_50.jpg</property>
+				<property name="Label3">Remaining</property>
+				<property name="isSystemInfo">true</property>
+				<visible>Integer.IsGreater(System.BatteryLevel,20) + !Integer.IsGreater(System.BatteryLevel,60)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>12395</label>
+				<label2>$INFO[System.BatteryLevel]</label2>
+				<icon>homewidgets/systeminfo/square/battery_10.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/battery_10.jpg</property>
+				<property name="Label3">Remaining</property>
+				<property name="isSystemInfo">true</property>
+				<visible>Integer.IsGreater(System.BatteryLevel,5) + !Integer.IsGreater(System.BatteryLevel,20)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>12395</label>
+				<label2>$INFO[System.BatteryLevel]</label2>
+				<icon>homewidgets/systeminfo/square/battery_critical.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/battery_critical.jpg</property>
+				<property name="Label3">Remaining</property>
+				<property name="isSystemInfo">true</property>
+				<visible>Integer.IsGreater(System.BatteryLevel,0) + !Integer.IsGreater(System.BatteryLevel,5)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>705</label>
+				<label2>$INFO[Network.LinkState]</label2>
+				<icon>homewidgets/systeminfo/square/connected.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/connected.jpg</property>
+				<property name="Label3">$INFO[Network.IPAddress,IP: ]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>!String.IsEmpty(Network.IPAddress)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>705</label>
+				<label2>$INFO[Network.LinkState]</label2>
+				<icon>homewidgets/systeminfo/square/disconnected.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/disconnected.jpg</property>
+				<property name="Label3">$INFO[Network.IPAddress,IP: ]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>String.IsEmpty(Network.IPAddress)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>13280</label>
+				<label2>$INFO[System.ScreenWidth]x$INFO[System.ScreenHeight]</label2>
+				<icon>homewidgets/systeminfo/square/video.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/video.jpg</property>
+				<property name="Label3">$INFO[System.fps,, FPS]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>!Integer.IsGreater(System.GPUTemperature,0)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>13280</label>
+				<label2>$INFO[System.ScreenWidth]x$INFO[System.ScreenHeight]</label2>
+				<icon>homewidgets/systeminfo/square/video.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/video.jpg</property>
+				<property name="Label3">$INFO[System.fps,, FPS ]$INFO[System.GPUTemperature, ]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>Integer.IsGreater(System.GPUTemperature,0)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>CPU</label>
+				<label2>$INFO[System.CPUUsage(used.percent)]</label2>
+				<icon>homewidgets/systeminfo/square/cpu.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/cpu.jpg</property>
+				<property name="Label3">$INFO[System.CpuFrequency]$INFO[System.CPUTemperature, ]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>Integer.IsGreater(System.CPUTemperature,0)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>CPU</label>
+				<label2>$INFO[System.CPUUsage(used.percent)]</label2>
+				<icon>homewidgets/systeminfo/square/cpu.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/cpu.jpg</property>
+				<property name="Label3">$INFO[System.CpuFrequency]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>!Integer.IsGreater(System.CPUTemperature,0)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>$LOCALIZE[31309]</label>
+				<label2>$INFO[System.Memory(free.percent)] $LOCALIZE[156]</label2>
+				<icon>homewidgets/systeminfo/square/memory.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/memory.jpg</property>
+				<property name="Label3">$INFO[System.Memory(total)] $LOCALIZE[20161]</property>
+				<property name="isSystemInfo">true</property>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>154</label>
+				<label2>$INFO[System.FreeSpacePercent]</label2>
+				<icon>homewidgets/systeminfo/square/storage.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/storage.jpg</property>
+				<property name="Label3">$INFO[System.TotalSpace]</property>
+				<property name="isSystemInfo">true</property>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>19020</label>
+				<label2>$INFO[Pvr.BackendName]</label2>
+				<icon>homewidgets/systeminfo/square/pvr.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/pvr.jpg</property>
+				<property name="Label3">$INFO[Pvr.BackendChannels] $LOCALIZE[19019]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>PVR.HasTVChannels</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>19114</label>
+				<label2>$INFO[System.BuildVersion]</label2>
+				<icon>homewidgets/systeminfo/square/system.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/system.jpg</property>
+				<property name="Label3">$INFO[System.BuildDate]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>!PVR.HasTVChannels</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>12390</label>
+				<label2>$INFO[System.Uptime]</label2>
+				<icon>homewidgets/systeminfo/square/uptime.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/uptime.jpg</property>
+				<property name="Label3">$LOCALIZE[20161]: $INFO[System.TotalUptime]</property>
+				<property name="isSystemInfo">true</property>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+		</controls>
+	</template>
+	<!-- System Uptime -->
+	<template include="SystemUptime" templateonly="auto">
+		<condition>widgetType=system | widgetType.2=system</condition>
+		<controls>
+			<item>
+				<label>12390</label>
+				<label2>$INFO[System.Uptime]</label2>
+				<icon>homewidgets/systeminfo/square/uptime.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/uptime.jpg</property>
+				<property name="Label3">$LOCALIZE[20161]: $INFO[System.TotalUptime]</property>
+				<property name="isSystemInfo">true</property>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+		</controls>
+	</template>
+	<!-- System Battery -->
+	<template include="SystemBattery" templateonly="auto">
+		<condition>widgetType=system | widgetType.2=system</condition>
+		<controls>
+			<item>
+				<label>12395</label>
+				<label2>$INFO[System.BatteryLevel]</label2>
+				<icon>homewidgets/systeminfo/square/battery_100.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/battery_100.jpg</property>
+				<property name="Label3">Remains</property>
+				<property name="isSystemInfo">true</property>
+				<visible>Integer.IsGreater(System.BatteryLevel,60)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>12395</label>
+				<label2>$INFO[System.BatteryLevel]</label2>
+				<icon>homewidgets/systeminfo/square/battery_50.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/battery_50.jpg</property>
+				<property name="Label3">Remains</property>
+				<property name="isSystemInfo">true</property>
+				<visible>Integer.IsGreater(System.BatteryLevel,20) + !Integer.IsGreater(System.BatteryLevel,60)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>12395</label>
+				<label2>$INFO[System.BatteryLevel]</label2>
+				<icon>homewidgets/systeminfo/square/battery_10.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/battery_10.jpg</property>
+				<property name="Label3">Remains</property>
+				<property name="isSystemInfo">true</property>
+				<visible>Integer.IsGreater(System.BatteryLevel,5) + !Integer.IsGreater(System.BatteryLevel,20)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>12395</label>
+				<label2>$INFO[System.BatteryLevel]</label2>
+				<icon>homewidgets/systeminfo/square/battery_critical.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/battery_critical.jpg</property>
+				<property name="Label3">Remains</property>
+				<property name="isSystemInfo">true</property>
+				<visible>Integer.IsGreater(System.BatteryLevel,0) + !Integer.IsGreater(System.BatteryLevel,5)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+		</controls>
+	</template>
+	<!-- System Network -->
+	<template include="SystemNetwork" templateonly="auto">
+		<condition>widgetType=system | widgetType.2=system</condition>
+		<controls>
+			<item>
+				<label>705</label>
+				<label2>$INFO[Network.LinkState]</label2>
+				<icon>homewidgets/systeminfo/square/connected.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/connected.jpg</property>
+				<property name="Label3">$INFO[Network.IPAddress,IP: ]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>!String.IsEmpty(Network.IPAddress)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>705</label>
+				<label2>$INFO[Network.LinkState]</label2>
+				<icon>homewidgets/systeminfo/square/disconnected.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/disconnected.jpg</property>
+				<property name="Label3">$INFO[Network.IPAddress,IP: ]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>String.IsEmpty(Network.IPAddress)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+		</controls>
+	</template>
+	<!-- System Video -->
+	<template include="SystemVideo" templateonly="auto">
+		<condition>widgetType=system | widgetType.2=system</condition>
+		<controls>
+			<item>
+				<label>13280</label>
+				<label2>$INFO[System.ScreenWidth]x$INFO[System.ScreenHeight]</label2>
+				<icon>homewidgets/systeminfo/square/video.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/video.jpg</property>
+				<property name="Label3">$INFO[System.fps,, FPS]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>!Integer.IsGreater(System.GPUTemperature,0)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>13280</label>
+				<label2>$INFO[System.ScreenWidth]x$INFO[System.ScreenHeight]</label2>
+				<icon>homewidgets/systeminfo/square/video.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/video.jpg</property>
+				<property name="Label3">$INFO[System.fps,, FPS ]$INFO[System.GPUTemperature, ]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>Integer.IsGreater(System.GPUTemperature,0)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+		</controls>
+	</template>
+	<!-- System CPU -->
+	<template include="SystemCPU" templateonly="auto">
+		<condition>widgetType=system | widgetType.2=system</condition>
+		<controls>
+			<item>
+				<label>CPU</label>
+				<label2>$INFO[System.CPUUsage(used.percent)]</label2>
+				<icon>homewidgets/systeminfo/square/cpu.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/cpu.jpg</property>
+				<property name="Label3">$INFO[System.CpuFrequency]$INFO[System.CPUTemperature, ]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>Integer.IsGreater(System.CPUTemperature,0)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+			<item>
+				<label>CPU</label>
+				<label2>$INFO[System.CPUUsage(used.percent)]</label2>
+				<icon>homewidgets/systeminfo/square/cpu.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/cpu.jpg</property>
+				<property name="Label3">$INFO[System.CpuFrequency]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>!Integer.IsGreater(System.CPUTemperature,0)</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+		</controls>
+	</template>
+	<!-- System Memory -->
+	<template include="SystemMemory" templateonly="auto">
+		<condition>widgetType=system | widgetType.2=system</condition>
+		<controls>
+			<item>
+				<label>$LOCALIZE[31309]</label>
+				<label2>$INFO[System.Memory(free.percent)] $LOCALIZE[156]</label2>
+				<icon>homewidgets/systeminfo/square/memory.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/memory.jpg</property>
+				<property name="Label3">$INFO[System.Memory(total)] $LOCALIZE[20161]</property>
+				<property name="isSystemInfo">true</property>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+		</controls>
+	</template>
+	<!-- System Storage -->
+	<template include="SystemStorage" templateonly="auto">
+		<condition>widgetType=system | widgetType.2=system</condition>
+		<controls>
+			<item>
+				<label>154</label>
+				<label2>$INFO[System.FreeSpacePercent]</label2>
+				<icon>homewidgets/systeminfo/square/storage.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/storage.jpg</property>
+				<property name="Label3">$INFO[System.TotalSpace]</property>
+				<property name="isSystemInfo">true</property>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+		</controls>
+	</template>
+	<!-- System PVR -->
+	<template include="SystemPVR" templateonly="auto">
+		<condition>widgetType=system | widgetType.2=system</condition>
+		<controls>
+			<item>
+				<label>19020</label>
+				<label2>$INFO[Pvr.BackendName]</label2>
+				<icon>homewidgets/systeminfo/square/pvr.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/pvr.jpg</property>
+				<property name="Label3">$INFO[Pvr.BackendChannels] $LOCALIZE[19019]</property>
+				<property name="isSystemInfo">true</property>
+				<visible>PVR.HasTVChannels</visible>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+		</controls>
+	</template>
+	<!-- System Version -->
+	<template include="SystemVersion" templateonly="auto">
+		<condition>widgetType=system | widgetType.2=system</condition>
+		<controls>
+			<item>
+				<label>19114</label>
+				<label2>$INFO[System.BuildVersion]</label2>
+				<icon>homewidgets/systeminfo/square/system.png</icon>
+				<property name="Fanart">special://skin/backgrounds/widgets/systeminfo/fanart/system.jpg</property>
+				<property name="Label3">$INFO[System.BuildDate]</property>
+				<property name="isSystemInfo">true</property>
+				<onclick>ActivateWindow(systeminfo)</onclick>
+			</item>
+		</controls>
+	</template>
+	<template include="BackgroundVars" menu="mainmenu" templateonly="true">
+		<condition>backgroundPath</condition>
+		<property name="backgroundPath" from="backgroundPath" />
+		<variables>
+			<variable name="MainMenu_BackgroundPath">
+				<value condition="String.IsEqual(Container(9000).ListItem.Property(name),$PROPERTY[name])">$PROPERTY[backgroundPath]</value>
+			</variable>
+		</variables>
+	</template>
+</templates>

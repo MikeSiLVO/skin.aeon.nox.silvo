@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<zorder>2</zorder>
-	<onload condition="String.IsEqual(Skin.String(Viz.Background),4) + !Skin.HasSetting(TMDbHelper.EnableBlur)">Skin.SetBool(TMDbHelper.EnableBlur)</onload>
+	<onload condition="String.IsEqual(Skin.String(Viz.Background),4) + !Skin.HasSetting(SkinInfo.Player.Blur)">Skin.SetBool(SkinInfo.Player.Blur)</onload>
+	<onload condition="String.IsEqual(Skin.String(Viz.Background),4) + String.IsEmpty(Window(Home).Property(SkinInfo.Player.BlurSource))">SetProperty(SkinInfo.Player.BlurSource,Player.Art(thumb),Home)</onload>
+	<onload condition="!String.IsEqual(Skin.String(Viz.Background),4)">Skin.Reset(SkinInfo.Player.Blur)</onload>
 	<onload condition="!Skin.HasSetting(WarnedOnMusicVizInfo)">SetProperty(Notify,True,Home)</onload>
 	<onload condition="!Skin.HasSetting(WarnedOnMusicVizInfo)">SetProperty(NotWarnedOnMuzicVizInfo,True,Home)</onload>
 	<onload condition="!Skin.HasSetting(WarnedOnMusicVizInfo)">ActivateWindow(1126)</onload>
-	<onunload condition="!String.IsEqual(Skin.String(Viz.Background),4) | String.IsEqual(Skin.String(Viz.Background),4) + !Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(TMDbHelper.EnableBlur)</onunload>
-	<!-- <onload condition="System.AddonIsEnabled(plugin.video.themoviedb.helper) + String.IsEqual(Skin.String(Viz.Background),4)">RunScript(plugin.video.themoviedb.helper,blur_image=$INFO[Player.Icon],prefix=MusicVisIcon)</onload> -->
+	<onunload condition="!String.IsEqual(Skin.String(Viz.Background),4) | String.IsEqual(Skin.String(Viz.Background),4) + !Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(SkinInfo.Player.Blur)</onunload>
 	<controls>
 		<control type="fadelabel" id="4410">
 			<top>-100</top>
@@ -99,7 +100,7 @@
 			</control>
 			<control type="image" id="90500">
 				<fadetime>1000</fadetime>
-				<texture background="true">$INFO[Window(Home).Property(TMDbHelper.Player.Poster.BlurImage)]</texture>
+				<texture background="true">$INFO[Window(Home).Property(SkinInfo.Player.BlurredImage)]</texture>
 				<animation effect="fade" start="100" end="20" time="0" condition="![String.IsEqual(Visualisation.Name,waveform) | String.Contains(Visualisation.Name,spectrum) | String.IsEmpty(Visualisation.Name)] + !Skin.HasSetting(HideVisualizationFanart)">Conditional</animation>
 				<visible>String.IsEqual(Skin.String(Viz.Background),4) + !Control.IsVisible(90400) + !String.IsEqual(Player.Icon,DefaultAlbumCover.png)</visible>
 			</control>
@@ -283,7 +284,7 @@
 						<height>440</height>
 						<aspectratio align="center">scale</aspectratio>
 						<texture diffuse="thumbs/boxes/cdcover_mask2.png" fallback="DefaultAlbumCover.png">$INFO[Player.Art(thumb)]</texture>
-						<bordertexture border="28">thumbs/boxes/cd_shadow2.png</bordertexture>
+						<bordertexture border="28" infill="false">thumbs/boxes/cd_shadow2.png</bordertexture>
 						<bordersize>28</bordersize>
 					</control>
 					<control type="group">
@@ -684,7 +685,6 @@
 						<!-- Album + CD -->
 						<control type="group">
 							<left>1135</left>
-							<top>-12</top>
 							<visible>!String.IsEqual(Skin.String(MusicVizLayout),2)</visible>
 							<animation effect="slide" end="-1090,0" time="0" condition="String.IsEqual(Skin.String(MusicVizLayout),1)">Conditional</animation>
 							<animation effect="slide" end="235,0" time="400" condition="String.IsEmpty(Skin.String(MusicVizLayout)) + Skin.HasSetting(HideMusicVizCD) + Skin.HasSetting(SlideMusicLabelsRight)">Conditional</animation>
@@ -692,9 +692,9 @@
 							<include>VisibleFadeAnimation</include>
 							<control type="image">
 								<left>220</left>
-								<top>3</top>
-								<width>545</width>
-								<height>545</height>
+								<top>-10</top>
+								<width>540</width>
+								<height>540</height>
 								<aligny>top</aligny>
 								<aspectratio align="left">keep</aspectratio>
 								<fadetime>300</fadetime>
@@ -732,12 +732,12 @@
 								</control>
 							</control>
 							<control type="image">
-								<width>550</width>
-								<height>550</height>
+								<width>520</width>
+								<height>520</height>
 								<aspectratio align="right">scale</aspectratio>
 								<texture diffuse="thumbs/boxes/cdcover_mask2.png" fallback="DefaultAlbumCover.png">$INFO[Player.Art(thumb)]</texture>
-								<bordertexture border="28">thumbs/boxes/cd_shadow2.png</bordertexture>
-								<bordersize>28</bordersize>
+								<bordertexture border="10" infill="false">thumbs/boxes/cd_shadow2.png</bordertexture>
+								<bordersize>10</bordersize>
 								<visible>!Skin.HasSetting(HideMusicVizAlbum)</visible>
 							</control>
 						</control>

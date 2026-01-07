@@ -23,7 +23,7 @@
 		<onup condition="Control.IsVisible(62)">62</onup> -->
 		<ondown condition="Control.IsVisible(95360)">95360</ondown>
 		<ondown condition="!Control.IsVisible(95360)">4400</ondown>
-		<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions) | Container.Content(videoversions) | Container.Content(artists) | Container.Content(sets) | Container.Content(musicvideos)] | Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_53]</visible>
+		<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions) | Container.Content(videoversions) | Container.Content(artists) | Container.Content(sets) | Container.Content(musicvideos)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_53]</visible>
 		<viewtype label="31077">bigwrap</viewtype>
 		<pagecontrol>95360</pagecontrol>
 		<scrolltime tween="quadratic">300</scrolltime>
@@ -554,7 +554,7 @@
 		<height>434</height>
 		<align>center</align>
 		<aspectratio>scale</aspectratio>
-		<bordertexture border="20">thumbs/thumb_shadow_aa.png</bordertexture>
+		<bordertexture border="20" infill="false">thumbs/thumb_shadow_aa.png</bordertexture>
 		<bordersize>20</bordersize>
 	</include>
 	<include name="MovieShowcaseCase">

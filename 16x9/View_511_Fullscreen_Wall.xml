@@ -30,7 +30,7 @@
 				<pagecontrol>51160</pagecontrol>
 				<preloaditems>2</preloaditems>
 				<scrolltime tween="quadratic">400</scrolltime>
-				<visible>!Skin.HasSetting(skinvariables.viewtypes) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(videoversions)] | Window.IsActive(music) + [Container.Content(artists) | Container.Content(albums) | Container.Content(files)] | !Window.IsActive(music) + Skin.HasSetting(skinvariables.viewtypes) + $EXP[Exp_View_511]</visible>
+				<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(videoversions)] | Window.IsActive(music) + [Container.Content(artists) | Container.Content(albums) | Container.Content(files)] | !Window.IsActive(music) + Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_511]</visible>
 				<itemlayout width="240" height="360" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + !Skin.HasSetting(Enable.SmallerFullscreenWallPosters)">
 					<control type="group">
 						<control type="image">

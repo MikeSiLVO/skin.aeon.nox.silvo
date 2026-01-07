@@ -2,107 +2,45 @@ name: Deploy to repository.silvo
 
 on:
   push:
-    branches: [ main, master, omega ]
+    tags:
+      - 'v*'
   workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      OMEGA_BRANCH: omega
-      OMEGA_CHANNEL: omega
-      MAIN_BRANCH: master
-      MAIN_CHANNEL: piers
 
     steps:
       - name: Checkout addon source
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-
-      - name: Check if version changed
-        id: version_check
-        if: github.event_name != 'workflow_dispatch'
-        run: |
-          if git diff HEAD~1 HEAD -- addon.xml | grep -E '^\+.*version=' | grep -E -v '^\+\+\+'; then
-            echo "Version changed in addon.xml"
-            echo "changed=true" >> $GITHUB_OUTPUT
-          else
-            echo "Version unchanged - skipping deployment"
-            echo "changed=false" >> $GITHUB_OUTPUT
-          fi
 
       - name: Set up Python
-        if: github.event_name == 'workflow_dispatch' || steps.version_check.outputs.changed == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Extract addon metadata and determine channel
-        if: github.event_name == 'workflow_dispatch' || steps.version_check.outputs.changed == 'true'
+      - name: Extract addon metadata
         id: metadata
         run: |
           python3 << 'EOF'
           import xml.etree.ElementTree as ET
-          import sys
           import os
 
-          try:
-              tree = ET.parse('addon.xml')
-              root = tree.getroot()
+          tree = ET.parse('addon.xml')
+          root = tree.getroot()
 
-              addon_id = root.get('id')
-              version = root.get('version')
+          addon_id = root.get('id')
+          version = root.get('version')
 
-              # Only deploy pre-release versions
-              if '~beta' not in version and '~rc' not in version and '~alpha' not in version:
-                  print("Version doesn't contain pre-release suffix (~beta, ~rc, ~alpha)")
-                  print("Skipping deployment - only pre-release versions are deployed")
-                  with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-                      f.write("should_deploy=false\n")
-                  sys.exit(0)
+          print(f"Addon: {addon_id}")
+          print(f"Version: {version}")
 
-              # Determine channel based on branch
-              branch = os.environ.get('GITHUB_REF_NAME', '')
-              omega_branch = os.environ.get('OMEGA_BRANCH', 'omega')
-              main_branch = os.environ.get('MAIN_BRANCH', 'master')
-              omega_channel = os.environ.get('OMEGA_CHANNEL', 'omega')
-              main_channel = os.environ.get('MAIN_CHANNEL', 'piers')
-
-              if branch == omega_branch:
-                  channel = omega_channel
-              elif branch in [main_branch, 'main']:
-                  channel = main_channel
-              else:
-                  print(f"Unknown branch: {branch}")
-                  print("Expected branches: {omega_branch}, {main_branch}, or main")
-                  sys.exit(1)
-
-              print(f"addon_id={addon_id}")
-              print(f"version={version}")
-              print(f"branch={branch}")
-              print(f"channel={channel}")
-
-              # Write to GitHub output
-              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-                  f.write(f"addon_id={addon_id}\n")
-                  f.write(f"version={version}\n")
-                  f.write(f"channel={channel}\n")
-                  f.write(f"should_deploy=true\n")
-
-          except Exception as e:
-              print(f"Error: {e}")
-              sys.exit(1)
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write(f"addon_id={addon_id}\n")
+              f.write(f"version={version}\n")
           EOF
 
-      - name: Check if deployment needed
-        id: check_deploy
-        if: (github.event_name == 'workflow_dispatch' || steps.version_check.outputs.changed == 'true') && steps.metadata.outputs.should_deploy == 'true'
-        run: |
-          echo "Deploying ${{ steps.metadata.outputs.addon_id }} v${{ steps.metadata.outputs.version }} to channel: ${{ steps.metadata.outputs.channel }}"
-
       - name: Package addon
-        if: (github.event_name == 'workflow_dispatch' || steps.version_check.outputs.changed == 'true') && steps.metadata.outputs.should_deploy == 'true'
         id: package
         run: |
           python3 << 'EOF'
@@ -115,11 +53,22 @@ jobs:
           zip_name = f"{addon_id}-{version}.zip"
 
           exclude_patterns = [
-              '.git', '.github', '.gitignore', '.gitattributes',
+              # Git and CI
+              '.git', '.github', ',github', '.gitignore', '.gitattributes',
+              # Dev tools config
+              '.claude', '.vscode', '.idea', '.sublime-',
+              '.pylintrc', 'pyrightconfig.json', 'ruff.toml', 'pyproject.toml',
+              # Caches
               '__pycache__', '.pyc', '.pyo', '.pyd',
-              '.vscode', '.idea', '.swp', '.swo',
+              '.mypy_cache', '.ruff_cache', '.pytest_cache',
+              # Dev folders
+              'typings', 'tests', 'docs', 'DOCS',
+              # Docs
+              'README.md', 'CHANGELOG.md',
+              # OS files
               '.DS_Store', 'Thumbs.db', 'desktop.ini',
-              '.log', '.tmp', '.bak', '.claude'
+              # Temp files
+              '.log', '.tmp', '.bak', '.swp', '.swo'
           ]
 
           def should_exclude(path):
@@ -130,6 +79,7 @@ jobs:
               return False
 
           print(f"Creating {zip_name}...")
+          file_count = 0
 
           with zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED) as zipf:
               for root, dirs, files in os.walk('.'):
@@ -141,57 +91,60 @@ jobs:
                       if should_exclude(file_path) or file == zip_name:
                           continue
 
-                      arcname = addon_id / file_path.relative_to('.')
+                      arcname = Path(addon_id) / file_path.relative_to('.')
                       zipf.write(file_path, arcname)
-                      print(f"  Added: {arcname}")
+                      file_count += 1
 
-          print(f"\n✓ Created {zip_name}")
+          size_mb = os.path.getsize(zip_name) / (1024 * 1024)
+          print(f"Created {zip_name} ({file_count} files, {size_mb:.1f} MB)")
 
           with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
               f.write(f"zip_name={zip_name}\n")
           EOF
 
       - name: Clone repository.silvo
-        if: (github.event_name == 'workflow_dispatch' || steps.version_check.outputs.changed == 'true') && steps.metadata.outputs.should_deploy == 'true'
         run: |
           git clone https://x-access-token:${{ secrets.REPO_SILVO_PAT }}@github.com/MikeSiLVO/repository.silvo.git repo-silvo
           cd repo-silvo
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
 
-      - name: Copy files to repository
-        if: (github.event_name == 'workflow_dispatch' || steps.version_check.outputs.changed == 'true') && steps.metadata.outputs.should_deploy == 'true'
+      - name: Deploy to piers channel
         run: |
           ADDON_ID="${{ steps.metadata.outputs.addon_id }}"
           ZIP_NAME="${{ steps.package.outputs.zip_name }}"
-          CHANNEL="${{ steps.metadata.outputs.channel }}"
 
-          echo "Deploying to channel: $CHANNEL"
+          mkdir -p "repo-silvo/piers/${ADDON_ID}"
 
-          # Create channel/addon directory
-          mkdir -p "repo-silvo/${CHANNEL}/${ADDON_ID}"
+          cp "${ZIP_NAME}" "repo-silvo/piers/${ADDON_ID}/"
+          echo "Copied ${ZIP_NAME}"
 
-          # Copy zip file
-          cp "${ZIP_NAME}" "repo-silvo/${CHANNEL}/${ADDON_ID}/"
-          echo "✓ Copied ${ZIP_NAME} to ${CHANNEL}"
-
-          # Copy metadata files
-          for file in addon.xml icon.png fanart.jpg changelog.txt; do
+          for file in addon.xml changelog.txt; do
             if [ -f "$file" ]; then
-              cp "$file" "repo-silvo/${CHANNEL}/${ADDON_ID}/"
-              echo "✓ Copied $file to ${CHANNEL}"
+              cp "$file" "repo-silvo/piers/${ADDON_ID}/"
+              echo "Copied $file"
             fi
           done
 
+          # Copy icon and fanart from resources path (skin uses nested assets)
+          if [ -f "resources/icon.png" ]; then
+            cp "resources/icon.png" "repo-silvo/piers/${ADDON_ID}/icon.png"
+          elif [ -f "icon.png" ]; then
+            cp "icon.png" "repo-silvo/piers/${ADDON_ID}/"
+          fi
+
+          if [ -f "resources/fanart.jpg" ]; then
+            cp "resources/fanart.jpg" "repo-silvo/piers/${ADDON_ID}/fanart.jpg"
+          elif [ -f "fanart.jpg" ]; then
+            cp "fanart.jpg" "repo-silvo/piers/${ADDON_ID}/"
+          fi
+
       - name: Generate repository metadata
-        if: (github.event_name == 'workflow_dispatch' || steps.version_check.outputs.changed == 'true') && steps.metadata.outputs.should_deploy == 'true'
         run: |
           cd repo-silvo
           python _repo_generator.py
-          echo "✓ Generated addons.xml files"
 
-      - name: Commit and push to repository.silvo
-        if: (github.event_name == 'workflow_dispatch' || steps.version_check.outputs.changed == 'true') && steps.metadata.outputs.should_deploy == 'true'
+      - name: Commit and push
         run: |
           cd repo-silvo
           git add .
@@ -199,30 +152,19 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Auto-deploy: ${{ steps.metadata.outputs.addon_id }} v${{ steps.metadata.outputs.version }}" \
-                       -m "Deployed from: ${{ github.repository }}" \
-                       -m "Commit: ${{ github.sha }}" \
-                       -m "Branch: ${{ github.ref_name }}" \
-                       -m "Channel: ${{ steps.metadata.outputs.channel }}" \
-                       -m "Automated deployment via GitHub Actions"
-
+            git commit -m "Deploy: ${{ steps.metadata.outputs.addon_id }} v${{ steps.metadata.outputs.version }}" \
+                       -m "Source: ${{ github.repository }}@${{ github.sha }}" \
+                       -m "Trigger: ${{ github.ref_name }}"
             git push
-            echo "✓ Pushed to repository.silvo"
           fi
 
-      - name: Deployment complete
-        if: (github.event_name == 'workflow_dispatch' || steps.version_check.outputs.changed == 'true') && steps.metadata.outputs.should_deploy == 'true'
+      - name: Summary
         run: |
-          echo "================================================================"
-          echo "✓ Deployment Successful!"
-          echo "================================================================"
-          echo "Addon:   ${{ steps.metadata.outputs.addon_id }}"
-          echo "Version: ${{ steps.metadata.outputs.version }}"
-          echo "Branch:  ${{ github.ref_name }}"
-          echo "Channel: ${{ steps.metadata.outputs.channel }}"
-          echo ""
-          echo "Deployed files:"
-          echo "  - Addon package and metadata"
-          echo "  - Generated addons.xml"
-          echo "  - Repository ready for Kodi"
-          echo "================================================================"
+          echo "## Deployment Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Addon | ${{ steps.metadata.outputs.addon_id }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Version | ${{ steps.metadata.outputs.version }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Channel | piers |" >> $GITHUB_STEP_SUMMARY
+          echo "| Trigger | ${{ github.ref_name }} |" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<backgrounds>
+	<!-- Kodi Built-in Fanart Properties -->
+	<group name="kodi-fanart" label="Kodi fanart">
+		<background name="kodi-movie-fanart" label="$LOCALIZE[31548]" type="property" visible="Library.HasContent(movies)">
+			<path>$INFO[Container(9035).ListItem.Art(fanart)]</path>
+			<icon>special://skin/extras/icons/DefaultMovies.png</icon>
+		</background>
+		<background name="kodi-tv-fanart" label="$LOCALIZE[31549]" type="property" visible="Library.HasContent(tvshows)">
+			<path>$INFO[Container(9036).ListItem.Art(fanart)]</path>
+			<icon>special://skin/extras/icons/DefaultTVShows.png</icon>
+		</background>
+		<background name="kodi-music-fanart" label="$LOCALIZE[31550]" type="property" visible="Library.HasContent(music)">
+			<path>$INFO[Container(9037).ListItem.Art(fanart)]</path>
+			<icon>special://skin/extras/icons/DefaultAudio.png</icon>
+		</background>
+		<background name="kodi-musicvideo-fanart" label="$LOCALIZE[31575]" type="property" visible="Library.HasContent(musicvideos)">
+			<path>$INFO[Container(9038).ListItem.Art(fanart)]</path>
+			<icon>special://skin/extras/icons/DefaultMusicVideos.png</icon>
+		</background>
+	</group>
+	<!-- Skin Fanart Properties -->
+	<background name="movie-fanart" label="$LOCALIZE[31062]" type="property" visible="System.AddonIsEnabled(script.skin.info.service) + Library.HasContent(movies)">
+		<path>$INFO[Window(Home).Property(SkinInfo.Slideshow.Movie.FanArt)]</path>
+		<icon>special://skin/extras/icons/DefaultMovies.png</icon>
+	</background>
+	<background name="tv-fanart" label="$LOCALIZE[31063]" type="property" visible="System.AddonIsEnabled(script.skin.info.service) + Library.HasContent(tvshows)">
+		<path>$INFO[Window(Home).Property(SkinInfo.Slideshow.TV.FanArt)]</path>
+		<icon>special://skin/extras/icons/DefaultTVShows.png</icon>
+	</background>
+	<background name="video-fanart" label="$LOCALIZE[31064]" type="property" visible="System.AddonIsEnabled(script.skin.info.service)">
+		<path>$INFO[Window(Home).Property(SkinInfo.Slideshow.Video.FanArt)]</path>
+		<icon>special://skin/extras/icons/DefaultVideo.png</icon>
+	</background>
+	<background name="music-fanart" label="$LOCALIZE[31065]" type="property" visible="System.AddonIsEnabled(script.skin.info.service) + Library.HasContent(music)">
+		<path>$INFO[Window(Home).Property(SkinInfo.Slideshow.Music.FanArt)]</path>
+		<icon>special://skin/extras/icons/DefaultAudio.png</icon>
+	</background>
+	<background name="global-fanart" label="$LOCALIZE[31066]" type="property" visible="System.AddonIsEnabled(script.skin.info.service)">
+		<path>$INFO[Window(Home).Property(SkinInfo.Slideshow.Global.FanArt)]</path>
+		<icon>special://skin/extras/icons/DefaultPicture.png</icon>
+	</background>
+	<background name="weather-fanart" label="$LOCALIZE[31084]" type="property" visible="!String.IsEmpty(Skin.String(weatherfanart.path))">
+		<path>$INFO[Skin.String(weatherfanart.path)]$INFO[Window(Weather).Property(Current.FanartCode)]$VAR[WeatherBackgroundTypeVar]</path>
+		<icon>special://skin/extras/icons/DefaultAddonWeather.png</icon>
+	</background>
+	<!-- Playlist Background (user selects playlist) -->
+	<background name="playlist" label="$LOCALIZE[136]" type="playlist">
+		<icon>special://skin/extras/icons/DefaultPlaylist.png</icon>
+		<source label="Video Playlists" icon="DefaultVideoPlaylists.png">special://videoplaylists/</source>
+		<source label="Music Playlists" icon="DefaultMusicPlaylists.png">special://musicplaylists/</source>
+		<source label="Skin Playlists">special://skin/playlists/</source>
+	</background>
+	<!-- Live Backgrounds -->
+	<background name="live-random-movies" label="Live Background: Random movies" type="live" visible="Library.HasContent(movies)">
+		<path>random movies</path>
+		<icon>special://skin/extras/icons/DefaultMovies.png</icon>
+	</background>
+	<background name="live-recent-movies" label="Live Background: Recent movies" type="live" visible="Library.HasContent(movies)">
+		<path>recent movies</path>
+		<icon>special://skin/extras/icons/DefaultMovies.png</icon>
+	</background>
+	<background name="live-recent-episodes" label="Live Background: Recent episodes" type="live" visible="Library.HasContent(tvshows)">
+		<path>recent episodes</path>
+		<icon>special://skin/extras/icons/DefaultTVShows.png</icon>
+	</background>
+	<background name="live-random-songs" label="Live Background: Random songs" type="live" visible="Library.HasContent(music)">
+		<path>songs</path>
+		<icon>special://skin/extras/icons/DefaultAudio.png</icon>
+	</background>
+	<background name="live-random-albums" label="Live Background: Random albums" type="live" visible="Library.HasContent(music)">
+		<path>albums</path>
+		<icon>special://skin/extras/icons/DefaultMusicAlbums.png</icon>
+	</background>
+	<background name="live-playlist" label="Live Background: Playlist" type="live-playlist">
+		<icon>special://skin/extras/icons/DefaultPlaylist.png</icon>
+		<source label="Video Playlists" icon="DefaultVideoPlaylists.png">special://videoplaylists/</source>
+		<source label="Music Playlists" icon="DefaultMusicPlaylists.png">special://musicplaylists/</source>
+		<source label="Skin Playlists">special://skin/playlists/</source>
+	</background>
+	<!-- Custom Image (user browses for single image) -->
+	<background name="custom-image" label="$LOCALIZE[31023]" type="browse">
+		<icon>special://skin/extras/icons/DefaultPicture.png</icon>
+		<source label="Skin Backgrounds">special://skin/extras/backgrounds/</source>
+		<source label="$LOCALIZE[20019]">browse</source>
+	</background>
+	<!-- Custom Folder (slideshow from folder) -->
+	<background name="custom-folder" label="$LOCALIZE[31022]" type="multi">
+		<icon>special://skin/extras/icons/DefaultFolder.png</icon>
+		<source label="Skin Backgrounds">special://skin/extras/backgrounds/</source>
+		<source label="$LOCALIZE[20019]">browse</source>
+	</background>
+</backgrounds>

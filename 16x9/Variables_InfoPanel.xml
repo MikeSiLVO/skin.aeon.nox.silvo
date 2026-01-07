@@ -162,26 +162,26 @@
 	</variable>
 	<variable name="InfoPanelLabel1IconVar">
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]"></value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Status)"></value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(5100).ListItem.Property(TMDb.Status))"></value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]"></value>
 	</variable>
 	<variable name="InfoPanelLabel1Var">
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + ![String.IsEmpty(ListItem.Director) + String.IsEmpty(Container(4501).ListItem.Property(director.collection))]">$VAR[VideoDirectorVar]</value>
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">$LOCALIZE[10005]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Status)">$INFO[Container(9143).ListItem.Status]</value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(5100).ListItem.Property(TMDb.Status))">$INFO[Container(5100).ListItem.Property(TMDb.Status)]</value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]">$INFO[ListItem.Premiered]</value>
 	</variable>
 	<variable name="InfoPanelLabel2IconVar">
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]"></value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))"></value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))"></value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(5100).ListItem.Property(TMDb.NextEpisodeAired))"></value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(5100).ListItem.Property(TMDb.LastEpisodeAired))"></value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]"></value>
 	</variable>
 	<variable name="InfoPanelLabel2Var">
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + ![String.IsEmpty(ListItem.Writer) + String.IsEmpty(Container(4501).ListItem.Property(writer.collection))]">$VAR[VideoWriterVar]</value>
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">$LOCALIZE[10005]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Property(Next_Aired))">$INFO[Container(9143).ListItem.Property(Next_Aired),,: ]$INFO[Container(9143).ListItem.Property(Next_Aired.Title)]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(9143).ListItem.Property(Last_Aired))">$INFO[Container(9143).ListItem.Property(Last_Aired.Season),S]$INFO[Container(9143).ListItem.Property(Last_Aired.Episode),E,  -]$INFO[Container(9143).ListItem.Property(Last_Aired.Title)]</value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(5100).ListItem.Property(TMDb.NextEpisodeAired))">$INFO[Container(5100).ListItem.Property(TMDb.NextEpisodeAired),,: ]$INFO[Container(5100).ListItem.Property(TMDb.NextEpisodeTitle)]</value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(5100).ListItem.Property(TMDb.LastEpisodeAired))">$INFO[Container(5100).ListItem.Property(TMDb.LastEpisodeSeason),S]$INFO[Container(5100).ListItem.Property(TMDb.LastEpisode),E,  -]$INFO[Container(5100).ListItem.Property(TMDb.LastEpisodeTitle)]</value>
 		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]">$INFO[ListItem.Studio]</value>
 	</variable>
 	<variable name="InfoPanelLabel3IconVar">
