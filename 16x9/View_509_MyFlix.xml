@@ -322,7 +322,7 @@
 						</control>
 						<control type="group">
 							<visible>!Skin.HasSetting(Disable.NextAired) + !Container.Content(seasons)</visible>
-							<visible>!String.IsEmpty(Container(5100).ListItem.Property(TMDb.Status)) | !String.IsEmpty(ListItem.Status)</visible>
+							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status)) | !String.IsEmpty(ListItem.Status)</visible>
 							<height>40</height>
 							<control type="label">
 								<left>10</left>
@@ -343,7 +343,7 @@
 						</control>
 						<control type="group">
 							<visible>!Skin.HasSetting(Disable.NextAired) + !Container.Content(seasons)</visible>
-							<visible>!String.IsEmpty(Container(5100).ListItem.Property(TMDb.NextEpisodeAired)) | !String.IsEmpty(Container(5100).ListItem.Property(TMDb.LastEpisodeAired))</visible>
+							<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Online.LastEpisodeAired))</visible>
 							<height>40</height>
 							<control type="togglebutton">
 								<left>10</left>
@@ -353,7 +353,7 @@
 								<include>NoFocusObject</include>
 								<label></label>
 								<altlabel></altlabel>
-								<usealttexture>String.IsEmpty(Container(5100).ListItem.Property(TMDb.NextEpisodeAired))</usealttexture>
+								<usealttexture>String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired))</usealttexture>
 							</control>
 							<control type="label">
 								<left>40</left>

@@ -61,8 +61,8 @@
 				<height>100</height>
 				<textcolor>white</textcolor>
 				<shadowcolor>shadow</shadowcolor>
-				<label>$LOCALIZE[19031]: $INFO[Container(5100).ListItem.Property(TMDb.NextEpisodeAired),, • ]$INFO[Container(5100).ListItem.Property(TMDb.NextEpisodeSeason),S]$INFO[Container(5100).ListItem.Property(TMDb.NextEpisode),E, - ]$INFO[Container(5100).ListItem.Property(TMDb.NextEpisodeTitle)]</label>
-				<visible>[!String.IsEmpty(Container(5100).ListItem.Property(TMDb.NextEpisodeAired)) + !Control.HasFocus(61)] + !Skin.HasSetting(Disable.NextAired)</visible>
+				<label>$LOCALIZE[19031]: $INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeAired),, • ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeSeason),S]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisode),E, - ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeTitle)]</label>
+				<visible>[!String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired)) + !Control.HasFocus(61)] + !Skin.HasSetting(Disable.NextAired)</visible>
 			</control>
 			<control type="label">
 				<top>890</top>
@@ -71,8 +71,8 @@
 				<height>100</height>
 				<textcolor>white</textcolor>
 				<shadowcolor>shadow</shadowcolor>
-				<label>$INFO[Container(5100).ListItem.Property(TMDb.Status)]</label>
-				<visible>[String.IsEmpty(Container(5100).ListItem.Property(TMDb.NextEpisodeAired)) + !String.IsEmpty(Container(5100).ListItem.Property(TMDb.Status)) + !Control.HasFocus(61)] + !Skin.HasSetting(Disable.NextAired) + !Container.Content(movies)</visible>
+				<label>$INFO[Window(Home).Property(SkinInfo.Online.Status)]</label>
+				<visible>[String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired)) + !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status)) + !Control.HasFocus(61)] + !Skin.HasSetting(Disable.NextAired) + !Container.Content(movies)</visible>
 			</control>
 			<control type="label">
 				<left>398</left>

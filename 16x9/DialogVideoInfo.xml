@@ -8,9 +8,8 @@
 	<onload>SetProperty(SkinInfo.CM_Focus.3,Window.IsActive(Home) + String.IsEqual(ListItem.DBTYPE,tvshow)::808,Home)</onload>
 	<onload>RunScript(script.skin.info.service,action=container_move,main_focus=300|90017|90016|90015|90014|90013|90012|90011|90050|90003)</onload>
 	<onload>RunScript(script.skin.info.service,action=split_string,string="$INFO[ListItem.Director]",separator=/,prefix=Director)</onload>
-	<onload>RunScript(script.skin.info.service,action=urlencode,string="$INFO[ListItem.Title]",prefix=Title)</onload>
+	<onload>RunScript(script.skin.info.service,action=urlencode,string="$INFO[ListItem.Title]")</onload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(FSFanart))">ClearProperty(FSFanart,movieinformation)</onunload>
-	<onunload>ClearProperty(encoded_actor,Home)</onunload>
 	<onunload>ClearProperty(item_origin,Home)</onunload>
 	<onunload>ClearProperty(1109_origin,Home)</onunload>
 	<onunload>ClearProperty(crew_name,Home)</onunload>
