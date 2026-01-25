@@ -30,10 +30,10 @@
 						<visible>!String.IsEmpty(ListItem.Director) + Container.Content(movies)</visible>
 					</control>
 					<control type="button">
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]:[/COLOR][CR]$INFO[Container(5100).ListItem.Property(TMDb.Status)]</label>
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]:[/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Online.Status)]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
-						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(5100).ListItem.Property(TMDb.Status))</visible>
+						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status))</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20416]:[/COLOR][CR]$INFO[ListItem.Premiered]</label>
@@ -49,16 +49,16 @@
 						<visible>[[Container.Content(tvshows) | Container.Content(seasons)] + Skin.HasSetting(Disable.NextAired)] | Container.Content(episodes)</visible>
 					</control>
 					<control type="button">
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31010]: [/COLOR][CR]$INFO[Container(5100).ListItem.Property(TMDb.NextEpisodeAired),, • ]$INFO[Container(5100).ListItem.Property(TMDb.NextEpisodeSeason),S]$INFO[Container(5100).ListItem.Property(TMDb.NextEpisode),E, - ]$INFO[Container(5100).ListItem.Property(TMDb.NextEpisodeTitle)]</label>
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31010]: [/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeAired),, • ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeSeason),S]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisode),E, - ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeTitle)]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
-						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + ![String.IsEmpty(Container(5100).ListItem.Property(TMDb.NextEpisodeAired)) | String.IsEmpty(Container(5100).ListItem.Property(TMDb.LastEpisodeAired))] + !Skin.HasSetting(Disable.NextAired)</visible>
+						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + ![String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired)) | String.IsEmpty(Window(Home).Property(SkinInfo.Online.LastEpisodeAired))] + !Skin.HasSetting(Disable.NextAired)</visible>
 					</control>
 					<control type="button">
-						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31011]: [/COLOR][CR]$INFO[Container(5100).ListItem.Property(TMDb.LastEpisodeAired),, • ]$INFO[Container(5100).ListItem.Property(TMDb.LastEpisodeSeason),S]$INFO[Container(5100).ListItem.Property(TMDb.LastEpisode),E, - ]$INFO[Container(5100).ListItem.Property(TMDb.LastEpisodeTitle)]</label>
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31011]: [/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Online.LastEpisodeAired),, • ]$INFO[Window(Home).Property(SkinInfo.Online.LastEpisodeSeason),S]$INFO[Window(Home).Property(SkinInfo.Online.LastEpisode),E, - ]$INFO[Window(Home).Property(SkinInfo.Online.LastEpisodeTitle)]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
-						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Container(5100).ListItem.Property(TMDb.LastEpisodeAired)) + String.IsEmpty(Container(5100).ListItem.Property(TMDb.NextEpisodeAired)) + !Skin.HasSetting(Disable.NextAired)</visible>
+						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Window(Home).Property(SkinInfo.Online.LastEpisodeAired)) + String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired)) + !Skin.HasSetting(Disable.NextAired)</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</label>
