@@ -8,6 +8,13 @@
 	<onload condition="System.AddonIsEnabled(script.artistslideshow)">RunScript(script.artistslideshow,daemon=True)</onload>
 	<onload condition="!String.IsEmpty(Skin.String(StartupIntro))">SetFocus(10)</onload>
 	<onload condition="String.IsEmpty(Skin.String(StartupIntro))">ReplaceWindow($INFO[System.StartupWindow])</onload>
+	<!-- RESET TMDBH SETTINGS -->
+	<onload>Skin.Reset(TMDbHelper.Service)</onload>
+	<onload>Skin.Reset(TMDbHelper.EnableBlur)</onload>
+	<onload>Skin.Reset(TMDbHelper.MonitorContainer,9143)</onload>
+	<onload>Skin.Reset(TMDbHelper.DisableArtwork)</onload>
+	<onload>Skin.Reset(TMDbHelper.DisableExtendedProperties)</onload>
+	<onload>Skin.Reset(TMDbHelper.DirectCallAuto)</onload>
 	<onunload condition="!String.IsEmpty(Skin.String(StartupIntro))">SetProperty(Playing.StartupIntro,True,Home)</onunload>
 	<controls>
 		<control type="button" id="10">
