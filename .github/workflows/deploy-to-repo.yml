@@ -116,6 +116,9 @@ jobs:
 
           mkdir -p "repo-silvo/piers/${ADDON_ID}"
 
+          # Remove old zips before deploying new version
+          rm -f "repo-silvo/piers/${ADDON_ID}"/*.zip
+
           cp "${ZIP_NAME}" "repo-silvo/piers/${ADDON_ID}/"
           echo "Copied ${ZIP_NAME}"
 
