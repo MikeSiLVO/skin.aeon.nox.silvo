@@ -293,7 +293,7 @@
 								<width>1125</width>
 								<include>SettingsButtonCommonValues</include>
 								<label>$LOCALIZE[31080]</label>
-								<visible>String.IsEqual(Window.Property(menuname),mainmenu) + String.IsEqual(Container(211).ListItem.Property(hasSubmenu),true)</visible>
+								<visible>String.IsEqual(Window.Property(menuname),mainmenu) + String.IsEmpty(Window.Property(disableSubmenus))</visible>
 							</control>
 							<control type="button" id="310">
 								<description>Change background</description>
