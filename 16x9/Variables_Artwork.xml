@@ -206,7 +206,6 @@
 	<!-- Backgrounds -->
 	<variable name="HomeBackgroundVar">
 		<value condition="!String.IsEmpty(Container.ListItem.Property(background)) + $EXP[WidgetFanartVisible]">$INFO[Container.ListItem.Property(background)]</value>
-		<value condition="[String.IsEqual(Container(9000).ListItem.Property(WidgetType),weather) | String.IsEqual(Container(9000).ListItem.Property(WidgetType.2),weather) | String.IsEqual(Container(9000).ListItem.Property(WidgetType),system) | String.IsEqual(Container(9000).ListItem.Property(WidgetType.2),system)] + !String.IsEmpty(Container.ListItem.Property(Fanart)) + $EXP[WidgetFanartVisible]">$INFO[Container.ListItem.Property(Fanart)]</value>
 		<value condition="!String.IsEmpty(Control.GetLabel(4410)) + !Skin.HasSetting(Disable.Extrafanart) + $EXP[WidgetFanartVisible]">$INFO[Control.GetLabel(4410)]</value>
 		<value condition="!String.IsEmpty(Container.Art(set.fanart)) + $EXP[WidgetFanartVisible]">$INFO[Container.Art(set.fanart)]</value>
 		<value condition="!String.IsEmpty(Container.Art(tvshow.fanart)) + $EXP[WidgetFanartVisible]">$INFO[Container.Art(tvshow.fanart)]</value>
@@ -215,8 +214,8 @@
 		<value condition="Player.HasAudio + Skin.HasSetting(Enable.ArtistSlideshowOnHome) + !String.IsEmpty(MusicPlayer.Property(Fanart_Image))">$INFO[MusicPlayer.Property(Fanart_Image)]</value>
 		<value condition="Player.HasAudio + Skin.HasSetting(Enable.ArtistSlideshowOnHome) + !String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>
 		<value condition="Control.HasFocus(9010) + !String.IsEmpty(Container(9010).ListItem.Property(backgroundPath))">$INFO[Container(9010).ListItem.Property(backgroundPath)]</value>
+		<value condition="!String.IsEmpty(Container(9000).ListItem.Property(backgroundPath))">$VAR[MainMenuBackgroundPathVar]</value>
 		<value condition="!String.IsEmpty(Skin.String(CustomDefaultBackground.path))">$INFO[Skin.String(CustomDefaultBackground.path)]</value>
-		<value>$VAR[MainMenu_BackgroundPath]</value>
 	</variable>
 	<variable name="GlobalBackgroundVar">
 		<value condition="Window.Next(Home)" />
