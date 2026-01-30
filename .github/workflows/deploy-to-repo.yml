@@ -158,6 +158,7 @@ jobs:
             git commit -m "Deploy: ${{ steps.metadata.outputs.addon_id }} v${{ steps.metadata.outputs.version }}" \
                        -m "Source: ${{ github.repository }}@${{ github.sha }}" \
                        -m "Trigger: ${{ github.ref_name }}"
+            git pull --rebase
             git push
           fi
 
