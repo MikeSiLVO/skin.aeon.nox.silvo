@@ -843,9 +843,8 @@
 				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
-				<onclick>DialogSelectAudio</onclick>
-				<oninfo>ActivateWindow(osdaudiosettings)</oninfo>
-				<visible>Integer.IsGreater(VideoPlayer.AudioStreamCount,1)</visible>
+				<onup condition="Integer.IsGreater(VideoPlayer.AudioStreamCount,1)">DialogSelectAudio</onup>
+				<onclick>ActivateWindow(osdaudiosettings)</onclick>
 			</control>
 			<control type="button" id="702">
 				<texturefocus />
@@ -856,9 +855,8 @@
 				<shadowcolor>shadow</shadowcolor>
 				<width>100</width>
 				<height>100</height>
-				<onclick>DialogSelectVideo</onclick>
-				<oninfo>ActivateWindow(osdvideosettings)</oninfo>
-				<visible>Integer.IsGreater(VideoPlayer.VideoStreamCount,1)</visible>
+				<onup condition="Integer.IsGreater(VideoPlayer.VideoStreamCount,1)">DialogSelectVideo</onup>
+				<onclick>ActivateWindow(osdvideosettings)</onclick>
 			</control>
 			<control type="togglebutton" id="703">
 				<texturefocus />
@@ -872,8 +870,8 @@
 				<width>100</width>
 				<height>100</height>
 				<usealttexture>VideoPlayer.HasSubtitles</usealttexture>
-				<onclick condition="!VideoPlayer.HasSubtitles">ActivateWindow(OSDSubtitleSettings)</onclick>
-				<onclick condition="VideoPlayer.HasSubtitles">DialogSelectSubtitle</onclick>
+				<onup condition="VideoPlayer.HasSubtitles">DialogSelectSubtitle</onup>
+				<onclick>ActivateWindow(OSDSubtitleSettings)</onclick>
 				<oninfo>ActivateWindow(SubtitleSearch)</oninfo>
 			</control>
 			<control type="button" id="600">
