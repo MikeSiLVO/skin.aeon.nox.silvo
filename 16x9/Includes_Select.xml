@@ -1357,17 +1357,17 @@
 		<item>
 			<label>$LOCALIZE[287]</label>
 			<label2>[UPPERCASE]$INFO[VideoPlayer.SubtitlesLanguage][/UPPERCASE]</label2>
-			<onclick>ActivateWindow(osdsubtitlesettings)</onclick>
+			<onclick>DialogSelectSubtitle</onclick>
 		</item>
 		<item>
 			<label>$LOCALIZE[292]</label>
-			<label2>$VAR[AudioCodecLabelVar]$VAR[AudioChannelsLabelVar, • ]</label2>
-			<onclick>ActivateWindow(osdaudiosettings)</onclick>
+			<label2>$INFO[VideoPlayer.AudioLanguage,[UPPERCASE], - [/UPPERCASE]]$VAR[AudioCodecPlayerLabelVar]$VAR[AudioChannelsPlayerLabelVar, • ]</label2>
+			<onclick>DialogSelectAudio</onclick>
 		</item>
 		<item>
 			<label>$LOCALIZE[157]</label>
-			<label2>$INFO[Player.Process(videowidth)]$INFO[Player.Process(videoheight),x]$INFO[Player.Process(videoscantype)]</label2>
-			<onclick>ActivateWindow(osdvideosettings)</onclick>
+			<label2>$INFO[VideoPlayer.VideoResolution]$INFO[Player.Process(videoscantype)]</label2>
+			<onclick>DialogSelectVideo</onclick>
 		</item>
 	</include>
 	<include name="SelectPointerSize">
