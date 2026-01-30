@@ -489,7 +489,7 @@
 				<action>ActivateWindow(Videos,Addons,return)</action>
 			</shortcut>
 			<shortcut name="music-addons" label="$LOCALIZE[1038]" type="$LOCALIZE[1038]" icon="DefaultAddonMusic.png">
-				<action>ActivateWindow(MusicLibrary,Addons,return)</action>
+				<action>ActivateWindow(Music,Addons,return)</action>
 			</shortcut>
 			<shortcut name="picture-addons" label="$LOCALIZE[1039]" type="$LOCALIZE[1039]" icon="DefaultAddonPicture.png">
 				<action>ActivateWindow(Pictures,Addons,return)</action>
@@ -725,28 +725,16 @@
 				<shortcut name="android-apps" label="$LOCALIZE[20244]" type="$LOCALIZE[1043]" icon="DefaultAddonProgram.png" visible="System.Platform.Android">
 					<action>ActivateWindow(Programs,androidapp://sources/apps,return)</action>
 				</shortcut>
-				<shortcut name="program-addons-root" label="$LOCALIZE[1043]" type="$LOCALIZE[1043]" icon="DefaultAddonProgram.png">
-					<action>ActivateWindow(Programs,Addons,return)</action>
-				</shortcut>
-				<content source="addons" target="programs"/>
+				<content source="addons" label="$LOCALIZE[1043]" icon="DefaultAddonProgram.png" target="programs"/>
 			</group>
 			<group name="video-addons" label="$LOCALIZE[1037]" icon="DefaultAddonVideo.png">
-				<shortcut name="video-addons-root" label="$LOCALIZE[1037]" type="$LOCALIZE[1037]" icon="DefaultAddonVideo.png">
-					<action>ActivateWindow(Videos,Addons,return)</action>
-				</shortcut>
-				<content source="addons" target="video"/>
+				<content source="addons" label="$LOCALIZE[1037]" icon="DefaultAddonVideo.png" target="videos"/>
 			</group>
 			<group name="music-addons" label="$LOCALIZE[1038]" icon="DefaultAddonMusic.png">
-				<shortcut name="music-addons-root" label="$LOCALIZE[1038]" type="$LOCALIZE[1038]" icon="DefaultAddonMusic.png">
-					<action>ActivateWindow(MusicLibrary,Addons,return)</action>
-				</shortcut>
-				<content source="addons" target="music"/>
+				<content source="addons" label="$LOCALIZE[1038]" icon="DefaultAddonMusic.png" target="music"/>
 			</group>
 			<group name="picture-addons" label="$LOCALIZE[1039]" icon="DefaultAddonPicture.png">
-				<shortcut name="picture-addons-root" label="$LOCALIZE[1039]" type="$LOCALIZE[1039]" icon="DefaultAddonPicture.png">
-					<action>ActivateWindow(Pictures,Addons,return)</action>
-				</shortcut>
-				<content source="addons" target="pictures"/>
+				<content source="addons" label="$LOCALIZE[1039]" icon="DefaultAddonPicture.png" target="pictures"/>
 			</group>
 		</group>
 		<!-- PVR/Live TV -->
