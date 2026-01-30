@@ -274,34 +274,22 @@
 	<group name="addons-widgets" label="$LOCALIZE[24001]" source="addon">
 		<!-- Video Add-ons -->
 		<group name="video-addons-widgets" label="$LOCALIZE[1037]">
-			<widget name="video-addons" label="$LOCALIZE[1037]" icon="DefaultAddonVideo.png" type="addon" target="videos">
-				<path>addons://sources/video</path>
-			</widget>
-			<content source="addons" target="videos"/>
+			<content source="addons" label="$LOCALIZE[1037]" icon="DefaultAddonVideo.png" target="videos"/>
 		</group>
 		<!-- Music Add-ons -->
 		<group name="music-addons-widgets" label="$LOCALIZE[1038]">
-			<widget name="music-addons" label="$LOCALIZE[1038]" icon="DefaultAddonMusic.png" type="addon" target="music">
-				<path>addons://sources/audio</path>
-			</widget>
-			<content source="addons" target="audio"/>
-		</group>
-		<!-- Picture Add-ons -->
-		<group name="picture-addons-widgets" label="$LOCALIZE[1039]">
-			<widget name="picture-addons" label="$LOCALIZE[1039]" icon="DefaultAddonPicture.png" type="addon" target="pictures">
-				<path>addons://sources/image</path>
-			</widget>
-			<content source="addons" target="image"/>
+			<content source="addons" label="$LOCALIZE[1038]" icon="DefaultAddonMusic.png" target="music"/>
 		</group>
 		<!-- Program Add-ons -->
 		<group name="program-addons-widgets" label="$LOCALIZE[1043]">
-			<widget name="programs-addons" label="$LOCALIZE[1043]" icon="DefaultAddonProgram.png" type="addon" target="programs">
-				<path>addons://sources/executable</path>
-			</widget>
 			<widget name="android-apps" label="$LOCALIZE[20244]" icon="DefaultAddonProgram.png" type="addon" target="programs" visible="System.Platform.Android">
 				<path>androidapp://sources/apps</path>
 			</widget>
-			<content source="addons" target="programs"/>
+			<content source="addons" label="$LOCALIZE[1043]" icon="DefaultAddonProgram.png" target="programs"/>
+		</group>
+		<!-- Picture Add-ons -->
+		<group name="picture-addons-widgets" label="$LOCALIZE[1039]">
+			<content source="addons" label="$LOCALIZE[1039]" icon="DefaultAddonPicture.png" target="pictures"/>
 		</group>
 		<!-- Game Add-ons -->
 		<group name="game-addons-widgets" label="$LOCALIZE[10821]">
