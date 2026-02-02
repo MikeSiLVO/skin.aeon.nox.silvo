@@ -518,7 +518,7 @@
 	</include>
 	<!-- Cases Content Var -->
 	<variable name="CaseContentVar">
-		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),playlist) | [Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),playlist)]">$VAR[MainMenu_BackgroundPath]</value>
+		<value condition="String.EndsWith(Container(9000).ListItem.Property(background),playlist) | [Control.HasFocus(9010) + String.EndsWith(Container(9010).ListItem.Property(background),playlist)]">$VAR[MainMenuBackgroundPathVar]</value>
 		<value condition="Control.HasFocus(9010) + !String.IsEmpty(Container(9010).ListItem.Property(backgroundPlaylist))">$INFO[Container(9010).ListItem.Property(backgroundPlaylist)]</value>
 	</variable>
 	<!-- Cases Background Vars-->
