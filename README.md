@@ -1,6 +1,8 @@
 # Aeon Nox: SiLVO
 [![Kodi badge](https://img.shields.io/badge/SKIN%20for-Kodi-blue.svg)](https://forum.kodi.tv/forumdisplay.php?fid=142)
 
+If you enjoy this skin, [buy me a coffee](https://ko-fi.com/mikesilvo) ☕
+
 **Branches:**
  - **master:** Kodi v22 Codename Piers
  - **omega:** Kodi v21 Codename Omega
