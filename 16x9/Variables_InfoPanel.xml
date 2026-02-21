@@ -190,7 +190,7 @@
 		<value condition="Container.Content(seasons)"></value>
 	</variable>
 	<variable name="InfoPanelLabel3Var">
-		<value condition="!String.IsEmpty(ListItem.Top250)">$INFO[ListItem.Rating]$INFO[ListItem.Top250, / $LOCALIZE[13409] #]</value>
+		<value condition="!String.IsEmpty(ListItem.Top250) + Integer.IsLessOrEqual(ListItem.Top250,250)">$INFO[ListItem.Rating]$INFO[ListItem.Top250, / $LOCALIZE[13409] #]</value>
 		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">$INFO[ListItem.RatingAndVotes]</value>
 		<value condition="Container.Content(tvshows)">$INFO[ListItem.Property(TotalSeasons)]$VAR[OneOrMoreSeasonsVar, ]</value>
 		<value condition="Container.Content(tvshows) | Container.Content(seasons)">$INFO[ListItem.Property(TotalEpisodes)]$INFO[ListItem.Property(UnWatchedEpisodes), (,[LOWERCASE] $LOCALIZE[16101][/LOWERCASE])]</value>

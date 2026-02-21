@@ -124,7 +124,7 @@
 						<align>center</align>
 						<textcolor>grey</textcolor>
 						<label>$INFO[ListItem.Top250,$LOCALIZE[13409] # ,]</label>
-						<visible>!String.IsEmpty(ListItem.Top250)</visible>
+						<visible>!String.IsEmpty(ListItem.Top250) + Integer.IsLessOrEqual(ListItem.Top250,250)</visible>
 					</control>
 					<control type="label">
 						<width>856</width>

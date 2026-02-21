@@ -25,13 +25,12 @@
 					<width>400</width>
 					<orientation>horizontal</orientation>
 					<usecontrolcoords>true</usecontrolcoords>
-					<visible>Skin.HasSetting(lowlistimdblogo)</visible>
+					<visible>Skin.HasSetting(lowlistimdblogo) + !String.IsEmpty(ListItem.Top250) + Integer.IsLessOrEqual(ListItem.Top250,250)</visible>
 					<control type="image">
 						<width>80</width>
 						<height>80</height>
 						<aspectratio>keep</aspectratio>
 						<texture>logos/imdb.png</texture>
-						<visible>!String.IsEmpty(ListItem.Top250)</visible>
 					</control>
 					<control type="Label">
 						<top>14</top>
@@ -41,7 +40,6 @@
 						<font>font16_title_bold</font>
 						<shadowcolor>shadow</shadowcolor>
 						<textcolor>FFFFC900</textcolor>
-						<visible>!String.IsEmpty(ListItem.Top250)</visible>
 					</control>
 				</control>
 				<control type="image">
