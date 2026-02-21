@@ -442,10 +442,10 @@
 							<ondown>50001</ondown>
 							<onclick condition="!String.IsEmpty(Container(4800).ListItem.Title)">SetProperty(TextViewerHeader,$ESCINFO[Container(4800).ListItem.Title,[B],[/B]],Home)</onclick>
 							<onclick condition="String.IsEmpty(Container(4800).ListItem.Title) + !String.IsEmpty(Container(4801).ListItem.Title)">SetProperty(TextViewerHeader,$ESCINFO[Container(4801).ListItem.Title,[B],[/B]],Home)</onclick>
-							<onclick condition="String.IsEqual(Window(Home).Property(item_dbtype),movie) + !String.IsEmpty(Container(4800).ListItem.Tagline)">SetProperty(TextViewerSubHeader,$ESCINFO[Container(4800).ListItem.Tagline,[LIGHT],[/LIGHT]],Home)</onclick>
-							<onclick condition="String.IsEqual(Window(Home).Property(item_dbtype),movie) + String.IsEmpty(Container(4800).ListItem.Tagline) + !String.IsEmpty(Container(4801).ListItem.Tagline)">SetProperty(TextViewerSubHeader,$ESCINFO[Container(4801).ListItem.Tagline,[LIGHT],[/LIGHT]],Home)</onclick>
-							<onclick condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + !String.IsEmpty(Container(4801).ListItem.Status)">SetProperty(TextViewerSubHeader,$ESCINFO[Container(4801).ListItem.Status,[LIGHT],[/LIGHT]],Home)</onclick>
-							<onclick condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + String.IsEmpty(Container(4801).ListItem.Status) + !String.IsEmpty(Container(4800).ListItem.Status)">SetProperty(TextViewerSubHeader,$ESCINFO[Container(4800).ListItem.Status,[LIGHT],[/LIGHT]],Home)</onclick>
+							<onclick condition="String.IsEqual(Window(Home).Property(item_dbtype),movie) + !String.IsEmpty(Container(4800).ListItem.Tagline)">SetProperty(TextViewerSubHeader,$ESCINFO[Container(4800).ListItem.Tagline],Home)</onclick>
+							<onclick condition="String.IsEqual(Window(Home).Property(item_dbtype),movie) + String.IsEmpty(Container(4800).ListItem.Tagline) + !String.IsEmpty(Container(4801).ListItem.Tagline)">SetProperty(TextViewerSubHeader,$ESCINFO[Container(4801).ListItem.Tagline],Home)</onclick>
+							<onclick condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + !String.IsEmpty(Container(4801).ListItem.Status)">SetProperty(TextViewerSubHeader,$ESCINFO[Container(4801).ListItem.Status],Home)</onclick>
+							<onclick condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + String.IsEmpty(Container(4801).ListItem.Status) + !String.IsEmpty(Container(4800).ListItem.Status)">SetProperty(TextViewerSubHeader,$ESCINFO[Container(4800).ListItem.Status],Home)</onclick>
 							<onclick>SetProperty(TextViewerContent,$ESCVAR[CustomPlotVar],Home)</onclick>
 							<onclick>ActivateWindow(1112)</onclick>
 						</control>
