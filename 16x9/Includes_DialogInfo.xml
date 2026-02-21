@@ -1374,9 +1374,10 @@
 		</definition>
 	</include> -->
 	<include name="InfoTop250">
-		<control type="group">
-			<visible>!String.IsEmpty(ListItem.Top250)</visible>
-			<width>125</width>
+		<control type="grouplist">
+			<visible>!String.IsEmpty(ListItem.Top250) + Integer.IsLessOrEqual(ListItem.Top250,250)</visible>
+			<width>160</width>
+			<orientation>horizontal</orientation>
 			<control type="image">
 				<width>65</width>
 				<aspectratio>keep</aspectratio>
@@ -1392,35 +1393,11 @@
 			</control>
 		</control>
 	</include>
-	<!-- <include name="InfoTop250">
-		<definition>
-			<param name="visible" default="!String.IsEmpty(ListItem.Top250)" />
-			<param name="label" default="$INFO[ListItem.Top250, #]" />
-			<control type="grouplist">
-				<visible>$PARAM[visible]</visible>
-				<width>165</width>
-				<orientation>horizontal</orientation>
-				<control type="image">
-					<width>65</width>
-					<aspectratio>keep</aspectratio>
-					<colordiffuse>grey</colordiffuse>
-					<texture>logos/imdb.png</texture>
-				</control>
-				<control type="label">
-					<width>auto</width>
-					<align>center</align>
-					<font>font16_title_bold</font>
-					<textcolor>grey</textcolor>
-					<label>$PARAM[label]</label>
-				</control>
-			</control>
-		</definition>
-	</include> -->
 	<include name="InfoExtendedRatings">
-		<!-- RT Critics (library) -->
+		<!-- RT Critics -->
 		<control type="group">
 			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.Tomatoes.Percent)) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.Tomatoes.Percent))</visible>
-			<width>130</width>
+			<width>140</width>
 			<control type="image">
 				<width>68</width>
 				<aspectratio>keep</aspectratio>
@@ -1435,7 +1412,7 @@
 				<label>$VAR[RottenFreshLabelVar]</label>
 			</control>
 		</control>
-		<!-- RT Audience (library) -->
+		<!-- RT Audience -->
 		<control type="group">
 			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.Popcorn.Percent)) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.Popcorn.Percent))</visible>
 			<width>130</width>
@@ -1450,7 +1427,7 @@
 				<width>auto</width>
 				<font>font16_title_bold</font>
 				<textcolor>grey</textcolor>
-				<label>$VAR[RottenFreshAudienceLabelVar]$VAR[RottenFreshAudienceLabel2Var]</label>
+				<label>$VAR[RottenFreshAudienceLabelVar]</label>
 			</control>
 		</control>
 		<!-- TMDb (themoviedb) -->

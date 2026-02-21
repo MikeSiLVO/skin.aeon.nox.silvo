@@ -218,7 +218,7 @@
 						</control>
 						<!-- Top 250 -->
 						<control type="grouplist">
-							<visible>!String.IsEmpty(Container(4800).ListItem.Top250)</visible>
+							<visible>!String.IsEmpty(Container(4800).ListItem.Top250) + Integer.IsLessOrEqual(Container(4800).ListItem.Top250,250)</visible>
 							<width>165</width>
 							<orientation>horizontal</orientation>
 							<control type="image">

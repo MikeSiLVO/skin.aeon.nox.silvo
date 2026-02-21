@@ -3054,7 +3054,7 @@
 									</control>
 								</control>
 								<control type="grouplist">
-									<visible>!String.IsEmpty(VideoPlayer.Top250)</visible>
+									<visible>!String.IsEmpty(VideoPlayer.Top250) + Integer.IsLessOrEqual(VideoPlayer.Top250,250)</visible>
 									<width>165</width>
 									<itemgap>5</itemgap>
 									<orientation>horizontal</orientation>
@@ -3189,7 +3189,7 @@
 							<font>font15</font>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
 							<scroll>true</scroll>
-							<label>$INFO[Container(8001).ListItem.Property(TMDb.Budget)),$LOCALIZE[31850]: [COLOR grey],[/COLOR]]$INFO[Container(8001).ListItem.Property(TMDb.Revenue)),[COLOR grey]  •  [/COLOR]$LOCALIZE[31851]: [COLOR grey],[/COLOR]]</label>
+							<label>$INFO[Container(8001).ListItem.Property(TMDb.Budget),$LOCALIZE[31850]: [COLOR grey],[/COLOR]]$INFO[Container(8001).ListItem.Property(TMDb.Revenue),[COLOR grey]  •  [/COLOR]$LOCALIZE[31851]: [COLOR grey],[/COLOR]]</label>
 							<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Container(8001).ListItem.Property(TMDb.Budget)) | !String.IsEmpty(Container(8001).ListItem.Property(TMDb.Revenue))]</visible>
 						</control>
 						<control type="label">

@@ -89,7 +89,7 @@
 						<width>75</width>
 						<height>38</height>
 						<texture colordiffuse="grey">logos/imdb_bw.png</texture>
-						<visible>!String.IsEmpty(VideoPlayer.Top250)</visible>
+						<visible>!String.IsEmpty(VideoPlayer.Top250) + Integer.IsLessOrEqual(VideoPlayer.Top250,250)</visible>
 					</control>
 					<control type="label">
 						<left>285</left>
@@ -99,7 +99,7 @@
 						<textoffsetx>15</textoffsetx>
 						<textcolor>grey</textcolor>
 						<label>$INFO[VideoPlayer.Top250,$LOCALIZE[13409]  #]</label>
-						<visible>!String.IsEmpty(VideoPlayer.Top250)</visible>
+						<visible>!String.IsEmpty(VideoPlayer.Top250) + Integer.IsLessOrEqual(VideoPlayer.Top250,250)</visible>
 					</control>
 				</control>
 				<control type="label">
