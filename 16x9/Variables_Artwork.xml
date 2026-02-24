@@ -40,6 +40,7 @@
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.poster))">$INFO[ListItem.Art(tvshow.poster)]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.Art(tvshow.poster))">$INFO[Container.ListItem.Art(tvshow.poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
+		<value condition="Container.Content(musicvideos) + !String.IsEmpty(Window(Home).Property(SkinInfo.MusicVideo.Album.Thumb))">$INFO[Window(Home).Property(SkinInfo.MusicVideo.Album.Thumb)]</value>
 		<value>$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="BannerThumb">
@@ -67,6 +68,8 @@
 		<value condition="VideoPlayer.Content(episodes) + !String.IsEmpty(Player.Art(season.poster))">$INFO[Player.Art(season.poster)]</value>
 		<value condition="VideoPlayer.Content(episodes) + !String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.poster)]</value>
 		<value condition="!String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(poster)]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.Cover)">$INFO[VideoPlayer.Cover]</value>
+		<value condition="!String.IsEmpty(Player.Art(thumb))">$INFO[Player.Art(thumb)]</value>
 	</variable>
 	<variable name="VideoInfoPosterVar">
 		<value condition="[Control.HasFocus(50) | Control.HasFocus(90050)] + System.AddonIsEnabled(resource.images.actorart) + !String.IsEmpty(Control.GetLabel(9777))" />
@@ -84,10 +87,17 @@
 		<value condition="ControlGroup(90001).HasFocus(900011) + !String.IsEmpty(Container(900011).ListItem.Art(poster))">$INFO[Container(900011).ListItem.Art(poster)]</value>
 		<value condition="ControlGroup(90001).HasFocus(900012) + !String.IsEmpty(Container(900012).ListItem.Art(poster))">$INFO[Container(900012).ListItem.Art(poster)]</value>
 		<value condition="ControlGroup(90001).HasFocus(990020) + !String.IsEmpty(Container(990020).ListItem.Art(poster))">$INFO[Container(990020).ListItem.Art(poster)]</value>
+		<value condition="ControlGroup(90001).HasFocus(90018) + !String.IsEmpty(Container(90018).ListItem.Art(thumb))">$INFO[Container(90018).ListItem.Art(thumb)]</value>
+		<value condition="ControlGroup(90001).HasFocus(90019) + !String.IsEmpty(Container(90019).ListItem.Art(thumb))">$INFO[Container(90019).ListItem.Art(thumb)]</value>
+		<value condition="ControlGroup(90001).HasFocus(90020) + !String.IsEmpty(Container(90020).ListItem.Art(thumb))">$INFO[Container(90020).ListItem.Art(thumb)]</value>
+		<value condition="ControlGroup(90001).HasFocus(90021) + !String.IsEmpty(Container(90021).ListItem.Art(thumb))">$INFO[Container(90021).ListItem.Art(thumb)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(season.poster))">$INFO[ListItem.Art(season.poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.poster)) + !String.IsEqual(ListItem.DBTYPE,season)">$INFO[ListItem.Art(tvshow.poster)]</value>
 		<value condition="Control.IsVisible(4510)">$INFO[Control.GetLabel(4510)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,musicvideo) + !String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,musicvideo) + !String.IsEmpty(Window(Home).Property(SkinInfo.MusicVideo.Album.Thumb))">$INFO[Window(Home).Property(SkinInfo.MusicVideo.Album.Thumb)]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,musicvideo) + !String.IsEmpty(Window(Home).Property(SkinInfo.MusicVideo.Online.Artist.Thumb))">$INFO[Window(Home).Property(SkinInfo.MusicVideo.Online.Artist.Thumb)]</value>
 		<value>$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="CustomPosterVar">
@@ -119,6 +129,8 @@
 		<value condition="Container.Content(seasons) | Container.Content(episodes)">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(albumartist.clearlogo))">$INFO[ListItem.Art(albumartist.clearlogo)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(artist.clearlogo))">$INFO[ListItem.Art(artist.clearlogo)]</value>
+		<value condition="Container.Content(musicvideos) + !String.IsEmpty(Window(Home).Property(SkinInfo.MusicVideo.Artist.Clearlogo))">$INFO[Window(Home).Property(SkinInfo.MusicVideo.Artist.Clearlogo)]</value>
+		<value condition="Container.Content(musicvideos) + !String.IsEmpty(Window(Home).Property(SkinInfo.MusicVideo.Online.Artist.Clearlogo))">$INFO[Window(Home).Property(SkinInfo.MusicVideo.Online.Artist.Clearlogo)]</value>
 		<value>$INFO[ListItem.Art(clearlogo)]</value>
 	</variable>
 	<variable name="ArtworkDiscVar">
@@ -162,6 +174,8 @@
 		<value condition="[String.IsEqual(Window(Home).Property(item_dbtype),episode) | String.IsEqual(Window(Home).Property(item_dbtype),season)] + Skin.HasSetting(CharacterOnInfo)">$INFO[Container(4800).ListItem.Art(tvshow.clearart)]</value>
 	</variable>
 	<variable name="PlayerArtworkVar">
+		<value condition="VideoPlayer.Content(musicvideos) + !String.IsEmpty(Window(Home).Property(SkinInfo.Player.MusicVideo.Artist.Clearlogo))">$INFO[Window(Home).Property(SkinInfo.Player.MusicVideo.Artist.Clearlogo)]</value>
+		<value condition="VideoPlayer.Content(musicvideos) + !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Artist.Clearlogo))">$INFO[Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Artist.Clearlogo)]</value>
 		<value condition="VideoPlayer.Content(episodes) + !String.IsEmpty(Player.Art(tvshow.clearart))">$INFO[Player.Art(tvshow.clearart)]</value>
 		<value condition="VideoPlayer.Content(episodes) + !String.IsEmpty(Player.Art(tvshow.clearlogo))">$INFO[Player.Art(tvshow.clearlogo)]</value>
 		<value condition="!String.IsEmpty(Player.Art(clearart))">$INFO[Player.Art(clearart)]</value>
@@ -225,6 +239,8 @@
 		<value condition="!String.IsEmpty(ListItem.Art(fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[ListItem.Art(fanart)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(artist.fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[ListItem.Art(artist.fanart)]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.Art(fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[Container.ListItem.Art(fanart)]</value>
+		<value condition="Container.Content(musicvideos) + !String.IsEmpty(Window(Home).Property(SkinInfo.MusicVideo.Artist.Fanart))">$INFO[Window(Home).Property(SkinInfo.MusicVideo.Artist.Fanart)]</value>
+		<value condition="Container.Content(musicvideos) + !String.IsEmpty(Window(Home).Property(SkinInfo.MusicVideo.Online.Artist.Fanart))">$INFO[Window(Home).Property(SkinInfo.MusicVideo.Online.Artist.Fanart)]</value>
 		<value condition="!String.IsEmpty(Container.Art(set.fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[Container.Art(set.fanart)]</value>
 		<value condition="!String.IsEmpty(Container.Art(tvshow.fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[Container.Art(tvshow.fanart)]</value>
 		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,1)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Movie.FanArt)]</value>

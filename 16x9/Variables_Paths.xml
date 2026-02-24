@@ -7,6 +7,7 @@
 	<variable name="SkinInfoLibraryPathVar">
 		<value condition="Window.IsActive(fullscreenvideo) + VideoPlayer.Content(movies) + !String.IsEmpty(VideoPlayer.DBID)">plugin://script.skin.info.service/?action=getdetails&amp;dbid=$INFO[VideoPlayer.DBID]&amp;dbtype=movie</value>
 		<value condition="Window.IsActive(fullscreenvideo) + VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.DBID)">plugin://script.skin.info.service/?action=getdetails&amp;dbid=$INFO[VideoPlayer.DBID]&amp;dbtype=episode</value>
+		<value condition="!String.IsEmpty(ListItem.Property(musicvideomediatype))">plugin://script.skin.info.service/?action=getdetails&amp;dbtype=musicvideo_$INFO[ListItem.Property(musicvideomediatype)]&amp;artist=$INFO[ListItem.Label]&amp;album=$INFO[ListItem.Album]</value>
 		<value condition="!String.IsEmpty(ListItem.DBID)">plugin://script.skin.info.service/?action=getdetails&amp;dbid=$INFO[ListItem.DBID]&amp;dbtype=$INFO[ListItem.DBTYPE]</value>
 	</variable>
 	<variable name="SkinInfoOnlinePathVar">
@@ -72,6 +73,10 @@
 	<variable name="PathFlagsStudios">
 		<value condition="Skin.HasSetting(coloredflags)">resource://resource.images.studios.coloured/</value>
 		<value>resource://resource.images.studios.white/</value>
+	</variable>
+	<variable name="LastFMLogoVar">
+		<value condition="Skin.HasSetting(coloredflags)">logos/lastfm.png</value>
+		<value>logos/lastfm_bw.png</value>
 	</variable>
 	<variable name="PathFlagsLanguage">
 		<value>flags/language/default/</value>

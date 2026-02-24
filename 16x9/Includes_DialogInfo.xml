@@ -18,14 +18,27 @@
 		</control>
 	</include>
 	<include name="InfoPoster">
-		<control type="image">
-			<texture>colors/black.png</texture>
-		</control>
-		<control type="image">
-			<aspectratio>scale</aspectratio>
-			<fadetime>IconCrossfadeTime</fadetime>
-			<texture background="true">$PARAM[texture]</texture>
-		</control>
+		<param name="texture" default="$VAR[VideoInfoPosterVar]" />
+		<param name="aspectratio" default="scale" />
+		<param name="logo" default="" />
+		<definition>
+			<control type="image">
+				<texture>colors/black.png</texture>
+			</control>
+			<control type="image">
+				<left>20</left>
+				<width>680</width>
+				<height>351</height>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<fadetime>IconCrossfadeTime</fadetime>
+				<texture background="true">$PARAM[logo]</texture>
+			</control>
+			<control type="image">
+				<aspectratio aligny="bottom">$PARAM[aspectratio]</aspectratio>
+				<fadetime>IconCrossfadeTime</fadetime>
+				<texture background="true">$PARAM[texture]</texture>
+			</control>
+		</definition>
 	</include>
 	<include name="ExtendedInfoListLayout">
 		<param name="numitems" default="0" />
@@ -38,12 +51,18 @@
 		<param name="texture" default="$VAR[PosterVar]" />
 		<param name="target" default="videos" />
 		<param name="do_onclick" default="true" />
+		<param name="panelheight" default="480" />
+		<param name="itemwidth" default="300" />
+		<param name="imagewidth" default="320" />
+		<param name="imageheight" default="450" />
+		<param name="labeltop" default="422" />
+		<param name="labelwidth" default="284" />
 		<definition>
 			<control type="panel" id="$PARAM[id]">
 				<visible allowhiddenfocus="true">Integer.IsGreater(Container($PARAM[id]).NumItems,$PARAM[numitems])</visible>
 				<left>15</left>
 				<width>$PARAM[width]</width>
-				<height>480</height>
+				<height>$PARAM[panelheight]</height>
 				<orientation>horizontal</orientation>
 				<preloaditems>2</preloaditems>
 				<scrolltime tween="quadratic" easing="out">300</scrolltime>
@@ -59,12 +78,12 @@
 				<onclick condition="[Control.HasFocus(50002) | Control.HasFocus(50003) | Control.HasFocus(50004)]">SetFocus(4701)</onclick>
 				<onclick condition="[Control.HasFocus(50002) | Control.HasFocus(50003) | Control.HasFocus(50004)]">SetFocus(4610)</onclick>
 				<onclick condition="Control.HasFocus(990020) | Control.HasFocus(900020)">SetFocus(99)</onclick>
-				<itemlayout height="480" width="300">
+				<itemlayout height="$PARAM[panelheight]" width="$PARAM[itemwidth]">
 					<control type="image">
 						<left>-15</left>
 						<top>-10</top>
-						<width>320</width>
-						<height>450</height>
+						<width>$PARAM[imagewidth]</width>
+						<height>$PARAM[imageheight]</height>
 						<bordersize>22</bordersize>
 						<bordertexture border="20" infill="false">thumbs/shadow.png</bordertexture>
 						<aspectratio aligny="top">scale</aspectratio>
@@ -73,8 +92,8 @@
 					<control type="image">
 						<left>-15</left>
 						<top>-10</top>
-						<width>320</width>
-						<height>450</height>
+						<width>$PARAM[imagewidth]</width>
+						<height>$PARAM[imageheight]</height>
 						<bordersize>22</bordersize>
 						<texture>colors/black25.png</texture>
 						<visible>Window.IsVisible(1125)</visible>
@@ -101,8 +120,8 @@
 					</control>
 					<control type="label">
 						<left>3</left>
-						<top>422</top>
-						<width>284</width>
+						<top>$PARAM[labeltop]</top>
+						<width>$PARAM[labelwidth]</width>
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
@@ -136,14 +155,14 @@
 						<visible>$PARAM[overlayVisibility]</visible>
 					</control>
 				</itemlayout>
-				<focusedlayout height="480" width="300">
+				<focusedlayout height="$PARAM[panelheight]" width="$PARAM[itemwidth]">
 					<control type="group">
 						<animation effect="zoom" start="90" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
 						<control type="image">
 							<left>-15</left>
 							<top>-10</top>
-							<width>320</width>
-							<height>450</height>
+							<width>$PARAM[imagewidth]</width>
+							<height>$PARAM[imageheight]</height>
 							<bordersize>22</bordersize>
 							<bordertexture border="20" infill="false">thumbs/shadow.png</bordertexture>
 							<aspectratio aligny="top">scale</aspectratio>
@@ -192,8 +211,8 @@
 						</control>
 						<control type="label">
 							<left>3</left>
-							<top>422</top>
-							<width>284</width>
+							<top>$PARAM[labeltop]</top>
+							<width>$PARAM[labelwidth]</width>
 							<height>43</height>
 							<align>center</align>
 							<font>font14</font>
@@ -465,6 +484,56 @@
 			<param name="overlayVisibility">false</param>
 			<param name="content">videodb://movies/titles/?xsp={"rules":{"and":[{"field":"set","operator":"is","value":["$INFO[ListItem.Set]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title)]"]}]},"type":"movies"}</param>
 			<param name="sortby">year</param>
+		</include>
+	</include>
+	<include name="ExtendedInfoMusicvideoLists">
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90018</param>
+			<param name="itemwidth">400</param>
+			<param name="imagewidth">420</param>
+			<param name="imageheight">420</param>
+			<param name="labeltop">392</param>
+			<param name="labelwidth">384</param>
+			<param name="texture">$INFO[ListItem.Thumb]</param>
+			<param name="overlayVisibility">false</param>
+			<param name="do_onclick">false</param>
+			<param name="content">plugin://script.skin.info.service/?action=similar_artists&amp;artist=$INFO[ListItem.Artist]&amp;limit=10</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90019</param>
+			<param name="itemwidth">400</param>
+			<param name="imagewidth">420</param>
+			<param name="imageheight">420</param>
+			<param name="labeltop">392</param>
+			<param name="labelwidth">384</param>
+			<param name="texture">$INFO[ListItem.Thumb]</param>
+			<param name="overlayVisibility">false</param>
+			<param name="do_onclick">false</param>
+			<param name="content">plugin://script.skin.info.service/?action=artist_albums&amp;artist=$INFO[ListItem.Artist]</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90020</param>
+			<param name="itemwidth">400</param>
+			<param name="imagewidth">420</param>
+			<param name="imageheight">420</param>
+			<param name="labeltop">392</param>
+			<param name="labelwidth">384</param>
+			<param name="texture">$INFO[ListItem.Thumb]</param>
+			<param name="overlayVisibility">false</param>
+			<param name="do_onclick">false</param>
+			<param name="content">plugin://script.skin.info.service/?action=artist_musicvideos&amp;artist=$INFO[ListItem.Artist]&amp;dbid=$INFO[ListItem.DBID]&amp;dbtype=musicvideo</param>
+		</include>
+		<include content="ExtendedInfoListLayout">
+			<param name="id">90021</param>
+			<param name="itemwidth">400</param>
+			<param name="imagewidth">420</param>
+			<param name="imageheight">420</param>
+			<param name="labeltop">392</param>
+			<param name="labelwidth">384</param>
+			<param name="texture">$INFO[ListItem.Thumb]</param>
+			<param name="overlayVisibility">false</param>
+			<param name="do_onclick">false</param>
+			<param name="content">plugin://script.skin.info.service/?action=genre_artists&amp;artist=$INFO[ListItem.Artist]&amp;limit=10</param>
 		</include>
 	</include>
 	<include name="ExtendedInfoOnclick">
@@ -827,6 +896,7 @@
 		<include condition="String.IsEqual(ListItem.DBTYPE,movie)">InfoContentMovies</include>
 		<include condition="String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)">InfoContentTVShows</include>
 		<include condition="String.IsEqual(ListItem.DBTYPE,episode)">InfoContentEpisodes</include>
+		<include condition="String.IsEqual(ListItem.DBTYPE,musicvideo)">InfoContentMusicvideos</include>
 		<include>InfoContentGeneral</include>
 	</include>
 	<include name="CustomInfoContentDetails">
@@ -1084,6 +1154,56 @@
 			<onclick>SetProperty(crew_job,writer,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 			<visible>!String.IsEmpty(ListItem.Writer)</visible>
+		</item>
+		<item>
+			<label>$INFO[ListItem.Premiered]</label>
+			<label2>$LOCALIZE[172]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[172])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[ListItem.Premiered])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(ListItem.Premiered)</visible>
+		</item>
+	</include>
+	<include name="InfoContentMusicvideos">
+		<item>
+			<label>$INFO[ListItem.Director]</label>
+			<label2>$LOCALIZE[20339]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[20339])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[ListItem.Director])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(ListItem.Director)</visible>
+		</item>
+		<item>
+			<label>$INFO[ListItem.Genre]</label>
+			<label2>$LOCALIZE[515]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[515])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[ListItem.Genre])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(ListItem.Genre)</visible>
+		</item>
+		<item>
+			<label>$INFO[ListItem.Album]</label>
+			<label2>$LOCALIZE[558]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[558])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[ListItem.Album])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(ListItem.Album)</visible>
+		</item>
+		<item>
+			<label>$INFO[ListItem.Tag]</label>
+			<label2>$LOCALIZE[20459]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[20459])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[ListItem.Tag])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>!String.IsEmpty(ListItem.Tag)</visible>
+		</item>
+		<item>
+			<label>$INFO[Window(Home).Property(SkinInfo.MusicVideo.Online.Track.Tags)]</label>
+			<label2>$LOCALIZE[20459]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[20459])</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window(Home).Property(SkinInfo.MusicVideo.Online.Track.Tags)])</onclick>
+			<onclick>SetFocus(64)</onclick>
+			<visible>String.IsEmpty(ListItem.Tag) + !String.IsEmpty(Window(Home).Property(SkinInfo.MusicVideo.Online.Track.Tags))</visible>
 		</item>
 		<item>
 			<label>$INFO[ListItem.Premiered]</label>

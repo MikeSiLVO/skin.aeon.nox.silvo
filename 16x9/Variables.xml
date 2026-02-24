@@ -287,6 +287,23 @@
 		<value condition="String.IsEmpty(Container(4800).ListItem.Votes)">$LOCALIZE[563]</value>
 		<value>$INFO[Container(4800).ListItem.Votes,, $LOCALIZE[205]]</value>
 	</variable>
+	<variable name="MusicVideoStudioVar">
+		<value condition="!Skin.HasSetting(Disable.MusicVideo.OnlineMetadata) + !String.IsEmpty(Window(Home).Property(SkinInfo.MusicVideo.Online.Album.Label))">$INFO[Window(Home).Property(SkinInfo.MusicVideo.Online.Album.Label)]</value>
+		<value condition="!String.IsEmpty(ListItem.Studio)">$INFO[ListItem.Studio]</value>
+	</variable>
+	<variable name="MusicVideoGenreVar">
+		<value condition="!Skin.HasSetting(Disable.MusicVideo.OnlineMetadata) + !String.IsEmpty(Window(Home).Property(SkinInfo.MusicVideo.Online.Track.Tags))">$INFO[Window(Home).Property(SkinInfo.MusicVideo.Online.Track.Tags)]</value>
+		<value condition="!String.IsEmpty(ListItem.Genre)">$INFO[ListItem.Genre]</value>
+	</variable>
+	<!-- Player context: music video online fallbacks (VideoPlayer.* infolabels) -->
+	<variable name="PlayerMusicVideoStudioVar">
+		<value condition="!Skin.HasSetting(Disable.MusicVideo.OnlineMetadata) + !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Album.Label))">$INFO[Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Album.Label)]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.Studio)">$INFO[VideoPlayer.Studio]</value>
+	</variable>
+	<variable name="PlayerMusicVideoPlotVar">
+		<value condition="!Skin.HasSetting(Disable.MusicVideo.OnlineMetadata) + !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Track.Wiki))">$INFO[Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Track.Wiki)]</value>
+		<value condition="!Skin.HasSetting(Disable.MusicVideo.OnlineMetadata) + !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Artist.Bio))">$INFO[Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Artist.Bio)]</value>
+	</variable>
 	<variable name="OneOrMoreSeasonsVar">
 		<value condition="!Window.IsVisible(1102) + Integer.IsEqual(ListItem.Property(TotalSeasons),1) | Window.IsVisible(1102) + Integer.IsEqual(Container(4800).ListItem.Property(TotalSeasons),1)">$LOCALIZE[20373]</value>
 		<value>$LOCALIZE[33054]</value>
@@ -299,6 +316,8 @@
 		<value condition="ListItem.IsCollection + !Skin.HasSetting(ViewSetPlotToggle)">$INFO[Container(4500).ListItemNoWrap(0).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(0).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(1).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(1).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(2).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(2).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(3).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(3).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(4).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(4).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(5).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(5).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(6).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(6).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(7).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(7).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(8).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(8).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(9).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(9).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(10).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(10).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(11).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(11).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(12).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(12).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(13).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(13).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(14).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(14).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(15).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(15).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(16).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(16).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(17).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(17).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(18).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(18).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(19).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(19).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(20).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(20).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(21).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(21).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(22).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(22).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(23).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(23).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(24).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(24).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(25).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(25).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(26).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(26).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(27).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(27).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(28).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(28).Plot,[CR],[CR][CR]]$INFO[Container(4500).ListItemNoWrap(29).Label,[B],[/B]]$INFO[Container(4500).ListItemNoWrap(29).Plot,[CR],[CR][CR]]</value>
 		<value condition="Container.Content(seasons)">$INFO[Container.ShowPlot]</value>
 		<value condition="!String.IsEmpty(ListItem.PlotOutline) + Skin.HasSetting(ViewInfoPlotToggle)">$INFO[ListItem.PlotOutline]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,musicvideo) + !Skin.HasSetting(Disable.MusicVideo.OnlineMetadata) + !String.IsEmpty(Window(Home).Property(SkinInfo.MusicVideo.Online.Track.Wiki))">$INFO[Window(Home).Property(SkinInfo.MusicVideo.Online.Track.Wiki)]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,musicvideo) + !Skin.HasSetting(Disable.MusicVideo.OnlineMetadata) + !String.IsEmpty(Window(Home).Property(SkinInfo.MusicVideo.Online.Artist.Bio))">$INFO[Window(Home).Property(SkinInfo.MusicVideo.Online.Artist.Bio)]</value>
 		<value>$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="OtherPlotVar">
@@ -387,11 +406,15 @@
 		<value condition="[Container.Content(tvshows) + Skin.HasSetting(rightlistalternatetv)]">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ,]</value>
 		<value condition="Container.Content(episodes) + !Skin.HasSetting(Enable.HourMinuteDuration) + !String.IsEmpty(ListItem.Duration)">$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.EndTimeResume, •  $LOCALIZE[31393]: ]</value>
 		<value condition="Container.Content(episodes) + Skin.HasSetting(Enable.HourMinuteDuration) + !String.IsEmpty(ListItem.Duration)">$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.EndTimeResume, •  $LOCALIZE[31393]: ]</value>
+		<value condition="Container.Content(musicvideos) + !Skin.HasSetting(rightlistalternate)">$INFO[ListItem.Album]</value>
+		<value condition="Container.Content(musicvideos) + Skin.HasSetting(rightlistalternate)">$INFO[ListItem.Album]$INFO[ListItem.Year, • ]</value>
 		<value condition="Container.Content(albums)">$INFO[ListItem.Year,, / ]$INFO[ListItem.Artist]</value>
 		<value condition="Container.Content(songs)">$INFO[ListItem.Artist]$INFO[ListItem.Duration, / ]</value>
 	</variable>
 	<variable name="RightListItemLabelVar">
 		<value condition="Container.Content(songs)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
+		<value condition="Container.Content(musicvideos) + String.IsEqual(Container.SortMethod,$LOCALIZE[551])">$INFO[ListItem.Title]$INFO[ListItem.Artist, - ]</value>
+		<value condition="Container.Content(musicvideos)">$INFO[ListItem.Artist,, - ]$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="SeekLabelVar">
@@ -435,7 +458,7 @@
 	</variable>
 	<variable name="SkinSettingsDescriptionVar">
 		<value condition="Window.IsVisible(1117)" />
-		<value condition="Control.HasFocus(10000) | Control.HasFocus(30000)">$LOCALIZE[31912]</value>
+		<value condition="Control.HasFocus(10000)">$LOCALIZE[31912]</value>
 		<value condition="Control.HasFocus(10001)">$LOCALIZE[31914]</value>
 		<value condition="Control.HasFocus(10002)">$LOCALIZE[31929]</value>
 		<value condition="Control.HasFocus(10003)">$LOCALIZE[31262]</value>
@@ -456,6 +479,7 @@
 		<value condition="Control.HasFocus(20003)">$LOCALIZE[31920]</value>
 		<value condition="Control.HasFocus(20004)">$LOCALIZE[31921]</value>
 		<!-- Customization -->
+		<value condition="Control.HasFocus(30000)">$LOCALIZE[31944]</value>
 		<value condition="Control.HasFocus(30001)">$LOCALIZE[31028]</value>
 		<value condition="Control.HasFocus(30002)">$LOCALIZE[31373]</value>
 		<value condition="Control.HasFocus(30003)">$LOCALIZE[31032]</value>
@@ -481,7 +505,7 @@
 		<value condition="Control.HasFocus(50002)">$LOCALIZE[31940]</value>
 		<value condition="Control.HasFocus(50003)">$LOCALIZE[31942]</value>
 		<value condition="Control.HasFocus(50004)">$LOCALIZE[31589]</value>
-		<value condition="Control.HasFocus(50005)">$LOCALIZE[31944]</value>
+		<value condition="Control.HasFocus(50005)">$LOCALIZE[31118]</value>
 		<value condition="Control.HasFocus(50006)">$LOCALIZE[31945]</value>
 		<value condition="Control.HasFocus(50007)">$LOCALIZE[31962]</value>
 		<value condition="Control.HasFocus(50008)">$LOCALIZE[31380]</value>
@@ -701,6 +725,10 @@
 		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow) + ControlGroup(90001).HasFocus(90015)">$LOCALIZE[31521]$INFO[Container(90015).ListItem.Property(Actor), ]$INFO[Container(90015).CurrentItem, (,/]$INFO[Container(90015).NumItems,,)]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow) + ControlGroup(90001).HasFocus(90016)">$LOCALIZE[33054]$INFO[Container(90016).CurrentItem, (,/]$INFO[Container(90016).NumItems,,)]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,movie) + ControlGroup(90001).HasFocus(90017)">$LOCALIZE[31038] $INFO[ListItem.Set]$INFO[Container(90017).CurrentItem, (,/]$INFO[Container(90017).NumItems,,)]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,musicvideo) + ControlGroup(90001).HasFocus(90018)">$LOCALIZE[31104]$INFO[Container(90018).CurrentItem, (,/]$INFO[Container(90018).NumItems,,)]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,musicvideo) + ControlGroup(90001).HasFocus(90019)">$LOCALIZE[31105]$INFO[ListItem.Artist, ]$INFO[Container(90019).CurrentItem, (,/]$INFO[Container(90019).NumItems,,)]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,musicvideo) + ControlGroup(90001).HasFocus(90020)">$LOCALIZE[31114]$INFO[ListItem.Artist, ]$INFO[Container(90020).CurrentItem, (,/]$INFO[Container(90020).NumItems,,)]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,musicvideo) + ControlGroup(90001).HasFocus(90021)">$LOCALIZE[31116]$INFO[Container(90021).CurrentItem, (,/]$INFO[Container(90021).NumItems,,)]</value>
 		<value condition="[Container(9001).HasNext + !Container(9001).HasPrevious] + !String.IsEqual(ListItem.DBTYPE,song)">$LOCALIZE[31453]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,season)">$LOCALIZE[31271]</value>
 	</variable>
