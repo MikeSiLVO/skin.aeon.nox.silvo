@@ -178,7 +178,7 @@
 			<label>$LOCALIZE[20021]</label>
 			<onclick>Skin.ToggleSetting(Disable.FullscreenPoster)</onclick>
 			<selected>!Skin.HasSetting(Disable.FullscreenPoster)</selected>
-			<visible>![Window.IsVisible(seekbar) + VideoPlayer.Content(LiveTV)]</visible>
+			<visible>![Window.IsVisible(seekbar) + VideoPlayer.Content(LiveTV)] + !VideoPlayer.Content(musicvideos)</visible>
 		</control>
 		<control type="radiobutton" id="90206">
 			<width>1498</width>
@@ -188,7 +188,7 @@
 			<onclick>Skin.ToggleSetting(Disable.FullscreenDiscart)</onclick>
 			<selected>!Skin.HasSetting(Disable.FullscreenDiscart)</selected>
 			<visible>!Skin.HasSetting(Disable.FullscreenPoster)</visible>
-			<visible>![Window.IsVisible(seekbar) + VideoPlayer.Content(LiveTV)]</visible>
+			<visible>![Window.IsVisible(seekbar) + VideoPlayer.Content(LiveTV)] + !VideoPlayer.Content(musicvideos)</visible>
 		</control>
 		<control type="radiobutton" id="90207">
 			<width>1498</width>
@@ -198,7 +198,7 @@
 			<onclick>Skin.ToggleSetting(SwapFullscreenInfo)</onclick>
 			<selected>Skin.HasSetting(SwapFullscreenInfo)</selected>
 			<visible>Skin.HasSetting(Disable.FullscreenPoster)</visible>
-			<visible>![Window.IsVisible(seekbar) + VideoPlayer.Content(LiveTV)]</visible>
+			<visible>![Window.IsVisible(seekbar) + VideoPlayer.Content(LiveTV)] + !VideoPlayer.Content(musicvideos)</visible>
 		</control>
 		<control type="radiobutton" id="90208">
 			<width>1498</width>
@@ -506,6 +506,16 @@
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
+			<onclick>Skin.ToggleSetting(Enable.ExtendedInfoMVIntergration)</onclick>
+			<onclick>Dialog.Close(1119)</onclick>
+			<onclick>Dialog.Close(movieinformation)</onclick>
+			<selected>Skin.HasSetting(Enable.ExtendedInfoMVIntergration)</selected>
+			<label>$LOCALIZE[31127] ($LOCALIZE[20389])</label>
+		</control>
+		<control type="radiobutton" id="90211">
+			<width>1498</width>
+			<textoffsetx>20</textoffsetx>
+			<radioposx>1388</radioposx>
 			<onclick>Skin.ToggleSetting(Enable.BlurredVideoInfo)</onclick>
 			<selected>Skin.HasSetting(Enable.BlurredVideoInfo)</selected>
 			<onclick condition="Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(SkinInfo.Blur)</onclick>
@@ -513,7 +523,7 @@
 			<onclick condition="!Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(SkinInfo.BlurSource,ListItem.Art(poster),home)</onclick>
 			<label>$LOCALIZE[31174]</label>
 		</control>
-		<control type="button" id="90211">
+		<control type="button" id="90212">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<label>$LOCALIZE[31442]</label>
@@ -522,7 +532,7 @@
 			<onclick>ActivateWindow(1129)</onclick>
 			<visible>!Skin.HasSetting(Enable.BlurredVideoInfo)</visible>
 		</control>
-		<control type="radiobutton" id="90212">
+		<control type="radiobutton" id="90213">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
@@ -530,7 +540,7 @@
 			<selected>Skin.HasSetting(discartoninfo)</selected>
 			<label>$LOCALIZE[31601]</label>
 		</control>
-		<control type="radiobutton" id="90213">
+		<control type="radiobutton" id="90214">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
@@ -538,7 +548,7 @@
 			<selected>Skin.HasSetting(CharacterOnInfo)</selected>
 			<label>$LOCALIZE[31507]</label>
 		</control>
-		<control type="radiobutton" id="90214">
+		<control type="radiobutton" id="90215">
 			<width>1498</width>
 			<textoffsetx>20</textoffsetx>
 			<radioposx>1388</radioposx>
@@ -771,7 +781,7 @@
 			<label>  - $LOCALIZE[303]</label>
 			<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Skin.String(InfoPopup.Delay),, $LOCALIZE[31090]][/COLOR]</label2>
 			<onclick>$VAR[InfoPopupDelayOnclickVar]</onclick>
-			<visible>[String.IsEqual(Window(Home).Property(actualViewtype),FullscreenWall) + Skin.HasSetting(Enable.FullscreenWallInfoPopup)] | [String.IsEqual(Window(Home).Property(actualViewtype),RightList) + Skin.HasSetting(Enable.RightlistInfoPopup) + Skin.HasSetting(inforightlist)] | [String.IsEqual(Window(Home).Property(actualViewtype),Icons) + Skin.HasSetting(Enable.IconsInfoPopup)] | [String.IsEqual(Window(Home).Property(actualViewtype),BannerWall) + Skin.HasSetting(Disable.BannerWallInfo) + Skin.HasSetting(Enable.BannerWallInfoPopup)] + !Window.IsActive(music)</visible>
+			<visible>[String.IsEqual(Window(Home).Property(actualViewtype),FullscreenWall) + Skin.HasSetting(Enable.FullscreenWallInfoPopup)] | [String.IsEqual(Window(Home).Property(actualViewtype),RightList) + Skin.HasSetting(Enable.RightlistInfoPopup) + Skin.HasSetting(inforightlist) + !Container.Content(musicvideos)] | [String.IsEqual(Window(Home).Property(actualViewtype),Icons) + Skin.HasSetting(Enable.IconsInfoPopup)] | [String.IsEqual(Window(Home).Property(actualViewtype),BannerWall) + Skin.HasSetting(Disable.BannerWallInfo) + Skin.HasSetting(Enable.BannerWallInfoPopup)] + !Window.IsActive(music)</visible>
 			<visible>!Container.Content(genres)</visible>
 		</control>
 		<!-- HD/SD/3D Indicators -->
@@ -913,13 +923,13 @@
 			<label>$LOCALIZE[31077]</label>
 			<onclick>Container.SetViewMode(53)</onclick>
 			<visible>Window.IsActive(videos)</visible>
-			<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(musicvideos) | Container.Content(seasons) | Container.Content(genres) | Container.Content(sets)] + !Skin.HasSetting(Disable.ShowCaseView)</visible>
+			<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(genres) | Container.Content(sets)] + !Skin.HasSetting(Disable.ShowCaseView)</visible>
 		</control>
 		<control type="button" id="1514">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31079]</label>
 			<onclick>Container.SetViewMode(57)</onclick>
-			<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(musicvideos) | Container.Content(seasons) | Container.Content(genres) | Container.Content(sets) | Container.Content(addons) | Container.Content(songs) | Container.Content(artists) | Container.Content(albums) | Container.Content(genres)] + !Skin.HasSetting(Disable.ShiftView)</visible>
+			<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(genres) | Container.Content(sets) | Container.Content(addons) | Container.Content(songs) | Container.Content(artists) | Container.Content(albums) | Container.Content(genres)] + !Skin.HasSetting(Disable.ShiftView)</visible>
 		</control>
 		<control type="button" id="1515">
 			<include>ButtonCommonValues</include>
@@ -933,7 +943,7 @@
 			<label>$LOCALIZE[31243]</label>
 			<onclick>Container.SetViewMode(56)</onclick>
 			<visible>Window.IsActive(videos)</visible>
-			<visible>[Container.Content(genres) | Container.Content(tvshows) | Container.Content(movies) | Container.Content(sets) | Container.Content(seasons) | Container.Content(musicvideos)] + !Skin.HasSetting(Disable.PostersView)</visible>
+			<visible>[Container.Content(genres) | Container.Content(tvshows) | Container.Content(movies) | Container.Content(sets) | Container.Content(seasons)] + !Skin.HasSetting(Disable.PostersView)</visible>
 		</control>
 		<control type="button" id="1517">
 			<include>ButtonCommonValues</include>

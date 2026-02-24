@@ -299,8 +299,8 @@
 						<visible>Container(9000).HasFocus(3)</visible>
 						<control type="button" id="30000">
 							<include>SettingsButtonCommonValues</include>
-							<label>31911</label>
-							<onclick>RunScript(script.skinshortcuts,type=manage&amp;menu=mainmenu)</onclick>
+							<label>$LOCALIZE[31943]</label>
+							<onclick>ActivateWindow(1127)</onclick>
 						</control>
 						<control type="button" id="30001">
 							<include>SettingsButtonCommonValues</include>
@@ -462,10 +462,11 @@
 							<onclick>Skin.ToggleSetting(Disable.MultiSearch)</onclick>
 							<selected>Skin.HasSetting(Disable.MultiSearch)</selected>
 						</control>
-						<control type="button" id="50005">
+						<control type="radiobutton" id="50005">
 							<include>SettingsButtonCommonValues</include>
-							<label>31943</label>
-							<onclick>ActivateWindow(1127)</onclick>
+							<label>$LOCALIZE[31119]</label>
+							<onclick>Skin.ToggleSetting(Disable.MusicVideo.OnlineMetadata)</onclick>
+							<selected>!Skin.HasSetting(Disable.MusicVideo.OnlineMetadata)</selected>
 						</control>
 						<control type="button" id="50006">
 							<include>SettingsButtonCommonValues</include>
