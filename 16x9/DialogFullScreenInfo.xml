@@ -18,7 +18,7 @@
 			<onleft condition="!VideoPlayer.Content(livetv) + !String.IsEmpty(Window(fullscreeninfo).Property(ShowCast))">ClearProperty(ShowCast,fullscreeninfo)</onleft>
 			<onright condition="!VideoPlayer.Content(livetv) + !String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot))">ClearProperty(ShowPlot,fullscreeninfo)</onright>
 			<!-- <onright condition="!VideoPlayer.Content(livetv) + String.IsEmpty(Window(fullscreeninfo).Property(ShowCast))">SetProperty(ShowCast,True,fullscreeninfo)</onright> -->
-			<onright condition="!VideoPlayer.Content(livetv)">ActivateWindow(1120)</onright>
+			<onright condition="!VideoPlayer.Content(livetv) + !VideoPlayer.Content(musicvideos)">ActivateWindow(1120)</onright>
 			<onright condition="!VideoPlayer.Content(livetv) + !String.IsEmpty(Window(fullscreeninfo).Property(ShowCast))">ClearProperty(ShowCast,fullscreeninfo)</onright>
 			<onright condition="!VideoPlayer.Content(livetv) + !String.IsEmpty(Window(fullscreeninfo).Property(ShowCast))">ClearProperty(ShowMoreDetails,fullscreeninfo)</onright>
 			<onleft condition="!VideoPlayer.Content(livetv) + String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot))">SetProperty(ShowPlot,True,fullscreeninfo)</onleft>
