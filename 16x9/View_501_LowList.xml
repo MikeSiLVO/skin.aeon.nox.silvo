@@ -82,6 +82,17 @@
 					<fadetime>IconCrossfadeTime</fadetime>
 					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
 					<bordersize>20</bordersize>
+					<visible>!Container.Content(musicvideos)</visible>
+				</control>
+				<control type="image">
+					<width>440</width>
+					<height>640</height>
+					<aspectratio aligny="bottom">keep</aspectratio>
+					<texture background="true">$INFO[ListItem.Thumb]</texture>
+					<fadetime>IconCrossfadeTime</fadetime>
+					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
+					<bordersize>20</bordersize>
+					<visible>Container.Content(musicvideos)</visible>
 				</control>
 				<control type="image">
 					<left>-55</left>
@@ -193,6 +204,38 @@
 						<width>650</width>
 						<include>DefaultButtonsValues</include>
 						<visible>!String.IsEmpty(ListItem.Genre)</visible>
+					</control>
+				</control>
+				<control type="grouplist">
+					<visible>Container.Content(musicvideos)</visible>
+					<include>VisibleFadeAnimation</include>
+					<control type="button">
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[557]:[/COLOR][CR]$INFO[ListItem.Artist]</label>
+						<width>650</width>
+						<height>95</height>
+						<include>DefaultButtonsValues</include>
+						<visible>!String.IsEmpty(ListItem.Artist)</visible>
+					</control>
+					<control type="button">
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[558]:[/COLOR][CR]$INFO[ListItem.Album]</label>
+						<width>650</width>
+						<height>95</height>
+						<include>DefaultButtonsValues</include>
+						<visible>!String.IsEmpty(ListItem.Album)</visible>
+					</control>
+					<control type="button">
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[572]:[/COLOR][CR]$VAR[MusicVideoStudioVar]</label>
+						<width>650</width>
+						<height>95</height>
+						<include>DefaultButtonsValues</include>
+						<visible>!String.IsEmpty(ListItem.Studio) | [!Skin.HasSetting(Disable.MusicVideo.OnlineMetadata) + !String.IsEmpty(Window(Home).Property(SkinInfo.MusicVideo.Online.Album.Label))]</visible>
+					</control>
+					<control type="button">
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$VAR[MusicVideoGenreVar]</label>
+						<width>650</width>
+						<height>95</height>
+						<include>DefaultButtonsValues</include>
+						<visible>!String.IsEmpty(ListItem.Genre) | [!Skin.HasSetting(Disable.MusicVideo.OnlineMetadata) + !String.IsEmpty(Window(Home).Property(SkinInfo.MusicVideo.Online.Track.Tags))]</visible>
 					</control>
 				</control>
 			</control>
@@ -644,7 +687,7 @@
 						<colordiffuse>grey2</colordiffuse>
 						<include>MediaFlagValues</include>
 						<texture fallback="flags/default/mpaa/NR.png">$VAR[MediaFlagsPathVar]/mpaa/$VAR[RatingFlagVar]</texture>
-						<visible>!ListItem.IsParentFolder + [!Container.Content(episodes) + !Container.Content(movies)] + !ListItem.IsCollection</visible>
+						<visible>!ListItem.IsParentFolder + [!Container.Content(episodes) + !Container.Content(movies) + !Container.Content(musicvideos)] + !ListItem.IsCollection</visible>
 					</control>
 				</control>
 			</control>
@@ -663,7 +706,7 @@
 				<ondown>501</ondown>
 				<pagecontrol>50160</pagecontrol>
 				<viewtype label="$LOCALIZE[31241]">list</viewtype>
-				<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions) | String.Contains(Container.FolderPath,plugin.program.advanced.launcher)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_501]</visible>
+				<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions) | Container.Content(musicvideos) | String.Contains(Container.FolderPath,plugin.program.advanced.launcher)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_501]</visible>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<animation effect="slide" end="0,-203.375" time="120" condition="!Skin.HasSetting(nohighlist)">Conditional</animation>
 				<itemlayout height="68" width="806" condition="Container.Content(movies)">

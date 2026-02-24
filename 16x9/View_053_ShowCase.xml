@@ -23,7 +23,7 @@
 		<onup condition="Control.IsVisible(62)">62</onup> -->
 		<ondown condition="Control.IsVisible(95360)">95360</ondown>
 		<ondown condition="!Control.IsVisible(95360)">4400</ondown>
-		<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions) | Container.Content(videoversions) | Container.Content(artists) | Container.Content(sets) | Container.Content(musicvideos)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_53]</visible>
+		<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions) | Container.Content(videoversions) | Container.Content(artists) | Container.Content(sets)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_53]</visible>
 		<viewtype label="31077">bigwrap</viewtype>
 		<pagecontrol>95360</pagecontrol>
 		<scrolltime tween="quadratic">300</scrolltime>
@@ -588,7 +588,7 @@
 		<width>80</width>
 		<height>80</height>
 		<bordersize>20</bordersize>
-		<visible>[!String.IsEmpty(Skin.String(53.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(53.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(53.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(53.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(53.MusicVideos.DisableOverlay)) + Container.Content(musicvideos)]</visible>
+		<visible>[!String.IsEmpty(Skin.String(53.Movies.DisableOverlay)) + Container.Content(movies)] | [!String.IsEmpty(Skin.String(53.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(53.Sets.DisableOverlay)) + Container.Content(sets)] | [!String.IsEmpty(Skin.String(53.Seasons.DisableOverlay)) + Container.Content(seasons)]</visible>
 	</include>
 	<include name="ShowCaseItemContent">
 		<param name="ListItem.Position" />

@@ -208,20 +208,6 @@
 			<selected>Skin.HasSetting(Enable.ShowCase.SetBannerLogo)</selected>
 			<visible>Skin.HasSetting(Enable.ShowCase.SetLogo) + Container.Content(sets)</visible>
 		</control>
-		<control type="radiobutton" id="1517">
-			<include>ButtonCommonValues</include>
-			<label>$LOCALIZE[31606]</label>
-			<onclick>Skin.ToggleSetting(Enable.ShowCase.MusicVidLogo)</onclick>
-			<selected>Skin.HasSetting(Enable.ShowCase.MusicVidLogo)</selected>
-			<visible>Container.Content(musicvideos)</visible>
-		</control>
-		<control type="radiobutton" id="1518">
-			<include>ButtonCommonValues</include>
-			<label>   - $LOCALIZE[31087]</label>
-			<onclick>Skin.ToggleSetting(Enable.ShowCase.MusicVidBannerLogo)</onclick>
-			<selected>Skin.HasSetting(Enable.ShowCase.MusicVidBannerLogo)</selected>
-			<visible>Skin.HasSetting(Enable.ShowCase.MusicVidLogo) + Container.Content(musicvideos)</visible>
-		</control>
 		<control type="radiobutton" id="1519">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31604]</label>
@@ -939,14 +925,14 @@
 			<label>$LOCALIZE[31605]</label>
 			<onclick>Skin.ToggleSetting(rightlistalternate)</onclick>
 			<selected>Skin.HasSetting(rightlistalternate)</selected>
-			<visible>Container.Content(movies)</visible>
+			<visible>Container.Content(movies) | Container.Content(musicvideos)</visible>
 		</control>
 		<control type="radiobutton" id="1520">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31605]</label>
 			<onclick>Skin.ToggleSetting(rightlistalternatetv)</onclick>
 			<selected>Skin.HasSetting(rightlistalternatetv)</selected>
-			<visible>!Container.Content(movies) + !Window.IsActive(music)</visible>
+			<visible>!Container.Content(movies) + !Container.Content(musicvideos) + !Window.IsActive(music)</visible>
 		</control>
 		<control type="radiobutton" id="1521">
 			<include>ButtonCommonValues</include>
@@ -1046,7 +1032,7 @@
 			<label>$LOCALIZE[31604]</label>
 			<onclick>Skin.ToggleSetting(inforightlist)</onclick>
 			<selected>Skin.HasSetting(inforightlist)</selected>
-			<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
+			<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos)]</visible>
 		</control>
 		<control type="radiobutton" id="1535">
 			<include>ButtonCommonValues</include>

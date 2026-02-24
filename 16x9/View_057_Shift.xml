@@ -14,7 +14,7 @@
 			<param name="left">268</param>
 			<param name="top">170</param>
 			<param name="size">40</param>
-			<param name="visible">[!String.IsEmpty(Skin.String(57.Movies.DisableOverlay)) + [Container.Content(movies) | Container.Content(sets)]] | [!String.IsEmpty(Skin.String(57.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(57.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(57.MusicVideos.DisableOverlay)) + Container.Content(musicvideos)]</param>
+			<param name="visible">[!String.IsEmpty(Skin.String(57.Movies.DisableOverlay)) + [Container.Content(movies) | Container.Content(sets)]] | [!String.IsEmpty(Skin.String(57.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(57.Seasons.DisableOverlay)) + Container.Content(seasons)]</param>
 		</include>
 		<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
 			<param name="left">8</param>
@@ -43,7 +43,7 @@
 			<param name="left">270</param>
 			<param name="top">365</param>
 			<param name="size">30</param>
-			<param name="visible">[!String.IsEmpty(Skin.String(57.Movies.DisableOverlay)) + [Container.Content(movies) | Container.Content(sets)]] | [!String.IsEmpty(Skin.String(57.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(57.Seasons.DisableOverlay)) + Container.Content(seasons)] | [!String.IsEmpty(Skin.String(57.MusicVideos.DisableOverlay)) + Container.Content(musicvideos)]</param>
+			<param name="visible">[!String.IsEmpty(Skin.String(57.Movies.DisableOverlay)) + [Container.Content(movies) | Container.Content(sets)]] | [!String.IsEmpty(Skin.String(57.TV.DisableOverlay)) + Container.Content(tvshows)] | [!String.IsEmpty(Skin.String(57.Seasons.DisableOverlay)) + Container.Content(seasons)]</param>
 		</include>
 		<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
 			<param name="left">140</param>
@@ -129,7 +129,7 @@
 				<preloaditems>2</preloaditems>
 				<scrolltime tween="quadratic">400</scrolltime>
 				<focusposition>1</focusposition>
-				<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(musicvideos) | Container.Content(seasons) | Container.Content(genres) | Container.Content(sets) | Container.Content(videoversions) | Container.Content(addons)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_57]</visible>
+				<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(genres) | Container.Content(sets) | Container.Content(videoversions) | Container.Content(addons)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_57]</visible>
 				<itemlayout width="315" height="750" condition="!Skin.HasSetting(Enable.Shift.Small) + !Container.Content(addons)">
 					<include>ShiftPosterThumbs</include>
 				</itemlayout>
