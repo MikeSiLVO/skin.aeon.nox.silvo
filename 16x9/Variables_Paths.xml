@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<variable name="CustomInfoDetailsPathVar">
-		<value condition="!Window.IsActive(1102)">special://skin/extras/playlists/empty.xsp</value>
+		<value condition="!Window.IsActive(1102)">special://skin/extras/empty.xsp</value>
 		<value>plugin://script.skin.info.service/?action=getdetails&amp;dbid=$INFO[Window(Home).Property(item_dbid)]&amp;dbtype=$INFO[Window(Home).Property(item_dbtype)]&amp;reload=$INFO[Skin.TimerElapsedSecs(resetfocus1102)]</value>
 	</variable>
 	<variable name="SkinInfoLibraryPathVar">
@@ -11,7 +11,6 @@
 		<value condition="!String.IsEmpty(ListItem.DBID)">plugin://script.skin.info.service/?action=getdetails&amp;dbid=$INFO[ListItem.DBID]&amp;dbtype=$INFO[ListItem.DBTYPE]</value>
 	</variable>
 	<variable name="SkinInfoOnlinePathVar">
-		<!-- <value condition="!Window.IsActive(movieinformation)">special://skin/extras/playlists/empty.xsp</value> -->
 		<value>$INFO[ListItem.DBID,plugin://script.skin.info.service/?action=online&amp;dbid=]$INFO[ListItem.DBTYPE,&amp;dbtype=]</value>
 	</variable>
 	<variable name="SkinInfoPlayerOnlinePathVar">
@@ -19,7 +18,6 @@
 		<value condition="VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.DBID)">plugin://script.skin.info.service/?action=online&amp;dbid=$INFO[VideoPlayer.DBID]&amp;dbtype=episode</value>
 	</variable>
 	<variable name="SkinInfoCastPathVar">
-		<!-- <value condition="!Window.IsActive()">special://skin/extras/playlists/empty.xsp</value> -->
 		<value condition="Skin.HasSetting(OnlineCast) + Window.IsVisible(fullscreeninfo)">plugin://script.skin.info.service/?action=get_cast&amp;dbid=$INFO[VideoPlayer.DBID]&amp;dbtype=$VAR[VideoPlayerDBTYPEVar]&amp;online=true</value>
 		<value condition="Window.IsVisible(fullscreeninfo)">plugin://script.skin.info.service/?action=get_cast&amp;dbid=$INFO[VideoPlayer.DBID]&amp;dbtype=$VAR[VideoPlayerDBTYPEVar]</value>
 		<value condition="Skin.HasSetting(OnlineCast)">plugin://script.skin.info.service/?action=get_cast&amp;dbid=$INFO[ListItem.DBID]&amp;dbtype=$INFO[ListItem.DBTYPE]&amp;online=true</value>
