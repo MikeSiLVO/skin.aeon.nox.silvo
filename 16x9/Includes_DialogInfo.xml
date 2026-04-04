@@ -1367,10 +1367,10 @@
 	</include>
 	<include name="InfoRuntime">
 		<param name="label" default="$VAR[DurationVar]" />
-		<param name="visible" default="!String.IsEmpty(ListItem.Duration) | !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Runtime))" />
+		<param name="visible" default="!String.IsEmpty(ListItem.Duration) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Runtime)) | !String.IsEmpty(Window(Home).Property(SkinInfo.TVShow.TotalRuntime.Hours)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Runtime)) | String.IsEqual(ListItem.DBTYPE,set) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Runtime))" />
 		<definition>
 			<control type="label">
-				<width max="160">auto</width>
+				<width max="180">auto</width>
 				<height>90</height>
 				<font>font48_bold</font>
 				<textcolor>grey</textcolor>
@@ -1421,7 +1421,7 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<width>165</width>
+				<width>125</width>
 				<control type="label">
 					<width>auto</width>
 					<height>60</height>
