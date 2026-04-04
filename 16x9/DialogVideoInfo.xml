@@ -190,7 +190,7 @@
 						<usecontrolcoords>true</usecontrolcoords>
 						<itemgap>8</itemgap>
 						<!-- Runtime -->
-						<include condition="!String.IsEqual(ListItem.DBTYPE,set)">InfoRuntime</include>
+						<include>InfoRuntime</include>
 						<!-- Episode Count -->
 						<include condition="String.IsEqual(ListItem.DBTYPE,episode)">InfoEpNumber</include>
 						<!-- MPAA -->
@@ -532,7 +532,7 @@
 								<orientation>horizontal</orientation>
 								<control type="group">
 									<width>160</width>
-									<visible>!String.IsEmpty(ListItem.Studio)</visible>
+									<visible>!String.IsEmpty(ListItem.Studio) + !String.IsEqual(ListItem.DBTYPE,musicvideo)</visible>
 									<control type="image" id="800011">
 										<width>160</width>
 										<include>MediaFlagValues</include>
