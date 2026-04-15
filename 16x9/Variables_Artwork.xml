@@ -227,6 +227,7 @@
 		<value condition="Player.HasAudio + Skin.HasSetting(Enable.ArtistSlideshowOnHome) + ![String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),/transparent) | String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),\transparent)] + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.ArtworkReady))">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</value>
 		<value condition="Player.HasAudio + Skin.HasSetting(Enable.ArtistSlideshowOnHome) + !String.IsEmpty(MusicPlayer.Property(Fanart_Image))">$INFO[MusicPlayer.Property(Fanart_Image)]</value>
 		<value condition="Player.HasAudio + Skin.HasSetting(Enable.ArtistSlideshowOnHome) + !String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>
+		<value condition="Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(backgroundType),playlist)">$INFO[Container(9034).ListItem.Art(fanart)]</value>
 		<value condition="Control.HasFocus(9010) + !String.IsEmpty(Container(9010).ListItem.Property(backgroundPath))">$INFO[Container(9010).ListItem.Property(backgroundPath)]</value>
 		<value condition="!String.IsEmpty(Container(9000).ListItem.Property(backgroundPath))">$VAR[MainMenuBackgroundPathVar]</value>
 		<value condition="!String.IsEmpty(Skin.String(CustomDefaultBackground.path))">$INFO[Skin.String(CustomDefaultBackground.path)]</value>
