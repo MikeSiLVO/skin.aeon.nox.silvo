@@ -70,6 +70,7 @@
 		</item>
 		<item name="search" submenu="search">
 			<label>$LOCALIZE[137]</label>
+			<action>SetProperty(CustomSelect,search,Home)</action>
 			<action>ActivateWindow(1129)</action>
 			<icon>special://skin/extras/icons/DefaultAddonsSearch.png</icon>
 		</item>
@@ -380,13 +381,13 @@
 		</item>
 		<item name="button-suspend" visible="System.CanSuspend">
 			<label>$LOCALIZE[13011]</label>
-			<onclick>Dialog.Close(shutdownmenu)</onclick>
+			<action>Dialog.Close(shutdownmenu)</action>
 			<action>Suspend()</action>
 			<visible>System.CanSuspend</visible>
 		</item>
 		<item name="button-hibernate" visible="System.CanHibernate">
 			<label>$LOCALIZE[13010]</label>
-			<onclick>Dialog.Close(shutdownmenu)</onclick>
+			<action>Dialog.Close(shutdownmenu)</action>
 			<action>Hibernate()</action>
 			<visible>System.CanHibernate</visible>
 		</item>
@@ -404,7 +405,7 @@
 		<item name="button-logoff" visible="System.Loggedon + [System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)]">
 			<label>$LOCALIZE[20126]</label>
 			<label2>$INFO[system.profilename]</label2>
-			<onclick>dialog.close(all,true)</onclick>
+			<action>dialog.close(all,true)</action>
 			<action>System.LogOff</action>
 			<visible>System.Loggedon + [System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)]</visible>
 		</item>
@@ -539,11 +540,11 @@
 				<shortcut name="movies-root" label="$LOCALIZE[342]" type="$LOCALIZE[20342]" icon="DefaultMovies.png">
 					<action>ActivateWindow(Videos,videodb://movies/,return)</action>
 				</shortcut>
-				<shortcut name="movies-titles" label="$LOCALIZE[10024]" type="$LOCALIZE[20342]" icon="DefaultMovieTitle.png">
-					<action>ActivateWindow(Videos,videodb://movies/titles/,return)</action>
+				<shortcut name="movies-titles" label="$LOCALIZE[10024]" type="$LOCALIZE[20342]" icon="DefaultMovieTitle.png" browse="videos">
+					<path>videodb://movies/titles/</path>
 				</shortcut>
-				<shortcut name="movies-recent" label="$LOCALIZE[20382]" type="$LOCALIZE[20342]" icon="DefaultRecentlyAddedMovies.png">
-					<action>ActivateWindow(Videos,videodb://recentlyaddedmovies,return)</action>
+				<shortcut name="movies-recent" label="$LOCALIZE[20382]" type="$LOCALIZE[20342]" icon="DefaultRecentlyAddedMovies.png" browse="videos">
+					<path>videodb://recentlyaddedmovies</path>
 				</shortcut>
 				<shortcut name="movies-genres" label="$LOCALIZE[135]" type="$LOCALIZE[20342]" icon="DefaultGenre.png" browse="videos">
 					<path>videodb://movies/genres/</path>
@@ -563,11 +564,14 @@
 				<shortcut name="movies-countries" label="$LOCALIZE[20451]" type="$LOCALIZE[20342]" icon="DefaultCountry.png" browse="videos">
 					<path>videodb://movies/countries/</path>
 				</shortcut>
-				<shortcut name="movies-actors" label="$LOCALIZE[344]" type="$LOCALIZE[20342]" icon="DefaultActor.png">
-					<action>ActivateWindow(Videos,videodb://movies/actors/,return)</action>
+				<shortcut name="movies-actors" label="$LOCALIZE[344]" type="$LOCALIZE[20342]" icon="DefaultActor.png" browse="videos">
+					<path>videodb://movies/actors/</path>
 				</shortcut>
-				<shortcut name="movies-tags" label="$LOCALIZE[20459]" type="$LOCALIZE[20342]" icon="DefaultTags.png">
-					<action>ActivateWindow(Videos,videodb://movies/tags/,return)</action>
+				<shortcut name="movies-tags" label="$LOCALIZE[20459]" type="$LOCALIZE[20342]" icon="DefaultTags.png" browse="videos">
+					<path>videodb://movies/tags/</path>
+				</shortcut>
+				<shortcut name="movies-versions" label="$LOCALIZE[40000]" type="$LOCALIZE[20342]" icon="DefaultMovies.png" browse="videos">
+					<path>videodb://movies/videoversions/</path>
 				</shortcut>
 			</group>
 			<!-- TV Shows -->
@@ -575,8 +579,8 @@
 				<shortcut name="tvshows-root" label="$LOCALIZE[20343]" type="$LOCALIZE[20343]" icon="DefaultTVShows.png">
 					<action>ActivateWindow(Videos,videodb://tvshows/,return)</action>
 				</shortcut>
-				<shortcut name="tvshows-titles" label="$LOCALIZE[10024]" type="$LOCALIZE[20343]" icon="DefaultTVShowTitle.png">
-					<action>ActivateWindow(Videos,videodb://tvshows/titles/,return)</action>
+				<shortcut name="tvshows-titles" label="$LOCALIZE[10024]" type="$LOCALIZE[20343]" icon="DefaultTVShowTitle.png" browse="videos">
+					<path>videodb://tvshows/titles/</path>
 				</shortcut>
 				<shortcut name="tvshows-recent" label="$LOCALIZE[20382]" type="$LOCALIZE[20343]" icon="DefaultRecentlyAddedEpisodes.png">
 					<action>ActivateWindow(Videos,videodb://recentlyaddedepisodes,return)</action>
@@ -593,8 +597,11 @@
 				<shortcut name="tvshows-studios" label="$LOCALIZE[20388]" type="$LOCALIZE[20342]" icon="DefaultStudios.png" browse="videos">
 					<path>videodb://tvshows/studios/</path>
 				</shortcut>
-				<shortcut name="tvshows-actors" label="$LOCALIZE[344]" type="$LOCALIZE[20343]" icon="DefaultActor.png">
-					<action>ActivateWindow(Videos,videodb://tvshows/actors/,return)</action>
+				<shortcut name="tvshows-actors" label="$LOCALIZE[344]" type="$LOCALIZE[20343]" icon="DefaultActor.png" browse="videos">
+					<path>videodb://tvshows/actors/</path>
+				</shortcut>
+				<shortcut name="tvshows-tags" label="$LOCALIZE[20459]" type="$LOCALIZE[20343]" icon="DefaultTags.png" browse="videos">
+					<path>videodb://tvshows/tags/</path>
 				</shortcut>
 			</group>
 			<!-- Music Videos -->
@@ -602,8 +609,8 @@
 				<shortcut name="musicvideos-root" label="$LOCALIZE[20389]" type="$LOCALIZE[20389]" icon="DefaultMusicVideos.png">
 					<action>ActivateWindow(Videos,videodb://musicvideos/,return)</action>
 				</shortcut>
-				<shortcut name="musicvideos-titles" label="$LOCALIZE[10024]" type="$LOCALIZE[20389]" icon="DefaultMusicVideoTitle.png">
-					<action>ActivateWindow(Videos,videodb://musicvideos/titles/,return)</action>
+				<shortcut name="musicvideos-titles" label="$LOCALIZE[10024]" type="$LOCALIZE[20389]" icon="DefaultMusicVideoTitle.png" browse="videos">
+					<path>videodb://musicvideos/titles/</path>
 				</shortcut>
 				<shortcut name="musicvideos-recent" label="$LOCALIZE[20382]" type="$LOCALIZE[20389]" icon="DefaultRecentlyAddedMusicVideos.png">
 					<action>ActivateWindow(Videos,videodb://recentlyaddedmusicvideos,return)</action>
@@ -617,7 +624,7 @@
 				<shortcut name="musicvideos-artists" label="$LOCALIZE[133]" type="$LOCALIZE[20389]" icon="DefaultMusicArtists.png" browse="videos">
 					<path>videodb://musicvideos/artists/</path>
 				</shortcut>
-				<shortcut name="musicvideos-albums" label="$LOCALIZE[344]" type="$LOCALIZE[20389]" icon="DefaultMusicAlbums.png" browse="videos">
+				<shortcut name="musicvideos-albums" label="$LOCALIZE[132]" type="$LOCALIZE[20389]" icon="DefaultMusicAlbums.png" browse="videos">
 					<path>videodb://musicvideos/albums/</path>
 				</shortcut>
 				<shortcut name="musicvideos-directors" label="$LOCALIZE[20348]" type="$LOCALIZE[20389]" icon="DefaultDirector.png" browse="videos">
@@ -625,6 +632,9 @@
 				</shortcut>
 				<shortcut name="musicvideos-studios" label="$LOCALIZE[20388]" type="$LOCALIZE[20389]" icon="DefaultStudios.png" browse="videos">
 					<path>videodb://musicvideos/studios/</path>
+				</shortcut>
+				<shortcut name="musicvideos-tags" label="$LOCALIZE[20459]" type="$LOCALIZE[20389]" icon="DefaultTags.png" browse="videos">
+					<path>videodb://musicvideos/tags/</path>
 				</shortcut>
 			</group>
 			<!-- Video Playlists -->
@@ -635,7 +645,7 @@
 				<content source="playlists" target="video"/>
 				<content source="playlists" target="video" path="special://skin/extras/playlists/" folder="Skin Playlists"/>
 			</group>
-			<!-- Video Sources -->
+			<!-- Video Library Nodes -->
 			<group name="video-nodes" label="$LOCALIZE[31564]" icon="DefaultFile.png">
 				<content source="nodes" target="video"/>
 			</group>
@@ -647,11 +657,11 @@
 			</shortcut>
 			<!-- Music -->
 			<group name="music" label="$LOCALIZE[2]" icon="DefaultAddonMusic.png">
-				<shortcut name="music-artists" label="$LOCALIZE[133]" type="$LOCALIZE[2]" icon="DefaultArtist.png">
-					<action>ActivateWindow(Music,musicdb://artists/,return)</action>
+				<shortcut name="music-artists" label="$LOCALIZE[133]" type="$LOCALIZE[2]" icon="DefaultArtist.png" browse="music">
+					<path>musicdb://artists/</path>
 				</shortcut>
-				<shortcut name="music-albums" label="$LOCALIZE[132]" type="$LOCALIZE[2]" icon="DefaultMusicAlbums.png">
-					<action>ActivateWindow(Music,musicdb://albums/,return)</action>
+				<shortcut name="music-albums" label="$LOCALIZE[132]" type="$LOCALIZE[2]" icon="DefaultMusicAlbums.png" browse="music">
+					<path>musicdb://albums/</path>
 				</shortcut>
 				<shortcut name="music-songs" label="$LOCALIZE[134]" type="$LOCALIZE[2]" icon="DefaultMusicSongs.png">
 					<action>ActivateWindow(Music,musicdb://songs/,return)</action>
@@ -680,6 +690,18 @@
 				<shortcut name="music-recentlyplayed" label="$LOCALIZE[517]" type="$LOCALIZE[2]" icon="DefaultMusicTop100Albums.png">
 					<action>ActivateWindow(Music,musicdb://recentlyplayedalbums/,return)</action>
 				</shortcut>
+				<shortcut name="music-compilations" label="$LOCALIZE[521]" type="$LOCALIZE[2]" icon="DefaultMusicAlbums.png">
+					<action>ActivateWindow(Music,musicdb://compilations/,return)</action>
+				</shortcut>
+				<shortcut name="music-sources" label="$LOCALIZE[39030]" type="$LOCALIZE[2]" icon="DefaultMusicSongs.png" browse="music">
+					<path>musicdb://sources/</path>
+				</shortcut>
+				<shortcut name="music-discs" label="$LOCALIZE[14087]" type="$LOCALIZE[2]" icon="DefaultMusicAlbums.png" browse="music">
+					<path>musicdb://discs/</path>
+				</shortcut>
+				<shortcut name="music-originalyears" label="$LOCALIZE[38078]" type="$LOCALIZE[2]" icon="DefaultMusicYears.png" browse="music">
+					<path>musicdb://originalyears/</path>
+				</shortcut>
 			</group>
 			<!-- Music Playlists -->
 			<group name="music-playlists" label="$LOCALIZE[136]" icon="DefaultMusicPlaylists.png">
@@ -690,12 +712,16 @@
 				<content source="playlists" target="music" path="special://skin/extras/playlists/" folder="Skin Playlists"/>
 			</group>
 			<!-- Music Sources -->
-			<group name="music-sources" label="$LOCALIZE[31564]" icon="DefaultFile.png">
+			<group name="music-sources" label="$LOCALIZE[39031]" icon="DefaultFolder.png">
 				<content source="library" target="music"/>
+			</group>
+			<!-- Music Library Nodes -->
+			<group name="music-nodes" label="$LOCALIZE[31564]" icon="DefaultFolder.png">
+				<content source="nodes" target="music"/>
 			</group>
 		</group>
 		<!-- Sources -->
-		<group name="sources" label="$LOCALIZE[39031]" icon="DefaultFile.png">
+		<group name="sources" label="$LOCALIZE[39031]" icon="DefaultFolder.png">
 			<group name="video-sources" label="$LOCALIZE[3]" icon="DefaultVideo.png">
 				<shortcut name="video-files" label="$LOCALIZE[744]" type="$LOCALIZE[39031]" icon="DefaultFile.png">
 					<action>ActivateWindow(Videos,sources://video/,return)</action>

@@ -122,13 +122,17 @@
 				<path>videodb://recentlyaddedmusicvideos/</path>
 			</widget>
 		</group>
+		<!-- Video Playlists -->
+		<group name="video-playlists-widgets" label="$LOCALIZE[136]">
+			<content source="playlists" target="videos"/>
+		</group>
 		<!-- Video Sources -->
 		<group name="video-sources-widgets" label="$LOCALIZE[39031]">
 			<content source="sources" target="videos"/>
 		</group>
-		<!-- Video Playlists -->
-		<group name="video-playlists-widgets" label="$LOCALIZE[136]">
-			<content source="playlists" target="videos"/>
+		<!-- Video Library Nodes -->
+		<group name="video-nodes-widgets" label="Library nodes">
+			<content source="nodes" target="videos"/>
 		</group>
 	</group>
 	<!-- Music Library -->
@@ -166,13 +170,17 @@
 				<path>musicdb://top100/songs/</path>
 			</widget>
 		</group>
+		<!-- Music Playlists -->
+		<group name="music-playlists-widgets" label="$LOCALIZE[136]">
+			<content source="playlists" target="audio"/>
+		</group>
 		<!-- Music Sources -->
 		<group name="music-sources-widgets" label="$LOCALIZE[39031]">
 			<content source="sources" target="music"/>
 		</group>
-		<!-- Music Playlists -->
-		<group name="music-playlists-widgets" label="$LOCALIZE[136]">
-			<content source="playlists" target="audio"/>
+		<!-- Music Library Nodes -->
+		<group name="music-nodes-widgets" label="Library nodes">
+			<content source="nodes" target="music"/>
 		</group>
 	</group>
 	<!-- PVR/Live TV -->
@@ -282,7 +290,7 @@
 		</group>
 		<!-- Program Add-ons -->
 		<group name="program-addons-widgets" label="$LOCALIZE[1043]">
-			<widget name="android-apps" label="$LOCALIZE[20244]" icon="DefaultAddonProgram.png" type="addon" target="programs" visible="System.Platform.Android">
+			<widget name="android-apps" label="$LOCALIZE[20244]" icon="DefaultAddonProgram.png" type="addon" target="programs" visible="System.Platform.Android" browse="true">
 				<path>androidapp://sources/apps</path>
 			</widget>
 			<content source="addons" label="$LOCALIZE[1043]" icon="DefaultAddonProgram.png" target="programs"/>
@@ -293,14 +301,18 @@
 		</group>
 		<!-- Game Add-ons -->
 		<group name="game-addons-widgets" label="$LOCALIZE[10821]">
-			<widget name="games-addons" label="$LOCALIZE[10821]" icon="DefaultAddonGame.png" type="addon" target="programs">
+			<widget name="games-addons" label="$LOCALIZE[10821]" icon="DefaultAddonGame.png" type="addon" target="programs" browse="true">
 				<path>addons://sources/game</path>
 			</widget>
 		</group>
 	</group>
-	<!-- Custom Widget - allows user-defined shortcut list -->
-	<widget name="customwidget" label="$LOCALIZE[31760]" type="custom" icon="DefaultFolder.png">
+	<!-- Custom Widgets -->
+	<widget name="customwidget" label="$LOCALIZE[31760]" type="custom" slot="widget" icon="DefaultFolder.png">
 		<path>$INCLUDE[skinshortcuts-{menuitem}-customwidget]</path>
+		<target>videos</target>
+	</widget>
+	<widget name="customwidget2" label="$LOCALIZE[31761]" type="custom" slot="widget.2" icon="DefaultFolder.png">
+		<path>$INCLUDE[skinshortcuts-{menuitem}-customwidget2]</path>
 		<target>videos</target>
 	</widget>
 </widgets>

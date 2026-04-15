@@ -41,7 +41,7 @@
 		<value condition="VideoPlayer.Content(episodes)">episode</value>
 	</variable>
 	<variable name="SkinShortcutsIconLabelVar">
-		<value condition="String.Contains(Window.Property(skinshortcuts-dialog),custom-widget) + !String.IsEqual(Container(211).ListItem.Icon,special://skin/extras/icons/) + !String.IsEqual(Container(211).ListItem.Icon,DefaultShortcut.png)">$INFO[Container(211).ListItem.Icon]</value>
+		<value condition="String.Contains(Window(Home).Property(skinshortcuts-dialog),custom-widget) + !String.IsEqual(Container(211).ListItem.Icon,special://skin/extras/icons/) + !String.IsEqual(Container(211).ListItem.Icon,DefaultShortcut.png)">$INFO[Container(211).ListItem.Icon]</value>
 	</variable>
 	<variable name="FanartTimePerImageLabelVar">
 		<value condition="!String.IsEmpty(Skin.String(FanartTimePerImage))">$INFO[Skin.String(FanartTimePerImage)] $LOCALIZE[31090]</value>
@@ -567,8 +567,8 @@
 		<value condition="Control.HasFocus(303)">$ADDON[script.skinshortcuts 32002]</value>
 		<value condition="Control.HasFocus(301)">$ADDON[script.skinshortcuts 32000]</value>
 		<value condition="Control.HasFocus(302)">$ADDON[script.skinshortcuts 32001]</value>
-		<value condition="Control.HasFocus(308)">$LOCALIZE[31468]</value>
-		<value condition="Control.HasFocus(3080)">$ADDON[script.skinshortcuts 32028]</value>
+		<value condition="Control.HasFocus(311)">$LOCALIZE[31468]</value>
+		<value condition="Control.HasFocus(312)">$LOCALIZE[13007]</value>
 		<value condition="Control.HasFocus(313)">$LOCALIZE[31553]</value>
 		<value condition="Control.HasFocus(401)">$LOCALIZE[31926]</value>
 		<value condition="Control.HasFocus(305)">$LOCALIZE[31552]</value>

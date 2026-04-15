@@ -48,7 +48,7 @@
 			<content>$VAR[CaseContentVar]</content>
 		</control>
 		<control type="group">
-			<visible>[String.StartsWith(Container(9000).ListItem.Property(backgroundtype),live) + ![String.EndsWith(Container(9000).ListItem.Property(backgroundPlaylistType),songs) | String.EndsWith(Container(9000).ListItem.Property(backgroundPlaylistType),albums)] | Control.HasFocus(9010) + String.StartsWith(Container(9010).ListItem.Property(backgroundtype),live) + ![String.EndsWith(Container(9010).ListItem.Property(backgroundPlaylistType),songs) | String.EndsWith(Container(9010).ListItem.Property(backgroundPlaylistType),albums)]] + ![Control.HasFocus(9010) + !String.IsEmpty(Container(9010).ListItem.Property(background))]</visible>
+			<visible>[String.StartsWith(Container(9000).ListItem.Property(backgroundType),live) + ![String.EndsWith(Container(9000).ListItem.Property(backgroundPlaylistType),songs) | String.EndsWith(Container(9000).ListItem.Property(backgroundPlaylistType),albums)] | Control.HasFocus(9010) + String.StartsWith(Container(9010).ListItem.Property(backgroundType),live) + ![String.EndsWith(Container(9010).ListItem.Property(backgroundPlaylistType),songs) | String.EndsWith(Container(9010).ListItem.Property(backgroundPlaylistType),albums)]] + ![Control.HasFocus(9010) + !String.IsEmpty(Container(9010).ListItem.Property(background))]</visible>
 			<animation effect="fade" time="600">WindowOpen</animation>
 			<animation effect="fade" time="600">VisibleChange</animation>
 			<control type="image">
@@ -519,7 +519,7 @@
 	<!-- Cases Content Var -->
 	<variable name="CaseContentVar">
 		<value condition="String.StartsWith(Container(9000).ListItem.Property(backgroundType),live) | [Control.HasFocus(9010) + String.StartsWith(Container(9010).ListItem.Property(backgroundType),live)]">$VAR[MainMenuBackgroundPathVar]</value>
-		<value condition="Control.HasFocus(9010) + !String.IsEmpty(Container(9010).ListItem.Property(backgroundPlaylist))">$INFO[Container(9010).ListItem.Property(backgroundPlaylist)]</value>
+		<value condition="Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(backgroundType),playlist)">$INFO[Container(9010).ListItem.Property(backgroundPath)]</value>
 	</variable>
 	<!-- Cases Background Vars-->
 	<variable name="Case1Var">
