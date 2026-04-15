@@ -19,7 +19,7 @@
 					<scrolltime>0</scrolltime>
 					<itemlayout height="81" width="356" condition="!String.IsEqual(Window.Property(menuname),buttonmenu)">
 						<control type="group">
-							<visible>!String.IsEqual(Window.Property(skinshortcuts-dialog),widget1) + !String.IsEqual(Window.Property(skinshortcuts-dialog),widget2)</visible>
+							<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-dialog),widget1) + !String.IsEqual(Window(Home).Property(skinshortcuts-dialog),widget2)</visible>
 							<include>SettingsFadeAnimation</include>
 							<control type="label">
 								<width>630</width>
@@ -58,14 +58,14 @@
 							<height>81</height>
 							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 							<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!ControlGroup(90000).HasFocus">Conditional</animation>
-							<visible>String.IsEmpty(Window.Property(skinshortcuts-dialog)) | String.Contains(Window.Property(skinshortcuts-dialog),custom-widget)</visible>
+							<visible>String.IsEmpty(Window(Home).Property(skinshortcuts-dialog)) | String.Contains(Window(Home).Property(skinshortcuts-dialog),custom-widget)</visible>
 						</control>
 						<control type="image">
 							<width>355</width>
 							<height>81</height>
 							<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 							<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="true">Conditional</animation>
-							<visible>!String.IsEmpty(Window.Property(skinshortcuts-dialog))</visible>
+							<visible>!String.IsEmpty(Window(Home).Property(skinshortcuts-dialog))</visible>
 						</control>
 						<control type="label">
 							<width>350</width>
@@ -135,7 +135,7 @@
 					<align>right</align>
 					<orientation>horizontal</orientation>
 					<itemgap>-24</itemgap>
-					<visible>String.IsEmpty(Window.Property(skinshortcuts-dialog)) | String.Contains(Window.Property(skinshortcuts-dialog),custom-widget)</visible>
+					<visible>String.IsEmpty(Window(Home).Property(skinshortcuts-dialog)) | String.Contains(Window(Home).Property(skinshortcuts-dialog),custom-widget)</visible>
 					<animation effect="slide" end="0,81" condition="Integer.IsGreater(Container(211).Position,0)">Conditional</animation>
 					<animation effect="slide" end="0,81" condition="Integer.IsGreater(Container(211).Position,1)">Conditional</animation>
 					<animation effect="slide" end="0,81" condition="Integer.IsGreater(Container(211).Position,2)">Conditional</animation>
@@ -167,7 +167,7 @@
 						<font>IconMediumMD</font>
 						<textcolor>grey2</textcolor>
 						<label></label>
-						<visible>!String.IsEmpty(Container(211).ListItem.Property(isResettable))</visible>
+						<visible>!String.IsEmpty(Container(211).ListItem.Property(isResettable)) + !String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
 					</control>
 					<control type="button" id="302">
 						<texturefocus />
@@ -214,7 +214,7 @@
 				<control type="group" id="9000">
 					<left>713</left>
 					<top>32</top>
-					<visible>String.IsEmpty(Window.Property(skinshortcuts-dialog)) | String.Contains(Window.Property(skinshortcuts-dialog),custom-widget)</visible>
+					<visible>String.IsEmpty(Window(Home).Property(skinshortcuts-dialog)) | String.Contains(Window(Home).Property(skinshortcuts-dialog),custom-widget)</visible>
 					<control type="image">
 						<left>-1</left>
 						<top>80</top>
@@ -265,7 +265,7 @@
 								<include>SettingsButtonCommonValues</include>
 								<label>$LOCALIZE[31047]</label>
 								<label2>$VAR[SkinShortcutsIconLabelVar]</label2>
-								<visible>[String.IsEqual(Skin.String(MainMenu.Layout),icons) + String.IsEqual(Window.Property(menuname),mainmenu)] | String.Contains(Window.Property(skinshortcuts-dialog),custom-widget)</visible>
+								<visible>[String.IsEqual(Skin.String(MainMenu.Layout),icons) + String.IsEqual(Window.Property(menuname),mainmenu)] | String.Contains(Window(Home).Property(skinshortcuts-dialog),custom-widget)</visible>
 							</control>
 							<control type="button" id="307">
 								<description>Change action</description>
@@ -329,7 +329,7 @@
 			</control>
 			<!-- Widget Settings -->
 			<control type="group">
-				<visible>String.IsEqual(Window.Property(skinshortcuts-dialog),widget1) | String.IsEqual(Window.Property(skinshortcuts-dialog),widget2)</visible>
+				<visible>String.IsEqual(Window(Home).Property(skinshortcuts-dialog),widget1) | String.IsEqual(Window(Home).Property(skinshortcuts-dialog),widget2)</visible>
 				<include>SettingsFadeAnimation</include>
 				<control type="grouplist" id="6000">
 					<left>437</left>
@@ -350,30 +350,30 @@
 						<include>SettingsButtonCommonValues</include>
 						<label>$LOCALIZE[31701]</label>
 						<label2>$VAR[WidgetStyleLabelVar]</label2>
-						<visible>!String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEqual(Window.Property(skinshortcuts-suffix),.2) | [!String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + String.IsEqual(Window.Property(skinshortcuts-suffix),.2)]</visible>
+						<visible>!String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) | [!String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2)]</visible>
 					</control>
 					<control type="button" id="1004">
 						<description>Change widget art</description>
 						<include>SettingsButtonCommonValues</include>
 						<label>$LOCALIZE[31706]</label>
 						<label2>$VAR[WidgetArtLabelVar]</label2>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + ![String.IsEqual(Container(212).ListItem.Property(widgetType),system) + String.Contains(Container(212).ListItem.Property(widgetStyle),List)] | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + ![String.IsEqual(Container(212).ListItem.Property(widgetType.2),system) + String.Contains(Container(212).ListItem.Property(widgetStyle.2),List)]</visible>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + ![String.IsEqual(Container(212).ListItem.Property(widgetType),system) + String.Contains(Container(212).ListItem.Property(widgetStyle),List)] | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + ![String.IsEqual(Container(212).ListItem.Property(widgetType.2),system) + String.Contains(Container(212).ListItem.Property(widgetStyle.2),List)]</visible>
 					</control>
 					<control type="button" id="1008">
 						<description>Change widget case</description>
 						<include>SettingsButtonCommonValues</include>
 						<label>$LOCALIZE[31707]</label>
 						<label2>$VAR[WidgetCaseLabelVar]</label2>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + ![String.IsEqual(Container(212).ListItem.Property(widgetType),system) + String.Contains(Container(212).ListItem.Property(widgetStyle),List)] | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + ![String.IsEqual(Container(212).ListItem.Property(widgetType.2),system) + String.Contains(Container(212).ListItem.Property(widgetStyle.2),List)]</visible>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + ![String.IsEqual(Container(212).ListItem.Property(widgetType),system) + String.Contains(Container(212).ListItem.Property(widgetStyle),List)] | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + ![String.IsEqual(Container(212).ListItem.Property(widgetType.2),system) + String.Contains(Container(212).ListItem.Property(widgetStyle.2),List)]</visible>
 					</control>
 					<control type="button" id="1002">
 						<description>Change widget background</description>
 						<include>SettingsButtonCommonValues</include>
 						<label>$LOCALIZE[31702]</label>
 						<label2>$VAR[WidgetBackLabelVar]</label2>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
 						<visible>!Skin.HasSetting(Enable.GlobalWidgetBack)</visible>
 					</control>
 					<control type="button" id="1003">
@@ -381,45 +381,45 @@
 						<include>SettingsButtonCommonValues</include>
 						<label>$LOCALIZE[31703]</label>
 						<label2>$VAR[WidgetTitleLabelVar]</label2>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.Contains(Container(212).ListItem.Property(widgetStyle),List) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.Contains(Container(212).ListItem.Property(widgetStyle.2),List)</visible>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.Contains(Container(212).ListItem.Property(widgetStyle),List) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.Contains(Container(212).ListItem.Property(widgetStyle.2),List)</visible>
 					</control>
 					<control type="button" id="1020">
 						<description>Change list widget text</description>
 						<include>SettingsButtonCommonValues</include>
 						<label>$LOCALIZE[31704]</label>
 						<label2>$VAR[WidgetListLabelVar]</label2>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + String.Contains(Container(212).ListItem.Property(widgetStyle),List) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + String.Contains(Container(212).ListItem.Property(widgetStyle.2),List)</visible>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEqual(Container(212).ListItem.Property(widgetArt),Banner) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEqual(Container(212).ListItem.Property(widgetArt.2),Banner)</visible>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEqual(Container(212).ListItem.Property(widgetType),system) + !String.IsEqual(Container(212).ListItem.Property(widgetType),weather) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEqual(Container(212).ListItem.Property(widgetType.2),system) + !String.IsEqual(Container(212).ListItem.Property(widgetType.2),weather)</visible>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + String.Contains(Container(212).ListItem.Property(widgetStyle),List) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + String.Contains(Container(212).ListItem.Property(widgetStyle.2),List)</visible>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEqual(Container(212).ListItem.Property(widgetArt),Banner) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEqual(Container(212).ListItem.Property(widgetArt.2),Banner)</visible>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEqual(Container(212).ListItem.Property(widgetType),system) + !String.IsEqual(Container(212).ListItem.Property(widgetType),weather) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEqual(Container(212).ListItem.Property(widgetType.2),system) + !String.IsEqual(Container(212).ListItem.Property(widgetType.2),weather)</visible>
 					</control>
 					<control type="radiobutton" id="1021">
 						<description>Enable panel widget info</description>
 						<include>SettingsButtonCommonValues</include>
-						<selected>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPanelInfo)) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPanelInfo.2))</selected>
+						<selected>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPanelInfo)) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPanelInfo.2))</selected>
 						<label>$LOCALIZE[31705]</label>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.Contains(Container(212).ListItem.Property(widgetStyle),List) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.Contains(Container(212).ListItem.Property(widgetStyle.2),List)</visible>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.Contains(Container(212).ListItem.Property(widgetStyle),List) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.Contains(Container(212).ListItem.Property(widgetStyle.2),List)</visible>
 					</control>
 					<control type="radiobutton" id="1022">
 						<description>Enable widget hide</description>
 						<include>SettingsButtonCommonValues</include>
 						<label>$LOCALIZE[31289]</label>
-						<selected>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetHide)) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetHide.2))</selected>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
+						<selected>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetHide)) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetHide.2))</selected>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
 					</control>
 					<control type="radiobutton" id="1023">
 						<description>Disable widget fanart</description>
 						<include>SettingsButtonCommonValues</include>
 						<label>$LOCALIZE[31444]</label>
-						<selected>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetDisableFanart)) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetDisableFanart.2))</selected>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
+						<selected>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetDisableFanart)) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetDisableFanart.2))</selected>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
 					</control>
 					<control type="group" id="6002">
 						<width>1401</width>
 						<height>81</height>
-						<visible>!String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window.Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
+						<visible>!String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle)) | String.IsEqual(Window(Home).Property(skinshortcuts-suffix),.2) + !String.IsEmpty(Container(212).ListItem.Property(widgetPath.2)) + !String.IsEmpty(Container(212).ListItem.Property(widgetStyle.2))</visible>
 						<control type="button" id="1017">
 							<description>Change widget limit</description>
 							<width>467</width>
