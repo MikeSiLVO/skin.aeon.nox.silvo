@@ -453,12 +453,14 @@
 			<param name="id">90013</param>
 			<param name="content">plugin://script.skin.info.service/?action=by_actor&amp;dbid=$INFO[ListItem.DBID]&amp;dbtype=$INFO[ListItem.DBType]&amp;mix=false&amp;reload=$INFO[Window(movieinformation).Property(OpenTime)]</param>
 			<param name="sortby">random</param>
+			<param name="label">$INFO[Container(90013).ListItem.Property(role)]</param>
+			<param name="labelVisibility">!String.IsEmpty(Container(90013).ListItem.Property(role))</param>
 		</include>
 	</include>
 	<include name="ExtendedInfoSeriesLists">
 		<include content="ExtendedInfoListLayout">
 			<param name="id">90014</param>
-			<param name="content">videodb://tvshows/titles/?xsp={"rules":{"and":[{"field":"genre","operator":"contains", "value":["$INFO[Window(Home).Property(encoded_genre_0)]"]},{"field":"genre","operator":"contains", "value":["$INFO[Window(Home).Property(encoded_genre_1)]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title)]"]}]},"type":"tvshows"}</param>
+			<param name="content">plugin://script.skin.info.service/?action=similar&amp;dbid=$INFO[ListItem.DBID]&amp;dbtype=$INFO[ListItem.DBType]&amp;limit=200</param>
 			<param name="limit">40</param>
 			<param name="sortby">random</param>
 		</include>
@@ -466,6 +468,8 @@
 			<param name="id">90015</param>
 			<param name="content">plugin://script.skin.info.service/?action=by_actor&amp;dbid=$INFO[ListItem.DBID]&amp;dbtype=$INFO[ListItem.DBType]&amp;mix=false&amp;reload=$INFO[Window(movieinformation).Property(OpenTime)]</param>
 			<param name="sortby">random</param>
+			<param name="label">$INFO[Container(90015).ListItem.Property(role)]</param>
+			<param name="labelVisibility">!String.IsEmpty(Container(90015).ListItem.Property(role))</param>
 		</include>
 	</include>
 	<include name="ExtendedSeasonPanel">
@@ -1367,7 +1371,7 @@
 	</include>
 	<include name="InfoRuntime">
 		<param name="label" default="$VAR[DurationVar]" />
-		<param name="visible" default="!String.IsEmpty(ListItem.Duration) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Runtime)) | !String.IsEmpty(Window(Home).Property(SkinInfo.TVShow.TotalRuntime.Hours)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Runtime)) | String.IsEqual(ListItem.DBTYPE,set) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Runtime))" />
+		<param name="visible" default="!String.IsEmpty(ListItem.Duration) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Runtime)) | !String.IsEmpty(Window(Home).Property(SkinInfo.TVShow.TotalRuntime.Hours)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Season.TotalRuntime)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Runtime)) | String.IsEqual(ListItem.DBTYPE,set) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Runtime))" />
 		<definition>
 			<control type="label">
 				<width max="180">auto</width>
