@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<variable name="CustomInfoDetailsPathVar">
+		<value condition="!Window.IsActive(1102)">videodb://movies/titles/?year=9999</value>
 		<value condition="!Window.IsActive(1102)">special://skin/extras/empty.xsp</value>
 		<value>plugin://script.skin.info.service/?action=getdetails&amp;dbid=$INFO[Window(Home).Property(item_dbid)]&amp;dbtype=$INFO[Window(Home).Property(item_dbtype)]&amp;reload=$INFO[Skin.TimerElapsedSecs(resetfocus1102)]</value>
 	</variable>

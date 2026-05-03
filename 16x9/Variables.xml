@@ -381,7 +381,7 @@
 	<variable name="NextAiredSubLabelVar">
 		<value condition="[Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(59) | Control.IsVisible(503)] + !String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeTitle))">$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeAired),$LOCALIZE[31010]: , • ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeSeason),S]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisode),E, - ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeTitle)]</value>
 		<value condition="!String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeTitle))">$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeSeason),S]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisode),E, - ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeTitle)][LIGHT]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeAired), • ][/LIGHT]</value>
-		<value condition="!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status))">$INFO[Window(Home).Property(SkinInfo.Online.Status)]</value>
+		<value condition="String.IsEqual(Window(Home).Property(SkinInfo.Online.DBID),ListItem.DBID) + !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status)) + !String.IsEqual(Window(Home).Property(SkinInfo.Online.Status),ListItem.Status)">$INFO[Window(Home).Property(SkinInfo.Online.Status)]</value>
 		<value>$INFO[ListItem.Status]</value>
 	</variable>
 	<variable name="FloorLabel2Var">
@@ -1067,7 +1067,8 @@
 		<value>$INFO[PVR.EpgEventRemainingTime(ss)]s</value>
 	</variable>
 	<variable name="DurationVar">
-		<value condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEmpty(Window(Home).Property(SkinInfo.TVShow.TotalRuntime.Hours)) + !String.IsEqual(Window(Home).Property(SkinInfo.ListItem.Runtime),0)">$INFO[Window(Home).Property(SkinInfo.TVShow.TotalRuntime.Hours),,h]$INFO[Window(Home).Property(SkinInfo.TVShow.TotalRuntime.Minutes),,m]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,season) + !String.IsEmpty(Window(Home).Property(SkinInfo.Season.TotalRuntime)) + !String.IsEqual(Window(Home).Property(SkinInfo.Season.Runtime),0)">$INFO[Window(Home).Property(SkinInfo.Season.TotalRuntime.Hours),,h]$INFO[Window(Home).Property(SkinInfo.Season.TotalRuntime.Minutes),,m]</value>
+		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow) + !String.IsEmpty(Window(Home).Property(SkinInfo.TVShow.TotalRuntime)) + !String.IsEqual(Window(Home).Property(SkinInfo.ListItem.Runtime),0)">$INFO[Window(Home).Property(SkinInfo.TVShow.TotalRuntime.Hours),,h]$INFO[Window(Home).Property(SkinInfo.TVShow.TotalRuntime.Minutes),,m]</value>
 		<value condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + String.IsEmpty(ListItem.Duration) + !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Runtime)) + !String.IsEqual(Window(Home).Property(SkinInfo.ListItem.Runtime),0)">$INFO[Window(Home).Property(SkinInfo.ListItem.Runtime),~,m]</value>
 		<value condition="[String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + String.IsEmpty(ListItem.Duration) + !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Runtime)) + !String.IsEqual(Window(Home).Property(SkinInfo.Online.Runtime),0)">$INFO[Window(Home).Property(SkinInfo.Online.Runtime),,m]</value>
 		<value condition="!Skin.HasSetting(Enable.HourMinuteDuration) + String.IsEqual(ListItem.DBTYPE,set)">$INFO[Window(Home).Property(SkinInfo.Set.Runtime),,m]</value>
