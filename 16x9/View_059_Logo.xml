@@ -202,7 +202,8 @@
 						<align>center</align>
 						<textcolor>grey</textcolor>
 						<label>$VAR[NextAiredSubLabelVar]</label>
-						<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container(59).OnNext + !Container(59).OnPrevious">Conditional</animation>
+						<animation effect="fade" time="250" delay="300" reversible="false">Visible</animation>
+						<visible>![Container.OnNext | Container.OnPrevious]</visible>
 					</control>
 					<control type="label">
 						<left>400</left>
