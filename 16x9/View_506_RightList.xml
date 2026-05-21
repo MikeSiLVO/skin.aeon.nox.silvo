@@ -13,18 +13,18 @@
 				<fadetime>IconCrossfadeTime</fadetime>
 				<aspectratio aligny="bottom">keep</aspectratio>
 				<texture background="true">$VAR[ArtworkLogoVar]</texture>
-				<visible>[Skin.HasSetting(rightlistlogomovie) + [Container.Content(movies) | Container.Content(sets)]] | [Skin.HasSetting(rightlistlogotv) + [Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]] | Container.Content(musicvideos)</visible>
+				<visible>[Skin.HasSetting(rightlistlogomovie) + [Container.Content(movies) | Container.Content(videoversions) | Container.Content(sets)]] | [Skin.HasSetting(rightlistlogotv) + [Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]] | Container.Content(musicvideos)</visible>
 			</control>
 			<control type="group">
 				<left>5</left>
 				<top>376</top>
-				<visible>[!Skin.HasSetting(Enable.Rightlist.HidePoster.Movies) + Container.Content(movies)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.Sets) + Container.Content(sets)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.tvshows) + Container.Content(tvshows)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.seasons) + Container.Content(seasons)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.episodes) + Container.Content(episodes)] | Container.Content(musicvideos)</visible>
+				<visible>[!Skin.HasSetting(Enable.Rightlist.HidePoster.Movies) + [Container.Content(movies) | Container.Content(videoversions)]] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.Sets) + Container.Content(sets)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.tvshows) + Container.Content(tvshows)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.seasons) + Container.Content(seasons)] | [!Skin.HasSetting(Enable.Rightlist.HidePoster.episodes) + Container.Content(episodes)] | Container.Content(musicvideos)</visible>
 				<control type="group">
 					<top>-170</top>
 					<left>40</left>
 					<width>370</width>
 					<height>370</height>
-					<visible>[Container.Content(movies) | Container.Content(sets)] + Skin.HasSetting(discrightlist)</visible>
+					<visible>[Container.Content(movies) | Container.Content(videoversions) | Container.Content(sets)] + Skin.HasSetting(discrightlist)</visible>
 					<animation effect="slide" end="0,30" time="0" tween="cubic" easing="inout" condition="!Skin.HasSetting(rightlistcovers) + Skin.HasSetting(discrightlist)">Conditional</animation>
 					<include>SlideLeftSpinningDiscAnimation</include>
 					<control type="image">
@@ -75,7 +75,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<animation effect="slide" end="-430,0" time="0" tween="cubic" easing="inout" condition="[Skin.HasSetting(Enable.Rightlist.HidePoster.movies) + Container.Content(movies)] | [Skin.HasSetting(Enable.Rightlist.HidePoster.sets) + Container.Content(sets)] | [Skin.HasSetting(Enable.Rightlist.HidePoster.tvshows) + Container.Content(tvshows)] | [Skin.HasSetting(Enable.Rightlist.HidePoster.seasons) + Container.Content(seasons)] | [Skin.HasSetting(Enable.Rightlist.HidePoster.episodes) + Container.Content(episodes)]">Conditional</animation>
+				<animation effect="slide" end="-430,0" time="0" tween="cubic" easing="inout" condition="[Skin.HasSetting(Enable.Rightlist.HidePoster.movies) + [Container.Content(movies) | Container.Content(videoversions)]] | [Skin.HasSetting(Enable.Rightlist.HidePoster.sets) + Container.Content(sets)] | [Skin.HasSetting(Enable.Rightlist.HidePoster.tvshows) + Container.Content(tvshows)] | [Skin.HasSetting(Enable.Rightlist.HidePoster.seasons) + Container.Content(seasons)] | [Skin.HasSetting(Enable.Rightlist.HidePoster.episodes) + Container.Content(episodes)]">Conditional</animation>
 				<visible>Skin.HasSetting(inforightlist) + !Skin.HasSetting(Enable.RightListInfoPopup) + !Container.Content(musicvideos)</visible>
 				<control type="group">
 					<left>434</left>
@@ -103,7 +103,7 @@
 						<visible>!String.IsEmpty(ListItem.Top250) + Integer.IsLessOrEqual(ListItem.Top250,250)</visible>
 					</control>
 					<control type="grouplist">
-						<visible>[Container.Content(movies) + !ListItem.IsCollection]</visible>
+						<visible>[Container.Content(movies) | Container.Content(videoversions)] + !ListItem.IsCollection</visible>
 						<height>180</height>
 						<control type="label">
 							<width>570</width>
@@ -492,9 +492,9 @@
 		<ondown>506</ondown>
 		<pagecontrol>50660</pagecontrol>
 		<viewtype label="$LOCALIZE[31239]">list</viewtype>
-		<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions) | Container.Content(musicvideos)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_506]</visible>
+		<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions) | Container.Content(videoextras) | Container.Content(musicvideos)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_506]</visible>
 		<scrolltime tween="quadratic" easing="out">200</scrolltime>
-		<itemlayout height="82" width="806" condition="[!Skin.HasSetting(rightlistalternate) + [Container.Content(movies) | Container.Content(musicvideos)]]">
+		<itemlayout height="82" width="806" condition="[!Skin.HasSetting(rightlistalternate) + [Container.Content(movies) | Container.Content(videoversions) | Container.Content(musicvideos)]]">
 			<include content="RightListItemLayout">
 				<param name="width">700</param>
 			</include>
@@ -507,7 +507,7 @@
 				</include>
 			</control>
 		</itemlayout>
-		<itemlayout height="82" width="806" condition="[Skin.HasSetting(rightlistalternate) + [Container.Content(movies) | Container.Content(musicvideos)]]">
+		<itemlayout height="82" width="806" condition="[Skin.HasSetting(rightlistalternate) + [Container.Content(movies) | Container.Content(videoversions) | Container.Content(musicvideos)]]">
 			<include content="RightListItemLayout">
 				<param name="width">770</param>
 			</include>
@@ -517,7 +517,7 @@
 				<param name="width">770</param>
 			</include>
 		</itemlayout>
-		<focusedlayout height="82" width="806" condition="[!Skin.HasSetting(rightlistalternate) + [Container.Content(movies) | Container.Content(musicvideos)]]" infoupdate="1000">
+		<focusedlayout height="82" width="806" condition="[!Skin.HasSetting(rightlistalternate) + [Container.Content(movies) | Container.Content(videoversions) | Container.Content(musicvideos)]]" infoupdate="1000">
 			<control type="image">
 				<include>VisibleFadeAnimation</include>
 			</control>
@@ -536,7 +536,7 @@
 				</include>
 			</control>
 		</focusedlayout>
-		<focusedlayout height="82" width="806" condition="[Skin.HasSetting(rightlistalternate) + [Container.Content(movies) | Container.Content(musicvideos)]]" infoupdate="1000">
+		<focusedlayout height="82" width="806" condition="[Skin.HasSetting(rightlistalternate) + [Container.Content(movies) | Container.Content(videoversions) | Container.Content(musicvideos)]]" infoupdate="1000">
 			<include content="RightListFocusedLayout">
 				<param name="width">770</param>
 			</include>
@@ -548,7 +548,7 @@
 		</focusedlayout>
 	</include>
 	<include name="RightListFocusedLayout">
-		<param name="visibleSubLabelNoYear" default="[[Container.Content(movies) | Container.Content(musicvideos)] + !Skin.HasSetting(rightlistalternate)] | [!Container.Content(movies) + !Container.Content(musicvideos) + !Skin.HasSetting(rightlistalternatetv) + !Window.IsActive(music)]" />
+		<param name="visibleSubLabelNoYear" default="[[Container.Content(movies) | Container.Content(videoversions) | Container.Content(musicvideos)] + !Skin.HasSetting(rightlistalternate)] | [!Container.Content(movies) + !Container.Content(musicvideos) + !Skin.HasSetting(rightlistalternatetv) + !Window.IsActive(music)]" />
 		<param name="width" />
 		<param name="labelColor" default="$VAR[ThemeLabelColor]" />
 		<definition>
@@ -563,7 +563,7 @@
 				<shadowcolor>shadow</shadowcolor>
 				<label>$VAR[RightListItemLabelVar]</label>
 				<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(506)">Conditional</animation>
-				<visible>!ListItem.IsCollection + !ListItem.IsParentFolder + !Container.Content(seasons) + !String.IsEqual(ListItem.DBTYPE,season) + ![Container.Content(movies) + String.IsEmpty(ListItem.Duration) + String.IsEmpty(ListItem.RatingAndVotes)] + ![Container.Content(episodes) + String.IsEmpty(ListItem.Duration) + String.IsEmpty(ListItem.RatingAndVotes)]</visible>
+				<visible>!ListItem.IsCollection + !ListItem.IsParentFolder + !Container.Content(seasons) + !String.IsEqual(ListItem.DBTYPE,season) + ![[Container.Content(movies) | Container.Content(videoversions) | Container.Content(videoextras) | Container.Content(videoversions)] + String.IsEmpty(ListItem.Duration) + String.IsEmpty(ListItem.RatingAndVotes)] + ![Container.Content(episodes) + String.IsEmpty(ListItem.Duration) + String.IsEmpty(ListItem.RatingAndVotes)]</visible>
 			</control>
 			<control type="label">
 				<top>25</top>
@@ -576,7 +576,7 @@
 				<shadowcolor>shadow</shadowcolor>
 				<label>$INFO[ListItem.Label]</label>
 				<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(506)">Conditional</animation>
-				<visible>ListItem.IsCollection | ListItem.IsParentFolder | Container.Content(seasons) | String.IsEqual(ListItem.DBTYPE,season) | [Container.Content(movies) + String.IsEmpty(ListItem.Duration) + String.IsEmpty(ListItem.RatingAndVotes)] | [Container.Content(episodes) + String.IsEmpty(ListItem.Duration) + String.IsEmpty(ListItem.RatingAndVotes)]</visible>
+				<visible>ListItem.IsCollection | ListItem.IsParentFolder | Container.Content(seasons) | String.IsEqual(ListItem.DBTYPE,season) | [[Container.Content(movies) | Container.Content(videoversions) | Container.Content(videoextras)] + String.IsEmpty(ListItem.Duration) + String.IsEmpty(ListItem.RatingAndVotes)] | [Container.Content(episodes) + String.IsEmpty(ListItem.Duration) + String.IsEmpty(ListItem.RatingAndVotes)]</visible>
 			</control>
 			<control type="group">
 				<left>45</left>
@@ -624,7 +624,7 @@
 		</definition>
 	</include>
 	<include name="RightListItemLayout">
-		<param name="visibleSubLabelNoYear" default="[[Container.Content(movies) | Container.Content(musicvideos)] + !Skin.HasSetting(rightlistalternate)] | [!Container.Content(movies) + !Container.Content(musicvideos) + !Skin.HasSetting(rightlistalternatetv) + !Window.IsActive(music)]" />
+		<param name="visibleSubLabelNoYear" default="[[Container.Content(movies) | Container.Content(videoversions) | Container.Content(musicvideos)] + !Skin.HasSetting(rightlistalternate)] | [!Container.Content(movies) + !Container.Content(videoversions) + !Container.Content(musicvideos) + !Skin.HasSetting(rightlistalternatetv) + !Window.IsActive(music)]" />
 		<param name="width" />
 		<param name="labelColor" default="white" />
 		<definition>

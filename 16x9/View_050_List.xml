@@ -951,7 +951,7 @@
 			<control type="group">
 				<left>1320</left>
 				<top>200</top>
-				<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons) | Container.Content()</visible>
+				<visible>Container.Content(movies) | Container.Content(videoversions) + !String.IsEqual(ListItem.Label,$LOCALIZE[40211]) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons) | Container.Content()</visible>
 				<include>VisibleFadeAnimation</include>
 				<control type="image">
 					<width>570</width>
@@ -964,7 +964,7 @@
 					<visible>Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons) | Container.Content()</visible>
 				</control>
 				<control type="group">
-					<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+					<visible>Container.Content(movies) | Container.Content(videoversions) | Container.Content(tvshows) | Container.Content(seasons)</visible>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
@@ -1015,7 +1015,7 @@
 			<control type="group" id="8001">
 				<left>1280</left>
 				<top>125</top>
-				<visible>![Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content() | Container.Content(files) | Container.Content(addons)]</visible>
+				<visible>![Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content() | Container.Content(files) | Container.Content(addons)] + ![Container.Content(videoversions) + !String.IsEqual(ListItem.Label,$LOCALIZE[40211])] + !Container.Content(videoextras)</visible>
 				<animation effect="fade" time="250">Visible</animation>
 				<include content="BackPanel">
 					<param name="left">-4</param>

@@ -11,6 +11,7 @@
 				<top>136</top>
 				<animation effect="slide" end="-503,0" time="640" easing="inout" tween="circle" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
 				<animation effect="zoom" center="1400,500" start="100" end="110" time="240" tween="back" reversible="false" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
+				<visible>!Container.Content(videoextras)</visible>
 				<include content="BackPanel">
 					<param name="left">-6</param>
 					<param name="top">86</param>
@@ -113,6 +114,35 @@
 						<include>DefaultButtonsValues</include>
 					</control>
 				</control>
+				<control type="grouplist">
+					<top>92</top>
+					<width>448</width>
+					<height>270</height>
+					<visible>Container.Content(videoversions) + String.IsEqual(ListItem.Label,$LOCALIZE[40211])</visible>
+					<control type="button">
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[40211]:[/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Movie.Extras.Count)]</label>
+						<width>448</width>
+						<include>DefaultButtonsValues</include>
+					</control>
+					<control type="button">
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[16101]:[/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Movie.Extras.Unwatched)]</label>
+						<width>448</width>
+						<include>DefaultButtonsValues</include>
+						<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Movie.Extras.Unwatched))</visible>
+					</control>
+					<control type="button">
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Movie.Extras.TotalRuntime),, $LOCALIZE[12391]]</label>
+						<width>448</width>
+						<include>DefaultButtonsValues</include>
+						<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Movie.Extras.TotalRuntime))</visible>
+					</control>
+					<control type="button">
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime),, $LOCALIZE[12391]]</label>
+						<width>448</width>
+						<include>DefaultButtonsValues</include>
+						<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Runtime))</visible>
+					</control>
+				</control>
 				<control type="textbox" id="70">
 					<label>$VAR[VideoPlotVar]</label>
 					<left>15</left>
@@ -145,6 +175,7 @@
 				<top>154</top>
 				<animation effect="slide" end="546,0" time="640" easing="inout" tween="circle" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
 				<animation effect="zoom" center="850,700" start="100" end="90" time="240" tween="back" reversible="false" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
+				<visible>!Container.Content(videoextras)</visible>
 				<control type="image">
 					<width>570</width>
 					<height>835</height>
@@ -162,6 +193,20 @@
 					<texture flipx="true" border="1">side_shadow.png</texture>
 					<visible>String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])</visible>
 					<animation effect="fade" start="0" end="100" time="650" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
+				</control>
+			</control>
+			<control type="group">
+				<left>910</left>
+				<top>178</top>
+				<visible>Container.Content(videoextras)</visible>
+				<control type="image">
+					<width>1000</width>
+					<height>835</height>
+					<aspectratio aligny="bottom" align="right">keep</aspectratio>
+					<fadetime>IconCrossfadeTime</fadetime>
+					<texture background="true">$VAR[FocusedPosterThumbVar]</texture>
+					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
+					<bordersize>20</bordersize>
 				</control>
 			</control>
 			<control type="group">

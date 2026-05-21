@@ -375,7 +375,7 @@
 						<param name="max_width">650</param>
 					</include>
 					<include content="NextAiredGenreLeft">
-						<param name="visible">!Container.Content(movies) + !Container.Content(episodes) + [Control.IsVisible(50) | Control.IsVisible(506) | Control.IsVisible(510)]</param>
+						<param name="visible">!Container.Content(movies) + !Container.Content(videoversions) + !Container.Content(videoextras) + !Container.Content(episodes) + [Control.IsVisible(50) | Control.IsVisible(506) | Control.IsVisible(510)]</param>
 						<param name="pos">84</param>
 						<param name="top">1024</param>
 						<param name="max_width">600</param>
@@ -389,6 +389,7 @@
 							<animation effect="slide" end="-10" condition="Control.IsVisible(509)">Conditional</animation>
 							<include>MediaFlagsFull</include>
 							<include>MediaFlagsSets</include>
+							<include>MediaFlagsExtras</include>
 						</control>
 						<control type="group">
 							<animation effect="slide" end="70" condition="Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(506)">Conditional</animation>

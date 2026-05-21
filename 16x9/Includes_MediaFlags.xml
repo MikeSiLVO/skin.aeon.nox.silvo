@@ -16,7 +16,7 @@
 			<animation effect="slide" end="170,0" condition="!Control.IsVisible(9512) + [Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(506)]">Conditional</animation>
 			<animation effect="slide" end="170,0" condition="!Control.IsVisible(9513) + [Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(506)]">Conditional</animation>
 			<animation effect="slide" end="170,0" condition="!Control.IsVisible(9514) + [Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(506)]">Conditional</animation>
-			<visible>[Control.IsVisible(50) + Container.Content(movies) + !Skin.HasSetting(DisableList_Movieflags)] | [Control.IsVisible(50) + Container.Content(episodes) + !Skin.HasSetting(DisableList_Episodeflags)] | [Control.IsVisible(55) + Container.Content(movies) + !Skin.HasSetting(DisableTriPanel_Movieflags)] | [Control.IsVisible(55) + Container.Content(episodes) + !Skin.HasSetting(DisableTriPanel_Episodeflags)] | [Control.IsVisible(58) + Container.Content(movies) + !Skin.HasSetting(DisableBannerWall_Movieflags)] | [Control.IsVisible(500) + Container.Content(movies) + !Skin.HasSetting(DisableIcons_Movieflags)] | [Control.IsVisible(500) + Container.Content(episodes) + !Skin.HasSetting(DisableIcons_Episodeflags)] | [Control.IsVisible(509) + Container.Content(movies) + !Skin.HasSetting(DisableMyFlix_Movieflags)] | [Control.IsVisible(509) + Container.Content(episodes) + !Skin.HasSetting(DisableMyFlix_Episodeflags)] | [Control.IsVisible(512) + Container.Content(movies) + !Skin.HasSetting(DisableBigFan_Movieflags)] | [Control.IsVisible(510) + Container.Content(movies) + !Skin.HasSetting(DisableFanartList_Movieflags)] | [Control.IsVisible(510) + Container.Content(episodes) + !Skin.HasSetting(DisableFanartList_Episodeflags)] | [Control.IsVisible(56) + Container.Content(movies) + !Skin.HasSetting(DisablePosters_Movieflags)] | [Control.IsVisible(57) + Container.Content(movies) + !Skin.HasSetting(DisableShift_Movieflags)] | [Control.IsVisible(506) + Container.Content(movies) + !Skin.HasSetting(DisableRightList_Movieflags)] | [Control.IsVisible(506) + Container.Content(episodes) + !Skin.HasSetting(DisableRightList_Episodeflags)]</visible>
+			<visible>[Control.IsVisible(50) + [Container.Content(movies) | Container.Content(videoversions) + ![ListItem.IsFolder + String.IsEqual(ListItem.Label,$LOCALIZE[40211])]] + !Skin.HasSetting(DisableList_Movieflags)] | [Control.IsVisible(50) + Container.Content(episodes) + !Skin.HasSetting(DisableList_Episodeflags)] | [Control.IsVisible(55) + [Container.Content(movies) | Container.Content(videoversions) + ![ListItem.IsFolder + String.IsEqual(ListItem.Label,$LOCALIZE[40211])]] + !Skin.HasSetting(DisableTriPanel_Movieflags)] | [Control.IsVisible(55) + Container.Content(episodes) + !Skin.HasSetting(DisableTriPanel_Episodeflags)] | [Control.IsVisible(58) + [Container.Content(movies) | Container.Content(videoversions) + ![ListItem.IsFolder + String.IsEqual(ListItem.Label,$LOCALIZE[40211])]] + !Skin.HasSetting(DisableBannerWall_Movieflags)] | [Control.IsVisible(500) + [Container.Content(movies) | Container.Content(videoversions) + ![ListItem.IsFolder + String.IsEqual(ListItem.Label,$LOCALIZE[40211])]] + !Skin.HasSetting(DisableIcons_Movieflags)] | [Control.IsVisible(500) + Container.Content(episodes) + !Skin.HasSetting(DisableIcons_Episodeflags)] | [Control.IsVisible(509) + [Container.Content(movies) | Container.Content(videoversions) + ![ListItem.IsFolder + String.IsEqual(ListItem.Label,$LOCALIZE[40211])]] + !Skin.HasSetting(DisableMyFlix_Movieflags)] | [Control.IsVisible(509) + Container.Content(episodes) + !Skin.HasSetting(DisableMyFlix_Episodeflags)] | [Control.IsVisible(512) + [Container.Content(movies) | Container.Content(videoversions) + ![ListItem.IsFolder + String.IsEqual(ListItem.Label,$LOCALIZE[40211])]] + !Skin.HasSetting(DisableBigFan_Movieflags)] | [Control.IsVisible(510) + [Container.Content(movies) | Container.Content(videoversions) + ![ListItem.IsFolder + String.IsEqual(ListItem.Label,$LOCALIZE[40211])]] + !Skin.HasSetting(DisableFanartList_Movieflags)] | [Control.IsVisible(510) + Container.Content(episodes) + !Skin.HasSetting(DisableFanartList_Episodeflags)] | [Control.IsVisible(56) + [Container.Content(movies) | Container.Content(videoversions) + ![ListItem.IsFolder + String.IsEqual(ListItem.Label,$LOCALIZE[40211])]] + !Skin.HasSetting(DisablePosters_Movieflags)] | [Control.IsVisible(57) + [Container.Content(movies) | Container.Content(videoversions) + ![ListItem.IsFolder + String.IsEqual(ListItem.Label,$LOCALIZE[40211])]] + !Skin.HasSetting(DisableShift_Movieflags)] | [Control.IsVisible(506) + [Container.Content(movies) | Container.Content(videoversions) + ![ListItem.IsFolder + String.IsEqual(ListItem.Label,$LOCALIZE[40211])]] + !Skin.HasSetting(DisableRightList_Movieflags)] | [Control.IsVisible(506) + Container.Content(episodes) + !Skin.HasSetting(DisableRightList_Episodeflags)]</visible>
 			<visible>!ListItem.IsCollection</visible>
 			<animation effect="fade" time="300" delay="200">Visible</animation>
 			<include>RatingsMediaFlags</include>
@@ -289,6 +289,62 @@
 				<control type="image">
 					<include>MediaFlagValues</include>
 					<texture>$VAR[MediaFlagsPathVar]/mpaa/$VAR[SetRatingFlagVar]</texture>
+				</control>
+			</control>
+		</control>
+	</include>
+	<include name="MediaFlagsExtras">
+		<control type="grouplist">
+			<animation effect="slide" end="390" condition="Control.IsVisible(57)">Conditional</animation>
+			<animation effect="slide" end="1500,0" condition="Control.IsVisible(56) | Control.IsVisible(506)">Conditional</animation>
+			<left>80</left>
+			<bottom>14</bottom>
+			<width>680</width>
+			<height>78</height>
+			<orientation>horizontal</orientation>
+			<visible>[Control.IsVisible(56) + Container.Content(videoversions) + String.IsEqual(ListItem.Label,$LOCALIZE[40211]) + !Skin.HasSetting(DisablePosters_Movieflags)] | [Control.IsVisible(57) +Container.Content(videoversions) + String.IsEqual(ListItem.Label,$LOCALIZE[40211]) + !Skin.HasSetting(DisableShift_Movieflags)] | [Control.IsVisible(58) + Container.Content(videoversions) + String.IsEqual(ListItem.Label,$LOCALIZE[40211]) + !Skin.HasSetting(DisableBannerWall_Movieflags)] | [Control.IsVisible(500) + Container.Content(videoversions) + String.IsEqual(ListItem.Label,$LOCALIZE[40211]) + !Skin.HasSetting(DisableIcons_Movieflags)] | [Control.IsVisible(506) + Container.Content(videoversions) + String.IsEqual(ListItem.Label,$LOCALIZE[40211]) + !Skin.HasSetting(DisableRightList_Movieflags)] | [Control.IsVisible(509) + Container.Content(videoversions) + String.IsEqual(ListItem.Label,$LOCALIZE[40211]) + !Skin.HasSetting(DisableMyFlix_Movieflags)] | [Control.IsVisible(512) + Container.Content(videoversions) + String.IsEqual(ListItem.Label,$LOCALIZE[40211]) + !Skin.HasSetting(DisableBigFan_Movieflags)] | [Control.IsVisible(510) + Container.Content(videoversions) + String.IsEqual(ListItem.Label,$LOCALIZE[40211]) + !Skin.HasSetting(DisableFanartList_Movieflags)]</visible>
+			<animation effect="fade" time="300" delay="200">Visible</animation>
+			<control type="group">
+				<left>850</left>
+				<width>170</width>
+				<height>78</height>
+				<control type="label">
+					<height>50</height>
+					<font>font48_bold</font>
+					<textcolor>grey</textcolor>
+					<align>center</align>
+					<wrapmultiline>true</wrapmultiline>
+					<label>$INFO[Window(Home).Property(SkinInfo.Movie.Extras.Count)]</label>
+				</control>
+				<control type="label">
+					<top>42</top>
+					<height>30</height>
+					<font>font12</font>
+					<textcolor>grey</textcolor>
+					<align>center</align>
+					<label>[LOWERCASE]$LOCALIZE[40211][/LOWERCASE]</label>
+				</control>
+			</control>
+			<control type="group">
+				<left>1020</left>
+				<width>170</width>
+				<height>78</height>
+				<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Movie.Extras.Unwatched))</visible>
+				<control type="label">
+					<height>50</height>
+					<font>font48_bold</font>
+					<textcolor>$VAR[UnWatchedEpColor]</textcolor>
+					<align>center</align>
+					<wrapmultiline>true</wrapmultiline>
+					<label>$INFO[Window(Home).Property(SkinInfo.Movie.Extras.Unwatched)]</label>
+				</control>
+				<control type="label">
+					<top>42</top>
+					<height>30</height>
+					<font>font12</font>
+					<textcolor>$VAR[UnWatchedEpColor]</textcolor>
+					<align>center</align>
+					<label>[LOWERCASE]$LOCALIZE[16101][/LOWERCASE]</label>
 				</control>
 			</control>
 		</control>
