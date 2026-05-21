@@ -862,7 +862,7 @@
 			<label>$LOCALIZE[31255]</label>
 			<onclick>Skin.ToggleSetting(DisableRightList_Movieflags)</onclick>
 			<selected>!Skin.HasSetting(DisableRightList_Movieflags)</selected>
-			<visible>Container.Content(movies)</visible>
+			<visible>Container.Content(movies) | Container.Content(videoversions)</visible>
 		</control>
 		<control type="radiobutton" id="1511">
 			<include>ButtonCommonValues</include>
@@ -932,7 +932,7 @@
 			<label>$LOCALIZE[31605]</label>
 			<onclick>Skin.ToggleSetting(rightlistalternatetv)</onclick>
 			<selected>Skin.HasSetting(rightlistalternatetv)</selected>
-			<visible>!Container.Content(movies) + !Container.Content(musicvideos) + !Window.IsActive(music)</visible>
+			<visible>!Container.Content(movies) + !Container.Content(videoversions) + !Container.Content(musicvideos) + !Window.IsActive(music)</visible>
 		</control>
 		<control type="radiobutton" id="1521">
 			<include>ButtonCommonValues</include>
@@ -946,7 +946,7 @@
 			<label>$LOCALIZE[31606]</label>
 			<onclick>Skin.ToggleSetting(rightlistlogomovie)</onclick>
 			<selected>Skin.HasSetting(rightlistlogomovie)</selected>
-			<visible>Container.Content(movies) | Container.Content(sets)</visible>
+			<visible>Container.Content(movies) | Container.Content(videoversions) | Container.Content(sets)</visible>
 		</control>
 		<control type="radiobutton" id="1523">
 			<textwidth>375</textwidth>
@@ -983,7 +983,7 @@
 			<label>$LOCALIZE[31152]</label>
 			<onclick>Skin.ToggleSetting(Enable.Rightlist.HidePoster.movies)</onclick>
 			<selected>!Skin.HasSetting(Enable.Rightlist.HidePoster.movies)</selected>
-			<visible>Container.Content(movies)</visible>
+			<visible>Container.Content(movies) | Container.Content(videoversions)</visible>
 		</control>
 		<control type="radiobutton" id="1528">
 			<include>ButtonCommonValues</include>
@@ -1018,21 +1018,21 @@
 			<label>   - $LOCALIZE[31609]</label>
 			<onclick>Skin.ToggleSetting(discrightlist)</onclick>
 			<selected>Skin.HasSetting(discrightlist)</selected>
-			<visible>Container.Content(movies) + !Skin.HasSetting(Enable.Rightlist.HidePoster.movies) | Container.Content(sets) + !Skin.HasSetting(Enable.Rightlist.HidePoster.sets)</visible>
+			<visible>[Container.Content(movies) | Container.Content(videoversions)] + !Skin.HasSetting(Enable.Rightlist.HidePoster.movies) | Container.Content(sets) + !Skin.HasSetting(Enable.Rightlist.HidePoster.sets)</visible>
 		</control>
 		<control type="radiobutton" id="1533">
 			<include>ButtonCommonValues</include>
 			<label>   - $LOCALIZE[31608]</label>
 			<onclick>Skin.ToggleSetting(rightlistcovers)</onclick>
 			<selected>Skin.HasSetting(rightlistcovers)</selected>
-			<visible>[Container.Content(movies) + !Skin.HasSetting(Enable.Rightlist.HidePoster.movies)] | [Container.Content(episodes) + !Skin.HasSetting(Enable.Rightlist.HidePoster.episodes)] | [Container.Content(tvshows) | Container.Content(seasons)]</visible>
+			<visible>[[Container.Content(movies) | Container.Content(videoversions)] + !Skin.HasSetting(Enable.Rightlist.HidePoster.movies)] | [Container.Content(episodes) + !Skin.HasSetting(Enable.Rightlist.HidePoster.episodes)] | [Container.Content(tvshows) | Container.Content(seasons)]</visible>
 		</control>
 		<control type="radiobutton" id="1534">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31604]</label>
 			<onclick>Skin.ToggleSetting(inforightlist)</onclick>
 			<selected>Skin.HasSetting(inforightlist)</selected>
-			<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos)]</visible>
+			<visible>[Container.Content(movies) | Container.Content(videoversions) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos)]</visible>
 		</control>
 		<control type="radiobutton" id="1535">
 			<include>ButtonCommonValues</include>
@@ -1047,7 +1047,7 @@
 			<onclick condition="String.IsEmpty(Skin.String(InfoPopup.Delay))">Skin.SetString(InfoPopup.Delay,3)</onclick>
 			<onclick>Skin.ToggleSetting(Enable.RightListInfoPopup)</onclick>
 			<selected>Skin.HasSetting(Enable.RightListInfoPopup)</selected>
-			<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)] + Skin.HasSetting(inforightlist)</visible>
+			<visible>[Container.Content(movies) | Container.Content(videoversions) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)] + Skin.HasSetting(inforightlist)</visible>
 		</control>
 	</include>
 	<include name="BigListViewSettings">

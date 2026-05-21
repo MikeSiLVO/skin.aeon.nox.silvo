@@ -40,7 +40,7 @@
 			<views>50, 506, 501, 507, 510, 59, 509, 503, 511, 55, 51, 53, 52, 56, 57, 500, 512, 504, 505</views>
 		</content>
 		<content name="videoversions" label="Video Versions" icon="DefaultVideoVersions.png" library="506" plugin="506">
-			<visible>Container.Content(videoversions) + !String.StartsWith(Container.FolderPath,videodb://movies/videoversions)</visible>
+			<visible>[Container.Content(videoversions) | Container.Content(videoextras)] + !String.StartsWith(Container.FolderPath,videodb://movies/videoversions)</visible>
 			<views>50, 506, 501, 507, 510, 59, 509, 503, 511, 55, 51, 53, 52, 56, 57, 58, 500, 512, 504, 505</views>
 		</content>
 		<content name="sets" label="$LOCALIZE[20434]" icon="DefaultSets.png" library="509" plugin="509">
