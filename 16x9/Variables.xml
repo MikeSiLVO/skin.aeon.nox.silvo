@@ -381,7 +381,7 @@
 	<variable name="NextAiredSubLabelVar">
 		<value condition="[Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(59) | Control.IsVisible(503)] + !String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeTitle))">$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeAired),$LOCALIZE[31010]: , • ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeSeason),S]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisode),E, - ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeTitle)]</value>
 		<value condition="!String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeTitle))">$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeSeason),S]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisode),E, - ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeTitle)][LIGHT]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeAired), • ][/LIGHT]</value>
-		<value condition="String.IsEqual(Window(Home).Property(SkinInfo.Online.DBID),ListItem.DBID) + !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status)) + !String.IsEqual(Window(Home).Property(SkinInfo.Online.Status),ListItem.Status)">$INFO[Window(Home).Property(SkinInfo.Online.Status)]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status)) + !String.IsEqual(Window(Home).Property(SkinInfo.Online.Status),ListItem.Status)">$INFO[Window(Home).Property(SkinInfo.Online.Status)]</value>
 		<value>$INFO[ListItem.Status]</value>
 	</variable>
 	<variable name="FloorLabel2Var">
@@ -1176,6 +1176,7 @@
 		<value condition="Control.HasFocus(95) + String.IsEqual(Control.GetLabel(5),$LOCALIZE[21452])">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[21452][/COLOR]</value>
 		<value condition="Control.HasFocus(95) + [Window.IsVisible(FileBrowser.xml) | Window.IsVisible(contentsettings) | Window.IsVisible(mediafilter) | Window.IsVisible(smartplaylisteditor) | Window.IsVisible(mediasource) | Window.IsVisible(profilesettings)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[186][/COLOR]</value>
 		<value condition="Control.HasFocus(95) + Window.IsVisible(managevideoversions) + Window.IsVisible(selectdialog)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[40216][/COLOR]</value>
+		<value condition="Control.HasFocus(95) + Window.IsVisible(selectdialog) + String.IsEqual(Control.GetLabel(1),$LOCALIZE[20466])">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20468][/COLOR]</value>
 		<value condition="Control.HasFocus(95) + [Window.IsVisible(addonsettings) | Window.IsVisible(selectdialog)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[190][/COLOR]</value>
 		<value condition="Control.HasFocus(98) + Window.IsVisible(addonsettings)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[571][/COLOR]</value>
 		<value condition="Control.HasFocus(98) + Window.IsVisible(FileBrowser.xml)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[119][/COLOR]</value>
@@ -1196,7 +1197,7 @@
 	<variable name="DialogSettingsOkButtonLabelVar">
 		<value condition="Window.IsVisible(addonsettings)"></value>
 		<value condition="String.IsEqual(Control.GetLabel(5),$LOCALIZE[21452])"></value>
-		<value condition="Window.IsVisible(managevideoversions) + Window.IsVisible(selectdialog)"></value>
+		<value condition="Window.IsVisible(managevideoversions) + Window.IsVisible(selectdialog) | Window.IsVisible(selectdialog) + String.IsEqual(Control.GetLabel(1),$LOCALIZE[20466])"></value>
 		<value></value>
 	</variable>
 	<variable name="DialogSettingsMoreButtonLabelVar">
