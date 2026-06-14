@@ -8,11 +8,11 @@
 	<dialogs>
 		<subdialog buttonID="800" mode="widget1" setfocus="309">
 			<!-- After widget picker closes, auto-open custom widget editor if widgetType=custom -->
-			<onclose condition="widgetType=custom" action="menu" menu="{item}.customwidget"/>
+			<onclose condition="widgetType=custom" action="menu" menu="{item}.customwidget" />
 		</subdialog>
 		<subdialog buttonID="801" mode="widget2" suffix=".2" setfocus="309">
 			<!-- After widget picker closes, auto-open custom widget editor if widgetType.2=custom -->
-			<onclose condition="widgetType.2=custom" action="menu" menu="{item}.customwidget.2"/>
+			<onclose condition="widgetType.2=custom" action="menu" menu="{item}.customwidget.2" />
 		</subdialog>
 	</dialogs>
 	<!-- Main Menu -->
@@ -66,7 +66,7 @@
 			<label>$LOCALIZE[13000]</label>
 			<action>ActivateWindow(Settings)</action>
 			<icon>special://skin/extras/icons/DefaultAddonService.png</icon>
-			<protect type="all" heading="$LOCALIZE[19098]" message="$LOCALIZE[31377]"/>
+			<protect type="all" heading="$LOCALIZE[19098]" message="$LOCALIZE[31377]" />
 		</item>
 		<item name="search" submenu="search">
 			<label>$LOCALIZE[137]</label>
@@ -300,7 +300,7 @@
 		<item name="settings-skin">
 			<label>$LOCALIZE[20077]</label>
 			<action>ActivateWindow(SkinSettings)</action>
-			<protect type="all" heading="$LOCALIZE[19098]" message="$LOCALIZE[31377]"/>
+			<protect type="all" heading="$LOCALIZE[19098]" message="$LOCALIZE[31377]" />
 		</item>
 		<item name="settings-filemanager">
 			<label>$LOCALIZE[7]</label>
@@ -356,7 +356,7 @@
 		<defaults>
 			<skinshortcuts include="ButtonMenuCommonValues" />
 		</defaults>
-		<allow widgets="false" backgrounds="false" submenus="false"/>
+		<allow widgets="false" backgrounds="false" submenus="false" />
 		<item name="button-quit" visible="System.ShowExitButton">
 			<label>$LOCALIZE[13012]</label>
 			<action>Quit()</action>
@@ -642,8 +642,8 @@
 				<shortcut name="video-playlists-root" label="$LOCALIZE[136]" type="$LOCALIZE[136]" icon="DefaultVideoPlaylists.png">
 					<action>ActivateWindow(Videos,special://videoplaylists/,return)</action>
 				</shortcut>
-				<content source="playlists" target="video"/>
-				<content source="playlists" target="video" path="special://skin/extras/playlists/" folder="Skin Playlists"/>
+				<content source="playlists" target="video" />
+				<content source="playlists" target="video" path="special://skin/extras/playlists/" folder="Skin Playlists" />
 			</group>
 		</group>
 		<!-- Music Library -->
@@ -704,13 +704,13 @@
 				<shortcut name="music-playlists-root" label="$LOCALIZE[136]" type="$LOCALIZE[136]" icon="DefaultMusicPlaylists.png">
 					<action>ActivateWindow(Music,special://musicplaylists/,return)</action>
 				</shortcut>
-				<content source="playlists" target="music"/>
-				<content source="playlists" target="music" path="special://skin/extras/playlists/" folder="Skin Playlists"/>
+				<content source="playlists" target="music" />
+				<content source="playlists" target="music" path="special://skin/extras/playlists/" folder="Skin Playlists" />
 			</group>
 		</group>
 		<!-- Video Library Nodes -->
 		<group name="library-nodes" label="$LOCALIZE[31564]" icon="DefaultFile.png">
-			<content source="nodes" target="library"/>
+			<content source="nodes" target="library" />
 		</group>
 		<!-- Sources -->
 		<group name="sources" label="$LOCALIZE[39031]" icon="DefaultFolder.png">
@@ -718,13 +718,13 @@
 				<shortcut name="video-files" label="$LOCALIZE[744]" type="$LOCALIZE[39031]" icon="DefaultFile.png">
 					<action>ActivateWindow(Videos,sources://video/,return)</action>
 				</shortcut>
-				<content source="sources" target="video"/>
+				<content source="sources" target="video" />
 			</group>
 			<group name="music-sources" label="$LOCALIZE[2]" icon="DefaultAddonMusic.png">
 				<shortcut name="music-files" label="$LOCALIZE[744]" type="$LOCALIZE[39031]" icon="DefaultFile.png">
 					<action>ActivateWindow(Music,sources://music/,return)</action>
 				</shortcut>
-				<content source="sources" target="music"/>
+				<content source="sources" target="music" />
 			</group>
 			<group name="picture-sources" label="$LOCALIZE[1]" icon="DefaultPicture.png">
 				<shortcut name="picture-files" label="$LOCALIZE[744]" type="$LOCALIZE[39031]" icon="DefaultFile.png">
@@ -741,26 +741,26 @@
 				<shortcut name="android-apps" label="$LOCALIZE[20244]" type="$LOCALIZE[1043]" icon="DefaultAddonProgram.png" visible="System.Platform.Android">
 					<action>ActivateWindow(Programs,androidapp://sources/apps,return)</action>
 				</shortcut>
-				<content source="addons" label="$LOCALIZE[1043]" icon="DefaultAddonProgram.png" target="executable"/>
+				<content source="addons" label="$LOCALIZE[1043]" icon="DefaultAddonProgram.png" target="executable" />
 			</group>
 			<group name="video-addons" label="$LOCALIZE[1037]" icon="DefaultAddonVideo.png">
-				<content source="addons" label="$LOCALIZE[1037]" icon="DefaultAddonVideo.png" target="video"/>
+				<content source="addons" label="$LOCALIZE[1037]" icon="DefaultAddonVideo.png" target="video" />
 			</group>
 			<group name="music-addons" label="$LOCALIZE[1038]" icon="DefaultAddonMusic.png">
-				<content source="addons" label="$LOCALIZE[1038]" icon="DefaultAddonMusic.png" target="audio"/>
+				<content source="addons" label="$LOCALIZE[1038]" icon="DefaultAddonMusic.png" target="audio" />
 			</group>
 			<group name="picture-addons" label="$LOCALIZE[1039]" icon="DefaultAddonPicture.png">
-				<content source="addons" label="$LOCALIZE[1039]" icon="DefaultAddonPicture.png" target="image"/>
+				<content source="addons" label="$LOCALIZE[1039]" icon="DefaultAddonPicture.png" target="image" />
 			</group>
 		</group>
 		<!-- PVR/Live TV -->
 		<group name="pvr" label="$LOCALIZE[14204]" icon="DefaultAddonPVRClient.png" visible="PVR.HasTVChannels | PVR.HasRadioChannels">
-			<content source="pvr" target="tv"/>
+			<content source="pvr" target="tv" />
 			<group name="pvr-tv" label="$LOCALIZE[19023]" icon="DefaultAddonPVRClient.png" visible="PVR.HasTVChannels">
-				<content source="pvr" target="tv"/>
+				<content source="pvr" target="tv" />
 			</group>
 			<group name="pvr-radio" label="$LOCALIZE[19024]" icon="DefaultAddonPVRClient.png" visible="PVR.HasRadioChannels">
-				<content source="pvr" target="radio"/>
+				<content source="pvr" target="radio" />
 			</group>
 		</group>
 		<!-- Games -->
@@ -777,19 +777,19 @@
 			<shortcut name="picture-addons" label="$LOCALIZE[1039]" type="$LOCALIZE[1]" icon="DefaultAddonPicture.png">
 				<action>ActivateWindow(Pictures,Addons,return)</action>
 			</shortcut>
-			<content source="sources" target="pictures" folder="$LOCALIZE[1]"/>
+			<content source="sources" target="pictures" folder="$LOCALIZE[1]" />
 		</group>
 		<!-- Favourites -->
 		<group name="favourites" label="$LOCALIZE[1036]" icon="DefaultAddonsInstalled.png">
 			<shortcut name="favourites-root" label="$LOCALIZE[1036]" type="$LOCALIZE[1036]" icon="DefaultAddonsInstalled.png">
 				<action>ActivateWindow(favouritesbrowser)</action>
 			</shortcut>
-			<content source="favourites" folder="$LOCALIZE[1036]" icon="DefaultFolder.png"/>
+			<content source="favourites" folder="$LOCALIZE[1036]" icon="DefaultFolder.png" />
 		</group>
 		<!-- System/Settings -->
 		<group name="settings" label="$LOCALIZE[13000]" icon="DefaultAddonService.png">
 			<group name="commands" label="$LOCALIZE[31531]" icon="DefaultAddonNone.png">
-				<content source="commands" target=""/>
+				<content source="commands" target="" />
 				<shortcut name="reload-skin" label="$LOCALIZE[20183]" type="$LOCALIZE[32054]" icon="DefaultAddonService.png">
 					<action>ReloadSkin()</action>
 				</shortcut>
@@ -812,7 +812,7 @@
 			<shortcut name="event-log" label="$LOCALIZE[10050]" type="$LOCALIZE[13000]" icon="DefaultAddonService.png">
 				<action>ActivateWindow(Eventlog)</action>
 			</shortcut>
-			<content source="settings" target=""/>
+			<content source="settings" target="" />
 		</group>
 		<input label="$ADDON[script.skinshortcuts 32024]" type="text" for="action" />
 	</groupings>

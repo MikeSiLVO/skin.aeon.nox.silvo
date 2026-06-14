@@ -926,7 +926,7 @@
 		<value condition="[String.Contains(ListItem.Filename,bluray) | String.Contains(ListItem.Filename,blu-ray) | String.Contains(ListItem.Filename,bdrip) | String.Contains(ListItem.Filename,brrip) | String.IsEqual(ListItem.FileExtension,bdmv) | String.IsEqual(ListItem.FileExtension,iso) | String.Contains(ListItem.Filename,remux)]">BluRay</value>
 		<value>$INFO[ListItem.VideoCodec]</value>
 	</variable> -->
-	<variable name="AudioCodecLabelVar">
+	<!-- <variable name="AudioCodecLabelVar">
 		<value condition="String.Contains(ListItem.AudioCodec,atmos) | String.Contains(ListItem.Property(stream.codec),atmos)">Atmos</value>
 		<value condition="String.IsEqual(ListItem.Filename,dtshd_ma_x) | String.IsEqual(ListItem.Property(stream.codec),dtshd_ma_x)">DTS-X</value>
 		<value condition="String.IsEqual(ListItem.AudioCodec,aac_latm) | String.IsEqual(ListItem.Property(stream.codec),aac_latm)">AAC</value>
@@ -945,7 +945,7 @@
 		<value condition="String.IsEqual(ListItem.AudioCodec,wmapro) | String.IsEqual(ListItem.Property(stream.codec),wmapro)">WMA-PRO</value>
 		<value condition="String.IsEqual(ListItem.AudioCodec,wmav2) | String.IsEqual(ListItem.Property(stream.codec),wmav2)">WMA</value>
 		<value>[UPPERCASE]$INFO[ListItem.AudioCodec]$INFO[ListItem.Property(stream.codec)][/UPPERCASE]</value>
-	</variable>
+	</variable> -->
 	<variable name="AudioCodecPlayerLabelVar">
 		<value condition="String.Contains(VideoPlayer.AudioCodec,atmos)">Atmos</value>
 		<value condition="String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x)">DTS-X</value>
@@ -966,7 +966,7 @@
 		<value condition="String.IsEqual(VideoPlayer.AudioCodec,wmav2)">WMA</value>
 		<value>[UPPERCASE]$INFO[VideoPlayer.AudioCodec][/UPPERCASE]</value>
 	</variable>
-	<variable name="AudioChannelsLabelVar">
+	<!-- <variable name="AudioChannelsLabelVar">
 		<value condition="String.IsEqual(ListItem.AudioChannels,1) | String.IsEqual(ListItem.Property(stream.channels),1)">1.0</value>
 		<value condition="String.IsEqual(ListItem.AudioChannels,2) | String.IsEqual(ListItem.Property(stream.channels),2)">2.0</value>
 		<value condition="String.IsEqual(ListItem.AudioChannels,3) | String.IsEqual(ListItem.Property(stream.channels),3)">2.1</value>
@@ -977,7 +977,7 @@
 		<value condition="String.IsEqual(ListItem.AudioChannels,8) | String.IsEqual(ListItem.Property(stream.channels),8)">7.1</value>
 		<value condition="String.IsEqual(ListItem.AudioChannels,10) | String.IsEqual(ListItem.Property(stream.channels),10)">9.1</value>
 		<value>$INFO[ListItem.AudioChannels]$INFO[ListItem.Property(stream.channels)]</value>
-	</variable>
+	</variable> -->
 	<variable name="AudioChannelsPlayerLabelVar">
 		<value condition="String.IsEqual(VideoPlayer.AudioChannels,1)">1.0</value>
 		<value condition="String.IsEqual(VideoPlayer.AudioChannels,2)">2.0</value>
