@@ -11,9 +11,9 @@
 		<value condition="!String.IsEmpty(ListItem.Property(musicvideomediatype))">plugin://script.skin.info.service/?action=getdetails&amp;dbtype=musicvideo_$INFO[ListItem.Property(musicvideomediatype)]&amp;artist=$INFO[ListItem.Label]&amp;album=$INFO[ListItem.Album]</value>
 		<value condition="!String.IsEmpty(ListItem.DBID)">plugin://script.skin.info.service/?action=getdetails&amp;dbid=$INFO[ListItem.DBID]&amp;dbtype=$INFO[ListItem.DBTYPE]</value>
 	</variable>
-	<variable name="SkinInfoOnlinePathVar">
+	<!-- <variable name="SkinInfoOnlinePathVar">
 		<value>$INFO[ListItem.DBID,plugin://script.skin.info.service/?action=online&amp;dbid=]$INFO[ListItem.DBTYPE,&amp;dbtype=]</value>
-	</variable>
+	</variable> -->
 	<variable name="SkinInfoPlayerOnlinePathVar">
 		<value condition="VideoPlayer.Content(movies) + !String.IsEmpty(VideoPlayer.DBID)">plugin://script.skin.info.service/?action=online&amp;dbid=$INFO[VideoPlayer.DBID]&amp;dbtype=movie</value>
 		<value condition="VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.DBID)">plugin://script.skin.info.service/?action=online&amp;dbid=$INFO[VideoPlayer.DBID]&amp;dbtype=episode</value>
@@ -46,10 +46,10 @@
 		<value condition="!System.GetBool(musiclibrary.showcompilationartists)">musicdb://artists/$INFO[ListItem.DBID]/?albumartistsonly=true</value>
 		<value>musicdb://artists/$INFO[ListItem.DBID]/?albumartistsonly=false</value>
 	</variable>
-	<variable name="ArtistAlbumInfoPathVar">
+	<!-- <variable name="ArtistAlbumInfoPathVar">
 		<value condition="!System.GetBool(musiclibrary.showcompilationartists)">musicdb://artists/$INFO[ListItem.DBID]/$INFO[Window(musicinformation).Property(AlbumDBID)]/?albumartistsonly=true&amp;artistid=$INFO[ListItem.DBID]</value>
 		<value>musicdb://artists/$INFO[ListItem.DBID]/$INFO[Window(musicinformation).Property(AlbumDBID)]/?albumartistsonly=false&amp;artistid=$INFO[ListItem.DBID]</value>
-	</variable>
+	</variable> -->
 	<variable name="ListContentVar">
 		<value condition="String.IsEmpty(Container.PluginName)">$INFO[Container(50).ListItem.FolderPath]</value>
 		<value />
