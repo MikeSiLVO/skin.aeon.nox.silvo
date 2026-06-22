@@ -1,0 +1,67 @@
+name: Close Translation Pull Requests
+
+on:
+  pull_request_target:
+    branches: [ master, main ]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to check (and close if translation-only)'
+        required: true
+        type: string
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+
+  close-translation-prs:
+    if: github.actor != 'weblate' && github.repository == 'MikeSiLVO/skin.aeon.nox.silvo'
+
+    name: Close Translation Pull Requests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check and close translation PRs
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const prNumber = context.payload.pull_request?.number ?? Number(context.payload.inputs.pr_number);
+
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber
+            });
+
+            const hasEnGb = files.some(f => f.filename.includes('en_gb/strings.po'));
+            const hasStrings = files.some(f => f.filename.includes('strings.po'));
+
+            // Allow if en_gb was modified (likely valid PR) or no strings.po at all
+            if (hasEnGb || !hasStrings) {
+              console.log('Not a translation-only PR, allowing through');
+              return;
+            }
+
+            // Close translation PRs from non-Weblate contributors
+            console.log('Translation PR detected, closing');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body: `A modified strings.po file was detected.
+
+            Translations are not accepted through PRs, please use Weblate if you'd like to contribute to the translations.
+
+            If you feel this PR was closed in error, please reply below.
+            Thank you for your interest in improving this add-on.`
+            });
+
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              state: 'closed'
+            });
