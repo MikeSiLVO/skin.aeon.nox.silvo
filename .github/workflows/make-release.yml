@@ -1,0 +1,71 @@
+name: Make Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    name: Make Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Add-on
+        uses: actions/checkout@v7
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install libxml2-utils xmlstarlet zip
+
+      - name: Get addon info
+        id: addon-info
+        run: |
+          version=$(xmlstarlet sel -t -v 'string(/addon/@version)' addon.xml)
+          echo "version=$version" >> $GITHUB_OUTPUT
+
+          # Extract changelog, preserve newlines for release body
+          changelog=$(xmlstarlet sel -t -v '//news' addon.xml)
+          echo "changelog<<EOF" >> $GITHUB_OUTPUT
+          echo "$changelog" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+          # Check if pre-release (addon.xml uses ~ for pre-release)
+          if [[ $version == *~alpha* || $version == *~beta* ]]; then
+            echo "prerelease=true" >> $GITHUB_OUTPUT
+          else
+            echo "prerelease=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Zip
+        id: zip
+        run: |
+          # Clean up for release - remove all dev files
+          rm -rf .git .github .gitignore .gitattributes
+          rm -rf .claude .vscode .idea
+          rm -rf .pylintrc pyrightconfig.json ruff.toml pyproject.toml
+          rm -rf __pycache__ .mypy_cache .ruff_cache .pytest_cache
+          rm -rf typings tests docs DOCS xbmcgui
+          rm -f README.md CHANGELOG.md
+          rm -f .DS_Store Thumbs.db desktop.ini
+          cd ..
+          filename=${{ github.event.repository.name }}-${{ steps.addon-info.outputs.version }}.zip
+          zip -r $filename ${{ github.event.repository.name }}
+          echo "filename=$filename" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PRE=""
+          if [[ "${{ steps.addon-info.outputs.prerelease }}" == "true" ]]; then
+            PRE="--prerelease"
+          fi
+          xmlstarlet sel -t -v '//news' addon.xml > /tmp/release-notes.md
+          gh release create "${{ github.ref_name }}" \
+            "../${{ steps.zip.outputs.filename }}" \
+            --repo "${{ github.repository }}" \
+            --title "v${{ steps.addon-info.outputs.version }}" \
+            --notes-file /tmp/release-notes.md \
+            $PRE
