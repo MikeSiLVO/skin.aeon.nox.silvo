@@ -57,6 +57,8 @@
 		<value>$LOCALIZE[571]</value>
 	</variable>
 	<variable name="FanartTitleVar">
+		<value condition="Control.HasFocus(9010) + String.StartsWith(Container(9010).ListItem.Property(backgroundType),playlist)">$VAR[SubMenuPlaylistBackgroundTitleVar]</value>
+		<value condition="String.StartsWith(Container(9000).ListItem.Property(backgroundType),playlist)">$VAR[PlaylistBackgroundTitleVar]</value>
 		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),movie-fanart) + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),-fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),movie-fanart)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Movie.Title)]</value>
 		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),tv-fanart) + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),-fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),tv-fanart)">$INFO[Window(Home).Property(SkinInfo.Slideshow.TV.Title)]</value>
 		<value condition="String.IsEqual(Container(9000).ListItem.Property(background),video-fanart) + ![Control.HasFocus(9010)  + !String.EndsWith(Container(9010).ListItem.Property(background),-fanart) + !String.IsEmpty(Container(9010).ListItem.Property(background))] | Control.HasFocus(9010) + String.IsEqual(Container(9010).ListItem.Property(background),video-fanart)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Video.Title)]</value>
