@@ -4,7 +4,7 @@
 If you enjoy this skin, [buy me a coffee](https://ko-fi.com/mikesilvo) ☕
 
 **Branches:**
- - **master:** Kodi v22 Codename Piers
+ - **main:** Kodi v22 Codename Piers
  - **omega:** Kodi v21 Codename Omega
  - **nexus:** Kodi v20 Codename Nexus
 
