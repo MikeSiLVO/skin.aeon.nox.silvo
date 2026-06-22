@@ -2,7 +2,7 @@
 [![Kodi badge](https://img.shields.io/badge/SKIN%20for-Kodi-blue.svg)](https://forum.kodi.tv/forumdisplay.php?fid=142)
 
 **Branches:**
- - **master:** Kodi v22 Codename Piers
+ - **main:** Kodi v22 Codename Piers
  - **omega:** Kodi v21 Codename Omega
  - **nexus:** Kodi v20 Codename Nexus
 
