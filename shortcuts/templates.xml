@@ -1376,6 +1376,29 @@
 			</control>
 		</controls>
 	</template>
+	<!-- Playlist backgrounds -->
+	<template include="SkinInfoPlaylistPaths">
+		<condition>backgroundType=playlist</condition>
+		<variables>
+			<variable name="PlaylistBackgroundFanartVar" condition="menu=mainmenu">
+				<value condition="String.IsEqual(Container(9000).ListItem.Property(name),$PROPERTY[name])">$INFO[Window(Home).Property(SkinInfo.Slideshow.Playlist.$PROPERTY[name].FanArt)]</value>
+			</variable>
+			<variable name="SubMenuPlaylistBackgroundFanartVar" condition="menu~mainmenu/">
+				<value condition="String.IsEqual(Container(9010).ListItem.Property(name),$PROPERTY[name])">$INFO[Window(Home).Property(SkinInfo.Slideshow.Playlist.$PROPERTY[name].FanArt)]</value>
+			</variable>
+			<variable name="PlaylistBackgroundTitleVar" condition="menu=mainmenu">
+				<value condition="String.IsEqual(Container(9000).ListItem.Property(name),$PROPERTY[name]) + !String.IsEmpty(Window(Home).Property(SkinInfo.Slideshow.Playlist.$PROPERTY[name].Title))">$INFO[Window(Home).Property(SkinInfo.Slideshow.Playlist.$PROPERTY[name].Title)]</value>
+				<value condition="String.IsEqual(Container(9000).ListItem.Property(name),$PROPERTY[name])">$INFO[Window(Home).Property(SkinInfo.Slideshow.Playlist.$PROPERTY[name].Artist)]</value>
+			</variable>
+			<variable name="SubMenuPlaylistBackgroundTitleVar" condition="menu~mainmenu/">
+				<value condition="String.IsEqual(Container(9010).ListItem.Property(name),$PROPERTY[name]) + !String.IsEmpty(Window(Home).Property(SkinInfo.Slideshow.Playlist.$PROPERTY[name].Title))">$INFO[Window(Home).Property(SkinInfo.Slideshow.Playlist.$PROPERTY[name].Title)]</value>
+				<value condition="String.IsEqual(Container(9010).ListItem.Property(name),$PROPERTY[name])">$INFO[Window(Home).Property(SkinInfo.Slideshow.Playlist.$PROPERTY[name].Artist)]</value>
+			</variable>
+		</variables>
+		<controls>
+			<onload condition="!String.IsEmpty(Window(Home).Property(PlaylistPathSet))">SetProperty(SkinInfo.Slideshow.Playlist.Paths,"$INFO[Window(Home).Property(SkinInfo.Slideshow.Playlist.Paths)]$PROPERTY[name]=$PROPERTY[backgroundPath]|",Home)</onload>
+		</controls>
+	</template>
 	<!-- Weather Forecast Content -->
 	<template include="WeatherForecastContent" templateonly="auto">
 		<condition>widgetType=weather | widgetType.2=weather</condition>
