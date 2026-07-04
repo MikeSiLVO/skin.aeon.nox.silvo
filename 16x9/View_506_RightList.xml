@@ -344,7 +344,8 @@
 					<width>570</width>
 					<height>270</height>
 					<usecontrolcoords>true</usecontrolcoords>
-					<animation effect="slide" end="0,255" time="0" tween="cubic" easing="inout" condition="Container.Content(songs)">Conditional</animation>
+					<animation effect="slide" end="0,165" time="0" condition="Container.Content(songs) + !String.IsEmpty(ListItem.Comment)">Conditional</animation>
+					<animation effect="slide" end="0,255" time="0" condition="Container.Content(songs) + String.IsEmpty(ListItem.Comment)">Conditional</animation>
 					<control type="label">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[557]:[/COLOR][CR]$INFO[ListItem.Artist]</label>
 						<width>570</width>
@@ -379,16 +380,15 @@
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Property(Artist_Genre)]</label>
 						<width>570</width>
 						<include>DefaultButtonsValues</include>
-						<visible>!String.IsEmpty(ListItem.Property(Artist_Genre))</visible>
+						<visible>!String.IsEmpty(ListItem.Property(Artist_Genre)) + Container.Content(artists)</visible>
 					</control>
 					<control type="textbox">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[569]:[/COLOR][CR]$INFO[ListItem.Comment]</label>
 						<left>15</left>
 						<width>570</width>
-						<height>180</height>
-						<font>font14_textbox</font>
-						<pagecontrol>62</pagecontrol>
+						<font>font14_textbox2</font>
 						<include>DefaultButtonsValues</include>
+						<pagecontrol>62</pagecontrol>
 						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(62)</autoscroll>
 						<visible>!String.IsEmpty(ListItem.Comment)</visible>
 					</control>
@@ -400,7 +400,7 @@
 						<label>$VAR[OtherPlotVar]</label>
 						<left>15</left>
 						<width>570</width>
-						<height>255</height>
+						<height>253</height>
 						<font>font14_textbox</font>
 						<pagecontrol>50663</pagecontrol>
 						<include>DefaultButtonsValues</include>
