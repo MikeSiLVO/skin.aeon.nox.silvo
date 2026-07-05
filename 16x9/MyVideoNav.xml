@@ -132,7 +132,7 @@
 			<param name="content" value="$VAR[SkinInfoOnlinePathVar]" />
 		</include> -->
 		<control type="group">
-			<visible>[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
+			<visible>$EXP[StartupIntroActive]</visible>
 			<include>CommonBackground</include>
 			<control type="group">
 				<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | [Control.IsVisible(58) + Skin.HasSetting(BannerPlex) + Skin.HasSetting(Disable.BannerWallInfo)] | Control.IsVisible(59)</visible>
@@ -255,7 +255,7 @@
 											<shadowcolor>shadow</shadowcolor>
 											<label>$VAR[NextAiredSubLabelVar]</label>
 											<textoffsetx>30</textoffsetx>
-											<animation effect="fade" time="250" delay="300" reversible="false" condition="!Container.OnNext + !Container.OnPrevious">Conditional</animation>
+											<animation effect="fade" time="250" delay="300" reversible="false" condition="$EXP[ContainerNotScrolling]">Conditional</animation>
 										</control>
 									</control>
 									<control type="label">
@@ -650,7 +650,7 @@
 						<onclick condition="Skin.HasSetting(Disable.MultiSearch)">SendClick(videos,8)</onclick>
 					</control>
 					<control type="edit" id="19">
-						<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
+						<visible>$EXP[CanFilterSimple]</visible>
 						<description>Filter</description>
 						<textwidth>345</textwidth>
 						<include>ButtonCommonValues</include>

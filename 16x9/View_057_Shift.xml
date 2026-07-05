@@ -149,7 +149,7 @@
 								<effect type="slide" start="0,-120" end="0,50" time="200" tween="quadratic" />
 							</animation>
 							<animation effect="slide" end="0,-28" time="0" tween="cubic" easing="inout" condition="Skin.HasSetting(Enable.Shift.Covers)">Conditional</animation>
-							<animation type="Conditional" reversible="false" condition="!Container.OnNext + !Container.OnPrevious">
+							<animation type="Conditional" reversible="false" condition="$EXP[ContainerNotScrolling]">
 								<effect type="rotate" end="-360" center="auto" time="6400" delay="1200" loop="false" tween="cubic" easing="inout" />
 							</animation>
 							<visible>Skin.HasSetting(Enable.Shift.Discart)</visible>

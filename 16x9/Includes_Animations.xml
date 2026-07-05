@@ -46,7 +46,7 @@
 		<animation effect="slide" end="0,-138" tween="cubic" easing="inout" time="720">WindowClose</animation>
 	</include>
 	<include name="InfoPanelDelayAnimation">
-		<visible>![Container.OnNext | Container.OnPrevious]</visible>
+		<visible>$EXP[ContainerNotScrolling]</visible>
 		<animation effect="fade" end="100" time="120" delay="1000" condition="String.IsEqual(Skin.String(InfoPanel.Delay),1)">Visible</animation>
 		<animation effect="fade" end="100" time="120" delay="2000" condition="String.IsEqual(Skin.String(InfoPanel.Delay),2)">Visible</animation>
 		<animation effect="fade" end="100" time="120" delay="3000" condition="String.IsEqual(Skin.String(InfoPanel.Delay),3)">Visible</animation>
@@ -54,7 +54,7 @@
 		<animation effect="fade" end="100" time="120" delay="5000" condition="String.IsEqual(Skin.String(InfoPanel.Delay),5)">Visible</animation>
 	</include>
 	<include name="ShowCaseDelayAnimation">
-		<visible>![Container.OnNext | Container.OnPrevious]</visible>
+		<visible>$EXP[ContainerNotScrolling]</visible>
 		<animation effect="fade" end="100" time="120" delay="1000" condition="String.IsEqual(Skin.String(ShowCase.Delay),1)">Visible</animation>
 		<animation effect="fade" end="100" time="120" delay="2000" condition="String.IsEqual(Skin.String(ShowCase.Delay),2)">Visible</animation>
 		<animation effect="fade" end="100" time="120" delay="3000" condition="String.IsEqual(Skin.String(ShowCase.Delay),3)">Visible</animation>
@@ -62,7 +62,7 @@
 		<animation effect="fade" end="100" time="120" delay="5000" condition="String.IsEqual(Skin.String(ShowCase.Delay),5)">Visible</animation>
 	</include>
 	<include name="MyFlixDelayAnimation">
-		<visible>![Container.OnNext | Container.OnPrevious]</visible>
+		<visible>$EXP[ContainerNotScrolling]</visible>
 		<animation effect="fade" end="100" time="120" delay="1000" condition="String.IsEqual(Skin.String(MyFlix.Delay),1)">Visible</animation>
 		<animation effect="fade" end="100" time="120" delay="2000" condition="String.IsEqual(Skin.String(MyFlix.Delay),2)">Visible</animation>
 		<animation effect="fade" end="100" time="120" delay="3000" condition="String.IsEqual(Skin.String(MyFlix.Delay),3)">Visible</animation>
@@ -128,7 +128,7 @@
 			<effect type="slide" tween="cubic" easing="inout" time="1500" delay="100" start="-800" end="0" />
 			<effect type="rotate" end="-360" center="auto" time="2000" delay="0" loop="false" tween="cubic" easing="inout" />
 		</animation>
-		<animation type="Conditional" reversible="false" condition="!Container.OnNext + !Container.OnPrevious + !String.IsEqual(MusicPlayer.Album,ListItem.Album)">
+		<animation type="Conditional" reversible="false" condition="$EXP[ContainerNotScrolling] + !String.IsEqual(MusicPlayer.Album,ListItem.Album)">
 			<effect type="rotate" end="-360" center="auto" time="6400" delay="1200" loop="false" tween="cubic" easing="inout" />
 		</animation>
 	</include>

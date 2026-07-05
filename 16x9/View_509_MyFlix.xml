@@ -67,7 +67,7 @@
 					<include>VisibleFadeAnimation</include>
 					<visible>!Skin.HasSetting(Disable.MyFlixInfo)</visible>
 					<control type="group">
-						<visible>!String.IsEmpty(ListItem.Top250) + Integer.IsLessOrEqual(ListItem.Top250,250)</visible>
+						<visible>$EXP[HasTop250]</visible>
 						<control type="image">
 							<left>17</left>
 							<top>-35</top>
@@ -309,7 +309,7 @@
 						</control>
 					</control>
 					<control type="grouplist">
-						<visible>[Container.Content(tvshows) | Container.Content(seasons)]</visible>
+						<visible>$EXP[IsTVShowOrSeason]</visible>
 						<control type="label">
 							<width>800</width>
 							<height>80</height>

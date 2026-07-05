@@ -793,11 +793,11 @@
 		<control type="group">
 			<visible>Player.HasVideo + !Window.IsActive(script-globalsearch.xml)</visible>
 			<include>VisibleFadeAnimation</include>
-			<animation effect="slide" tween="cubic" time="720" start="0,1080" end="0,0" condition="Skin.HasSetting(centermainmenu) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical)">WindowOpen</animation>
-			<animation effect="slide" tween="cubic" time="720" end="0,1080" start="0,0" condition="Skin.HasSetting(centermainmenu) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical)">WindowClose</animation>
+			<animation effect="slide" tween="cubic" time="720" start="0,1080" end="0,0" condition="$EXP[CenterMainMenu]">WindowOpen</animation>
+			<animation effect="slide" tween="cubic" time="720" end="0,1080" start="0,0" condition="$EXP[CenterMainMenu]">WindowClose</animation>
 			<animation effect="slide" tween="cubic" time="720" start="0,-1080" end="0,0" condition="!Skin.HasSetting(centermainmenu) | String.IsEqual(Skin.String(MainMenu.Layout),vertical)">WindowOpen</animation>
 			<animation effect="slide" tween="cubic" time="720" end="0,-1080" start="0,0" condition="!Skin.HasSetting(centermainmenu) | String.IsEqual(Skin.String(MainMenu.Layout),vertical)">WindowClose</animation>
-			<animation effect="slide" end="0,610" time="320" tween="cubic" easing="inout" condition="Skin.HasSetting(centermainmenu) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical)">Conditional</animation>
+			<animation effect="slide" end="0,610" time="320" tween="cubic" easing="inout" condition="$EXP[CenterMainMenu]">Conditional</animation>
 			<animation effect="slide" end="425,-30" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">Conditional</animation>
 			<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
 			<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + String.Contains(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus">Conditional</animation>
@@ -806,7 +806,7 @@
 				<width>1920</width>
 				<height>600</height>
 				<texture>gradient_floor.png</texture>
-				<visible>Skin.HasSetting(centermainmenu) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical)</visible>
+				<visible>$EXP[CenterMainMenu]</visible>
 			</control>
 			<control type="image">
 				<width>1920</width>
@@ -1047,11 +1047,11 @@
 			<control type="group">
 				<visible>Player.HasAudio + !Window.IsActive(script-globalsearch.xml)</visible>
 				<include>VisibleFadeAnimation</include>
-				<animation effect="slide" tween="cubic" time="720" start="0,1080" end="0,0" condition="Skin.HasSetting(centermainmenu) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical)">WindowOpen</animation>
-				<animation effect="slide" tween="cubic" time="720" end="0,1080" start="0,0" condition="Skin.HasSetting(centermainmenu) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical)">WindowClose</animation>
+				<animation effect="slide" tween="cubic" time="720" start="0,1080" end="0,0" condition="$EXP[CenterMainMenu]">WindowOpen</animation>
+				<animation effect="slide" tween="cubic" time="720" end="0,1080" start="0,0" condition="$EXP[CenterMainMenu]">WindowClose</animation>
 				<animation effect="slide" tween="cubic" time="720" start="0,-1080" end="0,0" condition="!Skin.HasSetting(centermainmenu) | String.IsEqual(Skin.String(MainMenu.Layout),vertical)">WindowOpen</animation>
 				<animation effect="slide" tween="cubic" time="720" end="0,-1080" start="0,0" condition="!Skin.HasSetting(centermainmenu) | String.IsEqual(Skin.String(MainMenu.Layout),vertical)">WindowClose</animation>
-				<animation effect="slide" end="0,615" time="320" tween="cubic" easing="inout" condition="Skin.HasSetting(centermainmenu) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical)">Conditional</animation>
+				<animation effect="slide" end="0,615" time="320" tween="cubic" easing="inout" condition="$EXP[CenterMainMenu]">Conditional</animation>
 				<animation effect="slide" end="425,-30" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">Conditional</animation>
 				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
 				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + String.Contains(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus">Conditional</animation>
@@ -1060,7 +1060,7 @@
 					<width>1920</width>
 					<height>600</height>
 					<texture>gradient_floor.png</texture>
-					<visible>Skin.HasSetting(centermainmenu) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical)</visible>
+					<visible>$EXP[CenterMainMenu]</visible>
 				</control>
 				<control type="image">
 					<width>1920</width>

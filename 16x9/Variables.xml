@@ -375,7 +375,7 @@
 		<value condition="Control.IsVisible(509) + Container.Content(episodes)">$INFO[ListItem.Premiered]$INFO[ListItem.RatingAndVotes, • ]$VAR[DurationVar, • ]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ]</value>
 		<value condition="[Control.IsVisible(509) | Control.IsVisible(512)] + Container.Content(seasons) + Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),0)">$INFO[ListItem.Year]$INFO[ListItem.Property(WatchedEpisodePercent), • ,% $LOCALIZE[19256]]</value>
 		<value condition="[Control.IsVisible(509) | Control.IsVisible(512)] + Container.Content(tvshows) + Integer.IsGreater(ListItem.Property(WatchedEpisodePercent),0)">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ]$VAR[DurationVar, • ]$INFO[ListItem.Property(WatchedEpisodePercent), • ,% $LOCALIZE[19256]]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ]$VAR[DurationVar, • ]</value>
+		<value condition="$EXP[IsTVShowOrSeason]">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ]$VAR[DurationVar, • ]</value>
 		<value condition="Container.Content(episodes)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="Container.Content(addons)">$INFO[ListItem.AddonSummary]</value>
 		<value condition="Container.Content(musicvideos)">$INFO[ListItem.Artist]</value>

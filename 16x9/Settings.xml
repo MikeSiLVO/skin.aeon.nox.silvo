@@ -4,7 +4,7 @@
 	<menucontrol>9051</menucontrol>
 	<controls>
 		<control type="group">
-			<visible>[!String.IsEmpty(Skin.String(StartupIntro)) + String.IsEmpty(Window(Home).Property(Playing.StartupIntro))] | String.IsEmpty(Skin.String(StartupIntro))</visible>
+			<visible>$EXP[StartupIntroActive]</visible>
 			<include>CommonBackground</include>
 			<include>Topbar</include>
 			<control type="group">

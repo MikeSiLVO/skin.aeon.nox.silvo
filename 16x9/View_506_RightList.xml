@@ -89,7 +89,7 @@
 						<width>65</width>
 						<height>30</height>
 						<texture>logos/imdb.png</texture>
-						<visible>!String.IsEmpty(ListItem.Top250) + Integer.IsLessOrEqual(ListItem.Top250,250)</visible>
+						<visible>$EXP[HasTop250]</visible>
 					</control>
 					<control type="Label">
 						<left>90</left>
@@ -100,7 +100,7 @@
 						<font>font14</font>
 						<shadowcolor>shadow</shadowcolor>
 						<textcolor>goldenrod</textcolor>
-						<visible>!String.IsEmpty(ListItem.Top250) + Integer.IsLessOrEqual(ListItem.Top250,250)</visible>
+						<visible>$EXP[HasTop250]</visible>
 					</control>
 					<control type="grouplist">
 						<visible>[Container.Content(movies) | Container.Content(videoversions)] + !ListItem.IsCollection</visible>
@@ -159,7 +159,7 @@
 						</control>
 					</control>
 					<control type="group">
-						<visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
+						<visible>$EXP[IsTVShowOrSeason]</visible>
 						<control type="label">
 							<top>110</top>
 							<width>570</width>

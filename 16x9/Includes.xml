@@ -7,6 +7,7 @@
 	<include file="Includes_Debug.xml" />
 	<include file="Includes_DialogInfo.xml" />
 	<include file="Includes_DialogSettings.xml" />
+	<include file="Includes_Expressions.xml" />
 	<include file="Includes_Games.xml" />
 	<include file="Includes_Home.xml" />
 	<include file="Includes_LiveBG.xml" />
@@ -1480,7 +1481,7 @@
 				<param name="visible">Control.IsVisible(57) + Skin.HasSetting(Enable.Shift.Small)</param>
 			</include>
 			<control type="group">
-				<visible>![Container.OnNext | Container.OnPrevious]</visible>
+				<visible>$EXP[ContainerNotScrolling]</visible>
 				<include>ViewAnimation</include>
 				<control type="group">
 					<visible>String.IsEqual(Control.GetLabel(4420),1) | String.IsEqual(Control.GetLabel(4420),2)</visible>

@@ -124,7 +124,7 @@
 						<align>center</align>
 						<textcolor>grey</textcolor>
 						<label>$INFO[ListItem.Top250,$LOCALIZE[13409] # ,]</label>
-						<visible>!String.IsEmpty(ListItem.Top250) + Integer.IsLessOrEqual(ListItem.Top250,250)</visible>
+						<visible>$EXP[HasTop250]</visible>
 					</control>
 					<control type="label">
 						<width>856</width>
@@ -203,7 +203,7 @@
 						<textcolor>grey</textcolor>
 						<label>$VAR[NextAiredSubLabelVar]</label>
 						<animation effect="fade" time="250" delay="300" reversible="false">Visible</animation>
-						<visible>![Container.OnNext | Container.OnPrevious]</visible>
+						<visible>$EXP[ContainerNotScrolling]</visible>
 					</control>
 					<control type="label">
 						<left>400</left>
