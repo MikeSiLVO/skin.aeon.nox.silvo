@@ -2,44 +2,17 @@ name: Sync addon metadata translations
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [main]
     paths:
       - '**addon.xml'
       - '**resource.language.**strings.po'
+  workflow_dispatch:
 
 jobs:
   sync-translations:
     if: github.repository == 'MikeSiLVO/skin.aeon.nox.silvo'
-
-    name: Sync addon metadata translations
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
-        with:
-          path: project
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.9'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install git+https://github.com/xbmc/sync_addon_metadata_translations.git
-
-      - name: Run sync-addon-metadata-translations
-        run: sync-addon-metadata-translations
-        working-directory: ./project
-
-      - name: Create PR for sync changes
-        uses: peter-evans/create-pull-request@v8
-        with:
-          commit-message: Sync of addon metadata translations
-          title: Sync of addon metadata translations
-          body: Sync of addon metadata translations triggered by ${{ github.sha }}
-          branch: amt-sync
-          delete-branch: true
-          path: ./project
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: MikeSiLVO/workflows/.github/workflows/sync-addon-metadata-translations.yml@v1
+    secrets: inherit
