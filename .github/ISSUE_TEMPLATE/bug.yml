@@ -1,0 +1,87 @@
+name: Bug report
+description: "Something in Aeon Nox: SiLVO looks wrong or isn't behaving right"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. The more you can pin down where the problem is, the faster it gets fixed.
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before you start
+      options:
+        - label: I searched existing issues and this isn't a duplicate
+          required: true
+        - label: "I'm on the latest version of Aeon Nox: SiLVO"
+          required: true
+        - label: I've added a screenshot, or described the problem clearly enough to reproduce it
+          required: true
+  - type: input
+    id: kodi-version
+    attributes:
+      label: Kodi version
+      placeholder: e.g. 22.0 (Piers)
+    validations:
+      required: true
+  - type: input
+    id: skin-version
+    attributes:
+      label: "Aeon Nox: SiLVO version"
+      placeholder: e.g. 11.0.0
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Where in the skin
+      description: Which screen, view, or dialog is affected. Be as specific as you can.
+      placeholder: "e.g. Home weather widget, the movie list view, the cast list in video info"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What looks or behaves wrong, and what you expected instead
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot or clip
+      description: A picture makes most skin bugs much faster to fix. Please add one if you can (drag files into this box).
+    validations:
+      required: false
+  - type: textarea
+    id: skin-debug
+    attributes:
+      label: Skin debug info
+      description: If you can turn on the skin's debug mode, paste what it shows for the affected screen (window / control / XML path).
+    validations:
+      required: false
+  - type: textarea
+    id: setup
+    attributes:
+      label: Skin setup
+      description: Anything relevant - skin settings you've changed, your display resolution, and skin zoom. Layout issues often depend on these.
+    validations:
+      required: false
+  - type: textarea
+    id: log
+    attributes:
+      label: Debug log
+      description: Only needed for crashes or errors. Upload the full log to https://paste.kodi.tv and paste the link. A visual or layout issue usually doesn't need one.
+      placeholder: https://paste.kodi.tv/...
+    validations:
+      required: false
