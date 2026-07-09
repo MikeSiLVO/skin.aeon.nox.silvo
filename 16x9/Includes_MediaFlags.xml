@@ -26,7 +26,7 @@
 				<visible>![Container.Content(movies) + Control.IsVisible(50)]</visible>
 				<visible>![Container.Content(movies) + Skin.HasSetting(DisableFlag_MovieStudio)]</visible>
 				<visible>![Container.Content(episodes) + Skin.HasSetting(DisableFlag_EpisodeStudio)]</visible>
-				<control type="image" id="99025">
+				<control type="image" id="44444">
 					<include>MediaFlagValues</include>
 					<texture fallback="colors/blank.png" background="true">$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
 				</control>
@@ -38,8 +38,7 @@
 					<textcolor>grey</textcolor>
 					<wrapmultiline>true</wrapmultiline>
 					<label>$INFO[ListItem.Studio]</label>
-					<visible>String.IsEqual(Control.GetLabel(99025),colors/blank.png) + ![Container.OnNext | Container.OnPrevious]</visible>
-					<animation effect="fade" delay="300" time="250">Visible</animation>
+					<visible>String.IsEqual(Control.GetLabel(44444),colors/blank.png) | String.IsEmpty(Control.GetLabel(44444))</visible>
 				</control>
 			</control>
 			<!-- MPAA -->
@@ -372,7 +371,7 @@
 				<width>170</width>
 				<height>78</height>
 				<visible>[[Container.Content(tvshows) + !Control.IsVisible(50)] | Container.Content(seasons)] + !String.IsEmpty(ListItem.Studio) + !Skin.HasSetting(DisableFlag_TVStudio)</visible>
-				<control type="image" id="99026">
+				<control type="image" id="44445">
 					<include>MediaFlagValues</include>
 					<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
 				</control>
@@ -384,7 +383,7 @@
 					<textcolor>grey</textcolor>
 					<wrapmultiline>true</wrapmultiline>
 					<label>$INFO[ListItem.Studio]</label>
-					<visible>String.IsEmpty(Control.GetLabel(99026))</visible>
+					<visible>String.IsEmpty(Control.GetLabel(44445))</visible>
 				</control>
 			</control>
 			<!-- MPAA -->

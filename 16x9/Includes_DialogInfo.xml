@@ -66,17 +66,12 @@
 				<orientation>horizontal</orientation>
 				<preloaditems>2</preloaditems>
 				<scrolltime tween="quadratic" easing="out">300</scrolltime>
-				<onclick condition="Control.HasFocus(50001)">ClearProperty(crew_name,Home)</onclick>
-				<onclick condition="[Control.HasFocus(900010) | Control.HasFocus(900011) | Control.HasFocus(900012)]">SetProperty(1109_origin,$INFO[System.CurrentControlID],Home)</onclick>
-				<onclick condition="Window.IsVisible(1109) + [Control.HasFocus(90050) | Control.HasFocus(50001)]">Dialog.Close(1109)</onclick>
-				<onclick condition="Window.IsVisible(1102) + [Control.HasFocus(50003) | Control.HasFocus(90008) | Control.HasFocus(90009) | Control.HasFocus(900010) | Control.HasFocus(900011) | Control.HasFocus(900012)]">Skin.TimerStart(resetfocus1102)</onclick>
+				<onclick condition="Control.HasFocus(99000) | Control.HasFocus(99001)">RunScript(script.skin.info.service,action=dialog_actor_info,person_id=$INFO[Container($PARAM[id]).ListItem.Property(person_id)],name=$ESCINFO[Container($PARAM[id]).ListItem.Label],focus=$INFO[System.CurrentControlID])</onclick>
+				<onclick condition="Control.HasFocus(99002) | Control.HasFocus(99003) | Control.HasFocus(99004) | Control.HasFocus(99005) | Control.HasFocus(99006) | Control.HasFocus(99007) | Control.HasFocus(99008)">RunScript(script.skin.info.service,action=dialog_video_info,dbid=$INFO[Container($PARAM[id]).ListItem.DBID],tmdb_id=$INFO[Container($PARAM[id]).ListItem.Property(tmdb_id)],dbtype=$INFO[Container($PARAM[id]).ListItem.DBType])</onclick>
+				<onclick condition="Control.HasFocus(99009)">RunScript(script.skin.info.service,action=dialog_image_viewer,images_path=$INFO[Window.Property(container.images.path)],selected_index=$INFO[Container(99009).CurrentItem])</onclick>
 				<include content="ExtendedInfoOnclick" condition="$PARAM[do_onclick]">
 					<param name="id">$PARAM[id]</param>
 				</include>
-				<onclick condition="Skin.HasSetting(Enable.BlurredVideoInfo) + [Control.HasFocus(50002) | Control.HasFocus(50003)]">RunScript(script.skin.info.service,blur,source='"$INFO[Window(Home).Property(item_poster)]",window_id=1102)</onclick>
-				<onclick condition="Control.HasFocus(50001)">ActivateWindow(1107)</onclick>
-				<onclick condition="[Control.HasFocus(50002) | Control.HasFocus(50003) | Control.HasFocus(50004)]">SetFocus(4701)</onclick>
-				<onclick condition="[Control.HasFocus(50002) | Control.HasFocus(50003) | Control.HasFocus(50004)]">SetFocus(4610)</onclick>
 				<onclick condition="Control.HasFocus(900020)">SetFocus(99)</onclick>
 				<itemlayout height="$PARAM[panelheight]" width="$PARAM[itemwidth]">
 					<control type="image">
@@ -345,10 +340,8 @@
 			<onclick>ClearProperty(crew_name,Home)</onclick>
 			<onclick>SetProperty(actor_name,$INFO[Container(90050).ListItem.Label],Home)</onclick>
 			<onclick>SetProperty(actor_role,$INFO[Container(90050).ListItem.Label2],Home)</onclick>
-			<onclick>RunScript(script.skin.info.service,action=blur,source="$INFO[Container(90050).ListItem.Art(thumb)]",prefix=Person)</onclick>
-			<onclick condition="Skin.HasSetting(OnlineCast)">RunScript(script.skin.info.service,action=person_info,person_id=$INFO[Container(90050).ListItem.Property(person_id)])</onclick>
 			<onclick condition="!String.IsEqual(ListItem.DBTYPE,season) + !Skin.HasSetting(OnlineCast)">ActivateWindow(1129)</onclick>
-			<onclick condition="String.IsEqual(ListItem.DBTYPE,season) | Skin.HasSetting(OnlineCast)">ActivateWindow(1109)</onclick>
+			<onclick condition="String.IsEqual(ListItem.DBTYPE,season) | Skin.HasSetting(OnlineCast)">RunScript(script.skin.info.service,action=dialog_actor_info,person_id=$INFO[Container(90050).ListItem.Property(person_id)],name=$ESCINFO[Container(90050).ListItem.Label],role=$ESCINFO[Container(90050).ListItem.Label2],focus=90050)</onclick>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
 			<itemlayout height="480" width="300">
 				<control type="image">
@@ -541,52 +534,8 @@
 		</include>
 	</include>
 	<include name="ExtendedInfoOnclick">
-		<onclick condition="Window.IsDialogTopMost(movieinformation)">SetProperty(item_origin,$INFO[System.CurrentControlID],Home)</onclick>
 		<onclick>RunScript(script.skin.info.service,action=urlencode,string="$INFO[Container($PARAM[id]).ListItem.Title]",prefix=CustomVideoTitle)</onclick>
-		<onclick>SetProperty(item_dbid,$INFO[Container($PARAM[id]).Listitem.DBID],Home)</onclick>
-		<onclick>SetProperty(item_dbtype,$INFO[Container($PARAM[id]).Listitem.DBTYPE],Home)</onclick>
-		<onclick>SetProperty(item_poster,$INFO[Container($PARAM[id]).Listitem.Art(poster)],Home)</onclick>
-		<onclick>SetProperty(item_status,$INFO[Container($PARAM[id]).Listitem.Status],Home)</onclick>
-		<onclick>RunScript(script.skin.info.service,action=online_fetch,dbtype=$INFO[Container($PARAM[id]).Listitem.DBTYPE],dbid=$INFO[Container($PARAM[id]).Listitem.DBID])</onclick>
-		<onclick>ActivateWindow(1102)</onclick>
-	</include>
-	<include name="PersonInfoLists">
-		<include content="ExtendedInfoListLayout">
-			<param name="id">90008</param>
-			<param name="content">$INFO[Window(Home).Property(SkinInfo.Person.LibraryMovies)]</param>
-			<param name="label">$INFO[Container(90008).ListItem.Property(role)]</param>
-			<param name="labelVisibility">!String.IsEmpty(Container(90008).ListItem.Property(role))</param>
-		</include>
-		<include content="ExtendedInfoListLayout">
-			<param name="id">90009</param>
-			<param name="content">$INFO[Window(Home).Property(SkinInfo.Person.LibraryTVShows)]</param>
-			<param name="label">$INFO[Container(90009).ListItem.Property(role)]</param>
-			<param name="labelVisibility">!String.IsEmpty(Container(90009).ListItem.Property(role))</param>
-		</include>
-		<include content="ExtendedInfoListLayout">
-			<param name="id">900010</param>
-			<param name="content">plugin://script.skin.info.service/?action=person_info&amp;info_type=filmography&amp;person_id=$INFO[Window(Home).Property(SkinInfo.person_id)]&amp;dbtype=movie&amp;min_votes=100&amp;exclude_unreleased=true&amp;sort=popularity</param>
-			<param name="label">$INFO[Container(900010).ListItem.Property(role)]</param>
-			<param name="labelVisibility">!String.IsEmpty(Container(900010).ListItem.Property(role))</param>
-		</include>
-		<include content="ExtendedInfoListLayout">
-			<param name="id">900011</param>
-			<param name="content">plugin://script.skin.info.service/?action=person_info&amp;info_type=filmography&amp;person_id=$INFO[Window(Home).Property(SkinInfo.person_id)]&amp;dbtype=tvshow&amp;min_votes=100&amp;exclude_unreleased=true&amp;sort=popularity</param>
-			<param name="label">$INFO[Container(900011).ListItem.Property(role)]</param>
-			<param name="labelVisibility">!String.IsEmpty(Container(900011).ListItem.Property(role))</param>
-		</include>
-		<include content="ExtendedInfoListLayout">
-			<param name="id">900012</param>
-			<param name="content">$INFO[Window(Home).Property(SkinInfo.Person.Crew)]</param>
-			<param name="label">$INFO[Container(900012).ListItem.Property(Job)]</param>
-			<param name="labelVisibility">!String.IsEmpty(Container(900012).ListItem.Property(Job))</param>
-		</include>
-		<include content="ExtendedInfoListLayout">
-			<param name="id">900020</param>
-			<param name="do_onclick">false</param>
-			<param name="label1">$INFO[Container(900020).ListItem.Property(height)]$INFO[Container(900020).ListItem.Property(width),x]</param>
-			<param name="content">$INFO[Window(Home).Property(SkinInfo.Person.Images)]</param>
-		</include>
+		<onclick>RunScript(script.skin.info.service,action=dialog_video_info,dbid=$INFO[Container($PARAM[id]).Listitem.DBID],tmdb_id=$INFO[Container($PARAM[id]).ListItem.Property(tmdb_id)],dbtype=$INFO[Container($PARAM[id]).Listitem.DBTYPE],focus=$INFO[System.CurrentControlID])</onclick>
 	</include>
 	<include name="DefaultSetList">
 		<control type="panel" id="50">
@@ -904,8 +853,8 @@
 		<include>InfoContentGeneral</include>
 	</include>
 	<include name="CustomInfoContentDetails">
-		<include condition="String.IsEqual(Window(Home).Property(item_dbtype),movie)">CustomInfoContentMovies</include>
-		<include condition="String.IsEqual(Window(Home).Property(item_dbtype),tvshow)">CustomInfoContentTVShows</include>
+		<include condition="String.IsEqual(Window.Property(MediaType),movie)">CustomInfoContentMovies</include>
+		<include condition="String.IsEqual(Window.Property(MediaType),tvshow)">CustomInfoContentTVShows</include>
 		<include>CustomInfoContentGeneral</include>
 	</include>
 	<include name="InfoContentSets">
@@ -988,69 +937,51 @@
 	</include>
 	<include name="CustomInfoContentMovies">
 		<item>
-			<label>$INFO[Container(4800).ListItem.Director]</label>
+			<label fallback="$INFO[Window.Property(Director)]">$INFO[Container(4800).ListItem.Director]</label>
 			<label2>$LOCALIZE[20339]:</label2>
 			<onfocus>ClearProperty(person_id,Home)</onfocus>
-			<onclick>RunScript(script.skin.info.service,action=person_info,name=$INFO[Container(4800).ListItem.Director],crew=director,dbid=$INFO[Window(Home).Property(item_dbid)],dbtype=movie,open_window=1109)</onclick>
-			<visible>!String.IsEmpty(Container(4800).ListItem.Director)</visible>
+			<onclick>RunScript(script.skin.info.service,action=dialog_actor_info,name=$INFO[Container(4800).ListItem.Director],crew=director,dbid=$INFO[Window.Property(dbid)],dbtype=movie,focus=300)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Director) | !String.IsEmpty(Window.Property(Director))</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(4801).ListItem.Director]</label>
-			<label2>$LOCALIZE[20339]:</label2>
-			<visible>String.IsEmpty(Container(4800).ListItem.Director) + !String.IsEmpty(Container(4801).ListItem.Director)</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(4800).ListItem.Writer]</label>
+			<label fallback="$INFO[Window.Property(Writer)]">$INFO[Container(4800).ListItem.Writer]</label>
 			<label2>$LOCALIZE[20417]:</label2>
-			<onclick>RunScript(script.skin.info.service,action=person_info,name=$INFO[Container(4800).ListItem.Writer],crew=writer,dbid=$INFO[Window(Home).Property(item_dbid)],dbtype=movie,open_window=1109)</onclick>
-			<visible>!String.IsEmpty(Container(4800).ListItem.Writer)</visible>
+			<onclick>RunScript(script.skin.info.service,action=dialog_actor_info,name=$INFO[Container(4800).ListItem.Writer],crew=writer,dbid=$INFO[Window.Property(dbid)],dbtype=movie,focus=300)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Writer) | !String.IsEmpty(Window.Property(Writer))</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(4801).ListItem.Writer]</label>
-			<label2>$LOCALIZE[20417]:</label2>
-			<visible>String.IsEmpty(Container(4800).ListItem.Writer) + !String.IsEmpty(Container(4801).ListItem.Writer)</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(4800).ListItem.Genre]</label>
+			<label fallback="$INFO[Window.Property(Genre)]">$INFO[Container(4800).ListItem.Genre]</label>
 			<label2>$LOCALIZE[515]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[515])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.Genre])</onclick>
-			<onclick>SetFocus(4700)</onclick>
-			<visible>!String.IsEmpty(Container(4800).ListItem.Genre)</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[515],Home)</onclick>
+			<onclick condition="!String.IsEmpty(Container(4800).ListItem.Genre)">SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.Genre],Home)</onclick>
+			<onclick condition="String.IsEmpty(Container(4800).ListItem.Genre) + !String.IsEmpty(Window.Property(Genre))">SetProperty(MoreInfoContent,$INFO[Window.Property(Genre)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Genre) | !String.IsEmpty(Window.Property(Genre))</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(4801).ListItem.Genre]</label>
-			<label2>$LOCALIZE[515]:</label2>
-			<visible>String.IsEmpty(Container(4800).ListItem.Genre) + !String.IsEmpty(Container(4801).ListItem.Genre)</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(4802).ListItem.Property(TMDB.Budget)]</label>
+			<label>$INFO[Window.Property(Budget)]</label>
 			<label2>$LOCALIZE[31850]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31850])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4802).ListItem.Property(Budget)])</onclick>
-			<onclick>SetFocus(4700)</onclick>
-			<visible>!String.IsEmpty(Container(4802).ListItem.Property(TMDB.Budget)) + !Skin.HasSetting(HideBudgetRevenue)</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31850],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window.Property(Budget)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Window.Property(Budget)) + !Skin.HasSetting(HideBudgetRevenue)</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(4802).ListItem.Property(TMDB.Revenue)]</label>
+			<label>$INFO[Window.Property(Revenue)]</label>
 			<label2>$LOCALIZE[31851]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31851])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4802).ListItem.Property(TMDB.Revenue)])</onclick>
-			<onclick>SetFocus(4700)</onclick>
-			<visible>!String.IsEmpty(Container(4802).ListItem.Property(TMDB.Revenue)) + !Skin.HasSetting(HideBudgetRevenue)</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31851],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window.Property(Revenue)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Window.Property(Revenue)) + !Skin.HasSetting(HideBudgetRevenue)</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(4800).ListItem.Premiered]</label>
+			<label fallback="$INFO[Window.Property(PremieredFormatted)]">$INFO[Container(4800).ListItem.Premiered]</label>
 			<label2>$LOCALIZE[172]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[172])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Premiered])</onclick>
-			<onclick>SetFocus(4700)</onclick>
-			<visible>!String.IsEmpty(Container(4800).ListItem.Premiered)</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(4801).ListItem.Premiered]</label>
-			<label2>$LOCALIZE[172]:</label2>
-			<visible>String.IsEmpty(Container(4800).ListItem.Premiered) + !String.IsEmpty(Container(4801).ListItem.Premiered)</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[172],Home)</onclick>
+			<onclick condition="!String.IsEmpty(Container(4800).ListItem.Premiered)">SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Premiered],Home)</onclick>
+			<onclick condition="String.IsEmpty(Container(4800).ListItem.Premiered)">SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Premiered],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Premiered) | !String.IsEmpty(Window.Property(PremieredFormatted))</visible>
 		</item>
 	</include>
 	<include name="InfoContentTVShows">
@@ -1098,37 +1029,29 @@
 	</include>
 	<include name="CustomInfoContentTVShows">
 		<item>
-			<label>$INFO[Container(4800).ListItem.Genre]</label>
+			<label fallback="$INFO[Window.Property(Genre)]">$INFO[Container(4800).ListItem.Genre]</label>
 			<label2>$LOCALIZE[515]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[515])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Genre])</onclick>
-			<onclick>SetFocus(4700)</onclick>
-			<visible>!String.IsEmpty(Container(4800).ListItem.Genre)</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[515],Home)</onclick>
+			<onclick condition="!String.IsEmpty(Container(4800).ListItem.Genre)">SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Genre],Home)</onclick>
+			<onclick condition="String.IsEmpty(Container(4800).ListItem.Genre) + !String.IsEmpty(Window.Property(Genre))">SetProperty(MoreInfoContent,$ESCINFO[Window.Property(Genre)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Genre) | !String.IsEmpty(Window.Property(Genre))</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(4801).ListItem.Genre]</label>
-			<label2>$LOCALIZE[515]:</label2>
-			<visible>String.IsEmpty(Container(4800).ListItem.Genre) + !String.IsEmpty(Container(4801).ListItem.Genre)</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(4800).ListItem.Premiered]</label>
+			<label fallback="$INFO[Window.Property(Premiered)]">$INFO[Container(4800).ListItem.Premiered]</label>
 			<label2>$LOCALIZE[31452]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31452])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Premiered])</onclick>
-			<onclick>SetFocus(4700)</onclick>
-			<visible>!String.IsEmpty(Container(4800).ListItem.Premiered)</visible>
-		</item>
-		<item>
-			<label>$INFO[Container(4801).ListItem.Premiered]</label>
-			<label2>$LOCALIZE[172]:</label2>
-			<visible>String.IsEmpty(Container(4800).ListItem.Premiered) + !String.IsEmpty(Container(4801).ListItem.Premiered)</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31452],Home)</onclick>
+			<onclick condition="!String.IsEmpty(Container(4800).ListItem.Premiered)">SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Premiered],Home)</onclick>
+			<onclick condition="String.IsEmpty(Container(4800).ListItem.Premiered) + !String.IsEmpty(Window.Property(Premiered))">SetProperty(MoreInfoContent,$ESCINFO[Window.Property(Premiered)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Premiered) | !String.IsEmpty(Window.Property(Premiered))</visible>
 		</item>
 		<item>
 			<label>$INFO[Container(4802).ListItem.Property(Next_Aired.Season),S]$INFO[Container(4802).ListItem.Property(Next_Aired.Episode),E, - ]$INFO[Container(4802).ListItem.Property(Next_Aired.Title)]$INFO[Container(4802).ListItem.Property(Next_Aired), (,)]</label>
 			<label2>$LOCALIZE[19031]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[19031])</onclick>
 			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4802).ListItem.Property(Next_Aired.Season),S]$INFO[Container(4802).ListItem.Property(Next_Aired.Episode),E, - ]$ESCINFO[Container(4802).ListItem.Property(Next_Aired.Title)]$INFO[Container(4802).ListItem.Property(Next_Aired), (,)])</onclick>
-			<onclick>SetFocus(4700)</onclick>
+			<onclick>SetFocus(98001)</onclick>
 			<visible>!String.IsEmpty(Container(4802).ListItem.Property(Next_Aired))</visible>
 		</item>
 		<item>
@@ -1136,7 +1059,7 @@
 			<label2>$LOCALIZE[31374]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31374])</onclick>
 			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4802).ListItem.Property(Last_Aired.Season),S]$INFO[Container(4802).ListItem.Property(Last_Aired.Episode),E, - ]$ESCINFO[Container(4802).ListItem.Property(Last_Aired.Title)]$INFO[Container(4802).ListItem.Property(Last_Aired), (,)])</onclick>
-			<onclick>SetFocus(4700)</onclick>
+			<onclick>SetFocus(98001)</onclick>
 			<visible>!String.IsEmpty(Container(4802).ListItem.Property(Last_Aired))</visible>
 		</item>
 	</include>
@@ -1305,48 +1228,56 @@
 		<item>
 			<label>$INFO[Container(4800).ListItem.Property(PercentPlayed),,%]</label>
 			<label2>$LOCALIZE[575]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[575])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.Property(PercentPlayed),,%])</onclick>
-			<onclick>SetFocus(4700)</onclick>
-			<visible>!String.IsEqual(Window(Home).Property(item_dbtype),tvshow) + !String.IsEmpty(Container(4800).ListItem.Property(PercentPlayed))</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[575],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.Property(PercentPlayed),,%],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEqual(Window.Property(MediaType),tvshow) + !String.IsEmpty(Container(4800).ListItem.Property(PercentPlayed))</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(4800).ListItem.LastPlayed]</label>
+			<label>$INFO[Container(4800).ListItem.Property(LastPlayed)]</label>
 			<label2>$LOCALIZE[568]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[568])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.LastPlayed])</onclick>
-			<onclick>SetFocus(4700)</onclick>
-			<visible>!String.IsEmpty(Container(4800).ListItem.LastPlayed)</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[568],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.Property(LastPlayed)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Property(LastPlayed))</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(4800).ListItem.DateAdded]</label>
+			<label>$INFO[Container(4800).ListItem.Property(DateAdded)]</label>
 			<label2>$LOCALIZE[570]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[570])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.DateAdded])</onclick>
-			<onclick>SetFocus(4700)</onclick>
-			<visible>!String.IsEmpty(Container(4800).ListItem.DateAdded)</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[570],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.Property(DateAdded)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Property(DateAdded))</visible>
 		</item>
 		<item>
 			<label>$INFO[Container(4800).ListItem.Playcount]</label>
 			<label2>$LOCALIZE[567]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[567])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.Playcount])</onclick>
-			<onclick>SetFocus(4700)</onclick>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[567],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.Playcount],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
 			<visible>!String.IsEmpty(Container(4800).ListItem.Playcount)</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(4800).ListItem.Property(file)]</label>
+			<label>$INFO[Container(4800).ListItem.Property(Tag)]</label>
+			<label2>$LOCALIZE[20459]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[20459],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,$INFO[Container(4800).ListItem.Property(Tag)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Property(Tag))</visible>
+		</item>
+		<item>
+			<label>$INFO[Container(4800).ListItem.Property(Path)]</label>
 			<label2>$LOCALIZE[573]:</label2>
 			<onclick>Dialog.Close(all,true)</onclick>
-			<onclick>ActivateWindow(Videos,$ESCINFO[Container(4800).ListItem.Property(file)],return)</onclick>
-			<visible>!String.IsEmpty(Container(4800).ListItem.Property(file)) + !Skin.HasSetting(Disable.VideoInfoPathDetails)</visible>
+			<onclick>ActivateWindow(Videos,$ESCINFO[Container(4800).ListItem.Property(Path)],return)</onclick>
+			<visible>!String.IsEmpty(Container(4800).ListItem.Property(Path)) + !Skin.HasSetting(Disable.VideoInfoPathDetails)</visible>
 		</item>
 		<item>
 			<label>$INFO[Container(4800).ListItem.Property(FileName)]</label>
 			<label2>$LOCALIZE[21800]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[21800])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Property(FileName)])</onclick>
-			<onclick>SetFocus(4700)</onclick>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[21800],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(4800).ListItem.Property(FileName)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
 			<visible>!String.IsEmpty(Container(4800).ListItem.Property(FileName)) + !Skin.HasSetting(Disable.VideoInfoPathDetails)</visible>
 		</item>
 	</include>
@@ -1499,7 +1430,7 @@
 	</include> -->
 	<include name="InfoTop250">
 		<control type="grouplist">
-			<visible>!String.IsEmpty(ListItem.Top250) + Integer.IsLessOrEqual(ListItem.Top250,250)</visible>
+			<visible>$EXP[HasTop250]</visible>
 			<width>160</width>
 			<orientation>horizontal</orientation>
 			<control type="image">
@@ -1610,52 +1541,52 @@
 	</include>
 	<include name="PersonInfoContent">
 		<item>
-			<label>$INFO[Container(11090).ListItem.Property(BirthdayFormatted)]</label>
+			<label>$INFO[Window.Property(BirthdayFormatted)]</label>
 			<label2>$LOCALIZE[21893]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[21893])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(BirthdayFormatted)])</onclick>
-			<onclick>SetFocus(64)</onclick>
-			<visible>!String.IsEmpty(Container(11090).ListItem.Property(BirthdayFormatted))</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[21893],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window.Property(BirthdayFormatted)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Window.Property(BirthdayFormatted))</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(11090).ListItem.Property(DeathdayFormatted)]</label>
+			<label>$INFO[Window.Property(DeathdayFormatted)]</label>
 			<label2>$LOCALIZE[21897]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[21897])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(DeathdayFormatted)])</onclick>
-			<onclick>SetFocus(64)</onclick>
-			<visible>!String.IsEmpty(Container(11090).ListItem.Property(DeathdayFormatted))</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[21897],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window.Property(DeathdayFormatted)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Window.Property(DeathdayFormatted))</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(11090).ListItem.Property(Birthplace)]</label>
+			<label>$INFO[Window.Property(Birthplace)]</label>
 			<label2>$LOCALIZE[31600]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31600])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(Birthplace)])</onclick>
-			<onclick>SetFocus(64)</onclick>
-			<visible>!String.IsEmpty(Container(11090).ListItem.Property(Birthplace))</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31600],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window.Property(Birthplace)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Window.Property(Birthplace))</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(11090).ListItem.Property(TopMovies)]</label>
+			<label>$INFO[Window.Property(TopMovies)]</label>
 			<label2>$LOCALIZE[31081]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31081])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(TopMovies)])</onclick>
-			<onclick>SetFocus(64)</onclick>
-			<visible>!String.IsEmpty(Container(11090).ListItem.Property(TopMovies))</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31081],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window.Property(TopMovies)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Window.Property(TopMovies))</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(11090).ListItem.Property(TopTVShows)]</label>
+			<label>$INFO[Window.Property(TopTVShows)]</label>
 			<label2>$LOCALIZE[31082]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31082])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(TopTVShows)])</onclick>
-			<onclick>SetFocus(64)</onclick>
-			<visible>!String.IsEmpty(Container(11090).ListItem.Property(TopTVShows))</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31082],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window.Property(TopTVShows)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Window.Property(TopTVShows))</visible>
 		</item>
 		<item>
-			<label>$INFO[Container(11090).ListItem.Property(Aliases)]</label>
+			<label>$INFO[Window.Property(Aliases)]</label>
 			<label2>$LOCALIZE[31614]:</label2>
-			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31614])</onclick>
-			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Container(11090).ListItem.Property(Aliases)])</onclick>
-			<onclick>SetFocus(64)</onclick>
-			<visible>!String.IsEmpty(Container(11090).ListItem.Property(Aliases))</visible>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[31614],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,$ESCINFO[Window.Property(Aliases)],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>!String.IsEmpty(Window.Property(Aliases))</visible>
 		</item>
 	</include>
 </includes>

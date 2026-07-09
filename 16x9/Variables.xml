@@ -308,11 +308,11 @@
 		<value condition="!Skin.HasSetting(Disable.MusicVideo.OnlineMetadata) + !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Artist.Bio))">$INFO[Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Artist.Bio)]</value>
 	</variable>
 	<variable name="OneOrMoreSeasonsVar">
-		<value condition="!Window.IsVisible(1102) + Integer.IsEqual(ListItem.Property(TotalSeasons),1) | Window.IsVisible(1102) + Integer.IsEqual(Container(4800).ListItem.Property(TotalSeasons),1)">$LOCALIZE[20373]</value>
+		<value condition="!Window.IsVisible(script-skin-info-service-DialogVideoInfo.xml) + Integer.IsEqual(ListItem.Property(TotalSeasons),1) | Window.IsVisible(script-skin-info-service-DialogVideoInfo.xml) + Integer.IsEqual(Container(4800).ListItem.Property(TotalSeasons),1)">$LOCALIZE[20373]</value>
 		<value>$LOCALIZE[33054]</value>
 	</variable>
 	<variable name="OneOrMoreEpisodesVar">
-		<value condition="!Window.IsVisible(1102) + [Integer.IsEqual(Container.ListItem.Property(TotalEpisodes),1) | Integer.IsEqual(ListItem.Property(TotalEpisodes),1)] | Window.IsVisible(1102) + Integer.IsEqual(Container(4800).ListItem.Property(TotalEpisodes),1)">$LOCALIZE[20359]</value>
+		<value condition="!Window.IsVisible(script-skin-info-service-DialogVideoInfo.xml) + [Integer.IsEqual(Container.ListItem.Property(TotalEpisodes),1) | Integer.IsEqual(ListItem.Property(TotalEpisodes),1)] | Window.IsVisible(script-skin-info-service-DialogVideoInfo.xml) + Integer.IsEqual(Container(4800).ListItem.Property(TotalEpisodes),1)">$LOCALIZE[20359]</value>
 		<value>$LOCALIZE[20360]</value>
 	</variable>
 	<variable name="VideoPlotVar">
@@ -349,8 +349,8 @@
 		<value>$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="CustomPlotVar">
-		<value condition="!String.IsEmpty(Window(Home).Property(item_dbid)) + !String.IsEmpty(Container(4800).ListItem.Plot)">$INFO[Container(4800).ListItem.Plot]</value>
-		<value>$INFO[Container(4801).ListItem.Plot]</value>
+		<value condition="!String.IsEmpty(Container(4800).ListItem.Plot)">$INFO[Container(4800).ListItem.Plot]</value>
+		<value>$INFO[Window.Property(Plot)]</value>
 	</variable>
 	<variable name="VideoPlotLocalizeVar">
 		<value condition="Skin.HasSetting(VideoInfoPlotToggle)">$LOCALIZE[203]</value>
@@ -738,33 +738,33 @@
 		<value condition="String.IsEqual(ListItem.DBTYPE,season)">$LOCALIZE[31271]</value>
 	</variable>
 	<variable name="ContainerHasNextPreviousLabelVar">
-		<value condition="Window.IsVisible(1102) + Container(4702).HasPrevious + !Container(4702).HasNext"></value>
-		<value condition="Window.IsVisible(1102) + Container(4702).HasNext + !Container(4702).HasPrevious"></value>
-		<value condition="Window.IsVisible(1102) + Container(4702).HasPrevious + Container(4702).HasNext"></value>
+		<value condition="Window.IsVisible(script-skin-info-service-DialogVideoInfo.xml) + Container(98006).HasPrevious + !Container(98006).HasNext"></value>
+		<value condition="Window.IsVisible(script-skin-info-service-DialogVideoInfo.xml) + Container(98006).HasNext + !Container(98006).HasPrevious"></value>
+		<value condition="Window.IsVisible(script-skin-info-service-DialogVideoInfo.xml) + Container(98006).HasPrevious + Container(98006).HasNext"></value>
 		<value condition="Container(90001).HasPrevious + !Container(90001).HasNext | String.IsEqual(ListItem.DBTYPE,season)"></value>
 		<value condition="Container(90001).HasNext + !Container(90001).HasPrevious"></value>
 		<value condition="Container(90001).HasPrevious + Container(90001).HasNext"></value>
 	</variable>
 	<variable name="CustomVideoButtonLabelVar">
-		<value condition="Control.HasFocus(4610)">$LOCALIZE[208]</value>
-		<value condition="Control.HasFocus(4611)">$LOCALIZE[206]</value>
-		<value condition="Control.HasFocus(4612)">$LOCALIZE[20410]</value>
-		<value condition="Control.HasFocus(4701)">$LOCALIZE[31453]</value>
-		<value condition="Control.HasFocus(50001)">$LOCALIZE[206]$INFO[Container(50001).CurrentItem, (,/]$INFO[Container(50001).NumItems,,)]</value>
-		<value condition="Control.HasFocus(50002)">$LOCALIZE[31112]$INFO[Container(4800).ListItem.Property(director.0), ]$INFO[Container(50002).CurrentItem, (,/]$INFO[Container(50002).NumItems,,)]</value>
-		<value condition="Control.HasFocus(50003)">$INFO[Container(50003).ListItem.Property(Actor), $LOCALIZE[31521]]$INFO[Container(50003).CurrentItem, (,/]$INFO[Container(50003).NumItems,,)]</value>
-		<value condition="Control.HasFocus(50004)">$INFO[Container(50004).ListItem.Property(Actor), $LOCALIZE[31521]]$INFO[Container(50004).CurrentItem, (,/]$INFO[Container(50004).NumItems,,)]</value>
+		<value condition="Control.HasFocus(98003)">$LOCALIZE[208]</value>
+		<value condition="Control.HasFocus(98004)">$LOCALIZE[206]</value>
+		<value condition="Control.HasFocus(98005)">$LOCALIZE[20410]</value>
+		<value condition="Control.HasFocus(98008)">$LOCALIZE[31453]</value>
+		<value condition="Control.HasFocus(99000)">$LOCALIZE[206]$INFO[Container(99000).CurrentItem, (,/]$INFO[Container(99000).NumItems,,)]</value>
+		<value condition="Control.HasFocus(99002)">Recommendations$INFO[Container(99002).CurrentItem, (,/]$INFO[Container(99002).NumItems,,)]</value>
+		<value condition="Control.HasFocus(99003)">Similar$INFO[Container(99003).CurrentItem, (,/]$INFO[Container(99003).NumItems,,)]</value>
+		<value condition="Control.HasFocus(99001)">$LOCALIZE[31545]$INFO[Container(99001).CurrentItem, (,/]$INFO[Container(99001).NumItems,,)]</value>
 	</variable>
 	<variable name="PersonInfoButtonLabelVar">
-		<value condition="Control.HasFocus(300)">$LOCALIZE[31271]</value>
-		<value condition="Control.HasFocus(1000)">$LOCALIZE[31547]</value>
-		<value condition="Control.HasFocus(90003)">$LOCALIZE[31453]</value>
-		<value condition="Control.HasFocus(90008)">$LOCALIZE[342]$INFO[Container(90008).CurrentItem, (,/]$INFO[Container(90008).NumItems,,)]</value>
-		<value condition="Control.HasFocus(90009)">$LOCALIZE[20343]$INFO[Container(90009).CurrentItem, (,/]$INFO[Container(90009).NumItems,,)]</value>
-		<value condition="Control.HasFocus(900010)">$LOCALIZE[31210]$INFO[Container(900010).CurrentItem, (,/]$INFO[Container(900010).NumItems,,)]</value>
-		<value condition="Control.HasFocus(900011)">$LOCALIZE[31212]$INFO[Container(900011).CurrentItem, (,/]$INFO[Container(900011).NumItems,,)]</value>
-		<value condition="Control.HasFocus(900012)">$LOCALIZE[31545]$INFO[Container(900012).CurrentItem, (,/]$INFO[Container(900012).NumItems,,)]</value>
-		<value condition="Control.HasFocus(900020)">$LOCALIZE[31547]$INFO[Container(900020).CurrentItem, (,/]$INFO[Container(900020).NumItems,,)]</value>
+		<value condition="Control.HasFocus(98000)">$LOCALIZE[31271]</value>
+		<value condition="Control.HasFocus(98004)">$LOCALIZE[31547]</value>
+		<value condition="Control.HasFocus(98008)">$LOCALIZE[31453]</value>
+		<value condition="Control.HasFocus(99004)">$LOCALIZE[342]$INFO[Container(99004).CurrentItem, (,/]$INFO[Container(99004).NumItems,,)]</value>
+		<value condition="Control.HasFocus(99005)">$LOCALIZE[20343]$INFO[Container(99005).CurrentItem, (,/]$INFO[Container(99005).NumItems,,)]</value>
+		<value condition="Control.HasFocus(99006)">$LOCALIZE[31210]$INFO[Container(99006).CurrentItem, (,/]$INFO[Container(99006).NumItems,,)]</value>
+		<value condition="Control.HasFocus(99007)">$LOCALIZE[31212]$INFO[Container(99007).CurrentItem, (,/]$INFO[Container(99007).NumItems,,)]</value>
+		<value condition="Control.HasFocus(99008)">$LOCALIZE[31545]$INFO[Container(99008).CurrentItem, (,/]$INFO[Container(99008).NumItems,,)]</value>
+		<value condition="Control.HasFocus(99009)">$LOCALIZE[31547]$INFO[Container(99009).CurrentItem, (,/]$INFO[Container(99009).NumItems,,)]</value>
 	</variable>
 	<variable name="VideoInfoTVSubtitleVar">
 		<value condition="!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status))">$INFO[Window(Home).Property(SkinInfo.Online.Status)]</value>
@@ -806,30 +806,30 @@
 	</variable>
 	<variable name="CustomRottenFreshLabelVar">
 		<value condition="!String.IsEmpty(Container(4800).ListItem.Property(Rating.Tomatoes.Percent))">$INFO[Container(4800).ListItem.Property(Rating.Tomatoes.Percent),,%]</value>
-		<value>$INFO[Container(4801).ListItem.Property(Rating.Tomatoes.Percent),,%]</value>
+		<value>$INFO[Window.Property(Rating.Tomatoes.Percent),,%]</value>
 	</variable>
 	<variable name="CustomRottenFreshLogoVar">
-		<value condition="String.IsEqual(Container(4800).ListItem.Property(Tomatometer),Certified) | String.IsEqual(Container(4801).ListItem.Property(Tomatometer),Certified)">logos/rottentomatoes/certified.png</value>
-		<value condition="String.IsEqual(Container(4800).ListItem.Property(Tomatometer),Rotten) | String.IsEqual(Container(4801).ListItem.Property(Tomatometer),Rotten)">logos/rottentomatoes/rotten.png</value>
+		<value condition="String.IsEqual(Container(4800).ListItem.Property(Tomatometer),Certified) | String.IsEqual(Window.Property(Tomatometer),Certified)">logos/rottentomatoes/certified.png</value>
+		<value condition="String.IsEqual(Container(4800).ListItem.Property(Tomatometer),Rotten) | String.IsEqual(Window.Property(Tomatometer),Rotten)">logos/rottentomatoes/rotten.png</value>
 		<value>logos/rottentomatoes/fresh.png</value>
 	</variable>
 	<variable name="CustomRottenFreshAudienceLabelVar">
 		<value condition="!String.IsEmpty(Container(4800).ListItem.Property(Rating.Popcorn.Percent))">$INFO[Container(4800).ListItem.Property(Rating.Popcorn.Percent),,%]</value>
-		<value>$INFO[Container(4801).ListItem.Property(Rating.Popcorn.Percent),,%]</value>
+		<value>$INFO[Window.Property(Rating.Popcorn.Percent),,%]</value>
 	</variable>
 	<variable name="CustomRottenFreshAudienceLogoVar">
-		<value condition="String.IsEqual(Container(4800).ListItem.Property(Popcornmeter),Hot) | String.IsEqual(Container(4801).ListItem.Property(Popcornmeter),Hot)">logos/rottentomatoes/popcornhot.png</value>
-		<value condition="String.IsEqual(Container(4800).ListItem.Property(Popcornmeter),Spilled) | String.IsEqual(Container(4801).ListItem.Property(Popcornmeter),Spilled)">logos/rottentomatoes/popcornrotten.png</value>
+		<value condition="String.IsEqual(Container(4800).ListItem.Property(Popcornmeter),Hot) | String.IsEqual(Window.Property(Popcornmeter),Hot)">logos/rottentomatoes/popcornhot.png</value>
+		<value condition="String.IsEqual(Container(4800).ListItem.Property(Popcornmeter),Spilled) | String.IsEqual(Window.Property(Popcornmeter),Spilled)">logos/rottentomatoes/popcornrotten.png</value>
 		<value>logos/rottentomatoes/popcornfresh.png</value>
 	</variable>
 	<variable name="CustomTMDbRatingsLabelVar">
 		<value condition="!String.IsEmpty(Container(4800).ListItem.Rating(tmdb))">$INFO[Container(4800).ListItem.Rating(tmdb)]</value>
 		<value condition="!String.IsEmpty(Container(4800).ListItem.Rating(themoviedb))">$INFO[Container(4800).ListItem.Rating(themoviedb)]</value>
-		<value>$INFO[Container(4801).ListItem.Property(TMDb_Rating)]</value>
+		<value>$INFO[Window.Property(Rating.tmdb)]</value>
 	</variable>
 	<variable name="CustomTraktRatingsLabelVar">
 		<value condition="!String.IsEmpty(Container(4800).ListItem.Rating(trakt))">$INFO[Container(4800).ListItem.Rating(trakt)]</value>
-		<value>$INFO[Container(4801).ListItem.Property(Trakt_Rating)]</value>
+		<value>$INFO[Window.Property(Rating.trakt)]</value>
 	</variable>
 	<variable name="SkinInfoNextAiredLabelVar">
 		<value condition="!String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19031]:[/COLOR] $INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeAired),, • ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeSeason),S]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisode),E, - ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeTitle)]</value>
@@ -1086,10 +1086,7 @@
 		<value>$INFO[ListItem.Duration(h),,h]$INFO[ListItem.Duration(m),,m]</value>
 	</variable>
 	<variable name="CustomDurationVar">
-		<value condition="String.IsEmpty(Container(4800).ListItem.Duration) + !String.IsEmpty(Container(4801).ListItem.Duration) + !String.IsEqual(Container(4801).ListItem.Duration,0) + !Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[Container(4801).ListItem.Duration(mins),,m]</value>
-		<value condition="String.IsEmpty(Container(4800).ListItem.Duration) + !String.IsEmpty(Container(4801).ListItem.Duration) + Skin.HasSetting(Enable.HourMinuteDuration) + [Integer.IsEqual(Container(4801).ListItem.Duration(mins),60) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),120) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),180) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),240) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),300) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),360) | Integer.IsEqual(ListItem.Duration(mins),420) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),480) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),540) | Integer.IsEqual(Container(4801).ListItem.Duration(mins),600)]">$INFO[Container(4801).ListItem.Duration(hours),,h]</value>
-		<value condition="String.IsEmpty(Container(4800).ListItem.Duration) + !String.IsEmpty(Container(4801).ListItem.Duration) + Skin.HasSetting(Enable.HourMinuteDuration) + Integer.IsLess(Container(4801).ListItem.Duration(mins),60)">$INFO[Container(4801).ListItem.Duration(m),,m]</value>
-		<value condition="String.IsEmpty(Container(4800).ListItem.Duration) + !String.IsEmpty(Container(4801).ListItem.Duration) + Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[Container(4801).ListItem.Duration(h),,h]$INFO[Container(4801).ListItem.Duration(m),,m]</value>
+		<value condition="String.IsEmpty(Container(4800).ListItem.Duration) + !String.IsEmpty(Window.Property(Runtime))">$INFO[Window.Property(Runtime),,m]</value>
 		<value condition="Integer.IsEqual(Container(4800).ListItem.Duration(mins),60) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),120) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),180) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),240) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),300) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),360) | Integer.IsEqual(ListItem.Duration(mins),420) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),480) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),540) | Integer.IsEqual(Container(4800).ListItem.Duration(mins),600)">$INFO[Container(4800).ListItem.Duration(hours),,h]</value>
 		<value condition="Integer.IsLess(Container(4800).ListItem.Duration(mins),60)">$INFO[Container(4800).ListItem.Duration(m),,m]</value>
 		<value>$INFO[Container(4800).ListItem.Duration(h),,h]$INFO[Container(4800).ListItem.Duration(m),,m]</value>

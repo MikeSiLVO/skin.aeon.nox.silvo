@@ -10,8 +10,6 @@
 	<onload>RunScript(script.skin.info.service,action=split_string,string="$INFO[ListItem.Director]",separator=/,prefix=Director)</onload>
 	<onload>RunScript(script.skin.info.service,action=urlencode,string="$INFO[ListItem.Title]")</onload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(FSFanart))">ClearProperty(FSFanart,movieinformation)</onunload>
-	<onunload>ClearProperty(item_origin,Home)</onunload>
-	<onunload>ClearProperty(1109_origin,Home)</onunload>
 	<onunload>ClearProperty(crew_name,Home)</onunload>
 	<controls>
 		<control type="textbox" id="4">
@@ -56,9 +54,9 @@
 		</control>
 		<!-- Poster Side -->
 		<control type="group">
-			<animation effect="slide" start="-730,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
+			<animation effect="slide" start="-730,0" end="0,0" delay="500" time="500" tween="quadratic">WindowOpen</animation>
 			<animation effect="slide" end="-730,0" time="500" tween="quadratic">WindowClose</animation>
-			<animation effect="slide" end="-730,0" time="500" tween="quadratic" condition="Window.IsVisible(1102) | Window.IsVisible(1109)">Conditional</animation>
+			<animation effect="slide" end="-730,0" time="500" tween="quadratic" condition="Window.IsVisible(script-skin-info-service-DialogVideoInfo.xml) | Window.IsVisible(script-skin-info-service-DialogActorInfo.xml)">Conditional</animation>
 			<width>720</width>
 			<height>100%</height>
 			<include content="InfoPoster" condition="!String.IsEqual(ListItem.DBTYPE,musicvideo)" />
@@ -97,9 +95,9 @@
 		</control>
 		<!-- Details Side -->
 		<control type="group">
-			<animation effect="slide" start="1210,0" end="0,0" delay="250" time="500" tween="quadratic">WindowOpen</animation>
+			<animation effect="slide" start="1210,0" end="0,0" delay="500" time="500" tween="quadratic">WindowOpen</animation>
 			<animation effect="slide" end="1210,0" time="500" tween="quadratic">WindowClose</animation>
-			<animation effect="slide" end="1210,0" time="500" tween="quadratic" condition="Window.IsVisible(1102) | Window.IsVisible(1109)">Conditional</animation>
+			<animation effect="slide" end="1210,0" time="500" tween="quadratic" condition="Window.IsVisible(script-skin-info-service-DialogVideoInfo.xml) | Window.IsVisible(script-skin-info-service-DialogActorInfo.xml)">Conditional</animation>
 			<left>720</left>
 			<control type="group">
 				<width>1200</width>
@@ -423,6 +421,7 @@
 						<altlabel></altlabel>
 						<usealttexture>!String.IsEmpty(ListItem.UserRating)</usealttexture>
 						<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
+						<enable>Control.IsEnabled(7)</enable>
 					</control>
 					<control type="button" id="10">
 						<description>Get Thumb</description>
@@ -431,7 +430,7 @@
 						<texturenofocus />
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label></label>
-						<enable>!Skin.HasSetting(KioskMode.Enabled)</enable>
+						<enable>Control.IsEnabled(10) + !Skin.HasSetting(KioskMode.Enabled)</enable>
 					</control>
 					<control type="button" id="6">
 						<description>Refresh</description>
@@ -440,7 +439,7 @@
 						<texturenofocus />
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label></label>
-						<enable>!Skin.HasSetting(KioskMode.Enabled)</enable>
+						<enable>Control.IsEnabled(6) + !Skin.HasSetting(KioskMode.Enabled)</enable>
 						<visible>!String.IsEqual(ListItem.DBTYPE,set)</visible>
 					</control>
 					<control type="button" id="208">

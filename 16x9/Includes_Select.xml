@@ -662,8 +662,8 @@
 		<item>
 			<label>$LOCALIZE[31149]</label>
 			<onclick>Dialog.Close(1129)</onclick>
-			<onclick condition="!String.IsEmpty(Window(Home).Property(actor_name))">RunScript(script.skin.info.service,action=person_info,name=$INFO[Window(Home).Property(actor_name)],role=$INFO[Window(Home).Property(actor_role)],dbid=$INFO[Window(Home).Property(dbid)],dbtype=$INFO[Window(Home).Property(dbtype)],open_window=1109)</onclick>
-			<onclick condition="!String.IsEmpty(Window(Home).Property(crew_name))">RunScript(script.skin.info.service,action=person_info,name=$INFO[Window(Home).Property(crew_name)],crew=$INFO[Window(Home).Property(crew_job)],dbid=$INFO[ListItem.DBID],dbtype=$INFO[Window(Home).Property(dbtype)],open_window=1109)</onclick>
+			<onclick condition="!String.IsEmpty(Window(Home).Property(actor_name))">RunScript(script.skin.info.service,action=dialog_actor_info,name=$INFO[Window(Home).Property(actor_name)],role=$INFO[Window(Home).Property(actor_role)],dbid=$INFO[Window(Home).Property(dbid)],dbtype=$INFO[Window(Home).Property(dbtype)],focus=90050)</onclick>
+			<onclick condition="!String.IsEmpty(Window(Home).Property(crew_name))">RunScript(script.skin.info.service,action=dialog_actor_info,name=$INFO[Window(Home).Property(crew_name)],crew=$INFO[Window(Home).Property(crew_job)],dbid=$INFO[ListItem.DBID],dbtype=$INFO[Window(Home).Property(dbtype)])</onclick>
 			<onclick condition="!String.IsEmpty(Window(Home).Property(SkinInfo.Person.SearchQuery))">$INFO[Window(Home).Property(SkinInfo.Person.SearchQuery)]</onclick>
 		</item>
 	</include>

@@ -4,8 +4,8 @@
 	<onload condition="!String.IsEmpty(Window(Home).Property(trailer))">PlayMedia($ESCINFO[Window(Home).Property(trailer)],1)</onload>
 	<onunload condition="Player.HasVideo">Action(Stop)</onunload>
 	<onunload condition="Window.IsVisible(okdialog)">SetFocus(11)</onunload>
-	<onunload condition="Window.IsVisible(1102) + !Window.IsVisible(okdialog)">SetFocus(4612)</onunload>
-	<onunload condition="!Window.IsVisible(1102) + !Window.IsVisible(okdialog)">SetFocus(913)</onunload>
+	<onunload condition="Window.IsVisible(script-skin-info-service-DialogVideoInfo.xml) + !Window.IsVisible(okdialog)">SetFocus(98005)</onunload>
+	<onunload condition="!Window.IsVisible(script-skin-info-service-DialogVideoInfo.xml) + !Window.IsVisible(okdialog)">SetFocus(913)</onunload>
 	<onunload>ClearProperty(trailer,Home)</onunload>
 	<controls>
 		<control type="button" id="64">

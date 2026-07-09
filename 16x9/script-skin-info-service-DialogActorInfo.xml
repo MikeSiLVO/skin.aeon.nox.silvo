@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog">
+	<defaultcontrol always="true">98004</defaultcontrol>
+	<controls>
+		<!-- Poster Side -->
+		<control type="group">
+			<animation effect="slide" start="-730,0" end="0,0" time="500" delay="250" tween="quadratic">WindowOpen</animation>
+			<animation effect="slide" end="-730,0" time="500" tween="quadratic">WindowClose</animation>
+			<animation effect="slide" end="-730,0" time="500" tween="quadratic" condition="String.IsEmpty(Window.Property(istop)) | Window.IsVisible(script-skin-info-service-DialogVideoInfo.xml) + !Window.IsActive(script-skin-info-service-DialogActorInfo.xml)">Conditional</animation>
+			<width>720</width>
+			<height>100%</height>
+			<include content="InfoPoster">
+				<param name="texture">$VAR[PersonInfoPosterVar]</param>
+			</include>
+		</control>
+		<!-- Details Side -->
+		<control type="group">
+			<animation effect="slide" start="1210,0" end="0,0" time="500" delay="250" tween="quadratic">WindowOpen</animation>
+			<animation effect="slide" end="1210,0" time="500" tween="quadratic">WindowClose</animation>
+			<animation effect="slide" end="1210,0" time="500" tween="quadratic" condition="String.IsEmpty(Window.Property(istop)) | Window.IsVisible(script-skin-info-service-DialogVideoInfo.xml) + !Window.IsActive(script-skin-info-service-DialogActorInfo.xml)">Conditional</animation>
+			<left>720</left>
+			<control type="group">
+				<width>1200</width>
+				<!-- Info Background -->
+				<include content="InfoBackground">
+					<param name="texture">$VAR[PersonInfoBackgroundVar]</param>
+				</include>
+				<!-- Top Section -->
+				<control type="group">
+					<left>10</left>
+					<!-- Name -->
+					<control type="label">
+						<width>1065</width>
+						<height>60</height>
+						<font>font30_title_bold</font>
+						<textcolor>grey</textcolor>
+						<scroll>true</scroll>
+						<label>$INFO[Window.Property(Name)]</label>
+					</control>
+					<control type="fadelabel">
+						<top>60</top>
+						<width>1075</width>
+						<height>30</height>
+						<align>left</align>
+						<aligny>center</aligny>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<scrollout>false</scrollout>
+						<pauseatend>5500</pauseatend>
+						<label>$INFO[Window.Property(KnownFor),$LOCALIZE[31546] ]</label>
+						<label>$INFO[Window.Property(Gender)]</label>
+					</control>
+					<!-- Separator Start -->
+					<control type="image">
+						<left>-7</left>
+						<top>105</top>
+						<height>1</height>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
+					</control>
+					<!-- Age -->
+					<control type="label">
+						<top>103</top>
+						<width>auto</width>
+						<height>90</height>
+						<font>font48_bold</font>
+						<textcolor>grey</textcolor>
+						<label>$INFO[Window.Property(Age),, $LOCALIZE[31544]]</label>
+					</control>
+					<!-- Separator End -->
+					<control type="image">
+						<left>-7</left>
+						<height>1</height>
+						<top>192</top>
+						<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
+					</control>
+				</control>
+				<!-- Details Panel -->
+				<include content="InfoDetailsPanel">
+					<param name="window_id">Home</param>
+					<param name="button_id">98001</param>
+					<param name="panel_id">98000</param>
+					<param name="panel_ondown">98004</param>
+					<param name="include">PersonInfoContent</param>
+				</include>
+				<!-- Buttons LABEL -->
+				<control type="group">
+					<left>-5</left>
+					<top>542</top>
+					<control type="button">
+						<width>650</width>
+						<texturenofocus />
+						<disabledcolor>grey</disabledcolor>
+						<font>font16_title_bold</font>
+						<align>left</align>
+						<textoffsetx>16</textoffsetx>
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label>$VAR[PersonInfoButtonLabelVar]</label>
+						<enable>no</enable>
+					</control>
+				</control>
+				<!-- Buttons -->
+				<control type="grouplist" id="98002">
+					<right>0</right>
+					<top>544</top>
+					<width>585</width>
+					<height>60</height>
+					<ondown>98008</ondown>
+					<align>right</align>
+					<orientation>horizontal</orientation>
+					<control type="button" id="98004">
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<texturenofocus />
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label></label>
+						<onup>Control.SetFocus(98000,0)</onup>
+						<onclick>SetFocus(99009)</onclick>
+					</control>
+				</control>
+				<control type="image">
+					<left>3</left>
+					<top>604</top>
+					<height>1</height>
+					<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
+				</control>
+				<!-- Bottom Section -->
+				<control type="grouplist" id="98006">
+					<left>-7</left>
+					<top>606</top>
+					<width>2800</width>
+					<height>480</height>
+					<ondown>noop</ondown>
+					<usecontrolcoords>true</usecontrolcoords>
+					<scrolltime tween="quadratic" easing="out">300</scrolltime>
+					<!-- Biography -->
+					<control type="group" id="98007">
+						<width>1200</width>
+						<height>480</height>
+						<control type="button" id="98008">
+							<left>10</left>
+							<top>-2</top>
+							<width>1200</width>
+							<height>480</height>
+							<include>ButtonInfoDialogsCommonValues</include>
+							<onup>98004</onup>
+							<ondown condition="Control.IsVisible(99004)">99004</ondown>
+							<ondown condition="!Control.IsVisible(99004) + Control.IsVisible(99005)">99005</ondown>
+							<ondown condition="!Control.IsVisible(99004) + !Control.IsVisible(99005) + Control.IsVisible(99006)">99006</ondown>
+							<ondown condition="!Control.IsVisible(99004) + Control.IsVisible(99005) + !Control.IsVisible(99006) + Control.IsVisible(99007)">99007</ondown>
+							<ondown condition="!Control.IsVisible(99004) + Control.IsVisible(99005) + !Control.IsVisible(99006) + !Control.IsVisible(99007) + Control.IsVisible(99008)">99008</ondown>
+							<ondown condition="!Control.IsVisible(99004) + Control.IsVisible(99005) + !Control.IsVisible(99006) + !Control.IsVisible(99007) + !Control.IsVisible(99008) + Control.IsVisible(99009)">99009</ondown>
+							<onclick>SetProperty(TextViewerHeader,$ESCINFO[Window.Property(Name),[B],[/B]],Home)</onclick>
+							<onclick>SetProperty(TextViewerContent,$ESCINFO[Window.Property(Biography)],Home)</onclick>
+							<onclick>RunScript(script.skin.info.service,dialog=textviewer,heading=$ESCINFO[Window.Property(Name)],text=$ESCINFO[Window.Property(Biography)])</onclick>
+						</control>
+						<!-- Biography text -->
+						<control type="group">
+							<left>26</left>
+							<top>22</top>
+							<include content="InfoPlot">
+								<param name="width">1168</param>
+								<param name="label">$INFO[Window.Property(Biography)]</param>
+								<param name="fallback">$LOCALIZE[19055]</param>
+								<param name="visible">true</param>
+								<param name="button_id">98008</param>
+							</include>
+						</control>
+					</control>
+					<!-- Library Movies -->
+					<include content="ExtendedInfoListLayout">
+						<param name="id">99004</param>
+						<param name="content">$INFO[Window.Property(container.library_movies.path)]</param>
+						<param name="texture">$INFO[ListItem.Art(poster)]</param>
+						<param name="fallback">DefaultMovies.png</param>
+						<param name="labelVisibility">true</param>
+						<param name="label">$INFO[ListItem.Property(Role)]</param>
+						<param name="label1">$INFO[ListItem.Title]</param>
+						<param name="do_onclick">false</param>
+					</include>
+					<!-- Library TV Shows -->
+					<include content="ExtendedInfoListLayout">
+						<param name="id">99005</param>
+						<param name="content">$INFO[Window.Property(container.library_tvshows.path)]</param>
+						<param name="texture">$INFO[ListItem.Art(poster)]</param>
+						<param name="fallback">DefaultTVShows.png</param>
+						<param name="labelVisibility">true</param>
+						<param name="label">$INFO[ListItem.Property(Role)]</param>
+						<param name="label1">$INFO[ListItem.Title]</param>
+						<param name="do_onclick">false</param>
+					</include>
+					<!-- Movies (TMDb filmography) -->
+					<include content="ExtendedInfoListLayout">
+						<param name="id">99006</param>
+						<param name="content">$INFO[Window.Property(container.movies.path)]</param>
+						<param name="texture">$INFO[ListItem.Art(poster)]</param>
+						<param name="fallback">DefaultMovies.png</param>
+						<param name="labelVisibility">true</param>
+						<param name="label">$INFO[ListItem.Property(Role)]</param>
+						<param name="label1">$INFO[ListItem.Title]</param>
+						<param name="do_onclick">false</param>
+					</include>
+					<!-- TV Shows (TMDb filmography) -->
+					<include content="ExtendedInfoListLayout">
+						<param name="id">99007</param>
+						<param name="content">$INFO[Window.Property(container.tvshows.path)]</param>
+						<param name="texture">$INFO[ListItem.Art(poster)]</param>
+						<param name="fallback">DefaultTVShows.png</param>
+						<param name="labelVisibility">true</param>
+						<param name="label">$INFO[ListItem.Property(Role)]</param>
+						<param name="label1">$INFO[ListItem.Title]</param>
+						<param name="do_onclick">false</param>
+					</include>
+					<!-- Crew credits -->
+					<include content="ExtendedInfoListLayout">
+						<param name="id">99008</param>
+						<param name="content">$INFO[Window.Property(container.crew.path)]</param>
+						<param name="texture">$INFO[ListItem.Art(poster)]</param>
+						<param name="fallback">DefaultTVShows.png</param>
+						<param name="labelVisibility">true</param>
+						<param name="label">$INFO[ListItem.Property(Job)]</param>
+						<param name="label1">$INFO[ListItem.Title]</param>
+						<param name="do_onclick">false</param>
+					</include>
+					<!-- Images -->
+					<include content="ExtendedInfoListLayout">
+						<param name="id">99009</param>
+						<param name="content">$INFO[Window.Property(container.images.path)]</param>
+						<param name="texture">$INFO[ListItem.Art(thumb)]</param>
+						<param name="fallback">DefaultActor.png</param>
+						<param name="labelVisibility">true</param>
+						<param name="label">$INFO[ListItem.Property(Dimensions)]</param>
+						<param name="label1"></param>
+						<param name="do_onclick">false</param>
+					</include>
+				</control>
+			</control>
+		</control>
+		<include content="BusySpinner">
+			<param name="visible">Container(99004).IsUpdating | Container(99005).IsUpdating | Container(99006).IsUpdating | Container(99007).IsUpdating | Container(99008).IsUpdating | Container(99009).IsUpdating</param>
+			<param name="texture">colors/black25.png</param>
+		</include>
+		<include>DebugWindow</include>
+	</controls>
+</window>
