@@ -28,33 +28,104 @@
 			<widget name="sets-movies" label="$LOCALIZE[20434]" icon="logos/kodi-sets.png" type="sets" target="videos" visible="Library.HasContent(MovieSets)">
 				<path>library://video/movies/sets.xml/</path>
 			</widget>
-			<widget name="recommended-movies" label="$LOCALIZE[31335]" icon="logos/skininfo-logo.png" type="movies" target="videos" source="addon" visible="Library.HasContent(movies)">
-				<path>plugin://script.skin.info.service/?action=recommended&amp;dbtype=movie&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
-			</widget>
-			<widget name="tmdb-trending-day-movies" label="$ADDON[plugin.video.themoviedb.helper 32178]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
-				<path>plugin://plugin.video.themoviedb.helper?info=trending_day&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
-			</widget>
-			<widget name="tmdb-trending-week-movies" label="$ADDON[plugin.video.themoviedb.helper 32179]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
-				<path>plugin://plugin.video.themoviedb.helper?info=trending_week&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
-			</widget>
-			<widget name="tmdb-popular-movies" label="$ADDON[plugin.video.themoviedb.helper 32175]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
-				<path>plugin://plugin.video.themoviedb.helper?info=popular&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
-			</widget>
-			<widget name="tmdb-toprated-movies" label="$ADDON[plugin.video.themoviedb.helper 32176]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
-				<path>plugin://plugin.video.themoviedb.helper?info=top_rated&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
-			</widget>
-			<widget name="tmdb-nowplaying-movies" label="$ADDON[plugin.video.themoviedb.helper 32180]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
-				<path>plugin://plugin.video.themoviedb.helper?info=now_playing&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
-			</widget>
-			<widget name="tmdb-upcoming-movies" label="$ADDON[plugin.video.themoviedb.helper 32177]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
-				<path>plugin://plugin.video.themoviedb.helper?info=upcoming&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
-			</widget>
-			<widget name="tmdb-revenue-movies" label="$ADDON[plugin.video.themoviedb.helper 32184]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
-				<path>plugin://plugin.video.themoviedb.helper?info=revenue_movies&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
-			</widget>
-			<widget name="tmdb-mostvoted-movies" label="$ADDON[plugin.video.themoviedb.helper 32185]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
-				<path>plugin://plugin.video.themoviedb.helper?info=most_voted&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
-			</widget>
+			<group name="movies-skininfo" label="$INFO[System.AddonTitle(script.skin.info.service)]" icon="logos/skininfo-logo.png">
+				<widget name="recommended-movies" label="$ADDON[script.skin.info.service 32623]" icon="logos/skininfo-logo.png" type="movies" target="videos" source="addon" visible="Library.HasContent(movies)">
+					<path>plugin://script.skin.info.service/?action=recommended&amp;dbtype=movie&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+				</widget>
+				<group name="movies-seasonal" label="$ADDON[script.skin.info.service 32622]" icon="logos/skininfo-logo.png">
+					<widget name="seasonal-christmas" label="$ADDON[script.skin.info.service 32642]" icon="logos/skininfo-logo.png" type="movies" target="videos" source="addon" visible="Library.HasContent(movies)">
+						<path>plugin://script.skin.info.service/?action=seasonal&amp;season=christmas&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+					</widget>
+					<widget name="seasonal-halloween" label="$ADDON[script.skin.info.service 32643]" icon="logos/skininfo-logo.png" type="movies" target="videos" source="addon" visible="Library.HasContent(movies)">
+						<path>plugin://script.skin.info.service/?action=seasonal&amp;season=halloween&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+					</widget>
+					<widget name="seasonal-valentines" label="$ADDON[script.skin.info.service 32644]" icon="logos/skininfo-logo.png" type="movies" target="videos" source="addon" visible="Library.HasContent(movies)">
+						<path>plugin://script.skin.info.service/?action=seasonal&amp;season=valentines&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+					</widget>
+					<widget name="seasonal-thanksgiving" label="$ADDON[script.skin.info.service 32645]" icon="logos/skininfo-logo.png" type="movies" target="videos" source="addon" visible="Library.HasContent(movies)">
+						<path>plugin://script.skin.info.service/?action=seasonal&amp;season=thanksgiving&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+					</widget>
+					<widget name="seasonal-starwars" label="$ADDON[script.skin.info.service 32646]" icon="logos/skininfo-logo.png" type="movies" target="videos" source="addon" visible="Library.HasContent(movies)">
+						<path>plugin://script.skin.info.service/?action=seasonal&amp;season=starwars&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+					</widget>
+					<widget name="seasonal-startrek" label="$ADDON[script.skin.info.service 32647]" icon="logos/skininfo-logo.png" type="movies" target="videos" source="addon" visible="Library.HasContent(movies)">
+						<path>plugin://script.skin.info.service/?action=seasonal&amp;season=startrek&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+					</widget>
+					<widget name="seasonal-newyear" label="$ADDON[script.skin.info.service 32648]" icon="logos/skininfo-logo.png" type="movies" target="videos" source="addon" visible="Library.HasContent(movies)">
+						<path>plugin://script.skin.info.service/?action=seasonal&amp;season=newyear&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+					</widget>
+					<widget name="seasonal-easter" label="$ADDON[script.skin.info.service 32649]" icon="logos/skininfo-logo.png" type="movies" target="videos" source="addon" visible="Library.HasContent(movies)">
+						<path>plugin://script.skin.info.service/?action=seasonal&amp;season=easter&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+					</widget>
+					<widget name="seasonal-independence" label="$ADDON[script.skin.info.service 32650]" icon="logos/skininfo-logo.png" type="movies" target="videos" source="addon" visible="Library.HasContent(movies)">
+						<path>plugin://script.skin.info.service/?action=seasonal&amp;season=independence&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+					</widget>
+				</group>
+				<group name="movies-discover" label="$ADDON[script.skin.info.service 32619]" icon="logos/skininfo-logo.png">
+					<widget name="sis-tmdb-trending-movies" label="$ADDON[script.skin.info.service 32627]" icon="logos/tmdb-logo.png" type="movies" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=tmdb_trending&amp;type=movie</path>
+					</widget>
+					<widget name="sis-tmdb-popular-movies" label="$ADDON[script.skin.info.service 32628]" icon="logos/tmdb-logo.png" type="movies" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=tmdb_popular&amp;type=movie</path>
+					</widget>
+					<widget name="sis-tmdb-top-rated-movies" label="$ADDON[script.skin.info.service 32629]" icon="logos/tmdb-logo.png" type="movies" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=tmdb_top_rated&amp;type=movie</path>
+					</widget>
+					<widget name="sis-tmdb-now-playing-movies" label="$ADDON[script.skin.info.service 32630]" icon="logos/tmdb-logo.png" type="movies" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=tmdb_now_playing&amp;type=movie</path>
+					</widget>
+					<widget name="sis-tmdb-upcoming-movies" label="$ADDON[script.skin.info.service 32631]" icon="logos/tmdb-logo.png" type="movies" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=tmdb_upcoming&amp;type=movie</path>
+					</widget>
+					<widget name="sis-trakt-trending-movies" label="$ADDON[script.skin.info.service 32634]" icon="logos/trakt-logo.png" type="movies" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=trakt_trending&amp;type=movie</path>
+					</widget>
+					<widget name="sis-trakt-popular-movies" label="$ADDON[script.skin.info.service 32635]" icon="logos/trakt-logo.png" type="movies" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=trakt_popular&amp;type=movie</path>
+					</widget>
+					<widget name="sis-trakt-anticipated-movies" label="$ADDON[script.skin.info.service 32636]" icon="logos/trakt-logo.png" type="movies" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=trakt_anticipated&amp;type=movie</path>
+					</widget>
+					<widget name="sis-trakt-watched-movies" label="$ADDON[script.skin.info.service 32637]" icon="logos/trakt-logo.png" type="movies" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=trakt_watched&amp;type=movie</path>
+					</widget>
+					<widget name="sis-trakt-collected-movies" label="$ADDON[script.skin.info.service 32638]" icon="logos/trakt-logo.png" type="movies" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=trakt_collected&amp;type=movie</path>
+					</widget>
+					<widget name="sis-trakt-boxoffice-movies" label="$ADDON[script.skin.info.service 32639]" icon="logos/trakt-logo.png" type="movies" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=trakt_boxoffice&amp;type=movie</path>
+					</widget>
+					<widget name="sis-trakt-recommendations-movies" label="$ADDON[script.skin.info.service 32640]" icon="logos/trakt-logo.png" type="movies" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=trakt_recommendations&amp;type=movie</path>
+					</widget>
+				</group>
+			</group>
+			<group name="movies-tmdbhelper" label="$INFO[System.AddonTitle(plugin.video.themoviedb.helper)]" icon="logos/tmdbh-logo.png" visible="System.AddonIsEnabled(plugin.video.themoviedb.helper)">
+				<widget name="tmdb-trending-day-movies" label="$ADDON[plugin.video.themoviedb.helper 32178]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon">
+					<path>plugin://plugin.video.themoviedb.helper?info=trending_day&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+				</widget>
+				<widget name="tmdb-trending-week-movies" label="$ADDON[plugin.video.themoviedb.helper 32179]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon">
+					<path>plugin://plugin.video.themoviedb.helper?info=trending_week&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+				</widget>
+				<widget name="tmdb-popular-movies" label="$ADDON[plugin.video.themoviedb.helper 32175]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon">
+					<path>plugin://plugin.video.themoviedb.helper?info=popular&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+				</widget>
+				<widget name="tmdb-toprated-movies" label="$ADDON[plugin.video.themoviedb.helper 32176]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon">
+					<path>plugin://plugin.video.themoviedb.helper?info=top_rated&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+				</widget>
+				<widget name="tmdb-nowplaying-movies" label="$ADDON[plugin.video.themoviedb.helper 32180]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon">
+					<path>plugin://plugin.video.themoviedb.helper?info=now_playing&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+				</widget>
+				<widget name="tmdb-upcoming-movies" label="$ADDON[plugin.video.themoviedb.helper 32177]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon">
+					<path>plugin://plugin.video.themoviedb.helper?info=upcoming&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+				</widget>
+				<widget name="tmdb-revenue-movies" label="$ADDON[plugin.video.themoviedb.helper 32184]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon">
+					<path>plugin://plugin.video.themoviedb.helper?info=revenue_movies&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+				</widget>
+				<widget name="tmdb-mostvoted-movies" label="$ADDON[plugin.video.themoviedb.helper 32185]" icon="logos/tmdbh-logo.png" type="movies" target="videos" source="addon">
+					<path>plugin://plugin.video.themoviedb.helper?info=most_voted&amp;type=movie&amp;nextpage=false&amp;fanarttv=false&amp;cacheonly=true&amp;length=1</path>
+				</widget>
+			</group>
 		</group>
 		<!-- TV Shows -->
 		<group name="tvshows-widgets" label="$LOCALIZE[20343]">
@@ -73,9 +144,46 @@
 			<widget name="unwatched-tvshows-pl" label="$LOCALIZE[31535]" icon="logos/kodi-pl.png" type="tvshows" target="videos" source="playlist" visible="Library.HasContent(TVShows)">
 				<path>special://skin/extras/playlists/unwatchedtvshows.xsp</path>
 			</widget>
-			<widget name="recommended-tvshows" label="$LOCALIZE[31335]" icon="logos/skininfo-logo.png" type="tvshows" target="videos" source="addon" visible="Library.HasContent(tvshows)">
-				<path>plugin://script.skin.info.service/?action=recommended&amp;dbtype=tvshow&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
-			</widget>
+			<group name="tvshows-skininfo" label="$INFO[System.AddonTitle(script.skin.info.service)]" icon="logos/skininfo-logo.png">
+				<widget name="recommended-tvshows" label="$ADDON[script.skin.info.service 32624]" icon="logos/skininfo-logo.png" type="tvshows" target="videos" source="addon" visible="Library.HasContent(tvshows)">
+					<path>plugin://script.skin.info.service/?action=recommended&amp;dbtype=tvshow&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+				</widget>
+				<group name="tvshows-discover" label="$ADDON[script.skin.info.service 32619]" icon="logos/skininfo-logo.png">
+					<widget name="sis-tmdb-trending-tvshows" label="$ADDON[script.skin.info.service 32627]" icon="logos/tmdb-logo.png" type="tvshows" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=tmdb_trending&amp;type=tv</path>
+					</widget>
+					<widget name="sis-tmdb-popular-tvshows" label="$ADDON[script.skin.info.service 32628]" icon="logos/tmdb-logo.png" type="tvshows" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=tmdb_popular&amp;type=tv</path>
+					</widget>
+					<widget name="sis-tmdb-top-rated-tvshows" label="$ADDON[script.skin.info.service 32629]" icon="logos/tmdb-logo.png" type="tvshows" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=tmdb_top_rated&amp;type=tv</path>
+					</widget>
+					<widget name="sis-tmdb-airing-today-tvshows" label="$ADDON[script.skin.info.service 32632]" icon="logos/tmdb-logo.png" type="tvshows" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=tmdb_airing_today&amp;type=tv</path>
+					</widget>
+					<widget name="sis-tmdb-on-the-air-tvshows" label="$ADDON[script.skin.info.service 32633]" icon="logos/tmdb-logo.png" type="tvshows" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=tmdb_on_the_air&amp;type=tv</path>
+					</widget>
+					<widget name="sis-trakt-trending-tvshows" label="$ADDON[script.skin.info.service 32634]" icon="logos/trakt-logo.png" type="tvshows" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=trakt_trending&amp;type=tv</path>
+					</widget>
+					<widget name="sis-trakt-popular-tvshows" label="$ADDON[script.skin.info.service 32635]" icon="logos/trakt-logo.png" type="tvshows" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=trakt_popular&amp;type=tv</path>
+					</widget>
+					<widget name="sis-trakt-anticipated-tvshows" label="$ADDON[script.skin.info.service 32636]" icon="logos/trakt-logo.png" type="tvshows" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=trakt_anticipated&amp;type=tv</path>
+					</widget>
+					<widget name="sis-trakt-watched-tvshows" label="$ADDON[script.skin.info.service 32637]" icon="logos/trakt-logo.png" type="tvshows" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=trakt_watched&amp;type=tv</path>
+					</widget>
+					<widget name="sis-trakt-collected-tvshows" label="$ADDON[script.skin.info.service 32638]" icon="logos/trakt-logo.png" type="tvshows" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=trakt_collected&amp;type=tv</path>
+					</widget>
+					<widget name="sis-trakt-recommendations-tvshows" label="$ADDON[script.skin.info.service 32640]" icon="logos/trakt-logo.png" type="tvshows" target="videos" source="addon">
+						<path>plugin://script.skin.info.service/?action=trakt_recommendations&amp;type=tv</path>
+					</widget>
+				</group>
+			</group>
 		</group>
 		<!-- Episodes -->
 		<group name="episodes-widgets" label="$LOCALIZE[20360]">
@@ -91,12 +199,14 @@
 			<widget name="inprogress-episodes-pl" label="$LOCALIZE[31733]" icon="logos/kodi-pl.png" type="episodes" target="videos" source="playlist" visible="Library.HasContent(TVShows)">
 				<path>special://skin/extras/playlists/inprogressepisodes.xsp</path>
 			</widget>
-			<widget name="nextup-episodes" label="$LOCALIZE[31089]" icon="logos/skininfo-logo.png" type="tvshows" target="videos" source="addon" visible="Library.HasContent(tvshows)">
-				<path>plugin://script.skin.info.service/?action=next_up&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
-			</widget>
-			<widget name="recent-episodes-grouped" label="$LOCALIZE[31093]" icon="logos/skininfo-logo.png" type="episodes" target="videos" source="addon" visible="Library.HasContent(tvshows)">
-				<path>plugin://script.skin.info.service/?action=recent_episodes_grouped&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
-			</widget>
+			<group name="episodes-skininfo" label="$INFO[System.AddonTitle(script.skin.info.service)]" icon="logos/skininfo-logo.png">
+				<widget name="nextup-episodes" label="$ADDON[script.skin.info.service 32620]" icon="logos/skininfo-logo.png" type="tvshows" target="videos" source="addon" visible="Library.HasContent(tvshows)">
+					<path>plugin://script.skin.info.service/?action=next_up&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+				</widget>
+				<widget name="recent-episodes-grouped" label="$ADDON[script.skin.info.service 32621]" icon="logos/skininfo-logo.png" type="episodes" target="videos" source="addon" visible="Library.HasContent(tvshows)">
+					<path>plugin://script.skin.info.service/?action=recent_episodes_grouped&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</path>
+				</widget>
+			</group>
 		</group>
 		<!-- Music Videos -->
 		<group name="musicvideos-widgets" label="$LOCALIZE[20389]">

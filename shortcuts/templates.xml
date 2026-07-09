@@ -502,9 +502,12 @@
 			<property name="content" from="widgetPath" />
 			<property name="target" from="widgetTarget" />
 			<property name="limit" from="widgetLimit" />
-			<property name="label" from="widgetLabel" />
 			<property name="sortby" from="widgetSortby" />
 			<property name="sort" from="widgetSort" />
+			<var name="label">
+				<value condition="widget~recommended-">$INFO[Container.ListItem.Property(BasedOnLabel)]</value>
+				<value>$PROPERTY[widgetLabel]</value>
+			</var>
 		</propertyGroup>
 		<!-- Artwork -->
 		<propertyGroup name="artworkVar">
