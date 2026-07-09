@@ -323,6 +323,15 @@
 						<usealttexture>String.IsEqual(Window.Property(MediaType),tvshow)</usealttexture>
 						<visible>!String.IsEmpty(Window.Property(dbid))</visible>
 					</control>
+					<control type="button" id="98010">
+						<description>Recommendations</description>
+						<font>IconMediumMD</font>
+						<width>65</width>
+						<texturenofocus />
+						<include>ButtonInfoDialogsCommonValues</include>
+						<label></label>
+						<onclick condition="Integer.IsGreater(Container(99002).NumItems,0)">SetFocus(99002)</onclick>
+					</control>
 					<control type="button" id="98004">
 						<description>Cast</description>
 						<font>IconMediumMD</font>
