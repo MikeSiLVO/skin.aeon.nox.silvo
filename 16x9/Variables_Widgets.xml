@@ -333,18 +333,23 @@
 		<value condition="!String.IsEmpty(Window(Home).Property(SkinInfo.Set.Movies.Count))">$INFO[Window(Home).Property(SkinInfo.Set.Movies.Count),, $LOCALIZE[342]]</value>
 		<value />
 	</variable>
+	<variable name="WidgetDurationVar">
+		<value condition="String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Runtime))">$INFO[Container.ListItem.Duration]</value>
+		<value condition="!Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[Window(Home).Property(SkinInfo.ListItem.Runtime),, $LOCALIZE[12391]]</value>
+		<value>$INFO[Window(Home).Property(SkinInfo.ListItem.Runtime.Hours),,h]$INFO[Window(Home).Property(SkinInfo.ListItem.Runtime.Minutes),,m]</value>
+	</variable>
 	<variable name="HomeWidgetInfo1Var">
 		<value condition="!String.IsEmpty(Container.ListItem.AddonName)">$INFO[Container.ListItem.AddonCreator,$LOCALIZE[31001] ]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.Property(Label3)) | !String.IsEmpty(Container.ListItem.Property(Label4))">$INFO[Container.ListItem.Property(Label3)] | $INFO[Container.ListItem.Property(Label4)]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.album)">$INFO[Container.ListItem.Album]</value>
 		<value condition="[!String.IsEmpty(Container.ListItem.Property(Album_Mood)) | !String.IsEmpty(Container.ListItem.Property(Album_Style)) | !String.IsEmpty(Container.ListItem.Property(Artist_Style))]">$INFO[Container.ListItem.Property(Album_Mood),,  •  ]$INFO[Container.ListItem.Property(Album_Style)]$INFO[Container.ListItem.Property(Artist_Style),  •  ]</value>
-		<value condition="!String.IsEmpty(Container.ListItem.StartDate) + !String.IsEqual(Container.ListItem.StartDate,System.Date) + String.IsEqual(Container(9000).ListItem.Property(WidgetType),pvr)">$INFO[Container.ListItem.StartDate,, ]$INFO[Container.ListItem.StartTime,@ , ]$INFO[Container.ListItem.RatingAndVotes, •  $LOCALIZE[563]: , ]$INFO[Container.ListItem.Duration, •  $LOCALIZE[2050]: ]</value>
-		<value condition="!String.IsEmpty(Container.ListItem.StartTime) + String.IsEqual(Container(9000).ListItem.Property(WidgetType),pvr)">$INFO[Container.ListItem.StartTime,$LOCALIZE[31012]: ]$INFO[Container.ListItem.EndTime, - ]$INFO[Container.ListItem.RatingAndVotes, •  $LOCALIZE[563]: , ]$INFO[Container.ListItem.Duration, •  $LOCALIZE[2050]: ]</value>
-		<value condition="!String.IsEmpty(Container.ListItem.Premiered)">$INFO[Container.ListItem.Premiered]$INFO[Container.ListItem.RatingAndVotes,  •  $LOCALIZE[563]: ]$INFO[Container.ListItem.Duration,  •  $LOCALIZE[2050]: ]</value>
+		<value condition="!String.IsEmpty(Container.ListItem.StartDate) + !String.IsEqual(Container.ListItem.StartDate,System.Date) + String.IsEqual(Container(9000).ListItem.Property(WidgetType),pvr)">$INFO[Container.ListItem.StartDate,, ]$INFO[Container.ListItem.StartTime,@ , ]$INFO[Container.ListItem.RatingAndVotes, •  $LOCALIZE[563]: , ]$VAR[WidgetDurationVar, •  $LOCALIZE[2050]: ]</value>
+		<value condition="!String.IsEmpty(Container.ListItem.StartTime) + String.IsEqual(Container(9000).ListItem.Property(WidgetType),pvr)">$INFO[Container.ListItem.StartTime,$LOCALIZE[31012]: ]$INFO[Container.ListItem.EndTime, - ]$INFO[Container.ListItem.RatingAndVotes, •  $LOCALIZE[563]: , ]$VAR[WidgetDurationVar, •  $LOCALIZE[2050]: ]</value>
+		<value condition="!String.IsEmpty(Container.ListItem.Premiered)">$INFO[Container.ListItem.Premiered]$INFO[Container.ListItem.RatingAndVotes,  •  $LOCALIZE[563]: ]$VAR[WidgetDurationVar,  •  $LOCALIZE[2050]: ]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.RatingAndVotes) + !String.IsEmpty(Container.ListItem.Property(Runtime))">$INFO[Container.ListItem.RatingAndVotes,$LOCALIZE[563]: ]$INFO[Container.ListItem.Property(Runtime),  •  $LOCALIZE[2050]: ]</value>
-		<value condition="!String.IsEmpty(Container.ListItem.RatingAndVotes) + !String.IsEmpty(Container.ListItem.Duration)">$INFO[Container.ListItem.RatingAndVotes,$LOCALIZE[563]: ]$INFO[Container.ListItem.Duration,  •  $LOCALIZE[2050]: ]</value>
+		<value condition="!String.IsEmpty(Container.ListItem.RatingAndVotes) + !String.IsEmpty(Container.ListItem.Duration)">$INFO[Container.ListItem.RatingAndVotes,$LOCALIZE[563]: ]$VAR[WidgetDurationVar,  •  $LOCALIZE[2050]: ]</value>
 		<value condition="ListItem.IsCollection | String.IsEqual(ListItem.DBTYPE,set)">$INFO[ListItem.Rating,$LOCALIZE[563]: ]$INFO[Window(Home).Property(SkinInfo.Set.Movies.Runtime),  •  $LOCALIZE[2050]: , $LOCALIZE[12391]]</value>
-		<value>$INFO[Container.ListItem.Duration,, $LOCALIZE[2050]]</value>
+		<value>$VAR[WidgetDurationVar,, $LOCALIZE[2050]]</value>
 	</variable>
 	<variable name="HomeWidgetInfo2Var">
 		<value condition="!String.IsEmpty(Container.ListItem.AddonType)">$INFO[Container.ListItem.AddonType]</value>
