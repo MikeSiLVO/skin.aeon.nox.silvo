@@ -1,0 +1,26 @@
+name: Close Stale Issues
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+  stale:
+    if: github.repository == 'MikeSiLVO/skin.aeon.nox.silvo'
+    permissions:
+      issues: write
+    uses: MikeSiLVO/workflows/.github/workflows/stale-issues.yml@v1
+    with:
+      stale_message: |
+        > **Automated reply** from a bot.
+
+        Just a heads up, this is still marked `needs-info` and hasn't had a reply in a while. It'll be closed in 7 days if nothing more is added, but a comment with the details will keep it open.
+
+        _This was posted automatically._
+      close_message: |
+        > **Automated reply** from a bot.
+
+        Closing this one out since the extra details weren't added. No worries though, comment any time and it can be reopened.
+
+        _This was posted automatically._
+    secrets: inherit

@@ -1,0 +1,24 @@
+name: Needs Info
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  nudge:
+    if: github.repository == 'MikeSiLVO/skin.aeon.nox.silvo'
+    permissions:
+      issues: write
+    uses: MikeSiLVO/workflows/.github/workflows/needs-info.yml@v1
+    with:
+      message: |
+        > **Automated reply** from a bot.
+
+        Thanks for taking the time to open this. To look into it properly I need a little more to go on, as there isn't quite enough here yet.
+
+        Could you add some more detail? What you're after or what's going wrong, where in the skin it applies, and how it looks now or how you'd like it to behave. A screenshot or mockup is always helpful.
+
+        I've marked this `needs-info` for now. If there's no reply it'll be closed automatically in a couple of weeks, but just add the details any time to keep it open.
+
+        _This was posted automatically._
+    secrets: inherit
