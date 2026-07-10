@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<variable name="SeasonsBackgroundOnclickVar">
-		<value condition="String.IsEmpty(Skin.String(SeasonsBackground))">Skin.SetString(SeasonsBackground,MakeItSnow)</value>
+		<value condition="String.IsEmpty(Skin.String(SeasonsBackground))">RunScript(script.skin.info.service,dialog=yesno,heading="$LOCALIZE[31573]",message="$LOCALIZE[31384]",yesaction="Skin.SetString(SeasonsBackground,MakeItSnow)")</value>
 		<value condition="String.IsEqual(Skin.String(SeasonsBackground),MakeItSnow)">Skin.SetString(SeasonsBackground,AutumnLeaves)</value>
 		<value condition="String.IsEqual(Skin.String(SeasonsBackground),AutumnLeaves)">Skin.Reset(SeasonsBackground)</value>
 	</variable>
