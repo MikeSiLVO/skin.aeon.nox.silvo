@@ -3,10 +3,11 @@
 
 If you enjoy this skin, [buy me a coffee](https://ko-fi.com/mikesilvo) ☕
 
-**Branches:**
- - **main:** Kodi v22 Codename Piers
- - **omega:** Kodi v21 Codename Omega
- - **nexus:** Kodi v20 Codename Nexus
+## Install
+
+Active development is on **Kodi 22 (Piers)**. The current version is still in beta, so install it from my dev repo:
+
+**https://mikesilvo.github.io/repository.silvo/**
 
  <hr/>
 
