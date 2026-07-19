@@ -463,7 +463,7 @@
 						<control type="group">
 							<left>1250</left>
 							<width>250</width>
-							<visible>!String.Contains(PVR.ActStreamStatus,TIMESHIFT) + !Skin.HasSetting(infobar_hidesignalinfo)</visible>
+							<visible>!Skin.HasSetting(infobar_hidesignalinfo)</visible>
 							<control type="label">
 								<width>250</width>
 								<height>38</height>
@@ -574,7 +574,7 @@
 							<font>font24_bold</font>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
 							<label>$LOCALIZE[31364]</label>
-							<visible>String.Contains(PVR.ActStreamStatus,TIMESHIFT)</visible>
+							<visible>Pvr.IsTimeShift</visible>
 						</control>
 					</control>
 				</control>
