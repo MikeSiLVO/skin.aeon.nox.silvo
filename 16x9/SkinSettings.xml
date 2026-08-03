@@ -677,7 +677,7 @@
 							<visible>System.GetBool(input.enablemouse)</visible>
 						</control>
 						<control type="radiobutton" id="80008">
-							<label>Prefer animated artwork</label>
+							<label>$LOCALIZE[31128]</label>
 							<onclick>Skin.ToggleSetting(prefer_animated_art)</onclick>
 							<selected>Skin.HasSetting(prefer_animated_art)</selected>
 							<include>SettingsButtonCommonValues</include>
@@ -717,6 +717,7 @@
 						<control type="button" id="90004">
 							<include>SettingsButtonCommonValues</include>
 							<align>center</align>
+							<!-- kdk-ignore: labels -->
 							<label>FAQ</label>
 							<onclick>RunScript(script.skin.info.service,dialog=textviewer,heading=FAQ,file=special://skin/faq.txt)</onclick>
 						</control>
