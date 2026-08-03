@@ -14,8 +14,7 @@ jobs:
         with:
           python-version: '3.13'
 
-      # Branch install until kdk 2.0.0 is on PyPI
-      - run: pip install git+https://github.com/MikeSiLVO/kdk@main
+      - run: pip install kdk==2.0.0
 
       # ubuntu so case-sensitive paths are checked the way Kodi sees them
       - run: kdk validate --strict --github .
