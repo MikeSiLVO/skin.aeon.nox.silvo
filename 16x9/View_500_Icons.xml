@@ -36,7 +36,7 @@
 					<preloaditems>2</preloaditems>
 					<scrolltime tween="quadratic" easing="out">300</scrolltime>
 					<visible>True + !Skin.HasSetting(Enable_ViewLocking) | [$EXP[ShortcutView_500] + Skin.HasSetting(Enable_ViewLocking)]</visible>
-					<itemlayout height="360" width="240" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)] + !Skin.HasSetting(500.SmallerIcons)">
+					<itemlayout height="360" width="240" condition="[Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(sets)] + !Skin.HasSetting(500.SmallerIcons)">
 						<control type="image">
 							<width>240</width>
 							<height>360</height>
@@ -52,7 +52,7 @@
 						</include>
 						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedEpisodeOverlay</include>
 					</itemlayout>
-					<focusedlayout height="360" width="240" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)] + !Skin.HasSetting(500.SmallerIcons)">
+					<focusedlayout height="360" width="240" condition="[Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(sets)] + !Skin.HasSetting(500.SmallerIcons)">
 						<control type="group">
 							<animation type="Focus" reversible="false">
 								<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
@@ -250,7 +250,7 @@
 							</include>
 						</control>
 					</focusedlayout>
-					<itemlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets) | Window.IsActive(videos) + String.StartsWith(Container.FolderPath,sources://video)]">
+					<itemlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(episodes) | Container.Content(sets) | Window.IsActive(videos) + String.StartsWith(Container.FolderPath,sources://video)]">
 						<control type="image">
 							<width>420</width>
 							<height>360</height>
@@ -282,7 +282,7 @@
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets) | Window.IsActive(videos) + String.StartsWith(Container.FolderPath,sources://video)]">
+					<focusedlayout height="360" width="420" condition="![Container.Content(addons) | Container.Content(genres) | Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(episodes) | Container.Content(sets) | Window.IsActive(videos) + String.StartsWith(Container.FolderPath,sources://video)]">
 						<control type="group">
 							<animation type="Focus" reversible="false">
 								<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
@@ -319,7 +319,7 @@
 							</control>
 						</control>
 					</focusedlayout>
-					<itemlayout height="240" width="160" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)] + Skin.HasSetting(500.SmallerIcons)">
+					<itemlayout height="240" width="160" condition="[Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(sets)] + Skin.HasSetting(500.SmallerIcons)">
 						<control type="image">
 							<width>160</width>
 							<height>240</height>
@@ -337,7 +337,7 @@
 							<param name="height">32</param>
 						</include>
 					</itemlayout>
-					<focusedlayout height="240" width="160" condition="[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)] + Skin.HasSetting(500.SmallerIcons)">
+					<focusedlayout height="240" width="160" condition="[Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(sets)] + Skin.HasSetting(500.SmallerIcons)">
 						<control type="group">
 							<animation type="Focus" reversible="false">
 								<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />

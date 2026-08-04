@@ -23,7 +23,7 @@
 		<onup condition="Control.IsVisible(62)">62</onup> -->
 		<ondown condition="Control.IsVisible(95360)">95360</ondown>
 		<ondown condition="!Control.IsVisible(95360)">4400</ondown>
-		<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions) | Container.Content(videoversions) | Container.Content(artists) | Container.Content(sets)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_53]</visible>
+		<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(genres) | $EXP[IsTVShowOrSeason] | Container.Content(episodes) | Container.Content(videoversions) | Container.Content(videoversions) | Container.Content(artists) | Container.Content(sets)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_53]</visible>
 		<viewtype label="31077">bigwrap</viewtype>
 		<pagecontrol>95360</pagecontrol>
 		<scrolltime tween="quadratic">300</scrolltime>
@@ -523,7 +523,7 @@
 					<control type="group">
 						<left>758</left>
 						<!-- Workaround for camera bug. As soon as the camera tag is applied to the group, label will be invisible -->
-						<animation effect="rotatey" center="0" start="1" end="1" time="0" condition="Skin.HasSetting(Disable.UnwatchedIcon) + [Container.Content(tvshows) | Container.Content(seasons)]">Conditional</animation>
+						<animation effect="rotatey" center="0" start="1" end="1" time="0" condition="Skin.HasSetting(Disable.UnwatchedIcon) + $EXP[IsTVShowOrSeason]">Conditional</animation>
 						<visible>!String.IsEmpty(Container(53).ListItemNoWrap(0).FolderPath) | !Skin.HasSetting(ShowCaseWrapList)</visible>
 						<include>MovieShowCaseItem0</include>
 					</control>
@@ -563,7 +563,7 @@
 		<width>375</width>
 		<height>500</height>
 		<bordersize>20</bordersize>
-		<visible>[Skin.HasSetting(Enable.ShowCase.Covers) + [Container.Content(movies) | Container.Content(sets)]] | [Skin.HasSetting(Enable.ShowCase.TVCovers) + [Container.Content(tvshows) | Container.Content(seasons)]]</visible>
+		<visible>[Skin.HasSetting(Enable.ShowCase.Covers) + [Container.Content(movies) | Container.Content(sets)]] | [Skin.HasSetting(Enable.ShowCase.TVCovers) + $EXP[IsTVShowOrSeason]]</visible>
 		<visible>!Container.Content(genres) + !ListItem.IsParentFolder</visible>
 	</include>
 	<include name="MovieShowcaseNoCase">

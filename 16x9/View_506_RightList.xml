@@ -13,7 +13,7 @@
 				<fadetime>IconCrossfadeTime</fadetime>
 				<aspectratio aligny="bottom">keep</aspectratio>
 				<texture background="true">$VAR[ArtworkLogoVar]</texture>
-				<visible>[Skin.HasSetting(rightlistlogomovie) + [Container.Content(movies) | Container.Content(videoversions) | Container.Content(sets)]] | [Skin.HasSetting(rightlistlogotv) + [Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]] | Container.Content(musicvideos)</visible>
+				<visible>[Skin.HasSetting(rightlistlogomovie) + [Container.Content(movies) | Container.Content(videoversions) | Container.Content(sets)]] | [Skin.HasSetting(rightlistlogotv) + [$EXP[IsTVShowOrSeason] | Container.Content(episodes)]] | Container.Content(musicvideos)</visible>
 			</control>
 			<control type="group">
 				<left>5</left>
@@ -492,14 +492,14 @@
 		<ondown>506</ondown>
 		<pagecontrol>50660</pagecontrol>
 		<viewtype label="$LOCALIZE[31239]">list</viewtype>
-		<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions) | Container.Content(videoextras) | Container.Content(musicvideos)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_506]</visible>
+		<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(sets) | $EXP[IsTVShowOrSeason] | Container.Content(episodes) | Container.Content(videoversions) | Container.Content(videoextras) | Container.Content(musicvideos)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_506]</visible>
 		<scrolltime tween="quadratic" easing="out">200</scrolltime>
 		<itemlayout height="82" width="806" condition="[!Skin.HasSetting(rightlistalternate) + [Container.Content(movies) | Container.Content(videoversions) | Container.Content(musicvideos)]]">
 			<include content="RightListItemLayout">
 				<param name="width">700</param>
 			</include>
 		</itemlayout>
-		<itemlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + !Skin.HasSetting(rightlistalternatetv)">
+		<itemlayout height="82" width="806" condition="[Container.Content(sets) | $EXP[IsTVShowOrSeason] | Container.Content(episodes)] + !Skin.HasSetting(rightlistalternatetv)">
 			<control type="group">
 				<animation effect="slide" end="70" time="0" condition="Container.Content(episodes)">Conditional</animation>
 				<include content="RightListItemLayout">
@@ -512,7 +512,7 @@
 				<param name="width">770</param>
 			</include>
 		</itemlayout>
-		<itemlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + Skin.HasSetting(rightlistalternatetv)">
+		<itemlayout height="82" width="806" condition="[Container.Content(sets) | $EXP[IsTVShowOrSeason] | Container.Content(episodes)] + Skin.HasSetting(rightlistalternatetv)">
 			<include content="RightListItemLayout">
 				<param name="width">770</param>
 			</include>
@@ -525,7 +525,7 @@
 				<param name="width">700</param>
 			</include>
 		</focusedlayout>
-		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + !Skin.HasSetting(rightlistalternatetv)" infoupdate="1000">
+		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | $EXP[IsTVShowOrSeason] | Container.Content(episodes)] + !Skin.HasSetting(rightlistalternatetv)" infoupdate="1000">
 			<control type="image">
 				<include>VisibleFadeAnimation</include>
 			</control>
@@ -541,7 +541,7 @@
 				<param name="width">770</param>
 			</include>
 		</focusedlayout>
-		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + Skin.HasSetting(rightlistalternatetv)" infoupdate="1000">
+		<focusedlayout height="82" width="806" condition="[Container.Content(sets) | $EXP[IsTVShowOrSeason] | Container.Content(episodes)] + Skin.HasSetting(rightlistalternatetv)" infoupdate="1000">
 			<include content="RightListFocusedLayout">
 				<param name="width">770</param>
 			</include>

@@ -48,7 +48,7 @@
 			<label>$LOCALIZE[31604]</label>
 			<onclick>Skin.ToggleSetting(SlimList.Info)</onclick>
 			<selected>Skin.HasSetting(SlimList.Info)</selected>
-			<visible>Skin.HasSetting(Enable.SlimList) + ![Container.Content(movies) | Container.Content(genres) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(musicvideos) | Container.Content() | Container.Content(files) | Container.Content(addons)]</visible>
+			<visible>Skin.HasSetting(Enable.SlimList) + ![Container.Content(movies) | Container.Content(genres) | $EXP[IsTVShowOrSeason] | Container.Content(musicvideos) | Container.Content() | Container.Content(files) | Container.Content(addons)]</visible>
 		</control>
 	</include>
 	<include name="InfoWallViewSettings">
@@ -457,7 +457,7 @@
 			<label>$LOCALIZE[31608]</label>
 			<onclick>Skin.ToggleSetting(Enable.Shift.Covers)</onclick>
 			<selected>Skin.HasSetting(Enable.Shift.Covers)</selected>
-			<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
+			<visible>[Container.Content(movies) | $EXP[IsTVShowOrSeason]]</visible>
 		</control>
 		<control type="radiobutton" id="1515">
 			<include>ButtonCommonValues</include>
@@ -625,7 +625,7 @@
 			<label>$LOCALIZE[31293]</label>
 			<onclick>Skin.ToggleSetting(500.SmallerIcons)</onclick>
 			<selected>Skin.HasSetting(500.SmallerIcons)</selected>
-			<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets) | Container.Content(genres)]</visible>
+			<visible>[Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(sets) | Container.Content(genres)]</visible>
 		</control>
 		<control type="radiobutton" id="1515">
 			<include>ButtonCommonValues</include>
@@ -682,7 +682,7 @@
 			<label>$LOCALIZE[31608]</label>
 			<onclick>Skin.ToggleSetting(togglelowlistcovers)</onclick>
 			<selected>Skin.HasSetting(togglelowlistcovers)</selected>
-			<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
+			<visible>[Container.Content(movies) | $EXP[IsTVShowOrSeason]]</visible>
 		</control>
 		<control type="radiobutton" id="1516">
 			<include>ButtonCommonValues</include>
@@ -939,7 +939,7 @@
 			<label>$LOCALIZE[31606]</label>
 			<onclick>Skin.ToggleSetting(rightlistlogotv)</onclick>
 			<selected>Skin.HasSetting(rightlistlogotv)</selected>
-			<visible>[Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
+			<visible>[$EXP[IsTVShowOrSeason] | Container.Content(episodes)]</visible>
 		</control>
 		<control type="radiobutton" id="1522">
 			<include>ButtonCommonValues</include>
@@ -1025,14 +1025,14 @@
 			<label>   - $LOCALIZE[31608]</label>
 			<onclick>Skin.ToggleSetting(rightlistcovers)</onclick>
 			<selected>Skin.HasSetting(rightlistcovers)</selected>
-			<visible>[[Container.Content(movies) | Container.Content(videoversions)] + !Skin.HasSetting(Enable.Rightlist.HidePoster.movies)] | [Container.Content(episodes) + !Skin.HasSetting(Enable.Rightlist.HidePoster.episodes)] | [Container.Content(tvshows) | Container.Content(seasons)]</visible>
+			<visible>[[Container.Content(movies) | Container.Content(videoversions)] + !Skin.HasSetting(Enable.Rightlist.HidePoster.movies)] | [Container.Content(episodes) + !Skin.HasSetting(Enable.Rightlist.HidePoster.episodes)] | $EXP[IsTVShowOrSeason]</visible>
 		</control>
 		<control type="radiobutton" id="1534">
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[31604]</label>
 			<onclick>Skin.ToggleSetting(inforightlist)</onclick>
 			<selected>Skin.HasSetting(inforightlist)</selected>
-			<visible>[Container.Content(movies) | Container.Content(videoversions) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos)]</visible>
+			<visible>[Container.Content(movies) | Container.Content(videoversions) | Container.Content(sets) | $EXP[IsTVShowOrSeason] | Container.Content(episodes) | Container.Content(musicvideos)]</visible>
 		</control>
 		<control type="radiobutton" id="1535">
 			<include>ButtonCommonValues</include>
@@ -1102,7 +1102,7 @@
 			<label>$LOCALIZE[31606]</label>
 			<onclick>Skin.ToggleSetting(Enable.MyFlix.TVLogo)</onclick>
 			<selected>Skin.HasSetting(Enable.MyFlix.TVLogo)</selected>
-			<visible>Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
+			<visible>$EXP[IsTVShowOrSeason] | Container.Content(episodes)</visible>
 		</control>
 		<control type="radiobutton" id="1516">
 			<include>ButtonCommonValues</include>
@@ -1136,7 +1136,7 @@
 			<label>$LOCALIZE[31608]</label>
 			<onclick>Skin.ToggleSetting(Enable.MyFlix.Cases)</onclick>
 			<selected>Skin.HasSetting(Enable.MyFlix.Cases)</selected>
-			<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)] + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)</visible>
+			<visible>[Container.Content(movies) | Container.Content(sets) | $EXP[IsTVShowOrSeason]] + !Skin.HasSetting(Enable.MyFlix.MovieLandscape)</visible>
 		</control>
 		<control type="radiobutton" id="1521">
 			<include>ButtonCommonValues</include>

@@ -34,32 +34,32 @@
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]:[/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Online.Status)]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
-						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status))</visible>
+						<visible>$EXP[IsTVShowOrSeason] + !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Status))</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20416]:[/COLOR][CR]$INFO[ListItem.Premiered]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
-						<visible>!String.IsEmpty(ListItem.Premiered) + [Container.Content(episodes) | [[Container.Content(tvshows) | Container.Content(seasons)] + Skin.HasSetting(Disable.NextAired)]]</visible>
+						<visible>!String.IsEmpty(ListItem.Premiered) + [Container.Content(episodes) | [$EXP[IsTVShowOrSeason] + Skin.HasSetting(Disable.NextAired)]]</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31019]:[/COLOR][CR]$INFO[ListItem.Studio]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
 						<visible>!String.IsEmpty(ListItem.Studio)</visible>
-						<visible>[[Container.Content(tvshows) | Container.Content(seasons)] + Skin.HasSetting(Disable.NextAired)] | Container.Content(episodes)</visible>
+						<visible>[$EXP[IsTVShowOrSeason] + Skin.HasSetting(Disable.NextAired)] | Container.Content(episodes)</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31010]: [/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeAired),, • ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeSeason),S]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisode),E, - ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeTitle)]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
-						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + ![String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired)) | String.IsEmpty(Window(Home).Property(SkinInfo.Online.LastEpisodeAired))] + !Skin.HasSetting(Disable.NextAired)</visible>
+						<visible>$EXP[IsTVShowOrSeason] + ![String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired)) | String.IsEmpty(Window(Home).Property(SkinInfo.Online.LastEpisodeAired))] + !Skin.HasSetting(Disable.NextAired)</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31011]: [/COLOR][CR]$INFO[Window(Home).Property(SkinInfo.Online.LastEpisodeAired),, • ]$INFO[Window(Home).Property(SkinInfo.Online.LastEpisodeSeason),S]$INFO[Window(Home).Property(SkinInfo.Online.LastEpisode),E, - ]$INFO[Window(Home).Property(SkinInfo.Online.LastEpisodeTitle)]</label>
 						<width>448</width>
 						<include>DefaultButtonsValues</include>
-						<visible>[Container.Content(tvshows) | Container.Content(seasons)] + !String.IsEmpty(Window(Home).Property(SkinInfo.Online.LastEpisodeAired)) + String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired)) + !Skin.HasSetting(Disable.NextAired)</visible>
+						<visible>$EXP[IsTVShowOrSeason] + !String.IsEmpty(Window(Home).Property(SkinInfo.Online.LastEpisodeAired)) + String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired)) + !Skin.HasSetting(Disable.NextAired)</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</label>
@@ -233,7 +233,7 @@
 					<viewtype label="31078">list</viewtype>
 					<pagecontrol>95560</pagecontrol>
 					<preloaditems>2</preloaditems>
-					<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets) | Container.Content(videoversions)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_55]</visible>
+					<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(episodes) | Container.Content(sets) | Container.Content(videoversions)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_55]</visible>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
 					<itemlayout height="70" width="806" condition="Container.Content(movies)">
 						<control type="label">

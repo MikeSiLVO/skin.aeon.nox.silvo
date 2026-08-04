@@ -108,7 +108,7 @@
 		<value>$LOCALIZE[20445]</value>
 	</variable>
 	<variable name="BackgroundLabelVar">
-		<value condition="String.StartsWith(Container.FolderPath,videodb://tvshows/) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)">$LOCALIZE[20343]</value>
+		<value condition="String.StartsWith(Container.FolderPath,videodb://tvshows/) | $EXP[IsTVShowOrSeason] | Container.Content(episodes)">$LOCALIZE[20343]</value>
 		<value condition="String.StartsWith(Container.FolderPath,videodb://movies/) | Container.Content(movies)">$LOCALIZE[20342]</value>
 		<value condition="Container.Content(musicvideos)">$LOCALIZE[20389]</value>
 		<value condition="Window.IsActive(videos) | Window.IsActive(videoplaylist)">$LOCALIZE[3]</value>
@@ -200,7 +200,7 @@
 		<value condition="Window.IsVisible(musicplaylisteditor)"></value>
 		<value condition="Window.IsActive(script-globalsearch.xml) | Window.IsVisible(1125)"></value>
 		<value condition="String.IsEqual(Container.FolderPath,sources://video/)"></value>
-		<value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Window.IsActive(tvchannels) | Window.IsActive(TVGuide) | Window.IsActive(TVRecordings) | Window.IsActive(TVTimers) | Window.IsActive(TVSearch) | [Container.Content(genres) + String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]"></value>
+		<value condition="$EXP[IsTVShowOrSeason] | Container.Content(episodes) | Window.IsActive(tvchannels) | Window.IsActive(TVGuide) | Window.IsActive(TVRecordings) | Window.IsActive(TVTimers) | Window.IsActive(TVSearch) | [Container.Content(genres) + String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)]"></value>
 		<value condition="Container.Content(movies) | Container.Content(sets) | [Container.Content(genres) + String.StartsWith(Container.FolderPath,videodb://movies/genres/)]"></value>
 		<value condition="Window.IsActive(videos)"></value>
 		<value condition="Container.Content(artists) | Container.Content(albums) | Container.Content(songs)"></value>
@@ -213,7 +213,7 @@
 		<value condition="Window.IsActive(favouritesbrowser)"></value>
 	</variable>
 	<variable name="BreadcrumbsFillerVar">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(movies) | Container.Content(genres) | Window.IsActive(music) | Window.IsActive(games) | Window.IsActive(programs) | Window.IsActive(tvchannels) | Window.IsActive(TVRecordings) | Window.IsActive(TVTimers) | Window.IsActive(TVSearch) | Window.IsActive(videos)" />
+		<value condition="$EXP[IsTVShowOrSeason] | Container.Content(episodes) | Container.Content(movies) | Container.Content(genres) | Window.IsActive(music) | Window.IsActive(games) | Window.IsActive(programs) | Window.IsActive(tvchannels) | Window.IsActive(TVRecordings) | Window.IsActive(TVTimers) | Window.IsActive(TVSearch) | Window.IsActive(videos)" />
 		<value condition="Window.IsActive(1112) + !String.IsEmpty(Window(Home).Property(AddonNews))">$LOCALIZE[24054]: </value>
 		<value condition="Window.IsActive(1115)">$LOCALIZE[20077]: $LOCALIZE[31021]</value>
 		<value condition="Window.IsActive(1140)">$LOCALIZE[20077]: $LOCALIZE[31340]</value>
@@ -1136,7 +1136,7 @@
 		<value>$INFO[System.BuildVersion,v] - [COLOR invalid]$LOCALIZE[31341][/COLOR]</value>
 	</variable>
 	<variable name="MyFlixTitleLabelVar">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)">$INFO[ListItem.TVShowTitle]</value>
+		<value condition="$EXP[IsTVShowOrSeason] | Container.Content(episodes)">$INFO[ListItem.TVShowTitle]</value>
 		<value>$INFO[ListItem.Title]</value>
 	</variable>
 	<variable name="MyFlixDimmerVar">

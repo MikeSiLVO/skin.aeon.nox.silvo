@@ -37,7 +37,7 @@
 						<aspectratio align="left" aligny="bottom">keep</aspectratio>
 						<texture background="true">$VAR[ArtworkLogoVar]</texture>
 						<visible>!String.IsEmpty(ListItem.Art(tvshow.clearlogo)) | !String.IsEmpty(ListItem.Art(clearlogo)) </visible>
-						<visible>[Container.Content(movies) | Container.Content(sets)] + Skin.HasSetting(Enable.MyFlix.MovieLogo) | [Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)] + Skin.HasSetting(Enable.MyFlix.TVLogo)</visible>
+						<visible>[Container.Content(movies) | Container.Content(sets)] + Skin.HasSetting(Enable.MyFlix.MovieLogo) | [$EXP[IsTVShowOrSeason] | Container.Content(episodes)] + Skin.HasSetting(Enable.MyFlix.TVLogo)</visible>
 					</control>
 					<control type="group">
 						<visible>!Control.IsVisible(50999)</visible>
@@ -478,7 +478,7 @@
 		<top>530</top>
 		<width>1920</width>
 		<height>600</height>
-		<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videoversions)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_509]</visible>
+		<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(sets) | $EXP[IsTVShowOrSeason] | Container.Content(episodes) | Container.Content(videoversions)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_509]</visible>
 		<onleft>509</onleft>
 		<onright>509</onright>
 		<onup>SetProperty(MediaMenu,True,Home)</onup>
@@ -564,7 +564,7 @@
 			<param name="left">218</param>
 			<param name="top">95</param>
 			<param name="size">40</param>
-			<param name="visible">!String.IsEmpty(Skin.String(509.Movies.DisableOverlay)) + [Container.Content(movies) | Container.Content(sets)] | !String.IsEmpty(Skin.String(509.TV.DisableOverlay)) + [Container.Content(tvshows) | Container.Content(seasons)]</param>
+			<param name="visible">!String.IsEmpty(Skin.String(509.Movies.DisableOverlay)) + [Container.Content(movies) | Container.Content(sets)] | !String.IsEmpty(Skin.String(509.TV.DisableOverlay)) + $EXP[IsTVShowOrSeason]</param>
 		</include>
 		<include condition="Skin.HasSetting(Disable.UnwatchedIcon)" content="UnwatchedEpisodeOverlay">
 			<param name="left">30</param>
@@ -633,7 +633,7 @@
 				<height>408</height>
 				<texture background="true">$PARAM[casepath]$VAR[GlobalCaseVar]</texture>
 				<!-- <texture background="true">$VAR[CaseBackPathVar]</texture> -->
-				<visible>Skin.HasSetting(Enable.MyFlix.Cases) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
+				<visible>Skin.HasSetting(Enable.MyFlix.Cases) + [Container.Content(movies) | Container.Content(sets) | $EXP[IsTVShowOrSeason]]</visible>
 			</control>
 		</definition>
 	</include>

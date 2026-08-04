@@ -26,7 +26,7 @@
 			<width>375</width>
 			<height>500</height>
 			<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
-			<visible>[String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,set) | Container.Content(tvshows) | Container.Content(seasons)] + Skin.HasSetting(Enable.Shift.Covers)</visible>
+			<visible>[String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,set) | $EXP[IsTVShowOrSeason]] + Skin.HasSetting(Enable.Shift.Covers)</visible>
 		</control>
 	</include>
 	<include name="ShiftPosterThumbsSmall">
@@ -56,7 +56,7 @@
 			<width>200</width>
 			<height>275</height>
 			<texture background="true">$VAR[CaseTypePathVar]$VAR[GlobalCaseVar]</texture>
-			<visible>[String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,set) | Container.Content(tvshows) | Container.Content(seasons)] + Skin.HasSetting(Enable.Shift.Covers)</visible>
+			<visible>[String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,set) | $EXP[IsTVShowOrSeason]] + Skin.HasSetting(Enable.Shift.Covers)</visible>
 		</control>
 	</include>
 	<include name="ShiftSquareThumbs">
@@ -129,7 +129,7 @@
 				<preloaditems>2</preloaditems>
 				<scrolltime tween="quadratic">400</scrolltime>
 				<focusposition>1</focusposition>
-				<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(genres) | Container.Content(sets) | Container.Content(videoversions) | Container.Content(addons)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_57]</visible>
+				<visible>!Skin.HasSetting(Enable_ViewLocking) + [Container.Content(movies) | $EXP[IsTVShowOrSeason] | Container.Content(genres) | Container.Content(sets) | Container.Content(videoversions) | Container.Content(addons)] | Skin.HasSetting(Enable_ViewLocking) + $EXP[ShortcutView_57]</visible>
 				<itemlayout width="315" height="750" condition="!Skin.HasSetting(Enable.Shift.Small) + !Container.Content(addons)">
 					<include>ShiftPosterThumbs</include>
 				</itemlayout>

@@ -40,7 +40,7 @@
 		<control type="group">
 			<left>10</left>
 			<top>300</top>
-			<visible>Skin.HasSetting(Logo.UnwatchedIcon) + [Container.Content(tvshows) | Container.Content(seasons)] + Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
+			<visible>Skin.HasSetting(Logo.UnwatchedIcon) + $EXP[IsTVShowOrSeason] + Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
 			<control type="image">
 				<width>36</width>
 				<height>36</height>

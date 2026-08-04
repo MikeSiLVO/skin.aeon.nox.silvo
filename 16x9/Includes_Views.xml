@@ -144,7 +144,7 @@
 				</control>
 				<!-- List View -->
 				<control type="group">
-					<visible>Control.IsVisible(50) + !Skin.HasSetting(Enable.SlimList) + [Container.Content(tvshows) | Container.Content(seasons)]</visible>
+					<visible>Control.IsVisible(50) + !Skin.HasSetting(Enable.SlimList) + $EXP[IsTVShowOrSeason]</visible>
 					<width>700</width>
 					<height>40</height>
 					<control type="label">
@@ -333,7 +333,7 @@
 		<param name="visible" default="Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)" />
 		<definition>
 			<control type="group">
-				<visible>[Container.Content(tvshows) | Container.Content(seasons)] + $PARAM[visible]</visible>
+				<visible>$EXP[IsTVShowOrSeason] + $PARAM[visible]</visible>
 				<left>$PARAM[left]</left>
 				<top>$PARAM[top]</top>
 				<control type="image">
