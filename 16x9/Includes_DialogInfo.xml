@@ -1029,6 +1029,13 @@
 	</include>
 	<include name="CustomInfoContentTVShows">
 		<item>
+			<label>$INFO[Window.Property(Creator)]</label>
+			<label2>$LOCALIZE[31096]:</label2>
+			<onfocus>ClearProperty(person_id,Home)</onfocus>
+			<onclick>RunScript(script.skin.info.service,action=dialog_actor_info,name=$INFO[Window.Property(Creator)],crew=creator,dbid=$INFO[Window.Property(dbid)],dbtype=tvshow)</onclick>
+			<visible>!String.IsEmpty(Window.Property(Creator))</visible>
+		</item>
+		<item>
 			<label fallback="$INFO[Window.Property(Genre)]">$INFO[Container(4800).ListItem.Genre]</label>
 			<label2>$LOCALIZE[515]:</label2>
 			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[515],Home)</onclick>
@@ -1266,6 +1273,24 @@
 			<visible>!String.IsEmpty(Container(4800).ListItem.Property(Tag))</visible>
 		</item>
 		<item>
+			<label>[UPPERCASE]$INFO[Container(4800).ListItem.Property(AudioLanguage.1)]$INFO[Container(4800).ListItem.Property(AudioLanguage.2), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.3), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.4), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.5), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.6), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.7), / ][/UPPERCASE]</label>
+			<label2>$LOCALIZE[292]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[292],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,[UPPERCASE]$INFO[Container(4800).ListItem.Property(AudioLanguage.1)]$INFO[Container(4800).ListItem.Property(AudioLanguage.2), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.3), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.4), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.5), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.6), / ]$INFO[Container(4800).ListItem.Property(AudioLanguage.7), / ][/UPPERCASE],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>![String.IsEqual(Skin.String(LanguageFlags),1) | String.IsEqual(Skin.String(LanguageFlags),3)] + !String.IsEmpty(Container(4800).ListItem.Property(AudioLanguage.1)) | !String.IsEmpty(Container(4800).ListItem.Property(AudioLanguage.3))</visible>
+			<visible>!Skin.HasSetting(Disable.VideoInfoLanguageDetails)</visible>
+		</item>
+		<item>
+			<label>[UPPERCASE]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.1)]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.2), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.3), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.4), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.5), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.6), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.7), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.8), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.9), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.10), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.11), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.12), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.13), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.14), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.15), / ][/UPPERCASE]</label>
+			<label2>$LOCALIZE[287]:</label2>
+			<onclick>SetProperty(MoreInfoTitle,$LOCALIZE[287],Home)</onclick>
+			<onclick>SetProperty(MoreInfoContent,[UPPERCASE]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.1)]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.2), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.3), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.4), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.5), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.6), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.7), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.8), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.9), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.10), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.11), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.12), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.13), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.14), / ]$INFO[Container(4800).ListItem.Property(SubtitleLanguage.15), / ][/UPPERCASE],Home)</onclick>
+			<onclick>SetFocus(98001)</onclick>
+			<visible>![String.IsEqual(Skin.String(LanguageFlags),2) | String.IsEqual(Skin.String(LanguageFlags),3)] + !String.IsEmpty(Container(4800).ListItem.Property(SubtitleLanguage.1)) | !String.IsEmpty(Container(4800).ListItem.Property(SubtitleLanguage.3))</visible>
+			<visible>!Skin.HasSetting(Disable.VideoInfoLanguageDetails)</visible>
+		</item>
+		<item>
 			<label>$INFO[Container(4800).ListItem.Property(Path)]</label>
 			<label2>$LOCALIZE[573]:</label2>
 			<onclick>Dialog.Close(all,true)</onclick>
@@ -1305,7 +1330,7 @@
 		<param name="visible" default="!String.IsEmpty(ListItem.Duration) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Runtime)) | !String.IsEmpty(Window(Home).Property(SkinInfo.TVShow.TotalRuntime.Hours)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Season.TotalRuntime)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Online.Runtime)) | String.IsEqual(ListItem.DBTYPE,set) + !String.IsEmpty(Window(Home).Property(SkinInfo.Set.Runtime))" />
 		<definition>
 			<control type="label">
-				<width max="180">auto</width>
+				<width max="200">auto</width>
 				<height>90</height>
 				<font>font48_bold</font>
 				<textcolor>grey</textcolor>
@@ -1452,15 +1477,15 @@
 		<!-- RT Critics -->
 		<control type="group">
 			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.Tomatoes.Percent)) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.Tomatoes.Percent))</visible>
-			<width>140</width>
+			<width>125</width>
 			<control type="image">
-				<width>68</width>
+				<width>65</width>
 				<aspectratio>keep</aspectratio>
 				<colordiffuse>grey</colordiffuse>
 				<texture>$VAR[RottenFreshLogoVar]</texture>
 			</control>
 			<control type="label">
-				<left>68</left>
+				<left>60</left>
 				<width>auto</width>
 				<font>font16_title_bold</font>
 				<textcolor>grey</textcolor>
@@ -1470,15 +1495,15 @@
 		<!-- RT Audience -->
 		<control type="group">
 			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.Popcorn.Percent)) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.Popcorn.Percent))</visible>
-			<width>130</width>
+			<width>125</width>
 			<control type="image">
-				<width>68</width>
+				<width>65</width>
 				<aspectratio>keep</aspectratio>
 				<colordiffuse>grey</colordiffuse>
 				<texture>$VAR[RottenFreshAudienceLogoVar]</texture>
 			</control>
 			<control type="label">
-				<left>68</left>
+				<left>55</left>
 				<width>auto</width>
 				<font>font16_title_bold</font>
 				<textcolor>grey</textcolor>
@@ -1488,16 +1513,15 @@
 		<!-- TMDb (themoviedb) -->
 		<control type="group">
 			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.tmdb)) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.tmdb))</visible>
-			<left>10</left>
-			<width>130</width>
+			<width>120</width>
 			<control type="image">
-				<width>68</width>
+				<width>65</width>
 				<aspectratio>keep</aspectratio>
 				<colordiffuse>grey</colordiffuse>
 				<texture>logos/tmdb.png</texture>
 			</control>
 			<control type="label">
-				<left>78</left>
+				<left>75</left>
 				<width>auto</width>
 				<font>font16_title_bold</font>
 				<textcolor>grey</textcolor>
@@ -1509,13 +1533,13 @@
 			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Rating.trakt)) | !String.IsEmpty(Window(Home).Property(SkinInfo.ListItem.Rating.trakt))</visible>
 			<width>130</width>
 			<control type="image">
-				<width>68</width>
+				<width>65</width>
 				<aspectratio>keep</aspectratio>
 				<colordiffuse>grey</colordiffuse>
 				<texture>logos/trakt-clearlogo.png</texture>
 			</control>
 			<control type="label">
-				<left>68</left>
+				<left>65</left>
 				<width>auto</width>
 				<font>font16_title_bold</font>
 				<textcolor>grey</textcolor>
