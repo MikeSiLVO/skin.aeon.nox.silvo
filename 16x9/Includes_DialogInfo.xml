@@ -340,6 +340,7 @@
 			<onclick>ClearProperty(crew_name,Home)</onclick>
 			<onclick>SetProperty(actor_name,$INFO[Container(90050).ListItem.Label],Home)</onclick>
 			<onclick>SetProperty(actor_role,$INFO[Container(90050).ListItem.Label2],Home)</onclick>
+			<onclick condition="!String.IsEqual(ListItem.DBTYPE,season) + !Skin.HasSetting(OnlineCast)">SetProperty(UseCustomSelectSmallBackPanel,True,Home)</onclick>
 			<onclick condition="!String.IsEqual(ListItem.DBTYPE,season) + !Skin.HasSetting(OnlineCast)">ActivateWindow(1129)</onclick>
 			<onclick condition="String.IsEqual(ListItem.DBTYPE,season) | Skin.HasSetting(OnlineCast)">RunScript(script.skin.info.service,action=dialog_actor_info,person_id=$INFO[Container(90050).ListItem.Property(person_id)],name=$ESCINFO[Container(90050).ListItem.Label],role=$ESCINFO[Container(90050).ListItem.Label2],focus=90050)</onclick>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
@@ -890,6 +891,7 @@
 			<onclick>ClearProperty(actor_name,Home)</onclick>
 			<onclick>SetProperty(crew_name,$INFO[ListItem.Director],Home)</onclick>
 			<onclick>SetProperty(crew_job,director,Home)</onclick>
+			<onclick>SetProperty(UseCustomSelectSmallBackPanel,True,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 			<visible>!String.IsEmpty(ListItem.Director)</visible>
 		</item>
@@ -899,6 +901,7 @@
 			<onclick>ClearProperty(actor_name,Home)</onclick>
 			<onclick>SetProperty(crew_name,$INFO[ListItem.Writer],Home)</onclick>
 			<onclick>SetProperty(crew_job,writer,Home)</onclick>
+			<onclick>SetProperty(UseCustomSelectSmallBackPanel,True,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 			<visible>!String.IsEmpty(ListItem.Writer)</visible>
 		</item>
@@ -939,7 +942,6 @@
 		<item>
 			<label fallback="$INFO[Window.Property(Director)]">$INFO[Container(4800).ListItem.Director]</label>
 			<label2>$LOCALIZE[20339]:</label2>
-			<onfocus>ClearProperty(person_id,Home)</onfocus>
 			<onclick>RunScript(script.skin.info.service,action=dialog_actor_info,name=$INFO[Container(4800).ListItem.Director],crew=director,dbid=$INFO[Window.Property(dbid)],dbtype=movie)</onclick>
 			<visible>!String.IsEmpty(Container(4800).ListItem.Director) | !String.IsEmpty(Window.Property(Director))</visible>
 		</item>
@@ -991,6 +993,7 @@
 			<onclick>ClearProperty(actor_name,Home)</onclick>
 			<onclick>SetProperty(crew_name,$INFO[Window(Home).Property(SkinInfo.Online.Creator)],Home)</onclick>
 			<onclick>SetProperty(crew_job,creator,Home)</onclick>
+			<onclick>SetProperty(UseCustomSelectSmallBackPanel,True,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 			<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Online.Creator))</visible>
 		</item>
@@ -1031,7 +1034,6 @@
 		<item>
 			<label>$INFO[Window.Property(Creator)]</label>
 			<label2>$LOCALIZE[31096]:</label2>
-			<onfocus>ClearProperty(person_id,Home)</onfocus>
 			<onclick>RunScript(script.skin.info.service,action=dialog_actor_info,name=$INFO[Window.Property(Creator)],crew=creator,dbid=$INFO[Window.Property(dbid)],dbtype=tvshow)</onclick>
 			<visible>!String.IsEmpty(Window.Property(Creator))</visible>
 		</item>
@@ -1077,6 +1079,7 @@
 			<onclick>ClearProperty(actor_name,Home)</onclick>
 			<onclick>SetProperty(crew_name,$INFO[ListItem.Director],Home)</onclick>
 			<onclick>SetProperty(crew_job,director,Home)</onclick>
+			<onclick>SetProperty(UseCustomSelectSmallBackPanel,True,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 			<visible>!String.IsEmpty(ListItem.Director)</visible>
 		</item>
@@ -1086,6 +1089,7 @@
 			<onclick>ClearProperty(actor_name,Home)</onclick>
 			<onclick>SetProperty(crew_name,$INFO[ListItem.Writer],Home)</onclick>
 			<onclick>SetProperty(crew_job,writer,Home)</onclick>
+			<onclick>SetProperty(UseCustomSelectSmallBackPanel,True,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 			<visible>!String.IsEmpty(ListItem.Writer)</visible>
 		</item>

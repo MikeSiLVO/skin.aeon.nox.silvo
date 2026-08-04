@@ -10,6 +10,7 @@
 	<onload>RunScript(script.skin.info.service,action=split_string,string="$INFO[ListItem.Director]",separator=/,prefix=Director)</onload>
 	<onload>RunScript(script.skin.info.service,action=urlencode,string="$INFO[ListItem.Title]")</onload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(FSFanart))">ClearProperty(FSFanart,movieinformation)</onunload>
+	<onunload>ClearProperty(actor_name,Home)</onunload>
 	<onunload>ClearProperty(crew_name,Home)</onunload>
 	<controls>
 		<control type="textbox" id="4">
