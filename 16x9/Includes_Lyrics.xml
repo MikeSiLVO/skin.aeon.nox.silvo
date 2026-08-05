@@ -1,769 +1,428 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<include name="LyricShadowList">
+		<param name="content" />
+		<param name="left" default="0" />
+		<param name="top" default="199" />
+		<param name="height" default="100" />
+		<param name="itemgap" default="10" />
+		<definition>
+			<control type="group">
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<control type="grouplist">
+					<left>0</left>
+					<top>0</top>
+					<width>1920</width>
+					<height>$PARAM[height]</height>
+					<itemgap>$PARAM[itemgap]</itemgap>
+					<scrolltime>0</scrolltime>
+					<orientation>horizontal</orientation>
+					<align>center</align>
+					<include content="$PARAM[content]">
+						<param name="line_endswith">$PARAM[line_endswith]</param>
+					</include>
+				</control>
+				<control type="grouplist">
+					<left>4</left>
+					<top>4</top>
+					<width>1920</width>
+					<height>$PARAM[height]</height>
+					<itemgap>$PARAM[itemgap]</itemgap>
+					<scrolltime>0</scrolltime>
+					<orientation>horizontal</orientation>
+					<align>center</align>
+					<include content="$PARAM[content]">
+						<param name="line_endswith">$PARAM[line_endswith]</param>
+					</include>
+				</control>
+				<control type="grouplist">
+					<left>1</left>
+					<top>1</top>
+					<width>1920</width>
+					<height>$PARAM[height]</height>
+					<itemgap>$PARAM[itemgap]</itemgap>
+					<scrolltime>0</scrolltime>
+					<orientation>horizontal</orientation>
+					<align>center</align>
+					<include content="$PARAM[content]">
+						<param name="line_endswith">$PARAM[line_endswith]</param>
+						<param name="part1_color">$VAR[LyricPart1Color]</param>
+						<param name="part2_color">$VAR[LyricPart2Color]</param>
+						<param name="part3_color">$VAR[LyricPart3Color]</param>
+						<param name="part4_color">$VAR[LyricPart4Color]</param>
+					</include>
+				</control>
+			</control>
+		</definition>
+	</include>
 	<include name="VideoLyrics">
 		<control type="group">
 			<visible>!String.IsEmpty(Container(110).ListItem.Label)</visible>
 			<control type="group">
 				<visible>[!String.IsEmpty(Window(Home).Property(culrc.islrc)) + Integer.IsGreater(Container(110).ListItem.Property(duration),299) + !Integer.IsGreater(Container(110).ListItem.Property(duration),1449)] | String.IsEmpty(Container(110).ListItem.Property(part4))</visible>
-				<!-- Short LINE 1 -->
-				<control type="grouplist">
-					<top>199</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Line1</include>
-				</control>
-				<control type="grouplist">
-					<left>4</left>
-					<top>203</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Line1</include>
-				</control>
-				<control type="grouplist">
-					<left>1</left>
-					<top>200</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Line1">
-						<param name="col11">$VAR[Col_lyr1]</param>
-						<param name="col12">$VAR[Col_lyr2]</param>
-						<param name="col13">$VAR[Col_lyr3]</param>
-					</include>
-				</control>
-				<include content="Line1b">
-					<param name="1b_left">509</param>
-					<param name="1b_top">223</param>
+				<!-- Short, line ends 1 -->
+				<include content="LyricShadowList">
+					<param name="content">Line1</param>
 				</include>
-				<include content="Line1b">
-					<param name="1b_left">513</param>
-					<param name="1b_top">227</param>
+				<include content="Line1Part4">
+					<param name="left">509</param>
+					<param name="top">223</param>
 				</include>
-				<include content="Line1b">
-					<param name="col14">$VAR[Col_lyr4]</param>
+				<include content="Line1Part4">
+					<param name="left">513</param>
+					<param name="top">227</param>
 				</include>
-				<!-- Short LINE 2 -->
+				<include content="Line1Part4">
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+				</include>
+				<!-- Short, line ends 2 -->
 				<include>Line2</include>
 				<include content="Line2">
-					<param name="2_left">14</param>
-					<param name="2_top">4</param>
+					<param name="left">14</param>
+					<param name="top">4</param>
 				</include>
 				<include content="Line2">
-					<param name="col21">$VAR[Col_lyr1]</param>
-					<param name="col22">$VAR[Col_lyr2]</param>
-					<param name="col23">$VAR[Col_lyr3]</param>
-					<param name="col24">$VAR[Col_lyr4]</param>
-					<param name="2_left">11</param>
-					<param name="2_top">1</param>
+					<param name="part1_color">$VAR[LyricPart1Color]</param>
+					<param name="part2_color">$VAR[LyricPart2Color]</param>
+					<param name="part3_color">$VAR[LyricPart3Color]</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+					<param name="left">11</param>
+					<param name="top">1</param>
 				</include>
-				<!-- Short LINE 3 -->
-				<control type="grouplist">
-					<top>199</top>
-					<width>1920</width>
-					<height>120</height>
-					<itemgap>3</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Line3</include>
-				</control>
-				<control type="grouplist">
-					<left>4</left>
-					<top>203</top>
-					<width>1920</width>
-					<height>120</height>
-					<itemgap>3</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Line3</include>
-				</control>
-				<control type="grouplist">
-					<left>1</left>
-					<top>200</top>
-					<width>1920</width>
-					<height>120</height>
-					<itemgap>3</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Line3">
-						<param name="col31">$VAR[Col_lyr1]</param>
-						<param name="col32">$VAR[Col_lyr2]</param>
-						<param name="col33">$VAR[Col_lyr3]</param>
-					</include>
-				</control>
-				<include content="Line3b">
-					<param name="3b_left">509</param>
-					<param name="3b_top">229</param>
+				<!-- Short, line ends 3 -->
+				<include content="LyricShadowList">
+					<param name="content">Line3</param>
+					<param name="height">120</param>
+					<param name="itemgap">3</param>
 				</include>
-				<include content="Line3b">
-					<param name="3b_left">513</param>
-					<param name="3b_top">233</param>
+				<include content="Line3Part4">
+					<param name="left">509</param>
+					<param name="top">229</param>
 				</include>
-				<include content="Line3b">
-					<param name="col34">$VAR[Col_lyr4]</param>
+				<include content="Line3Part4">
+					<param name="left">513</param>
+					<param name="top">233</param>
 				</include>
-				<!-- Short LINE 4 -->
+				<include content="Line3Part4">
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+				</include>
+				<!-- Short, line ends 4 -->
 				<include>Line4</include>
 				<include content="Line4">
-					<param name="4_left">4</param>
-					<param name="4_top">254</param>
+					<param name="left">4</param>
+					<param name="top">254</param>
 				</include>
 				<include content="Line4">
-					<param name="col41">$VAR[Col_lyr1]</param>
-					<param name="col42">$VAR[Col_lyr2]</param>
-					<param name="col43">$VAR[Col_lyr3]</param>
-					<param name="col44">$VAR[Col_lyr4]</param>
-					<param name="4_left">1</param>
-					<param name="4_top">251</param>
+					<param name="part1_color">$VAR[LyricPart1Color]</param>
+					<param name="part2_color">$VAR[LyricPart2Color]</param>
+					<param name="part3_color">$VAR[LyricPart3Color]</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+					<param name="left">1</param>
+					<param name="top">251</param>
 				</include>
-				<!-- Short LINE 5 -->
-				<control type="grouplist">
-					<top>99</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Line5</include>
-				</control>
-				<control type="grouplist">
-					<left>4</left>
-					<top>103</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Line5</include>
-				</control>
-				<control type="grouplist">
-					<left>1</left>
-					<top>100</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Line5">
-						<param name="col51">$VAR[Col_lyr1]</param>
-						<param name="col52">$VAR[Col_lyr2]</param>
-						<param name="col53">$VAR[Col_lyr3]</param>
-						<param name="col54">$VAR[Col_lyr4]</param>
-					</include>
-				</control>
-				<!-- Short LINE 6 -->
-				<control type="grouplist">
-					<top>199</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Line6</include>
-				</control>
-				<control type="grouplist">
-					<left>4</left>
-					<top>203</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Line6</include>
-				</control>
-				<control type="grouplist">
-					<left>1</left>
-					<top>200</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Line6">
-						<param name="col61">$VAR[Col_lyr1]</param>
-						<param name="col62">$VAR[Col_lyr2]</param>
-						<param name="col63">$VAR[Col_lyr3]</param>
-					</include>
-				</control>
-				<include content="Line6b">
-					<param name="6b_left">509</param>
-					<param name="6b_top">223</param>
+				<!-- Short, line ends 5 -->
+				<include content="LyricShadowList">
+					<param name="content">Line0</param>
+					<param name="line_endswith">5</param>
+					<param name="top">99</param>
+					<param name="height">350</param>
 				</include>
-				<include content="Line6b">
-					<param name="6b_left">513</param>
-					<param name="6b_top">227</param>
+				<!-- Short, line ends 6 -->
+				<include content="LyricShadowList">
+					<param name="content">Line1</param>
+					<param name="line_endswith">6</param>
 				</include>
-				<include content="Line6b">
-					<param name="col64">$VAR[Col_lyr4]</param>
+				<include content="Line1Part4">
+					<param name="line_endswith">6</param>
+					<param name="left">509</param>
+					<param name="top">223</param>
 				</include>
-				<!-- Short LINE 7 -->
-				<include>Line7</include>
-				<include content="Line7">
-					<param name="7_left">14</param>
-					<param name="7_top">4</param>
+				<include content="Line1Part4">
+					<param name="line_endswith">6</param>
+					<param name="left">513</param>
+					<param name="top">227</param>
 				</include>
-				<include content="Line7">
-					<param name="col71">$VAR[Col_lyr1]</param>
-					<param name="col72">$VAR[Col_lyr2]</param>
-					<param name="col73">$VAR[Col_lyr3]</param>
-					<param name="col74">$VAR[Col_lyr4]</param>
-					<param name="7_left">11</param>
-					<param name="7_top">1</param>
+				<include content="Line1Part4">
+					<param name="line_endswith">6</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
 				</include>
-				<!-- Short LINE 8 -->
-				<control type="grouplist">
-					<top>199</top>
-					<width>1920</width>
-					<height>120</height>
-					<itemgap>3</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Line8</include>
-				</control>
-				<control type="grouplist">
-					<left>4</left>
-					<top>203</top>
-					<width>1920</width>
-					<height>120</height>
-					<itemgap>3</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Line8</include>
-				</control>
-				<control type="grouplist">
-					<left>1</left>
-					<top>200</top>
-					<width>1920</width>
-					<height>120</height>
-					<itemgap>3</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Line8">
-						<param name="col81">$VAR[Col_lyr1]</param>
-						<param name="col82">$VAR[Col_lyr2]</param>
-						<param name="col83">$VAR[Col_lyr3]</param>
-					</include>
-				</control>
-				<include content="Line8b">
-					<param name="8b_left">509</param>
-					<param name="8b_top">229</param>
+				<!-- Short, line ends 7 -->
+				<include content="Line2">
+					<param name="line_endswith">7</param>
 				</include>
-				<include content="Line8b">
-					<param name="8b_left">513</param>
-					<param name="8b_top">233</param>
+				<include content="Line2">
+					<param name="line_endswith">7</param>
+					<param name="left">14</param>
+					<param name="top">4</param>
 				</include>
-				<include content="Line8b">
-					<param name="col84">$VAR[Col_lyr4]</param>
+				<include content="Line2">
+					<param name="line_endswith">7</param>
+					<param name="part1_color">$VAR[LyricPart1Color]</param>
+					<param name="part2_color">$VAR[LyricPart2Color]</param>
+					<param name="part3_color">$VAR[LyricPart3Color]</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+					<param name="left">11</param>
+					<param name="top">1</param>
 				</include>
-				<!-- Short LINE 9 -->
-				<include>Line9</include>
-				<include content="Line9">
-					<param name="9_left">4</param>
-					<param name="9_top">254</param>
+				<!-- Short, line ends 8 -->
+				<include content="LyricShadowList">
+					<param name="content">Line3</param>
+					<param name="line_endswith">8</param>
+					<param name="height">120</param>
+					<param name="itemgap">3</param>
 				</include>
-				<include content="Line9">
-					<param name="col91">$VAR[Col_lyr1]</param>
-					<param name="col92">$VAR[Col_lyr2]</param>
-					<param name="col93">$VAR[Col_lyr3]</param>
-					<param name="col94">$VAR[Col_lyr4]</param>
-					<param name="9_left">1</param>
-					<param name="9_top">251</param>
+				<include content="Line3Part4">
+					<param name="line_endswith">8</param>
+					<param name="left">509</param>
+					<param name="top">229</param>
 				</include>
-				<!-- Short LINE 0 -->
-				<control type="grouplist">
-					<top>99</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Line0</include>
-				</control>
-				<control type="grouplist">
-					<left>4</left>
-					<top>103</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Line0</include>
-				</control>
-				<control type="grouplist">
-					<left>1</left>
-					<top>100</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Line0">
-						<param name="col01">$VAR[Col_lyr1]</param>
-						<param name="col02">$VAR[Col_lyr2]</param>
-						<param name="col03">$VAR[Col_lyr3]</param>
-						<param name="col04">$VAR[Col_lyr4]</param>
-					</include>
-				</control>
+				<include content="Line3Part4">
+					<param name="line_endswith">8</param>
+					<param name="left">513</param>
+					<param name="top">233</param>
+				</include>
+				<include content="Line3Part4">
+					<param name="line_endswith">8</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+				</include>
+				<!-- Short, line ends 9 -->
+				<include content="Line4">
+					<param name="line_endswith">9</param>
+				</include>
+				<include content="Line4">
+					<param name="line_endswith">9</param>
+					<param name="left">4</param>
+					<param name="top">254</param>
+				</include>
+				<include content="Line4">
+					<param name="line_endswith">9</param>
+					<param name="part1_color">$VAR[LyricPart1Color]</param>
+					<param name="part2_color">$VAR[LyricPart2Color]</param>
+					<param name="part3_color">$VAR[LyricPart3Color]</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+					<param name="left">1</param>
+					<param name="top">251</param>
+				</include>
+				<!-- Short, line ends 0 -->
+				<include content="LyricShadowList">
+					<param name="content">Line0</param>
+					<param name="top">99</param>
+					<param name="height">350</param>
+				</include>
 			</control>
 			<control type="group">
 				<visible>!String.IsEmpty(Container(110).ListItem.Property(part4)) + [Integer.IsGreater(Container(110).ListItem.Property(duration),1449) | String.IsEmpty(Window(Home).Property(culrc.islrc))]</visible>
-				<!-- Line 1 -->
-				<control type="grouplist">
-					<top>199</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics1</include>
-				</control>
-				<control type="grouplist">
-					<left>4</left>
-					<top>203</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics1</include>
-				</control>
-				<control type="grouplist">
-					<left>1</left>
-					<top>200</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Lyrics1">
-						<param name="col11">$VAR[Col_lyr1]</param>
-						<param name="col12">$VAR[Col_lyr2]</param>
-						<param name="col13">$VAR[Col_lyr3]</param>
-					</include>
-				</control>
-				<include content="Lyrics1b">
-					<param name="1b_left">509</param>
-					<param name="1b_top">223</param>
+				<!-- Lyrics 1 -->
+				<include content="LyricShadowList">
+					<param name="content">Lyrics1</param>
 				</include>
-				<include content="Lyrics1b">
-					<param name="1b_left">513</param>
-					<param name="1b_top">227</param>
+				<include content="Lyrics1Part4">
+					<param name="left">509</param>
+					<param name="top">223</param>
 				</include>
-				<include content="Lyrics1b">
-					<param name="col14">$VAR[Col_lyr4]</param>
+				<include content="Lyrics1Part4">
+					<param name="left">513</param>
+					<param name="top">227</param>
 				</include>
-				<!-- Line 2 -->
+				<include content="Lyrics1Part4">
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+				</include>
+				<!-- Lyrics 2 -->
 				<include>Lyrics2</include>
 				<include content="Lyrics2">
-					<param name="2_left">4</param>
-					<param name="2_top">254</param>
+					<param name="left">4</param>
+					<param name="top">254</param>
 				</include>
 				<include content="Lyrics2">
-					<param name="col21">$VAR[Col_lyr1]</param>
-					<param name="col22">$VAR[Col_lyr2]</param>
-					<param name="col23">$VAR[Col_lyr3]</param>
-					<param name="col24">$VAR[Col_lyr4]</param>
-					<param name="2_left">1</param>
-					<param name="2_top">251</param>
+					<param name="part1_color">$VAR[LyricPart1Color]</param>
+					<param name="part2_color">$VAR[LyricPart2Color]</param>
+					<param name="part3_color">$VAR[LyricPart3Color]</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+					<param name="left">1</param>
+					<param name="top">251</param>
 				</include>
-				<!-- Line 3 -->
-				<control type="grouplist">
-					<top>199</top>
-					<width>1920</width>
-					<height>120</height>
-					<itemgap>3</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics3</include>
-				</control>
-				<control type="grouplist">
-					<left>4</left>
-					<top>203</top>
-					<width>1920</width>
-					<height>120</height>
-					<itemgap>3</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics3</include>
-				</control>
-				<control type="grouplist">
-					<left>1</left>
-					<top>200</top>
-					<width>1920</width>
-					<height>120</height>
-					<itemgap>3</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Lyrics3">
-						<param name="col31">$VAR[Col_lyr1]</param>
-						<param name="col32">$VAR[Col_lyr2]</param>
-						<param name="col33">$VAR[Col_lyr3]</param>
-					</include>
-				</control>
-				<include content="Lyrics3b">
-					<param name="3b_left">509</param>
-					<param name="3b_top">229</param>
+				<!-- Lyrics 3 -->
+				<include content="LyricShadowList">
+					<param name="content">Lyrics3</param>
+					<param name="height">120</param>
+					<param name="itemgap">3</param>
 				</include>
-				<include content="Lyrics3b">
-					<param name="3b_left">513</param>
-					<param name="3b_top">233</param>
+				<include content="Lyrics3Part4">
+					<param name="left">509</param>
+					<param name="top">229</param>
 				</include>
-				<include content="Lyrics3b">
-					<param name="col34">$VAR[Col_lyr4]</param>
+				<include content="Lyrics3Part4">
+					<param name="left">513</param>
+					<param name="top">233</param>
 				</include>
-				<!-- Line 4 -->
+				<include content="Lyrics3Part4">
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+				</include>
+				<!-- Lyrics 4 -->
 				<include>Lyrics4</include>
 				<include content="Lyrics4">
-					<param name="4_left">114</param>
-					<param name="4_top">34</param>
+					<param name="left">114</param>
+					<param name="top">34</param>
 				</include>
 				<include content="Lyrics4">
-					<param name="col41">$VAR[Col_lyr1]</param>
-					<param name="col42">$VAR[Col_lyr2]</param>
-					<param name="col43">$VAR[Col_lyr3]</param>
-					<param name="col44">$VAR[Col_lyr4]</param>
-					<param name="4_left">111</param>
-					<param name="4_top">31</param>
+					<param name="part1_color">$VAR[LyricPart1Color]</param>
+					<param name="part2_color">$VAR[LyricPart2Color]</param>
+					<param name="part3_color">$VAR[LyricPart3Color]</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+					<param name="left">111</param>
+					<param name="top">31</param>
 				</include>
-				<!-- Line 5 -->
-				<control type="grouplist">
-					<left>1950</left>
-					<top>99</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics5</include>
-				</control>
-				<control type="grouplist">
-					<left>1954</left>
-					<top>103</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics5</include>
-				</control>
-				<control type="grouplist">
-					<left>1951</left>
-					<top>100</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Lyrics5">
-						<param name="col51">$VAR[Col_lyr1]</param>
-						<param name="col52">$VAR[Col_lyr2]</param>
-						<param name="col53">$VAR[Col_lyr3]</param>
-						<param name="col54">$VAR[Col_lyr4]</param>
-					</include>
-				</control>
-				<!-- Line 6 -->
+				<!-- Lyrics 5 -->
+				<include content="LyricShadowList">
+					<param name="content">Lyrics5</param>
+					<param name="left">1950</param>
+					<param name="top">99</param>
+					<param name="height">350</param>
+				</include>
+				<!-- Lyrics 6 -->
 				<include>Lyrics6</include>
 				<include content="Lyrics6">
-					<param name="6_left">14</param>
-					<param name="6_top">4</param>
+					<param name="left">14</param>
+					<param name="top">4</param>
 				</include>
 				<include content="Lyrics6">
-					<param name="col61">$VAR[Col_lyr1]</param>
-					<param name="col62">$VAR[Col_lyr2]</param>
-					<param name="col63">$VAR[Col_lyr3]</param>
-					<param name="col64">$VAR[Col_lyr4]</param>
-					<param name="6_left">11</param>
-					<param name="6_top">1</param>
+					<param name="part1_color">$VAR[LyricPart1Color]</param>
+					<param name="part2_color">$VAR[LyricPart2Color]</param>
+					<param name="part3_color">$VAR[LyricPart3Color]</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+					<param name="left">11</param>
+					<param name="top">1</param>
 				</include>
-				<!-- Line 7 -->
-				<control type="grouplist">
-					<top>-201</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics7</include>
-				</control>
-				<control type="grouplist">
-					<left>4</left>
-					<top>-197</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics7</include>
-				</control>
-				<control type="grouplist">
-					<left>1</left>
-					<top>-200</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Lyrics7">
-						<param name="col71">$VAR[Col_lyr1]</param>
-						<param name="col72">$VAR[Col_lyr2]</param>
-						<param name="col73">$VAR[Col_lyr3]</param>
-					</include>
-				</control>
-				<include content="Lyrics7b">
-					<param name="7b_left">509</param>
-					<param name="7b_top">223</param>
+				<!-- Lyrics 7 -->
+				<include content="LyricShadowList">
+					<param name="content">Lyrics7</param>
+					<param name="top">-201</param>
 				</include>
-				<include content="Lyrics7b">
-					<param name="7b_left">513</param>
-					<param name="7b_top">227</param>
+				<include content="Lyrics7Part4">
+					<param name="left">509</param>
+					<param name="top">223</param>
 				</include>
-				<include content="Lyrics7b">
-					<param name="col74">$VAR[Col_lyr4]</param>
+				<include content="Lyrics7Part4">
+					<param name="left">513</param>
+					<param name="top">227</param>
 				</include>
-				<!-- Line 8 -->
-				<control type="grouplist">
-					<top>199</top>
-					<width>1920</width>
-					<height>140</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics8</include>
-				</control>
-				<control type="grouplist">
-					<left>4</left>
-					<top>203</top>
-					<width>1920</width>
-					<height>140</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics8</include>
-				</control>
-				<control type="grouplist">
-					<left>1</left>
-					<top>200</top>
-					<width>1920</width>
-					<height>140</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Lyrics8">
-						<param name="col81">$VAR[Col_lyr1]</param>
-						<param name="col82">$VAR[Col_lyr2]</param>
-						<param name="col83">$VAR[Col_lyr3]</param>
-					</include>
-				</control>
-				<include content="Lyrics8b">
-					<param name="8b_left">509</param>
-					<param name="8b_top">269</param>
+				<include content="Lyrics7Part4">
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
 				</include>
-				<include content="Lyrics8b">
-					<param name="8b_left">513</param>
-					<param name="8b_top">273</param>
+				<!-- Lyrics 8 -->
+				<include content="LyricShadowList">
+					<param name="content">Lyrics8</param>
+					<param name="height">140</param>
 				</include>
-				<include content="Lyrics8b">
-					<param name="col84">$VAR[Col_lyr4]</param>
+				<include content="Lyrics8Part4">
+					<param name="left">509</param>
+					<param name="top">269</param>
 				</include>
-				<!-- Line 9 -->
+				<include content="Lyrics8Part4">
+					<param name="left">513</param>
+					<param name="top">273</param>
+				</include>
+				<include content="Lyrics8Part4">
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+				</include>
+				<!-- Lyrics 9 -->
 				<include>Lyrics9</include>
 				<include content="Lyrics9">
-					<param name="9_left">24</param>
-					<param name="9_top">-16</param>
+					<param name="left">24</param>
+					<param name="top">-16</param>
 				</include>
 				<include content="Lyrics9">
-					<param name="col91">$VAR[Col_lyr1]</param>
-					<param name="col92">$VAR[Col_lyr2]</param>
-					<param name="col93">$VAR[Col_lyr3]</param>
-					<param name="col94">$VAR[Col_lyr4]</param>
-					<param name="9_left">21</param>
-					<param name="9_top">-19</param>
+					<param name="part1_color">$VAR[LyricPart1Color]</param>
+					<param name="part2_color">$VAR[LyricPart2Color]</param>
+					<param name="part3_color">$VAR[LyricPart3Color]</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+					<param name="left">21</param>
+					<param name="top">-19</param>
 				</include>
-				<!-- Line 10 -->
-				<control type="grouplist">
-					<top>149</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>30</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics10</include>
-				</control>
-				<control type="grouplist">
-					<left>4</left>
-					<top>153</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>30</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics10</include>
-				</control>
-				<control type="grouplist">
-					<left>1</left>
-					<top>150</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>30</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Lyrics10">
-						<param name="col101">$VAR[Col_lyr1]</param>
-						<param name="col102">$VAR[Col_lyr2]</param>
-						<param name="col103">$VAR[Col_lyr3]</param>
-					</include>
-				</control>
-				<include content="Lyrics10b">
-					<param name="col104">black</param>
+				<!-- Lyrics 10 -->
+				<include content="LyricShadowList">
+					<param name="content">Lyrics10</param>
+					<param name="top">149</param>
+					<param name="height">350</param>
+					<param name="itemgap">30</param>
 				</include>
-				<include content="Lyrics10b">
-					<param name="10b_left">623</param>
-					<param name="10b_top">323</param>
-					<param name="col104">black</param>
+				<include content="Lyrics10Part4">
+					<param name="part4_color">black</param>
 				</include>
-				<include content="Lyrics10b">
-					<param name="10b_left">621</param>
-					<param name="10b_top">321</param>
-					<param name="col104">$VAR[Col_lyr4]</param>
+				<include content="Lyrics10Part4">
+					<param name="left">623</param>
+					<param name="top">323</param>
+					<param name="part4_color">black</param>
 				</include>
-				<!-- Line 11 -->
+				<include content="Lyrics10Part4">
+					<param name="left">621</param>
+					<param name="top">321</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+				</include>
+				<!-- Lyrics 11 -->
 				<include>Lyrics11</include>
 				<include content="Lyrics11">
-					<param name="11_left">4</param>
-					<param name="11_top">254</param>
+					<param name="left">4</param>
+					<param name="top">254</param>
 				</include>
 				<include content="Lyrics11">
-					<param name="col111">$VAR[Col_lyr1]</param>
-					<param name="col112">$VAR[Col_lyr2]</param>
-					<param name="col113">$VAR[Col_lyr3]</param>
-					<param name="col114">$VAR[Col_lyr4]</param>
-					<param name="11_left">1</param>
-					<param name="11_top">251</param>
+					<param name="part1_color">$VAR[LyricPart1Color]</param>
+					<param name="part2_color">$VAR[LyricPart2Color]</param>
+					<param name="part3_color">$VAR[LyricPart3Color]</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+					<param name="left">1</param>
+					<param name="top">251</param>
 				</include>
-				<!-- Line 12 -->
-				<include>Lyrics12</include>
-				<include content="Lyrics12">
-					<param name="12_left">14</param>
-					<param name="12_top">4</param>
+				<!-- Lyrics 12 -->
+				<include>Lyrics12Part1</include>
+				<include content="Lyrics12Part1">
+					<param name="left">14</param>
+					<param name="top">4</param>
 				</include>
-				<include content="Lyrics12">
-					<param name="col121">$VAR[Col_lyr1]</param>
-					<param name="12_left">11</param>
-					<param name="12_top">1</param>
+				<include content="Lyrics12Part1">
+					<param name="part1_color">$VAR[LyricPart1Color]</param>
+					<param name="left">11</param>
+					<param name="top">1</param>
 				</include>
-				<include>Lyrics12b</include>
-				<include content="Lyrics12b">
-					<param name="12b_left">14</param>
-					<param name="12b_top">184</param>
+				<include>Lyrics12Parts2And3</include>
+				<include content="Lyrics12Parts2And3">
+					<param name="left">14</param>
+					<param name="top">184</param>
 				</include>
-				<include content="Lyrics12b">
-					<param name="col122">$VAR[Col_lyr2]</param>
-					<param name="col123">$VAR[Col_lyr3]</param>
-					<param name="12b_left">11</param>
-					<param name="12b_top">181</param>
+				<include content="Lyrics12Parts2And3">
+					<param name="part2_color">$VAR[LyricPart2Color]</param>
+					<param name="part3_color">$VAR[LyricPart3Color]</param>
+					<param name="left">11</param>
+					<param name="top">181</param>
 				</include>
-				<include>Lyrics12c</include>
-				<include content="Lyrics12c">
-					<param name="12c_left">14</param>
-					<param name="12c_top">4</param>
+				<include>Lyrics12Part4</include>
+				<include content="Lyrics12Part4">
+					<param name="left">14</param>
+					<param name="top">4</param>
 				</include>
-				<include content="Lyrics12c">
-					<param name="col124">$VAR[Col_lyr4]</param>
-					<param name="12c_left">11</param>
-					<param name="12c_top">1</param>
+				<include content="Lyrics12Part4">
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+					<param name="left">11</param>
+					<param name="top">1</param>
 				</include>
-				<!-- Line 13 -->
-				<control type="grouplist">
-					<top>199</top>
-					<width>1920</width>
-					<height>125</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics13</include>
-				</control>
-				<control type="grouplist">
-					<left>4</left>
-					<top>203</top>
-					<width>1920</width>
-					<height>125</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics13</include>
-				</control>
-				<control type="grouplist">
-					<left>1</left>
-					<top>200</top>
-					<width>1920</width>
-					<height>125</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Lyrics13">
-						<param name="col131">$VAR[Col_lyr1]</param>
-						<param name="col132">$VAR[Col_lyr2]</param>
-						<param name="col133">$VAR[Col_lyr3]</param>
-					</include>
-				</control>
-				<include content="Lyrics13b">
-					<param name="13b_left">509</param>
-					<param name="13b_top">219</param>
+				<!-- Lyrics 13 -->
+				<include content="LyricShadowList">
+					<param name="content">Lyrics13</param>
+					<param name="height">125</param>
 				</include>
-				<include content="Lyrics13b">
-					<param name="13b_left">513</param>
-					<param name="13b_top">223</param>
+				<include content="Lyrics13Part4">
+					<param name="left">509</param>
+					<param name="top">219</param>
 				</include>
-				<include content="Lyrics13b">
-					<param name="col134">$VAR[Col_lyr4]</param>
+				<include content="Lyrics13Part4">
+					<param name="left">513</param>
+					<param name="top">223</param>
 				</include>
-				<!-- Line 14 -->
+				<include content="Lyrics13Part4">
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+				</include>
+				<!-- Lyrics 14 -->
 				<control type="grouplist">
 					<top>169</top>
 					<width>1920</width>
@@ -773,7 +432,7 @@
 					<orientation>horizontal</orientation>
 					<align>center</align>
 					<include content="Lyrics14">
-						<param name="col141">black</param>
+						<param name="part1_color">black</param>
 					</include>
 				</control>
 				<control type="grouplist">
@@ -785,7 +444,7 @@
 					<orientation>horizontal</orientation>
 					<align>center</align>
 					<include content="Lyrics14">
-						<param name="col142">black</param>
+						<param name="part2_color">black</param>
 					</include>
 				</control>
 				<control type="grouplist">
@@ -797,7 +456,7 @@
 					<orientation>horizontal</orientation>
 					<align>center</align>
 					<include content="Lyrics14">
-						<param name="col143">black</param>
+						<param name="part3_color">black</param>
 					</include>
 				</control>
 				<control type="grouplist">
@@ -810,7 +469,7 @@
 					<orientation>horizontal</orientation>
 					<align>center</align>
 					<include content="Lyrics14">
-						<param name="col141">black</param>
+						<param name="part1_color">black</param>
 					</include>
 				</control>
 				<control type="grouplist">
@@ -823,7 +482,7 @@
 					<orientation>horizontal</orientation>
 					<align>center</align>
 					<include content="Lyrics14">
-						<param name="col142">black</param>
+						<param name="part2_color">black</param>
 					</include>
 				</control>
 				<control type="grouplist">
@@ -836,7 +495,7 @@
 					<orientation>horizontal</orientation>
 					<align>center</align>
 					<include content="Lyrics14">
-						<param name="col143">black</param>
+						<param name="part3_color">black</param>
 					</include>
 				</control>
 				<control type="grouplist">
@@ -849,7 +508,7 @@
 					<orientation>horizontal</orientation>
 					<align>center</align>
 					<include content="Lyrics14">
-						<param name="col141">$VAR[Col_lyr1]</param>
+						<param name="part1_color">$VAR[LyricPart1Color]</param>
 					</include>
 				</control>
 				<control type="grouplist">
@@ -862,7 +521,7 @@
 					<orientation>horizontal</orientation>
 					<align>center</align>
 					<include content="Lyrics14">
-						<param name="col142">$VAR[Col_lyr2]</param>
+						<param name="part2_color">$VAR[LyricPart2Color]</param>
 					</include>
 				</control>
 				<control type="grouplist">
@@ -875,175 +534,112 @@
 					<orientation>horizontal</orientation>
 					<align>center</align>
 					<include content="Lyrics14">
-						<param name="col143">$VAR[Col_lyr3]</param>
+						<param name="part3_color">$VAR[LyricPart3Color]</param>
 					</include>
 				</control>
-				<include content="Lyrics14b">
-					<param name="col144">black</param>
+				<include content="Lyrics14Part4">
+					<param name="part4_color">black</param>
 				</include>
-				<include content="Lyrics14b">
-					<param name="14b_left">613</param>
-					<param name="14b_top">358</param>
-					<param name="col144">black</param>
+				<include content="Lyrics14Part4">
+					<param name="left">613</param>
+					<param name="top">358</param>
+					<param name="part4_color">black</param>
 				</include>
-				<include content="Lyrics14b">
-					<param name="14b_left">611</param>
-					<param name="14b_top">356</param>
-					<param name="col144">$VAR[Col_lyr4]</param>
+				<include content="Lyrics14Part4">
+					<param name="left">611</param>
+					<param name="top">356</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
 				</include>
-				<!-- Line 15 -->
+				<!-- Lyrics 15 -->
 				<include>Lyrics15</include>
 				<include content="Lyrics15">
-					<param name="15_left">174</param>
-					<param name="15_top">4</param>
+					<param name="left">174</param>
+					<param name="top">4</param>
 				</include>
 				<include content="Lyrics15">
-					<param name="col151">$VAR[Col_lyr1]</param>
-					<param name="col152">$VAR[Col_lyr2]</param>
-					<param name="col153">$VAR[Col_lyr3]</param>
-					<param name="col154">$VAR[Col_lyr4]</param>
-					<param name="15_left">171</param>
-					<param name="15_top">1</param>
+					<param name="part1_color">$VAR[LyricPart1Color]</param>
+					<param name="part2_color">$VAR[LyricPart2Color]</param>
+					<param name="part3_color">$VAR[LyricPart3Color]</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+					<param name="left">171</param>
+					<param name="top">1</param>
 				</include>
-				<!-- Line 16 -->
-				<control type="grouplist">
-					<top>199</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics16</include>
-				</control>
-				<control type="grouplist">
-					<left>4</left>
-					<top>203</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics16</include>
-				</control>
-				<control type="grouplist">
-					<left>1</left>
-					<top>200</top>
-					<width>1920</width>
-					<height>100</height>
-					<itemgap>10</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Lyrics16">
-						<param name="col161">$VAR[Col_lyr1]</param>
-						<param name="col162">$VAR[Col_lyr2]</param>
-						<param name="col163">$VAR[Col_lyr3]</param>
-					</include>
-				</control>
-				<include content="Lyrics16b">
-					<param name="16b_left">509</param>
-					<param name="16b_top">223</param>
+				<!-- Lyrics 16 -->
+				<include content="LyricShadowList">
+					<param name="content">Lyrics16</param>
 				</include>
-				<include content="Lyrics16b">
-					<param name="16b_left">513</param>
-					<param name="16b_top">227</param>
+				<include content="Lyrics16Part4">
+					<param name="left">509</param>
+					<param name="top">223</param>
 				</include>
-				<include content="Lyrics16b">
-					<param name="col164">$VAR[Col_lyr4]</param>
+				<include content="Lyrics16Part4">
+					<param name="left">513</param>
+					<param name="top">227</param>
 				</include>
-				<!-- Line 17 -->
+				<include content="Lyrics16Part4">
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+				</include>
+				<!-- Lyrics 17 -->
 				<include>Lyrics17</include>
 				<include content="Lyrics17">
-					<param name="17_left">14</param>
-					<param name="17_top">4</param>
+					<param name="left">14</param>
+					<param name="top">4</param>
 				</include>
 				<include content="Lyrics17">
-					<param name="col171">$VAR[Col_lyr1]</param>
-					<param name="col172">$VAR[Col_lyr2]</param>
-					<param name="col173">$VAR[Col_lyr3]</param>
-					<param name="col174">$VAR[Col_lyr4]</param>
-					<param name="17_left">11</param>
-					<param name="17_top">1</param>
+					<param name="part1_color">$VAR[LyricPart1Color]</param>
+					<param name="part2_color">$VAR[LyricPart2Color]</param>
+					<param name="part3_color">$VAR[LyricPart3Color]</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+					<param name="left">11</param>
+					<param name="top">1</param>
 				</include>
-				<!-- Line 18 -->
+				<!-- Lyrics 18 -->
 				<include>Lyrics18</include>
 				<include content="Lyrics18">
-					<param name="18_left">114</param>
-					<param name="18_top">34</param>
+					<param name="left">114</param>
+					<param name="top">34</param>
 				</include>
 				<include content="Lyrics18">
-					<param name="col181">$VAR[Col_lyr1]</param>
-					<param name="col182">$VAR[Col_lyr2]</param>
-					<param name="col183">$VAR[Col_lyr3]</param>
-					<param name="col184">$VAR[Col_lyr4]</param>
-					<param name="18_left">111</param>
-					<param name="18_top">31</param>
+					<param name="part1_color">$VAR[LyricPart1Color]</param>
+					<param name="part2_color">$VAR[LyricPart2Color]</param>
+					<param name="part3_color">$VAR[LyricPart3Color]</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+					<param name="left">111</param>
+					<param name="top">31</param>
 				</include>
-				<!-- Line 19 -->
-				<control type="grouplist">
-					<top>69</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>30</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics19</include>
-				</control>
-				<control type="grouplist">
-					<left>4</left>
-					<top>73</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>30</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include>Lyrics19</include>
-				</control>
-				<control type="grouplist">
-					<left>1</left>
-					<top>70</top>
-					<width>1920</width>
-					<height>350</height>
-					<itemgap>30</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<align>center</align>
-					<include content="Lyrics19">
-						<param name="col191">$VAR[Col_lyr1]</param>
-						<param name="col192">$VAR[Col_lyr2]</param>
-						<param name="col193">$VAR[Col_lyr3]</param>
-					</include>
-				</control>
-				<include content="Lyrics19b">
-					<param name="col194">black</param>
+				<!-- Lyrics 19 -->
+				<include content="LyricShadowList">
+					<param name="content">Lyrics19</param>
+					<param name="top">69</param>
+					<param name="height">350</param>
+					<param name="itemgap">30</param>
 				</include>
-				<include content="Lyrics19b">
-					<param name="19b_left">613</param>
-					<param name="19b_top">228</param>
-					<param name="col194">black</param>
+				<include content="Lyrics19Part4">
+					<param name="part4_color">black</param>
 				</include>
-				<include content="Lyrics19b">
-					<param name="19b_left">611</param>
-					<param name="19b_top">226</param>
-					<param name="col194">$VAR[Col_lyr4]</param>
+				<include content="Lyrics19Part4">
+					<param name="left">613</param>
+					<param name="top">228</param>
+					<param name="part4_color">black</param>
 				</include>
-				<!-- Line 20 -->
+				<include content="Lyrics19Part4">
+					<param name="left">611</param>
+					<param name="top">226</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+				</include>
+				<!-- Lyrics 20 -->
 				<include>Lyrics20</include>
 				<include content="Lyrics20">
-					<param name="20_left">4</param>
-					<param name="20_top">154</param>
+					<param name="left">4</param>
+					<param name="top">154</param>
 				</include>
 				<include content="Lyrics20">
-					<param name="col201">$VAR[Col_lyr1]</param>
-					<param name="col202">$VAR[Col_lyr2]</param>
-					<param name="col203">$VAR[Col_lyr3]</param>
-					<param name="col204">$VAR[Col_lyr4]</param>
-					<param name="20_left">1</param>
-					<param name="20_top">151</param>
+					<param name="part1_color">$VAR[LyricPart1Color]</param>
+					<param name="part2_color">$VAR[LyricPart2Color]</param>
+					<param name="part3_color">$VAR[LyricPart3Color]</param>
+					<param name="part4_color">$VAR[LyricPart4Color]</param>
+					<param name="left">1</param>
+					<param name="top">151</param>
 				</include>
 			</control>
 		</control>
@@ -1065,12 +661,12 @@
 		</definition>
 	</include>
 	<include name="Lyrics1">
-		<param name="col11" default="black" />
-		<param name="col12" default="black" />
-		<param name="col13" default="black" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
 		<definition>
 			<control type="label">
-				<visible>String.IsEqual(Container(110).Currentitem,1) | String.EndsWith(Container(110).Currentitem,21) | String.EndsWith(Container(110).Currentitem,41) | String.EndsWith(Container(110).Currentitem,61) | String.EndsWith(Container(110).Currentitem,81) | String.EndsWith(Container(110).Currentitem,01)</visible>
+				<visible>$EXP[LyricsRow1]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" start="-200,0" end="0,0" tween="back" easing="out" time="360" />
 					<effect type="zoom" start="25" end="100" tween="back" easing="out" time="600" />
@@ -1078,27 +674,27 @@
 				<width>auto</width>
 				<height>100</height>
 				<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr1</font>
+				<font>fontLyrics1</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col11]</textcolor>
+				<textcolor>$PARAM[part1_color]</textcolor>
 			</control>
 			<control type="label">
 				<animation type="Visible" reversible="false">
 					<effect type="slide" start="-200,0" end="0,0" tween="back" easing="out" time="720" />
 					<effect type="zoom" start="25" end="100" tween="back" easing="out" time="960" />
 				</animation>
-				<visible>String.IsEqual(Container(110).Currentitem,1) | String.EndsWith(Container(110).Currentitem,21) | String.EndsWith(Container(110).Currentitem,41) | String.EndsWith(Container(110).Currentitem,61) | String.EndsWith(Container(110).Currentitem,81) | String.EndsWith(Container(110).Currentitem,01)</visible>
+				<visible>$EXP[LyricsRow1]</visible>
 				<width>auto</width>
 				<height>100</height>
 				<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr1</font>
+				<font>fontLyrics1</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col12]</textcolor>
+				<textcolor>$PARAM[part2_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.IsEqual(Container(110).Currentitem,1) | String.EndsWith(Container(110).Currentitem,21) | String.EndsWith(Container(110).Currentitem,41) | String.EndsWith(Container(110).Currentitem,61) | String.EndsWith(Container(110).Currentitem,81) | String.EndsWith(Container(110).Currentitem,01)</visible>
+				<visible>$EXP[LyricsRow1]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" start="-200,0" end="0,0" tween="back" easing="out" time="1080" />
 					<effect type="zoom" start="25" end="100" tween="back" easing="out" time="1320" />
@@ -1106,22 +702,22 @@
 				<width>auto</width>
 				<height>100</height>
 				<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr1</font>
+				<font>fontLyrics1</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col13]</textcolor>
+				<textcolor>$PARAM[part3_color]</textcolor>
 			</control>
 		</definition>
 	</include>
-	<include name="Lyrics1b">
-		<param name="col14" default="black" />
-		<param name="1b_left" default="510" />
-		<param name="1b_top" default="224" />
+	<include name="Lyrics1Part4">
+		<param name="part4_color" default="black" />
+		<param name="left" default="510" />
+		<param name="top" default="224" />
 		<definition>
 			<control type="group">
-				<left>$PARAM[1b_left]</left>
-				<top>$PARAM[1b_top]</top>
-				<visible>String.IsEqual(Container(110).Currentitem,1) | String.EndsWith(Container(110).Currentitem,21) | String.EndsWith(Container(110).Currentitem,41) | String.EndsWith(Container(110).Currentitem,61) | String.EndsWith(Container(110).Currentitem,81) | String.EndsWith(Container(110).Currentitem,01)</visible>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<visible>$EXP[LyricsRow1]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" delay="360" start="-200,0" end="0,0" tween="back" easing="out" time="1080" />
 					<effect type="zoom" center="450,370" delay="360" start="25" end="100" tween="sine" easing="out" time="1080" />
@@ -1131,26 +727,26 @@
 					<width>900</width>
 					<height>600</height>
 					<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr1b</font>
+					<font>fontLyrics1Part4</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
 					<aligny>top</aligny>
-					<textcolor>$PARAM[col14]</textcolor>
+					<textcolor>$PARAM[part4_color]</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics2">
-		<param name="col21" default="black" />
-		<param name="col22" default="black" />
-		<param name="col23" default="black" />
-		<param name="col24" default="black" />
-		<param name="2_left" default="0" />
-		<param name="2_top" default="250" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="part4_color" default="black" />
+		<param name="left" default="0" />
+		<param name="top" default="250" />
 		<definition>
 			<control type="group">
-				<top>$PARAM[2_top]</top>
-				<left>$PARAM[2_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<control type="grouplist">
 					<top>-95</top>
 					<width>1920</width>
@@ -1158,10 +754,9 @@
 					<itemgap>25</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
-						<visible>String.IsEqual(Container(110).Currentitem,2) | String.EndsWith(Container(110).Currentitem,22) | String.EndsWith(Container(110).Currentitem,42) | String.EndsWith(Container(110).Currentitem,62) | String.EndsWith(Container(110).Currentitem,82) | String.EndsWith(Container(110).Currentitem,02)</visible>
+						<visible>$EXP[LyricsRow2]</visible>
 						<animation effect="slide" end="0,4" condition="true">Conditional</animation>
 						<animation type="Visible" reversible="false">
 							<effect type="zoom" center="auto" start="0" end="100" tween="sine" easing="out" time="840" />
@@ -1169,22 +764,22 @@
 						<width>auto</width>
 						<height>125</height>
 						<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-						<font>lyr2</font>
+						<font>fontLyrics2</font>
 						<shadowcolor>black</shadowcolor>
 						<align>center</align>
-						<textcolor>$PARAM[col21]</textcolor>
+						<textcolor>$PARAM[part1_color]</textcolor>
 					</control>
 					<control type="label">
-						<visible>String.IsEqual(Container(110).Currentitem,2) | String.EndsWith(Container(110).Currentitem,22) | String.EndsWith(Container(110).Currentitem,42) | String.EndsWith(Container(110).Currentitem,62) | String.EndsWith(Container(110).Currentitem,82) | String.EndsWith(Container(110).Currentitem,02)</visible>
+						<visible>$EXP[LyricsRow2]</visible>
 						<animation type="Visible" reversible="false">
 							<effect type="zoom" center="auto" start="200" end="100" tween="sine" easing="out" time="840" />
 						</animation>
 						<width>auto</width>
 						<height>125</height>
 						<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-						<font>lyr2</font>
+						<font>fontLyrics2</font>
 						<align>center</align>
-						<textcolor>$PARAM[col22]</textcolor>
+						<textcolor>$PARAM[part2_color]</textcolor>
 					</control>
 				</control>
 				<control type="grouplist">
@@ -1194,48 +789,47 @@
 					<itemgap>30</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
-						<visible>String.IsEqual(Container(110).Currentitem,2) | String.EndsWith(Container(110).Currentitem,22) | String.EndsWith(Container(110).Currentitem,42) | String.EndsWith(Container(110).Currentitem,62) | String.EndsWith(Container(110).Currentitem,82) | String.EndsWith(Container(110).Currentitem,02)</visible>
+						<visible>$EXP[LyricsRow2]</visible>
 						<animation type="Visible" reversible="false">
 							<effect type="zoom" center="auto" start="200" end="100" tween="sine" easing="out" time="840" />
 						</animation>
 						<width>auto</width>
 						<height>125</height>
 						<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-						<font>lyr2</font>
+						<font>fontLyrics2</font>
 						<shadowcolor>black</shadowcolor>
 						<align>right</align>
 						<aligny>top</aligny>
-						<textcolor>$PARAM[col23]</textcolor>
+						<textcolor>$PARAM[part3_color]</textcolor>
 					</control>
 					<control type="label">
 						<width max="700">auto</width>
 						<height>600</height>
 						<wrapmultiline>true</wrapmultiline>
-						<visible>String.IsEqual(Container(110).Currentitem,2) | String.EndsWith(Container(110).Currentitem,22) | String.EndsWith(Container(110).Currentitem,42) | String.EndsWith(Container(110).Currentitem,62) | String.EndsWith(Container(110).Currentitem,82) | String.EndsWith(Container(110).Currentitem,02)</visible>
+						<visible>$EXP[LyricsRow2]</visible>
 						<animation effect="slide" end="0,28" condition="true">Conditional</animation>
 						<animation type="Visible" reversible="false">
 							<effect type="zoom" center="240,50" start="0" end="100" tween="sine" easing="out" time="840" />
 						</animation>
 						<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-						<font>lyr2b</font>
+						<font>fontLyrics2Part4</font>
 						<shadowcolor>black</shadowcolor>
 						<aligny>top</aligny>
-						<textcolor>$PARAM[col24]</textcolor>
+						<textcolor>$PARAM[part4_color]</textcolor>
 					</control>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics3">
-		<param name="col31" default="black" />
-		<param name="col32" default="black" />
-		<param name="col33" default="black" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
 		<definition>
 			<control type="label">
-				<visible>String.IsEqual(Container(110).Currentitem,3) | String.EndsWith(Container(110).Currentitem,23) | String.EndsWith(Container(110).Currentitem,43) | String.EndsWith(Container(110).Currentitem,63) | String.EndsWith(Container(110).Currentitem,83) | String.EndsWith(Container(110).Currentitem,03)</visible>
+				<visible>$EXP[LyricsRow3]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" start="100,-300" end="50,0" time="300" tween="back" easing="out" />
 					<effect type="rotate" delay="1080" center="auto" start="15" end="-10" time="200" tween="sine" easing="out" />
@@ -1245,13 +839,13 @@
 				<width>auto</width>
 				<height>115</height>
 				<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr3</font>
+				<font>fontLyrics3</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col31]</textcolor>
+				<textcolor>$PARAM[part1_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.IsEqual(Container(110).Currentitem,3) | String.EndsWith(Container(110).Currentitem,23) | String.EndsWith(Container(110).Currentitem,43) | String.EndsWith(Container(110).Currentitem,63) | String.EndsWith(Container(110).Currentitem,83) | String.EndsWith(Container(110).Currentitem,03)</visible>
+				<visible>$EXP[LyricsRow3]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" start="0,-300" end="0,0" time="600" tween="back" easing="out" />
 					<effect type="rotate" delay="1080" center="auto" start="-8" end="11" time="200" tween="sine" easing="out" />
@@ -1260,13 +854,13 @@
 				<width>auto</width>
 				<height>115</height>
 				<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr3</font>
+				<font>fontLyrics3</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col32]</textcolor>
+				<textcolor>$PARAM[part2_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.IsEqual(Container(110).Currentitem,3) | String.EndsWith(Container(110).Currentitem,23) | String.EndsWith(Container(110).Currentitem,43) | String.EndsWith(Container(110).Currentitem,63) | String.EndsWith(Container(110).Currentitem,83) | String.EndsWith(Container(110).Currentitem,03)</visible>
+				<visible>$EXP[LyricsRow3]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" start="-100,-300" end="-50,0" time="780" tween="back" easing="out" />
 					<effect type="rotate" delay="1080" center="auto" start="22" end="-12" time="200" tween="sine" easing="out" />
@@ -1276,22 +870,22 @@
 				<width>auto</width>
 				<height>115</height>
 				<label>$INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr3</font>
+				<font>fontLyrics3</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col33]</textcolor>
+				<textcolor>$PARAM[part3_color]</textcolor>
 			</control>
 		</definition>
 	</include>
-	<include name="Lyrics3b">
-		<param name="col34" default="black" />
-		<param name="3b_left" default="510" />
-		<param name="3b_top" default="230" />
+	<include name="Lyrics3Part4">
+		<param name="part4_color" default="black" />
+		<param name="left" default="510" />
+		<param name="top" default="230" />
 		<definition>
 			<control type="group">
-				<left>$PARAM[3b_left]</left>
-				<top>$PARAM[3b_top]</top>
-				<visible>String.IsEqual(Container(110).Currentitem,3) | String.EndsWith(Container(110).Currentitem,23) | String.EndsWith(Container(110).Currentitem,43) | String.EndsWith(Container(110).Currentitem,63) | String.EndsWith(Container(110).Currentitem,83) | String.EndsWith(Container(110).Currentitem,03)</visible>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<visible>$EXP[LyricsRow3]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" delay="840" start="0,250" end="0,0" time="420" tween="back" />
 					<effect type="rotate" delay="840" center="auto" start="4" end="0" time="720" tween="bounce" easing="out" />
@@ -1302,28 +896,28 @@
 					<width>700</width>
 					<height>600</height>
 					<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr3b</font>
+					<font>fontLyrics3Part4</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
 					<aligny>top</aligny>
-					<textcolor>$PARAM[col34]</textcolor>
+					<textcolor>$PARAM[part4_color]</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics4">
-		<param name="col41" default="black" />
-		<param name="col42" default="black" />
-		<param name="col43" default="black" />
-		<param name="col44" default="black" />
-		<param name="4_left" default="110" />
-		<param name="4_top" default="30" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="part4_color" default="black" />
+		<param name="left" default="110" />
+		<param name="top" default="30" />
 		<definition>
 			<control type="group">
-				<top>$PARAM[4_top]</top>
-				<left>$PARAM[4_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<control type="label">
-					<visible>String.IsEqual(Container(110).Currentitem,4) | String.EndsWith(Container(110).Currentitem,24) | String.EndsWith(Container(110).Currentitem,44) | String.EndsWith(Container(110).Currentitem,64) | String.EndsWith(Container(110).Currentitem,84) | String.EndsWith(Container(110).Currentitem,04)</visible>
+					<visible>$EXP[LyricsRow4]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" end="0,-115" time="300" tween="sine" easing="out" />
 						<effect type="slide" delay="360" end="0,-160" time="300" tween="sine" easing="out" />
@@ -1335,14 +929,14 @@
 					<width>1135</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-					<font>lyr4</font>
+					<font>fontLyrics4</font>
 					<shadowcolor>black</shadowcolor>
 					<align>right</align>
-					<textcolor>$PARAM[col41]</textcolor>
+					<textcolor>$PARAM[part1_color]</textcolor>
 				</control>
 				<control type="label">
 					<left>-30</left>
-					<visible>String.IsEqual(Container(110).Currentitem,4) | String.EndsWith(Container(110).Currentitem,24) | String.EndsWith(Container(110).Currentitem,44) | String.EndsWith(Container(110).Currentitem,64) | String.EndsWith(Container(110).Currentitem,84) | String.EndsWith(Container(110).Currentitem,04)</visible>
+					<visible>$EXP[LyricsRow4]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" delay="360" end="0,-160" time="300" tween="sine" easing="out" />
 						<effect type="slide" delay="780" end="-280,0" time="300" tween="sine" easing="out" />
@@ -1352,13 +946,13 @@
 					<width>1135</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-					<font>lyr4</font>
+					<font>fontLyrics4</font>
 					<shadowcolor>black</shadowcolor>
 					<align>right</align>
-					<textcolor>$PARAM[col42]</textcolor>
+					<textcolor>$PARAM[part2_color]</textcolor>
 				</control>
 				<control type="label">
-					<visible>String.IsEqual(Container(110).Currentitem,4) | String.EndsWith(Container(110).Currentitem,24) | String.EndsWith(Container(110).Currentitem,44) | String.EndsWith(Container(110).Currentitem,64) | String.EndsWith(Container(110).Currentitem,84) | String.EndsWith(Container(110).Currentitem,04)</visible>
+					<visible>$EXP[LyricsRow4]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" delay="780" end="0,-160" time="300" tween="sine" easing="out" />
 						<effect type="slide" delay="1380" end="0,-160" time="420" tween="back" easing="out" />
@@ -1368,36 +962,36 @@
 					<width>1135</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-					<font>lyr4</font>
+					<font>fontLyrics4</font>
 					<shadowcolor>black</shadowcolor>
-					<textcolor>$PARAM[col43]</textcolor>
+					<textcolor>$PARAM[part3_color]</textcolor>
 				</control>
 				<control type="textbox">
 					<left>852</left>
 					<top>454</top>
 					<width>600</width>
 					<height>600</height>
-					<visible>String.IsEqual(Container(110).Currentitem,4) | String.EndsWith(Container(110).Currentitem,24) | String.EndsWith(Container(110).Currentitem,44) | String.EndsWith(Container(110).Currentitem,64) | String.EndsWith(Container(110).Currentitem,84) | String.EndsWith(Container(110).Currentitem,04)</visible>
+					<visible>$EXP[LyricsRow4]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" delay="1350" end="0,-160" time="420" tween="back" easing="out" />
 					</animation>
 					<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr4b</font>
+					<font>fontLyrics4Part4</font>
 					<shadowcolor>black</shadowcolor>
 					<aligny>top</aligny>
-					<textcolor>$PARAM[col44]</textcolor>
+					<textcolor>$PARAM[part4_color]</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics5">
-		<param name="col51" default="black" />
-		<param name="col52" default="black" />
-		<param name="col53" default="black" />
-		<param name="col54" default="black" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="part4_color" default="black" />
 		<definition>
 			<control type="label">
-				<visible>String.IsEqual(Container(110).Currentitem,5) | String.EndsWith(Container(110).Currentitem,25) | String.EndsWith(Container(110).Currentitem,45) | String.EndsWith(Container(110).Currentitem,65) | String.EndsWith(Container(110).Currentitem,85) | String.EndsWith(Container(110).Currentitem,05)</visible>
+				<visible>$EXP[LyricsRow5]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="-1950,0" time="360" tween="sine" easing="out" />
 					<effect type="rotate" center="auto" start="6" end="0" time="1080" tween="bounce" easing="out" />
@@ -1405,14 +999,14 @@
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr5</font>
+				<font>fontLyrics5</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col51]</textcolor>
+				<textcolor>$PARAM[part1_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.IsEqual(Container(110).Currentitem,5) | String.EndsWith(Container(110).Currentitem,25) | String.EndsWith(Container(110).Currentitem,45) | String.EndsWith(Container(110).Currentitem,65) | String.EndsWith(Container(110).Currentitem,85) | String.EndsWith(Container(110).Currentitem,05)</visible>
+				<visible>$EXP[LyricsRow5]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="10,70" />
 					<effect type="slide" delay="300" end="-1960,0" time="360" tween="sine" easing="out" />
@@ -1421,14 +1015,14 @@
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr5</font>
+				<font>fontLyrics5</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col52]</textcolor>
+				<textcolor>$PARAM[part2_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.IsEqual(Container(110).Currentitem,5) | String.EndsWith(Container(110).Currentitem,25) | String.EndsWith(Container(110).Currentitem,45) | String.EndsWith(Container(110).Currentitem,65) | String.EndsWith(Container(110).Currentitem,85) | String.EndsWith(Container(110).Currentitem,05)</visible>
+				<visible>$EXP[LyricsRow5]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="10,140" />
 					<effect type="slide" delay="600" end="-1960,0" time="360" tween="sine" easing="out" />
@@ -1437,15 +1031,15 @@
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr5</font>
+				<font>fontLyrics5</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col53]</textcolor>
+				<textcolor>$PARAM[part3_color]</textcolor>
 			</control>
 			<control type="label">
 				<wrapmultiline>true</wrapmultiline>
-				<visible>String.IsEqual(Container(110).Currentitem,5) | String.EndsWith(Container(110).Currentitem,25) | String.EndsWith(Container(110).Currentitem,45) | String.EndsWith(Container(110).Currentitem,65) | String.EndsWith(Container(110).Currentitem,85) | String.EndsWith(Container(110).Currentitem,05)</visible>
+				<visible>$EXP[LyricsRow5]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="10,210" />
 					<effect type="slide" delay="900" end="-1960,0" time="360" tween="sine" easing="out" />
@@ -1454,26 +1048,26 @@
 				<width max="600">auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-				<font>lyr5b</font>
+				<font>fontLyrics5Part4</font>
 				<shadowcolor>black</shadowcolor>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col54]</textcolor>
+				<textcolor>$PARAM[part4_color]</textcolor>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics6">
-		<param name="col61" default="black" />
-		<param name="col62" default="black" />
-		<param name="col63" default="black" />
-		<param name="col64" default="black" />
-		<param name="6_left" default="10" />
-		<param name="6_top" default="0" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="part4_color" default="black" />
+		<param name="left" default="10" />
+		<param name="top" default="0" />
 		<definition>
 			<control type="group">
-				<top>$PARAM[6_top]</top>
-				<left>$PARAM[6_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<control type="label">
-					<visible>String.IsEqual(Container(110).Currentitem,6) | String.EndsWith(Container(110).Currentitem,26) | String.EndsWith(Container(110).Currentitem,46) | String.EndsWith(Container(110).Currentitem,66) | String.EndsWith(Container(110).Currentitem,86) | String.EndsWith(Container(110).Currentitem,06)</visible>
+					<visible>$EXP[LyricsRow6]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" end="0,-130" time="300" tween="sine" easing="out" />
 						<effect type="slide" delay="360" end="0,-160" time="300" tween="sine" easing="out" />
@@ -1485,14 +1079,14 @@
 					<width>1820</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-					<font>lyr6</font>
+					<font>fontLyrics6Part1</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
-					<textcolor>$PARAM[col61]</textcolor>
+					<textcolor>$PARAM[part1_color]</textcolor>
 				</control>
 				<control type="label">
 					<left>250</left>
-					<visible>String.IsEqual(Container(110).Currentitem,6) | String.EndsWith(Container(110).Currentitem,26) | String.EndsWith(Container(110).Currentitem,46) | String.EndsWith(Container(110).Currentitem,66) | String.EndsWith(Container(110).Currentitem,86) | String.EndsWith(Container(110).Currentitem,06)</visible>
+					<visible>$EXP[LyricsRow6]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" delay="360" end="0,-160" time="300" tween="sine" easing="out" />
 						<effect type="slide" delay="720" end="0,-160" time="300" tween="sine" easing="out" />
@@ -1502,10 +1096,10 @@
 					<width>1820</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-					<font>lyr6a</font>
+					<font>fontLyrics6Part2</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
-					<textcolor>$PARAM[col62]</textcolor>
+					<textcolor>$PARAM[part2_color]</textcolor>
 				</control>
 				<control type="grouplist">
 					<left>-5</left>
@@ -1515,10 +1109,9 @@
 					<itemgap>30</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
-						<visible>String.IsEqual(Container(110).Currentitem,6) | String.EndsWith(Container(110).Currentitem,26) | String.EndsWith(Container(110).Currentitem,46) | String.EndsWith(Container(110).Currentitem,66) | String.EndsWith(Container(110).Currentitem,86) | String.EndsWith(Container(110).Currentitem,06)</visible>
+						<visible>$EXP[LyricsRow6]</visible>
 						<animation type="Visible" reversible="false">
 							<effect type="slide" end="200,0" />
 							<effect type="zoom" delay="720" center="auto" start="0" end="100" time="300" tween="sine" easing="out" />
@@ -1527,39 +1120,39 @@
 						<width>auto</width>
 						<height>600</height>
 						<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-						<font>lyr6b</font>
+						<font>fontLyrics6Part3</font>
 						<shadowcolor>black</shadowcolor>
 						<align>right</align>
 						<aligny>top</aligny>
-						<textcolor>$PARAM[col63]</textcolor>
+						<textcolor>$PARAM[part3_color]</textcolor>
 					</control>
 					<control type="label">
 						<width max="625">auto</width>
 						<height>600</height>
 						<wrapmultiline>true</wrapmultiline>
-						<visible>String.IsEqual(Container(110).Currentitem,6) | String.EndsWith(Container(110).Currentitem,26) | String.EndsWith(Container(110).Currentitem,46) | String.EndsWith(Container(110).Currentitem,66) | String.EndsWith(Container(110).Currentitem,86) | String.EndsWith(Container(110).Currentitem,06)</visible>
+						<visible>$EXP[LyricsRow6]</visible>
 						<animation type="Visible" reversible="false">
 							<effect type="slide" end="0,74" />
 							<effect type="zoom" delay="1320" center="auto" start="0" end="100" time="420" tween="back" easing="out" />
 							<effect type="rotate" delay="1320" center="auto" start="4" end="0" time="720" tween="bounce" easing="out" />
 						</animation>
 						<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-						<font>lyr6c</font>
+						<font>fontLyrics6Part4</font>
 						<shadowcolor>black</shadowcolor>
 						<aligny>top</aligny>
-						<textcolor>$PARAM[col64]</textcolor>
+						<textcolor>$PARAM[part4_color]</textcolor>
 					</control>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics7">
-		<param name="col71" default="black" />
-		<param name="col72" default="black" />
-		<param name="col73" default="black" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
 		<definition>
 			<control type="label">
-				<visible>String.IsEqual(Container(110).Currentitem,7) | String.EndsWith(Container(110).Currentitem,27) | String.EndsWith(Container(110).Currentitem,47) | String.EndsWith(Container(110).Currentitem,67) | String.EndsWith(Container(110).Currentitem,87) | String.EndsWith(Container(110).Currentitem,07)</visible>
+				<visible>$EXP[LyricsRow7]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="0,-300" />
 					<effect type="slide" end="0,700" time="1000" tween="bounce" easing="out" />
@@ -1568,10 +1161,10 @@
 				<width>auto</width>
 				<height>100</height>
 				<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr7</font>
+				<font>fontLyrics7</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col71]</textcolor>
+				<textcolor>$PARAM[part1_color]</textcolor>
 			</control>
 			<control type="label">
 				<animation type="Visible" reversible="false">
@@ -1579,17 +1172,17 @@
 					<effect type="slide" end="0,700" time="1200" tween="bounce" easing="out" />
 					<effect type="rotate" start="440" center="auto" end="360" time="1200" tween="cubic" easing="out" />
 				</animation>
-				<visible>String.IsEqual(Container(110).Currentitem,7) | String.EndsWith(Container(110).Currentitem,27) | String.EndsWith(Container(110).Currentitem,47) | String.EndsWith(Container(110).Currentitem,67) | String.EndsWith(Container(110).Currentitem,87) | String.EndsWith(Container(110).Currentitem,07)</visible>
+				<visible>$EXP[LyricsRow7]</visible>
 				<width>auto</width>
 				<height>100</height>
 				<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr7</font>
+				<font>fontLyrics7</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col72]</textcolor>
+				<textcolor>$PARAM[part2_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.IsEqual(Container(110).Currentitem,7) | String.EndsWith(Container(110).Currentitem,27) | String.EndsWith(Container(110).Currentitem,47) | String.EndsWith(Container(110).Currentitem,67) | String.EndsWith(Container(110).Currentitem,87) | String.EndsWith(Container(110).Currentitem,07)</visible>
+				<visible>$EXP[LyricsRow7]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="0,-300" />
 					<effect type="slide" end="0,700" time="1400" tween="bounce" easing="out" />
@@ -1598,22 +1191,22 @@
 				<width>auto</width>
 				<height>100</height>
 				<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr7</font>
+				<font>fontLyrics7</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col73]</textcolor>
+				<textcolor>$PARAM[part3_color]</textcolor>
 			</control>
 		</definition>
 	</include>
-	<include name="Lyrics7b">
-		<param name="col74" default="black" />
-		<param name="7b_left" default="510" />
-		<param name="7b_top" default="224" />
+	<include name="Lyrics7Part4">
+		<param name="part4_color" default="black" />
+		<param name="left" default="510" />
+		<param name="top" default="224" />
 		<definition>
 			<control type="group">
-				<left>$PARAM[7b_left]</left>
-				<top>$PARAM[7b_top]</top>
-				<visible>String.IsEqual(Container(110).Currentitem,7) | String.EndsWith(Container(110).Currentitem,27) | String.EndsWith(Container(110).Currentitem,47) | String.EndsWith(Container(110).Currentitem,67) | String.EndsWith(Container(110).Currentitem,87) | String.EndsWith(Container(110).Currentitem,07)</visible>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<visible>$EXP[LyricsRow7]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" delay="270" start="0,200" end="0,0" time="420" tween="back" />
 				</animation>
@@ -1622,22 +1215,22 @@
 					<width>900</width>
 					<height>600</height>
 					<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr7b</font>
+					<font>fontLyrics7Part4</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
 					<aligny>top</aligny>
-					<textcolor>$PARAM[col74]</textcolor>
+					<textcolor>$PARAM[part4_color]</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics8">
-		<param name="col81" default="black" />
-		<param name="col82" default="black" />
-		<param name="col83" default="black" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
 		<definition>
 			<control type="label">
-				<visible>String.IsEqual(Container(110).Currentitem,8) | String.EndsWith(Container(110).Currentitem,28) | String.EndsWith(Container(110).Currentitem,48) | String.EndsWith(Container(110).Currentitem,68) | String.EndsWith(Container(110).Currentitem,88) | String.EndsWith(Container(110).Currentitem,08)</visible>
+				<visible>$EXP[LyricsRow8]</visible>
 				<animation effect="slide" end="-15,0" condition="true">Conditional</animation>
 				<animation type="Visible" reversible="false">
 					<effect type="fade" delay="50" start="0" end="100" time="1" />
@@ -1646,14 +1239,14 @@
 				<width>auto</width>
 				<height>120</height>
 				<label>$INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr8</font>
+				<font>fontLyrics8</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col81]</textcolor>
+				<textcolor>$PARAM[part1_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.IsEqual(Container(110).Currentitem,8) | String.EndsWith(Container(110).Currentitem,28) | String.EndsWith(Container(110).Currentitem,48) | String.EndsWith(Container(110).Currentitem,68) | String.EndsWith(Container(110).Currentitem,88) | String.EndsWith(Container(110).Currentitem,08)</visible>
+				<visible>$EXP[LyricsRow8]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="fade" delay="50" start="0" end="100" time="1" />
 					<effect type="rotatex" center="0,0" start="90" end="0" time="900" tween="sine" easing="out" />
@@ -1661,14 +1254,14 @@
 				<width>auto</width>
 				<height>120</height>
 				<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr8</font>
+				<font>fontLyrics8</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col82]</textcolor>
+				<textcolor>$PARAM[part2_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.IsEqual(Container(110).Currentitem,8) | String.EndsWith(Container(110).Currentitem,28) | String.EndsWith(Container(110).Currentitem,48) | String.EndsWith(Container(110).Currentitem,68) | String.EndsWith(Container(110).Currentitem,88) | String.EndsWith(Container(110).Currentitem,08)</visible>
+				<visible>$EXP[LyricsRow8]</visible>
 				<animation effect="slide" end="15,0" condition="true">Conditional</animation>
 				<animation type="Visible" reversible="false">
 					<effect type="fade" delay="50" start="0" end="100" time="1" />
@@ -1677,23 +1270,23 @@
 				<width>auto</width>
 				<height>120</height>
 				<label>$INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr8</font>
+				<font>fontLyrics8</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col83]</textcolor>
+				<textcolor>$PARAM[part3_color]</textcolor>
 			</control>
 		</definition>
 	</include>
-	<include name="Lyrics8b">
-		<param name="col84" default="black" />
-		<param name="8b_left" default="510" />
-		<param name="8b_top" default="270" />
+	<include name="Lyrics8Part4">
+		<param name="part4_color" default="black" />
+		<param name="left" default="510" />
+		<param name="top" default="270" />
 		<definition>
 			<control type="group">
-				<left>$PARAM[8b_left]</left>
-				<top>$PARAM[8b_top]</top>
-				<visible>String.IsEqual(Container(110).Currentitem,8) | String.EndsWith(Container(110).Currentitem,28) | String.EndsWith(Container(110).Currentitem,48) | String.EndsWith(Container(110).Currentitem,68) | String.EndsWith(Container(110).Currentitem,88) | String.EndsWith(Container(110).Currentitem,08)</visible>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<visible>$EXP[LyricsRow8]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" delay="900" start="-800,0" end="0,0" time="600" tween="back" easing="out" />
 					<effect type="rotate" delay="900" center="auto" start="3" end="0" time="800" tween="bounce" easing="out" />
@@ -1704,28 +1297,28 @@
 					<width>700</width>
 					<height>600</height>
 					<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr8b</font>
+					<font>fontLyrics8Part4</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
 					<aligny>top</aligny>
-					<textcolor>$PARAM[col84]</textcolor>
+					<textcolor>$PARAM[part4_color]</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics9">
-		<param name="col91" default="black" />
-		<param name="col92" default="black" />
-		<param name="col93" default="black" />
-		<param name="col94" default="black" />
-		<param name="9_left" default="20" />
-		<param name="9_top" default="-20" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="part4_color" default="black" />
+		<param name="left" default="20" />
+		<param name="top" default="-20" />
 		<definition>
 			<control type="group">
-				<top>$PARAM[9_top]</top>
-				<left>$PARAM[9_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<control type="label">
-					<visible>String.IsEqual(Container(110).Currentitem,9) | String.EndsWith(Container(110).Currentitem,29) | String.EndsWith(Container(110).Currentitem,49) | String.EndsWith(Container(110).Currentitem,69) | String.EndsWith(Container(110).Currentitem,89) | String.EndsWith(Container(110).Currentitem,09)</visible>
+					<visible>$EXP[LyricsRow9]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" delay="480" start="0,-400" end="0,0" time="300" tween="back" easing="out" />
 						<effect type="rotate" center="720,270" delay="1080" start="35" end="0" time="300" tween="back" easing="out" />
@@ -1734,13 +1327,13 @@
 					<width>940</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-					<font>lyr9</font>
+					<font>fontLyrics9</font>
 					<shadowcolor>black</shadowcolor>
 					<align>right</align>
-					<textcolor>$PARAM[col93]</textcolor>
+					<textcolor>$PARAM[part3_color]</textcolor>
 				</control>
 				<control type="label">
-					<visible>String.IsEqual(Container(110).Currentitem,9) | String.EndsWith(Container(110).Currentitem,29) | String.EndsWith(Container(110).Currentitem,49) | String.EndsWith(Container(110).Currentitem,69) | String.EndsWith(Container(110).Currentitem,89) | String.EndsWith(Container(110).Currentitem,09)</visible>
+					<visible>$EXP[LyricsRow9]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" delay="180" start="0,-400" end="0,0" time="420" tween="back" easing="out" />
 						<effect type="rotate" center="720,270" delay="1080" start="35" end="0" time="360" tween="back" easing="out" />
@@ -1749,13 +1342,13 @@
 					<width>940</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-					<font>lyr9</font>
+					<font>fontLyrics9</font>
 					<shadowcolor>black</shadowcolor>
 					<align>right</align>
-					<textcolor>$PARAM[col92]</textcolor>
+					<textcolor>$PARAM[part2_color]</textcolor>
 				</control>
 				<control type="label">
-					<visible>String.IsEqual(Container(110).Currentitem,9) | String.EndsWith(Container(110).Currentitem,29) | String.EndsWith(Container(110).Currentitem,49) | String.EndsWith(Container(110).Currentitem,69) | String.EndsWith(Container(110).Currentitem,89) | String.EndsWith(Container(110).Currentitem,09)</visible>
+					<visible>$EXP[LyricsRow9]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" start="0,-400" end="0,0" time="300" tween="back" easing="out" />
 						<effect type="rotate" center="720,270" delay="1080" start="35" end="0" time="420" tween="back" easing="out" />
@@ -1764,38 +1357,38 @@
 					<width>940</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-					<font>lyr9</font>
+					<font>fontLyrics9</font>
 					<shadowcolor>black</shadowcolor>
 					<align>right</align>
-					<textcolor>$PARAM[col91]</textcolor>
+					<textcolor>$PARAM[part1_color]</textcolor>
 				</control>
 				<control type="textbox">
 					<left>960</left>
 					<top>30</top>
 					<width>600</width>
 					<height>600</height>
-					<visible>String.IsEqual(Container(110).Currentitem,9) | String.EndsWith(Container(110).Currentitem,29) | String.EndsWith(Container(110).Currentitem,49) | String.EndsWith(Container(110).Currentitem,69) | String.EndsWith(Container(110).Currentitem,89) | String.EndsWith(Container(110).Currentitem,09)</visible>
+					<visible>$EXP[LyricsRow9]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" delay="840" start="600,0" end="0,0" time="420" tween="back" easing="out" />
 						<effect type="rotate" delay="840" center="auto" start="4" end="0" time="720" tween="bounce" easing="out" />
 					</animation>
 					<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr9b</font>
+					<font>fontLyrics9Part4</font>
 					<shadowcolor>black</shadowcolor>
 					<aligny>center</aligny>
-					<textcolor>$PARAM[col94]</textcolor>
+					<textcolor>$PARAM[part4_color]</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics10">
-		<param name="col101" default="black" />
-		<param name="col102" default="black" />
-		<param name="col103" default="black" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
 		<definition>
 			<control type="label">
 				<animation effect="rotate" center="auto" start="0" end="0" condition="true">Conditional</animation>
-				<visible>String.EndsWith(Container(110).Currentitem,10) | String.EndsWith(Container(110).Currentitem,30) | String.EndsWith(Container(110).Currentitem,50) | String.EndsWith(Container(110).Currentitem,70) | String.EndsWith(Container(110).Currentitem,90)</visible>
+				<visible>$EXP[LyricsRow10]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="0,-700" />
 					<effect type="slide" delay="10" end="0,700" time="1" />
@@ -1804,14 +1397,14 @@
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr10</font>
+				<font>fontLyrics10Part1</font>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col101]</textcolor>
+				<textcolor>$PARAM[part1_color]</textcolor>
 			</control>
 			<control type="label">
 				<animation effect="rotate" center="auto" start="0" end="0" condition="true">Conditional</animation>
-				<visible>String.EndsWith(Container(110).Currentitem,10) | String.EndsWith(Container(110).Currentitem,30) | String.EndsWith(Container(110).Currentitem,50) | String.EndsWith(Container(110).Currentitem,70) | String.EndsWith(Container(110).Currentitem,90)</visible>
+				<visible>$EXP[LyricsRow10]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="0,-700" />
 					<effect type="slide" delay="410" end="0,710" time="1" />
@@ -1820,14 +1413,14 @@
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr10b</font>
+				<font>fontLyrics10Part2</font>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col102]</textcolor>
+				<textcolor>$PARAM[part2_color]</textcolor>
 			</control>
 			<control type="label">
 				<animation effect="rotate" center="auto" start="0" end="0" condition="true">Conditional</animation>
-				<visible>String.EndsWith(Container(110).Currentitem,10) | String.EndsWith(Container(110).Currentitem,30) | String.EndsWith(Container(110).Currentitem,50) | String.EndsWith(Container(110).Currentitem,70) | String.EndsWith(Container(110).Currentitem,90)</visible>
+				<visible>$EXP[LyricsRow10]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="0,-700" />
 					<effect type="slide" delay="830" end="0,720" time="1" />
@@ -1836,80 +1429,79 @@
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr10c</font>
+				<font>fontLyrics10Part3</font>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col103]</textcolor>
+				<textcolor>$PARAM[part3_color]</textcolor>
 			</control>
 		</definition>
 	</include>
-	<include name="Lyrics10b">
-		<param name="col104" default="00ffffff" />
-		<param name="10b_left" default="620" />
-		<param name="10b_top" default="320" />
+	<include name="Lyrics10Part4">
+		<param name="part4_color" default="transparent" />
+		<param name="left" default="620" />
+		<param name="top" default="320" />
 		<definition>
 			<control type="textbox">
-				<left>$PARAM[10b_left]</left>
-				<top>$PARAM[10b_top]</top>
-				<visible>String.EndsWith(Container(110).Currentitem,10) | String.EndsWith(Container(110).Currentitem,30) | String.EndsWith(Container(110).Currentitem,50) | String.EndsWith(Container(110).Currentitem,70) | String.EndsWith(Container(110).Currentitem,90)</visible>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<visible>$EXP[LyricsRow10]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="rotatex" delay="1260" center="400,0" start="-85" end="0" time="360" />
 				</animation>
 				<width>700</width>
 				<height>600</height>
 				<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-				<font>lyr10d</font>
+				<font>fontLyrics10Part4</font>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col104]</textcolor>
+				<textcolor>$PARAM[part4_color]</textcolor>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics11">
-		<param name="col111" default="black" />
-		<param name="col112" default="black" />
-		<param name="col113" default="black" />
-		<param name="col114" default="black" />
-		<param name="11_left" default="0" />
-		<param name="11_top" default="250" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="part4_color" default="black" />
+		<param name="left" default="0" />
+		<param name="top" default="250" />
 		<definition>
 			<control type="group">
-				<top>$PARAM[11_top]</top>
-				<left>$PARAM[11_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<control type="grouplist">
 					<animation type="Visible" reversible="false">
 						<effect type="slide" start="0,-300" end="0,0" time="500" tween="sine" easing="out" />
 					</animation>
-					<visible>String.EndsWith(Container(110).Currentitem,11) | String.EndsWith(Container(110).Currentitem,31) | String.EndsWith(Container(110).Currentitem,51) | String.EndsWith(Container(110).Currentitem,71) | String.EndsWith(Container(110).Currentitem,91)</visible>
+					<visible>$EXP[LyricsRow11]</visible>
 					<top>-95</top>
 					<width>1920</width>
 					<height>125</height>
 					<itemgap>25</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
 						<animation effect="slide" end="0,0" condition="true">Conditional</animation>
 						<width>auto</width>
 						<height>125</height>
 						<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-						<font>lyr11</font>
+						<font>fontLyrics11</font>
 						<shadowcolor>black</shadowcolor>
 						<align>center</align>
-						<textcolor>$PARAM[col111]</textcolor>
+						<textcolor>$PARAM[part1_color]</textcolor>
 					</control>
 					<control type="label">
 						<width>auto</width>
 						<height>125</height>
 						<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-						<font>lyr11</font>
+						<font>fontLyrics11</font>
 						<align>center</align>
-						<textcolor>00fFFFFF</textcolor>
+						<textcolor>transparent</textcolor>
 					</control>
 				</control>
 				<control type="grouplist">
-					<visible>String.EndsWith(Container(110).Currentitem,11) | String.EndsWith(Container(110).Currentitem,31) | String.EndsWith(Container(110).Currentitem,51) | String.EndsWith(Container(110).Currentitem,71) | String.EndsWith(Container(110).Currentitem,91)</visible>
+					<visible>$EXP[LyricsRow11]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" delay="0" start="500,0" end="0,0" time="500" tween="sine" easing="out" />
 					</animation>
@@ -1919,28 +1511,27 @@
 					<itemgap>25</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
 						<width>auto</width>
 						<height>125</height>
 						<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-						<font>lyr11</font>
+						<font>fontLyrics11</font>
 						<align>center</align>
-						<textcolor>00fFFFFF</textcolor>
+						<textcolor>transparent</textcolor>
 					</control>
 					<control type="label">
 						<width>auto</width>
 						<height>125</height>
 						<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-						<font>lyr11</font>
+						<font>fontLyrics11</font>
 						<shadowcolor>black</shadowcolor>
 						<align>center</align>
-						<textcolor>$PARAM[col112]</textcolor>
+						<textcolor>$PARAM[part2_color]</textcolor>
 					</control>
 				</control>
 				<control type="grouplist">
-					<visible>String.EndsWith(Container(110).Currentitem,11) | String.EndsWith(Container(110).Currentitem,31) | String.EndsWith(Container(110).Currentitem,51) | String.EndsWith(Container(110).Currentitem,71) | String.EndsWith(Container(110).Currentitem,91)</visible>
+					<visible>$EXP[LyricsRow11]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" delay="0" start="-500,0" end="0,0" time="500" tween="sine" easing="out" />
 					</animation>
@@ -1950,17 +1541,16 @@
 					<itemgap>40</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
 						<width>auto</width>
 						<height>125</height>
 						<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-						<font>lyr11</font>
+						<font>fontLyrics11</font>
 						<shadowcolor>black</shadowcolor>
 						<align>right</align>
 						<aligny>top</aligny>
-						<textcolor>$PARAM[col113]</textcolor>
+						<textcolor>$PARAM[part3_color]</textcolor>
 					</control>
 					<control type="label">
 						<animation effect="slide" end="0,10" condition="true">Conditional</animation>
@@ -1968,13 +1558,13 @@
 						<height>600</height>
 						<wrapmultiline>true</wrapmultiline>
 						<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-						<font>lyr11b</font>
+						<font>fontLyrics11Part4</font>
 						<aligny>top</aligny>
-						<textcolor>00ffffff</textcolor>
+						<textcolor>transparent</textcolor>
 					</control>
 				</control>
 				<control type="grouplist">
-					<visible>String.EndsWith(Container(110).Currentitem,11) | String.EndsWith(Container(110).Currentitem,31) | String.EndsWith(Container(110).Currentitem,51) | String.EndsWith(Container(110).Currentitem,71) | String.EndsWith(Container(110).Currentitem,91)</visible>
+					<visible>$EXP[LyricsRow11]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" delay="0" start="0,300" end="0,0" time="500" tween="sine" easing="out" />
 					</animation>
@@ -1984,16 +1574,15 @@
 					<itemgap>40</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
 						<width>auto</width>
 						<height>125</height>
 						<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-						<font>lyr11</font>
+						<font>fontLyrics11</font>
 						<align>right</align>
 						<aligny>top</aligny>
-						<textcolor>00ffffff</textcolor>
+						<textcolor>transparent</textcolor>
 					</control>
 					<control type="label">
 						<animation effect="slide" end="0,10" condition="true">Conditional</animation>
@@ -2001,25 +1590,25 @@
 						<height>600</height>
 						<wrapmultiline>true</wrapmultiline>
 						<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-						<font>lyr11b</font>
+						<font>fontLyrics11Part4</font>
 						<shadowcolor>black</shadowcolor>
 						<aligny>top</aligny>
-						<textcolor>$PARAM[col114]</textcolor>
+						<textcolor>$PARAM[part4_color]</textcolor>
 					</control>
 				</control>
 			</control>
 		</definition>
 	</include>
-	<include name="Lyrics12">
-		<param name="col121" default="black" />
-		<param name="12_left" default="10" />
-		<param name="12_top" default="0" />
+	<include name="Lyrics12Part1">
+		<param name="part1_color" default="black" />
+		<param name="left" default="10" />
+		<param name="top" default="0" />
 		<definition>
 			<control type="group">
-				<top>$PARAM[12_top]</top>
-				<left>$PARAM[12_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<control type="label">
-					<visible>String.EndsWith(Container(110).Currentitem,12) | String.EndsWith(Container(110).Currentitem,32) | String.EndsWith(Container(110).Currentitem,52) | String.EndsWith(Container(110).Currentitem,72) | String.EndsWith(Container(110).Currentitem,92)</visible>
+					<visible>$EXP[LyricsRow12]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="zoom" center="auto" start="0" end="100" time="240" />
 					</animation>
@@ -2028,46 +1617,45 @@
 					<width>1820</width>
 					<height>400</height>
 					<label>$INFO[Container(110).ListItem.Property(part1)]</label>
-					<font>lyr12</font>
+					<font>fontLyrics12Part1</font>
 					<shadowcolor>black</shadowcolor>
 					<scroll>true</scroll>
 					<scrollspeed>100</scrollspeed>
 					<scrollsuffix />
 					<align>center</align>
 					<aligny>top</aligny>
-					<textcolor>$PARAM[col121]</textcolor>
+					<textcolor>$PARAM[part1_color]</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
-	<include name="Lyrics12b">
-		<param name="col122" default="black" />
-		<param name="col123" default="black" />
-		<param name="12b_left" default="10" />
-		<param name="12b_top" default="180" />
+	<include name="Lyrics12Parts2And3">
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="left" default="10" />
+		<param name="top" default="180" />
 		<definition>
 			<control type="grouplist">
-				<top>$PARAM[12b_top]</top>
-				<left>$PARAM[12b_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<width>1900</width>
 				<height>350</height>
 				<itemgap>45</itemgap>
 				<scrolltime>0</scrolltime>
 				<orientation>horizontal</orientation>
-				<visible>true</visible>
 				<align>center</align>
 				<control type="label">
-					<visible>String.EndsWith(Container(110).Currentitem,12) | String.EndsWith(Container(110).Currentitem,32) | String.EndsWith(Container(110).Currentitem,52) | String.EndsWith(Container(110).Currentitem,72) | String.EndsWith(Container(110).Currentitem,92)</visible>
+					<visible>$EXP[LyricsRow12]</visible>
 					<width>auto</width>
 					<height>350</height>
 					<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-					<font>lyr12b</font>
+					<font>fontLyrics12Part2</font>
 					<align>center</align>
 					<aligny>top</aligny>
-					<textcolor>00fFFFFF</textcolor>
+					<textcolor>transparent</textcolor>
 				</control>
 				<control type="label">
-					<visible>String.EndsWith(Container(110).Currentitem,12) | String.EndsWith(Container(110).Currentitem,32) | String.EndsWith(Container(110).Currentitem,52) | String.EndsWith(Container(110).Currentitem,72) | String.EndsWith(Container(110).Currentitem,92)</visible>
+					<visible>$EXP[LyricsRow12]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" end="0,-700" />
 						<effect type="slide" end="0,700" time="1" />
@@ -2076,24 +1664,23 @@
 					<width>auto</width>
 					<height>350</height>
 					<label>$INFO[Container(110).ListItem.Property(part3)]</label>
-					<font>lyr12c</font>
+					<font>fontLyrics12Part3</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
-					<textcolor>$PARAM[col123]</textcolor>
+					<textcolor>$PARAM[part3_color]</textcolor>
 				</control>
 			</control>
 			<control type="grouplist">
-				<top>$PARAM[12b_top]</top>
-				<left>$PARAM[12b_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<width>1900</width>
 				<height>350</height>
 				<itemgap>45</itemgap>
 				<scrolltime>0</scrolltime>
 				<orientation>horizontal</orientation>
-				<visible>true</visible>
 				<align>center</align>
 				<control type="label">
-					<visible>String.EndsWith(Container(110).Currentitem,12) | String.EndsWith(Container(110).Currentitem,32) | String.EndsWith(Container(110).Currentitem,52) | String.EndsWith(Container(110).Currentitem,72) | String.EndsWith(Container(110).Currentitem,92)</visible>
+					<visible>$EXP[LyricsRow12]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" end="0,-700" />
 						<effect type="slide" end="0,700" time="1" />
@@ -2102,58 +1689,58 @@
 					<width>auto</width>
 					<height>350</height>
 					<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-					<font>lyr12b</font>
+					<font>fontLyrics12Part2</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
 					<aligny>top</aligny>
-					<textcolor>$PARAM[col122]</textcolor>
+					<textcolor>$PARAM[part2_color]</textcolor>
 				</control>
 				<control type="label">
-					<visible>String.EndsWith(Container(110).Currentitem,12) | String.EndsWith(Container(110).Currentitem,32) | String.EndsWith(Container(110).Currentitem,52) | String.EndsWith(Container(110).Currentitem,72) | String.EndsWith(Container(110).Currentitem,92)</visible>
+					<visible>$EXP[LyricsRow12]</visible>
 					<width>auto</width>
 					<height>350</height>
 					<label>$INFO[Container(110).ListItem.Property(part3)]</label>
-					<font>lyr12c</font>
+					<font>fontLyrics12Part3</font>
 					<align>center</align>
-					<textcolor>00fFFFFF</textcolor>
+					<textcolor>transparent</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
-	<include name="Lyrics12c">
-		<param name="col124" default="black" />
-		<param name="12c_left" default="10" />
-		<param name="12c_top" default="0" />
+	<include name="Lyrics12Part4">
+		<param name="part4_color" default="black" />
+		<param name="left" default="10" />
+		<param name="top" default="0" />
 		<definition>
 			<control type="group">
-				<top>$PARAM[12c_top]</top>
-				<left>$PARAM[12c_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<control type="textbox">
 					<left>600</left>
 					<top>390</top>
 					<width>700</width>
 					<height>600</height>
-					<visible>String.EndsWith(Container(110).Currentitem,12) | String.EndsWith(Container(110).Currentitem,32) | String.EndsWith(Container(110).Currentitem,52) | String.EndsWith(Container(110).Currentitem,72) | String.EndsWith(Container(110).Currentitem,92)</visible>
+					<visible>$EXP[LyricsRow12]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="zoom" delay="960" center="960,400" start="0" end="100" time="240" />
 					</animation>
 					<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr12d</font>
+					<font>fontLyrics12Part4</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
 					<aligny>top</aligny>
-					<textcolor>$PARAM[col124]</textcolor>
+					<textcolor>$PARAM[part4_color]</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics13">
-		<param name="col131" default="black" />
-		<param name="col132" default="black" />
-		<param name="col133" default="black" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
 		<definition>
 			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,13) | String.EndsWith(Container(110).Currentitem,33) | String.EndsWith(Container(110).Currentitem,53) | String.EndsWith(Container(110).Currentitem,73) | String.EndsWith(Container(110).Currentitem,93)</visible>
+				<visible>$EXP[LyricsRow13]</visible>
 				<animation effect="slide" end="-15,0" condition="true">Conditional</animation>
 				<animation type="Visible" reversible="false">
 					<effect type="zoom" center="auto" start="25" end="100" time="360" />
@@ -2162,14 +1749,14 @@
 				<width>auto</width>
 				<height>120</height>
 				<label>$INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr13</font>
+				<font>fontLyrics13</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col131]</textcolor>
+				<textcolor>$PARAM[part1_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,13) | String.EndsWith(Container(110).Currentitem,33) | String.EndsWith(Container(110).Currentitem,53) | String.EndsWith(Container(110).Currentitem,73) | String.EndsWith(Container(110).Currentitem,93)</visible>
+				<visible>$EXP[LyricsRow13]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="zoom" center="auto" start="25" end="100" time="600" />
 					<effect type="rotate" center="auto" start="450" end="0" time="600" tween="sine" easing="out" />
@@ -2177,14 +1764,14 @@
 				<width>auto</width>
 				<height>120</height>
 				<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr13</font>
+				<font>fontLyrics13</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col132]</textcolor>
+				<textcolor>$PARAM[part2_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,13) | String.EndsWith(Container(110).Currentitem,33) | String.EndsWith(Container(110).Currentitem,53) | String.EndsWith(Container(110).Currentitem,73) | String.EndsWith(Container(110).Currentitem,93)</visible>
+				<visible>$EXP[LyricsRow13]</visible>
 				<animation effect="slide" end="15,0" condition="true">Conditional</animation>
 				<animation type="Visible" reversible="false">
 					<effect type="zoom" center="auto" start="25" end="100" time="720" />
@@ -2193,23 +1780,23 @@
 				<width>auto</width>
 				<height>120</height>
 				<label>$INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr13</font>
+				<font>fontLyrics13</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col133]</textcolor>
+				<textcolor>$PARAM[part3_color]</textcolor>
 			</control>
 		</definition>
 	</include>
-	<include name="Lyrics13b">
-		<param name="col134" default="black" />
-		<param name="13b_left" default="510" />
-		<param name="13b_top" default="220" />
+	<include name="Lyrics13Part4">
+		<param name="part4_color" default="black" />
+		<param name="left" default="510" />
+		<param name="top" default="220" />
 		<definition>
 			<control type="group">
-				<left>$PARAM[13b_left]</left>
-				<top>$PARAM[13b_top]</top>
-				<visible>String.EndsWith(Container(110).Currentitem,13) | String.EndsWith(Container(110).Currentitem,33) | String.EndsWith(Container(110).Currentitem,53) | String.EndsWith(Container(110).Currentitem,73) | String.EndsWith(Container(110).Currentitem,93)</visible>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<visible>$EXP[LyricsRow13]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="zoom" center="450,370" delay="840" start="25" end="100" tween="sine" easing="out" time="360" />
 				</animation>
@@ -2219,23 +1806,23 @@
 					<width>700</width>
 					<height>600</height>
 					<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr13b</font>
+					<font>fontLyrics13Part4</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
 					<aligny>top</aligny>
-					<textcolor>$PARAM[col134]</textcolor>
+					<textcolor>$PARAM[part4_color]</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics14">
-		<param name="col141" default="00ffffff" />
-		<param name="col142" default="00ffffff" />
-		<param name="col143" default="00ffffff" />
+		<param name="part1_color" default="transparent" />
+		<param name="part2_color" default="transparent" />
+		<param name="part3_color" default="transparent" />
 		<definition>
 			<control type="label">
 				<animation effect="rotate" center="auto" start="4" end="4" condition="true">Conditional</animation>
-				<visible>String.EndsWith(Container(110).Currentitem,14) | String.EndsWith(Container(110).Currentitem,34) | String.EndsWith(Container(110).Currentitem,54) | String.EndsWith(Container(110).Currentitem,74) | String.EndsWith(Container(110).Currentitem,94)</visible>
+				<visible>$EXP[LyricsRow14]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="-10,-400" />
 					<effect type="slide" delay="10" end="0,440" time="1" />
@@ -2245,14 +1832,14 @@
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr14</font>
+				<font>fontLyrics14Part1</font>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col141]</textcolor>
+				<textcolor>$PARAM[part1_color]</textcolor>
 			</control>
 			<control type="label">
 				<animation effect="rotate" center="auto" start="4" end="4" condition="true">Conditional</animation>
-				<visible>String.EndsWith(Container(110).Currentitem,14) | String.EndsWith(Container(110).Currentitem,34) | String.EndsWith(Container(110).Currentitem,54) | String.EndsWith(Container(110).Currentitem,74) | String.EndsWith(Container(110).Currentitem,94)</visible>
+				<visible>$EXP[LyricsRow14]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="0,-400" />
 					<effect type="slide" delay="360" end="0,420" time="1" />
@@ -2262,14 +1849,14 @@
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr14b</font>
+				<font>fontLyrics14Part2</font>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col142]</textcolor>
+				<textcolor>$PARAM[part2_color]</textcolor>
 			</control>
 			<control type="label">
 				<animation effect="rotate" center="auto" start="4" end="4" condition="true">Conditional</animation>
-				<visible>String.EndsWith(Container(110).Currentitem,14) | String.EndsWith(Container(110).Currentitem,34) | String.EndsWith(Container(110).Currentitem,54) | String.EndsWith(Container(110).Currentitem,74) | String.EndsWith(Container(110).Currentitem,94)</visible>
+				<visible>$EXP[LyricsRow14]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="10,-400" />
 					<effect type="slide" delay="710" end="0,400" time="1" />
@@ -2279,22 +1866,22 @@
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr14c</font>
+				<font>fontLyrics14Part3</font>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col143]</textcolor>
+				<textcolor>$PARAM[part3_color]</textcolor>
 			</control>
 		</definition>
 	</include>
-	<include name="Lyrics14b">
-		<param name="col144" default="00ffffff" />
-		<param name="14b_left" default="610" />
-		<param name="14b_top" default="355" />
+	<include name="Lyrics14Part4">
+		<param name="part4_color" default="transparent" />
+		<param name="left" default="610" />
+		<param name="top" default="355" />
 		<definition>
 			<control type="textbox">
-				<left>$PARAM[14b_left]</left>
-				<top>$PARAM[14b_top]</top>
-				<visible>String.EndsWith(Container(110).Currentitem,14) | String.EndsWith(Container(110).Currentitem,34) | String.EndsWith(Container(110).Currentitem,54) | String.EndsWith(Container(110).Currentitem,74) | String.EndsWith(Container(110).Currentitem,94)</visible>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<visible>$EXP[LyricsRow14]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="fade" delay="1200" start="0" end="100" time="250" />
 					<effect type="zoom" center="960,500" delay="1200" start="0" end="105" time="250" tween="back" easing="out" />
@@ -2302,26 +1889,26 @@
 				<width>700</width>
 				<height>600</height>
 				<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-				<font>lyr14d</font>
+				<font>fontLyrics14Part4</font>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col144]</textcolor>
+				<textcolor>$PARAM[part4_color]</textcolor>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics15">
-		<param name="col151" default="black" />
-		<param name="col152" default="black" />
-		<param name="col153" default="black" />
-		<param name="col154" default="black" />
-		<param name="15_left" default="170" />
-		<param name="15_top" default="0" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="part4_color" default="black" />
+		<param name="left" default="170" />
+		<param name="top" default="0" />
 		<definition>
 			<control type="group">
-				<top>$PARAM[15_top]</top>
-				<left>$PARAM[15_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<control type="label">
-					<visible>String.EndsWith(Container(110).Currentitem,15) | String.EndsWith(Container(110).Currentitem,35) | String.EndsWith(Container(110).Currentitem,55) | String.EndsWith(Container(110).Currentitem,75) | String.EndsWith(Container(110).Currentitem,95)</visible>
+					<visible>$EXP[LyricsRow15]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" start="1000,0" end="100,0" time="420" tween="back" easing="out" />
 						<effect type="slide" delay="960" start="0,0" end="-200,0" time="420" tween="back" easing="out" />
@@ -2331,14 +1918,14 @@
 					<width>925</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-					<font>lyr15</font>
+					<font>fontLyrics15</font>
 					<shadowcolor>black</shadowcolor>
 					<align>right</align>
-					<textcolor>$PARAM[col151]</textcolor>
+					<textcolor>$PARAM[part1_color]</textcolor>
 				</control>
 				<control type="label">
 					<left>50</left>
-					<visible>String.EndsWith(Container(110).Currentitem,15) | String.EndsWith(Container(110).Currentitem,35) | String.EndsWith(Container(110).Currentitem,55) | String.EndsWith(Container(110).Currentitem,75) | String.EndsWith(Container(110).Currentitem,95)</visible>
+					<visible>$EXP[LyricsRow15]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" delay="180" start="1000,0" end="100,0" time="420" tween="back" easing="out" />
 						<effect type="slide" delay="960" start="0,0" end="-200,0" time="420" tween="back" easing="out" />
@@ -2347,13 +1934,13 @@
 					<width>925</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-					<font>lyr15</font>
+					<font>fontLyrics15</font>
 					<shadowcolor>black</shadowcolor>
 					<align>right</align>
-					<textcolor>$PARAM[col152]</textcolor>
+					<textcolor>$PARAM[part2_color]</textcolor>
 				</control>
 				<control type="label">
-					<visible>String.EndsWith(Container(110).Currentitem,15) | String.EndsWith(Container(110).Currentitem,35) | String.EndsWith(Container(110).Currentitem,55) | String.EndsWith(Container(110).Currentitem,75) | String.EndsWith(Container(110).Currentitem,95)</visible>
+					<visible>$EXP[LyricsRow15]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" delay="360" start="1000,0" end="100,0" time="420" tween="back" easing="out" />
 						<effect type="slide" delay="960" start="0,0" end="-200,0" time="420" tween="back" easing="out" />
@@ -2363,36 +1950,36 @@
 					<width>925</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-					<font>lyr15</font>
+					<font>fontLyrics15</font>
 					<shadowcolor>black</shadowcolor>
 					<align>right</align>
-					<textcolor>$PARAM[col153]</textcolor>
+					<textcolor>$PARAM[part3_color]</textcolor>
 				</control>
 				<control type="textbox">
 					<left>800</left>
 					<top>10</top>
 					<width>550</width>
 					<height>600</height>
-					<visible>String.EndsWith(Container(110).Currentitem,15) | String.EndsWith(Container(110).Currentitem,35) | String.EndsWith(Container(110).Currentitem,55) | String.EndsWith(Container(110).Currentitem,75) | String.EndsWith(Container(110).Currentitem,95)</visible>
+					<visible>$EXP[LyricsRow15]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" delay="780" start="100,-400" end="100,0" time="1440" tween="bounce" easing="out" />
 					</animation>
 					<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr15b</font>
+					<font>fontLyrics15Part4</font>
 					<shadowcolor>black</shadowcolor>
 					<aligny>center</aligny>
-					<textcolor>$PARAM[col154]</textcolor>
+					<textcolor>$PARAM[part4_color]</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics16">
-		<param name="col161" default="black" />
-		<param name="col162" default="black" />
-		<param name="col163" default="black" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
 		<definition>
 			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,16) | String.EndsWith(Container(110).Currentitem,36) | String.EndsWith(Container(110).Currentitem,56) | String.EndsWith(Container(110).Currentitem,76) | String.EndsWith(Container(110).Currentitem,96)</visible>
+				<visible>$EXP[LyricsRow16]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="-1500,0" />
 					<effect type="slide" end="1500,0" tween="sine" easing="out" time="500" />
@@ -2401,10 +1988,10 @@
 				<width>auto</width>
 				<height>100</height>
 				<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr16</font>
+				<font>fontLyrics16</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col161]</textcolor>
+				<textcolor>$PARAM[part1_color]</textcolor>
 			</control>
 			<control type="label">
 				<animation type="Visible" reversible="false">
@@ -2413,17 +2000,17 @@
 					<effect type="slide" delay="360" end="300,800" time="300" tween="sine" easing="out" />
 					<effect type="rotate" delay="1140" center="auto" end="393" time="720" tween="back" easing="out" />
 				</animation>
-				<visible>String.EndsWith(Container(110).Currentitem,16) | String.EndsWith(Container(110).Currentitem,36) | String.EndsWith(Container(110).Currentitem,56) | String.EndsWith(Container(110).Currentitem,76) | String.EndsWith(Container(110).Currentitem,96)</visible>
+				<visible>$EXP[LyricsRow16]</visible>
 				<width>auto</width>
 				<height>100</height>
 				<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr16</font>
+				<font>fontLyrics16</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col162]</textcolor>
+				<textcolor>$PARAM[part2_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,16) | String.EndsWith(Container(110).Currentitem,36) | String.EndsWith(Container(110).Currentitem,56) | String.EndsWith(Container(110).Currentitem,76) | String.EndsWith(Container(110).Currentitem,96)</visible>
+				<visible>$EXP[LyricsRow16]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="1000,0" />
 					<effect type="slide" delay="520" end="-1000,0" tween="sine" easing="out" time="500" />
@@ -2432,22 +2019,22 @@
 				<width>auto</width>
 				<height>100</height>
 				<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr16</font>
+				<font>fontLyrics16</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col163]</textcolor>
+				<textcolor>$PARAM[part3_color]</textcolor>
 			</control>
 		</definition>
 	</include>
-	<include name="Lyrics16b">
-		<param name="col164" default="black" />
-		<param name="16b_left" default="510" />
-		<param name="16b_top" default="224" />
+	<include name="Lyrics16Part4">
+		<param name="part4_color" default="black" />
+		<param name="left" default="510" />
+		<param name="top" default="224" />
 		<definition>
 			<control type="group">
-				<left>$PARAM[16b_left]</left>
-				<top>$PARAM[16b_top]</top>
-				<visible>String.EndsWith(Container(110).Currentitem,16) | String.EndsWith(Container(110).Currentitem,36) | String.EndsWith(Container(110).Currentitem,56) | String.EndsWith(Container(110).Currentitem,76) | String.EndsWith(Container(110).Currentitem,96)</visible>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<visible>$EXP[LyricsRow16]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" delay="960" start="-800,0" end="0,0" tween="sine" easing="out" time="420" />
 					<effect type="rotate" delay="1080" center="auto" start="-4" end="0" time="720" tween="bounce" easing="out" />
@@ -2457,28 +2044,28 @@
 					<width>900</width>
 					<height>600</height>
 					<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr16b</font>
+					<font>fontLyrics16Part4</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
 					<aligny>top</aligny>
-					<textcolor>$PARAM[col164]</textcolor>
+					<textcolor>$PARAM[part4_color]</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics17">
-		<param name="col171" default="black" />
-		<param name="col172" default="black" />
-		<param name="col173" default="black" />
-		<param name="col174" default="black" />
-		<param name="17_left" default="10" />
-		<param name="17_top" default="0" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="part4_color" default="black" />
+		<param name="left" default="10" />
+		<param name="top" default="0" />
 		<definition>
 			<control type="group">
-				<top>$PARAM[17_top]</top>
-				<left>$PARAM[17_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<control type="label">
-					<visible>String.EndsWith(Container(110).Currentitem,17) | String.EndsWith(Container(110).Currentitem,37) | String.EndsWith(Container(110).Currentitem,57) | String.EndsWith(Container(110).Currentitem,77) | String.EndsWith(Container(110).Currentitem,97)</visible>
+					<visible>$EXP[LyricsRow17]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="rotatex" center="62,0" start="275" end="360" time="1080" tween="bounce" easing="out" />
 						<effect type="rotate" center="auto" start="6" end="0" time="1080" tween="bounce" easing="out" />
@@ -2488,14 +2075,14 @@
 					<width>1820</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-					<font>lyr17</font>
+					<font>fontLyrics17Part1</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
-					<textcolor>$PARAM[col171]</textcolor>
+					<textcolor>$PARAM[part1_color]</textcolor>
 				</control>
 				<control type="label">
 					<left>50</left>
-					<visible>String.EndsWith(Container(110).Currentitem,17) | String.EndsWith(Container(110).Currentitem,37) | String.EndsWith(Container(110).Currentitem,57) | String.EndsWith(Container(110).Currentitem,77) | String.EndsWith(Container(110).Currentitem,97)</visible>
+					<visible>$EXP[LyricsRow17]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="rotatex" delay="360" center="175,0" start="275" end="360" time="1080" tween="bounce" easing="out" />
 					</animation>
@@ -2503,10 +2090,10 @@
 					<width>1820</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-					<font>lyr17a</font>
+					<font>fontLyrics17Part2</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
-					<textcolor>$PARAM[col172]</textcolor>
+					<textcolor>$PARAM[part2_color]</textcolor>
 				</control>
 				<control type="grouplist">
 					<left>-5</left>
@@ -2516,10 +2103,9 @@
 					<itemgap>30</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,17) | String.EndsWith(Container(110).Currentitem,37) | String.EndsWith(Container(110).Currentitem,57) | String.EndsWith(Container(110).Currentitem,77) | String.EndsWith(Container(110).Currentitem,97)</visible>
+						<visible>$EXP[LyricsRow17]</visible>
 						<animation type="Visible" reversible="false">
 							<effect type="fade" delay="730" start="0" end="100" time="1" />
 							<effect type="rotatex" delay="720" center="30,0" start="275" end="360" time="1080" tween="bounce" easing="out" />
@@ -2527,43 +2113,43 @@
 						<width>auto</width>
 						<height>600</height>
 						<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-						<font>lyr17b</font>
+						<font>fontLyrics17Part3</font>
 						<shadowcolor>black</shadowcolor>
 						<align>right</align>
 						<aligny>top</aligny>
-						<textcolor>$PARAM[col173]</textcolor>
+						<textcolor>$PARAM[part3_color]</textcolor>
 					</control>
 					<control type="label">
 						<width max="625">auto</width>
 						<height>600</height>
 						<wrapmultiline>true</wrapmultiline>
-						<visible>String.EndsWith(Container(110).Currentitem,17) | String.EndsWith(Container(110).Currentitem,37) | String.EndsWith(Container(110).Currentitem,57) | String.EndsWith(Container(110).Currentitem,77) | String.EndsWith(Container(110).Currentitem,97)</visible>
+						<visible>$EXP[LyricsRow17]</visible>
 						<animation type="Visible" reversible="false">
 							<effect type="slide" end="0,80" />
 							<effect type="fade" delay="730" start="0" end="100" time="1" />
 							<effect type="rotatex" delay="720" center="0,0" start="275" end="360" time="1080" tween="bounce" easing="out" />
 						</animation>
 						<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-						<font>lyr17c</font>
+						<font>fontLyrics17Part4</font>
 						<shadowcolor>black</shadowcolor>
 						<aligny>top</aligny>
-						<textcolor>$PARAM[col174]</textcolor>
+						<textcolor>$PARAM[part4_color]</textcolor>
 					</control>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics18">
-		<param name="col181" default="black" />
-		<param name="col182" default="black" />
-		<param name="col183" default="black" />
-		<param name="col184" default="black" />
-		<param name="18_left" default="110" />
-		<param name="18_top" default="30" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="part4_color" default="black" />
+		<param name="left" default="110" />
+		<param name="top" default="30" />
 		<definition>
 			<control type="group">
-				<top>$PARAM[18_top]</top>
-				<left>$PARAM[18_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<control type="grouplist">
 					<left>-110</left>
 					<top>150</top>
@@ -2572,10 +2158,9 @@
 					<itemgap>25</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,18) | String.EndsWith(Container(110).Currentitem,38) | String.EndsWith(Container(110).Currentitem,58) | String.EndsWith(Container(110).Currentitem,78) | String.EndsWith(Container(110).Currentitem,98)</visible>
+						<visible>$EXP[LyricsRow18]</visible>
 						<animation type="Visible" reversible="false">
 							<effect type="zoom" center="0,0" start="0" end="100" time="300" tween="sine" easing="out" />
 							<effect type="slide" delay="1250" end="50,0" time="180" tween="back" easing="out" />
@@ -2584,20 +2169,20 @@
 						<width>auto</width>
 						<height>125</height>
 						<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-						<font>lyr18</font>
+						<font>fontLyrics18</font>
 						<shadowcolor>black</shadowcolor>
 						<align>center</align>
-						<textcolor>$PARAM[col181]</textcolor>
+						<textcolor>$PARAM[part1_color]</textcolor>
 					</control>
 					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,18) | String.EndsWith(Container(110).Currentitem,38) | String.EndsWith(Container(110).Currentitem,58) | String.EndsWith(Container(110).Currentitem,78) | String.EndsWith(Container(110).Currentitem,98)</visible>
+						<visible>$EXP[LyricsRow18]</visible>
 						<width>auto</width>
 						<height>125</height>
 						<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-						<font>lyr18</font>
+						<font>fontLyrics18</font>
 						<shadowcolor>black</shadowcolor>
 						<align>center</align>
-						<textcolor>00ffffff</textcolor>
+						<textcolor>transparent</textcolor>
 					</control>
 				</control>
 				<control type="grouplist">
@@ -2608,20 +2193,19 @@
 					<itemgap>25</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,18) | String.EndsWith(Container(110).Currentitem,38) | String.EndsWith(Container(110).Currentitem,58) | String.EndsWith(Container(110).Currentitem,78) | String.EndsWith(Container(110).Currentitem,98)</visible>
+						<visible>$EXP[LyricsRow18]</visible>
 						<width>auto</width>
 						<height>125</height>
 						<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-						<font>lyr18</font>
+						<font>fontLyrics18</font>
 						<shadowcolor>black</shadowcolor>
 						<align>center</align>
-						<textcolor>00ffffff</textcolor>
+						<textcolor>transparent</textcolor>
 					</control>
 					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,18) | String.EndsWith(Container(110).Currentitem,38) | String.EndsWith(Container(110).Currentitem,58) | String.EndsWith(Container(110).Currentitem,78) | String.EndsWith(Container(110).Currentitem,98)</visible>
+						<visible>$EXP[LyricsRow18]</visible>
 						<animation type="Visible" reversible="false">
 							<effect type="slide" end="0,30" />
 							<effect type="zoom" center="0,0" delay="300" start="0" end="50" time="300" tween="sine" easing="out" />
@@ -2633,10 +2217,10 @@
 						<width>auto</width>
 						<height>125</height>
 						<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-						<font>lyr18</font>
+						<font>fontLyrics18</font>
 						<shadowcolor>black</shadowcolor>
 						<align>center</align>
-						<textcolor>$PARAM[col182]</textcolor>
+						<textcolor>$PARAM[part2_color]</textcolor>
 					</control>
 				</control>
 				<control type="grouplist">
@@ -2647,32 +2231,31 @@
 					<itemgap>15</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,18) | String.EndsWith(Container(110).Currentitem,38) | String.EndsWith(Container(110).Currentitem,58) | String.EndsWith(Container(110).Currentitem,78) | String.EndsWith(Container(110).Currentitem,98)</visible>
+						<visible>$EXP[LyricsRow18]</visible>
 						<animation type="Visible" reversible="false">
 							<effect type="zoom" center="0,0" delay="600" start="0" end="100" time="300" tween="sine" easing="out" />
 						</animation>
 						<width>auto</width>
 						<height>600</height>
 						<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-						<font>lyr18</font>
+						<font>fontLyrics18</font>
 						<shadowcolor>black</shadowcolor>
 						<align>center</align>
 						<aligny>top</aligny>
-						<textcolor>$PARAM[col183]</textcolor>
+						<textcolor>$PARAM[part3_color]</textcolor>
 					</control>
 					<control type="label">
 						<width max="625">auto</width>
 						<height>600</height>
 						<wrapmultiline>true</wrapmultiline>
-						<visible>String.EndsWith(Container(110).Currentitem,18) | String.EndsWith(Container(110).Currentitem,38) | String.EndsWith(Container(110).Currentitem,58) | String.EndsWith(Container(110).Currentitem,78) | String.EndsWith(Container(110).Currentitem,98)</visible>
+						<visible>$EXP[LyricsRow18]</visible>
 						<label> $INFO[Container(110).ListItem.Property(part4)]</label>
-						<font>lyr18b</font>
+						<font>fontLyrics18Part4</font>
 						<shadowcolor>black</shadowcolor>
 						<aligny>top</aligny>
-						<textcolor>00ffffff</textcolor>
+						<textcolor>transparent</textcolor>
 					</control>
 				</control>
 				<control type="grouplist">
@@ -2683,46 +2266,45 @@
 					<itemgap>15</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,18) | String.EndsWith(Container(110).Currentitem,38) | String.EndsWith(Container(110).Currentitem,58) | String.EndsWith(Container(110).Currentitem,78) | String.EndsWith(Container(110).Currentitem,98)</visible>
+						<visible>$EXP[LyricsRow18]</visible>
 						<width>auto</width>
 						<height>600</height>
 						<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-						<font>lyr18</font>
+						<font>fontLyrics18</font>
 						<shadowcolor>black</shadowcolor>
 						<align>center</align>
 						<aligny>top</aligny>
-						<textcolor>00ffffff</textcolor>
+						<textcolor>transparent</textcolor>
 					</control>
 					<control type="label">
 						<width max="625">auto</width>
 						<height>600</height>
 						<wrapmultiline>true</wrapmultiline>
-						<visible>String.EndsWith(Container(110).Currentitem,18) | String.EndsWith(Container(110).Currentitem,38) | String.EndsWith(Container(110).Currentitem,58) | String.EndsWith(Container(110).Currentitem,78) | String.EndsWith(Container(110).Currentitem,98)</visible>
+						<visible>$EXP[LyricsRow18]</visible>
 						<animation type="Visible" reversible="false">
 							<effect type="slide" delay="900" end="0,47" time="300" tween="sine" easing="out" />
 							<effect type="zoom" center="0,0" delay="900" start="0" end="100" time="300" tween="sine" easing="out" />
 						</animation>
 						<label> $INFO[Container(110).ListItem.Property(part4)]</label>
-						<font>lyr18b</font>
+						<font>fontLyrics18Part4</font>
 						<shadowcolor>black</shadowcolor>
 						<aligny>top</aligny>
-						<textcolor>$PARAM[col184]</textcolor>
+						<textcolor>$PARAM[part4_color]</textcolor>
 					</control>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics19">
-		<param name="col191" default="black" />
-		<param name="col192" default="black" />
-		<param name="col193" default="black" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
 		<definition>
 			<control type="label">
 				<animation effect="rotate" center="auto" start="0" end="0" condition="true">Conditional</animation>
-				<visible>String.EndsWith(Container(110).Currentitem,19) | String.EndsWith(Container(110).Currentitem,39) | String.EndsWith(Container(110).Currentitem,59) | String.EndsWith(Container(110).Currentitem,79) | String.EndsWith(Container(110).Currentitem,99)</visible>
+				<visible>$EXP[LyricsRow19]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="0,-550" />
 					<effect type="slide" delay="12" end="0,605" time="300" />
@@ -2730,14 +2312,14 @@
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr19</font>
+				<font>fontLyrics19Part1</font>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col191]</textcolor>
+				<textcolor>$PARAM[part1_color]</textcolor>
 			</control>
 			<control type="label">
 				<animation effect="rotate" center="auto" start="0" end="0" condition="true">Conditional</animation>
-				<visible>String.EndsWith(Container(110).Currentitem,19) | String.EndsWith(Container(110).Currentitem,39) | String.EndsWith(Container(110).Currentitem,59) | String.EndsWith(Container(110).Currentitem,79) | String.EndsWith(Container(110).Currentitem,99)</visible>
+				<visible>$EXP[LyricsRow19]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="0,-550" />
 					<effect type="slide" delay="360" end="0,615" time="300" />
@@ -2745,14 +2327,14 @@
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr19b</font>
+				<font>fontLyrics19Part2</font>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col192]</textcolor>
+				<textcolor>$PARAM[part2_color]</textcolor>
 			</control>
 			<control type="label">
 				<animation effect="rotate" center="auto" start="0" end="0" condition="true">Conditional</animation>
-				<visible>String.EndsWith(Container(110).Currentitem,19) | String.EndsWith(Container(110).Currentitem,39) | String.EndsWith(Container(110).Currentitem,59) | String.EndsWith(Container(110).Currentitem,79) | String.EndsWith(Container(110).Currentitem,99)</visible>
+				<visible>$EXP[LyricsRow19]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" end="0,-550" />
 					<effect type="slide" delay="720" end="0,625" time="300" />
@@ -2760,48 +2342,48 @@
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr19c</font>
+				<font>fontLyrics19Part3</font>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col193]</textcolor>
+				<textcolor>$PARAM[part3_color]</textcolor>
 			</control>
 		</definition>
 	</include>
-	<include name="Lyrics19b">
-		<param name="col194" default="00ffffff" />
-		<param name="19b_left" default="610" />
-		<param name="19b_top" default="225" />
+	<include name="Lyrics19Part4">
+		<param name="part4_color" default="transparent" />
+		<param name="left" default="610" />
+		<param name="top" default="225" />
 		<definition>
 			<control type="textbox">
-				<left>$PARAM[19b_left]</left>
-				<top>$PARAM[19b_top]</top>
-				<visible>String.EndsWith(Container(110).Currentitem,19) | String.EndsWith(Container(110).Currentitem,39) | String.EndsWith(Container(110).Currentitem,59) | String.EndsWith(Container(110).Currentitem,79) | String.EndsWith(Container(110).Currentitem,99)</visible>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<visible>$EXP[LyricsRow19]</visible>
 				<animation type="Visible" reversible="false">
 					<effect type="slide" delay="1260" start="1200,115" end="100,115" time="360" tween="back" easing="out" />
 				</animation>
 				<width>700</width>
 				<height>600</height>
 				<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-				<font>lyr19d</font>
+				<font>fontLyrics19Part4</font>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col194]</textcolor>
+				<textcolor>$PARAM[part4_color]</textcolor>
 			</control>
 		</definition>
 	</include>
 	<include name="Lyrics20">
-		<param name="col201" default="black" />
-		<param name="col202" default="black" />
-		<param name="col203" default="black" />
-		<param name="col204" default="black" />
-		<param name="20_left" default="0" />
-		<param name="20_top" default="150" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="part4_color" default="black" />
+		<param name="left" default="0" />
+		<param name="top" default="150" />
 		<definition>
 			<control type="group">
-				<top>$PARAM[20_top]</top>
-				<left>$PARAM[20_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<control type="label">
-					<visible>String.EndsWith(Container(110).Currentitem,20) | String.EndsWith(Container(110).Currentitem,40) | String.EndsWith(Container(110).Currentitem,60) | String.EndsWith(Container(110).Currentitem,80) | String.EndsWith(Container(110).Currentitem,00)</visible>
+					<visible>$EXP[LyricsRow20]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="zoom" center="auto" start="400" end="100" tween="back" easing="out" time="600" />
 						<effect type="slide" delay="1000" start="0,0" end="0,-200" time="420" tween="back" easing="out" />
@@ -2810,10 +2392,10 @@
 					<width>1920</width>
 					<height>115</height>
 					<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-					<font>lyr20</font>
+					<font>fontLyrics20</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
-					<textcolor>$PARAM[col201]</textcolor>
+					<textcolor>$PARAM[part1_color]</textcolor>
 				</control>
 				<control type="grouplist">
 					<top>260</top>
@@ -2822,10 +2404,9 @@
 					<itemgap>35</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,20) | String.EndsWith(Container(110).Currentitem,40) | String.EndsWith(Container(110).Currentitem,60) | String.EndsWith(Container(110).Currentitem,80) | String.EndsWith(Container(110).Currentitem,00)</visible>
+						<visible>$EXP[LyricsRow20]</visible>
 						<animation type="Visible" reversible="false">
 							<effect type="zoom" center="auto" start="400" end="100" tween="back" easing="out" time="800" />
 							<effect type="slide" delay="1000" start="0,0" end="0,-200" time="480" tween="back" easing="out" />
@@ -2833,13 +2414,13 @@
 						<width>auto</width>
 						<height>125</height>
 						<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-						<font>lyr20</font>
+						<font>fontLyrics20</font>
 						<shadowcolor>black</shadowcolor>
 						<align>center</align>
-						<textcolor>$PARAM[col202]</textcolor>
+						<textcolor>$PARAM[part2_color]</textcolor>
 					</control>
 					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,20) | String.EndsWith(Container(110).Currentitem,40) | String.EndsWith(Container(110).Currentitem,60) | String.EndsWith(Container(110).Currentitem,80) | String.EndsWith(Container(110).Currentitem,00)</visible>
+						<visible>$EXP[LyricsRow20]</visible>
 						<animation type="Visible" reversible="false">
 							<effect type="zoom" center="auto" start="400" end="100" tween="back" easing="out" time="1000" />
 							<effect type="slide" delay="1000" start="0,0" end="0,-200" time="540" tween="back" easing="out" />
@@ -2847,10 +2428,10 @@
 						<width>auto</width>
 						<height>125</height>
 						<label>$INFO[Container(110).ListItem.Property(part3)]</label>
-						<font>lyr20</font>
+						<font>fontLyrics20</font>
 						<shadowcolor>black</shadowcolor>
 						<align>center</align>
-						<textcolor>$PARAM[col203]</textcolor>
+						<textcolor>$PARAM[part3_color]</textcolor>
 					</control>
 				</control>
 				<control type="textbox">
@@ -2858,73 +2439,75 @@
 					<top>178</top>
 					<width>700</width>
 					<height>600</height>
-					<visible>String.EndsWith(Container(110).Currentitem,20) | String.EndsWith(Container(110).Currentitem,40) | String.EndsWith(Container(110).Currentitem,60) | String.EndsWith(Container(110).Currentitem,80) | String.EndsWith(Container(110).Currentitem,00)</visible>
+					<visible>$EXP[LyricsRow20]</visible>
 					<animation type="Visible" reversible="false">
 						<effect type="slide" delay="1200" start="400,0" end="0,0" time="300" tween="sine" easing="out" />
 						<effect type="rotate" delay="1200" center="auto" start="4" end="0" time="720" tween="bounce" easing="out" />
 					</animation>
 					<label> $INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr20b</font>
+					<font>fontLyrics20Part4</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
 					<aligny>top</aligny>
-					<textcolor>$PARAM[col204]</textcolor>
+					<textcolor>$PARAM[part4_color]</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Line1">
-		<param name="col11" default="black" />
-		<param name="col12" default="black" />
-		<param name="col13" default="black" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="line_endswith" default="1" />
 		<definition>
 			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,1)</visible>
+				<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 				<animation effect="slide" start="0,-400" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
 				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 				<width>auto</width>
 				<height>100</height>
 				<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr1</font>
+				<font>fontLyrics1</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col11]</textcolor>
+				<textcolor>$PARAM[part1_color]</textcolor>
 			</control>
 			<control type="label">
 				<animation effect="slide" start="0,-400" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
 				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-				<visible>String.EndsWith(Container(110).Currentitem,1)</visible>
+				<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 				<width>auto</width>
 				<height>100</height>
 				<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr1</font>
+				<font>fontLyrics1</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col12]</textcolor>
+				<textcolor>$PARAM[part2_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,1)</visible>
+				<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 				<animation effect="slide" start="0,-400" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
 				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 				<width>auto</width>
 				<height>100</height>
 				<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr1</font>
+				<font>fontLyrics1</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col13]</textcolor>
+				<textcolor>$PARAM[part3_color]</textcolor>
 			</control>
 		</definition>
 	</include>
-	<include name="Line1b">
-		<param name="col14" default="black" />
-		<param name="1b_left" default="510" />
-		<param name="1b_top" default="224" />
+	<include name="Line1Part4">
+		<param name="part4_color" default="black" />
+		<param name="left" default="510" />
+		<param name="top" default="224" />
+		<param name="line_endswith" default="1" />
 		<definition>
 			<control type="group">
-				<left>$PARAM[1b_left]</left>
-				<top>$PARAM[1b_top]</top>
-				<visible>String.EndsWith(Container(110).Currentitem,1)</visible>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 				<animation effect="slide" start="0,-400" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
 				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 				<control type="textbox">
@@ -2932,28 +2515,29 @@
 					<width>900</width>
 					<height>600</height>
 					<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr1b</font>
+					<font>fontLyrics1Part4</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
 					<aligny>top</aligny>
-					<textcolor>$PARAM[col14]</textcolor>
+					<textcolor>$PARAM[part4_color]</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Line2">
-		<param name="col21" default="black" />
-		<param name="col22" default="black" />
-		<param name="col23" default="black" />
-		<param name="col24" default="black" />
-		<param name="2_left" default="10" />
-		<param name="2_top" default="0" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="part4_color" default="black" />
+		<param name="left" default="10" />
+		<param name="top" default="0" />
+		<param name="line_endswith" default="2" />
 		<definition>
 			<control type="group">
-				<top>$PARAM[2_top]</top>
-				<left>$PARAM[2_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<control type="label">
-					<visible>String.EndsWith(Container(110).Currentitem,2)</visible>
+					<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 					<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
 					<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 					<left>50</left>
@@ -2961,24 +2545,24 @@
 					<width>1820</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-					<font>lyr17</font>
+					<font>fontLyrics17Part1</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
-					<textcolor>$PARAM[col21]</textcolor>
+					<textcolor>$PARAM[part1_color]</textcolor>
 				</control>
 				<control type="label">
 					<left>50</left>
-					<visible>String.EndsWith(Container(110).Currentitem,2)</visible>
+					<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 					<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
 					<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 					<top>193</top>
 					<width>1820</width>
 					<height>125</height>
 					<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-					<font>lyr17a</font>
+					<font>fontLyrics17Part2</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
-					<textcolor>$PARAM[col22]</textcolor>
+					<textcolor>$PARAM[part2_color]</textcolor>
 				</control>
 				<control type="grouplist">
 					<left>-5</left>
@@ -2988,91 +2572,92 @@
 					<itemgap>30</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,2)</visible>
+						<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 						<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
 						<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 						<width>auto</width>
 						<height>600</height>
 						<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-						<font>lyr17b</font>
+						<font>fontLyrics17Part3</font>
 						<shadowcolor>black</shadowcolor>
 						<align>right</align>
 						<aligny>top</aligny>
-						<textcolor>$PARAM[col23]</textcolor>
+						<textcolor>$PARAM[part3_color]</textcolor>
 					</control>
 					<control type="label">
 						<width max="625">auto</width>
 						<height>600</height>
 						<wrapmultiline>true</wrapmultiline>
-						<visible>String.EndsWith(Container(110).Currentitem,2)</visible>
+						<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 						<animation effect="slide" end="0,80" condition="true">Conditional</animation>
 						<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
 						<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 						<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-						<font>lyr17c</font>
+						<font>fontLyrics17Part4</font>
 						<shadowcolor>black</shadowcolor>
 						<aligny>top</aligny>
-						<textcolor>$PARAM[col24]</textcolor>
+						<textcolor>$PARAM[part4_color]</textcolor>
 					</control>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Line3">
-		<param name="col31" default="black" />
-		<param name="col32" default="black" />
-		<param name="col33" default="black" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="line_endswith" default="3" />
 		<definition>
 			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,3)</visible>
+				<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 				<animation effect="slide" start="0,-400" end="-15,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
 				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 				<width>auto</width>
 				<height>115</height>
 				<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr3</font>
+				<font>fontLyrics3</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col31]</textcolor>
+				<textcolor>$PARAM[part1_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,3)</visible>
+				<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 				<animation effect="slide" start="0,-400" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
 				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 				<width>auto</width>
 				<height>115</height>
 				<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr3</font>
+				<font>fontLyrics3</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col32]</textcolor>
+				<textcolor>$PARAM[part2_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,3)</visible>
+				<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 				<animation effect="slide" start="0,-400" end="15,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
 				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 				<width>auto</width>
 				<height>115</height>
 				<label>$INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr3</font>
+				<font>fontLyrics3</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
-				<textcolor>$PARAM[col33]</textcolor>
+				<textcolor>$PARAM[part3_color]</textcolor>
 			</control>
 		</definition>
 	</include>
-	<include name="Line3b">
-		<param name="col34" default="black" />
-		<param name="3b_left" default="510" />
-		<param name="3b_top" default="230" />
+	<include name="Line3Part4">
+		<param name="part4_color" default="black" />
+		<param name="left" default="510" />
+		<param name="top" default="230" />
+		<param name="line_endswith" default="3" />
 		<definition>
 			<control type="group">
-				<left>$PARAM[3b_left]</left>
-				<top>$PARAM[3b_top]</top>
-				<visible>String.EndsWith(Container(110).Currentitem,3)</visible>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 				<animation effect="slide" start="0,-400" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
 				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 				<control type="textbox">
@@ -3081,26 +2666,27 @@
 					<width>700</width>
 					<height>600</height>
 					<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr3b</font>
+					<font>fontLyrics3Part4</font>
 					<shadowcolor>black</shadowcolor>
 					<align>center</align>
 					<aligny>top</aligny>
-					<textcolor>$PARAM[col34]</textcolor>
+					<textcolor>$PARAM[part4_color]</textcolor>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Line4">
-		<param name="col41" default="black" />
-		<param name="col42" default="black" />
-		<param name="col43" default="black" />
-		<param name="col44" default="black" />
-		<param name="4_left" default="0" />
-		<param name="4_top" default="250" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="part4_color" default="black" />
+		<param name="left" default="0" />
+		<param name="top" default="250" />
+		<param name="line_endswith" default="4" />
 		<definition>
 			<control type="group">
-				<top>$PARAM[4_top]</top>
-				<left>$PARAM[4_left]</left>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
 				<control type="grouplist">
 					<top>-95</top>
 					<width>1920</width>
@@ -3108,31 +2694,30 @@
 					<itemgap>25</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,4)</visible>
+						<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 						<animation effect="slide" end="0,4" condition="true">Conditional</animation>
 						<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
 						<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 						<width>auto</width>
 						<height>125</height>
 						<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-						<font>lyr2</font>
+						<font>fontLyrics2</font>
 						<shadowcolor>black</shadowcolor>
 						<align>center</align>
-						<textcolor>$PARAM[col41]</textcolor>
+						<textcolor>$PARAM[part1_color]</textcolor>
 					</control>
 					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,4)</visible>
+						<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 						<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
 						<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 						<width>auto</width>
 						<height>125</height>
 						<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-						<font>lyr2</font>
+						<font>fontLyrics2</font>
 						<align>center</align>
-						<textcolor>$PARAM[col42]</textcolor>
+						<textcolor>$PARAM[part2_color]</textcolor>
 					</control>
 				</control>
 				<control type="grouplist">
@@ -3142,505 +2727,140 @@
 					<itemgap>30</itemgap>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
-					<visible>true</visible>
 					<align>center</align>
 					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,4)</visible>
+						<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 						<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
 						<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 						<width>auto</width>
 						<height>125</height>
 						<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-						<font>lyr2</font>
+						<font>fontLyrics2</font>
 						<shadowcolor>black</shadowcolor>
 						<align>right</align>
 						<aligny>top</aligny>
-						<textcolor>$PARAM[col43]</textcolor>
+						<textcolor>$PARAM[part3_color]</textcolor>
 					</control>
 					<control type="label">
 						<width max="700">auto</width>
 						<height>600</height>
 						<wrapmultiline>true</wrapmultiline>
-						<visible>String.EndsWith(Container(110).Currentitem,4)</visible>
+						<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 						<animation effect="slide" end="0,28" condition="true">Conditional</animation>
 						<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
 						<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 						<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-						<font>lyr2b</font>
+						<font>fontLyrics2Part4</font>
 						<shadowcolor>black</shadowcolor>
 						<aligny>top</aligny>
-						<textcolor>$PARAM[col44]</textcolor>
-					</control>
-				</control>
-			</control>
-		</definition>
-	</include>
-	<include name="Line5">
-		<param name="col51" default="black" />
-		<param name="col52" default="black" />
-		<param name="col53" default="black" />
-		<param name="col54" default="black" />
-		<definition>
-			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,5)</visible>
-				<animation effect="slide" start="400,0" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
-				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-				<width>auto</width>
-				<height>350</height>
-				<label>$INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr5</font>
-				<shadowcolor>black</shadowcolor>
-				<align>center</align>
-				<aligny>top</aligny>
-				<textcolor>$PARAM[col51]</textcolor>
-			</control>
-			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,5)</visible>
-				<animation effect="slide" end="10,60" condition="true">Conditional</animation>
-				<animation effect="slide" start="400,0" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
-				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-				<width>auto</width>
-				<height>350</height>
-				<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr5</font>
-				<shadowcolor>black</shadowcolor>
-				<align>center</align>
-				<aligny>top</aligny>
-				<textcolor>$PARAM[col52]</textcolor>
-			</control>
-			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,5)</visible>
-				<animation effect="slide" end="20,120" condition="true">Conditional</animation>
-				<animation effect="slide" start="400,0" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
-				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-				<width>auto</width>
-				<height>350</height>
-				<label>$INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr5</font>
-				<shadowcolor>black</shadowcolor>
-				<align>center</align>
-				<aligny>top</aligny>
-				<textcolor>$PARAM[col53]</textcolor>
-			</control>
-			<control type="label">
-				<wrapmultiline>true</wrapmultiline>
-				<visible>String.EndsWith(Container(110).Currentitem,5)</visible>
-				<animation effect="slide" end="30,200" condition="true">Conditional</animation>
-				<animation effect="slide" start="400,0" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
-				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-				<width max="600">auto</width>
-				<height>350</height>
-				<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-				<font>lyr5b</font>
-				<shadowcolor>black</shadowcolor>
-				<aligny>top</aligny>
-				<textcolor>$PARAM[col54]</textcolor>
-			</control>
-		</definition>
-	</include>
-	<include name="Line6">
-		<param name="col61" default="black" />
-		<param name="col62" default="black" />
-		<param name="col63" default="black" />
-		<definition>
-			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,6)</visible>
-				<animation effect="slide" start="0,-400" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
-				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-				<width>auto</width>
-				<height>100</height>
-				<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr1</font>
-				<shadowcolor>black</shadowcolor>
-				<align>center</align>
-				<textcolor>$PARAM[col61]</textcolor>
-			</control>
-			<control type="label">
-				<animation effect="slide" start="0,-400" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
-				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-				<visible>String.EndsWith(Container(110).Currentitem,6)</visible>
-				<width>auto</width>
-				<height>100</height>
-				<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr1</font>
-				<shadowcolor>black</shadowcolor>
-				<align>center</align>
-				<textcolor>$PARAM[col62]</textcolor>
-			</control>
-			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,6)</visible>
-				<animation effect="slide" start="0,-400" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
-				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-				<width>auto</width>
-				<height>100</height>
-				<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr1</font>
-				<shadowcolor>black</shadowcolor>
-				<align>center</align>
-				<textcolor>$PARAM[col63]</textcolor>
-			</control>
-		</definition>
-	</include>
-	<include name="Line6b">
-		<param name="col64" default="black" />
-		<param name="6b_left" default="510" />
-		<param name="6b_top" default="224" />
-		<definition>
-			<control type="group">
-				<left>$PARAM[6b_left]</left>
-				<top>$PARAM[6b_top]</top>
-				<visible>String.EndsWith(Container(110).Currentitem,6)</visible>
-				<animation effect="slide" start="0,-400" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
-				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-				<control type="textbox">
-					<top>80</top>
-					<width>900</width>
-					<height>600</height>
-					<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr1b</font>
-					<shadowcolor>black</shadowcolor>
-					<align>center</align>
-					<aligny>top</aligny>
-					<textcolor>$PARAM[col64]</textcolor>
-				</control>
-			</control>
-		</definition>
-	</include>
-	<include name="Line7">
-		<param name="col71" default="black" />
-		<param name="col72" default="black" />
-		<param name="col73" default="black" />
-		<param name="col74" default="black" />
-		<param name="7_left" default="10" />
-		<param name="7_top" default="0" />
-		<definition>
-			<control type="group">
-				<top>$PARAM[7_top]</top>
-				<left>$PARAM[7_left]</left>
-				<control type="label">
-					<visible>String.EndsWith(Container(110).Currentitem,7)</visible>
-					<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
-					<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-					<left>50</left>
-					<top>70</top>
-					<width>1820</width>
-					<height>125</height>
-					<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-					<font>lyr17</font>
-					<shadowcolor>black</shadowcolor>
-					<align>center</align>
-					<textcolor>$PARAM[col71]</textcolor>
-				</control>
-				<control type="label">
-					<left>50</left>
-					<visible>String.EndsWith(Container(110).Currentitem,7)</visible>
-					<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
-					<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-					<top>193</top>
-					<width>1820</width>
-					<height>125</height>
-					<label> $INFO[Container(110).ListItem.Property(part2)]</label>
-					<font>lyr17a</font>
-					<shadowcolor>black</shadowcolor>
-					<align>center</align>
-					<textcolor>$PARAM[col72]</textcolor>
-				</control>
-				<control type="grouplist">
-					<left>-5</left>
-					<top>275</top>
-					<width>1920</width>
-					<height>600</height>
-					<itemgap>30</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<visible>true</visible>
-					<align>center</align>
-					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,7)</visible>
-						<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
-						<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-						<width>auto</width>
-						<height>600</height>
-						<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-						<font>lyr17b</font>
-						<shadowcolor>black</shadowcolor>
-						<align>right</align>
-						<aligny>top</aligny>
-						<textcolor>$PARAM[col73]</textcolor>
-					</control>
-					<control type="label">
-						<width max="625">auto</width>
-						<height>600</height>
-						<wrapmultiline>true</wrapmultiline>
-						<visible>String.EndsWith(Container(110).Currentitem,7)</visible>
-						<animation effect="slide" end="0,80" condition="true">Conditional</animation>
-						<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
-						<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-						<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-						<font>lyr17c</font>
-						<shadowcolor>black</shadowcolor>
-						<aligny>top</aligny>
-						<textcolor>$PARAM[col74]</textcolor>
-					</control>
-				</control>
-			</control>
-		</definition>
-	</include>
-	<include name="Line8">
-		<param name="col81" default="black" />
-		<param name="col82" default="black" />
-		<param name="col83" default="black" />
-		<definition>
-			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,8)</visible>
-				<animation effect="slide" start="0,-400" end="-15,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
-				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-				<width>auto</width>
-				<height>115</height>
-				<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr3</font>
-				<shadowcolor>black</shadowcolor>
-				<align>center</align>
-				<textcolor>$PARAM[col81]</textcolor>
-			</control>
-			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,8)</visible>
-				<animation effect="slide" start="0,-400" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
-				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-				<width>auto</width>
-				<height>115</height>
-				<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr3</font>
-				<shadowcolor>black</shadowcolor>
-				<align>center</align>
-				<textcolor>$PARAM[col82]</textcolor>
-			</control>
-			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,8)</visible>
-				<animation effect="slide" start="0,-400" end="15,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
-				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-				<width>auto</width>
-				<height>115</height>
-				<label>$INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr3</font>
-				<shadowcolor>black</shadowcolor>
-				<align>center</align>
-				<textcolor>$PARAM[col83]</textcolor>
-			</control>
-		</definition>
-	</include>
-	<include name="Line8b">
-		<param name="col84" default="black" />
-		<param name="8b_left" default="510" />
-		<param name="8b_top" default="230" />
-		<definition>
-			<control type="group">
-				<left>$PARAM[8b_left]</left>
-				<top>$PARAM[8b_top]</top>
-				<visible>String.EndsWith(Container(110).Currentitem,8)</visible>
-				<animation effect="slide" start="0,-400" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
-				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-				<control type="textbox">
-					<left>100</left>
-					<top>75</top>
-					<width>700</width>
-					<height>600</height>
-					<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-					<font>lyr3b</font>
-					<shadowcolor>black</shadowcolor>
-					<align>center</align>
-					<aligny>top</aligny>
-					<textcolor>$PARAM[col84]</textcolor>
-				</control>
-			</control>
-		</definition>
-	</include>
-	<include name="Line9">
-		<param name="col91" default="black" />
-		<param name="col92" default="black" />
-		<param name="col93" default="black" />
-		<param name="col94" default="black" />
-		<param name="9_left" default="0" />
-		<param name="9_top" default="250" />
-		<definition>
-			<control type="group">
-				<top>$PARAM[9_top]</top>
-				<left>$PARAM[9_left]</left>
-				<control type="grouplist">
-					<top>-95</top>
-					<width>1920</width>
-					<height>125</height>
-					<itemgap>25</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<visible>true</visible>
-					<align>center</align>
-					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,9)</visible>
-						<animation effect="slide" end="0,4" condition="true">Conditional</animation>
-						<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
-						<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-						<width>auto</width>
-						<height>125</height>
-						<label> $INFO[Container(110).ListItem.Property(part1)]</label>
-						<font>lyr2</font>
-						<shadowcolor>black</shadowcolor>
-						<align>center</align>
-						<textcolor>$PARAM[col91]</textcolor>
-					</control>
-					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,9)</visible>
-						<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
-						<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-						<width>auto</width>
-						<height>125</height>
-						<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-						<font>lyr2</font>
-						<align>center</align>
-						<textcolor>$PARAM[col92]</textcolor>
-					</control>
-				</control>
-				<control type="grouplist">
-					<top>5</top>
-					<width>1920</width>
-					<height>600</height>
-					<itemgap>30</itemgap>
-					<scrolltime>0</scrolltime>
-					<orientation>horizontal</orientation>
-					<visible>true</visible>
-					<align>center</align>
-					<control type="label">
-						<visible>String.EndsWith(Container(110).Currentitem,9)</visible>
-						<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
-						<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-						<width>auto</width>
-						<height>125</height>
-						<label> $INFO[Container(110).ListItem.Property(part3)]</label>
-						<font>lyr2</font>
-						<shadowcolor>black</shadowcolor>
-						<align>right</align>
-						<aligny>top</aligny>
-						<textcolor>$PARAM[col93]</textcolor>
-					</control>
-					<control type="label">
-						<width max="700">auto</width>
-						<height>600</height>
-						<wrapmultiline>true</wrapmultiline>
-						<visible>String.EndsWith(Container(110).Currentitem,9)</visible>
-						<animation effect="slide" end="0,28" condition="true">Conditional</animation>
-						<animation effect="zoom" center="auto" start="0" end="100" time="250" reversible="false">Visible</animation>
-						<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
-						<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-						<font>lyr2b</font>
-						<shadowcolor>black</shadowcolor>
-						<aligny>top</aligny>
-						<textcolor>$PARAM[col94]</textcolor>
+						<textcolor>$PARAM[part4_color]</textcolor>
 					</control>
 				</control>
 			</control>
 		</definition>
 	</include>
 	<include name="Line0">
-		<param name="col01" default="black" />
-		<param name="col02" default="black" />
-		<param name="col03" default="black" />
-		<param name="col04" default="black" />
+		<param name="part1_color" default="black" />
+		<param name="part2_color" default="black" />
+		<param name="part3_color" default="black" />
+		<param name="part4_color" default="black" />
+		<param name="line_endswith" default="0" />
 		<definition>
 			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,0)</visible>
+				<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 				<animation effect="slide" start="400,0" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
 				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part1)]</label>
-				<font>lyr5</font>
+				<font>fontLyrics5</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col01]</textcolor>
+				<textcolor>$PARAM[part1_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,0)</visible>
+				<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 				<animation effect="slide" end="10,60" condition="true">Conditional</animation>
 				<animation effect="slide" start="400,0" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
 				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part2)]</label>
-				<font>lyr5</font>
+				<font>fontLyrics5</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col02]</textcolor>
+				<textcolor>$PARAM[part2_color]</textcolor>
 			</control>
 			<control type="label">
-				<visible>String.EndsWith(Container(110).Currentitem,0)</visible>
+				<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 				<animation effect="slide" end="20,120" condition="true">Conditional</animation>
 				<animation effect="slide" start="400,0" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
 				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 				<width>auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part3)]</label>
-				<font>lyr5</font>
+				<font>fontLyrics5</font>
 				<shadowcolor>black</shadowcolor>
 				<align>center</align>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col03]</textcolor>
+				<textcolor>$PARAM[part3_color]</textcolor>
 			</control>
 			<control type="label">
 				<wrapmultiline>true</wrapmultiline>
-				<visible>String.EndsWith(Container(110).Currentitem,0)</visible>
+				<visible>String.EndsWith(Container(110).Currentitem,$PARAM[line_endswith])</visible>
 				<animation effect="slide" end="30,200" condition="true">Conditional</animation>
 				<animation effect="slide" start="400,0" end="0,0" time="250" tween="sine" easing="out" reversible="false">Visible</animation>
 				<animation effect="fade" start="0" end="0" time="10">Hidden</animation>
 				<width max="600">auto</width>
 				<height>350</height>
 				<label>$INFO[Container(110).ListItem.Property(part4)]</label>
-				<font>lyr5b</font>
+				<font>fontLyrics5Part4</font>
 				<shadowcolor>black</shadowcolor>
 				<aligny>top</aligny>
-				<textcolor>$PARAM[col04]</textcolor>
+				<textcolor>$PARAM[part4_color]</textcolor>
 			</control>
 		</definition>
 	</include>
-	<!-- VARs -->
-	<variable name="Col_lyr1">
-		<value condition="String.EndsWith(Container(110).Currentitem,1)">ffffea4f</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,2)">ffff4d99</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,3)">ffff8554</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,4)">ff4a7eb8</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,5)">ffFF5354</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,6)">ff46e046</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,7)">ffFFEA4F</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,8)">ffFF4D99</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,9)">ffFF8655</value>
-		<value>ff4A7EB8</value>
+	<!-- Colors -->
+	<variable name="LyricPart1Color">
+		<value condition="String.EndsWith(Container(110).Currentitem,1)">FFFFEA4F</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,2)">FFFF4D99</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,3)">FFFF8655</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,4)">FF4A7EB8</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,5)">FFFF5354</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,6)">FF46E046</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,7)">FFFFEA4F</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,8)">FFFF4D99</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,9)">FFFF8655</value>
+		<value>FF4A7EB8</value>
 	</variable>
-	<variable name="Col_lyr2">
-		<value condition="String.EndsWith(Container(110).Currentitem,1)">ff46e046</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,2)">ffffea4f</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,3)">ff46e046</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,4)">ffFF8655</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,5)">ff46E046</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,6)">ffffea4f</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,7)">ffFF8655</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,8)">ff46E046</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,9)">ffFFEA4F</value>
-		<value>ffFF5354</value>
+	<variable name="LyricPart2Color">
+		<value condition="String.EndsWith(Container(110).Currentitem,1)">FF46E046</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,2)">FFFFEA4F</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,3)">FF46E046</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,4)">FFFF8655</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,5)">FF46E046</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,6)">FFFFEA4F</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,7)">FFFF8655</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,8)">FF46E046</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,9)">FFFFEA4F</value>
+		<value>FFFF5354</value>
 	</variable>
-	<variable name="Col_lyr3">
-		<value condition="String.EndsWith(Container(110).Currentitem,1)">ff4a7eb8</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,2)">ff4a80b9</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,3)">ffff4d99</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,4)">ffFF4D99</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,5)">ffFF8655</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,6)">ffff4d99</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,7)">ffFF5354</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,8)">ff4A7EB8</value>
-		<value condition="String.EndsWith(Container(110).Currentitem,9)">ff46E046</value>
-		<value>ffFFEA4F</value>
+	<variable name="LyricPart3Color">
+		<value condition="String.EndsWith(Container(110).Currentitem,1)">FF4A7EB8</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,2)">FF4A7EB8</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,3)">FFFF4D99</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,4)">FFFF4D99</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,5)">FFFF8655</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,6)">FFFF4D99</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,7)">FFFF5354</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,8)">FF4A7EB8</value>
+		<value condition="String.EndsWith(Container(110).Currentitem,9)">FF46E046</value>
+		<value>FFFFEA4F</value>
 	</variable>
-	<variable name="Col_lyr4">
-		<value>fffffaf0</value>
+	<variable name="LyricPart4Color">
+		<value>FFFFFAF0</value>
 	</variable>
 </includes>
