@@ -3817,4 +3817,100 @@
 			</control>
 		</definition>
 	</include>
+	<include name="MusicVizTrackInfo">
+		<param name="left" default="30" />
+		<param name="width" default="1100" />
+		<param name="align" default="right" />
+		<definition>
+			<control type="label">
+				<left>$PARAM[left]</left>
+				<top>-40</top>
+				<width>$PARAM[width]</width>
+				<height>80</height>
+				<font>font_musicviz</font>
+				<align>$PARAM[align]</align>
+				<shadowcolor>black</shadowcolor>
+				<label>$INFO[MusicPlayer.Artist]</label>
+				<scroll>true</scroll>
+				<scrollsuffix>  -  </scrollsuffix>
+				<visible>[String.IsEmpty(Player.Art(artist.clearlogo)) + String.IsEmpty(Player.Art(clearlogo))] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
+				<include>VisibleFadeAnimation</include>
+			</control>
+			<control type="label">
+				<left>$PARAM[left]</left>
+				<top>70</top>
+				<width>$PARAM[width]</width>
+				<height>20</height>
+				<align>$PARAM[align]</align>
+				<font>font30</font>
+				<label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[Player.Title,[COLOR white],[/COLOR]]</label>
+				<textcolor>$VAR[ThemeLabelColor]</textcolor>
+				<shadowcolor>black</shadowcolor>
+				<scroll>true</scroll>
+			</control>
+			<control type="label">
+				<left>$PARAM[left]</left>
+				<top>140</top>
+				<width>$PARAM[width]</width>
+				<height>20</height>
+				<align>$PARAM[align]</align>
+				<font>font30</font>
+				<label>$INFO[MusicPlayer.Album]$INFO[MusicPlayer.DiscNumber, - $LOCALIZE[427]: ,][COLOR $VAR[ThemeLabelColor]]$INFO[MusicPlayer.Year, [,]][/COLOR]</label>
+				<shadowcolor>black</shadowcolor>
+				<scroll>true</scroll>
+				<scrollsuffix>  -  </scrollsuffix>
+			</control>
+			<control type="label">
+				<left>$PARAM[left]</left>
+				<top>250</top>
+				<width>$PARAM[width]</width>
+				<height>65</height>
+				<align>$PARAM[align]</align>
+				<textcolor>$VAR[ThemeLabelColor]</textcolor>
+				<scroll>true</scroll>
+				<scrollsuffix>  -  </scrollsuffix>
+				<label>$INFO[MusicPlayer.Genre,[COLOR white][LOWERCASE], [/LOWERCASE]· [/COLOR]]$VAR[MusicPlayerCodecVar]$INFO[MusicPlayer.Bitrate,[COLOR white] · , [/COLOR]kbps[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.BitsPerSample,[COLOR white] ,[/COLOR] bit[COLOR white] ·[/COLOR]]$INFO[MusicPlayer.Samplerate,[COLOR white] ,[/COLOR] kHz]</label>
+			</control>
+		</definition>
+	</include>
+	<include name="MusicVizTrackExtras">
+		<param name="left" default="30" />
+		<param name="width" default="1100" />
+		<param name="align" default="right" />
+		<param name="ratingleft" default="745" />
+		<param name="ratingalign" default="right" />
+		<definition>
+			<control type="image">
+				<left>$PARAM[left]</left>
+				<top>-120</top>
+				<width>$PARAM[width]</width>
+				<height>155</height>
+				<aspectratio aligny="bottom" align="$PARAM[align]">keep</aspectratio>
+				<texture background="true">$VAR[PlayerArtworkLogoVar]</texture>
+				<fadetime>300</fadetime>
+				<visible>!Skin.HasSetting(Disable.MusicVizLogo)</visible>
+			</control>
+			<control type="label">
+				<left>$PARAM[left]</left>
+				<top>210</top>
+				<width>$PARAM[width]</width>
+				<height>18</height>
+				<align>$PARAM[align]</align>
+				<font>font30</font>
+				<label>[COLOR=white]$INFO[Player.Time][/COLOR]$INFO[Player.Duration, / [COLOR=white],[/COLOR] ]</label>
+				<textcolor>$VAR[ThemeLabelColor]</textcolor>
+				<shadowcolor>black</shadowcolor>
+			</control>
+			<control type="image">
+				<left>$PARAM[ratingleft]</left>
+				<top>315</top>
+				<width>400</width>
+				<height>45</height>
+				<colordiffuse>$VAR[ThemeLabelColor]</colordiffuse>
+				<texture fallback="flags/rating/empty.png">$INFO[MusicPlayer.UserRating,flags/rating/,.png]</texture>
+				<aspectratio align="$PARAM[ratingalign]" aligny="bottom">keep</aspectratio>
+				<visible>!Player.IsInternetStream</visible>
+			</control>
+		</definition>
+	</include>
 </includes>
