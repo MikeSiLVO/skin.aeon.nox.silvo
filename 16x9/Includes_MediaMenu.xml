@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="MediaMenuTop">
+		<top>80</top>
+		<width>400</width>
+		<height>1080</height>
+		<onleft>9050</onleft>
+		<onright>ClearProperty(MediaMenu,Home)</onright>
+		<onright>50</onright>
+		<onup>9050</onup>
+		<ondown>9957</ondown>
+		<onback>ClearProperty(MediaMenu,Home)</onback>
+		<onback>50</onback>
+		<include condition="Skin.HasSetting(KioskMode.Enabled)">KioskModeButton</include>
+		<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1104)" reversible="true">Conditional</animation>
+		<control type="button" id="200">
+			<label>31006</label>
+			<textwidth>352</textwidth>
+			<font>font13_title</font>
+			<height>48</height>
+			<include>ButtonCommonValues</include>
+			<enable>no</enable>
+			<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
+		</control>
+		<control type="button" id="2000">
+			<description>View As button</description>
+			<textwidth>352</textwidth>
+			<include>ButtonCommonValues</include>
+			<label>$INFO[Container.Viewmode,$LOCALIZE[31100] ]</label>
+			<onclick condition="!Skin.HasSetting(Enable_ViewLocking) | !Window.IsActive(MyVideoNav.xml)">SetProperty(CustomSideMenu,viewselection,Home)</onclick>
+			<onclick condition="!Skin.HasSetting(Enable_ViewLocking) | !Window.IsActive(MyVideoNav.xml)">ActivateWindow(1104)</onclick>
+			<onclick condition="Skin.HasSetting(Enable_ViewLocking) + Window.IsActive(MyVideoNav.xml)">RunScript(script.skinshortcuts,type=viewselect,content=$VAR[ShortcutsViewContentVar],plugin=$INFO[Container.PluginName])</onclick>
+			<visible>!Window.IsActive(tvchannels)</visible>
+		</control>
+		<control type="button" id="7031">
+			<description>View settings</description>
+			<textwidth>352</textwidth>
+			<include>ButtonCommonValues</include>
+			<label>$INFO[Container.Viewmode,,: $LOCALIZE[5]]</label>
+			<onclick condition="Control.IsVisible(50)">SetProperty(actualViewtype,List,Home)</onclick>
+			<onclick condition="Control.IsVisible(51)">SetProperty(actualViewtype,InfoWall,Home)</onclick>
+			<onclick condition="Control.IsVisible(52)">SetProperty(actualViewtype,Landscape,Home)</onclick>
+			<onclick condition="Control.IsVisible(53)">SetProperty(actualViewtype,ShowCase,Home)</onclick>
+			<onclick condition="Control.IsVisible(54)">SetProperty(actualViewtype,ShowCaseSquare,Home)</onclick>
+			<onclick condition="Control.IsVisible(55)">SetProperty(actualViewtype,TriPanel,Home)</onclick>
+			<onclick condition="Control.IsVisible(56)">SetProperty(actualViewtype,Posters,Home)</onclick>
+			<onclick condition="Control.IsVisible(57)">SetProperty(actualViewtype,Shift,Home)</onclick>
+			<onclick condition="Control.IsVisible(58)">SetProperty(actualViewtype,BannerWall,Home)</onclick>
+			<onclick condition="Control.IsVisible(59)">SetProperty(actualViewtype,Logo,Home)</onclick>
+			<onclick condition="Control.IsVisible(500)">SetProperty(actualViewtype,Icons,Home)</onclick>
+			<onclick condition="Control.IsVisible(501)">SetProperty(actualViewtype,LowList,Home)</onclick>
+			<onclick condition="Control.IsVisible(502)">SetProperty(actualViewtype,Episode,Home)</onclick>
+			<onclick condition="Control.IsVisible(503)">SetProperty(actualViewtype,Wall,Home)</onclick>
+			<onclick condition="Control.IsVisible(504)">SetProperty(actualViewtype,Gallery,Home)</onclick>
+			<onclick condition="Control.IsVisible(505)">SetProperty(actualViewtype,Panel,Home)</onclick>
+			<onclick condition="Control.IsVisible(506)">SetProperty(actualViewtype,RightList,Home)</onclick>
+			<onclick condition="Control.IsVisible(507)">SetProperty(actualViewtype,BigList,Home)</onclick>
+			<onclick condition="Control.IsVisible(508)">SetProperty(actualViewtype,SongList,Home)</onclick>
+			<onclick condition="Control.IsVisible(509)">SetProperty(actualViewtype,MyFlix,Home)</onclick>
+			<onclick condition="Control.IsVisible(510)">SetProperty(actualViewtype,FanartList,Home)</onclick>
+			<onclick condition="Control.IsVisible(511)">SetProperty(actualViewtype,FullscreenWall,Home)</onclick>
+			<onclick condition="Control.IsVisible(512)">SetProperty(actualViewtype,BigFan,Home)</onclick>
+			<onclick condition="Control.IsVisible(513)">SetProperty(actualViewtype,MusicJukebox,Home)</onclick>
+			<onclick>SetProperty(CustomSideMenu,viewsettings,Home)</onclick>
+			<onclick>ActivateWindow(1104)</onclick>
+		</control>
+		<control type="button" id="3">
+			<description>Sort by button</description>
+			<include>ButtonCommonValues</include>
+		</control>
+		<control type="togglebutton" id="4">
+			<description>Sort asc</description>
+			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[31051]</label>
+			<altlabel>$LOCALIZE[31050]</altlabel>
+			<texturefocus border="10,8,10,8" colordiffuse="$VAR[HighlightBarColor]">button_focus.png</texturefocus>
+			<alttexturefocus border="10,8,10,8" colordiffuse="$VAR[HighlightBarColor]">button_focus.png</alttexturefocus>
+			<usealttexture>Container.SortDirection(Ascending)</usealttexture>
+		</control>
+		<control type="button" id="2001">
+			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[33068]</label>
+			<onclick>SetProperty(CustomSideMenu,backgroundsettings,Home)</onclick>
+			<onclick>ActivateWindow(1104)</onclick>
+		</control>
+	</include>
+	<include name="MediaMenuPlayerControls">
+		<control type="grouplist" id="9950">
+			<defaultcontrol always="true">9957</defaultcontrol>
+			<top>1010</top>
+			<left>-15</left>
+			<height>80</height>
+			<width>440</width>
+			<align>center</align>
+			<scrolltime tween="sine">200</scrolltime>
+			<orientation>horizontal</orientation>
+			<onup>9050</onup>
+			<itemgap>-25</itemgap>
+			<ondown condition="Window.IsActive(SettingsCategory.xml)">2001</ondown>
+			<ondown condition="Window.IsActive(profiles)">2002</ondown>
+			<ondown condition="!Window.IsActive(profiles) + Control.IsVisible(2000)">2000</ondown>
+			<ondown condition="!Window.IsActive(profiles) + Control.IsVisible(28)">28</ondown>
+			<ondown condition="!Window.IsActive(profiles) + !Control.IsVisible(28) + Control.IsVisible(3) + !Control.IsVisible(2)">3</ondown>
+			<ondown condition="!Window.IsActive(profiles) + !Control.IsVisible(28) + Control.IsVisible(2) + !Control.IsVisible(3) | [Control.IsVisible(2) + Control.IsVisible(3)]">2</ondown>
+			<onleft>9950</onleft>
+			<onright>9950</onright>
+			<onback>ClearProperty(MediaMenu,Home)</onback>
+			<onback>50</onback>
+			<visible>Player.HasMedia + !String.IsEmpty(Window(Home).Property(MediaMenu)) + !Window.IsVisible(1104)</visible>
+			<control type="button" id="9958">
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
+				<onclick>PlayerControl(Previous)</onclick>
+				<visible>VideoPlayer.Content(livetv)</visible>
+			</control>
+			<control type="button" id="9951">
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
+				<onclick>PlayerControl(Previous)</onclick>
+				<visible>!VideoPlayer.Content(livetv)</visible>
+			</control>
+			<control type="button" id="9952">
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
+				<onclick>PlayerControl(Rewind)</onclick>
+			</control>
+			<control type="button" id="9953">
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
+				<onclick>PlayerControl(Stop)</onclick>
+				<onclick>ClearProperty(MediaMenu,Home)</onclick>
+				<onclick>SetFocus(50)</onclick>
+			</control>
+			<control type="button" id="9957">
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
+				<onclick>fullscreen</onclick>
+			</control>
+			<control type="togglebutton" id="9954">
+				<texturefocus />
+				<alttexturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<altlabel></altlabel>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
+				<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
+				<onclick>PlayerControl(Play)</onclick>
+			</control>
+			<control type="button" id="9955">
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
+				<onclick>PlayerControl(Forward)</onclick>
+			</control>
+			<control type="button" id="9956">
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
+				<onclick>PlayerControl(Next)</onclick>
+				<visible>!VideoPlayer.Content(livetv)</visible>
+			</control>
+			<control type="button" id="9959">
+				<texturefocus />
+				<font>IconMediaMenuButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>80</width>
+				<height>80</height>
+				<onclick>PlayerControl(Next)</onclick>
+				<visible>VideoPlayer.Content(livetv)</visible>
+			</control>
+		</control>
+	</include>
+	<include name="NoMediaMenu">
+		<top>100</top>
+		<width>400</width>
+		<height>1080</height>
+		<onleft>9050</onleft>
+		<onright>ClearProperty(MediaMenu,Home)</onright>
+		<onright condition="!Window.IsActive(skinsettings) + !Window.IsActive(SettingsCategory.xml) + !Window.IsActive(profiles)">50</onright>
+		<onright condition="Window.IsActive(SettingsCategory.xml)">3</onright>
+		<onright condition="Window.IsActive(profiles)">2</onright>
+		<onright condition="Window.IsActive(skinsettings)">9000</onright>
+		<onup>9050</onup>
+		<ondown condition="Player.HasMedia">9957</ondown>
+		<ondown condition="!Player.HasMedia">9050</ondown>
+		<onback>ClearProperty(MediaMenu,Home)</onback>
+		<onback>50</onback>
+		<include condition="Skin.HasSetting(KioskMode.Enabled)">KioskModeButton</include>
+		<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1104)" reversible="true">Conditional</animation>
+		<control type="label" id="200">
+			<width>400</width>
+			<height>52</height>
+			<textoffsetx>15</textoffsetx>
+			<font>font13_title</font>
+			<label>31006</label>
+			<textcolor>$VAR[ThemeLabelColor]</textcolor>
+		</control>
+		<control type="button" id="2001">
+			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[33068]</label>
+			<onclick>SetProperty(CustomSideMenu,backgroundsettings,Home)</onclick>
+			<onclick>ActivateWindow(1104)</onclick>
+			<visible>!Window.IsActive(profiles)</visible>
+		</control>
+		<control type="button" id="2002">
+			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[13200]: $LOCALIZE[33068]</label>
+			<onclick>Skin.Reset(ItemToEdit.MultiFanart)</onclick>
+			<onclick>$VAR[FallbackBackgroundOnclickVar]</onclick>
+			<onclick>SetProperty(CustomSelect,fallbackbackground,Home)</onclick>
+			<onclick>ActivateWindow(1129)</onclick>
+			<visible>Window.IsActive(profiles)</visible>
+		</control>
+	</include>
+	<include name="PVRMediaMenu">
+		<control type="group">
+			<left>-440</left>
+			<include>SideBladeLeft</include>
+			<control type="grouplist" id="9050">
+				<top>100</top>
+				<width>400</width>
+				<height>1080</height>
+				<onleft>9050</onleft>
+				<onright>ClearProperty(MediaMenu,Home)</onright>
+				<onright condition="!Window.IsVisible(tvguide) + Control.IsVisible(50)">50</onright>
+				<onright condition="!Window.IsVisible(tvguide) + Control.IsVisible(51)">51</onright>
+				<onright condition="!Window.IsVisible(tvguide) + Control.IsVisible(52)">52</onright>
+				<onright condition="Window.IsVisible(tvguide)">10</onright>
+				<onup>9050</onup>
+				<ondown condition="Player.HasMedia">9950</ondown>
+				<ondown condition="!Player.HasMedia">9050</ondown>
+				<onback>ClearProperty(MediaMenu,Home)</onback>
+				<onback>50</onback>
+				<include condition="Skin.HasSetting(KioskMode.Enabled)">KioskModeButton</include>
+				<animation effect="fade" start="100" end="0" time="200" condition="Window.IsVisible(1104)" reversible="true">Conditional</animation>
+				<control type="button" id="203">
+					<description>Quicknav</description>
+					<textwidth>352</textwidth>
+					<font>font13_title</font>
+					<include>ButtonCommonValues</include>
+					<label>31523</label>
+					<enable>no</enable>
+					<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
+					<visible>!Skin.HasSetting(Disable.PVRChannels) | !Skin.HasSetting(Disable.PVRGuide) | !Skin.HasSetting(Disable.PVRRecordings) | !Skin.HasSetting(Disable.PVRTimer) | !Skin.HasSetting(Disable.PVRSearch)</visible>
+				</control>
+				<control type="button" id="100">
+					<description>Channels</description>
+					<label>19019</label>
+					<textwidth>352</textwidth>
+					<include>ButtonCommonValues</include>
+					<onclick>ClearProperty(MediaMenu,Home)</onclick>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVChannels)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioChannels)</onclick>
+					<visible>!Skin.HasSetting(Disable.PVRChannels) + ![Window.IsActive(tvchannels) | Window.IsActive(radiochannels)]</visible>
+				</control>
+				<control type="button" id="101">
+					<description>Guide</description>
+					<label>22020</label>
+					<textwidth>352</textwidth>
+					<include>ButtonCommonValues</include>
+					<onclick>ClearProperty(MediaMenu,Home)</onclick>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVGuide)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioGuide)</onclick>
+					<visible>![Skin.HasSetting(Disable.PVRGuide) | Window.IsActive(tvguide)]</visible>
+				</control>
+				<control type="button" id="102">
+					<description>Recordings</description>
+					<label>19163</label>
+					<textwidth>352</textwidth>
+					<include>ButtonCommonValues</include>
+					<onclick>ClearProperty(MediaMenu,Home)</onclick>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVRecordings)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioRecordings)</onclick>
+					<visible>![Skin.HasSetting(Disable.PVRRecordings) | Window.IsActive(tvrecordings)]</visible>
+				</control>
+				<control type="button" id="103">
+					<description>Timers</description>
+					<label>19040</label>
+					<textwidth>352</textwidth>
+					<include>ButtonCommonValues</include>
+					<onclick>ClearProperty(MediaMenu,Home)</onclick>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVTimers)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioTimers)</onclick>
+					<visible>![Skin.HasSetting(Disable.PVRTimer) | Window.IsActive(tvtimers)]</visible>
+				</control>
+				<control type="button" id="104">
+					<description>Search</description>
+					<label>137</label>
+					<textwidth>352</textwidth>
+					<include>ButtonCommonValues</include>
+					<onclick>ClearProperty(MediaMenu,Home)</onclick>
+					<onclick condition="String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVSearch)</onclick>
+					<onclick condition="!String.IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioSearch)</onclick>
+					<visible>![Skin.HasSetting(Disable.PVRSearch) | Window.IsActive(tvsearch)]</visible>
+				</control>
+				<control type="label" id="200">
+					<description>View options</description>
+					<width>400</width>
+					<height>52</height>
+					<textoffsetx>15</textoffsetx>
+					<font>font13_title</font>
+					<label>31006</label>
+					<textcolor>$VAR[ThemeLabelColor]</textcolor>
+				</control>
+				<control type="button" id="28">
+					<description>Channel Groups</description>
+					<textwidth>255</textwidth>
+					<include>ButtonCommonValues</include>
+					<label />
+					<visible>Window.IsActive(tvchannels) | Window.IsActive(tvguide)</visible>
+				</control>
+				<control type="button" id="2">
+					<description>View As button</description>
+					<textwidth>352</textwidth>
+					<include>ButtonCommonValues</include>
+					<visible>!Window.IsActive(tvguide)</visible>
+				</control>
+				<control type="button" id="3">
+					<description>Sort by button</description>
+					<include>ButtonCommonValues</include>
+					<label>103</label>
+				</control>
+				<control type="togglebutton" id="4">
+					<description>Sort asc</description>
+					<include>ButtonCommonValues</include>
+					<label>31051</label>
+					<altlabel>31050</altlabel>
+					<usealttexture>Container.SortDirection(Ascending)</usealttexture>
+				</control>
+				<control type="radiobutton" id="31">
+					<include>ButtonCommonValues</include>
+					<label>$LOCALIZE[587]</label>
+					<selected>Container.Filtered</selected>
+					<visible>Window.IsActive(MyPVRChannels.xml)</visible>
+				</control>
+				<control type="button" id="2001">
+					<include>ButtonCommonValues</include>
+					<label>$LOCALIZE[33068]</label>
+					<onclick>SetProperty(CustomSideMenu,backgroundsettings,Home)</onclick>
+					<onclick>ActivateWindow(1104)</onclick>
+				</control>
+				<control type="button" id="201">
+					<description>View options</description>
+					<textwidth>352</textwidth>
+					<font>font13_title</font>
+					<include>ButtonCommonValues</include>
+					<label>31026</label>
+					<enable>no</enable>
+					<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
+				</control>
+				<control type="button" id="105">
+					<description>Watched toggle</description>
+					<textwidth>352</textwidth>
+					<include>ButtonCommonValues</include>
+					<label>$INFO[Control.GetLabel(10)]</label>
+					<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Container.NumNonFolderItems][/COLOR]</label2>
+					<onclick>SendClick(10)</onclick>
+					<visible>Window.IsActive(tvrecordings)</visible>
+				</control>
+				<control type="button" id="330">
+					<description>Settings</description>
+					<textwidth>352</textwidth>
+					<include>ButtonCommonValues</include>
+					<label>$LOCALIZE[31179]</label>
+					<onclick>ClearProperty(MediaMenu,Home)</onclick>
+					<onclick>SetProperty(DialogSettings,livetv,Home)</onclick>
+					<onclick>ActivateWindow(1114)</onclick>
+				</control>
+			</control>
+			<include>MediaMenuPlayerControls</include>
+		</control>
+		<control type="button" id="10">
+			<description>Watched toggle</description>
+			<include>HiddenObject</include>
+		</control>
+	</include>
+</includes>

@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="DefaultVideoOSD">
+		<control type="grouplist" id="202">
+			<animation effect="slide" end="0,942" condition="!Skin.HasSetting(VideoOSDOnTop)">Conditional</animation>
+			<height>100</height>
+			<width>100%</width>
+			<align>center</align>
+			<scrolltime tween="sine">200</scrolltime>
+			<orientation>horizontal</orientation>
+			<itemgap>20</itemgap>
+			<onleft>202</onleft>
+			<onright>202</onright>
+			<onup>703</onup>
+			<ondown>706</ondown>
+			<control type="button" id="708">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>SetProperty(CustomSelect,avsettings,Home)</onclick>
+				<onclick>SetProperty(UseCustomSelectSmallBackPanel,True,Home)</onclick>
+				<onclick>ActivateWindow(1129)</onclick>
+			</control>
+			<control type="button" id="701">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onup condition="Integer.IsGreater(VideoPlayer.AudioStreamCount,1)">DialogSelectAudio</onup>
+				<onclick>ActivateWindow(osdaudiosettings)</onclick>
+			</control>
+			<control type="button" id="702">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onup condition="Integer.IsGreater(VideoPlayer.VideoStreamCount,1)">DialogSelectVideo</onup>
+				<onclick>ActivateWindow(osdvideosettings)</onclick>
+			</control>
+			<control type="togglebutton" id="703">
+				<texturefocus />
+				<alttexturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<altlabel></altlabel>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<usealttexture>VideoPlayer.HasSubtitles</usealttexture>
+				<onup condition="VideoPlayer.HasSubtitles">DialogSelectSubtitle</onup>
+				<onclick>ActivateWindow(OSDSubtitleSettings)</onclick>
+				<oninfo>ActivateWindow(SubtitleSearch)</oninfo>
+			</control>
+			<control type="button" id="600">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>PlayerControl(Previous)</onclick>
+				<oninfo>Dialog.Close(all,true)</oninfo>
+				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
+			</control>
+			<control type="button" id="601">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick condition="!Player.TempoEnabled">PlayerControl(Rewind)</onclick>
+				<onclick condition="Player.TempoEnabled">PlayerControl(tempodown)</onclick>
+				<oninfo>Dialog.Close(all,true)</oninfo>
+				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
+			</control>
+			<control type="button" id="603">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>PlayerControl(Stop)</onclick>
+				<oninfo>Dialog.Close(all,true)</oninfo>
+				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
+			</control>
+			<control type="togglebutton" id="602">
+				<texturefocus />
+				<alttexturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<altlabel></altlabel>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
+				<onclick>PlayerControl(Play)</onclick>
+				<oninfo>Dialog.Close(all,true)</oninfo>
+				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
+			</control>
+			<control type="button" id="604">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick condition="!Player.TempoEnabled">PlayerControl(Forward)</onclick>
+				<onclick condition="Player.TempoEnabled">PlayerControl(tempoup)</onclick>
+				<oninfo>Dialog.Close(all,true)</oninfo>
+				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
+			</control>
+			<control type="button" id="605">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>PlayerControl(Next)</onclick>
+				<oninfo>Dialog.Close(all,true)</oninfo>
+				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
+			</control>
+			<control type="button" id="706">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>Close</onclick>
+				<onclick condition="!Window.IsActive(fullscreeninfo)">ActivateWindow(fullscreeninfo)</onclick>
+				<onclick condition="Window.IsActive(fullscreeninfo)">Dialog.Close(all,true)</onclick>
+				<oninfo>Dialog.Close(all,true)</oninfo>
+				<oninfo>ActivateWindow(fullscreeninfo)</oninfo>
+			</control>
+			<control type="button" id="700">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>ActivateWindow(videobookmarks)</onclick>
+				<oninfo>ActivateWindow(videobookmarks)</oninfo>
+			</control>
+			<control type="button" id="704">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>PlayerControl(ShowVideoMenu)</onclick>
+				<oninfo>PlayerControl(ShowVideoMenu)</oninfo>
+				<visible>VideoPlayer.HasMenu</visible>
+			</control>
+			<control type="button" id="705">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>StereoMode</onclick>
+				<oninfo>Dialog.Close(all,true)</oninfo>
+				<visible>VideoPlayer.IsStereoscopic</visible>
+			</control>
+			<control type="button" id="707">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>Dialog.Close(all,true)</onclick>
+				<onclick>SetProperty(Enable.ScreenshotMode,True,Home)</onclick>
+				<onclick>Notification($LOCALIZE[19098]:,$LOCALIZE[31329],1500,icon.png)</onclick>
+				<onclick>Skin.TimerStart(takescreenshot)</onclick>
+				<onclick>Skin.TimerStart(resetscreenshot)</onclick>
+				<oninfo>Dialog.Close(all,true)</oninfo>
+				<visible>VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)</visible>
+			</control>
+			<control type="button" id="709">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>SetProperty(DialogSettings,videoosd,Home)</onclick>
+				<onclick>ActivateWindow(1114)</onclick>
+				<oninfo>SetProperty(DialogSettings,videoosd,Home)</oninfo>
+				<oninfo>ActivateWindow(1114)</oninfo>
+			</control>
+		</control>
+	</include>
+	<include name="DefaultSeekbar">
+		<control type="group">
+			<visible>![Player.Paused + Skin.HasSetting(CleanPauseScreen) + !Window.IsActive(fullscreeninfo)]</visible>
+			<animation effect="fade" start="0" end="100" time="250">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="250" condition="!Skin.HasSetting(CleanPauseScreen)">WindowClose</animation>
+			<control type="group">
+				<top>1014</top>
+				<visible>!Window.IsVisible(SliderDialog)</visible>
+				<include>VisibleFadeAnimation</include>
+				<control type="group">
+					<animation effect="slide" end="0,-90" time="200" tween="quadratic" condition="Window.IsActive(videoosd) + !Skin.HasSetting(VideoOSDOnTop)">Conditional</animation>
+					<animation effect="slide" end="0,90" time="200" tween="quadratic" condition="!Skin.HasSetting(VideoOSDOnTop) + [Window.IsVisible(SliderDialog) | Window.IsVisible(pvrchannelguide) | Window.IsVisible(PVROSDTeletext) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(SubtitleSearch) | Window.IsVisible(1114)]">Conditional</animation>
+					<control type="image">
+						<width>100%</width>
+						<height>160</height>
+						<texture border="1,32,1,1">bottombar.png</texture>
+					</control>
+				</control>
+				<control type="group">
+					<top>20</top>
+					<control type="progress">
+						<width>100%</width>
+						<height>46</height>
+						<info>Player.ProgressCache</info>
+						<midtexture>colors/white25.png</midtexture>
+					</control>
+					<control type="progress">
+						<width>100%</width>
+						<height>46</height>
+						<texturebg>colors/blank.png</texturebg>
+						<midtexture colordiffuse="$VAR[ThemeOSDProgressColor]">colors/grey.png</midtexture>
+						<info>Player.Progress</info>
+					</control>
+				</control>
+				<control type="slider" id="401">
+					<top>20</top>
+					<width>100%</width>
+					<height>28</height>
+					<texturesliderbar>seekslider.png</texturesliderbar>
+					<textureslidernib colordiffuse="$VAR[ThemeOSDProgressColor]">slidernib_alt.png</textureslidernib>
+					<textureslidernibfocus colordiffuse="$VAR[ThemeOSDProgressColor]">slidernib_alt.png</textureslidernibfocus>
+					<visible>Player.Seeking</visible>
+				</control>
+				<control type="group">
+					<top>20</top>
+					<animation effect="fade" start="100" end="50" time="200" condition="Player.Seeking">Conditional</animation>
+					<control type="label">
+						<width>830</width>
+						<height>90</height>
+						<font>font14_title</font>
+						<textoffsetx>15</textoffsetx>
+						<textcolor>grey</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<aligny>top</aligny>
+						<label>$VAR[PlayerTitleLabelVar]</label>
+						<scroll>true</scroll>
+					</control>
+					<control type="label">
+						<left>1020</left>
+						<width>900</width>
+						<height>90</height>
+						<font>font14_title</font>
+						<textoffsetx>15</textoffsetx>
+						<textcolor>grey</textcolor>
+						<shadowcolor>shadow</shadowcolor>
+						<align>right</align>
+						<aligny>top</aligny>
+						<label>$VAR[OSDRightLabelVar]</label>
+					</control>
+				</control>
+				<control type="label">
+					<top>20</top>
+					<width>100%</width>
+					<height>90</height>
+					<font>font14_title</font>
+					<textoffsetx>15</textoffsetx>
+					<textcolor>grey</textcolor>
+					<shadowcolor>shadow</shadowcolor>
+					<align>center</align>
+					<aligny>top</aligny>
+					<label>$VAR[SeekLabelVar]</label>
+				</control>
+				<control type="ranges">
+					<top>56</top>
+					<width>100%</width>
+					<height>10</height>
+					<texturebg border="2">colors/blank.png</texturebg>
+					<lefttexture>colors/white.png</lefttexture>
+					<midtexture colordiffuse="red">colors/white.png</midtexture>
+					<righttexture>colors/white.png</righttexture>
+					<info>Player.Editlist</info>
+				</control>
+				<control type="ranges">
+					<top>58</top>
+					<width>100%</width>
+					<height>8</height>
+					<texturebg border="2">colors/blank.png</texturebg>
+					<righttexture colordiffuse="red">colors/white.png</righttexture>
+					<info>Player.Cuts</info>
+				</control>
+				<control type="ranges">
+					<top>62</top>
+					<width>100%</width>
+					<height>4</height>
+					<texturebg border="2">colors/blank.png</texturebg>
+					<righttexture>colors/white.png</righttexture>
+					<info>Player.SceneMarkers</info>
+				</control>
+				<control type="ranges">
+					<top>62</top>
+					<width>100%</width>
+					<height>4</height>
+					<texturebg border="2">colors/blank.png</texturebg>
+					<righttexture>colors/white.png</righttexture>
+					<info>Player.Chapters</info>
+				</control>
+				<control type="image">
+					<left>1460</left>
+					<top>-244</top>
+					<width>450</width>
+					<height>260</height>
+					<aspectratio aligny="bottom" align="center">keep</aspectratio>
+					<texture background="true">$VAR[PlayerArtworkVar]</texture>
+					<visible>![Window.IsVisible(DialogSettings.xml) | Window.IsVisible(subtitlesearch) | Window.IsVisible(1114) | Window.IsVisible(fullscreeninfo)]</visible>
+					<animation effect="slide" end="0,-90" time="240" tween="quadratic" condition="Window.IsActive(videoosd) + !Skin.HasSetting(VideoOSDOnTop)">Conditional</animation>
+				</control>
+			</control>
+			<control type="group">
+				<top>447</top>
+				<include>VisibleFadeAnimation</include>
+				<visible>Player.Paused + !System.HasVisibleModalDialog</visible>
+				<control type="group">
+					<left>867</left>
+					<width>186</width>
+					<height>186</height>
+					<visible>!Skin.HasSetting(PausedLabel)</visible>
+					<control type="image">
+						<texture>osd/bg_play_large.png</texture>
+					</control>
+					<control type="image">
+						<texture>osd/btn_pause.png</texture>
+					</control>
+				</control>
+				<control type="label">
+					<width>100%</width>
+					<height>184</height>
+					<align>center</align>
+					<label>[UPPERCASE][B]$LOCALIZE[112][/B][/UPPERCASE]</label>
+					<font>BigAssTimeFont</font>
+					<textcolor>B3FFFFFF</textcolor>
+					<visible>Skin.HasSetting(PausedLabel) + !Window.IsVisible(fullscreeninfo)</visible>
+				</control>
+			</control>
+		</control>
+	</include>
+	<include name="PVRVideoOSD">
+		<control type="image">
+			<left>-5%</left>
+			<top>970</top>
+			<width>110%</width>
+			<height>147</height>
+			<texture border="40" colordiffuse="D9FFFFFF">dialogs/default/bg.png</texture>
+			<visible>!Skin.HasSetting(VideoOSDOnTop)</visible>
+		</control>
+		<control type="image">
+			<left>-5%</left>
+			<top>-30</top>
+			<width>110%</width>
+			<height>147</height>
+			<texture border="40" flipy="true" colordiffuse="D9FFFFFF">dialogs/default/bg.png</texture>
+			<visible>Skin.HasSetting(VideoOSDOnTop)</visible>
+		</control>
+		<control type="grouplist" id="203">
+			<animation effect="slide" end="0,-985" condition="Skin.HasSetting(VideoOSDOnTop)">Conditional</animation>
+			<top>985</top>
+			<height>144</height>
+			<width>100%</width>
+			<align>center</align>
+			<scrolltime tween="sine">200</scrolltime>
+			<orientation>horizontal</orientation>
+			<onup>800</onup>
+			<ondown>807</ondown>
+			<onleft>203</onleft>
+			<onright>203</onright>
+			<control type="button" id="800">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>ActivateWindow(osdaudiosettings)</onclick>
+			</control>
+			<control type="button" id="801">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>ActivateWindow(osdvideosettings)</onclick>
+			</control>
+			<control type="togglebutton" id="802">
+				<texturefocus />
+				<alttexturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<altlabel></altlabel>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<usealttexture>VideoPlayer.HasSubtitles</usealttexture>
+				<onclick>ActivateWindow(OSDSubtitleSettings)</onclick>
+			</control>
+			<control type="button" id="814">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>ActivateWindow(Teletext)</onclick>
+			</control>
+			<control type="button" id="803">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>PlayerControl(Previous)</onclick>
+			</control>
+			<control type="button" id="805">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>PlayerControl(Rewind)</onclick>
+				<visible>Player.SeekEnabled</visible>
+				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
+			</control>
+			<control type="button" id="807">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>PlayerControl(Stop)</onclick>
+				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
+			</control>
+			<control type="togglebutton" id="806">
+				<texturefocus />
+				<alttexturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<altlabel></altlabel>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
+				<onclick>PlayerControl(Play)</onclick>
+				<visible>Player.PauseEnabled</visible>
+				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
+			</control>
+			<control type="button" id="808">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>PlayerControl(Forward)</onclick>
+				<visible>Player.SeekEnabled</visible>
+				<visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
+			</control>
+			<control type="button" id="804">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>PlayerControl(Next)</onclick>
+			</control>
+			<control type="button" id="816">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>Dialog.Close(all,true)</onclick>
+				<onclick>ActivateWindow(fullscreeninfo)</onclick>
+				<onclick>SetProperty(show_pvr_info,True,Home)</onclick>
+			</control>
+			<control type="togglebutton" id="809">
+				<texturefocus />
+				<alttexturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<altlabel></altlabel>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>PVR.ToggleRecordPlayingChannel</onclick>
+				<visible>PVR.CanRecordPlayingChannel</visible>
+				<usealttexture>PVR.IsRecordingPlayingChannel</usealttexture>
+			</control>
+			<control type="button" id="810">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>Dialog.Close(VideoOSD)</onclick>
+				<onclick>ActivateWindow(PVROSDChannels)</onclick>
+			</control>
+			<control type="button" id="811">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>Dialog.Close(VideoOSD)</onclick>
+				<onclick>ActivateWindow(pvrchannelguide)</onclick>
+			</control>
+			<control type="button" id="812">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>ToggleStereoMode</onclick>
+				<visible>VideoPlayer.IsStereoscopic</visible>
+			</control>
+			<control type="button" id="813">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>Dialog.Close(VideoOSD)</onclick>
+				<onclick>ActivateWindow(TVGuide)</onclick>
+			</control>
+			<control type="button" id="815">
+				<texturefocus />
+				<font>IconOSDButtons</font>
+				<label></label>
+				<focusedcolor>$VAR[FocusedOSDButtonsColor]</focusedcolor>
+				<textcolor>$VAR[UnfocusedOSDButtonsColor]</textcolor>
+				<shadowcolor>shadow</shadowcolor>
+				<width>100</width>
+				<height>100</height>
+				<onclick>SetProperty(DialogSettings,videoosd,Home)</onclick>
+				<onclick>ActivateWindow(1114)</onclick>
+				<oninfo>SetProperty(DialogSettings,videoosd,Home)</oninfo>
+				<oninfo>ActivateWindow(1114)</oninfo>
+			</control>
+		</control>
+	</include>
+</includes>

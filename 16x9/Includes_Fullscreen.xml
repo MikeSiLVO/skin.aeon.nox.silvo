@@ -1,0 +1,939 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="FullscreenInfo">
+		<control type="group">
+			<animation effect="fade" end="100" time="250">WindowOpen</animation>
+			<animation effect="fade" end="0" time="250">WindowClose</animation>
+			<control type="image">
+				<left>-5%</left>
+				<top>-30</top>
+				<width>110%</width>
+				<height>147</height>
+				<texture border="40" flipy="true" colordiffuse="E6FFFFFF">dialogs/default/bg.png</texture>
+				<visible>!Window.IsVisible(playerprocessinfo)</visible>
+				<visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(SubtitleSearch) | Window.IsVisible(1114)]</visible>
+				<animation effect="fade" end="100" time="250">Visible</animation>
+			</control>
+			<!-- Media Flags -->
+			<control type="grouplist">
+				<left>15</left>
+				<top>5</top>
+				<width>1890</width>
+				<height>100</height>
+				<align>center</align>
+				<orientation>horizontal</orientation>
+				<visible>![Window.IsActive(videoosd) + Skin.HasSetting(VideoOSDOnTop) | Window.IsVisible(playerprocessinfo) | Window.IsVisible(SliderDialog) | Window.IsVisible(pvrchannelguide) | Window.IsVisible(PVROSDTeletext) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(SubtitleSearch) | Window.IsVisible(1114)]</visible>
+				<animation effect="fade" end="100" time="250">Visible</animation>
+				<control type="group">
+					<visible>!String.IsEmpty(VideoPlayer.Studio)</visible>
+					<width>240</width>
+					<control type="image" id="142099">
+						<width>240</width>
+						<include>MediaFlagValues</include>
+						<bordersize>2</bordersize>
+						<texture>$VAR[PathFlagsStudios]$INFO[VideoPlayer.Studio,,.png]</texture>
+					</control>
+					<control type="label">
+						<width>240</width>
+						<height>90</height>
+						<align>center</align>
+						<label>$INFO[VideoPlayer.Studio]</label>
+						<font>font10</font>
+						<textcolor>grey2</textcolor>
+						<wrapmultiline>true</wrapmultiline>
+						<animation effect="fade" time="250" delay="100">Visible</animation>
+						<visible>String.IsEmpty(Control.GetLabel(142099))</visible>
+					</control>
+				</control>
+				<control type="image">
+					<width>240</width>
+					<include>MediaFlagValues</include>
+					<texture>$VAR[MediaFlagsPathVar]/mpaa/$VAR[VideoRatingFlagVar]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.MPAA)</visible>
+				</control>
+				<control type="image">
+					<width>240</width>
+					<include>MediaFlagValues</include>
+					<texture>$VAR[MediaFlagsPathVar]/resolution/$INFO[VideoPlayer.VideoResolution,,.png]</texture>
+				</control>
+				<control type="image">
+					<width>240</width>
+					<include>MediaFlagValues</include>
+					<texture>$VAR[MediaFlagsPathVar]/$INFO[VideoPlayer.HdrType,hdr/,.png]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.HdrType)</visible>
+				</control>
+				<control type="image">
+					<width>240</width>
+					<include>MediaFlagValues</include>
+					<texture>$VAR[MediaFlagsPathVar]/videocodec/$VAR[VideoSourceFlagVar]</texture>
+				</control>
+				<control type="image">
+					<width>240</width>
+					<include>MediaFlagValues</include>
+					<texture>$VAR[MediaFlagsPathVar]/aspectratio/$INFO[VideoPlayer.VideoAspect,,.png]</texture>
+				</control>
+				<control type="image">
+					<width>240</width>
+					<include>MediaFlagValues</include>
+					<texture>$VAR[MediaFlagsPathVar]/audiocodec/$VAR[PlayerAudioCodecFlagVar]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.AudioCodec)</visible>
+				</control>
+				<control type="image">
+					<width>240</width>
+					<include>MediaFlagValues</include>
+					<texture>$VAR[MediaFlagsPathVar]/audiochannels/$INFO[VideoPlayer.AudioChannels,,.png]</texture>
+					<visible>!String.IsEmpty(VideoPlayer.AudioChannels)</visible>
+				</control>
+			</control>
+			<control type="image">
+				<left>-5%</left>
+				<top>755</top>
+				<width>110%</width>
+				<height>400</height>
+				<texture border="40" colordiffuse="E6FFFFFF">dialogs/default/bg.png</texture>
+				<visible>VideoPlayer.HasInfo + [VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(musicvideos)] | [VideoPlayer.HasInfo + Skin.HasSetting(Enable.RecordingInfo) + Pvr.IsPlayingRecording] | VideoPlayer.HasInfo + Skin.HasSetting(Enable.AddonInfo) + !Pvr.IsPlayingRecording</visible>
+				<animation effect="slide" end="0,-90" time="240" tween="quadratic" condition="Window.IsActive(videoosd) + !Skin.HasSetting(VideoOSDOnTop)">Conditional</animation>
+			</control>
+			<include condition="VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)">LibraryFullscreenInfo</include>
+			<include condition="VideoPlayer.Content(musicvideos)">MusicVideoFullscreenInfo</include>
+			<include condition="VideoPlayer.HasInfo + Skin.HasSetting(Enable.AddonInfo) + ![VideoPlayer.Content(LiveTV) | Pvr.IsPlayingRecording | VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(musicvideos)] | [VideoPlayer.HasInfo + Skin.HasSetting(Enable.RecordingInfo) + Pvr.IsPlayingRecording]">OtherFullscreenInfo</include>
+		</control>
+	</include>
+	<include name="LibraryFullscreenInfo">
+		<control type="group">
+			<top>600</top>
+			<animation effect="slide" end="0,-90" time="240" tween="quadratic" condition="Window.IsActive(videoosd) + !Skin.HasSetting(VideoOSDOnTop)">Conditional</animation>
+			<control type="group">
+				<top>-110</top>
+				<visible>!Skin.HasSetting(Disable.FullscreenPoster)</visible>
+				<control type="image">
+					<left>20</left>
+					<top>-155</top>
+					<width>350</width>
+					<height>350</height>
+					<aspectratio aligny="top">keep</aspectratio>
+					<texture background="true" diffuse="thumbs/boxes/cdart_mask.png">$INFO[Player.Art(discart)]</texture>
+					<visible>!Skin.HasSetting(Disable.FullscreenDiscart)</visible>
+				</control>
+				<control type="image">
+					<width>390</width>
+					<height>560</height>
+					<texture background="true">$VAR[PlayerPosterVar]</texture>
+					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
+					<bordersize>20</bordersize>
+				</control>
+			</control>
+			<control type="group">
+				<left>250</left>
+				<top>25</top>
+				<control type="image" id="999149">
+					<left>1207</left>
+					<top>-110</top>
+					<width>450</width>
+					<height>260</height>
+					<aspectratio>keep</aspectratio>
+					<texture background="true">$VAR[PlayerArtworkVar]</texture>
+					<visible>!Skin.HasSetting(Disable.FullscreenInfoLogo)</visible>
+					<animation effect="slide" end="0,259" condition="Skin.HasSetting(Disable.FullscreenPoster)">Conditional</animation>
+					<animation effect="slide" end="-1440" condition="Skin.HasSetting(Disable.FullscreenPoster) + !Skin.HasSetting(SwapFullscreenInfo)">Conditional</animation>
+				</control>
+				<control type="group">
+					<left>150</left>
+					<top>132</top>
+					<height>300</height>
+					<animation effect="slide" end="80" condition="Skin.HasSetting(Disable.FullscreenPoster) + !Skin.HasSetting(SwapFullscreenInfo)">Conditional</animation>
+					<animation effect="slide" end="-380,-10" condition="Skin.HasSetting(Disable.FullscreenPoster) + Skin.HasSetting(SwapFullscreenInfo)">Conditional</animation>
+					<control type="grouplist">
+						<width>1420</width>
+						<height>300</height>
+						<align>center</align>
+						<usecontrolcoords>true</usecontrolcoords>
+						<visible>String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot)) + String.IsEmpty(Window(fullscreeninfo).Property(ShowCast)) + String.IsEmpty(Window(fullscreeninfo).Property(ShowMoreDetails))</visible>
+						<control type="label">
+							<width>1420</width>
+							<height>60</height>
+							<font>font30_title_bold</font>
+							<textcolor>grey</textcolor>
+							<scroll>true</scroll>
+							<label>$INFO[Player.Title]$INFO[VideoPlayer.Year, (,)]</label>
+							<visible>!VideoPlayer.Content(episodes)</visible>
+						</control>
+						<control type="label">
+							<width>1420</width>
+							<height>60</height>
+							<font>font30_title_bold</font>
+							<textcolor>grey</textcolor>
+							<scroll>true</scroll>
+							<label>$INFO[VideoPlayer.TvShowTitle]</label>
+							<visible>VideoPlayer.Content(episodes)</visible>
+						</control>
+						<control type="label">
+							<width>1420</width>
+							<height>60</height>
+							<font>font15</font>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<scroll>true</scroll>
+							<label>$INFO[VideoPlayer.Tagline]</label>
+							<visible>!String.IsEmpty(VideoPlayer.Tagline)</visible>
+						</control>
+						<control type="label">
+							<width>1420</width>
+							<height>60</height>
+							<font>font15</font>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<label>$INFO[VideoPlayer.Season,$LOCALIZE[20373] ,: ]$INFO[VideoPlayer.Episode,$LOCALIZE[20359] ]$INFO[VideoPlayer.Title,  -  ]$INFO[VideoPlayer.Premiered, (,)]</label>
+							<visible>VideoPlayer.Content(episodes)</visible>
+						</control>
+						<control type="grouplist">
+							<width>1420</width>
+							<height>60</height>
+							<itemgap>10</itemgap>
+							<orientation>horizontal</orientation>
+							<usecontrolcoords>true</usecontrolcoords>
+							<visible>String.IsEmpty(Window(fullscreeninfo).Property(ShowCast)) + String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot))</visible>
+							<control type="label">
+								<width>auto</width>
+								<height>60</height>
+								<font>font15</font>
+								<textcolor>grey</textcolor>
+								<label>$INFO[Player.FinishTime,$LOCALIZE[31393]: ,]  •  $VAR[PlayerTimeRemainingHourVar,, ]$VAR[PlayerTimeRemainingMinuteVar]</label>
+							</control>
+							<control type="grouplist">
+								<width>1420</width>
+								<height>60</height>
+								<itemgap>10</itemgap>
+								<orientation>horizontal</orientation>
+								<usecontrolcoords>true</usecontrolcoords>
+								<control type="group">
+									<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+									<width>170</width>
+									<height>60</height>
+									<control type="label">
+										<width>auto</width>
+										<height>30</height>
+										<align>center</align>
+										<label>$INFO[VideoPlayer.Rating]</label>
+										<font>font14_bold</font>
+										<textcolor>grey</textcolor>
+									</control>
+									<control type="label">
+										<top>30</top>
+										<width>auto</width>
+										<height>30</height>
+										<align>center</align>
+										<label>[LOWERCASE]$VAR[RatingAndVotesVar][/LOWERCASE]</label>
+										<font>font11</font>
+										<textcolor>grey</textcolor>
+									</control>
+								</control>
+								<control type="grouplist">
+									<visible>!String.IsEmpty(VideoPlayer.UserRating)</visible>
+									<width>100</width>
+									<orientation>horizontal</orientation>
+									<control type="image">
+										<width>50</width>
+										<height>60</height>
+										<aspectratio>keep</aspectratio>
+										<texture colordiffuse="$VAR[ThemeLabelColor]">favourites.png</texture>
+										<animation effect="fade" end="67" condition="true">Conditional</animation>
+									</control>
+									<control type="label">
+										<height>60</height>
+										<width>auto</width>
+										<font>font14_bold</font>
+										<textcolor>grey</textcolor>
+										<label>$INFO[VideoPlayer.UserRating]</label>
+									</control>
+								</control>
+								<control type="grouplist">
+									<visible>!String.IsEmpty(VideoPlayer.Top250) + Integer.IsLessOrEqual(VideoPlayer.Top250,250)</visible>
+									<width>165</width>
+									<itemgap>5</itemgap>
+									<orientation>horizontal</orientation>
+									<control type="image">
+										<width>80</width>
+										<height>60</height>
+										<aspectratio>keep</aspectratio>
+										<texture>logos/imdb.png</texture>
+										<colordiffuse>grey</colordiffuse>
+									</control>
+									<control type="label">
+										<width>auto</width>
+										<height>60</height>
+										<align>center</align>
+										<label>$INFO[VideoPlayer.Top250,#]</label>
+										<font>font14_bold</font>
+										<textcolor>grey</textcolor>
+									</control>
+								</control>
+								<control type="grouplist">
+									<width>560</width>
+									<height>60</height>
+									<itemgap>10</itemgap>
+									<orientation>horizontal</orientation>
+									<control type="grouplist">
+										<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.Tomatoes)) | !String.IsEmpty(Container(8001).ListItem.Property(Rating.Tomatoes.Percent))]</visible>
+										<width>140</width>
+										<orientation>horizontal</orientation>
+										<control type="image">
+											<width>60</width>
+											<height>55</height>
+											<aspectratio>keep</aspectratio>
+											<colordiffuse>grey</colordiffuse>
+											<texture>$VAR[PlayerRottenFreshLogoVar]</texture>
+										</control>
+										<control type="label">
+											<height>60</height>
+											<width>auto</width>
+											<font>font14_bold</font>
+											<textcolor>grey</textcolor>
+											<label>$VAR[PlayerRottenFreshLabelVar]</label>
+										</control>
+									</control>
+									<control type="grouplist">
+										<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.Popcorn)) | !String.IsEmpty(Container(8001).ListItem.Property(Rating.Popcorn.Percent))]</visible>
+										<width>140</width>
+										<orientation>horizontal</orientation>
+										<control type="image">
+											<width>60</width>
+											<height>55</height>
+											<aspectratio>keep</aspectratio>
+											<colordiffuse>grey</colordiffuse>
+											<texture>$VAR[PlayerRottenFreshAudienceLogoVar]</texture>
+										</control>
+										<control type="label">
+											<width>auto</width>
+											<height>60</height>
+											<font>font14_bold</font>
+											<textcolor>grey</textcolor>
+											<label>$VAR[PlayerRottenFreshAudienceLabelVar]</label>
+										</control>
+									</control>
+									<control type="grouplist">
+										<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.themoviedb)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.tmdb)) | !String.IsEmpty(Container(8001).ListItem.Rating(themoviedb)) | !String.IsEmpty(Container(8001).ListItem.Rating(tmdb))</visible>
+										<width>140</width>
+										<itemgap>10</itemgap>
+										<orientation>horizontal</orientation>
+										<control type="image">
+											<width>60</width>
+											<height>60</height>
+											<aspectratio>keep</aspectratio>
+											<colordiffuse>grey</colordiffuse>
+											<texture>logos/tmdb.png</texture>
+										</control>
+										<control type="label">
+											<width>auto</width>
+											<height>60</height>
+											<font>font14_bold</font>
+											<textcolor>grey</textcolor>
+											<label>$VAR[PlayerTMDbRatingsLabelVar]</label>
+										</control>
+									</control>
+									<control type="grouplist">
+										<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Player.Rating.trakt)) | !String.IsEmpty(Container(8001).ListItem.Rating(trakt))</visible>
+										<width>140</width>
+										<orientation>horizontal</orientation>
+										<control type="image">
+											<width>60</width>
+											<height>60</height>
+											<aspectratio>keep</aspectratio>
+											<colordiffuse>grey</colordiffuse>
+											<texture>logos/trakt-clearlogo.png</texture>
+										</control>
+										<control type="label">
+											<width>auto</width>
+											<height>60</height>
+											<font>font14_bold</font>
+											<textcolor>grey</textcolor>
+											<label>$VAR[PlayerTraktRatingsLabelVar]</label>
+										</control>
+									</control>
+								</control>
+							</control>
+						</control>
+						<control type="label">
+							<width>1420</width>
+							<height>54</height>
+							<font>font15</font>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<label>$INFO[VideoPlayer.Director,$LOCALIZE[31000]:[COLOR grey] ,[/COLOR]]$INFO[VideoPlayer.Writer, [COLOR grey] • [/COLOR] $LOCALIZE[31001]:[COLOR grey] ,[/COLOR]]</label>
+							<visible>[!String.IsEmpty(VideoPlayer.Director) | !String.IsEmpty(VideoPlayer.Writer)] + String.IsEmpty(Window(fullscreeninfo).Property(ShowCast)) + String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot))</visible>
+						</control>
+					</control>
+					<control type="grouplist">
+						<width>1420</width>
+						<height>300</height>
+						<align>center</align>
+						<usecontrolcoords>true</usecontrolcoords>
+						<visible>!String.IsEmpty(Window(fullscreeninfo).Property(ShowMoreDetails)) + [String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot)) + String.IsEmpty(Window(fullscreeninfo).Property(ShowCast))]</visible>
+						<control type="label">
+							<width>1420</width>
+							<height>60</height>
+							<font>font15</font>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<scroll>true</scroll>
+							<label>$INFO[VideoPlayer.Genre,$LOCALIZE[515]: [COLOR grey],[/COLOR]]</label>
+							<visible>!String.IsEmpty(VideoPlayer.Genre)</visible>
+						</control>
+						<control type="label">
+							<width>1420</width>
+							<height>60</height>
+							<font>font15</font>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<scroll>true</scroll>
+							<label>$INFO[Container(8001).ListItem.Property(TMDb.Budget),$LOCALIZE[31850]: [COLOR grey],[/COLOR]]$INFO[Container(8001).ListItem.Property(TMDb.Revenue),[COLOR grey]  •  [/COLOR]$LOCALIZE[31851]: [COLOR grey],[/COLOR]]</label>
+							<visible>VideoPlayer.Content(movies) + [!String.IsEmpty(Container(8001).ListItem.Property(TMDb.Budget)) | !String.IsEmpty(Container(8001).ListItem.Property(TMDb.Revenue))]</visible>
+						</control>
+						<control type="label">
+							<width>1420</width>
+							<height>60</height>
+							<font>font15</font>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<scroll>true</scroll>
+							<label>$INFO[VideoPlayer.Premiered,$LOCALIZE[172]: [COLOR grey],[/COLOR]]</label>
+							<visible>VideoPlayer.Content(movies) + !String.IsEmpty(VideoPlayer.Premiered)</visible>
+						</control>
+						<control type="label">
+							<width>1420</width>
+							<height>60</height>
+							<font>font15</font>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<scroll>true</scroll>
+							<label>$INFO[VideoPlayer.LastPlayed,$LOCALIZE[568]: [COLOR grey],[/COLOR]]$INFO[VideoPlayer.PlayCount,[COLOR grey]  •  [/COLOR]$LOCALIZE[567]: [COLOR grey],[/COLOR]]</label>
+							<visible>!String.IsEmpty(VideoPlayer.LastPlayed)</visible>
+						</control>
+					</control>
+					<control type="grouplist">
+						<top>40</top>
+						<width>1420</width>
+						<height>500</height>
+						<usecontrolcoords>true</usecontrolcoords>
+						<itemgap>15</itemgap>
+						<control type="label">
+							<width>1420</width>
+							<height>35</height>
+							<font>font15</font>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<label>$LOCALIZE[206]</label>
+							<visible>!String.IsEmpty(Window(fullscreeninfo).Property(ShowCast))</visible>
+						</control>
+						<control type="label">
+							<width>1420</width>
+							<height>35</height>
+							<font>font15</font>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<label>$LOCALIZE[207]</label>
+							<visible>!String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot))</visible>
+						</control>
+						<control type="textbox" id="400">
+							<width>1420</width>
+							<height>170</height>
+							<font>font15_textbox2</font>
+							<label>$VAR[VideoPlayerPlotVar]</label>
+							<textcolor>grey</textcolor>
+							<pagecontrol>61</pagecontrol>
+							<align>justify</align>
+							<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+							<visible>!String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot)) | !String.IsEmpty(Window(fullscreeninfo).Property(ShowCast))</visible>
+						</control>
+					</control>
+					<control type="scrollbar" id="61">
+						<include>HiddenObject</include>
+					</control>
+				</control>
+			</control>
+			<control type="panel" id="90099">
+				<visible allowhiddenfocus="true">!String.IsEmpty(Window(fullscreeninfo).Property(ShowCast))</visible>
+				<left>480</left>
+				<top>100</top>
+				<width>1400</width>
+				<height>400</height>
+				<orientation>horizontal</orientation>
+				<itemlayout width="240" height="360">
+					<control type="image">
+						<left>10</left>
+						<width>220</width>
+						<height>290</height>
+						<bordersize>10</bordersize>
+						<bordertexture border="10">thumbs/poster_border.png</bordertexture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<texture fallback="DefaultActor.png" background="true">$INFO[ListItem.Icon]</texture>
+					</control>
+					<control type="label">
+						<left>10</left>
+						<top>290</top>
+						<width>220</width>
+						<height>30</height>
+						<align>center</align>
+						<font>font14</font>
+						<shadowcolor>shadow</shadowcolor>
+						<textcolor>white</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<left>10</left>
+						<top>328</top>
+						<width>220</width>
+						<height>30</height>
+						<align>center</align>
+						<font>font12</font>
+						<shadowcolor>shadow</shadowcolor>
+						<textcolor>grey</textcolor>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="480" width="300">
+					<control type="group">
+						<animation effect="zoom" start="90" end="100" time="200" tween="sine" easing="inout" center="auto">Focus</animation>
+						<control type="image">
+							<left>-15</left>
+							<top>-10</top>
+							<width>320</width>
+							<height>450</height>
+							<bordersize>22</bordersize>
+							<bordertexture border="20" infill="false">thumbs/shadow.png</bordertexture>
+							<aspectratio aligny="top">scale</aspectratio>
+							<texture fallback="$PARAM[fallback]" background="true">$PARAM[texture]</texture>
+						</control>
+						<control type="group">
+							<visible>$PARAM[labelVisibility]</visible>
+							<control type="image">
+								<left>5</left>
+								<width>282</width>
+								<height>418</height>
+								<texture>poster_bottom_fade.png</texture>
+							</control>
+							<control type="label">
+								<left>8</left>
+								<top>374</top>
+								<width>274</width>
+								<height>43</height>
+								<align>center</align>
+								<font>font14</font>
+								<shadowcolor>shadow</shadowcolor>
+								<textcolor>$VAR[ThemeLabelColor]</textcolor>
+								<label>$PARAM[label]</label>
+								<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
+							</control>
+						</control>
+						<control type="image">
+							<left>7</left>
+							<top>12</top>
+							<width>67</width>
+							<height>30</height>
+							<texture>colors/black50.png</texture>
+							<aspectratio aligny="center">scale</aspectratio>
+							<visible>!String.IsEmpty(ListItem.Year) + !Control.HasFocus(90016)</visible>
+						</control>
+						<control type="label">
+							<left>8</left>
+							<top>4</top>
+							<width>274</width>
+							<height>43</height>
+							<font>font14</font>
+							<shadowcolor>shadow</shadowcolor>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<label>$PARAM[label2]</label>
+							<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
+						</control>
+						<control type="label">
+							<left>3</left>
+							<top>422</top>
+							<width>284</width>
+							<height>43</height>
+							<align>center</align>
+							<font>font14</font>
+							<shadowcolor>shadow</shadowcolor>
+							<textcolor>$VAR[ThemeLabelColor]</textcolor>
+							<label>$PARAM[label1]</label>
+							<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
+						</control>
+						<control type="image">
+							<left>242</left>
+							<top>13</top>
+							<width>40</width>
+							<height>40</height>
+							<texture>overlays/addons/enabled.png</texture>
+							<visible>$PARAM[overlayVisibility]</visible>
+						</control>
+					</control>
+				</focusedlayout>
+				<content browse="never">$VAR[SkinInfoCastPathVar]</content>
+			</control>
+		</control>
+	</include>
+	<include name="LiveTVFullscreenInfo">
+		<!-- LiveTV Plot-->
+		<control type="group">
+			<top>5</top>
+			<animation effect="fade" start="0" end="100" time="400">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="400">WindowClose</animation>
+			<visible>Skin.HasSetting(TogglePlotLiveTV) | !String.IsEmpty(Window(Home).Property(show_pvr_info))</visible>
+			<!-- PlotOutLine BG -->
+			<control type="image">
+				<left>17</left>
+				<width>1885</width>
+				<height>300</height>
+				<texture border="40">dialogs/default/bg.png</texture>
+				<animation effect="fade" end="85" condition="true">Conditional</animation>
+				<visible>!String.IsEmpty(VideoPlayer.PlotOutline) + !String.IsEqual(VideoPlayer.PlotOutline,N/A) + !String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot))</visible>
+			</control>
+			<!-- FullPlot BG -->
+			<control type="image">
+				<left>17</left>
+				<width>1885</width>
+				<height>720</height>
+				<texture border="40">dialogs/default/bg.png</texture>
+				<animation effect="fade" end="85" condition="true">Conditional</animation>
+				<visible>[String.IsEmpty(VideoPlayer.PlotOutline) | String.IsEqual(VideoPlayer.PlotOutline,N/A)] | String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot))</visible>
+			</control>
+			<control type="grouplist">
+				<top>50</top>
+				<left>57</left>
+				<height>650</height>
+				<width>1805</width>
+				<itemgap>10</itemgap>
+				<control type="label">
+					<height>30</height>
+					<font>font16</font>
+					<textcolor>$VAR[ThemeLabelColor]</textcolor>
+					<label>$INFO[VideoPlayer.ChannelName]</label>
+				</control>
+				<control type="label">
+					<width>auto</width>
+					<height>55</height>
+					<font>font48_bold</font>
+					<scroll>true</scroll>
+					<label>$INFO[VideoPlayer.Season,$LOCALIZE[20373] ,: ]$INFO[VideoPlayer.Episode,$LOCALIZE[20359] , - ]$INFO[VideoPlayer.EpisodeName]</label>
+					<visible>String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))</visible>
+				</control>
+				<control type="grouplist">
+					<width>1805</width>
+					<height>55</height>
+					<itemgap>50</itemgap>
+					<orientation>horizontal</orientation>
+					<visible>!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))</visible>
+					<control type="label">
+						<width>auto</width>
+						<height>55</height>
+						<font>font48</font>
+						<scroll>true</scroll>
+						<label>[B][COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19031]:[/COLOR] $INFO[VideoPlayer.NextTitle][/B]</label>
+					</control>
+					<control type="label">
+						<width>auto</width>
+						<height>65</height>
+						<font>font15</font>
+						<scroll>true</scroll>
+						<label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[180]:[/COLOR] $INFO[VideoPlayer.NextDuration]</label>
+					</control>
+				</control>
+				<control type="label">
+					<width>auto</width>
+					<height>35</height>
+					<font>font14</font>
+					<scroll>true</scroll>
+					<label>[B]$INFO[VideoPlayer.PlotOutline,(,)][/B]</label>
+					<visible>String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + !String.IsEmpty(VideoPlayer.PlotOutline) + String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))</visible>
+				</control>
+				<control type="label">
+					<width>auto</width>
+					<height>35</height>
+					<font>font14</font>
+					<scroll>true</scroll>
+					<label>[B]$INFO[VideoPlayer.NextPlotOutline,(,)][/B]</label>
+					<visible>String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + !String.IsEmpty(VideoPlayer.NextPlotOutline) + !String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))</visible>
+				</control>
+				<control type="image">
+					<width>1809</width>
+					<height>2</height>
+					<texture colordiffuse="$VAR[ThemeLabelColor]">colors/white.png</texture>
+				</control>
+				<control type="label">
+					<width>1000</width>
+					<height>30</height>
+					<textcolor>grey</textcolor>
+					<label>$INFO[VideoPlayer.Genre,$LOCALIZE[515]: ]</label>
+					<visible>String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))</visible>
+				</control>
+				<control type="label">
+					<width>1000</width>
+					<height>30</height>
+					<textcolor>grey</textcolor>
+					<label>$INFO[VideoPlayer.NextGenre,$LOCALIZE[515]: ]</label>
+					<visible>!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))</visible>
+				</control>
+				<control type="group">
+					<visible>String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))</visible>
+					<control type="textbox">
+						<width>1805</width>
+						<height>174</height>
+						<label>$INFO[VideoPlayer.PlotOutline]</label>
+						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
+						<visible>!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + !String.IsEmpty(VideoPlayer.PlotOutline)</visible>
+					</control>
+					<control type="textbox">
+						<width>1805</width>
+						<height>774</height>
+						<label>$INFO[VideoPlayer.Plot]</label>
+						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
+						<visible>String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot))</visible>
+					</control>
+					<control type="textbox">
+						<width>1805</width>
+						<height>50</height>
+						<label>$INFO[VideoPlayer.Plot]</label>
+						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
+						<visible>String.IsEmpty(VideoPlayer.PlotOutline) + !String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot))</visible>
+					</control>
+				</control>
+				<control type="group">
+					<visible>!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))</visible>
+					<control type="textbox">
+						<width>1805</width>
+						<height>174</height>
+						<label>$INFO[VideoPlayer.NextPlotOutline]</label>
+						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
+						<visible>!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + !String.IsEmpty(VideoPlayer.PlotOutline)</visible>
+					</control>
+					<control type="textbox">
+						<width>1805</width>
+						<height>774</height>
+						<label>$INFO[VideoPlayer.NextPlot]</label>
+						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
+						<visible>String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot))</visible>
+					</control>
+					<control type="textbox">
+						<width>1805</width>
+						<height>50</height>
+						<label>$INFO[VideoPlayer.NextPlot]</label>
+						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
+						<visible>String.IsEmpty(VideoPlayer.PlotOutline) + !String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot))</visible>
+					</control>
+				</control>
+			</control>
+		</control>
+	</include>
+	<include name="MusicVideoFullscreenInfo">
+		<control type="group">
+			<top>764</top>
+			<animation effect="slide" end="0,-90" time="240" tween="quadratic" condition="Window.IsActive(videoosd) + !Skin.HasSetting(VideoOSDOnTop)">Conditional</animation>
+			<control type="image">
+				<top>-120</top>
+				<width>400</width>
+				<height>400</height>
+				<aspectratio aligny="bottom">keep</aspectratio>
+				<texture background="true">$VAR[PlayerPosterVar]</texture>
+				<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
+				<bordersize>20</bordersize>
+			</control>
+			<control type="group">
+				<left>400</left>
+				<top>25</top>
+				<control type="image">
+					<left>1057</left>
+					<top>-284</top>
+					<width>450</width>
+					<height>260</height>
+					<aspectratio aligny="bottom">keep</aspectratio>
+					<texture background="true">$VAR[PlayerArtworkVar]</texture>
+					<visible>!Skin.HasSetting(Disable.FullscreenInfoLogo)</visible>
+				</control>
+				<control type="grouplist">
+					<width>1420</width>
+					<height>300</height>
+					<usecontrolcoords>true</usecontrolcoords>
+					<visible>String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot)) + String.IsEmpty(Window(fullscreeninfo).Property(ShowMoreDetails))</visible>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font30_title_bold</font>
+						<textcolor>grey</textcolor>
+						<scroll>true</scroll>
+						<label>$INFO[VideoPlayer.Artist]</label>
+						<visible>!String.IsEmpty(VideoPlayer.Artist)</visible>
+					</control>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<scroll>true</scroll>
+						<label>$INFO[Player.Title]$INFO[VideoPlayer.Year, (,)]</label>
+					</control>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<textcolor>grey</textcolor>
+						<scroll>true</scroll>
+						<label>$INFO[VideoPlayer.Album]$INFO[VideoPlayer.Genre, • ]$VAR[PlayerMusicVideoStudioVar, • ]</label>
+						<visible>!String.IsEmpty(VideoPlayer.Album) | !String.IsEmpty(VideoPlayer.Genre)</visible>
+					</control>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<textcolor>grey</textcolor>
+						<label>$INFO[Player.FinishTime,$LOCALIZE[31393]: ,]$INFO[VideoPlayer.Director, [COLOR grey] • [/COLOR] $LOCALIZE[31000]:[COLOR grey] ,[/COLOR]]</label>
+					</control>
+				</control>
+				<control type="grouplist">
+					<width>1420</width>
+					<height>300</height>
+					<usecontrolcoords>true</usecontrolcoords>
+					<visible>!String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot)) + String.IsEmpty(Window(fullscreeninfo).Property(ShowMoreDetails))</visible>
+					<control type="label">
+						<width>1420</width>
+						<height>35</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$LOCALIZE[207]</label>
+					</control>
+					<control type="textbox" id="400">
+						<top>27</top>
+						<width>1420</width>
+						<height>170</height>
+						<font>font15_textbox2</font>
+						<textcolor>grey</textcolor>
+						<label>$VAR[PlayerMusicVideoPlotVar]</label>
+						<pagecontrol>61</pagecontrol>
+						<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+					</control>
+				</control>
+				<control type="grouplist">
+					<width>1420</width>
+					<height>300</height>
+					<usecontrolcoords>true</usecontrolcoords>
+					<visible>!String.IsEmpty(Window(fullscreeninfo).Property(ShowMoreDetails)) + String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot))</visible>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<scroll>true</scroll>
+						<label fallback="$INFO[Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Album.Tags),$LOCALIZE[20459]: [COLOR grey],[/COLOR]]">$INFO[Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Track.Tags),$LOCALIZE[20459]: [COLOR grey],[/COLOR]]</label>
+						<visible>!Skin.HasSetting(Disable.MusicVideo.OnlineMetadata) + !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Track.Tags)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.MusicVideo.Album.Tags))</visible>
+					</control>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<scroll>true</scroll>
+						<label>$INFO[VideoPlayer.LastPlayed,$LOCALIZE[568]: [COLOR grey],[/COLOR]]$INFO[VideoPlayer.PlayCount,[COLOR grey]  •  [/COLOR]$LOCALIZE[567]: [COLOR grey],[/COLOR]]</label>
+						<visible>!String.IsEmpty(VideoPlayer.LastPlayed)</visible>
+					</control>
+				</control>
+				<control type="scrollbar" id="61">
+					<include>HiddenObject</include>
+				</control>
+			</control>
+		</control>
+	</include>
+	<include name="OtherFullscreenInfo">
+		<control type="group">
+			<animation effect="slide" end="0,-90" time="240" tween="quadratic" condition="Window.IsActive(videoosd) + !Skin.HasSetting(VideoOSDOnTop)">Conditional</animation>
+			<control type="image">
+				<left>30</left>
+				<top>780</top>
+				<width>400</width>
+				<height>240</height>
+				<aspectratio>keep</aspectratio>
+				<texture background="true" diffuse="thumbs/movieposter_mask.png" fallback="$INFO[Player.Art(thumb)]">$INFO[VideoPlayer.Cover]</texture>
+			</control>
+			<control type="group">
+				<left>460</left>
+				<top>757</top>
+				<control type="grouplist">
+					<width>1420</width>
+					<height>300</height>
+					<align>center</align>
+					<visible>String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot))</visible>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font30_title_bold</font>
+						<textcolor>grey</textcolor>
+						<scroll>true</scroll>
+						<label>$INFO[Player.Title]$INFO[VideoPlayer.ChannelNumberLabel, (,)]</label>
+					</control>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$INFO[VideoPlayer.Season,$LOCALIZE[20373] ,: ]$INFO[VideoPlayer.Episode,$LOCALIZE[20359] ]$INFO[VideoPlayer.Title,  -  ]$INFO[VideoPlayer.Premiered, (,)]</label>
+						<visible>!String.IsEmpty(VideoPlayer.Episode) + !String.IsEqual(Player.Title,VideoPlayer.Title)</visible>
+					</control>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$INFO[VideoPlayer.Director,$LOCALIZE[31000]:[COLOR grey] ,[/COLOR]]$INFO[VideoPlayer.Writer, [COLOR grey] • [/COLOR] $LOCALIZE[31001]:[COLOR grey] ,[/COLOR]]</label>
+						<visible>![String.IsEmpty(VideoPlayer.Director) | String.IsEmpty(VideoPlayer.Writer)]</visible>
+					</control>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$INFO[VideoPlayer.ChannelName]</label>
+						<visible>!String.IsEmpty(VideoPlayer.ChannelName)</visible>
+					</control>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<label>$INFO[VideoPlayer.Season,$LOCALIZE[20373] ,: ]$INFO[VideoPlayer.Episode,$LOCALIZE[20359] , - ]$INFO[VideoPlayer.EpisodeName]</label>
+						<visible>!String.IsEmpty(VideoPlayer.EpisodeName)</visible>
+					</control>
+					<control type="label">
+						<width>1420</width>
+						<height>60</height>
+						<font>font15</font>
+						<textcolor>grey</textcolor>
+						<label>$INFO[Player.FinishTime,$LOCALIZE[31393]: ,]  •  $VAR[PlayerTimeRemainingHourVar,, ]$VAR[PlayerTimeRemainingMinuteVar]</label>
+					</control>
+				</control>
+				<control type="grouplist">
+					<top>40</top>
+					<width>1420</width>
+					<height>300</height>
+					<itemgap>15</itemgap>
+					<control type="label">
+						<width>1420</width>
+						<height>35</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$LOCALIZE[206]</label>
+						<visible>!String.IsEmpty(Window(fullscreeninfo).Property(ShowCast))</visible>
+					</control>
+					<control type="label">
+						<width>1420</width>
+						<height>35</height>
+						<font>font15</font>
+						<textcolor>$VAR[ThemeLabelColor]</textcolor>
+						<label>$LOCALIZE[207]</label>
+						<visible>!String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot))</visible>
+					</control>
+					<control type="textbox" id="403">
+						<width>1420</width>
+						<height>170</height>
+						<font>font15_textbox2</font>
+						<label>$VAR[VideoPlayerPlotVar]</label>
+						<textcolor>grey</textcolor>
+						<pagecontrol>61</pagecontrol>
+						<align>justify</align>
+						<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+						<visible>!String.IsEmpty(Window(fullscreeninfo).Property(ShowPlot))</visible>
+					</control>
+				</control>
+			</control>
+		</control>
+		<control type="scrollbar" id="61">
+			<include>HiddenObject</include>
+		</control>
+	</include>
+</includes>
