@@ -437,13 +437,6 @@
 			<values condition="suffix=.2" infotop="449" infoslide1="0,-950" infoslide2="0,-697" />
 			<values infotop="90" infoslide1="0,950" infoslide2="0,677" />
 		</preset>
-		<!-- Random Fanart Lists -->
-		<preset name="randomFanartLists">
-			<values condition="background=kodi-movie-fanart" listid="9035" content="videodb://movies/titles/" />
-			<values condition="background=kodi-tv-fanart" listid="9036" content="videodb://tvshows/titles/" />
-			<values condition="background=kodi-music-fanart" listid="9037" content="musicdb://artists/?albumartistsonly=true" />
-			<values condition="background=kodi-musicvideo-fanart" listid="9038" content="videodb://musicvideos/titles/" />
-		</preset>
 	</presets>
 	<!-- PRESETGROUPS -->
 	<presetGroups>
@@ -1365,18 +1358,6 @@
 						<content target="$PROPERTY[target]" sortby="$PROPERTY[sortby]" sortorder="$PROPERTY[sort]" limit="$PROPERTY[limit]" browse="never">$PROPERTY[content]</content>
 					</control>
 				</control>
-			</control>
-		</controls>
-	</template>
-	<!-- Random Fanart Lists -->
-	<template include="HomeRandomFanartLists">
-		<condition>background=kodi-movie-fanart | kodi-tv-fanart | kodi-music-fanart | kodi-musicvideo-fanart</condition>
-		<preset content="randomFanartLists" />
-		<controls>
-			<control type="wraplist" id="$PROPERTY[listid]">
-				<include>HiddenList</include>
-				<include>ListAutoscrollTime</include>
-				<content sortby="random" limit="100">$PROPERTY[content]</content>
 			</control>
 		</controls>
 	</template>

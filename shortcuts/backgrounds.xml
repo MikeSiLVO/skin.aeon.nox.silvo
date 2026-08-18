@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <backgrounds>
+	<overrides>
+		<background replace="kodi-movie-fanart">movie-fanart</background>
+		<background replace="kodi-tv-fanart">tv-fanart</background>
+		<background replace="kodi-music-fanart">music-fanart</background>
+		<background replace="kodi-musicvideo-fanart">musicvideo-fanart</background>
+	</overrides>
 	<background name="custom-image" label="$LOCALIZE[31023]" type="browse">
 		<icon>special://skin/extras/icons/DefaultPicture.png</icon>
 		<source label="$LOCALIZE[1024]">browse</source>
@@ -10,7 +16,7 @@
 		<source label="$LOCALIZE[1024]">browse</source>
 		<source label="Skin Backgrounds">special://skin/extras/backgrounds/</source>
 	</background>
-	<group name="skininfo-fanart" icon="logos/skininfo-logo.png" label="$INFO[System.AddonTitle(script.skin.info.service)]" visible="System.AddonIsEnabled(script.skin.info.service)">
+	<group name="skininfo-fanart" flat="true" visible="System.AddonIsEnabled(script.skin.info.service)">
 		<background name="movie-fanart" label="$LOCALIZE[31062]" type="property" visible="System.AddonIsEnabled(script.skin.info.service) + Library.HasContent(movies)">
 			<path>$INFO[Window(Home).Property(SkinInfo.Slideshow.Movie.FanArt)]</path>
 			<icon>special://skin/extras/icons/DefaultMovies.png</icon>
@@ -27,27 +33,13 @@
 			<path>$INFO[Window(Home).Property(SkinInfo.Slideshow.Music.FanArt)]</path>
 			<icon>special://skin/extras/icons/DefaultAudio.png</icon>
 		</background>
+		<background name="musicvideo-fanart" label="$LOCALIZE[31575]" type="property" visible="System.AddonIsEnabled(script.skin.info.service) + Library.HasContent(musicvideos)">
+			<path>$INFO[Window(Home).Property(SkinInfo.Slideshow.MusicVideo.FanArt)]</path>
+			<icon>special://skin/extras/icons/DefaultMusicVideos.png</icon>
+		</background>
 		<background name="global-fanart" label="$LOCALIZE[31066]" type="property" visible="System.AddonIsEnabled(script.skin.info.service)">
 			<path>$INFO[Window(Home).Property(SkinInfo.Slideshow.Global.FanArt)]</path>
 			<icon>special://skin/extras/icons/DefaultPicture.png</icon>
-		</background>
-	</group>
-	<group name="kodi-fanart" icon="logos/kodi.png" label="Kodi fanart">
-		<background name="kodi-movie-fanart" label="$LOCALIZE[31548]" type="property" visible="Library.HasContent(movies)">
-			<path>$INFO[Container(9035).ListItem.Art(fanart)]</path>
-			<icon>special://skin/extras/icons/DefaultMovies.png</icon>
-		</background>
-		<background name="kodi-tv-fanart" label="$LOCALIZE[31549]" type="property" visible="Library.HasContent(tvshows)">
-			<path>$INFO[Container(9036).ListItem.Art(fanart)]</path>
-			<icon>special://skin/extras/icons/DefaultTVShows.png</icon>
-		</background>
-		<background name="kodi-music-fanart" label="$LOCALIZE[31550]" type="property" visible="Library.HasContent(music)">
-			<path>$INFO[Container(9037).ListItem.Art(fanart)]</path>
-			<icon>special://skin/extras/icons/DefaultAudio.png</icon>
-		</background>
-		<background name="kodi-musicvideo-fanart" label="$LOCALIZE[31575]" type="property" visible="Library.HasContent(musicvideos)">
-			<path>$INFO[Container(9038).ListItem.Art(fanart)]</path>
-			<icon>special://skin/extras/icons/DefaultMusicVideos.png</icon>
 		</background>
 	</group>
 	<background name="weather-fanart" label="$LOCALIZE[31084]" type="property" visible="!String.IsEmpty(Skin.String(weatherfanart.path))">
