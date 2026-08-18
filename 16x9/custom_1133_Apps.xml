@@ -409,6 +409,8 @@
 			</control>
 			<include>MediaMenuPlayerControls</include>
 		</control>
-		<include>DebugWindow</include>
+		<include content="DebugWindow">
+			<param name="visible">!System.HasVisibleModalDialog</param>
+		</include>
 	</controls>
 </window>
