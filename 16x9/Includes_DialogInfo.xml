@@ -66,7 +66,7 @@
 				<orientation>horizontal</orientation>
 				<preloaditems>2</preloaditems>
 				<scrolltime tween="quadratic" easing="out">300</scrolltime>
-				<onclick condition="Control.HasFocus(99000) | Control.HasFocus(99001)">RunScript(script.skin.info.service,action=dialog_actor_info,person_id=$INFO[Container($PARAM[id]).ListItem.Property(person_id)],name=$ESCINFO[Container($PARAM[id]).ListItem.Label],focus=$INFO[System.CurrentControlID])</onclick>
+				<onclick condition="Control.HasFocus(99000) | Control.HasFocus(99001)">RunScript(script.skin.info.service,action=dialog_actor_info,person_id=$INFO[Container($PARAM[id]).ListItem.Property(person_id)],name=$ESCINFO[Container($PARAM[id]).ListItem.Label],role=$ESCINFO[Container($PARAM[id]).ListItem.Label2],dbid=$INFO[Window.Property(dbid)],dbtype=$INFO[Window.Property(mediatype)],focus=$INFO[System.CurrentControlID])</onclick>
 				<onclick condition="Control.HasFocus(99002) | Control.HasFocus(99003) | Control.HasFocus(99004) | Control.HasFocus(99005) | Control.HasFocus(99006) | Control.HasFocus(99007) | Control.HasFocus(99008)">RunScript(script.skin.info.service,action=dialog_video_info,dbid=$INFO[Container($PARAM[id]).ListItem.DBID],tmdb_id=$INFO[Container($PARAM[id]).ListItem.Property(tmdb_id)],dbtype=$INFO[Container($PARAM[id]).ListItem.DBType])</onclick>
 				<onclick condition="Control.HasFocus(99009)">RunScript(script.skin.info.service,action=dialog_image_viewer,images_path=$INFO[Window.Property(container.images.path)],selected_index=$INFO[Container(99009).CurrentItem])</onclick>
 				<include content="ExtendedInfoOnclick" condition="$PARAM[do_onclick]">
@@ -1507,7 +1507,7 @@
 				<texture>$VAR[RottenFreshAudienceLogoVar]</texture>
 			</control>
 			<control type="label">
-				<left>55</left>
+				<left>60</left>
 				<width>auto</width>
 				<font>font16_title_bold</font>
 				<textcolor>grey</textcolor>
