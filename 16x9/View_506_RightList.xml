@@ -243,19 +243,17 @@
 						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(50664)</autoscroll>
 					</control>
 					<control type="scrollbar" id="50664">
-						<left>592</left>
-						<top>100</top>
-						<width>12</width>
-						<height>270</height>
+						<include content="ScrollbarValues">
+							<param name="left">587</param>
+							<param name="top">100</param>
+							<param name="height">270</param>
+							<param name="style">ScrollbarDim</param>
+						</include>
 						<onup>PageUp(70)</onup>
 						<ondown>PageUp(70)</ondown>
 						<onleft>SetProperty(MediaMenu,True,Home)</onleft>
 						<onleft>SetFocus(9050)</onleft>
 						<onright>506</onright>
-						<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-						<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-						<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
-						<showonepage>false</showonepage>
 					</control>
 				</control>
 			</control>
@@ -263,19 +261,17 @@
 				<include condition="!Skin.HasSetting(RightListFixedList)">listrightlist</include>
 				<include condition="Skin.HasSetting(RightListFixedList)">fixedlistrightlist</include>
 				<control type="scrollbar" id="50660">
-					<left>1904</left>
-					<top>74</top>
-					<width>16</width>
-					<height>909</height>
+					<include content="ScrollbarValues">
+						<param name="left">1906</param>
+						<param name="top">74</param>
+						<param name="height">909</param>
+						<param name="style">ScrollbarDim</param>
+					</include>
 					<onup>50660</onup>
 					<ondown>50660</ondown>
 					<onleft>506</onleft>
 					<onright condition="Control.IsVisible(615) + Integer.IsGreaterOrEqual(Container(506).NumPages,5)">615</onright>
 					<onright condition="!Integer.IsGreaterOrEqual(Container(506).NumPages,5) | Integer.IsGreaterOrEqual(Container(506).NumPages,5) + !Control.IsVisible(615)">4400</onright>
-					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
-					<showonepage>false</showonepage>
 				</control>
 			</control>
 		</control>
@@ -407,18 +403,16 @@
 						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(50663)</autoscroll>
 					</control>
 					<control type="scrollbar" id="50663">
-						<left>587</left>
-						<width>14</width>
-						<height>245</height>
+						<include content="ScrollbarValues">
+							<param name="left">587</param>
+							<param name="height">245</param>
+							<param name="style">ScrollbarDim</param>
+						</include>
 						<onup>PageUp(70)</onup>
 						<ondown>PageUp(70)</ondown>
 						<onleft>SetProperty(MediaMenu,True,Home)</onleft>
 						<onleft>SetFocus(9050)</onleft>
 						<onright>506</onright>
-						<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-						<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-						<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
-						<showonepage>false</showonepage>
 					</control>
 				</control>
 			</control>
@@ -450,19 +444,17 @@
 				</focusedlayout>
 			</control>
 			<control type="scrollbar" id="50660">
-				<left>1904</left>
-				<top>60</top>
-				<width>16</width>
-				<height>990</height>
+				<include content="ScrollbarValues">
+					<param name="left">1906</param>
+					<param name="top">60</param>
+					<param name="height">990</param>
+					<param name="style">ScrollbarDim</param>
+				</include>
 				<onup>50660</onup>
 				<ondown>50660</ondown>
 				<onleft>506</onleft>
 				<onright condition="Control.IsVisible(615) + Integer.IsGreaterOrEqual(Container(506).NumPages,5)">615</onright>
 				<onright condition="!Integer.IsGreaterOrEqual(Container(506).NumPages,5) | Integer.IsGreaterOrEqual(Container(506).NumPages,5) + !Control.IsVisible(615)">4400</onright>
-				<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-				<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-				<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
-				<showonepage>false</showonepage>
 			</control>
 		</control>
 	</include>
