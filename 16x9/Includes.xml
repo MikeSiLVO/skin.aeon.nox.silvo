@@ -395,6 +395,32 @@
 		</control>
 	</include>
 	<!-- Scrollbars -->
+	<include name="ScrollbarSolid">
+		<texturesliderbackground>colors/black.png</texturesliderbackground>
+		<texturesliderbar colordiffuse="$VAR[UnfocusedScrollbarColor]">colors/white50.png</texturesliderbar>
+		<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
+	</include>
+	<include name="ScrollbarDim">
+		<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
+		<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
+		<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
+	</include>
+	<include name="ScrollbarValues">
+		<param name="left" />
+		<param name="top" />
+		<param name="width" default="14" />
+		<param name="height" />
+		<param name="style" default="ScrollbarSolid" />
+		<param name="showonepage" default="false" />
+		<definition>
+			<left>$PARAM[left]</left>
+			<top>$PARAM[top]</top>
+			<width>$PARAM[width]</width>
+			<height>$PARAM[height]</height>
+			<include>$PARAM[style]</include>
+			<showonepage>$PARAM[showonepage]</showonepage>
+		</definition>
+	</include>
 	<include name="BottomScrollbar">
 		<param name="id" />
 		<param name="view" />
