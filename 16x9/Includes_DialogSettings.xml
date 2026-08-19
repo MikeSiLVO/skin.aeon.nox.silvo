@@ -10,26 +10,20 @@
 		<param name="ondown_condition2" default="false" />
 		<param name="onup_condition" default="false" />
 		<definition>
-			<control type="image">
-				<left>-4</left>
-				<top>-4</top>
-				<width>1508</width>
-				<height>$PARAM[height]</height>
-				<texture border="4">colors/black.png</texture>
-				<bordersize>4</bordersize>
-				<bordertexture border="4" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/white.png</bordertexture>
-				<visible>$PARAM[icon_visible] + !Window.IsVisible(dialogselectsubtitle) + !Window.IsVisible(dialogselectvideo) + !Window.IsVisible(dialogselectaudio)</visible>
-			</control>
-			<control type="image">
-				<left>-4</left>
-				<top>-4</top>
-				<width>968</width>
-				<height>$PARAM[height]</height>
-				<texture border="4">colors/black.png</texture>
-				<bordersize>4</bordersize>
-				<bordertexture border="4" infill="false" colordiffuse="$VAR[ThemeBorderColor]">colors/white.png</bordertexture>
-				<visible>!$PARAM[icon_visible] | Window.IsVisible(dialogselectsubtitle) | Window.IsVisible(dialogselectvideo) | Window.IsVisible(dialogselectaudio)</visible>
-			</control>
+			<include content="BackPanel">
+				<param name="left">-4</param>
+				<param name="top">-4</param>
+				<param name="width">1508</param>
+				<param name="height">$PARAM[height]</param>
+				<param name="visible">$PARAM[icon_visible] + !Window.IsVisible(dialogselectsubtitle) + !Window.IsVisible(dialogselectvideo) + !Window.IsVisible(dialogselectaudio)</param>
+			</include>
+			<include content="BackPanel">
+				<param name="left">-4</param>
+				<param name="top">-4</param>
+				<param name="width">968</param>
+				<param name="height">$PARAM[height]</param>
+				<param name="visible">!$PARAM[icon_visible] | Window.IsVisible(dialogselectsubtitle) | Window.IsVisible(dialogselectvideo) | Window.IsVisible(dialogselectaudio)</param>
+			</include>
 			<control type="label" id="$PARAM[header_id]">
 				<description>Header label</description>
 				<width>1345</width>
