@@ -1164,8 +1164,45 @@
 			<texture>colors/black75.png</texture>
 			<animation effect="fade" time="400">Visible</animation>
 			<animation effect="fade" time="200">Hidden</animation>
-			<visible>Window.IsActive(FileBrowser) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRTimerSetting) | Window.IsActive(PVRGroupManager) | Window.IsActive(PVRGuideSearch)</visible>
+			<visible>Window.IsActive(FileBrowser) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRTimerSetting) | Window.IsActive(PVRGuideSearch)</visible>
 		</control>
+	</include>
+	<include name="GroupManagerItem">
+		<param name="icon" default="" />
+		<param name="label2" />
+		<param name="labelright" default="165" />
+		<param name="textcolor" default="white" />
+		<param name="scroll" default="false" />
+		<definition>
+			<control type="image">
+				<right>5</right>
+				<top>5</top>
+				<width>150</width>
+				<height>70</height>
+				<aspectratio align="right">keep</aspectratio>
+				<texture>$PARAM[icon]</texture>
+			</control>
+			<control type="label">
+				<left>15</left>
+				<top>2</top>
+				<right>$PARAM[labelright]</right>
+				<height>44</height>
+				<font>font14</font>
+				<textcolor>$PARAM[textcolor]</textcolor>
+				<label>$PARAM[label]</label>
+				<scroll>$PARAM[scroll]</scroll>
+			</control>
+			<control type="label">
+				<left>15</left>
+				<top>44</top>
+				<right>$PARAM[labelright]</right>
+				<height>34</height>
+				<font>font12</font>
+				<textcolor>grey3</textcolor>
+				<label>$PARAM[label2]</label>
+				<scroll>$PARAM[scroll]</scroll>
+			</control>
+		</definition>
 	</include>
 	<variable name="GuideTimelineViewTypeOptionsLabelVar">
 		<value condition="String.IsEqual(Skin.String(LiveTV.EpgViewType),1)">$LOCALIZE[31222]</value>
