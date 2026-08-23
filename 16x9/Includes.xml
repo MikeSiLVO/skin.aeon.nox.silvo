@@ -438,6 +438,24 @@
 		<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
 		<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 	</include>
+	<include name="PanelDivider">
+		<param name="left" default="0" />
+		<param name="top" default="0" />
+		<param name="width" default="1" />
+		<param name="height" default="1" />
+		<param name="color" default="grey4" />
+		<param name="visible" default="true" />
+		<definition>
+			<control type="image">
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<texture colordiffuse="$PARAM[color]">colors/white.png</texture>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
+	</include>
 	<include name="ScrollbarValues">
 		<param name="left" />
 		<param name="top" />

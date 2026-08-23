@@ -105,30 +105,25 @@
 					<ondown condition="$PARAM[ondown_condition2]">$PARAM[buttons_ondown2]</ondown>
 				</control>
 			</control>
-			<control type="image">
-				<left>1</left>
-				<top>67</top>
-				<width>1498</width>
-				<height>1</height>
-				<texture colordiffuse="grey4">colors/white.png</texture>
-				<visible>$PARAM[icon_visible] + !Window.IsVisible(dialogselectsubtitle) + !Window.IsVisible(dialogselectvideo) + !Window.IsVisible(dialogselectaudio)</visible>
-			</control>
-			<control type="image">
-				<left>1</left>
-				<top>67</top>
-				<width>958</width>
-				<height>1</height>
-				<texture colordiffuse="grey4">colors/white.png</texture>
-				<visible>!$PARAM[icon_visible] | Window.IsVisible(dialogselectsubtitle) | Window.IsVisible(dialogselectvideo) | Window.IsVisible(dialogselectaudio)</visible>
-			</control>
-			<control type="image">
-				<left>968</left>
-				<top>68</top>
-				<width>2</width>
-				<height>540</height>
-				<texture colordiffuse="grey4">colors/white.png</texture>
-				<visible>$PARAM[has_inner]</visible>
-			</control>
+			<include content="PanelDivider">
+				<param name="left">1</param>
+				<param name="top">67</param>
+				<param name="width">1498</param>
+				<param name="visible">$PARAM[icon_visible] + !Window.IsVisible(dialogselectsubtitle) + !Window.IsVisible(dialogselectvideo) + !Window.IsVisible(dialogselectaudio)</param>
+			</include>
+			<include content="PanelDivider">
+				<param name="left">1</param>
+				<param name="top">67</param>
+				<param name="width">958</param>
+				<param name="visible">!$PARAM[icon_visible] | Window.IsVisible(dialogselectsubtitle) | Window.IsVisible(dialogselectvideo) | Window.IsVisible(dialogselectaudio)</param>
+			</include>
+			<include content="PanelDivider">
+				<param name="left">968</param>
+				<param name="top">68</param>
+				<param name="width">2</param>
+				<param name="height">540</param>
+				<param name="visible">$PARAM[has_inner]</param>
+			</include>
 		</definition>
 	</include>
 	<include name="VideoOSDSettings">
@@ -697,13 +692,11 @@
 			<height>67</height>
 			<info>System.Progressbar</info>
 		</control>
-		<control type="image">
-			<left>1</left>
-			<top>68</top>
-			<width>908</width>
-			<height>1</height>
-			<texture colordiffuse="grey4">colors/white.png</texture>
-		</control>
+		<include content="PanelDivider">
+			<param name="left">1</param>
+			<param name="top">68</param>
+			<param name="width">908</param>
+		</include>
 	</include>
 	<!-- View Settings -->
 	<include name="ViewSettingsButtons">

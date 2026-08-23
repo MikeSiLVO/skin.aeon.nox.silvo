@@ -42,27 +42,21 @@
 				<ondown>13</ondown>
 				<label></label>
 			</control>
-			<control type="image">
-				<left>472</left>
-				<top>129</top>
-				<width>1</width>
-				<height>795</height>
-				<texture colordiffuse="grey4">colors/white.png</texture>
-			</control>
-			<control type="image">
-				<left>1129</left>
-				<top>129</top>
-				<width>1</width>
-				<height>795</height>
-				<texture colordiffuse="grey4">colors/white.png</texture>
-			</control>
-			<control type="image">
-				<left>64</left>
-				<top>128</top>
-				<width>1792</width>
-				<height>1</height>
-				<texture colordiffuse="grey4">colors/white.png</texture>
-			</control>
+			<include content="PanelDivider">
+				<param name="left">472</param>
+				<param name="top">129</param>
+				<param name="height">795</param>
+			</include>
+			<include content="PanelDivider">
+				<param name="left">1129</param>
+				<param name="top">129</param>
+				<param name="height">795</param>
+			</include>
+			<include content="PanelDivider">
+				<param name="left">64</param>
+				<param name="top">128</param>
+				<param name="width">1792</param>
+			</include>
 			<control type="label">
 				<left>64</left>
 				<top>169</top>
@@ -85,20 +79,16 @@
 				<label>$LOCALIZE[19174]</label>
 				<visible>!String.IsEmpty(Window.Property(IsRadio))</visible>
 			</control>
-			<control type="image">
-				<left>64</left>
-				<top>203</top>
-				<width>1792</width>
-				<height>1</height>
-				<texture colordiffuse="grey4">colors/white.png</texture>
-			</control>
-			<control type="image">
-				<left>64</left>
-				<top>924</top>
-				<width>1792</width>
-				<height>1</height>
-				<texture colordiffuse="grey4">colors/white.png</texture>
-			</control>
+			<include content="PanelDivider">
+				<param name="left">64</param>
+				<param name="top">203</param>
+				<param name="width">1792</param>
+			</include>
+			<include content="PanelDivider">
+				<param name="left">64</param>
+				<param name="top">924</param>
+				<param name="width">1792</param>
+			</include>
 			<control type="grouplist" id="9000">
 				<left>64</left>
 				<top>925</top>
