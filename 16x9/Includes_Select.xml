@@ -49,7 +49,98 @@
 					<onright>60</onright>
 					<pagecontrol>60</pagecontrol>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
-					<itemlayout height="60" width="950">
+					<itemlayout height="90" width="950" condition="$EXP[IsSkinShortcutsPicker]">
+						<control type="label">
+							<width>950</width>
+							<height>90</height>
+							<textoffsetx>15</textoffsetx>
+							<font>font14</font>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>String.IsEmpty(ListItem.Property(path)) + !String.IsEqual(ListItem.Property(type),group)</visible>
+						</control>
+						<control type="label">
+							<width>950</width>
+							<height>60</height>
+							<textoffsetx>15</textoffsetx>
+							<font>font14</font>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>!String.IsEmpty(ListItem.Property(path)) | String.IsEqual(ListItem.Property(type),group)</visible>
+						</control>
+						<control type="label">
+							<width>950</width>
+							<height>60</height>
+							<textoffsetx>15</textoffsetx>
+							<font>font14</font>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<align>right</align>
+							<label>$INFO[ListItem.Label2]</label>
+						</control>
+						<control type="label">
+							<top>60</top>
+							<width>950</width>
+							<height>30</height>
+							<textoffsetx>15</textoffsetx>
+							<font>font12</font>
+							<textcolor>grey3</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label>$VAR[PickerRowPathVar]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="90" width="958" condition="$EXP[IsSkinShortcutsPicker]">
+						<control type="group">
+							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(3)">Conditional</animation>
+							<control type="image">
+								<width>958</width>
+								<height>90</height>
+								<texture colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texture>
+							</control>
+							<control type="label">
+								<width>950</width>
+								<height>90</height>
+								<textoffsetx>15</textoffsetx>
+								<font>font14</font>
+								<scroll>true</scroll>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$INFO[ListItem.Label]</label>
+								<visible>String.IsEmpty(ListItem.Property(path)) + !String.IsEqual(ListItem.Property(type),group)</visible>
+							</control>
+							<control type="label">
+								<width>950</width>
+								<height>60</height>
+								<textoffsetx>15</textoffsetx>
+								<font>font14</font>
+								<textcolor>grey2</textcolor>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$INFO[ListItem.Label]</label>
+								<visible>!String.IsEmpty(ListItem.Property(path)) | String.IsEqual(ListItem.Property(type),group)</visible>
+							</control>
+							<control type="label">
+								<width>950</width>
+								<height>60</height>
+								<textoffsetx>15</textoffsetx>
+								<font>font14</font>
+								<align>right</align>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$INFO[ListItem.Label2]</label>
+							</control>
+							<control type="label">
+								<top>50</top>
+								<width>950</width>
+								<height>30</height>
+								<textoffsetx>15</textoffsetx>
+								<font>font12</font>
+								<scroll>true</scroll>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$VAR[PickerRowPathVar]</label>
+							</control>
+						</control>
+					</focusedlayout>
+					<itemlayout height="60" width="950" condition="!$EXP[IsSkinShortcutsPicker]">
 						<control type="label">
 							<width>950</width>
 							<height>60</height>
@@ -70,7 +161,7 @@
 							<label>$INFO[ListItem.Label2]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout height="60" width="958">
+					<focusedlayout height="60" width="958" condition="!$EXP[IsSkinShortcutsPicker]">
 						<control type="group">
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(3)">Conditional</animation>
 							<control type="image">
@@ -110,7 +201,98 @@
 					<onright>60</onright>
 					<pagecontrol>60</pagecontrol>
 					<scrolltime tween="quadratic" easing="out">200</scrolltime>
-					<itemlayout height="60" width="950">
+					<itemlayout height="90" width="950" condition="$EXP[IsSkinShortcutsPicker]">
+						<control type="label">
+							<width>950</width>
+							<height>90</height>
+							<textoffsetx>15</textoffsetx>
+							<font>font14</font>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label>$VAR[DialogSelectLabelVar]</label>
+							<visible>String.IsEmpty(ListItem.Property(path)) + !String.IsEqual(ListItem.Property(type),group)</visible>
+						</control>
+						<control type="label">
+							<width>950</width>
+							<height>60</height>
+							<textoffsetx>15</textoffsetx>
+							<font>font14</font>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label>$VAR[DialogSelectLabelVar]</label>
+							<visible>!String.IsEmpty(ListItem.Property(path)) | String.IsEqual(ListItem.Property(type),group)</visible>
+						</control>
+						<control type="label">
+							<width>950</width>
+							<height>60</height>
+							<textoffsetx>15</textoffsetx>
+							<font>font13</font>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<align>right</align>
+							<label>$VAR[DialogSelectLabel2Var]</label>
+						</control>
+						<control type="label">
+							<top>50</top>
+							<width>950</width>
+							<height>30</height>
+							<textoffsetx>15</textoffsetx>
+							<font>font12</font>
+							<textcolor>grey3</textcolor>
+							<shadowcolor>shadow</shadowcolor>
+							<label>$VAR[PickerRowPathVar]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="90" width="958" condition="$EXP[IsSkinShortcutsPicker]">
+						<control type="group">
+							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(6)">Conditional</animation>
+							<control type="image">
+								<width>958</width>
+								<height>90</height>
+								<texture colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texture>
+							</control>
+							<control type="label">
+								<width>950</width>
+								<height>90</height>
+								<textoffsetx>15</textoffsetx>
+								<font>font14</font>
+								<scroll>true</scroll>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$VAR[DialogSelectLabelVar]</label>
+								<visible>String.IsEmpty(ListItem.Property(path)) + !String.IsEqual(ListItem.Property(type),group)</visible>
+							</control>
+							<control type="label">
+								<width>950</width>
+								<height>60</height>
+								<textoffsetx>15</textoffsetx>
+								<font>font14</font>
+								<scroll>true</scroll>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$VAR[DialogSelectLabelVar]</label>
+								<visible>!String.IsEmpty(ListItem.Property(path)) | String.IsEqual(ListItem.Property(type),group)</visible>
+							</control>
+							<control type="label">
+								<width>950</width>
+								<height>60</height>
+								<textoffsetx>15</textoffsetx>
+								<font>font13</font>
+								<align>right</align>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$VAR[DialogSelectLabel2Var]</label>
+							</control>
+							<control type="label">
+								<top>50</top>
+								<width>950</width>
+								<height>30</height>
+								<textoffsetx>15</textoffsetx>
+								<font>font12</font>
+								<scroll>true</scroll>
+								<shadowcolor>shadow</shadowcolor>
+								<label>$VAR[PickerRowPathVar]</label>
+							</control>
+						</control>
+					</focusedlayout>
+					<itemlayout height="60" width="950" condition="!$EXP[IsSkinShortcutsPicker]">
 						<control type="label">
 							<width>950</width>
 							<height>60</height>
@@ -131,7 +313,7 @@
 							<label>$VAR[DialogSelectLabel2Var]</label>
 						</control>
 					</itemlayout>
-					<focusedlayout height="60" width="958">
+					<focusedlayout height="60" width="958" condition="!$EXP[IsSkinShortcutsPicker]">
 						<control type="group">
 							<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(6)">Conditional</animation>
 							<control type="image">

@@ -900,6 +900,10 @@
 		<value condition="!String.IsEmpty(Container(8000).ListItem.Rating(imdb))">$INFO[Container(8000).ListItem.Rating(imdb)]</value>
 		<value>$INFO[Container(8001).ListItem.Rating(imdb)]</value>
 	</variable> -->
+	<variable name="PickerRowPathVar">
+		<value condition="!String.IsEmpty(ListItem.Property(path))">$INFO[ListItem.Property(path)]</value>
+		<value condition="String.IsEqual(ListItem.Property(type),group)">$INFO[ListItem.Property(count),, $LOCALIZE[31025]]</value>
+	</variable>
 	<variable name="DialogSelectLabelVar">
 		<value condition="Window.IsVisible(dialogselectvideo)">$INFO[ListItem.Property(stream.codec)]$INFO[ListItem.Property(stream.hdrtype),$COMMA ]$INFO[ListItem.Property(stream.resolution),$COMMA ]$INFO[Player.Process(videoscantype)]$INFO[ListItem.Property(stream.bitrate),$COMMA , kbps]$INFO[ListItem.Property(stream.fps),$COMMA , fps]</value>
 		<value>$INFO[ListItem.Label]</value>
