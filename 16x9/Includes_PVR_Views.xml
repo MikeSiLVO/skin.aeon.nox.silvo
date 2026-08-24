@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<include name="DefaultPVRChannels">
+	<include name="ListPVRChannels">
 		<!-- Default Channel List -->
 		<control type="group">
 			<top>128</top>
 			<visible>Control.IsVisible(50)</visible>
 			<include>VisibleFadeAnimation</include>
-			<control type="image">
-				<left>50</left>
-				<width>885</width>
-				<height>904</height>
-				<texture border="40">listpanel_back.png</texture>
-			</control>
+			<include content="BackPanel">
+				<param name="left">78</param>
+				<param name="top">28</param>
+				<param name="width">846</param>
+				<param name="height">848</param>
+			</include>
 			<control type="list" id="50">
 				<left>82</left>
 				<top>32</top>
-				<width>821</width>
+				<width>824</width>
 				<height>840</height>
 				<onleft>SetProperty(MediaMenu,True,Home)</onleft>
 				<onleft>SetFocus(9050)</onleft>
@@ -28,7 +28,7 @@
 				<viewtype label="535">list</viewtype>
 				<pagecontrol>60</pagecontrol>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
-				<itemlayout height="120" width="821">
+				<itemlayout height="120" width="824">
 					<control type="label">
 						<width>150</width>
 						<height>95</height>
@@ -83,9 +83,9 @@
 						<animation effect="fade" start="100" end="40" time="2000" pulse="true" condition="ListItem.IsRecording">Conditional</animation>
 					</control>
 				</itemlayout>
-				<focusedlayout height="120" width="821">
+				<focusedlayout height="120" width="824">
 					<control type="image">
-						<width>821</width>
+						<width>824</width>
 						<height>120</height>
 						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 						<visible>Control.HasFocus(50)</visible>
@@ -147,29 +147,27 @@
 				</focusedlayout>
 			</control>
 			<control type="scrollbar" id="60">
-				<left>906</left>
-				<top>32</top>
-				<width>12</width>
-				<height>840</height>
+				<include content="ScrollbarValues">
+					<param name="left">906</param>
+					<param name="top">32</param>
+					<param name="height">840</param>
+				</include>
 				<onleft>50</onleft>
 				<onright condition="!Control.IsVisible(61)">SetProperty(MediaMenu,True,Home)</onright>
 				<onright condition="!Control.IsVisible(61)">SetFocus(9050)</onright>
 				<onright condition="Control.IsVisible(61)">61</onright>
 				<ondown>60</ondown>
 				<onup>60</onup>
-				<showonepage>false</showonepage>
-				<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-				<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-				<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 			</control>
 			<control type="group">
 				<description>Small Media Window</description>
-				<left>985</left>
-				<control type="image">
-					<width>885</width>
-					<height>904</height>
-					<texture border="40">listpanel_back.png</texture>
-				</control>
+				<left>968</left>
+				<include content="BackPanel">
+					<param name="left">28</param>
+					<param name="top">28</param>
+					<param name="width">846</param>
+					<param name="height">848</param>
+				</include>
 				<control type="image">
 					<left>32</left>
 					<top>32</top>
@@ -218,7 +216,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<left>1017</left>
+				<left>1000</left>
 				<top>494</top>
 				<control type="label">
 					<top>10</top>
@@ -259,19 +257,16 @@
 					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(61)</autoscroll>
 				</control>
 				<control type="scrollbar" id="61">
-					<left>824</left>
-					<top>105</top>
-					<width>12</width>
-					<height>272</height>
+					<include content="ScrollbarValues">
+						<param name="left">824</param>
+						<param name="top">134</param>
+						<param name="height">244</param>
+					</include>
 					<onup>PageUp(70)</onup>
 					<ondown>PageUp(70)</ondown>
 					<onleft>50</onleft>
 					<onright>SetProperty(MediaMenu,True,Home)</onright>
 					<onright>SetFocus(9050)</onright>
-					<showonepage>false</showonepage>
-					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 				</control>
 			</control>
 		</control>
@@ -283,15 +278,16 @@
 			<top>55</top>
 			<visible>Control.IsVisible(51)</visible>
 			<include>VisibleFadeAnimation</include>
-			<control type="image">
-				<width>1840</width>
-				<height>1012</height>
-				<texture border="40">listpanel_back.png</texture>
-			</control>
+			<include content="BackPanel">
+				<param name="left">9</param>
+				<param name="top">16</param>
+				<param name="width">1802</param>
+				<param name="height">980</param>
+			</include>
 			<control type="panel" id="51">
-				<left>32</left>
-				<top>30</top>
-				<width>1800</width>
+				<left>13</left>
+				<top>20</top>
+				<width>1780</width>
 				<height>720</height>
 				<onleft>SetProperty(MediaMenu,True,Home)</onleft>
 				<onleft>SetFocus(9050)</onleft>
@@ -304,11 +300,18 @@
 				<scrolltime tween="quadratic" easing="out">300</scrolltime>
 				<itemlayout height="180" width="445">
 					<control type="image">
-						<width>440</width>
-						<height>175</height>
-						<aspectratio>stretch</aspectratio>
-						<texture colordiffuse="33FFFFFF" border="4">pvr/grey_bg.png</texture>
+						<width>445</width>
+						<height>180</height>
+						<texture>colors/black.png</texture>
 					</control>
+					<include content="PanelDivider">
+						<param name="left">444</param>
+						<param name="height">180</param>
+					</include>
+					<include content="PanelDivider">
+						<param name="top">179</param>
+						<param name="width">445</param>
+					</include>
 					<control type="label">
 						<left>15</left>
 						<top>-2</top>
@@ -383,18 +386,11 @@
 							<effect type="fade" start="80" end="100" time="300" tween="sine" easing="in" />
 						</animation>
 						<control type="image">
-							<width>440</width>
-							<height>175</height>
-							<aspectratio>stretch</aspectratio>
-							<texture colordiffuse="4DFFFFFF" border="4">pvr/grey_bg.png</texture>
-						</control>
-						<control type="image">
-							<left>-13</left>
-							<top>-8</top>
-							<width>465</width>
-							<height>192</height>
-							<aspectratio>stretch</aspectratio>
-							<texture colordiffuse="$VAR[ThemeLabelColor]" border="4" background="true">pvr/overlay/OverlayDialogBackground.png</texture>
+							<width>445</width>
+							<height>180</height>
+							<texture>colors/black.png</texture>
+							<bordersize>2</bordersize>
+							<bordertexture border="2" infill="false" colordiffuse="$VAR[HighlightBarColor]">colors/white.png</bordertexture>
 						</control>
 						<control type="label">
 							<left>15</left>
@@ -460,38 +456,40 @@
 							</control>
 						</control>
 					</control>
+					<include content="PanelDivider">
+						<param name="left">444</param>
+						<param name="height">180</param>
+					</include>
+					<include content="PanelDivider">
+						<param name="top">179</param>
+						<param name="width">445</param>
+					</include>
 				</focusedlayout>
 			</control>
 			<control type="scrollbar" id="62">
-				<left>1810</left>
-				<top>30</top>
-				<width>14</width>
-				<height>900</height>
+				<include content="ScrollbarValues">
+					<param name="left">1793</param>
+					<param name="top">20</param>
+					<param name="height">720</param>
+				</include>
 				<onleft>51</onleft>
-				<onleft>51</onleft>
+				<onright>63</onright>
 				<ondown>62</ondown>
 				<onup>62</onup>
-				<showonepage>false</showonepage>
-				<texturesliderbackground />
-				<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
-				<animation effect="fade" start="100" end="0" time="500" delay="500" condition="!Control.HasFocus(62) + !Container.Scrolling">Conditional</animation>
 			</control>
 			<!-- Bottom info-panel -->
 			<control type="group">
-				<left>30</left>
-				<top>750</top>
-				<control type="image">
-					<left>-1</left>
-					<width>1780</width>
-					<height>230</height>
-					<texture colordiffuse="60FFFFFF" border="5">dialogs/default/inner.png</texture>
-				</control>
+				<left>13</left>
+				<top>740</top>
+				<include content="PanelDivider">
+					<param name="top">-1</param>
+					<param name="width">1794</param>
+				</include>
 				<!-- Videopreview and logo -->
 				<control type="group">
 					<visible>!Player.HasVideo</visible>
 					<left>122</left>
-					<top>12</top>
+					<top>26</top>
 					<control type="image">
 						<width>200</width>
 						<height>200</height>
@@ -547,6 +545,7 @@
 				<!-- Description and fanart -->
 				<control type="group">
 					<left>450</left>
+					<top>8</top>
 					<control type="label">
 						<top>15</top>
 						<width>1316</width>
@@ -561,56 +560,54 @@
 						<left>15</left>
 						<top>50</top>
 						<width>1286</width>
-						<height>180</height>
+						<height>172</height>
 						<font>font14_textbox2</font>
 						<pagecontrol>63</pagecontrol>
 						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(63)</autoscroll>
 					</control>
 					<control type="scrollbar" id="63">
-						<left>1328</left>
-						<top>124</top>
-						<width>14</width>
-						<height>110</height>
+						<include content="ScrollbarValues">
+							<param name="left">1330</param>
+							<param name="top">50</param>
+							<param name="height">172</param>
+						</include>
 						<onup>PageUp(71)</onup>
 						<ondown>PageUp(71)</ondown>
-						<onleft>10</onleft>
-						<onright>10</onright>
-						<texturesliderbackground />
-						<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-						<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
-						<showonepage>false</showonepage>
+						<onleft>51</onleft>
+						<onright>SetProperty(MediaMenu,True,Home)</onright>
+						<onright>SetFocus(9050)</onright>
 					</control>
 				</control>
 			</control>
 		</control>
 	</include>
-	<include name="BigListPVRChannels">
+	<include name="SlimListPVRChannels">
 		<!-- Channel BigList -->
 		<control type="group">
 			<top>70</top>
-			<visible>Control.IsVisible(52)</visible>
+			<visible>Control.IsVisible(50)</visible>
 			<include>VisibleFadeAnimation</include>
 			<control type="group">
 				<top>-2</top>
-				<control type="image">
-					<left>50</left>
-					<width>1031</width>
-					<height>948</height>
-					<texture border="40">listpanel_back.png</texture>
-				</control>
-				<control type="image">
-					<left>1080</left>
-					<width>780</width>
-					<height>948</height>
-					<texture border="40">listpanel_back.png</texture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">75</param>
+					<param name="top">28</param>
+					<param name="width">992</param>
+					<param name="height">890</param>
+				</include>
+				<include content="BackPanel">
+					<param name="left">1103</param>
+					<param name="top">28</param>
+					<param name="width">742</param>
+					<param name="height">890</param>
+				</include>
 			</control>
 			<control type="group">
-				<left>60</left>
+				<left>59</left>
 				<top>30</top>
 				<control type="group">
 					<left>20</left>
-					<control type="list" id="52">
+					<control type="list" id="50">
 						<width>970</width>
 						<height>882</height>
 						<onleft>SetProperty(MediaMenu,True,Home)</onleft>
@@ -619,10 +616,10 @@
 						<onright condition="!Control.IsVisible(64) + !Control.IsVisible(65)">SetFocus(9050)</onright>
 						<onright condition="Control.IsVisible(64)">64</onright>
 						<onright condition="!Control.IsVisible(64) + Control.IsVisible(65)">65</onright>
-						<onup>52</onup>
-						<ondown>52</ondown>
+						<onup>50</onup>
+						<ondown>50</ondown>
 						<pagecontrol>64</pagecontrol>
-						<viewtype label="$LOCALIZE[31095]">list</viewtype>
+						<viewtype label="535">list</viewtype>
 						<scrolltime tween="quadratic">200</scrolltime>
 						<itemlayout height="63" width="970">
 							<control type="label">
@@ -670,11 +667,10 @@
 						</itemlayout>
 						<focusedlayout height="63" width="970">
 							<control type="image">
-								<left>1</left>
 								<width>970</width>
 								<height>63</height>
 								<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
-								<animation effect="fade" start="100" end="0" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(52)">Conditional</animation>
+								<animation effect="fade" start="100" end="0" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
 							</control>
 							<control type="label">
 								<left>2</left>
@@ -723,26 +719,25 @@
 						</focusedlayout>
 					</control>
 					<control type="scrollbar" id="64">
-						<left>970</left>
-						<width>12</width>
-						<height>882</height>
-						<onleft>52</onleft>
+						<include content="ScrollbarValues">
+							<param name="left">970</param>
+							<param name="top">0</param>
+							<param name="height">882</param>
+						</include>
+						<onleft>50</onleft>
+						<onright>65</onright>
 						<ondown>64</ondown>
 						<onup>64</onup>
-						<showonepage>false</showonepage>
-						<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-						<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-						<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					</control>
 				</control>
 				<control type="group">
-					<left>1049</left>
+					<left>1048</left>
 					<height>875</height>
 					<control type="group">
-						<width>720</width>
+						<width>734</width>
 						<height>405</height>
 						<control type="image">
-							<width>720</width>
+							<width>734</width>
 							<height>405</height>
 							<texture fallback="special://skin/extras/backgrounds/fallback_movies.jpg">$INFO[Skin.String(Home_Custom_Back_TV_Folder)]</texture>
 							<visible>!Player.HasVideo</visible>
@@ -751,16 +746,16 @@
 							<visible>Player.HasVideo</visible>
 							<include>VisibleFadeAnimation</include>
 							<control type="image">
-								<width>720</width>
+								<width>734</width>
 								<height>405</height>
 								<texture>colors/black.png</texture>
 							</control>
 							<control type="videowindow">
-								<width>720</width>
+								<width>734</width>
 								<height>405</height>
 							</control>
 							<control type="image">
-								<width>720</width>
+								<width>734</width>
 								<height>60</height>
 								<texture>colors/black75.png</texture>
 							</control>
@@ -769,19 +764,18 @@
 								<top>10</top>
 								<control type="label">
 									<left>24</left>
-									<top>-5</top>
-									<width>655</width>
+									<width>616</width>
 									<height>40</height>
 									<label>[I]$INFO[VideoPlayer.Title,$LOCALIZE[31040]:  ][/I]</label>
 									<font>font13</font>
 									<scroll>true</scroll>
 								</control>
 								<control type="image">
-									<left>660</left>
+									<left>650</left>
 									<top>-8</top>
 									<width>100</width>
-									<height>55</height>
-									<aspectratio>keep</aspectratio>
+									<height>56</height>
+									<aspectratio align="right">keep</aspectratio>
 									<texture background="true">$INFO[VideoPlayer.Cover]</texture>
 								</control>
 							</control>
@@ -797,7 +791,7 @@
 							<width>680</width>
 							<height>30</height>
 							<align>center</align>
-							<label>$INFO[Container(52).ListItem.Title]</label>
+							<label>$INFO[Container(50).ListItem.Title]</label>
 							<font>font15_bold</font>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
 							<scroll>true</scroll>
@@ -808,10 +802,10 @@
 							<width>100</width>
 							<height>30</height>
 							<align>center</align>
-							<label>$INFO[Container(52).ListItem.StartTime]</label>
+							<label>$INFO[Container(50).ListItem.StartTime]</label>
 							<font>font12</font>
 							<textcolor>D0FFFFFF</textcolor>
-							<visible>Container(52).ListItem.HasEpg</visible>
+							<visible>Container(50).ListItem.HasEpg</visible>
 						</control>
 						<control type="progress">
 							<left>115</left>
@@ -820,8 +814,8 @@
 							<height>18</height>
 							<texturebg colordiffuse="$VAR[ThemeLabelColor]" border="3">pvr/texturebg_border_white.png</texturebg>
 							<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="3">pvr/texturebg_white.png</midtexture>
-							<visible>Container(52).ListItem.HasEpg</visible>
-							<info>Container(52).ListItem.Progress</info>
+							<visible>Container(50).ListItem.HasEpg</visible>
+							<info>Container(50).ListItem.Progress</info>
 						</control>
 						<control type="label">
 							<left>600</left>
@@ -829,10 +823,10 @@
 							<width>100</width>
 							<height>30</height>
 							<align>center</align>
-							<label>$INFO[Container(52).ListItem.EndTime]</label>
+							<label>$INFO[Container(50).ListItem.EndTime]</label>
 							<font>font12</font>
 							<textcolor>d0FFFFFF</textcolor>
-							<visible>Container(52).ListItem.HasEpg</visible>
+							<visible>Container(50).ListItem.HasEpg</visible>
 						</control>
 					</control>
 					<control type="group">
@@ -844,14 +838,14 @@
 							<width>700</width>
 							<height>27</height>
 							<align>center</align>
-							<label>[B]$VAR[EpisodeCountVar,, - ]$INFO[Container(52).ListItem.EpisodeName][/B]</label>
+							<label>[B]$VAR[EpisodeCountVar,, - ]$INFO[Container(50).ListItem.EpisodeName][/B]</label>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
 						</control>
 						<control type="textbox" id="72">
 							<top>40</top>
 							<width>700</width>
-							<height>255</height>
-							<label>$INFO[Container(52).ListItem.Plot]</label>
+							<height>248</height>
+							<label>$INFO[Container(50).ListItem.Plot]</label>
 							<font>font14_textbox</font>
 							<shadowcolor>black</shadowcolor>
 							<pagecontrol>65</pagecontrol>
@@ -859,19 +853,16 @@
 						</control>
 					</control>
 					<control type="scrollbar" id="65">
-						<left>722</left>
-						<top>532</top>
-						<width>12</width>
-						<height>255</height>
+						<include content="ScrollbarValues">
+							<param name="left">720</param>
+							<param name="top">525</param>
+							<param name="height">248</param>
+						</include>
 						<onup>PageUp(72)</onup>
 						<ondown>PageUp(72)</ondown>
 						<onleft>50</onleft>
 						<onright>SetProperty(MediaMenu,True,Home)</onright>
 						<onright>SetFocus(9050)</onright>
-						<showonepage>false</showonepage>
-						<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-						<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-						<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
 					</control>
 					<control type="group">
 						<top>794</top>
@@ -881,108 +872,112 @@
 							<height>40</height>
 							<width>700</width>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<label>$INFO[Container(52).ListItem.Genre,$LOCALIZE[515]: [COLOR grey2],[/COLOR]]</label>
+							<label>$INFO[Container(50).ListItem.Genre,$LOCALIZE[515]: [COLOR grey2],[/COLOR]]</label>
 						</control>
 						<control type="label">
 							<top>45</top>
 							<height>30</height>
 							<width>700</width>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<label>$INFO[Container(52).ListItem.NextStartTime,$LOCALIZE[19031]: [COLOR grey2],[/COLOR]]$INFO[Container(52).ListItem.NextEndTime, [COLOR grey2]- ,[/COLOR]]$INFO[Container(52).ListItem.NextTitle,   [COLOR grey2],[/COLOR]]</label>
+							<label>$INFO[Container(50).ListItem.NextStartTime,$LOCALIZE[19031]: [COLOR grey2],[/COLOR]]$INFO[Container(50).ListItem.NextEndTime, [COLOR grey2]- ,[/COLOR]]$INFO[Container(50).ListItem.NextTitle,   [COLOR grey2],[/COLOR]]</label>
 						</control>
 					</control>
 				</control>
 			</control>
 		</control>
 	</include>
-	<include name="DefaultPVRRecordings">
+	<include name="SlimListPVRRecordings">
 		<control type="group">
 			<visible>Control.IsVisible(50)</visible>
 			<include>ViewAnimation</include>
 			<left>60</left>
 			<top>-40</top>
-			<control type="image">
-				<left>-32</left>
-				<top>148</top>
-				<width>1084</width>
-				<height>904</height>
-				<texture colordiffuse="E6FFFFFF" border="40">listpanel_back.png</texture>
-			</control>
-			<control type="image">
-				<left>1054</left>
-				<top>148</top>
-				<width>780</width>
-				<height>904</height>
-				<texture colordiffuse="E6FFFFFF" border="40">listpanel_back.png</texture>
-			</control>
+			<include content="BackPanel">
+				<param name="left">0</param>
+				<param name="top">176</param>
+				<param name="width">1016</param>
+				<param name="height">848</param>
+			</include>
+			<include content="BackPanel">
+				<param name="left">1052</param>
+				<param name="top">176</param>
+				<param name="width">748</param>
+				<param name="height">848</param>
+			</include>
 			<control type="list" id="50">
+				<left>4</left>
 				<top>180</top>
-				<width>1020</width>
+				<width>994</width>
 				<height>840</height>
 				<onleft>SetProperty(MediaMenu,True,Home)</onleft>
 				<onleft>SetFocus(9050)</onleft>
-				<onright>72</onright>
+				<onright condition="Control.IsVisible(72)">72</onright>
+				<onright condition="!Control.IsVisible(72) + Control.IsVisible(73)">73</onright>
+				<onright condition="!Control.IsVisible(72) + !Control.IsVisible(73)">SetProperty(MediaMenu,True,Home)</onright>
+				<onright condition="!Control.IsVisible(72) + !Control.IsVisible(73)">SetFocus(9050)</onright>
 				<onup>50</onup>
 				<ondown>50</ondown>
-				<viewtype label="31095">list</viewtype>
+				<viewtype label="535">list</viewtype>
 				<pagecontrol>72</pagecontrol>
 				<scrolltime tween="quadratic">200</scrolltime>
-				<itemlayout height="60" width="1140">
+				<itemlayout height="60" width="994">
 					<control type="image">
-						<left>-15</left>
+						<left>15</left>
 						<top>4</top>
 						<width>105</width>
 						<height>52</height>
-						<aspectratio>keep</aspectratio>
+						<aspectratio align="left" aligny="center">keep</aspectratio>
 						<texture background="true" fallback="views/list/DefaultVideo.png">$INFO[ListItem.Icon]</texture>
 					</control>
 					<control type="label">
-						<left>90</left>
+						<left>135</left>
 						<top>12</top>
-						<width>860</width>
+						<width>758</width>
 						<height>35</height>
 						<font>font15</font>
 						<textcolor>grey2</textcolor>
 						<label>$VAR[EpisodeCountVar,, - ]$INFO[ListItem.Label]</label>
 					</control>
 					<include content="ListStatusIndicators">
-						<param name="left">940</param>
+						<param name="left">925</param>
+						<param name="top">-2</param>
 					</include>
 				</itemlayout>
-				<focusedlayout height="60" width="1140">
+				<focusedlayout height="60" width="994">
 					<control type="image">
-						<width>1020</width>
+						<width>994</width>
 						<height>60</height>
 						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 						<visible>Control.HasFocus(50)</visible>
 						<include>VisibleFadeAnimation</include>
 					</control>
 					<control type="image">
-						<left>-15</left>
+						<left>15</left>
 						<top>4</top>
 						<width>105</width>
 						<height>52</height>
-						<aspectratio>keep</aspectratio>
+						<aspectratio align="left" aligny="center">keep</aspectratio>
 						<texture background="true" fallback="views/list/DefaultVideo.png">$INFO[ListItem.Icon]</texture>
 					</control>
 					<control type="label">
-						<left>90</left>
+						<left>135</left>
 						<top>12</top>
-						<width>900</width>
+						<width>758</width>
 						<height>35</height>
 						<font>font15</font>
 						<label>$VAR[EpisodeCountVar,, - ]$INFO[ListItem.Label]</label>
 						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
 					</control>
 					<include content="ListStatusIndicators">
-						<param name="left">940</param>
+						<param name="left">925</param>
+						<param name="top">-2</param>
 					</include>
 				</focusedlayout>
 			</control>
 			<control type="group">
 				<visible>!ListItem.IsFolder</visible>
-				<top>450</top>
-				<left>1054</left>
+				<top>462</top>
+				<left>1036</left>
 				<control type="group">
 					<top>-302</top>
 					<control type="group">
@@ -1018,26 +1013,26 @@
 				</control>
 			</control>
 			<control type="group">
-				<left>1090</left>
-				<top>420</top>
+				<left>1072</left>
+				<top>432</top>
 				<control type="grouplist">
-					<width>700</width>
+					<width>692</width>
 					<height>400</height>
 					<itemgap>20</itemgap>
 					<control type="label">
-						<width>700</width>
+						<width>692</width>
 						<height>40</height>
 						<font>font24_title</font>
 						<label>[B][COLOR $VAR[ThemeLabelColor]]$INFO[Container(50).ListItem.Title][/COLOR][/B]</label>
 					</control>
 					<control type="label">
-						<width>700</width>
+						<width>692</width>
 						<height>34</height>
 						<font>font13</font>
 						<label>$VAR[EpisodeCountVar,, - ]$INFO[Container.ListItem.Episodename]</label>
 					</control>
 					<control type="label">
-						<width>700</width>
+						<width>692</width>
 						<height>34</height>
 						<textcolor>$VAR[ThemeLabelColor]</textcolor>
 						<label>$INFO[Container(50).ListItem.Genre,$LOCALIZE[515]: [COLOR white],[/COLOR]]</label>
@@ -1046,37 +1041,35 @@
 				</control>
 				<control type="textbox">
 					<top>180</top>
-					<width>700</width>
-					<height>318</height>
+					<width>692</width>
+					<height>297</height>
 					<align>justify</align>
-					<font>font13</font>
+					<font>font14_textbox</font>
 					<pagecontrol>73</pagecontrol>
-					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(73)</autoscroll>
 					<label>$INFO[Container(50).ListItem.Plot]</label>
 				</control>
 				<control type="scrollbar" id="73">
-					<left>708</left>
-					<top>180</top>
-					<width>14</width>
-					<height>318</height>
-					<onleft>72</onleft>
-					<onright>50</onright>
-					<texturesliderbackground />
-					<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-					<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
-					<showonepage>false</showonepage>
+					<include content="ScrollbarValues">
+						<param name="left">710</param>
+						<param name="top">180</param>
+						<param name="height">297</param>
+					</include>
+					<onleft>50</onleft>
+					<onright>SetProperty(MediaMenu,True,Home)</onright>
+					<onright>SetFocus(9050)</onright>
 				</control>
 			</control>
 			<control type="group">
 				<visible>ListItem.IsFolder</visible>
-				<top>148</top>
-				<left>1054</left>
+				<top>160</top>
+				<left>1036</left>
 				<control type="group">
 					<top>40</top>
 					<left>40</left>
 					<visible>ListItem.IsFolder</visible>
 					<control type="label">
-						<width>740</width>
+						<width>720</width>
 						<height>50</height>
 						<label>$INFO[Container(5000).NumItems,$LOCALIZE[19076] (, $LOCALIZE[31025])]</label>
 						<font>font16</font>
@@ -1112,34 +1105,36 @@
 				</control>
 			</control>
 			<control type="scrollbar" id="72">
-				<left>1016</left>
-				<top>180</top>
-				<width>14</width>
-				<height>840</height>
+				<include content="ScrollbarValues">
+					<param name="left">998</param>
+					<param name="top">180</param>
+					<param name="height">840</param>
+				</include>
 				<onleft>50</onleft>
-				<onright>73</onright>
-				<texturesliderbackground />
-				<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
-				<showonepage>false</showonepage>
+				<onright condition="Control.IsVisible(73)">73</onright>
+				<onright condition="!Control.IsVisible(73)">SetProperty(MediaMenu,True,Home)</onright>
+				<onright condition="!Control.IsVisible(73)">SetFocus(9050)</onright>
 			</control>
+			<include content="PanelDivider">
+				<param name="left">1056</param>
+				<param name="top">909</param>
+				<param name="width">740</param>
+			</include>
 			<control type="group">
-				<top>900</top>
-				<left>1054</left>
+				<top>935</top>
+				<left>1056</left>
 				<control type="group">
-					<left>40</left>
 					<control type="label">
-						<top>50</top>
-						<width>700</width>
-						<height>20</height>
+						<width>740</width>
+						<height>30</height>
 						<align>center</align>
 						<textcolor>$VAR[ThemeLabelColor]</textcolor>
 						<label>$INFO[PVR.backenddiskspace]</label>
 					</control>
 					<control type="progress">
 						<description>Disk Usage Bar</description>
-						<top>90</top>
-						<left>20</left>
+						<top>42</top>
+						<left>40</left>
 						<width>660</width>
 						<height>18</height>
 						<info>PVR.backenddiskspaceprogr</info>
@@ -1153,43 +1148,45 @@
 	</include>
 	<include name="ListPVRRecordings">
 		<control type="group">
-			<visible>Control.IsVisible(51)</visible>
+			<visible>Control.IsVisible(50)</visible>
 			<include>ViewAnimation</include>
 			<left>60</left>
 			<top>-40</top>
-			<control type="image">
-				<left>-32</left>
-				<top>148</top>
-				<width>1204</width>
-				<height>904</height>
-				<texture colordiffuse="E6FFFFFF" border="40">listpanel_back.png</texture>
-			</control>
-			<control type="image">
-				<left>1174</left>
-				<top>148</top>
-				<width>660</width>
-				<height>904</height>
-				<texture colordiffuse="E6FFFFFF" border="40">listpanel_back.png</texture>
-			</control>
-			<control type="list" id="51">
+			<include content="BackPanel">
+				<param name="left">0</param>
+				<param name="top">176</param>
+				<param name="width">1136</param>
+				<param name="height">848</param>
+			</include>
+			<include content="BackPanel">
+				<param name="left">1172</param>
+				<param name="top">176</param>
+				<param name="width">628</param>
+				<param name="height">848</param>
+			</include>
+			<control type="list" id="50">
+				<left>4</left>
 				<top>180</top>
-				<width>1140</width>
+				<width>1114</width>
 				<height>840</height>
 				<onleft>SetProperty(MediaMenu,True,Home)</onleft>
 				<onleft>SetFocus(9050)</onleft>
-				<onright>60</onright>
-				<onup>51</onup>
-				<ondown>51</ondown>
+				<onright condition="Control.IsVisible(60)">60</onright>
+				<onright condition="!Control.IsVisible(60) + Control.IsVisible(74)">74</onright>
+				<onright condition="!Control.IsVisible(60) + !Control.IsVisible(74)">SetProperty(MediaMenu,True,Home)</onright>
+				<onright condition="!Control.IsVisible(60) + !Control.IsVisible(74)">SetFocus(9050)</onright>
+				<onup>50</onup>
+				<ondown>50</ondown>
 				<viewtype label="535">list</viewtype>
 				<pagecontrol>60</pagecontrol>
 				<scrolltime tween="quadratic">200</scrolltime>
-				<itemlayout height="120" width="1140">
+				<itemlayout height="120" width="1114">
 					<control type="image">
 						<left>15</left>
 						<top>7.5</top>
 						<width>105</width>
 						<height>105</height>
-						<aspectratio>keep</aspectratio>
+						<aspectratio align="left" aligny="center">keep</aspectratio>
 						<texture background="true">$INFO[ListItem.Icon]</texture>
 					</control>
 					<control type="label">
@@ -1211,8 +1208,14 @@
 						<visible>ListItem.IsFolder</visible>
 					</control>
 					<include content="ListStatusIndicators">
-						<param name="left">1070</param>
+						<param name="left">1045</param>
 						<param name="top">28</param>
+						<param name="visible">ListItem.IsFolder</param>
+					</include>
+					<include content="ListStatusIndicators">
+						<param name="left">1045</param>
+						<param name="top">3</param>
+						<param name="visible">!ListItem.IsFolder</param>
 					</include>
 					<control type="label">
 						<left>135</left>
@@ -1224,7 +1227,7 @@
 						<label>$VAR[EpisodeCountVar,, - ]$INFO[ListItem.EpisodeName]</label>
 					</control>
 					<control type="label">
-						<right>16</right>
+						<right>15</right>
 						<top>68</top>
 						<width>790</width>
 						<height>60</height>
@@ -1234,12 +1237,12 @@
 						<label>$INFO[ListItem.Label2]</label>
 					</control>
 				</itemlayout>
-				<focusedlayout height="120" width="1140">
+				<focusedlayout height="120" width="1114">
 					<control type="image">
-						<width>1140</width>
+						<width>1114</width>
 						<height>120</height>
 						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
-						<visible>Control.HasFocus(51)</visible>
+						<visible>Control.HasFocus(50)</visible>
 						<include>VisibleFadeAnimation</include>
 					</control>
 					<control type="image">
@@ -1247,7 +1250,7 @@
 						<top>7.5</top>
 						<width>105</width>
 						<height>105</height>
-						<aspectratio>keep</aspectratio>
+						<aspectratio align="left" aligny="center">keep</aspectratio>
 						<texture background="true" fallback="views/list/DefaultVideo.png">$INFO[ListItem.Icon]</texture>
 					</control>
 					<control type="label">
@@ -1267,8 +1270,14 @@
 						<visible>ListItem.IsFolder</visible>
 					</control>
 					<include content="ListStatusIndicators">
-						<param name="left">1070</param>
+						<param name="left">1045</param>
 						<param name="top">28</param>
+						<param name="visible">ListItem.IsFolder</param>
+					</include>
+					<include content="ListStatusIndicators">
+						<param name="left">1045</param>
+						<param name="top">3</param>
+						<param name="visible">!ListItem.IsFolder</param>
 					</include>
 					<control type="label">
 						<left>135</left>
@@ -1280,7 +1289,7 @@
 						<label>$VAR[EpisodeCountVar,, - ]$INFO[ListItem.EpisodeName]</label>
 					</control>
 					<control type="label">
-						<right>16</right>
+						<right>15</right>
 						<top>68</top>
 						<width>790</width>
 						<height>60</height>
@@ -1292,21 +1301,20 @@
 				</focusedlayout>
 			</control>
 			<control type="scrollbar" id="60">
-				<left>1142</left>
-				<top>180</top>
-				<width>12</width>
-				<height>840</height>
-				<onleft>51</onleft>
-				<onright>74</onright>
-				<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-				<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-				<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
-				<showonepage>false</showonepage>
+				<include content="ScrollbarValues">
+					<param name="left">1118</param>
+					<param name="top">180</param>
+					<param name="height">840</param>
+				</include>
+				<onleft>50</onleft>
+				<onright condition="Control.IsVisible(74)">74</onright>
+				<onright condition="!Control.IsVisible(74)">SetProperty(MediaMenu,True,Home)</onright>
+				<onright condition="!Control.IsVisible(74)">SetFocus(9050)</onright>
 			</control>
 			<control type="group">
 				<visible>!ListItem.IsFolder</visible>
-				<left>1174</left>
-				<top>168</top>
+				<left>1156</left>
+				<top>180</top>
 				<control type="image">
 					<left>20</left>
 					<width>250</width>
@@ -1337,30 +1345,30 @@
 					<left>36</left>
 					<top>252</top>
 					<control type="grouplist">
-						<width>700</width>
+						<width>572</width>
 						<height>400</height>
 						<itemgap>5</itemgap>
 						<control type="label">
-							<width>585</width>
+							<width>572</width>
 							<height>40</height>
 							<font>font24_title</font>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
 							<label>[B]$INFO[Container.ListItem.ChannelName][/B]</label>
 						</control>
 						<control type="label">
-							<width>585</width>
+							<width>572</width>
 							<height>40</height>
 							<font>font14</font>
 							<label>$INFO[Container.ListItem.Title]</label>
 						</control>
 						<control type="label">
-							<width>585</width>
+							<width>572</width>
 							<height>40</height>
 							<font>font13</font>
 							<label>$VAR[EpisodeCountVar,, - ]$INFO[Container.ListItem.Episodename]</label>
 						</control>
 						<control type="label">
-							<width>585</width>
+							<width>572</width>
 							<height>40</height>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
 							<font>font12</font>
@@ -1369,34 +1377,32 @@
 					</control>
 					<control type="textbox">
 						<top>180</top>
-						<width>585</width>
-						<height>318</height>
+						<width>572</width>
+						<height>297</height>
 						<align>justify</align>
-						<font>font13</font>
+						<font>font14_textbox</font>
 						<pagecontrol>74</pagecontrol>
 						<label>$INFO[Container.ListItem.Plot]</label>
-						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(74)</autoscroll>
 					</control>
 					<control type="scrollbar" id="74">
-						<left>585</left>
-						<top>180</top>
-						<width>14</width>
-						<height>318</height>
-						<onleft>60</onleft>
-						<onright>51</onright>
-						<texturesliderbackground />
-						<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-						<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
-						<showonepage>false</showonepage>
+						<include content="ScrollbarValues">
+							<param name="left">590</param>
+							<param name="top">180</param>
+							<param name="height">297</param>
+						</include>
+						<onleft>50</onleft>
+						<onright>SetProperty(MediaMenu,True,Home)</onright>
+						<onright>SetFocus(9050)</onright>
 					</control>
 				</control>
 			</control>
 			<control type="group">
 				<visible>ListItem.IsFolder</visible>
-				<top>188</top>
-				<left>1214</left>
+				<top>200</top>
+				<left>1196</left>
 				<control type="label">
-					<width>585</width>
+					<width>600</width>
 					<height>50</height>
 					<label>$INFO[Container(8000).NumItems,$LOCALIZE[19076] (, $LOCALIZE[31025])]</label>
 					<font>font16</font>
@@ -1406,7 +1412,7 @@
 					<top>50</top>
 					<control type="panel" id="8000">
 						<width>585</width>
-						<height>680</height>
+						<height>640</height>
 						<itemlayout height="40" width="560">
 							<control type="label">
 								<height>50</height>
@@ -1429,19 +1435,25 @@
 					</control>
 				</control>
 			</control>
+			<include content="PanelDivider">
+				<param name="left">1176</param>
+				<param name="top">909</param>
+				<param name="width">620</param>
+			</include>
 			<control type="group">
-				<top>950</top>
-				<left>1214</left>
+				<top>935</top>
+				<left>1176</left>
 				<control type="label">
-					<width>580</width>
+					<width>620</width>
 					<height>30</height>
 					<align>center</align>
 					<textcolor>$VAR[ThemeLabelColor]</textcolor>
 					<label>$INFO[PVR.backenddiskspace]</label>
 				</control>
 				<control type="progress">
-					<top>40</top>
-					<width>580</width>
+					<top>42</top>
+					<left>40</left>
+					<width>540</width>
 					<height>18</height>
 					<info>PVR.backenddiskspaceprogr</info>
 					<midtexture colordiffuse="$VAR[ThemeLabelColor]">pvr/texturebg_white.png</midtexture>

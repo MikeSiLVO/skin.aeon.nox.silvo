@@ -2,12 +2,11 @@
 <window>
 	<onload condition="Control.IsVisible(50)">SetFocus(50)</onload>
 	<onload condition="Control.IsVisible(51)">SetFocus(51)</onload>
-	<onload condition="Control.IsVisible(52)">SetFocus(52)</onload>
 	<onload>SetProperty(Window.HasSettings,True,Home)</onload>
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
-	<views>50,51,52</views>
+	<views>50,51</views>
 	<menucontrol>9051</menucontrol>
 	<controls>
 		<control type="group">
@@ -16,11 +15,10 @@
 			<control type="group">
 				<include>WindowOpenCloseAnimation</include>
 				<!-- view id = 50 -->
-				<include>DefaultPVRChannels</include>
+				<include condition="!Skin.HasSetting(Enable.SlimList)">ListPVRChannels</include>
+				<include condition="Skin.HasSetting(Enable.SlimList)">SlimListPVRChannels</include>
 				<!-- view id = 51 -->
 				<include condition="!Skin.HasSetting(Disable.WallPVRChannels)">WallPVRChannels</include>
-				<!-- view id = 52 -->
-				<include condition="!Skin.HasSetting(Disable.BigListPVRChannels)">BigListPVRChannels</include>
 			</control>
 			<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>
 			<include>PVRBackgroundDim</include>

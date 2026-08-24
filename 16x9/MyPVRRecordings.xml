@@ -5,16 +5,15 @@
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
-	<views>50,51</views>
+	<views>50</views>
 	<menucontrol>9051</menucontrol>
 	<controls>
 		<include>CommonBackground</include>
 		<control type="group">
 			<include>WindowOpenCloseAnimation</include>
 			<!-- view id = 50 -->
-			<include>DefaultPVRRecordings</include>
-			<!-- view id = 51 -->
-			<include>ListPVRRecordings</include>
+			<include condition="!Skin.HasSetting(Enable.SlimList)">ListPVRRecordings</include>
+			<include condition="Skin.HasSetting(Enable.SlimList)">SlimListPVRRecordings</include>
 		</control>
 		<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>
 		<include>PVRBackgroundDim</include>
