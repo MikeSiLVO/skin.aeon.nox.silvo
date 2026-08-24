@@ -9,8 +9,8 @@
 			<control type="group">
 				<left>1400</left>
 				<top>136</top>
-				<animation effect="slide" end="-503,0" time="640" easing="inout" tween="circle" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
-				<animation effect="zoom" center="1400,500" start="100" end="110" time="240" tween="back" reversible="false" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
+				<animation effect="slide" end="-524,0" time="640" easing="inout" tween="circle" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
+				<animation effect="zoom" center="1408,500" start="100" end="110" time="240" tween="back" reversible="false" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
 				<visible>!Container.Content(videoextras)</visible>
 				<include content="BackPanel">
 					<param name="left">-6</param>
@@ -155,25 +155,22 @@
 					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(95561)</autoscroll>
 				</control>
 				<control type="scrollbar" id="95561">
-					<left>450</left>
-					<top>370</top>
-					<width>12</width>
-					<height>408</height>
+					<include content="ScrollbarValues">
+						<param name="left">454</param>
+						<param name="top">370</param>
+						<param name="height">412</param>
+					</include>
 					<onup>PageUp(70)</onup>
 					<ondown>PageUp(70)</ondown>
-					<onleft>50</onleft>
+					<onleft>55</onleft>
 					<onright condition="!Control.IsVisible(615)">4400</onright>
 					<onright condition="Control.IsVisible(615)">615</onright>
-					<texturesliderbackground>colors/black10.png</texturesliderbackground>
-					<texturesliderbar>colors/white25.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
-					<showonepage>false</showonepage>
 				</control>
 			</control>
 			<control type="group">
 				<left>850</left>
 				<top>154</top>
-				<animation effect="slide" end="546,0" time="640" easing="inout" tween="circle" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
+				<animation effect="slide" end="527,0" time="640" easing="inout" tween="circle" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
 				<animation effect="zoom" center="850,700" start="100" end="90" time="240" tween="back" reversible="false" condition="String.IsEqual(Skin.String(TriPanelLayout),$LOCALIZE[31162])">Conditional</animation>
 				<visible>!Container.Content(videoextras)</visible>
 				<control type="image">
@@ -210,13 +207,13 @@
 				</control>
 			</control>
 			<control type="group">
-				<left>76</left>
+				<left>52</left>
 				<top>60</top>
 				<include content="BackPanel">
 					<param name="left">-4</param>
-					<param name="top">86</param>
+					<param name="top">88</param>
 					<param name="width">828</param>
-					<param name="height">850</param>
+					<param name="height">848</param>
 					<param name="texture">colors/black75.png</param>
 				</include>
 				<control type="list" id="55">
@@ -544,20 +541,17 @@
 					</focusedlayout>
 				</control>
 				<control type="scrollbar" id="95560">
-					<left>806</left>
-					<top>90</top>
-					<width>14</width>
-					<height>842</height>
+					<include content="ScrollbarValues">
+						<param name="left">806</param>
+						<param name="top">92</param>
+						<param name="height">840</param>
+					</include>
 					<onup>95560</onup>
 					<ondown>95560</ondown>
-					<onleft>50</onleft>
+					<onleft>55</onleft>
 					<onright condition="Control.IsVisible(95561)">95561</onright>
 					<onright condition="!Control.IsVisible(615) + !Control.IsVisible(95561)">4400</onright>
 					<onright condition="Control.IsVisible(615) + !Control.IsVisible(95561)">615</onright>
-					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
-					<showonepage>false</showonepage>
 				</control>
 			</control>
 		</control>
@@ -568,15 +562,14 @@
 			<visible>Control.IsVisible(55) + !Window.IsActive(addoninformation)</visible>
 			<include>ViewAnimation</include>
 			<control type="group">
-				<left>1396</left>
+				<left>1408</left>
 				<top>401</top>
-				<control type="image">
-					<left>-32</left>
-					<top>60</top>
-					<width>512</width>
-					<height>487</height>
-					<texture border="40">listpanel_back.png</texture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">-14</param>
+					<param name="top">76</param>
+					<param name="width">478</param>
+					<param name="height">455</param>
+				</include>
 				<control type="grouplist">
 					<top>92</top>
 					<width>448</width>
@@ -685,20 +678,35 @@
 						<include>DefaultButtonsValues</include>
 						<visible>!String.IsEmpty(ListItem.Property(Artist_Genre))</visible>
 					</control>
-					<control type="textbox">
-						<label>$VAR[MusicPlotVar]</label>
-						<left>15</left>
-						<top>15</top>
-						<width>418</width>
-						<height>300</height>
-						<font>font14_textbox</font>
-						<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
-						<include>DefaultButtonsValues</include>
-					</control>
+				</control>
+				<control type="textbox" id="70">
+					<label>$VAR[MusicPlotVar]</label>
+					<left>15</left>
+					<top>272</top>
+					<width>418</width>
+					<height>245</height>
+					<font>font14_textbox</font>
+					<pagecontrol>95563</pagecontrol>
+					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(95563)</autoscroll>
+					<include>DefaultButtonsValues</include>
+					<visible>![Container.Content(songs) | Container.Content(albums)]</visible>
+				</control>
+				<control type="scrollbar" id="95563">
+					<include content="ScrollbarValues">
+						<param name="left">446</param>
+						<param name="top">272</param>
+						<param name="height">255</param>
+					</include>
+					<onup>PageUp(70)</onup>
+					<ondown>PageUp(70)</ondown>
+					<onleft>55</onleft>
+					<onright condition="!Control.IsVisible(615)">4400</onright>
+					<onright condition="Control.IsVisible(615)">615</onright>
+					<visible>![Container.Content(songs) | Container.Content(albums)]</visible>
 				</control>
 			</control>
 			<control type="group">
-				<left>846</left>
+				<left>850</left>
 				<top>419</top>
 				<control type="image">
 					<width>570</width>
@@ -718,19 +726,18 @@
 				</control>
 			</control>
 			<control type="group">
-				<left>76</left>
+				<left>52</left>
 				<top>325</top>
-				<control type="image">
-					<left>-32</left>
-					<top>60</top>
-					<width>870</width>
-					<height>639</height>
-					<texture border="40">listpanel_back.png</texture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">-4</param>
+					<param name="top">88</param>
+					<param name="width">828</param>
+					<param name="height">568</param>
+				</include>
 				<control type="list" id="55">
 					<top>92</top>
 					<width>806</width>
-					<height>575</height>
+					<height>560</height>
 					<onleft>SetProperty(MediaMenu,True,Home)</onleft>
 					<onleft>SetFocus(9050)</onleft>
 					<onright>95560</onright>
@@ -853,22 +860,20 @@
 					</focusedlayout>
 				</control>
 				<control type="scrollbar" id="95560">
-					<left>808</left>
-					<top>92</top>
-					<width>12</width>
-					<height>575</height>
+					<include content="ScrollbarValues">
+						<param name="left">806</param>
+						<param name="top">92</param>
+						<param name="height">560</param>
+					</include>
 					<onup>95560</onup>
 					<ondown>95560</ondown>
-					<onleft>50</onleft>
-					<onright condition="!Control.IsVisible(615)">4400</onright>
+					<onleft>55</onleft>
+					<onright condition="Control.IsVisible(95563)">95563</onright>
+					<onright condition="!Control.IsVisible(95563) + !Control.IsVisible(615)">4400</onright>
 					<onright condition="Control.IsVisible(615)">615</onright>
-					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
-					<showonepage>false</showonepage>
 				</control>
 				<control type="image">
-					<left>822</left>
+					<left>824</left>
 					<top>114</top>
 					<width>40</width>
 					<height>530</height>
@@ -883,15 +888,14 @@
 			<visible>Control.IsVisible(55)</visible>
 			<include>ViewAnimation</include>
 			<control type="group">
-				<left>1396</left>
+				<left>1400</left>
 				<top>136</top>
-				<control type="image">
-					<left>-32</left>
-					<top>60</top>
-					<width>512</width>
-					<height>752</height>
-					<texture border="40">listpanel_back.png</texture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">-6</param>
+					<param name="top">76</param>
+					<param name="width">478</param>
+					<param name="height">720</param>
+				</include>
 				<control type="grouplist">
 					<top>92</top>
 					<width>448</width>
@@ -927,23 +931,20 @@
 					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(95562)</autoscroll>
 				</control>
 				<control type="scrollbar" id="95562">
-					<left>450</left>
-					<top>370</top>
-					<width>12</width>
-					<height>408</height>
+					<include content="ScrollbarValues">
+						<param name="left">454</param>
+						<param name="top">370</param>
+						<param name="height">422</param>
+					</include>
 					<onup>PageUp(70)</onup>
 					<ondown>PageUp(70)</ondown>
-					<onleft>50</onleft>
-					<onright>SetProperty(MediaMenu,True,Home)</onright>
-					<onright>SetFocus(9050)</onright>
-					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
-					<showonepage>false</showonepage>
+					<onleft>55</onleft>
+					<onright condition="!Control.IsVisible(615)">4400</onright>
+					<onright condition="Control.IsVisible(615)">615</onright>
 				</control>
 			</control>
 			<control type="group">
-				<left>846</left>
+				<left>850</left>
 				<top>154</top>
 				<control type="image">
 					<width>570</width>
@@ -973,15 +974,14 @@
 				</control>
 			</control>
 			<control type="group">
-				<left>76</left>
+				<left>52</left>
 				<top>60</top>
-				<control type="image">
-					<left>-32</left>
-					<top>60</top>
-					<width>870</width>
-					<height>904</height>
-					<texture border="40">listpanel_back.png</texture>
-				</control>
+				<include content="BackPanel">
+					<param name="left">-4</param>
+					<param name="top">88</param>
+					<param name="width">828</param>
+					<param name="height">848</param>
+				</include>
 				<control type="list" id="55">
 					<top>92</top>
 					<width>806</width>
@@ -1061,18 +1061,17 @@
 					</focusedlayout>
 				</control>
 				<control type="scrollbar" id="95560">
-					<left>808</left>
-					<top>92</top>
-					<width>12</width>
-					<height>840</height>
+					<include content="ScrollbarValues">
+						<param name="left">806</param>
+						<param name="top">92</param>
+						<param name="height">840</param>
+					</include>
 					<onup>95560</onup>
 					<ondown>95560</ondown>
-					<onleft>50</onleft>
-					<onright>95562</onright>
-					<texturesliderbackground colordiffuse="1AFFFFFF">colors/white50.png</texturesliderbackground>
-					<texturesliderbar colordiffuse="1AFFFFFF">colors/white.png</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="$VAR[FocusedScrollbarColor]">colors/white.png</texturesliderbarfocus>
-					<showonepage>false</showonepage>
+					<onleft>55</onleft>
+					<onright condition="Control.IsVisible(95562)">95562</onright>
+					<onright condition="!Control.IsVisible(615) + !Control.IsVisible(95562)">4400</onright>
+					<onright condition="Control.IsVisible(615) + !Control.IsVisible(95562)">615</onright>
 				</control>
 				<control type="image">
 					<left>822</left>
