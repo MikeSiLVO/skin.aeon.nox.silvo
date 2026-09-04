@@ -13,8 +13,8 @@
 	<variable name="SkinInfoCastPathVar">
 		<value condition="[Skin.HasSetting(OnlineCast) | String.IsEmpty(VideoPlayer.DBID)] + Window.IsVisible(fullscreeninfo)">plugin://script.skin.info.service/?action=get_cast&amp;dbid=$INFO[VideoPlayer.DBID]&amp;dbtype=$VAR[VideoPlayerDBTYPEVar]&amp;online=true</value>
 		<value condition="Window.IsVisible(fullscreeninfo)">plugin://script.skin.info.service/?action=get_cast&amp;dbid=$INFO[VideoPlayer.DBID]&amp;dbtype=$VAR[VideoPlayerDBTYPEVar]</value>
-		<value condition="[Skin.HasSetting(OnlineCast) | String.IsEmpty(ListItem.DBID)] + String.IsEqual(ListItem.DBType,episode)">plugin://script.skin.info.service/?action=get_cast&amp;season=$INFO[ListItem.Season]&amp;episode=$INFO[ListItem.Episode]&amp;tmdb_id=$INFO[ListItem.UniqueID(tmdb)]&amp;imdb_id=$INFO[ListItem.IMDBNumber]&amp;dbtype=$INFO[ListItem.DBTYPE]&amp;online=true</value>
-		<value condition="[Skin.HasSetting(OnlineCast) | String.IsEmpty(ListItem.DBID)]">plugin://script.skin.info.service/?action=get_cast&amp;tmdb_id=$INFO[ListItem.UniqueID(tmdb)]&amp;imdb_id=$INFO[ListItem.IMDBNumber]&amp;dbtype=$INFO[ListItem.DBTYPE]&amp;online=true</value>
+		<value condition="[Skin.HasSetting(OnlineCast) | String.IsEmpty(ListItem.DBID)] + String.IsEqual(ListItem.DBType,episode)">plugin://script.skin.info.service/?action=get_cast&amp;season=$INFO[ListItem.Season]&amp;episode=$INFO[ListItem.Episode]&amp;dbid=$INFO[ListItem.DBID]&amp;tmdb_id=$INFO[ListItem.UniqueID(tmdb)]&amp;imdb_id=$INFO[ListItem.IMDBNumber]&amp;dbtype=$INFO[ListItem.DBTYPE]&amp;online=true</value>
+		<value condition="[Skin.HasSetting(OnlineCast) | String.IsEmpty(ListItem.DBID)]">plugin://script.skin.info.service/?action=get_cast&amp;dbid=$INFO[ListItem.DBID]&amp;tmdb_id=$INFO[ListItem.UniqueID(tmdb)]&amp;imdb_id=$INFO[ListItem.IMDBNumber]&amp;dbtype=$INFO[ListItem.DBTYPE]&amp;online=true</value>
 		<value condition="!String.IsEmpty(ListItem.DBID)">plugin://script.skin.info.service/?action=get_cast&amp;dbid=$INFO[ListItem.DBID]&amp;dbtype=$INFO[ListItem.DBTYPE]</value>
 	</variable>
 	<variable name="ShortcutsViewContentVar">
