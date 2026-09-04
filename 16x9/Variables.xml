@@ -1084,20 +1084,6 @@
 		<value condition="Integer.IsEqual(Player.TimeRemaining(mm),01)">$LOCALIZE[12311] $LOCALIZE[31182]</value>
 		<value condition="Integer.IsLess(Player.TimeRemaining(h),1) + Integer.IsLess(Player.TimeRemaining(mm),01) + !Integer.IsEqual(Player.TimeRemaining(ss),00)">$INFO[Player.TimeRemaining(ss),, $LOCALIZE[31184]]</value>
 	</variable>
-	<variable name="PlayerTimeRemainingAltVar">
-		<value condition="Integer.IsGreater(PVR.EpgEventRemainingTime(h),0) + Integer.IsGreater(PVR.EpgEventRemainingTime(mm),10)">$INFO[PVR.EpgEventRemainingTime(h),,h]$INFO[PVR.EpgEventRemainingTime(mm),,m]</value>
-		<value condition="Integer.IsLessOrEqual(PVR.EpgEventRemainingTime(h),0) + Integer.IsGreater(PVR.EpgEventRemainingTime(mm),10)">$INFO[PVR.EpgEventRemainingTime(mm),,m]</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),09)">$LOCALIZE[12319]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),08)">$LOCALIZE[12318]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),07)">$LOCALIZE[12317]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),06)">$LOCALIZE[12316]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),05)">$LOCALIZE[12315]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),04)">$LOCALIZE[12314]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),03)">$LOCALIZE[12313]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),02)">$LOCALIZE[12312]m</value>
-		<value condition="Integer.IsEqual(PVR.EpgEventRemainingTime(mm),01)">$LOCALIZE[12311]m</value>
-		<value>$INFO[PVR.EpgEventRemainingTime(ss)]s</value>
-	</variable>
 	<variable name="DurationVar">
 		<value condition="String.IsEqual(ListItem.DBTYPE,season) + !String.IsEmpty(Window(Home).Property(SkinInfo.Season.TotalRuntime)) + !String.IsEqual(Window(Home).Property(SkinInfo.Season.Runtime),0)">$INFO[Window(Home).Property(SkinInfo.Season.TotalRuntime.Hours),,h]$INFO[Window(Home).Property(SkinInfo.Season.TotalRuntime.Minutes),,m]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow) + !String.IsEmpty(Window(Home).Property(SkinInfo.TVShow.TotalRuntime)) + !String.IsEqual(Window(Home).Property(SkinInfo.ListItem.Runtime),0)">$INFO[Window(Home).Property(SkinInfo.TVShow.TotalRuntime.Hours),,h]$INFO[Window(Home).Property(SkinInfo.TVShow.TotalRuntime.Minutes),,m]</value>
@@ -1179,25 +1165,6 @@
 	<variable name="TopBarRightLabelVar">
 		<value condition="Pvr.IsPlayingTv">$INFO[System.Date][COLOR grey2]$INFO[System.Time, • ][/COLOR][COLOR white]$INFO[PVR.EpgEventRemainingTime,   - ][/COLOR]</value>
 		<value>$INFO[System.Date][COLOR grey2]$INFO[System.Time, • ][/COLOR][COLOR white][LIGHT]$INFO[Player.TimeRemaining, - ][/LIGHT][/COLOR]</value>
-	</variable>
-	<variable name="PVRTimerIcon">
-		<value condition="ListItem.IsRecording">pvr/icons/PVR-IsRecording.png</value>
-		<value condition="ListItem.HasReminder">pvr/icons/timers/bell.png</value>
-		<value condition="ListItem.HasTimerSchedule + ListItem.TimerHasError">pvr/icons/PVR-HasTimerScheduleError.png</value>
-		<value condition="ListItem.HasTimer + ListItem.TimerHasError">pvr/icons/PVR-HasTimerError.png</value>
-		<value condition="ListItem.HasTimerSchedule + ListItem.TimerHasConflict">pvr/icons/PVR-HasTimerScheduleConflict.png</value>
-		<value condition="ListItem.HasTimer + ListItem.TimerHasConflict">pvr/icons/PVR-HasTimerConflict.png</value>
-		<value condition="ListItem.HasRecording">pvr/icons/PVR-HasRecording.png</value>
-		<value condition="ListItem.HasTimerSchedule + !ListItem.TimerIsActive">pvr/icons/PVR-HasTimerScheduleDisabled.png</value>
-		<value condition="ListItem.HasTimer + !ListItem.TimerIsActive">pvr/icons/PVR-HasTimerDisabled.png</value>
-		<value condition="ListItem.HasTimerSchedule">pvr/icons/PVR-HasTimerSchedule.png</value>
-		<value condition="ListItem.HasTimer">pvr/icons/PVR-HasTimer.png</value>
-		<value condition="ListItem.IsPlayable">pvr/icons/PVR-HasArchive.png</value>
-	</variable>
-	<variable name="PVRChannelStatusIcon">
-		<value condition="ListItem.IsRecording">pvr/icons/channels/record.png</value>
-		<value condition="ListItem.HasTimer | ListItem.HasTimerSchedule">pvr/icons/channels/timer.png</value>
-		<value condition="ListItem.HasArchive">pvr/icons/channels/archive.png</value>
 	</variable>
 	<variable name="DialogSettingsHeaderVar">
 		<value condition="Control.HasFocus(97) + Window.IsVisible(contentsettings)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[222][/COLOR]</value>
