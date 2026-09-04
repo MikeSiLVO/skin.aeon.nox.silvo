@@ -165,6 +165,7 @@
 		<value condition="!Skin.HasSetting(Disable.OverlayWatched) + String.IsEqual(ListItem.Overlay,OverlayWatched.png)">overlays/OverlayWatched.png</value>
 	</variable>
 	<variable name="ListItemOverlay">
+		<value condition="ListItem.IsRecording">[COLOR red][/COLOR]</value>
 		<value condition="String.IsEqual(ListItem.Property(WatchedEpisodePercent),100)">[COLOR $VAR[ThemeLabelColor]][/COLOR]</value>
 		<value condition="ListItem.IsResumable + String.IsEqual(ListItem.DBTYPE,set)">[COLOR white2][/COLOR]</value>
 		<value condition="ListItem.IsResumable + !String.IsEmpty(ListItem.PlayCount) + ![String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)] + !String.IsEqual(Container.SortMethod,$LOCALIZE[20360])">[COLOR $VAR[ThemeLabelColor]][/COLOR]</value>
