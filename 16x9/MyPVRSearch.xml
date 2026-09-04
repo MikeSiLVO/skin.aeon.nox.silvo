@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol>50</defaultcontrol>
+	<defaultcontrol always="true">50</defaultcontrol>
 	<onload>SetProperty(Window.HasSettings,True,Home)</onload>
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
@@ -14,211 +14,262 @@
 			<visible>Control.IsVisible(50)</visible>
 			<include>WindowOpenCloseAnimation</include>
 			<include>ViewAnimation</include>
-			<left>100</left>
-			<top>-40</top>
-			<control type="image">
-				<left>-32</left>
-				<top>148</top>
-				<width>1204</width>
-				<height>904</height>
-				<texture border="40">listpanel_back.png</texture>
-			</control>
+			<left>60</left>
+			<top>-44</top>
+			<include content="BackPanel">
+				<param name="left">0</param>
+				<param name="top">176</param>
+				<param name="width">1136</param>
+				<param name="height">848</param>
+			</include>
 			<control type="list" id="50">
+				<left>4</left>
 				<top>180</top>
-				<width>1140</width>
+				<width>1114</width>
 				<height>840</height>
 				<onleft>SetProperty(MediaMenu,True,Home)</onleft>
 				<onleft>SetFocus(9050)</onleft>
-				<onright>72</onright>
+				<onright condition="Control.IsVisible(60)">60</onright>
+				<onright condition="!Control.IsVisible(60) + ListItem.IsFolder">62</onright>
+				<onright condition="!Control.IsVisible(60) + !ListItem.IsFolder + Control.IsVisible(61)">61</onright>
+				<onright condition="!Control.IsVisible(60) + !ListItem.IsFolder + !Control.IsVisible(61)">SetProperty(MediaMenu,True,Home)</onright>
+				<onright condition="!Control.IsVisible(60) + !ListItem.IsFolder + !Control.IsVisible(61)">SetFocus(9050)</onright>
 				<onup>50</onup>
 				<ondown>50</ondown>
 				<viewtype label="535">list</viewtype>
-				<pagecontrol>72</pagecontrol>
+				<pagecontrol>60</pagecontrol>
 				<scrolltime tween="quadratic">200</scrolltime>
-				<itemlayout height="120" width="1140">
-					<control type="image">
-						<left>15</left>
-						<top>8</top>
-						<width>105</width>
-						<height>105</height>
-						<aspectratio>keep</aspectratio>
-						<colordiffuse>BFFFFFFF</colordiffuse>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
+				<itemlayout height="120" width="1114">
+					<control type="group">
+						<visible>!ListItem.IsFolder + !String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
+						<control type="label">
+							<top>22</top>
+							<width>150</width>
+							<height>50</height>
+							<align>center</align>
+							<font>font16</font>
+							<textcolor>grey2</textcolor>
+							<label>[B]$INFO[ListItem.ChannelNumberLabel][/B]</label>
+						</control>
+						<control type="progress">
+							<left>15</left>
+							<top>88</top>
+							<width>120</width>
+							<height>12</height>
+							<visible>ListItem.HasEpg</visible>
+							<info>ListItem.Progress</info>
+							<texturebg colordiffuse="$VAR[ThemeLabelColor]" border="3">pvr/texturebg_border_white.png</texturebg>
+							<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="3">pvr/texturebg_white.png</midtexture>
+						</control>
 					</control>
 					<control type="label">
-						<left>135</left>
-						<top>20</top>
-						<width>950</width>
+						<left>15</left>
+						<top>25</top>
+						<width>1084</width>
 						<height>70</height>
 						<font>font60</font>
 						<label>$INFO[ListItem.Label]</label>
-						<visible>String.IsEqual(ListItem.Label,$LOCALIZE[19335]) | String.IsEqual(ListItem.Label,$LOCALIZE[19337]) | String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
+						<visible>ListItem.IsFolder | String.IsEqual(ListItem.Label,$LOCALIZE[19335]) | String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
 					</control>
 					<control type="label">
-						<left>135</left>
-						<width>960</width>
+						<left>165</left>
+						<top>0</top>
+						<width>584</width>
 						<height>70</height>
 						<font>font30</font>
 						<textcolor>grey2</textcolor>
+						<scroll>true</scroll>
 						<label>$INFO[ListItem.Label]</label>
-						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19337]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
+						<visible>!ListItem.IsFolder + !String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
 					</control>
 					<control type="label">
-						<left>135</left>
+						<left>165</left>
 						<top>55</top>
-						<width>950</width>
+						<width>579</width>
 						<height>60</height>
 						<font>font15</font>
 						<textcolor>grey3</textcolor>
-						<label>$INFO[ListItem.Plot]</label>
+						<label>$INFO[ListItem.ChannelName]</label>
+						<visible>!ListItem.IsFolder + !String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
 					</control>
 					<control type="label">
-						<left>135</left>
-						<width>940</width>
-						<height>120</height>
+						<right>15</right>
+						<top>55</top>
+						<width>340</width>
+						<height>60</height>
 						<font>font15</font>
 						<align>right</align>
 						<textcolor>grey3</textcolor>
-						<label>$INFO[ListItem.Label2][CR]$INFO[ListItem.StartTime]</label>
+						<label>$INFO[ListItem.Date]</label>
+						<visible>!ListItem.IsFolder + !String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
+					</control>
+					<control type="label">
+						<right>15</right>
+						<top>0</top>
+						<width>200</width>
+						<height>60</height>
+						<font>font15</font>
+						<align>right</align>
+						<textcolor>grey3</textcolor>
+						<label>$VAR[DurationVar]</label>
+						<visible>!ListItem.IsFolder + !String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
 					</control>
 					<control type="group">
+						<left>764</left>
 						<visible>[ListItem.HasTimer | ListItem.IsRecording]</visible>
-						<left>1017</left>
 						<control type="label">
-							<top>44</top>
-							<width>120</width>
+							<top>20</top>
+							<width>135</width>
 							<height>30</height>
 							<font>IconSmallMD</font>
 							<textoffsetx>15</textoffsetx>
-							<textcolor>grey2</textcolor>
 							<align>right</align>
-							<label></label>
+							<textcolor>grey2</textcolor>
+							<label></label>
 							<visible>ListItem.HasTimer</visible>
 						</control>
 						<control type="label">
-							<top>44</top>
-							<width>120</width>
+							<top>20</top>
+							<width>135</width>
 							<height>30</height>
 							<font>IconSmallMD</font>
 							<textoffsetx>15</textoffsetx>
-							<textcolor>red</textcolor>
 							<align>right</align>
-							<label></label>
+							<textcolor>red</textcolor>
+							<label></label>
 							<visible>ListItem.IsRecording</visible>
 						</control>
 					</control>
 				</itemlayout>
-				<focusedlayout height="120" width="1140">
+				<focusedlayout height="120" width="1114">
 					<control type="image">
-						<width>1140</width>
+						<width>1114</width>
 						<height>120</height>
 						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 						<visible>Control.HasFocus(50)</visible>
 						<include>VisibleFadeAnimation</include>
 					</control>
-					<control type="image">
-						<left>15</left>
-						<top>8</top>
-						<width>105</width>
-						<height>105</height>
-						<aspectratio>keep</aspectratio>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
+					<control type="group">
+						<visible>!ListItem.IsFolder + !String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
+						<control type="label">
+							<top>22</top>
+							<width>150</width>
+							<height>50</height>
+							<align>center</align>
+							<font>font16</font>
+							<textcolor>white</textcolor>
+							<label>[B]$INFO[ListItem.ChannelNumberLabel][/B]</label>
+						</control>
+						<control type="progress">
+							<left>15</left>
+							<top>88</top>
+							<width>120</width>
+							<height>12</height>
+							<visible>ListItem.HasEpg</visible>
+							<info>ListItem.Progress</info>
+							<texturebg colordiffuse="$VAR[ThemeLabelColor]" border="3">pvr/texturebg_border_white.png</texturebg>
+							<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="3">pvr/texturebg_white.png</midtexture>
+						</control>
 					</control>
 					<control type="label">
-						<left>135</left>
-						<top>20</top>
-						<width>950</width>
+						<left>15</left>
+						<top>25</top>
+						<width>1084</width>
 						<height>70</height>
 						<font>font60</font>
 						<label>$INFO[ListItem.Label]</label>
-						<visible>String.IsEqual(ListItem.Label,$LOCALIZE[19335]) | String.IsEqual(ListItem.Label,$LOCALIZE[19337]) | String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
+						<visible>ListItem.IsFolder | String.IsEqual(ListItem.Label,$LOCALIZE[19335]) | String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
 					</control>
 					<control type="label">
-						<left>135</left>
-						<width>950</width>
+						<left>165</left>
+						<top>0</top>
+						<width>584</width>
 						<height>70</height>
 						<font>font30</font>
+						<scroll>true</scroll>
 						<label>$INFO[ListItem.Label]</label>
-						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19337]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
+						<visible>!ListItem.IsFolder + !String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
 					</control>
 					<control type="label">
-						<left>135</left>
+						<left>165</left>
 						<top>55</top>
-						<width>950</width>
+						<width>579</width>
 						<height>60</height>
 						<font>font15</font>
-						<label>$INFO[ListItem.Plot]</label>
+						<label>$INFO[ListItem.ChannelName]</label>
+						<visible>!ListItem.IsFolder + !String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
 					</control>
 					<control type="label">
-						<left>135</left>
-						<width>940</width>
-						<height>120</height>
+						<right>15</right>
+						<top>55</top>
+						<width>340</width>
+						<height>60</height>
 						<font>font15</font>
 						<align>right</align>
-						<label>$INFO[ListItem.Label2][CR]$INFO[ListItem.StartTime]</label>
+						<label>$INFO[ListItem.Date]</label>
+						<visible>!ListItem.IsFolder + !String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
+					</control>
+					<control type="label">
+						<right>15</right>
+						<top>0</top>
+						<width>200</width>
+						<height>60</height>
+						<font>font15</font>
+						<align>right</align>
+						<label>$VAR[DurationVar]</label>
+						<visible>!ListItem.IsFolder + !String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
 					</control>
 					<control type="group">
+						<left>764</left>
 						<visible>[ListItem.HasTimer | ListItem.IsRecording]</visible>
-						<left>1017</left>
 						<control type="label">
-							<top>44</top>
-							<width>120</width>
+							<top>20</top>
+							<width>135</width>
 							<height>30</height>
 							<font>IconSmallMD</font>
 							<textoffsetx>15</textoffsetx>
-							<textcolor>grey2</textcolor>
 							<align>right</align>
-							<label></label>
+							<textcolor>grey2</textcolor>
+							<label></label>
 							<visible>ListItem.HasTimer</visible>
 						</control>
 						<control type="label">
-							<top>44</top>
-							<width>120</width>
+							<top>20</top>
+							<width>135</width>
 							<height>30</height>
 							<font>IconSmallMD</font>
 							<textoffsetx>15</textoffsetx>
-							<textcolor>red</textcolor>
 							<align>right</align>
-							<label></label>
+							<textcolor>red</textcolor>
+							<label></label>
 							<visible>ListItem.IsRecording</visible>
 						</control>
 					</control>
 				</focusedlayout>
 			</control>
-			<control type="scrollbar" id="72">
-				<left>1140</left>
-				<top>180</top>
-				<width>14</width>
-				<height>840</height>
+			<control type="scrollbar" id="60">
+				<include content="ScrollbarValues">
+					<param name="left">1118</param>
+					<param name="top">180</param>
+					<param name="height">840</param>
+				</include>
 				<onleft>50</onleft>
-				<onright>SetProperty(MediaMenu,True,Home)</onright>
-				<onright>SetFocus(9050)</onright>
-				<texturesliderbackground />
-				<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
-				<showonepage>false</showonepage>
+				<onright condition="ListItem.IsFolder">62</onright>
+				<onright condition="!ListItem.IsFolder + Control.IsVisible(61)">61</onright>
+				<onright condition="!ListItem.IsFolder + !Control.IsVisible(61)">SetProperty(MediaMenu,True,Home)</onright>
+				<onright condition="!ListItem.IsFolder + !Control.IsVisible(61)">SetFocus(9050)</onright>
 			</control>
 			<control type="group">
-				<left>1196</left>
-				<top>195</top>
-				<control type="image">
-					<width>570</width>
-					<height>835</height>
-					<aspectratio aligny="bottom">keep</aspectratio>
-					<texture background="true" fallback="DefaultVideo.png">$INFO[Container(50).ListItem.Icon]</texture>
-					<fadetime>IconCrossfadeTime</fadetime>
-					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
-					<bordersize>20</bordersize>
-				</control>
-				<control type="image">
-					<top>795</top>
-					<width>570</width>
-					<height>835</height>
-					<aspectratio aligny="top">keep</aspectratio>
-					<fadetime>IconCrossfadeTime</fadetime>
-					<texture diffuse="thumbs/thumb_reflect.png" flipy="true" fallback="DefaultVideo.png" background="true">$INFO[Container(50).ListItem.Icon]</texture>
-					<bordersize>20</bordersize>
-				</control>
+				<left>1172</left>
+				<top>176</top>
+				<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19335]) + !String.IsEqual(ListItem.Label,$LOCALIZE[19336])</visible>
+				<include>VisibleFadeAnimation</include>
+				<include content="PVRInfoDefaultDetails">
+					<param name="plottop">207</param>
+					<param name="plotheight">637</param>
+					<param name="folderheight">726</param>
+					<param name="diskspace">false</param>
+				</include>
 			</control>
 		</control>
 		<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>
