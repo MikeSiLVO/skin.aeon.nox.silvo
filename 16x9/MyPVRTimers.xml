@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol>50</defaultcontrol>
+	<defaultcontrol always="true">50</defaultcontrol>
 	<onload>SetProperty(Window.HasSettings,True,Home)</onload>
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
@@ -13,28 +13,29 @@
 			<visible>Control.IsVisible(50)</visible>
 			<include>WindowOpenCloseAnimation</include>
 			<include>ViewAnimation</include>
-			<left>100</left>
-			<top>-90</top>
-			<control type="image">
-				<left>-32</left>
-				<top>148</top>
-				<width>1784</width>
-				<height>904</height>
-				<texture border="40">listpanel_back.png</texture>
-			</control>
+			<left>64</left>
+			<top>-40</top>
+			<include content="BackPanel">
+				<param name="left">-4</param>
+				<param name="top">176</param>
+				<param name="width">1800</param>
+				<param name="height">848</param>
+			</include>
 			<control type="list" id="50">
 				<top>180</top>
-				<width>1720</width>
+				<width>1778</width>
 				<height>840</height>
 				<onleft>SetProperty(MediaMenu,True,Home)</onleft>
 				<onleft>SetFocus(9050)</onleft>
-				<onright>72</onright>
+				<onright condition="Control.IsVisible(72)">72</onright>
+				<onright condition="!Control.IsVisible(72)">SetProperty(MediaMenu,True,Home)</onright>
+				<onright condition="!Control.IsVisible(72)">SetFocus(9050)</onright>
 				<onup>50</onup>
 				<ondown>50</ondown>
 				<viewtype label="535">list</viewtype>
 				<pagecontrol>72</pagecontrol>
 				<scrolltime tween="quadratic">200</scrolltime>
-				<itemlayout height="120" width="1720">
+				<itemlayout height="120" width="1778">
 					<control type="image">
 						<left>15</left>
 						<top>8</top>
@@ -46,16 +47,17 @@
 						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
 					</control>
 					<control type="label">
-						<left>135</left>
-						<width>950</width>
-						<height>120</height>
+						<left>15</left>
+						<top>20</top>
+						<width>1748</width>
+						<height>70</height>
 						<font>font60</font>
 						<label>$INFO[ListItem.Label]</label>
 						<visible>String.IsEmpty(ListItem.Date)</visible>
 					</control>
 					<control type="label">
 						<left>135</left>
-						<width>1510</width>
+						<width>1582</width>
 						<height>50</height>
 						<font>font30</font>
 						<textcolor>grey</textcolor>
@@ -66,7 +68,7 @@
 					<control type="label">
 						<left>135</left>
 						<top>40</top>
-						<width>950</width>
+						<width>1022</width>
 						<height>45</height>
 						<font>font12</font>
 						<textcolor>grey2</textcolor>
@@ -76,7 +78,7 @@
 					<control type="label">
 						<left>135</left>
 						<top>70</top>
-						<width>1510</width>
+						<width>1582</width>
 						<height>50</height>
 						<font>font15</font>
 						<textcolor>grey3</textcolor>
@@ -85,7 +87,7 @@
 					</control>
 					<control type="label">
 						<left>200</left>
-						<width>1510</width>
+						<width>1561</width>
 						<height>50</height>
 						<font>font12</font>
 						<align>right</align>
@@ -93,7 +95,7 @@
 						<label>$INFO[ListItem.Timertype]</label>
 					</control>
 					<control type="image">
-						<left>1670</left>
+						<left>1725</left>
 						<top>46</top>
 						<width>36</width>
 						<height>36</height>
@@ -102,7 +104,7 @@
 					<control type="label">
 						<left>200</left>
 						<top>75</top>
-						<width>1510</width>
+						<width>1561</width>
 						<height>50</height>
 						<font>font12</font>
 						<align>right</align>
@@ -110,9 +112,9 @@
 						<label>$INFO[ListItem.Comment]</label>
 					</control>
 				</itemlayout>
-				<focusedlayout height="120" width="1720">
+				<focusedlayout height="120" width="1778">
 					<control type="image">
-						<width>1720</width>
+						<width>1778</width>
 						<height>120</height>
 						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 						<visible>Control.HasFocus(50)</visible>
@@ -128,16 +130,17 @@
 						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
 					</control>
 					<control type="label">
-						<left>135</left>
-						<width>950</width>
-						<height>120</height>
+						<left>15</left>
+						<top>20</top>
+						<width>1748</width>
+						<height>70</height>
 						<font>font60</font>
 						<label>$INFO[ListItem.Label]</label>
 						<visible>String.IsEmpty(ListItem.Date)</visible>
 					</control>
 					<control type="label">
 						<left>135</left>
-						<width>1510</width>
+						<width>1582</width>
 						<height>50</height>
 						<font>font30</font>
 						<textcolor>white</textcolor>
@@ -148,7 +151,7 @@
 					<control type="label">
 						<left>135</left>
 						<top>40</top>
-						<width>950</width>
+						<width>1022</width>
 						<height>45</height>
 						<font>font12</font>
 						<textcolor>grey</textcolor>
@@ -158,7 +161,7 @@
 					<control type="label">
 						<left>135</left>
 						<top>70</top>
-						<width>1510</width>
+						<width>1582</width>
 						<height>50</height>
 						<font>font15</font>
 						<textcolor>grey2</textcolor>
@@ -167,7 +170,7 @@
 					</control>
 					<control type="label">
 						<left>200</left>
-						<width>1510</width>
+						<width>1561</width>
 						<height>50</height>
 						<font>font12</font>
 						<align>right</align>
@@ -175,7 +178,7 @@
 						<label>$INFO[ListItem.Timertype]</label>
 					</control>
 					<control type="image">
-						<left>1670</left>
+						<left>1725</left>
 						<top>46</top>
 						<width>36</width>
 						<height>36</height>
@@ -184,7 +187,7 @@
 					<control type="label">
 						<left>200</left>
 						<top>75</top>
-						<width>1510</width>
+						<width>1561</width>
 						<height>50</height>
 						<font>font12</font>
 						<align>right</align>
@@ -194,17 +197,14 @@
 				</focusedlayout>
 			</control>
 			<control type="scrollbar" id="72">
-				<left>1140</left>
-				<top>180</top>
-				<width>14</width>
-				<height>840</height>
+				<include content="ScrollbarValues">
+					<param name="left">1778</param>
+					<param name="top">180</param>
+					<param name="height">840</param>
+				</include>
 				<onleft>50</onleft>
 				<onright>SetProperty(MediaMenu,True,Home)</onright>
 				<onright>SetFocus(9050)</onright>
-				<texturesliderbackground />
-				<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
-				<showonepage>false</showonepage>
 			</control>
 		</control>
 		<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>

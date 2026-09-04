@@ -16,18 +16,18 @@
 				<visible>Control.IsVisible(50) + !Window.IsActive(addoninformation)</visible>
 				<include>ViewAnimation</include>
 				<control type="group">
-					<left>100</left>
+					<left>64</left>
 					<top>-40</top>
 					<include content="BackPanel">
 						<param name="left">-4</param>
 						<param name="top">176</param>
-						<param name="width">1728</param>
+						<param name="width">1800</param>
 						<param name="height">848</param>
 						<param name="texture">colors/black90.png</param>
 					</include>
 					<control type="list" id="50">
 						<top>180</top>
-						<width>1706</width>
+						<width>1778</width>
 						<height>840</height>
 						<onleft>SetProperty(MediaMenu,True,Home)</onleft>
 						<onleft>SetFocus(9050)</onleft>
@@ -37,7 +37,7 @@
 						<viewtype label="535">list</viewtype>
 						<pagecontrol>60</pagecontrol>
 						<scrolltime tween="quadratic" easing="out">200</scrolltime>
-						<itemlayout height="120" width="1706">
+						<itemlayout height="120" width="1778">
 							<control type="image">
 								<left>15</left>
 								<top>8</top>
@@ -85,9 +85,9 @@
 								<label>$INFO[ListItem.Label2]</label>
 							</control>
 						</itemlayout>
-						<focusedlayout height="120" width="1706">
+						<focusedlayout height="120" width="1778">
 							<control type="image">
-								<width>1706</width>
+								<width>1778</width>
 								<height>120</height>
 								<texture colordiffuse="$VAR[HighlightBarColor]" border="4">colors/white50.png</texture>
 								<visible>Control.HasFocus(50)</visible>
@@ -142,7 +142,7 @@
 					</control>
 					<control type="scrollbar" id="60">
 						<include content="ScrollbarValues">
-							<param name="left">1706</param>
+							<param name="left">1778</param>
 							<param name="top">180</param>
 							<param name="height">840</param>
 						</include>
