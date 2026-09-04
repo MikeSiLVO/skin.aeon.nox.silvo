@@ -1,6 +1,12 @@
 name: kdk skin validate
 
 on:
+  push:
+    paths-ignore:
+      - '**/*.po'
+  pull_request:
+    paths-ignore:
+      - '**/*.po'
   workflow_dispatch:
 
 jobs:
