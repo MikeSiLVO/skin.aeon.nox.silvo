@@ -65,7 +65,7 @@
 						<height>40</height>
 						<font>font12</font>
 						<textcolor>grey2</textcolor>
-						<label>$VAR[EpisodeCountVar,, - ]$INFO[VideoPlayer.EpisodeName]</label>
+						<label>$VAR[EpisodeCountVar,, - ]$INFO[ListItem.EpisodeName]</label>
 					</control>
 					<control type="image">
 						<top>-2</top>
@@ -84,7 +84,7 @@
 						<include>VisibleFadeAnimation</include>
 					</control>
 					<control type="group">
-						<animation effect="slide" end="0,-15" time="0" condition="[!String.IsEmpty(VideoPlayer.Season) | !String.IsEmpty(VideoPlayer.Episode) | !String.IsEmpty(VideoPlayer.EpisodeName)]">Conditional</animation>
+						<animation effect="slide" end="0,-15" time="0" condition="[!String.IsEmpty(ListItem.Season) | !String.IsEmpty(ListItem.Episode) | !String.IsEmpty(ListItem.EpisodeName)]">Conditional</animation>
 						<control type="label">
 							<left>10</left>
 							<top>5</top>
@@ -111,7 +111,7 @@
 						<width>700</width>
 						<height>60</height>
 						<font>font12</font>
-						<label>$VAR[EpisodeCountVar,, - ]$INFO[VideoPlayer.EpisodeName]</label>
+						<label>$VAR[EpisodeCountVar,, - ]$INFO[ListItem.EpisodeName]</label>
 					</control>
 					<control type="textbox">
 						<top>75</top>
