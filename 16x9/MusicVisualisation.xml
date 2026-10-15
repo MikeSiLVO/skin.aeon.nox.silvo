@@ -93,9 +93,9 @@
 			<control type="image" id="90400">
 				<fadetime>1000</fadetime>
 				<aspectratio>keep</aspectratio>
-				<texture background="true">$INFO[Window(Visualisation).Property(ArtistSlideshow.Image)]</texture>
+				<texture background="true">$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.FanArt)]</texture>
 				<animation effect="fade" start="100" end="20" time="0" condition="![String.IsEqual(Visualisation.Name,waveform) | String.Contains(Visualisation.Name,spectrum) | String.IsEmpty(Visualisation.Name)] + !Skin.HasSetting(HideVisualizationFanart)">Conditional</animation>
-				<visible>String.IsEqual(Skin.String(Viz.Background),3) + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.Image))</visible>
+				<visible>String.IsEqual(Skin.String(Viz.Background),3) + !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.Music.Artist.FanArt))</visible>
 			</control>
 			<control type="image" id="90500">
 				<fadetime>1000</fadetime>
@@ -570,7 +570,7 @@
 			</control>
 			<!-- RSS Feed: similar artists-->
 			<control type="group">
-				<visible>System.AddonIsEnabled(script.artistslideshow) + [!String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.ArtistBiography)) | !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.1.AlbumName)) | !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.1.SimilarName))]</visible>
+				<visible>!String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Bio)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Discography.1.Name)) | !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Similar.1.Name))</visible>
 				<visible>Skin.HasSetting(Enable.VizInfo) + [Player.ShowInfo | Window.IsActive(MusicOSD)] | Skin.HasSetting(Enable.VizPersistent)</visible>
 				<include>VisibleFadeAnimation</include>
 				<top>993</top>
@@ -596,9 +596,9 @@
 						<width>1840</width>
 						<textcolor>$VAR[ThemeLabelColor]</textcolor>
 						<shadowcolor>shadow</shadowcolor>
-						<label>$INFO[Window(Visualisation).Property(ArtistSlideshow.ArtistBiography),$LOCALIZE[21887]: [COLOR grey],[/COLOR]]</label>
-						<label>$INFO[MusicPlayer.Artist,$LOCALIZE[31105] ,: ]$INFO[Window(Visualisation).Property(ArtistSlideshow.1.AlbumName),[COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.2.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.3.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.4.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.5.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.6.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.7.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.8.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.9.AlbumName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.10.AlbumName), • [COLOR grey],[/COLOR]]</label>
-						<label>$INFO[Window(Visualisation).Property(ArtistSlideshow.1.SimilarName),$LOCALIZE[31104]: [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.2.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.3.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.4.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.5.SimilarName), •	[COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.6.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.7.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.8.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.9.SimilarName), • [COLOR grey],[/COLOR]]$INFO[Window(Visualisation).Property(ArtistSlideshow.10.SimilarName), • [COLOR grey],[/COLOR]]</label>
+						<label>$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Bio),$LOCALIZE[21887]: [COLOR grey],[/COLOR]]</label>
+						<label>$INFO[MusicPlayer.Artist,$LOCALIZE[31105] ,: ]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Discography.1.Name),[COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Discography.2.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Discography.3.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Discography.4.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Discography.5.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Discography.6.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Discography.7.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Discography.8.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Discography.9.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Discography.10.Name), • [COLOR grey],[/COLOR]]</label>
+						<label>$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Similar.1.Name),$LOCALIZE[31104]: [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Similar.2.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Similar.3.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Similar.4.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Similar.5.Name), •	[COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Similar.6.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Similar.7.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Similar.8.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Similar.9.Name), • [COLOR grey],[/COLOR]]$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.Similar.10.Name), • [COLOR grey],[/COLOR]]</label>
 						<scrollspeed>40</scrollspeed>
 					</control>
 				</control>

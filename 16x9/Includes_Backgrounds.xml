@@ -181,13 +181,13 @@
 			<control type="multiimage">
 				<include>MultiImageTime</include>
 				<imagepath background="true">$VAR[HomeBackgroundVar]</imagepath>
-				<visible>![Player.HasAudio + Skin.HasSetting(Enable.ArtistSlideshowOnHome) + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.Image))]</visible>
+				<visible>![Player.HasAudio + Skin.HasSetting(Enable.ArtistFanartOnHome) + !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.Music.Artist.FanArt))]</visible>
 			</control>
 			<control type="image">
 				<fadetime>2000</fadetime>
 				<aspectratio>keep</aspectratio>
-				<texture background="true">$INFO[Window(Visualisation).Property(ArtistSlideshow.Image)]</texture>
-				<visible>Player.HasAudio + Skin.HasSetting(Enable.ArtistSlideshowOnHome) + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.Image))</visible>
+				<texture background="true">$INFO[Window(Home).Property(SkinInfo.Player.Online.Music.Artist.FanArt)]</texture>
+				<visible>Player.HasAudio + Skin.HasSetting(Enable.ArtistFanartOnHome) + !String.IsEmpty(Window(Home).Property(SkinInfo.Player.Online.Music.Artist.FanArt))</visible>
 			</control>
 		</control>
 	</include>
