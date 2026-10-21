@@ -268,7 +268,7 @@
 				<visible>!String.IsEmpty(Container(4500).ListItem(0).Studio) + !Skin.HasSetting(DisableFlag_SetStudio)</visible>
 				<control type="image" id="95220">
 					<include>MediaFlagValues</include>
-					<texture>$VAR[PathFlagsStudios]$INFO[Container(4500).ListItem(0).Studio,,.png]</texture>
+					<texture background="true">$VAR[PathFlagsStudios]$INFO[Container(4500).ListItem(0).Studio,,.png]</texture>
 				</control>
 				<control type="label">
 					<width>170</width>
@@ -373,7 +373,7 @@
 				<visible>[[Container.Content(tvshows) + !Control.IsVisible(50)] | Container.Content(seasons)] + !String.IsEmpty(ListItem.Studio) + !Skin.HasSetting(DisableFlag_TVStudio)</visible>
 				<control type="image" id="44445">
 					<include>MediaFlagValues</include>
-					<texture>$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
+					<texture background="true">$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
 				</control>
 				<control type="label">
 					<width>170</width>
