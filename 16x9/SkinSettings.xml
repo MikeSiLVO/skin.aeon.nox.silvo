@@ -5,8 +5,8 @@
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
-	<onunload condition="!String.IsEmpty(Skin.String(FanartTimePerImage)) + Skin.HasSetting(SkinInfo.EnableSlideshow)">Skin.SetString(SkinInfo.SlideshowRefreshInterval,$INFO[Skin.String(FanartTimePerImage)])</onunload>
-	<onunload condition="String.IsEmpty(Skin.String(FanartTimePerImage)) + Skin.HasSetting(SkinInfo.EnableSlideshow)">Skin.SetString(SkinInfo.SlideshowRefreshInterval,7)</onunload>
+	<onunload condition="!String.IsEmpty(Skin.String(FanartTimePerImage)) + Skin.HasSetting(SkinInfo.EnableSlideshow) + !String.IsEqual(Skin.String(SkinInfo.SlideshowRefreshInterval),Skin.String(FanartTimePerImage))">Skin.SetString(SkinInfo.SlideshowRefreshInterval,$INFO[Skin.String(FanartTimePerImage)])</onunload>
+	<onunload condition="String.IsEmpty(Skin.String(FanartTimePerImage)) + Skin.HasSetting(SkinInfo.EnableSlideshow) + !String.IsEqual(Skin.String(SkinInfo.SlideshowRefreshInterval),7)">Skin.SetString(SkinInfo.SlideshowRefreshInterval,7)</onunload>
 	<controls>
 		<control type="group">
 			<animation effect="fade" time="500" delay="400" condition="Window.Previous(Home)">WindowOpen</animation>

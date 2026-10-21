@@ -3,11 +3,11 @@
 	<zorder>2</zorder>
 	<onload condition="String.IsEqual(Skin.String(Viz.Background),4) + !Skin.HasSetting(SkinInfo.Player.Blur)">Skin.SetBool(SkinInfo.Player.Blur)</onload>
 	<onload condition="String.IsEqual(Skin.String(Viz.Background),4) + String.IsEmpty(Window(Home).Property(SkinInfo.Player.BlurSource))">SetProperty(SkinInfo.Player.BlurSource,Player.Art(thumb),Home)</onload>
-	<onload condition="!String.IsEqual(Skin.String(Viz.Background),4)">Skin.Reset(SkinInfo.Player.Blur)</onload>
+	<onload condition="!String.IsEqual(Skin.String(Viz.Background),4) + Skin.HasSetting(SkinInfo.Player.Blur)">Skin.Reset(SkinInfo.Player.Blur)</onload>
 	<onload condition="!Skin.HasSetting(WarnedOnMusicVizInfo)">SetProperty(Notify,True,Home)</onload>
 	<onload condition="!Skin.HasSetting(WarnedOnMusicVizInfo)">SetProperty(NotWarnedOnMuzicVizInfo,True,Home)</onload>
 	<onload condition="!Skin.HasSetting(WarnedOnMusicVizInfo)">ActivateWindow(1126)</onload>
-	<onunload condition="!String.IsEqual(Skin.String(Viz.Background),4) | String.IsEqual(Skin.String(Viz.Background),4) + !Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(SkinInfo.Player.Blur)</onunload>
+	<onunload condition="[!String.IsEqual(Skin.String(Viz.Background),4) | String.IsEqual(Skin.String(Viz.Background),4) + !Skin.HasSetting(Enable.BlurredVideoInfo)] + Skin.HasSetting(SkinInfo.Player.Blur)">Skin.Reset(SkinInfo.Player.Blur)</onunload>
 	<controls>
 		<control type="fadelabel" id="4410">
 			<top>-100</top>

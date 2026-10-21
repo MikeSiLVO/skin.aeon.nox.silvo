@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1114" type="dialog">
 	<onload>SetFocus(90201)</onload>
-	<onunload condition="[Window.IsVisible(visualisation) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd) + String.IsEqual(Skin.String(Viz.Background),4)]">Skin.SetBool(SkinInfo.Player.Blur)</onunload>
+	<onunload condition="[Window.IsVisible(visualisation) + String.IsEqual(Window(Home).Property(DialogSettings),musicosd) + String.IsEqual(Skin.String(Viz.Background),4)] + !Skin.HasSetting(SkinInfo.Player.Blur)">Skin.SetBool(SkinInfo.Player.Blur)</onunload>
 	<onunload condition="String.IsEqual(Skin.String(Viz.Background),4) + String.IsEmpty(Window(Home).Property(SkinInfo.Player.BlurSource))">SetProperty(SkinInfo.Player.BlurSource,Player.Art(thumb),Home)</onunload>
-	<onunload condition="!String.IsEqual(Skin.String(Viz.Background),4)">Skin.Reset(SkinInfo.Player.Blur)</onunload>
+	<onunload condition="!String.IsEqual(Skin.String(Viz.Background),4) + Skin.HasSetting(SkinInfo.Player.Blur)">Skin.Reset(SkinInfo.Player.Blur)</onunload>
 	<onunload condition="String.IsEqual(Window(Home).Property(DialogSettings),livetv) + !Window.IsActive(skinsettings)">SetFocus(50)</onunload>
 	<onunload>ClearProperty(DialogSettings,Home)</onunload>
 	<controls>
