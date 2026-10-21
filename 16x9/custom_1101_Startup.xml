@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1101" type="window">
-	<onload>Skin.SetBool(SkinInfo.Service)</onload>
-	<onload>Skin.SetBool(SkinInfo.EnableSlideshow)</onload>
+	<onload condition="!Skin.HasSetting(SkinInfo.Service)">Skin.SetBool(SkinInfo.Service)</onload>
+	<onload condition="!Skin.HasSetting(SkinInfo.EnableSlideshow)">Skin.SetBool(SkinInfo.EnableSlideshow)</onload>
 	<onload condition="Skin.HasSetting(Enable.ArtistSlideshowOnHome)">Skin.SetBool(Enable.ArtistFanartOnHome)</onload>
 	<onload condition="Skin.HasSetting(Enable.ArtistSlideshowOnHome)">Skin.Reset(Enable.ArtistSlideshowOnHome)</onload>
-	<onload condition="!Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.Reset(SkinInfo.Blur)</onload>
-	<onload condition="Skin.HasSetting(Enable.BlurredVideoInfo)">Skin.SetBool(SkinInfo.Blur)</onload>
+	<onload condition="!Skin.HasSetting(Enable.BlurredVideoInfo) + Skin.HasSetting(SkinInfo.Blur)">Skin.Reset(SkinInfo.Blur)</onload>
+	<onload condition="Skin.HasSetting(Enable.BlurredVideoInfo) + !Skin.HasSetting(SkinInfo.Blur)">Skin.SetBool(SkinInfo.Blur)</onload>
 	<onload condition="Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(SkinInfo.BlurSourceVar,PosterVar,home)</onload>
 	<onload condition="!String.IsEmpty(Skin.String(StartupIntro))">SetFocus(10)</onload>
 	<onload condition="String.IsEmpty(Skin.String(StartupIntro))">ReplaceWindow($INFO[System.StartupWindow])</onload>
 	<!-- RESET TMDBH SETTINGS -->
-	<onload>Skin.Reset(TMDbHelper.Service)</onload>
-	<onload>Skin.Reset(TMDbHelper.EnableBlur)</onload>
-	<onload>Skin.Reset(TMDbHelper.MonitorContainer)</onload>
-	<onload>Skin.Reset(TMDbHelper.DisableArtwork)</onload>
-	<onload>Skin.Reset(TMDbHelper.DisableExtendedProperties)</onload>
-	<onload>Skin.Reset(TMDbHelper.DirectCallAuto)</onload>
+	<onload condition="Skin.HasSetting(TMDbHelper.Service)">Skin.Reset(TMDbHelper.Service)</onload>
+	<onload condition="Skin.HasSetting(TMDbHelper.EnableBlur)">Skin.Reset(TMDbHelper.EnableBlur)</onload>
+	<onload condition="!String.IsEmpty(Skin.String(TMDbHelper.MonitorContainer))">Skin.Reset(TMDbHelper.MonitorContainer)</onload>
+	<onload condition="Skin.HasSetting(TMDbHelper.DisableArtwork)">Skin.Reset(TMDbHelper.DisableArtwork)</onload>
+	<onload condition="Skin.HasSetting(TMDbHelper.DisableExtendedProperties)">Skin.Reset(TMDbHelper.DisableExtendedProperties)</onload>
+	<onload condition="Skin.HasSetting(TMDbHelper.DirectCallAuto)">Skin.Reset(TMDbHelper.DirectCallAuto)</onload>
 	<onunload condition="!String.IsEmpty(Skin.String(StartupIntro))">SetProperty(Playing.StartupIntro,True,Home)</onunload>
 	<controls>
 		<control type="button" id="10">
