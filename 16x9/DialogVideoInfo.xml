@@ -7,11 +7,11 @@
 	<onload>SetProperty(SkinInfo.CM_Focus.2,![Window.IsActive(Home) + String.IsEqual(ListItem.DBTYPE,tvshow)] + String.IsEqual(Skin.String(CinemaVision.Button),$LOCALIZE[31232]) + System.AddonIsEnabled(script.preshowexperience)::909,Home)</onload>
 	<onload>SetProperty(SkinInfo.CM_Focus.3,Window.IsActive(Home) + String.IsEqual(ListItem.DBTYPE,tvshow)::808,Home)</onload>
 	<onload>RunScript(script.skin.info.service,action=container_move,main_focus=300|90021|90020|90019|90018|90017|90016|90015|90014|90013|90012|90011|90050|90003)</onload>
-	<onload>RunScript(script.skin.info.service,action=split_string,string="$INFO[ListItem.Director]",separator=/,prefix=Director)</onload>
-	<onload>RunScript(script.skin.info.service,action=urlencode,string="$INFO[ListItem.Title]")</onload>
+	<onload condition="System.AddonIsEnabled(script.skin.info.service) + Skin.HasSetting(Enable.ExtendedInfoMVIntergration) + String.IsEqual(ListItem.DBTYPE,musicvideo) + String.IsEmpty(ListItem.DBID)">RunScript(script.skin.info.service,action=urlencode,stringinfo=ListItem.Artist,prefix=MVArtist)</onload>
 	<onunload condition="!String.IsEmpty(Window(movieinformation).Property(FSFanart))">ClearProperty(FSFanart,movieinformation)</onunload>
 	<onunload>ClearProperty(actor_name,Home)</onunload>
 	<onunload>ClearProperty(crew_name,Home)</onunload>
+	<onunload>ClearProperty(SkinInfo.Encoded.MVArtist,Home)</onunload>
 	<controls>
 		<control type="textbox" id="4">
 			<include>HiddenObject</include>
@@ -341,8 +341,8 @@
 						<texturenofocus />
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label></label>
-						<onclick>Dialog.Close(movieinformation)</onclick>
-						<onclick condition="String.IsEqual(ListItem.DBTYPE,movie) + String.IsEmpty(ListItem.SetID)">ActivateWindow(Videos,videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B"$INFO[ListItem.Title]"%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D,return)</onclick>
+						<onclick condition="String.IsEqual(ListItem.DBTYPE,movie) + String.IsEmpty(ListItem.SetID)">RunScript(script.skin.info.service,action=urlencode,stringinfo=ListItem.Title,json=true,doneaction=Dialog.Close(movieinformation)|ActivateWindow(Videos,videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22{value}%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D,return))</onclick>
+						<onclick condition="![String.IsEqual(ListItem.DBTYPE,movie) + String.IsEmpty(ListItem.SetID)]">Dialog.Close(movieinformation)</onclick>
 						<onclick condition="String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEmpty(ListItem.SetID)">ActivateWindow(Videos,videodb://movies/sets/$INFO[ListItem.SetId]/?setid=$INFO[ListItem.SetId],return)</onclick>
 						<onclick condition="String.IsEqual(ListItem.DBTYPE,tvshow)">ActivateWindow(Videos,videodb://tvshows/titles/$INFO[ListItem.DBID],return)</onclick>
 						<visible>Window.IsActive(Home) + [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)]</visible>
@@ -406,9 +406,8 @@
 						<texturenofocus />
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label></label>
-						<onclick>Dialog.Close(all,force)</onclick>
-						<onclick condition="!Window.IsVisible(MyVideoNav.xml)">ActivateWindow(videos,plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.Title]&amp;search_type=videos,return)</onclick>
-						<onclick condition="Window.IsVisible(MyVideoNav.xml)">Container.Update(plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.Title]&amp;search_type=videos)</onclick>
+						<onclick condition="!Window.IsVisible(MyVideoNav.xml)">RunScript(script.skin.info.service,action=urlencode,stringinfo=ListItem.Title,doneaction=Dialog.Close(all,force)|ActivateWindow(videos,plugin://plugin.video.youtube/kodion/search/query/?q={value}&amp;search_type=videos,return))</onclick>
+						<onclick condition="Window.IsVisible(MyVideoNav.xml)">RunScript(script.skin.info.service,action=urlencode,stringinfo=ListItem.Title,doneaction=Dialog.Close(all,force)|Container.Update(plugin://plugin.video.youtube/kodion/search/query/?q={value}&amp;search_type=videos))</onclick>
 						<visible>System.AddonIsEnabled(plugin.video.youtube) + String.IsEqual(ListItem.DBType,movie) + !Control.IsVisible(913)</visible>
 					</control>
 					<control type="togglebutton" id="7">

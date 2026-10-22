@@ -480,10 +480,14 @@
 		<include content="ExtendedInfoListLayout">
 			<param name="id">90017</param>
 			<param name="overlayVisibility">false</param>
-			<param name="content">videodb://movies/titles/?xsp={"rules":{"and":[{"field":"set","operator":"is","value":["$INFO[ListItem.Set]"]},{"field":"title","operator":"isnot","value":["$INFO[Window(Home).Property(encoded_title)]"]}]},"type":"movies"}</param>
+			<param name="content">videodb://movies/sets/$INFO[ListItem.SetID]/</param>
 			<param name="sortby">year</param>
 		</include>
 	</include>
+	<variable name="MusicVideoArtistParamsVar">
+		<value condition="!String.IsEmpty(ListItem.DBID)">dbid=$INFO[ListItem.DBID]&amp;dbtype=musicvideo</value>
+		<value>$INFO[Window(Home).Property(SkinInfo.Encoded.MVArtist),artist=]</value>
+	</variable>
 	<include name="ExtendedInfoMusicvideoLists">
 		<include content="ExtendedInfoListLayout">
 			<param name="id">90018</param>
@@ -495,7 +499,7 @@
 			<param name="texture">$INFO[ListItem.Thumb]</param>
 			<param name="overlayVisibility">false</param>
 			<param name="do_onclick">false</param>
-			<param name="content">plugin://script.skin.info.service/?action=similar_artists&amp;artist=$INFO[ListItem.Artist]&amp;limit=10</param>
+			<param name="content">$VAR[MusicVideoArtistParamsVar,plugin://script.skin.info.service/?action=similar_artists&amp;,&amp;limit=10]</param>
 		</include>
 		<include content="ExtendedInfoListLayout">
 			<param name="id">90019</param>
@@ -507,7 +511,7 @@
 			<param name="texture">$INFO[ListItem.Thumb]</param>
 			<param name="overlayVisibility">false</param>
 			<param name="do_onclick">false</param>
-			<param name="content">plugin://script.skin.info.service/?action=artist_albums&amp;artist=$INFO[ListItem.Artist]</param>
+			<param name="content">$VAR[MusicVideoArtistParamsVar,plugin://script.skin.info.service/?action=artist_albums&amp;]</param>
 		</include>
 		<include content="ExtendedInfoListLayout">
 			<param name="id">90020</param>
@@ -519,7 +523,7 @@
 			<param name="texture">$INFO[ListItem.Thumb]</param>
 			<param name="overlayVisibility">false</param>
 			<param name="do_onclick">false</param>
-			<param name="content">plugin://script.skin.info.service/?action=artist_musicvideos&amp;artist=$INFO[ListItem.Artist]&amp;dbid=$INFO[ListItem.DBID]&amp;dbtype=musicvideo</param>
+			<param name="content">$VAR[MusicVideoArtistParamsVar,plugin://script.skin.info.service/?action=artist_musicvideos&amp;]</param>
 		</include>
 		<include content="ExtendedInfoListLayout">
 			<param name="id">90021</param>
@@ -531,7 +535,7 @@
 			<param name="texture">$INFO[ListItem.Thumb]</param>
 			<param name="overlayVisibility">false</param>
 			<param name="do_onclick">false</param>
-			<param name="content">plugin://script.skin.info.service/?action=genre_artists&amp;artist=$INFO[ListItem.Artist]&amp;limit=10</param>
+			<param name="content">$VAR[MusicVideoArtistParamsVar,plugin://script.skin.info.service/?action=genre_artists&amp;,&amp;limit=10]</param>
 		</include>
 	</include>
 	<include name="ExtendedInfoOnclick">
