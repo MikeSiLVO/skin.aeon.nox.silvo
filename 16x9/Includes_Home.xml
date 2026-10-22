@@ -126,7 +126,7 @@
 					<onup condition="!Control.IsVisible(90010) + Control.IsVisible(90020) + !Skin.HasSetting(centermainmenu)">90020</onup>
 					<onup condition="!Control.IsVisible(90010) + !Control.IsVisible(90020)">9000</onup>
 					<ondown>9000</ondown>
-					<include condition="System.AddonIsEnabled(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)">HomeSearchButton</include>
+					<include condition="Skin.HasSetting(Enable.SearchButton)">HomeSearchButton</include>
 					<control type="label" id="9026">
 						<width>5</width>
 						<height>41</height>
@@ -173,7 +173,7 @@
 					<onup condition="!Control.IsVisible(90010) + Control.IsVisible(90020) + !Skin.HasSetting(centermainmenu)">90020</onup>
 					<onup condition="!Control.IsVisible(90010) + !Control.IsVisible(90020)">9000</onup>
 					<ondown>9000</ondown>
-					<include condition="System.AddonIsEnabled(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)">HomeSearchButton</include>
+					<include condition="Skin.HasSetting(Enable.SearchButton)">HomeSearchButton</include>
 					<control type="label" id="9026">
 						<width>5</width>
 						<height>41</height>
@@ -1324,9 +1324,9 @@
 			<animation effect="slide" start="1400,0" end="0,0" delay="800" time="480" condition="Window.Previous(startup)">WindowOpen</animation>
 			<animation effect="slide" end="0,-993" time="320" tween="cubic" easing="inout" condition="[System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419])] | [!System.Getbool(lookandfeel.enablerssfeeds) + String.IsEqual(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])]">Conditional</animation>
 			<animation effect="slide" end="1250,0" time="320" tween="cubic" easing="inout" condition="!System.Getbool(lookandfeel.enablerssfeeds)">Conditional</animation>
-			<animation effect="slide" end="100,0" time="320" tween="cubic" easing="inout" condition="!System.Getbool(lookandfeel.enablerssfeeds) + !Skin.HasSetting(Disable.SearchButton) + !System.HasMediaDVD">Conditional</animation>
-			<animation effect="slide" end="50,0" time="320" tween="cubic" easing="inout" condition="!System.Getbool(lookandfeel.enablerssfeeds) + Skin.HasSetting(Disable.SearchButton) + System.HasMediaDVD">Conditional</animation>
-			<visible>System.Getbool(lookandfeel.enablerssfeeds) | [System.AddonIsEnabled(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)] | System.HasMediaDVD</visible>
+			<animation effect="slide" end="100,0" time="320" tween="cubic" easing="inout" condition="!System.Getbool(lookandfeel.enablerssfeeds) + Skin.HasSetting(Enable.SearchButton) + !System.HasMediaDVD">Conditional</animation>
+			<animation effect="slide" end="50,0" time="320" tween="cubic" easing="inout" condition="!System.Getbool(lookandfeel.enablerssfeeds) + !Skin.HasSetting(Enable.SearchButton) + System.HasMediaDVD">Conditional</animation>
+			<visible>System.Getbool(lookandfeel.enablerssfeeds) | Skin.HasSetting(Enable.SearchButton) | System.HasMediaDVD</visible>
 			<top>1036</top>
 			<control type="group">
 				<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
@@ -1385,7 +1385,7 @@
 					<onup condition="!Control.IsVisible(90010) + !Control.IsVisible(90020)">9000</onup>
 					<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
 					<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.Contains(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus">Conditional</animation>
-					<include condition="System.AddonIsEnabled(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)">HomeSearchButton</include>
+					<include condition="Skin.HasSetting(Enable.SearchButton)">HomeSearchButton</include>
 					<control type="label">
 						<width>410</width>
 						<label />

@@ -4,6 +4,7 @@
 	<onload condition="!Skin.HasSetting(SkinInfo.EnableSlideshow)">Skin.SetBool(SkinInfo.EnableSlideshow)</onload>
 	<onload condition="Skin.HasSetting(Enable.ArtistSlideshowOnHome)">Skin.SetBool(Enable.ArtistFanartOnHome)</onload>
 	<onload condition="Skin.HasSetting(Enable.ArtistSlideshowOnHome)">Skin.Reset(Enable.ArtistSlideshowOnHome)</onload>
+	<onload condition="Skin.HasSetting(Disable.SearchButton)">Skin.Reset(Disable.SearchButton)</onload>
 	<onload condition="!Skin.HasSetting(Enable.BlurredVideoInfo) + Skin.HasSetting(SkinInfo.Blur)">Skin.Reset(SkinInfo.Blur)</onload>
 	<onload condition="Skin.HasSetting(Enable.BlurredVideoInfo) + !Skin.HasSetting(SkinInfo.Blur)">Skin.SetBool(SkinInfo.Blur)</onload>
 	<onload condition="Skin.HasSetting(Enable.BlurredVideoInfo)">SetProperty(SkinInfo.BlurSourceVar,PosterVar,home)</onload>
