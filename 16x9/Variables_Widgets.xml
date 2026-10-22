@@ -368,4 +368,36 @@
 		<value condition="Skin.HasSetting(ViewInfoPlotToggle) + !String.IsEmpty(Container.ListItem.PlotOutline)">$INFO[Container.ListItem.PlotOutline]</value>
 		<value>$INFO[Container.ListItem.Plot]</value>
 	</variable>
+	<variable name="DefaultMoviesWidgetPathVar">
+		<value condition="Library.HasContent(movies)">videodb://recentlyaddedmovies/</value>
+		<value>plugin://script.skin.info.service/?action=tmdb_trending&amp;type=movie</value>
+	</variable>
+	<variable name="DefaultMoviesWidgetLabelVar">
+		<value condition="Library.HasContent(movies)">$LOCALIZE[20386]</value>
+		<value>$ADDON[script.skin.info.service 32627]</value>
+	</variable>
+	<variable name="DefaultMoviesWidget2PathVar">
+		<value condition="Library.HasContent(movies)">special://skin/extras/playlists/randommovies.xsp</value>
+		<value>plugin://script.skin.info.service/?action=tmdb_now_playing&amp;type=movie</value>
+	</variable>
+	<variable name="DefaultMoviesWidget2LabelVar">
+		<value condition="Library.HasContent(movies)">$LOCALIZE[31031]</value>
+		<value>$ADDON[script.skin.info.service 32630]</value>
+	</variable>
+	<variable name="DefaultTVShowsWidgetPathVar">
+		<value condition="Library.HasContent(tvshows)">special://skin/extras/playlists/recenttvshows.xsp</value>
+		<value>plugin://script.skin.info.service/?action=tmdb_trending&amp;type=tv</value>
+	</variable>
+	<variable name="DefaultTVShowsWidgetLabelVar">
+		<value condition="Library.HasContent(tvshows)">$LOCALIZE[31532]</value>
+		<value>$ADDON[script.skin.info.service 32627]</value>
+	</variable>
+	<variable name="DefaultTVShowsWidget2PathVar">
+		<value condition="Library.HasContent(tvshows)">special://skin/extras/playlists/randomtvshows.xsp</value>
+		<value>plugin://script.skin.info.service/?action=tmdb_airing_today&amp;type=tv</value>
+	</variable>
+	<variable name="DefaultTVShowsWidget2LabelVar">
+		<value condition="Library.HasContent(tvshows)">$LOCALIZE[31539]</value>
+		<value>$ADDON[script.skin.info.service 32632]</value>
+	</variable>
 </includes>

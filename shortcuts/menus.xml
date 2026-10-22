@@ -22,23 +22,30 @@
 			<action>ActivateWindow(Pictures,return)</action>
 			<icon>special://skin/extras/icons/DefaultPicture.png</icon>
 		</item>
-		<item name="music" submenu="music">
+		<item name="music" submenu="music" widget="recentlyadded-albums">
 			<label>$LOCALIZE[2]</label>
 			<action condition="Library.HasContent(music)">ActivateWindow(Music,musicdb://,return)</action>
 			<action condition="!Library.HasContent(music)">ActivateWindow(Music,files)</action>
 			<icon>special://skin/extras/icons/DefaultAudio.png</icon>
+			<property name="widgetStyle">Extended Panel</property>
 		</item>
-		<item name="movies" submenu="movies">
+		<item name="movies" submenu="movies" widget="default-movies">
 			<label>$LOCALIZE[20342]</label>
 			<action condition="Library.HasContent(movies)">ActivateWindow(Videos,videodb://movies/titles/,return)</action>
 			<action condition="!Library.HasContent(movies)">ActivateWindow(Videos,files,return)</action>
 			<icon>special://skin/extras/icons/DefaultMovies.png</icon>
+			<property name="widgetStyle">Extended Panel</property>
+			<property name="widget.2">default-movies-2</property>
+			<property name="widgetStyle.2">Extended Panel</property>
 		</item>
-		<item name="tvshows" submenu="tvshows">
+		<item name="tvshows" submenu="tvshows" widget="default-tvshows">
 			<label>$LOCALIZE[20343]</label>
 			<action condition="Library.HasContent(tvshows)">ActivateWindow(Videos,videodb://tvshows/titles/,return)</action>
 			<action condition="!Library.HasContent(tvshows)">ActivateWindow(Videos,files,return)</action>
 			<icon>special://skin/extras/icons/DefaultTVShows.png</icon>
+			<property name="widgetStyle">Extended Panel</property>
+			<property name="widget.2">default-tvshows-2</property>
+			<property name="widgetStyle.2">Extended Panel</property>
 		</item>
 		<item name="livetv" submenu="livetv">
 			<label>$LOCALIZE[31502]</label>
@@ -85,10 +92,11 @@
 			<action>ActivateWindow(shutdownmenu)</action>
 			<icon>special://skin/extras/icons/power.png</icon>
 		</item>
-		<item name="favourites" submenu="favourites">
+		<item name="favourites" submenu="favourites" widget="favourite-videos">
 			<label>$LOCALIZE[1036]</label>
 			<action>ActivateWindow(FavouritesBrowser)</action>
 			<icon>special://skin/extras/icons/Favorites.png</icon>
+			<property name="widgetStyle">Extended Panel</property>
 		</item>
 		<item name="weather" submenu="weather">
 			<label>$LOCALIZE[12600]</label>
