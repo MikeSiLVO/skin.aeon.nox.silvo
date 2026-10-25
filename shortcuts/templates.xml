@@ -945,11 +945,11 @@
 		<property name="controlgroup" condition="suffix=.2">90020</property>
 		<property name="controlgroup">90010</property>
 		<!-- Extra visibility for widget2 -->
-		<property name="extravisible" condition="suffix=.2"> + !Window.IsVisible(shutdownmenu) + !Window.IsVisible(favourites) + !Window.IsVisible(numericinput) + !Window.IsVisible(busydialog)</property>
-		<property name="extravisible"></property>
+		<property name="extravisible" condition="suffix=.2"> + !Window.IsVisible(shutdownmenu) + !Window.IsVisible(numericinput) + !Window.IsVisible(busydialog)</property>
+		<property name="extravisible" />
 		<!-- Suffix for property names -->
 		<property name="suffix" condition="suffix=.2">.2</property>
-		<property name="suffix"></property>
+		<property name="suffix" />
 		<!-- Controls -->
 		<controls>
 			<control type="group">
@@ -1475,7 +1475,7 @@
 				<visible>!Weather.IsFetched</visible>
 			</item>
 			<item>
-				<label>33006</label>
+				<label>$LOCALIZE[33006]</label>
 				<label2>$INFO[Window(weather).Property(Day0.Outlook)]</label2>
 				<icon>$VAR[WeatherIconsPathVar]$INFO[Window(weather).Property(Day0.FanartCode)]$VAR[WeatherIconsExtVar]</icon>
 				<property name="Label3">[COLOR red]$INFO[Window(weather).Property(Day0.HighTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
@@ -1496,7 +1496,7 @@
 				<visible>!Weather.IsFetched</visible>
 			</item>
 			<item>
-				<label>33007</label>
+				<label>$LOCALIZE[33007]</label>
 				<label2>$INFO[Window(weather).Property(Day1.Outlook)]</label2>
 				<icon>$VAR[WeatherIconsPathVar]$INFO[Window(weather).Property(Day1.FanartCode)]$VAR[WeatherIconsExtVar]</icon>
 				<property name="Label3">[COLOR red]$INFO[Window(weather).Property(Day1.HighTemp)]$INFO[System.TemperatureUnits][/COLOR]</property>
@@ -1512,7 +1512,7 @@
 		<condition>widgetType=system | widgetType.2=system</condition>
 		<controls>
 			<item>
-				<label>12395</label>
+				<label>$LOCALIZE[12395]</label>
 				<label2>$INFO[System.BatteryLevel]</label2>
 				<icon>homewidgets/systeminfo/square/battery_100.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/battery_100.jpg</property>
@@ -1522,7 +1522,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>12395</label>
+				<label>$LOCALIZE[12395]</label>
 				<label2>$INFO[System.BatteryLevel]</label2>
 				<icon>homewidgets/systeminfo/square/battery_50.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/battery_50.jpg</property>
@@ -1532,7 +1532,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>12395</label>
+				<label>$LOCALIZE[12395]</label>
 				<label2>$INFO[System.BatteryLevel]</label2>
 				<icon>homewidgets/systeminfo/square/battery_10.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/battery_10.jpg</property>
@@ -1542,7 +1542,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>12395</label>
+				<label>$LOCALIZE[12395]</label>
 				<label2>$INFO[System.BatteryLevel]</label2>
 				<icon>homewidgets/systeminfo/square/battery_critical.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/battery_critical.jpg</property>
@@ -1552,7 +1552,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>705</label>
+				<label>$LOCALIZE[705]</label>
 				<label2>$INFO[Network.LinkState]</label2>
 				<icon>homewidgets/systeminfo/square/connected.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/connected.jpg</property>
@@ -1562,7 +1562,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>705</label>
+				<label>$LOCALIZE[705]</label>
 				<label2>$INFO[Network.LinkState]</label2>
 				<icon>homewidgets/systeminfo/square/disconnected.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/disconnected.jpg</property>
@@ -1572,7 +1572,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>13280</label>
+				<label>$LOCALIZE[13280]</label>
 				<label2>$INFO[System.ScreenWidth]x$INFO[System.ScreenHeight]</label2>
 				<icon>homewidgets/systeminfo/square/video.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/video.jpg</property>
@@ -1582,7 +1582,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>13280</label>
+				<label>$LOCALIZE[13280]</label>
 				<label2>$INFO[System.ScreenWidth]x$INFO[System.ScreenHeight]</label2>
 				<icon>homewidgets/systeminfo/square/video.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/video.jpg</property>
@@ -1621,7 +1621,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>154</label>
+				<label>$LOCALIZE[154]</label>
 				<label2>$INFO[System.FreeSpacePercent]</label2>
 				<icon>homewidgets/systeminfo/square/storage.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/storage.jpg</property>
@@ -1630,7 +1630,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>19020</label>
+				<label>$LOCALIZE[19020]</label>
 				<label2>$INFO[Pvr.BackendName]</label2>
 				<icon>homewidgets/systeminfo/square/pvr.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/pvr.jpg</property>
@@ -1640,7 +1640,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>19114</label>
+				<label>$LOCALIZE[19114]</label>
 				<label2>$INFO[System.BuildVersion]</label2>
 				<icon>homewidgets/systeminfo/square/system.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/system.jpg</property>
@@ -1650,7 +1650,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>12390</label>
+				<label>$LOCALIZE[12390]</label>
 				<label2>$INFO[System.Uptime]</label2>
 				<icon>homewidgets/systeminfo/square/uptime.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/uptime.jpg</property>
@@ -1665,7 +1665,7 @@
 		<condition>widgetType=system | widgetType.2=system</condition>
 		<controls>
 			<item>
-				<label>12390</label>
+				<label>$LOCALIZE[12390]</label>
 				<label2>$INFO[System.Uptime]</label2>
 				<icon>homewidgets/systeminfo/square/uptime.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/uptime.jpg</property>
@@ -1680,7 +1680,7 @@
 		<condition>widgetType=system | widgetType.2=system</condition>
 		<controls>
 			<item>
-				<label>12395</label>
+				<label>$LOCALIZE[12395]</label>
 				<label2>$INFO[System.BatteryLevel]</label2>
 				<icon>homewidgets/systeminfo/square/battery_100.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/battery_100.jpg</property>
@@ -1690,7 +1690,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>12395</label>
+				<label>$LOCALIZE[12395]</label>
 				<label2>$INFO[System.BatteryLevel]</label2>
 				<icon>homewidgets/systeminfo/square/battery_50.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/battery_50.jpg</property>
@@ -1700,7 +1700,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>12395</label>
+				<label>$LOCALIZE[12395]</label>
 				<label2>$INFO[System.BatteryLevel]</label2>
 				<icon>homewidgets/systeminfo/square/battery_10.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/battery_10.jpg</property>
@@ -1710,7 +1710,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>12395</label>
+				<label>$LOCALIZE[12395]</label>
 				<label2>$INFO[System.BatteryLevel]</label2>
 				<icon>homewidgets/systeminfo/square/battery_critical.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/battery_critical.jpg</property>
@@ -1726,7 +1726,7 @@
 		<condition>widgetType=system | widgetType.2=system</condition>
 		<controls>
 			<item>
-				<label>705</label>
+				<label>$LOCALIZE[705]</label>
 				<label2>$INFO[Network.LinkState]</label2>
 				<icon>homewidgets/systeminfo/square/connected.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/connected.jpg</property>
@@ -1736,7 +1736,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>705</label>
+				<label>$LOCALIZE[705]</label>
 				<label2>$INFO[Network.LinkState]</label2>
 				<icon>homewidgets/systeminfo/square/disconnected.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/disconnected.jpg</property>
@@ -1752,7 +1752,7 @@
 		<condition>widgetType=system | widgetType.2=system</condition>
 		<controls>
 			<item>
-				<label>13280</label>
+				<label>$LOCALIZE[13280]</label>
 				<label2>$INFO[System.ScreenWidth]x$INFO[System.ScreenHeight]</label2>
 				<icon>homewidgets/systeminfo/square/video.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/video.jpg</property>
@@ -1762,7 +1762,7 @@
 				<onclick>ActivateWindow(systeminfo)</onclick>
 			</item>
 			<item>
-				<label>13280</label>
+				<label>$LOCALIZE[13280]</label>
 				<label2>$INFO[System.ScreenWidth]x$INFO[System.ScreenHeight]</label2>
 				<icon>homewidgets/systeminfo/square/video.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/video.jpg</property>
@@ -1819,7 +1819,7 @@
 		<condition>widgetType=system | widgetType.2=system</condition>
 		<controls>
 			<item>
-				<label>154</label>
+				<label>$LOCALIZE[154]</label>
 				<label2>$INFO[System.FreeSpacePercent]</label2>
 				<icon>homewidgets/systeminfo/square/storage.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/storage.jpg</property>
@@ -1834,7 +1834,7 @@
 		<condition>widgetType=system | widgetType.2=system</condition>
 		<controls>
 			<item>
-				<label>19020</label>
+				<label>$LOCALIZE[19020]</label>
 				<label2>$INFO[Pvr.BackendName]</label2>
 				<icon>homewidgets/systeminfo/square/pvr.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/pvr.jpg</property>
@@ -1850,7 +1850,7 @@
 		<condition>widgetType=system | widgetType.2=system</condition>
 		<controls>
 			<item>
-				<label>19114</label>
+				<label>$LOCALIZE[19114]</label>
 				<label2>$INFO[System.BuildVersion]</label2>
 				<icon>homewidgets/systeminfo/square/system.png</icon>
 				<property name="background">special://skin/backgrounds/widgets/systeminfo/fanart/system.jpg</property>

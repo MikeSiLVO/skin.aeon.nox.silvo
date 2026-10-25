@@ -54,42 +54,42 @@
 					</focusedlayout>
 					<content>
 						<item id="3">
-							<label>31901</label>
+							<label>$LOCALIZE[31901]</label>
 							<icon />
 							<visible>!String.IsEmpty(Window.Property(36Hour.IsFetched))</visible>
 						</item>
 						<item id="4">
-							<label>31903</label>
+							<label>$LOCALIZE[31903]</label>
 							<icon />
 							<visible>!String.IsEmpty(Window.Property(Weekend.IsFetched))</visible>
 						</item>
 						<item id="5">
-							<label>31902</label>
+							<label>$LOCALIZE[31902]</label>
 							<icon />
 							<visible>!String.IsEmpty(Window.Property(Hourly.IsFetched))</visible>
 						</item>
 						<item id="6">
-							<label fallback="1448">$INFO[Window.Property(Map.1.Heading)]</label>
+							<label fallback="$LOCALIZE[1448]">$INFO[Window.Property(Map.1.Heading)]</label>
 							<icon />
 							<visible>!String.IsEmpty(Window.Property(Map.1.Area)) + !String.IsEmpty(Window.Property(Map.IsFetched))</visible>
 						</item>
 						<item id="7">
-							<label fallback="387">$INFO[Window.Property(Map.2.Heading)]</label>
+							<label fallback="$LOCALIZE[387]">$INFO[Window.Property(Map.2.Heading)]</label>
 							<icon />
 							<visible>!String.IsEmpty(Window.Property(Map.2.Area)) + !String.IsEmpty(Window.Property(Map.IsFetched))</visible>
 						</item>
 						<item id="8">
-							<label fallback="1375">$INFO[Window.Property(Map.3.Heading)]</label>
+							<label fallback="$LOCALIZE[1375]">$INFO[Window.Property(Map.3.Heading)]</label>
 							<icon />
 							<visible>!String.IsEmpty(Window.Property(Map.3.Area)) + !String.IsEmpty(Window.Property(Map.IsFetched))</visible>
 						</item>
 						<item id="9">
-							<label fallback="404">$INFO[Window.Property(Map.4.Heading)]</label>
+							<label fallback="$LOCALIZE[404]">$INFO[Window.Property(Map.4.Heading)]</label>
 							<icon />
 							<visible>!String.IsEmpty(Window.Property(Map.4.Area)) + !String.IsEmpty(Window.Property(Map.IsFetched))</visible>
 						</item>
 						<item id="10">
-							<label fallback="1376">$INFO[Window.Property(Map.5.Heading)]</label>
+							<label fallback="$LOCALIZE[1376]">$INFO[Window.Property(Map.5.Heading)]</label>
 							<icon />
 							<visible>!String.IsEmpty(Window.Property(Map.5.Area)) + !String.IsEmpty(Window.Property(Map.IsFetched))</visible>
 						</item>
@@ -964,7 +964,7 @@
 						<height>52</height>
 						<textoffsetx>15</textoffsetx>
 						<font>font13_title</font>
-						<label>31006</label>
+						<label>$LOCALIZE[31006]</label>
 						<textcolor>$VAR[ThemeLabelColor]</textcolor>
 					</control>
 					<control type="spincontrolex" id="3">
@@ -993,18 +993,18 @@
 						<height>52</height>
 						<textoffsetx>15</textoffsetx>
 						<font>font13_title</font>
-						<label>31026</label>
+						<label>$LOCALIZE[31026]</label>
 						<textcolor>$VAR[ThemeLabelColor]</textcolor>
 					</control>
 					<control type="button" id="2">
 						<description>Refresh button</description>
 						<textwidth>352</textwidth>
 						<include>ButtonCommonValues</include>
-						<label>103</label>
+						<label>$LOCALIZE[103]</label>
 					</control>
 					<control type="button" id="4">
 						<description>Settings button</description>
-						<label>5</label>
+						<label>$LOCALIZE[5]</label>
 						<onclick>ClearProperty(MediaMenu,Home)</onclick>
 						<onclick>ActivateWindow(servicesettings,weather)</onclick>
 						<textwidth>352</textwidth>
@@ -1015,13 +1015,13 @@
 					<top>152</top>
 					<control type="label" id="201">
 						<include>ButtonCommonValues</include>
-						<label>31069</label>
+						<label>$LOCALIZE[31069]</label>
 						<visible>!Control.HasFocus(3)</visible>
 					</control>
 					<control type="label" id="202">
 						<textcolor>white</textcolor>
 						<include>ButtonCommonValues</include>
-						<label>31069</label>
+						<label>$LOCALIZE[31069]</label>
 						<visible>Control.HasFocus(3)</visible>
 					</control>
 				</control>

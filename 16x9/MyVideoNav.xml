@@ -658,7 +658,7 @@
 						<textwidth>352</textwidth>
 						<font>font13_title</font>
 						<include>ButtonCommonValues</include>
-						<label>31026</label>
+						<label>$LOCALIZE[31026]</label>
 						<enable>no</enable>
 						<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
 					</control>
@@ -671,7 +671,7 @@
 					<control type="button" id="11118">
 						<description>Search</description>
 						<include>ButtonCommonValues</include>
-						<label>137</label>
+						<label>$LOCALIZE[137]</label>
 						<onclick>ClearProperty(MediaMenu,Home)</onclick>
 						<onclick>SetFocus(50)</onclick>
 						<onclick condition="!Skin.HasSetting(Disable.MultiSearch)">SetProperty(CustomSelect,search,Home)</onclick>
@@ -684,20 +684,20 @@
 						<description>Filter</description>
 						<textwidth>345</textwidth>
 						<include>ButtonCommonValues</include>
-						<label>587</label>
+						<label>$LOCALIZE[587]</label>
 					</control>
 					<control type="button" id="98">
 						<visible>Container.CanFilterAdvanced</visible>
 						<description>Filter</description>
 						<include>ButtonCommonValues</include>
-						<label>587</label>
+						<label>$LOCALIZE[587]</label>
 						<onclick>ClearProperty(MediaMenu,Home)</onclick>
 						<onclick>SetFocus(50)</onclick>
 						<onclick>Filter</onclick>
 					</control>
 					<control type="radiobutton" id="16">
 						<description>PartyMode</description>
-						<label>589</label>
+						<label>$LOCALIZE[589]</label>
 						<include>ButtonCommonValues</include>
 						<visible>Container.Content(MusicVideos)</visible>
 					</control>
@@ -705,7 +705,7 @@
 						<description>Unlock Shares</description>
 						<textwidth>255</textwidth>
 						<include>ButtonCommonValues</include>
-						<label>20336</label>
+						<label>$LOCALIZE[20336]</label>
 						<onclick>Mastermode</onclick>
 						<selected>System.IsMaster</selected>
 						<visible>System.HasLocks</visible>
@@ -715,15 +715,15 @@
 						<textwidth>352</textwidth>
 						<font>font13_title</font>
 						<include>ButtonCommonValues</include>
-						<label>31039</label>
+						<label>$LOCALIZE[31039]</label>
 						<enable>no</enable>
 						<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
 					</control>
 					<control type="togglebutton" id="20">
 						<description>Update library</description>
 						<include>ButtonCommonValues</include>
-						<label>653</label>
-						<altlabel>13353</altlabel>
+						<label>$LOCALIZE[653]</label>
+						<altlabel>$LOCALIZE[13353]</altlabel>
 						<usealttexture>library.isscanningvideo</usealttexture>
 					</control>
 					<control type="button" id="2099">
@@ -736,7 +736,7 @@
 					<control type="button" id="612">
 						<description>Go to playlist</description>
 						<include>ButtonCommonValues</include>
-						<label>13350</label>
+						<label>$LOCALIZE[13350]</label>
 						<onclick>ClearProperty(MediaMenu,Home)</onclick>
 						<onclick>ActivateWindow(videoplaylist)</onclick>
 						<visible>!String.IsEqual(Playlist.Length(video),0)</visible>

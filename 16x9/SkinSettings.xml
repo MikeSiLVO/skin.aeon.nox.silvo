@@ -150,19 +150,19 @@
 						<visible>Container(9000).HasFocus(1)</visible>
 						<control type="button" id="10000">
 							<include>SettingsButtonCommonValues</include>
-							<label>31911</label>
+							<label>$LOCALIZE[31911]</label>
 							<onclick>RunScript(script.skinshortcuts,type=manage&amp;menu=mainmenu)</onclick>
 						</control>
 						<control type="button" id="10001">
 							<include>SettingsButtonCommonValues</include>
-							<label>31913</label>
+							<label>$LOCALIZE[31913]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[CenterMainMenuVar][/COLOR]</label2>
 							<onclick>Skin.ToggleSetting(centermainmenu)</onclick>
 							<visible>!String.IsEqual(Skin.String(MainMenu.Layout),vertical)</visible>
 						</control>
 						<control type="button" id="10002">
 							<include>SettingsButtonCommonValues</include>
-							<label>31928</label>
+							<label>$LOCALIZE[31928]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[MainMenuLayoutVar][/COLOR]</label2>
 							<onclick>SetProperty(CustomSelect,mainmenulayout,Home)</onclick>
 							<onclick>ActivateWindow(1129)</onclick>
@@ -279,13 +279,13 @@
 						</control>
 						<control type="radiobutton" id="20003">
 							<include>SettingsButtonCommonValues</include>
-							<label>20083</label>
+							<label>$LOCALIZE[20083]</label>
 							<onclick>Skin.ToggleSetting(Disable.Musicinfo)</onclick>
 							<selected>!Skin.HasSetting(Disable.Musicinfo)</selected>
 						</control>
 						<control type="radiobutton" id="20004">
 							<include>SettingsButtonCommonValues</include>
-							<label>20176</label>
+							<label>$LOCALIZE[20176]</label>
 							<onclick>Skin.ToggleSetting(Disable.Videoinfo)</onclick>
 							<selected>!Skin.HasSetting(Disable.Videoinfo)</selected>
 						</control>
@@ -382,7 +382,7 @@
 						</control>
 						<control type="button" id="40002">
 							<include>SettingsButtonCommonValues</include>
-							<label>31371</label>
+							<label>$LOCALIZE[31371]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[ViewPlotLocalizeVar][/COLOR]</label2>
 							<onclick>Skin.ToggleSetting(ViewInfoPlotToggle)</onclick>
 						</control>
@@ -394,19 +394,19 @@
 						</control>
 						<control type="radiobutton" id="40004">
 							<include>SettingsButtonCommonValues</include>
-							<label>20189</label>
+							<label>$LOCALIZE[20189]</label>
 							<onclick>Skin.ToggleSetting(Enable.AutoScroll)</onclick>
 							<selected>Skin.HasSetting(Enable.AutoScroll)</selected>
 						</control>
 						<control type="radiobutton" id="40005">
 							<include>SettingsButtonCommonValues</include>
-							<label>31124</label>
+							<label>$LOCALIZE[31124]</label>
 							<onclick>Skin.ToggleSetting(Disable.ShowBackgroundVideo)</onclick>
 							<selected>!Skin.HasSetting(Disable.ShowBackgroundVideo)</selected>
 						</control>
 						<control type="radiobutton" id="40006">
 							<include>SettingsButtonCommonValues</include>
-							<label>31125</label>
+							<label>$LOCALIZE[31125]</label>
 							<onclick>Skin.ToggleSetting(Disable.ShowBackgroundVis)</onclick>
 							<selected>!Skin.HasSetting(Disable.ShowBackgroundVis)</selected>
 						</control>
@@ -442,14 +442,14 @@
 						</control>
 						<control type="button" id="50002">
 							<include>SettingsButtonCommonValues</include>
-							<label>31939</label>
+							<label>$LOCALIZE[31939]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[InfoPanelDelayLocalizeVar][/COLOR]</label2>
 							<onclick condition="Skin.HasSetting(Enable.ManualInfoPanel)">Skin.Reset(Enable.ManualInfoPanel)</onclick>
 							<onclick>$VAR[InfoPanelDelayOnclickVar]</onclick>
 						</control>
 						<control type="radiobutton" id="50003">
 							<include>SettingsButtonCommonValues</include>
-							<label>31941</label>
+							<label>$LOCALIZE[31941]</label>
 							<onclick>SetProperty(OfferReloadAfterConfirm,kiosk_mode,Home)</onclick>
 							<onclick>ActivateWindow(1126)</onclick>
 							<selected>Skin.HasSetting(KioskMode.Enabled)</selected>
@@ -468,13 +468,13 @@
 						</control>
 						<control type="button" id="50006">
 							<include>SettingsButtonCommonValues</include>
-							<label>31094</label>
+							<label>$LOCALIZE[31094]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[SlimListSettingVar][/COLOR]</label2>
 							<onclick>Skin.ToggleSetting(Enable.SlimList)</onclick>
 						</control>
 						<control type="radiobutton" id="50007">
 							<include>SettingsButtonCommonValues</include>
-							<label>31961</label>
+							<label>$LOCALIZE[31961]</label>
 							<onclick>Skin.ToggleSetting(Enable.HideRatings)</onclick>
 							<selected>Skin.HasSetting(Enable.HideRatings)</selected>
 						</control>
@@ -501,14 +501,14 @@
 						<onleft>9000</onleft>
 						<visible>Container(9000).HasFocus(6)</visible>
 						<control type="button" id="60000">
-							<label>31736</label>
+							<label>$LOCALIZE[31736]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[WidgetTransLabelVar]%[/COLOR]</label2>
 							<onclick>SetProperty(CustomSelect,widgetopacity,Home)</onclick>
 							<onclick>ActivateWindow(1129)</onclick>
 							<include>SettingsButtonCommonValues</include>
 						</control>
 						<control type="radiobutton" id="60001">
-							<label>31737</label>
+							<label>$LOCALIZE[31737]</label>
 							<onclick>Skin.ToggleSetting(Enable.GlobalWidgetBack)</onclick>
 							<selected>Skin.HasSetting(Enable.GlobalWidgetBack)</selected>
 							<include>SettingsButtonCommonValues</include>
@@ -522,13 +522,13 @@
 							<include>SettingsButtonCommonValues</include>
 						</control>
 						<control type="radiobutton" id="60003">
-							<label>31738</label>
+							<label>$LOCALIZE[31738]</label>
 							<onclick>Skin.ToggleSetting(Enable.ListWidgetAutoscroll)</onclick>
 							<selected>Skin.HasSetting(Enable.ListWidgetAutoscroll)</selected>
 							<include>SettingsButtonCommonValues</include>
 						</control>
 						<control type="button" id="60004">
-							<label>31740</label>
+							<label>$LOCALIZE[31740]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[WidgetCaseInfoVar][/COLOR]</label2>
 							<onclick>SetProperty(CustomSelect,widgetcaseinfo,Home)</onclick>
 							<onclick>ActivateWindow(1129)</onclick>
@@ -548,7 +548,7 @@
 						<visible>Container(9000).HasFocus(7)</visible>
 						<control type="radiobutton" id="70000">
 							<include>SettingsButtonCommonValues</include>
-							<label>31083</label>
+							<label>$LOCALIZE[31083]</label>
 							<onclick>Skin.ToggleSetting(Disable.NextAired)</onclick>
 							<selected>!Skin.HasSetting(Disable.NextAired)</selected>
 						</control>
@@ -603,7 +603,7 @@
 						</control>
 						<control type="button" id="70008">
 							<include>SettingsButtonCommonValues</include>
-							<label>31017</label>
+							<label>$LOCALIZE[31017]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Skin.String(MusicGenreFanartPath)][/COLOR]</label2>
 							<onclick>Skin.SetPath(MusicGenreFanartPath)</onclick>
 						</control>
