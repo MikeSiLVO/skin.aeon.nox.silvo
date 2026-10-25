@@ -367,54 +367,54 @@
 						<height>810</height>
 						<onleft>9000</onleft>
 						<visible>Container(9000).HasFocus(4)</visible>
-						<control type="radiobutton" id="40000">
+						<control type="button" id="40000">
+							<include>SettingsButtonCommonValues</include>
+							<label>$LOCALIZE[31192]</label>
+							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[DefaultBackgroundLabelVar][/COLOR]</label2>
+							<onclick>SetProperty(CustomSelect,defaultbackground,Home)</onclick>
+							<onclick>ActivateWindow(1129)</onclick>
+						</control>
+						<control type="radiobutton" id="40001">
 							<include>SettingsButtonCommonValues</include>
 							<label>$LOCALIZE[31469]</label>
 							<onclick>Skin.ToggleSetting(Disable.TopBar)</onclick>
 							<selected>Skin.HasSetting(Disable.TopBar)</selected>
 						</control>
-						<control type="button" id="40001">
+						<control type="button" id="40002">
 							<include>SettingsButtonCommonValues</include>
 							<label>31371</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[ViewPlotLocalizeVar][/COLOR]</label2>
 							<onclick>Skin.ToggleSetting(ViewInfoPlotToggle)</onclick>
 						</control>
-						<control type="button" id="40002">
+						<control type="button" id="40003">
 							<include>SettingsButtonCommonValues</include>
 							<label>$LOCALIZE[31574]</label>
 							<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[ViewSetPlotLocalizeVar][/COLOR]</label2>
 							<onclick>Skin.ToggleSetting(ViewSetPlotToggle)</onclick>
 						</control>
-						<control type="radiobutton" id="40003">
+						<control type="radiobutton" id="40004">
 							<include>SettingsButtonCommonValues</include>
 							<label>20189</label>
 							<onclick>Skin.ToggleSetting(Enable.AutoScroll)</onclick>
 							<selected>Skin.HasSetting(Enable.AutoScroll)</selected>
 						</control>
-						<control type="radiobutton" id="40004">
+						<control type="radiobutton" id="40005">
 							<include>SettingsButtonCommonValues</include>
 							<label>31124</label>
 							<onclick>Skin.ToggleSetting(Disable.ShowBackgroundVideo)</onclick>
 							<selected>!Skin.HasSetting(Disable.ShowBackgroundVideo)</selected>
 						</control>
-						<control type="radiobutton" id="40005">
+						<control type="radiobutton" id="40006">
 							<include>SettingsButtonCommonValues</include>
 							<label>31125</label>
 							<onclick>Skin.ToggleSetting(Disable.ShowBackgroundVis)</onclick>
 							<selected>!Skin.HasSetting(Disable.ShowBackgroundVis)</selected>
 						</control>
-						<control type="radiobutton" id="40006">
+						<control type="radiobutton" id="40007">
 							<include>SettingsButtonCommonValues</include>
 							<label>$LOCALIZE[31291]</label>
 							<onclick>Skin.ToggleSetting(Disable.ScrollLabel)</onclick>
 							<selected>Skin.HasSetting(Disable.ScrollLabel)</selected>
-						</control>
-						<control type="button" id="40007">
-							<include>SettingsButtonCommonValues</include>
-							<label>$LOCALIZE[31192]</label>
-							<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Skin.String(CustomDefaultBackground.path)][/COLOR]</label2>
-							<onclick>SetProperty(CustomSelect,defaultbackground,Home)</onclick>
-							<onclick>ActivateWindow(1129)</onclick>
 						</control>
 						<control type="radiobutton" id="40008">
 							<include>SettingsButtonCommonValues</include>

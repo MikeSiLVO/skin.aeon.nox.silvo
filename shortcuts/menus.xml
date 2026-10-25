@@ -17,19 +17,19 @@
 	</dialogs>
 	<!-- Main Menu -->
 	<menu name="mainmenu" container="9000">
-		<item name="pictures">
+		<item name="pictures" background="skin-pictures">
 			<label>$LOCALIZE[1]</label>
 			<action>ActivateWindow(Pictures,return)</action>
 			<icon>special://skin/extras/icons/DefaultPicture.png</icon>
 		</item>
-		<item name="music" submenu="music" widget="recentlyadded-albums">
+		<item name="music" submenu="music" widget="recentlyadded-albums" background="skin-music">
 			<label>$LOCALIZE[2]</label>
 			<action condition="Library.HasContent(music)">ActivateWindow(Music,musicdb://,return)</action>
 			<action condition="!Library.HasContent(music)">ActivateWindow(Music,files)</action>
 			<icon>special://skin/extras/icons/DefaultAudio.png</icon>
 			<property name="widgetStyle">Extended Panel</property>
 		</item>
-		<item name="movies" submenu="movies" widget="default-movies">
+		<item name="movies" submenu="movies" widget="default-movies" background="skin-movies">
 			<label>$LOCALIZE[20342]</label>
 			<action condition="Library.HasContent(movies)">ActivateWindow(Videos,videodb://movies/titles/,return)</action>
 			<action condition="!Library.HasContent(movies)">ActivateWindow(Videos,files,return)</action>
@@ -38,7 +38,7 @@
 			<property name="widget.2">default-movies-2</property>
 			<property name="widgetStyle.2">Extended Panel</property>
 		</item>
-		<item name="tvshows" submenu="tvshows" widget="default-tvshows">
+		<item name="tvshows" submenu="tvshows" widget="default-tvshows" background="skin-tvshows">
 			<label>$LOCALIZE[20343]</label>
 			<action condition="Library.HasContent(tvshows)">ActivateWindow(Videos,videodb://tvshows/titles/,return)</action>
 			<action condition="!Library.HasContent(tvshows)">ActivateWindow(Videos,files,return)</action>
@@ -47,64 +47,64 @@
 			<property name="widget.2">default-tvshows-2</property>
 			<property name="widgetStyle.2">Extended Panel</property>
 		</item>
-		<item name="livetv" submenu="livetv">
+		<item name="livetv" submenu="livetv" background="skin-livetv">
 			<label>$LOCALIZE[31502]</label>
 			<action condition="System.HasPVRAddon">ActivateWindow(TVChannels)</action>
 			<action condition="!System.HasPVRAddon">ActivateWindow(addonbrowser,addons://default_binary_addons_source/kodi.pvrclient,return)</action>
 			<icon>special://skin/extras/icons/DefaultAddonPVRClient.png</icon>
 		</item>
-		<item name="videos" submenu="videos">
+		<item name="videos" submenu="videos" background="skin-videos">
 			<label>$LOCALIZE[3]</label>
 			<action>ActivateWindow(Videos,root)</action>
 			<icon>special://skin/extras/icons/DefaultVideo.png</icon>
 		</item>
-		<item name="programs" submenu="programs">
+		<item name="programs" submenu="programs" background="skin-programs">
 			<label>$LOCALIZE[31957]</label>
 			<action>ActivateWindow(1133)</action>
 			<icon>special://skin/extras/icons/DefaultAddon.png</icon>
 		</item>
-		<item name="games" submenu="games">
+		<item name="games" submenu="games" background="skin-games">
 			<label>$LOCALIZE[15016]</label>
 			<action>ActivateWindow(Games)</action>
 			<icon>special://skin/extras/icons/DefaultGames.png</icon>
 			<visible>System.GetBool(gamesgeneral.enable)</visible>
 		</item>
-		<item name="settings" submenu="settings">
+		<item name="settings" submenu="settings" background="skin-settings">
 			<label>$LOCALIZE[13000]</label>
 			<action>ActivateWindow(Settings)</action>
 			<icon>special://skin/extras/icons/DefaultAddonService.png</icon>
 			<protect type="all" heading="$LOCALIZE[19098]" message="$LOCALIZE[31377]" />
 		</item>
-		<item name="search" submenu="search">
+		<item name="search" submenu="search" background="skin-search">
 			<label>$LOCALIZE[137]</label>
 			<action>SetProperty(CustomSelect,search,Home)</action>
 			<action>ActivateWindow(1129)</action>
 			<icon>special://skin/extras/icons/DefaultAddonsSearch.png</icon>
 		</item>
-		<item name="playdisc" submenu="playdisc" visible="System.HasMediaDVD | System.HasMediaAudioCD">
+		<item name="playdisc" submenu="playdisc" background="skin-playdisc" visible="System.HasMediaDVD | System.HasMediaAudioCD">
 			<label>$LOCALIZE[341]</label>
 			<action>PlayDisc</action>
 			<icon>special://skin/extras/icons/Disc.png</icon>
 			<visible>System.HasMediaDVD</visible>
 		</item>
-		<item name="power" submenu="power">
+		<item name="power" submenu="power" background="skin-power">
 			<label>$LOCALIZE[33060]</label>
 			<action>ActivateWindow(shutdownmenu)</action>
 			<icon>special://skin/extras/icons/power.png</icon>
 		</item>
-		<item name="favourites" submenu="favourites" widget="favourite-videos">
+		<item name="favourites" submenu="favourites" widget="favourite-videos" background="skin-favourites">
 			<label>$LOCALIZE[1036]</label>
 			<action>ActivateWindow(FavouritesBrowser)</action>
 			<icon>special://skin/extras/icons/Favorites.png</icon>
 			<property name="widgetStyle">Extended Panel</property>
 		</item>
-		<item name="weather" submenu="weather">
+		<item name="weather" submenu="weather" background="skin-weather">
 			<label>$LOCALIZE[12600]</label>
 			<action condition="!String.IsEmpty(Weather.Plugin)">ActivateWindow(Weather)</action>
 			<action condition="String.IsEmpty(Weather.Plugin)">ActivateWindow(ServiceSettings,weather)</action>
 			<icon>special://skin/extras/icons/DefaultAddonWeather.png</icon>
 		</item>
-		<item name="musicvideos" submenu="musicvideos">
+		<item name="musicvideos" submenu="musicvideos" background="skin-musicvideos">
 			<label>$LOCALIZE[20389]</label>
 			<action condition="Library.HasContent(musicvideos)">ActivateWindow(Videos,videodb://musicvideos/titles/,return)</action>
 			<action condition="!Library.HasContent(musicvideos)">ActivateWindow(Videos,files,return)</action>

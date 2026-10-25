@@ -217,6 +217,10 @@
 		<value condition="System.Platform.WebOS">logos/webOS-logo.png</value>
 	</variable>
 	<!-- Backgrounds -->
+	<variable name="DefaultBackgroundLabelVar">
+		<value condition="!String.IsEmpty(Skin.String(CustomDefaultBackground.path))">$INFO[Skin.String(CustomDefaultBackground.path)]</value>
+		<value>special://skin/extras/backgrounds/default_bg.jpg</value>
+	</variable>
 	<variable name="HomeBackgroundVar">
 		<value condition="!String.IsEmpty(Container.ListItem.Property(background)) + $EXP[WidgetFanartVisible]">$INFO[Container.ListItem.Property(background)]</value>
 		<value condition="!String.IsEmpty(Control.GetLabel(4410)) + !Skin.HasSetting(Disable.Extrafanart) + $EXP[WidgetFanartVisible]">$INFO[Control.GetLabel(4410)]</value>
@@ -229,8 +233,10 @@
 		<value condition="Control.HasFocus(9010) + String.StartsWith(Container(9010).ListItem.Property(backgroundType),playlist)">$VAR[SubMenuPlaylistBackgroundFanartVar]</value>
 		<value condition="Control.HasFocus(9010) + !String.IsEmpty(Container(9010).ListItem.Property(backgroundPath))">$INFO[Container(9010).ListItem.Property(backgroundPath)]</value>
 		<value condition="String.StartsWith(Container(9000).ListItem.Property(backgroundType),playlist)">$VAR[PlaylistBackgroundFanartVar]</value>
+		<value condition="String.StartsWith(Container(9000).ListItem.Property(background),skin-) + !String.IsEmpty(Skin.String(CustomDefaultBackground.path))">$INFO[Skin.String(CustomDefaultBackground.path)]</value>
 		<value condition="!String.IsEmpty(Container(9000).ListItem.Property(backgroundPath))">$VAR[MainMenuBackgroundPathVar]</value>
 		<value condition="!String.IsEmpty(Skin.String(CustomDefaultBackground.path))">$INFO[Skin.String(CustomDefaultBackground.path)]</value>
+		<value>special://skin/extras/backgrounds/default_bg.jpg</value>
 	</variable>
 	<variable name="GlobalBackgroundVar">
 		<value condition="Window.Next(Home)" />
@@ -252,7 +258,8 @@
 		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,5)">$INFO[Window(Home).Property(SkinInfo.Slideshow.Global.FanArt)]</value>
 		<value condition="String.IsEqual(Container(9033).ListItem.Thumb,6)">$INFO[Skin.String(weatherfanart.path)]$INFO[Window(Weather).Property(Current.FanartCode)]$VAR[WeatherBackgroundTypeVar]</value>
 		<value condition="!String.IsEmpty(Container(9033).ListItem.Thumb)">$INFO[Container(9033).ListItem.Thumb]</value>
-		<value condition="String.IsEmpty(Container(9033).ListItem.Art(thumb)) + !String.IsEmpty(Skin.String(CustomDefaultBackground.path))">$INFO[Skin.String(CustomDefaultBackground.path)]</value>
+		<value condition="!String.IsEmpty(Skin.String(CustomDefaultBackground.path))">$INFO[Skin.String(CustomDefaultBackground.path)]</value>
+		<value>special://skin/extras/backgrounds/default_bg.jpg</value>
 	</variable>
 	<variable name="FanartVar">
 		<value condition="!String.IsEmpty(Control.GetLabel(4410)) + !Skin.HasSetting(Disable.Extrafanart)">$INFO[Control.GetLabel(4410)]</value>
