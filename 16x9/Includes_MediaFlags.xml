@@ -28,7 +28,7 @@
 				<visible>![Container.Content(episodes) + Skin.HasSetting(DisableFlag_EpisodeStudio)]</visible>
 				<control type="image" id="44444">
 					<include>MediaFlagValues</include>
-					<texture fallback="colors/blank.png" background="true">$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
+					<texture background="true">$VAR[PathFlagsStudios]$INFO[ListItem.Studio,,.png]</texture>
 				</control>
 				<control type="label">
 					<width>170</width>
@@ -38,7 +38,7 @@
 					<textcolor>grey</textcolor>
 					<wrapmultiline>true</wrapmultiline>
 					<label>$INFO[ListItem.Studio]</label>
-					<visible>String.IsEqual(Control.GetLabel(44444),colors/blank.png) | String.IsEmpty(Control.GetLabel(44444))</visible>
+					<visible>String.IsEmpty(Control.GetLabel(44444))</visible>
 				</control>
 			</control>
 			<!-- MPAA -->
