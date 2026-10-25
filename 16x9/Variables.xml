@@ -852,6 +852,10 @@
 		<value condition="!String.IsEmpty(Container(4800).ListItem.Rating(trakt))">$INFO[Container(4800).ListItem.Rating(trakt)]</value>
 		<value>$INFO[Window.Property(Rating.trakt)]</value>
 	</variable>
+	<variable name="CustomImageViewerLabelVar">
+		<value condition="!String.IsEmpty(Window.Property(artwork_view))">$INFO[Container(1520).ListItem.Property(Source)]</value>
+		<value>$INFO[Container(1520).CurrentItem] / $INFO[Container(1520).NumItems]</value>
+	</variable>
 	<variable name="SkinInfoNextAiredLabelVar">
 		<value condition="!String.IsEmpty(Window(Home).Property(SkinInfo.Online.NextEpisodeAired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19031]:[/COLOR] $INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeAired),, • ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeSeason),S]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisode),E, - ]$INFO[Window(Home).Property(SkinInfo.Online.NextEpisodeTitle)]</value>
 		<value condition="!String.IsEmpty(Window(Home).Property(SkinInfo.Online.LastEpisodeAired))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31374]:[/COLOR] $INFO[Window(Home).Property(SkinInfo.Online.LastEpisodeAired),, • ]$INFO[Window(Home).Property(SkinInfo.Online.LastEpisodeSeason),S]$INFO[Window(Home).Property(SkinInfo.Online.LastEpisode),E, - ]$INFO[Window(Home).Property(SkinInfo.Online.LastEpisodeTitle)]</value>

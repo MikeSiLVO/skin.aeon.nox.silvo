@@ -41,8 +41,10 @@
 			<aspectratio>keep</aspectratio>
 			<fadetime>IconCrossfadeTime</fadetime>
 			<texture background="true">$INFO[Container(1520).ListItem.Art(thumb)]</texture>
+			<visible>!String.IsEmpty(Window.Property(viewer_ready))</visible>
 		</control>
 		<control type="group">
+			<visible>!String.IsEmpty(Window.Property(viewer_ready))</visible>
 			<animation effect="fade" start="100" end="0" time="300" condition="System.IdleTime(3)">Conditional</animation>
 			<animation effect="fade" start="0" end="100" time="300" condition="!System.IdleTime(3)">Conditional</animation>
 			<control type="image">
@@ -51,7 +53,7 @@
 				<height>60</height>
 				<texture colordiffuse="99000000">colors/white.png</texture>
 			</control>
-			<!-- Image count -->
+			<!-- Image count/provider -->
 			<control type="label">
 				<left>60</left>
 				<bottom>0</bottom>
@@ -59,7 +61,7 @@
 				<height>50</height>
 				<font>font15</font>
 				<textcolor>whitesmoke</textcolor>
-				<label>$INFO[Container(1520).CurrentItem] / $INFO[Container(1520).NumItems]</label>
+				<label>$VAR[CustomImageViewerLabelVar]</label>
 			</control>
 			<!-- Dimensions -->
 			<control type="label">
