@@ -7,7 +7,6 @@
 	<onunload>ClearProperty(Notify,Home)</onunload>
 	<onunload>ClearProperty(NotWarnedOnMuzicVizInfo,Home)</onunload>
 	<onunload>ClearProperty(OfferReloadAfterConfirm,Home)</onunload>
-	<onunload>ClearProperty(AskDefaultBackground,Home)</onunload>
 	<onunload>ClearProperty(CustomConfirm,Home)</onunload>
 	<controls>
 		<include>DimBackground</include>
@@ -72,9 +71,6 @@
 					<onclick condition="!Skin.HasSetting(WarnedOnHidingViz) + !String.IsEmpty(Window(Home).Property(NotWarnedOnHidingViz))">Skin.SetBool(WarnedOnHidingViz)</onclick>
 					<onclick condition="String.IsEqual(Window(Home).Property(OfferReloadAfterConfirm),kiosk_mode)">Skin.ToggleSetting(KioskMode.Enabled)</onclick>
 					<onclick condition="!String.IsEmpty(Window(Home).Property(OfferReloadAfterConfirm))">ReloadSkin()</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(AskDefaultBackground))">Skin.SetBool(AskedDefaultBackground)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(AskDefaultBackground))">SetProperty(CustomSelect,defaultbackground,Home)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(AskDefaultBackground))">ActivateWindow(1129)</onclick>
 					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texturefocus>
 					<visible>String.IsEmpty(Window(Home).Property(Notify))</visible>
 				</control>
@@ -92,7 +88,6 @@
 					<onup>noop</onup>
 					<ondown>noop</ondown>
 					<onclick>Dialog.Close(1126)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(AskDefaultBackground))">Skin.SetBool(AskedDefaultBackground)</onclick>
 					<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="5">colors/white50.png</texturefocus>
 					<visible>String.IsEmpty(Window(Home).Property(Notify))</visible>
 				</control>

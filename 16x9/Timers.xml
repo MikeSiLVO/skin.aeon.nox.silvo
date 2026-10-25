@@ -25,11 +25,6 @@
 		<onstop>ClearProperty(Enable.ScreenshotMode,Home)</onstop>
 	</timer>
 	<timer>
-		<name>askdefaultbackground</name>
-		<stop>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(askdefaultbackground),3)</stop>
-		<onstop>ActivateWindow(1126)</onstop>
-	</timer>
-	<timer>
 		<name>autoclosecustomtrailer</name>
 		<start reset="true">Window.IsVisible(1103) + Player.HasVideo</start>
 		<reset>Player.HasVideo</reset>
