@@ -404,6 +404,18 @@
 		<widget name="favourites-widget" label="$LOCALIZE[1036]" icon="logos/kodi.png" type="favourite">
 			<path>favourites://</path>
 		</widget>
+		<widget name="favourites-movies" label="$ADDON[script.skin.info.service 32687]" icon="logos/skininfo-logo.png" type="movies" target="videos" source="addon" visible="Library.HasContent(movies)">
+			<path>plugin://script.skin.info.service/?action=favourites&amp;dbtype=movie</path>
+		</widget>
+		<widget name="favourites-tvshows" label="$ADDON[script.skin.info.service 32688]" icon="logos/skininfo-logo.png" type="tvshows" target="videos" source="addon" visible="Library.HasContent(tvshows)">
+			<path>plugin://script.skin.info.service/?action=favourites&amp;dbtype=tvshow</path>
+		</widget>
+		<widget name="favourites-episodes" label="$ADDON[script.skin.info.service 32689]" icon="logos/skininfo-logo.png" type="episodes" target="videos" source="addon" visible="Library.HasContent(tvshows)">
+			<path>plugin://script.skin.info.service/?action=favourites&amp;dbtype=episode</path>
+		</widget>
+		<widget name="favourites-musicvideos" label="$ADDON[script.skin.info.service 32690]" icon="logos/skininfo-logo.png" type="musicvideos" target="videos" source="addon" visible="Library.HasContent(musicvideos)">
+			<path>plugin://script.skin.info.service/?action=favourites&amp;dbtype=musicvideo</path>
+		</widget>
 		<content source="favourites" folder="$LOCALIZE[1036]" icon="DefaultFolder.png" />
 	</group>
 	<!-- Add-ons -->
